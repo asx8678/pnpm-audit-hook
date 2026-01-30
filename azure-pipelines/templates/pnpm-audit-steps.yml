@@ -1,0 +1,69 @@
+# pnpm audit steps template
+# Runs pnpm install with the pnpm audit hook enabled (via .pnpmfile.cjs)
+# and publishes security artifacts.
+
+parameters:
+  nodeVersion: '18.x'
+  pnpmVersion: '9.x'
+  severityThreshold: 'high'   # critical|high|medium|low
+  failOnWarn: false
+  offlineMode: false
+  cacheTtl: 3600
+  reportFormat: 'sarif,html,json,junit,markdown'
+  outputDir: '.'
+  basename: '.pnpm-audit-report'
+
+steps:
+  - task: NodeTool@0
+    displayName: 'Use Node.js ${{ parameters.nodeVersion }}'
+    inputs:
+      versionSpec: ${{ parameters.nodeVersion }}
+
+  - script: |
+      corepack enable
+      corepack prepare pnpm@${{ parameters.pnpmVersion }} --activate
+      pnpm --version
+    displayName: 'Enable pnpm via Corepack'
+
+  - script: |
+      pnpm config set store-dir $(Pipeline.Workspace)/.pnpm-store
+    displayName: 'Configure pnpm store directory'
+
+  - script: |
+      pnpm install --frozen-lockfile
+    displayName: 'pnpm install (audit hook runs before download)'
+    env:
+      PNPM_AUDIT_ENABLED: 'true'
+      PNPM_AUDIT_SEVERITY_THRESHOLD: ${{ parameters.severityThreshold }}
+      PNPM_AUDIT_FAIL_ON_WARN: ${{ parameters.failOnWarn }}
+      PNPM_AUDIT_OFFLINE_MODE: ${{ parameters.offlineMode }}
+      PNPM_AUDIT_CACHE_TTL: ${{ parameters.cacheTtl }}
+      PNPM_AUDIT_REPORT_FORMAT: ${{ parameters.reportFormat }}
+      PNPM_AUDIT_OUTPUT_DIR: ${{ parameters.outputDir }}
+      PNPM_AUDIT_BASENAME: ${{ parameters.basename }}
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+      # Optional API keys (recommend using Key Vault)
+      NVD_API_KEY: $(NVD_API_KEY)
+      GITHUB_TOKEN: $(GITHUB_TOKEN)
+      SNYK_TOKEN: $(SNYK_TOKEN)
+      SNYK_ORG_ID: $(SNYK_ORG_ID)
+      OSSINDEX_USERNAME: $(OSSINDEX_USERNAME)
+      OSSINDEX_TOKEN: $(OSSINDEX_TOKEN)
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish pnpm audit artifacts'
+    condition: succeededOrFailed()
+    inputs:
+      PathtoPublish: '${{ parameters.outputDir }}'
+      ArtifactName: 'pnpm-audit'
+      publishLocation: 'Container'
+
+  - task: PublishTestResults@2
+    displayName: 'Publish JUnit (pnpm audit)'
+    condition: succeededOrFailed()
+    inputs:
+      testResultsFormat: 'JUnit'
+      testResultsFiles: '${{ parameters.basename }}.junit.xml'
+      searchFolder: '${{ parameters.outputDir }}'
+      mergeTestResults: true
+      failTaskOnFailedTests: false

@@ -1,0 +1,15 @@
+# Example CI pipeline (configurable strictness)
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+
+stages:
+  - stage: Build
+    jobs:
+      - template: ../templates/pnpm-audit-job.yml
+        parameters:
+          severityThreshold: 'high'
+          failOnWarn: false
+          reportFormat: 'sarif,html,json,junit'

@@ -1,0 +1,62 @@
+# Azure DevOps pipeline template: pnpm audit hook
+#
+# Supports:
+# - PR validation (strict)
+# - CI builds (configurable)
+# - Release builds (max strictness)
+# - Scheduled scans
+# - Manual runs
+#
+# Usage:
+#   - template: azure-pipelines-pnpm-audit.yml
+#     parameters:
+#       mode: 'ci'  # pr|ci|release|scan
+#       nodeVersion: '18.x'
+#       pnpmVersion: '9.x'
+
+parameters:
+  mode: 'ci' # pr|ci|release|scan
+  nodeVersion: '18.x'
+  pnpmVersion: '9.x'
+  vmImage: 'ubuntu-latest'
+
+stages:
+  - stage: PnpmAudit
+    displayName: 'pnpm security audit'
+    jobs:
+      - ${{ if eq(parameters.mode, 'pr') }}:
+          - template: azure-pipelines/templates/pnpm-audit-job.yml
+            parameters:
+              vmImage: ${{ parameters.vmImage }}
+              nodeVersion: ${{ parameters.nodeVersion }}
+              pnpmVersion: ${{ parameters.pnpmVersion }}
+              severityThreshold: 'high'
+              failOnWarn: false
+              reportFormat: 'sarif,html,json,junit,markdown'
+      - ${{ if eq(parameters.mode, 'ci') }}:
+          - template: azure-pipelines/templates/pnpm-audit-job.yml
+            parameters:
+              vmImage: ${{ parameters.vmImage }}
+              nodeVersion: ${{ parameters.nodeVersion }}
+              pnpmVersion: ${{ parameters.pnpmVersion }}
+              severityThreshold: 'high'
+              failOnWarn: false
+              reportFormat: 'sarif,html,json,junit'
+      - ${{ if eq(parameters.mode, 'release') }}:
+          - template: azure-pipelines/templates/pnpm-audit-job.yml
+            parameters:
+              vmImage: ${{ parameters.vmImage }}
+              nodeVersion: ${{ parameters.nodeVersion }}
+              pnpmVersion: ${{ parameters.pnpmVersion }}
+              severityThreshold: 'low'
+              failOnWarn: true
+              reportFormat: 'sarif,html,json,junit,markdown,sbom-cyclonedx'
+      - ${{ if eq(parameters.mode, 'scan') }}:
+          - template: azure-pipelines/templates/pnpm-audit-job.yml
+            parameters:
+              vmImage: ${{ parameters.vmImage }}
+              nodeVersion: ${{ parameters.nodeVersion }}
+              pnpmVersion: ${{ parameters.pnpmVersion }}
+              severityThreshold: 'medium'
+              failOnWarn: false
+              reportFormat: 'sarif,html,json,junit,markdown'

@@ -1,0 +1,80 @@
+version: 1
+
+# Default policy set:
+# - Block Critical/High
+# - Warn Medium/Low
+# Override per-environment with env vars (see README)
+policies:
+  block:
+    - critical
+    - high
+  warn:
+    - medium
+    - low
+
+  # Grace period (days) for newly published vulnerabilities.
+  # By default, this downgrades BLOCK -> WARN for non-critical vulns
+  # published within this window (critical is still blocked).
+  gracePeriod: 7
+
+  # What to do when vulnerability data is unavailable (network issues/offline)
+  # allowed values: allow | warn | block
+  unknownVulnData: warn
+
+  # Network failure behavior when a source cannot be reached:
+  # - fail-open: treat as unknown and continue
+  # - fail-closed: block install if required sources fail
+  networkPolicy: fail-open
+
+  # Allow specific vulnerabilities temporarily (with expiration + reason)
+  allowlist: []
+
+  # Block specific packages entirely
+  blocklist:
+    - "event-stream"
+    - "flatmap-stream"
+
+sources:
+  osv:
+    enabled: true
+  github:
+    enabled: true
+  npm:
+    enabled: true
+  nvd:
+    enabled: true
+  ossIndex:
+    enabled: false
+
+integrity:
+  # Require sha512 integrity hashes in lockfile.
+  requireSha512Integrity: true
+
+performance:
+  concurrency: 8
+  timeoutMs: 15000
+  earlyExitOnBlock: true
+
+cache:
+  # Base cache TTL (seconds). May be shortened automatically for critical findings.
+  ttlSeconds: 3600
+  # Directory for persistent cache
+  dir: ".pnpm-audit-cache"
+  # In offline mode, allow using stale cache entries if present.
+  allowStale: true
+
+reporting:
+  # Comma-separated list of formats to emit by default:
+  # json, sarif, html, junit, sbom-cyclonedx, sbom-spdx, markdown
+  formats:
+    - "json"
+    - "html"
+    - "sarif"
+  outputDir: "."
+  basename: ".pnpm-audit-report"
+
+azureDevOps:
+  prComment:
+    enabled: false
+  logAnalytics:
+    enabled: false

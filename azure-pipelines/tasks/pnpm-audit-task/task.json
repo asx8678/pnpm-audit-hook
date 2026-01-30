@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "d3e9c1a1-8c6a-4c8b-9f89-3f3b5c9f0001",
+  "name": "PnpmAuditHook",
+  "friendlyName": "pnpm Security Audit (Hook + Reports)",
+  "description": "Runs the pnpm audit hook CLI to generate security reports and enforce policies.",
+  "helpMarkDown": "Runs pnpm-audit-hook (CLI) which audits resolved dependencies before download/installation.",
+  "category": "Utility",
+  "author": "Your Org",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "instanceNameFormat": "pnpm security audit",
+  "inputs": [
+    {
+      "name": "severityThreshold",
+      "type": "string",
+      "label": "Severity threshold",
+      "defaultValue": "high",
+      "required": false,
+      "helpMarkDown": "critical|high|medium|low"
+    },
+    {
+      "name": "failOnWarn",
+      "type": "boolean",
+      "label": "Fail on warnings",
+      "defaultValue": "false",
+      "required": false
+    },
+    {
+      "name": "offlineMode",
+      "type": "boolean",
+      "label": "Offline mode",
+      "defaultValue": "false",
+      "required": false
+    }
+  ],
+  "execution": {
+    "Node18": {
+      "target": "index.js"
+    }
+  }
+}
