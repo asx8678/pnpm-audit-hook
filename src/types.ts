@@ -1,19 +1,13 @@
 export type Severity = "critical" | "high" | "medium" | "low" | "unknown";
-export type NetworkPolicy = "fail-open" | "fail-closed";
-export type UnknownDataPolicy = "allow" | "warn" | "block";
-export type FindingSource = "osv" | "github" | "npm" | "nvd" | "ossindex" | "integrity" | "policy";
+export type FindingSource = "osv" | "npm" | "github" | "nvd" | "depsdev";
 export type PolicyAction = "allow" | "warn" | "block";
-export type DecisionSource = "blocklist" | "allowlist" | "severity" | "integrity" | "network" | "unknown" | "policy";
-export type VulnerabilityIdType = "CVE" | "GHSA" | "OSV" | "SONATYPE" | "OTHER";
+export type DecisionSource = "severity" | "source";
+export type VulnerabilityIdType = "CVE" | "GHSA" | "OSV" | "OTHER";
 
 export interface PackageRef {
   name: string;
   version: string;
-  integrity?: string;
-  tarball?: string;
   direct?: boolean;
-  importers?: string[];
-  registry?: string;
 }
 
 export interface VulnerabilityIdentifier {
@@ -30,21 +24,11 @@ export interface VulnerabilityFinding {
   url?: string;
   description?: string;
   severity: Severity;
-  cvssScore?: number;
-  cvssVector?: string;
   publishedAt?: string;
   modifiedAt?: string;
   identifiers?: VulnerabilityIdentifier[];
-  references?: string[];
   affectedRange?: string;
   fixedVersion?: string;
-  raw?: Record<string, unknown>;
-}
-
-export interface AllowlistApproval {
-  approvedBy: string;
-  reason: string;
-  expires: string;
 }
 
 export interface PolicyDecision {
@@ -55,7 +39,6 @@ export interface PolicyDecision {
   findingId?: string;
   packageName?: string;
   packageVersion?: string;
-  allowlist?: AllowlistApproval;
 }
 
 export interface PackageAuditResult {
@@ -70,63 +53,24 @@ export interface SourceStatus {
   durationMs?: number;
 }
 
-export interface AuditSummary {
-  totalPackages: number;
-  directPackages: number;
-  vulnerablePackages: number;
-  countsBySeverity: Record<Severity, number>;
-  blockedFindings: number;
-  warnedFindings: number;
-  blocked: boolean;
-  warnings: boolean;
-  startedAt: string;
-  finishedAt: string;
-  sources: Record<string, SourceStatus>;
-}
-
-export interface AuditReport {
-  summary: AuditSummary;
-  packages: PackageAuditResult[];
-  decisions: PolicyDecision[];
-}
-
-export interface AllowlistEntry {
-  cve?: string;
-  id?: string;
-  package: string;
-  expires: string;
-  reason: string;
-  approvedBy: string;
-}
-
-interface SourceToggle {
-  enabled: boolean;
-}
-
 export interface AuditConfig {
-  version: number;
-  policies: {
+  policy: {
     block: Severity[];
     warn: Severity[];
-    gracePeriod: number;
-    unknownVulnData: UnknownDataPolicy;
-    networkPolicy: NetworkPolicy;
-    allowlist: AllowlistEntry[];
-    blocklist: string[];
   };
   sources?: {
-    osv?: SourceToggle;
-    github?: SourceToggle;
-    npm?: SourceToggle;
-    nvd?: SourceToggle;
-    ossIndex?: SourceToggle;
+    osv?: { enabled?: boolean };
+    npm?: { enabled?: boolean };
+    github?: { enabled?: boolean };
+    nvd?: { enabled?: boolean };
+    depsdev?: { enabled?: boolean };
   };
-  integrity?: { requireSha512Integrity?: boolean };
-  performance?: { concurrency?: number; timeoutMs?: number; earlyExitOnBlock?: boolean };
-  cache?: { ttlSeconds?: number; dir?: string; allowStale?: boolean };
-  reporting?: { formats?: string[]; outputDir?: string; basename?: string };
-  azureDevOps?: { prComment?: SourceToggle; logAnalytics?: SourceToggle };
-  notifications?: { email?: { enabled: boolean; to: string[] } };
+  performance?: {
+    timeoutMs?: number;
+  };
+  cache?: {
+    ttlSeconds?: number;
+  };
 }
 
 export interface RuntimeOptions {
@@ -134,7 +78,3 @@ export interface RuntimeOptions {
   registryUrl: string;
   env: Record<string, string | undefined>;
 }
-
-// Type aliases for backward compatibility
-export type Finding = VulnerabilityFinding;
-export type PackageResult = PackageAuditResult;

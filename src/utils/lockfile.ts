@@ -2,7 +2,6 @@ import type { PackageRef } from "../types";
 
 export interface LockfileParseResult {
   packages: PackageRef[];
-  dependencies: Record<string, string[]>;
 }
 
 const stripPeerSuffix = (v: string) => {
@@ -42,22 +41,11 @@ function isRegistryPackage(entry: any): boolean {
   return typeof res.integrity === "string";
 }
 
-const depsFromEntry = (entry: any): Record<string, string> => ({
-  ...entry?.dependencies,
-  ...entry?.optionalDependencies,
-  ...entry?.peerDependencies,
-});
-
-function addDepEdge(graph: Record<string, string[]>, from: string, to: string): void {
-  (graph[from] ??= []).includes(to) || graph[from]!.push(to);
-}
-
 /** Extract registry packages from a pnpm lockfile object. */
 export function extractPackagesFromLockfile(
   lockfile: any,
 ): LockfileParseResult {
   const packages: PackageRef[] = [];
-  const graph: Record<string, string[]> = {};
 
   const packageEntries: Record<string, any> = lockfile?.packages ?? {};
   const keyToRef: Record<string, PackageRef> = {};
@@ -67,12 +55,9 @@ export function extractPackagesFromLockfile(
     if (!parsed) continue;
     if (!isRegistryPackage(entry)) continue;
 
-    const res = entry?.resolution ?? {};
     const pkg: PackageRef = {
       name: parsed.name,
       version: parsed.version,
-      integrity: typeof res.integrity === "string" ? res.integrity : undefined,
-      tarball: typeof res.tarball === "string" ? res.tarball : undefined,
     };
 
     const key = `${pkg.name}@${pkg.version}`;
@@ -81,33 +66,13 @@ export function extractPackagesFromLockfile(
   }
 
   // Direct deps via importers
-  for (const [importerPath, imp] of Object.entries((lockfile?.importers ?? {}) as Record<string, any>)) {
+  for (const [_, imp] of Object.entries((lockfile?.importers ?? {}) as Record<string, any>)) {
     const deps = { ...imp?.dependencies, ...imp?.devDependencies, ...imp?.optionalDependencies };
     for (const [depName, depVersion] of Object.entries(deps)) {
       const ref = keyToRef[`${depName}@${stripPeerSuffix(String(depVersion))}`];
-      if (!ref) continue;
-      ref.direct = true;
-      (ref.importers ??= []).includes(importerPath) || ref.importers.push(importerPath);
+      if (ref) ref.direct = true;
     }
   }
 
-  // Dependency edges
-  for (const [k, entry] of Object.entries(packageEntries)) {
-    const parsed = parsePnpmPackageKey(k);
-    if (!parsed) continue;
-    const fromKey = `${parsed.name}@${stripPeerSuffix(parsed.version)}`;
-    if (!keyToRef[fromKey]) continue; // skip non-registry nodes
-
-    const deps = depsFromEntry(entry);
-    for (const [depName, depVer] of Object.entries(deps)) {
-      const v = stripPeerSuffix(String(depVer));
-      // Skip non-version references (link:, workspace:, etc)
-      if (/^(link|workspace|file|patch):/.test(v)) continue;
-      const toKey = `${depName}@${v}`;
-      if (!keyToRef[toKey]) continue;
-      addDepEdge(graph, fromKey, toKey);
-    }
-  }
-
-  return { packages, dependencies: graph };
+  return { packages };
 }

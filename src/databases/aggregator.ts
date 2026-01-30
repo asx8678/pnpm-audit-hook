@@ -1,97 +1,111 @@
 import type { AuditConfig, PackageRef, VulnerabilityFinding } from "../types";
-import type { Cache } from "../cache/memory-cache";
-import type { Logger } from "../utils/logger";
-import { createAuditHttpClient } from "../utils/http-factory";
-import type { NetworkPolicy } from "../types";
-import type { SourceResult, VulnerabilitySource } from "./connector";
+import type { Cache } from "../cache/types";
+import type { VulnerabilitySource, SourceContext, SourceResult } from "./connector";
+import { HttpClient } from "../utils/http";
 import { OsvSource } from "./osv";
 import { NpmAuditSource } from "./npm-audit";
 import { GitHubAdvisorySource } from "./github-advisory";
-import { OssIndexSource } from "./ossindex";
+import { DepsDevSource } from "./depsdev";
 import { enrichFindingsWithNvd } from "./nvd";
 
 export interface AggregateContext {
   cfg: AuditConfig;
   env: Record<string, string | undefined>;
   cache: Cache;
-  logger: Logger;
   registryUrl: string;
-  offline: boolean;
-  networkPolicy: NetworkPolicy;
 }
 
 export interface AggregateResult {
   findings: VulnerabilityFinding[];
   sources: Record<string, { ok: boolean; error?: string; durationMs: number }>;
-  unknownPackages: Set<string>;
-  nvdEnrichment?: {
-    ok: boolean;
-    error?: string;
-    durationMs: number;
-    unknownCves?: string[];
-  };
 }
 
+/**
+ * Deduplicate findings by (packageName, packageVersion, id).
+ * Keeps the first occurrence from each source for richer data.
+ */
 function dedupeFindings(findings: VulnerabilityFinding[]): VulnerabilityFinding[] {
-  const seen = new Set<string>();
-  return findings.filter((f) => {
-    const key = `${f.packageName}@${f.packageVersion}:${f.id.toUpperCase()}`;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
+  const seen = new Map<string, VulnerabilityFinding>();
+  for (const f of findings) {
+    const key = `${f.packageName}@${f.packageVersion}:${f.id}`;
+    if (!seen.has(key)) {
+      seen.set(key, f);
+    }
+  }
+  return [...seen.values()];
 }
 
+/**
+ * Query multiple vulnerability sources and aggregate findings.
+ */
 export async function aggregateVulnerabilities(
   pkgs: PackageRef[],
   ctx: AggregateContext,
 ): Promise<AggregateResult> {
-  const http = createAuditHttpClient(ctx.cfg, ctx.logger);
+  const http = new HttpClient({
+    timeoutMs: ctx.cfg.performance?.timeoutMs ?? 15000,
+    userAgent: "pnpm-audit-hook",
+    retries: 2,
+  });
 
-  const sources: VulnerabilitySource[] = [
-    new OsvSource(),
-    new NpmAuditSource(),
-    new GitHubAdvisorySource(),
-    new OssIndexSource(),
-  ].filter((s) => s.isEnabled(ctx.cfg, ctx.env));
-
-  const queryCtx = {
+  const queryCtx: SourceContext = {
     cfg: ctx.cfg,
     env: ctx.env,
     http,
     cache: ctx.cache,
-    logger: ctx.logger,
     registryUrl: ctx.registryUrl,
-    offline: ctx.offline,
-    networkPolicy: ctx.networkPolicy,
   };
 
-  const settled = await Promise.allSettled(sources.map((s) => s.query(pkgs, queryCtx)));
+  // All available sources
+  const allSources: VulnerabilitySource[] = [
+    new OsvSource(),
+    new NpmAuditSource(),
+    new GitHubAdvisorySource(),
+    new DepsDevSource(),
+  ];
 
-  const results: SourceResult[] = settled.map((r, i) =>
-    r.status === "fulfilled"
-      ? r.value
-      : { source: sources[i]!.id, ok: false, error: String(r.reason ?? "unknown error"), durationMs: 0, findings: [] },
+  // Filter to enabled sources
+  const enabledSources = allSources.filter((s) => s.isEnabled(ctx.cfg, ctx.env));
+
+  if (enabledSources.length === 0) {
+    return { findings: [], sources: {} };
+  }
+
+  // Query all enabled sources in parallel
+  const results = await Promise.allSettled(
+    enabledSources.map((source) =>
+      source.query(pkgs, queryCtx).catch((e) => ({
+        source: source.id,
+        ok: false,
+        error: String(e?.message ?? e),
+        durationMs: 0,
+        findings: [] as VulnerabilityFinding[],
+      }))
+    )
   );
 
-  const findings = dedupeFindings(results.flatMap((r) => r.findings ?? []));
+  const allFindings: VulnerabilityFinding[] = [];
+  const sourceStatus: Record<string, { ok: boolean; error?: string; durationMs: number }> = {};
 
-  const unknownPackages = new Set(results.flatMap((r) => [...(r.unknownDataForPackages ?? [])]));
+  for (const result of results) {
+    if (result.status === "fulfilled") {
+      const r = result.value as SourceResult;
+      allFindings.push(...r.findings);
+      sourceStatus[r.source] = { ok: r.ok, error: r.error, durationMs: r.durationMs };
+    }
+  }
 
-  const sourceStatus = Object.fromEntries(
-    results.map((r) => [r.source, { ok: r.ok, error: r.error, durationMs: r.durationMs }]),
-  ) as Record<string, { ok: boolean; error?: string; durationMs: number }>;
+  // Deduplicate findings across sources
+  const dedupedFindings = dedupeFindings(allFindings);
 
-  let nvdEnrichment: AggregateResult["nvdEnrichment"];
+  // NVD enrichment - adds CVSS data and fills in missing severity for CVE IDs
   if (ctx.cfg.sources?.nvd?.enabled !== false) {
-    nvdEnrichment = await enrichFindingsWithNvd(findings, queryCtx);
-    sourceStatus["nvd"] = { ok: nvdEnrichment.ok, error: nvdEnrichment.error, durationMs: nvdEnrichment.durationMs };
+    const nvdResult = await enrichFindingsWithNvd(dedupedFindings, queryCtx);
+    sourceStatus["nvd"] = { ok: nvdResult.ok, error: nvdResult.error, durationMs: nvdResult.durationMs };
   }
 
   return {
-    findings,
+    findings: dedupedFindings,
     sources: sourceStatus,
-    unknownPackages,
-    nvdEnrichment,
   };
 }

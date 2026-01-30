@@ -1,20 +1,17 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { sha256Hex } from "../utils/hash";
-import type { Cache, CacheEntry } from "./memory-cache";
+import type { Cache, CacheEntry } from "./types";
 
 export interface FileCacheOptions {
   dir: string;
-  allowStale: boolean;
 }
 
 export class FileCache<T = unknown> implements Cache<T> {
   private readonly dir: string;
-  private readonly allowStale: boolean;
 
   constructor(opts: FileCacheOptions) {
     this.dir = opts.dir;
-    this.allowStale = opts.allowStale;
   }
 
   private filePathForKey(key: string): string {
@@ -29,7 +26,7 @@ export class FileCache<T = unknown> implements Cache<T> {
       const entry = JSON.parse(raw) as CacheEntry<T>;
       if (!entry || typeof entry !== "object") return null;
       if (entry.expiresAt > Date.now()) return entry;
-      return this.allowStale ? { ...entry, stale: true } : null;
+      return null;
     } catch {
       return null;
     }

@@ -1,5 +1,25 @@
-import { retry } from "./retry";
-import type { Logger } from "./logger";
+const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+
+export async function retry<T>(
+  fn: () => Promise<T>,
+  retries: number,
+  shouldRetry: (err: unknown) => boolean,
+): Promise<T> {
+  let attempt = 0;
+  for (;;) {
+    try {
+      return await fn();
+    } catch (err) {
+      if (++attempt > retries || !shouldRetry(err)) throw err;
+      const ra = (err as any).retryAfter;
+      const base = 250 * 2 ** (attempt - 1);
+      const delay = (typeof ra === "number" || (typeof ra === "string" && !Number.isNaN(+ra)))
+        ? +ra * 1000
+        : Math.min(8000, base + base * 0.2 * Math.random());
+      await sleep(delay);
+    }
+  }
+}
 
 export class HttpError extends Error {
   readonly status?: number;
@@ -23,7 +43,6 @@ export class HttpError extends Error {
 export interface HttpClientOptions {
   timeoutMs: number;
   userAgent: string;
-  logger: Logger;
   headers?: Record<string, string>;
   retries?: number;
 }
@@ -31,14 +50,12 @@ export interface HttpClientOptions {
 export class HttpClient {
   private readonly timeoutMs: number;
   private readonly userAgent: string;
-  private readonly logger: Logger;
   private readonly headers: Record<string, string>;
   private readonly retries: number;
 
   constructor(opts: HttpClientOptions) {
     this.timeoutMs = opts.timeoutMs;
     this.userAgent = opts.userAgent;
-    this.logger = opts.logger;
     this.headers = opts.headers ?? {};
     this.retries = opts.retries ?? 3;
   }
@@ -94,18 +111,10 @@ export class HttpClient {
       }
     };
 
-    return retry(fn, {
-      retries: this.retries,
-      minDelayMs: 250,
-      maxDelayMs: 8000,
-      factor: 2,
-      jitter: 0.2,
-      retryOn: (err) =>
-        !(err instanceof HttpError) || err.status === 429 || (err.status ?? 0) >= 500,
-    }).catch((err) => {
-      const e = err as any;
-      this.logger.debug(`HTTP ${method} failed: ${url}`, { status: e?.status, name: e?.name, message: e?.message });
-      throw err;
-    });
+    return retry(
+      fn,
+      this.retries,
+      (err) => !(err instanceof HttpError) || err.status === 429 || (err.status ?? 0) >= 500,
+    );
   }
 }
