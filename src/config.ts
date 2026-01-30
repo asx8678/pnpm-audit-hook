@@ -4,9 +4,8 @@ import Ajv from "ajv";
 import YAML from "yaml";
 import { configSchema } from "./schema";
 import type { AuditConfig, Severity } from "./types";
-import { parseBool } from "./utils/env";
 
-const DEFAULT_CONFIG: AuditConfig = {
+export const DEFAULT_CONFIG: AuditConfig = {
   version: 1,
   policies: {
     block: ["critical", "high"],
@@ -67,14 +66,7 @@ function deepMerge<T>(base: T, override: Partial<T>): T {
 
 function normalizeSeverity(v: string): Severity | null {
   const s = v.toLowerCase().trim();
-  if (
-    s === "critical" ||
-    s === "high" ||
-    s === "medium" ||
-    s === "low" ||
-    s === "unknown"
-  )
-    return s;
+  if (s === "critical" || s === "high" || s === "medium" || s === "low" || s === "unknown") return s;
   return null;
 }
 
@@ -118,64 +110,77 @@ export async function loadConfig(
 
   let cfg = deepMerge(DEFAULT_CONFIG, fileCfg);
 
-  // Env overrides
-  const ttl = env.PNPM_AUDIT_CACHE_TTL
-    ? Number(env.PNPM_AUDIT_CACHE_TTL)
-    : undefined;
-  if (ttl !== undefined && !Number.isNaN(ttl) && ttl >= 0) {
-    cfg = deepMerge(cfg, { cache: { ttlSeconds: ttl } } as any);
+  // Env overrides - declarative config
+  type EnvOverride = {
+    key: string;
+    path: string[];
+    parse: (v: string) => unknown;
+    validate?: (v: unknown) => boolean;
+  };
+
+  const envOverrides: EnvOverride[] = [
+    {
+      key: "PNPM_AUDIT_CACHE_TTL",
+      path: ["cache", "ttlSeconds"],
+      parse: Number,
+      validate: (v) => !Number.isNaN(v) && (v as number) >= 0,
+    },
+    {
+      key: "PNPM_AUDIT_CONCURRENCY",
+      path: ["performance", "concurrency"],
+      parse: Number,
+      validate: (v) =>
+        !Number.isNaN(v) && (v as number) >= 1 && (v as number) <= 64,
+    },
+    {
+      key: "PNPM_AUDIT_TIMEOUT_MS",
+      path: ["performance", "timeoutMs"],
+      parse: Number,
+      validate: (v) =>
+        !Number.isNaN(v) && (v as number) >= 1000 && (v as number) <= 600000,
+    },
+    {
+      key: "PNPM_AUDIT_NETWORK_POLICY",
+      path: ["policies", "networkPolicy"],
+      parse: (v) => v,
+      validate: (v) => v === "fail-open" || v === "fail-closed",
+    },
+    {
+      key: "PNPM_AUDIT_OUTPUT_DIR",
+      path: ["reporting", "outputDir"],
+      parse: (v) => v,
+    },
+    {
+      key: "PNPM_AUDIT_BASENAME",
+      path: ["reporting", "basename"],
+      parse: (v) => v,
+    },
+    {
+      key: "PNPM_AUDIT_REPORT_FORMAT",
+      path: ["reporting", "formats"],
+      parse: (v) =>
+        v
+          .split(",")
+          .map((s) => s.trim())
+          .filter(Boolean),
+      validate: (v) => Array.isArray(v) && v.length > 0,
+    },
+  ];
+
+  for (const { key, path: p, parse, validate } of envOverrides) {
+    const raw = env[key];
+    if (!raw) continue;
+    const val = parse(raw);
+    if (validate && !validate(val)) continue;
+    const override = p.reduceRight((acc, k) => ({ [k]: acc }), val as any);
+    cfg = deepMerge(cfg, override);
   }
 
-  const conc = env.PNPM_AUDIT_CONCURRENCY
-    ? Number(env.PNPM_AUDIT_CONCURRENCY)
-    : undefined;
-  if (conc !== undefined && !Number.isNaN(conc) && conc >= 1 && conc <= 64) {
-    cfg = deepMerge(cfg, { performance: { concurrency: conc } } as any);
-  }
-
-  const timeout = env.PNPM_AUDIT_TIMEOUT_MS
-    ? Number(env.PNPM_AUDIT_TIMEOUT_MS)
-    : undefined;
-  if (
-    timeout !== undefined &&
-    !Number.isNaN(timeout) &&
-    timeout >= 1000 &&
-    timeout <= 600000
-  ) {
-    cfg = deepMerge(cfg, { performance: { timeoutMs: timeout } } as any);
-  }
-
-  const offline = parseBool(env.PNPM_AUDIT_OFFLINE_MODE);
-  if (offline !== undefined)
-    cfg = deepMerge(cfg, {
-      /* runtime-only; handled elsewhere */
-    } as any);
-
-  const netPol = env.PNPM_AUDIT_NETWORK_POLICY;
-  if (netPol === "fail-open" || netPol === "fail-closed")
-    cfg = deepMerge(cfg, { policies: { networkPolicy: netPol } } as any);
-
+  // Special case: severity threshold applies complex logic
   const thresholdRaw = env.PNPM_AUDIT_SEVERITY_THRESHOLD;
   if (thresholdRaw) {
     const sev = normalizeSeverity(thresholdRaw);
     if (sev) cfg = applyThreshold(cfg, sev);
-  }
-
-  const outDir = env.PNPM_AUDIT_OUTPUT_DIR;
-  if (outDir) cfg = deepMerge(cfg, { reporting: { outputDir: outDir } } as any);
-
-  const baseName = env.PNPM_AUDIT_BASENAME;
-  if (baseName)
-    cfg = deepMerge(cfg, { reporting: { basename: baseName } } as any);
-
-  const formats = env.PNPM_AUDIT_REPORT_FORMAT;
-  if (formats) {
-    const list = formats
-      .split(",")
-      .map((s) => s.trim())
-      .filter(Boolean);
-    if (list.length)
-      cfg = deepMerge(cfg, { reporting: { formats: list } } as any);
   }
 
   // Validate

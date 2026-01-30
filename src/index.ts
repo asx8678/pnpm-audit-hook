@@ -1,6 +1,5 @@
-import type { RuntimeOptions } from "./types";
 import { runAudit, shouldBlockInstall } from "./audit";
-import { getRegistryUrl } from "./utils/env";
+import { createRuntimeFromEnv } from "./utils/runtime";
 
 /**
  * Factory to create pnpm hooks.
@@ -16,18 +15,14 @@ export function createPnpmHooks(): { hooks: Record<string, any> } {
        *
        * This is the earliest place we can audit the *exact* resolved versions.
        */
-      afterAllResolved: async (lockfile: any, _context: any) => {
-        const env = process.env as Record<string, string | undefined>;
-
-        const runtime: RuntimeOptions = {
-          cwd: process.cwd(),
-          registryUrl: getRegistryUrl(env),
-          env,
-        };
+      afterAllResolved: async (lockfile: any, context: any) => {
+        // Use lockfileDir from pnpm context when available (handles workspace subfolders).
+        // Falls back to process.cwd() for compatibility with older pnpm versions.
+        const runtime = createRuntimeFromEnv(context?.lockfileDir);
 
         const { report } = await runAudit({ lockfile, runtime });
 
-        if (shouldBlockInstall(report, env)) {
+        if (shouldBlockInstall(report, runtime.env)) {
           const top = report.summary;
           const msg = [
             `pnpm-audit-hook blocked installation`,

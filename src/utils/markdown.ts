@@ -1,60 +1,31 @@
-import type { AuditReport, PackageAuditResult, Severity } from "../types";
+import type { AuditReport, Severity } from "../types";
 import { severityRank } from "./severity";
 
-function sevEmoji(sev: Severity): string {
-  switch (sev) {
-    case "critical":
-      return "🛑";
-    case "high":
-      return "❌";
-    case "medium":
-      return "⚠️";
-    case "low":
-      return "ℹ️";
-    default:
-      return "❔";
-  }
-}
+const SEV_EMOJI: Record<Severity, string> = { critical: "🛑", high: "❌", medium: "⚠️", low: "ℹ️", unknown: "❔" };
+const sevEmoji = (sev: Severity) => SEV_EMOJI[sev] ?? "❔";
 
-export function reportToMarkdown(
-  report: AuditReport,
-  opts?: { maxItems?: number },
-): string {
+export function reportToMarkdown(report: AuditReport, opts?: { maxItems?: number }): string {
   const maxItems = opts?.maxItems ?? 50;
   const { summary } = report;
+  const c = summary.countsBySeverity;
 
-  const lines: string[] = [];
-
-  lines.push(`# pnpm security audit report`);
-  lines.push("");
-  lines.push(`- Started: ${summary.startedAt}`);
-  lines.push(`- Finished: ${summary.finishedAt}`);
-  lines.push(
+  const lines = [
+    `# pnpm security audit report`,
+    "",
+    `- Started: ${summary.startedAt}`,
+    `- Finished: ${summary.finishedAt}`,
     `- Total packages: **${summary.totalPackages}** (direct: **${summary.directPackages}**)`,
-  );
-  lines.push(`- Vulnerable packages: **${summary.vulnerablePackages}**`);
-  lines.push(
-    `- Findings by severity: critical ${summary.countsBySeverity.critical}, high ${summary.countsBySeverity.high}, medium ${summary.countsBySeverity.medium}, low ${summary.countsBySeverity.low}, unknown ${summary.countsBySeverity.unknown}`,
-  );
-  lines.push(
+    `- Vulnerable packages: **${summary.vulnerablePackages}**`,
+    `- Findings by severity: critical ${c.critical}, high ${c.high}, medium ${c.medium}, low ${c.low}, unknown ${c.unknown}`,
     `- Status: ${summary.blocked ? "**BLOCKED**" : summary.warnings ? "**WARNINGS**" : "**OK**"}`,
-  );
-  lines.push("");
+    "",
+  ];
 
-  const allFindings: Array<{ pkg: string; f: any }> = [];
-  for (const p of report.packages) {
-    for (const f of p.findings)
-      allFindings.push({ pkg: `${p.pkg.name}@${p.pkg.version}`, f });
-  }
+  const allFindings = report.packages
+    .flatMap((p) => p.findings.map((f) => ({ pkg: `${p.pkg.name}@${p.pkg.version}`, f })))
+    .sort((a, b) => severityRank(b.f.severity) - severityRank(a.f.severity));
 
-  allFindings.sort(
-    (a, b) => severityRank(b.f.severity) - severityRank(a.f.severity),
-  );
-
-  if (allFindings.length === 0) {
-    lines.push("No vulnerabilities found.");
-    return lines.join("\n");
-  }
+  if (!allFindings.length) return [...lines, "No vulnerabilities found."].join("\n");
 
   lines.push("## Top findings");
   lines.push("");
@@ -66,12 +37,8 @@ export function reportToMarkdown(
     );
   }
 
-  if (allFindings.length > maxItems) {
-    lines.push("");
-    lines.push(
-      `...and ${allFindings.length - maxItems} more findings. See the full report artifact.`,
-    );
-  }
+  if (allFindings.length > maxItems)
+    lines.push("", `...and ${allFindings.length - maxItems} more findings. See the full report artifact.`);
 
   lines.push("");
   lines.push("## Sources");

@@ -17,9 +17,7 @@ export class MemoryCache<T = unknown> implements Cache<T> {
   private readonly map = new Map<string, CacheEntry<T>>();
 
   async get(key: string): Promise<CacheEntry<T> | null> {
-    const e = this.map.get(key);
-    if (!e) return null;
-    return e;
+    return this.map.get(key) ?? null;
   }
 
   async set(key: string, value: T, ttlSeconds: number): Promise<void> {

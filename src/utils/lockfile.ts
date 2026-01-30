@@ -2,27 +2,16 @@ import type { PackageRef } from "../types";
 
 export interface LockfileParseResult {
   packages: PackageRef[];
-  dependencies: Record<string, string[]>; // key name@version -> dep keys
+  dependencies: Record<string, string[]>;
 }
 
-function stripPeerSuffix(v: string): string {
+const stripPeerSuffix = (v: string) => {
   const idx = v.indexOf("(");
-  if (idx === -1) return v;
-  return v.slice(0, idx);
-}
+  return idx === -1 ? v : v.slice(0, idx);
+};
 
-/**
- * Parse a pnpm lockfile package key into name + version.
- *
- * Examples:
- * - /react/18.2.0
- * - /@types/node/20.10.0
- * - /eslint-plugin-react/7.33.2(eslint@8.56.0)
- * - registry.npmjs.org/react/18.2.0 (rare)
- */
-export function parsePnpmPackageKey(
-  key: string,
-): { name: string; version: string } | null {
+/** Parse a pnpm lockfile package key (e.g., /react/18.2.0, /@types/node/20.10.0) into name + version. */
+export function parsePnpmPackageKey(key: string): { name: string; version: string } | null {
   const raw = key.startsWith("/") ? key.slice(1) : key;
   const parts = raw.split("/").filter(Boolean);
 
@@ -48,39 +37,22 @@ export function parsePnpmPackageKey(
 
 function isRegistryPackage(entry: any): boolean {
   const res = entry?.resolution ?? {};
-  // Lockfile can contain local directories / links / git. We treat them as non-registry.
   if (res.type === "directory" || res.directory || res.path) return false;
-  if (typeof res.tarball === "string") {
-    const t = res.tarball;
-    // tarball URL indicates registry-like. We'll treat as registry.
-    return t.startsWith("http:") || t.startsWith("https:");
-  }
-  // If we have an integrity hash, it's almost certainly fetched content.
-  if (typeof res.integrity === "string") return true;
-
-  return false;
+  if (typeof res.tarball === "string") return res.tarball.startsWith("http");
+  return typeof res.integrity === "string";
 }
 
-function depsFromEntry(entry: any): Record<string, string> {
-  return {
-    ...(entry?.dependencies ?? {}),
-    ...(entry?.optionalDependencies ?? {}),
-    ...(entry?.peerDependencies ?? {}),
-  };
+const depsFromEntry = (entry: any): Record<string, string> => ({
+  ...entry?.dependencies,
+  ...entry?.optionalDependencies,
+  ...entry?.peerDependencies,
+});
+
+function addDepEdge(graph: Record<string, string[]>, from: string, to: string): void {
+  (graph[from] ??= []).includes(to) || graph[from]!.push(to);
 }
 
-function addDepEdge(
-  graph: Record<string, string[]>,
-  from: string,
-  to: string,
-): void {
-  graph[from] = graph[from] ?? [];
-  if (!graph[from]!.includes(to)) graph[from]!.push(to);
-}
-
-/**
- * Extract registry packages from a pnpm lockfile object.
- */
+/** Extract registry packages from a pnpm lockfile object. */
 export function extractPackagesFromLockfile(
   lockfile: any,
 ): LockfileParseResult {
@@ -109,23 +81,13 @@ export function extractPackagesFromLockfile(
   }
 
   // Direct deps via importers
-  const importers: Record<string, any> = lockfile?.importers ?? {};
-  for (const [importerPath, imp] of Object.entries(importers)) {
-    const deps = {
-      ...(imp?.dependencies ?? {}),
-      ...(imp?.devDependencies ?? {}),
-      ...(imp?.optionalDependencies ?? {}),
-    };
+  for (const [importerPath, imp] of Object.entries((lockfile?.importers ?? {}) as Record<string, any>)) {
+    const deps = { ...imp?.dependencies, ...imp?.devDependencies, ...imp?.optionalDependencies };
     for (const [depName, depVersion] of Object.entries(deps)) {
-      const v = stripPeerSuffix(String(depVersion));
-      const key = `${depName}@${v}`;
-      const ref = keyToRef[key];
-      if (ref) {
-        ref.direct = true;
-        ref.importers = ref.importers ?? [];
-        if (!ref.importers.includes(importerPath))
-          ref.importers.push(importerPath);
-      }
+      const ref = keyToRef[`${depName}@${stripPeerSuffix(String(depVersion))}`];
+      if (!ref) continue;
+      ref.direct = true;
+      (ref.importers ??= []).includes(importerPath) || ref.importers.push(importerPath);
     }
   }
 
@@ -140,13 +102,7 @@ export function extractPackagesFromLockfile(
     for (const [depName, depVer] of Object.entries(deps)) {
       const v = stripPeerSuffix(String(depVer));
       // Skip non-version references (link:, workspace:, etc)
-      if (
-        v.startsWith("link:") ||
-        v.startsWith("workspace:") ||
-        v.startsWith("file:") ||
-        v.startsWith("patch:")
-      )
-        continue;
+      if (/^(link|workspace|file|patch):/.test(v)) continue;
       const toKey = `${depName}@${v}`;
       if (!keyToRef[toKey]) continue;
       addDepEdge(graph, fromKey, toKey);

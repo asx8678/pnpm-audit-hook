@@ -32,21 +32,14 @@ export interface AggregateResult {
   };
 }
 
-function dedupeFindings(
-  findings: VulnerabilityFinding[],
-): VulnerabilityFinding[] {
+function dedupeFindings(findings: VulnerabilityFinding[]): VulnerabilityFinding[] {
   const seen = new Set<string>();
-  const out: VulnerabilityFinding[] = [];
-  for (const f of findings) {
-    const key = `${f.packageName}@${f.packageVersion}:${f.id.toUpperCase()}:${f.source}`;
-    // Dedupe across identical id across sources as well:
-    const key2 = `${f.packageName}@${f.packageVersion}:${f.id.toUpperCase()}`;
-    if (seen.has(key2)) continue;
-    seen.add(key2);
+  return findings.filter((f) => {
+    const key = `${f.packageName}@${f.packageVersion}:${f.id.toUpperCase()}`;
+    if (seen.has(key)) return false;
     seen.add(key);
-    out.push(f);
-  }
-  return out;
+    return true;
+  });
 }
 
 export async function aggregateVulnerabilities(
@@ -62,75 +55,37 @@ export async function aggregateVulnerabilities(
     new OssIndexSource(),
   ].filter((s) => s.isEnabled(ctx.cfg, ctx.env));
 
-  const results: SourceResult[] = [];
+  const queryCtx = {
+    cfg: ctx.cfg,
+    env: ctx.env,
+    http,
+    cache: ctx.cache,
+    logger: ctx.logger,
+    registryUrl: ctx.registryUrl,
+    offline: ctx.offline,
+    networkPolicy: ctx.networkPolicy,
+  };
 
-  const settled = await Promise.allSettled(
-    sources.map((s) =>
-      s.query(pkgs, {
-        cfg: ctx.cfg,
-        env: ctx.env,
-        http,
-        cache: ctx.cache,
-        logger: ctx.logger,
-        registryUrl: ctx.registryUrl,
-        offline: ctx.offline,
-        networkPolicy: ctx.networkPolicy,
-      }),
-    ),
+  const settled = await Promise.allSettled(sources.map((s) => s.query(pkgs, queryCtx)));
+
+  const results: SourceResult[] = settled.map((r, i) =>
+    r.status === "fulfilled"
+      ? r.value
+      : { source: sources[i]!.id, ok: false, error: String(r.reason ?? "unknown error"), durationMs: 0, findings: [] },
   );
-
-  for (let i = 0; i < settled.length; i++) {
-    const s = sources[i]!;
-    const r = settled[i]!;
-    if (r.status === "fulfilled") results.push(r.value);
-    else {
-      results.push({
-        source: s.id,
-        ok: false,
-        error: r.reason ? String(r.reason) : "unknown error",
-        durationMs: 0,
-        findings: [],
-      });
-    }
-  }
 
   const findings = dedupeFindings(results.flatMap((r) => r.findings ?? []));
 
-  const unknownPackages = new Set<string>();
-  for (const r of results) {
-    for (const k of r.unknownDataForPackages ?? []) unknownPackages.add(k);
-  }
+  const unknownPackages = new Set(results.flatMap((r) => [...(r.unknownDataForPackages ?? [])]));
 
-  const sourceStatus: Record<
-    string,
-    { ok: boolean; error?: string; durationMs: number }
-  > = {};
-  for (const r of results)
-    sourceStatus[r.source] = {
-      ok: r.ok,
-      error: r.error,
-      durationMs: r.durationMs,
-    };
+  const sourceStatus = Object.fromEntries(
+    results.map((r) => [r.source, { ok: r.ok, error: r.error, durationMs: r.durationMs }]),
+  ) as Record<string, { ok: boolean; error?: string; durationMs: number }>;
 
-  // NVD enrichment (optional)
-  let nvdEnrichment: AggregateResult["nvdEnrichment"] = undefined;
+  let nvdEnrichment: AggregateResult["nvdEnrichment"];
   if (ctx.cfg.sources?.nvd?.enabled !== false) {
-    const res = await enrichFindingsWithNvd(findings, {
-      cfg: ctx.cfg,
-      env: ctx.env,
-      http,
-      cache: ctx.cache,
-      logger: ctx.logger,
-      registryUrl: ctx.registryUrl,
-      offline: ctx.offline,
-      networkPolicy: ctx.networkPolicy,
-    });
-    nvdEnrichment = res;
-    sourceStatus["nvd"] = {
-      ok: res.ok,
-      error: res.error,
-      durationMs: res.durationMs,
-    };
+    nvdEnrichment = await enrichFindingsWithNvd(findings, queryCtx);
+    sourceStatus["nvd"] = { ok: nvdEnrichment.ok, error: nvdEnrichment.error, durationMs: nvdEnrichment.durationMs };
   }
 
   return {

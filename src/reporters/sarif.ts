@@ -1,9 +1,4 @@
-import type {
-  AuditReport,
-  PackageAuditResult,
-  Severity,
-  VulnerabilityFinding,
-} from "../types";
+import type { AuditReport, Severity, VulnerabilityFinding } from "../types";
 
 function sarifLevelForSeverity(sev: Severity): "error" | "warning" | "note" {
   switch (sev) {

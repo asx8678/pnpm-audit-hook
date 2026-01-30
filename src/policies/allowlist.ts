@@ -6,21 +6,13 @@ export interface AllowlistMatch {
   expires: string;
 }
 
-function normalizeId(id: string): string {
-  return id.trim().toUpperCase();
-}
+const normalizeId = (id: string): string => id.trim().toUpperCase();
 
-export function isAllowlistEntryExpired(
-  expires: string,
-  now: Date = new Date(),
-): boolean {
-  // expires in YYYY-MM-DD, treat as end of that day in local time
-  const m = expires.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+export function isAllowlistEntryExpired(expires: string, now: Date = new Date()): boolean {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(expires);
   if (!m) return true;
-  const y = Number(m[1]);
-  const mo = Number(m[2]) - 1;
-  const d = Number(m[3]);
-  const exp = new Date(y, mo, d, 23, 59, 59, 999);
+  const [y, mo, d] = [Number(m[1]), Number(m[2]), Number(m[3])];
+  const exp = new Date(y, mo - 1, d, 23, 59, 59, 999);
   return now.getTime() > exp.getTime();
 }
 

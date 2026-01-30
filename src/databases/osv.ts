@@ -1,41 +1,22 @@
-import type {
-  VulnerabilitySource,
-  SourceContext,
-  SourceResult,
-} from "./connector";
-import type {
-  FindingSource,
-  PackageRef,
-  Severity,
-  VulnerabilityFinding,
-  VulnerabilityIdentifier,
-} from "../types";
+import type { VulnerabilitySource, SourceContext, SourceResult } from "./connector";
+import type { FindingSource, PackageRef, Severity, VulnerabilityFinding, VulnerabilityIdentifier } from "../types";
 import { cvssV3VectorToBaseScore, severityFromCvssScore } from "../utils/cvss";
 import { isVersionAffectedByOsvSemverRange, npmPurl } from "../utils/semver";
 import { mapSeverity } from "../utils/severity";
 
-function pickCanonicalId(
-  aliases: string[] | undefined,
-  fallback: string,
-): string {
-  const cve = aliases?.find((a) => a.toUpperCase().startsWith("CVE-"));
-  if (cve) return cve.toUpperCase();
-  const ghsa = aliases?.find((a) => a.toUpperCase().startsWith("GHSA-"));
-  if (ghsa) return ghsa.toUpperCase();
-  return fallback;
+function pickCanonicalId(aliases: string[] | undefined, fallback: string): string {
+  return aliases?.find((a) => a.toUpperCase().startsWith("CVE-"))?.toUpperCase()
+    ?? aliases?.find((a) => a.toUpperCase().startsWith("GHSA-"))?.toUpperCase()
+    ?? fallback;
 }
 
-function identifiersFromAliases(
-  aliases: string[] | undefined,
-): VulnerabilityIdentifier[] {
-  const ids: VulnerabilityIdentifier[] = [];
-  for (const a of aliases ?? []) {
+function identifiersFromAliases(aliases: string[] | undefined): VulnerabilityIdentifier[] {
+  return (aliases ?? []).map((a) => {
     const u = a.toUpperCase();
-    if (u.startsWith("CVE-")) ids.push({ type: "CVE", value: u });
-    else if (u.startsWith("GHSA-")) ids.push({ type: "GHSA", value: u });
-    else ids.push({ type: "OTHER", value: a });
-  }
-  return ids;
+    return u.startsWith("CVE-") ? { type: "CVE" as const, value: u }
+      : u.startsWith("GHSA-") ? { type: "GHSA" as const, value: u }
+      : { type: "OTHER" as const, value: a };
+  });
 }
 
 export class OsvSource implements VulnerabilitySource {
@@ -50,278 +31,125 @@ export class OsvSource implements VulnerabilitySource {
     const findings: VulnerabilityFinding[] = [];
     const unknown = new Set<string>();
 
-    // 1) Determine which package@version need live query
     type P = { pkg: PackageRef; key: string };
     const needsQuery: P[] = [];
-    const pkgToVulnIds: Record<
-      string,
-      Array<{ id: string; modified?: string }>
-    > = {};
+    const pkgToVulnIds: Record<string, Array<{ id: string; modified?: string }>> = {};
 
     for (const p of pkgs) {
       const key = `${p.name}@${p.version}`;
-      const cacheKey = `osv:ids:${key}`;
-      const cached = await ctx.cache.get(cacheKey);
-      if (cached?.value) {
-        pkgToVulnIds[key] = cached.value as Array<{
-          id: string;
-          modified?: string;
-        }>;
-        continue;
-      }
-      if (ctx.offline) {
-        unknown.add(key);
-        pkgToVulnIds[key] = [];
-        continue;
-      }
+      const cached = await ctx.cache.get(`osv:ids:${key}`);
+      if (cached?.value) { pkgToVulnIds[key] = cached.value as Array<{ id: string; modified?: string }>; continue; }
+      if (ctx.offline) { unknown.add(key); pkgToVulnIds[key] = []; continue; }
       needsQuery.push({ pkg: p, key });
     }
 
-    // 2) Query OSV in batches
-    const batchSize = 200;
-
-    const queryBatch = async (
-      batch: P[],
-      pageTokens?: Record<string, string>,
-    ): Promise<void> => {
-      const queries = batch.map((item) => {
-        const q: any = {
-          package: { ecosystem: "npm", name: item.pkg.name },
-          version: item.pkg.version,
-        };
-        if (pageTokens?.[item.key]) q.page_token = pageTokens[item.key];
-        return q;
-      });
-
-      const res = await ctx.http.postJson<any>(
-        "https://api.osv.dev/v1/querybatch",
-        { queries },
-      );
-
-      const results: any[] = Array.isArray(res?.results) ? res.results : [];
+    const queryBatch = async (batch: P[], pageTokens?: Record<string, string>): Promise<void> => {
+      const queries = batch.map((item) => ({
+        package: { ecosystem: "npm", name: item.pkg.name },
+        version: item.pkg.version,
+        ...(pageTokens?.[item.key] && { page_token: pageTokens[item.key] }),
+      }));
+      const res = await ctx.http.postJson<any>("https://api.osv.dev/v1/querybatch", { queries });
       for (let i = 0; i < batch.length; i++) {
-        const item = batch[i]!;
-        const r = results[i] ?? {};
-        const vulns: Array<{ id: string; modified?: string }> = Array.isArray(
-          r.vulns,
-        )
-          ? r.vulns.map((v: any) => ({
-              id: String(v.id),
-              modified: v.modified ? String(v.modified) : undefined,
-            }))
-          : [];
-        const existing = pkgToVulnIds[item.key] ?? [];
-        pkgToVulnIds[item.key] = existing.concat(vulns);
-
-        const token =
-          typeof r.next_page_token === "string" ? r.next_page_token : undefined;
-        if (token) {
-          // Pagination: re-query only this item with page_token
-          const tokens = { [item.key]: token };
-          await queryBatch([item], tokens);
-        }
+        const { key } = batch[i]!;
+        const r = res?.results?.[i] ?? {};
+        const vulns = (r.vulns ?? []).map((v: any) => ({ id: String(v.id), modified: v.modified ? String(v.modified) : undefined }));
+        pkgToVulnIds[key] = (pkgToVulnIds[key] ?? []).concat(vulns);
+        if (typeof r.next_page_token === "string") await queryBatch([batch[i]!], { [key]: r.next_page_token });
       }
     };
 
     try {
-      for (let i = 0; i < needsQuery.length; i += batchSize) {
-        const batch = needsQuery.slice(i, i + batchSize);
-        await queryBatch(batch);
-      }
-
-      // Cache vuln id lists per package@version
+      for (let i = 0; i < needsQuery.length; i += 200) await queryBatch(needsQuery.slice(i, i + 200));
       const ttl = ctx.cfg.cache?.ttlSeconds ?? 3600;
-      for (const [key, ids] of Object.entries(pkgToVulnIds)) {
-        await ctx.cache.set(`osv:ids:${key}`, ids, ttl);
-      }
+      for (const [key, ids] of Object.entries(pkgToVulnIds)) await ctx.cache.set(`osv:ids:${key}`, ids, ttl);
     } catch (e: any) {
-      const error = e?.message ? String(e.message) : String(e);
-
+      const error = String(e?.message ?? e);
       if (ctx.networkPolicy === "fail-closed") {
-        return {
-          source: this.id,
-          ok: false,
-          error,
-          durationMs: Date.now() - start,
-          findings: [],
-        };
+        return { source: this.id, ok: false, error, durationMs: Date.now() - start, findings: [] };
       }
-
-      // fail-open: mark all still-unknown packages
-      for (const item of needsQuery) unknown.add(item.key);
-
-      return {
-        source: this.id,
-        ok: false,
-        error,
-        durationMs: Date.now() - start,
-        findings,
-        unknownDataForPackages: unknown,
-      };
+      needsQuery.forEach((item) => unknown.add(item.key));
+      return { source: this.id, ok: false, error, durationMs: Date.now() - start, findings, unknownDataForPackages: unknown };
     }
 
-    // 3) Fetch vuln details for unique ids
-    const allIds = new Set<string>();
-    for (const ids of Object.values(pkgToVulnIds))
-      for (const v of ids) allIds.add(v.id);
-
+    const allIds = [...new Set(Object.values(pkgToVulnIds).flatMap((ids) => ids.map((v) => v.id)))];
     const vulnDetails: Record<string, any> = {};
     const ttl = ctx.cfg.cache?.ttlSeconds ?? 3600;
 
-    const fetchVuln = async (id: string): Promise<any | null> => {
-      const cacheKey = `osv:vuln:${id}`;
-      const cached = await ctx.cache.get(cacheKey);
+    const fetchVuln = async (id: string) => {
+      const cached = await ctx.cache.get(`osv:vuln:${id}`);
       if (cached?.value) return cached.value;
-
       if (ctx.offline) return null;
-
-      const detail = await ctx.http.getJson<any>(
-        `https://api.osv.dev/v1/vulns/${encodeURIComponent(id)}`,
-      );
-      await ctx.cache.set(cacheKey, detail, ttl);
+      const detail = await ctx.http.getJson<any>(`https://api.osv.dev/v1/vulns/${encodeURIComponent(id)}`);
+      await ctx.cache.set(`osv:vuln:${id}`, detail, ttl);
       return detail;
     };
 
-    // Concurrency-limited fetch
     const concurrency = Math.max(1, ctx.cfg.performance?.concurrency ?? 8);
-    const queue = Array.from(allIds);
     let idx = 0;
-    const getNextIndex = () => idx++;
-    const workers = new Array(Math.min(concurrency, queue.length))
-      .fill(0)
-      .map(async () => {
-        let myIdx: number;
-        while ((myIdx = getNextIndex()) < queue.length) {
-          const id = queue[myIdx]!;
-          const d = await fetchVuln(id);
-          if (d) vulnDetails[id] = d;
-        }
-      });
-    await Promise.all(workers);
+    await Promise.all(Array.from({ length: Math.min(concurrency, allIds.length) }, async () => {
+      let i: number;
+      while ((i = idx++) < allIds.length) {
+        const d = await fetchVuln(allIds[i]!);
+        if (d) vulnDetails[allIds[i]!] = d;
+      }
+    }));
 
-    // 4) Build findings per package by checking affected ranges
     for (const p of pkgs) {
       const key = `${p.name}@${p.version}`;
-      const ids = pkgToVulnIds[key] ?? [];
-      for (const { id } of ids) {
+      for (const { id } of pkgToVulnIds[key] ?? []) {
         const d = vulnDetails[id];
         if (!d) continue;
 
-        // Determine if this OSV record actually affects this npm package+version
-        const aliases: string[] | undefined = Array.isArray(d.aliases)
-          ? d.aliases.map(String)
-          : undefined;
+        const aliases: string[] | undefined = Array.isArray(d.aliases) ? d.aliases.map(String) : undefined;
         const canonicalId = pickCanonicalId(aliases, String(d.id ?? id));
+        let affectedRange: string | undefined, fixedVersion: string | undefined;
+        let severity: Severity = "unknown", cvssScore: number | undefined, cvssVector: string | undefined;
 
-        let affectedRange: string | undefined;
-        let fixedVersion: string | undefined;
-        let severity: Severity = "unknown";
-        let cvssScore: number | undefined;
-        let cvssVector: string | undefined;
-
-        // Try OSV severity array (CVSS vectors)
-        if (Array.isArray(d.severity) && d.severity.length > 0) {
-          const entry =
-            d.severity.find((s: any) => s.type === "CVSS_V3") ?? d.severity[0];
-          if (entry?.score && typeof entry.score === "string") {
-            cvssVector = entry.score;
-            const s = cvssV3VectorToBaseScore(entry.score);
-            if (s !== undefined) {
-              cvssScore = s;
-              severity = severityFromCvssScore(s);
-            }
-          }
+        const sevEntry = d.severity?.find((s: any) => s.type === "CVSS_V3") ?? d.severity?.[0];
+        if (sevEntry?.score) {
+          cvssVector = sevEntry.score;
+          const s = cvssV3VectorToBaseScore(sevEntry.score);
+          if (s !== undefined) { cvssScore = s; severity = severityFromCvssScore(s); }
         }
 
-        // Try affected[].ecosystem_specific/database_specific severity fields
-        if (Array.isArray(d.affected)) {
-          for (const a of d.affected) {
-            const pkg = a?.package;
-            if (!pkg) continue;
-            const eco = String(pkg.ecosystem ?? "");
-            const nm = String(pkg.name ?? "");
-            if (eco !== "npm" || nm !== p.name) continue;
-
-            // Determine if affected
-            let affected = false;
-
-            // Exact versions list
-            if (Array.isArray(a.versions) && a.versions.includes(p.version))
+        for (const a of d.affected ?? []) {
+          const { ecosystem, name: nm } = a?.package ?? {};
+          if (ecosystem !== "npm" || nm !== p.name) continue;
+          let affected = a.versions?.includes(p.version) ?? false;
+          for (const r of a.ranges ?? []) {
+            if (String(r.type).toUpperCase() !== "SEMVER") continue;
+            const events = r.events ?? [];
+            if (isVersionAffectedByOsvSemverRange(p.version, events)) {
               affected = true;
-
-            // SEMVER ranges
-            if (Array.isArray(a.ranges)) {
-              for (const r of a.ranges) {
-                if (String(r.type).toUpperCase() !== "SEMVER") continue;
-                const events = Array.isArray(r.events) ? r.events : [];
-                if (isVersionAffectedByOsvSemverRange(p.version, events)) {
-                  affected = true;
-                  // Best-effort: build human readable affected range
-                  const intro = events.find(
-                    (e: any) => e.introduced,
-                  )?.introduced;
-                  const fixed = events.find((e: any) => e.fixed)?.fixed;
-                  if (intro && fixed) affectedRange = `>=${intro} <${fixed}`;
-                  if (fixed) fixedVersion = fixed;
-                  break;
-                }
-              }
+              const intro = events.find((e: any) => e.introduced)?.introduced;
+              const fixed = events.find((e: any) => e.fixed)?.fixed;
+              if (intro && fixed) affectedRange = `>=${intro} <${fixed}`;
+              if (fixed) fixedVersion = fixed;
+              break;
             }
-
-            if (!affected) continue;
-
-            const ecoSev =
-              a.ecosystem_specific?.severity ?? a.database_specific?.severity;
-            if (typeof ecoSev === "string" && severity === "unknown")
-              severity = mapSeverity(ecoSev);
           }
+          if (!affected) continue;
+          const ecoSev = a.ecosystem_specific?.severity ?? a.database_specific?.severity;
+          if (typeof ecoSev === "string" && severity === "unknown") severity = mapSeverity(ecoSev);
         }
 
         const identifiers = identifiersFromAliases(aliases);
-
-        const references: string[] = Array.isArray(d.references)
-          ? d.references.map((r: any) => String(r.url ?? r))
-          : [];
-
-        const finding: VulnerabilityFinding = {
-          id: canonicalId,
-          source: "osv",
-          packageName: p.name,
-          packageVersion: p.version,
-          title:
-            typeof d.summary === "string"
-              ? d.summary
-              : typeof d.details === "string"
-                ? d.details.split("\n")[0]
-                : undefined,
-          url:
-            typeof d.database_specific?.url === "string"
-              ? d.database_specific.url
-              : references[0],
-          description: typeof d.details === "string" ? d.details : undefined,
-          severity,
-          cvssScore,
-          cvssVector,
-          publishedAt:
-            typeof d.published === "string" ? d.published : undefined,
-          modifiedAt: typeof d.modified === "string" ? d.modified : undefined,
+        const references = (d.references ?? []).map((r: any) => String(r.url ?? r));
+        findings.push({
+          id: canonicalId, source: "osv", packageName: p.name, packageVersion: p.version,
+          title: d.summary ?? d.details?.split("\n")[0],
+          url: d.database_specific?.url ?? references[0],
+          description: d.details,
+          severity, cvssScore, cvssVector,
+          publishedAt: d.published, modifiedAt: d.modified,
           identifiers: identifiers.length ? identifiers : undefined,
           references: references.length ? references : undefined,
-          affectedRange,
-          fixedVersion,
+          affectedRange, fixedVersion,
           raw: { osvId: d.id, purl: npmPurl(p.name, p.version) },
-        };
-
-        findings.push(finding);
+        });
       }
     }
-
-    return {
-      source: this.id,
-      ok: true,
-      durationMs: Date.now() - start,
-      findings,
-      unknownDataForPackages: unknown.size ? unknown : undefined,
-    };
+    return { source: this.id, ok: true, durationMs: Date.now() - start, findings, unknownDataForPackages: unknown.size ? unknown : undefined };
   }
 }

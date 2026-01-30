@@ -8,28 +8,27 @@ export interface SbomOptions {
   dependencies?: Record<string, string[]>; // key = name@version
 }
 
+const DEFAULT_TOOL_VERSION = "1.0.0";
+const TOOL_NAME = "pnpm-audit-hook";
+
+function buildHash(integrity?: string) {
+  if (!integrity) return undefined;
+  const sri = parseSubresourceIntegrity(integrity);
+  if (!sri) return undefined;
+  return [{ alg: sri.algorithm.toUpperCase(), content: sri.digestBase64 }];
+}
+
 export function toCycloneDxJson(pkgs: PackageRef[], opts: SbomOptions): any {
-  const components = pkgs.map((p) => {
-    const purl = npmPurl(p.name, p.version);
+  const timestamp = new Date().toISOString();
+  const toolVersion = opts.toolVersion ?? DEFAULT_TOOL_VERSION;
 
-    const hashes: Array<{ alg: string; content: string }> = [];
-    if (p.integrity) {
-      const sri = parseSubresourceIntegrity(p.integrity);
-      if (sri)
-        hashes.push({
-          alg: sri.algorithm.toUpperCase(),
-          content: sri.digestBase64,
-        });
-    }
-
-    return {
-      type: "library",
-      name: p.name,
-      version: p.version,
-      purl,
-      hashes: hashes.length ? hashes : undefined,
-    };
-  });
+  const components = pkgs.map((p) => ({
+    type: "library",
+    name: p.name,
+    version: p.version,
+    purl: npmPurl(p.name, p.version),
+    hashes: buildHash(p.integrity),
+  }));
 
   const depMap = opts.dependencies ?? {};
   const dependencies = Object.entries(depMap).map(([k, deps]) => {
@@ -48,14 +47,8 @@ export function toCycloneDxJson(pkgs: PackageRef[], opts: SbomOptions): any {
     specVersion: "1.5",
     version: 1,
     metadata: {
-      timestamp: new Date().toISOString(),
-      tools: [
-        {
-          vendor: "org",
-          name: "pnpm-audit-hook",
-          version: opts.toolVersion ?? "1.0.0",
-        },
-      ],
+      timestamp,
+      tools: [{ vendor: "org", name: TOOL_NAME, version: toolVersion }],
     },
     components,
     dependencies: dependencies.length ? dependencies : undefined,
@@ -63,7 +56,9 @@ export function toCycloneDxJson(pkgs: PackageRef[], opts: SbomOptions): any {
 }
 
 export function toSpdxJson(pkgs: PackageRef[], opts: SbomOptions): any {
-  // Minimal SPDX 2.3 document.
+  const timestamp = new Date().toISOString();
+  const toolVersion = opts.toolVersion ?? DEFAULT_TOOL_VERSION;
+
   const packages = pkgs.map((p, idx) => ({
     SPDXID: `SPDXRef-Package-${idx + 1}`,
     name: p.name,
@@ -85,11 +80,11 @@ export function toSpdxJson(pkgs: PackageRef[], opts: SbomOptions): any {
     spdxVersion: "SPDX-2.3",
     dataLicense: "CC0-1.0",
     SPDXID: "SPDXRef-DOCUMENT",
-    name: "pnpm-audit-hook SBOM",
+    name: `${TOOL_NAME} SBOM`,
     documentNamespace: `https://example.org/spdx/${Date.now()}`,
     creationInfo: {
-      created: new Date().toISOString(),
-      creators: [`Tool: pnpm-audit-hook@${opts.toolVersion ?? "1.0.0"}`],
+      created: timestamp,
+      creators: [`Tool: ${TOOL_NAME}@${toolVersion}`],
     },
     packages,
     relationships: [],

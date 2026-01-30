@@ -6,8 +6,7 @@ import { createIntegrationHttpClient } from "../utils/http-factory";
 export function isAzurePipelines(
   env: Record<string, string | undefined> = process.env,
 ): boolean {
-  const v = env.TF_BUILD || env.AZURE_HTTP_USER_AGENT;
-  return Boolean(v);
+  return !!(env.TF_BUILD || env.AZURE_HTTP_USER_AGENT);
 }
 
 export function vsoLogIssue(type: "error" | "warning", message: string): void {
@@ -31,22 +30,14 @@ export function vsoSetVariable(
   value: string,
   opts?: { isOutput?: boolean; isSecret?: boolean },
 ): void {
-  const props: string[] = [];
-  if (opts?.isOutput) props.push("isOutput=true");
-  if (opts?.isSecret) props.push("issecret=true");
+  const props = [opts?.isOutput && "isOutput=true", opts?.isSecret && "issecret=true"].filter(Boolean);
   const propStr = props.length ? ";" + props.join(";") : "";
   // eslint-disable-next-line no-console
-  console.log(
-    `##vso[task.setvariable variable=${escapeVso(name)}${propStr}]${escapeVso(value)}`,
-  );
+  console.log(`##vso[task.setvariable variable=${escapeVso(name)}${propStr}]${escapeVso(value)}`);
 }
 
 function escapeVso(s: string): string {
-  return s
-    .replace(/\r/g, "%0D")
-    .replace(/\n/g, "%0A")
-    .replace(/;/g, "%3B")
-    .replace(/]/g, "%5D");
+  return s.replace(/\r/g, "%0D").replace(/\n/g, "%0A").replace(/;/g, "%3B").replace(/]/g, "%5D");
 }
 
 export interface PullRequestCommentOptions {
@@ -85,18 +76,10 @@ export async function postPullRequestComment(
     Authorization: `Bearer ${token}`,
   });
 
-  const body = {
-    comments: [
-      {
-        parentCommentId: 0,
-        content: markdown,
-        commentType: 1,
-      },
-    ],
+  await http.postJson<unknown>(url, {
+    comments: [{ parentCommentId: 0, content: markdown, commentType: 1 }],
     status: 1,
-  };
-
-  await http.postJson<any>(url, body, { "content-type": "application/json" });
+  }, { "content-type": "application/json" });
 }
 
 export async function writeAndUploadSummary(

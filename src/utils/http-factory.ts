@@ -2,38 +2,23 @@ import type { AuditConfig } from "../types.js";
 import type { Logger } from "./logger.js";
 import { HttpClient } from "./http.js";
 
-const DEFAULT_TIMEOUT_MS = 15000;
-const DEFAULT_RETRIES = 2;
-const USER_AGENT = "pnpm-audit-hook";
+const DEFAULTS = { timeoutMs: 15000, retries: 2, userAgent: "pnpm-audit-hook" } as const;
 
-/**
- * Create a configured HttpClient for audit operations.
- */
-export function createAuditHttpClient(
-  cfg: AuditConfig,
-  logger: Logger,
-): HttpClient {
+/** Create HttpClient for audit operations. */
+export function createAuditHttpClient(cfg: AuditConfig, logger: Logger): HttpClient {
   return new HttpClient({
-    timeoutMs: cfg.performance?.timeoutMs ?? DEFAULT_TIMEOUT_MS,
-    userAgent: USER_AGENT,
+    timeoutMs: cfg.performance?.timeoutMs ?? DEFAULTS.timeoutMs,
+    userAgent: DEFAULTS.userAgent,
     logger,
-    retries: DEFAULT_RETRIES,
+    retries: DEFAULTS.retries,
   });
 }
 
-/**
- * Create a configured HttpClient for integration services (Azure DevOps, webhooks, etc.).
- */
+/** Create HttpClient for integration services (Azure DevOps, webhooks, etc.). */
 export function createIntegrationHttpClient(
   timeoutMs: number,
   logger: Logger,
   headers?: Record<string, string>,
 ): HttpClient {
-  return new HttpClient({
-    timeoutMs,
-    userAgent: USER_AGENT,
-    logger,
-    retries: DEFAULT_RETRIES,
-    headers,
-  });
+  return new HttpClient({ timeoutMs, userAgent: DEFAULTS.userAgent, logger, retries: DEFAULTS.retries, headers });
 }

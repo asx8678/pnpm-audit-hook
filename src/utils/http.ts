@@ -2,19 +2,14 @@ import { retry } from "./retry";
 import type { Logger } from "./logger";
 
 export class HttpError extends Error {
-  public readonly status?: number;
-  public readonly url: string;
-  public readonly retryAfter?: string | number;
-  public readonly responseText?: string;
+  readonly status?: number;
+  readonly url: string;
+  readonly retryAfter?: string | number;
+  readonly responseText?: string;
 
   constructor(
     message: string,
-    opts: {
-      url: string;
-      status?: number;
-      retryAfter?: string | number;
-      responseText?: string;
-    },
+    opts: { url: string; status?: number; retryAfter?: string | number; responseText?: string },
   ) {
     super(message);
     this.name = "HttpError";
@@ -48,20 +43,11 @@ export class HttpClient {
     this.retries = opts.retries ?? 3;
   }
 
-  async getJson<T>(
-    url: string,
-    extraHeaders?: Record<string, string>,
-  ): Promise<T> {
-    return this.requestJson<T>("GET", url, undefined, extraHeaders);
-  }
+  getJson = <T>(url: string, extraHeaders?: Record<string, string>) =>
+    this.requestJson<T>("GET", url, undefined, extraHeaders);
 
-  async postJson<T>(
-    url: string,
-    body: unknown,
-    extraHeaders?: Record<string, string>,
-  ): Promise<T> {
-    return this.requestJson<T>("POST", url, body, extraHeaders);
-  }
+  postJson = <T>(url: string, body: unknown, extraHeaders?: Record<string, string>) =>
+    this.requestJson<T>("POST", url, body, extraHeaders);
 
   private async requestJson<T>(
     method: "GET" | "POST",
@@ -101,15 +87,8 @@ export class HttpClient {
         }
 
         const text = await res.text();
-        try {
-          return JSON.parse(text) as T;
-        } catch (e) {
-          throw new HttpError(`Invalid JSON response`, {
-            url,
-            status: res.status,
-            responseText: text,
-          });
-        }
+        try { return JSON.parse(text) as T; }
+        catch { throw new HttpError(`Invalid JSON response`, { url, status: res.status, responseText: text }); }
       } finally {
         clearTimeout(timeout);
       }
@@ -121,19 +100,11 @@ export class HttpClient {
       maxDelayMs: 8000,
       factor: 2,
       jitter: 0.2,
-      retryOn: (err) => {
-        if (!(err instanceof HttpError)) return true;
-        const status = err.status;
-        return status === 429 || (typeof status === "number" && status >= 500);
-      },
+      retryOn: (err) =>
+        !(err instanceof HttpError) || err.status === 429 || (err.status ?? 0) >= 500,
     }).catch((err) => {
-      // Best-effort debug log (avoid huge response bodies).
       const e = err as any;
-      this.logger.debug(`HTTP ${method} failed: ${url}`, {
-        status: e?.status,
-        name: e?.name,
-        message: e?.message,
-      });
+      this.logger.debug(`HTTP ${method} failed: ${url}`, { status: e?.status, name: e?.name, message: e?.message });
       throw err;
     });
   }

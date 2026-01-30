@@ -3,12 +3,11 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import YAML from "yaml";
 import { runAudit, shouldBlockInstall } from "./audit";
-import type { RuntimeOptions } from "./types";
-import { getRegistryUrl } from "./utils/env";
+import { createRuntimeFromEnv } from "./utils/runtime";
 
 async function main(): Promise<void> {
-  const env = process.env as Record<string, string | undefined>;
-  const cwd = process.cwd();
+  const runtime = createRuntimeFromEnv();
+  const { cwd, env } = runtime;
 
   const lockfilePath = env.PNPM_LOCKFILE_PATH
     ? path.resolve(cwd, env.PNPM_LOCKFILE_PATH)
@@ -16,12 +15,6 @@ async function main(): Promise<void> {
 
   const raw = await fs.readFile(lockfilePath, "utf-8");
   const lockfile = YAML.parse(raw);
-
-  const runtime: RuntimeOptions = {
-    cwd,
-    env,
-    registryUrl: getRegistryUrl(env),
-  };
 
   const { report, artifacts } = await runAudit({ lockfile, runtime });
 

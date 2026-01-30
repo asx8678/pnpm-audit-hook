@@ -1,20 +1,12 @@
-/**
- * Blocklist matching.
- *
- * Supports:
- * - Exact matches: "event-stream"
- * - Simple wildcard suffix: "@scope/*" or "lodash*"
- */
+/** Blocklist: exact matches ("event-stream") or wildcard suffix ("@scope/*", "lodash*") */
 export function isBlockedPackage(name: string, blocklist: string[]): boolean {
-  for (const pattern of blocklist) {
-    if (!pattern) continue;
+  return blocklist.some((pattern) => {
+    if (!pattern || pattern === "*") return false;
     if (pattern === name) return true;
-    if (pattern === "*") continue; // Skip bare wildcard - would block everything
-
     if (pattern.endsWith("*")) {
       const prefix = pattern.slice(0, -1);
-      if (prefix && name.startsWith(prefix)) return true;
+      return prefix && name.startsWith(prefix);
     }
-  }
-  return false;
+    return false;
+  });
 }

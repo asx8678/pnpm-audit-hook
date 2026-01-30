@@ -1,4 +1,4 @@
-// Generated-ish from .pnpm-audit.schema.json for runtime validation (keeps hook self-contained).
+// Runtime validation schema derived from .pnpm-audit.schema.json
 export const configSchema: any = {
   $schema: "https://json-schema.org/draft/2020-12/schema",
   $id: "https://example.org/pnpm-audit.schema.json",
@@ -16,17 +16,11 @@ export const configSchema: any = {
       properties: {
         block: {
           type: "array",
-          items: {
-            $ref: "#/$defs/severity",
-          },
-          minItems: 0,
+          items: { $ref: "#/$defs/severity" },
         },
         warn: {
           type: "array",
-          items: {
-            $ref: "#/$defs/severity",
-          },
-          minItems: 0,
+          items: { $ref: "#/$defs/severity" },
         },
         gracePeriod: {
           type: "integer",
@@ -173,26 +167,8 @@ export const configSchema: any = {
       type: "object",
       additionalProperties: false,
       properties: {
-        prComment: {
-          type: "object",
-          additionalProperties: false,
-          properties: {
-            enabled: {
-              type: "boolean",
-            },
-          },
-          required: ["enabled"],
-        },
-        logAnalytics: {
-          type: "object",
-          additionalProperties: false,
-          properties: {
-            enabled: {
-              type: "boolean",
-            },
-          },
-          required: ["enabled"],
-        },
+        prComment: { $ref: "#/$defs/enabledToggle" },
+        logAnalytics: { $ref: "#/$defs/enabledToggle" },
       },
     },
   },
@@ -202,15 +178,12 @@ export const configSchema: any = {
       type: "string",
       enum: ["critical", "high", "medium", "low", "unknown"],
     },
-    sourceToggle: {
+    enabledToggle: {
       type: "object",
       additionalProperties: false,
-      properties: {
-        enabled: {
-          type: "boolean",
-        },
-      },
+      properties: { enabled: { type: "boolean" } },
       required: ["enabled"],
     },
+    sourceToggle: { $ref: "#/$defs/enabledToggle" },
   },
 };

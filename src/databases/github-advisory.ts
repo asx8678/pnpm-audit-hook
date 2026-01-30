@@ -1,55 +1,33 @@
-import type {
-  VulnerabilitySource,
-  SourceContext,
-  SourceResult,
-} from "./connector";
-import type {
-  FindingSource,
-  PackageRef,
-  Severity,
-  VulnerabilityFinding,
-  VulnerabilityIdentifier,
-} from "../types";
+import type { VulnerabilitySource, SourceContext, SourceResult } from "./connector";
+import type { FindingSource, PackageRef, Severity, VulnerabilityFinding, VulnerabilityIdentifier } from "../types";
 import { satisfies } from "../utils/semver";
 import { retry } from "../utils/retry";
 import { HttpError } from "../utils/http";
 import { ttlForFindings } from "../cache/ttl";
 import { mapSeverity } from "../utils/severity";
 
-function buildGithubHeaders(
-  env: Record<string, string | undefined>,
-): Record<string, string> {
+function buildGithubHeaders(env: Record<string, string | undefined>): Record<string, string> {
   const token = env.GITHUB_TOKEN || env.GH_TOKEN || env.GITHUB_ADVISORY_TOKEN;
-  const headers: Record<string, string> = {
+  return {
     Accept: "application/vnd.github+json",
     "X-GitHub-Api-Version": env.GITHUB_API_VERSION || "2022-11-28",
     "User-Agent": "pnpm-audit-hook",
+    ...(token && { Authorization: `Bearer ${token}` }),
   };
-  if (token) headers.Authorization = `Bearer ${token}`;
-  return headers;
 }
 
 function parseLinkHeader(link: string | null): Record<string, string> {
-  // RFC 5988-ish: <url>; rel="next", <url>; rel="last"
   if (!link) return {};
-  const out: Record<string, string> = {};
-  for (const part of link.split(",")) {
-    const m = part.match(/<([^>]+)>\s*;\s*rel="([^"]+)"/);
-    if (m && m[1] && m[2]) out[m[2]] = m[1];
-  }
-  return out;
+  return Object.fromEntries(
+    link.split(",").map((p) => p.match(/<([^>]+)>\s*;\s*rel="([^"]+)"/)).filter(Boolean).map((m) => [m![2], m![1]]),
+  );
 }
 
 export class GitHubAdvisorySource implements VulnerabilitySource {
   id: FindingSource = "github";
 
   isEnabled(cfg: any, env: Record<string, string | undefined>): boolean {
-    // GitHub endpoint is public but rate limited heavily without token.
-    // We keep it enabled by default unless config disables it.
-    return (
-      cfg.sources?.github?.enabled !== false &&
-      env.PNPM_AUDIT_DISABLE_GITHUB !== "true"
-    );
+    return cfg.sources?.github?.enabled !== false && env.PNPM_AUDIT_DISABLE_GITHUB !== "true";
   }
 
   async query(pkgs: PackageRef[], ctx: SourceContext): Promise<SourceResult> {
@@ -57,25 +35,14 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
     const findings: VulnerabilityFinding[] = [];
     const unknown = new Set<string>();
 
-    // Cache per package@version
     const targets: PackageRef[] = [];
-    const cachedFindings: VulnerabilityFinding[] = [];
-
     for (const p of pkgs) {
-      const cacheKey = `github:${p.name}@${p.version}`;
-      const cached = await ctx.cache.get(cacheKey);
-      if (cached?.value) {
-        cachedFindings.push(...(cached.value as VulnerabilityFinding[]));
-        continue;
-      }
-      if (ctx.offline) {
-        unknown.add(`${p.name}@${p.version}`);
-        continue;
-      }
+      const key = `${p.name}@${p.version}`;
+      const cached = await ctx.cache.get(`github:${key}`);
+      if (cached?.value) { findings.push(...(cached.value as VulnerabilityFinding[])); continue; }
+      if (ctx.offline) { unknown.add(key); continue; }
       targets.push(p);
     }
-
-    findings.push(...cachedFindings);
 
     if (targets.length === 0) {
       return {
@@ -173,34 +140,14 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
                 ? adv.cvss.vector_string
                 : undefined;
 
-            const identifiers: VulnerabilityIdentifier[] = Array.isArray(
-              adv.identifiers,
-            )
-              ? adv.identifiers
-                  .map((x: any) => ({
-                    type: String(x.type ?? "OTHER") as any,
-                    value: String(x.value ?? ""),
-                  }))
-                  .filter((x: any) => x.value)
-              : [];
+            const identifiers: VulnerabilityIdentifier[] = (adv.identifiers ?? [])
+              .map((x: any) => ({ type: String(x.type ?? "OTHER") as any, value: String(x.value ?? "") }))
+              .filter((x: any) => x.value);
 
-            const cveId: string | undefined =
-              typeof adv.cve_id === "string"
-                ? adv.cve_id
-                : identifiers.find((i) => i.type === "CVE")?.value;
-            const ghsaId: string | undefined =
-              typeof adv.ghsa_id === "string"
-                ? adv.ghsa_id
-                : identifiers.find((i) => i.type === "GHSA")?.value;
-            const canonicalId = (
-              cveId ??
-              ghsaId ??
-              `GH:${String(adv.id ?? "")}`
-            ).toUpperCase();
-
-            const vulnerabilities = Array.isArray(adv.vulnerabilities)
-              ? adv.vulnerabilities
-              : [];
+            const cveId = typeof adv.cve_id === "string" ? adv.cve_id : identifiers.find((i) => i.type === "CVE")?.value;
+            const ghsaId = typeof adv.ghsa_id === "string" ? adv.ghsa_id : identifiers.find((i) => i.type === "GHSA")?.value;
+            const canonicalId = (cveId ?? ghsaId ?? `GH:${String(adv.id ?? "")}`).toUpperCase();
+            const vulnerabilities = adv.vulnerabilities ?? [];
             for (const v of vulnerabilities) {
               const pkg = v?.package;
               if (!pkg) continue;
@@ -208,64 +155,36 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
               const name = String(pkg.name ?? "");
               if (!name) continue;
 
-              const range: string | undefined =
-                typeof v.vulnerable_version_range === "string"
-                  ? v.vulnerable_version_range
-                  : undefined;
+              const range = typeof v.vulnerable_version_range === "string" ? v.vulnerable_version_range : undefined;
 
               // Apply to every requested version of this package in this batch if it matches range.
               for (const p of batch) {
                 if (p.name !== name) continue;
                 if (range && !satisfies(p.version, range)) continue;
 
-                const fixed: string | undefined =
-                  typeof v.first_patched_version === "string"
-                    ? v.first_patched_version
-                    : typeof v.first_patched_version?.identifier === "string"
-                      ? v.first_patched_version.identifier
-                      : undefined;
-
+                const fixed = typeof v.first_patched_version === "string" ? v.first_patched_version : v.first_patched_version?.identifier;
                 const key = `${p.name}@${p.version}`;
 
-                const finding: VulnerabilityFinding = {
+                perPkg[key] = perPkg[key] ?? [];
+                perPkg[key].push({
                   id: canonicalId,
                   source: "github",
                   packageName: p.name,
                   packageVersion: p.version,
-                  title:
-                    typeof adv.summary === "string" ? adv.summary : undefined,
-                  url:
-                    typeof adv.html_url === "string"
-                      ? adv.html_url
-                      : typeof adv.url === "string"
-                        ? adv.url
-                        : undefined,
-                  description:
-                    typeof adv.description === "string"
-                      ? adv.description
-                      : undefined,
+                  title: typeof adv.summary === "string" ? adv.summary : undefined,
+                  url: adv.html_url ?? adv.url,
+                  description: typeof adv.description === "string" ? adv.description : undefined,
                   severity,
                   cvssScore,
                   cvssVector,
-                  publishedAt:
-                    typeof adv.published_at === "string"
-                      ? adv.published_at
-                      : undefined,
-                  modifiedAt:
-                    typeof adv.updated_at === "string"
-                      ? adv.updated_at
-                      : undefined,
+                  publishedAt: typeof adv.published_at === "string" ? adv.published_at : undefined,
+                  modifiedAt: typeof adv.updated_at === "string" ? adv.updated_at : undefined,
                   identifiers: identifiers.length ? identifiers : undefined,
-                  references: Array.isArray(adv.references)
-                    ? adv.references.map(String)
-                    : undefined,
+                  references: adv.references?.map(String),
                   affectedRange: range,
                   fixedVersion: fixed,
                   raw: { ghsa_id: adv.ghsa_id, cve_id: adv.cve_id },
-                };
-
-                perPkg[key] = perPkg[key] ?? [];
-                perPkg[key].push(finding);
+                });
               }
             }
           }
@@ -290,28 +209,12 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
         unknownDataForPackages: unknown.size ? unknown : undefined,
       };
     } catch (e: any) {
-      const error = e?.message ? String(e.message) : String(e);
-
+      const error = String(e?.message ?? e);
       if (ctx.networkPolicy === "fail-closed") {
-        return {
-          source: this.id,
-          ok: false,
-          error,
-          durationMs: Date.now() - start,
-          findings: [],
-        };
+        return { source: this.id, ok: false, error, durationMs: Date.now() - start, findings: [] };
       }
-
       for (const p of targets) unknown.add(`${p.name}@${p.version}`);
-
-      return {
-        source: this.id,
-        ok: false,
-        error,
-        durationMs: Date.now() - start,
-        findings,
-        unknownDataForPackages: unknown,
-      };
+      return { source: this.id, ok: false, error, durationMs: Date.now() - start, findings, unknownDataForPackages: unknown };
     }
   }
 }

@@ -24,23 +24,13 @@ export class FileCache<T = unknown> implements Cache<T> {
   }
 
   async get(key: string): Promise<CacheEntry<T> | null> {
-    const filePath = this.filePathForKey(key);
     try {
-      const raw = await fs.readFile(filePath, "utf-8");
-      const parsed = JSON.parse(raw) as CacheEntry<T>;
-      if (!parsed || typeof parsed !== "object") return null;
-
-      const now = Date.now();
-      if (parsed.expiresAt > now) return parsed;
-
-      // Expired entry
-      if (this.allowStale) {
-        return { ...parsed, stale: true };
-      }
-      return null;
+      const raw = await fs.readFile(this.filePathForKey(key), "utf-8");
+      const entry = JSON.parse(raw) as CacheEntry<T>;
+      if (!entry || typeof entry !== "object") return null;
+      if (entry.expiresAt > Date.now()) return entry;
+      return this.allowStale ? { ...entry, stale: true } : null;
     } catch {
-      // Cache miss on read error (corrupted file, permission issue, etc.)
-      // Intentional: treat unreadable cache entries as misses
       return null;
     }
   }
