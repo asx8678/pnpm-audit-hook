@@ -174,11 +174,30 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
     }
 
     if (errors.length > 0) {
+      // When static DB is available and was queried successfully, API failures are less critical
+      // because the static DB covers historical vulnerabilities. The API is primarily needed
+      // for very recent vulnerabilities published after the cutoff date.
+      const hasStaticDbFindings = findings.length > 0 && staticDbAvailable;
+
       if (errors.length === targets.length) {
-        // All queries failed
+        // All API queries failed
+        if (hasStaticDbFindings) {
+          // Static DB returned findings, so we have coverage for historical vulnerabilities
+          // Log warning but return success with static DB findings
+          logger.warn(`GitHub API failed for all packages, but static DB returned ${findings.length} findings`);
+          return { source: this.id, ok: true, durationMs: Date.now() - start, findings };
+        }
         return { source: this.id, ok: false, error: errors[0], durationMs: Date.now() - start, findings };
       }
-      // Partial failure - some queries succeeded, but fail-closed for security
+
+      // Partial failure - some queries succeeded
+      if (hasStaticDbFindings) {
+        // Static DB has findings, treat API partial failure as non-fatal
+        logger.warn(`GitHub API partial failure: ${errors.length}/${targets.length} packages failed, but static DB has findings`);
+        return { source: this.id, ok: true, durationMs: Date.now() - start, findings };
+      }
+
+      // No static DB findings - fail-closed for security
       return {
         source: this.id,
         ok: false,

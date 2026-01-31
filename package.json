@@ -16,7 +16,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json && node scripts/copy-static-db.js",
+    "build": "tsc -p tsconfig.json && node scripts/copy-static-db.js && node scripts/bundle.js",
     "test": "node --import tsx --test 'test/**/*.test.ts'",
     "prepare": "npm run build",
     "update-vuln-db": "tsx scripts/update-vuln-db.ts --since=2021-01-01",
@@ -30,6 +30,7 @@
   "devDependencies": {
     "@types/node": "^20.11.30",
     "@types/semver": "^7.5.8",
+    "esbuild": "^0.27.2",
     "tsx": "^4.7.0",
     "typescript": "^5.5.0"
   }

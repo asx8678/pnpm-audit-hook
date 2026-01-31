@@ -68,7 +68,9 @@ export async function aggregateVulnerabilities(
 
   if (staticBaselineCfg?.enabled && !staticDb) {
     try {
-      const defaultDataPath = path.resolve(__dirname, "..", "static-db", "data");
+      // Path is relative to dist/ directory where index.js lives
+      // Static DB data is at dist/static-db/data/
+      const defaultDataPath = path.resolve(__dirname, "static-db", "data");
       staticDb = await createStaticDbReader({
         dataPath: staticBaselineCfg.dataPath ?? defaultDataPath,
         cutoffDate: staticBaselineCfg.cutoffDate,
