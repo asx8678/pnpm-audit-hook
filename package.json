@@ -50,12 +50,12 @@
     "update-vuln-db:full": "tsx scripts/update-vuln-db.ts"
   },
   "devDependencies": {
-    "@types/node": "^20.11.30",
-    "@types/semver": "^7.5.8",
+    "@types/node": "^24.10.9",
+    "@types/semver": "^7.7.1",
     "esbuild": "^0.27.2",
-    "semver": "^7.6.3",
-    "tsx": "^4.7.0",
-    "typescript": "^5.5.0",
-    "yaml": "^2.4.5"
+    "semver": "^7.7.3",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "yaml": "^2.8.2"
   }
 }
