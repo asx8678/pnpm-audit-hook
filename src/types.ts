@@ -1,8 +1,16 @@
 export type Severity = "critical" | "high" | "medium" | "low" | "unknown";
-export type FindingSource = "osv" | "npm" | "github" | "nvd" | "depsdev";
+export type FindingSource = "github" | "nvd";
 export type PolicyAction = "allow" | "warn" | "block";
-export type DecisionSource = "severity" | "source";
-export type VulnerabilityIdType = "CVE" | "GHSA" | "OSV" | "OTHER";
+export type DecisionSource = "severity" | "source" | "allowlist";
+export type VulnerabilityIdType = "CVE" | "GHSA" | "OTHER";
+
+export interface AllowlistEntry {
+  id?: string; // CVE-XXXX-XXXX, GHSA-XXXX, etc.
+  package?: string; // Package name to ignore
+  version?: string; // Semver range to match (e.g., "<1.0.0", ">=2.0.0 <3.0.0")
+  reason?: string; // Why it's allowed
+  expires?: string; // ISO date string, optional expiration
+}
 
 export interface PackageRef {
   name: string;
@@ -53,17 +61,16 @@ export interface SourceStatus {
   durationMs?: number;
 }
 
-export interface AuditConfig {
-  policy: {
-    block: Severity[];
-    warn: Severity[];
+/** User-provided config (all fields optional, merged with defaults) */
+export interface AuditConfigInput {
+  policy?: {
+    block?: Severity[];
+    warn?: Severity[];
+    allowlist?: AllowlistEntry[];
   };
   sources?: {
-    osv?: { enabled?: boolean };
-    npm?: { enabled?: boolean };
-    github?: { enabled?: boolean };
-    nvd?: { enabled?: boolean };
-    depsdev?: { enabled?: boolean };
+    github?: boolean | { enabled?: boolean };
+    nvd?: boolean | { enabled?: boolean };
   };
   performance?: {
     timeoutMs?: number;
@@ -71,6 +78,33 @@ export interface AuditConfig {
   cache?: {
     ttlSeconds?: number;
   };
+  /** Block installation when all sources are disabled (default: true for security) */
+  failOnNoSources?: boolean;
+  /** Block installation when a source fails (default: true for security) */
+  failOnSourceError?: boolean;
+}
+
+/** Fully-resolved config returned by loadConfig() */
+export interface AuditConfig {
+  policy: {
+    block: Severity[];
+    warn: Severity[];
+    allowlist: AllowlistEntry[];
+  };
+  sources: {
+    github: { enabled: boolean };
+    nvd: { enabled: boolean };
+  };
+  performance: {
+    timeoutMs: number;
+  };
+  cache: {
+    ttlSeconds: number;
+  };
+  /** Block installation when all sources are disabled (default: true for security) */
+  failOnNoSources: boolean;
+  /** Block installation when a source fails (default: true for security) */
+  failOnSourceError: boolean;
 }
 
 export interface RuntimeOptions {

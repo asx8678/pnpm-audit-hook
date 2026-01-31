@@ -69,7 +69,8 @@ export function extractPackagesFromLockfile(
   for (const [_, imp] of Object.entries((lockfile?.importers ?? {}) as Record<string, any>)) {
     const deps = { ...imp?.dependencies, ...imp?.devDependencies, ...imp?.optionalDependencies };
     for (const [depName, depVersion] of Object.entries(deps)) {
-      const ref = keyToRef[`${depName}@${stripPeerSuffix(String(depVersion))}`];
+      const v = stripPeerSuffix(String(depVersion));
+      const ref = keyToRef[`${depName}@${v}`];
       if (ref) ref.direct = true;
     }
   }

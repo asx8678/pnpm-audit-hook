@@ -42,11 +42,17 @@ export async function runAudit(lockfile: Record<string, unknown>, runtime: Runti
     decisions.push(...evaluated.decisions);
   }
 
-  // Block on source failures
+  // Block on source failures if configured to fail-closed
   const failedSources = Object.entries(agg.sources).filter(([, v]) => !v.ok);
   if (failedSources.length) {
     const srcList = failedSources.map(([k, v]) => `${k}: ${v.error ?? "unknown"}`).join("; ");
-    decisions.push({ action: "block", reason: `Source failure: ${srcList}`, source: "source", at: new Date().toISOString() });
+    const action = cfg.failOnSourceError !== false ? "block" : "warn";
+    decisions.push({
+      action,
+      reason: `Source failure: ${srcList}`,
+      source: "source",
+      at: new Date().toISOString(),
+    });
   }
 
   const blocked = decisions.some((d) => d.action === "block");

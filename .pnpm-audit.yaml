@@ -11,7 +11,8 @@ policy:
     - unknown
 
 sources:
-  osv: true
+  github: true
+  nvd: true
 
 cache:
   ttlSeconds: 3600

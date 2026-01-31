@@ -1,12 +1,10 @@
 import type { AuditConfig, PackageRef, VulnerabilityFinding } from "../types";
 import type { Cache } from "../cache/types";
-import type { VulnerabilitySource, SourceContext, SourceResult } from "./connector";
+import type { SourceContext } from "./connector";
 import { HttpClient } from "../utils/http";
-import { OsvSource } from "./osv";
-import { NpmAuditSource } from "./npm-audit";
 import { GitHubAdvisorySource } from "./github-advisory";
-import { DepsDevSource } from "./depsdev";
 import { enrichFindingsWithNvd } from "./nvd";
+import { logger } from "../utils/logger";
 
 export interface AggregateContext {
   cfg: AuditConfig;
@@ -56,50 +54,43 @@ export async function aggregateVulnerabilities(
     registryUrl: ctx.registryUrl,
   };
 
-  // All available sources
-  const allSources: VulnerabilitySource[] = [
-    new OsvSource(),
-    new NpmAuditSource(),
-    new GitHubAdvisorySource(),
-    new DepsDevSource(),
-  ];
-
-  // Filter to enabled sources
-  const enabledSources = allSources.filter((s) => s.isEnabled(ctx.cfg, ctx.env));
-
-  if (enabledSources.length === 0) {
-    return { findings: [], sources: {} };
-  }
-
-  // Query all enabled sources in parallel
-  const results = await Promise.allSettled(
-    enabledSources.map((source) =>
-      source.query(pkgs, queryCtx).catch((e) => ({
-        source: source.id,
-        ok: false,
-        error: String(e?.message ?? e),
-        durationMs: 0,
-        findings: [] as VulnerabilityFinding[],
-      }))
-    )
-  );
-
-  const allFindings: VulnerabilityFinding[] = [];
   const sourceStatus: Record<string, { ok: boolean; error?: string; durationMs: number }> = {};
 
-  for (const result of results) {
-    if (result.status === "fulfilled") {
-      const r = result.value as SourceResult;
-      allFindings.push(...r.findings);
-      sourceStatus[r.source] = { ok: r.ok, error: r.error, durationMs: r.durationMs };
+  // GitHub Advisory is the primary (and only) vulnerability source
+  const githubSource = new GitHubAdvisorySource();
+  const githubEnabled = githubSource.isEnabled(ctx.cfg, ctx.env);
+
+  if (!githubEnabled) {
+    logger.warn("GitHub Advisory source is disabled - no vulnerability checks will be performed");
+    sourceStatus[githubSource.id] = { ok: true, error: "disabled by configuration", durationMs: 0 };
+
+    // Fail-closed: block when no sources are enabled (default behavior for security)
+    if (ctx.cfg.failOnNoSources !== false) {
+      throw new Error("All vulnerability sources are disabled. Set failOnNoSources: false to allow this.");
     }
+
+    return { findings: [], sources: sourceStatus };
   }
 
-  // Deduplicate findings across sources
-  const dedupedFindings = dedupeFindings(allFindings);
+  let findings: VulnerabilityFinding[] = [];
+  try {
+    const result = await githubSource.query(pkgs, queryCtx);
+    findings = result.findings;
+    sourceStatus[githubSource.id] = { ok: result.ok, error: result.error, durationMs: result.durationMs };
+  } catch (e) {
+    sourceStatus[githubSource.id] = { ok: false, error: String(e instanceof Error ? e.message : e), durationMs: 0 };
+  }
+
+  // Deduplicate findings (in case of duplicates within GitHub response)
+  const dedupedFindings = dedupeFindings(findings);
 
   // NVD enrichment - adds CVSS data and fills in missing severity for CVE IDs
-  if (ctx.cfg.sources?.nvd?.enabled !== false) {
+  // Skip if disabled, no findings, or no findings with unknown severity needing enrichment
+  const needsNvdEnrichment =
+    ctx.cfg.sources?.nvd?.enabled !== false &&
+    dedupedFindings.some((f) => f.severity === "unknown");
+
+  if (needsNvdEnrichment) {
     const nvdResult = await enrichFindingsWithNvd(dedupedFindings, queryCtx);
     sourceStatus["nvd"] = { ok: nvdResult.ok, error: nvdResult.error, durationMs: nvdResult.durationMs };
   }

@@ -1,8 +1,46 @@
 import type { Severity, VulnerabilityFinding } from "../types";
 import type { SourceContext } from "./connector";
+import { ttlForFindings } from "../cache/ttl";
+import { logger } from "../utils/logger";
 import { mapSeverity } from "../utils/severity";
 
+const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+
+interface NvdCvssData {
+  baseScore?: number;
+  baseSeverity?: string;
+}
+
+interface NvdCvssMetric {
+  type?: "Primary" | "Secondary";
+  cvssData?: NvdCvssData;
+}
+
+interface NvdCve {
+  published?: string;
+  lastModified?: string;
+  metrics?: {
+    cvssMetricV31?: NvdCvssMetric[];
+    cvssMetricV30?: NvdCvssMetric[];
+    cvssMetricV2?: NvdCvssMetric[];
+  };
+}
+
+interface NvdVulnerability {
+  cve?: NvdCve;
+}
+
+interface NvdApiResponse {
+  vulnerabilities?: NvdVulnerability[];
+}
+
 const normalizeCve = (id: string) => id.trim().toUpperCase();
+
+/** Prefer "Primary" type metrics over "Secondary" when available */
+function findPrimaryMetric(metrics: NvdCvssMetric[] | undefined): NvdCvssMetric | undefined {
+  if (!metrics?.length) return undefined;
+  return metrics.find((m) => m.type === "Primary") ?? metrics[0];
+}
 
 function extractCveIds(findings: VulnerabilityFinding[]): string[] {
   const ids = new Set<string>();
@@ -30,13 +68,21 @@ async function fetchNvdCve(cveId: string, ctx: SourceContext): Promise<NvdCveDet
   const apiKey = ctx.env.NVD_API_KEY || ctx.env.NIST_NVD_API_KEY;
   const url = new URL("https://services.nvd.nist.gov/rest/json/cves/2.0");
   url.searchParams.set("cveId", cveId);
-  if (apiKey) url.searchParams.set("apiKey", apiKey);
+
+  // Pass API key in header (not query string) to avoid logging sensitive data
+  const headers: Record<string, string> = {};
+  if (apiKey) headers.apiKey = apiKey;
 
   try {
-    const json = await ctx.http.getJson<any>(url.toString());
+    const json = await ctx.http.getJson<NvdApiResponse>(url.toString(), headers);
     const cve = json?.vulnerabilities?.[0]?.cve;
     const metrics = cve?.metrics;
-    const cvssData = (metrics?.cvssMetricV31?.[0] ?? metrics?.cvssMetricV30?.[0] ?? metrics?.cvssMetricV2?.[0])?.cvssData;
+    // Prefer "Primary" type metrics over "Secondary"
+    const cvssData = (
+      findPrimaryMetric(metrics?.cvssMetricV31) ??
+      findPrimaryMetric(metrics?.cvssMetricV30) ??
+      findPrimaryMetric(metrics?.cvssMetricV2)
+    )?.cvssData;
 
     const detail: NvdCveDetail = {
       id: cveId,
@@ -47,9 +93,12 @@ async function fetchNvdCve(cveId: string, ctx: SourceContext): Promise<NvdCveDet
       url: `https://nvd.nist.gov/vuln/detail/${encodeURIComponent(cveId)}`,
     };
 
-    await ctx.cache.set(key, detail, ctx.cfg.cache?.ttlSeconds ?? 3600);
+    const baseTtl = ctx.cfg.cache?.ttlSeconds ?? 3600;
+    const dynamicTtl = ttlForFindings(baseTtl, [{ severity: detail.baseSeverity } as VulnerabilityFinding]);
+    await ctx.cache.set(key, detail, dynamicTtl);
     return detail;
-  } catch {
+  } catch (e) {
+    logger.warn(`Failed to fetch NVD data for ${cveId}: ${e instanceof Error ? e.message : String(e)}`);
     return null;
   }
 }
@@ -81,20 +130,33 @@ export async function enrichFindingsWithNvd(
 
   try {
     const details: Record<string, NvdCveDetail> = {};
-    const concurrency = 4;
-    let idx = 0;
+
+    // NVD rate limits: 5 req/30s (no key), 50 req/30s (with key)
+    const hasApiKey = !!(ctx.env.NVD_API_KEY || ctx.env.NIST_NVD_API_KEY);
+    const delayMs = hasApiKey ? 700 : 6500;
+    const concurrency = hasApiKey ? 2 : 1;
+
+    // Use queue.shift() pattern to avoid race conditions with shared index
+    const queue = [...needs];
 
     await Promise.all(
-      Array.from({ length: Math.min(concurrency, needs.length) }, async () => {
-        let i: number;
-        while ((i = idx++) < needs.length) {
-          const d = await fetchNvdCve(needs[i]!, ctx);
-          if (d) details[needs[i]!] = d;
+      Array.from({ length: Math.min(concurrency, queue.length) }, async () => {
+        while (queue.length > 0) {
+          const cveId = queue.shift();
+          if (!cveId) break;
+
+          const d = await fetchNvdCve(cveId, ctx);
+          if (d) details[cveId] = d;
+
+          // Only sleep if there are more items in the queue
+          if (queue.length > 0) {
+            await sleep(delayMs);
+          }
         }
       })
     );
 
-    // Enrich findings with NVD data
+    // Enrich findings with NVD data (mutates findings array in-place intentionally)
     for (const f of findings) {
       if (f.severity !== "unknown") continue;
 
@@ -117,7 +179,8 @@ export async function enrichFindingsWithNvd(
     }
 
     return { ok: true, durationMs: Date.now() - start };
-  } catch (e: any) {
-    return { ok: false, error: String(e?.message ?? e), durationMs: Date.now() - start };
+  } catch (e: unknown) {
+    const message = e instanceof Error ? e.message : String(e);
+    return { ok: false, error: message, durationMs: Date.now() - start };
   }
 }

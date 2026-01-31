@@ -11,10 +11,10 @@ export async function retry<T>(
       return await fn();
     } catch (err) {
       if (++attempt > retries || !shouldRetry(err)) throw err;
-      const ra = (err as any).retryAfter;
+      const ra = err instanceof HttpError ? err.retryAfter : undefined;
       const base = 250 * 2 ** (attempt - 1);
       const delay = (typeof ra === "number" || (typeof ra === "string" && !Number.isNaN(+ra)))
-        ? +ra * 1000
+        ? Math.min(30000, +ra * 1000)  // Cap at 30 seconds
         : Math.min(8000, base + base * 0.2 * Math.random());
       await sleep(delay);
     }
@@ -66,12 +66,15 @@ export class HttpClient {
   postJson = <T>(url: string, body: unknown, extraHeaders?: Record<string, string>) =>
     this.requestJson<T>("POST", url, body, extraHeaders);
 
-  private async requestJson<T>(
+  getRaw = (url: string, extraHeaders?: Record<string, string>) =>
+    this.requestRaw("GET", url, undefined, extraHeaders);
+
+  private async requestRaw(
     method: "GET" | "POST",
     url: string,
     body?: unknown,
     extraHeaders?: Record<string, string>,
-  ): Promise<T> {
+  ): Promise<Response> {
     const headers: Record<string, string> = {
       "user-agent": this.userAgent,
       accept: "application/json",
@@ -80,7 +83,7 @@ export class HttpClient {
     };
     if (method === "POST") headers["content-type"] = "application/json";
 
-    const fn = async (): Promise<T> => {
+    const fn = async (): Promise<Response> => {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), this.timeoutMs);
 
@@ -103,9 +106,7 @@ export class HttpClient {
           });
         }
 
-        const text = await res.text();
-        try { return JSON.parse(text) as T; }
-        catch { throw new HttpError(`Invalid JSON response`, { url, status: res.status, responseText: text }); }
+        return res;
       } finally {
         clearTimeout(timeout);
       }
@@ -116,5 +117,24 @@ export class HttpClient {
       this.retries,
       (err) => !(err instanceof HttpError) || err.status === 429 || (err.status ?? 0) >= 500,
     );
+  }
+
+  private async requestJson<T>(
+    method: "GET" | "POST",
+    url: string,
+    body?: unknown,
+    extraHeaders?: Record<string, string>,
+  ): Promise<T> {
+    const res = await this.requestRaw(method, url, body, extraHeaders);
+    const text = await res.text();
+    try {
+      return JSON.parse(text) as T;
+    } catch {
+      throw new HttpError(`Invalid JSON response`, {
+        url,
+        status: res.status,
+        responseText: text,
+      });
+    }
   }
 }

@@ -1,4 +1,5 @@
 import semver from "semver";
+import { logger } from "./logger";
 
 /** Safe semver.satisfies wrapper - returns false if inputs are invalid. */
 export function satisfies(version: string, range: string): boolean {
@@ -7,7 +8,7 @@ export function satisfies(version: string, range: string): boolean {
   try {
     return semver.satisfies(v, range, { includePrerelease: true });
   } catch (e) {
-    console.warn(`[pnpm-audit] Invalid semver range "${range}" for version "${v}":`, e instanceof Error ? e.message : String(e));
+    logger.warn(`Invalid semver range "${range}" for version "${v}": ${e instanceof Error ? e.message : String(e)}`);
     return false;
   }
 }
@@ -31,12 +32,16 @@ export function isVersionAffectedByOsvSemverRange(
   for (const ev of events) {
     if (ev.introduced !== undefined) {
       intro = normalize(ev.introduced);
-    } else if (ev.fixed !== undefined && intro && gte(v, intro) && lt(v, ev.fixed)) {
-      return true;
-    } else if (ev.last_affected !== undefined && intro && gte(v, intro) && lte(v, ev.last_affected)) {
+    }
+    if (ev.fixed !== undefined && intro && gte(v, intro) && lt(v, ev.fixed)) {
       return true;
     }
-    if (ev.fixed !== undefined || ev.last_affected !== undefined) intro = null;
+    if (ev.last_affected !== undefined && intro && gte(v, intro) && lte(v, ev.last_affected)) {
+      return true;
+    }
+    if (ev.fixed !== undefined || ev.last_affected !== undefined) {
+      intro = null;
+    }
   }
 
   return intro !== null && gte(v, intro);

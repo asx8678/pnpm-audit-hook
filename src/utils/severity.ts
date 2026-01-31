@@ -1,4 +1,4 @@
-import type { Severity } from "../types.js";
+import type { Severity } from "../types";
 
 const SEV_MAP: Record<string, Severity> = {
   critical: "critical", high: "high", medium: "medium", moderate: "medium", low: "low",
