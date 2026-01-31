@@ -4,14 +4,14 @@ A pnpm hook that audits dependencies for vulnerabilities **before packages are d
 
 ## Installation
 
-### From npm (Easiest)
+### From npm/pnpm (Easiest)
 
 ```bash
 # Install the package
 pnpm add -D pnpm-audit-hook
 
 # Run setup to create .pnpmfile.cjs in your project
-npx pnpm-audit-setup
+pnpm exec pnpm-audit-setup
 ```
 
 That's it! Every `pnpm install` will now audit packages for vulnerabilities.
@@ -22,12 +22,12 @@ To enable for all pnpm projects on your machine:
 
 ```bash
 # Install globally
-npm install -g pnpm-audit-hook
+pnpm add -g pnpm-audit-hook
 
 # Create global hooks directory
 mkdir -p ~/.pnpm-hooks
-cp $(npm root -g)/pnpm-audit-hook/dist ~/.pnpm-hooks/ -r
-cp $(npm root -g)/pnpm-audit-hook/.pnpmfile.cjs ~/.pnpm-hooks/
+cp $(pnpm root -g)/pnpm-audit-hook/dist ~/.pnpm-hooks/ -r
+cp $(pnpm root -g)/pnpm-audit-hook/.pnpmfile.cjs ~/.pnpm-hooks/
 
 # Configure pnpm to use global hooks
 pnpm config set global-pnpmfile ~/.pnpm-hooks/.pnpmfile.cjs
@@ -38,7 +38,7 @@ pnpm config set global-pnpmfile ~/.pnpm-hooks/.pnpmfile.cjs
 ```bash
 git clone https://github.com/asx8678/pnpm-audit-hook.git
 cd pnpm-audit-hook
-npm install && npm run build
+pnpm install && pnpm run build
 
 # Copy to your project
 cp -r dist /path/to/your/project/
@@ -215,29 +215,94 @@ Update the bundled vulnerability database monthly to capture new disclosures:
 
 ```bash
 # Full rebuild of the vulnerability database
-npm run update-vuln-db
+pnpm run update-vuln-db
 
 # Incremental update (faster, adds only new vulnerabilities)
-npm run update-vuln-db:incremental
+pnpm run update-vuln-db:incremental
 ```
 
 After updating, rebuild and commit the changes:
 
 ```bash
-npm run build
+pnpm run build
 git add src/static-db/data/ dist/static-db/data/
 git commit -m "chore: update vulnerability database"
 ```
 
 ### Update Workflow
 
-1. Run `npm run update-vuln-db:incremental` monthly
+1. Run `pnpm run update-vuln-db:incremental` monthly
 2. Optionally extend `cutoffDate` in your config to include newer static data
 3. Commit the updated `data/` directory to your repository
+
+## Local Development with pnpm
+
+### Setup
+
+```bash
+git clone https://github.com/asx8678/pnpm-audit-hook.git
+cd pnpm-audit-hook
+pnpm install
+pnpm run build
+```
+
+### Test in Another Project (pnpm link)
+
+```bash
+# In pnpm-audit-hook directory
+pnpm link --global
+
+# In your target project
+pnpm link --global pnpm-audit-hook
+
+# Copy the hook file to your project root
+cp node_modules/pnpm-audit-hook/.pnpmfile.cjs .
+
+# Edit .pnpmfile.cjs to point to linked package
+# Change: path.join(__dirname, 'dist', 'index.js')
+# To:     path.join(__dirname, 'node_modules', 'pnpm-audit-hook', 'dist', 'index.js')
+
+# Test it
+pnpm add lodash
+```
+
+### Test Directly in This Repo
+
+The `.pnpmfile.cjs` already points to `./dist`, so you can test directly:
+
+```bash
+pnpm run build
+pnpm add lodash              # Safe package
+pnpm add event-stream@3.3.6  # Vulnerable - should be blocked
+```
+
+### Development Workflow
+
+```bash
+# Make changes to src/
+pnpm run build
+
+# Run tests
+pnpm test
+
+# Test the hook manually
+pnpm add some-package
+```
+
+### Unlink After Testing
+
+```bash
+# In your target project
+pnpm unlink pnpm-audit-hook
+rm .pnpmfile.cjs
+
+# In pnpm-audit-hook directory
+pnpm unlink --global
+```
 
 ## Build
 
 ```bash
-npm ci
-npm run build
+pnpm install
+pnpm run build
 ```
