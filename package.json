@@ -1,13 +1,39 @@
 {
   "name": "pnpm-audit-hook",
   "version": "1.0.0",
-  "description": "Minimal pnpm hook that blocks compromised or vulnerable package installs before download.",
+  "description": "pnpm hook that blocks vulnerable packages before download. Uses GitHub Advisory Database with offline static DB fallback.",
   "license": "MIT",
+  "author": "asx8678",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asx8678/pnpm-audit-hook.git"
+  },
+  "homepage": "https://github.com/asx8678/pnpm-audit-hook#readme",
+  "bugs": {
+    "url": "https://github.com/asx8678/pnpm-audit-hook/issues"
+  },
+  "keywords": [
+    "pnpm",
+    "security",
+    "audit",
+    "vulnerability",
+    "hook",
+    "pnpmfile",
+    "npm",
+    "dependencies",
+    "supply-chain",
+    "ghsa",
+    "cve"
+  ],
   "type": "commonjs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "bin": {
+    "pnpm-audit-setup": "bin/setup.js"
+  },
   "files": [
     "dist",
+    "bin",
     ".pnpmfile.cjs",
     ".pnpm-audit.yaml",
     "README.md"
@@ -23,15 +49,13 @@
     "update-vuln-db:incremental": "tsx scripts/update-vuln-db.ts --incremental",
     "update-vuln-db:full": "tsx scripts/update-vuln-db.ts"
   },
-  "dependencies": {
-    "semver": "^7.6.3",
-    "yaml": "^2.4.5"
-  },
   "devDependencies": {
     "@types/node": "^20.11.30",
     "@types/semver": "^7.5.8",
     "esbuild": "^0.27.2",
+    "semver": "^7.6.3",
     "tsx": "^4.7.0",
-    "typescript": "^5.5.0"
+    "typescript": "^5.5.0",
+    "yaml": "^2.4.5"
   }
 }

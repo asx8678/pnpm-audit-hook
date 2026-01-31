@@ -4,90 +4,55 @@ A pnpm hook that audits dependencies for vulnerabilities **before packages are d
 
 ## Installation
 
-### Option 1: Copy to Your Project (Recommended)
-
-1. **Clone or download this repository:**
-   ```bash
-   git clone https://github.com/asx8678/pnpm-audit-hook.git
-   cd pnpm-audit-hook
-   ```
-
-2. **Build the hook:**
-   ```bash
-   npm install
-   npm run build
-   ```
-
-3. **Copy these files to your project root:**
-   ```bash
-   cp -r dist /path/to/your/project/
-   cp .pnpmfile.cjs /path/to/your/project/
-   cp .pnpm-audit.yaml /path/to/your/project/  # optional config
-   ```
-
-4. **Done!** Now run `pnpm install` in your project - the hook will automatically audit all packages.
-
-### Option 2: Global Setup (All Projects)
-
-To enable the hook for all pnpm projects on your machine:
-
-1. **Build the hook** (same as above):
-   ```bash
-   git clone https://github.com/asx8678/pnpm-audit-hook.git
-   cd pnpm-audit-hook
-   npm install && npm run build
-   ```
-
-2. **Create a global hooks directory:**
-   ```bash
-   mkdir -p ~/.pnpm-hooks
-   cp -r dist ~/.pnpm-hooks/
-   cp .pnpmfile.cjs ~/.pnpm-hooks/
-   cp .pnpm-audit.yaml ~/.pnpm-hooks/  # optional
-   ```
-
-3. **Configure pnpm to use global hooks:**
-   ```bash
-   pnpm config set global-pnpmfile ~/.pnpm-hooks/.pnpmfile.cjs
-   ```
-
-4. **Verify it's set:**
-   ```bash
-   pnpm config get global-pnpmfile
-   # Should output: /Users/yourname/.pnpm-hooks/.pnpmfile.cjs
-   ```
-
-Now every `pnpm install` on your machine will run the security audit.
-
-### Option 3: Per-Project via npm Package
+### From npm (Easiest)
 
 ```bash
-# In your project
+# Install the package
 pnpm add -D pnpm-audit-hook
 
-# Copy hook file to project root
-cp node_modules/pnpm-audit-hook/.pnpmfile.cjs .
+# Run setup to create .pnpmfile.cjs in your project
+npx pnpm-audit-setup
 ```
 
-## What Files Are Needed?
+That's it! Every `pnpm install` will now audit packages for vulnerabilities.
 
-| File | Required | Description |
-|------|----------|-------------|
-| `dist/` | ✅ Yes | Bundled hook code (self-contained, no node_modules needed) |
-| `.pnpmfile.cjs` | ✅ Yes | pnpm hook entry point |
-| `.pnpm-audit.yaml` | ❌ Optional | Configuration (uses sensible defaults) |
+### Global Setup (All Projects)
+
+To enable for all pnpm projects on your machine:
+
+```bash
+# Install globally
+npm install -g pnpm-audit-hook
+
+# Create global hooks directory
+mkdir -p ~/.pnpm-hooks
+cp $(npm root -g)/pnpm-audit-hook/dist ~/.pnpm-hooks/ -r
+cp $(npm root -g)/pnpm-audit-hook/.pnpmfile.cjs ~/.pnpm-hooks/
+
+# Configure pnpm to use global hooks
+pnpm config set global-pnpmfile ~/.pnpm-hooks/.pnpmfile.cjs
+```
+
+### Manual Setup
+
+```bash
+git clone https://github.com/asx8678/pnpm-audit-hook.git
+cd pnpm-audit-hook
+npm install && npm run build
+
+# Copy to your project
+cp -r dist /path/to/your/project/
+cp .pnpmfile.cjs /path/to/your/project/
+```
 
 ## Quick Test
 
-After installation, test that it works:
-
 ```bash
-cd your-project
-pnpm add lodash  # Safe package - should install
-pnpm add event-stream@3.3.6  # Vulnerable - should block
+pnpm add lodash              # Safe - installs normally
+pnpm add event-stream@3.3.6  # Vulnerable - blocked!
 ```
 
-If blocking vulnerabilities are found, the install fails before any packages are downloaded.
+If vulnerabilities are found, install fails before any packages are downloaded.
 
 ## Configuration
 
