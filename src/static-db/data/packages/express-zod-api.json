@@ -1,0 +1,23 @@
+{
+  "name": "express-zod-api",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mvrp-3cvx-c325",
+      "title": "Zod denial of service vulnerability during email validation",
+      "description": "### Impact\n\nAPI servers running `express-zod-api` having:\n\n- version of `express-zod-api` below `10.0.0-beta1`,\n- and using the following (or similar) validation schema in its implementation: `z.string().email()`,\n\nare vulnerable to a DoS attack due to: \n\n- Inefficient Regular Expression Complexity in `zod` versions up to `3.22.2`,\n- depending on `zod`.\n\n### Patches\n\nThe patched version of `zod` fixing the vulnerability is `3.22.3`.\n\nHowever, it's highly recommended to upgrade `express-zod-api` ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mvrp-3cvx-c325",
+      "publishedAt": "2023-10-04T14:46:06Z",
+      "modifiedAt": "2023-10-04T14:46:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mvrp-3cvx-c325"
+        }
+      ],
+      "affectedRange": "< 10.0.0-beta1",
+      "fixedVersion": "10.0.0-beta1"
+    }
+  ]
+}

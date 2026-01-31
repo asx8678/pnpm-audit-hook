@@ -1,0 +1,26 @@
+{
+  "name": "bigint-buffer",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3gc7-fjrx-p6mg",
+      "title": "bigint-buffer Vulnerable to Buffer Overflow via toBigIntLE() Function",
+      "description": "Versions of the package bigint-buffer from 0.0.0 to 1.1.5 are vulnerable to Buffer Overflow in the toBigIntLE() function. Attackers can exploit this to crash the application.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3gc7-fjrx-p6mg",
+      "publishedAt": "2025-04-04T06:34:22Z",
+      "modifiedAt": "2025-04-04T18:23:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3gc7-fjrx-p6mg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-3194"
+        }
+      ],
+      "affectedRange": "<= 1.1.5"
+    }
+  ]
+}

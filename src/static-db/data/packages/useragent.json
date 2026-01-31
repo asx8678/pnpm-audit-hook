@@ -1,0 +1,26 @@
+{
+  "name": "useragent",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mgfv-m47x-4wqp",
+      "title": "useragent Regular Expression Denial of Service vulnerability",
+      "description": "Useragent is a user agent parser for Node.js. All versions as of time of publication contain one or more regular expressions that are vulnerable to Regular Expression Denial of Service (ReDoS).\n\n## PoC\n```js\nasync function exploit() {\n   const useragent = require(\\\"useragent\\\");\n\n   // Create a malicious user-agent that leads to excessive backtracking\n   const maliciousUserAgent = 'Mozilla/5.0 (' + 'X'.repeat(30000) + ') Gecko/20100101 Firefox/77.0';\n\n   // Parse the malicious user-agent\n   cons",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mgfv-m47x-4wqp",
+      "publishedAt": "2024-10-26T21:30:47Z",
+      "modifiedAt": "2025-09-03T15:17:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mgfv-m47x-4wqp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26311"
+        }
+      ],
+      "affectedRange": "<= 2.3.0"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "misskey-js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wwrj-3hvj-prpm",
+      "title": "Misskey has a login rate limit bypass via spoofed X-Forwarded-For header",
+      "description": "### Summary\nWhen using an untrusted reverse proxy or not using a reverse proxy at all, attackers can bypass IP rate limiting by adding a forged X-Forwarded-For header. Starting with version 2025.9.1, an option (`trustProxy`) has been added in config file to prevent this from happening. However, it is initialized with an insecure default value before version 2025.12.0, making it still vulnerable if the configuration is not set correctly.\n\n### Workaround\n\nIf you are running Misskey with a trusted ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wwrj-3hvj-prpm",
+      "publishedAt": "2025-12-15T20:59:59Z",
+      "modifiedAt": "2026-01-06T22:41:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wwrj-3hvj-prpm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-66482"
+        }
+      ],
+      "affectedRange": ">= 2025.9.1, < 2025.12.0-alpha.2",
+      "fixedVersion": "2025.12.0-alpha.2"
+    },
+    {
+      "id": "GHSA-496g-mmpw-j9x3",
+      "title": "misskey.js's export data contains private post data",
+      "description": "### Summary\n\nAfter adding private posts (followers, direct) that you do not have permission to view to your favorites or clips, you can export them to view the contents of the private posts.\n\n### PoC\n\n1. Create an account (X) for testing and an account (Y) for private posts on the same server.\n2. Send appropriate content from Y using \"Follow\"\n3. Send appropriate content to any user using \"Nominate\" from Y\n4. Obtain the URLs for the two posts above using Y's account.\n5. Query the URLs for the two",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-496g-mmpw-j9x3",
+      "publishedAt": "2025-12-15T20:55:27Z",
+      "modifiedAt": "2026-01-06T22:41:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-496g-mmpw-j9x3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-66402"
+        }
+      ],
+      "affectedRange": ">= 13.0.0-beta.16, < 2025.12.0",
+      "fixedVersion": "2025.12.0"
+    }
+  ]
+}

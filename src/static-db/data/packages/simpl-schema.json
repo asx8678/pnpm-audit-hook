@@ -1,0 +1,27 @@
+{
+  "name": "simpl-schema",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9mx2-prfp-8hqp",
+      "title": "Prototype Pollution in simpl-schema",
+      "description": "This affects the package simpl-schema before 1.10.2. Attacker controlled input into a schema could result in remote code execution within the scope of the surrounding application.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9mx2-prfp-8hqp",
+      "publishedAt": "2021-05-10T18:38:47Z",
+      "modifiedAt": "2023-02-01T05:05:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9mx2-prfp-8hqp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7742"
+        }
+      ],
+      "affectedRange": "< 1.10.2",
+      "fixedVersion": "1.10.2"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "name": "@ckeditor/ckeditor5-markdown-gfm",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3rh3-wfr4-76mj",
+      "title": "Regular expression Denial of Service in multiple packages",
+      "description": "\n### Impact\nA regular expression denial of service (ReDoS) vulnerability has been discovered in multiple CKEditor 5 packages. The vulnerability allowed to abuse particular regular expressions, which could cause a significant performance drop resulting in a browser tab freeze. It affects all users using the CKEditor 5 packages listed above at version <= 26.0.0.\n\n### Patches\nThe problem has been recognized and patched. The fix will be available in version 27.0.0.\n\n### For more information\nEmail us",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3rh3-wfr4-76mj",
+      "publishedAt": "2021-04-06T17:28:41Z",
+      "modifiedAt": "2023-02-01T05:05:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3rh3-wfr4-76mj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-21391"
+        }
+      ],
+      "affectedRange": "<= 26.0.0",
+      "fixedVersion": "27.0.0"
+    },
+    {
+      "id": "GHSA-42wq-rch8-6f6j",
+      "title": "CKEditor5 cross-site scripting vulnerability caused by the editor instance destroying process",
+      "description": "### Affected packages\n@ckeditor/ckeditor5-markdown-gfm\n@ckeditor/ckeditor5-html-support\n@ckeditor/ckeditor5-html-embed\n\n### Impact\nA cross-site scripting vulnerability has been discovered affecting three optional CKEditor 5's packages. The vulnerability allowed to trigger a JavaScript code after fulfilling special conditions:\n\na) Using one of the affected packages. In case of `ckeditor5-html-support` and `ckeditor5-html-embed`, additionally, it was required to use a configuration that allows uns",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-42wq-rch8-6f6j",
+      "publishedAt": "2022-08-06T09:40:43Z",
+      "modifiedAt": "2023-01-31T05:01:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-42wq-rch8-6f6j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31175"
+        }
+      ],
+      "affectedRange": "< 35.0.1",
+      "fixedVersion": "35.0.1"
+    },
+    {
+      "id": "GHSA-hgmg-hhc8-g5wr",
+      "title": "CKEditor 5 Markdown plugin Regular expression Denial of Service",
+      "description": "### Impact\nA regular expression denial of service (ReDoS) vulnerability has been discovered in the CKEditor 5 Markdown plugin code. The vulnerability allowed to abuse a link recognition regular expression, which could cause a significant performance drop resulting in a browser tab freeze. It affects all users using the CKEditor 5 Markdown plugin at version <= 24.0.0. \n\n### Patches\nThe problem has been recognized and patched. The fix will be available in version 25.0.0.\n\n### Workarounds\nThe user ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hgmg-hhc8-g5wr",
+      "publishedAt": "2021-01-29T21:51:22Z",
+      "modifiedAt": "2023-01-30T05:02:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hgmg-hhc8-g5wr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-21254"
+        }
+      ],
+      "affectedRange": "<= 24.0.0",
+      "fixedVersion": "25.0.0"
+    }
+  ]
+}

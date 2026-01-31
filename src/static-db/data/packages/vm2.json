@@ -1,0 +1,278 @@
+{
+  "name": "vm2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-99p7-6v5w-7xg8",
+      "title": "vm2 has a Sandbox Escape",
+      "description": "In vm2 for version 3.10.0, `Promise.prototype.then` `Promise.prototype.catch` callback sanitization can be bypassed. This allows attackers to escape the sandbox and run arbitrary code.\n\n```js\nconst { VM } = require(\"vm2\");\n\nconst code = `\nconst error = new Error();\nerror.name = Symbol();\nconst f = async () => error.stack;\nconst promise = f();\npromise.catch(e => {\n    const Error = e.constructor;\n    const Function = Error.constructor;\n    const f = new Function(\n        \"process.mainModule.requi",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-99p7-6v5w-7xg8",
+      "publishedAt": "2026-01-26T18:57:14Z",
+      "modifiedAt": "2026-01-29T03:22:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-99p7-6v5w-7xg8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22709"
+        }
+      ],
+      "affectedRange": "<= 3.10.1",
+      "fixedVersion": "3.10.2"
+    },
+    {
+      "id": "GHSA-cchq-frgv-rjh5",
+      "title": "vm2 Sandbox Escape vulnerability",
+      "description": "In vm2 for versions up to 3.9.19, `Promise` handler sanitization can be bypassed, allowing attackers to escape the sandbox and run arbitrary code.\n\n### Impact\nRemote Code Execution, assuming the attacker has arbitrary code execution primitive inside the context of vm2 sandbox.\n\n### Patches\nNone.\n\n### Workarounds\nNone.\n\n### References\nPoC - https://gist.github.com/leesh3288/f693061e6523c97274ad5298eb2c74e9\n\n### For more information\n\nIf you have any questions or comments about this advisory:\n\n- Op",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cchq-frgv-rjh5",
+      "publishedAt": "2023-07-13T17:02:02Z",
+      "modifiedAt": "2026-01-05T21:25:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cchq-frgv-rjh5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-37466"
+        }
+      ],
+      "affectedRange": "<= 3.9.19",
+      "fixedVersion": "3.10.0"
+    },
+    {
+      "id": "GHSA-g644-9gfx-q4q4",
+      "title": "vm2 Sandbox Escape vulnerability",
+      "description": "In vm2 for versions up to 3.9.19, Node.js custom inspect function allows attackers to escape the sandbox and run arbitrary code.\n\n### Impact\nRemote Code Execution, assuming the attacker has arbitrary code execution primitive inside the context of vm2 sandbox.\n\n### Patches\nNone.\n\n### Workarounds\nNone.\n\n### References\nPoC is to be disclosed on or after the 5th of September.\n\n### Similarity with [CVE-2023-37466](https://nvd.nist.gov/vuln/detail/CVE-2023-37466)\nWhile this advisory might look similar",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-g644-9gfx-q4q4",
+      "publishedAt": "2023-07-13T17:01:58Z",
+      "modifiedAt": "2025-11-04T16:44:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g644-9gfx-q4q4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-37903"
+        }
+      ],
+      "affectedRange": "<= 3.9.19"
+    },
+    {
+      "id": "GHSA-xj72-wvfv-8985",
+      "title": "vm2 Sandbox Escape vulnerability",
+      "description": "There exists a vulnerability in source code transformer (exception sanitization logic) of vm2 for versions up to 3.9.15, allowing attackers to bypass `handleException()` and leak unsanitized host exceptions which can be used to escape the sandbox and run arbitrary code in host context.\n\n### Impact\nA threat actor can bypass the sandbox protections to gain remote code execution rights on the host running the sandbox.\n\n### Patches\nThis vulnerability was patched in the release of version `3.9.16` of",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-xj72-wvfv-8985",
+      "publishedAt": "2023-04-12T20:42:44Z",
+      "modifiedAt": "2023-11-29T22:41:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xj72-wvfv-8985"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-29199"
+        }
+      ],
+      "affectedRange": "< 3.9.16",
+      "fixedVersion": "3.9.16"
+    },
+    {
+      "id": "GHSA-p5gc-c584-jj6v",
+      "title": "vm2 vulnerable to Inspect Manipulation",
+      "description": "In versions 3.9.17 and lower of vm2 it was possible to get a read-write reference to the node `inspect` method and edit options for `console.log`.\n\n### Impact\nA threat actor can edit options for `console.log`.\n\n### Patches\nThis vulnerability was patched in the release of version `3.9.18` of `vm2`.\n\n### Workarounds\nAfter creating a vm make the `inspect` method readonly with `vm.readonly(inspect)`.\n\n### References\nPoC - https://gist.github.com/arkark/c1c57eaf3e0a649af1a70c2b93b17550\n\n### For more ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p5gc-c584-jj6v",
+      "publishedAt": "2023-05-17T03:49:37Z",
+      "modifiedAt": "2023-11-06T05:05:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p5gc-c584-jj6v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-32313"
+        }
+      ],
+      "affectedRange": "< 3.9.18",
+      "fixedVersion": "3.9.18"
+    },
+    {
+      "id": "GHSA-whpj-8f3w-67p5",
+      "title": "vm2 Sandbox Escape vulnerability",
+      "description": "A sandbox escape vulnerability exists in vm2 for versions up to 3.9.17. It abuses an unexpected creation of a host object based on the specification of `Proxy`.\n\n### Impact\nA threat actor can bypass the sandbox protections to gain remote code execution rights on the host running the sandbox.\n\n### Patches\nThis vulnerability was patched in the release of version `3.9.18` of `vm2`.\n\n### Workarounds\nNone.\n\n### References\nPoC - https://gist.github.com/arkark/e9f5cf5782dec8321095be3e52acf5ac\n\n### For ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-whpj-8f3w-67p5",
+      "publishedAt": "2023-05-15T20:50:51Z",
+      "modifiedAt": "2023-11-05T05:05:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-whpj-8f3w-67p5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-32314"
+        }
+      ],
+      "affectedRange": "< 3.9.18",
+      "fixedVersion": "3.9.18"
+    },
+    {
+      "id": "GHSA-ch3r-j5x3-6q2m",
+      "title": "vm2 Sandbox Escape vulnerability",
+      "description": "There exists a vulnerability in exception sanitization of vm2 for versions up to 3.9.16, allowing attackers to raise an unsanitized host exception inside `handleException()` which can be used to escape the sandbox and run arbitrary code in host context.\n\n### Impact\nA threat actor can bypass the sandbox protections to gain remote code execution rights on the host running the sandbox.\n\n### Patches\nThis vulnerability was patched in the release of version `3.9.17` of `vm2`.\n\n### Workarounds\nNone.\n\n#",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-ch3r-j5x3-6q2m",
+      "publishedAt": "2023-04-20T14:37:53Z",
+      "modifiedAt": "2023-11-04T05:08:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ch3r-j5x3-6q2m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-30547"
+        }
+      ],
+      "affectedRange": "< 3.9.17",
+      "fixedVersion": "3.9.17"
+    },
+    {
+      "id": "GHSA-7jxr-cg7f-gpgv",
+      "title": "vm2 vulnerable to sandbox escape",
+      "description": "vm2 was not properly handling host objects passed to `Error.prepareStackTrace` in case of unhandled async errors.\n\n- vm2 version: ~3.9.14\n- Node version: 18.15.0, 19.8.1, 17.9.1\n\n### Impact\nA threat actor can bypass the sandbox protections to gain remote code execution rights on the host running the sandbox.\n\n### Patches\nThis vulnerability was patched in the release of version `3.9.15` of `vm2`.\n\n### Workarounds\nNone.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7jxr-cg7f-gpgv",
+      "publishedAt": "2023-04-07T20:35:03Z",
+      "modifiedAt": "2023-04-07T20:35:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7jxr-cg7f-gpgv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-29017"
+        }
+      ],
+      "affectedRange": "< 3.9.15",
+      "fixedVersion": "3.9.15"
+    },
+    {
+      "id": "GHSA-6pw2-5hjv-9pf7",
+      "title": "Sandbox bypass in vm2",
+      "description": "The package vm2 before 3.9.6 are vulnerable to Sandbox Bypass via direct access to host error objects generated by node internals during generation of a stacktraces, which can lead to execution of arbitrary code on the host machine.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6pw2-5hjv-9pf7",
+      "publishedAt": "2022-02-12T00:00:38Z",
+      "modifiedAt": "2023-02-03T05:06:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6pw2-5hjv-9pf7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23555"
+        }
+      ],
+      "affectedRange": "< 3.9.6",
+      "fixedVersion": "3.9.6"
+    },
+    {
+      "id": "GHSA-rjf2-j2r6-q8gr",
+      "title": "Prototype Pollution in vm2",
+      "description": "This affects the package vm2 before 3.9.4. Prototype Pollution attack vector can lead to sandbox escape and execution of arbitrary code on the host machine.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-rjf2-j2r6-q8gr",
+      "publishedAt": "2021-10-19T15:28:45Z",
+      "modifiedAt": "2023-02-01T05:06:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rjf2-j2r6-q8gr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23449"
+        }
+      ],
+      "affectedRange": "< 3.9.4",
+      "fixedVersion": "3.9.4"
+    },
+    {
+      "id": "GHSA-mrgp-mrhc-5jrq",
+      "title": "vm2 vulnerable to Sandbox Escape resulting in Remote Code Execution on host",
+      "description": "### Impact\nA threat actor can bypass the sandbox protections to gain remote code execution rights on the host running the sandbox.\n\n### Patches\nThis vulnerability was patched in the release of version `3.9.11` of `vm2`\n\n### Workarounds\nNone. \n\n### References\nGithub Issue - https://github.com/patriksimek/vm2/issues/467\nThe file that was patched - https://github.com/patriksimek/vm2/blob/master/lib/setup-sandbox.js#L71\nThe commit with the patch - https://github.com/patriksimek/vm2/commit/d9a7f3cc99",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mrgp-mrhc-5jrq",
+      "publishedAt": "2022-09-28T13:09:01Z",
+      "modifiedAt": "2023-01-30T05:07:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mrgp-mrhc-5jrq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-36067"
+        }
+      ],
+      "affectedRange": "< 3.9.11",
+      "fixedVersion": "3.9.11"
+    },
+    {
+      "id": "GHSA-4w2j-2rg4-5mjw",
+      "title": "vm2 vulnerable to Arbitrary Code Execution",
+      "description": "The package vm2 before 3.9.10 is vulnerable to Arbitrary Code Execution due to the usage of prototype lookup for the WeakMap.prototype.set method. Exploiting this vulnerability leads to access to a host object and a sandbox compromise.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4w2j-2rg4-5mjw",
+      "publishedAt": "2022-12-21T06:30:29Z",
+      "modifiedAt": "2023-01-30T05:01:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4w2j-2rg4-5mjw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25893"
+        }
+      ],
+      "affectedRange": "< 3.9.10",
+      "fixedVersion": "3.9.10"
+    },
+    {
+      "id": "GHSA-wf5x-cr3r-xr77",
+      "title": "vm2 before 3.6.11 vulnerable to sandbox escape",
+      "description": "This affects the package vm2 before 3.6.11. It is possible to trigger a RangeError exception from the host rather than the \"sandboxed\" context by reaching the stack call limit with an infinite recursion. The returned object is then used to reference the mainModule property of the host code running the script allowing it to spawn a child_process and execute arbitrary code.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wf5x-cr3r-xr77",
+      "publishedAt": "2022-07-14T00:00:23Z",
+      "modifiedAt": "2023-01-27T05:05:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wf5x-cr3r-xr77"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10761"
+        }
+      ],
+      "affectedRange": "< 3.6.11",
+      "fixedVersion": "3.6.11"
+    }
+  ]
+}

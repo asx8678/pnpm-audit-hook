@@ -1,0 +1,27 @@
+{
+  "name": "tempura",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w4v7-hwx7-9929",
+      "title": "Cross-site Scripting in tempura",
+      "description": "This affects the package tempura before 0.4.0. If the input to the esc function is of type object (i.e an array) it is returned without being escaped/sanitized, leading to a potential Cross-Site Scripting vulnerability.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w4v7-hwx7-9929",
+      "publishedAt": "2021-11-08T17:50:10Z",
+      "modifiedAt": "2023-02-01T05:06:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w4v7-hwx7-9929"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23784"
+        }
+      ],
+      "affectedRange": "< 0.4.0",
+      "fixedVersion": "0.4.0"
+    }
+  ]
+}

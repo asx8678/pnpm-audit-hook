@@ -1,0 +1,26 @@
+{
+  "name": "restify-paginate",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qr9h-vr5p-pwwx",
+      "title": "Denial of Service (DoS) in restify-paginate",
+      "description": "The restify-paginate package 0.0.5 for Node.js allows remote attackers to cause a Denial-of-Service by omitting the HTTP Host header. A Restify-based web service would crash with an uncaught exception.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qr9h-vr5p-pwwx",
+      "publishedAt": "2021-04-12T18:59:11Z",
+      "modifiedAt": "2023-02-01T05:05:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qr9h-vr5p-pwwx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-27543"
+        }
+      ],
+      "affectedRange": "<= 0.0.5"
+    }
+  ]
+}

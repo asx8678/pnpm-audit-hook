@@ -1,0 +1,48 @@
+{
+  "name": "@workos-inc/authkit-remix",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v3gr-w9gf-23cx",
+      "title": "The AuthKit Remix Library renders sensitive auth data in HTML",
+      "description": "### Summary\n\nBefore `0.15.0`, `@workos-inc/authkit-remix` returned sensitive authentication artifacts from the `authkitLoader`, specifically `sealedSession` and `accessToken`. Because these values were returned from the loader, they were embedded into the server-rendered HTML and became readable by any script with access to the page’s DOM (e.g., in the presence of XSS or a malicious browser extension).\n\n*   **Impact:** Exposure of these secrets can lead to session hijacking and unauthorized API ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v3gr-w9gf-23cx",
+      "publishedAt": "2025-08-08T17:08:46Z",
+      "modifiedAt": "2025-09-25T22:56:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v3gr-w9gf-23cx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-55009"
+        }
+      ],
+      "affectedRange": "< 0.15.0",
+      "fixedVersion": "0.15.0"
+    },
+    {
+      "id": "GHSA-v2qh-f584-6hj8",
+      "title": "@workos-inc/authkit-remix refresh tokens are logged when the debug flag is enabled",
+      "description": "### Impact\nRefresh tokens are logged to the console when the disabled by default `debug` flag, is enabled.\n\n### Patches\nPatched in [https://github.com/workos/authkit-remix/releases/tag/v0.4.1](https://github.com/workos/authkit-remix/releases/tag/v0.4.1)",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-v2qh-f584-6hj8",
+      "publishedAt": "2024-11-05T17:34:47Z",
+      "modifiedAt": "2024-11-05T21:37:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v2qh-f584-6hj8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-51753"
+        }
+      ],
+      "affectedRange": "< 0.4.1",
+      "fixedVersion": "0.4.1"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "nanoid",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mwcw-c2x4-8c55",
+      "title": "Predictable results in nanoid generation when given non-integer values",
+      "description": "When nanoid is called with a fractional value, there were a number of undesirable effects:\n\n1. in browser and non-secure, the code infinite loops on while (size--)\n2. in node, the value of poolOffset becomes fractional, causing calls to nanoid to return zeroes until the pool is next filled\n3. if the first call in node is a fractional argument, the initial buffer allocation fails with an error\n\nVersion 3.3.8 and 5.0.9 are fixed.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mwcw-c2x4-8c55",
+      "publishedAt": "2024-12-09T03:30:59Z",
+      "modifiedAt": "2025-11-04T16:54:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mwcw-c2x4-8c55"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-55565"
+        }
+      ],
+      "affectedRange": "< 3.3.8",
+      "fixedVersion": "3.3.8"
+    },
+    {
+      "id": "GHSA-qrpm-p2h7-hrv2",
+      "title": "Exposure of Sensitive Information to an Unauthorized Actor in nanoid",
+      "description": "The package nanoid from 3.0.0, before 3.1.31, are vulnerable to Information Exposure via the valueOf() function which allows to reproduce the last id generated.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qrpm-p2h7-hrv2",
+      "publishedAt": "2022-01-21T23:57:06Z",
+      "modifiedAt": "2025-11-04T16:35:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qrpm-p2h7-hrv2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23566"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.1.31",
+      "fixedVersion": "3.1.31"
+    }
+  ]
+}

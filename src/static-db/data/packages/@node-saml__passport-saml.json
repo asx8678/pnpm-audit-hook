@@ -1,0 +1,48 @@
+{
+  "name": "@node-saml/passport-saml",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4mxg-3p6v-xgq3",
+      "title": "Node-SAML SAML Signature Verification Vulnerability",
+      "description": "Node-SAML loads the assertion from the (unsigned) original response document. This is different than the parts that are verified when checking signature.\n\nThis allows an attacker to modify authentication details within a valid SAML assertion. For example, in one attack it is possible to remove any character from the SAML assertion username.\n\nTo conduct the attack an attacker would need a validly signed document from the identity provider (IdP).\n\nIn fixing this we made sure to process the SAML as",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4mxg-3p6v-xgq3",
+      "publishedAt": "2025-07-28T20:38:44Z",
+      "modifiedAt": "2025-08-08T14:53:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4mxg-3p6v-xgq3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54419"
+        }
+      ],
+      "affectedRange": "<= 5.0.1",
+      "fixedVersion": "5.1.0"
+    },
+    {
+      "id": "GHSA-m974-647v-whv7",
+      "title": "Signature bypass via multiple root elements",
+      "description": "### Impact\n\nA remote attacker may be able to bypass SAML authentication on a website using passport-saml. A successful attack requires that the attacker is in possession of an arbitrary IDP signed XML element. Depending on the IDP used, fully unauthenticated attacks (e.g without access to a valid user) might also be feasible if generation of a signed message can be triggered.\n\n### Patches\n\nUsers should upgrade to passport-saml 3.2.2 or newer. The issue was also present in the beta releases of `n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m974-647v-whv7",
+      "publishedAt": "2022-10-12T22:05:41Z",
+      "modifiedAt": "2023-01-27T05:03:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m974-647v-whv7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39299"
+        }
+      ],
+      "affectedRange": "< 4.0.0-beta.3",
+      "fixedVersion": "4.0.0-beta.3"
+    }
+  ]
+}

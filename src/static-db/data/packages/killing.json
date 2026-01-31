@@ -1,0 +1,26 @@
+{
+  "name": "killing",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cq77-8jpx-892g",
+      "title": "Command Injection in killing",
+      "description": "This affects all versions of package killing up to and including 1.0.6. If attacker-controlled user input is given, it is possible for an attacker to execute arbitrary commands. This is due to use of the child_process exec function without input sanitization.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cq77-8jpx-892g",
+      "publishedAt": "2021-05-06T15:53:32Z",
+      "modifiedAt": "2023-01-27T05:00:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cq77-8jpx-892g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23381"
+        }
+      ],
+      "affectedRange": "<= 1.0.6"
+    }
+  ]
+}

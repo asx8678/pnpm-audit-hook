@@ -1,0 +1,27 @@
+{
+  "name": "@elysiajs/cors",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f9qj-4c5x-cpcw",
+      "title": "elysia-cors Origin Validation Error",
+      "description": "An Origin Validation Error in the elysia-cors library thru 1.3.0 allows attackers to bypass Cross-Origin Resource Sharing (CORS) restrictions. The library incorrectly validates the supplied origin by checking if it is a substring of any domain in the site's CORS policy, rather than performing an exact match. For example, a malicious origin like \"notexample.com\", \"example.common.net\" is whitelisted when the site's CORS policy specifies \"example.com.\" This vulnerability enables unauthorized access",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f9qj-4c5x-cpcw",
+      "publishedAt": "2025-08-20T15:31:42Z",
+      "modifiedAt": "2026-01-29T02:36:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f9qj-4c5x-cpcw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-50864"
+        }
+      ],
+      "affectedRange": "< 1.3.1",
+      "fixedVersion": "1.3.1"
+    }
+  ]
+}

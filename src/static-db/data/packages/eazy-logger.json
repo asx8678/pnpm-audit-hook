@@ -1,0 +1,27 @@
+{
+  "name": "eazy-logger",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r7jx-5m6m-cpg9",
+      "title": "eazy-logger prototype pollution",
+      "description": "A prototype pollution in the lib.Logger function of eazy-logger v4.0.1 allows attackers to cause a Denial of Service (DoS) via supplying a crafted payload.\n\nAn attacker can supply a payload with `Object.prototype` setter to introduce or modify properties within the global prototype chain, causing denial of service (DoS) a the minimum consequence.\n\nMoreover, the consequences of this vulnerability can escalate to other injection-based attacks, depending on how the library integrates within the app",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r7jx-5m6m-cpg9",
+      "publishedAt": "2025-02-06T06:31:26Z",
+      "modifiedAt": "2025-04-07T12:34:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r7jx-5m6m-cpg9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-57075"
+        }
+      ],
+      "affectedRange": "<= 4.0.1",
+      "fixedVersion": "4.1.0"
+    }
+  ]
+}

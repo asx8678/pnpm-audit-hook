@@ -1,0 +1,26 @@
+{
+  "name": "gitbook",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hwgp-c653-6684",
+      "title": "GitBook allows Cross-site Scripting via a local .md file.",
+      "description": "GitBook through 2.6.9 allows Cross-site Scripting via javascript inclusion in a local .md file.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hwgp-c653-6684",
+      "publishedAt": "2022-05-24T17:02:45Z",
+      "modifiedAt": "2024-04-22T23:23:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hwgp-c653-6684"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-19596"
+        }
+      ],
+      "affectedRange": "<= 2.6.9"
+    }
+  ]
+}

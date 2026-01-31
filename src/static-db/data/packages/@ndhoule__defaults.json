@@ -1,0 +1,26 @@
+{
+  "name": "@ndhoule/defaults",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-79h2-v6hh-wq23",
+      "title": "@ndhoule/defaults prototype pollution",
+      "description": "A prototype pollution in the lib.deep function of @ndhoule/defaults v2.0.1 allows attackers to cause a Denial of Service (DoS) via supplying a crafted payload.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-79h2-v6hh-wq23",
+      "publishedAt": "2025-02-06T06:31:25Z",
+      "modifiedAt": "2025-02-06T22:52:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-79h2-v6hh-wq23"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-57066"
+        }
+      ],
+      "affectedRange": "<= 2.0.1"
+    }
+  ]
+}

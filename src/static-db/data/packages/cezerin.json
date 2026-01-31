@@ -1,0 +1,26 @@
+{
+  "name": "cezerin",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6pq6-crw9-522h",
+      "title": "Cezerin Unauthorized Acces",
+      "description": "Cezerin v0.33.0 allows unauthorized order-information modification because certain internal attributes can be overwritten via a conflicting name when processing order requests. Hence, a malicious customer can manipulate an order (e.g., its payment status or shipping fee) by adding additional attributes to user-input during the PUT `/ajax/cart` operation for a checkout, because of `getValidDocumentForUpdate` in `api/server/services/orders/orders.js`.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6pq6-crw9-522h",
+      "publishedAt": "2022-05-24T17:00:04Z",
+      "modifiedAt": "2023-09-26T16:56:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6pq6-crw9-522h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-18608"
+        }
+      ],
+      "affectedRange": "<= 0.33.0"
+    }
+  ]
+}

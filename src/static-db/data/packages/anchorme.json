@@ -1,0 +1,26 @@
+{
+  "name": "anchorme",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w4wq-rvmq-77x7",
+      "title": "Cross-site scripting in anchorme",
+      "description": "All versions of package anchorme are vulnerable to Cross-site Scripting (XSS) via the main functionality.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w4wq-rvmq-77x7",
+      "publishedAt": "2021-07-26T21:23:58Z",
+      "modifiedAt": "2023-02-01T05:06:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w4wq-rvmq-77x7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23411"
+        }
+      ],
+      "affectedRange": "<= 2.1.2"
+    }
+  ]
+}

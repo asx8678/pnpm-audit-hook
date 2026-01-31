@@ -1,0 +1,27 @@
+{
+  "name": "@tanstack/react-query-next-experimental",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-997g-27x8-43rf",
+      "title": "react-query-streamed-hydration Cross-site Scripting vulnerability",
+      "description": "### Impact\n\nThe `@tanstack/react-query-next-experimental` NPM package is vulnerable to a cross-site scripting vulnerability. To exploit this, an attacker would need to either inject malicious input or arrange to have malicious input be returned from an endpoint.\n\nThis vulnerability arises from improper handling of untrusted input when `@tanstack/react-query-next-experimental` performs server-side rendering of HTML pages. To fix this vulnerability, we implemented appropriate escaping to prevent j",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-997g-27x8-43rf",
+      "publishedAt": "2024-01-30T20:57:22Z",
+      "modifiedAt": "2024-01-30T21:34:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-997g-27x8-43rf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-24558"
+        }
+      ],
+      "affectedRange": ">= 5.0.0, < 5.18.0",
+      "fixedVersion": "5.18.0"
+    }
+  ]
+}

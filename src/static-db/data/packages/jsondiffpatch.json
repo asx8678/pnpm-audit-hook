@@ -1,0 +1,27 @@
+{
+  "name": "jsondiffpatch",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-33vc-wfww-vjfv",
+      "title": "jsondiffpatch is vulnerable to Cross-site Scripting (XSS) via HtmlFormatter::nodeBegin",
+      "description": "### Vulnerability in jsondiffpatch\n\nVersions of `jsondiffpatch` prior to `0.7.2` are vulnerable to Cross-site Scripting (XSS) in the `HtmlFormatter` (`HtmlFormatter::nodeBegin`). When diffs are rendered to HTML using the built-in formatter, untrusted payloads can inject scripts and execute in the context of a consuming web page.\n\n**Affected versions:** >= 0, < 0.7.2\n**Patched version:** 0.7.2\n\n**Remediation**\nUpgrade to `jsondiffpatch` `0.7.2` or later. The fix hardens the HTML formatter to avoi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-33vc-wfww-vjfv",
+      "publishedAt": "2025-09-11T06:30:23Z",
+      "modifiedAt": "2025-09-22T22:45:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-33vc-wfww-vjfv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-9910"
+        }
+      ],
+      "affectedRange": "< 0.7.2",
+      "fixedVersion": "0.7.2"
+    }
+  ]
+}

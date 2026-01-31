@@ -1,0 +1,27 @@
+{
+  "name": "@tarojs/helper",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-468q-v4jj-485h",
+      "title": "Inefficient Regular Expression Complexity in taro",
+      "description": "taro is vulnerable to Inefficient Regular Expression Complexity",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-468q-v4jj-485h",
+      "publishedAt": "2021-09-20T20:09:59Z",
+      "modifiedAt": "2023-03-29T14:49:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-468q-v4jj-485h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3804"
+        }
+      ],
+      "affectedRange": "< 3.3.9",
+      "fixedVersion": "3.3.9"
+    }
+  ]
+}

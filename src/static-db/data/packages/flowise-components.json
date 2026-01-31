@@ -1,0 +1,65 @@
+{
+  "name": "flowise-components",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jv9m-vf54-chjj",
+      "title": "Flowise is vulnerable to arbitrary file write through its WriteFileTool ",
+      "description": "### Summary\n\nThe WriteFileTool in Flowise does not restrict the file path for reading, allowing authenticated attackers to exploit this vulnerability to write arbitrary files to any path in the file system, potentially leading to remote command execution.\n\n### Details\n\nFlowise supports providing WriteFileTool for large models, which is used to write files to the server's file system. The implementation of this tool is located at packages/components/nodes/tools/WriteFile/WriteFile.ts.\n\n```\n/**\n *",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-jv9m-vf54-chjj",
+      "publishedAt": "2025-10-09T15:21:39Z",
+      "modifiedAt": "2025-11-15T03:13:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jv9m-vf54-chjj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-61913"
+        }
+      ],
+      "affectedRange": "< 3.0.8",
+      "fixedVersion": "3.0.8"
+    },
+    {
+      "id": "GHSA-j44m-5v8f-gc9c",
+      "title": "Flowise is vulnerable to arbitrary file exposure through its ReadFileTool",
+      "description": "### Summary\n\nThe ReadFileTool in Flowise does not restrict file path access, allowing authenticated attackers to exploit this vulnerability to read arbitrary files from the file system, potentially leading to remote command execution.\n\n### Details\n\nFlowise supports providing ReadFileTool for large models to read files in the server's file system. The implementation of this tool is located at packages/components/nodes/tools/ReadFile/ReadFile.ts.\n\n```\n/**\n * Class for reading files from the disk. ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j44m-5v8f-gc9c",
+      "publishedAt": "2025-10-10T22:55:09Z",
+      "modifiedAt": "2025-11-07T16:46:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j44m-5v8f-gc9c"
+        }
+      ],
+      "affectedRange": "< 3.0.8",
+      "fixedVersion": "3.0.8"
+    },
+    {
+      "id": "GHSA-gjx9-wg9x-7gvp",
+      "title": "Flowise Vulnerable to SQL Injection via `tableName` Parameter",
+      "description": "Flowise <= 2.2.3 is vulnerable to SQL Injection. via tableName parameter at Postgres_VectorStores.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gjx9-wg9x-7gvp",
+      "publishedAt": "2025-04-09T12:30:24Z",
+      "modifiedAt": "2025-04-10T14:18:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gjx9-wg9x-7gvp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-29189"
+        }
+      ],
+      "affectedRange": "<= 2.2.3",
+      "fixedVersion": "2.2.4"
+    }
+  ]
+}

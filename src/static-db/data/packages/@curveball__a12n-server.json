@@ -1,0 +1,44 @@
+{
+  "name": "@curveball/a12n-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-crhg-xgrg-vvcc",
+      "title": "a12nserver vulnerable to potential SQL Injections via Knex dependency",
+      "description": "### Impact\n\nUsers of a12nserver that use MySQL might be vulnerable to SQL injection bugs. \n\nIf you use a12nserver and MySQL, update as soon as possible. This SQL injection bug might let an attacker obtain OAuth2 Access Tokens for users unrelated to those that permitted OAuth2 clients.\n\n### Patches\n\nThe knex dependency has been updated to 2.4.0 in a12nserver 0.23.0\n\n### Workarounds\n\nNo further workarounds\n\n### References\n\n* https://github.com/knex/knex/issues/1227\n* https://nvd.nist.gov/vuln/deta",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-crhg-xgrg-vvcc",
+      "publishedAt": "2023-01-13T21:34:29Z",
+      "modifiedAt": "2023-01-29T05:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-crhg-xgrg-vvcc"
+        }
+      ],
+      "affectedRange": ">= 0.20.0, < 0.23.0",
+      "fixedVersion": "0.23.0"
+    },
+    {
+      "id": "GHSA-8hw9-22v6-9jr9",
+      "title": "Any logged in user could edit any other logged in user.",
+      "description": "### Impact\nEveryone who is running a12n-server. \n\nA new HAL-Form was added to allow editing users. This feature should only have been accessible to admins. Unfortunately, privileges were incorrectly checked allowing any logged in user to make this change.\n\n### Patches\nPatched in v0.18.2",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8hw9-22v6-9jr9",
+      "publishedAt": "2021-04-19T15:14:33Z",
+      "modifiedAt": "2023-01-27T05:02:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8hw9-22v6-9jr9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-29452"
+        }
+      ],
+      "affectedRange": ">= 0.18.0, < 0.18.2",
+      "fixedVersion": "0.18.2"
+    }
+  ]
+}

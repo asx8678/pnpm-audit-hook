@@ -1,0 +1,27 @@
+{
+  "name": "@nestjs/core",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4jpv-8r57-pv7j",
+      "title": "@nestjs/core vulnerable to Information Exposure via StreamableFile pipe",
+      "description": "Versions of the package @nestjs/core before 9.0.5 are vulnerable to Information Exposure via the StreamableFile pipe. Exploiting this vulnerability is possible when the client cancels a request while it is streaming a StreamableFile, the stream wrapped by the StreamableFile will be kept open.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4jpv-8r57-pv7j",
+      "publishedAt": "2023-03-06T06:30:18Z",
+      "modifiedAt": "2023-03-13T15:29:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4jpv-8r57-pv7j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26108"
+        }
+      ],
+      "affectedRange": "< 9.0.5",
+      "fixedVersion": "9.0.5"
+    }
+  ]
+}

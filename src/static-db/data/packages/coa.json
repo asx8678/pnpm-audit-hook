@@ -1,0 +1,22 @@
+{
+  "name": "coa",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-73qr-pfmq-6rp8",
+      "title": "Embedded malware in coa",
+      "description": "The npm package `coa` had versions published with malicious code. Users of affected versions (2.0.3 and above) should downgrade to 2.0.2 as soon as possible and check their systems for suspicious activity. See [this issue](https://github.com/veged/coa/issues/99) for details as they unfold.\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-73qr-pfmq-6rp8",
+      "publishedAt": "2021-11-04T16:22:28Z",
+      "modifiedAt": "2023-01-12T05:07:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-73qr-pfmq-6rp8"
+        }
+      ],
+      "affectedRange": "= 3.1.3"
+    }
+  ]
+}

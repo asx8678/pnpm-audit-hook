@@ -1,0 +1,27 @@
+{
+  "name": "@apollo/query-planner",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fmj9-77q8-g6c4",
+      "title": "Apollo Query Planner and Apollo Gateway may infinitely loop on sufficiently complex queries",
+      "description": "### Impact\nInstances of @apollo/query-planner >=2.0.0 and <2.8.5 are impacted by a denial-of-service vulnerability. @apollo/gateway versions >=2.0.0 and < 2.8.5 and Apollo Router <1.52.1 are also impacted through their use of @apollo/query-planner. \n\nIf @apollo/query-planner is asked to plan a sufficiently complex query, it may loop infinitely and never complete. This results in unbounded memory consumption and either a crash or out-of-memory (OOM) termination.\n\nThis issue can be triggered if yo",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fmj9-77q8-g6c4",
+      "publishedAt": "2024-08-27T18:14:12Z",
+      "modifiedAt": "2024-09-13T13:36:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fmj9-77q8-g6c4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-43414"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.8.5",
+      "fixedVersion": "2.8.5"
+    }
+  ]
+}

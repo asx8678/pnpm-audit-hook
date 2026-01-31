@@ -1,0 +1,69 @@
+{
+  "name": "@workos-inc/authkit-nextjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p8pf-44ff-93gf",
+      "title": "authkit-nextjs may let session cookies be cached in CDNs",
+      "description": "In `authkit-nextjs` version 2.11.0 and below, authenticated responses do not defensively apply anti-caching headers. In environments where CDN caching is enabled, this can result in session tokens being included in cached responses and subsequently served to multiple users.\n\nNext.js applications deployed on Vercel are unaffected **unless** they manually enable CDN caching by setting cache headers on authenticated paths.\n\n### Impact\nThis vulnerability may lead to session caching, potentially allo",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p8pf-44ff-93gf",
+      "publishedAt": "2025-11-20T21:29:16Z",
+      "modifiedAt": "2025-11-21T15:32:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p8pf-44ff-93gf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64762"
+        }
+      ],
+      "affectedRange": "<= 2.11.0",
+      "fixedVersion": "2.11.1"
+    },
+    {
+      "id": "GHSA-5wmg-9cvh-qw25",
+      "title": "@workos-inc/authkit-nextjs refresh tokens are logged when the debug flag is enabled",
+      "description": "### Impact\nRefresh tokens are logged to the console when the disabled by default `debug` flag, is enabled.\n\n### Patches\nPatched in [https://github.com/workos/authkit-nextjs/releases/tag/v0.13.2](https://github.com/workos/authkit-nextjs/releases/tag/v0.13.2)\n",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-5wmg-9cvh-qw25",
+      "publishedAt": "2024-11-05T17:34:23Z",
+      "modifiedAt": "2024-11-05T21:37:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5wmg-9cvh-qw25"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-51752"
+        }
+      ],
+      "affectedRange": "< 0.13.2",
+      "fixedVersion": "0.13.2"
+    },
+    {
+      "id": "GHSA-35w3-6qhc-474v",
+      "title": "@workos-inc/authkit-nextjs session replay vulnerability",
+      "description": "### Impact\n\nA user can reuse an expired session by controlling the `x-workos-session` header.\n\n### Patches\n\nPatched in https://github.com/workos/authkit-nextjs/releases/tag/v0.4.2",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-35w3-6qhc-474v",
+      "publishedAt": "2024-03-29T20:16:00Z",
+      "modifiedAt": "2024-03-29T20:16:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-35w3-6qhc-474v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-29901"
+        }
+      ],
+      "affectedRange": "< 0.4.2",
+      "fixedVersion": "0.4.2"
+    }
+  ]
+}

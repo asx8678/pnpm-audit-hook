@@ -1,0 +1,23 @@
+{
+  "name": "@redocly/openapi-cli",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q324-q795-2q5p",
+      "title": "Path traversal when using `preview-docs` when working dir contains files with question mark `?` in name",
+      "description": "### Impact\n`preview-docs` command allows path traversal if current working dir contains files with question mark `?` in name and attacker knows the name.\n\n### Patches\nIt was patched starting from 1.0.0-beta.59\n\n### Workarounds\nDo not run openapi-cli preview-docs command in the folder which contains files with question mark `?` in name.\n\n### References\nhttps://github.com/Redocly/openapi-cli/pull/347\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Open an iss",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-q324-q795-2q5p",
+      "publishedAt": "2021-10-12T16:05:11Z",
+      "modifiedAt": "2023-01-09T05:05:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q324-q795-2q5p"
+        }
+      ],
+      "affectedRange": "<= 1.0.0-beta.58",
+      "fixedVersion": "1.0.0-beta.59"
+    }
+  ]
+}

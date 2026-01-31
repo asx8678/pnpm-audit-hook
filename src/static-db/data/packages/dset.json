@@ -1,0 +1,69 @@
+{
+  "name": "dset",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f6v4-cf5j-vf3w",
+      "title": "dset Prototype Pollution vulnerability",
+      "description": "Versions of the package dset before 3.1.4 are vulnerable to Prototype Pollution via the dset function due improper user input sanitization. This vulnerability allows the attacker to inject malicious object property using the built-in Object property __proto__, which is recursively assigned to all the objects in the program.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f6v4-cf5j-vf3w",
+      "publishedAt": "2024-09-11T06:30:39Z",
+      "modifiedAt": "2024-09-11T23:11:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f6v4-cf5j-vf3w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21529"
+        }
+      ],
+      "affectedRange": "< 3.1.4",
+      "fixedVersion": "3.1.4"
+    },
+    {
+      "id": "GHSA-q4xc-7cw8-cgfj",
+      "title": "dset vulnerable to prototype pollution",
+      "description": "### Overview\nPrototype pollution vulnerability in 'dset' versions 1.0.0 through 2.0.1 allows attacker to cause a denial of service and may lead to remote code execution.\n\n### Details\nThe NPM module 'dset' can be abused by Prototype Pollution vulnerability since the function ‘export ()' did not check for the type of object before assigning value to the property. Due to this flaw an attacker could create a non-existent property or able to manipulate the property which leads to Denial of Service or",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-q4xc-7cw8-cgfj",
+      "publishedAt": "2022-05-24T17:37:26Z",
+      "modifiedAt": "2024-02-01T21:04:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q4xc-7cw8-cgfj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28277"
+        }
+      ],
+      "affectedRange": ">= 1.0.0, < 2.0.1",
+      "fixedVersion": "2.0.1"
+    },
+    {
+      "id": "GHSA-23wx-cgxq-vpwx",
+      "title": "Prototype Pollution in dset",
+      "description": "All versions of `dset` prior to 3.1.2 are vulnerable to Prototype Pollution via `dset/merge` mode, as the `dset` function checks for prototype pollution by validating if the top-level path contains `__proto__`, `constructor` or `prototype`. By crafting a malicious object, it is possible to bypass this check and achieve prototype pollution.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-23wx-cgxq-vpwx",
+      "publishedAt": "2022-05-03T00:00:45Z",
+      "modifiedAt": "2023-02-01T05:00:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-23wx-cgxq-vpwx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25645"
+        }
+      ],
+      "affectedRange": "< 3.1.2",
+      "fixedVersion": "3.1.2"
+    }
+  ]
+}

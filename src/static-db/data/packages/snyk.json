@@ -1,0 +1,90 @@
+{
+  "name": "snyk",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6hwc-9h8r-3vmf",
+      "title": "Snyk CLI Insertion of Sensitive Information into Log File allowed in DEBUG or DEBUG/TRACE mode",
+      "description": "Versions of the package snyk before 1.1297.3 are vulnerable to Insertion of Sensitive Information into Log File through local Snyk CLI debug logs. Container Registry credentials provided via environment variables or command line arguments can be exposed when executing Snyk CLI in DEBUG or DEBUG/TRACE mode.\n\nThe issue affects the following Snyk commands:\n\n1. When snyk container test or snyk container monitor commands are run against a container registry, with debug mode enabled, the container reg",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-6hwc-9h8r-3vmf",
+      "publishedAt": "2025-06-26T06:31:04Z",
+      "modifiedAt": "2025-06-30T11:42:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6hwc-9h8r-3vmf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-6624"
+        }
+      ],
+      "affectedRange": "< 1.1297.3",
+      "fixedVersion": "1.1297.3"
+    },
+    {
+      "id": "GHSA-4vrv-93c7-m92j",
+      "title": "snyk Code Injection vulnerability",
+      "description": "The package snyk before 1.1064.0 is vulnerable to Code Injection when analyzing a project. An attacker who can convince a user to scan a malicious project can include commands in a build file such as build.gradle or gradle-wrapper.jar, which will be executed with the privileges of the application. This vulnerability may be triggered when running the the CLI tool directly, or when running a scan with one of the IDE plugins that invoke the Snyk CLI. Successful exploitation of this issue would like",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4vrv-93c7-m92j",
+      "publishedAt": "2023-07-06T19:24:04Z",
+      "modifiedAt": "2025-04-24T21:40:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4vrv-93c7-m92j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24441"
+        }
+      ],
+      "affectedRange": "< 1.1064.0",
+      "fixedVersion": "1.1064.0"
+    },
+    {
+      "id": "GHSA-hpqj-7cj6-hfj8",
+      "title": "Snyk CLI affected by Command Injection vulnerability",
+      "description": "Snyk CLI before 1.996.0 allows arbitrary command execution, affecting Snyk IDE plugins and the snyk npm package. Exploitation could follow from the common practice of viewing untrusted files in the Visual Studio Code editor, for example. The original demonstration was with shell metacharacters in the vendor.json ignore field, affecting snyk-go-plugin before 1.19.1. This affects, for example, the Snyk TeamCity plugin (which does not update automatically) before 20220930.142957.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hpqj-7cj6-hfj8",
+      "publishedAt": "2022-10-04T00:00:22Z",
+      "modifiedAt": "2023-08-17T05:02:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hpqj-7cj6-hfj8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-40764"
+        }
+      ],
+      "affectedRange": "< 1.996.0",
+      "fixedVersion": "1.996.0"
+    },
+    {
+      "id": "GHSA-4x6g-3cmx-w76r",
+      "title": "Snyk plugins vulnerable to Command Injection",
+      "description": "The package snyk before 1.1064.0; the package snyk-mvn-plugin before 2.31.3; the package snyk-gradle-plugin before 3.24.5; the package @snyk/snyk-cocoapods-plugin before 2.5.3; the package snyk-sbt-plugin before 2.16.2; the package snyk-python-plugin before 1.24.2; the package snyk-docker-plugin before 5.6.5; the package @snyk/snyk-hex-plugin before 1.1.6 are vulnerable to Command Injection due to an incomplete fix for [CVE-2022-40764](https://security.snyk.io/vuln/SNYK-JS-SNYK-3037342). A succe",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4x6g-3cmx-w76r",
+      "publishedAt": "2022-11-30T15:30:27Z",
+      "modifiedAt": "2023-08-17T05:02:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4x6g-3cmx-w76r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-22984"
+        }
+      ],
+      "affectedRange": "< 1.1064.0",
+      "fixedVersion": "1.1064.0"
+    }
+  ]
+}

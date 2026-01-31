@@ -1,0 +1,22 @@
+{
+  "name": "pullit",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2w9p-xf5h-qwj3",
+      "title": "Duplicate Advisory: pullit Command Injection vulnerability",
+      "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of [GHSA-8px5-63x9-5c7p](https://github.com/advisories/GHSA-8px5-63x9-5c7p). This link is maintained to preserve external references.\n\n## Original Description\nThe pullit package before 1.4.0 for Node.js allows OS Command Injection because `eval()` is used on an attacker-supplied Git branch name.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2w9p-xf5h-qwj3",
+      "publishedAt": "2023-03-27T03:30:16Z",
+      "modifiedAt": "2023-03-28T23:17:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2w9p-xf5h-qwj3"
+        }
+      ],
+      "affectedRange": "< 1.4.0"
+    }
+  ]
+}

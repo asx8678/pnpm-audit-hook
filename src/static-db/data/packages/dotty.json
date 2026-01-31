@@ -1,0 +1,48 @@
+{
+  "name": "dotty",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f5c9-x9j6-87qp",
+      "title": "Prototype pollution in dotty",
+      "description": "Prototype pollution vulnerability in 'dotty' before version 0.1.1 allows attackers to cause a denial of service and may lead to remote code execution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-f5c9-x9j6-87qp",
+      "publishedAt": "2021-02-05T20:43:08Z",
+      "modifiedAt": "2023-08-17T05:02:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f5c9-x9j6-87qp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-25912"
+        }
+      ],
+      "affectedRange": "< 0.1.1",
+      "fixedVersion": "0.1.1"
+    },
+    {
+      "id": "GHSA-6g47-63mv-qpgh",
+      "title": "Prototype Pollution in dotty",
+      "description": "This affects the package dotty before 0.1.2. A type confusion vulnerability can lead to a bypass of CVE-2021-25912 when the user-provided keys used in the path parameter are arrays.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6g47-63mv-qpgh",
+      "publishedAt": "2021-11-08T17:55:48Z",
+      "modifiedAt": "2023-02-01T05:06:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6g47-63mv-qpgh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23624"
+        }
+      ],
+      "affectedRange": "< 0.1.2",
+      "fixedVersion": "0.1.2"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "name": "editor.md",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-847g-34c5-vvm8",
+      "title": "editor.md vulnerable to Cross-site Scripting",
+      "description": "Cross Site Scripting (XSS) vulnerability in pandao editor.md thru 1.5.0 allows attackers to inject arbitrary web script or HTML via crafted markdown text.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-847g-34c5-vvm8",
+      "publishedAt": "2023-05-01T18:30:23Z",
+      "modifiedAt": "2023-11-07T05:05:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-847g-34c5-vvm8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-29641"
+        }
+      ],
+      "affectedRange": "<= 1.5.0"
+    },
+    {
+      "id": "GHSA-w974-rq9x-mh3v",
+      "title": "Pandao Editor.md vulnerable to cross-site scripting (XSS) in iframe src parameter",
+      "description": "Cross-site Scripting vulnerability found in Pandao Editor.md v.1.5.0 allows a remote attacker to execute arbitrary code via a crafted script in the `<iframe> src` parameter.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w974-rq9x-mh3v",
+      "publishedAt": "2023-04-04T15:30:27Z",
+      "modifiedAt": "2023-04-07T22:43:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w974-rq9x-mh3v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-19697"
+        }
+      ],
+      "affectedRange": "<= 1.5.0"
+    },
+    {
+      "id": "GHSA-5p84-mmh9-pxgr",
+      "title": "Pandao Editor.md vulnerable to cross-site scripting (XSS) in editor parameter",
+      "description": "Cross-site Scripting vulnerability found in Pandao Editor.md v.1.5.0 allows a remote attacker to execute arbitrary code via a crafted script to the `editor` parameter.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5p84-mmh9-pxgr",
+      "publishedAt": "2023-04-04T15:30:27Z",
+      "modifiedAt": "2023-04-07T22:35:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5p84-mmh9-pxgr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-19698"
+        }
+      ],
+      "affectedRange": "<= 1.5.0"
+    }
+  ]
+}

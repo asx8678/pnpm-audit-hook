@@ -1,0 +1,111 @@
+{
+  "name": "prismjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x7hr-w5r2-h6wg",
+      "title": "PrismJS DOM Clobbering vulnerability",
+      "description": "Prism (aka PrismJS) through 1.29.0 allows DOM Clobbering (with resultant XSS for untrusted input that contains HTML but does not directly contain JavaScript), because document.currentScript lookup can be shadowed by attacker-injected HTML elements.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x7hr-w5r2-h6wg",
+      "publishedAt": "2025-03-03T09:30:34Z",
+      "modifiedAt": "2025-06-30T12:51:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x7hr-w5r2-h6wg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-53382"
+        }
+      ],
+      "affectedRange": "< 1.30.0",
+      "fixedVersion": "1.30.0"
+    },
+    {
+      "id": "GHSA-h4hr-7fg3-h35w",
+      "title": "Denial of service in prismjs",
+      "description": "The package prismjs before 1.23.0 are vulnerable to Regular Expression Denial of Service (ReDoS) via the `prism-asciidoc`, `prism-rest`, `prism-tap` and `prism-eiffel` components.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h4hr-7fg3-h35w",
+      "publishedAt": "2021-03-01T19:52:33Z",
+      "modifiedAt": "2023-09-05T22:59:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h4hr-7fg3-h35w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23341"
+        }
+      ],
+      "affectedRange": "< 1.23.0",
+      "fixedVersion": "1.23.0"
+    },
+    {
+      "id": "GHSA-3949-f494-cm99",
+      "title": "Cross-site Scripting in Prism",
+      "description": "### Impact\nPrism's [Command line plugin](https://prismjs.com/plugins/command-line/) can be used by attackers to achieve an XSS attack. The Command line plugin did not properly escape its output, leading to the input text being inserted into the DOM as HTML code.\n\nServer-side usage of Prism is not impacted. Websites that do not use the Command Line plugin are also not impacted.\n\n### Patches\nThis bug has been fixed in v1.27.0.\n\n### Workarounds\nDo not use the Command line plugin on untrusted inputs",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3949-f494-cm99",
+      "publishedAt": "2022-02-22T19:32:18Z",
+      "modifiedAt": "2023-02-03T05:06:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3949-f494-cm99"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-23647"
+        }
+      ],
+      "affectedRange": ">= 1.14.0, < 1.27.0",
+      "fixedVersion": "1.27.0"
+    },
+    {
+      "id": "GHSA-gj77-59wh-66hg",
+      "title": "Regular Expression Denial of Service (ReDoS) in Prism",
+      "description": "Some languages before 1.24.0 are vulnerable to Regular Expression Denial of Service (ReDoS).\n\n### Impact\n\nWhen Prism is used to highlight untrusted (user-given) text, an attacker can craft a string that will take a very very long time to highlight. Do not use the following languages to highlight untrusted text.\n\n- ASCIIDoc\n- ERB\n\nOther languages are __not__ affected and can be used to highlight untrusted text.\n\n### Patches\nThis problem has been fixed in Prism v1.24.\n\n### References\n\n- PrismJS/pr",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gj77-59wh-66hg",
+      "publishedAt": "2021-06-28T18:33:18Z",
+      "modifiedAt": "2023-02-01T05:05:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gj77-59wh-66hg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32723"
+        }
+      ],
+      "affectedRange": "< 1.24.0",
+      "fixedVersion": "1.24.0"
+    },
+    {
+      "id": "GHSA-hqhp-5p83-hx96",
+      "title": "prismjs Regular Expression Denial of Service vulnerability",
+      "description": "Prism is a syntax highlighting library. The prismjs package is vulnerable to ReDoS (regular expression denial of service). An attacker that is able to provide a crafted HTML comment as input may cause an application to consume an excessive amount of CPU.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hqhp-5p83-hx96",
+      "publishedAt": "2021-09-20T20:44:48Z",
+      "modifiedAt": "2023-01-29T05:02:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hqhp-5p83-hx96"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3801"
+        }
+      ],
+      "affectedRange": "< 1.25.0",
+      "fixedVersion": "1.25.0"
+    }
+  ]
+}

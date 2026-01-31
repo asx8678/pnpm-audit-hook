@@ -1,0 +1,26 @@
+{
+  "name": "docker-cli-js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-ff45-7prw-58vj",
+      "title": "OS Command injection in docker-cli-js",
+      "description": "# Withdrawn\n\nAfter reviewing this CVE, and [this response from the maintainer](https://github.com/Quobject/docker-cli-js/issues/22#issuecomment-967760940), we have withdrawn this advisory.\n\n# Original CVE description\n\nThis affects all versions of package docker-cli-js. If the command parameter of the Docker.command method can at least be partially controlled by a user, they will be in a position to execute any arbitrary OS commands on the host system. ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-ff45-7prw-58vj",
+      "publishedAt": "2021-12-02T17:51:22Z",
+      "modifiedAt": "2023-02-01T05:06:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ff45-7prw-58vj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23732"
+        }
+      ],
+      "affectedRange": "<= 2.8.0"
+    }
+  ]
+}

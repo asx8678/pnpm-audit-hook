@@ -1,0 +1,27 @@
+{
+  "name": "msgpackr",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7hpj-7hhx-2fgx",
+      "title": "msgpackr's conversion of property names to strings can trigger infinite recursion",
+      "description": "### Impact\nWhen decoding user supplied MessagePack messages, users can trigger stuck threads by crafting messages that keep the decoder stuck in a loop.\n\n### Patches\nThe fix is available in v1.10.1\n\n### Workarounds\nExploits seem to require structured cloning, replacing the 0x70 extension with your own (that throws an error or does something other than recursive referencing) should mitigate the issue.\n\n### References",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7hpj-7hhx-2fgx",
+      "publishedAt": "2023-12-28T21:16:20Z",
+      "modifiedAt": "2024-01-10T18:34:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7hpj-7hhx-2fgx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-52079"
+        }
+      ],
+      "affectedRange": "< 1.10.1",
+      "fixedVersion": "1.10.1"
+    }
+  ]
+}

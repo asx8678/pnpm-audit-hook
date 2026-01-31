@@ -1,0 +1,48 @@
+{
+  "name": "squirrelly",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w5pw-gmcw-rfc8",
+      "title": "squirrelly Code Injection vulnerability",
+      "description": "squirrellyjs squirrelly v9.0.0 was discovered to contain a code injection vulnerability via the component `options.varName`. The issue was fixed in version 9.1.0.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w5pw-gmcw-rfc8",
+      "publishedAt": "2024-08-21T18:31:28Z",
+      "modifiedAt": "2024-08-21T20:09:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w5pw-gmcw-rfc8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-40453"
+        }
+      ],
+      "affectedRange": ">= 9.0.0, < 9.1.0",
+      "fixedVersion": "9.1.0"
+    },
+    {
+      "id": "GHSA-q8j6-pwqx-pm96",
+      "title": "Insecure template handling in Squirrelly",
+      "description": "Squirrelly is a template engine implemented in JavaScript that works out of the box with ExpressJS. Squirrelly mixes pure template data with engine configuration options through the Express render API. By overwriting internal configuration options remote code execution may be triggered in downstream applications. Version 9.0.0 has a fix for this issue. For complete details refer to the referenced [GHSL-2021-023](https://securitylab.github.com/advisories/GHSL-2021-023-squirrelly/).",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q8j6-pwqx-pm96",
+      "publishedAt": "2021-05-17T20:58:02Z",
+      "modifiedAt": "2023-09-11T16:25:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q8j6-pwqx-pm96"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32819"
+        }
+      ],
+      "affectedRange": "<= 8.0.8",
+      "fixedVersion": "9.0.0"
+    }
+  ]
+}

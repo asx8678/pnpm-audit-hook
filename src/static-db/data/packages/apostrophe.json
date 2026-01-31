@@ -1,0 +1,48 @@
+{
+  "name": "apostrophe",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9j9m-8wjc-ff96",
+      "title": " Apostrophe CMS Insufficient Session Expiration vulnerability",
+      "description": "Apostrophe CMS versions between 2.63.0 to 3.3.1 affected by an insufficient session expiration vulnerability, which allows unauthenticated remote attackers to hijack recently logged-in users' sessions. As a mitigation for older releases the user account in question can be archived (3.x) or moved to the trash (2.x and earlier) which does disable the existing session.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9j9m-8wjc-ff96",
+      "publishedAt": "2021-11-10T17:02:44Z",
+      "modifiedAt": "2023-02-03T05:04:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9j9m-8wjc-ff96"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-25979"
+        }
+      ],
+      "affectedRange": ">= 2.63.0, < 3.4.0",
+      "fixedVersion": "3.4.0"
+    },
+    {
+      "id": "GHSA-4r9c-jghc-cx5m",
+      "title": "Cross-site Scripting in apostrophe",
+      "description": "Apostrophe CMS versions between 2.63.0 to 3.3.1 are vulnerable to Stored XSS where an editor uploads an SVG file that contains malicious JavaScript onto the Images module, which triggers XSS once viewed.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4r9c-jghc-cx5m",
+      "publishedAt": "2021-11-10T16:45:34Z",
+      "modifiedAt": "2023-02-01T05:06:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4r9c-jghc-cx5m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-25978"
+        }
+      ],
+      "affectedRange": ">= 2.63.0, < 3.4.0",
+      "fixedVersion": "3.4.0"
+    }
+  ]
+}

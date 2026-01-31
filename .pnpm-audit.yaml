@@ -16,3 +16,12 @@ sources:
 
 cache:
   ttlSeconds: 3600
+
+# Static baseline configuration for historical vulnerabilities
+# Vulnerabilities published before the cutoff date use a static database
+# instead of making live API calls, improving performance and reliability
+#
+# staticBaseline:
+#   enabled: true              # Enable/disable static baseline (default: true)
+#   cutoffDate: "2025-12-31"   # Vulnerabilities before this use static DB (ISO date, must not be in future)
+#   dataPath: "./node_modules/pnpm-audit-hook/data"  # Optional custom path to static data directory

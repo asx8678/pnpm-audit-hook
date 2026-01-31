@@ -1,0 +1,27 @@
+{
+  "name": "vvvebJs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pmm3-68q9-57jg",
+      "title": "VvvebJs Arbitrary File Upload vulnerability",
+      "description": "Arbitrary File Upload vulnerability in VvvebJs before version 1.7.5, allows unauthenticated remote attackers to execute arbitrary code and obtain sensitive information via the sanitizeFileName parameter in save.php.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pmm3-68q9-57jg",
+      "publishedAt": "2024-03-22T06:30:24Z",
+      "modifiedAt": "2024-08-02T13:27:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pmm3-68q9-57jg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-29272"
+        }
+      ],
+      "affectedRange": "< 1.7.5",
+      "fixedVersion": "1.7.5"
+    }
+  ]
+}

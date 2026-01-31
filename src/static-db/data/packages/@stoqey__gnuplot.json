@@ -1,0 +1,26 @@
+{
+  "name": "@stoqey/gnuplot",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-795w-7426-m94j",
+      "title": "stoqey/gnuplot is vulnerable to command injection",
+      "description": "An issue found in Stoqey gnuplot v.0.0.3 and earlier allows attackers to execute arbitrary code via the src/index.ts, plotCallack, child_process, and/or filePath parameter(s).",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-795w-7426-m94j",
+      "publishedAt": "2023-03-10T18:30:22Z",
+      "modifiedAt": "2023-03-15T19:18:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-795w-7426-m94j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-33360"
+        }
+      ],
+      "affectedRange": "<= 0.0.3"
+    }
+  ]
+}

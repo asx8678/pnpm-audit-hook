@@ -1,0 +1,26 @@
+{
+  "name": "@airvertco/frappejs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gc7m-596h-x57r",
+      "title": "frappejs was discovered to contain a prototype pollution via the function registerView",
+      "description": "airvertco frappejs v0.0.11 was discovered to contain a prototype pollution via the function registerView. This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gc7m-596h-x57r",
+      "publishedAt": "2024-07-01T15:32:11Z",
+      "modifiedAt": "2024-07-05T17:45:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gc7m-596h-x57r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-38992"
+        }
+      ],
+      "affectedRange": "= 0.0.11"
+    }
+  ]
+}

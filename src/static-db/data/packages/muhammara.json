@@ -1,0 +1,90 @@
+{
+  "name": "muhammara",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rcrx-fpjp-mfrw",
+      "title": "Unchecked Return Value to NULL Pointer Dereference in PDFDocumentHandler.cpp",
+      "description": "### Impact\nThe package muhammara before 2.6.0; all versions of package hummus are vulnerable to Denial of Service (DoS) when supplied with a maliciously crafted PDF file to be appended to another.\n\n### Patches\nIt has been patched in 2.6.0 for muhammara and not at all for hummus\n\n### Workarounds\nDo not process files from untrusted sources\n\n### References\nPR: https://github.com/julianhille/MuhammaraJS/pull/194\nIssue: https://github.com/julianhille/MuhammaraJS/issues/191\nIssue in hummus: https://gi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rcrx-fpjp-mfrw",
+      "publishedAt": "2022-11-02T18:10:47Z",
+      "modifiedAt": "2023-02-02T05:04:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rcrx-fpjp-mfrw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39381"
+        }
+      ],
+      "affectedRange": "< 2.6.0",
+      "fixedVersion": "2.6.0"
+    },
+    {
+      "id": "GHSA-9cv5-4wqv-9w94",
+      "title": "muhammara and hummus vulnerable to denial of service by NULL pointer dereference",
+      "description": "### Impact\nThe package muhammara before 2.6.1, from 3.0.0 and before 3.1.1; all versions of package hummus are vulnerable to Denial of Service (DoS) when supplied with a maliciously crafted PDF file to be parsed.\n\n### Patches\nIt has been patched in 3.1.1 and has been backported to 2.6.1\nHummus has a patch in 1.0.111.\n\n### Workarounds\nDo not process files from untrusted sources or update.\n\n### References\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-25892\nhttps://github.com/galkahana/HummusJS/issues/",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9cv5-4wqv-9w94",
+      "publishedAt": "2022-11-01T12:00:30Z",
+      "modifiedAt": "2023-01-31T05:04:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9cv5-4wqv-9w94"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25892"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.1.1",
+      "fixedVersion": "3.1.1"
+    },
+    {
+      "id": "GHSA-frp9-2v6r-gj97",
+      "title": "muhammara and hummus vulnerable to null pointer dereference on bad response object",
+      "description": "The package muhammara before 2.6.0 and the package hummus before 1.0.111 are vulnerable to Denial of Service (DoS) when PDFStreamForResponse() is used with invalid data.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-frp9-2v6r-gj97",
+      "publishedAt": "2022-11-01T12:00:30Z",
+      "modifiedAt": "2023-01-31T05:03:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-frp9-2v6r-gj97"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25885"
+        }
+      ],
+      "affectedRange": "< 2.6.0",
+      "fixedVersion": "2.6.0"
+    },
+    {
+      "id": "GHSA-2r7v-cmch-5x26",
+      "title": "muhammara and hummus vulnerable to Unchecked Return Value to NULL Pointer Dereference",
+      "description": "### Impact\nThe package muhammara before 2.6.2, from 3.0.0 and before 3.3.0; all versions of package hummus are vulnerable to Denial of Service (DoS) when supplied with a maliciously crafted PDF file to be parsed.\n\n### Patches\nIt has been patched in 3.4.0 and has been backported to 2.6.2\nThere is no patch for hummus, currently\n\n### Workarounds\nDo not process files from untrusted sources or update.\nReplace hummus with muhammara\n\n### References\nhttps://github.com/julianhille/MuhammaraJS/pull/235\nht",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2r7v-cmch-5x26",
+      "publishedAt": "2022-12-05T17:37:22Z",
+      "modifiedAt": "2023-01-31T05:02:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2r7v-cmch-5x26"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-41957"
+        }
+      ],
+      "affectedRange": "< 2.6.2",
+      "fixedVersion": "2.6.2"
+    }
+  ]
+}

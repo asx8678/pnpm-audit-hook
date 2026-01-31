@@ -1,0 +1,48 @@
+{
+  "name": "hexo",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x2jc-989c-47q4",
+      "title": "Hexo `include_code` has a path traversal",
+      "description": "Hexo up to v7.1.1 was discovered to contain an arbitrary file read vulnerability.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x2jc-989c-47q4",
+      "publishedAt": "2023-09-08T15:30:18Z",
+      "modifiedAt": "2025-09-05T13:29:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x2jc-989c-47q4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-39584"
+        }
+      ],
+      "affectedRange": "< 7.2.0",
+      "fixedVersion": "7.2.0"
+    },
+    {
+      "id": "GHSA-q54r-r9pr-w7qv",
+      "title": "Hexo Vulnerable to XSS",
+      "description": "Hexo versions 0.0.1 to 5.4.0 are vulnerable against stored XSS. The post “body” and “tags” don’t sanitize malicious javascript during web page generation. Local unprivileged attacker can inject arbitrary code.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q54r-r9pr-w7qv",
+      "publishedAt": "2021-12-01T18:27:44Z",
+      "modifiedAt": "2023-09-13T19:55:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q54r-r9pr-w7qv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-25987"
+        }
+      ],
+      "affectedRange": ">= 0.0.1, <= 5.4.0",
+      "fixedVersion": "6.0.0"
+    }
+  ]
+}

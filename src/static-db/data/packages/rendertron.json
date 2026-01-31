@@ -1,0 +1,27 @@
+{
+  "name": "rendertron",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xr9h-9m79-x29g",
+      "title": "SSRF in Rendertron",
+      "description": "Rendertron versions prior to 3.0.0 are are susceptible to a Server-Side Request Forgery (SSRF) attack. An attacker can use a specially crafted webpage to force a rendertron headless chrome process to render internal sites it has access to, and display it as a screenshot. Suggested mitigations are to upgrade your rendertron to version 3.0.0, or, if you cannot update, to secure the infrastructure to limit the headless chrome's access to your internal domain.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xr9h-9m79-x29g",
+      "publishedAt": "2021-03-01T19:38:23Z",
+      "modifiedAt": "2023-02-01T05:05:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xr9h-9m79-x29g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8902"
+        }
+      ],
+      "affectedRange": "< 3.0.0",
+      "fixedVersion": "3.0.0"
+    }
+  ]
+}

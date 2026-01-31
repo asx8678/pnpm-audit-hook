@@ -1,0 +1,107 @@
+{
+  "name": "passport-wsfed-saml2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8gqj-226h-gm8r",
+      "title": "Passport-wsfed-saml2 allows SAML Authentication Bypass via Attribute Smuggling",
+      "description": "### Overview\nThis vulnerability allows an attacker to impersonate any user during SAML authentication by tampering with a valid SAML response. This can be done by adding attributes to the response.\n\n### Am I Affected?\nYou are affected by this SAML Attribute Smuggling vulnerability if you are using `passport-wsfed-saml2` version 4.6.3 or below, specifically under the following conditions:\n1. The service provider is using `passport-wsfed-saml2`, \n2. A valid SAML Response signed by the Identity Pro",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8gqj-226h-gm8r",
+      "publishedAt": "2025-05-06T21:18:49Z",
+      "modifiedAt": "2025-05-07T15:34:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8gqj-226h-gm8r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-46573"
+        }
+      ],
+      "affectedRange": ">= 3.0.5, <= 4.6.3",
+      "fixedVersion": "4.6.4"
+    },
+    {
+      "id": "GHSA-wjmp-wphq-jvqf",
+      "title": "Passport-wsfed-saml2 allows SAML Authentication Bypass via Signature Wrapping",
+      "description": "### Overview\nThis vulnerability allows an attacker to impersonate any user during SAML authentication by crafting a SAMLResponse. This can be done by using a valid SAML object that was signed by the configured IdP.\n\n### Am I Affected?\nYou are affected by this SAML Signature Wrapping vulnerability if you are using `passport-wsfed-saml2` version 4.6.3 or below, specifically under the following conditions:\n1. The service provider is using `passport-wsfed-saml2`,\n2. A valid SAML document signed by t",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wjmp-wphq-jvqf",
+      "publishedAt": "2025-05-06T21:18:43Z",
+      "modifiedAt": "2025-05-06T21:43:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wjmp-wphq-jvqf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-46572"
+        }
+      ],
+      "affectedRange": ">= 3.0.5, <= 4.6.3",
+      "fixedVersion": "4.6.4"
+    },
+    {
+      "id": "GHSA-5wrg-8fxp-cx9r",
+      "title": "passport-wsfed-saml2 Signature Bypass vulnerability",
+      "description": "## Information\nPlease note that this is not a new disclosure, and is previously reported in our [SECURITY-NOTICE.md](https://github.com/auth0/passport-wsfed-saml2/commit/520b9fc0bb4249ce83bec47e30153419f086ab70\n) which we removed in favor of github advisory. \n\n# Overview\n\nA vulnerability was found in the validation of a SAML signature. The validation doesn't ensure that the \"Signature\" tag is at the proper location inside an \"Assertion\" tag. This leads to a signature relocation attack where the ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5wrg-8fxp-cx9r",
+      "publishedAt": "2023-06-21T22:06:22Z",
+      "modifiedAt": "2023-06-21T22:06:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5wrg-8fxp-cx9r"
+        }
+      ],
+      "affectedRange": "< 3.0.10",
+      "fixedVersion": "3.0.10"
+    },
+    {
+      "id": "GHSA-77fw-rf4v-vfp9",
+      "title": "passport-wsfed-saml2 vulnerable to Signature Bypass in SAML2 token",
+      "description": "## Information\nPlease note that this is not a new disclosure, and is previously reported in our [SECURITY-NOTICE.md](https://github.com/auth0/passport-wsfed-saml2/commit/520b9fc0bb4249ce83bec47e30153419f086ab70\n) which we removed in favor of github advisory. \n\n# Overview \n This vulnerability allows an attacker to impersonate another user and potentially elevate their privileges if the SAML identity provider:\n\n- signs SAML response and signs assertion\n\n- does not sign SAML response and signs asse",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-77fw-rf4v-vfp9",
+      "publishedAt": "2023-06-21T22:00:18Z",
+      "modifiedAt": "2023-06-21T22:00:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-77fw-rf4v-vfp9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16897"
+        }
+      ],
+      "affectedRange": "< 3.0.5",
+      "fixedVersion": "3.0.5"
+    },
+    {
+      "id": "GHSA-ppjq-qxhx-m25f",
+      "title": "Authentication Bypass for passport-wsfed-saml2",
+      "description": "# Overview\nA remote attacker can bypass WSFed authentication on a website using passport-wsfed-saml2. A successful attack requires that the attacker is in possession of an arbitrary IDP signed WSFed assertion. Depending on the IDP used, fully unauthenticated attacks (e.g without access to a valid user) might also be feasible if generation of a signed message can be triggered.\n\n# Am I affected?\nYou are affected if you are using WSFed protocol with the passport-wsfed-saml2 library versions < 4.6.3",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-ppjq-qxhx-m25f",
+      "publishedAt": "2022-12-13T17:16:36Z",
+      "modifiedAt": "2023-01-31T05:07:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ppjq-qxhx-m25f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-23505"
+        }
+      ],
+      "affectedRange": "< 4.6.3",
+      "fixedVersion": "4.6.3"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "gitsome",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9v73-x562-wv5x",
+      "title": "OS Command Injection in gitsome",
+      "description": "OS Command Injection vulnerability in bbultman gitsome through 0.2.3 allows attackers to execute arbitrary commands via a crafted tag name of the target git repository.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9v73-x562-wv5x",
+      "publishedAt": "2022-06-03T00:00:58Z",
+      "modifiedAt": "2023-01-27T05:03:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9v73-x562-wv5x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-34081"
+        }
+      ],
+      "affectedRange": "<= 0.2.3"
+    }
+  ]
+}

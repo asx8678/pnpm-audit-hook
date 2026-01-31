@@ -1,0 +1,26 @@
+{
+  "name": "snarkjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xp5g-jhg3-3rg2",
+      "title": "Double spend in snarkjs",
+      "description": "iden3 snarkjs through 0.6.11 allows double spending because there is no validation that the publicSignals length is less than the field modulus.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xp5g-jhg3-3rg2",
+      "publishedAt": "2023-05-22T00:30:20Z",
+      "modifiedAt": "2025-01-21T18:53:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xp5g-jhg3-3rg2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-33252"
+        }
+      ],
+      "affectedRange": "<= 0.6.11"
+    }
+  ]
+}

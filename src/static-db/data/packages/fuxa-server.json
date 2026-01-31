@@ -1,0 +1,66 @@
+{
+  "name": "fuxa-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wwfj-h843-3hrq",
+      "title": "FUXA local file inclusion vulnerability",
+      "description": "FUXA <= 1.1.12 is vulnerable to Local File Inclusion via `/api/download`.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wwfj-h843-3hrq",
+      "publishedAt": "2023-09-22T00:30:29Z",
+      "modifiedAt": "2024-09-25T17:57:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wwfj-h843-3hrq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-31718"
+        }
+      ],
+      "affectedRange": "<= 1.1.12"
+    },
+    {
+      "id": "GHSA-p46g-8c3q-89p2",
+      "title": "FUXA SQL Injection vulnerability",
+      "description": "FUXA <= 1.1.12 is vulnerable to SQL Injection via `/api/signin`.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-p46g-8c3q-89p2",
+      "publishedAt": "2023-09-22T00:30:29Z",
+      "modifiedAt": "2023-11-07T05:04:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p46g-8c3q-89p2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-31719"
+        }
+      ],
+      "affectedRange": "<= 1.1.12"
+    },
+    {
+      "id": "GHSA-v9q5-9crp-92f9",
+      "title": "FUXA SQL Injection vulnerability",
+      "description": "A SQL Injection attack in FUXA <= 1.1.12 allows exfiltration of confidential information from the database.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v9q5-9crp-92f9",
+      "publishedAt": "2023-09-22T00:30:29Z",
+      "modifiedAt": "2023-11-07T05:04:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v9q5-9crp-92f9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-31717"
+        }
+      ],
+      "affectedRange": "<= 1.1.12"
+    }
+  ]
+}

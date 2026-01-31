@@ -1,0 +1,27 @@
+{
+  "name": "@turbo-boost/commands",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mp76-7w5v-pr75",
+      "title": "TurboBoost Commands vulnerable to arbitrary method invocation",
+      "description": "### Impact\nTurboBoost Commands has existing protections in place to guarantee that only public methods on Command classes can be invoked; however, the existing checks aren't as robust as they should be. It's possible for a sophisticated attacker to invoke more methods than should be permitted depending on the the strictness of authorization checks that individual applications enforce. Being able to call some of these methods can have security implications.\n\n#### Details\nCommands verify that the ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mp76-7w5v-pr75",
+      "publishedAt": "2024-03-15T19:53:50Z",
+      "modifiedAt": "2024-03-18T16:48:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mp76-7w5v-pr75"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-28181"
+        }
+      ],
+      "affectedRange": ">= 0.2.0, < 0.2.2",
+      "fixedVersion": "0.2.2"
+    }
+  ]
+}

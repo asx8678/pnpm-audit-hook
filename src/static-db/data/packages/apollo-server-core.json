@@ -1,0 +1,57 @@
+{
+  "name": "apollo-server-core",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j5g3-5c8r-7qfx",
+      "title": "Prevent logging invalid header values",
+      "description": "## Impact\n### What kind of vulnerability is it?\nApollo Server can log sensitive information (Studio API keys) if they are passed incorrectly (with leading/trailing whitespace) or if they have any characters that are invalid as part of a header value.\n\n### Who is impacted?\nUsers who (all of the below):\n* use either the schema reporting or usage reporting feature\n* use an Apollo Studio API key which has invalid header values\n* use the default fetcher (`node-fetch`) or configured their own `node-fe",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-j5g3-5c8r-7qfx",
+      "publishedAt": "2023-08-30T21:24:57Z",
+      "modifiedAt": "2023-08-30T21:24:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j5g3-5c8r-7qfx"
+        }
+      ],
+      "affectedRange": "< 2.26.1",
+      "fixedVersion": "2.26.1"
+    },
+    {
+      "id": "GHSA-8r69-3cvp-wxc3",
+      "title": "Batched HTTP requests may set incorrect `cache-control` response header",
+      "description": "### Impact\nIn Apollo Server 3 and 4, the `cache-control` HTTP response header may not reflect the cache policy that should apply to an HTTP request when that HTTP request contains multiple operations using HTTP batching. This could lead to data being inappropriately cached and shared.\n\nApollo Server allows clients to send multiple operations in a single HTTP request.  The results of these operations are returned in a single HTTP response, with a single set of headers.  Apollo Client Web and Apol",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8r69-3cvp-wxc3",
+      "publishedAt": "2022-11-02T18:18:10Z",
+      "modifiedAt": "2023-01-08T05:03:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8r69-3cvp-wxc3"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.11.0",
+      "fixedVersion": "3.11.0"
+    },
+    {
+      "id": "GHSA-2fvv-qxrq-7jq6",
+      "title": "apollo-server-core vulnerable to URL-based XSS attack affecting IE11 on default landing page",
+      "description": "### Impact\n\nThe default landing page contained HTML to display a sample `curl` command which is made visible if the full landing page bundle could not be fetched from Apollo's CDN. The server's URL is directly interpolated into this command inside the browser from `window.location.href`. On some older browsers such as IE11, this value is not URI-encoded. On such browsers, opening a malicious URL pointing at an Apollo Router could cause execution of attacker-controlled JavaScript.\n\nThis only affe",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2fvv-qxrq-7jq6",
+      "publishedAt": "2022-08-18T18:55:01Z",
+      "modifiedAt": "2023-01-07T05:05:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2fvv-qxrq-7jq6"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.10.1",
+      "fixedVersion": "3.10.1"
+    }
+  ]
+}

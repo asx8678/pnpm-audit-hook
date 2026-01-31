@@ -1,0 +1,26 @@
+{
+  "name": "foundation-sites",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p8pc-3f7w-jr5q",
+      "title": "Foundation Regular Expression Denial of Service vulnerability",
+      "description": "Foundation is a front-end framework. Versions 6.3.3 and prior contain one or more regular expressions that are vulnerable to Regular Expression Denial of Service (ReDoS). As of time of publication, it is unknown if any fixes are available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p8pc-3f7w-jr5q",
+      "publishedAt": "2024-10-26T21:30:46Z",
+      "modifiedAt": "2024-11-13T23:24:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p8pc-3f7w-jr5q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26304"
+        }
+      ],
+      "affectedRange": "<= 6.3.3"
+    }
+  ]
+}

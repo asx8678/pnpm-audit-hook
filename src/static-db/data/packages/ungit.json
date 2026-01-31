@@ -1,0 +1,27 @@
+{
+  "name": "ungit",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hf8c-xr89-vfm5",
+      "title": "Command Injection in ungit",
+      "description": "The package ungit before 1.5.20 are vulnerable to Remote Code Execution (RCE) via argument injection. The issue occurs when calling the /api/fetch endpoint. User controlled values (remote and ref) are passed to the git fetch command. By injecting some git options it was possible to get arbitrary command execution.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hf8c-xr89-vfm5",
+      "publishedAt": "2022-03-22T00:00:41Z",
+      "modifiedAt": "2023-01-27T05:00:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hf8c-xr89-vfm5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25766"
+        }
+      ],
+      "affectedRange": "< 1.5.20",
+      "fixedVersion": "1.5.20"
+    }
+  ]
+}

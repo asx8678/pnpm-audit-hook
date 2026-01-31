@@ -1,0 +1,27 @@
+{
+  "name": "remult",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7hh3-3x64-v2g9",
+      "title": "When setting EntityOptions.apiPrefilter to a function, the filter is not applied to API requests for a resource by Id",
+      "description": "### Impact\nIf you used the [apiPrefilter](https://remult.dev/docs/ref_entity.html#apiprefilter) option of the `@Entity` decorator, by setting it to a function that returns a filter that prevents unauthorized access to data, an attacker who knows the `id` of an entity instance she is not authorized to access, can gain read, update and delete access to it.\n\n### Patches\nThe issue is fixed in version 0.20.6\n\n### Workarounds\nSet the `apiPrefilter` option to a filter object instead of a function.\n\n###",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7hh3-3x64-v2g9",
+      "publishedAt": "2023-06-20T18:50:15Z",
+      "modifiedAt": "2023-11-09T05:02:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7hh3-3x64-v2g9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-35167"
+        }
+      ],
+      "affectedRange": "< 0.20.6",
+      "fixedVersion": "0.20.6"
+    }
+  ]
+}

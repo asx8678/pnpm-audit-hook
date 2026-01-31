@@ -1,0 +1,26 @@
+{
+  "name": "string-math",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-994j-5c83-r424",
+      "title": "string-math's string-math.js vulnerability can cause Regex Denial of Service (ReDoS) ",
+      "description": "string-math v1.2.2 was discovered to contain a Regex Denial of Service (ReDoS) which is exploited via a crafted input.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-994j-5c83-r424",
+      "publishedAt": "2025-06-30T18:31:50Z",
+      "modifiedAt": "2025-06-30T21:39:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-994j-5c83-r424"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-45143"
+        }
+      ],
+      "affectedRange": "<= 1.2.2"
+    }
+  ]
+}

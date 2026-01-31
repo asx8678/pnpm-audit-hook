@@ -1,0 +1,46 @@
+{
+  "name": "oauth2-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2fw4-mgq9-39cx",
+      "title": "Code Injection in oauth2-server",
+      "description": "\"oauth2-server (aka node-oauth2-server) through 3.1.1 implements OAuth 2.0 without PKCE. It does not prevent authorization code injection. This is similar to CVE-2020-7692. NOTE: the vendor states 'As RFC7636 is an extension, I think the claim in the Readme of \"RFC 6749 compliant\" is valid and not misleading and I also therefore wouldn't describe this as a \"vulnerability\" with the library per se.'\"",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2fw4-mgq9-39cx",
+      "publishedAt": "2021-04-22T15:53:45Z",
+      "modifiedAt": "2023-02-01T05:05:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2fw4-mgq9-39cx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-18924"
+        }
+      ],
+      "affectedRange": "<= 3.1.1"
+    },
+    {
+      "id": "GHSA-4rg6-fm25-gc34",
+      "title": "oauth2-server through 3.1.1 vulnerable to Open Redirect",
+      "description": "In oauth2-server (aka node-oauth2-server) through 3.1.1, the value of the `redirect_uri` parameter received during the authorization and token request is checked against an incorrect URI pattern (`[a-zA-Z][a-zA-Z0-9+.-]+:`) before making a redirection. This allows a malicious client to pass an XSS payload through the redirect_uri parameter while making an authorization request. NOTE: this vulnerability is similar to CVE-2020-7741.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4rg6-fm25-gc34",
+      "publishedAt": "2022-08-30T00:00:26Z",
+      "modifiedAt": "2023-01-27T05:02:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4rg6-fm25-gc34"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26938"
+        }
+      ],
+      "affectedRange": "<= 3.1.1"
+    }
+  ]
+}

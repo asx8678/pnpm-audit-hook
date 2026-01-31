@@ -1,0 +1,27 @@
+{
+  "name": "antsword",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hq75-ggc3-8h3q",
+      "title": "AntSword RCE and XSS via code injection",
+      "description": "In antSword before 2.1.0, self-XSS in the database configuration leads to code execution via `modules/database/asp/index.js`, `modules/database/custom/index.js`, `modules/database/index.js`, or `modules/database/php/index.js`.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hq75-ggc3-8h3q",
+      "publishedAt": "2022-05-24T16:50:44Z",
+      "modifiedAt": "2023-08-25T21:44:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hq75-ggc3-8h3q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-13970"
+        }
+      ],
+      "affectedRange": "< 2.1.0",
+      "fixedVersion": "2.1.0"
+    }
+  ]
+}

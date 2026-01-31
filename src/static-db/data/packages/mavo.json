@@ -1,0 +1,26 @@
+{
+  "name": "mavo",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3mf5-r4hg-hfx9",
+      "title": "mavo DOM Clobbering vulnerability",
+      "description": "A DOM Clobbering vulnerability in mavo v0.3.2 allows attackers to execute arbitrary code via supplying a crafted HTML element.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3mf5-r4hg-hfx9",
+      "publishedAt": "2025-03-03T18:31:28Z",
+      "modifiedAt": "2025-03-03T22:16:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3mf5-r4hg-hfx9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-53388"
+        }
+      ],
+      "affectedRange": "<= 0.3.2"
+    }
+  ]
+}

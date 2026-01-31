@@ -1,0 +1,27 @@
+{
+  "name": "klona",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8f89-2fwj-5v5r",
+      "title": "Improper Input Validation in klona",
+      "description": "Flaw in input validation in npm package klona version 1.1.0 and earlier may allow prototype pollution attack that may result in remote code execution or denial of service of applications using klona.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8f89-2fwj-5v5r",
+      "publishedAt": "2021-04-13T15:41:24Z",
+      "modifiedAt": "2023-02-01T05:05:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8f89-2fwj-5v5r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8125"
+        }
+      ],
+      "affectedRange": "<= 1.1.0",
+      "fixedVersion": "1.1.1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "azle",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xc76-5pf9-mx8m",
+      "title": "In Azle, calling `setTimer` causes infinite loop of timers",
+      "description": "### Impact\n\nCalling `setTimer` in Azle versions `0.27.0`, `0.28.0`, and `0.29.0` causes an immediate infinite loop of timers to be executed on the canister, each timer attempting to clean up the global state of the previous timer.\n\nThe infinite loop will occur with any valid invocation of `setTimer`.\n\n### Patches\n\nThe problem has been fixed as of Azle version `0.30.0`.\n\n### Workarounds\n\nIf a canister is caught in this infinite loop after calling `setTimer`, the canister can be upgraded and the t",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xc76-5pf9-mx8m",
+      "publishedAt": "2025-03-14T17:31:07Z",
+      "modifiedAt": "2025-03-14T17:31:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xc76-5pf9-mx8m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-29776"
+        }
+      ],
+      "affectedRange": ">= 0.27.0, < 0.30.0",
+      "fixedVersion": "0.30.0"
+    }
+  ]
+}

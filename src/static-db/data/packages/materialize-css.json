@@ -1,0 +1,26 @@
+{
+  "name": "materialize-css",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7jvx-f994-rfw2",
+      "title": "materialize-css vulnerable to cross-site Scripting (XSS) due to improper escape of user input",
+      "description": "All versions of package materialize-css are vulnerable to Cross-site Scripting (XSS) due to improper escape of user input (such as &lt;not-a-tag /&gt;) that is being parsed as HTML/JavaScript, and inserted into the Document Object Model (DOM). This vulnerability can be exploited when the user-input is provided to the autocomplete component.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7jvx-f994-rfw2",
+      "publishedAt": "2022-05-03T00:00:45Z",
+      "modifiedAt": "2023-02-01T05:00:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7jvx-f994-rfw2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25349"
+        }
+      ],
+      "affectedRange": "<= 1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "highlight.run",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9qpj-qq2r-5mcc",
+      "title": "html inputs of type password recorded in plaintext when converted to text inputs",
+      "description": "### Impact\nHighlight may record passwords on customer deployments when a password html input is switched to `type=\"text\"` via a javascript \"Show Password\" button. This differs from the expected behavior which always obfuscates `type=\"password\"` inputs. A customer may assume that switching to `type=\"text\"` would also not record this input; hence, they would not add additional `highlight-mask` css-class obfuscation to this part of the DOM, resulting in unintentional recording of a password value w",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9qpj-qq2r-5mcc",
+      "publishedAt": "2023-05-26T13:52:19Z",
+      "modifiedAt": "2023-11-08T05:05:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9qpj-qq2r-5mcc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-33187"
+        }
+      ],
+      "affectedRange": "< 6.0.0",
+      "fixedVersion": "6.0.0"
+    }
+  ]
+}

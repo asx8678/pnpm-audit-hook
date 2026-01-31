@@ -1,0 +1,27 @@
+{
+  "name": "ra-ui-materialui",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5jcr-82fh-339v",
+      "title": "Cross-Site-Scripting attack on `<RichTextField>`",
+      "description": "### Impact\n\nAll React applications built with react-admin and using the `<RichTextField>` are affected. \n\n`<RichTextField>` outputs the field value using `dangerouslySetInnerHTML` without client-side sanitization. If the data isn't sanitized server-side, this opens a possible Cross-Site-Scripting (XSS) attack. \n\nProof of concept:\n\n```jsx\nimport { RichTextField } from 'react-admin';\n\nconst record = {\n    id: 1,\n    body: `\n<p>\n<strong>War and Peace</strong> is a novel by the Russian author\n<a hre",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5jcr-82fh-339v",
+      "publishedAt": "2023-02-14T00:32:21Z",
+      "modifiedAt": "2023-02-22T22:16:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5jcr-82fh-339v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-25572"
+        }
+      ],
+      "affectedRange": "< 3.19.12",
+      "fixedVersion": "3.19.12"
+    }
+  ]
+}

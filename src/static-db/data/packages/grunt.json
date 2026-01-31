@@ -1,0 +1,69 @@
+{
+  "name": "grunt",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j383-35pm-c5h4",
+      "title": "Path Traversal in Grunt",
+      "description": "Grunt prior to version 1.5.2 is vulnerable to path traversal.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j383-35pm-c5h4",
+      "publishedAt": "2022-04-13T00:00:16Z",
+      "modifiedAt": "2023-04-06T22:55:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j383-35pm-c5h4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0436"
+        }
+      ],
+      "affectedRange": "< 1.5.2",
+      "fixedVersion": "1.5.2"
+    },
+    {
+      "id": "GHSA-rm36-94g8-835r",
+      "title": "Race Condition in Grunt",
+      "description": "file.copy operations in GruntJS are vulnerable to a TOCTOU race condition leading to arbitrary file write in GitHub repository gruntjs/grunt prior to 1.5.3. This vulnerability is capable of arbitrary file writes which can lead to local privilege escalation to the GruntJS user if a lower-privileged user has write access to both source and destination directories as the lower-privileged user can create a symlink to the GruntJS user's .bashrc file or replace /etc/shadow file if the GruntJS user is ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rm36-94g8-835r",
+      "publishedAt": "2022-05-11T00:01:37Z",
+      "modifiedAt": "2023-04-06T22:55:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rm36-94g8-835r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-1537"
+        }
+      ],
+      "affectedRange": "< 1.5.3",
+      "fixedVersion": "1.5.3"
+    },
+    {
+      "id": "GHSA-m5pj-vjjf-4m3h",
+      "title": "Arbitrary Code Execution in grunt",
+      "description": "The package grunt before 1.3.0 are vulnerable to Arbitrary Code Execution due to the default usage of the function load() instead of its secure replacement safeLoad() of the package js-yaml inside grunt.file.readYAML.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m5pj-vjjf-4m3h",
+      "publishedAt": "2021-05-06T18:27:18Z",
+      "modifiedAt": "2023-02-01T05:05:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m5pj-vjjf-4m3h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7729"
+        }
+      ],
+      "affectedRange": "< 1.3.0",
+      "fixedVersion": "1.3.0"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "morgan-json",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fwv4-6mxc-x5h3",
+      "title": "morgan-json vulnerable to Arbitrary Code Execution",
+      "description": "All versions of package morgan-json are vulnerable to Arbitrary Code Execution due to missing sanitization of input passed to the `Function` constructor.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fwv4-6mxc-x5h3",
+      "publishedAt": "2022-08-29T20:06:55Z",
+      "modifiedAt": "2023-01-27T05:02:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fwv4-6mxc-x5h3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25921"
+        }
+      ],
+      "affectedRange": "<= 1.1.0"
+    }
+  ]
+}

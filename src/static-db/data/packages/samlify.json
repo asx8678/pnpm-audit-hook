@@ -1,0 +1,27 @@
+{
+  "name": "samlify",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r683-v43c-6xqv",
+      "title": "samlify SAML Signature Wrapping attack",
+      "description": "A Signature Wrapping attack has been found in samlify <v2.10.0, allowing an attacker to forge a SAML Response to authenticate as any user. \nAn attacker would need a signed XML document by the identity provider.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-r683-v43c-6xqv",
+      "publishedAt": "2025-05-19T22:33:00Z",
+      "modifiedAt": "2025-05-19T22:33:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r683-v43c-6xqv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-47949"
+        }
+      ],
+      "affectedRange": "< 2.10.0",
+      "fixedVersion": "2.10.0"
+    }
+  ]
+}

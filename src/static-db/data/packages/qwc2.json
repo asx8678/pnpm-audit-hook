@@ -1,0 +1,27 @@
+{
+  "name": "qwc2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gxp8-m5rq-3m38",
+      "title": "QGIS QWC2 Cross-Site Scripting vulnerability",
+      "description": "Cross-Site Scripting vulnerability in attribute table in QGIS QWC2 < 2025.08.14 allows an authorized attacker to plant arbitrary JavaScript code in the page.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gxp8-m5rq-3m38",
+      "publishedAt": "2025-10-13T12:31:10Z",
+      "modifiedAt": "2025-10-13T20:24:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gxp8-m5rq-3m38"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-11183"
+        }
+      ],
+      "affectedRange": "< 2025.08.14",
+      "fixedVersion": "2025.08.14"
+    }
+  ]
+}

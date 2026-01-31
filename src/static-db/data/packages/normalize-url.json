@@ -1,0 +1,27 @@
+{
+  "name": "normalize-url",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-px4h-xg32-q955",
+      "title": "ReDoS in normalize-url",
+      "description": "The normalize-url package before 4.5.1, 5.x before 5.3.1, and 6.x before 6.0.1 for Node.js has a ReDoS (regular expression denial of service) issue because it has exponential performance for data: URLs.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-px4h-xg32-q955",
+      "publishedAt": "2021-06-08T23:11:43Z",
+      "modifiedAt": "2023-11-29T22:10:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-px4h-xg32-q955"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-33502"
+        }
+      ],
+      "affectedRange": ">= 4.3.0, < 4.5.1",
+      "fixedVersion": "4.5.1"
+    }
+  ]
+}

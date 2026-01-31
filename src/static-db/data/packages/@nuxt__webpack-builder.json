@@ -1,0 +1,27 @@
+{
+  "name": "@nuxt/webpack-builder",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4gf7-ff8x-hq99",
+      "title": "Opening a malicious website while running a Nuxt dev server could allow read-only access to code",
+      "description": "### Summary\nSource code may be stolen during dev when using webpack / rspack builder and you open a malicious web site.\n\n### Details\nBecause the request for classic script by a script tag is not subject to same origin policy, an attacker can inject `<script src=\"http://localhost:3000/_nuxt/app.js\">` in their site and run the script.\nBy using `Function::toString` against the values in `window.webpackChunknuxt_app`, the attacker can get the source code.\n\n### PoC\n1. Create a nuxt project with webpa",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4gf7-ff8x-hq99",
+      "publishedAt": "2025-01-27T11:31:41Z",
+      "modifiedAt": "2025-01-27T11:31:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4gf7-ff8x-hq99"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-24361"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.15.3",
+      "fixedVersion": "3.15.3"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "dot-notes",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qr4m-jcvc-3382",
+      "title": "Prototype Pollution in dot-notes",
+      "description": "All versions of package dot-notes up to and including version 3.2.0 are vulnerable to Prototype Pollution via the create function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qr4m-jcvc-3382",
+      "publishedAt": "2021-05-06T18:12:00Z",
+      "modifiedAt": "2023-02-01T05:05:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qr4m-jcvc-3382"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7717"
+        }
+      ],
+      "affectedRange": "<= 3.2.0"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "stylelint",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f7xj-rg7h-mc87",
+      "title": "Stylelint has vulnerability in semver dependency",
+      "description": "### Summary\n\nOur `meow` dependency (which we use for our CLI) depended on `semver@5.7.1 `. A vulnerability in this version of `semver` was recently identified and surfaced by `npm audit`:\n\nRegular Expression Denial of Service - https://github.com/advisories/GHSA-c2qf-rxjj-qqgw\n\n### Details\n\nOriginal post by the reporter:\n\n\"my npm audit show the report\n\nsemver  <7.5.2\nSeverity: moderate\nsemver vulnerable to Regular Expression Denial of Service - https://github.com/advisories/GHSA-c2qf-rxjj-qqgw\nN",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-f7xj-rg7h-mc87",
+      "publishedAt": "2023-07-07T20:32:55Z",
+      "modifiedAt": "2024-08-16T11:04:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f7xj-rg7h-mc87"
+        }
+      ],
+      "affectedRange": ">= 8.0.0, < 15.10.1",
+      "fixedVersion": "15.10.1"
+    }
+  ]
+}

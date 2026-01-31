@@ -1,0 +1,27 @@
+{
+  "name": "linux-cmdline",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2c29-wc65-4cx9",
+      "title": "linux-cmdline is vulnerable to Prototype Pollution via the constructor",
+      "description": "The package linux-cmdline is a parser for Linux kernel command line arguments. Versions before 1.0.1 are vulnerable to Prototype Pollution via the constructor.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-2c29-wc65-4cx9",
+      "publishedAt": "2022-05-24T17:26:04Z",
+      "modifiedAt": "2023-01-31T05:02:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2c29-wc65-4cx9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7704"
+        }
+      ],
+      "affectedRange": "< 1.0.1",
+      "fixedVersion": "1.0.1"
+    }
+  ]
+}

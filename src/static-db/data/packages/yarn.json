@@ -1,0 +1,69 @@
+{
+  "name": "yarn",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mpwj-fcr6-x34c",
+      "title": "Yarn untrusted search path vulnerability",
+      "description": "An untrusted search path vulnerability was found in Yarn. When a victim runs certain Yarn commands in a directory with attacker-controlled content, malicious commands could be executed in unexpected ways.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mpwj-fcr6-x34c",
+      "publishedAt": "2024-02-04T21:30:43Z",
+      "modifiedAt": "2024-02-05T20:20:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mpwj-fcr6-x34c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-4435"
+        }
+      ],
+      "affectedRange": "< 1.22.13",
+      "fixedVersion": "1.22.13"
+    },
+    {
+      "id": "GHSA-hjxc-462x-x77j",
+      "title": "TOCTOU Race Condition in Yarn",
+      "description": "The package integrity validation in yarn < 1.19.0 contains a TOCTOU vulnerability where the hash is computed before writing a package to cache. It's not computed again when reading from the cache. This may lead to a cache pollution attack. This issue is fixed in 1.19.0.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hjxc-462x-x77j",
+      "publishedAt": "2022-02-09T22:49:38Z",
+      "modifiedAt": "2023-09-08T23:56:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hjxc-462x-x77j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15608"
+        }
+      ],
+      "affectedRange": "< 1.19.0",
+      "fixedVersion": "1.19.0"
+    },
+    {
+      "id": "GHSA-8mfc-v7wv-p62g",
+      "title": "Path Traversal in Yarn",
+      "description": "Arbitrary filesystem write vulnerability in Yarn 1.21.1 and earlier allows attackers to write to any path on the filesystem and potentially lead to arbitrary code execution by forcing the user to install a malicious package.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8mfc-v7wv-p62g",
+      "publishedAt": "2022-02-09T22:43:37Z",
+      "modifiedAt": "2023-02-01T05:05:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8mfc-v7wv-p62g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8131"
+        }
+      ],
+      "affectedRange": "<= 1.21.1",
+      "fixedVersion": "1.22.0"
+    }
+  ]
+}

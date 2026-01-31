@@ -1,0 +1,153 @@
+{
+  "name": "axios",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4hjh-wcwx-xvwj",
+      "title": "Axios is vulnerable to DoS attack through lack of data size check",
+      "description": "## Summary\n\nWhen Axios runs on Node.js and is given a URL with the `data:` scheme, it does not perform HTTP. Instead, its Node http adapter decodes the entire payload into memory (`Buffer`/`Blob`) and returns a synthetic 200 response.\nThis path ignores `maxContentLength` / `maxBodyLength` (which only protect HTTP responses), so an attacker can supply a very large `data:` URI and cause the process to allocate unbounded memory and crash (DoS), even if the caller requested `responseType: 'stream'`.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4hjh-wcwx-xvwj",
+      "publishedAt": "2025-09-11T21:07:55Z",
+      "modifiedAt": "2026-01-16T14:49:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4hjh-wcwx-xvwj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-58754"
+        }
+      ],
+      "affectedRange": ">= 0.28.0, < 0.30.2",
+      "fixedVersion": "0.30.2"
+    },
+    {
+      "id": "GHSA-jr5f-v2jv-69x6",
+      "title": "axios Requests Vulnerable To Possible SSRF and Credential Leakage via Absolute URL",
+      "description": "### Summary\n\nA previously reported issue in axios demonstrated that using protocol-relative URLs could lead to SSRF (Server-Side Request Forgery). Reference: axios/axios#6463\n\nA similar problem that occurs when passing absolute URLs rather than protocol-relative URLs to axios has been identified. Even if ⁠`baseURL` is set, axios sends the request to the specified absolute URL, potentially causing SSRF and credential leakage. This issue impacts both server-side and client-side usage of axios.\n\n##",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jr5f-v2jv-69x6",
+      "publishedAt": "2025-03-07T15:16:00Z",
+      "modifiedAt": "2025-11-27T08:44:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jr5f-v2jv-69x6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-27152"
+        }
+      ],
+      "affectedRange": "< 0.30.0",
+      "fixedVersion": "0.30.0"
+    },
+    {
+      "id": "GHSA-rm8p-cx58-hcvx",
+      "title": "Withdrawn Advisory: Axios has Transitive Critical Vulnerability via form-data",
+      "description": "### Withdrawn Advisory\nThis advisory has been withdrawn because users of Axios 1.10.0 have the flexibility to use a patched version of form-data, the software in which the vulnerability originates, without upgrading Axios to address GHSA-fjxv-7rqg-78g4.\n\n### Original Description\nA critical vulnerability exists in the form-data package used by `axios@1.10.0`. The issue allows an attacker to predict multipart boundary values generated using `Math.random()`, opening the door to HTTP parameter pollu",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rm8p-cx58-hcvx",
+      "publishedAt": "2025-07-23T16:49:38Z",
+      "modifiedAt": "2025-07-24T13:35:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rm8p-cx58-hcvx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54371"
+        }
+      ],
+      "affectedRange": "= 1.10.0",
+      "fixedVersion": "1.11.0"
+    },
+    {
+      "id": "GHSA-cph5-m8f7-6c5x",
+      "title": "axios Inefficient Regular Expression Complexity vulnerability",
+      "description": "axios before v0.21.2 is vulnerable to Inefficient Regular Expression Complexity.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cph5-m8f7-6c5x",
+      "publishedAt": "2021-09-01T18:23:02Z",
+      "modifiedAt": "2025-02-12T05:10:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cph5-m8f7-6c5x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3749"
+        }
+      ],
+      "affectedRange": "< 0.21.2",
+      "fixedVersion": "0.21.2"
+    },
+    {
+      "id": "GHSA-8hc4-vh64-cxmj",
+      "title": "Server-Side Request Forgery in axios",
+      "description": "axios 1.7.2 allows SSRF via unexpected behavior where requests for path relative URLs get processed as protocol relative URLs.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8hc4-vh64-cxmj",
+      "publishedAt": "2024-08-12T15:30:49Z",
+      "modifiedAt": "2024-08-13T19:53:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8hc4-vh64-cxmj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-39338"
+        }
+      ],
+      "affectedRange": ">= 1.3.2, <= 1.7.3",
+      "fixedVersion": "1.7.4"
+    },
+    {
+      "id": "GHSA-wf5p-g6vw-rhxx",
+      "title": "Axios Cross-Site Request Forgery Vulnerability",
+      "description": "An issue discovered in Axios 0.8.1 through 1.5.1 inadvertently reveals the confidential XSRF-TOKEN stored in cookies by including it in the HTTP header X-XSRF-TOKEN for every request made to any host allowing attackers to view sensitive information.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wf5p-g6vw-rhxx",
+      "publishedAt": "2023-11-08T21:30:37Z",
+      "modifiedAt": "2024-06-21T21:33:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wf5p-g6vw-rhxx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-45857"
+        }
+      ],
+      "affectedRange": ">= 0.8.1, < 0.28.0",
+      "fixedVersion": "0.28.0"
+    },
+    {
+      "id": "GHSA-4w2v-q235-vp99",
+      "title": "Axios vulnerable to Server-Side Request Forgery",
+      "description": "Axios NPM package 0.21.0 contains a Server-Side Request Forgery (SSRF) vulnerability where an attacker is able to bypass a proxy by providing a URL that responds with a redirect to a restricted host or IP address.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4w2v-q235-vp99",
+      "publishedAt": "2021-01-04T20:59:40Z",
+      "modifiedAt": "2023-02-01T05:05:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4w2v-q235-vp99"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28168"
+        }
+      ],
+      "affectedRange": "< 0.21.1",
+      "fixedVersion": "0.21.1"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "grunt-util-property",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4hq8-jgr8-mw9j",
+      "title": "grunt-util-property 0.0.2 function call can add/modify properties of Object.prototype using a __proto__ payload",
+      "description": "This affects all versions of package grunt-util-property. The function call could be tricked into adding or modifying properties of `Object.prototype` using a `__proto__` payload.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4hq8-jgr8-mw9j",
+      "publishedAt": "2022-07-18T00:00:33Z",
+      "modifiedAt": "2023-01-27T05:05:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4hq8-jgr8-mw9j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7641"
+        }
+      ],
+      "affectedRange": "<= 0.0.2"
+    }
+  ]
+}

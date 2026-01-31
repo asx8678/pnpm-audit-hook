@@ -1,0 +1,27 @@
+{
+  "name": "@mockoon/cli",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w7f9-wqc4-3wxr",
+      "title": "Mockoon has a Path Traversal and LFI in the static file serving endpoint",
+      "description": "### Summary\nA mock API configuration for static file serving following the same approach presented in the [documentation page](https://mockoon.com/tutorials/create-endpoint-serving-static-file/), where the server filename is generated via templating features from user input is vulnerable to Path Traversal and LFI, allowing an attacker to get any file in the mock server filesystem.\nThe issue may be particularly relevant in cloud hosted server instances\n\n### Details\nIn `sendFileWithCallback`([code",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w7f9-wqc4-3wxr",
+      "publishedAt": "2025-03-11T16:17:42Z",
+      "modifiedAt": "2025-09-13T03:03:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w7f9-wqc4-3wxr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59049"
+        }
+      ],
+      "affectedRange": "<= 9.1.0",
+      "fixedVersion": "9.2.0"
+    }
+  ]
+}

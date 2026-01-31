@@ -1,0 +1,48 @@
+{
+  "name": "@grpc/grpc-js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7v5v-9h63-cj86",
+      "title": "@grpc/grpc-js can allocate memory for incoming messages well above configured limits",
+      "description": "### Impact\nThere are two separate code paths in which memory can be allocated per message in excess of the `grpc.max_receive_message_length` channel option:\n\n 1. If an incoming message has a size on the wire greater than the configured limit, the entire message is buffered before it is discarded.\n 2. If an incoming message has a size within the limit on the wire but decompresses to a size greater than the limit, the entire message is decompressed into memory, and on the server is not discarded.\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7v5v-9h63-cj86",
+      "publishedAt": "2024-06-10T21:38:05Z",
+      "modifiedAt": "2024-06-11T21:44:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7v5v-9h63-cj86"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-37168"
+        }
+      ],
+      "affectedRange": "< 1.8.22",
+      "fixedVersion": "1.8.22"
+    },
+    {
+      "id": "GHSA-pp75-xfpw-37g9",
+      "title": "Prototype pollution in grpc and @grpc/grpc-js",
+      "description": "\"The package grpc before 1.24.4 and the package @grpc/grpc-js before 1.1.8 are vulnerable to Prototype Pollution via loadPackageDefinition.\"",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pp75-xfpw-37g9",
+      "publishedAt": "2021-05-10T19:16:14Z",
+      "modifiedAt": "2023-01-27T05:09:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pp75-xfpw-37g9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7768"
+        }
+      ],
+      "affectedRange": "< 1.1.8",
+      "fixedVersion": "1.1.8"
+    }
+  ]
+}

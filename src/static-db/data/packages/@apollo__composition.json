@@ -1,0 +1,44 @@
+{
+  "name": "@apollo/composition",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m8jr-fxqx-8xx6",
+      "title": "Apollo Federation has Improper Enforcement of Access Control on Transitive Fields",
+      "description": "# Summary\nA vulnerability in Apollo Federation's composition logic did not enforce that fields depending on protected data through `@requires` and/or `@fromContext` directives have the same access control requirements as the fields they reference. This allowed queries to access protected fields indirectly through their dependencies, bypassing access control checks. A fix to composition logic in Federation now enforces that dependent fields match the access control requirements from of the fields",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m8jr-fxqx-8xx6",
+      "publishedAt": "2025-11-14T21:49:26Z",
+      "modifiedAt": "2025-11-14T21:50:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m8jr-fxqx-8xx6"
+        }
+      ],
+      "affectedRange": ">= 2.12.0-preview.0, < 2.12.1",
+      "fixedVersion": "2.12.1"
+    },
+    {
+      "id": "GHSA-mx7m-j9xf-62hw",
+      "title": "@apollo/composition has Improper Enforcement of Access Control on Interface Types and Fields",
+      "description": "# Summary\nA vulnerability in Apollo Federation's composition logic allowed some queries to Apollo Router to improperly bypass access controls on types/fields. Apollo Federation incorrectly allowed user-defined access control directives on interface types/fields, which could be bypassed by instead querying the implementing object types/fields in Apollo Router via inline or named fragments. A fix to composition logic in Federation now disallows interfaces types and fields to contain user-defined a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mx7m-j9xf-62hw",
+      "publishedAt": "2025-11-14T17:46:55Z",
+      "modifiedAt": "2025-11-14T17:46:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mx7m-j9xf-62hw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64530"
+        }
+      ],
+      "affectedRange": ">= 2.12.0-preview.1, < 2.12.1",
+      "fixedVersion": "2.12.1"
+    }
+  ]
+}

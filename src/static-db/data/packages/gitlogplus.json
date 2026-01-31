@@ -1,0 +1,26 @@
+{
+  "name": "gitlogplus",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3fxp-vwxm-2r5p",
+      "title": "Command injection in gitlogplus",
+      "description": "All versions of package gitlogplus are vulnerable to Command Injection via the main functionality, as options attributes are appended to the command to be executed without sanitization.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3fxp-vwxm-2r5p",
+      "publishedAt": "2021-07-26T21:23:35Z",
+      "modifiedAt": "2023-02-01T05:05:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3fxp-vwxm-2r5p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23412"
+        }
+      ],
+      "affectedRange": "<= 3.1.7"
+    }
+  ]
+}

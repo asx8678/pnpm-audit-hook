@@ -1,0 +1,47 @@
+{
+  "name": "bootstrap-table",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-grw5-g9h2-wpg8",
+      "title": "Cross-site Scripting in bootstrap-table",
+      "description": "Bootstrap Tables XSS vulnerability with Table Export plug-in when exportOptions: htmlContent is true in GitHub repository wenzhixin/bootstrap-table prior to 1.20.2. Disclosing session cookies, disclosing secure session data, exfiltrating data to third-parties.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-grw5-g9h2-wpg8",
+      "publishedAt": "2022-05-17T00:01:42Z",
+      "modifiedAt": "2023-02-03T05:01:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-grw5-g9h2-wpg8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-1726"
+        }
+      ],
+      "affectedRange": "< 1.20.2",
+      "fixedVersion": "1.20.2"
+    },
+    {
+      "id": "GHSA-mw6q-98mp-g8g8",
+      "title": "Cross-site Scripting in bootstrap-table",
+      "description": "This affects all versions of package bootstrap-table. A type confusion vulnerability can lead to a bypass of input sanitization when the input provided to the escapeHTML function is an array (instead of a string) even if the escape attribute is set.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-mw6q-98mp-g8g8",
+      "publishedAt": "2021-11-08T17:54:46Z",
+      "modifiedAt": "2023-01-23T18:49:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mw6q-98mp-g8g8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23472"
+        }
+      ],
+      "affectedRange": "<= 1.19.0"
+    }
+  ]
+}

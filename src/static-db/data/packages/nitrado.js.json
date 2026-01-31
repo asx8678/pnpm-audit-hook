@@ -1,0 +1,27 @@
+{
+  "name": "nitrado.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vqc4-v8hc-h2jg",
+      "title": "Polynomial regular expression used on uncontrolled data in nitrado.js",
+      "description": "### Impact\nPossible ReDoS with lib input of `{{` and with many repetitions of `{{|`\n\n### Patches\nPatched in all versions above `0.2.5`\n\n### Workarounds\nNo known work arounds.\n\n### References\n- OWASP: [Regular expression Denial of Service - ReDoS](https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS)\n- Wikipedia: [ReDoS](https://en.wikipedia.org/wiki/ReDoS).\n- Wikipedia: [Time complexity](https://en.wikipedia.org/wiki/Time_complexity).\n- James Kirrage, Asiri Rathnayake, Ha",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vqc4-v8hc-h2jg",
+      "publishedAt": "2022-08-31T22:23:39Z",
+      "modifiedAt": "2023-01-29T05:05:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vqc4-v8hc-h2jg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-36034"
+        }
+      ],
+      "affectedRange": "< 0.2.5",
+      "fixedVersion": "0.2.5"
+    }
+  ]
+}

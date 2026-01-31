@@ -1,0 +1,27 @@
+{
+  "name": "screenshot-desktop",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gjx4-2c7g-fm94",
+      "title": "screenshot-desktop vulnerable to command Injection via `format` option",
+      "description": "## Impact\nThis vulnerability is a **command injection** issue.  \nWhen user-controlled input is passed into the `format` option of the screenshot function, it is interpolated into a shell command without sanitization.  \nAn attacker can craft malicious input such as:\n\n    { format: \"; echo vulnerable > /tmp/hello;\" }\n\nThis results in arbitrary command execution with the privileges of the calling process.\n\n**Who is impacted:**  \nAny application that accepts untrusted input and forwards it directly ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-gjx4-2c7g-fm94",
+      "publishedAt": "2025-08-19T20:17:45Z",
+      "modifiedAt": "2025-08-19T20:17:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gjx4-2c7g-fm94"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-55294"
+        }
+      ],
+      "affectedRange": "< 1.15.2",
+      "fixedVersion": "1.15.2"
+    }
+  ]
+}

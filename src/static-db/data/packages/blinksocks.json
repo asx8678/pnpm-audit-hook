@@ -1,0 +1,26 @@
+{
+  "name": "blinksocks",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pqj5-37xf-x5gc",
+      "title": "blinksocks has weak encryption algorithms",
+      "description": "An issue was discovered in blinksocks version 3.3.8, allows remote attackers to obtain sensitive information via weak encryption algorithms in the component `/presets/ssr-auth-chain.js`.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pqj5-37xf-x5gc",
+      "publishedAt": "2023-12-21T12:30:29Z",
+      "modifiedAt": "2023-12-21T18:12:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pqj5-37xf-x5gc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-50481"
+        }
+      ],
+      "affectedRange": "<= 3.3.8"
+    }
+  ]
+}

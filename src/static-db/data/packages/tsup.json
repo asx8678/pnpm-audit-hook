@@ -1,0 +1,26 @@
+{
+  "name": "tsup",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3mv9-4h5g-vhg3",
+      "title": "tsup DOM Clobbering vulnerability",
+      "description": "A DOM Clobbering vulnerability in tsup v8.3.4 allows attackers to execute arbitrary code via a crafted script in the import.meta.url to document.currentScript in cjs_shims.js components",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-3mv9-4h5g-vhg3",
+      "publishedAt": "2025-03-03T18:31:29Z",
+      "modifiedAt": "2025-03-03T22:22:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3mv9-4h5g-vhg3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-53384"
+        }
+      ],
+      "affectedRange": "<= 8.3.4"
+    }
+  ]
+}

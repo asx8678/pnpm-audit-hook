@@ -1,0 +1,23 @@
+{
+  "name": "readthedocs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-98pf-gfh3-x3mp",
+      "title": "Read the Docs vulnerable to Cross-Site Scripting (XSS)",
+      "description": "### Impact\n\nThis vulnerability allowed a malicious user to serve arbitrary HTML files from the main application domain (readthedocs[.]org/readthedocs[.]com) by exploiting a vulnerability in the code that serves downloadable content from a project. \n\nExploiting this would have required the attacker to get a logged-in user to visit the malicious URL, which would have allowed the attacker to take control of the user's session with JavaScript (making requests to the API/site on behalf of the user). ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-98pf-gfh3-x3mp",
+      "publishedAt": "2022-11-10T16:02:51Z",
+      "modifiedAt": "2023-01-07T05:06:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-98pf-gfh3-x3mp"
+        }
+      ],
+      "affectedRange": "< 8.8.1",
+      "fixedVersion": "8.8.1"
+    }
+  ]
+}

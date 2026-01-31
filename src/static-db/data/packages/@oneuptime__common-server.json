@@ -1,0 +1,27 @@
+{
+  "name": "@oneuptime/common-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-246p-xmg8-wmcq",
+      "title": "OneUptime Vulnerable to a Privilege Escalation via Local Storage Key Manipulation",
+      "description": "## Summary\nA security vulnerability exists in oneuptime's local storage handling, where a regular user can escalate privileges by modifying the `is_master_admin` key to `true`. This allows unauthorized access to administrative functionalities.\n\n## Details\nThe vulnerability lies in the improper validation of client-side stored data within the web application. Specifically, the `is_master_admin` key, stored in the local storage of the browser, can be manipulated by an attacker. By changing this ke",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-246p-xmg8-wmcq",
+      "publishedAt": "2024-03-25T19:37:27Z",
+      "modifiedAt": "2024-03-26T13:40:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-246p-xmg8-wmcq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-29194"
+        }
+      ],
+      "affectedRange": "< 7.0.1815",
+      "fixedVersion": "7.0.1815"
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "name": "pnpm",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m733-5w8f-5ggw",
+      "title": "pnpm has symlink traversal in file:/git dependencies",
+      "description": "### Summary\nWhen pnpm installs a `file:` (directory) or `git:` dependency, it follows symlinks and reads their target contents without constraining them to the package root. A malicious package containing a symlink to an absolute path (e.g., `/etc/passwd`, `~/.ssh/id_rsa`) causes pnpm to copy that file's contents into `node_modules`, leaking local data.\n\n**Preconditions:** Only affects `file:` and `git:` dependencies. Registry packages (npm) have symlinks stripped during publish and are NOT affe",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m733-5w8f-5ggw",
+      "publishedAt": "2026-01-26T21:02:33Z",
+      "modifiedAt": "2026-01-29T03:23:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m733-5w8f-5ggw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24056"
+        }
+      ],
+      "affectedRange": "< 10.28.2",
+      "fixedVersion": "10.28.2"
+    },
+    {
+      "id": "GHSA-xpqm-wm3m-f34h",
+      "title": "pnpm scoped bin name Path Traversal allows arbitrary file creation outside node_modules/.bin",
+      "description": "### Summary\nA path traversal vulnerability in pnpm's bin linking allows malicious npm packages to create executable shims or symlinks outside of `node_modules/.bin`. Bin names starting with `@` bypass validation, and after scope normalization, path traversal sequences like `../../` remain intact.\n\n### Details\nThe vulnerability exists in the bin name validation and normalization logic:\n\n**1. Validation Bypass (`pkg-manager/package-bins/src/index.ts`)**\n\nThe filter allows any bin name starting wit",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xpqm-wm3m-f34h",
+      "publishedAt": "2026-01-26T21:02:39Z",
+      "modifiedAt": "2026-01-29T03:23:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xpqm-wm3m-f34h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23890"
+        }
+      ],
+      "affectedRange": "< 10.28.1",
+      "fixedVersion": "10.28.1"
+    },
+    {
+      "id": "GHSA-6x96-7vc8-cm3p",
+      "title": "pnpm has Windows-specific tarball Path Traversal",
+      "description": "### Summary\nA path traversal vulnerability in pnpm's tarball extraction allows malicious packages to write files outside the package directory on Windows. The path normalization only checks for `./` but not `.\\`. On Windows, backslashes are directory separators, enabling path traversal.\n\n**This vulnerability is Windows-only.**\n\n### Details\n**1. Incomplete Path Normalization (`store/cafs/src/parseTarball.ts:107-110`)**\n\n```typescript\nif (fileName.includes('./')) {\n  fileName = path.posix.join('/'",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6x96-7vc8-cm3p",
+      "publishedAt": "2026-01-26T21:02:44Z",
+      "modifiedAt": "2026-01-29T03:23:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6x96-7vc8-cm3p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23889"
+        }
+      ],
+      "affectedRange": "< 10.28.1",
+      "fixedVersion": "10.28.1"
+    },
+    {
+      "id": "GHSA-6pfh-p556-v868",
+      "title": "pnpm: Binary ZIP extraction allows arbitrary file write via path traversal (Zip Slip)",
+      "description": "### Summary\n\nA path traversal vulnerability in pnpm's binary fetcher allows malicious packages to write files outside the intended extraction directory. The vulnerability has two attack vectors: (1) Malicious ZIP entries containing `../` or absolute paths that escape the extraction root via AdmZip's `extractAllTo`, and (2) The `BinaryResolution.prefix` field is concatenated into the extraction path without validation, allowing a crafted prefix like `../../evil` to redirect extracted files outsid",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6pfh-p556-v868",
+      "publishedAt": "2026-01-26T21:02:49Z",
+      "modifiedAt": "2026-01-28T16:18:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6pfh-p556-v868"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23888"
+        }
+      ],
+      "affectedRange": "< 10.28.1",
+      "fixedVersion": "10.28.1"
+    },
+    {
+      "id": "GHSA-v253-rj99-jwpq",
+      "title": "pnpm has Path Traversal via arbitrary file permission modification ",
+      "description": "### Summary\nWhen pnpm processes a package's `directories.bin` field, it uses `path.join()` without validating the result stays within the package root. A malicious npm package can specify `\"directories\": {\"bin\": \"../../../../tmp\"}` to escape the package directory, causing pnpm to chmod 755 files at arbitrary locations.\n\n**Note:** Only affects Unix/Linux/macOS. Windows is not affected (`fixBin` gated by `EXECUTABLE_SHEBANG_SUPPORTED`).\n\n### Details\nVulnerable code in `pkg-manager/package-bins/src",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v253-rj99-jwpq",
+      "publishedAt": "2026-01-26T21:29:58Z",
+      "modifiedAt": "2026-01-26T21:29:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v253-rj99-jwpq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24131"
+        }
+      ],
+      "affectedRange": "< 10.28.2",
+      "fixedVersion": "10.28.2"
+    },
+    {
+      "id": "GHSA-2phv-j68v-wwqx",
+      "title": "pnpm vulnerable to Command Injection via environment variable substitution",
+      "description": "## Summary\n\nA command injection vulnerability exists in pnpm when using environment variable substitution in `.npmrc` configuration files with `tokenHelper` settings. An attacker who can control environment variables during pnpm operations could achieve remote code execution (RCE) in build environments.\n\n## Affected Components\n\n- **Package**: pnpm\n- **Versions**: All versions using `@pnpm/config.env-replace` and `loadToken` functionality\n- **File**: `pnpm/network/auth-header/src/getAuthHeadersFr",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2phv-j68v-wwqx",
+      "publishedAt": "2026-01-07T18:51:07Z",
+      "modifiedAt": "2026-01-08T20:07:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2phv-j68v-wwqx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-69262"
+        }
+      ],
+      "affectedRange": ">= 6.25.0, < 10.27.0",
+      "fixedVersion": "10.27.0"
+    },
+    {
+      "id": "GHSA-379q-355j-w6rj",
+      "title": "pnpm v10+ Bypass \"Dependency lifecycle scripts execution disabled by default\"",
+      "description": "# pnpm v10+ Git Dependency Script Execution Bypass\n\n### Summary\n\nA security bypass vulnerability in pnpm v10+ allows git-hosted dependencies to execute arbitrary code during `pnpm install`, circumventing the v10 security feature \"Dependency lifecycle scripts execution disabled by default\". While pnpm v10 blocks `postinstall` scripts via the `onlyBuiltDependencies` mechanism, git dependencies can still execute `prepare`, `prepublish`, and `prepack` scripts during the fetch phase, enabling remote ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-379q-355j-w6rj",
+      "publishedAt": "2026-01-07T19:07:43Z",
+      "modifiedAt": "2026-01-08T20:05:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-379q-355j-w6rj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-69264"
+        }
+      ],
+      "affectedRange": ">= 10.0.0, < 10.26.0",
+      "fixedVersion": "10.26.0"
+    },
+    {
+      "id": "GHSA-7vhp-vf5g-r2fw",
+      "title": "pnpm Has Lockfile Integrity Bypass that Allows Remote Dynamic Dependencies",
+      "description": "### Summary\n\nHTTP tarball dependencies (and git-hosted tarballs) are stored in the lockfile without integrity hashes. This allows the remote server to serve different content on each install, even when a lockfile is committed.\n\n### Details\n\nWhen a package depends on an HTTP tarball URL, pnpm's tarball resolver returns only the URL without computing an integrity hash:\n\n`resolving/tarball-resolver/src/index.ts`:\n```javascript\nreturn {\n  resolution: {\n    tarball: resolvedUrl,\n    // No integrity f",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7vhp-vf5g-r2fw",
+      "publishedAt": "2026-01-07T19:06:59Z",
+      "modifiedAt": "2026-01-08T20:05:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7vhp-vf5g-r2fw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-69263"
+        }
+      ],
+      "affectedRange": "< 10.26.0",
+      "fixedVersion": "10.26.0"
+    },
+    {
+      "id": "GHSA-8cc4-rfj6-fhg4",
+      "title": "pnpm uses the md5 path shortening function causes packet paths to coincide, which causes indirect packet overwriting",
+      "description": "The path shortening function is used in pnpm：\n```\nexport function depPathToFilename (depPath: string, maxLengthWithoutHash: number): string {\n  let filename = depPathToFilenameUnescaped(depPath).replace(/[\\\\/:*?\"<>|]/g, '+')\n  if (filename.includes('(')) {\n    filename = filename\n      .replace(/\\)$/, '')\n      .replace(/(\\)\\()|\\(|\\)/g, '_')\n  }\n  if (filename.length > maxLengthWithoutHash || filename !== filename.toLowerCase() && !filename.startsWith('file+')) {\n    return `${filename.substring",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8cc4-rfj6-fhg4",
+      "publishedAt": "2025-04-23T14:05:47Z",
+      "modifiedAt": "2025-04-23T19:16:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8cc4-rfj6-fhg4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-47829"
+        }
+      ],
+      "affectedRange": "< 10.0.0",
+      "fixedVersion": "10.0.0"
+    },
+    {
+      "id": "GHSA-vm32-9rqf-rh3r",
+      "title": "pnpm no-script global cache poisoning via overrides / `ignore-scripts` evasion",
+      "description": "### Summary\n\npnpm seems to mishandle overrides and global cache:\n1. Overrides from one workspace leak into npm metadata saved in global cache\n2. npm metadata from global cache affects other workspaces\n3. installs by default don't revalidate the data (including on first lockfile generation)\n\nThis can make workspace A (even running with `ignore-scripts=true`) posion global cache and execute scripts in workspace B\n\nUsers generally expect `ignore-scripts` to be sufficient to prevent immediate code e",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vm32-9rqf-rh3r",
+      "publishedAt": "2024-12-10T22:42:41Z",
+      "modifiedAt": "2024-12-10T22:42:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vm32-9rqf-rh3r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-53866"
+        }
+      ],
+      "affectedRange": "< 9.15.0",
+      "fixedVersion": "9.15.0"
+    },
+    {
+      "id": "GHSA-5r98-f33j-g8h7",
+      "title": "pnpm incorrectly parses tar archives relative to specification",
+      "description": "### Summary\nIt is possible to construct a tarball that, when installed via npm or parsed by the registry is safe, but when installed via pnpm is malicious, due to how pnpm parses tar archives.\n\n### Details\nThe TAR format is an append-only archive format, and as such, the specification for how to update a file is to add a new record to the end with the updated version of the file. This means that it is completely valid for an archive to contain multiple copies of, say, `package.json`, and the exp",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5r98-f33j-g8h7",
+      "publishedAt": "2023-08-01T17:00:55Z",
+      "modifiedAt": "2023-11-11T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5r98-f33j-g8h7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-37478"
+        }
+      ],
+      "affectedRange": ">= 8.0.0, < 8.6.8",
+      "fixedVersion": "8.6.8"
+    },
+    {
+      "id": "GHSA-9m87-6fj3-c5xh",
+      "title": "Untrusted Search Path in PNPM",
+      "description": "PNPM prior to v6.15.1 was discovered to contain an untrusted search path which causes the application to behave in unexpected ways when users execute PNPM commands in a directory containing malicious content. This vulnerability occurs when the application is ran on Windows OS.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9m87-6fj3-c5xh",
+      "publishedAt": "2022-03-23T00:00:24Z",
+      "modifiedAt": "2023-10-31T21:27:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9m87-6fj3-c5xh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-26183"
+        }
+      ],
+      "affectedRange": "< 6.15.1",
+      "fixedVersion": "6.15.1"
+    }
+  ]
+}

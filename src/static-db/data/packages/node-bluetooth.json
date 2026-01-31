@@ -1,0 +1,26 @@
+{
+  "name": "node-bluetooth",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cxx3-36qc-m6qm",
+      "title": "node-bluetooth is vulnerable to Buffer Overflow via the findSerialPortChannel method due to improper user input length validation",
+      "description": "All versions of the package node-bluetooth are vulnerable to Buffer Overflow via the findSerialPortChannel method due to improper user input length validation.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cxx3-36qc-m6qm",
+      "publishedAt": "2023-03-09T06:30:21Z",
+      "modifiedAt": "2023-03-15T19:16:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cxx3-36qc-m6qm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26110"
+        }
+      ],
+      "affectedRange": "<= 1.2.6"
+    }
+  ]
+}

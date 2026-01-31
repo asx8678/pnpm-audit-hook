@@ -1,0 +1,27 @@
+{
+  "name": "@octokit/endpoint",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x4c5-c7rf-jjgv",
+      "title": "@octokit/endpoint has a Regular Expression in parse that Leads to ReDoS Vulnerability Due to Catastrophic Backtracking",
+      "description": "### Summary\nBy crafting specific `options` parameters, the `endpoint.parse(options)` call can be triggered, leading to a regular expression denial-of-service (ReDoS) attack. This causes the program to hang and results in high CPU utilization.\n\n### Details\nThe issue occurs in the `parse` function within the `parse.ts` file of the npm package `@octokit/endpoint`. The specific code is located at the following link: https://github.com/octokit/endpoint.js/blob/main/src/parse.ts, at line 62:\n```ts\nhea",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x4c5-c7rf-jjgv",
+      "publishedAt": "2025-02-14T17:56:18Z",
+      "modifiedAt": "2025-02-14T22:19:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x4c5-c7rf-jjgv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-25285"
+        }
+      ],
+      "affectedRange": ">= 10.0.0, < 10.1.3",
+      "fixedVersion": "10.1.3"
+    }
+  ]
+}

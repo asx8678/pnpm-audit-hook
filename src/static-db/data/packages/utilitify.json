@@ -1,0 +1,27 @@
+{
+  "name": "utilitify",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9534-h433-2rjf",
+      "title": "Improperly Controlled Modification of Dynamically-Determined Object Attributes in utilitify",
+      "description": "utilitify prior to 1.0.3 allows modification of object properties. The merge method could be tricked into adding or modifying properties of the Object.prototype.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9534-h433-2rjf",
+      "publishedAt": "2021-05-07T16:28:47Z",
+      "modifiedAt": "2023-01-27T05:07:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9534-h433-2rjf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10808"
+        }
+      ],
+      "affectedRange": "< 1.0.3",
+      "fixedVersion": "1.0.3"
+    }
+  ]
+}

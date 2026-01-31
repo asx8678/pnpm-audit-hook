@@ -1,0 +1,27 @@
+{
+  "name": "@workos-inc/authkit-react-router",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vqvc-9q8x-vmq6",
+      "title": "The AuthKit React Router Library rendered sensitive auth data in HTML",
+      "description": "In versions before `0.7.0`, `@workos-inc/authkit-react-router` exposed sensitive authentication artifacts — specifically `sealedSession` and `accessToken` by returning them from the `authkitLoader`. This caused them to be rendered into the browser HTML.\n\n### Impact\nThis information disclosure could lead to session hijacking in environments where cross-site scripting (XSS), malicious browser extensions, or local inspection is possible.\n \n### Patches\nPatched in [https://github.com/workos/authkit-r",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vqvc-9q8x-vmq6",
+      "publishedAt": "2025-08-08T17:04:11Z",
+      "modifiedAt": "2025-08-11T13:57:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vqvc-9q8x-vmq6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-55008"
+        }
+      ],
+      "affectedRange": "< 0.7.0",
+      "fixedVersion": "0.7.0"
+    }
+  ]
+}

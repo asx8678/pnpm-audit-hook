@@ -1,0 +1,22 @@
+{
+  "name": "faker",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5w9c-rv96-fr7g",
+      "title": "Removal of functional code in faker.js",
+      "description": "Faker.js helps users create large amounts of data for testing and development. The maintainer deliberately removed the functional code from this package. This appears to be a purposeful and successful attempt to make the package unusable. This is related to the colors.js [CVE-2021-23567](https://github.com/advisories/GHSA-gh88-3pxp-6fm8). \n\nThe functional code for this package was forked and can be found [here](https://github.com/faker-js/faker). ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5w9c-rv96-fr7g",
+      "publishedAt": "2022-03-22T19:28:24Z",
+      "modifiedAt": "2023-01-11T05:06:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5w9c-rv96-fr7g"
+        }
+      ],
+      "affectedRange": "= 6.6.6"
+    }
+  ]
+}

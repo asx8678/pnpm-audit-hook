@@ -1,0 +1,27 @@
+{
+  "name": "h3",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mp2g-9vg9-f4cg",
+      "title": "h3 v1 has Request Smuggling (TE.TE) issue",
+      "description": "I was digging into h3 v1 (specifically v1.15.4) and found a critical HTTP Request Smuggling vulnerability.\n\nBasically, `readRawBody` is doing a strict case-sensitive check for the Transfer-Encoding header. It explicitly looks for \"chunked\", but per the RFC, this header should be case-insensitive.\n\n**The Bug**: If I send a request with Transfer-Encoding: ChuNked (mixed case), h3 misses it. Since it doesn't see \"chunked\" and there's no Content-Length, it assumes the body is empty and processes the",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mp2g-9vg9-f4cg",
+      "publishedAt": "2026-01-15T20:10:51Z",
+      "modifiedAt": "2026-01-15T22:34:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mp2g-9vg9-f4cg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23527"
+        }
+      ],
+      "affectedRange": "<= 1.15.4",
+      "fixedVersion": "1.15.5"
+    }
+  ]
+}

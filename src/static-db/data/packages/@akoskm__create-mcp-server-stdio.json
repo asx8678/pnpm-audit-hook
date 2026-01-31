@@ -1,0 +1,27 @@
+{
+  "name": "@akoskm/create-mcp-server-stdio",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3ch2-jxxc-v4xf",
+      "title": "@akoskm/create-mcp-server-stdio is vulnerable to MCP Server Command Injection through `exec` API",
+      "description": "# Command Injection in MCP Server\n\nThe MCP Server at https://github.com/akoskm/create-mcp-server-stdio is written in a way that is vulnerable to command injection vulnerability attacks as part of some of its MCP Server tool definition and implementation.\n\n## Vulnerable tool\n\nThe MCP Server exposes the tool `which-app-on-port` which relies on Node.js child process API `exec` which is an unsafe and vulnerable API if concatenated with untrusted user input.\n\nVulnerable line of code: https://github.c",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3ch2-jxxc-v4xf",
+      "publishedAt": "2025-09-08T19:42:34Z",
+      "modifiedAt": "2025-09-10T21:03:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3ch2-jxxc-v4xf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54994"
+        }
+      ],
+      "affectedRange": "< 0.0.13",
+      "fixedVersion": "0.0.13"
+    }
+  ]
+}

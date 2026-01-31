@@ -1,0 +1,27 @@
+{
+  "name": "@sap/xssec",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p2vx-qj66-88q3",
+      "title": "Escalation of privileges in @sap/xssec",
+      "description": "SAP BTP Security Services Integration Library ([Node.js] @sap/xssec - versions < 3.6.0, allow under certain conditions an escalation of privileges. On successful exploitation, an unauthenticated attacker can obtain arbitrary permissions within the application.\n\n",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-p2vx-qj66-88q3",
+      "publishedAt": "2023-12-12T03:31:45Z",
+      "modifiedAt": "2024-09-30T13:40:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p2vx-qj66-88q3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-49583"
+        }
+      ],
+      "affectedRange": "< 3.6.0",
+      "fixedVersion": "3.6.0"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "nodee-utils",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p6jh-p7q8-pcrg",
+      "title": "Prototype Pollution in nodee-utils",
+      "description": "All versions of package nodee-utils below version 1.2.3 are vulnerable to Prototype Pollution via the deepSet function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-p6jh-p7q8-pcrg",
+      "publishedAt": "2021-05-06T18:26:21Z",
+      "modifiedAt": "2023-02-01T05:05:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p6jh-p7q8-pcrg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7722"
+        }
+      ],
+      "affectedRange": "< 1.2.3",
+      "fixedVersion": "1.2.3"
+    }
+  ]
+}

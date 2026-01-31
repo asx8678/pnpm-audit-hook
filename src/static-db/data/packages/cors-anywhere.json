@@ -1,0 +1,26 @@
+{
+  "name": "cors-anywhere",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r3jv-xfgx-gj24",
+      "title": "cors-anywhere vulnerable to server-side request forgery",
+      "description": "Rob -- W / cors-anywhere instances configured as an open proxy allow unauthenticated external users to induce the server to make HTTP requests to arbitrary targets (SSRF). Because the proxy forwards requests and headers, an attacker can reach internal-only endpoints and link-local metadata services, retrieve instance role credentials or other sensitive metadata, and interact with internal APIs and services that are not intended to be internet-facing. The vulnerability is exploitable by sending c",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-r3jv-xfgx-gj24",
+      "publishedAt": "2025-09-25T15:30:24Z",
+      "modifiedAt": "2025-09-26T16:34:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r3jv-xfgx-gj24"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-36851"
+        }
+      ],
+      "affectedRange": "<= 0.4.4"
+    }
+  ]
+}

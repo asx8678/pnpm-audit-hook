@@ -1,0 +1,27 @@
+{
+  "name": "lettersanitizer",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7r3r-gq8p-v9jj",
+      "title": "Improper handling of CSS at-rules in lettersanitizer",
+      "description": "### Impact\n\nAll versions of lettersanitizer below 1.0.2 are affected by a denial of service issue when processing a CSS at-rule `@keyframes`.\n\nThis package is depended on by [react-letter](https://github.com/mat-sz/react-letter), therefore everyone using react-letter is also at risk.\n\n### Patches\n\nThe problem has been patched in version 1.0.2.\n\n### Workarounds\n\nThere is no workaround besides upgrading.\n\n### References\n\nThe issue was originally reported in the react-letter repository: https://git",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7r3r-gq8p-v9jj",
+      "publishedAt": "2022-06-23T17:48:19Z",
+      "modifiedAt": "2023-01-27T05:04:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7r3r-gq8p-v9jj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31103"
+        }
+      ],
+      "affectedRange": "< 1.0.2",
+      "fixedVersion": "1.0.2"
+    }
+  ]
+}

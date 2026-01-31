@@ -1,0 +1,27 @@
+{
+  "name": "git-commiters",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g38c-wxjf-xrh6",
+      "title": "`git-comiters` Command Injection vulnerability",
+      "description": "## Background on the vulnerability\n\nThis vulnerability manifests with the library's primary exported API: `gitCommiters(options, callback)`\nwhich allows specifying options such as `cwd` for current working directory and `revisionRange` as a revision pointer, such as `HEAD`.\n\nHowever, the library does not sanitize for user input or practice secure process execution API to separate commands from their arguments and as such, uncontrolled user input is concatenated into command execution.\n\n## Exploi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g38c-wxjf-xrh6",
+      "publishedAt": "2025-09-22T18:01:37Z",
+      "modifiedAt": "2025-10-16T20:41:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g38c-wxjf-xrh6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59831"
+        }
+      ],
+      "affectedRange": "< 0.1.2",
+      "fixedVersion": "0.1.2"
+    }
+  ]
+}

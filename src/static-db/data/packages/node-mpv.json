@@ -1,0 +1,26 @@
+{
+  "name": "node-mpv",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cqr2-xhg6-p268",
+      "title": "OS Command Injection in node-mpv",
+      "description": "node-mpv through 1.4.3 is vulnerable to Command Injection. It allows execution of arbitrary commands via the options argument.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cqr2-xhg6-p268",
+      "publishedAt": "2022-01-07T00:20:27Z",
+      "modifiedAt": "2023-02-01T05:06:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cqr2-xhg6-p268"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7632"
+        }
+      ],
+      "affectedRange": "<= 1.4.3"
+    }
+  ]
+}

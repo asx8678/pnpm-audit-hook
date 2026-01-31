@@ -1,0 +1,27 @@
+{
+  "name": "pg-promise",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-ff9h-848c-4xfj",
+      "title": "pg-promise SQL Injection vulnerability",
+      "description": "pg-promise before 11.5.5 is vulnerable to SQL Injection due to improper handling of negative numbers.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-ff9h-848c-4xfj",
+      "publishedAt": "2025-06-12T18:31:48Z",
+      "modifiedAt": "2025-06-18T19:41:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ff9h-848c-4xfj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-29744"
+        }
+      ],
+      "affectedRange": "< 11.5.5",
+      "fixedVersion": "11.5.5"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "angular-server-side-configuration",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gwvm-vrp4-4pp5",
+      "title": "angular-server-side-configuration information disclosure vulnerability in monorepo with node.js backend",
+      "description": "### Impact\nangular-server-side-configuration detects used environment variables in TypeScript (.ts) files during build time of an Angular CLI project. The detected environment variables are written to a ngssc.json file in the output directory.\nDuring deployment of an Angular based app, the environment variables based on the variables from ngssc.json are inserted into the apps index.html (or defined index file).\n\nWith version 15 the environment variable detection was widened to the entire project",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-gwvm-vrp4-4pp5",
+      "publishedAt": "2023-03-24T22:04:35Z",
+      "modifiedAt": "2023-03-24T22:05:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gwvm-vrp4-4pp5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-28444"
+        }
+      ],
+      "affectedRange": ">= 15.0.0, < 15.1.0",
+      "fixedVersion": "15.1.0"
+    }
+  ]
+}

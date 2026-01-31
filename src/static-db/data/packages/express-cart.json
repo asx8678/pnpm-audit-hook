@@ -1,0 +1,68 @@
+{
+  "name": "express-cart",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hr89-w7p6-pjmq",
+      "title": "express-cart allows any user to create an admin user",
+      "description": "Express-Cart before 1.1.6 allows remote attackers to create an admin user via an `/admin/setup` Referer header.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hr89-w7p6-pjmq",
+      "publishedAt": "2022-05-13T01:49:36Z",
+      "modifiedAt": "2024-04-01T22:03:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hr89-w7p6-pjmq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-12457"
+        }
+      ],
+      "affectedRange": "< 1.1.6"
+    },
+    {
+      "id": "GHSA-4w62-cq5r-5mmq",
+      "title": "express-cart unrestricted file upload vulnerability",
+      "description": "Unrestricted file upload (RCE) in express-cart module before 1.1.7 allows a privileged user to gain access in the hosting machine.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4w62-cq5r-5mmq",
+      "publishedAt": "2022-05-13T01:32:21Z",
+      "modifiedAt": "2024-04-01T22:03:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4w62-cq5r-5mmq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3758"
+        }
+      ],
+      "affectedRange": "< 1.1.7",
+      "fixedVersion": "1.1.7"
+    },
+    {
+      "id": "GHSA-h5q8-5697-9p9h",
+      "title": "Cross-Site Request Forgery in express-cart",
+      "description": "The express-cart package through 1.1.10 for Node.js allows CSRF.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h5q8-5697-9p9h",
+      "publishedAt": "2021-08-30T17:22:15Z",
+      "modifiedAt": "2023-07-06T16:07:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h5q8-5697-9p9h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-22403"
+        }
+      ],
+      "affectedRange": "< 1.1.17",
+      "fixedVersion": "1.1.17"
+    }
+  ]
+}

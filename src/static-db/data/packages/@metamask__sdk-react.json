@@ -1,0 +1,23 @@
+{
+  "name": "@metamask/sdk-react",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qj3p-xc97-xw74",
+      "title": "MetaMask SDK indirectly exposed via malicious debug@4.4.2 dependency",
+      "description": "### Who is affected?\nThis advisory only applies to developers who use MetaMask SDK in the browser and who, on Sept 8th 2025 between 13:00–15:30 UTC, performed one of the following actions and then deployed their application:\n- Installed MetaMask SDK into a project with a lockfile for the first time\n- Installed MetaMask SDK in a project without a lockfile\n- Updated a lockfile to pull in `debug@4.4.2` (e.g., via `npm update` or `yarn upgrade`)\n\n### What happened?\nOn Sept 8th, 2025 (13:00–15:30 UTC",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qj3p-xc97-xw74",
+      "publishedAt": "2025-09-15T13:55:56Z",
+      "modifiedAt": "2025-09-15T13:55:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qj3p-xc97-xw74"
+        }
+      ],
+      "affectedRange": ">= 0.16.0, <= 0.33.0",
+      "fixedVersion": "0.33.1"
+    }
+  ]
+}

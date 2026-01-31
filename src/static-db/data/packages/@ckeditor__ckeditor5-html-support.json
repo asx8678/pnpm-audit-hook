@@ -1,0 +1,27 @@
+{
+  "name": "@ckeditor/ckeditor5-html-support",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-42wq-rch8-6f6j",
+      "title": "CKEditor5 cross-site scripting vulnerability caused by the editor instance destroying process",
+      "description": "### Affected packages\n@ckeditor/ckeditor5-markdown-gfm\n@ckeditor/ckeditor5-html-support\n@ckeditor/ckeditor5-html-embed\n\n### Impact\nA cross-site scripting vulnerability has been discovered affecting three optional CKEditor 5's packages. The vulnerability allowed to trigger a JavaScript code after fulfilling special conditions:\n\na) Using one of the affected packages. In case of `ckeditor5-html-support` and `ckeditor5-html-embed`, additionally, it was required to use a configuration that allows uns",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-42wq-rch8-6f6j",
+      "publishedAt": "2022-08-06T09:40:43Z",
+      "modifiedAt": "2023-01-31T05:01:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-42wq-rch8-6f6j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31175"
+        }
+      ],
+      "affectedRange": "< 35.0.1",
+      "fixedVersion": "35.0.1"
+    }
+  ]
+}

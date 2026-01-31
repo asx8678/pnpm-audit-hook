@@ -1,0 +1,27 @@
+{
+  "name": "sqlite-vec",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vrcx-gx3g-j3h8",
+      "title": "Heap-based Buffer Overflow in sqlite-vec",
+      "description": "sqlite-vec v0.1.1 was discovered to contain a heap buffer overflow via the npy_token_next function. This vulnerability allows attackers to cause a Denial of Service (DoS) via a crafted file.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vrcx-gx3g-j3h8",
+      "publishedAt": "2024-09-25T18:31:21Z",
+      "modifiedAt": "2024-10-02T21:16:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vrcx-gx3g-j3h8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-46488"
+        }
+      ],
+      "affectedRange": "< 0.1.3",
+      "fixedVersion": "0.1.3"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@backstage/plugin-app-backend",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qc4v-xq2m-65wc",
+      "title": "Unexpected visibility of environment variable configurations in @backstage/plugin-app-backend",
+      "description": "### Impact\n\nConfiguration supplied through `APP_CONFIG_*` environment variables, for example `APP_CONFIG_backend_listen_port=7007`, where unexpectedly ignoring the visibility defined in configuration schema. This occurred even if the configuration schema specified that they should have backend or secret visibility. This was an intended feature of the `APP_CONFIG_*` way of supplying configuration, but now clearly goes against the expected behavior of the configuration system. This behavior leads ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qc4v-xq2m-65wc",
+      "publishedAt": "2024-10-03T16:51:24Z",
+      "modifiedAt": "2024-10-03T18:41:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qc4v-xq2m-65wc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-47762"
+        }
+      ],
+      "affectedRange": "< 0.3.75",
+      "fixedVersion": "0.3.75"
+    }
+  ]
+}

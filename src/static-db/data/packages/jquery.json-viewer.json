@@ -1,0 +1,27 @@
+{
+  "name": "jquery.json-viewer",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qp2q-6h9j-jg2r",
+      "title": "Cross-site Scripting in jquery.json-viewer",
+      "description": "The jquery.json-viewer library before version 1.5.0 for Node.js does not properly escape characters such as < in a JSON object, as demonstrated by a SCRIPT element.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qp2q-6h9j-jg2r",
+      "publishedAt": "2022-05-05T00:00:15Z",
+      "modifiedAt": "2023-02-01T05:01:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qp2q-6h9j-jg2r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-30241"
+        }
+      ],
+      "affectedRange": "< 1.5.0",
+      "fixedVersion": "1.5.0"
+    }
+  ]
+}

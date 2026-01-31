@@ -1,0 +1,27 @@
+{
+  "name": "remark-html",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9q5w-79cv-947m",
+      "title": "Unsafe defaults in `remark-html`",
+      "description": "### Impact\n\nThe documentation of `remark-html` has mentioned that it was safe by default. In practise the default was never safe and had to be opted into. This means arbitrary HTML can be passed through leading to potential XSS attacks.\n\n### Patches\n\nThe problem has been patched in 13.0.2 and 14.0.1: `remark-html` is now safe by default, and the implementation matches the documentation.\n\n### Workarounds\n\nOn older affected versions, pass `sanitize: true`, like so:\n\n```diff\n-  .use(remarkHtml)\n+  ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9q5w-79cv-947m",
+      "publishedAt": "2021-09-07T23:10:56Z",
+      "modifiedAt": "2023-02-01T05:06:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9q5w-79cv-947m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-39199"
+        }
+      ],
+      "affectedRange": "= 14.0.0",
+      "fixedVersion": "14.0.1"
+    }
+  ]
+}

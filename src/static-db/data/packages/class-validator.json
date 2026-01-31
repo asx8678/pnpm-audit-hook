@@ -1,0 +1,27 @@
+{
+  "name": "class-validator",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fj58-h2fr-3pp2",
+      "title": "SQL Injection and Cross-site Scripting in class-validator",
+      "description": "In TypeStack class-validator, `validate()` input validation can be bypassed because certain internal attributes can be overwritten via a conflicting name. Even though there is an optional `forbidUnknownValues` parameter that can be used to reduce the risk of this bypass, this option is not documented and thus most developers configure input validation in the vulnerable default manner. With this vulnerability, attackers can launch SQL Injection or XSS attacks by injecting arbitrary malicious inpu",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fj58-h2fr-3pp2",
+      "publishedAt": "2021-10-12T16:35:45Z",
+      "modifiedAt": "2023-01-27T05:03:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fj58-h2fr-3pp2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-18413"
+        }
+      ],
+      "affectedRange": "< 0.14.0",
+      "fixedVersion": "0.14.0"
+    }
+  ]
+}

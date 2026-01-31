@@ -1,0 +1,26 @@
+{
+  "name": "field",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hm82-qr45-h7mw",
+      "title": "Prototype Pollution in field",
+      "description": "Prototype pollution vulnerability in 'field' versions 0.0.1 through 1.0.1 allows attacker to cause a denial of service and may lead to remote code execution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-hm82-qr45-h7mw",
+      "publishedAt": "2021-12-10T17:22:58Z",
+      "modifiedAt": "2023-09-08T22:51:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hm82-qr45-h7mw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28269"
+        }
+      ],
+      "affectedRange": ">= 0.0.1, <= 1.0.1"
+    }
+  ]
+}

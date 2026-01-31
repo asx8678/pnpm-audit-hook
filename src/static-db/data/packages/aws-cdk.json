@@ -1,0 +1,48 @@
+{
+  "name": "aws-cdk",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v63m-x9r9-8gqp",
+      "title": "AWS CDK CLI prints AWS credentials retrieved by custom credential plugins",
+      "description": "## Summary\n\nThe AWS Cloud Development Kit (AWS CDK) [1] is an open-source software development framework for defining cloud infrastructure in code and provisioning it through AWS CloudFormation. The AWS CDK CLI [2] is a command line tool for interacting with CDK applications. Customers can use the CDK CLI to create, manage, and deploy their AWS CDK projects. \n\nAn issue exists in the AWS CDK CLI where, under certain conditions, AWS credentials may be returned in the console output. Plugins that r",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v63m-x9r9-8gqp",
+      "publishedAt": "2025-03-21T17:43:09Z",
+      "modifiedAt": "2025-10-14T21:58:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v63m-x9r9-8gqp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-2598"
+        }
+      ],
+      "affectedRange": ">= 2.172.0, < 2.178.2",
+      "fixedVersion": "2.178.2"
+    },
+    {
+      "id": "GHSA-qj85-69xf-2vxq",
+      "title": "AWS CDK RestApi not generating authorizationScope correctly in resultant CFN template",
+      "description": "### Summary\nThe AWS Cloud Development Kit (CDK) is an open-source framework for defining cloud infrastructure using code. Customers use it to create their own applications which are converted to AWS CloudFormation templates during deployment to a customer’s AWS account. CDK contains pre-built components called \"constructs\" that are higher-level abstractions providing defaults and best practices. This approach enables developers to use familiar programming languages to define complex cloud infras",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qj85-69xf-2vxq",
+      "publishedAt": "2024-08-27T19:53:21Z",
+      "modifiedAt": "2024-08-28T20:06:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qj85-69xf-2vxq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-45037"
+        }
+      ],
+      "affectedRange": ">= 2.142.0, <= 2.148.0",
+      "fixedVersion": "2.148.1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@udecode/plate-link",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4882-hxpr-hrvm",
+      "title": "@udecode/plate-link does not sanitize URLs to prevent use of the `javascript:` scheme",
+      "description": "### Impact\nAffected versions of the link plugin and link UI component do not sanitize URLs to prevent use of the `javascript:` scheme. As a result, links with JavaScript URLs can be inserted into the Plate editor through various means, including opening or pasting malicious content.\n\n### Patches\n`@udecode/plate-link` 20.0.0 resolves this issue by introducing an `allowedSchemes` option to the link plugin, defaulting to `['http', 'https', 'mailto', 'tel']`. URLs using a scheme that isn't in this l",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4882-hxpr-hrvm",
+      "publishedAt": "2023-06-09T22:41:56Z",
+      "modifiedAt": "2023-11-10T05:04:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4882-hxpr-hrvm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-34245"
+        }
+      ],
+      "affectedRange": "< 20.0.0",
+      "fixedVersion": "20.0.0"
+    }
+  ]
+}

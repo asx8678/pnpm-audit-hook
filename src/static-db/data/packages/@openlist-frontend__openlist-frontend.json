@@ -1,0 +1,27 @@
+{
+  "name": "@openlist-frontend/openlist-frontend",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2hw3-h8qx-hqqp",
+      "title": "OpenList (frontend) allows XSS Attacks in the built-in Markdown Viewer",
+      "description": "XSS via `.py` file containing script tag interpreted as HTML\n\n## Summary\n\nA vulnerability exists in the file preview/browsing feature of the application, where files with a `.py` extension that contain JavaScript code wrapped in `<script>` tags may be interpreted and executed as HTML in certain modes. This leads to a stored XSS vulnerability.\n\n## Affected Versions\n\n* <= 4.0.0-rc.3\n\n## PoC\n\nCreate a `.py` file with arbitrary JavaScript content wrapped in `<script>` tags. For example:\n\n```javascri",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2hw3-h8qx-hqqp",
+      "publishedAt": "2025-06-18T14:41:25Z",
+      "modifiedAt": "2025-06-19T15:19:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2hw3-h8qx-hqqp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-50183"
+        }
+      ],
+      "affectedRange": "<= 4.0.0-rc.3",
+      "fixedVersion": "4.0.0-rc.4"
+    }
+  ]
+}

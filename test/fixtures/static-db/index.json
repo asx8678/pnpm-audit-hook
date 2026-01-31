@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "lastUpdated": "2025-01-15T00:00:00Z",
+  "cutoffDate": "2025-01-01T00:00:00Z",
+  "totalVulnerabilities": 8,
+  "totalPackages": 3,
+  "packages": {
+    "lodash": {
+      "count": 3,
+      "latestVuln": "2024-12-15T00:00:00Z",
+      "maxSeverity": "critical"
+    },
+    "react": {
+      "count": 2,
+      "latestVuln": "2024-11-01T00:00:00Z",
+      "maxSeverity": "high"
+    },
+    "@angular/core": {
+      "count": 3,
+      "latestVuln": "2024-10-01T00:00:00Z",
+      "maxSeverity": "medium"
+    }
+  },
+  "buildInfo": {
+    "generator": "test-fixture",
+    "sources": ["github-advisory"],
+    "durationMs": 1000
+  }
+}

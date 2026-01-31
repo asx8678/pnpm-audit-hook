@@ -1,0 +1,44 @@
+{
+  "name": "@sentry/remix",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6465-jgvq-jhgp",
+      "title": "Sentry's sensitive headers are leaked when `sendDefaultPii` is set to `true`",
+      "description": "### Impact\nIn version 10.11.0, a change to how the SDK collects request data in Node.js applications caused certain incoming HTTP headers to be added as trace span attributes. When `sendDefaultPii: true` was set, a few headers that were previously redacted - including Authorization and Cookie - were unintentionally allowed through.\n\nSentry’s server-side scrubbing (handled by Sentry's Relay edge proxy) normally serves as a second layer of protection. However, because it relied on the same matchin",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6465-jgvq-jhgp",
+      "publishedAt": "2025-11-24T21:52:45Z",
+      "modifiedAt": "2025-11-27T07:56:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6465-jgvq-jhgp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-65944"
+        }
+      ],
+      "affectedRange": ">= 10.11.0, < 10.27.0",
+      "fixedVersion": "10.27.0"
+    },
+    {
+      "id": "GHSA-r5w7-f542-q2j4",
+      "title": "Potential DoS when using ContextLines integration",
+      "description": "### Impact\nThe [ContextLines integration](https://docs.sentry.io/platforms/javascript/guides/node/configuration/integrations/contextlines/) uses readable streams to more efficiently use memory when reading files. The ContextLines integration is used to attach source context to outgoing events.\n\nThe stream was not explicitly closed after use. This could lead to excessive amounts of file handles open on the system and potentially lead to a Denial of Service (DoS).\n\nThe ContextLines integration is ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-r5w7-f542-q2j4",
+      "publishedAt": "2025-01-28T20:37:26Z",
+      "modifiedAt": "2025-01-28T21:26:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r5w7-f542-q2j4"
+        }
+      ],
+      "affectedRange": ">= 8.10.0, < 8.49.0",
+      "fixedVersion": "8.49.0"
+    }
+  ]
+}

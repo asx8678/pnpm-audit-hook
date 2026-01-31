@@ -1,0 +1,107 @@
+{
+  "name": "ua-parser-js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fhg7-m89q-25r3",
+      "title": "ReDoS Vulnerability in ua-parser-js version",
+      "description": "### Description:\nA regular expression denial of service (ReDoS) vulnerability has been discovered in `ua-parser-js`.\n\n### Impact:\nThis vulnerability bypass the library's `MAX_LENGTH` input limit prevention. By crafting a very-very-long user-agent string with specific pattern, an attacker can turn the script to get stuck processing for a very long time which results in a denial of service (DoS) condition.\n\n### Affected Versions:\nFrom version `0.7.30` to before versions `0.7.33` / `1.0.33`.\n\n### P",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fhg7-m89q-25r3",
+      "publishedAt": "2023-01-24T15:36:32Z",
+      "modifiedAt": "2025-10-17T16:52:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fhg7-m89q-25r3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25927"
+        }
+      ],
+      "affectedRange": ">= 0.7.30, < 0.7.33",
+      "fixedVersion": "0.7.33"
+    },
+    {
+      "id": "GHSA-pjwm-rvh2-c87w",
+      "title": "Embedded malware in ua-parser-js",
+      "description": "The npm package `ua-parser-js` had three versions published with malicious code. Users of affected versions (0.7.29, 0.8.0, 1.0.0) should upgrade as soon as possible and check their systems for suspicious activity. See [this issue](https://github.com/faisalman/ua-parser-js/issues/536) for details as they unfold.\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a differe",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pjwm-rvh2-c87w",
+      "publishedAt": "2021-10-22T20:38:14Z",
+      "modifiedAt": "2023-07-28T15:38:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pjwm-rvh2-c87w"
+        }
+      ],
+      "affectedRange": "= 1.0.0",
+      "fixedVersion": "1.0.1"
+    },
+    {
+      "id": "GHSA-394c-5j6w-4xmx",
+      "title": "ua-parser-js Regular Expression Denial of Service vulnerability",
+      "description": "The package ua-parser-js before 0.7.23 are vulnerable to Regular Expression Denial of Service (ReDoS) in multiple regexes (see linked commit for more info).",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-394c-5j6w-4xmx",
+      "publishedAt": "2022-02-09T22:46:53Z",
+      "modifiedAt": "2023-02-01T05:05:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-394c-5j6w-4xmx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7793"
+        }
+      ],
+      "affectedRange": "< 0.7.23",
+      "fixedVersion": "0.7.23"
+    },
+    {
+      "id": "GHSA-78cj-fxph-m83p",
+      "title": "Regular Expression Denial of Service (ReDoS) in ua-parser-js",
+      "description": "ua-parser-js >= 0.7.14, fixed in 0.7.24, uses a regular expression which is vulnerable to denial of service. If an attacker sends a malicious User-Agent header, ua-parser-js will get stuck processing it for an extended period of time.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-78cj-fxph-m83p",
+      "publishedAt": "2021-05-06T16:11:13Z",
+      "modifiedAt": "2023-02-01T05:05:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-78cj-fxph-m83p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-27292"
+        }
+      ],
+      "affectedRange": ">= 0.7.14, < 0.7.24",
+      "fixedVersion": "0.7.24"
+    },
+    {
+      "id": "GHSA-662x-fhqg-9p8v",
+      "title": "Regular Expression Denial of Service in ua-parser-js",
+      "description": "The package ua-parser-js before 0.7.22 are vulnerable to Regular Expression Denial of Service (ReDoS) via the regex for Redmi Phones and Mi Pad Tablets UA.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-662x-fhqg-9p8v",
+      "publishedAt": "2021-05-07T16:18:19Z",
+      "modifiedAt": "2023-01-31T05:06:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-662x-fhqg-9p8v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7733"
+        }
+      ],
+      "affectedRange": "< 0.7.22",
+      "fixedVersion": "0.7.22"
+    }
+  ]
+}

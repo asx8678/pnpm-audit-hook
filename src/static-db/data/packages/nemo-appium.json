@@ -1,0 +1,27 @@
+{
+  "name": "nemo-appium",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c6rx-gxqv-vr5j",
+      "title": "nemo-appium vulnerable to OS Command Injection",
+      "description": "Versions of the package nemo-appium before 0.0.9 are vulnerable to Command Injection due to improper input sanitization in the 'module.exports.setup' function. \n\n**Note:** In order to exploit this vulnerability appium-running 0.1.3 has to be installed as one of nemo-appium dependencies.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-c6rx-gxqv-vr5j",
+      "publishedAt": "2023-01-31T06:30:26Z",
+      "modifiedAt": "2023-02-07T21:14:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c6rx-gxqv-vr5j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21129"
+        }
+      ],
+      "affectedRange": "< 0.0.9",
+      "fixedVersion": "0.0.9"
+    }
+  ]
+}

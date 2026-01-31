@@ -1,0 +1,27 @@
+{
+  "name": "snyk-broker",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gq75-5gc3-rfwg",
+      "title": "snyk-broker Path Traversal before v4.73.0",
+      "description": "This affects the package snyk-broker before 4.73.0. It allows arbitrary file reads for users with access to Snyk's internal network via directory traversal.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gq75-5gc3-rfwg",
+      "publishedAt": "2022-07-26T00:01:05Z",
+      "modifiedAt": "2023-01-27T05:07:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gq75-5gc3-rfwg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7649"
+        }
+      ],
+      "affectedRange": "< 4.73.0",
+      "fixedVersion": "4.73.0"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "matrix-appservice-bridge",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vc7j-h8xg-fv5x",
+      "title": "matrix-appservice-bridge doesn't verify the sub parameter of an openId token exhange, allowing unauthorized access to provisioning APIs",
+      "description": "### Impact\n\nA malicious Matrix server can use a foreign user's MXID in an OpenID exchange, allowing a bad actor to impersonate users when using the provisioning API.\n\n### Details\n\nThe library does not check that the servername part of the `sub` parameter (containing the user's *claimed* MXID) is the same as the servername we are talking to. A malicious actor could spin up a server on any given domain, respond with a `sub` parameter according to the user they want to act as and use the resulting ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vc7j-h8xg-fv5x",
+      "publishedAt": "2023-08-04T17:26:32Z",
+      "modifiedAt": "2023-11-07T05:05:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vc7j-h8xg-fv5x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-38691"
+        }
+      ],
+      "affectedRange": "= 9.0.0",
+      "fixedVersion": "9.0.1"
+    },
+    {
+      "id": "GHSA-35g4-qx3c-vjhx",
+      "title": "Automatic room upgrade handling can be used maliciously to bridge a room non-consentually ",
+      "description": "### Impact\n\nIf a bridge has room upgrade handling turned on in the configuration (the `roomUpgradeOpts` key when instantiating a new `Bridge` instance.), any `m.room.tombstone` event it encounters will be used to unbridge the current room and bridge into the target room. However, the target room `m.room.create` event is not checked to verify if the `predecessor` field contains the previous room. This means that any mailcious admin of a bridged room can repoint the traffic to a different room wit",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-35g4-qx3c-vjhx",
+      "publishedAt": "2021-06-21T17:09:22Z",
+      "modifiedAt": "2023-02-01T05:06:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-35g4-qx3c-vjhx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32659"
+        }
+      ],
+      "affectedRange": "< 2.6.1",
+      "fixedVersion": "2.6.1"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "tiddlywiki",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cr9c-rhq6-vh53",
+      "title": "Withdrawn: Code execution via SVG file upload in tiddlywiki",
+      "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because it has been found to not be valid. Please see the issue [here](https://github.com/Jermolene/TiddlyWiki5/issues/7384) for more information.\n\n## Original Description\n\nAn arbitrary file upload vulnerability in the file upload module of Tiddlywiki5 v5.2.2 allows attackers to execute arbitrary code via a crafted SVG file.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cr9c-rhq6-vh53",
+      "publishedAt": "2022-05-17T00:01:44Z",
+      "modifiedAt": "2024-05-17T18:36:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cr9c-rhq6-vh53"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-29351"
+        }
+      ],
+      "affectedRange": "<= 5.2.2"
+    }
+  ]
+}

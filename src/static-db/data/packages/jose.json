@@ -1,0 +1,69 @@
+{
+  "name": "jose",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hhhv-q57g-882q",
+      "title": "jose vulnerable to resource exhaustion via specifically crafted JWE with compressed plaintext",
+      "description": "A vulnerability has been identified in the JSON Web Encryption (JWE) decryption interfaces, specifically related to the [support for decompressing plaintext after its decryption](https://www.rfc-editor.org/rfc/rfc7516.html#section-4.1.3). This allows an adversary to exploit specific scenarios where the compression ratio becomes exceptionally high. As a result, the length of the JWE token, which is determined by the compressed content's size, can land below application-defined limits. In such cas",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hhhv-q57g-882q",
+      "publishedAt": "2024-03-07T17:40:57Z",
+      "modifiedAt": "2024-03-30T06:30:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hhhv-q57g-882q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-28176"
+        }
+      ],
+      "affectedRange": "< 2.0.7",
+      "fixedVersion": "2.0.7"
+    },
+    {
+      "id": "GHSA-jv3g-j58f-9mq9",
+      "title": "JOSE vulnerable to resource exhaustion via specifically crafted JWE",
+      "description": "The PBKDF2-based JWE key management algorithms expect a JOSE Header Parameter named `p2c` ([PBES2 Count](https://www.rfc-editor.org/rfc/rfc7518.html#section-4.8.1.2)), which determines how many PBKDF2 iterations must be executed in order to derive a CEK wrapping key. The purpose of this parameter is to intentionally slow down the key derivation function in order to make password brute-force and dictionary attacks more expensive.\n\nThis makes the PBES2 algorithms unsuitable for situations where th",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jv3g-j58f-9mq9",
+      "publishedAt": "2022-09-16T17:44:42Z",
+      "modifiedAt": "2023-07-21T21:33:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jv3g-j58f-9mq9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-36083"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, <= 4.9.1",
+      "fixedVersion": "4.9.2"
+    },
+    {
+      "id": "GHSA-58f5-hfqc-jgch",
+      "title": "Padding Oracle Attack due to Observable Timing Discrepancy in jose",
+      "description": "jose is an npm library providing a number of cryptographic operations.\n### Impact\n\n[AES_CBC_HMAC_SHA2 Algorithm](https://tools.ietf.org/html/rfc7518#section-5.2) (A128CBC-HS256, A192CBC-HS384, A256CBC-HS512) decryption would always execute both HMAC tag verification and CBC decryption, if either failed `JWEDecryptionFailed` would be thrown. But a possibly observable difference in timing when padding error would occur while decrypting the ciphertext makes a padding oracle and an adversary might b",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-58f5-hfqc-jgch",
+      "publishedAt": "2021-04-19T14:57:22Z",
+      "modifiedAt": "2023-02-01T05:05:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-58f5-hfqc-jgch"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-29443"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.11.4",
+      "fixedVersion": "3.11.4"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@azure/identity",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m5vv-6r4h-3vj9",
+      "title": "Azure Identity Libraries and Microsoft Authentication Library Elevation of Privilege Vulnerability",
+      "description": "Azure Identity Libraries and Microsoft Authentication Library Elevation of Privilege Vulnerability.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m5vv-6r4h-3vj9",
+      "publishedAt": "2024-06-11T18:30:50Z",
+      "modifiedAt": "2025-07-22T14:51:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m5vv-6r4h-3vj9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-35255"
+        }
+      ],
+      "affectedRange": "< 4.2.1",
+      "fixedVersion": "4.2.1"
+    }
+  ]
+}

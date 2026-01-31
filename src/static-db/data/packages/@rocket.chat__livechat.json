@@ -1,0 +1,27 @@
+{
+  "name": "@rocket.chat/livechat",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hf55-c445-2w97",
+      "title": "Cross-site Scripting in @rocket.chat/livechat",
+      "description": "A blind self XSS vulnerability exists in RocketChat LiveChat versions lower than 1.9 that could allow an attacker to trick a victim pasting malicious code in their chat instance.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hf55-c445-2w97",
+      "publishedAt": "2022-04-03T00:01:00Z",
+      "modifiedAt": "2023-01-27T05:01:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hf55-c445-2w97"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21830"
+        }
+      ],
+      "affectedRange": "< 1.9.0",
+      "fixedVersion": "1.9.0"
+    }
+  ]
+}

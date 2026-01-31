@@ -1,0 +1,27 @@
+{
+  "name": "@isomorphic-git/cors-proxy",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v82v-rq72-phq9",
+      "title": "Server side request forgery in @isomorphic-git/cors-proxy",
+      "description": "The package @isomorphic-git/cors-proxy before 2.7.1 is vulnerable to Server-side Request Forgery (SSRF) due to missing sanitization and validation of the redirection action in middleware.js.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v82v-rq72-phq9",
+      "publishedAt": "2022-01-26T22:13:05Z",
+      "modifiedAt": "2023-02-03T05:05:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v82v-rq72-phq9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23664"
+        }
+      ],
+      "affectedRange": "< 2.7.1",
+      "fixedVersion": "2.7.1"
+    }
+  ]
+}

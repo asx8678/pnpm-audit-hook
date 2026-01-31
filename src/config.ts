@@ -1,7 +1,33 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import YAML from "yaml";
-import type { AllowlistEntry, AuditConfig, Severity } from "./types";
+import type { AllowlistEntry, AuditConfig, Severity, StaticBaselineConfig } from "./types";
+
+/** Default cutoff date for static baseline */
+export const DEFAULT_CUTOFF_DATE = "2025-12-31";
+
+/**
+ * Check if a published date is before the cutoff date.
+ * Both dates should be ISO date strings (YYYY-MM-DD or full ISO timestamp).
+ * Returns true if publishedDate is before cutoffDate.
+ */
+export function isBeforeCutoff(publishedDate: string, cutoffDate: string): boolean {
+  const published = new Date(publishedDate);
+  const cutoff = new Date(cutoffDate);
+
+  // Invalid dates return false (fail-closed)
+  if (isNaN(published.getTime()) || isNaN(cutoff.getTime())) {
+    return false;
+  }
+
+  return published.getTime() < cutoff.getTime();
+}
+
+export const DEFAULT_STATIC_BASELINE: StaticBaselineConfig = {
+  enabled: true,
+  cutoffDate: DEFAULT_CUTOFF_DATE,
+  dataPath: undefined,
+};
 
 export const DEFAULT_CONFIG: AuditConfig = {
   policy: {
@@ -17,6 +43,7 @@ export const DEFAULT_CONFIG: AuditConfig = {
   cache: { ttlSeconds: 3600 },
   failOnNoSources: true,
   failOnSourceError: true,
+  staticBaseline: DEFAULT_STATIC_BASELINE,
 };
 
 export interface LoadConfigOptions {
@@ -49,6 +76,29 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
   const sources = raw.sources as Record<string, unknown> | undefined;
   const cache = raw.cache as Record<string, unknown> | undefined;
   const performance = raw.performance as Record<string, unknown> | undefined;
+  const staticBaselineRaw = raw.staticBaseline as Record<string, unknown> | undefined;
+
+  const parseStaticBaseline = (v: Record<string, unknown> | undefined): StaticBaselineConfig => {
+    if (!v) return DEFAULT_STATIC_BASELINE;
+
+    const enabled = v.enabled !== false; // default true
+
+    // Validate cutoffDate: must be valid ISO date and not in the future
+    let cutoffDate = DEFAULT_CUTOFF_DATE;
+    if (typeof v.cutoffDate === "string") {
+      const parsed = Date.parse(v.cutoffDate);
+      const now = Date.now();
+      if (!isNaN(parsed) && parsed <= now) {
+        cutoffDate = v.cutoffDate;
+      }
+      // Invalid or future dates fall back to default
+    }
+
+    const dataPath =
+      typeof v.dataPath === "string" && v.dataPath.length > 0 ? v.dataPath : undefined;
+
+    return { enabled, cutoffDate, dataPath };
+  };
 
   const asAllowlist = (v: unknown): AllowlistEntry[] =>
     Array.isArray(v)
@@ -100,5 +150,6 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
     },
     failOnNoSources: raw.failOnNoSources !== false,
     failOnSourceError: raw.failOnSourceError !== false,
+    staticBaseline: parseStaticBaseline(staticBaselineRaw),
   };
 }

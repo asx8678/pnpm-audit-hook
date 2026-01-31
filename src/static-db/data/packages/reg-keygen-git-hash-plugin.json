@@ -1,0 +1,27 @@
+{
+  "name": "reg-keygen-git-hash-plugin",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-49q3-8867-5wmp",
+      "title": "Remote Command Execution in reg-keygen-git-hash-plugin",
+      "description": "### Impact\n\n`reg-keygen-git-hash-plugin` through 0.10.15 allow remote attackers to execute of arbitrary commands.\n\n### Patches\n\nUpgrade to version 0.10.16 or later.\n\n### For more information\n\nIf you have any questions or comments about this advisory:\n- Open an issue in [reg-viz/reg-suit](https://github.com/reg-viz/reg-suit)\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-49q3-8867-5wmp",
+      "publishedAt": "2021-06-08T18:47:06Z",
+      "modifiedAt": "2023-02-01T05:06:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-49q3-8867-5wmp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32673"
+        }
+      ],
+      "affectedRange": "< 0.10.16",
+      "fixedVersion": "0.10.16"
+    }
+  ]
+}

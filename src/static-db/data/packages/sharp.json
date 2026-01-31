@@ -1,0 +1,44 @@
+{
+  "name": "sharp",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-54xq-cgqr-rpm3",
+      "title": "sharp vulnerability in libwebp dependency CVE-2023-4863",
+      "description": "## Overview\n\nsharp uses libwebp to decode WebP images and versions prior to the latest 0.32.6 are vulnerable to the high severity https://github.com/advisories/GHSA-j7hp-h8jx-5ppr.\n\n## Who does this affect?\n\nAlmost anyone processing untrusted input with versions of sharp prior to 0.32.6.\n\n## How to resolve this?\n\n### Using prebuilt binaries provided by sharp?\n\nMost people rely on the prebuilt binaries provided by sharp.\n\nPlease upgrade sharp to the latest 0.32.6, which provides libwebp 1.3.2.\n\n#",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-54xq-cgqr-rpm3",
+      "publishedAt": "2023-11-16T17:14:15Z",
+      "modifiedAt": "2023-11-16T17:14:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-54xq-cgqr-rpm3"
+        }
+      ],
+      "affectedRange": "< 0.32.6",
+      "fixedVersion": "0.32.6"
+    },
+    {
+      "id": "GHSA-gp95-ppv5-3jc5",
+      "title": "sharp vulnerable to Command Injection in post-installation over build environment",
+      "description": "There's a possible vulnerability in logic that is run only at `npm install` time when installing versions of `sharp` prior to the latest v0.30.5.\n\nThis is not part of any runtime code, does not affect Windows users at all, and is unlikely to affect anyone that already cares about the security of their build environment. However, out of an abundance of caution, I've created this advisory.\n\nIf an attacker has the ability to set the value of the `PKG_CONFIG_PATH` environment variable in a build env",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gp95-ppv5-3jc5",
+      "publishedAt": "2022-06-01T19:58:29Z",
+      "modifiedAt": "2023-06-30T19:58:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gp95-ppv5-3jc5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-29256"
+        }
+      ],
+      "affectedRange": "< 0.30.5",
+      "fixedVersion": "0.30.5"
+    }
+  ]
+}

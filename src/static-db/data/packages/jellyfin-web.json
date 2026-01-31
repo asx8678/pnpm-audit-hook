@@ -1,0 +1,48 @@
+{
+  "name": "jellyfin-web",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2h5r-cqfc-45v6",
+      "title": "Jellyfin Web Cross-Site Scripting (XSS) via Playlist Name",
+      "description": "In Jellyfin 10.8.x through 10.8.3, the name of a playlist is vulnerable to stored XSS. This allows an attacker to steal access tokens from the localStorage of the victim.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2h5r-cqfc-45v6",
+      "publishedAt": "2023-02-03T03:30:25Z",
+      "modifiedAt": "2025-03-27T21:18:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2h5r-cqfc-45v6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-23636"
+        }
+      ],
+      "affectedRange": ">= 10.8.0, < 10.8.4",
+      "fixedVersion": "10.8.4"
+    },
+    {
+      "id": "GHSA-749c-pc87-4qcw",
+      "title": "Jellyfin Web Cross-Site Scripting (XSS) via Collection Name",
+      "description": "In Jellyfin 10.8.x through 10.8.3, the name of a collection is vulnerable to stored XSS. This allows an attacker to steal access tokens from the localStorage of the victim.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-749c-pc87-4qcw",
+      "publishedAt": "2023-02-03T03:30:25Z",
+      "modifiedAt": "2025-03-27T21:18:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-749c-pc87-4qcw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-23635"
+        }
+      ],
+      "affectedRange": ">= 10.8.0, < 10.8.4",
+      "fixedVersion": "10.8.4"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "hexo-admin",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g784-q3p3-26rm",
+      "title": "hexo-admin plugin for Node.js XSS Vulnerability",
+      "description": "The Post editor functionality in the hexo-admin plugin versions 2.3.0 and earlier for Node.js is vulnerable to stored XSS via the content of a post.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g784-q3p3-26rm",
+      "publishedAt": "2022-05-24T16:59:45Z",
+      "modifiedAt": "2023-09-26T16:55:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g784-q3p3-26rm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-17606"
+        }
+      ],
+      "affectedRange": "<= 2.3.0"
+    }
+  ]
+}

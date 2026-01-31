@@ -1,0 +1,27 @@
+{
+  "name": "terser",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4wf5-vphf-c2xc",
+      "title": "Terser insecure use of regular expressions leads to ReDoS",
+      "description": "The package terser before 4.8.1, from 5.0.0 and before 5.14.2 are vulnerable to Regular Expression Denial of Service (ReDoS) due to insecure usage of regular expressions.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4wf5-vphf-c2xc",
+      "publishedAt": "2022-07-16T00:00:20Z",
+      "modifiedAt": "2023-04-11T23:40:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4wf5-vphf-c2xc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25858"
+        }
+      ],
+      "affectedRange": ">= 5.0.0, < 5.14.2",
+      "fixedVersion": "5.14.2"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@budibase/builder",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x92g-49gh-63qm",
+      "title": "Budibase Improper Access Control vulnerability",
+      "description": "Improper Access Control in GitHub repository budibase/budibase prior to 1.3.20.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x92g-49gh-63qm",
+      "publishedAt": "2022-09-17T00:00:34Z",
+      "modifiedAt": "2023-08-03T16:41:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x92g-49gh-63qm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-3225"
+        }
+      ],
+      "affectedRange": "< 1.3.20",
+      "fixedVersion": "1.3.20"
+    }
+  ]
+}

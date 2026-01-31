@@ -1,0 +1,141 @@
+{
+  "name": "marked",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p9wx-2529-fp83",
+      "title": "Marked allows Regular Expression Denial of Service (ReDoS) attacks",
+      "description": "Marked prior to version 0.3.17 is vulnerable to a Regular Expression Denial of Service (ReDoS) attack due to catastrophic backtracking in several regular expressions used for parsing HTML tags and markdown links. An attacker can exploit this vulnerability by providing specially crafted markdown input, such as deeply nested or repetitively structured brackets or tag attributes, which cause the parser to hang and lead to a Denial of Service.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p9wx-2529-fp83",
+      "publishedAt": "2025-05-23T15:31:16Z",
+      "modifiedAt": "2025-05-27T15:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p9wx-2529-fp83"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-25110"
+        }
+      ],
+      "affectedRange": "< 0.3.17",
+      "fixedVersion": "0.3.17"
+    },
+    {
+      "id": "GHSA-rrrm-qjm4-v8hf",
+      "title": "Inefficient Regular Expression Complexity in marked",
+      "description": "### Impact\n\n_What kind of vulnerability is it?_\n\nDenial of service.\n\nThe regular expression `block.def` may cause catastrophic backtracking against some strings.\nPoC is the following.\n\n```javascript\nimport * as marked from \"marked\";\n\nmarked.parse(`[x]:${' '.repeat(1500)}x ${' '.repeat(1500)} x`);\n```\n\n_Who is impacted?_\n\nAnyone who runs untrusted markdown through marked and does not use a worker with a time limit.\n\n### Patches\n\n_Has the problem been patched?_\n\nYes\n\n_What versions should users up",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rrrm-qjm4-v8hf",
+      "publishedAt": "2022-01-14T21:04:41Z",
+      "modifiedAt": "2023-11-29T20:51:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rrrm-qjm4-v8hf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21680"
+        }
+      ],
+      "affectedRange": "< 4.0.10",
+      "fixedVersion": "4.0.10"
+    },
+    {
+      "id": "GHSA-5v2h-r2cx-5xgj",
+      "title": "Inefficient Regular Expression Complexity in marked",
+      "description": "### Impact\n\n_What kind of vulnerability is it?_\n\nDenial of service.\n\nThe regular expression `inline.reflinkSearch` may cause catastrophic backtracking against some strings.\nPoC is the following.\n\n```javascript\nimport * as marked from 'marked';\n\nconsole.log(marked.parse(`[x]: x\n\n\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](\\\\[\\\\](`));\n```\n\n_",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5v2h-r2cx-5xgj",
+      "publishedAt": "2022-01-14T21:04:46Z",
+      "modifiedAt": "2023-11-29T20:51:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5v2h-r2cx-5xgj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21681"
+        }
+      ],
+      "affectedRange": "< 4.0.10",
+      "fixedVersion": "4.0.10"
+    },
+    {
+      "id": "GHSA-4r62-v4vq-hr96",
+      "title": "Regular Expression Denial of Service (REDoS) in Marked",
+      "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\n\n[Regular expression Denial of Service](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS)\n\nA Denial of Service attack can affect anyone who runs user generated code through `marked`.\n\n### Patches\n_Has the problem been patched? What versions should users upgrade to?_\n\npatched in v2.0.0\n\n### Workarounds\n_Is there a way for users to fix or remediate the vulnerability without upgrading?_\n\nNone.\n\n### R",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4r62-v4vq-hr96",
+      "publishedAt": "2021-02-08T21:17:58Z",
+      "modifiedAt": "2023-02-01T05:05:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4r62-v4vq-hr96"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-21306"
+        }
+      ],
+      "affectedRange": ">= 1.1.1, < 2.0.0",
+      "fixedVersion": "2.0.0"
+    },
+    {
+      "id": "GHSA-wjmf-58vc-xqjr",
+      "title": "Content injection in marked",
+      "description": "Versions 0.3.7 and earlier of marked When mangling is disabled via option mangle don't escape target href. This allow attacker to inject arbitrary html-event into resulting a tag.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wjmf-58vc-xqjr",
+      "publishedAt": "2021-02-25T02:01:56Z",
+      "modifiedAt": "2023-01-09T05:01:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wjmf-58vc-xqjr"
+        }
+      ],
+      "affectedRange": "< 0.3.9",
+      "fixedVersion": "0.3.9"
+    },
+    {
+      "id": "GHSA-8wp3-cp9v-44fm",
+      "title": "Cross-Site Scripting in marked",
+      "description": "Versions 0.3.7 and earlier of marked unescape only lowercase while owsers support both lowercase and uppercase x in hexadecimal form of HTML character entity",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8wp3-cp9v-44fm",
+      "publishedAt": "2021-02-25T02:01:15Z",
+      "modifiedAt": "2023-01-09T05:01:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8wp3-cp9v-44fm"
+        }
+      ],
+      "affectedRange": "< 0.3.9",
+      "fixedVersion": "0.3.9"
+    },
+    {
+      "id": "GHSA-7m7q-q53v-j47v",
+      "title": "Regular Expression Denial of Service",
+      "description": "A flaw was found in nodejs-marked versions from 0.5.0 to before 0.6.1. Affected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS). Input to the host variable is vulnerable when input contains parenthesis in link URIs, coupled with a high number of link tokens in a single line.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7m7q-q53v-j47v",
+      "publishedAt": "2021-02-25T02:01:47Z",
+      "modifiedAt": "2023-01-09T05:01:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7m7q-q53v-j47v"
+        }
+      ],
+      "affectedRange": ">= 0.5.0, < 0.6.1",
+      "fixedVersion": "0.6.1"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "iniparserjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2f6g-w5gj-c93h",
+      "title": "Prototype Pollution in iniparserjs",
+      "description": "This affects all versions of package iniparserjs. This vulnerability relates when ini_parser.js is concentrating arrays. Depending on if user input is provided, an attacker can overwrite and pollute the object prototype of a program.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2f6g-w5gj-c93h",
+      "publishedAt": "2021-04-13T15:20:09Z",
+      "modifiedAt": "2023-02-01T05:05:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2f6g-w5gj-c93h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23328"
+        }
+      ],
+      "affectedRange": "<= 1.0.4"
+    }
+  ]
+}

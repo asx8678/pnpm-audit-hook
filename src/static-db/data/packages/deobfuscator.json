@@ -1,0 +1,27 @@
+{
+  "name": "deobfuscator",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jg82-xh3w-rhxx",
+      "title": "Synchrony deobfuscator prototype pollution vulnerability leading to arbitrary code execution",
+      "description": "### Impact\n\nA `__proto__` pollution vulnerability exists in synchrony versions before v2.4.4. Successful exploitation could lead to arbitrary code execution.\n\n### Summary\n\nA `__proto__` pollution vulnerability exists in the [LiteralMap] transformer allowing crafted input to modify properties in the Object prototype.\n\nWhen executing in Node.js, due to use of the `prettier` module, defining a `parser` property on `__proto__` with a path to a JS module on disk [causes a `require` of the value][pret",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jg82-xh3w-rhxx",
+      "publishedAt": "2023-10-18T18:27:13Z",
+      "modifiedAt": "2025-07-22T15:37:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jg82-xh3w-rhxx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-45811"
+        }
+      ],
+      "affectedRange": ">= 2.0.1, < 2.4.4",
+      "fixedVersion": "2.4.4"
+    }
+  ]
+}

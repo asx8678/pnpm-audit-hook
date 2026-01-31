@@ -1,0 +1,27 @@
+{
+  "name": "hackmd-mcp",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g5cg-6c7v-mmpw",
+      "title": "HackMD MCP Server has Server-Side Request Forgery (SSRF) vulnerability",
+      "description": "### Impact\n\nA Server-Side Request Forgery (SSRF) vulnerability that affects all users running the HackMD MCP server in HTTP mode. Attackers could exploit this vulnerability by passing arbitrary `hackmdApiUrl` values through HTTP headers (`Hackmd-Api-Url`) or base64-encoded JSON query parameters. This allows malicious users to:\n\n- Redirect API calls to internal network services\n- Potentially access sensitive internal endpoints\n- Perform network reconnaissance through the server\n- Bypass network a",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g5cg-6c7v-mmpw",
+      "publishedAt": "2025-09-15T20:37:46Z",
+      "modifiedAt": "2025-09-15T20:37:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g5cg-6c7v-mmpw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59155"
+        }
+      ],
+      "affectedRange": ">= 1.4.0, < 1.5.0",
+      "fixedVersion": "1.5.0"
+    }
+  ]
+}

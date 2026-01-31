@@ -1,0 +1,27 @@
+{
+  "name": "@bunt/app",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p734-xg27-8cfq",
+      "title": "Prototype pollution in izatop bunt",
+      "description": "izatop bunt v0.29.19 was discovered to contain a prototype pollution via the component /esm/qs.js. This vulnerability allows attackers to execute arbitrary code via injecting arbitrary properties.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-p734-xg27-8cfq",
+      "publishedAt": "2024-08-12T15:30:49Z",
+      "modifiedAt": "2024-08-13T19:23:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p734-xg27-8cfq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-38989"
+        }
+      ],
+      "affectedRange": "< 0.29.26",
+      "fixedVersion": "0.29.26"
+    }
+  ]
+}

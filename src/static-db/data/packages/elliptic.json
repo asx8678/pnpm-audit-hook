@@ -1,0 +1,169 @@
+{
+  "name": "elliptic",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-848j-6mx2-7j84",
+      "title": "Elliptic Uses a Cryptographic Primitive with a Risky Implementation",
+      "description": "The ECDSA implementation of the Elliptic package generates incorrect signatures if an interim value of 'k' (as computed based on step 3.2 of  RFC 6979 https://datatracker.ietf.org/doc/html/rfc6979 ) has leading zeros and is susceptible to cryptanalysis, which can lead to secret key exposure. This happens, because the byte-length of 'k' is incorrectly computed, resulting in its getting truncated during the computation. Legitimate transactions or communications will be broken as a result. Furtherm",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-848j-6mx2-7j84",
+      "publishedAt": "2026-01-08T21:30:34Z",
+      "modifiedAt": "2026-01-09T20:19:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-848j-6mx2-7j84"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-14505"
+        }
+      ],
+      "affectedRange": "<= 6.6.1"
+    },
+    {
+      "id": "GHSA-fc9h-whq2-v747",
+      "title": "Valid ECDSA signatures erroneously rejected in Elliptic",
+      "description": "The Elliptic prior to 6.6.0 for Node.js, in its for ECDSA implementation, does not correctly verify valid signatures if the hash contains at least four leading 0 bytes and when the order of the elliptic curve's base point is smaller than the hash, because of an _truncateToN anomaly. This leads to valid signatures being rejected. Legitimate transactions or communications may be incorrectly flagged as invalid.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-fc9h-whq2-v747",
+      "publishedAt": "2024-10-15T15:30:56Z",
+      "modifiedAt": "2025-11-27T08:43:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fc9h-whq2-v747"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-48948"
+        }
+      ],
+      "affectedRange": "< 6.6.0",
+      "fixedVersion": "6.6.0"
+    },
+    {
+      "id": "GHSA-434g-2637-qmqr",
+      "title": "Elliptic's verify function omits uniqueness validation",
+      "description": "The Elliptic package 6.5.5 for Node.js for EDDSA implementation does not perform the required check if the signature proof(s) is within the bounds of the order n of the base point of the elliptic curve, leading to signature malleability. Namely, the `verify` function in `lib/elliptic/eddsa/index.js` omits `sig.S().gte(sig.eddsa.curve.n) || sig.S().isNeg()` validation.\n\nThis vulnerability could have a security-relevant impact if an application relies on the uniqueness of a signature.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-434g-2637-qmqr",
+      "publishedAt": "2024-10-10T03:30:44Z",
+      "modifiedAt": "2025-11-27T08:42:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-434g-2637-qmqr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-48949"
+        }
+      ],
+      "affectedRange": "< 6.5.6",
+      "fixedVersion": "6.5.6"
+    },
+    {
+      "id": "GHSA-49q7-c7j4-3p7m",
+      "title": "Elliptic allows BER-encoded signatures",
+      "description": "In the Elliptic package 6.5.6 for Node.js, ECDSA signature malleability occurs because BER-encoded signatures are allowed.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-49q7-c7j4-3p7m",
+      "publishedAt": "2024-08-02T09:31:35Z",
+      "modifiedAt": "2025-11-04T16:52:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-49q7-c7j4-3p7m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-42461"
+        }
+      ],
+      "affectedRange": ">= 5.2.1, <= 6.5.6",
+      "fixedVersion": "6.5.7"
+    },
+    {
+      "id": "GHSA-977x-g7h5-7qgw",
+      "title": "Elliptic's ECDSA missing check for whether leading bit of r and s is zero",
+      "description": "In the Elliptic package 6.5.6 for Node.js, ECDSA signature malleability occurs because there is a missing check for whether the leading bit of r and s is zero.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-977x-g7h5-7qgw",
+      "publishedAt": "2024-08-02T09:31:35Z",
+      "modifiedAt": "2025-11-04T16:52:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-977x-g7h5-7qgw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-42460"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, <= 6.5.6",
+      "fixedVersion": "6.5.7"
+    },
+    {
+      "id": "GHSA-f7q4-pwc6-w24p",
+      "title": "Elliptic's EDDSA missing signature length check",
+      "description": "In the Elliptic package 6.5.6 for Node.js, EDDSA signature malleability occurs because there is a missing signature length check, and thus zero-valued bytes can be removed or appended.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-f7q4-pwc6-w24p",
+      "publishedAt": "2024-08-02T09:31:35Z",
+      "modifiedAt": "2025-11-04T16:51:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f7q4-pwc6-w24p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-42459"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, <= 6.5.6",
+      "fixedVersion": "6.5.7"
+    },
+    {
+      "id": "GHSA-vjh7-7g9h-fjfh",
+      "title": "Elliptic's private key extraction in ECDSA upon signing a malformed input (e.g. a string)",
+      "description": "### Summary\n\nPrivate key can be extracted from ECDSA signature upon signing a malformed input (e.g. a string or a number), which could e.g. come from JSON network input\n\nNote that `elliptic` by design accepts hex strings as one of the possible input types\n\n### Details\n\nIn this code: https://github.com/indutny/elliptic/blob/3e46a48fdd2ef2f89593e5e058d85530578c9761/lib/elliptic/ec/index.js#L100-L107\n\n`msg` is a BN instance after conversion, but `nonce` is an array, and different BN instances could",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vjh7-7g9h-fjfh",
+      "publishedAt": "2025-02-12T19:47:52Z",
+      "modifiedAt": "2025-02-23T23:30:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vjh7-7g9h-fjfh"
+        }
+      ],
+      "affectedRange": "<= 6.6.0",
+      "fixedVersion": "6.6.1"
+    },
+    {
+      "id": "GHSA-r9p9-mrjm-926w",
+      "title": "Elliptic Uses a Broken or Risky Cryptographic Algorithm",
+      "description": "The npm package `elliptic` before version 6.5.4 are vulnerable to Cryptographic Issues via the secp256k1 implementation in elliptic/ec/key.js. There is no check to confirm that the public key point passed into the derive function actually exists on the secp256k1 curve. This results in the potential for the private key used in this implementation to be revealed after a number of ECDH operations are performed.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-r9p9-mrjm-926w",
+      "publishedAt": "2021-03-08T16:06:50Z",
+      "modifiedAt": "2023-09-06T23:43:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r9p9-mrjm-926w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28498"
+        }
+      ],
+      "affectedRange": "< 6.5.4",
+      "fixedVersion": "6.5.4"
+    }
+  ]
+}

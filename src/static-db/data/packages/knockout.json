@@ -1,0 +1,23 @@
+{
+  "name": "knockout",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qfmr-6qvh-49gm",
+      "title": "XSS",
+      "description": "**Withdrawn:** Duplicate of GHSA-vcjj-xf2r-mwvc.\n\nKnockout, before 3.5.0-beta, has an XSS injection point in attr name binding for browser IE7 and older.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qfmr-6qvh-49gm",
+      "publishedAt": "2021-02-25T01:44:38Z",
+      "modifiedAt": "2023-01-09T05:01:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qfmr-6qvh-49gm"
+        }
+      ],
+      "affectedRange": "< 3.5.0",
+      "fixedVersion": "3.5.0"
+    }
+  ]
+}

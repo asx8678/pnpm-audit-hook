@@ -1,0 +1,44 @@
+{
+  "name": "@nocobase/auth",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mv7p-34fv-4874",
+      "title": "Authentication Bypass via Default JWT Secret in NocoBase docker-compose Deployments",
+      "description": "### Impact\n\nCVE-2025-13877 is an **authentication bypass vulnerability caused by insecure default JWT key usage** in NocoBase Docker deployments.\n\nBecause the official one-click Docker deployment configuration historically provided a **public default JWT key**, attackers can **forge valid JWT tokens without possessing any legitimate credentials**. By constructing a token with a known `userId` (commonly the administrator account), an attacker can directly bypass authentication and authorization c",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mv7p-34fv-4874",
+      "publishedAt": "2025-12-09T17:42:53Z",
+      "modifiedAt": "2025-12-09T17:42:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mv7p-34fv-4874"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-13877"
+        }
+      ],
+      "affectedRange": ">= 2.0.0-alpha.1, <= 2.0.0-alpha.51",
+      "fixedVersion": "2.0.0-alpha.52"
+    },
+    {
+      "id": "GHSA-644f-hrff-mf96",
+      "title": "Duplicate Advisory: Authentication Bypass via Default JWT Secret in NocoBase docker-compose Deployments",
+      "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-mv7p-34fv-4874. This link is maintained to preserve external references.\n\n## Original Description\nA vulnerability was detected in nocobase up to 1.9.4/2.0.0-alpha.37. The affected element is an unknown function of the file nocobase\\packages\\core\\auth\\src\\base\\jwt-service.ts of the component JWT Service. The manipulation of the argument API_KEY results in use of hard-coded cryptographic key\n . The attack can ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-644f-hrff-mf96",
+      "publishedAt": "2025-12-02T18:30:35Z",
+      "modifiedAt": "2025-12-09T17:42:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-644f-hrff-mf96"
+        }
+      ],
+      "affectedRange": "<= 1.9.21",
+      "fixedVersion": "1.9.23"
+    }
+  ]
+}

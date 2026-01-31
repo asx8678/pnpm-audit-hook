@@ -1,0 +1,48 @@
+{
+  "name": "semver-regex",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4x5v-gmq8-25ch",
+      "title": "Regular expression denial of service in semver-regex",
+      "description": "An exponential ReDoS (Regular Expression Denial of Service) can be triggered in the semver-regex npm package, when an attacker is able to supply arbitrary input to the test() method",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-4x5v-gmq8-25ch",
+      "publishedAt": "2022-06-03T00:01:00Z",
+      "modifiedAt": "2023-07-19T19:58:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4x5v-gmq8-25ch"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-43307"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 4.0.3",
+      "fixedVersion": "4.0.3"
+    },
+    {
+      "id": "GHSA-44c6-4v22-4mhx",
+      "title": "semver-regex Regular Expression Denial of Service (ReDOS)",
+      "description": "npm `semver-regex` is vulnerable to Inefficient Regular Expression Complexity",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-44c6-4v22-4mhx",
+      "publishedAt": "2021-09-20T20:42:25Z",
+      "modifiedAt": "2023-07-11T13:37:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-44c6-4v22-4mhx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3795"
+        }
+      ],
+      "affectedRange": "= 4.0.0",
+      "fixedVersion": "4.0.1"
+    }
+  ]
+}

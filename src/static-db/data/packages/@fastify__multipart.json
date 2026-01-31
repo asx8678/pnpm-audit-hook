@@ -1,0 +1,48 @@
+{
+  "name": "@fastify/multipart",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-27c6-mcxv-x3fh",
+      "title": "Unlimited consumption of resources in @fastify/multipart",
+      "description": "### Impact\n\nThe `saveRequestFiles` function does not delete the uploaded temporary files when user cancels the request.\n\n### Patches\n\nFixed in version 8.3.1 and 9.0.3\n\n### Workarounds\n\nDo not use `saveRequestFiles`.\n\n### References\n\nThis was identified in https://github.com/fastify/fastify-multipart/issues/546 and fixed in https://github.com/fastify/fastify-multipart/pull/567.\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-27c6-mcxv-x3fh",
+      "publishedAt": "2025-01-23T18:02:07Z",
+      "modifiedAt": "2025-01-23T23:17:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-27c6-mcxv-x3fh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-24033"
+        }
+      ],
+      "affectedRange": ">= 9.0.0, < 9.0.3",
+      "fixedVersion": "9.0.3"
+    },
+    {
+      "id": "GHSA-hpp2-2cr5-pf6g",
+      "title": "Denial of service due to unlimited number of parts",
+      "description": "### Impact\n\n* The multipart body parser accepts an unlimited number of file parts.\n* The multipart body parser accepts an unlimited number of field parts.\n* The multipart body parser accepts an unlimited number of empty parts as field\nparts.\n\n\n### Patches\n\nThis is fixed in v7.4.1 (for Fastify v4.x) and v6.0.1 (for Fastify v3.x).\n\n### Workarounds\n\nThere are no known workaround.  \n\n### References\n\nReported at https://hackerone.com/reports/1816195.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hpp2-2cr5-pf6g",
+      "publishedAt": "2023-02-14T21:49:55Z",
+      "modifiedAt": "2023-02-22T18:35:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hpp2-2cr5-pf6g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-25576"
+        }
+      ],
+      "affectedRange": ">= 7.0.0, < 7.4.1",
+      "fixedVersion": "7.4.1"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "list-n-stream",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-26hg-crh6-mjrw",
+      "title": "Directory Traversal",
+      "description": "Affected versions of list-n-stream package (0.0.10 and before), are vulnerable to a directory traversal issue.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-26hg-crh6-mjrw",
+      "publishedAt": "2021-02-23T21:28:28Z",
+      "modifiedAt": "2023-01-09T05:01:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-26hg-crh6-mjrw"
+        }
+      ],
+      "affectedRange": "< 0.0.11",
+      "fixedVersion": "0.0.11"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "yui2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jjg9-mf63-vqrp",
+      "title": "Cross-site scripting in yui 2.4.0",
+      "description": "Cross-site scripting (XSS) vulnerability in the Flash component infrastructure in YUI 2.4.0 through 2.9.0 allows remote attackers to inject arbitrary web script or HTML via vectors related to charts.swf, a similar issue to CVE-2010-4207.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jjg9-mf63-vqrp",
+      "publishedAt": "2022-05-17T01:38:30Z",
+      "modifiedAt": "2024-01-09T21:54:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jjg9-mf63-vqrp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2012-5881"
+        }
+      ],
+      "affectedRange": ">= 2.4.0, <= 2.9.0"
+    }
+  ]
+}

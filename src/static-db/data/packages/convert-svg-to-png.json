@@ -1,0 +1,26 @@
+{
+  "name": "convert-svg-to-png",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jv7g-9g6q-cxvw",
+      "title": "Path Traversal in convert-svg packages",
+      "description": "This affects all versions of package convert-svg-core; all versions of package convert-svg-to-png; all versions of package convert-svg-to-jpeg. Using a specially crafted SVG file, an attacker could read arbitrary files from the file system and then show the file content as a converted PNG file.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jv7g-9g6q-cxvw",
+      "publishedAt": "2022-01-27T14:04:28Z",
+      "modifiedAt": "2023-02-03T05:05:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jv7g-9g6q-cxvw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23631"
+        }
+      ],
+      "affectedRange": "<= 0.5.0"
+    }
+  ]
+}

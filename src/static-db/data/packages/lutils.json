@@ -1,0 +1,26 @@
+{
+  "name": "lutils",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3r8w-mphv-2f3f",
+      "title": "Prototype Pollution in lutils",
+      "description": "All versions of package lutils are vulnerable to Prototype Pollution via the main (merge) function.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3r8w-mphv-2f3f",
+      "publishedAt": "2021-06-21T17:12:25Z",
+      "modifiedAt": "2023-08-17T05:02:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3r8w-mphv-2f3f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23396"
+        }
+      ],
+      "affectedRange": "<= 2.4.0"
+    }
+  ]
+}

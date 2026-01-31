@@ -1,0 +1,48 @@
+{
+  "name": "reveal.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hhqj-cfjx-vj25",
+      "title": "Cross site scripting in reveal.js",
+      "description": "The onmessage event listener in /plugin/notes/speaker-view.html does not check the origin of postMessage before adding the content to the webpage. The vulnerable code allows any origin to postMessage on the browser window and feeds attacker's input to parts using which attacker can execute arbitrary javascript code on victim's browser window hosting reveal.js",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hhqj-cfjx-vj25",
+      "publishedAt": "2022-03-02T00:00:20Z",
+      "modifiedAt": "2023-02-03T05:06:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hhqj-cfjx-vj25"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0776"
+        }
+      ],
+      "affectedRange": "< 4.3.0",
+      "fixedVersion": "4.3.0"
+    },
+    {
+      "id": "GHSA-6vwx-mwp8-fh44",
+      "title": "Cross-site Scripting in reveal.js",
+      "description": "Insufficient validation in cross-origin communication (postMessage) in reveal.js version 3.9.1 and earlier allow attackers to perform cross-site scripting attacks.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6vwx-mwp8-fh44",
+      "publishedAt": "2021-05-10T18:47:10Z",
+      "modifiedAt": "2023-02-01T05:05:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6vwx-mwp8-fh44"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8127"
+        }
+      ],
+      "affectedRange": "<= 3.9.1",
+      "fixedVersion": "3.9.2"
+    }
+  ]
+}

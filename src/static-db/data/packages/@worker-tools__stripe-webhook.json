@@ -1,0 +1,23 @@
+{
+  "name": "@worker-tools/stripe-webhook",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4g53-vp7q-gfjv",
+      "title": "constructEvent does not verify header",
+      "description": "### Impact\nAnyone verifying a Stripe webhook request via this library's `constructEvent` function.\n\n### Patches\nUpgrade to 1.1.4. \n\n### Workarounds\nUse `await verifyHeader(...)` directly instead of `constructEvent`.\n\n### References\nhttps://github.com/worker-tools/stripe-webhook/issues/1\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4g53-vp7q-gfjv",
+      "publishedAt": "2021-05-28T19:18:28Z",
+      "modifiedAt": "2023-01-09T05:04:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4g53-vp7q-gfjv"
+        }
+      ],
+      "affectedRange": "< 1.1.4",
+      "fixedVersion": "1.1.4"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "bootstrap-multiselect",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gv5r-9gxr-v74w",
+      "title": "Bootstrap Multiselect Vulnerable to CSRF and Reflective XSS via Arbitrary POST Data",
+      "description": "An issue was discovered in post.php in bootstrap-multiselect (aka Bootstrap Multiselect) 1.1.2. A PHP script in the source code echoes arbitrary POST data. If a developer adopts this structure wholesale in a live application, it could create a Reflective Cross-Site Scripting (XSS) vulnerability exploitable through Cross-Site Request Forgery (CSRF).",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gv5r-9gxr-v74w",
+      "publishedAt": "2025-05-13T18:30:53Z",
+      "modifiedAt": "2025-05-15T14:51:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gv5r-9gxr-v74w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-47204"
+        }
+      ],
+      "affectedRange": "<= 1.1.2"
+    }
+  ]
+}

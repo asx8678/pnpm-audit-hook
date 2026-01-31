@@ -1,0 +1,27 @@
+{
+  "name": "getobject",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-957j-59c2-j692",
+      "title": "Prototype pollution in getobject",
+      "description": "Prototype pollution vulnerability in 'getobject' version 0.1.0 allows an attacker to cause a denial of service and may lead to remote code execution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-957j-59c2-j692",
+      "publishedAt": "2021-10-12T16:26:37Z",
+      "modifiedAt": "2023-09-07T18:58:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-957j-59c2-j692"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28282"
+        }
+      ],
+      "affectedRange": "< 1.0.0",
+      "fixedVersion": "1.0.0"
+    }
+  ]
+}

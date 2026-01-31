@@ -1,0 +1,26 @@
+{
+  "name": "git-archive",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vqgr-mfxm-47f3",
+      "title": "git-archive vulnerable to Command Injection via exports function",
+      "description": "All versions of package git-archive are vulnerable to Command Injection via the exports function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vqgr-mfxm-47f3",
+      "publishedAt": "2022-07-26T00:01:06Z",
+      "modifiedAt": "2023-01-27T05:07:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vqgr-mfxm-47f3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28422"
+        }
+      ],
+      "affectedRange": "<= 0.1.4"
+    }
+  ]
+}

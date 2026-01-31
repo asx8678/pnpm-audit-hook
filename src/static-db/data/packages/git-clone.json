@@ -1,0 +1,26 @@
+{
+  "name": "git-clone",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8jmw-wjr8-2x66",
+      "title": "Command injection in git-clone",
+      "description": "All versions of package git-clone are vulnerable to Command Injection due to insecure usage of the `--upload-pack` feature of git.\n\n## Credits\n\nCredit to @lirantal for discovering this vulnerability.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8jmw-wjr8-2x66",
+      "publishedAt": "2022-07-02T00:00:19Z",
+      "modifiedAt": "2023-09-07T00:12:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8jmw-wjr8-2x66"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25900"
+        }
+      ],
+      "affectedRange": "<= 0.2.0"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "@astrojs/node",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xf8x-j4p2-f749",
+      "title": "Astro allows unauthorized third-party images in _image endpoint",
+      "description": "### Summary\n\nIn affected versions of `astro`, the image optimization endpoint in projects deployed with on-demand rendering allows images from unauthorized third-party domains to be served.\n\n### Details\n\nOn-demand rendered sites built with Astro include an `/_image` endpoint which returns optimized versions of images.\n\nThe `/_image` endpoint is restricted to processing local images bundled with the site and also supports remote images from domains the site developer has manually authorized (usin",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xf8x-j4p2-f749",
+      "publishedAt": "2025-08-19T15:40:31Z",
+      "modifiedAt": "2025-11-27T08:07:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xf8x-j4p2-f749"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-55303"
+        }
+      ],
+      "affectedRange": "<= 9.1.0",
+      "fixedVersion": "9.1.1"
+    },
+    {
+      "id": "GHSA-9x9c-ghc5-jhw9",
+      "title": "@astrojs/node's trailing slash handling causes open redirect issue",
+      "description": "### Summary\n\nFollowing https://github.com/withastro/astro/security/advisories/GHSA-cq8c-xv66-36gw, there's still an Open Redirect vulnerability in a subset of Astro deployment scenarios.\n\n### Details\n\nAstro 5.12.8 fixed a case where `https://example.com//astro.build/press` would redirect to the external origin `//astro.build/press`. However, with the Node deployment adapter in standalone mode and `trailingSlash` set to `\"always\"` in the Astro configuration, `https://example.com//astro.build/pres",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9x9c-ghc5-jhw9",
+      "publishedAt": "2025-08-15T16:52:48Z",
+      "modifiedAt": "2025-08-15T20:55:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9x9c-ghc5-jhw9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-55207"
+        }
+      ],
+      "affectedRange": "<= 9.4.0",
+      "fixedVersion": "9.4.1"
+    }
+  ]
+}

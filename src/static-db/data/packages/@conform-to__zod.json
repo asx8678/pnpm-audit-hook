@@ -1,0 +1,27 @@
+{
+  "name": "@conform-to/zod",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-624g-8qjg-8qxf",
+      "title": "Conform contains a Prototype Pollution Vulnerability in `parseWith...` function",
+      "description": "### Summary\nConform allows the parsing of nested objects in the form of `object.property`. Due to an improper implementation of this feature, an attacker can exploit it to trigger prototype pollution by passing a crafted input to `parseWith...` functions.\n\n### PoC\n```javascript\nconst { parseWithZod } = require('@conform-to/zod');\nconst { z } = require(\"zod\"); \n\nconst param = new URLSearchParams(\"__proto__.pollution=polluted\");\nconst schema = z.object({ \"a\": z.string() });\n\nparseWithZod(param, { ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-624g-8qjg-8qxf",
+      "publishedAt": "2024-04-23T21:15:55Z",
+      "modifiedAt": "2024-06-10T20:13:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-624g-8qjg-8qxf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-32866"
+        }
+      ],
+      "affectedRange": "< 0.9.2",
+      "fixedVersion": "0.9.2"
+    }
+  ]
+}

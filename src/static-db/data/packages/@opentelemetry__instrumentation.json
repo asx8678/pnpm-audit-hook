@@ -1,0 +1,23 @@
+{
+  "name": "@opentelemetry/instrumentation",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f8pq-3926-8gx5",
+      "title": "Unsanitized user controlled input in module generation",
+      "description": "## Impact\n\nThe `import-in-the-middle` loader used by `@opentelemetry/instrumentation` works by generating a wrapper module on the fly. The wrapper uses the module specifier to load the original module and add some wrapping code. It allows for remote code execution in cases where an application passes user-supplied input directly to an `import()` function.\n\n## Patches\n\nThis vulnerability has been patched in `@opentelemetry/instrumentation` version `0.41.2`\n\n## Workarounds\n\n- Do not pass any user-",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f8pq-3926-8gx5",
+      "publishedAt": "2023-08-09T20:59:14Z",
+      "modifiedAt": "2023-08-18T05:03:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f8pq-3926-8gx5"
+        }
+      ],
+      "affectedRange": ">= 0.40.0, < 0.41.2",
+      "fixedVersion": "0.41.2"
+    }
+  ]
+}

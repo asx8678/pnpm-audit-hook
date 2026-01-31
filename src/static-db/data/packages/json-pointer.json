@@ -1,0 +1,69 @@
+{
+  "name": "json-pointer",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7mg4-w3w5-x5pc",
+      "title": "Prototype pollution in json-pointer",
+      "description": "This affects the package json-pointer before 0.6.1. Multiple reference of object using slash is supported.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7mg4-w3w5-x5pc",
+      "publishedAt": "2021-05-10T18:37:47Z",
+      "modifiedAt": "2025-03-05T19:04:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7mg4-w3w5-x5pc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7709"
+        }
+      ],
+      "affectedRange": "< 0.6.1",
+      "fixedVersion": "0.6.1"
+    },
+    {
+      "id": "GHSA-6xrf-q977-5vgc",
+      "title": "json-pointer vulnerable to Prototype Pollution",
+      "description": "A vulnerability, which was classified as critical, has been found in json-pointer up to 0.6.1. Affected by this issue is the function set of the file index.js. The manipulation leads to improperly controlled modification of object prototype attributes ('prototype pollution'). The attack may be launched remotely. Upgrading to version 0.6.2 is able to address this issue. The patch is identified as 859c9984b6c407fc2d5a0a7e47c7274daa681941. It is recommended to upgrade the affected component. VDB-21",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6xrf-q977-5vgc",
+      "publishedAt": "2022-12-26T09:30:25Z",
+      "modifiedAt": "2024-04-04T13:49:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6xrf-q977-5vgc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-4742"
+        }
+      ],
+      "affectedRange": "< 0.6.2",
+      "fixedVersion": "0.6.2"
+    },
+    {
+      "id": "GHSA-v5vg-g7rq-363w",
+      "title": "Prototype Pollution in json-pointer",
+      "description": "This affects versions of package `json-pointer` up to and including `0.6.1`. A type confusion vulnerability can lead to a bypass of CVE-2020-7709 when the pointer components are arrays.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v5vg-g7rq-363w",
+      "publishedAt": "2021-11-08T17:40:49Z",
+      "modifiedAt": "2023-01-27T05:01:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v5vg-g7rq-363w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23820"
+        }
+      ],
+      "affectedRange": "<= 0.6.1",
+      "fixedVersion": "0.6.2"
+    }
+  ]
+}

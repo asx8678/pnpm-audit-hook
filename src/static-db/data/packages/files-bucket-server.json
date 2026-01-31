@@ -1,0 +1,26 @@
+{
+  "name": "files-bucket-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3r3j-4vrw-884j",
+      "title": "files-bucket-server vulnerable to Directory Traversal",
+      "description": "All versions of the package files-bucket-server are vulnerable to Directory Traversal, where an attacker can traverse the file system and access files outside of the intended directory.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3r3j-4vrw-884j",
+      "publishedAt": "2025-07-23T06:33:50Z",
+      "modifiedAt": "2025-09-26T21:50:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3r3j-4vrw-884j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-8021"
+        }
+      ],
+      "affectedRange": "<= 1.2.6"
+    }
+  ]
+}

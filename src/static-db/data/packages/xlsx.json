@@ -1,0 +1,109 @@
+{
+  "name": "xlsx",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4r6h-8v6p-xvw6",
+      "title": "Prototype Pollution in sheetJS",
+      "description": "All versions of SheetJS CE through 0.19.2 are vulnerable to \"Prototype Pollution\" when reading specially crafted files. Workflows that do not read arbitrary files (for example, exporting data to spreadsheet files) are unaffected.\n\nA non-vulnerable version cannot be found via npm, as the repository hosted on GitHub and the npm package `xlsx` are no longer maintained. Version 0.19.3 can be downloaded via https://cdn.sheetjs.com/.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4r6h-8v6p-xvw6",
+      "publishedAt": "2023-04-24T09:30:19Z",
+      "modifiedAt": "2025-09-19T15:23:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4r6h-8v6p-xvw6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-30533"
+        }
+      ],
+      "affectedRange": "< 0.19.3"
+    },
+    {
+      "id": "GHSA-5pgg-2g8v-p4x9",
+      "title": "SheetJS Regular Expression Denial of Service (ReDoS)",
+      "description": "SheetJS Community Edition before 0.20.2 is vulnerable.to Regular Expression Denial of Service (ReDoS).\n\nA non-vulnerable version cannot be found via npm, as the repository hosted on GitHub and the npm package `xlsx` are no longer maintained. Version 0.20.2 can be downloaded via https://cdn.sheetjs.com/.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5pgg-2g8v-p4x9",
+      "publishedAt": "2024-04-05T06:30:46Z",
+      "modifiedAt": "2025-09-19T15:23:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5pgg-2g8v-p4x9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-22363"
+        }
+      ],
+      "affectedRange": "< 0.20.2"
+    },
+    {
+      "id": "GHSA-3x9f-74h4-2fqr",
+      "title": "Denial of Service in SheetJS Pro",
+      "description": "SheetJS Pro through 0.16.9 allows attackers to cause a denial of service (memory consumption) via a crafted .xlsx document that is mishandled when read by xlsx.js (issue 1 of 2).",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3x9f-74h4-2fqr",
+      "publishedAt": "2021-07-22T19:48:17Z",
+      "modifiedAt": "2023-02-01T05:06:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3x9f-74h4-2fqr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32012"
+        }
+      ],
+      "affectedRange": "< 0.17.0",
+      "fixedVersion": "0.17.0"
+    },
+    {
+      "id": "GHSA-8vcr-vxm8-293m",
+      "title": "Denial of Service in SheetsJS Pro",
+      "description": "SheetJS Pro through 0.16.9 allows attackers to cause a denial of service (memory consumption) via a crafted .xlsx document that is mishandled when read by xlsx.js (issue 2 of 2).",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8vcr-vxm8-293m",
+      "publishedAt": "2021-07-22T19:48:13Z",
+      "modifiedAt": "2023-02-01T05:06:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8vcr-vxm8-293m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32013"
+        }
+      ],
+      "affectedRange": "< 0.17.0",
+      "fixedVersion": "0.17.0"
+    },
+    {
+      "id": "GHSA-g973-978j-2c3p",
+      "title": "Denial of Service in SheetJS Pro",
+      "description": "SheetJS Pro through 0.16.9 allows attackers to cause a denial of service (CPU consumption) via a crafted .xlsx document that is mishandled when read by xlsx.js.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g973-978j-2c3p",
+      "publishedAt": "2021-07-22T19:47:15Z",
+      "modifiedAt": "2023-02-01T05:05:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g973-978j-2c3p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32014"
+        }
+      ],
+      "affectedRange": "< 0.17.0",
+      "fixedVersion": "0.17.0"
+    }
+  ]
+}

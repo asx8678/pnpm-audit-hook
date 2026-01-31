@@ -1,0 +1,23 @@
+{
+  "name": "node-simple-router",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f6gj-7592-5jxm",
+      "title": "Directory Traversal",
+      "description": "Affected versions of node-simple-router package (0.10.0 and before), are vulnerable to a directory traversal issue.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f6gj-7592-5jxm",
+      "publishedAt": "2021-02-23T21:33:53Z",
+      "modifiedAt": "2023-01-09T05:01:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f6gj-7592-5jxm"
+        }
+      ],
+      "affectedRange": "< 0.10.1",
+      "fixedVersion": "0.10.1"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "name": "uptime-kuma",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vffh-c9pq-4crh",
+      "title": "Uptime Kuma Server-side Template Injection (SSTI) in Notification Templates Allows Arbitrary File Read",
+      "description": "### Summary\n\nIn some Notification types (e.g., Webhook, Telegram), the `send()` function allows user-controlled renderTemplate input. This leads to a Server-side Template Injection (SSTI) vulnerability that can be exploited to read arbitrary files from the server.\n\n\n\n### Details\n\nThe root cause is how Uptime Kuma renders user-controlled templates via `renderTemplate()`. The function instantiates a Liquid template engine and parses the `template` argument without sanitization:\n\n```js\nasync render",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vffh-c9pq-4crh",
+      "publishedAt": "2025-10-20T20:03:15Z",
+      "modifiedAt": "2025-10-20T20:03:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vffh-c9pq-4crh"
+        }
+      ],
+      "affectedRange": "= 2.0.0-dev.0"
+    },
+    {
+      "id": "GHSA-hx7h-9vf7-5xhg",
+      "title": "Uptime Kuma's Regular Expression in pushdeeer and whapi file Leads to ReDoS Vulnerability Due to Catastrophic Backtracking",
+      "description": "### Summary\nThere is a `ReDoS vulnerability risk` in the system, specifically when administrators create `notification` through the web service(`pushdeer` and `whapi`). If a string is provided that triggers catastrophic backtracking in the regular expression, it may lead to a ReDoS attack.\n\n### Details\nThe regular expression` \\/*$\\` is used to match zero or more slashes `/` at the end of a URL. When a malicious attack string appends a large number of slashes `/` and a non-slash character at the ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hx7h-9vf7-5xhg",
+      "publishedAt": "2025-03-31T16:12:53Z",
+      "modifiedAt": "2025-08-07T14:03:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hx7h-9vf7-5xhg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-26042"
+        }
+      ],
+      "affectedRange": ">= 2.0.0-beta.0, < 2.0.0-beta.2",
+      "fixedVersion": "2.0.0-beta.2"
+    },
+    {
+      "id": "GHSA-3rw8-4xrq-3f7p",
+      "title": "Duplicate Advisory: Uptime Kuma ReDoS vulnerability",
+      "description": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-hx7h-9vf7-5xhg. This link is maintained to preserve external references.\n\n### Original Description\nUptime Kuma >== 1.23.0 has a ReDoS vulnerability, specifically when an administrator creates a notification through the web service. If a string is provided it triggers catastrophic backtracking in the regular expression, leading to a ReDoS attack.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3rw8-4xrq-3f7p",
+      "publishedAt": "2025-03-17T21:30:34Z",
+      "modifiedAt": "2025-08-07T14:02:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3rw8-4xrq-3f7p"
+        }
+      ],
+      "affectedRange": ">= 1.23.0, <= 2.0.0-dev.0"
+    },
+    {
+      "id": "GHSA-2qgm-m29m-cj2h",
+      "title": "uptime-kuma vulnerable to Local File Inclusion (LFI) via Improper URL Handling in `Real-Browser` monitor",
+      "description": "### Summary\nAn **Improper URL Handling Vulnerability** allows an attacker to access sensitive local files on the server by exploiting the `file:///` protocol. This vulnerability is triggered via the **\"real-browser\"** request type, which takes a screenshot of the URL provided by the attacker. By supplying local file paths, such as `file:///etc/passwd`, an attacker can read sensitive data from the server.\n\n### Details\nThe vulnerability arises because the system does not properly validate or sanit",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2qgm-m29m-cj2h",
+      "publishedAt": "2024-12-20T15:10:46Z",
+      "modifiedAt": "2024-12-20T21:36:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2qgm-m29m-cj2h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-56331"
+        }
+      ],
+      "affectedRange": "= 2.0.0-beta.0",
+      "fixedVersion": "2.0.0-beta.1"
+    },
+    {
+      "id": "GHSA-7grx-f945-mj96",
+      "title": "Uptime Kuma vulnerable to authenticated remote code execution via malicious plugin installation",
+      "description": "### Summary\nInstallation of a maliciously crafted plugin allows for remote code execution by an authenticated attacker.\n\n### Details\nUptime Kuma allows authenticated users to install plugins from an official list of plugins. This feature is currently disabled in the web interface, but the corresponding API endpoints are still available after login.\nAfter downloading a plugin, it's installed by calling `npm install` in the installation directory of the plugin:\nhttps://github.com/louislam/uptime-k",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7grx-f945-mj96",
+      "publishedAt": "2024-05-01T10:01:24Z",
+      "modifiedAt": "2024-05-01T10:01:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7grx-f945-mj96"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-36821"
+        }
+      ],
+      "affectedRange": "<= 1.22.0",
+      "fixedVersion": "1.22.1"
+    },
+    {
+      "id": "GHSA-vr8x-74pm-6vj7",
+      "title": "Uptime Kuma's authenticated path traversal via plugin repository name may lead to unavailability or data loss",
+      "description": "### Summary\nA path traversal vulnerability via the plugin repository name allows an authenticated attacker to delete files on the server leading to unavailability and potentially data loss.\n\n### Details\nUptime Kuma allows authenticated users to install plugins from an official list of plugins. This feature is currently disabled in the web interface, but the corresponding API endpoints are still available after login.\nBefore a plugin is downloaded, the plugin installation directory is checked for",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vr8x-74pm-6vj7",
+      "publishedAt": "2024-05-01T10:01:02Z",
+      "modifiedAt": "2024-05-01T10:01:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vr8x-74pm-6vj7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-36822"
+        }
+      ],
+      "affectedRange": "<= 1.22.0",
+      "fixedVersion": "1.22.1"
+    },
+    {
+      "id": "GHSA-23q2-5gf8-gjpp",
+      "title": "Enabling Authentication does not close all logged in socket connections immediately ",
+      "description": "### Summary\nThis is basically [GHSA-88j4-pcx8-q4q](https://github.com/louislam/uptime-kuma/security/advisories/GHSA-88j4-pcx8-q4q3) but instead of changing passwords, when enabling authentication.\n\n### PoC\n- Open Uptime Kuma with authentication disabled\n- Enable authentication using another window\n- Access the platform using the previously logged-in window\n- Note that access (read-write) remains despite the enabled authentication\n- Expected behaviour:\n  - After enabling authentication, all previ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-23q2-5gf8-gjpp",
+      "publishedAt": "2024-04-19T17:26:32Z",
+      "modifiedAt": "2024-04-19T17:26:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-23q2-5gf8-gjpp"
+        }
+      ],
+      "affectedRange": "<= 1.23.11",
+      "fixedVersion": "1.23.12"
+    },
+    {
+      "id": "GHSA-88j4-pcx8-q4q3",
+      "title": "Password Change Vulnerability",
+      "description": "## Overview:\n\nA moderate security vulnerability has been identified in Uptime Kuma platform that poses a significant threat to the confidentiality and integrity of user accounts.  \nWhen a user changes their login password in Uptime Kuma, a previously logged-in user retains access without being logged out.\nThis behaviour persists consistently, even after system restarts or browser restarts.\nThis vulnerability allows unauthorized access to user accounts, compromising the security of sensitive info",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-88j4-pcx8-q4q3",
+      "publishedAt": "2023-12-12T00:59:30Z",
+      "modifiedAt": "2023-12-12T00:59:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-88j4-pcx8-q4q3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-49804"
+        }
+      ],
+      "affectedRange": "< 1.23.9",
+      "fixedVersion": "1.23.9"
+    },
+    {
+      "id": "GHSA-v4v2-8h88-65qj",
+      "title": "Attribute Injection leading to XSS(Cross-Site-Scripting)",
+      "description": "### Summary\nGoogle Analytics element Attribute Injection leading to XSS\n\n### Details\nSince the custom status interface can set an independent Google Analytics ID and the template has not been sanitized, there is an attribute injection vulnerability here, which can lead to XSS attacks.\n![image](https://user-images.githubusercontent.com/110759348/282278047-667b774b-421f-449a-8f95-3f3906ae4216.png)\n\n### PoC\n1. Run the latest version of the louislam/uptime-kuma container and initialize the account p",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v4v2-8h88-65qj",
+      "publishedAt": "2023-11-24T16:54:20Z",
+      "modifiedAt": "2023-12-07T22:59:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v4v2-8h88-65qj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-49276"
+        }
+      ],
+      "affectedRange": ">= 1.20.0, <= 1.23.6",
+      "fixedVersion": "1.23.7"
+    },
+    {
+      "id": "GHSA-hfxh-rjv7-2369",
+      "title": "Uptime Kuma Authenticated remote code execution via TailscalePing",
+      "description": "### Summary\n\nThe `runTailscalePing` method of the `TailscalePing` class injects the `hostname` parameter inside a shell command, leading to a command injection and the possibility to run arbitrary commands on the server.\n\n### Details\n\nWhen adding a new monitor on Uptime Kuma, we can select the \"Tailscale Ping\" type. Then we can add a hostname and insert a command injection payload into it. The front-end application requires that the field follow a specific pattern, this validation only happens o",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hfxh-rjv7-2369",
+      "publishedAt": "2023-11-27T17:25:11Z",
+      "modifiedAt": "2023-11-27T17:25:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hfxh-rjv7-2369"
+        }
+      ],
+      "affectedRange": ">= 1.23.0, <= 1.23.6",
+      "fixedVersion": "1.23.7"
+    },
+    {
+      "id": "GHSA-g9v2-wqcj-j99g",
+      "title": "Uptime Kuma has Persistentent User Sessions",
+      "description": "# Summary\n\nAttackers with access to a users' device can gain persistent account access.\nThis is caused by missing verification of Session Tokens after password changes and/or elapsed inactivity-periods.\n\n# Details\n\n`uptime-kuma` sets JWT tokens for users after successful authentication.\n\nThese tokens have the following design flaws:\n- After successful login, a JWT token and it is stored in `sessionStorage` or `localStorage`. \n  Which of the two is decided based on the `Remember Me` button. \n  Th",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g9v2-wqcj-j99g",
+      "publishedAt": "2023-10-10T21:29:23Z",
+      "modifiedAt": "2023-11-08T05:05:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g9v2-wqcj-j99g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-44400"
+        }
+      ],
+      "affectedRange": "< 1.23.3",
+      "fixedVersion": "1.23.3"
+    }
+  ]
+}

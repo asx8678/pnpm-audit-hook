@@ -1,0 +1,26 @@
+{
+  "name": "ion-parser",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7vrv-5m2h-rjw9",
+      "title": "ion-parser Prototype Pollution when malicious INI file submitted to application that parses with `parse`",
+      "description": "This affects all versions of package ion-parser. If an attacker submits a malicious INI file to an application that parses it with `parse` , they will pollute the prototype on the application. This can be exploited further depending on the context.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7vrv-5m2h-rjw9",
+      "publishedAt": "2022-07-26T00:01:05Z",
+      "modifiedAt": "2023-01-27T05:06:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7vrv-5m2h-rjw9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28462"
+        }
+      ],
+      "affectedRange": "<= 0.5.2"
+    }
+  ]
+}

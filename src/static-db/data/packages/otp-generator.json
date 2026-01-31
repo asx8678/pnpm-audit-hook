@@ -1,0 +1,27 @@
+{
+  "name": "otp-generator",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6x93-h9g3-9phr",
+      "title": "otp-generator before v3.0.0 insecurely generates random one-time passwords",
+      "description": "The package otp-generator before 3.0.0 are vulnerable to Insecure Randomness due to insecure generation of random one-time passwords, which may allow a brute-force attack.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6x93-h9g3-9phr",
+      "publishedAt": "2022-07-26T00:01:05Z",
+      "modifiedAt": "2023-01-27T05:06:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6x93-h9g3-9phr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23451"
+        }
+      ],
+      "affectedRange": "< 3.0.0",
+      "fixedVersion": "3.0.0"
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "name": "matrix-appservice-irc",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5mvm-89c9-9gm5",
+      "title": "Matrix IRC Bridge allows IRC command injection to own puppeted user",
+      "description": "### Impact\nThe matrix-appservice-irc bridge up to version 3.0.3 contains a vulnerability which can lead to arbitrary IRC command execution as the puppeted user. The attacker can only inject commands executed as their own IRC user.\n\n### Patches\nThe vulnerability has been patched in matrix-appservice-irc version 3.0.4.\n\n### For more information\nIf you have any questions or comments about this advisory, please email us at [security at matrix.org](mailto:security@matrix.org).",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-5mvm-89c9-9gm5",
+      "publishedAt": "2025-02-25T18:29:34Z",
+      "modifiedAt": "2025-02-25T21:46:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5mvm-89c9-9gm5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-27146"
+        }
+      ],
+      "affectedRange": "< 3.0.4",
+      "fixedVersion": "3.0.4"
+    },
+    {
+      "id": "GHSA-w9mh-5x8j-9754",
+      "title": "Malicious Matrix homeserver can leak truncated message content of messages it shouldn't have access to",
+      "description": "### Impact\n\nThe fix for GHSA-wm4w-7h2q-3pf7 / [CVE-2024-32000](https://www.cve.org/CVERecord?id=CVE-2024-32000) included in matrix-appservice-irc 2.0.0 relied on the Matrix homeserver-provided timestamp to determine whether a user has access to the event they're replying to when determining whether or not to include a truncated version of the original event in the IRC message. Since this value is controlled by external entities, a malicious Matrix homeserver joined to a room in which a matrix-ap",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w9mh-5x8j-9754",
+      "publishedAt": "2024-07-05T20:06:06Z",
+      "modifiedAt": "2024-07-05T21:37:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w9mh-5x8j-9754"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-39691"
+        }
+      ],
+      "affectedRange": "<= 2.0.0",
+      "fixedVersion": "2.0.1"
+    },
+    {
+      "id": "GHSA-3pmj-jqqp-2mj3",
+      "title": "matrix-appservice-irc IRC command injection via admin commands containing newlines ",
+      "description": "### Impact\n\nIt is possible to craft a command with newlines which would not be properly parsed. This would mean you could pass a string of commands as a channel name, which would then be run by the IRC bridge bot. \n\n### Patches\n\nVersions 1.0.1 and above are patched.\n\n### Workarounds\n\nThere are no robust workarounds to the bug. You can disable dynamic channels in the config to disable the most common execution method but others may exist. It is highly recommended to upgrade the bridge.\n\n### Credi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3pmj-jqqp-2mj3",
+      "publishedAt": "2023-08-04T17:26:45Z",
+      "modifiedAt": "2024-06-20T14:53:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3pmj-jqqp-2mj3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-38690"
+        }
+      ],
+      "affectedRange": "<= 1.0.0",
+      "fixedVersion": "1.0.1"
+    },
+    {
+      "id": "GHSA-wm4w-7h2q-3pf7",
+      "title": "Matrix IRC Bridge truncated content of messages can be leaked",
+      "description": "### Impact\n\nThe matrix-appservice-irc before version 2.0.0 can be exploited to leak the truncated body of a message if a malicious user sends a Matrix reply to an event ID they don't have access to. As a precondition to the attack, the malicious user needs to know the event ID of the message they want to leak, as well as to be joined to both the Matrix room and the IRC channel it is bridged to.\n\nThe message reply containing the leaked message content is visible to IRC channel members when this h",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wm4w-7h2q-3pf7",
+      "publishedAt": "2024-04-11T20:17:49Z",
+      "modifiedAt": "2024-04-15T19:42:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wm4w-7h2q-3pf7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-32000"
+        }
+      ],
+      "affectedRange": "< 2.0.0",
+      "fixedVersion": "2.0.0"
+    },
+    {
+      "id": "GHSA-c7hh-3v6c-fj4q",
+      "title": "matrix-appservice-irc events can be crafted to leak parts of targeted messages from other bridged rooms",
+      "description": "### Impact\n\nIt was possible to craft an event such that it would leak part of a targeted message event from another bridged room. This required knowing an event ID to target.\n\n### Patches\n\nPlease upgrade to 1.0.1.\n\n### Workarounds\n\nYou can set the `matrixHandler.eventCacheSize` config value to `0` to workaround this bug. However, this may impact performance.\n\n### Credits\n\nDiscovered and reported by [Val Lorentz](https://valentin-lorentz.fr/).\n\n### For more information\n\nIf you have any questions ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-c7hh-3v6c-fj4q",
+      "publishedAt": "2023-08-04T17:26:07Z",
+      "modifiedAt": "2023-11-12T05:02:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c7hh-3v6c-fj4q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-38700"
+        }
+      ],
+      "affectedRange": "<= 1.0.0",
+      "fixedVersion": "1.0.1"
+    },
+    {
+      "id": "GHSA-cq7q-5c67-w39w",
+      "title": "matrix-appservice-irc vulnerable to IRC mode parameter confusion",
+      "description": "### Impact\n\nIRC allows you to specify multiple modes in a single mode command. Due to a bug in the underlying matrix-org/node-irc library, affected versions of matrix-appservice-irc perform parsing of such modes incorrectly, potentially resulting in the wrong user being given permissions.\n\nMode commands can only be executed by privileged users, so this can only be abused if an operator is tricked into running the command on behalf of an attacker.\n\n### Patches\n\nThe vulnerability has been patched ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cq7q-5c67-w39w",
+      "publishedAt": "2022-09-15T03:26:25Z",
+      "modifiedAt": "2023-01-29T05:00:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cq7q-5c67-w39w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39202"
+        }
+      ],
+      "affectedRange": "< 0.35.0",
+      "fixedVersion": "0.35.0"
+    },
+    {
+      "id": "GHSA-xvqg-mv25-rwvw",
+      "title": "Parsing issue in matrix-org/node-irc leading to room takeovers",
+      "description": "### Impact\n\nAttackers can specify a specific string of characters, which would confuse the bridge into combining an attacker-owned channel and an existing channel, allowing them to grant themselves permissions in the channel.\n\n### Patched\n\nThe vulnerability has been patched in matrix-appservice-irc 0.35.0.\n\n### Workarounds\n\nDisable dynamic channel joining via `dynamicChannels.enabled` to prevent users from joining new channels, which prevents any new channels being bridged outside of what is alr",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xvqg-mv25-rwvw",
+      "publishedAt": "2022-09-15T03:26:10Z",
+      "modifiedAt": "2023-01-29T05:00:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xvqg-mv25-rwvw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39203"
+        }
+      ],
+      "affectedRange": "< 0.35.0",
+      "fixedVersion": "0.35.0"
+    },
+    {
+      "id": "GHSA-ffwf-47x2-jpr8",
+      "title": "Matrix-appservice-irc vulnerable to sql injection via roomIds argument",
+      "description": "A vulnerability was found in matrix-appservice-irc up to 0.35.1. This vulnerability affects the file src/datastore/postgres/PgDataStore.ts. The manipulation of the argument roomIds leads to sql injection. Upgrading to version 0.36.0 is able to address this issue. The name of the patch is 179313a37f06b298150edba3e2b0e5a73c1415e7. It is recommended to upgrade the affected component. ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-ffwf-47x2-jpr8",
+      "publishedAt": "2022-11-13T12:00:17Z",
+      "modifiedAt": "2023-01-28T05:03:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ffwf-47x2-jpr8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-3971"
+        }
+      ],
+      "affectedRange": "< 0.36.0",
+      "fixedVersion": "0.36.0"
+    },
+    {
+      "id": "GHSA-37hr-348p-rmf4",
+      "title": "Improper handling of multiline messages in node-irc affects matrix-appservice-irc",
+      "description": "matrix-appservice-irc provides an IRC bridge for Matrix. The vulnerability in node-irc allows an attacker to manipulate a Matrix user into executing IRC commands by having them reply to a maliciously crafted message. The vulnerability has been patched in matrix-appservice-irc 0.33.2. In terms of a workaround, users should refrain from replying to messages from untrusted participants in IRC-bridged Matrix rooms. ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-37hr-348p-rmf4",
+      "publishedAt": "2022-05-23T20:17:07Z",
+      "modifiedAt": "2023-01-27T05:01:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-37hr-348p-rmf4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-29166"
+        }
+      ],
+      "affectedRange": "<= 0.33.1",
+      "fixedVersion": "0.33.2"
+    }
+  ]
+}

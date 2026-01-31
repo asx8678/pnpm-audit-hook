@@ -1,0 +1,26 @@
+{
+  "name": "macfromip",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vh8f-xw5v-8993",
+      "title": "Command Injection in macfromip",
+      "description": "All versions of npm package macfromip are affected by a command injection vulnerability. The injection point is located in line 66 in macfromip.js.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vh8f-xw5v-8993",
+      "publishedAt": "2021-04-12T19:01:20Z",
+      "modifiedAt": "2023-02-01T05:05:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vh8f-xw5v-8993"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7786"
+        }
+      ],
+      "affectedRange": "<= 1.1.1"
+    }
+  ]
+}

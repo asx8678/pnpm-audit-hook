@@ -1,0 +1,27 @@
+{
+  "name": "altcha-lib",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6gvq-jcmp-8959",
+      "title": "ALTCHA Proof-of-Work Vulnerable to Challenge Splicing and Replay",
+      "description": "### Impact\n\nA cryptographic semantic binding flaw in ALTCHA libraries allows challenge payload splicing, which may enable replay attacks. The HMAC signature does not unambiguously bind challenge parameters to the nonce, allowing an attacker to reinterpret a valid proof-of-work submission with a modified expiration value. This may allow previously solved challenges to be reused beyond their intended lifetime, depending on server-side replay handling and deployment assumptions.\n\nThe vulnerability ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6gvq-jcmp-8959",
+      "publishedAt": "2025-12-16T00:43:52Z",
+      "modifiedAt": "2025-12-20T02:32:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6gvq-jcmp-8959"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-68113"
+        }
+      ],
+      "affectedRange": "< 1.4.1",
+      "fixedVersion": "1.4.1"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "name": "total.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3wj8-vp9h-rm6m",
+      "title": "total.js Remote Code Execution Vulnerability",
+      "description": "total.js is a framework for Node.js platfrom written in pure JavaScript similar to PHP's Laravel or Python's Django or ASP.NET MVC. It can be used as web, desktop, service or IoT application.\n\nAffected versions of this package are vulnerable to Remote Code Execution (RCE) via `set`.\n\n### PoC\n```js\n// To be run in a nodejs console: \nrequire('total.js/utils').set({}, 'a;eval(`require(\"child_process\")\\\\x2eexecSync(\"touch pwned\")`);//')\n```",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3wj8-vp9h-rm6m",
+      "publishedAt": "2021-03-19T21:32:20Z",
+      "modifiedAt": "2023-09-13T20:23:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3wj8-vp9h-rm6m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23344"
+        }
+      ],
+      "affectedRange": "< 3.4.7",
+      "fixedVersion": "3.4.8"
+    },
+    {
+      "id": "GHSA-6cf8-qhqj-vjqm",
+      "title": "Prototype pollution in total.js",
+      "description": "There is a prototype pollution vulnerability in the package total.js before version 3.4.7. The set function can be used to set a value into the object according to the path. However the keys of the path being set are not properly sanitized, leading to a prototype pollution vulnerability. The impact depends on the application. In some cases it is possible to achieve Denial of service (DoS), Remote Code Execution or Property Injection.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6cf8-qhqj-vjqm",
+      "publishedAt": "2021-02-05T20:43:19Z",
+      "modifiedAt": "2023-09-13T20:22:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6cf8-qhqj-vjqm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28495"
+        }
+      ],
+      "affectedRange": "< 3.4.7",
+      "fixedVersion": "3.4.7"
+    },
+    {
+      "id": "GHSA-vwhc-pww7-72x6",
+      "title": "Code Injection in total.js",
+      "description": "Total.js framework (npm package total.js) is a framework for Node.js platfrom written in pure JavaScript similar to PHP's Laravel or Python's Django or ASP.NET MVC. In total.js framework before version 3.4.9, calling the utils.set function with user-controlled values leads to code-injection. This can cause a variety of impacts that include arbitrary code execution. This is fixed in version 3.4.9.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vwhc-pww7-72x6",
+      "publishedAt": "2021-09-01T18:24:05Z",
+      "modifiedAt": "2023-02-01T05:06:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vwhc-pww7-72x6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32831"
+        }
+      ],
+      "affectedRange": "< 3.4.9",
+      "fixedVersion": "3.4.9"
+    },
+    {
+      "id": "GHSA-7fm6-gxqg-2pwr",
+      "title": "Code Injection in total.js",
+      "description": "The package total.js before 3.4.9 are vulnerable to Arbitrary Code Execution via the U.set() and U.get() functions.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7fm6-gxqg-2pwr",
+      "publishedAt": "2021-12-10T17:26:06Z",
+      "modifiedAt": "2023-02-01T05:06:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7fm6-gxqg-2pwr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23389"
+        }
+      ],
+      "affectedRange": "< 3.4.9",
+      "fixedVersion": "3.4.9"
+    },
+    {
+      "id": "GHSA-4449-hg37-77v8",
+      "title": "Command injection in total.js",
+      "description": "There is a command injection vulnerability that affects the package total.js before version 3.4.7. The issue occurs in the image.pipe and image.stream functions. The type parameter is used to build the command that is then executed using child_process.spawn. The issue occurs because child_process.spawn is called with the option shell set to true and because the type parameter is not properly sanitized.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4449-hg37-77v8",
+      "publishedAt": "2021-02-05T20:43:27Z",
+      "modifiedAt": "2023-02-01T05:05:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4449-hg37-77v8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28494"
+        }
+      ],
+      "affectedRange": "< 3.4.7",
+      "fixedVersion": "3.4.7"
+    }
+  ]
+}

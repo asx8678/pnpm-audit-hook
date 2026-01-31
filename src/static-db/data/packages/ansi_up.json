@@ -1,0 +1,27 @@
+{
+  "name": "ansi_up",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2v5f-23xc-v9qr",
+      "title": "ansi_up cross-site scripting vulnerability",
+      "description": "The npm package ansi_up converts ANSI escape codes into HTML. In ansi_up v4, ANSI escape codes can be used to create HTML hyperlinks. Due to insufficient URL sanitization, this feature is affected by a cross-site scripting (XSS) vulnerability. This issue is fixed in v5.0.0.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2v5f-23xc-v9qr",
+      "publishedAt": "2021-03-11T22:50:39Z",
+      "modifiedAt": "2025-11-04T16:33:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2v5f-23xc-v9qr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3377"
+        }
+      ],
+      "affectedRange": "< 5.0.0",
+      "fixedVersion": "5.0.0"
+    }
+  ]
+}

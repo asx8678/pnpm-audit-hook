@@ -1,0 +1,27 @@
+{
+  "name": "@vendure/asset-server-plugin",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r9mq-3c9r-fmjq",
+      "title": "Vendure asset server plugin has local file read vulnerability with AssetServerPlugin & LocalAssetStorageStrategy",
+      "description": "# Description\n\n## Path traversal\n\nThis vulnerability allows an attacker to craft a request which is able to traverse the server file system and retrieve the contents of arbitrary files, including sensitive data such as configuration files, environment variables, and other critical data stored on the server.\n\nFrom Rajesh Sharma who discovered the vulnerability:\n\nPOC: `curl --path-as-is http://localhost:3000/assets/../package.json` gives you the content of package.json present in the local directo",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-r9mq-3c9r-fmjq",
+      "publishedAt": "2024-10-15T18:00:02Z",
+      "modifiedAt": "2024-10-15T19:56:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r9mq-3c9r-fmjq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-48914"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.0.5",
+      "fixedVersion": "3.0.5"
+    }
+  ]
+}

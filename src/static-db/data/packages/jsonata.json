@@ -1,0 +1,27 @@
+{
+  "name": "jsonata",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fqg8-vfv7-8fj8",
+      "title": "JSONata expression can pollute the \"Object\" prototype",
+      "description": "### Impact\n\nIn JSONata versions `>= 1.4.0, < 1.8.7` and `>= 2.0.0, < 2.0.4`, a malicious expression can use the [transform operator](https://docs.jsonata.org/other-operators#-------transform) to override properties on the `Object` constructor and prototype. This may lead to denial of service, remote code execution or other unexpected behavior in applications that evaluate user-provided JSONata expressions.\n\n### Patch\n\nThis issue has been fixed in JSONata versions `>= 1.8.7` and `>= 2.0.4`. Appli",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fqg8-vfv7-8fj8",
+      "publishedAt": "2024-03-04T20:43:12Z",
+      "modifiedAt": "2024-03-06T21:36:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fqg8-vfv7-8fj8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-27307"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.0.4",
+      "fixedVersion": "2.0.4"
+    }
+  ]
+}

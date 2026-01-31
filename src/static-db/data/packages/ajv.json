@@ -1,0 +1,27 @@
+{
+  "name": "ajv",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v88g-cgmw-v5xw",
+      "title": "Prototype Pollution in Ajv",
+      "description": "An issue was discovered in ajv.validate() in Ajv (aka Another JSON Schema Validator) 6.12.2. A carefully crafted JSON schema could be provided that allows execution of other code by prototype pollution. (While untrusted schemas are recommended against, the worst case of an untrusted schema should be a denial of service, not execution of code.)",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v88g-cgmw-v5xw",
+      "publishedAt": "2022-02-10T23:30:59Z",
+      "modifiedAt": "2024-06-21T21:33:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v88g-cgmw-v5xw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15366"
+        }
+      ],
+      "affectedRange": "< 6.12.3",
+      "fixedVersion": "6.12.3"
+    }
+  ]
+}

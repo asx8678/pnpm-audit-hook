@@ -1,0 +1,27 @@
+{
+  "name": "binary-parser",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m39p-34qh-rh3w",
+      "title": "binary-parser library has a code injection vulnerability",
+      "description": "A code injection vulnerability in the binary-parser library prior to version 2.3.0 allows arbitrary JavaScript code execution when untrusted values are used in parser field names or encoding parameters. The library directly interpolates these values into dynamically generated code without sanitization, enabling attackers to execute arbitrary code in the context of the Node.js process.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m39p-34qh-rh3w",
+      "publishedAt": "2026-01-20T21:31:34Z",
+      "modifiedAt": "2026-01-21T22:57:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m39p-34qh-rh3w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-1245"
+        }
+      ],
+      "affectedRange": "< 2.3.0",
+      "fixedVersion": "2.3.0"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@amoy/common",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w58v-r3cp-qr93",
+      "title": "@amoy/common v was discovered to contain a prototype pollution via the function extend",
+      "description": "amoyjs amoy common v1.0.10 was discovered to contain a prototype pollution via the function extend. This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w58v-r3cp-qr93",
+      "publishedAt": "2024-07-01T15:32:15Z",
+      "modifiedAt": "2024-07-05T17:48:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w58v-r3cp-qr93"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-38994"
+        }
+      ],
+      "affectedRange": "= 1.0.10"
+    }
+  ]
+}

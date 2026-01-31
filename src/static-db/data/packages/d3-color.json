@@ -1,0 +1,23 @@
+{
+  "name": "d3-color",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-36jr-mh4h-2g58",
+      "title": "d3-color vulnerable to ReDoS",
+      "description": "The d3-color module provides representations for various color spaces in the browser. Versions prior to 3.1.0 are vulnerable to a Regular expression Denial of Service. This issue has been patched in version 3.1.0. There are no known workarounds.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-36jr-mh4h-2g58",
+      "publishedAt": "2022-09-29T14:12:55Z",
+      "modifiedAt": "2023-01-13T05:04:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-36jr-mh4h-2g58"
+        }
+      ],
+      "affectedRange": "< 3.1.0",
+      "fixedVersion": "3.1.0"
+    }
+  ]
+}

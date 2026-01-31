@@ -1,0 +1,27 @@
+{
+  "name": "@scandipwa/magento-scripts",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-52qp-gwwh-qrg4",
+      "title": "Missing Handler in @scandipwa/magento-scripts",
+      "description": "### Impact\nAfter changing the function from synchronous to asynchronous there wasn't implemented handler in the [start](https://docs.create-magento-app.com/getting-started/available-commands/start), [stop](https://docs.create-magento-app.com/getting-started/available-commands/stop), [exec](https://docs.create-magento-app.com/getting-started/available-commands/exec) and [logs](https://docs.create-magento-app.com/getting-started/available-commands/logs) commands, effectively making them unusable.\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-52qp-gwwh-qrg4",
+      "publishedAt": "2021-06-21T17:10:02Z",
+      "modifiedAt": "2023-02-01T05:06:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-52qp-gwwh-qrg4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32684"
+        }
+      ],
+      "affectedRange": ">= 1.5.1, < 1.5.3",
+      "fixedVersion": "1.5.3"
+    }
+  ]
+}

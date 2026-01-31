@@ -1,0 +1,27 @@
+{
+  "name": "highcharts",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8j65-4pcq-xq95",
+      "title": "Options structure open to Cross-site Scripting if passed unfiltered",
+      "description": "### Impact\nIn Highcharts versions 8 and earlier, the chart options structure was not systematically filtered for XSS vectors. The potential impact was that content from untrusted sources could execute code in the end user's browser. Especially when using the `useHTML` flag, HTML string options would be inserted unfiltered directly into the DOM. When `useHTML` was false, malicious code could be inserted by using various character replacement tricks or malformed HTML.\n\nIf your chart configuration ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8j65-4pcq-xq95",
+      "publishedAt": "2021-05-06T15:45:03Z",
+      "modifiedAt": "2023-01-29T05:06:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8j65-4pcq-xq95"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-29489"
+        }
+      ],
+      "affectedRange": "< 9.0.0",
+      "fixedVersion": "9.0.0"
+    }
+  ]
+}

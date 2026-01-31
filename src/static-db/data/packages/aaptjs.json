@@ -1,0 +1,126 @@
+{
+  "name": "aaptjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7fw7-gh23-f832",
+      "title": "Vulnerability in singleCrunch function leads to arbitrary code execution via filePath parameters",
+      "description": "aaptjs is a node wraper for aapt. An issue was discovered in the singleCrunch function in shenzhim aaptjs 1.3.1, allows attackers to execute arbitrary code via the filePath parameters.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7fw7-gh23-f832",
+      "publishedAt": "2021-11-01T19:19:29Z",
+      "modifiedAt": "2023-02-01T05:06:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7fw7-gh23-f832"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-36381"
+        }
+      ],
+      "affectedRange": "<= 1.3.1"
+    },
+    {
+      "id": "GHSA-m7p2-ghfh-pjvx",
+      "title": "Vulnerability in crunch function leads to arbitrary code execution via filePath parameters",
+      "description": "aaptjs is a node wraper for aapt. An issue was discovered in the crunch function in shenzhim aaptjs 1.3.1, allows attackers to execute arbitrary code via the filePath parameters.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m7p2-ghfh-pjvx",
+      "publishedAt": "2021-11-01T19:18:51Z",
+      "modifiedAt": "2023-02-01T05:06:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m7p2-ghfh-pjvx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-36380"
+        }
+      ],
+      "affectedRange": "<= 1.3.1"
+    },
+    {
+      "id": "GHSA-4qwq-q4pr-rr7r",
+      "title": "Vulnerability in packageCmd function leads to arbitrary code execution via filePath parameters",
+      "description": "aaptjs is a node wraper for aapt. An issue was discovered in the packageCmd function in shenzhim aaptjs 1.3.1, allows attackers to execute arbitrary code via the filePath parameters.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4qwq-q4pr-rr7r",
+      "publishedAt": "2021-11-02T15:42:38Z",
+      "modifiedAt": "2023-02-01T05:06:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4qwq-q4pr-rr7r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-36378"
+        }
+      ],
+      "affectedRange": "<= 1.3.1"
+    },
+    {
+      "id": "GHSA-9cq3-fj2h-ggj5",
+      "title": "Vulnerability in remove function leads to arbitrary code execution via filePath parameters",
+      "description": "Aaptjs is a node wraper for aapt. An issue was discovered in the remove function in shenzhim aaptjs 1.3.1, allows attackers to execute arbitrary code via the filePath parameters.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9cq3-fj2h-ggj5",
+      "publishedAt": "2021-11-02T15:42:31Z",
+      "modifiedAt": "2023-02-01T05:06:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9cq3-fj2h-ggj5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-36379"
+        }
+      ],
+      "affectedRange": "<= 1.3.1"
+    },
+    {
+      "id": "GHSA-r496-7hgp-53wf",
+      "title": "Vulnerability in dump function leads to arbitrary code execution via filePath parameters",
+      "description": "aaptjs is a node wraper for aapt. An issue was discovered in the dump function in shenzhim aaptjs 1.3.1, allows attackers to execute arbitrary code via the filePath parameters.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-r496-7hgp-53wf",
+      "publishedAt": "2021-11-02T15:42:24Z",
+      "modifiedAt": "2023-02-01T05:06:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r496-7hgp-53wf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-36377"
+        }
+      ],
+      "affectedRange": "<= 1.3.1"
+    },
+    {
+      "id": "GHSA-4g7x-7vgq-3j28",
+      "title": "Vulnerability in list function leads to arbitrary code execution via filePath parameters",
+      "description": "aaptjs is a node wraper for aapt. An issue was discovered in the list function in shenzhim aaptjs 1.3.1, allows attackers to execute arbitrary code via the filePath parameters.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4g7x-7vgq-3j28",
+      "publishedAt": "2021-11-02T15:42:16Z",
+      "modifiedAt": "2023-02-01T05:06:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4g7x-7vgq-3j28"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-36376"
+        }
+      ],
+      "affectedRange": "<= 1.3.1"
+    }
+  ]
+}

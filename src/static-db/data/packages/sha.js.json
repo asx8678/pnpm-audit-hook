@@ -1,0 +1,27 @@
+{
+  "name": "sha.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-95m3-7q98-8xr5",
+      "title": "sha.js is missing type checks leading to hash rewind and passing on crafted data",
+      "description": "### Summary\n\nThis is the same as [GHSA-cpq7-6gpm-g9rc](https://github.com/browserify/cipher-base/security/advisories/GHSA-cpq7-6gpm-g9rc) but just for `sha.js`, as it has its own implementation.\n\nMissing input type checks can allow types other than a well-formed `Buffer` or `string`, resulting in invalid values, hanging and rewinding the hash state (including turning a tagged hash into an untagged hash), or other generally undefined behaviour.\n\n### Details\n\nSee PoC\n\n### PoC\n```js\nconst forgeHash",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-95m3-7q98-8xr5",
+      "publishedAt": "2025-08-21T14:47:55Z",
+      "modifiedAt": "2025-11-03T21:35:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-95m3-7q98-8xr5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-9288"
+        }
+      ],
+      "affectedRange": "<= 2.4.11",
+      "fixedVersion": "2.4.12"
+    }
+  ]
+}

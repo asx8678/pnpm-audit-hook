@@ -1,0 +1,26 @@
+{
+  "name": "node-qpdf",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fpr8-4wvx-j9q3",
+      "title": "node-qpdf vulnerable to command injection ",
+      "description": "All versions of the package node-qpdf are vulnerable to Command Injection such that the package-exported method encrypt() fails to sanitize its parameter input, which later flows into a sensitive command execution API. As a result, attackers may inject malicious commands once they can specify the input pdf file path.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fpr8-4wvx-j9q3",
+      "publishedAt": "2023-10-14T06:30:54Z",
+      "modifiedAt": "2023-11-05T05:01:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fpr8-4wvx-j9q3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26155"
+        }
+      ],
+      "affectedRange": "<= 1.0.3"
+    }
+  ]
+}

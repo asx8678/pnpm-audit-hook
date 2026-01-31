@@ -1,0 +1,27 @@
+{
+  "name": "@apollo/experimental-nextjs-app-support",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rv8p-rr2h-fgpg",
+      "title": "@apollo/experimental-nextjs-app-support Cross-site Scripting vulnerability",
+      "description": "### Impact\n\nThe @apollo/experimental-apollo-client-nextjs NPM package is vulnerable to a cross-site scripting vulnerability. This vulnerability arises from improper handling of untrusted input when @apollo/experimental-apollo-client-nextjs performs server-side rendering of HTML pages. To fix this vulnerability, we implemented appropriate escaping to prevent javascript injection into rendered pages.\n\n### Patches\n\nTo fix this issue, please update to version 0.7.0 or later.\n\n### Workarounds\n\nThere ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rv8p-rr2h-fgpg",
+      "publishedAt": "2024-01-30T20:57:45Z",
+      "modifiedAt": "2024-01-30T20:57:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rv8p-rr2h-fgpg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-23841"
+        }
+      ],
+      "affectedRange": "<= 0.6.0",
+      "fixedVersion": "0.7.0"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "ag-grid-enterprise",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-876p-c77m-x2hc",
+      "title": "Prototype pollution in ag-grid-community via the _.mergeDeep function",
+      "description": "ag-grid-community v31.3.2 and ag-grid-enterprise v31.3.2 were discovered to contain a prototype pollution via the _.mergeDeep function. This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties. Prior versions were also found to be affected.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-876p-c77m-x2hc",
+      "publishedAt": "2024-07-01T15:32:17Z",
+      "modifiedAt": "2024-09-04T16:39:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-876p-c77m-x2hc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-38996"
+        }
+      ],
+      "affectedRange": "< 31.3.4",
+      "fixedVersion": "31.3.4"
+    },
+    {
+      "id": "GHSA-328p-362g-r48j",
+      "title": "ag-grid packages vulnerable to Prototype Pollution",
+      "description": "ag-grid-enterprise v31.3.2 was discovered to contain a prototype pollution via the component _ModuleSupport.jsonApply. This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-328p-362g-r48j",
+      "publishedAt": "2024-07-01T15:32:20Z",
+      "modifiedAt": "2024-08-26T13:51:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-328p-362g-r48j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-39001"
+        }
+      ],
+      "affectedRange": "< 31.3.4",
+      "fixedVersion": "31.3.4"
+    }
+  ]
+}

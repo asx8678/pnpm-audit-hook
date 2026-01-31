@@ -1,0 +1,27 @@
+{
+  "name": "rgb2hex",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7599-fqgm-v84p",
+      "title": "rgb2hex vulnerable to inefficient regular expression complexity",
+      "description": "A vulnerability was found in rgb2hex up to 0.1.5. It has been rated as problematic. This issue affects some unknown processing. The manipulation leads to inefficient regular expression complexity. The attack may be initiated remotely. Upgrading to version 0.1.6 can address this issue. The name of the patch is 9e0c38594432edfa64136fdf7bb651835e17c34f. It is recommended to upgrade the affected component. The associated identifier of this vulnerability is VDB-217151.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7599-fqgm-v84p",
+      "publishedAt": "2022-12-31T21:30:20Z",
+      "modifiedAt": "2023-10-20T22:23:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7599-fqgm-v84p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-25061"
+        }
+      ],
+      "affectedRange": "< 0.1.6",
+      "fixedVersion": "0.1.6"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "snyk-php-plugin",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-69f9-h8f9-7vjf",
+      "title": "OS Command Injection in Snyk php plugin",
+      "description": "The Snyk php plugin is vulnerable to Code Injection when scanning an untrusted PHP project. The vulnerability can be triggered if Snyk test is run inside the untrusted project due to the improper handling of the current working directory name. Snyk recommends only scanning trusted projects.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-69f9-h8f9-7vjf",
+      "publishedAt": "2024-10-23T21:30:28Z",
+      "modifiedAt": "2024-10-23T21:40:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-69f9-h8f9-7vjf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-48963"
+        }
+      ],
+      "affectedRange": "< 1.10.0",
+      "fixedVersion": "1.10.0"
+    }
+  ]
+}

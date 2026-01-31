@@ -1,0 +1,27 @@
+{
+  "name": "lifion-verify-deps",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rphm-c8gw-3r38",
+      "title": "OS Command Injection in lifion-verify-deps",
+      "description": "lifion-verify-dependencies through 1.1.0 is vulnerable to OS command injection via a crafted dependency name on the scanned project's package.json file.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rphm-c8gw-3r38",
+      "publishedAt": "2022-06-03T00:00:58Z",
+      "modifiedAt": "2023-01-27T05:03:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rphm-c8gw-3r38"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-34078"
+        }
+      ],
+      "affectedRange": "< 1.2.0",
+      "fixedVersion": "1.2.0"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@tinacms/graphql",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-529f-9qwm-9628",
+      "title": "tinacms is vulnerable to arbitrary code execution",
+      "description": "### Summary\n```tinacms``` uses the ```gray-matter``` package in an insecure way allowing attackers that can control the content of the processed markdown files, e.g., blog posts, to execute arbitrary code.\n\n### Details\nThe ```gray-matter``` package executes by default the code in the markdown file's front matter. ```tinacms``` does not change this behavior when process markdown file, e.g., by passing a custom engine property for js/javascript in the options object.\n\n### PoC\n1. Create a tinacms a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-529f-9qwm-9628",
+      "publishedAt": "2025-12-18T18:45:41Z",
+      "modifiedAt": "2025-12-18T18:45:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-529f-9qwm-9628"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-68278"
+        }
+      ],
+      "affectedRange": "< 2.0.3",
+      "fixedVersion": "2.0.3"
+    }
+  ]
+}

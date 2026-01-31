@@ -1,0 +1,23 @@
+{
+  "name": "matrix-org-irc",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-52rh-5rpj-c3w6",
+      "title": "Improper handling of multiline messages in node-irc",
+      "description": "node-irc is a socket wrapper for the IRC protocol that extends Node.js' EventEmitter. The vulnerability allows an attacker to manipulate a Matrix user into executing IRC commands by having them reply to a maliciously crafted message. Incorrect handling of a CR character allowed for making part of the message be sent to the IRC server verbatim rather than as a message to the channel.\nThe vulnerability has been patched in node-irc version 1.2.1.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-52rh-5rpj-c3w6",
+      "publishedAt": "2022-05-05T16:00:50Z",
+      "modifiedAt": "2023-01-09T05:01:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-52rh-5rpj-c3w6"
+        }
+      ],
+      "affectedRange": "<= 1.2.0",
+      "fixedVersion": "1.2.1"
+    }
+  ]
+}

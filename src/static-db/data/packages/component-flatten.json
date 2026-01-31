@@ -1,0 +1,26 @@
+{
+  "name": "component-flatten",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g6r3-hhg9-qf58",
+      "title": "component-flatten vulnerable to Prototype Pollution",
+      "description": "All versions of component-flatten are vulnerable to Prototype Pollution. The a function could be tricked into adding or modifying properties of Object.prototype using a `__proto__` payload.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g6r3-hhg9-qf58",
+      "publishedAt": "2022-05-24T17:09:13Z",
+      "modifiedAt": "2023-09-26T20:09:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g6r3-hhg9-qf58"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10794"
+        }
+      ],
+      "affectedRange": "<= 1.0.1"
+    }
+  ]
+}

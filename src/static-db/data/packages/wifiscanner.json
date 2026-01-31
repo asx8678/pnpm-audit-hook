@@ -1,0 +1,26 @@
+{
+  "name": "wifiscanner",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m6rw-m2v9-7hx4",
+      "title": "OS Command Injection in wifiscanner",
+      "description": "wifiscanner.js in thingsSDK WiFi Scanner 1.0.1 allows Code Injection because it can be used with options to overwrite the default executable/binary path and its arguments. An attacker can abuse this functionality to execute arbitrary code.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m6rw-m2v9-7hx4",
+      "publishedAt": "2021-05-17T21:00:59Z",
+      "modifiedAt": "2023-02-01T05:05:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m6rw-m2v9-7hx4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15362"
+        }
+      ],
+      "affectedRange": "<= 1.0.1"
+    }
+  ]
+}

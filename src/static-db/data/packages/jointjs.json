@@ -1,0 +1,69 @@
+{
+  "name": "jointjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f3pp-32qc-36w4",
+      "title": "Prototype Pollution in jointjs",
+      "description": "This affects the package jointjs before 3.4.2. A type confusion vulnerability can lead to a bypass of CVE-2020-28480 when the user-provided keys used in the path parameter are arrays in the setByPath function.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f3pp-32qc-36w4",
+      "publishedAt": "2021-09-22T20:36:34Z",
+      "modifiedAt": "2023-02-01T05:06:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f3pp-32qc-36w4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23444"
+        }
+      ],
+      "affectedRange": "< 3.4.2",
+      "fixedVersion": "3.4.2"
+    },
+    {
+      "id": "GHSA-cq8r-fc3q-6hg2",
+      "title": "Denial of Service (DoS) via the unsetByPath function in jsjoints",
+      "description": "The package jointjs before 3.3.0 are vulnerable to Denial of Service (DoS) via the unsetByPath function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cq8r-fc3q-6hg2",
+      "publishedAt": "2021-04-13T15:29:40Z",
+      "modifiedAt": "2023-02-01T05:05:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cq8r-fc3q-6hg2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28479"
+        }
+      ],
+      "affectedRange": "< 3.3.0",
+      "fixedVersion": "3.3.0"
+    },
+    {
+      "id": "GHSA-qwp9-52h8-xgg8",
+      "title": "Prototype pollution in JointJS",
+      "description": "The package jointjs before 3.3.0 are vulnerable to Prototype Pollution via util.setByPath (https://resources.jointjs.com/docs/jointjs/v3.2/joint.htmlutil.setByPath). The path used the access the object's key and set the value is not properly sanitized, leading to a Prototype Pollution.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qwp9-52h8-xgg8",
+      "publishedAt": "2021-01-20T21:21:16Z",
+      "modifiedAt": "2023-02-01T05:05:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qwp9-52h8-xgg8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28480"
+        }
+      ],
+      "affectedRange": "< 3.3.0",
+      "fixedVersion": "3.3.0"
+    }
+  ]
+}

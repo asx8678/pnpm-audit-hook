@@ -1,0 +1,27 @@
+{
+  "name": "serialize-javascript",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-76p7-773f-r4q5",
+      "title": "Cross-site Scripting (XSS) in serialize-javascript",
+      "description": "A flaw was found in npm-serialize-javascript. The vulnerability occurs because the serialize-javascript module does not properly sanitize certain inputs, such as regex or other JavaScript object types, allowing an attacker to inject malicious code. This code could be executed when deserialized by a web browser, causing Cross-site scripting (XSS) attacks. This issue is critical in environments where serialized data is sent to web clients, potentially compromising the security of the website or we",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-76p7-773f-r4q5",
+      "publishedAt": "2025-02-10T18:30:47Z",
+      "modifiedAt": "2026-01-29T12:30:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-76p7-773f-r4q5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-11831"
+        }
+      ],
+      "affectedRange": ">= 6.0.0, < 6.0.2",
+      "fixedVersion": "6.0.2"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "flat",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2j2x-2gpw-g8fm",
+      "title": "flat vulnerable to Prototype Pollution",
+      "description": "flat helps flatten/unflatten nested Javascript objects. A vulnerability, which was classified as critical, was found in hughsk flat up to 5.0.0. This affects the function unflatten of the file index.js. The manipulation leads to improperly controlled modification of object prototype attributes ('prototype pollution'). It is possible to initiate the attack remotely. Upgrading to version 5.0.1 can address this issue. The name of the patch is 20ef0ef55dfa028caddaedbcb33efbdb04d18e13. It is recommen",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-2j2x-2gpw-g8fm",
+      "publishedAt": "2022-12-25T21:30:22Z",
+      "modifiedAt": "2026-01-21T14:45:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2j2x-2gpw-g8fm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-36632"
+        }
+      ],
+      "affectedRange": "= 5.0.0",
+      "fixedVersion": "5.0.1"
+    }
+  ]
+}

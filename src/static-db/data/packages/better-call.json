@@ -1,0 +1,23 @@
+{
+  "name": "better-call",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hq75-xg7r-rx6c",
+      "title": "Better Call routing bug can lead to Cache Deception",
+      "description": "### Summary\n\nUsing a CDN that caches (`/**/*.png`, `/**/*.json`, `/**/*.css`, etc...) requests, a cache deception can emerge. This could lead to unauthorized access to user sessions and personal data when cached responses are served to other users.\n\n### Details\n\nThe vulnerability occurs in the request processing logic where path sanitization is insufficient. The library splits the path using `config.basePath` but doesn't properly validate the remaining path components. This allows specially craf",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hq75-xg7r-rx6c",
+      "publishedAt": "2025-07-11T17:09:53Z",
+      "modifiedAt": "2025-07-11T17:09:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hq75-xg7r-rx6c"
+        }
+      ],
+      "affectedRange": "< 1.0.12",
+      "fixedVersion": "1.0.12"
+    }
+  ]
+}

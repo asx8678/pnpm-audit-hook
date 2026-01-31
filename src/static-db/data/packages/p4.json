@@ -1,0 +1,27 @@
+{
+  "name": "p4",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jfm8-hwhg-r6gg",
+      "title": "p4 vulnerable to Command Injection due to improper input sanitization",
+      "description": "The package p4 before 0.0.7 is vulnerable to Command Injection via the run() function due to improper input sanitization",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jfm8-hwhg-r6gg",
+      "publishedAt": "2022-12-20T06:30:36Z",
+      "modifiedAt": "2023-08-17T05:02:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jfm8-hwhg-r6gg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25171"
+        }
+      ],
+      "affectedRange": "< 0.0.7",
+      "fixedVersion": "0.0.7"
+    }
+  ]
+}

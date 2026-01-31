@@ -1,0 +1,27 @@
+{
+  "name": "samba-client",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r3j7-x2g5-9gx6",
+      "title": "Command injection in samba-client",
+      "description": "The samba-client package before 4.0.0 for Node.js allows command injection because of the use of process.exec.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-r3j7-x2g5-9gx6",
+      "publishedAt": "2021-02-11T20:47:27Z",
+      "modifiedAt": "2023-02-01T05:05:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r3j7-x2g5-9gx6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-27185"
+        }
+      ],
+      "affectedRange": "< 4.0.0",
+      "fixedVersion": "4.0.0"
+    }
+  ]
+}

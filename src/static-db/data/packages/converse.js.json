@@ -1,0 +1,27 @@
+{
+  "name": "converse.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mv4h-qm24-x4gh",
+      "title": "Converse.js Exposure of Sensitive Information",
+      "description": "Converse.js and Inverse.js through 3.3 allow remote attackers to obtain sensitive information because it is too difficult to determine whether safe publication of private data was configured or even intended. For example, users might have an expectation that chatroom bookmarks are private, but the various interacting software components do not necessarily make that happen.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mv4h-qm24-x4gh",
+      "publishedAt": "2022-05-14T03:12:35Z",
+      "modifiedAt": "2023-10-06T17:38:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mv4h-qm24-x4gh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-6591"
+        }
+      ],
+      "affectedRange": "< 3.3.3",
+      "fixedVersion": "3.3.3"
+    }
+  ]
+}

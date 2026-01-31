@@ -1,0 +1,27 @@
+{
+  "name": "compile-sass",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-79qm-h35f-hr77",
+      "title": "OS Command Injection in compile-sass",
+      "description": "compile-sass prior to 1.0.5 allows execution of arbritary commands. The function &quot;setupCleanupOnExit(cssPath)&quot; within &quot;dist/index.js&quot; is executed as part of the &quot;rm&quot; command without any sanitization.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-79qm-h35f-hr77",
+      "publishedAt": "2021-04-13T15:23:13Z",
+      "modifiedAt": "2023-02-01T05:05:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-79qm-h35f-hr77"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10799"
+        }
+      ],
+      "affectedRange": "< 1.0.5",
+      "fixedVersion": "1.0.5"
+    }
+  ]
+}

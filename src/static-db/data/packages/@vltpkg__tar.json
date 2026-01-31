@@ -1,0 +1,27 @@
+{
+  "name": "@vltpkg/tar",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gf2c-jwcj-x929",
+      "title": "vlt Mishandles Path Sanitization for tar",
+      "description": "vlt before 1.0.0-rc.10 mishandles path sanitization for tar, leading to path traversal during extraction.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gf2c-jwcj-x929",
+      "publishedAt": "2026-01-28T00:31:42Z",
+      "modifiedAt": "2026-01-28T16:48:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gf2c-jwcj-x929"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24909"
+        }
+      ],
+      "affectedRange": "< 1.0.0-rc.10",
+      "fixedVersion": "1.0.0-rc.10"
+    }
+  ]
+}

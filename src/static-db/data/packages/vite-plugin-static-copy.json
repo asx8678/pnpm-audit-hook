@@ -1,0 +1,27 @@
+{
+  "name": "vite-plugin-static-copy",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pp7p-q8fx-2968",
+      "title": "vite-plugin-static-copy files not included in `src` are possible to access with a crafted request",
+      "description": "### Summary\n\nFiles not included in `src` was possible to access with a crafted request.\n\n### Impact\n\nOnly apps explicitly exposing the Vite dev server to the network (using --host or [server.host config option](https://vitejs.dev/config/server-options.html#server-host)) are affected.\n\nArbitrary files can be disclosed by exploiting this vulnerability.\n\n### Details\n\nConsider the following configuration in used by `vite.config.ts`:\n\n```ts\nimport { defineConfig } from 'vite'\nimport { viteStaticCopy ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pp7p-q8fx-2968",
+      "publishedAt": "2025-08-21T14:53:52Z",
+      "modifiedAt": "2025-08-21T19:17:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pp7p-q8fx-2968"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57753"
+        }
+      ],
+      "affectedRange": ">= 0.4.3, <= 2.3.1",
+      "fixedVersion": "2.3.2"
+    }
+  ]
+}

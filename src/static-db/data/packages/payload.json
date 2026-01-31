@@ -1,0 +1,90 @@
+{
+  "name": "payload",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-26rv-h2hf-3fw4",
+      "title": "Payload's SQLite adapter Session Fixation vulnerability",
+      "description": "A Session Fixation vulnerability existed in Payload's SQLite adapter due to identifier reuse during account creation. A malicious attacker could create a new account, save its JSON Web Token (JWT), and then delete the account, which did not invalidate the JWT. As a result, the next newly created user would receive the same identifier, allowing the attacker to reuse the JWT to authenticate and perform actions as that user.\n\nThis issue has been fixed in version 3.44.0 of Payload.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-26rv-h2hf-3fw4",
+      "publishedAt": "2025-08-29T12:31:11Z",
+      "modifiedAt": "2025-08-29T16:59:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-26rv-h2hf-3fw4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-4644"
+        }
+      ],
+      "affectedRange": "< 3.44.0",
+      "fixedVersion": "3.44.0"
+    },
+    {
+      "id": "GHSA-5v66-m237-hwf7",
+      "title": "Payload does not invalidate JWTs after log out",
+      "description": "Payload uses JSON Web Tokens (JWT) for authentication. After log out JWT is not invalidated, which allows an attacker who has stolen or intercepted token to freely reuse it until expiration date (which is by default set to 2 hours, but can be changed). \n\nThis issue has been fixed in version 3.44.0 of Payload.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5v66-m237-hwf7",
+      "publishedAt": "2025-08-29T12:31:11Z",
+      "modifiedAt": "2025-08-29T16:57:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5v66-m237-hwf7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-4643"
+        }
+      ],
+      "affectedRange": "< 3.44.0",
+      "fixedVersion": "3.44.0"
+    },
+    {
+      "id": "GHSA-35jj-vqcf-f2jf",
+      "title": "Hidden fields can be leaked on readable collections in Payload",
+      "description": "### Details\n\nIf a user has access to documents that contain hidden fields or fields they do not have access to, the user could reverse-engineer those values via brute force.\n\nAffected versions:  < 1.7.0\n\n### Workarounds\n\nIf you are unable to update, you can write a `beforeOperation` hook to remove `where` queries that attempt to access hidden field data.\n\n### Detecting Compromise\n\nMonitor your instance for brute-force style requests against your instance using `where` queries.\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-35jj-vqcf-f2jf",
+      "publishedAt": "2023-04-26T19:45:04Z",
+      "modifiedAt": "2023-11-11T05:02:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-35jj-vqcf-f2jf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-30843"
+        }
+      ],
+      "affectedRange": "< 1.7.0",
+      "fixedVersion": "1.7.0"
+    },
+    {
+      "id": "GHSA-w8xh-93qh-35vw",
+      "title": "Unrestricted Upload of File with Dangerous Type in Payload",
+      "description": "An arbitrary file upload vulnerability in the file upload module of PayloadCMS v0.15.0 allows attackers to execute arbitrary code via a crafted SVG file.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-w8xh-93qh-35vw",
+      "publishedAt": "2022-04-13T00:00:22Z",
+      "modifiedAt": "2023-01-27T05:01:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w8xh-93qh-35vw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-27952"
+        }
+      ],
+      "affectedRange": "<= 0.15.0",
+      "fixedVersion": "0.15.1"
+    }
+  ]
+}

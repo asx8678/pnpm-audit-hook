@@ -1,0 +1,26 @@
+{
+  "name": "hexo-theme-anzhiyu",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-82jf-8f24-xq9m",
+      "title": "hexo-theme-anzhiyu Cross-site Scripting vulnerability",
+      "description": "Cross Site Scripting (XSS) vulnerability in hexo-theme-anzhiyu v1.6.12, allows remote attackers to execute arbitrary code via the algolia search function.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-82jf-8f24-xq9m",
+      "publishedAt": "2024-03-03T00:30:32Z",
+      "modifiedAt": "2025-01-21T17:12:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-82jf-8f24-xq9m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-25865"
+        }
+      ],
+      "affectedRange": "= 1.6.12"
+    }
+  ]
+}

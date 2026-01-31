@@ -1,0 +1,27 @@
+{
+  "name": "object-path-set",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h6pr-c536-6rjg",
+      "title": "Prototype Pollution in object-path-set",
+      "description": "The package object-path-set before 1.0.2 are vulnerable to Prototype Pollution via the setPath method, as it allows an attacker to merge object prototypes into it. *Note:* This vulnerability derives from an incomplete fix in https://security.snyk.io/vuln/SNYK-JS-OBJECTPATHSET-607908",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h6pr-c536-6rjg",
+      "publishedAt": "2022-02-05T00:00:31Z",
+      "modifiedAt": "2023-02-03T05:05:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h6pr-c536-6rjg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23507"
+        }
+      ],
+      "affectedRange": "< 1.0.2",
+      "fixedVersion": "1.0.2"
+    }
+  ]
+}

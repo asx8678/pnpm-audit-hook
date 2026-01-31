@@ -1,0 +1,23 @@
+{
+  "name": "@veramo/data-store",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-38cw-85xc-xr9x",
+      "title": "Veramo is Vulnerable to SQL Injection in Veramo Data Store ORM",
+      "description": "## Summary\n\nAn SQL injection vulnerability exists in the `@veramo/data-store` package that allows any authenticated user to execute arbitrary SQL queries against the database. The vulnerability is caused by insufficient validation of the `column` parameter in the `order` array of query requests.\n\n## Details\n\n`packages/data-store/src/data-store-orm.ts` (lines 416-434)\n\nThe vulnerability exists in the `decorateQB()` function which processes query ordering parameters:\n\n```typescript\nfunction decora",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-38cw-85xc-xr9x",
+      "publishedAt": "2026-01-16T21:04:12Z",
+      "modifiedAt": "2026-01-16T21:04:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-38cw-85xc-xr9x"
+        }
+      ],
+      "affectedRange": "< 6.0.2",
+      "fixedVersion": "6.0.2"
+    }
+  ]
+}

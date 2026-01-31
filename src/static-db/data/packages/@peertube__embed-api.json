@@ -1,0 +1,27 @@
+{
+  "name": "@peertube/embed-api",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mv26-cx23-vrfg",
+      "title": "Server-Side Request Forgery in @peertube/embed-api",
+      "description": "@peertube/embed-api version 4.0.0 and prior is vulnerable to server-side request forgery.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mv26-cx23-vrfg",
+      "publishedAt": "2022-02-09T00:00:31Z",
+      "modifiedAt": "2023-02-03T05:05:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mv26-cx23-vrfg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0508"
+        }
+      ],
+      "affectedRange": "<= 4.0.0",
+      "fixedVersion": "4.1.0-rc.1"
+    }
+  ]
+}

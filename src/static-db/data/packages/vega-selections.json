@@ -1,0 +1,48 @@
+{
+  "name": "vega-selections",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-829q-m3qg-ph8r",
+      "title": "Vega XSS via expression abusing vlSelectionTuples function array map calls in environments with satisfactory function gadgets in the global scope",
+      "description": "## Impact\n\nApplications meeting these two conditions are at risk of arbitrary JavaScript code execution, even if \"safe mode\" [expressionInterpreter](https://vega.github.io/vega/usage/interpreter/) is used. \n\n1. Use `vega` in an application that attaches both `vega` library and a `vega.View` instance similar to the Vega [Editor](https://github.com/vega/editor) to the global `window`, or has any other satisfactory function gadgets in the global scope\n2. Allow user-defined Vega `JSON` definitions (",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-829q-m3qg-ph8r",
+      "publishedAt": "2026-01-05T22:56:59Z",
+      "modifiedAt": "2026-01-06T15:51:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-829q-m3qg-ph8r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-65110"
+        }
+      ],
+      "affectedRange": ">= 6.0.0, < 6.1.2",
+      "fixedVersion": "6.1.2"
+    },
+    {
+      "id": "GHSA-mp7w-mhcv-673j",
+      "title": "Vega allows Cross-site Scripting via the vlSelectionTuples function",
+      "description": "### Summary\nThe `vlSelectionTuples` function can be used to call JavaScript functions, leading to XSS.\n\n### Details\n[`vlSelectionTuples`](https://github.com/vega/vega/blob/b45cf431cd6c0d0c0e1567f087f9b3b55bc236fa/packages/vega-selections/src/selectionTuples.js#L14) calls multiple functions that can be controlled by an attacker, including one call with an attacker-controlled argument.\n\nExample call: `vlSelectionTuples([{datum:<argument>}], {fields:[{getter:<function>}]})`\n\nThis can be used to cal",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mp7w-mhcv-673j",
+      "publishedAt": "2025-02-14T17:33:58Z",
+      "modifiedAt": "2025-02-14T22:17:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mp7w-mhcv-673j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-25304"
+        }
+      ],
+      "affectedRange": "< 5.4.2",
+      "fixedVersion": "5.4.2"
+    }
+  ]
+}

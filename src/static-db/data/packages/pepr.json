@@ -1,0 +1,27 @@
+{
+  "name": "pepr",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w54x-r83c-x79q",
+      "title": "Pepr Has Overly Permissive RBAC ClusterRole in Admin Mode",
+      "description": "Severity: LOW\nTarget: /workspace/pepr/src/lib/assets/rbac.ts\nEndpoint: Kubernetes RBAC configuration\nMethod: Deployment\n\n## Response / Rationale\nPepr defaults to `rbacMode: \"admin\"` because the initial experience is designed to be frictionless for new users. This mode ensures that users can deploy and run the default `hello-pepr.ts` module without needing to understand or pre-configure RBAC rules.\n\nIt’s important to note that `hello-pepr.ts` is intended strictly as a demo to showcase Pepr featur",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-w54x-r83c-x79q",
+      "publishedAt": "2026-01-15T20:14:31Z",
+      "modifiedAt": "2026-01-16T21:56:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w54x-r83c-x79q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23634"
+        }
+      ],
+      "affectedRange": "< 1.0.5",
+      "fixedVersion": "1.0.5"
+    }
+  ]
+}

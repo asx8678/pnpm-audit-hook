@@ -1,0 +1,27 @@
+{
+  "name": "cross-spawn",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3xgq-45jj-v275",
+      "title": "Regular Expression Denial of Service (ReDoS) in cross-spawn",
+      "description": "Versions of the package cross-spawn before 7.0.5 are vulnerable to Regular Expression Denial of Service (ReDoS) due to improper input sanitization. An attacker can increase the CPU usage and crash the program by crafting a very large and well crafted string.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3xgq-45jj-v275",
+      "publishedAt": "2024-11-08T06:30:47Z",
+      "modifiedAt": "2025-05-19T19:56:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3xgq-45jj-v275"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21538"
+        }
+      ],
+      "affectedRange": "< 6.0.6",
+      "fixedVersion": "6.0.6"
+    }
+  ]
+}

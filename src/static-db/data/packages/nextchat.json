@@ -1,0 +1,26 @@
+{
+  "name": "nextchat",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qf3q-9f3h-cjp9",
+      "title": "NextChat has full-read SSRF and XSS vulnerability in /api/cors endpoint",
+      "description": "NextChat, also known as ChatGPT-Next-Web, is a cross-platform chat user interface for use with ChatGPT. Versions 2.11.2 and prior are vulnerable to server-side request forgery and cross-site scripting. This vulnerability enables read access to internal HTTP endpoints but also write access using HTTP POST, PUT, and other methods. Attackers can also use this vulnerability to mask their source IP by forwarding malicious traffic intended for other Internet targets through these open proxies. As of t",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qf3q-9f3h-cjp9",
+      "publishedAt": "2024-08-05T21:29:23Z",
+      "modifiedAt": "2024-08-05T21:29:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qf3q-9f3h-cjp9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-49785"
+        }
+      ],
+      "affectedRange": "<= 2.11.2"
+    }
+  ]
+}

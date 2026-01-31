@@ -1,0 +1,48 @@
+{
+  "name": "body-parser",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wqch-xfxh-vrr4",
+      "title": "body-parser is vulnerable to denial of service when url encoding is used",
+      "description": "### Impact\n\nbody-parser 2.2.0 is vulnerable to denial of service due to inefficient handling of URL-encoded bodies with very large numbers of parameters. An attacker can send payloads containing thousands of parameters within the default 100KB request size limit, causing elevated CPU and memory usage. This can lead to service slowdown or partial outages under sustained malicious traffic.\n\n### Patches\n\nThis issue is addressed in version 2.2.1.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wqch-xfxh-vrr4",
+      "publishedAt": "2025-11-25T14:20:21Z",
+      "modifiedAt": "2025-11-25T18:09:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wqch-xfxh-vrr4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-13466"
+        }
+      ],
+      "affectedRange": ">= 2.2.0, < 2.2.1",
+      "fixedVersion": "2.2.1"
+    },
+    {
+      "id": "GHSA-qwcr-r2fm-qrc7",
+      "title": "body-parser vulnerable to denial of service when url encoding is enabled",
+      "description": "### Impact\n\nbody-parser <1.20.3 is vulnerable to denial of service when url encoding is enabled. A malicious actor using a specially crafted payload could flood the server with a large number of requests, resulting in denial of service.\n\n### Patches\n\nthis issue is patched in 1.20.3\n\n### References\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qwcr-r2fm-qrc7",
+      "publishedAt": "2024-09-10T15:52:39Z",
+      "modifiedAt": "2024-09-10T19:01:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qwcr-r2fm-qrc7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-45590"
+        }
+      ],
+      "affectedRange": "< 1.20.3",
+      "fixedVersion": "1.20.3"
+    }
+  ]
+}

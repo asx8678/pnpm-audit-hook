@@ -1,0 +1,23 @@
+{
+  "name": "@smithy/config-resolver",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6475-r3vj-m8vf",
+      "title": "AWS SDK for JavaScript v3 adopted defense in depth enhancement for region parameter value",
+      "description": "CVSSv3.1 Rating: 3.7 (LOW)\n\nSummary\n\nThis notification is related to the use of specific values for the region input field when calling AWS services. An actor with access to the environment in which the SDK is used could set the region input field to an invalid value.\n\nA defense-in-depth enhancement has been implemented in the AWS SDK for JavaScript v3 (versions 3.723.0 and later). This enhancement validates that a region used to construct an endpoint URL is a valid host label. The change was re",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-6475-r3vj-m8vf",
+      "publishedAt": "2026-01-08T21:52:45Z",
+      "modifiedAt": "2026-01-08T21:52:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6475-r3vj-m8vf"
+        }
+      ],
+      "affectedRange": "< 4.4.0",
+      "fixedVersion": "4.4.0"
+    }
+  ]
+}

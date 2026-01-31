@@ -1,0 +1,27 @@
+{
+  "name": "kill-port-process",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xp4x-j9vh-c3wf",
+      "title": "OS Command Injection and Command Injection in kill-port-process",
+      "description": "The kill-port-process package version &lt; 2.2.0 is vulnerable to a Command Injection vulnerability.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xp4x-j9vh-c3wf",
+      "publishedAt": "2022-02-10T20:20:31Z",
+      "modifiedAt": "2023-02-01T05:05:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xp4x-j9vh-c3wf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15609"
+        }
+      ],
+      "affectedRange": "<= 2.2.0",
+      "fixedVersion": "2.2.1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "pdfmake",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rj3r-r7hh-jxfq",
+      "title": "pdfmake is vulnerable to Throttling via repeatedly redirecting URL in file embedding",
+      "description": "Versions of the package pdfmake from 0.3.0-beta.1 to before 0.3.0-beta.17 are vulnerable to Allocation of Resources Without Limits or Throttling via repeatedly redirect URL in file embedding. An attacker can cause the application to crash or become unresponsive by providing crafted input that triggers this condition.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rj3r-r7hh-jxfq",
+      "publishedAt": "2025-10-07T06:31:12Z",
+      "modifiedAt": "2025-10-08T18:56:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rj3r-r7hh-jxfq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-11362"
+        }
+      ],
+      "affectedRange": ">= 0.3.0-beta.1, < 0.3.0-beta.17",
+      "fixedVersion": "0.3.0-beta.17"
+    }
+  ]
+}

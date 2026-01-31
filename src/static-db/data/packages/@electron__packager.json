@@ -1,0 +1,27 @@
+{
+  "name": "@electron/packager",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-34h3-8mw4-qw57",
+      "title": "@electron/packager's build process memory potentially leaked into final executable",
+      "description": "### Impact\nA random segment of ~1-10kb of Node.js heap memory allocated either side of a known buffer will be leaked into the final executable. This memory _could_ contain sensitive information such as environment variables, secrets files, etc.\n\n### Patches\nThis issue is patched in 18.3.1\n\n### Workarounds\nNo workarounds, please update to a patched version of `@electron/packager` immediately if impacated.\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-34h3-8mw4-qw57",
+      "publishedAt": "2024-03-29T20:16:22Z",
+      "modifiedAt": "2024-03-29T20:16:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-34h3-8mw4-qw57"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-29900"
+        }
+      ],
+      "affectedRange": "= 18.3.0",
+      "fixedVersion": "18.3.1"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "name": "vue-i18n",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x8qp-wqqm-57ph",
+      "title": "vue-i18n's escapeParameterHtml does not prevent DOM-based XSS through its tag attributes",
+      "description": "### Summary\nThe escapeParameterHtml: true option in Vue I18n is designed to protect against HTML/script injection by escaping interpolated parameters. However, this setting fails to prevent execution of certain tag-based payloads, such as `<img src=x onerror=...>`, if the interpolated value is inserted inside an HTML context using v-html.\n\nThis may lead to a DOM-based XSS vulnerability, even when using escapeParameterHtml: true, if a translation string includes minor HTML and is rendered via v-h",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x8qp-wqqm-57ph",
+      "publishedAt": "2025-07-16T19:32:48Z",
+      "modifiedAt": "2025-07-17T20:58:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x8qp-wqqm-57ph"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-53892"
+        }
+      ],
+      "affectedRange": ">= 11.0.0, < 11.1.10",
+      "fixedVersion": "11.1.10"
+    },
+    {
+      "id": "GHSA-p2ph-7g93-hw3m",
+      "title": "Vue I18n Allows Prototype Pollution in `handleFlatJson`",
+      "description": "**Vulnerability type:**\nPrototype Pollution\n\n**Vulnerability Location(s):**\n```js\n# v9.1\nnode_modules/@intlify/message-resolver/index.js\n\n# v9.2 or later\nnode_modules/@intlify/vue-i18n-core/index.js\n```\n\n**Description:**\n\nThe latest version of `@intlify/message-resolver (9.1)` and `@intlify/vue-i18n-core (9.2 or later)`, (previous versions might also affected), is vulnerable to Prototype Pollution through the entry function(s) `handleFlatJson`. An attacker can supply a payload with Object.protot",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p2ph-7g93-hw3m",
+      "publishedAt": "2025-03-07T15:58:24Z",
+      "modifiedAt": "2025-03-10T19:17:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p2ph-7g93-hw3m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-27597"
+        }
+      ],
+      "affectedRange": ">= 11.0.0-beta.0, < 11.1.2",
+      "fixedVersion": "11.1.2"
+    },
+    {
+      "id": "GHSA-hjwq-mjwj-4x6c",
+      "title": "@intlify/shared Prototype Pollution vulnerability",
+      "description": "**Vulnerability type: Prototype Pollution**\n\n**Affected Package:**\n\nProduct: @intlify/shared\nVersion: 10.0.4\n\n\n**Vulnerability Location(s):**\n\n`node_modules/@intlify/shared/dist/shared.cjs:232:26`\n\n\n**Description:**\n\nThe latest version of `@intlify/shared (10.0.4)` is vulnerable to Prototype Pollution through the entry function(s) `lib.deepCopy`. An attacker can supply a payload with `Object.prototype` setter to introduce or modify properties within the global prototype chain, causing denial of ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hjwq-mjwj-4x6c",
+      "publishedAt": "2024-12-02T17:26:47Z",
+      "modifiedAt": "2024-12-02T17:26:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hjwq-mjwj-4x6c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-52810"
+        }
+      ],
+      "affectedRange": ">= 10.0.0, < 10.0.5",
+      "fixedVersion": "10.0.5"
+    },
+    {
+      "id": "GHSA-9r9m-ffp6-9x4v",
+      "title": "vue-i18n has cross-site scripting vulnerability with prototype pollution",
+      "description": "### Vulnerability type\nXSS\n\n### Description\nvue-i18n can be passed locale messages to `createI18n` or `useI18n`.\nwe can then translate them using `t` and `$t`.\nvue-i18n has its own syntax for local messages, and uses a message compiler to generate AST.\nIn order to maximize the performance of the translation function, vue-i18n uses bundler plugins such as `@intlify/unplugin-vue-i18n` and bulder to convert the AST in advance when building the application.\nBy using that AST as the locale message, i",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9r9m-ffp6-9x4v",
+      "publishedAt": "2024-12-02T17:26:20Z",
+      "modifiedAt": "2024-12-02T17:26:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9r9m-ffp6-9x4v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-52809"
+        }
+      ],
+      "affectedRange": ">= 10.0.0, < 10.0.5",
+      "fixedVersion": "10.0.5"
+    }
+  ]
+}

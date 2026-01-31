@@ -1,0 +1,27 @@
+{
+  "name": "lockfile-lint-api",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7cfr-5cjf-32p4",
+      "title": "lockfile-lint-api Vulnerable to Incorrect Behavior Order",
+      "description": "Versions of the package lockfile-lint-api before 5.9.2 are vulnerable to Incorrect Behavior Order: Early Validation via the resolved attribute of the package URL validation which can be bypassed by extending the package name allowing an attacker to install other npm packages than the intended one.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7cfr-5cjf-32p4",
+      "publishedAt": "2025-05-16T06:30:24Z",
+      "modifiedAt": "2025-05-16T21:45:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7cfr-5cjf-32p4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-4759"
+        }
+      ],
+      "affectedRange": "< 5.9.2",
+      "fixedVersion": "5.9.2"
+    }
+  ]
+}

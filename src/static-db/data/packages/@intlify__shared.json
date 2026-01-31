@@ -1,0 +1,27 @@
+{
+  "name": "@intlify/shared",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hjwq-mjwj-4x6c",
+      "title": "@intlify/shared Prototype Pollution vulnerability",
+      "description": "**Vulnerability type: Prototype Pollution**\n\n**Affected Package:**\n\nProduct: @intlify/shared\nVersion: 10.0.4\n\n\n**Vulnerability Location(s):**\n\n`node_modules/@intlify/shared/dist/shared.cjs:232:26`\n\n\n**Description:**\n\nThe latest version of `@intlify/shared (10.0.4)` is vulnerable to Prototype Pollution through the entry function(s) `lib.deepCopy`. An attacker can supply a payload with `Object.prototype` setter to introduce or modify properties within the global prototype chain, causing denial of ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hjwq-mjwj-4x6c",
+      "publishedAt": "2024-12-02T17:26:47Z",
+      "modifiedAt": "2024-12-02T17:26:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hjwq-mjwj-4x6c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-52810"
+        }
+      ],
+      "affectedRange": ">= 10.0.0, < 10.0.5",
+      "fixedVersion": "10.0.5"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "rebber",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2c83-wfv3-q25f",
+      "title": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') in ZMarkdown",
+      "description": "### Impact\n\nA Remote Command Execution vulnerability was found in the rebber module,\nwhich allowed execution of arbitrary commands. The reported problem came\nfrom CodeBlocks, which could be escaped to insert malicious LaTeX.\n\nAnyone using `rebber` without sanitation of code content or a custom\nmacro is impacted by this vulnerability. Here is an example of a Markdown\ncontent that will exploit the vulnerability:\n\n````markdown\n```\n\\end{CodeBlock}\n\n\\immediate\\write18{COMMAND > outputrce}\n\\input{outp",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-2c83-wfv3-q25f",
+      "publishedAt": "2021-09-07T23:07:56Z",
+      "modifiedAt": "2024-04-29T09:19:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2c83-wfv3-q25f"
+        }
+      ],
+      "affectedRange": "< 5.2.1",
+      "fixedVersion": "5.2.1"
+    }
+  ]
+}

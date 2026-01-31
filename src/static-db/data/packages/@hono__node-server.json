@@ -1,0 +1,48 @@
+{
+  "name": "@hono/node-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hgxw-5xg3-69jx",
+      "title": "@hono/node-server has Denial of Service risk when receiving Host header that cannot be parsed",
+      "description": "### Impact\n\nThe application hangs when receiving a Host header with a value that `@hono/node-server` can't handle well. Invalid values are those that cannot be parsed by the `URL` as a hostname such as an empty string, slashes `/`, and other strings.\n\nFor example, if you have a simple application:\n\n```ts\nimport { serve } from '@hono/node-server'\nimport { Hono } from 'hono'\n\nconst app = new Hono()\n\napp.get('/', (c) => c.text('Hello'))\n\nserve(app)\n```\n\nSending a request with a Host header with an ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hgxw-5xg3-69jx",
+      "publishedAt": "2024-04-19T19:48:40Z",
+      "modifiedAt": "2024-04-19T21:44:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hgxw-5xg3-69jx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-32652"
+        }
+      ],
+      "affectedRange": ">= 1.3.0, < 1.10.1",
+      "fixedVersion": "1.10.1"
+    },
+    {
+      "id": "GHSA-rjq5-w47x-x359",
+      "title": "@hono/node-server cannot handle \"double dots\" in URL",
+      "description": "### Impact\n\nSince v1.3.0, we use our own Request object. This is great, but the `url` behavior is unexpected.\n\nIn the standard API, if the URL contains `..`, here called \"double dots\", the URL string returned by Request will be in the resolved path.\n\n```ts\nconst req = new Request('http://localhost/static/../foo.txt') // Web-standards\nconsole.log(req.url) // http://localhost/foo.txt\n```\n\nHowever, the `url` in our Request does not resolve double dots, so `http://localhost/static/.. /foo.txt` is re",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rjq5-w47x-x359",
+      "publishedAt": "2024-01-23T14:42:51Z",
+      "modifiedAt": "2024-01-23T14:42:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rjq5-w47x-x359"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-23340"
+        }
+      ],
+      "affectedRange": ">= 1.3.0, < 1.4.1",
+      "fixedVersion": "1.4.1"
+    }
+  ]
+}

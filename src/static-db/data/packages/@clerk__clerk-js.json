@@ -1,0 +1,26 @@
+{
+  "name": "@clerk/clerk-js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3mm3-wfpv-q85g",
+      "title": "Clerk-js vulnerable to bypass of OAuth authentication flow by manipulating request at OTP verification stage",
+      "description": "An issue was discovered in Clerk-js 5.88.0 allowing attackers to bypass the OAuth authentication flow by manipulating the request at the OTP verification stage.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3mm3-wfpv-q85g",
+      "publishedAt": "2025-11-20T21:30:32Z",
+      "modifiedAt": "2025-11-21T00:38:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3mm3-wfpv-q85g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-63700"
+        }
+      ],
+      "affectedRange": "<= 5.88.0"
+    }
+  ]
+}

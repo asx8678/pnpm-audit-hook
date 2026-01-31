@@ -1,0 +1,26 @@
+{
+  "name": "wincred",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v85c-hgq5-7pfw",
+      "title": "Arbitrary Command Injection",
+      "description": "This affects all versions of package wincred. If attacker-controlled user input is given to the getCredential function, it is possible for an attacker to execute arbitrary commands. This is due to use of the child_process exec function without input sanitization.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-v85c-hgq5-7pfw",
+      "publishedAt": "2021-06-29T18:26:05Z",
+      "modifiedAt": "2023-02-01T05:05:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v85c-hgq5-7pfw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23399"
+        }
+      ],
+      "affectedRange": "<= 1.0.2"
+    }
+  ]
+}

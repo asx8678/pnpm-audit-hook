@@ -1,0 +1,91 @@
+{
+  "name": "sweetalert2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8jh9-wqpf-q52c",
+      "title": "sweetalert2 v8.19.1 and above contains hidden functionality",
+      "description": "`sweetalert2` versions 8.19.1 and up until 9.0.0 are vulnerable to hidden functionality that was introduced by the maintainer. The package outputs audio and/or video messages that do not pertain to the functionality of the package and is not included in versions below 8.19.1.\n\n### Workaround\nUsers who are unable to update to the fixed version (11.22.4) can use package versions 8.19.0 and below, as they do not contain the hidden functionality.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-8jh9-wqpf-q52c",
+      "publishedAt": "2022-11-23T15:49:51Z",
+      "modifiedAt": "2025-09-24T20:11:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8jh9-wqpf-q52c"
+        }
+      ],
+      "affectedRange": ">= 8.19.1, < 9.0.0",
+      "fixedVersion": "11.22.4"
+    },
+    {
+      "id": "GHSA-pg98-6v7f-2xfv",
+      "title": "sweetalert2 v9.17.4 and above contains hidden functionality",
+      "description": "`sweetalert2` versions 9.17.4 and up until 10.0.0 are vulnerable to hidden functionality that was introduced by the maintainer. The package outputs audio and/or video messages that do not pertain to the functionality of the package and is not included in versions 9.0.0 - 9.17.3.\n\n### Workaround\nUsers who are unable to update to the fixed version (11.22.4) can use package versions 9.0.0-9.17.3, as they do not contain the hidden functionality.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-pg98-6v7f-2xfv",
+      "publishedAt": "2022-11-23T15:44:52Z",
+      "modifiedAt": "2025-09-24T20:11:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pg98-6v7f-2xfv"
+        }
+      ],
+      "affectedRange": ">= 9.17.4, < 10.0.0",
+      "fixedVersion": "11.22.4"
+    },
+    {
+      "id": "GHSA-qq6h-5g6j-q3cm",
+      "title": "sweetalert2 v11.4.9 and above contains hidden functionality",
+      "description": "`sweetalert2` versions 11.4.9 and above are vulnerable to hidden functionality that was introduced by the maintainer. The package outputs audio and/or video messages that do not pertain to the functionality of the package and is not included in versions 11.0.0 - 11.4.8.\n\n### Workaround\nUse a version 11.0.0 - 11.4.8 of the package until the maintainer releases a fix.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-qq6h-5g6j-q3cm",
+      "publishedAt": "2022-11-23T15:26:43Z",
+      "modifiedAt": "2025-08-25T17:23:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qq6h-5g6j-q3cm"
+        }
+      ],
+      "affectedRange": ">= 11.4.9, < 11.6.14",
+      "fixedVersion": "11.22.4"
+    },
+    {
+      "id": "GHSA-457r-cqc8-9vj9",
+      "title": "sweetalert2 v10.16.10 and above contains hidden functionality",
+      "description": "`sweetalert2` versions 10.16.10 and up until 11.0.0 are vulnerable to hidden functionality that was introduced by the maintainer. The package outputs audio and/or video messages that do not pertain to the functionality of the package and is not included in versions 10.0.0 - 10.16.9.\n\n### Workaround\nUse a version 10.0.0 - 10.16.9 of the package until the maintainer releases a fix.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-457r-cqc8-9vj9",
+      "publishedAt": "2022-11-23T15:39:50Z",
+      "modifiedAt": "2025-08-25T17:22:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-457r-cqc8-9vj9"
+        }
+      ],
+      "affectedRange": ">= 10.16.10, < 11.0.0",
+      "fixedVersion": "11.22.4"
+    },
+    {
+      "id": "GHSA-mrr8-v49w-3333",
+      "title": "sweetalert2 contains potentially undesirable behavior",
+      "description": "`sweetalert2` versions from 11.6.14 to before 11.22.4 have potentially undesirable behavior. The package outputs audio and/or video messages that do not pertain to the functionality of the package when run on specific tlds. This functionality is documented on the project's readme.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-mrr8-v49w-3333",
+      "publishedAt": "2023-07-10T19:08:10Z",
+      "modifiedAt": "2025-08-14T19:15:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mrr8-v49w-3333"
+        }
+      ],
+      "affectedRange": ">= 11.6.14, < 11.22.4",
+      "fixedVersion": "11.22.4"
+    }
+  ]
+}

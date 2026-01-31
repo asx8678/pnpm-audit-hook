@@ -1,0 +1,46 @@
+{
+  "name": "expr-eval",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jc85-fpwf-qm7x",
+      "title": "expr-eval does not restrict functions passed to the evaluate function",
+      "description": "The expr-eval library is a JavaScript expression parser and evaluator designed to safely evaluate mathematical expressions with user-defined variables. However, due to insufficient input validation, an attacker can pass a crafted variables object into the evaluate() function and trigger arbitrary code execution.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jc85-fpwf-qm7x",
+      "publishedAt": "2025-11-05T03:30:23Z",
+      "modifiedAt": "2025-12-09T15:33:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jc85-fpwf-qm7x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-12735"
+        }
+      ],
+      "affectedRange": "<= 2.0.2"
+    },
+    {
+      "id": "GHSA-8gw3-rxh4-v6jx",
+      "title": "expr-eval vulnerable to Prototype Pollution",
+      "description": "npm package `expr-eval` is vulnerable to Prototype Pollution. An attacker with access to express eval interface can use JavaScript prototype-based inheritance model to achieve arbitrary code execution. The npm expr-eval-fork package resolves this issue.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8gw3-rxh4-v6jx",
+      "publishedAt": "2025-11-14T18:31:39Z",
+      "modifiedAt": "2025-11-17T18:39:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8gw3-rxh4-v6jx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-13204"
+        }
+      ],
+      "affectedRange": "<= 2.0.2"
+    }
+  ]
+}

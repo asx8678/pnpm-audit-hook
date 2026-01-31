@@ -1,0 +1,27 @@
+{
+  "name": "@directus/types",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-56p6-qw3c-fq2g",
+      "title": "Suspended Directus user can continue to use session token to access API",
+      "description": "### Summary\nSince the user status is not checked when verifying a session token a suspended user can use the token generated in session auth mode to access the API despite their status.\n\n### Details\nThere is a check missing in `verifySessionJWT` to verify that a user is actually still active and allowed to access the API. Right now one can extract the session token obtained by, e.g. login in to the app while still active and then, after the user has been suspended continue to use that token unti",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-56p6-qw3c-fq2g",
+      "publishedAt": "2025-03-26T18:30:43Z",
+      "modifiedAt": "2025-06-09T18:12:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-56p6-qw3c-fq2g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-30351"
+        }
+      ],
+      "affectedRange": ">= 11.0.7, < 13.0.0",
+      "fixedVersion": "13.0.0"
+    }
+  ]
+}

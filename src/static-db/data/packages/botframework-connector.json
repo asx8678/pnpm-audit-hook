@@ -1,0 +1,27 @@
+{
+  "name": "botframework-connector",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fvcj-hvfw-7f2v",
+      "title": "botframework-connector vulnerable to Improper Authentication",
+      "description": "### Impact\nA maliciously crafted claim may be incorrectly authenticated by the bot. Impacts bots that are not configured to be used as a Skill. This vulnerability requires an attacker to have internal knowledge of the bot.\n\n### Patches\nThe problem has been patched in all affected versions. Please see the list of patched versions for the most appropriate one for your individual case.\n\n### Workarounds\nUsers who do not wish or are not able to upgrade can add an authentication configuration containi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fvcj-hvfw-7f2v",
+      "publishedAt": "2021-03-08T15:49:53Z",
+      "modifiedAt": "2024-01-11T05:05:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fvcj-hvfw-7f2v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-1725"
+        }
+      ],
+      "affectedRange": ">= 4.10.0, < 4.10.3",
+      "fixedVersion": "4.10.3"
+    }
+  ]
+}

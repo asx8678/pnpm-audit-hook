@@ -1,0 +1,23 @@
+{
+  "name": "@better-auth/passkey",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4vcf-q4xf-f48m",
+      "title": "Better Auth Passkey Plugin allows passkey deletion through IDOR",
+      "description": "# Summary\n\nAffected versions of the better-auth passkey plugin allow users with any valid session to delete arbitrary passkeys via their ID using `POST /passkey/delete-passkey`.\n\n# Details\n\n`ctx.body.id` is implicitly trusted and used in passkey deletion queries.\n\nbetter-auth applications configured with `useNumberId` may use auto incrementing IDs which makes it trivial to delete all passkeys via enumeration.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4vcf-q4xf-f48m",
+      "publishedAt": "2025-11-25T21:42:53Z",
+      "modifiedAt": "2025-11-25T21:42:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4vcf-q4xf-f48m"
+        }
+      ],
+      "affectedRange": "< 1.4.0",
+      "fixedVersion": "1.4.0"
+    }
+  ]
+}

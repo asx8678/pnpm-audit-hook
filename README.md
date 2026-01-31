@@ -119,6 +119,62 @@ jobs:
 
 The hook runs automatically during `pnpm install` and will fail the job if blocking vulnerabilities are found.
 
+## Static Vulnerability Database
+
+The hook includes a bundled database of historical vulnerabilities (2020-2025) that enables faster audits and reduced API calls.
+
+### How It Works
+
+- **Historical vulnerabilities** (before the cutoff date) are served from the bundled static database
+- **New vulnerabilities** (after the cutoff date) are fetched from live APIs
+- This hybrid approach provides offline capability for historical data while ensuring fresh data for recent disclosures
+
+### Benefits
+
+- **Faster audits**: No API calls needed for known historical vulnerabilities
+- **Reduced API calls**: Only new vulnerabilities require network requests
+- **Offline capability**: Historical vulnerability checks work without internet access
+- **Rate limit friendly**: Minimizes API usage against GitHub and NVD
+
+### Configuration
+
+Enable or disable the static baseline in `.pnpm-audit.yaml`:
+
+```yaml
+staticBaseline:
+  enabled: true
+  cutoffDate: "2025-12-31"
+```
+
+- `enabled` - Whether to use the static database (default: `true`)
+- `cutoffDate` - Vulnerabilities published before this date use the static database
+
+### Updating the Database
+
+Update the bundled vulnerability database monthly to capture new disclosures:
+
+```bash
+# Full rebuild of the vulnerability database
+npm run update-vuln-db
+
+# Incremental update (faster, adds only new vulnerabilities)
+npm run update-vuln-db:incremental
+```
+
+After updating, rebuild and commit the changes:
+
+```bash
+npm run build
+git add data/
+git commit -m "chore: update vulnerability database"
+```
+
+### Update Workflow
+
+1. Run `npm run update-vuln-db:incremental` monthly
+2. Optionally extend `cutoffDate` in your config to include newer static data
+3. Commit the updated `data/` directory to your repository
+
 ## Build
 
 ```bash

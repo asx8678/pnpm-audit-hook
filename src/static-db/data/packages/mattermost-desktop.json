@@ -1,0 +1,152 @@
+{
+  "name": "mattermost-desktop",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g6qx-wq5w-wr8v",
+      "title": "Mattermost Desktop App exposes sensitive information in its application logs",
+      "description": "Mattermost Desktop App versions < 6.0.0 fail to sanitize sensitive information from Mattermost logs and clear data on server deletion which allows an attacker with access to the users system to gain access to potentially sensitive information via reading the application logs.\n\nA fix is available for direct download via the [Mattermost Desktop](https://github.com/mattermost/desktop/releases/tag/v6.0.0) repository, but it has not been uploaded to the npm registry at time of publication.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-g6qx-wq5w-wr8v",
+      "publishedAt": "2025-12-17T21:30:48Z",
+      "modifiedAt": "2025-12-19T18:56:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g6qx-wq5w-wr8v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-13321"
+        }
+      ],
+      "affectedRange": "<= 3.6.0"
+    },
+    {
+      "id": "GHSA-xmvv-w44w-j8wx",
+      "title": "Mattermost Desktop App allows the bypass of Transparency, Consent, and Control (TCC) via code injection",
+      "description": "Mattermost Desktop App versions <=5.10.0 explicitly declared unnecessary macOS entitlements which allows an attacker with remote access to bypass Transparency, Consent, and Control (TCC) via code injection.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-xmvv-w44w-j8wx",
+      "publishedAt": "2025-03-17T15:31:50Z",
+      "modifiedAt": "2025-03-17T21:27:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xmvv-w44w-j8wx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-1398"
+        }
+      ],
+      "affectedRange": "< 5.11.0",
+      "fixedVersion": "5.11.0"
+    },
+    {
+      "id": "GHSA-5777-rcjj-9p22",
+      "title": "Mattermost Desktop App fails to safeguard screen capture functionality",
+      "description": "Mattermost Desktop App versions <=5.8.0 fail to safeguard screen capture functionality which allows an attacker to silently capture high-quality screenshots via JavaScript APIs.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5777-rcjj-9p22",
+      "publishedAt": "2024-09-16T15:32:46Z",
+      "modifiedAt": "2024-11-18T16:27:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5777-rcjj-9p22"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-39772"
+        }
+      ],
+      "affectedRange": "< 5.9.0",
+      "fixedVersion": "5.9.0"
+    },
+    {
+      "id": "GHSA-xgq9-7gw6-jr5r",
+      "title": "Mattermost Desktop App fails to sufficiently configure Electron Fuses",
+      "description": "Mattermost Desktop App versions <=5.8.0 fail to sufficiently configure Electron Fuses which allows an attacker to gather Chromium cookies or abuse other misconfigurations via remote/local access.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-xgq9-7gw6-jr5r",
+      "publishedAt": "2024-09-16T15:32:46Z",
+      "modifiedAt": "2024-09-16T20:21:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xgq9-7gw6-jr5r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-45835"
+        }
+      ],
+      "affectedRange": "< 5.9.0",
+      "fixedVersion": "5.9.0"
+    },
+    {
+      "id": "GHSA-wj4j-qc2m-fgh7",
+      "title": "Mattermost Desktop App Uncontrolled Search Path Vulnerability",
+      "description": "Mattermost Desktop App versions <=5.8.0 fail to specify an absolute path when searching the cmd.exe file, which allows a local attacker who is able to put an cmd.exe file in the Downloads folder of a user's machine to cause remote code execution on that machine.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wj4j-qc2m-fgh7",
+      "publishedAt": "2024-09-16T14:37:28Z",
+      "modifiedAt": "2024-09-16T20:14:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wj4j-qc2m-fgh7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-39613"
+        }
+      ],
+      "affectedRange": "< 5.9.0",
+      "fixedVersion": "5.9.0"
+    },
+    {
+      "id": "GHSA-xgqm-wp7w-mgg2",
+      "title": "Mattermost Desktop App allows for bypassing TCC restrictions on macOS",
+      "description": "Mattermost Desktop App versions <=5.7.0 fail to disable certain Electron debug flags which allows for bypassing TCC restrictions on macOS.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-xgqm-wp7w-mgg2",
+      "publishedAt": "2024-06-14T09:31:17Z",
+      "modifiedAt": "2024-06-17T21:23:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xgqm-wp7w-mgg2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-36287"
+        }
+      ],
+      "affectedRange": "< 5.8.0",
+      "fixedVersion": "5.8.0"
+    },
+    {
+      "id": "GHSA-hvxg-77mg-vrvp",
+      "title": "Mattermost Desktop App Remote Code Execution",
+      "description": "Mattermost Desktop App versions <=5.7.0 fail to correctly prompt for permission when opening external URLs which allows a remote attacker to force a victim over the Internet to run arbitrary programs on the victim's system via custom URI schemes.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hvxg-77mg-vrvp",
+      "publishedAt": "2024-06-14T09:31:17Z",
+      "modifiedAt": "2024-06-17T21:23:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hvxg-77mg-vrvp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-37182"
+        }
+      ],
+      "affectedRange": "< 5.8.0",
+      "fixedVersion": "5.8.0"
+    }
+  ]
+}

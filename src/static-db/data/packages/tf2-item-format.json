@@ -1,0 +1,27 @@
+{
+  "name": "tf2-item-format",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8h55-q5qq-p685",
+      "title": "(ReDoS) Regular Expression Denial of Service in tf2-item-format",
+      "description": "## Summary\n\nVersions of `tf2-item-format` since at least `4.2.6` are vulnerable to a Regular Expression Denial of Service (ReDoS) attack when parsing crafted user input. \n\n## Tested Versions\n\n- `5.9.13`\n- `5.8.10`\n- `5.7.0`\n- `5.6.17`\n- `4.3.5`\n- `4.2.6`\n\n### v5\nUpgrade package to `^5.9.14`\n\n### v4\nNo patch exists. Please consult the [v4 to v5 migration guide](https://github.com/danocmx/node-tf2-item-format?tab=readme-ov-file#migrating-from-v4-to-v5) to upgrade to v5.\n\nIf upgrading to v5 is not ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8h55-q5qq-p685",
+      "publishedAt": "2024-07-23T14:10:45Z",
+      "modifiedAt": "2024-08-02T05:06:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8h55-q5qq-p685"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-41655"
+        }
+      ],
+      "affectedRange": ">= 4.2.6, <= 5.9.13",
+      "fixedVersion": "5.9.14"
+    }
+  ]
+}

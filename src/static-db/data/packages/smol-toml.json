@@ -1,0 +1,23 @@
+{
+  "name": "smol-toml",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pqhp-25j4-6hq9",
+      "title": "smol-toml has a Denial of Service via malicious TOML document using deeply nested inline tables",
+      "description": "### Summary\nAn attacker can send a maliciously crafted TOML to cause the parser to crash because of a stack overflow caused by a deeply nested inline structure. A similar problem occurs when attempting to stringify deeply nested objects.\n\nThe library does not limit the maximum exploration depth while parsing or producing TOML documents, nor does it offer a way to do so.\n\n### Proof of concept\n```js\nrequire(\"smol-toml\").parse(\"e=\" + \"{e=\".repeat(9999) + \"{}\" + \"}\".repeat(9999))\n```\n\n### Impact\nApp",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pqhp-25j4-6hq9",
+      "publishedAt": "2024-11-22T20:40:49Z",
+      "modifiedAt": "2024-11-22T20:40:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pqhp-25j4-6hq9"
+        }
+      ],
+      "affectedRange": "<= 1.3.0",
+      "fixedVersion": "1.3.1"
+    }
+  ]
+}

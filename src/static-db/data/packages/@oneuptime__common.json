@@ -1,0 +1,48 @@
+{
+  "name": "@oneuptime/common",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m449-vh5f-574g",
+      "title": "OneUptime Unauthorized User Creation via API",
+      "description": "### Summary\nA low-permission user can create new accounts through a direct API request instead of being restricted to the intended interface.\n\n### PoC\nA low-permission user sends a crafted API request to the user-creation endpoint and the system creates the account successfully.\n![WhatsApp Image 2025-11-23 at 14 27 32_0e0f5889](https://github.com/user-attachments/assets/5a539310-c9a2-4466-8926-b49b9b2a2422)\n\n### Impact\nThis allows attackers to create unauthorized accounts.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m449-vh5f-574g",
+      "publishedAt": "2025-11-26T19:33:08Z",
+      "modifiedAt": "2025-12-01T16:02:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m449-vh5f-574g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-65966"
+        }
+      ],
+      "affectedRange": "< 9.1.0",
+      "fixedVersion": "9.1.0"
+    },
+    {
+      "id": "GHSA-675q-66gf-gqg8",
+      "title": "OneUptime is Vulnerable to Privilege Escalation via Login Response Manipulation ",
+      "description": "### Summary\n\nDuring the login process, the server response included a parameter called isMasterAdmin. By intercepting and modifying this parameter value from false to true, a user is able to gain access to the admin dashboard interface.  However, despite accessing the admin panel, the user does not have sufficient permissions to view or interact with actual data. \n\n\n### PoC\nIntercept the login response and change \"isMasterAdmin\": false → \"isMasterAdmin\": true \n<img width=\"1405\" height=\"567\" alt=",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-675q-66gf-gqg8",
+      "publishedAt": "2025-11-25T22:55:50Z",
+      "modifiedAt": "2025-11-27T09:01:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-675q-66gf-gqg8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-66028"
+        }
+      ],
+      "affectedRange": "< 8.0.5567",
+      "fixedVersion": "8.0.5567"
+    }
+  ]
+}

@@ -1,0 +1,300 @@
+{
+  "name": "astro",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-whqg-ppgf-wp8c",
+      "title": "Astro has an Authentication Bypass via Double URL Encoding, a bypass for CVE-2025-64765",
+      "description": "# Authentication Bypass via Double URL Encoding in Astro\n## Bypass for CVE-2025-64765 / GHSA-ggxq-hp9w-j794\n\n---\n\n### Summary\n\nA **double URL encoding bypass** allows any unauthenticated attacker to bypass path-based authentication checks in Astro middleware, granting unauthorized access to protected routes. While the original CVE-2025-64765 (single URL encoding) was fixed in v5.15.8, the fix is insufficient as it only decodes once. By using double-encoded URLs like `/%2561dmin` instead of `/%61",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-whqg-ppgf-wp8c",
+      "publishedAt": "2025-12-08T16:26:43Z",
+      "modifiedAt": "2025-12-09T16:28:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-whqg-ppgf-wp8c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-66202"
+        }
+      ],
+      "affectedRange": "< 5.15.8",
+      "fixedVersion": "5.15.8"
+    },
+    {
+      "id": "GHSA-fvmw-cj7j-j39q",
+      "title": "Astro Cloudflare adapter has Stored Cross-site Scripting vulnerability in /_image endpoint",
+      "description": "**Summary**  \nA Cross-Site Scripting (XSS) vulnerability exists in Astro when using the **@astrojs/cloudflare** adapter with `output: 'server'`. The built-in image optimization endpoint (`/_image`) uses `isRemoteAllowed()` from Astro’s internal helpers, which **unconditionally allows `data:` URLs**. When the endpoint receives a valid `data:` URL pointing to a malicious SVG containing JavaScript, and the Cloudflare-specific implementation performs a **302 redirect back to the original `data:` URL",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fvmw-cj7j-j39q",
+      "publishedAt": "2025-11-19T20:09:12Z",
+      "modifiedAt": "2025-11-27T08:15:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fvmw-cj7j-j39q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-65019"
+        }
+      ],
+      "affectedRange": "< 5.15.9",
+      "fixedVersion": "5.15.9"
+    },
+    {
+      "id": "GHSA-ggxq-hp9w-j794",
+      "title": "Astro's middleware authentication checks based on url.pathname can be bypassed via url encoded values",
+      "description": "A mismatch exists between how Astro normalizes request paths for routing/rendering and how the application’s middleware reads the path for validation checks. Astro internally applies `decodeURI()` to determine which route to render, while the middleware uses `context.url.pathname` without applying the same normalization (decodeURI).\n\nThis discrepancy may allow attackers to reach protected routes (e.g., /admin) using encoded path variants that pass routing but bypass validation checks.\n\nhttps://g",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-ggxq-hp9w-j794",
+      "publishedAt": "2025-11-19T20:03:21Z",
+      "modifiedAt": "2025-11-27T08:14:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ggxq-hp9w-j794"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64765"
+        }
+      ],
+      "affectedRange": "< 5.15.8",
+      "fixedVersion": "5.15.8"
+    },
+    {
+      "id": "GHSA-w2vj-39qv-7vh7",
+      "title": "Astro development server error page is vulnerable to reflected Cross-site Scripting",
+      "description": "## Summary\n\nA Reflected Cross-Site Scripting (XSS) vulnerability exists in Astro's development server error pages when the `trailingSlash` configuration option is used. An attacker can inject arbitrary JavaScript code that executes in the victim's browser context by crafting a malicious URL. While this vulnerability only affects the development server and not production builds, it could be exploited to compromise developer environments through social engineering or malicious links.\n\n## Details\n\n",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-w2vj-39qv-7vh7",
+      "publishedAt": "2025-11-13T22:38:30Z",
+      "modifiedAt": "2025-11-27T08:12:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w2vj-39qv-7vh7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64745"
+        }
+      ],
+      "affectedRange": ">= 5.2.0, < 5.15.6",
+      "fixedVersion": "5.15.6"
+    },
+    {
+      "id": "GHSA-xf8x-j4p2-f749",
+      "title": "Astro allows unauthorized third-party images in _image endpoint",
+      "description": "### Summary\n\nIn affected versions of `astro`, the image optimization endpoint in projects deployed with on-demand rendering allows images from unauthorized third-party domains to be served.\n\n### Details\n\nOn-demand rendered sites built with Astro include an `/_image` endpoint which returns optimized versions of images.\n\nThe `/_image` endpoint is restricted to processing local images bundled with the site and also supports remote images from domains the site developer has manually authorized (usin",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xf8x-j4p2-f749",
+      "publishedAt": "2025-08-19T15:40:31Z",
+      "modifiedAt": "2025-11-27T08:07:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xf8x-j4p2-f749"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-55303"
+        }
+      ],
+      "affectedRange": ">= 5.0.0-alpha.0, < 5.13.2",
+      "fixedVersion": "5.13.2"
+    },
+    {
+      "id": "GHSA-cq8c-xv66-36gw",
+      "title": "Astros's duplicate trailing slash feature leads to an open redirection security issue",
+      "description": "## Summary\n\nThere is an Open Redirection vulnerability in the trailing slash redirection logic when handling paths with double slashes. This allows an attacker to redirect users to arbitrary external domains by crafting URLs such as `https://mydomain.com//malicious-site.com/`. This increases the risk of phishing and other social engineering attacks.\n\nThis affects Astro >=5.2.0 sites that use on-demand rendering (SSR) with the Node or Cloudflare adapter. It does not affect static sites, or sites ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cq8c-xv66-36gw",
+      "publishedAt": "2025-08-07T16:41:55Z",
+      "modifiedAt": "2025-11-27T08:06:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cq8c-xv66-36gw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54793"
+        }
+      ],
+      "affectedRange": ">= 5.2.0, < 5.12.8",
+      "fixedVersion": "5.12.8"
+    },
+    {
+      "id": "GHSA-49w6-73cw-chjr",
+      "title": "Astro's server source code is exposed to the public if sourcemaps are enabled",
+      "description": "### Summary\nA bug in the build process allows any unauthenticated user to read parts of the server source code.\n\n### Details\nDuring build, along with client assets such as css and font files, the sourcemap files **for the server code** are moved to a publicly-accessible folder.\nhttps://github.com/withastro/astro/blob/176fe9f113fd912f9b61e848b00bbcfecd6d5c2c/packages/astro/src/core/build/static-build.ts#L139\n\nAny outside party can read them with an unauthorized HTTP GET request to the same server",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-49w6-73cw-chjr",
+      "publishedAt": "2024-12-19T15:12:33Z",
+      "modifiedAt": "2025-11-27T08:02:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-49w6-73cw-chjr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-56159"
+        }
+      ],
+      "affectedRange": ">= 5.0.0-alpha.0, < 5.0.8",
+      "fixedVersion": "5.0.8"
+    },
+    {
+      "id": "GHSA-c4pw-33h3-35xw",
+      "title": "Atro CSRF Middleware Bypass (security.checkOrigin)",
+      "description": "### Summary\n\nA bug in Astro’s CSRF-protection middleware allows requests to bypass CSRF checks.\n\n### Details\n\nWhen the `security.checkOrigin` configuration option is set to `true`, Astro middleware will perform a CSRF check. (Source code: https://github.com/withastro/astro/blob/6031962ab5f56457de986eb82bd24807e926ba1b/packages/astro/src/core/app/middlewares.ts)\n\nFor example, with the following Astro configuration:\n\n```js\n// astro.config.mjs\nimport { defineConfig } from 'astro/config';\nimport nod",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c4pw-33h3-35xw",
+      "publishedAt": "2024-12-18T15:02:37Z",
+      "modifiedAt": "2025-11-27T08:01:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c4pw-33h3-35xw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-56140"
+        }
+      ],
+      "affectedRange": "< 4.16.17",
+      "fixedVersion": "4.16.17"
+    },
+    {
+      "id": "GHSA-m85w-3h95-hcf9",
+      "title": "DOM Clobbering Gadget found in astro's client-side router that leads to XSS",
+      "description": "### Summary\n\nA DOM Clobbering gadget has been discoverd in Astro's client-side router. It can lead to cross-site scripting (XSS) in websites enables Astro's client-side routing and has *stored* attacker-controlled scriptless HTML elements (i.e., `iframe` tags with unsanitized `name` attributes) on the destination pages.\n\n### Details\n\n#### Backgrounds\n\nDOM Clobbering is a type of code-reuse attack where the attacker first embeds a piece of non-script, seemingly benign HTML markups in the webpage ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m85w-3h95-hcf9",
+      "publishedAt": "2024-10-14T20:02:21Z",
+      "modifiedAt": "2025-11-27T08:00:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m85w-3h95-hcf9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-47885"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 4.16.1",
+      "fixedVersion": "4.16.1"
+    },
+    {
+      "id": "GHSA-wrwg-2hg8-v723",
+      "title": "Astro vulnerable to reflected XSS via the server islands feature",
+      "description": "## Summary\nAfter some research it appears that it is possible to obtain a reflected XSS when the server islands feature is used in the targeted application, **regardless of what was intended by the component template(s)**.\n\n## Details\nServer islands run in their own isolated context outside of the page request and use the following pattern path to hydrate the page: `/_server-islands/[name]`. These paths can be called via GET or POST and use three parameters:\n\n- `e`: component to export\n- `p`: th",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wrwg-2hg8-v723",
+      "publishedAt": "2025-11-19T20:00:14Z",
+      "modifiedAt": "2025-11-19T20:00:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wrwg-2hg8-v723"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64764"
+        }
+      ],
+      "affectedRange": "<= 5.15.6",
+      "fixedVersion": "5.15.8"
+    },
+    {
+      "id": "GHSA-x3h8-62x9-952g",
+      "title": "Astro Development Server has Arbitrary Local File Read",
+      "description": "### Summary\nA vulnerability has been identified in the Astro framework's development server that allows arbitrary local file read access through the image optimization endpoint. The vulnerability affects Astro development environments and allows remote attackers to read any image file accessible to the Node.js process on the host system.\n\n### Details\n- **Title**: Arbitrary Local File Read in Astro Development Image Endpoint\n- **Type**: CWE-22: Improper Limitation of a Pathname to a Restricted Di",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-x3h8-62x9-952g",
+      "publishedAt": "2025-11-19T19:43:05Z",
+      "modifiedAt": "2025-11-19T19:43:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x3h8-62x9-952g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64757"
+        }
+      ],
+      "affectedRange": "< 5.14.3",
+      "fixedVersion": "5.14.3"
+    },
+    {
+      "id": "GHSA-hr2q-hp5q-x767",
+      "title": "Astro vulnerable to URL manipulation via headers, leading to middleware and CVE-2025-61925 bypass",
+      "description": "## Summary\n\nIn impacted versions of Astro using [on-demand rendering](https://docs.astro.build/en/guides/on-demand-rendering/), request headers `x-forwarded-proto` and `x-forwarded-port` are insecurely used, without sanitization, to build the URL. This has several consequences the most important of which are:\n\n- Middleware-based protected route bypass (only via `x-forwarded-proto`)\n- DoS via cache poisoning (if a CDN is present)\n- SSRF (only via `x-forwarded-proto`)\n- URL pollution (potential SX",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hr2q-hp5q-x767",
+      "publishedAt": "2025-11-13T22:46:24Z",
+      "modifiedAt": "2025-11-13T22:46:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hr2q-hp5q-x767"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64525"
+        }
+      ],
+      "affectedRange": ">= 2.16.0, < 5.15.5",
+      "fixedVersion": "5.15.5"
+    },
+    {
+      "id": "GHSA-qcpr-679q-rhm2",
+      "title": "Astro's bypass of image proxy domain validation leads to SSRF and potential XSS",
+      "description": "### Summary\n\nThis is a patch bypass of CVE-2025-58179 in commit [9ecf359](https://github.com/withastro/astro/commit/9ecf3598e2b29dd74614328fde3047ea90e67252). The fix blocks `http://`, `https://` and `//`, but can be bypassed using backslashes (`\\`) - the endpoint still issues a server-side fetch.\n\n### PoC\n[https://astro.build/_image?href=\\\\raw.githubusercontent.com/projectdiscovery/nuclei-templates/refs/heads/main/helpers/payloads/retool-xss.svg&f=svg](https://astro.build/_image?href=%5C%5Craw.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qcpr-679q-rhm2",
+      "publishedAt": "2025-10-28T17:45:04Z",
+      "modifiedAt": "2025-10-29T14:48:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qcpr-679q-rhm2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59837"
+        }
+      ],
+      "affectedRange": ">= 5.13.4, < 5.13.10",
+      "fixedVersion": "5.13.10"
+    },
+    {
+      "id": "GHSA-5ff5-9fcw-vg88",
+      "title": "Astro's `X-Forwarded-Host` is reflected without validation",
+      "description": "### Summary\nWhen running Astro in on-demand rendering mode using a adapter such as the node adapter it is possible to maliciously send an `X-Forwarded-Host` header that is reflected when using the recommended `Astro.url` property as there is no validation that the value is safe.\n\n### Details\nAstro reflects the value in `X-Forwarded-Host` in output when using `Astro.url` without any validation. \n\nIt is common for web servers such as nginx to route requests via the `Host` header, and forward on ot",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5ff5-9fcw-vg88",
+      "publishedAt": "2025-10-10T23:41:29Z",
+      "modifiedAt": "2025-10-10T23:41:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5ff5-9fcw-vg88"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-61925"
+        }
+      ],
+      "affectedRange": "< 5.14.3",
+      "fixedVersion": "5.14.3"
+    }
+  ]
+}

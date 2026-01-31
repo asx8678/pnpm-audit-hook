@@ -1,0 +1,27 @@
+{
+  "name": "@meshconnect/web-link-sdk",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vh3f-qppr-j97f",
+      "title": "Mesh Connect JS SDK Vulnerable to Cross Site Scripting via createLink.openLink",
+      "description": "### Summary\nThe lack of sanitization of URLs protocols in the `createLink.openLink` function enables the execution of arbitrary JavaScript code within the context of the parent page.\n### Details\nhttps://github.com/FrontFin/mesh-web-sdk/blob/cf013b85ab95d64c63cbe46d6cb14695474924e7/packages/link/src/Link.ts#L441\nThe `createLink.openLink` function takes base64 encoded links, decodes them, and then sets the resulting string as the `src` attribute of an `iframe`. It’s important to note that the prot",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vh3f-qppr-j97f",
+      "publishedAt": "2025-09-22T21:09:27Z",
+      "modifiedAt": "2025-09-22T21:58:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vh3f-qppr-j97f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59430"
+        }
+      ],
+      "affectedRange": "< 3.3.2",
+      "fixedVersion": "3.3.2"
+    }
+  ]
+}

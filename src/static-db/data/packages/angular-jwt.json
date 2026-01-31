@@ -1,0 +1,27 @@
+{
+  "name": "angular-jwt",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vm2p-f5j4-mj6g",
+      "title": "Auth0 angular-jwt misinterprets allowlist as regex",
+      "description": "Auth0 angular-jwt before 0.1.10 treats whiteListedDomains entries as regular expressions, which allows remote attackers with knowledge of the `jwtInterceptorProvider.whiteListedDomains` setting to bypass the domain allowlist filter via a crafted domain.\n\n For example, if the setting is initialized with:\n\n`jwtInterceptorProvider.whiteListedDomains = ['whitelisted.Example.com'];`\n\nAn attacker can set up a domain `whitelistedXexample.com` that will pass the allow list filter, as it considers the `.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vm2p-f5j4-mj6g",
+      "publishedAt": "2022-05-14T03:05:44Z",
+      "modifiedAt": "2023-10-19T18:21:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vm2p-f5j4-mj6g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-11537"
+        }
+      ],
+      "affectedRange": "< 0.1.10",
+      "fixedVersion": "0.1.10"
+    }
+  ]
+}

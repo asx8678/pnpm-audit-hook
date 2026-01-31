@@ -1,0 +1,26 @@
+{
+  "name": "monorepo-build",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5vrc-7jfr-4642",
+      "title": "monorepo-build Command Injection vulnerability",
+      "description": "A command injection vulnerability affects all versions of package monorepo-build.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5vrc-7jfr-4642",
+      "publishedAt": "2022-08-03T00:00:56Z",
+      "modifiedAt": "2023-02-02T05:02:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5vrc-7jfr-4642"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28423"
+        }
+      ],
+      "affectedRange": "<= 0.1.9"
+    }
+  ]
+}

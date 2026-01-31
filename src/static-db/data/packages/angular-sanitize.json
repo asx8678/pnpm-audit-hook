@@ -1,0 +1,26 @@
+{
+  "name": "angular-sanitize",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4p4w-6hg8-63wx",
+      "title": "AngularJS Incomplete Filtering of Special Elements vulnerability",
+      "description": "Improper sanitization of the value of the 'href' and 'xlink:href' attributes in '<image>' SVG elements in AngularJS's 'ngSanitize' module allows attackers to bypass common image source restrictions. This can lead to a form of  Content Spoofing https://owasp.org/www-community/attacks/Content_Spoofing  and also negatively affect the application's performance and behavior by using too large or slow-to-load images.\n\nThis issue affects AngularJS versions greater than or equal to 1.3.1.\n\nNote:\nThe Ang",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4p4w-6hg8-63wx",
+      "publishedAt": "2025-06-04T18:30:58Z",
+      "modifiedAt": "2025-11-03T21:35:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4p4w-6hg8-63wx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-2336"
+        }
+      ],
+      "affectedRange": ">= 1.3.1, <= 1.8.3"
+    }
+  ]
+}

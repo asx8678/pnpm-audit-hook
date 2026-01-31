@@ -1,0 +1,26 @@
+{
+  "name": "node-latex-pdf",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-32fw-9wq8-9x9c",
+      "title": "node-latex-pdf is susceptible to command injection",
+      "description": "A command injection vulnerability affects all versions of the package node-latex-pdf.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-32fw-9wq8-9x9c",
+      "publishedAt": "2022-08-03T00:00:57Z",
+      "modifiedAt": "2023-01-30T05:01:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-32fw-9wq8-9x9c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28433"
+        }
+      ],
+      "affectedRange": "<= 0.0.2"
+    }
+  ]
+}

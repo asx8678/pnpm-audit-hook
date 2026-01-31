@@ -1,0 +1,48 @@
+{
+  "name": "@braintree/sanitize-url",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q8gg-vj6m-hgmj",
+      "title": "@braintree/sanitize-url Cross-site Scripting vulnerability",
+      "description": "sanitize-url (aka @braintree/sanitize-url) before 6.0.1 allows XSS via HTML entities.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q8gg-vj6m-hgmj",
+      "publishedAt": "2023-02-24T06:30:16Z",
+      "modifiedAt": "2023-03-03T00:11:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q8gg-vj6m-hgmj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-48345"
+        }
+      ],
+      "affectedRange": "< 6.0.1",
+      "fixedVersion": "6.0.1"
+    },
+    {
+      "id": "GHSA-hqq7-2q2v-82xq",
+      "title": "Cross-site Scripting in sanitize-url",
+      "description": "The package `@braintree/sanitize-url` before 6.0.0 is vulnerable to Cross-site Scripting (XSS) due to improper sanitization in the `sanitizeUrl` function.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hqq7-2q2v-82xq",
+      "publishedAt": "2022-03-17T00:00:24Z",
+      "modifiedAt": "2023-01-27T05:00:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hqq7-2q2v-82xq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23648"
+        }
+      ],
+      "affectedRange": "< 6.0.0",
+      "fixedVersion": "6.0.0"
+    }
+  ]
+}

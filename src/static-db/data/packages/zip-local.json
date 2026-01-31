@@ -1,0 +1,27 @@
+{
+  "name": "zip-local",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wxj7-97fp-j53j",
+      "title": "Exposure of Resource to Wrong Sphere in Zip-Local",
+      "description": "The package zip-local before 0.3.5 are vulnerable to Arbitrary File Write via Archive Extraction (Zip Slip) which can lead to an extraction of a crafted file outside the intended extraction directory.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wxj7-97fp-j53j",
+      "publishedAt": "2022-02-01T00:46:01Z",
+      "modifiedAt": "2023-11-29T22:46:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wxj7-97fp-j53j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23484"
+        }
+      ],
+      "affectedRange": "< 0.3.5",
+      "fixedVersion": "0.3.5"
+    }
+  ]
+}

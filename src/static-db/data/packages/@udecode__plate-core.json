@@ -1,0 +1,27 @@
+{
+  "name": "@udecode/plate-core",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-73rg-f94j-xvhx",
+      "title": "Plate allows arbitrary DOM attributes in element.attributes and leaf.attributes",
+      "description": "### Impact\nOne longstanding feature of Plate is the ability to add custom DOM attributes to any element or leaf using the `attributes` property. These attributes are passed to the node component using the `nodeProps` prop.\n\nNote: The `attributes` prop that is typically rendered alongside `nodeProps` is unrelated.\n\n```ts\n[{\n  type: 'p',\n  attributes: { 'data-my-attribute': 'This will be rendered on the paragraph element' },\n  children: [{\n    bold: true,\n    attributes: { 'data-my-attribute': 'Th",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-73rg-f94j-xvhx",
+      "publishedAt": "2024-09-20T14:41:02Z",
+      "modifiedAt": "2024-09-20T22:07:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-73rg-f94j-xvhx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-47061"
+        }
+      ],
+      "affectedRange": "< 21.5.1",
+      "fixedVersion": "21.5.1"
+    }
+  ]
+}

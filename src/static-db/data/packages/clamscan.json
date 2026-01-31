@@ -1,0 +1,27 @@
+{
+  "name": "clamscan",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5v25-xr56-phph",
+      "title": "Clamscan vulnerable to command injection",
+      "description": "clamscan through 1.2.0 is vulnerable to Command Injection. It is possible to inject arbitrary commands as part of the `_is_clamav_binary` function located within `Index.js`. It should be noted that this vulnerability requires a pre-requisite that a folder should be created with the same command that will be chained to execute. This lowers the risk of this issue.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5v25-xr56-phph",
+      "publishedAt": "2022-05-24T17:13:40Z",
+      "modifiedAt": "2023-10-19T18:32:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5v25-xr56-phph"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7613"
+        }
+      ],
+      "affectedRange": "<= 1.2.0",
+      "fixedVersion": "1.3.0"
+    }
+  ]
+}

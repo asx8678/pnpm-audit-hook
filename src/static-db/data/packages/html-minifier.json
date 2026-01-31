@@ -1,0 +1,26 @@
+{
+  "name": "html-minifier",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pfq8-rq6v-vf5m",
+      "title": "kangax html-minifier REDoS vulnerability",
+      "description": "A Regular Expression Denial of Service (ReDoS) flaw was found in kangax html-minifier 4.0.0 because of the reCustomIgnore regular expression.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pfq8-rq6v-vf5m",
+      "publishedAt": "2022-10-31T19:00:36Z",
+      "modifiedAt": "2025-06-11T17:34:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pfq8-rq6v-vf5m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-37620"
+        }
+      ],
+      "affectedRange": "<= 4.0.0"
+    }
+  ]
+}

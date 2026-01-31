@@ -1,0 +1,26 @@
+{
+  "name": "altcha",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mpmc-qchh-r9q8",
+      "title": "Altcha Proof-of-Work obfuscation mode cryptanalytic break",
+      "description": "A cryptanalytic break in Altcha Proof-of-Work obfuscation mode version 0.8.0 and later allows for remote visitors to recover the Proof-of-Work nonce in constant time via mathematical deduction.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mpmc-qchh-r9q8",
+      "publishedAt": "2025-12-08T21:30:22Z",
+      "modifiedAt": "2025-12-12T19:39:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mpmc-qchh-r9q8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-65849"
+        }
+      ],
+      "affectedRange": ">= 0.8.0, <= 2.2.4"
+    }
+  ]
+}

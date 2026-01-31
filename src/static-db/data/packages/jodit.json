@@ -1,0 +1,46 @@
+{
+  "name": "jodit",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-95xr-cq6h-vwr3",
+      "title": "Jodit Editor vulnerable to cross-site scripting",
+      "description": "Cross Site Scripting vulnerability in xdsoft.net Jodit Editor v.4.0.0-beta.86 allows a remote attacker to obtain sensitive information via the rich text editor component.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-95xr-cq6h-vwr3",
+      "publishedAt": "2023-09-19T06:30:17Z",
+      "modifiedAt": "2023-11-04T05:05:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-95xr-cq6h-vwr3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-42399"
+        }
+      ],
+      "affectedRange": "= 4.0.0-beta.86"
+    },
+    {
+      "id": "GHSA-42hx-vrxx-5r6v",
+      "title": "Jodit Editor vulnerable to Cross-site Scripting",
+      "description": "Jodit Editor is a WYSIWYG editor written in pure TypeScript without the use of additional libraries. Jodit Editor is vulnerable to XSS attacks when pasting specially constructed input. This issue has not been fully patched. There are no known workarounds.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-42hx-vrxx-5r6v",
+      "publishedAt": "2022-09-25T00:00:15Z",
+      "modifiedAt": "2023-01-28T05:06:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-42hx-vrxx-5r6v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-23461"
+        }
+      ],
+      "affectedRange": "<= 3.24.2"
+    }
+  ]
+}

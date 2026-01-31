@@ -1,0 +1,26 @@
+{
+  "name": "openssl",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-75w2-qv55-x7fv",
+      "title": "openssl npm package vulnerable to command execution",
+      "description": "The openssl (aka node-openssl) NPM package through 2.0.0 was characterized as \"a nonsense wrapper with no real purpose\" by its author, and accepts an opts argument that contains a verb field (used for command execution). NOTE: This vulnerability only affects products that are no longer supported by the maintainer.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-75w2-qv55-x7fv",
+      "publishedAt": "2023-11-23T21:30:18Z",
+      "modifiedAt": "2023-11-30T22:05:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-75w2-qv55-x7fv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-49210"
+        }
+      ],
+      "affectedRange": "<= 2.0.0"
+    }
+  ]
+}

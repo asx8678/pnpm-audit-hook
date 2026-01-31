@@ -1,0 +1,27 @@
+{
+  "name": "cordova-plugin-fingerprint-aio",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7vfx-hfvm-rhr8",
+      "title": "cordova-plugin-fingerprint-aio DoS vulnerability",
+      "description": "## Summary:\n\nSending a specially crafted intent with an invalid/empty extras `de.niklasmerz.cordova.biometric.BiometricActivity` can cause the app to crash. sending the intent repeatedly can prevent the app using this plugin from working, resulting in a denial of service (DoS) condition.\n\n## Impact\n\nA 3rd party app/remote attacker can exploit this vulnerability by sending a malicious intent to the target device, causing the app using this plugin from working to crash or become unresponsive, resu",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7vfx-hfvm-rhr8",
+      "publishedAt": "2023-11-02T20:44:41Z",
+      "modifiedAt": "2023-11-02T20:44:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7vfx-hfvm-rhr8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-43849"
+        }
+      ],
+      "affectedRange": "< 5.0.1",
+      "fixedVersion": "5.0.1"
+    }
+  ]
+}

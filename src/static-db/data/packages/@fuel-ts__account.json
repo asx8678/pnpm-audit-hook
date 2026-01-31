@@ -1,0 +1,27 @@
+{
+  "name": "@fuel-ts/account",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3jcg-vx7f-j6qf",
+      "title": "The fuels-ts typescript SDK has no awareness of to-be-spent transactions",
+      "description": "# Brief/Intro\n\nThe typescript SDK has no awareness of to-be-spent transactions causing some transactions to fail or silently get pruned as they are funded with already used UTXOs.\n\nThe `Typescript SDK` provides the `fund` function which retrieves `UTXOs`, which belong to the owner and can be used to fund the request in question, from fuel's graphql api. These then get added to the request making it possible to send it to the network as it now has inputs which can be spent by its outputs. Now thi",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-3jcg-vx7f-j6qf",
+      "publishedAt": "2024-07-30T21:13:42Z",
+      "modifiedAt": "2024-07-30T21:37:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3jcg-vx7f-j6qf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-41945"
+        }
+      ],
+      "affectedRange": "< 0.93.0",
+      "fixedVersion": "0.93.0"
+    }
+  ]
+}

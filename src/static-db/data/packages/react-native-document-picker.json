@@ -1,0 +1,27 @@
+{
+  "name": "react-native-document-picker",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pmgm-h3cc-m4hj",
+      "title": "React Native Document Picker Directory Traversal vulnerability",
+      "description": "Directory Traversal vulnerability in React Native Document Picker before 8.2.2 and 9.x before 9.1.1 allows a local attacker to execute arbitrary code via a crafted script to the Android library component.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pmgm-h3cc-m4hj",
+      "publishedAt": "2024-02-16T09:30:26Z",
+      "modifiedAt": "2024-08-19T21:37:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pmgm-h3cc-m4hj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-25466"
+        }
+      ],
+      "affectedRange": "< 8.2.2",
+      "fixedVersion": "8.2.2"
+    }
+  ]
+}

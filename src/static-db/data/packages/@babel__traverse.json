@@ -1,0 +1,27 @@
+{
+  "name": "@babel/traverse",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-67hx-6x53-jw92",
+      "title": "Babel vulnerable to arbitrary code execution when compiling specifically crafted malicious code",
+      "description": "### Impact\n\nUsing Babel to compile code that was specifically crafted by an attacker can lead to arbitrary code execution during compilation, when using plugins that rely on the `path.evaluate()`or `path.evaluateTruthy()` internal Babel methods.\n\nKnown affected plugins are:\n- `@babel/plugin-transform-runtime`\n- `@babel/preset-env` when using its [`useBuiltIns`](https://babeljs.io/docs/babel-preset-env#usebuiltins) option\n- Any \"polyfill provider\" plugin that depends on `@babel/helper-define-poly",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-67hx-6x53-jw92",
+      "publishedAt": "2023-10-16T13:55:36Z",
+      "modifiedAt": "2024-04-04T14:26:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-67hx-6x53-jw92"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-45133"
+        }
+      ],
+      "affectedRange": ">= 8.0.0-alpha.0, < 8.0.0-alpha.4",
+      "fixedVersion": "8.0.0-alpha.4"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "promise-probe",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vmqq-7qvx-68qx",
+      "title": "promise-probe OS command injection vulnerability",
+      "description": "promise-probe before 0.10.0 allows remote attackers to perform a command injection attack. The `file`, `outputFile` and `options` functions can be controlled by users without any sanitization.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vmqq-7qvx-68qx",
+      "publishedAt": "2022-05-24T17:09:13Z",
+      "modifiedAt": "2024-04-22T23:09:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vmqq-7qvx-68qx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10791"
+        }
+      ],
+      "affectedRange": "< 0.1.10",
+      "fixedVersion": "0.1.10"
+    }
+  ]
+}

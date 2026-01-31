@@ -1,0 +1,27 @@
+{
+  "name": "ced",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-27wq-qx3q-fxm9",
+      "title": "Improper Handling of Unexpected Data Type in ced",
+      "description": "### Impact\n\nIn ced v0.1.0, passing data types other than `Buffer` causes the Node.js process to crash.\n\n### Patches\n\nThe problem has been patched in [ced v1.0.0](https://github.com/sonicdoe/ced/releases/tag/v1.0.0). You can upgrade from v0.1.0 without any breaking changes.\n\n### Workarounds\n\nBefore passing an argument to ced, verify it’s a `Buffer` using [`Buffer.isBuffer(obj)`](https://nodejs.org/api/buffer.html#buffer_static_method_buffer_isbuffer_obj).\n\n### CVSS score\n\n[CVSS:3.1/AV:N/AC:L/PR:N",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-27wq-qx3q-fxm9",
+      "publishedAt": "2021-08-23T19:42:28Z",
+      "modifiedAt": "2023-02-01T05:06:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-27wq-qx3q-fxm9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-39131"
+        }
+      ],
+      "affectedRange": "< 1.0.0",
+      "fixedVersion": "1.0.0"
+    }
+  ]
+}

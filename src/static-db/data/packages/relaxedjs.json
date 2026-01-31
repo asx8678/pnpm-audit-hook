@@ -1,0 +1,26 @@
+{
+  "name": "relaxedjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gj3p-j74v-3x57",
+      "title": "ReLaXed Cross-site Scripting vulnerability",
+      "description": "A vulnerability classified as problematic has been found in RelaxedJS ReLaXed up to 0.2.2. Affected is an unknown function of the component Pug to PDF Converter. The manipulation leads to cross site scripting. An attack has to be approached locally. The exploit has been disclosed to the public and may be used.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-gj3p-j74v-3x57",
+      "publishedAt": "2024-09-27T15:30:35Z",
+      "modifiedAt": "2024-10-08T18:56:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gj3p-j74v-3x57"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-9283"
+        }
+      ],
+      "affectedRange": "<= 0.2.5"
+    }
+  ]
+}

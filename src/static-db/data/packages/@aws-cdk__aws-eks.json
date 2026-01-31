@@ -1,0 +1,27 @@
+{
+  "name": "@aws-cdk/aws-eks",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rx28-r23p-2qc3",
+      "title": "AWS CDK EKS overly permissive trust policies",
+      "description": "If you are using the `eks.Cluster` or `eks.FargateCluster` construct we need you to take action. Other users are not affected and can stop reading.\n\n### Impact \n\nThe AWS Cloud Development Kit (CDK) allows for the definition of Amazon Elastic Container Service for Kubernetes (EKS) clusters. `eks.Cluster` and `eks.FargateCluster` constructs create two roles that have an overly permissive trust policy. \n \nThe first, referred to as the _CreationRole_, is used by lambda handlers to create the cluster",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rx28-r23p-2qc3",
+      "publishedAt": "2023-06-19T22:47:26Z",
+      "modifiedAt": "2023-11-07T05:02:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rx28-r23p-2qc3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-35165"
+        }
+      ],
+      "affectedRange": ">= 1.57.0, < 1.202.0",
+      "fixedVersion": "1.202.0"
+    }
+  ]
+}

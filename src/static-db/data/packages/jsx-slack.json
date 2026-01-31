@@ -1,0 +1,48 @@
+{
+  "name": "jsx-slack",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-55xv-f85c-248q",
+      "title": "Regular Expression Denial of Service (ReDoS) in jsx-slack",
+      "description": "jsx-slack v4.5.1 and earlier versions are vulnerable to a regular expression denial-of-service (ReDoS) attack. \n\n### Impact\n\nIf attacker can put a lot of JSX elements into `<blockquote>` tag, an internal regular expression for escaping characters may consume an excessive amount of computing resources.\n\n```javascript\n/** @jsxImportSource jsx-slack */\nimport { Section } from 'jsx-slack'\n\nconsole.log(\n  <Section>\n    <blockquote>\n      {[...Array(40)].map((_, i) => (\n        <p>{i + 1}</p>\n      ))",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-55xv-f85c-248q",
+      "publishedAt": "2021-12-17T19:59:02Z",
+      "modifiedAt": "2023-07-21T19:15:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-55xv-f85c-248q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-43838"
+        }
+      ],
+      "affectedRange": "< 4.5.1",
+      "fixedVersion": "4.5.1"
+    },
+    {
+      "id": "GHSA-hp68-xhvj-x6j6",
+      "title": "jsx-slack insufficient patch for CVE-2021-43838 ReDoS",
+      "description": "We found the patch for CVE-2021-43838 in jsx-slack v4.5.1 is insufficient to save from Regular Expression Denial of Service (ReDoS) attack.\n\nThis vulnerability affects to jsx-slack v4.5.1 and earlier versions.\n\n### Impact\n\nIf attacker can put a lot of JSX elements into `<blockquote>` tag _with including multibyte characters_, an internal regular expression for escaping characters may consume an excessive amount of computing resources.\n\n```javascript\n/** @jsxImportSource jsx-slack */\nimport { Sec",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hp68-xhvj-x6j6",
+      "publishedAt": "2022-01-06T18:34:18Z",
+      "modifiedAt": "2023-01-30T05:02:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hp68-xhvj-x6j6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-43843"
+        }
+      ],
+      "affectedRange": "< 4.5.2",
+      "fixedVersion": "4.5.2"
+    }
+  ]
+}

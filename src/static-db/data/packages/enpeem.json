@@ -1,0 +1,26 @@
+{
+  "name": "enpeem",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hmw2-mvvh-jf5j",
+      "title": "OS Command Injection in enpeem",
+      "description": "enpeem through 2.2.0 allows execution of arbitrary commands. The &quot;options.dir&quot; argument is provided to the &quot;exec&quot; function without any sanitization.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hmw2-mvvh-jf5j",
+      "publishedAt": "2021-04-13T15:22:47Z",
+      "modifiedAt": "2023-02-01T05:05:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hmw2-mvvh-jf5j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10801"
+        }
+      ],
+      "affectedRange": "<= 2.2.0"
+    }
+  ]
+}

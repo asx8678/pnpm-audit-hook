@@ -1,0 +1,26 @@
+{
+  "name": "mcp-watch",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-27m7-ffhq-jqrm",
+      "title": "MCP Watch has a Critical Command Injection in cloneRepo allows Remote Code Execution (RCE) via malicious URL",
+      "description": "### Summary\nThe `MCPScanner ` class contains a critical Command Injection vulnerability in the `cloneRepo `method. The application passes the user-supplied githubUrl argument directly to a system shell via execSync without sanitization. This allows an attacker to execute arbitrary commands on the host machine by appending shell metacharacters to the URL.\n\n### Details\nThe vulnerability exists in the src/scanner/MCPScanner.ts file within the cloneRepo method.\n\n[https://github.com/kapilduraphe/mcp-",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-27m7-ffhq-jqrm",
+      "publishedAt": "2025-12-02T00:38:14Z",
+      "modifiedAt": "2025-12-02T00:38:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-27m7-ffhq-jqrm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-66401"
+        }
+      ],
+      "affectedRange": "<= 0.1.2"
+    }
+  ]
+}

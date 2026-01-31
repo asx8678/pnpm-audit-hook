@@ -1,0 +1,26 @@
+{
+  "name": "nedb",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-339j-hqgx-qrrx",
+      "title": "Prototype Pollution in nedb",
+      "description": "This affects all versions of package nedb. The library could be tricked into adding or modifying properties of Object.prototype using a __proto__ or constructor.prototype payload.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-339j-hqgx-qrrx",
+      "publishedAt": "2021-06-21T17:13:06Z",
+      "modifiedAt": "2023-08-17T05:02:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-339j-hqgx-qrrx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23395"
+        }
+      ],
+      "affectedRange": "<= 1.8.0"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "confucious",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fmrr-mx6j-h3h5",
+      "title": "Prototype Pollution in confucious",
+      "description": "All versions of package confucious up to and including version 0.0.12 are vulnerable to Prototype Pollution via the set function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fmrr-mx6j-h3h5",
+      "publishedAt": "2021-05-06T18:12:09Z",
+      "modifiedAt": "2023-02-01T05:05:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fmrr-mx6j-h3h5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7714"
+        }
+      ],
+      "affectedRange": "<= 0.0.12"
+    }
+  ]
+}

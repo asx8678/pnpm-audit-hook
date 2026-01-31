@@ -1,0 +1,27 @@
+{
+  "name": "mind-elixir",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m22q-97p5-79v2",
+      "title": "Mind-elixir Cross-site Scripting vulnerability",
+      "description": "Mind-elixir is a free, open source mind map core. Prior to version 0.18.1, mind-elixir is prone to cross-site scripting when handling untrusted menus. This issue is patched in version 0.18.1.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m22q-97p5-79v2",
+      "publishedAt": "2023-02-21T00:30:20Z",
+      "modifiedAt": "2023-02-22T00:11:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m22q-97p5-79v2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32851"
+        }
+      ],
+      "affectedRange": "< 0.18.1",
+      "fixedVersion": "0.18.1"
+    }
+  ]
+}

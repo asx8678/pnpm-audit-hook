@@ -1,0 +1,26 @@
+{
+  "name": "npos-tesseract",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mpwp-pf96-9g4r",
+      "title": "npos-tesseract Command Injection vulnerability",
+      "description": "A command injection vulnerability affects all versions of package npos-tesseract. The injection point is located in line 55 in lib/ocr.js.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mpwp-pf96-9g4r",
+      "publishedAt": "2022-08-03T00:00:57Z",
+      "modifiedAt": "2023-01-31T05:01:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mpwp-pf96-9g4r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28453"
+        }
+      ],
+      "affectedRange": "<= 0.0.3"
+    }
+  ]
+}

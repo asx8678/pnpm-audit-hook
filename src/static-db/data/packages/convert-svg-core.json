@@ -1,0 +1,89 @@
+{
+  "name": "convert-svg-core",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5gxc-fxcr-9326",
+      "title": "convert-svg-core vulnerable to remote code injection",
+      "description": "The package convert-svg-core before 0.6.2 is vulnerable to Remote Code Injection via sending an SVG file containing the payload in an `onload` attribute. Puppeteer/Chromium (used by convert-svg-core) will execute any code within that tag, including malicious code.\n\n### PoC\n\n**Payload**\n\n```html\n<svg onload=eval(atob(this.id)) id='ZG9jdW1lbnQud3JpdGUoJzxzdmctZHVtbXk+PC9zdmctZHVtbXk+PGlmcmFtZSBzcmM9ImZpbGU6Ly8vZXRjL3Bhc3N3ZCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwMHB4Ij48L2lmcmFtZT48c3ZnIHZpZXdCb3g9IjAg",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5gxc-fxcr-9326",
+      "publishedAt": "2022-07-23T00:00:16Z",
+      "modifiedAt": "2024-04-22T23:21:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5gxc-fxcr-9326"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25759"
+        }
+      ],
+      "affectedRange": "< 0.6.2",
+      "fixedVersion": "0.6.2"
+    },
+    {
+      "id": "GHSA-jv7g-9g6q-cxvw",
+      "title": "Path Traversal in convert-svg packages",
+      "description": "This affects all versions of package convert-svg-core; all versions of package convert-svg-to-png; all versions of package convert-svg-to-jpeg. Using a specially crafted SVG file, an attacker could read arbitrary files from the file system and then show the file content as a converted PNG file.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jv7g-9g6q-cxvw",
+      "publishedAt": "2022-01-27T14:04:28Z",
+      "modifiedAt": "2023-02-03T05:05:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jv7g-9g6q-cxvw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23631"
+        }
+      ],
+      "affectedRange": "<= 0.5.0"
+    },
+    {
+      "id": "GHSA-5f47-rcg5-9m24",
+      "title": "Directory traversal in convert-svg-core",
+      "description": "The package convert-svg-core before 0.6.4 is vulnerable to Directory Traversal due to improper sanitization of SVG tags. Exploiting this vulnerability is possible by using a specially crafted SVG file.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5f47-rcg5-9m24",
+      "publishedAt": "2022-06-11T00:00:18Z",
+      "modifiedAt": "2023-01-27T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5f47-rcg5-9m24"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24278"
+        }
+      ],
+      "affectedRange": "< 0.6.4",
+      "fixedVersion": "0.6.4"
+    },
+    {
+      "id": "GHSA-54px-mhwv-5v8x",
+      "title": "Code injection via SVG file in convert-svg-core",
+      "description": "The package convert-svg-core before 0.6.3 are vulnerable to Arbitrary Code Injection when using a specially crafted SVG file. An attacker can read arbitrary files from the file system and then show the file content as a converted PNG file.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-54px-mhwv-5v8x",
+      "publishedAt": "2022-06-11T00:00:17Z",
+      "modifiedAt": "2023-01-27T05:03:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-54px-mhwv-5v8x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24429"
+        }
+      ],
+      "affectedRange": "< 0.6.3",
+      "fixedVersion": "0.6.3"
+    }
+  ]
+}

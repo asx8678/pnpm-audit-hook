@@ -1,0 +1,26 @@
+{
+  "name": "lodash.trim",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-29mw-wpgm-hmr9",
+      "title": "Regular Expression Denial of Service (ReDoS) in lodash",
+      "description": "All versions of package lodash prior to 4.17.21 are vulnerable to Regular Expression Denial of Service (ReDoS) via the `toNumber`, `trim` and `trimEnd` functions. \n\nSteps to reproduce (provided by reporter Liyuan Chen):\n```js\nvar lo = require('lodash');\n\nfunction build_blank(n) {\n    var ret = \"1\"\n    for (var i = 0; i < n; i++) {\n        ret += \" \"\n    }\n    return ret + \"1\";\n}\nvar s = build_blank(50000) var time0 = Date.now();\nlo.trim(s) \nvar time_cost0 = Date.now() - time0;\nconsole.log(\"time_",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-29mw-wpgm-hmr9",
+      "publishedAt": "2022-01-06T20:30:46Z",
+      "modifiedAt": "2025-09-29T20:19:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-29mw-wpgm-hmr9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28500"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, <= 4.5.1"
+    }
+  ]
+}

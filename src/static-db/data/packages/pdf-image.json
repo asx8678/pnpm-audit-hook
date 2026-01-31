@@ -1,0 +1,26 @@
+{
+  "name": "pdf-image",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rv7p-mmwq-x674",
+      "title": "Improper Input Validation and Code Injection in pdf-image",
+      "description": "Lack of input validation in pdf-image npm package version &lt;= 2.0.0 may allow an attacker to run arbitrary code if PDF file path is constructed based on untrusted user input.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rv7p-mmwq-x674",
+      "publishedAt": "2021-05-10T18:46:58Z",
+      "modifiedAt": "2023-02-01T05:05:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rv7p-mmwq-x674"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8132"
+        }
+      ],
+      "affectedRange": "<= 2.0.0"
+    }
+  ]
+}

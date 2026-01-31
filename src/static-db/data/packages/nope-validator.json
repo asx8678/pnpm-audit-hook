@@ -1,0 +1,27 @@
+{
+  "name": "nope-validator",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3phv-83cj-p8p7",
+      "title": "nope-validator Regular Expression Denial of Service vulnerability",
+      "description": "Nope is a JavaScript validator. Versions 0.11.3 and prior contain one or more regular expressions that are vulnerable to Regular Expression Denial of Service (ReDoS). This vulnerability is fixed in 0.12.1.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3phv-83cj-p8p7",
+      "publishedAt": "2024-10-26T21:30:46Z",
+      "modifiedAt": "2024-10-28T14:56:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3phv-83cj-p8p7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26309"
+        }
+      ],
+      "affectedRange": "< 0.12.1",
+      "fixedVersion": "0.12.1"
+    }
+  ]
+}

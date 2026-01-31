@@ -1,0 +1,26 @@
+{
+  "name": "dat.gui",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-chwr-hf3w-c984",
+      "title": "Regular Expression Denial of Service in dat.gui",
+      "description": "All versions of package dat.gui are vulnerable to Regular Expression Denial of Service (ReDoS) via specifically crafted rgb and rgba values.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-chwr-hf3w-c984",
+      "publishedAt": "2021-05-10T18:44:38Z",
+      "modifiedAt": "2023-02-01T05:05:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-chwr-hf3w-c984"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7755"
+        }
+      ],
+      "affectedRange": "<= 0.7.7"
+    }
+  ]
+}

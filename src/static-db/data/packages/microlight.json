@@ -1,0 +1,46 @@
+{
+  "name": "microlight",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-64x7-m7rh-9m83",
+      "title": "Withdrawn Advisory: microlight.js has a null pointer dereference vulnerability",
+      "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because a website owner has to set CSS color values. The proof of concept doesn't demonstrate how a malicious user who is not the website owner can cause an application crash. This link has been maintained to preserve external references.\n\n## Original Description\nA null pointer dereference vulnerability was discovered in microlight.js (version 0.0.7), a lightweight syntax highlighting library. When processing elements with non-standard CSS c",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-64x7-m7rh-9m83",
+      "publishedAt": "2025-06-17T21:32:30Z",
+      "modifiedAt": "2025-06-20T14:12:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-64x7-m7rh-9m83"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-45525"
+        }
+      ],
+      "affectedRange": "<= 0.0.7"
+    },
+    {
+      "id": "GHSA-wgc6-9f6w-h8hx",
+      "title": "Withdrawn Advisory: microlight allows a denial of service",
+      "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because the proof of concept does not demonstrate a practical security impact. This link is maintained to preserve external references.\n\n## Original Description\nA denial of service (DoS) vulnerability has been identified in the JavaScript library microlight version 0.0.7. This library, used for syntax highlighting, does not limit the size of textual content it processes in HTML elements with the microlight class. When excessively large conte",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-wgc6-9f6w-h8hx",
+      "publishedAt": "2025-06-17T21:32:30Z",
+      "modifiedAt": "2025-06-18T17:11:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wgc6-9f6w-h8hx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-45526"
+        }
+      ],
+      "affectedRange": "<= 0.0.7"
+    }
+  ]
+}

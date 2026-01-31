@@ -1,0 +1,26 @@
+{
+  "name": "node-bluetooth-serial-port",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9jh3-4pc9-hq29",
+      "title": "node-bluetooth-serial-port is vulnerable to Buffer Overflow via the findSerialPortChannel ",
+      "description": "All versions of the package node-bluetooth-serial-port are vulnerable to Buffer Overflow via the findSerialPortChannel method due to improper user input length validation.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9jh3-4pc9-hq29",
+      "publishedAt": "2023-03-09T06:30:21Z",
+      "modifiedAt": "2023-03-15T19:18:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9jh3-4pc9-hq29"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26109"
+        }
+      ],
+      "affectedRange": "<= 2.2.7"
+    }
+  ]
+}

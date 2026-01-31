@@ -1,0 +1,86 @@
+{
+  "name": "validator",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vghf-hv5q-vc2g",
+      "title": "Validator is Vulnerable to Incomplete Filtering of One or More Instances of Special Elements",
+      "description": "Versions of the package validator before 13.15.22 are vulnerable to Incomplete Filtering of One or More Instances of Special Elements in the isLength() function that does not take into account Unicode variation selectors (\\uFE0F, \\uFE0E) appearing in a sequence which lead to improper string length calculation. This can lead to an application using isLength for input validation accepting strings significantly longer than intended, resulting in issues like data truncation in databases, buffer over",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vghf-hv5q-vc2g",
+      "publishedAt": "2025-11-27T06:31:25Z",
+      "modifiedAt": "2026-01-31T03:33:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vghf-hv5q-vc2g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-12758"
+        }
+      ],
+      "affectedRange": "< 13.15.22",
+      "fixedVersion": "13.15.22"
+    },
+    {
+      "id": "GHSA-9965-vmph-33xx",
+      "title": "validator.js has a URL validation bypass vulnerability in its isURL function",
+      "description": "A URL validation bypass vulnerability exists in validator.js prior to version 13.15.20. The isURL() function uses '://' as a delimiter to parse protocols, while browsers use ':' as the delimiter. This parsing difference allows attackers to bypass protocol and domain validation by crafting URLs leading to XSS and Open Redirect attacks.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9965-vmph-33xx",
+      "publishedAt": "2025-09-30T18:30:25Z",
+      "modifiedAt": "2025-10-27T12:53:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9965-vmph-33xx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-56200"
+        }
+      ],
+      "affectedRange": "< 13.15.20",
+      "fixedVersion": "13.15.20"
+    },
+    {
+      "id": "GHSA-qgmg-gppg-76g5",
+      "title": "Inefficient Regular Expression Complexity in validator.js",
+      "description": "validator.js prior to 13.7.0 is vulnerable to Inefficient Regular Expression Complexity",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qgmg-gppg-76g5",
+      "publishedAt": "2021-11-03T17:34:45Z",
+      "modifiedAt": "2023-11-29T22:41:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qgmg-gppg-76g5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3765"
+        }
+      ],
+      "affectedRange": "< 13.7.0",
+      "fixedVersion": "13.7.0"
+    },
+    {
+      "id": "GHSA-xx4c-jj58-r7x6",
+      "title": "Inefficient Regular Expression Complexity in Validator.js",
+      "description": "### Impact\nVersions of `validator` prior to 13.7.0 are affected by an inefficient Regular Expression complexity  when using the `rtrim` and `trim` sanitizers.\n\n### Patches\nThe problem has been patched in validator 13.7.0",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xx4c-jj58-r7x6",
+      "publishedAt": "2021-11-19T20:14:23Z",
+      "modifiedAt": "2023-01-11T05:06:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xx4c-jj58-r7x6"
+        }
+      ],
+      "affectedRange": ">= 11.1.0, < 13.7.0",
+      "fixedVersion": "13.7.0"
+    }
+  ]
+}

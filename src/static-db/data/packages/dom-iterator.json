@@ -1,0 +1,27 @@
+{
+  "name": "dom-iterator",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jrvm-mcxc-mf6m",
+      "title": "dom-iterator code execution vulnerability",
+      "description": "Versions of the package dom-iterator before 1.0.1 are vulnerable to Arbitrary Code Execution due to use of the Function constructor without complete input sanitization. Function generates a new function body and thus care must be given to ensure that the inputs to Function are not attacker-controlled. The risks involved are similar to that of allowing attacker-controlled input to reach eval.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jrvm-mcxc-mf6m",
+      "publishedAt": "2024-11-13T06:30:29Z",
+      "modifiedAt": "2025-01-14T21:18:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jrvm-mcxc-mf6m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21541"
+        }
+      ],
+      "affectedRange": "<= 1.0.0",
+      "fixedVersion": "1.0.1"
+    }
+  ]
+}

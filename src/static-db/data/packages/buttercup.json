@@ -1,0 +1,27 @@
+{
+  "name": "buttercup",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7cwq-p8cr-h9qg",
+      "title": "Buttercup allows attackers to obtain the hash of the master password",
+      "description": "Buttercup allows attackers to obtain the hash of the master password for the password manager via accessing the file /vaults.json/.\n\nThis affects the Buttercup app up to version 2.20.3.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7cwq-p8cr-h9qg",
+      "publishedAt": "2023-09-08T00:31:02Z",
+      "modifiedAt": "2023-12-13T23:22:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7cwq-p8cr-h9qg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-41646"
+        }
+      ],
+      "affectedRange": ">= 2.20.3, < 7.4.0",
+      "fixedVersion": "7.4.0"
+    }
+  ]
+}

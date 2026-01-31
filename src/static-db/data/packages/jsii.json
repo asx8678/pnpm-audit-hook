@@ -1,0 +1,23 @@
+{
+  "name": "jsii",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m56h-5xx3-2jc2",
+      "title": "Prototype pollution in jsii.configureCategories",
+      "description": "## Summary\n\n`jsii` is a TypeScript to JavaScript compiler that also extracts an interface definition manifest to generate RPC stubs in various programming languages. jsii is typically used as a command-line tool, but it can also be loaded as a library.\nWhen loaded as a library into a larger application, prototype pollution may happen if untrusted user input is passed to the library. When used as a command line-tool, this pollution cannot occur.\n\n## Impact\n\nYou may be impacted if you have written",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-m56h-5xx3-2jc2",
+      "publishedAt": "2024-12-18T15:50:09Z",
+      "modifiedAt": "2025-01-07T15:12:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m56h-5xx3-2jc2"
+        }
+      ],
+      "affectedRange": ">= 5.4.0, < 5.4.46",
+      "fixedVersion": "5.4.46"
+    }
+  ]
+}

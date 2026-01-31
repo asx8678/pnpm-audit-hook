@@ -1,0 +1,26 @@
+{
+  "name": "is-http2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2275-rpf5-xv8h",
+      "title": "is-http2 vulnerable to Improper Input Validation",
+      "description": "All versions of the package is-http2 are vulnerable to Command Injection due to missing input sanitization or other checks, and sandboxes being employed to the isH2 function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2275-rpf5-xv8h",
+      "publishedAt": "2023-02-01T06:30:30Z",
+      "modifiedAt": "2025-03-27T03:50:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2275-rpf5-xv8h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25906"
+        }
+      ],
+      "affectedRange": "<= 1.2.0"
+    }
+  ]
+}

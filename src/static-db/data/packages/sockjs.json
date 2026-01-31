@@ -1,0 +1,48 @@
+{
+  "name": "sockjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c9g6-9335-x697",
+      "title": "Improper Input Validation in SocksJS-Node",
+      "description": "Incorrect handling of Upgrade header with the value websocket leads in crashing of containers hosting sockjs apps. This affects the package sockjs before 0.3.20.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c9g6-9335-x697",
+      "publishedAt": "2021-04-13T15:27:51Z",
+      "modifiedAt": "2023-02-01T05:05:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c9g6-9335-x697"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7693"
+        }
+      ],
+      "affectedRange": "< 0.3.20",
+      "fixedVersion": "0.3.20"
+    },
+    {
+      "id": "GHSA-hh8v-jmh3-9437",
+      "title": "Cross-site scripting in SocksJS-node",
+      "description": "htmlfile in lib/transport/htmlfile.js in SockJS before 0.3.0 is vulnerable to Reflected XSS via the /htmlfile c (aka callback) parameter.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hh8v-jmh3-9437",
+      "publishedAt": "2021-04-13T15:25:33Z",
+      "modifiedAt": "2023-02-01T05:05:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hh8v-jmh3-9437"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8823"
+        }
+      ],
+      "affectedRange": "< 0.3.0",
+      "fixedVersion": "0.3.0"
+    }
+  ]
+}

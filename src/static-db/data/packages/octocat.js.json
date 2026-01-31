@@ -1,0 +1,27 @@
+{
+  "name": "octocat.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r4jg-5v89-9v62",
+      "title": "Withdrawn: Octocat.js vulnerable to code injection",
+      "description": "## Withdrawn\n\nThis advisory has been withdrawn because it is a test.\n\n## Original Description\n\n### Impact\nUsers can include their own images for accessories via provided URLs. These URLs are not validated and can result in execution of injected code.\n\n### Patches\nThis vulnerability was fixed in version 1.2 of octocat.js\n\n### Workarounds\nDirectly exposing rendered images to a website can introduce the vulnerability to users. To avoid, writing an image to disk then using that image in an image ele",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r4jg-5v89-9v62",
+      "publishedAt": "2022-11-08T20:48:49Z",
+      "modifiedAt": "2023-02-24T16:37:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r4jg-5v89-9v62"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39390"
+        }
+      ],
+      "affectedRange": "< 1.2",
+      "fixedVersion": "1.2"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "ipx",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mm3p-j368-7jcr",
+      "title": "IPX Allows Path Traversal via Prefix Matching Bypass",
+      "description": "### Summary\n\nThe approach used to check whether a path is within allowed directories is vulnerable to path prefix bypass when the allowed directories do not end with a path separator. This occurs because the check relies on a raw string prefix comparison.\n\n\n### PoC\n\n- setup\n```\nmkdir ~/public123\nmove a png file under ~/public123 with name test.png\ncd\nnpm i ipx \n```\n\n- `main.js`\n```js\nimport { createIPX, ipxFSStorage } from \"ipx\";\n\nconst ipx = createIPX({\n  storage: ipxFSStorage({ dir: \"./public\"",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mm3p-j368-7jcr",
+      "publishedAt": "2025-08-04T14:48:25Z",
+      "modifiedAt": "2025-08-05T17:10:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mm3p-j368-7jcr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54387"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.1.1",
+      "fixedVersion": "3.1.1"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "textangular",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7h4w-6p98-r3wx",
+      "title": "textAngular Cross-site Scripting vulnerability",
+      "description": "textAngular is a text editor for Angular.js. Version 1.5.16 and prior are vulnerable to copy-paste cross-site scripting (XSS). For this particular type of XSS, the victim needs to be fooled into copying a malicious payload into the text editor. There are no known patches.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7h4w-6p98-r3wx",
+      "publishedAt": "2023-02-21T15:30:23Z",
+      "modifiedAt": "2023-02-22T00:11:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7h4w-6p98-r3wx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32854"
+        }
+      ],
+      "affectedRange": "<= 1.5.16"
+    }
+  ]
+}

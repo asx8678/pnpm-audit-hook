@@ -1,0 +1,27 @@
+{
+  "name": "dns-packet",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3wcq-x3mq-6r9p",
+      "title": "Potential memory exposure in dns-packet",
+      "description": "This affects the package dns-packet before versions 1.3.2 and 5.2.2. It creates buffers with allocUnsafe and does not always fill them before forming network packets. This can expose internal application memory over unencrypted network when querying crafted invalid domain names.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3wcq-x3mq-6r9p",
+      "publishedAt": "2021-05-24T19:51:04Z",
+      "modifiedAt": "2025-02-12T05:11:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3wcq-x3mq-6r9p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23386"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 5.2.2",
+      "fixedVersion": "5.2.2"
+    }
+  ]
+}

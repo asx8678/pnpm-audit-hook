@@ -1,0 +1,23 @@
+{
+  "name": "@nfid/embed",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-84c3-j8r2-mcm8",
+      "title": "@nfid/embed has compromised private key due to @dfinity/auth-client producing insecure session keys",
+      "description": "### Problem\nUser sessions in the @nfid/embed SDK with Ed25519 keys are vulnerable due to a compromised private key `535yc-uxytb-gfk7h-tny7p-vjkoe-i4krp-3qmcl-uqfgr-cpgej-yqtjq-rqe`. This exposes users to potential loss of funds on ledgers and unauthorized access to canisters they control.\n\n### Solution\nUsing version >1.0.1 of @dfinity/auth-client and @dfinity/identity packages, or @nfid/embed >0.10.1-alpha.6 includes patched versions of the issue.\n\nUser sessions will be automatically fixed when ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-84c3-j8r2-mcm8",
+      "publishedAt": "2024-02-26T20:10:10Z",
+      "modifiedAt": "2024-02-26T20:10:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-84c3-j8r2-mcm8"
+        }
+      ],
+      "affectedRange": ">= 0.10.0, < 0.10.1-alpha.6",
+      "fixedVersion": "0.10.1-alpha.6"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "collection.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-47pj-q2vm-46xc",
+      "title": "Collection.js vulnerable to Prototype Pollution",
+      "description": "Versions of the package collection.js before 6.8.1 are vulnerable to Prototype Pollution via the `extend` function in `Collection.js/dist/node/iterators/extend.js`.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-47pj-q2vm-46xc",
+      "publishedAt": "2023-03-18T06:30:15Z",
+      "modifiedAt": "2023-11-29T00:00:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-47pj-q2vm-46xc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26113"
+        }
+      ],
+      "affectedRange": "< 6.8.1",
+      "fixedVersion": "6.8.1"
+    }
+  ]
+}

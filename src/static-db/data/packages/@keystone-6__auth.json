@@ -1,0 +1,48 @@
+{
+  "name": "@keystone-6/auth",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jqxr-vjvv-899m",
+      "title": "@keystone-6/auth Open Redirect vulnerability",
+      "description": "### Summary\nThere is an open redirect in the `@keystone-6/auth` package, where the redirect leading `/` filter can be bypassed.\n\n### Impact\nUsers may be redirected to domains other than the relative host, thereby it might be used by attackers to re-direct users to an unexpected location.\n\n### Mitigations\n- Don't use the `@keystone-6/auth` package\n\n### References\n- [CWE-601: URL Redirection to Untrusted Site ('Open Redirect')](https://cwe.mitre.org/data/definitions/601.html)\n- [OWASP: Unvalidated",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jqxr-vjvv-899m",
+      "publishedAt": "2023-06-14T14:54:06Z",
+      "modifiedAt": "2023-11-04T05:01:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jqxr-vjvv-899m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-34247"
+        }
+      ],
+      "affectedRange": "< 7.0.0",
+      "fixedVersion": "7.0.0"
+    },
+    {
+      "id": "GHSA-hrgx-7j6v-xj82",
+      "title": "Reflected cross-site scripting (XSS) vulnerability",
+      "description": "This security advisory relates to a capability for an attacker to exploit a reflected cross-site scripting vulnerability when using the `@keystone-6/auth` package.\n\n#### Impact\nThe vulnerability can impact users of the administration user interface when following an untrusted link to the `signin` or `init` page.\nThis is a targeted attack and may present itself in the form of phishing and or chained in conjunction with some other vulnerability.\n\n## Vulnerability mitigation\nPlease upgrade to `@key",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hrgx-7j6v-xj82",
+      "publishedAt": "2022-01-12T21:55:40Z",
+      "modifiedAt": "2023-02-03T05:03:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hrgx-7j6v-xj82"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0087"
+        }
+      ],
+      "affectedRange": "< 1.0.2",
+      "fixedVersion": "1.0.2"
+    }
+  ]
+}

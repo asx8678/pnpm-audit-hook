@@ -1,0 +1,44 @@
+{
+  "name": "min-dash",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2m53-83f3-562j",
+      "title": "Prototype pollution in min-dash",
+      "description": "### Impact\n\nThe `set` method is vulnerable to prototype pollution with specially crafted inputs.\n\n```javascript\n// insert the following into poc.js and run node poc,js (after installing the package)\n \nlet parser = require(\"min-dash\");\nparser.set({}, [[\"__proto__\"], \"polluted\"], \"success\");\nconsole.log(polluted);\n```\n\n### Patches\n\n`min-dash>=3.8.1` fix the issue.\n\n### Workarounds\n\nNo workarounds exist for the issue.\n\n### References\n\nClosed via https://github.com/bpmn-io/min-dash/pull/21.\n\n### Cre",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2m53-83f3-562j",
+      "publishedAt": "2022-02-01T00:44:35Z",
+      "modifiedAt": "2025-07-18T19:59:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2m53-83f3-562j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23460"
+        }
+      ],
+      "affectedRange": "< 3.8.1",
+      "fixedVersion": "3.8.1"
+    },
+    {
+      "id": "GHSA-fm93-fhh2-cg2c",
+      "title": "Duplicate Advisory: Prototype Pollution in min-dash",
+      "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-2m53-83f3-562j. This link is maintained to preserve external references.\n\n## Original Description\nThe package min-dash before 3.8.1 are vulnerable to Prototype Pollution via the set method due to missing enforcement of key types.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fm93-fhh2-cg2c",
+      "publishedAt": "2022-01-27T14:21:53Z",
+      "modifiedAt": "2025-07-18T19:44:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fm93-fhh2-cg2c"
+        }
+      ],
+      "affectedRange": "< 3.8.1",
+      "fixedVersion": "3.8.1"
+    }
+  ]
+}

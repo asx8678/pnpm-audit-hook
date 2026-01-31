@@ -1,0 +1,26 @@
+{
+  "name": "roar-pidusage",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xfxf-qw26-hr33",
+      "title": "Arbitrary command execution in roar-pidusage",
+      "description": "This affects all current versions of package roar-pidusage. If attacker-controlled user input is given to the stat function of this package on certain operating systems, it is possible for an attacker to execute arbitrary commands. This is due to use of the child_process exec function without input sanitization.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xfxf-qw26-hr33",
+      "publishedAt": "2021-05-06T15:55:43Z",
+      "modifiedAt": "2023-01-27T05:00:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xfxf-qw26-hr33"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23380"
+        }
+      ],
+      "affectedRange": "<= 1.1.7"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "eventsource",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6h5x-7c5m-7cr7",
+      "title": "Exposure of Sensitive Information in eventsource",
+      "description": "When fetching an url with a link to an external site (Redirect), the users Cookies & Autorisation headers are leaked to the third party application. According to the same-origin-policy, the header should be \"sanitized.\"",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6h5x-7c5m-7cr7",
+      "publishedAt": "2022-05-13T00:01:12Z",
+      "modifiedAt": "2023-11-28T23:43:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6h5x-7c5m-7cr7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-1650"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.0.2",
+      "fixedVersion": "2.0.2"
+    }
+  ]
+}

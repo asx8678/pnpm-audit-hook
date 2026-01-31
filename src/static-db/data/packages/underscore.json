@@ -1,0 +1,27 @@
+{
+  "name": "underscore",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cf4h-3jhx-xvhq",
+      "title": "Arbitrary Code Execution in underscore",
+      "description": "The package `underscore` from 1.13.0-0 and before 1.13.0-2, from 1.3.2 and before 1.12.1 are vulnerable to Arbitrary Code Execution via the template function, particularly when a variable property is passed as an argument as it is not sanitized.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cf4h-3jhx-xvhq",
+      "publishedAt": "2021-05-06T16:09:43Z",
+      "modifiedAt": "2025-11-04T16:34:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cf4h-3jhx-xvhq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23358"
+        }
+      ],
+      "affectedRange": ">= 1.3.2, < 1.12.1",
+      "fixedVersion": "1.12.1"
+    }
+  ]
+}

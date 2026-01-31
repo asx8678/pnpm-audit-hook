@@ -1,0 +1,26 @@
+{
+  "name": "spritesheet-js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-333x-qr3v-g4xx",
+      "title": "Command injection in spritesheet-js",
+      "description": "This affects all versions of package spritesheet-js. It depends on a vulnerable package platform-command. The injection point is located in line 32 in lib/generator.js, which is triggered by main entry of the package.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-333x-qr3v-g4xx",
+      "publishedAt": "2021-04-13T15:30:16Z",
+      "modifiedAt": "2023-02-01T05:05:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-333x-qr3v-g4xx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7782"
+        }
+      ],
+      "affectedRange": "<= 1.2.6"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@redwoodjs/api",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3qmc-2r76-4rqp",
+      "title": "Redwood is vulnerable to account takeover via dbAuth \"forgot-password\" ",
+      "description": "# Impact\n\n_What kind of vulnerability is it? Who is impacted?_\n\nThis is an API vulnerability in Redwood's [dbAuth], specifically the dbAuth forgot password feature:\n- only projects with the dbAuth \"forgot password\" feature are affected\n- this vulnerability was introduced in v0.38.0\n\n## User Accounts are Vulnerable to Takeover (Hijacking)\n\nA reset token for any user can be obtained given knowledge of their username or email via the forgot-password API. With the leaked reset token, a malicious use",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3qmc-2r76-4rqp",
+      "publishedAt": "2022-11-10T15:51:01Z",
+      "modifiedAt": "2023-01-07T05:06:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3qmc-2r76-4rqp"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.3.1",
+      "fixedVersion": "3.3.1"
+    }
+  ]
+}

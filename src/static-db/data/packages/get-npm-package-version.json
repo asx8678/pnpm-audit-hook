@@ -1,0 +1,27 @@
+{
+  "name": "get-npm-package-version",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4h66-vghf-xg5x",
+      "title": "get-npm-package-version Command Injection vulnerability",
+      "description": "The package get-npm-package-version before 1.0.7 is vulnerable to Command Injection via the `main` function in index.js.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4h66-vghf-xg5x",
+      "publishedAt": "2022-08-03T00:00:57Z",
+      "modifiedAt": "2023-01-30T05:01:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4h66-vghf-xg5x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7795"
+        }
+      ],
+      "affectedRange": "< 1.0.7",
+      "fixedVersion": "1.0.7"
+    }
+  ]
+}

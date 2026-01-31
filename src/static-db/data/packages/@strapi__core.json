@@ -1,0 +1,69 @@
+{
+  "name": "@strapi/core",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9329-mxxw-qwf8",
+      "title": "Strapi core vulnerable to sensitive data exposure via CORS misconfiguration",
+      "description": "### Summary\n\nA CORS misconfiguration vulnerability exists in default installations of Strapi where attacker-controlled origins are improperly reflected in API responses.\n\n### Technical Details\n\nBy default, Strapi reflects the value of the Origin header back in the Access-Control-Allow-Origin response header without proper validation or whitelisting.\n\nExample:\n`Origin: http://localhost:8888`\n`Access-Control-Allow-Origin: http://localhost:8888`\n`Access-Control-Allow-Credentials: true`\n\nThis allows",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9329-mxxw-qwf8",
+      "publishedAt": "2025-10-16T19:49:01Z",
+      "modifiedAt": "2026-01-29T03:59:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9329-mxxw-qwf8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-53092"
+        }
+      ],
+      "affectedRange": "< 5.20.0",
+      "fixedVersion": "5.20.0"
+    },
+    {
+      "id": "GHSA-2cjv-6wg9-f4f3",
+      "title": "Strapi Password Hashing is Missing Maximum Password Length Validation",
+      "description": "## Summary\n\nStrapi's password hashing implementation using bcryptjs lacks maximum password length validation. Since bcryptjs truncates passwords exceeding 72 bytes, this creates potential vulnerabilities such as authentication bypass and performance degradation.\n\n## POC\nCreate an admin user with a password exceeding 72 characters like 85,\nLog in using only the first 72 characters of the password.\nAuthentication is successful, confirming the issue.\n\nProposed Solution Based on  discussions:\n\nAdd a",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2cjv-6wg9-f4f3",
+      "publishedAt": "2025-10-16T18:41:43Z",
+      "modifiedAt": "2025-11-27T08:45:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2cjv-6wg9-f4f3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-25298"
+        }
+      ],
+      "affectedRange": "< 5.10.3",
+      "fixedVersion": "5.10.3"
+    },
+    {
+      "id": "GHSA-495j-h493-42q2",
+      "title": "Strapi Allows Unauthorized Access to Private Fields via parms.lookup",
+      "description": "### Summary\nIt's possible to access any private fields by filtering through the lookup parameters\n\n### Details\n\nUsing the new lookup operator provided by the document service in Strapi 5, it is not properly sanitizing this query operator for private fields.\n\n### PoC\n\n1. Create a strapi app.\n2. Create a content-type\n3. In the content-type you make a new entry\n4. Go back to the list view\n4. Add `&lookup[updatedBy][password][$startsWith]=$2` to the end of your url (All passwords start with $2) see ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-495j-h493-42q2",
+      "publishedAt": "2025-10-16T18:22:40Z",
+      "modifiedAt": "2025-10-16T20:42:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-495j-h493-42q2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-56143"
+        }
+      ],
+      "affectedRange": ">= 5.0.0, < 5.5.2",
+      "fixedVersion": "5.5.2"
+    }
+  ]
+}

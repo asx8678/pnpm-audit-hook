@@ -1,0 +1,66 @@
+{
+  "name": "@perfood/couch-auth",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r385-c5fc-x56c",
+      "title": "CouchAuth has a Server-Side Template Injection vulnerability in its email functionality",
+      "description": "A host header injection vulnerability exists in the NPM package of perfood/couch-auth <= 0.21.2. By sending a specially crafted host header in the email change confirmation request, it is possible to trigger a SSTI which can be leveraged to run limited commands or leak server-side information.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-r385-c5fc-x56c",
+      "publishedAt": "2025-02-10T21:31:39Z",
+      "modifiedAt": "2025-12-18T15:30:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r385-c5fc-x56c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-57177"
+        }
+      ],
+      "affectedRange": "<= 0.21.2"
+    },
+    {
+      "id": "GHSA-62vx-hpcr-m9ch",
+      "title": "@perfood/couch-auth may expose session tokens, passwords",
+      "description": "Session tokens and passwords in couch-auth 0.21.2 are stored in JavaScript objects and remain in memory without explicit clearing in src/user.ts lines 700-707. This creates a window of opportunity for sensitive data extraction through memory dumps, debugging tools, or other memory access techniques, potentially leading to session hijacking.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-62vx-hpcr-m9ch",
+      "publishedAt": "2025-11-20T15:30:24Z",
+      "modifiedAt": "2025-11-20T18:48:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-62vx-hpcr-m9ch"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-60794"
+        }
+      ],
+      "affectedRange": "<= 0.21.2"
+    },
+    {
+      "id": "GHSA-fqh6-6h6c-366m",
+      "title": "CouchAuth host header injection vulnerability leaks the password reset token",
+      "description": "A host header injection vulnerability exists in the NPM package @perfood/couch-auth versions <= 0.20.0. By sending a specially crafted host header in the forgot password request, it is possible to send password reset links to users which, once clicked, lead to an attacker-controlled server and thus leak the password reset token. This may allow an attacker to reset other users' passwords and take over their accounts.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fqh6-6h6c-366m",
+      "publishedAt": "2024-01-03T15:30:26Z",
+      "modifiedAt": "2024-01-09T21:52:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fqh6-6h6c-366m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-39655"
+        }
+      ],
+      "affectedRange": "<= 0.20.0"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Colors",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5rqg-jm4f-cqx7",
+      "title": "Infinite loop causing Denial of Service in colors",
+      "description": "colors is a library for including colored text in node.js consoles. Between 07 and 09 January 2022, colors versions 1.4.1, 1.4.2, and 1.4.44-liberty-2 were published including malicious code that caused a Denial of Service due to an infinite loop. Software dependent on these versions experienced the printing of randomized characters to console and an infinite loop resulting in unbound system resource consumption.\n\nUsers of colors relying on these specific versions should downgrade to version 1.4",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5rqg-jm4f-cqx7",
+      "publishedAt": "2022-01-10T17:29:53Z",
+      "modifiedAt": "2023-01-11T05:03:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5rqg-jm4f-cqx7"
+        }
+      ],
+      "affectedRange": "= 1.4.44-liberty-2"
+    }
+  ]
+}

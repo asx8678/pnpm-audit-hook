@@ -1,0 +1,27 @@
+{
+  "name": "@octokit/webhooks",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pwfr-8pq7-x9qv",
+      "title": "Unauthenticated Denial of Service in the octokit/webhooks library",
+      "description": "### Impact\nVersions [v9.26.0](https://github.com/octokit/webhooks.js/releases/tag/v9.26.0), [v10.9.x](https://github.com/octokit/webhooks.js/releases/tag/v10.9.1)), [v11.1.x](https://github.com/octokit/webhooks.js/releases/tag/v11.1.1), [v12.0.x](https://github.com/octokit/webhooks.js/releases/tag/v12.0.3) all contained the code that would throw the error.\n\nSpecifically, during a pentest we encountered a bug in the octokit/webhooks library (a dependency of Probot, a framework for building Github",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pwfr-8pq7-x9qv",
+      "publishedAt": "2023-12-16T00:52:19Z",
+      "modifiedAt": "2023-12-16T00:52:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pwfr-8pq7-x9qv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-50728"
+        }
+      ],
+      "affectedRange": ">= 12.0.0, < 12.0.3",
+      "fixedVersion": "12.0.3"
+    }
+  ]
+}

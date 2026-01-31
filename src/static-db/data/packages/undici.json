@@ -1,0 +1,342 @@
+{
+  "name": "undici",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g9mf-h72j-4rw9",
+      "title": "Undici has an unbounded decompression chain in HTTP responses on Node.js Fetch API via Content-Encoding leads to resource exhaustion",
+      "description": "### Impact\n\nThe `fetch()` API supports chained HTTP encoding algorithms for response content according to RFC 9110 (e.g., Content-Encoding: gzip, br). This is also supported by the undici decompress interceptor.\n\nHowever, the number of links in the decompression chain is unbounded and the default maxHeaderSize allows a malicious server to insert thousands compression steps leading to high CPU usage and excessive memory allocation.\n\n### Patches\n\nUpgrade to 7.18.2 or 6.23.0.\n\n### Workarounds\n\nIt i",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g9mf-h72j-4rw9",
+      "publishedAt": "2026-01-14T21:06:08Z",
+      "modifiedAt": "2026-01-22T20:17:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g9mf-h72j-4rw9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22036"
+        }
+      ],
+      "affectedRange": "< 6.23.0",
+      "fixedVersion": "6.23.0"
+    },
+    {
+      "id": "GHSA-9qxr-qj54-h672",
+      "title": "Undici's fetch with integrity option is too lax when algorithm is specified but hash value is in incorrect",
+      "description": "### Impact\n\nIf an attacker can alter the `integrity` option passed to `fetch()`, they can let `fetch()` accept requests as valid even if they have been tampered.\n\n### Patches\n\nFixed in https://github.com/nodejs/undici/commit/d542b8cd39ec1ba303f038ea26098c3f355974f3.\nFixes has been released in v5.28.4 and v6.11.1.\n\n\n### Workarounds\n\nEnsure that `integrity` cannot be tampered with.\n\n### References\n\nhttps://hackerone.com/reports/2377760",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-9qxr-qj54-h672",
+      "publishedAt": "2024-04-04T14:20:54Z",
+      "modifiedAt": "2025-11-04T19:44:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9qxr-qj54-h672"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-30261"
+        }
+      ],
+      "affectedRange": ">= 6.0.0, < 6.11.1",
+      "fixedVersion": "6.11.1"
+    },
+    {
+      "id": "GHSA-m4v8-wqvr-p9f7",
+      "title": "Undici's Proxy-Authorization header not cleared on cross-origin redirect for dispatch, request, stream, pipeline",
+      "description": "### Impact\n\nUndici cleared Authorization and Proxy-Authorization headers for `fetch()`, but did not clear them for `undici.request()`.\n\n### Patches\n\nThis has been patched in https://github.com/nodejs/undici/commit/6805746680d27a5369d7fb67bc05f95a28247d75.\nFixes has been released in v5.28.4 and v6.11.1.\n\n### Workarounds\n\nuse `fetch()` or disable `maxRedirections`.\n\n### References\n\nLinzi Shang reported this.\n\n* https://hackerone.com/reports/2408074\n* https://github.com/nodejs/undici/security/advis",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-m4v8-wqvr-p9f7",
+      "publishedAt": "2024-04-04T14:20:39Z",
+      "modifiedAt": "2025-11-04T19:44:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m4v8-wqvr-p9f7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-30260"
+        }
+      ],
+      "affectedRange": ">= 6.0.0, < 6.11.1",
+      "fixedVersion": "6.11.1"
+    },
+    {
+      "id": "GHSA-cxrh-j4jr-qwg3",
+      "title": "undici Denial of Service attack via bad certificate data",
+      "description": "### Impact\n\nApplications that use undici to implement a webhook-like system are vulnerable. If the attacker set up a server with an invalid certificate, and they can force the application to call the webhook repeatedly, then they can cause a memory leak. \n\n### Patches\n\nThis has been patched in https://github.com/nodejs/undici/pull/4088.\n\n### Workarounds\n\nIf a webhook fails, avoid keep calling it repeatedly.\n\n### References\n\nReported as: https://github.com/nodejs/undici/issues/3895",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-cxrh-j4jr-qwg3",
+      "publishedAt": "2025-05-15T14:15:06Z",
+      "modifiedAt": "2025-05-16T02:07:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cxrh-j4jr-qwg3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-47279"
+        }
+      ],
+      "affectedRange": ">= 7.0.0, < 7.5.0",
+      "fixedVersion": "7.5.0"
+    },
+    {
+      "id": "GHSA-c76h-2ccp-4975",
+      "title": "Use of Insufficiently Random Values in undici",
+      "description": "### Impact\n\n[Undici `fetch()` uses Math.random()](https://github.com/nodejs/undici/blob/8b06b8250907d92fead664b3368f1d2aa27c1f35/lib/web/fetch/body.js#L113) to choose the boundary for a multipart/form-data request. It is known that the output of Math.random() can be predicted if several of its generated values are known.\n\nIf there is a mechanism in an app that sends multipart requests to an attacker-controlled website, they can use this to leak the necessary values. Therefore, An attacker can ta",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c76h-2ccp-4975",
+      "publishedAt": "2025-01-21T21:10:47Z",
+      "modifiedAt": "2025-01-22T08:01:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c76h-2ccp-4975"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-22150"
+        }
+      ],
+      "affectedRange": ">= 7.0.0, < 7.2.3",
+      "fixedVersion": "7.2.3"
+    },
+    {
+      "id": "GHSA-9f24-jqhm-jfcw",
+      "title": "fetch(url) leads to a memory leak in undici",
+      "description": "### Impact\n\nCalling `fetch(url)` and not consuming the incoming body ((or consuming it very slowing) will lead to a memory leak. \n\n### Patches\n\nPatched in v6.6.1\n\n### Workarounds\n\nMake sure to always consume the incoming body.\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9f24-jqhm-jfcw",
+      "publishedAt": "2024-02-16T15:59:38Z",
+      "modifiedAt": "2024-12-17T20:04:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9f24-jqhm-jfcw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-24750"
+        }
+      ],
+      "affectedRange": ">= 6.0.0, <= 6.6.0",
+      "fixedVersion": "6.6.1"
+    },
+    {
+      "id": "GHSA-3g92-w8c5-73pq",
+      "title": "Undici vulnerable to data leak when using response.arrayBuffer()",
+      "description": "### Impact\n\nDepending on network and process conditions of a `fetch()` request, `response.arrayBuffer()` might include portion of memory from the Node.js process.\n\n### Patches\n\nThis has been patched in v6.19.2.\n\n### Workarounds\n\nThere are no known workaround.\n\n### References\n\nhttps://github.com/nodejs/undici/issues/3337\nhttps://github.com/nodejs/undici/issues/3328\nhttps://github.com/nodejs/undici/pull/3338\nhttps://github.com/nodejs/undici/commit/f979ec3204ca489abf30e7d20e9fee9ea7711d36",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-3g92-w8c5-73pq",
+      "publishedAt": "2024-07-09T13:32:30Z",
+      "modifiedAt": "2024-08-08T05:06:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3g92-w8c5-73pq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-38372"
+        }
+      ],
+      "affectedRange": ">= 6.14.0, < 6.19.2",
+      "fixedVersion": "6.19.2"
+    },
+    {
+      "id": "GHSA-3787-6prv-h9w3",
+      "title": "Undici proxy-authorization header not cleared on cross-origin redirect in fetch",
+      "description": "### Impact\n\nUndici already cleared Authorization headers on cross-origin redirects, but did not clear `Proxy-Authorization` headers. \n\n### Patches\n\nThis is patched in v5.28.3 and v6.6.1\n\n### Workarounds\n\nThere are no known workarounds.\n\n### References\n\n- https://fetch.spec.whatwg.org/#authentication-entries\n- https://github.com/nodejs/undici/security/advisories/GHSA-wqq4-5wpv-mx2g",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-3787-6prv-h9w3",
+      "publishedAt": "2024-02-16T16:02:52Z",
+      "modifiedAt": "2024-05-02T13:15:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3787-6prv-h9w3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-24758"
+        }
+      ],
+      "affectedRange": ">= 6.0.0, <= 6.6.0",
+      "fixedVersion": "6.6.1"
+    },
+    {
+      "id": "GHSA-wqq4-5wpv-mx2g",
+      "title": "Undici's cookie header not cleared on cross-origin redirect in fetch",
+      "description": "### Impact\n\nUndici clears Authorization headers on cross-origin redirects, but does not clear `Cookie` headers. By design, `cookie` headers are [forbidden request headers](https://fetch.spec.whatwg.org/#forbidden-request-header), disallowing them to be set in `RequestInit.headers` in browser environments. Since Undici handles headers more liberally than the specification, there was a disconnect from the assumptions the spec made, and Undici's implementation of fetch.\n\nAs such this may lead to ac",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-wqq4-5wpv-mx2g",
+      "publishedAt": "2023-10-16T14:05:37Z",
+      "modifiedAt": "2024-02-16T22:38:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wqq4-5wpv-mx2g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-45143"
+        }
+      ],
+      "affectedRange": "< 5.26.2",
+      "fixedVersion": "5.26.2"
+    },
+    {
+      "id": "GHSA-5r9g-qh6m-jxff",
+      "title": "CRLF Injection in Nodejs ‘undici’ via host",
+      "description": "### Impact\n\nundici library does not protect `host` HTTP header from CRLF injection vulnerabilities.\n\n### Patches\n\nThis issue was patched in Undici v5.19.1.\n\n### Workarounds\n\nSanitize the `headers.host` string before passing to undici.\n\n### References\n\nReported at https://hackerone.com/reports/1820955.\n\n### Credits\n\nThank you to Zhipeng Zhang ([@timon8](https://hackerone.com/timon8)) for reporting this vulnerability. ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5r9g-qh6m-jxff",
+      "publishedAt": "2023-02-16T20:46:30Z",
+      "modifiedAt": "2023-02-24T21:40:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5r9g-qh6m-jxff"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-23936"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 5.19.1",
+      "fixedVersion": "5.19.1"
+    },
+    {
+      "id": "GHSA-r6ch-mqf9-qc9w",
+      "title": "Regular Expression Denial of Service in Headers",
+      "description": "### Impact\nThe `Headers.set()` and `Headers.append()` methods are vulnerable to Regular Expression Denial of Service (ReDoS) attacks when untrusted values are passed into the functions. This is due to the inefficient regular expression used to normalize the values in the `headerValueNormalize()` utility function.\n\n### Patches\n\nThis vulnerability was patched in v5.19.1.\n\n### Workarounds\nThere is no workaround. Please update to an unaffected version.\n\n### References\n\n* https://hackerone.com/bugs?r",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r6ch-mqf9-qc9w",
+      "publishedAt": "2023-02-16T20:46:10Z",
+      "modifiedAt": "2023-02-16T20:46:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r6ch-mqf9-qc9w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-24807"
+        }
+      ],
+      "affectedRange": "< 5.19.1",
+      "fixedVersion": "5.19.1"
+    },
+    {
+      "id": "GHSA-f772-66g8-q5h3",
+      "title": "Nodejs ‘undici’ vulnerable to CRLF Injection via Content-Type",
+      "description": "### Impact\n\n`=< undici@5.8.0` users are vulnerable to _CRLF Injection_ on headers when using unsanitized input as request headers, more specifically, inside the `content-type` header.\n\nExample:\n\n```\nimport { request } from 'undici'\n\nconst unsanitizedContentTypeInput =  'application/json\\r\\n\\r\\nGET /foo2 HTTP/1.1'\n\nawait request('http://localhost:3000, {\n    method: 'GET',\n    headers: {\n      'content-type': unsanitizedContentTypeInput\n    },\n})\n```\n\nThe above snippet will perform two requests i",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f772-66g8-q5h3",
+      "publishedAt": "2022-08-18T19:02:56Z",
+      "modifiedAt": "2023-02-03T05:04:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f772-66g8-q5h3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-35948"
+        }
+      ],
+      "affectedRange": "<= 5.8.1",
+      "fixedVersion": "5.8.2"
+    },
+    {
+      "id": "GHSA-8qr4-xgw6-wmr3",
+      "title": "`undici.request` vulnerable to SSRF using absolute URL on `pathname`",
+      "description": "### Impact\n\n`undici` is vulnerable to SSRF (Server-side Request Forgery) when an application takes in **user input** into the `path/pathname` option of `undici.request`.\n\nIf a user specifies a URL such as `http://127.0.0.1` or `//127.0.0.1`\n\n```js\nconst undici = require(\"undici\")\nundici.request({origin: \"http://example.com\", pathname: \"//127.0.0.1\"})\n```\n\nInstead of processing the request as `http://example.org//127.0.0.1` (or `http://example.org/http://127.0.0.1` when `http://127.0.0.1 is used`",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8qr4-xgw6-wmr3",
+      "publishedAt": "2022-08-18T18:59:46Z",
+      "modifiedAt": "2023-02-03T05:04:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8qr4-xgw6-wmr3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-35949"
+        }
+      ],
+      "affectedRange": "<= 5.8.1",
+      "fixedVersion": "5.8.2"
+    },
+    {
+      "id": "GHSA-q768-x9m6-m9qp",
+      "title": "undici before v5.8.0 vulnerable to uncleared cookies on cross-host / cross-origin redirect",
+      "description": "### Impact\n\nAuthorization headers are already cleared on cross-origin redirect in\nhttps://github.com/nodejs/undici/blob/main/lib/handler/redirect.js#L189, based on https://github.com/nodejs/undici/issues/872.\n\nHowever, cookie headers which are sensitive headers and are official headers found in the spec, remain uncleared. There also has been active discussion of implementing a cookie store https://github.com/nodejs/undici/pull/1441, which suggests that there are active users using cookie headers",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-q768-x9m6-m9qp",
+      "publishedAt": "2022-07-21T20:31:05Z",
+      "modifiedAt": "2023-01-30T05:06:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q768-x9m6-m9qp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31151"
+        }
+      ],
+      "affectedRange": "< 5.8.0",
+      "fixedVersion": "5.8.0"
+    },
+    {
+      "id": "GHSA-pgw7-wx7w-2w33",
+      "title": "ProxyAgent vulnerable to MITM",
+      "description": "### Description\n\n`Undici.ProxyAgent` never verifies the remote server's certificate, and always exposes all request & response data to the proxy. This unexpectedly means that proxies can MitM all HTTPS traffic, and if the proxy's URL is HTTP then it also means that nominally HTTPS requests are actually sent via plain-text HTTP between Undici and the proxy server.\n\n### Impact\n\nThis affects all use of HTTPS via HTTP proxy using **`Undici.ProxyAgent`**  with Undici or Node's global `fetch`. In this",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pgw7-wx7w-2w33",
+      "publishedAt": "2022-06-17T01:02:29Z",
+      "modifiedAt": "2023-01-27T05:04:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pgw7-wx7w-2w33"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-32210"
+        }
+      ],
+      "affectedRange": ">= 4.8.2, <= 5.5.0",
+      "fixedVersion": "5.5.1"
+    },
+    {
+      "id": "GHSA-3cvr-822r-rqcc",
+      "title": "undici before v5.8.0 vulnerable to CRLF injection in request headers",
+      "description": "### Impact\n\nIt is possible to inject CRLF sequences into request headers in Undici.\n\n```js\nconst undici = require('undici')\n\nconst response = undici.request(\"http://127.0.0.1:1000\", {\n  headers: {'a': \"\\r\\nb\"}\n})\n```\n\nThe same applies to `path` and `method`\n\n### Patches\n\nUpdate to v5.8.0\n\n### Workarounds\n\nSanitize all HTTP headers from untrusted sources to eliminate `\\r\\n`.\n\n### References\n\nhttps://hackerone.com/reports/409943\nhttps://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12116\n\n### Fo",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3cvr-822r-rqcc",
+      "publishedAt": "2022-07-21T20:30:10Z",
+      "modifiedAt": "2023-01-27T05:02:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3cvr-822r-rqcc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31150"
+        }
+      ],
+      "affectedRange": "< 5.8.0",
+      "fixedVersion": "5.8.0"
+    }
+  ]
+}

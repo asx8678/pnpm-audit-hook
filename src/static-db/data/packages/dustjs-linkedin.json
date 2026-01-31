@@ -1,0 +1,27 @@
+{
+  "name": "dustjs-linkedin",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c6rp-wrp9-qr4q",
+      "title": "dustjs-linkedin vulnerable to Prototype Pollution",
+      "description": "A vulnerability was found in LinkedIn dustjs prior to version 3.0.0 and classified as problematic. Affected by this issue is some unknown functionality. The manipulation leads to improperly controlled modification of object prototype attributes ('prototype pollution'). The attack may be launched remotely. The exploit has been disclosed to the public and may be used. Upgrading to version 3.0.0 can address this issue. The name of the patch is ddb6523832465d38c9d80189e9de60519ac307c3. It is recomme",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-c6rp-wrp9-qr4q",
+      "publishedAt": "2022-12-21T21:30:15Z",
+      "modifiedAt": "2023-01-28T05:06:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c6rp-wrp9-qr4q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-4264"
+        }
+      ],
+      "affectedRange": "< 3.0.0",
+      "fixedVersion": "3.0.0"
+    }
+  ]
+}

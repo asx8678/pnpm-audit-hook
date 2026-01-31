@@ -1,0 +1,27 @@
+{
+  "name": "degenerator",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9j49-mfvp-vmhm",
+      "title": "Code Injection in pac-resolver",
+      "description": "This affects the package pac-resolver before 5.0.0. This can occur when used with untrusted input, due to unsafe PAC file handling. **NOTE:** The fix for this vulnerability is applied in the node-degenerator library, a dependency written by the same maintainer.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9j49-mfvp-vmhm",
+      "publishedAt": "2021-09-02T17:10:06Z",
+      "modifiedAt": "2023-02-03T05:01:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9j49-mfvp-vmhm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23406"
+        }
+      ],
+      "affectedRange": "< 3.0.1",
+      "fixedVersion": "3.0.1"
+    }
+  ]
+}

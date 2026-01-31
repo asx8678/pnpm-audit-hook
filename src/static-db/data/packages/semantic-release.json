@@ -1,0 +1,27 @@
+{
+  "name": "semantic-release",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x2pg-mjhr-2m5x",
+      "title": "Exposure of Sensitive Information to an Unauthorized Actor in semantic-release",
+      "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\n\nSecrets that would normally be masked by semantic-release can be accidentally disclosed if they contain characters that are excluded from uri encoding by [encodeURI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI). Occurrence is further limited to execution contexts where push access to the related repository is not available without modifying the repository url to inject credentials.\n\n##",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x2pg-mjhr-2m5x",
+      "publishedAt": "2022-06-09T23:51:25Z",
+      "modifiedAt": "2023-01-27T05:03:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x2pg-mjhr-2m5x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31051"
+        }
+      ],
+      "affectedRange": ">= 17.0.4, < 19.0.3",
+      "fixedVersion": "19.0.3"
+    }
+  ]
+}

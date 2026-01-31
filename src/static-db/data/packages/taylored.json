@@ -1,0 +1,40 @@
+{
+  "name": "taylored",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vh5j-5fhq-9xwg",
+      "title": "Taylor has race condition in /get-patch that allows purchase token replay",
+      "description": "Hi team,\n\nI was looking at the recent fix and you limited the exploitability of race conditions but unfortunately it is still possible to exploit the issue since two requests happening at the exact same time will still go through. You should be able to completely fix the race conditions by leveraging SQLITE write lock and just send one query.\n\n### Summary\nThe /get-patch endpoint processes a purchase in two separate database queries: a SELECT that verifies the token is unused, followed by an UPDA",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-vh5j-5fhq-9xwg",
+      "publishedAt": "2025-06-27T22:06:48Z",
+      "modifiedAt": "2025-06-30T12:53:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vh5j-5fhq-9xwg"
+        }
+      ],
+      "affectedRange": "<= 8.1.2",
+      "fixedVersion": "8.1.3"
+    },
+    {
+      "id": "GHSA-8g98-m4j9-qww5",
+      "title": "Taylored webhook validation vulnerabilities",
+      "description": "### Critical Security Advisory for Taylored npm package v7.0.7 - tag 7.0.5\n\n#### Summary\n\nA series of moderate to high-severity security vulnerabilities have been identified specifically in version **7.0.7 of \\`taylored\\`**. These vulnerabilities reside in the \"Backend-in-a-Box\" template distributed with this version. They could allow a malicious actor to read arbitrary files from the server, download paid patches without completing a valid purchase, and weaken the protection of encrypted patche",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8g98-m4j9-qww5",
+      "publishedAt": "2025-06-18T17:51:03Z",
+      "modifiedAt": "2025-06-18T17:51:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8g98-m4j9-qww5"
+        }
+      ],
+      "affectedRange": ">= 7.0.5, < 7.0.8",
+      "fixedVersion": "7.0.8"
+    }
+  ]
+}

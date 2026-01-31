@@ -1,0 +1,27 @@
+{
+  "name": "color-convert",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pxx3-g568-hxr4",
+      "title": "color-convert@3.1.1 contains malware after npm account takeover",
+      "description": "### Impact\nOn 8 September 2025, the npm publishing account for `color-convert` was taken over after a phishing attack. Version `3.1.1` was published, functionally identical to the previous patch version, but with a malware payload added attempting to redirect cryptocurrency transactions to the attacker's own addresses from within browser environments.\n\nLocal environments, server environments, command line applications, etc. are not affected. If the package was used in a browser context (e.g. a d",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pxx3-g568-hxr4",
+      "publishedAt": "2025-09-15T23:32:36Z",
+      "modifiedAt": "2025-09-15T23:32:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pxx3-g568-hxr4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59162"
+        }
+      ],
+      "affectedRange": "= 3.1.1",
+      "fixedVersion": "3.1.2"
+    }
+  ]
+}

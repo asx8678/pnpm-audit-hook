@@ -1,0 +1,27 @@
+{
+  "name": "just-safe-set",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v26w-gcxh-v4r7",
+      "title": "Prototype polluation in just-safe-set",
+      "description": "Prototype pollution vulnerability in ‘just-safe-set’ versions 1.0.0 through 2.2.1 allows an attacker to cause a denial of service and may lead to remote code execution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-v26w-gcxh-v4r7",
+      "publishedAt": "2021-12-10T18:50:40Z",
+      "modifiedAt": "2023-01-27T05:00:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v26w-gcxh-v4r7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-25952"
+        }
+      ],
+      "affectedRange": ">= 1.0.0, < 2.2.2",
+      "fixedVersion": "2.2.2"
+    }
+  ]
+}

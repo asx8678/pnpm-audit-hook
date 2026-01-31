@@ -1,0 +1,27 @@
+{
+  "name": "@mastra/mcp-docs-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xh92-rqrq-227v",
+      "title": "Mastra Docs MCP Server `@mastra/mcp-docs-server` Leads to Information Exposure",
+      "description": "The Mastra Docs MCP Server package `@mastra/mcp-docs-server` is a server designed to provide documentation context to AI agentic workflows, such as those used in AI-powered IDEs.\n\n**Resources:**\n\n  * Package URL: [https://www.npmjs.com/package/@mastra/mcp-docs-server](https://www.npmjs.com/package/@mastra/mcp-docs-server)\n\n-----\n\n## Overview\n\nThe `@mastra/mcp-docs-server` package in versions **0.13.18 and below** is vulnerable to a Directory Traversal attack that results in the disclosure of dir",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xh92-rqrq-227v",
+      "publishedAt": "2025-09-24T20:05:15Z",
+      "modifiedAt": "2025-10-13T15:10:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xh92-rqrq-227v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-61685"
+        }
+      ],
+      "affectedRange": "<= 0.13.8",
+      "fixedVersion": "0.17.0"
+    }
+  ]
+}

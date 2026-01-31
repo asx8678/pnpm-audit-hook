@@ -1,0 +1,48 @@
+{
+  "name": "@sveltejs/adapter-node",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j62c-4x62-9r35",
+      "title": "SvelteKit is vulnerable to denial of service and possible SSRF when using prerendering",
+      "description": "### Summary\n\nVersions of SvelteKit are vulnerable to a server side request forgery (SSRF) and denial of service (DoS) under certain conditions.\n\n### Details\n\nAffected versions from 2.44.0 onwards are vulnerable to DoS if:\n\n- your app has at least one prerendered route (`export const prerender = true`)\n\nAffected versions from 2.19.0 onwards are vulnerable to DoS and SSRF if:\n\n- your app has at least one prerendered route (`export const prerender = true`)\n- AND you are using `adapter-node` without",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j62c-4x62-9r35",
+      "publishedAt": "2026-01-15T18:09:59Z",
+      "modifiedAt": "2026-01-15T22:33:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j62c-4x62-9r35"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-67647"
+        }
+      ],
+      "affectedRange": ">= 5.4.1, <= 5.5.0",
+      "fixedVersion": "5.5.1"
+    },
+    {
+      "id": "GHSA-g5m6-hxpp-fc49",
+      "title": "Sending a GET or HEAD request with a body crashes SvelteKit",
+      "description": "### Summary\nIn SvelteKit 2 sending a GET request with a body eg `{}` to a SvelteKit app in preview or with `adapter-node` throws `Request with GET/HEAD method cannot have body.` and crashes the app.\n\n```\nnode:internal/deps/undici/undici:6066\n          throw new TypeError(\"Request with GET/HEAD method cannot have body.\");\n                ^\n\nTypeError: Request with GET/HEAD method cannot have body.\n    at new Request (node:internal/deps/undici/undici:6066:17)\n    at getRequest (file:///C:/Users/ad",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g5m6-hxpp-fc49",
+      "publishedAt": "2024-01-24T14:22:22Z",
+      "modifiedAt": "2024-01-24T19:13:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g5m6-hxpp-fc49"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-23641"
+        }
+      ],
+      "affectedRange": "= 4.0.0",
+      "fixedVersion": "4.0.1"
+    }
+  ]
+}

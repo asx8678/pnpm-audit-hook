@@ -1,0 +1,27 @@
+{
+  "name": "skeemas",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qv66-f876-vjvr",
+      "title": "skeemas Inefficient Regular Expression Complexity vulnerability",
+      "description": "A vulnerability was found in Prestaul skeemas and classified as problematic. This issue affects some unknown processing of the file validators/base.js. The manipulation of the argument uri leads to inefficient regular expression complexity. The name of the patch is 65e94eda62dc8dc148ab3e59aa2ccc086ac448fd. It is recommended to apply a patch to fix this issue. The associated identifier of this vulnerability is VDB-218003.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qv66-f876-vjvr",
+      "publishedAt": "2023-01-11T15:30:28Z",
+      "modifiedAt": "2023-10-20T22:39:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qv66-f876-vjvr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-25074"
+        }
+      ],
+      "affectedRange": "< 1.2.5",
+      "fixedVersion": "1.2.5"
+    }
+  ]
+}

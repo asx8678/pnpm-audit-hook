@@ -1,0 +1,23 @@
+{
+  "name": "@saltcorn/plugins-loader",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fm76-w8jw-xf8m",
+      "title": "@saltcorn/plugins-loader unsanitized plugin name leads to a remote code execution (RCE) vulnerability when creating plugins using git source",
+      "description": "### Summary\n\nWhen creating a new plugin using the `git` source, the user-controlled value `req.body.name` is used to build the plugin directory where the location will be cloned. The API used to execute the `git clone` command with the user-controlled data is `child_process.execSync`. Since the user-controlled data is not validated, a user with admin permission can add escaping characters and execute arbitrary commands, leading to a command injection vulnerability.\n\n### Details\n\nRelevant code fr",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fm76-w8jw-xf8m",
+      "publishedAt": "2024-10-03T22:21:24Z",
+      "modifiedAt": "2024-10-04T16:51:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fm76-w8jw-xf8m"
+        }
+      ],
+      "affectedRange": "<= 1.0.0-beta.13",
+      "fixedVersion": "1.0.0-beta.14"
+    }
+  ]
+}

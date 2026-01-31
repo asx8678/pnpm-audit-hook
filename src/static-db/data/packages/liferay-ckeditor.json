@@ -1,0 +1,27 @@
+{
+  "name": "liferay-ckeditor",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3h7r-4xxj-3mfm",
+      "title": "Liferay Portal Reflected XSS in CKeditor 4.21.0 endpoint",
+      "description": "A reflected cross-site scripting (XSS) vulnerability in the Liferay Portal 7.4.0 through 7.4.3.131, and Liferay DXP 2024.Q4.0 through 2024.Q4.4, 2024.Q3.1 through 2024.Q3.13, 2024.Q2.0 through 2024.Q2.13, 2024.Q1.1 through 2024.Q1.12 and 7.4 GA through update 92 allows an remote non-authenticated attacker to inject JavaScript into the frontend-editor-ckeditor-web/ckeditor/samples/old/ajax.html path",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3h7r-4xxj-3mfm",
+      "publishedAt": "2025-08-22T21:31:16Z",
+      "modifiedAt": "2025-08-25T18:28:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3h7r-4xxj-3mfm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-43761"
+        }
+      ],
+      "affectedRange": "< 4.21.0-liferay.10",
+      "fixedVersion": "4.21.0-liferay.10"
+    }
+  ]
+}

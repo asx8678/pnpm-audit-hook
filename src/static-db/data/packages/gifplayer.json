@@ -1,0 +1,27 @@
+{
+  "name": "gifplayer",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gr7w-hmch-25g7",
+      "title": "gifplayer XSS vulnerability",
+      "description": "### Impact\nXSS vulnerability. All versions under 0.3.7 are impacted\n\n### Patches\nPlease upgrade to 0.3.7",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gr7w-hmch-25g7",
+      "publishedAt": "2025-03-31T22:36:11Z",
+      "modifiedAt": "2025-03-31T22:36:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gr7w-hmch-25g7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-31128"
+        }
+      ],
+      "affectedRange": "< 0.3.7",
+      "fixedVersion": "0.3.7"
+    }
+  ]
+}

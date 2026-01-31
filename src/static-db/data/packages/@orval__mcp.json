@@ -1,0 +1,27 @@
+{
+  "name": "@orval/mcp",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mwr6-3gp8-9jmj",
+      "title": "orval MCP client is vulnerable to a code injection attack.",
+      "description": "### Impact\nThe MCP server generation logic relies on string manipulation that incorporates the summary field from the OpenAPI specification without proper validation or escaping. This allows an attacker to \"break out\" of the string literal and inject arbitrary code.\n\nHere is an example OpenAPI with the exploit\n\n```yaml\nopenapi: 3.0.4\ninfo:\n  title: Swagger Petstore - OpenAPI 3.0\n  description: |-\n    This is a sample Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mwr6-3gp8-9jmj",
+      "publishedAt": "2026-01-13T19:12:22Z",
+      "modifiedAt": "2026-01-13T19:12:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mwr6-3gp8-9jmj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22785"
+        }
+      ],
+      "affectedRange": "< 7.18.0",
+      "fixedVersion": "7.18.0"
+    }
+  ]
+}

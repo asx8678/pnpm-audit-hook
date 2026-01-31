@@ -1,0 +1,26 @@
+{
+  "name": "home-assistant-frontend",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7wfq-wmx2-3wr4",
+      "title": "Withdrawn Advisory: Home Assistant Frontend XSS Vulnerability",
+      "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because we cannot confirm [home-assistant-frontend](https://www.npmjs.com/package/home-assistant-frontend) is or was ever published to npm.\n\n## Original Description\nIn Home Assistant before 0.57, it is possible to inject JavaScript code into a persistent notification via crafted Markdown text, aka XSS.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7wfq-wmx2-3wr4",
+      "publishedAt": "2022-05-17T00:20:01Z",
+      "modifiedAt": "2023-10-10T18:21:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7wfq-wmx2-3wr4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16782"
+        }
+      ],
+      "affectedRange": "< 0.57"
+    }
+  ]
+}

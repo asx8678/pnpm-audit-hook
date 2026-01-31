@@ -1,0 +1,27 @@
+{
+  "name": "webfinger.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8xq3-w9fx-74rv",
+      "title": "webfinger.js Blind SSRF Vulnerability",
+      "description": "### Description\nThe lookup function takes a user address for checking accounts as a feature, however, as per\nthe ActivityPub spec (https://www.w3.org/TR/activitypub/#security-considerations), on the\nsecurity considerations section at B.3, access to Localhost services should be prevented while\nrunning in production. The library does not prevent Localhost access (neither does it prevent\nLAN addresses such as 192.168.x.x) , thus is not safe for use in production by ActivityPub\napplications. The onl",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8xq3-w9fx-74rv",
+      "publishedAt": "2025-07-28T16:41:06Z",
+      "modifiedAt": "2025-08-01T18:36:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8xq3-w9fx-74rv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54590"
+        }
+      ],
+      "affectedRange": "<= 2.8.0",
+      "fixedVersion": "2.8.1"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "name": "@strapi/plugin-content-manager",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m284-85mf-cgrc",
+      "title": "Strapi's field level permissions not being respected in relationship title",
+      "description": "### Summary\nField level permissions not being respected in relationship title.\nIf I have a  relationship title and the relationship shows a field I don't have permission to see I will still be visible.\n\n### Details\nNo RBAC checks on on the relationship the relation endpoint returns\n\n### PoC\n#### Setup\nCreate a fresh strapi instance\nCreate a new content type\nin the newly created content type add a relation to the users-permissions user.\nSave.\nCreate a users-permissions user\nUse your created  cont",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m284-85mf-cgrc",
+      "publishedAt": "2023-09-13T16:31:43Z",
+      "modifiedAt": "2024-09-25T19:21:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m284-85mf-cgrc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-37263"
+        }
+      ],
+      "affectedRange": "< 4.12.1",
+      "fixedVersion": "4.12.1"
+    },
+    {
+      "id": "GHSA-6j89-frxc-q26m",
+      "title": "@strapi/plugin-content-manager leaks data via relations via the Admin Panel",
+      "description": "### Summary\n1. If a super admin creates a collection where an item in the collection has an association to another collection, a user with the Author Role can see the list of associated items they did not create. They should only see their own items that they created, not all items ever created.\n\n### Details\nAt the top level every collection shows blank items for an Author if they did not create the item. This is ideal and works great. However if you associate one private collection to another p",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-6j89-frxc-q26m",
+      "publishedAt": "2024-06-12T19:38:01Z",
+      "modifiedAt": "2024-06-14T11:52:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6j89-frxc-q26m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-29181"
+        }
+      ],
+      "affectedRange": "< 4.19.1",
+      "fixedVersion": "4.19.1"
+    },
+    {
+      "id": "GHSA-v8gg-4mq2-88q4",
+      "title": "Strapi may leak sensitive user information, user reset password, tokens via content-manager views",
+      "description": "### Summary\nI can get access to user  reset password tokens if I have the configure view permissions\n![b37a6fd9eae06027e7d91266f1908a3d](https://user-images.githubusercontent.com/34578426/246782921-fbc007d3-ffec-45de-a1f1-a4287cd507ac.png)\n![6c1da5b3bfbb3bca97c8d064be0ecb05](https://user-images.githubusercontent.com/34578426/246783044-7d716dde-6f27-4d01-9521-42720c6ce92e.gif)\n\n### Details\n/content-manager/relations route does not remove private fields or ensure that they can't be selected\n\n### P",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v8gg-4mq2-88q4",
+      "publishedAt": "2023-09-13T16:31:31Z",
+      "modifiedAt": "2023-11-11T05:02:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v8gg-4mq2-88q4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-36472"
+        }
+      ],
+      "affectedRange": "< 4.11.7",
+      "fixedVersion": "4.11.7"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "dom-expressions",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hw62-58pr-7wc5",
+      "title": "DOM Expressions has a Cross-Site Scripting (XSS) vulnerability due to improper use of string.replace",
+      "description": "> [!NOTE]  \n> This advisory was originally emailed to community@solidjs.com by @nsysean.\n\nTo sum it up, the use of javascript's `.replace()` opens up to potential XSS vulnerabilities with the special replacement patterns beginning with `$`.\n\nParticularly, when the attributes of `Meta` tag from solid-meta are user-defined, attackers can utilise the special replacement patterns, either `$'` or `$\\`` to achieve XSS.\n\nThe solid-meta package has this issue since it uses `useAffect` and context provid",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hw62-58pr-7wc5",
+      "publishedAt": "2025-02-25T17:49:57Z",
+      "modifiedAt": "2025-02-25T17:49:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hw62-58pr-7wc5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-27108"
+        }
+      ],
+      "affectedRange": "< 0.39.5",
+      "fixedVersion": "0.39.5"
+    }
+  ]
+}

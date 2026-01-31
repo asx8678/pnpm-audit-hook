@@ -1,0 +1,27 @@
+{
+  "name": "content-security-policy-parser",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w2cq-g8g3-gm83",
+      "title": "content-security-policy-parser Prototype Pollution Vulnerability May Lead to RCE",
+      "description": "### Impact\nA prototype pollution vulnerability exists in versions 0.5.0 and earlier, wherein if you provide a policy name called `__proto__` you can override the Object prototype.\n\nFor example:\n\n```\nconst parse = require('content-security-policy-parser');\n\nconst x = parse(\"default-src 'self'; __proto__ foobar\");\nconsole.log('raw print:', x);\nconsole.log('toString:', x.toString());\n```\n\nOutputs:\n\n```\nraw print: Array { 'default-src': [ \"'self'\" ] }\ntoString: foobar\n```\n\nWhilst no gadget exists in",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w2cq-g8g3-gm83",
+      "publishedAt": "2025-08-12T18:07:44Z",
+      "modifiedAt": "2025-08-12T19:19:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w2cq-g8g3-gm83"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-55164"
+        }
+      ],
+      "affectedRange": "< 0.6.0",
+      "fixedVersion": "0.6.0"
+    }
+  ]
+}

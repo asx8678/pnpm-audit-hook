@@ -1,0 +1,27 @@
+{
+  "name": "js-deobfuscator",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9p6p-8v9r-8c9m",
+      "title": "javascript-deobfuscator crafted payload can lead to code execution",
+      "description": "javascript-deobfuscator removes common JavaScript obfuscation techniques. Crafted payloads targeting expression simplification can lead to code execution. This issue has been patched in version 1.1.0.\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9p6p-8v9r-8c9m",
+      "publishedAt": "2024-06-04T15:13:54Z",
+      "modifiedAt": "2024-06-04T15:13:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9p6p-8v9r-8c9m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-36120"
+        }
+      ],
+      "affectedRange": "< 1.1.0",
+      "fixedVersion": "1.1.0"
+    }
+  ]
+}

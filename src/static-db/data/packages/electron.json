@@ -1,0 +1,27 @@
+{
+  "name": "Electron",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6h98-cf9g-vmg2",
+      "title": "Electron vulnerable to URL spoofing via PDFium",
+      "description": "Electron version 1.7.0 - 1.7.5 is vulnerable to a URL Spoofing problem when opening PDFs in PDFium resulting loading arbitrary PDFs that a hacker can control.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6h98-cf9g-vmg2",
+      "publishedAt": "2022-05-13T01:41:15Z",
+      "modifiedAt": "2023-09-13T19:59:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6h98-cf9g-vmg2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-1000424"
+        }
+      ],
+      "affectedRange": ">= 1.7.0, < 1.7.6",
+      "fixedVersion": "1.7.6"
+    }
+  ]
+}

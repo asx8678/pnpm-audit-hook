@@ -1,0 +1,43 @@
+{
+  "name": "bignum",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7cgc-fjv4-52x6",
+      "title": "Malware in pre-build binaries of bignum",
+      "description": "### Impact\n\nbignum releases from v0.12.2 to v0.13.0 (inclusive) used node-pre-gyp to optionally download pre-built binary versions of the addon. These binaries were published on a now-expired S3 bucket which has since been claimed by a malicious third party which is now serving binaries containing malware that exfiltrates data from the user's computer.\n\n### Patches\n\nv0.13.1 does not use node-pre-gyp and does not have support for downloading pre-built binaries in any form, avoiding the risk of ma",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7cgc-fjv4-52x6",
+      "publishedAt": "2023-05-24T16:43:58Z",
+      "modifiedAt": "2023-05-24T16:43:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7cgc-fjv4-52x6"
+        }
+      ],
+      "affectedRange": ">= 0.12.2, < 0.13.1",
+      "fixedVersion": "0.13.1"
+    },
+    {
+      "id": "GHSA-6429-3g3w-6mw5",
+      "title": "Uncaught Exception in bignum",
+      "description": "All versions of the npm package bignum are vulnerable to Denial of Service (DoS) due to a type-check exception in V8. When verifying the type of the second argument to the .powm function, V8 will crash regardless of Node try/catch blocks.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6429-3g3w-6mw5",
+      "publishedAt": "2022-05-07T00:00:31Z",
+      "modifiedAt": "2023-02-01T05:02:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6429-3g3w-6mw5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25324"
+        }
+      ],
+      "affectedRange": "<= 0.13.1"
+    }
+  ]
+}

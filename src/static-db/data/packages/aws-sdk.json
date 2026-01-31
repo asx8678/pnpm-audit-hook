@@ -1,0 +1,43 @@
+{
+  "name": "aws-sdk",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j965-2qgj-vjmq",
+      "title": "JavaScript SDK v2 users should add validation to the region parameter value in or migrate to v3",
+      "description": "CVSSv3.1 Rating: 3.7 (LOW)\n\nSummary\nThis notification is related to the use of specific values for the region input field when calling AWS services. An actor with access to the environment in which the SDK is used could set the region input field to an invalid value. Per the AWS shared responsibility model, customer applications should protect instances appropriately, or implement proper input sanitization checks. The AWS SDK for JavaScript v2 reached end-of-support on September 8, 2025, but a d",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-j965-2qgj-vjmq",
+      "publishedAt": "2026-01-08T22:04:26Z",
+      "modifiedAt": "2026-01-08T22:04:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j965-2qgj-vjmq"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, <= 3.0.0"
+    },
+    {
+      "id": "GHSA-rrc9-gqf8-8rwg",
+      "title": "Prototype Pollution via file load in aws-sdk and @aws-sdk/shared-ini-file-loader",
+      "description": "This affects the package @aws-sdk/shared-ini-file-loader before 1.0.0-rc.9; the package aws-sdk before 2.814.0. If an attacker submits a malicious INI file to an application that parses it with loadSharedConfigFiles , they will pollute the prototype on the application. This can be exploited further depending on the context.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rrc9-gqf8-8rwg",
+      "publishedAt": "2021-11-16T21:26:43Z",
+      "modifiedAt": "2023-01-29T05:06:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rrc9-gqf8-8rwg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28472"
+        }
+      ],
+      "affectedRange": "< 2.814.0",
+      "fixedVersion": "2.814.0"
+    }
+  ]
+}

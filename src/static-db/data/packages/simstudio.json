@@ -1,0 +1,26 @@
+{
+  "name": "simstudio",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g4c9-f287-64xg",
+      "title": "SimStudioAI: A function in route.ts is vulnerable to Code Injection",
+      "description": "A vulnerability was identified in SimStudioAI sim. This impacts an unknown function of the file apps/sim/app/api/function/execute/route.ts. The manipulation of the argument code leads to code injection. The attack is possible to be carried out remotely.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g4c9-f287-64xg",
+      "publishedAt": "2025-09-08T18:31:40Z",
+      "modifiedAt": "2025-09-15T13:53:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g4c9-f287-64xg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-10097"
+        }
+      ],
+      "affectedRange": "<= 0.1.19"
+    }
+  ]
+}

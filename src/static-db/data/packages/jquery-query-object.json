@@ -1,0 +1,26 @@
+{
+  "name": "jquery-query-object",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q9xg-h756-8689",
+      "title": "jquery-plugin-query-object contains prototype pollution vulnerability",
+      "description": "Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution') in jquery-plugin-query-object 2.2.3 allows a malicious user to inject properties into Object.prototype.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q9xg-h756-8689",
+      "publishedAt": "2022-05-24T17:48:43Z",
+      "modifiedAt": "2023-07-11T17:00:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q9xg-h756-8689"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-20083"
+        }
+      ],
+      "affectedRange": "<= 2.2.3"
+    }
+  ]
+}

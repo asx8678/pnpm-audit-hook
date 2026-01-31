@@ -1,0 +1,48 @@
+{
+  "name": "hellojs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g3vf-47fv-8f3c",
+      "title": "MrSwitch hello.js vulnerable to prototype pollution",
+      "description": "A prototype pollution vulnerability in MrSwitch hello.js prior to version 1.18.8 allows remote attackers to execute arbitrary code via `hello.utils.extend` function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-g3vf-47fv-8f3c",
+      "publishedAt": "2023-08-11T15:30:46Z",
+      "modifiedAt": "2023-11-09T05:05:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g3vf-47fv-8f3c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-26505"
+        }
+      ],
+      "affectedRange": "< 1.18.8",
+      "fixedVersion": "1.18.8"
+    },
+    {
+      "id": "GHSA-7jh9-6cpf-h4m7",
+      "title": "XSS in hello.js",
+      "description": "This affects the package hello.js before 1.18.6. The code get the param oauth_redirect from url and pass it to location.assign without any check and sanitisation. So we can simply pass some XSS payloads into the url param oauth_redirect, such as `javascript:alert(1)`.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7jh9-6cpf-h4m7",
+      "publishedAt": "2021-01-13T19:07:01Z",
+      "modifiedAt": "2023-09-12T18:13:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7jh9-6cpf-h4m7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7741"
+        }
+      ],
+      "affectedRange": "< 1.18.6",
+      "fixedVersion": "1.18.6"
+    }
+  ]
+}

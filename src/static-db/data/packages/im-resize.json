@@ -1,0 +1,26 @@
+{
+  "name": "im-resize",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r9vm-rhmf-7hxx",
+      "title": "OS Command Injection in im-resize",
+      "description": "im-resize through 2.3.2 allows remote attackers to execute arbitrary commands via the \"exec\" argument. The cmd argument used within index.js, can be controlled by user without any sanitization.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r9vm-rhmf-7hxx",
+      "publishedAt": "2021-04-13T15:17:06Z",
+      "modifiedAt": "2023-02-01T05:05:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r9vm-rhmf-7hxx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10787"
+        }
+      ],
+      "affectedRange": "<= 2.3.2"
+    }
+  ]
+}

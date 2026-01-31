@@ -1,0 +1,65 @@
+{
+  "name": "mixme",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r5cq-9537-9rpf",
+      "title": "Prototype Pollution in mixme",
+      "description": "Node.js mixme 0.5.0, an attacker can add or alter properties of an object via '__proto__' through the mutate() and merge() functions. The polluted attribute will be directly assigned to every object in the program. This will put the availability of the program at risk causing a potential denial of service (DoS).",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-r5cq-9537-9rpf",
+      "publishedAt": "2022-02-10T23:52:01Z",
+      "modifiedAt": "2023-02-01T05:06:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r5cq-9537-9rpf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-28860"
+        }
+      ],
+      "affectedRange": "< 0.5.1",
+      "fixedVersion": "0.5.1"
+    },
+    {
+      "id": "GHSA-79jw-6wg7-r9g4",
+      "title": "Use of Potentially Dangerous Function in mixme",
+      "description": "### Impact\n\nIn Node.js mixme v0.5.0, an attacker can add or alter properties of an object via 'proto' through the mutate() and merge() functions. The polluted attribute will be directly assigned to every object in the program. This will put the availability of the program at risk causing a potential denial of service (DoS).\n\n### Patches\nThe problem is corrected starting with version 0.5.1.\n\n### References\nIssue: https://github.com/adaltas/node-mixme/issues/1\nCommit: https://github.com/adaltas/no",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-79jw-6wg7-r9g4",
+      "publishedAt": "2021-05-06T15:45:39Z",
+      "modifiedAt": "2023-02-01T05:05:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-79jw-6wg7-r9g4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-29491"
+        }
+      ],
+      "affectedRange": "< 0.5.1",
+      "fixedVersion": "0.5.1"
+    },
+    {
+      "id": "GHSA-84p7-fh9c-6g8h",
+      "title": "Prototype Pollution in mixme",
+      "description": "### Impact\nWhen copying properties from a source object to a target object, the target object can gain access to certain properties of the source object and modify their content.\n\n### Patches\nThe problem was patch with a more agressive discovery of secured properties to filter out.\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-84p7-fh9c-6g8h",
+      "publishedAt": "2021-09-20T19:52:24Z",
+      "modifiedAt": "2023-01-09T05:05:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-84p7-fh9c-6g8h"
+        }
+      ],
+      "affectedRange": "< 0.5.2",
+      "fixedVersion": "0.5.2"
+    }
+  ]
+}

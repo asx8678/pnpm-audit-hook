@@ -1,0 +1,23 @@
+{
+  "name": "@envelop/graphql-modules",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h3hw-29fv-2x75",
+      "title": "@envelop/graphql-modules has a Race Condition vulnerability",
+      "description": "### Summary\nContext race condition when using `useGraphQLModules` plugin\n\n### Details\n\nRelated to: https://github.com/graphql-hive/graphql-modules/security/advisories/GHSA-53wg-r69p-v3r7\n\nWhen 2 or more parallel requests are made which trigger the same service, the context of the requests is mixed up in the service when the context is injected via @ExecutionContext() and graphql-modules are used in Yoga with `useGraphQLModules(application)`. This issue was fixed in `graphql-modules` in `2.4.1` a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h3hw-29fv-2x75",
+      "publishedAt": "2026-01-21T16:36:27Z",
+      "modifiedAt": "2026-01-21T16:36:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h3hw-29fv-2x75"
+        }
+      ],
+      "affectedRange": "< 9.1.0",
+      "fixedVersion": "9.1.0"
+    }
+  ]
+}

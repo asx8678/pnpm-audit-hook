@@ -1,0 +1,26 @@
+{
+  "name": "module-from-string",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q5j8-9m9g-x2jh",
+      "title": "module-from-string prototype pollution",
+      "description": "A prototype pollution in the lib.requireFromString function of module-from-string v3.3.1 allows attackers to cause a Denial of Service (DoS) via supplying a crafted payload.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q5j8-9m9g-x2jh",
+      "publishedAt": "2025-02-06T06:31:25Z",
+      "modifiedAt": "2025-02-06T23:30:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q5j8-9m9g-x2jh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-57072"
+        }
+      ],
+      "affectedRange": "<= 3.3.1"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "shakapacker",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-96qw-h329-v5rg",
+      "title": "Shakapacker has environment variable leak via EnvironmentPlugin that exposes secrets to client-side bundles",
+      "description": "### Summary\n\nSince 2017, the default webpack plugins have passed the entire `process.env` to `EnvironmentPlugin`. This pattern exposed ALL build environment variables to client-side JavaScript bundles whenever application code (or any dependency) referenced `process.env.VARIABLE_NAME`.\n\nThis is not a regression - the vulnerable code has existed since the original Webpacker implementation. No recent code change in Shakapacker triggered this issue.\n\n### Impact\n\nAny environment variable in the buil",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-96qw-h329-v5rg",
+      "publishedAt": "2026-01-08T21:13:37Z",
+      "modifiedAt": "2026-01-08T21:13:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-96qw-h329-v5rg"
+        }
+      ],
+      "affectedRange": "< 9.5.0",
+      "fixedVersion": "9.5.0"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "lsof",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-whq6-mj2r-mjqc",
+      "title": "OS Command Injection in lsof",
+      "description": "All versions including 0.0.4 of lsof npm module are vulnerable to Command Injection. Every exported method used by the package uses the exec function to parse user input.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-whq6-mj2r-mjqc",
+      "publishedAt": "2021-04-13T15:17:53Z",
+      "modifiedAt": "2023-02-01T05:05:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-whq6-mj2r-mjqc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10783"
+        }
+      ],
+      "affectedRange": "<= 0.0.4"
+    }
+  ]
+}

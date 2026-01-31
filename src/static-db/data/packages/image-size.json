@@ -1,0 +1,23 @@
+{
+  "name": "image-size",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m5qc-5hw7-8vg7",
+      "title": "image-size Denial of Service via Infinite Loop during Image Processing",
+      "description": "### Summary\n\n`image-size` is vulnerable to a Denial of Service vulnerability when processing specially crafted images.\n\nThe issue occurs because of an infine loop in `findBox` when processing certain images with a box with size `0`.\n\n\n### Details\n\nIf the first bytes of the input does not match any bytes in `firstBytes`, then the package tries to validate the image using other handlers:\n```js\n// https://github.com/image-size/image-size/blob/v1.2.0/lib/detector.ts#L20-L31\nexport function detector(",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m5qc-5hw7-8vg7",
+      "publishedAt": "2025-04-02T15:04:58Z",
+      "modifiedAt": "2025-05-28T15:04:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m5qc-5hw7-8vg7"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.0.2",
+      "fixedVersion": "2.0.2"
+    }
+  ]
+}

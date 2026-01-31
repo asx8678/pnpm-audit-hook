@@ -1,0 +1,26 @@
+{
+  "name": "epiceditor",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4wc5-gfgh-4vjx",
+      "title": "EpicEditor XSS Vulnerability",
+      "description": "EpicEditor through 0.2.3 has Cross-Site Scripting because of an insecure default marked.js configuration. An example attack vector is a crafted IMG element in an HTML document.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4wc5-gfgh-4vjx",
+      "publishedAt": "2022-05-17T02:56:01Z",
+      "modifiedAt": "2023-10-31T19:37:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4wc5-gfgh-4vjx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-6589"
+        }
+      ],
+      "affectedRange": "<= 0.2.3"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "name": "sequelize",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f598-mfpv-gmfx",
+      "title": "Sequelize - Default support for “raw attributes” when using parentheses",
+      "description": "### Impact\n\nSequelize 6.28.2 and prior has a dangerous feature where using parentheses in the attribute option would make Sequelize use the string as-is in the SQL\n\n```ts\nUser.findAll({\n  attributes: [\n    ['count(id)', 'count']\n  ]\n});\n```\n\nProduced\n\n```sql\nSELECT count(id) AS \"count\" FROM \"users\"\n```\n\n### Patches\n\nThis feature was deprecated in Sequelize 5, and using it prints a deprecation warning.\n\nThis issue has been patched in [`@sequelize/core@7.0.0.alpha-20`](https://github.com/sequelize",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-f598-mfpv-gmfx",
+      "publishedAt": "2023-02-24T18:48:49Z",
+      "modifiedAt": "2023-02-24T18:48:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f598-mfpv-gmfx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-22578"
+        }
+      ],
+      "affectedRange": "< 6.29.0",
+      "fixedVersion": "6.29.0"
+    },
+    {
+      "id": "GHSA-8mwq-mj73-qv68",
+      "title": "Duplicate advisory: Sequelize vulnerable to Improper Filtering of Special Elements",
+      "description": "## Duplicate advisory\nThis advisory has been withdrawn because it is a duplicate of [GHSA-f598-mfpv-gmfx](https://github.com/advisories/GHSA-f598-mfpv-gmfx). This link is maintained to preserve external references.\n\n## Original Description\nDue to improper attribute filtering in the sequelize js library, an attacker can peform SQL injections. This issue can be mitigated by not accepting untrusted input.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8mwq-mj73-qv68",
+      "publishedAt": "2023-02-16T15:30:28Z",
+      "modifiedAt": "2023-02-24T18:48:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8mwq-mj73-qv68"
+        }
+      ],
+      "affectedRange": "<= 6.28.2",
+      "fixedVersion": "6.29.0"
+    },
+    {
+      "id": "GHSA-vqfx-gj96-3w95",
+      "title": "Unsafe fall-through in getWhereConditions",
+      "description": "### Impact\n\nProviding an invalid value to the `where` option of a query caused Sequelize to ignore that option instead of throwing an error. \n\nA finder call like the following did not throw an error:\n\n```ts\nUser.findAll({\n  where: new Date(),\n});\n```\n\nAs this option is typically used with plain javascript objects, be aware that this only happens at the top level of this option.\n\n### Patches\n\nThis issue has been patched in [`sequelize@6.28.1`](https://github.com/sequelize/sequelize/pull/15699) & ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vqfx-gj96-3w95",
+      "publishedAt": "2023-02-23T16:58:56Z",
+      "modifiedAt": "2023-02-23T16:58:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vqfx-gj96-3w95"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-22579"
+        }
+      ],
+      "affectedRange": "< 6.28.1",
+      "fixedVersion": "6.28.1"
+    },
+    {
+      "id": "GHSA-8c25-f3mj-v6h8",
+      "title": "Sequelize information disclosure vulnerability",
+      "description": "Due to improper input filtering in the sequelize js library, can malicious queries lead to sensitive information disclosure.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8c25-f3mj-v6h8",
+      "publishedAt": "2023-02-16T15:30:28Z",
+      "modifiedAt": "2023-02-22T23:15:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8c25-f3mj-v6h8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-22580"
+        }
+      ],
+      "affectedRange": "< 6.28.1",
+      "fixedVersion": "6.28.1"
+    },
+    {
+      "id": "GHSA-wrh9-cjv3-2hpw",
+      "title": "Sequelize vulnerable to SQL Injection via replacements",
+      "description": "### Impact\n\nThe SQL injection exploit is related to replacements. Here is such an example: \n\nIn the following query, some parameters are passed through replacements, and some are passed directly through the `where` option.\n\n```typescript\nUser.findAll({\n  where: or(\n    literal('soundex(\"firstName\") = soundex(:firstName)'),\n    { lastName: lastName },\n  ),\n  replacements: { firstName },\n})\n```\n\nThis is a very legitimate use case, but this query was vulnerable to SQL injection due to how Sequelize",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wrh9-cjv3-2hpw",
+      "publishedAt": "2023-02-22T22:59:09Z",
+      "modifiedAt": "2023-02-22T22:59:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wrh9-cjv3-2hpw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-25813"
+        }
+      ],
+      "affectedRange": "< 6.19.1",
+      "fixedVersion": "6.19.1"
+    }
+  ]
+}

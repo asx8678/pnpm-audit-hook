@@ -1,0 +1,48 @@
+{
+  "name": "@solana/web3.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jcxm-7wvp-g6p5",
+      "title": "Modified package published to npm, containing malware that exfiltrates private key material",
+      "description": "Earlier today, a publish-access account was compromised for `@solana/web3.js`, a JavaScript library that is commonly used by Solana dapps. This allowed an attacker to publish unauthorized and malicious packages that were modified, allowing them to steal private key material and drain funds from dapps, like bots, that handle private keys directly. This issue should not affect non-custodial wallets, as they generally do not expose private keys during transactions. This is not an issue with the Sol",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jcxm-7wvp-g6p5",
+      "publishedAt": "2024-12-04T18:09:24Z",
+      "modifiedAt": "2026-01-22T20:49:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jcxm-7wvp-g6p5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-54134"
+        }
+      ],
+      "affectedRange": ">= 1.95.6, < 1.95.8",
+      "fixedVersion": "1.95.8"
+    },
+    {
+      "id": "GHSA-8m45-2rjm-j347",
+      "title": "Handling untrusted input can result in a crash, leading to loss of availability / denial of service",
+      "description": "Using particular inputs with `@solana/web3.js` will result in memory exhaustion (OOM).\n\nIf you have a server, client, mobile, or desktop product that accepts untrusted input for use with `@solana/web3.js`, your application/service may crash, resulting in a loss of availability.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8m45-2rjm-j347",
+      "publishedAt": "2024-04-17T18:21:18Z",
+      "modifiedAt": "2024-04-17T21:29:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8m45-2rjm-j347"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-30253"
+        }
+      ],
+      "affectedRange": "< 1.0.1",
+      "fixedVersion": "1.0.1"
+    }
+  ]
+}

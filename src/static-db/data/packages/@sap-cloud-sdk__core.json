@@ -1,0 +1,27 @@
+{
+  "name": "@sap-cloud-sdk/core",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gp2f-254m-rh32",
+      "title": "Unauthorized access to data in @sap-cloud-sdk/core",
+      "description": "### Impact\nThis affects applications on SAP Business Technology Platform that use the SAP Cloud SDK and enabled caching of destinations.\nIn some cases, when user information was missing, destinations were cached without user information, allowing other users to retrieve the same destination with its permissions.\nBy default, destination caching is disabled. If it is enabled the maximum lifetime is 5 minutes which limits the attack vector.\n\n### Patches\nThe problem was fixed by #1769 and #1770. The",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gp2f-254m-rh32",
+      "publishedAt": "2021-11-10T16:51:41Z",
+      "modifiedAt": "2023-02-01T05:06:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gp2f-254m-rh32"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-41251"
+        }
+      ],
+      "affectedRange": "< 1.52.0",
+      "fixedVersion": "1.52.0"
+    }
+  ]
+}

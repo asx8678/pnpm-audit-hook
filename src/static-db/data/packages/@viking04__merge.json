@@ -1,0 +1,27 @@
+{
+  "name": "@viking04/merge",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cqqh-49mx-fq63",
+      "title": "merge vulnerable to Prototype Pollution",
+      "description": "merge is vulnerable to Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cqqh-49mx-fq63",
+      "publishedAt": "2021-09-13T20:16:54Z",
+      "modifiedAt": "2023-01-29T05:02:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cqqh-49mx-fq63"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3645"
+        }
+      ],
+      "affectedRange": "< 1.0.2",
+      "fixedVersion": "1.0.2"
+    }
+  ]
+}

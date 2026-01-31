@@ -1,0 +1,27 @@
+{
+  "name": "ssrfcheck",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c2fv-2fmj-9xrx",
+      "title": "ssrfcheck has Incomplete IP Address Deny List that leads to Server-Side Request Forgery Vulnerability",
+      "description": "Versions of the package ssrfcheck below 1.2.0 are vulnerable to Server-Side Request Forgery (SSRF) due to an incomplete denylist of IP address ranges. Specifically, the package fails to classify the reserved IP address space 224.0.0.0/4 (Multicast) as invalid. This oversight allows attackers to craft requests targeting these multicast addresses.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-c2fv-2fmj-9xrx",
+      "publishedAt": "2025-07-28T06:30:23Z",
+      "modifiedAt": "2025-09-26T21:26:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c2fv-2fmj-9xrx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-8267"
+        }
+      ],
+      "affectedRange": "< 1.2.0",
+      "fixedVersion": "1.2.0"
+    }
+  ]
+}

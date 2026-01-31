@@ -1,0 +1,27 @@
+{
+  "name": "twitter-fetcher-js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m688-cx2p-rgq9",
+      "title": "Twitter-Post-Fetcher vulnerable to Use of Web Link to Untrusted Target with window.opener Access",
+      "description": "A vulnerability classified as problematic has been found in Twitter-Post-Fetcher up to 17.x. This affects an unknown part of the file `js/twitterFetcher.js` of the component Link Target Handler. The manipulation leads to use of web link to untrusted target with window.opener access. It is possible to initiate the attack remotely. Upgrading to version 18.0.0 can address this issue. The name of the patch is 7d281c6fb5acbc29a2cad295262c1f0c19ca56f3. It is recommended to upgrade the affected compone",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m688-cx2p-rgq9",
+      "publishedAt": "2022-12-29T09:30:19Z",
+      "modifiedAt": "2023-02-02T05:01:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m688-cx2p-rgq9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-25058"
+        }
+      ],
+      "affectedRange": "< 18.0.0",
+      "fixedVersion": "18.0.0"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "ggit",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pr45-cg4x-ff4m",
+      "title": "ggit is vulnerable to Arbitrary Argument Injection via the clone() API ",
+      "description": "All versions of the package ggit are vulnerable to Arbitrary Argument Injection via the clone() API, which allows specifying the remote URL to clone and the file on disk to clone to. The library does not sanitize for user input or validate a given URL scheme, nor does it properly pass command-line flags to the git binary using the double-dash POSIX characters (--) to communicate the end of options.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pr45-cg4x-ff4m",
+      "publishedAt": "2024-10-08T06:30:48Z",
+      "modifiedAt": "2025-09-18T23:34:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pr45-cg4x-ff4m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21533"
+        }
+      ],
+      "affectedRange": "<= 2.4.12"
+    },
+    {
+      "id": "GHSA-62cx-5xj4-wfm4",
+      "title": "ggit is vulnerable to Command Injection via the fetchTags(branch) API",
+      "description": "All versions of the package ggit are vulnerable to Command Injection via the fetchTags(branch) API, which allows user input to specify the branch to be fetched and then concatenates this string along with a git command which is then passed to the unsafe exec() Node.js child process API.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-62cx-5xj4-wfm4",
+      "publishedAt": "2024-10-08T06:30:47Z",
+      "modifiedAt": "2024-10-08T14:38:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-62cx-5xj4-wfm4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21532"
+        }
+      ],
+      "affectedRange": "<= 2.4.12"
+    }
+  ]
+}

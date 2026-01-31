@@ -1,0 +1,90 @@
+{
+  "name": "simple-git",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9w5j-4mwv-2wj8",
+      "title": "Remote code execution in simple-git",
+      "description": "Versions of the package simple-git before 3.16.0 are vulnerable to Remote Code Execution (RCE) via the clone(), pull(), push() and listRemote() methods, due to improper input sanitization. This vulnerability exists due to an incomplete fix of CVE-2022-25912.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9w5j-4mwv-2wj8",
+      "publishedAt": "2023-01-26T21:30:25Z",
+      "modifiedAt": "2025-04-01T23:03:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9w5j-4mwv-2wj8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25860"
+        }
+      ],
+      "affectedRange": "< 3.16.0",
+      "fixedVersion": "3.16.0"
+    },
+    {
+      "id": "GHSA-28xr-mwxg-3qc8",
+      "title": "Command injection in simple-git",
+      "description": "`simple-git` (maintained as [git-js](https://github.com/steveukx/git-js) named repository on GitHub) is a light weight interface for running git commands in any node.js application.The package simple-git before 3.5.0 are vulnerable to Command Injection due to an incomplete fix of [CVE-2022-24433](https://security.snyk.io/vuln/SNYK-JS-SIMPLEGIT-2421199) which only patches against the git fetch attack vector. A similar use of the --upload-pack feature of git is also supported for git clone, which ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-28xr-mwxg-3qc8",
+      "publishedAt": "2022-04-02T00:00:13Z",
+      "modifiedAt": "2023-08-17T05:02:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-28xr-mwxg-3qc8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24066"
+        }
+      ],
+      "affectedRange": "< 3.5.0",
+      "fixedVersion": "3.5.0"
+    },
+    {
+      "id": "GHSA-9p95-fxvg-qgq2",
+      "title": "simple-git vulnerable to Remote Code Execution when enabling the ext transport protocol",
+      "description": "The package simple-git before 3.15.0 is vulnerable to Remote Code Execution (RCE) when enabling the `ext` transport protocol, which makes it exploitable via `clone()` method. This vulnerability exists due to an incomplete fix of [CVE-2022-24066](https://security.snyk.io/vuln/SNYK-JS-SIMPLEGIT-2434306).",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9p95-fxvg-qgq2",
+      "publishedAt": "2022-12-06T06:30:17Z",
+      "modifiedAt": "2023-08-17T05:02:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9p95-fxvg-qgq2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25912"
+        }
+      ],
+      "affectedRange": "< 3.15.0",
+      "fixedVersion": "3.15.0"
+    },
+    {
+      "id": "GHSA-3f95-r44v-8mrg",
+      "title": "Command injection in simple-git",
+      "description": "The package simple-git before 3.3.0 is vulnerable to Command Injection via argument injection. When calling the .fetch(remote, branch, handlerFn) function, both the remote and branch parameters are passed to the git fetch subcommand. By injecting some git options, it was possible to get arbitrary command execution.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3f95-r44v-8mrg",
+      "publishedAt": "2022-03-12T00:00:33Z",
+      "modifiedAt": "2023-01-27T05:00:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3f95-r44v-8mrg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24433"
+        }
+      ],
+      "affectedRange": "< 3.3.0",
+      "fixedVersion": "3.3.0"
+    }
+  ]
+}

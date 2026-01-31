@@ -1,0 +1,26 @@
+{
+  "name": "is_js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pvrw-g6fx-mcx2",
+      "title": "is_js vulnerable to Regular Expression Denial of Service",
+      "description": "is.js is a general-purpose check library. Versions 0.9.0 and prior contain one or more regular expressions that are vulnerable to Regular Expression Denial of Service (ReDoS). is.js uses a regex copy-pasted from a gist to validate URLs. Trying to validate a malicious string can cause the regex to loop \"forever.\" This vulnerability was found using a CodeQL query which identifies inefficient regular expressions. is.js has no patch for this issue.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pvrw-g6fx-mcx2",
+      "publishedAt": "2023-07-06T19:24:05Z",
+      "modifiedAt": "2023-07-06T21:46:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pvrw-g6fx-mcx2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26302"
+        }
+      ],
+      "affectedRange": "<= 0.9.0"
+    }
+  ]
+}

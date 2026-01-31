@@ -1,0 +1,69 @@
+{
+  "name": "@plone/volto",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xjhf-7833-3pm5",
+      "title": "Volto affected by possible DoS by invoking specific URL by anonymous user",
+      "description": "### Impact\nWhen visiting a specific URL, an anonymous user could cause the NodeJS server part of Volto to quit with an error.\n\n### Patches\nThe problem has been patched and the patch has been backported to Volto major versions down until 16. It is advised to upgrade to the latest patch release of your respective current major version:\n\n- Volto 16: [16.34.0](https://github.com/plone/volto/releases/tag/16.34.0)\n- Volto 17: [17.22.1](https://github.com/plone/volto/releases/tag/17.22.1)\n- Volto 18: [",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xjhf-7833-3pm5",
+      "publishedAt": "2025-08-28T15:34:28Z",
+      "modifiedAt": "2025-11-05T20:41:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xjhf-7833-3pm5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-58047"
+        }
+      ],
+      "affectedRange": ">= 19.0.0-alpha.1, < 19.0.0-alpha.4",
+      "fixedVersion": "19.0.0-alpha.4"
+    },
+    {
+      "id": "GHSA-m8rj-ppph-mj33",
+      "title": " @plone/volto vulnerable to potential DoS by invoking specific URL by anonymous user ",
+      "description": "### Impact\nWhen visiting a specific URL, an anonymous user could cause the NodeJS server part of Volto to quit with an error.\n\n### Patches\nThe problem has been patched and the patch has been backported to Volto major versions down until 16. It is advised to upgrade to the latest patch release of your respective current major version:\n\n- Volto 16: [16.34.1](https://github.com/plone/volto/releases/tag/16.34.1)\n- Volto 17: [17.22.2](https://github.com/plone/volto/releases/tag/17.22.2)\n- Volto 18: [",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m8rj-ppph-mj33",
+      "publishedAt": "2025-10-01T15:53:43Z",
+      "modifiedAt": "2025-10-03T13:22:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m8rj-ppph-mj33"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-61668"
+        }
+      ],
+      "affectedRange": ">= 19.0.0-alpha.1, < 19.0.0-alpha.6",
+      "fixedVersion": "19.0.0-alpha.6"
+    },
+    {
+      "id": "GHSA-cfhh-xgwq-5r67",
+      "title": "Sudden swap of user auth tokens in Volto",
+      "description": "### Impact\nDue to the usage of an outdated version of the react-cookie library, under the circumstances of given a server high load, it is possible that a user could get his/her auth cookie replaced with the auth cookie from another user, effectively giving him full access to the other users account and privileges. A proven exploit for this vulnerability does not exist, since the exact requisites for it to happen have not been fully clarified, and the attempts to reproduce it under testing condi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cfhh-xgwq-5r67",
+      "publishedAt": "2022-03-14T22:15:19Z",
+      "modifiedAt": "2023-01-27T05:00:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cfhh-xgwq-5r67"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24740"
+        }
+      ],
+      "affectedRange": ">= 14.0.0-alpha.6, <= 14.10.0",
+      "fixedVersion": "15.0.0-alpha.0"
+    }
+  ]
+}

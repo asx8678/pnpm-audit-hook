@@ -1,0 +1,26 @@
+{
+  "name": "x-data-spreadsheet",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x5cw-843f-r366",
+      "title": "x-data-spreadsheet through 1.1.9 vulnerable to Cross-site Scripting",
+      "description": "All versions of package x-data-spreadsheet are vulnerable to Cross-site Scripting (XSS) due to missing sanitization of values inserted into the cells.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x5cw-843f-r366",
+      "publishedAt": "2022-08-31T00:00:24Z",
+      "modifiedAt": "2023-01-27T05:02:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x5cw-843f-r366"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25646"
+        }
+      ],
+      "affectedRange": "<= 1.1.9"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "fs-path",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8mrf-64fw-2x75",
+      "title": "Command injection in fs-path",
+      "description": "fs-path node module before 0.0.25 is vulnerable to command injection by way of user-supplied inputs via the `copy`, `copySync`, `remove`, and `removeSync` methods.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8mrf-64fw-2x75",
+      "publishedAt": "2021-03-25T21:06:41Z",
+      "modifiedAt": "2023-02-01T05:05:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8mrf-64fw-2x75"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8298"
+        }
+      ],
+      "affectedRange": "< 0.0.25",
+      "fixedVersion": "0.0.25"
+    }
+  ]
+}

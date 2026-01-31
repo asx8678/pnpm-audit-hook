@@ -1,0 +1,27 @@
+{
+  "name": "@langchain/community",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6m59-8fmv-m5f9",
+      "title": "@langchain/community SQL Injection vulnerability",
+      "description": "A vulnerability in the GraphCypherQAChain class of langchain-ai/langchainjs versions 0.2.5 and all versions with this class allows for prompt injection, leading to SQL injection. This vulnerability permits unauthorized data manipulation, data exfiltration, denial of service (DoS) by deleting all data, breaches in multi-tenant security environments, and data integrity issues. Attackers can create, update, or delete nodes and relationships without proper authorization, extract sensitive data, disr",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-6m59-8fmv-m5f9",
+      "publishedAt": "2024-10-29T15:32:05Z",
+      "modifiedAt": "2024-11-01T13:16:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6m59-8fmv-m5f9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-7042"
+        }
+      ],
+      "affectedRange": "< 0.3.3",
+      "fixedVersion": "0.3.3"
+    }
+  ]
+}

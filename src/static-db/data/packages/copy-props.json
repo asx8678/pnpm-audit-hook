@@ -1,0 +1,27 @@
+{
+  "name": "copy-props",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-897m-rjf5-jp39",
+      "title": "Prototype Pollution in copy-props",
+      "description": "The package copy-props before 2.0.5 are vulnerable to Prototype Pollution via the main functionality.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-897m-rjf5-jp39",
+      "publishedAt": "2022-01-06T20:35:05Z",
+      "modifiedAt": "2023-02-01T05:05:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-897m-rjf5-jp39"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28503"
+        }
+      ],
+      "affectedRange": "< 2.0.5",
+      "fixedVersion": "2.0.5"
+    }
+  ]
+}

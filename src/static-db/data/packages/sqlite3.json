@@ -1,0 +1,48 @@
+{
+  "name": "sqlite3",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jqv5-7xpx-qj74",
+      "title": "sqlite vulnerable to code execution due to Object coercion",
+      "description": "### Impact\n\nDue to the underlying implementation of `.ToString()`, it's possible to execute arbitrary JavaScript, or to achieve a denial-of-service, if a binding parameter is a crafted Object.\n\nUsers of `sqlite3` v5.0.0 - v5.1.4 are affected by this.\n\n### Patches\n\nFixed in v5.1.5. All users are recommended to upgrade to v5.1.5 or later.\n\n### Workarounds\n\n* Ensure there is sufficient sanitization in the parent application to protect against invalid values being supplied to binding parameters.\n\n##",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jqv5-7xpx-qj74",
+      "publishedAt": "2023-03-13T20:00:52Z",
+      "modifiedAt": "2023-03-22T21:40:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jqv5-7xpx-qj74"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-43441"
+        }
+      ],
+      "affectedRange": ">= 5.0.0, < 5.1.5",
+      "fixedVersion": "5.1.5"
+    },
+    {
+      "id": "GHSA-9qrh-qjmc-5w2p",
+      "title": "Denial-of-Service when binding invalid parameters in sqlite3",
+      "description": "Affected versions of sqlite3 will experience a fatal error when supplying a specific object in the parameter array. This error causes the application to crash and could not be caught. Users of `sqlite3` v5.0.0, v5.0.1 and v5.0.2 are affected by this. This issue is fixed in v5.0.3. All users are recommended to upgrade to v5.0.3 or later. Ensure there is sufficient sanitization in the parent application to protect against invalid values being supplied to binding parameters as a workaround.\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9qrh-qjmc-5w2p",
+      "publishedAt": "2022-04-28T20:25:23Z",
+      "modifiedAt": "2023-01-30T05:00:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9qrh-qjmc-5w2p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21227"
+        }
+      ],
+      "affectedRange": ">= 5.0.0, < 5.0.3",
+      "fixedVersion": "5.0.3"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@cat5th/key-serializer",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-whpx-g542-7c7v",
+      "title": "@cat5th/key-serializer Prototype Pollution vulnerability",
+      "description": "harvey-woo cat5th/key-serializer v0.2.5 was discovered to contain a prototype pollution via the function \"query\". This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-whpx-g542-7c7v",
+      "publishedAt": "2024-07-01T15:32:30Z",
+      "modifiedAt": "2024-07-31T05:02:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-whpx-g542-7c7v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-39018"
+        }
+      ],
+      "affectedRange": "<= 0.2.5"
+    }
+  ]
+}

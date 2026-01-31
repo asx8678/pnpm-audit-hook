@@ -1,0 +1,27 @@
+{
+  "name": "prebid.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jwq7-6j4r-2f92",
+      "title": "Prebid.js NPM package briefly compromised",
+      "description": "### Impact\nNPM users of prebid 10.9.2. The malicious code attempts to redirect crypto transactions on the site to the attackers' wallet.\n\n### Patches\n10.10.0 is solved\n\n### References\nhttps://www.sonatype.com/blog/npm-chalk-and-debug-packages-hit-in-software-supply-chain-attack",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jwq7-6j4r-2f92",
+      "publishedAt": "2025-09-11T14:22:40Z",
+      "modifiedAt": "2025-09-11T14:22:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jwq7-6j4r-2f92"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59038"
+        }
+      ],
+      "affectedRange": "= 10.9.2",
+      "fixedVersion": "10.10.0"
+    }
+  ]
+}

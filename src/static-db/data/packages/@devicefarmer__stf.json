@@ -1,0 +1,26 @@
+{
+  "name": "@devicefarmer/stf",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7xm8-wjq7-88r5",
+      "title": "DeviceFarmer stf uses DES-ECB",
+      "description": "DeviceFarmer stf v3.6.6 suffers from Use of a Broken or Risky Cryptographic Algorithm.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7xm8-wjq7-88r5",
+      "publishedAt": "2024-01-29T21:30:27Z",
+      "modifiedAt": "2024-02-06T20:29:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7xm8-wjq7-88r5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-51839"
+        }
+      ],
+      "affectedRange": "<= 3.6.6"
+    }
+  ]
+}

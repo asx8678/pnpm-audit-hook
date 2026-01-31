@@ -1,0 +1,27 @@
+{
+  "name": "property-expr",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6fw4-hr69-g3rv",
+      "title": "Prototype Pollution in property-expr",
+      "description": "The package property-expr before 2.0.3 are vulnerable to Prototype Pollution via the setter function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6fw4-hr69-g3rv",
+      "publishedAt": "2021-05-06T17:29:47Z",
+      "modifiedAt": "2023-01-27T05:09:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6fw4-hr69-g3rv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7707"
+        }
+      ],
+      "affectedRange": "< 2.0.3",
+      "fixedVersion": "2.0.3"
+    }
+  ]
+}

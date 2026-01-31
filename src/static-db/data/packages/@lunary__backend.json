@@ -1,0 +1,27 @@
+{
+  "name": "@lunary/backend",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v6x6-4v4x-2fx9",
+      "title": "Withdrawn Advisory: Lunary Cross-Site Request Forgery (CSRF) vulnerability",
+      "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because the [lunary npm package](https://www.npmjs.com/package/lunary) is connected to https://github.com/lunary-ai/lunary-js, not the https://github.com/lunary-ai/lunary repo that is discussed in this advisory.\n\n**The underlying vulnerability report is still valid**, but it doesn't affect a product in a [GitHub Advisory Database supported ecosystem](https://docs.github.com/en/code-security/security-advisories/working-with-global-security-ad",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v6x6-4v4x-2fx9",
+      "publishedAt": "2024-09-13T18:31:48Z",
+      "modifiedAt": "2025-06-20T20:02:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v6x6-4v4x-2fx9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-6862"
+        }
+      ],
+      "affectedRange": "< 1.4.10",
+      "fixedVersion": "1.4.10"
+    }
+  ]
+}

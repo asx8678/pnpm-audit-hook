@@ -1,0 +1,27 @@
+{
+  "name": "window-control",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9mjx-wfqp-j5ph",
+      "title": "window-control vulnerable to Command Injection due to improper input sanitization",
+      "description": "window-control is an npm package that provides tools to manage window focus. Versions before 1.4.5 are vulnerable to Command Injection via the `sendKeys` function due to improper input sanitization.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9mjx-wfqp-j5ph",
+      "publishedAt": "2023-01-04T18:30:59Z",
+      "modifiedAt": "2023-08-17T05:02:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9mjx-wfqp-j5ph"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25926"
+        }
+      ],
+      "affectedRange": "< 1.4.5",
+      "fixedVersion": "1.4.5"
+    }
+  ]
+}

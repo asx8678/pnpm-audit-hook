@@ -1,0 +1,26 @@
+{
+  "name": "@akbr/update",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mj4p-gmhr-92g3",
+      "title": "@akbr/update Prototype Pollution",
+      "description": "akbr update 1.0.0 is vulnerable to Prototype Pollution via update/index.js.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mj4p-gmhr-92g3",
+      "publishedAt": "2024-06-17T18:31:34Z",
+      "modifiedAt": "2024-07-05T17:26:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mj4p-gmhr-92g3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-36578"
+        }
+      ],
+      "affectedRange": "<= 1.0.0"
+    }
+  ]
+}

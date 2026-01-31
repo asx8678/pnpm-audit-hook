@@ -1,0 +1,27 @@
+{
+  "name": "@actions/core",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7r3h-m5j6-3q42",
+      "title": "@actions/core has Delimiter Injection Vulnerability in exportVariable",
+      "description": "## Impact\n\nThe `core.exportVariable` function uses a well known delimiter that attackers can use to break out of that specific variable and assign values to other arbitrary variables. Workflows that write untrusted values to the `GITHUB_ENV` file may cause the path or other environment variables to be modified without the intention of the workflow or action author.\n\n## Patches\n\nUsers should upgrade to `@actions/core v1.9.1`.\n\n## Workarounds\n\nIf you are unable to upgrade the `@actions/core` packa",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7r3h-m5j6-3q42",
+      "publishedAt": "2022-08-18T19:01:36Z",
+      "modifiedAt": "2023-01-30T05:06:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7r3h-m5j6-3q42"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-35954"
+        }
+      ],
+      "affectedRange": "<= 1.9.0",
+      "fixedVersion": "1.9.1"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "@tryghost/portal",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gv6q-2m97-882h",
+      "title": "Ghost vulnerable to XSS via malicious Portal preview links",
+      "description": "### Impact\nAn attacker was able to craft a malicious link that, when accessed by an authenticated staff user or member, would execute JavaScript with the victim's permissions, potentially leading to account takeover. \n\n### Vulnerable versions\nThis vulnerability is present in Ghost versions:\n- v5.43.0 to v5.120.4\n- v6.0.0 to v6.14.0\n\nAs well as in Portal versions:\n- v2.29.1 to v2.51.4\n- v2.52.0 to v2.57.0\n\n### Patches\nGhost automatically loads the latest patch of the members Portal component via ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gv6q-2m97-882h",
+      "publishedAt": "2026-01-28T16:11:59Z",
+      "modifiedAt": "2026-01-28T16:12:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gv6q-2m97-882h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24778"
+        }
+      ],
+      "affectedRange": ">= 2.52.0, < 2.57.1",
+      "fixedVersion": "2.57.1"
+    },
+    {
+      "id": "GHSA-78x2-cwp9-5j42",
+      "title": "Ghost's improper authentication allows access to member information and actions",
+      "description": "### Impact\n\nImproper authentication on some endpoints used for member actions would allow an attacker to perform member-only actions, and read member information.\n\n### Vulnerable versions\n\nThis security vulnerability is present in Ghost v4.46.0-v5.89.5.\n\nGhost(Pro) customers are automatically updated to fixed versions ahead of disclosure.\n\nIf you're a self-hoster, please follow our [update instructions](https://ghost.org/docs/update).\n\n### Patches\n\nv5.89.5 contains a fix for this issue.\n\n### Wor",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-78x2-cwp9-5j42",
+      "publishedAt": "2024-08-20T20:04:49Z",
+      "modifiedAt": "2024-10-29T20:00:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-78x2-cwp9-5j42"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-43409"
+        }
+      ],
+      "affectedRange": ">= 1.22.2, < 2.39.0",
+      "fixedVersion": "2.39.0"
+    }
+  ]
+}

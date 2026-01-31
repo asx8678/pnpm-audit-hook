@@ -1,0 +1,69 @@
+{
+  "name": "socket.io-parser",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cqmj-92xf-r6r9",
+      "title": "Insufficient validation when decoding a Socket.IO packet",
+      "description": "### Impact\n\nA specially crafted Socket.IO packet can trigger an uncaught exception on the Socket.IO server, thus killing the Node.js process.\n\n```\nTypeError: Cannot convert object to primitive value\n       at Socket.emit (node:events:507:25)\n       at .../node_modules/socket.io/lib/socket.js:531:14\n```\n\n### Patches\n\nA fix has been released today (2023/05/22):\n\n- https://github.com/socketio/socket.io-parser/commit/3b78117bf6ba7e99d7a5cfc1ba54d0477554a7f3, included in `socket.io-parser@4.2.3`\n- ht",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cqmj-92xf-r6r9",
+      "publishedAt": "2023-05-23T19:55:13Z",
+      "modifiedAt": "2024-11-18T16:26:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cqmj-92xf-r6r9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-32695"
+        }
+      ],
+      "affectedRange": "< 3.3.4",
+      "fixedVersion": "3.3.4"
+    },
+    {
+      "id": "GHSA-qm95-pgcg-qqfq",
+      "title": "Insufficient validation when decoding a Socket.IO packet",
+      "description": "Due to improper type validation in the `socket.io-parser` library (which is used by the `socket.io` and `socket.io-client` packages to encode and decode Socket.IO packets), it is possible to overwrite the _placeholder object which allows an attacker to place references to functions at arbitrary places in the resulting query object.\n\nExample:\n\n```js\nconst decoder = new Decoder();\n\ndecoder.on(\"decoded\", (packet) => {\n console.log(packet.data); // prints [ 'hello', [Function: splice] ]\n})\n\ndecoder.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qm95-pgcg-qqfq",
+      "publishedAt": "2022-10-26T12:00:28Z",
+      "modifiedAt": "2024-04-22T19:11:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qm95-pgcg-qqfq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-2421"
+        }
+      ],
+      "affectedRange": ">= 3.4.0, < 3.4.2",
+      "fixedVersion": "3.4.2"
+    },
+    {
+      "id": "GHSA-xfhh-g9f5-x4m4",
+      "title": "Resource exhaustion in socket.io-parser",
+      "description": "The `socket.io-parser` npm package before versions 3.3.2 and 3.4.1 allows attackers to cause a denial of service (memory consumption) via a large packet because a concatenation approach is used.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xfhh-g9f5-x4m4",
+      "publishedAt": "2021-06-30T16:51:31Z",
+      "modifiedAt": "2023-02-01T05:05:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xfhh-g9f5-x4m4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-36049"
+        }
+      ],
+      "affectedRange": "= 3.4.0",
+      "fixedVersion": "3.4.1"
+    }
+  ]
+}

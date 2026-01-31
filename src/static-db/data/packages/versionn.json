@@ -1,0 +1,27 @@
+{
+  "name": "versionn",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fj78-2vc5-f6cm",
+      "title": "Versionn Command Injection Vulnerability",
+      "description": "### Impact\n\nCommand Injection Vulnerability. All versions <1.1.0 are affected.\n \n### Patches\n\nPlease upgrade to versionn@1.1.0",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fj78-2vc5-f6cm",
+      "publishedAt": "2023-02-22T00:05:05Z",
+      "modifiedAt": "2023-02-22T00:05:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fj78-2vc5-f6cm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-25805"
+        }
+      ],
+      "affectedRange": "< 1.1.0",
+      "fixedVersion": "1.1.0"
+    }
+  ]
+}

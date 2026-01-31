@@ -1,0 +1,40 @@
+{
+  "name": "moment-timezone",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-56x4-j7p9-fcf9",
+      "title": "Command Injection in moment-timezone",
+      "description": "### Impact\n\nAll versions of moment-timezone from 0.1.0 contain build tasks vulnerable to command injection.\n\n* if Alice uses tzdata pipeline to package moment-timezone on her own (for example via `grunt data:2014d`, where `2014d` stands for the version of the tzdata to be used from IANA's website),\n* and Alice let's Mallory select the version (`2014d` in our example), then Mallory can execute arbitrary commands on the machine running the grunt task, with the same privilege as the grunt task\n\n###",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-56x4-j7p9-fcf9",
+      "publishedAt": "2022-08-30T20:31:21Z",
+      "modifiedAt": "2023-01-12T05:07:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-56x4-j7p9-fcf9"
+        }
+      ],
+      "affectedRange": ">= 0.1.0, < 0.5.35",
+      "fixedVersion": "0.5.35"
+    },
+    {
+      "id": "GHSA-v78c-4p63-2j6c",
+      "title": "Cleartext Transmission of Sensitive Information in moment-timezone",
+      "description": "### Impact\n\n* if Alice uses `grunt data` (or `grunt release`) to prepare a custom-build, moment-timezone with the latest tzdata from IANA's website\n* and Mallory intercepts the request to IANA's unencrypted ftp server, Mallory can serve data which might exploit further stages of the moment-timezone tzdata pipeline, or potentially produce a tainted version of moment-timezone (practicality of such attacks is not proved)\n\n### Patches\nProblem has been patched in version 0.5.35, patch should be appli",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v78c-4p63-2j6c",
+      "publishedAt": "2022-08-30T20:28:43Z",
+      "modifiedAt": "2023-01-12T05:07:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v78c-4p63-2j6c"
+        }
+      ],
+      "affectedRange": ">= 0.1.0, < 0.5.35",
+      "fixedVersion": "0.5.35"
+    }
+  ]
+}

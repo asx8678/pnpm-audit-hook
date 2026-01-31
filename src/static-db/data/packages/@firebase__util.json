@@ -1,0 +1,27 @@
+{
+  "name": "@firebase/util",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fpm5-vv97-jfwg",
+      "title": "Uncontrolled Resource Consumption in firebase",
+      "description": "This affects the package @firebase/util before 0.3.4. This vulnerability relates to the deepExtend function within the DeepCopy.ts file. Depending on if user input is provided, an attacker can overwrite and pollute the object prototype of a program.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fpm5-vv97-jfwg",
+      "publishedAt": "2021-05-18T01:57:24Z",
+      "modifiedAt": "2023-02-01T05:05:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fpm5-vv97-jfwg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7765"
+        }
+      ],
+      "affectedRange": "< 0.3.4",
+      "fixedVersion": "0.3.4"
+    }
+  ]
+}

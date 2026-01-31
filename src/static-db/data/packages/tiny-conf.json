@@ -1,0 +1,26 @@
+{
+  "name": "tiny-conf",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4q97-fh3f-j294",
+      "title": "Prototype Pollution in tiny-conf",
+      "description": "All versions of package tiny-conf up to and including version 1.1.0 are vulnerable to Prototype Pollution via the set function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4q97-fh3f-j294",
+      "publishedAt": "2021-05-10T15:59:24Z",
+      "modifiedAt": "2023-02-01T05:05:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4q97-fh3f-j294"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7724"
+        }
+      ],
+      "affectedRange": "<= 1.1.0"
+    }
+  ]
+}

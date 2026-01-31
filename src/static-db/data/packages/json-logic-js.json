@@ -1,0 +1,27 @@
+{
+  "name": "json-logic-js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-67j4-2mh6-8627",
+      "title": "json-logic-js Command Injection vulnerability",
+      "description": "A vulnerability, which was classified as critical, has been found in json-logic-js 2.0.0. Affected by this issue is some unknown functionality of the file logic.js. The manipulation leads to command injection. Upgrading to version 2.0.1 is able to address this issue. The name of the patch is c1dd82f5b15d8a553bb7a0cfa841ab8a11a9c227. It is recommended to upgrade the affected component. VDB-222266 is the identifier assigned to this vulnerability.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-67j4-2mh6-8627",
+      "publishedAt": "2023-03-05T21:30:15Z",
+      "modifiedAt": "2024-09-23T20:42:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-67j4-2mh6-8627"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-4329"
+        }
+      ],
+      "affectedRange": "< 2.0.1",
+      "fixedVersion": "2.0.1"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "node-red-contrib-huemagic",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-frpw-jrwx-hcfv",
+      "title": "Path Traversal in node-red-contrib-huemagic",
+      "description": "node-red-contrib-huemagic 3.0.0 is affected by `hue/assets/..%2F` Directory Traversal.in the `res.sendFile` API, used in file hue-magic.js, to fetch an arbitrary file.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-frpw-jrwx-hcfv",
+      "publishedAt": "2021-04-13T15:30:00Z",
+      "modifiedAt": "2023-09-07T22:38:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-frpw-jrwx-hcfv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-25864"
+        }
+      ],
+      "affectedRange": "<= 3.0.0"
+    }
+  ]
+}

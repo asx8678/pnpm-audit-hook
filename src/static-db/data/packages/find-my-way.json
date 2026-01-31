@@ -1,0 +1,27 @@
+{
+  "name": "find-my-way",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rrr8-f88r-h8q6",
+      "title": "find-my-way has a ReDoS vulnerability in multiparametric routes",
+      "description": "### Impact\n\nA bad regular expression is generated any time you have two parameters within a single segment, when adding a `-` at the end, like `/:a-:b-`.\n\n### Patches\n\nUpdate to find-my-way v8.2.2 or v9.0.1. or subsequent versions.\n\n### Workarounds\n\nNo known workarounds.\n\n### References\n\n- [CVE-2024-45296](https://github.com/advisories/GHSA-9wv6-86v2-598j)\n- [Detailed blog post about `path-to-regexp` vulnerability](https://blakeembrey.com/posts/2024-09-web-redos/)",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rrr8-f88r-h8q6",
+      "publishedAt": "2024-09-18T15:52:33Z",
+      "modifiedAt": "2024-10-07T21:52:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rrr8-f88r-h8q6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-45813"
+        }
+      ],
+      "affectedRange": ">= 5.5.0, < 8.2.2",
+      "fixedVersion": "8.2.2"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "@account-kit/smart-contracts",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-56r6-ccm5-8hg3",
+      "title": "Alchemy Non-SMA and Webauthn Account Security Advisory",
+      "description": "### Impact\nA potential security issue has been mitigated on old account deployment functions from the factory. Smart wallets in use on all existing supported networks are not impacted.\n### Patches\nPlease direct creation of new wallets to either `createSemiModularAccount` on `AccountFactory.sol` or `createWebAuthnAccount` on `WebAuthnFactory.sol`.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-56r6-ccm5-8hg3",
+      "publishedAt": "2025-07-21T14:20:40Z",
+      "modifiedAt": "2025-07-21T14:20:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-56r6-ccm5-8hg3"
+        }
+      ],
+      "affectedRange": ">= 4.42.0, <= 4.51.0",
+      "fixedVersion": "4.52.0"
+    },
+    {
+      "id": "GHSA-wfm2-rq5g-f8v5",
+      "title": "@account-kit/smart-contracts Allowlist Module Bypass Vulnerability",
+      "description": "### Summary\nAllowlist module contains a bypass vulnerability\n\n### Details\nThe logic for using an allowlist on a Modular Account V2 contained a bug that allowed session keys to bypass any allowlist configuration\n\n### Action\nIf you are using @aa-sdk and/or @account-kit/smart-contracts between the versions of >=4.8.0 and <4.28.1, please upgrade to 4.28.2",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wfm2-rq5g-f8v5",
+      "publishedAt": "2025-04-29T15:11:41Z",
+      "modifiedAt": "2025-04-29T15:11:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wfm2-rq5g-f8v5"
+        }
+      ],
+      "affectedRange": ">= 4.8.0, < 4.28.2",
+      "fixedVersion": "4.28.2"
+    }
+  ]
+}

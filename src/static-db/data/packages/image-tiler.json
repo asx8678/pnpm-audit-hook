@@ -1,0 +1,26 @@
+{
+  "name": "image-tiler",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mrxv-pr4h-963q",
+      "title": "image-tiler susceptible to command injection",
+      "description": "A command injection vulnerability affects the package image-tiler before version 2.0.2.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mrxv-pr4h-963q",
+      "publishedAt": "2022-08-03T00:00:57Z",
+      "modifiedAt": "2023-01-30T05:01:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mrxv-pr4h-963q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28451"
+        }
+      ],
+      "affectedRange": "< 2.0.2"
+    }
+  ]
+}

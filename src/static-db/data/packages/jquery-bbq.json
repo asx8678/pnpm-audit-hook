@@ -1,0 +1,26 @@
+{
+  "name": "jquery-bbq",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7w8j-85wm-6xfq",
+      "title": "Prototype Pollution in jquery-bbq",
+      "description": "Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution') in jquery-bbq 1.2.1 allows a malicious user to inject properties into Object.prototype.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7w8j-85wm-6xfq",
+      "publishedAt": "2021-05-24T19:51:58Z",
+      "modifiedAt": "2025-11-04T16:34:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7w8j-85wm-6xfq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-20086"
+        }
+      ],
+      "affectedRange": "<= 1.2.1"
+    }
+  ]
+}

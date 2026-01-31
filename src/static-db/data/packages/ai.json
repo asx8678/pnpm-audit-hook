@@ -1,0 +1,27 @@
+{
+  "name": "ai",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rwvc-j5jr-mgvh",
+      "title": "Vercel’s AI SDK's filetype whitelists can be bypassed when uploading files",
+      "description": "A vulnerability in Vercel’s AI SDK has been fixed in versions 5.0.52, 5.1.0-beta.9, and 6.0.0-beta. This issue may have allowed users to bypass filetype whitelists when uploading files. All users are encouraged to upgrade.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-rwvc-j5jr-mgvh",
+      "publishedAt": "2025-11-07T03:30:25Z",
+      "modifiedAt": "2025-12-02T01:27:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rwvc-j5jr-mgvh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-48985"
+        }
+      ],
+      "affectedRange": ">= 5.1.0-beta.0, < 5.1.0-beta.9",
+      "fixedVersion": "5.1.0-beta.9"
+    }
+  ]
+}

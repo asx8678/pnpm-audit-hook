@@ -1,0 +1,67 @@
+{
+  "name": "mcp-markdownify-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-45qj-4xq3-3c45",
+      "title": "mcp-markdownify-server vulnerable to command injection in pptx-to-markdown tool",
+      "description": "### Summary\n\nA command injection vulnerability exists in the `mcp-markdownify-server` MCP Server. The vulnerability is caused by the unsanitized use of input parameters within a call to `child_process.exec`, enabling an attacker to inject arbitrary system commands. Successful exploitation can lead to remote code execution under the server process's privileges. \n\nThe server constructs and executes shell commands using unvalidated user input directly within command-line strings. This introduces th",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-45qj-4xq3-3c45",
+      "publishedAt": "2025-09-02T17:40:01Z",
+      "modifiedAt": "2025-09-04T13:52:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-45qj-4xq3-3c45"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-58358"
+        }
+      ],
+      "affectedRange": "<= 0.0.1",
+      "fixedVersion": "0.0.2"
+    },
+    {
+      "id": "GHSA-frq9-3hp2-xvxg",
+      "title": "Markdownify MCP Server allows Server-Side Request Forgery (SSRF) via the Markdownify.get() function",
+      "description": "All versions of the package mcp-markdownify-server are vulnerable to Server-Side Request Forgery (SSRF) via the Markdownify.get() function. An attacker can craft a prompt that, once accessed by the MCP host, can invoke the webpage-to-markdown, bing-search-to-markdown, and youtube-to-markdown tools to issue requests and read the responses to attacker-controlled URLs, potentially leaking sensitive information.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-frq9-3hp2-xvxg",
+      "publishedAt": "2025-05-29T06:31:17Z",
+      "modifiedAt": "2025-05-29T17:27:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-frq9-3hp2-xvxg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-5276"
+        }
+      ],
+      "affectedRange": "<= 0.0.1"
+    },
+    {
+      "id": "GHSA-22v8-p7h2-rj7p",
+      "title": "Markdownify MCP Server allows attackers to read arbitrary files",
+      "description": "All versions of the package mcp-markdownify-server are vulnerable to Files or Directories Accessible to External Parties via the get-markdown-file tool. An attacker can craft a prompt that, once accessed by the MCP host, will allow it to read arbitrary files from the host running the server.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-22v8-p7h2-rj7p",
+      "publishedAt": "2025-05-29T06:31:17Z",
+      "modifiedAt": "2025-05-29T17:27:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-22v8-p7h2-rj7p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-5273"
+        }
+      ],
+      "affectedRange": "<= 0.0.1"
+    }
+  ]
+}

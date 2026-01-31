@@ -1,0 +1,69 @@
+{
+  "name": "nadesiko3",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7249-8x22-4rg4",
+      "title": "nadesiko3 vulnerable to OS Command Injection",
+      "description": "OS command injection vulnerability in Nako3edit, editor component of nadesiko3 (PC Version) v3.3.74 and earlier allows a remote attacker to obtain appkey of the product and execute an arbitrary OS command on the product.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7249-8x22-4rg4",
+      "publishedAt": "2022-12-05T06:30:22Z",
+      "modifiedAt": "2023-01-31T05:03:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7249-8x22-4rg4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-42496"
+        }
+      ],
+      "affectedRange": "< 3.3.75",
+      "fixedVersion": "3.3.75"
+    },
+    {
+      "id": "GHSA-x2jx-w3wm-9p3p",
+      "title": "nadesiko3 allows remote attacker to inject invalid value to decodeURIComponent of nako3edit",
+      "description": "Nako3edit is the editor component of Nadeshiko 3, a programming language developed based on Japanese. Improper check or handling of exceptional conditions in Nako3edit v3.3.74 and earlier allows a remote attacker to inject an invalid value to decodeURIComponent of nako3edit, which may lead the server to crash.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x2jx-w3wm-9p3p",
+      "publishedAt": "2022-12-05T06:30:22Z",
+      "modifiedAt": "2023-01-31T05:03:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x2jx-w3wm-9p3p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-41777"
+        }
+      ],
+      "affectedRange": "< 3.3.75",
+      "fixedVersion": "3.3.75"
+    },
+    {
+      "id": "GHSA-m8r5-7wf4-63mw",
+      "title": "Nadesiko3 OS Command Injection vulnerability",
+      "description": "OS command injection vulnerability in Nadesiko3 (PC Version) v3.3.68 and earlier allows a remote attacker to execute an arbitrary OS command when processing compression and decompression on the product.\n\nRelease notes for versions 3.3.62 and 3.3.69 both link to patches for this particular issue. The [JPCERT/CC](https://jvn.jp/en/jp/JVN56968681/index.html) advisory lists versions 3.3.68 and prior as vulnerable, and the most recent patch for this issue is tagged with version 3.3.69.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m8r5-7wf4-63mw",
+      "publishedAt": "2022-12-05T06:30:22Z",
+      "modifiedAt": "2023-01-31T05:02:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m8r5-7wf4-63mw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-41642"
+        }
+      ],
+      "affectedRange": "<= 3.3.68",
+      "fixedVersion": "3.3.69"
+    }
+  ]
+}

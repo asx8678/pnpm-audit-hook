@@ -1,0 +1,26 @@
+{
+  "name": "speaker",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w5fc-gj3h-26rx",
+      "title": "speaker vulnerable to Denial of Service",
+      "description": "All versions of the package speaker are vulnerable to Denial of Service (DoS) when providing unexpected input types to the channels property of the Speaker object makes it possible to reach an assert macro. Exploiting this vulnerability can lead to a process crash.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w5fc-gj3h-26rx",
+      "publishedAt": "2024-07-10T06:33:52Z",
+      "modifiedAt": "2024-07-31T05:02:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w5fc-gj3h-26rx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21526"
+        }
+      ],
+      "affectedRange": "<= 0.5.5"
+    }
+  ]
+}

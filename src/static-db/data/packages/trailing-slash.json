@@ -1,0 +1,27 @@
+{
+  "name": "trailing-slash",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rfhr-62xp-2fp2",
+      "title": "Open Redirect in trailing-slash",
+      "description": "The package trailing-slash before 2.0.1 are vulnerable to Open Redirect via the use of trailing double slashes in the URL when accessing the vulnerable endpoint (such as https://example.com//attacker.example/). The vulnerable code is in index.js::createTrailing(), as the web server uses relative URLs instead of absolute URLs.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rfhr-62xp-2fp2",
+      "publishedAt": "2021-06-08T23:19:21Z",
+      "modifiedAt": "2023-02-01T05:05:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rfhr-62xp-2fp2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23387"
+        }
+      ],
+      "affectedRange": "< 2.0.1",
+      "fixedVersion": "2.0.1"
+    }
+  ]
+}

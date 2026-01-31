@@ -1,0 +1,26 @@
+{
+  "name": "lightning-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gmch-cm2p-9qw9",
+      "title": "Cross-site Scripting in lightning-server",
+      "description": "This affects all versions of package lightning-server. It is possible to inject malicious JavaScript code as part of a session controller.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gmch-cm2p-9qw9",
+      "publishedAt": "2021-05-10T18:39:15Z",
+      "modifiedAt": "2023-02-01T05:05:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gmch-cm2p-9qw9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7747"
+        }
+      ],
+      "affectedRange": "<= 1.3.0"
+    }
+  ]
+}

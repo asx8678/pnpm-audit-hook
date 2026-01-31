@@ -1,0 +1,46 @@
+{
+  "name": "express-gateway",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xfp8-x3j6-h67v",
+      "title": "ExpressGateway Cross-Site Scripting Vulnerability in lib/rest/routes/apps.js",
+      "description": "A cross-site scripting (XSS) issue exists in ExpressGateway ≤ 1.16.10 in lib/rest/routes/apps.js. User-controlled data returned by the REST endpoint is not sanitized before being rendered by the admin/UI layer, allowing an authenticated, low-privileged actor to store or reflect a payload that executes in a maintainer’s browser when the resource is viewed. The issue can be triggered remotely over the network and does not impact availability. No vendor fix is available at this time.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xfp8-x3j6-h67v",
+      "publishedAt": "2025-08-18T00:30:30Z",
+      "modifiedAt": "2025-09-23T20:39:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xfp8-x3j6-h67v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-9096"
+        }
+      ],
+      "affectedRange": "<= 1.16.10"
+    },
+    {
+      "id": "GHSA-q4rg-7cjj-5r86",
+      "title": "ExpressGateway Cross-Site Scripting Vulnerability in lib/rest/routes/users.js",
+      "description": "A cross-site scripting (XSS) issue exists in ExpressGateway up to 1.16.10 in the REST endpoint implemented in lib/rest/routes/users.js. User-controlled input is reflected into the HTTP response without proper sanitization, allowing arbitrary JavaScript execution in the browser of a logged-in user who views the affected page/route. The attack can be triggered over the network with low complexity and requires a low-privileged authenticated context and user interaction (viewing the page). Impact is",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q4rg-7cjj-5r86",
+      "publishedAt": "2025-08-18T00:30:30Z",
+      "modifiedAt": "2025-09-23T20:30:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q4rg-7cjj-5r86"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-9095"
+        }
+      ],
+      "affectedRange": "<= 1.16.10"
+    }
+  ]
+}

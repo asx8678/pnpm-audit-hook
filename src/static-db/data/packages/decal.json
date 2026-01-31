@@ -1,0 +1,46 @@
+{
+  "name": "decal",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j32x-j8pj-pg2h",
+      "title": "Prototype Pollution in decal",
+      "description": "This affects all versions of package decal. The vulnerability is in the extend function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j32x-j8pj-pg2h",
+      "publishedAt": "2021-04-13T15:20:34Z",
+      "modifiedAt": "2023-09-05T22:53:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j32x-j8pj-pg2h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28450"
+        }
+      ],
+      "affectedRange": "<= 2.1.3"
+    },
+    {
+      "id": "GHSA-vp77-fqqp-79j8",
+      "title": "Prototype Pollution in decal",
+      "description": "This affects all versions of package decal. The vulnerability is in the set function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vp77-fqqp-79j8",
+      "publishedAt": "2021-04-13T15:20:27Z",
+      "modifiedAt": "2023-02-01T05:05:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vp77-fqqp-79j8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28449"
+        }
+      ],
+      "affectedRange": "<= 2.1.3"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "file-upload-with-preview",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-97pv-4338-r5vp",
+      "title": "Cross-site Scripting in file-upload-with-preview",
+      "description": "This affects the package file-upload-with-preview before 4.2.0. A file containing malicious JavaScript code in the name can be uploaded (a user needs to be tricked into uploading such a file).",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-97pv-4338-r5vp",
+      "publishedAt": "2021-09-07T23:08:54Z",
+      "modifiedAt": "2023-02-01T05:06:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-97pv-4338-r5vp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23439"
+        }
+      ],
+      "affectedRange": "< 4.2.0",
+      "fixedVersion": "4.2.0"
+    }
+  ]
+}

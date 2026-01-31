@@ -1,0 +1,27 @@
+{
+  "name": "@tomphttp/bare-server-node",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-86fc-f9gr-v533",
+      "title": "HTTP Handling Vulnerability in the Bare server",
+      "description": "### Impact\nThis vulnerability relates to insecure handling of HTTP requests by the @tomphttp/bare-server-node package. This flaw potentially exposes the users of the package to manipulation of their web traffic. The impact may vary depending on the specific usage of the package but it can potentially affect any system where this package is in use.\n\n### Patches\nYes, the problem has been patched. We advise all users to upgrade to version @tomphttp/bare-server-node@2.0.2 as soon as possible.\n\n### W",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-86fc-f9gr-v533",
+      "publishedAt": "2024-03-05T16:24:31Z",
+      "modifiedAt": "2024-03-21T18:25:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-86fc-f9gr-v533"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-27922"
+        }
+      ],
+      "affectedRange": "< 2.0.2",
+      "fixedVersion": "2.0.2"
+    }
+  ]
+}

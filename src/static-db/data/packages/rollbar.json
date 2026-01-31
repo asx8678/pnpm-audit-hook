@@ -1,0 +1,64 @@
+{
+  "name": "rollbar",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xcg2-9pp4-j82x",
+      "title": "rollbar vulnerable to Prototype Pollution in merge()",
+      "description": "### Impact\n\nPrototype pollution vulnerability in merge(). If application code calls `rollbar.configure()` with untrusted input, prototype pollution is possible.\n\n### Patches\n\nFixed in 2.26.5 and 3.0.0-beta5.\n\n### Workarounds\n\nEnsure that values passed to `rollbar.configure()` do not contain untrusted input.\n\n### References\n\nFixed in https://github.com/rollbar/rollbar.js/pull/1394 (2.26.x) and https://github.com/rollbar/rollbar.js/pull/1390 (3.x)",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xcg2-9pp4-j82x",
+      "publishedAt": "2025-10-23T20:31:30Z",
+      "modifiedAt": "2025-10-24T19:28:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xcg2-9pp4-j82x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-62517"
+        }
+      ],
+      "affectedRange": ">= 3.0.0-alpha1, <= 3.0.0-beta4",
+      "fixedVersion": "3.0.0-beta5"
+    },
+    {
+      "id": "GHSA-r8c2-2qwq-94p6",
+      "title": "rollbar vulnerable to prototype pollution",
+      "description": "### Impact\n\nPrototype pollution potential with the utility function `rollbar/src/utility`.`set()`. No impact when using the published public interface.\n\nIf application code directly imports `set` from `rollbar/src/utility` and then calls `set` with untrusted input in the second argument, it is vulnerable to prototype pollution.\n\nPOC:\n\n```js\nconst obj = {};\nrequire(\"rollbar/src/utility\").set(obj, \"__proto__.polluted\", \"vulnerable\");\nconsole.log({}.polluted !== undefined ? '[POLLUTION_TRIGGERED]':",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-r8c2-2qwq-94p6",
+      "publishedAt": "2025-10-20T15:33:02Z",
+      "modifiedAt": "2025-10-20T21:40:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r8c2-2qwq-94p6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57325"
+        }
+      ],
+      "affectedRange": ">= 3.0.0-alpha1, <= 3.0.0-beta4",
+      "fixedVersion": "3.0.0-beta5"
+    },
+    {
+      "id": "GHSA-m929-rg27-gj99",
+      "title": "Duplicate Advisory: rollbar vulnerable to prototype pollution",
+      "description": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-r8c2-2qwq-94p6. This link is maintained to preserve external references.\n\n### Original Description\nrollbar is a package designed to effortlessly track and debug errors in JavaScript applications. This package includes advanced error tracking features and an intuitive interface to help you identify and fix issues more quickly. A Prototype Pollution vulnerability in the utility.set function of rollbar v2.26.4",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-m929-rg27-gj99",
+      "publishedAt": "2025-09-24T21:30:37Z",
+      "modifiedAt": "2025-10-20T15:32:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m929-rg27-gj99"
+        }
+      ],
+      "affectedRange": "<= 2.26.4"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "cassproject",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7qcx-4p32-qcmx",
+      "title": "Missing Cryptographic Step in cassproject",
+      "description": "### Impact\nCaSS Library, (npm:cassproject) has a missing cryptographic step when storing cryptographic keys that can allow a server administrator access to an account’s cryptographic keys. This affects CaSS servers using standalone username/password authentication, which uses a method that expects e2e cryptographic security of authorization credentials.\n\n### Patches\nThe issue has been patched in 1.5.8, however, the vulnerable accounts are only resecured when the user next logs in using standalon",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7qcx-4p32-qcmx",
+      "publishedAt": "2022-05-25T19:34:20Z",
+      "modifiedAt": "2023-01-27T05:03:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7qcx-4p32-qcmx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-29229"
+        }
+      ],
+      "affectedRange": "< 1.5.8",
+      "fixedVersion": "1.5.8"
+    }
+  ]
+}

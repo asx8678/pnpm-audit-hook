@@ -1,0 +1,27 @@
+{
+  "name": "@rpldy/uploader",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pc47-g7gv-4gpw",
+      "title": "@rpldy/uploader prototype pollution",
+      "description": "A prototype pollution in the lib.createUploader function of @rpldy/uploader v1.8.1 allows attackers to cause a Denial of Service (DoS) via supplying a crafted payload.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pc47-g7gv-4gpw",
+      "publishedAt": "2025-02-06T06:31:26Z",
+      "modifiedAt": "2025-02-21T15:18:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pc47-g7gv-4gpw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-57082"
+        }
+      ],
+      "affectedRange": "< 1.9.1",
+      "fixedVersion": "1.9.1"
+    }
+  ]
+}

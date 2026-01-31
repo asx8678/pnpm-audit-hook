@@ -1,0 +1,111 @@
+{
+  "name": "mongoose",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vg7j-7cwx-8wgw",
+      "title": "Mongoose search injection vulnerability",
+      "description": "Mongoose versions prior to 8.9.5, 7.8.4, and 6.13.6 are vulnerable to improper use of the `$where` operator. This vulnerability arises from the ability of the `$where` clause to execute arbitrary JavaScript code in MongoDB queries, potentially leading to code injection attacks and unauthorized access or manipulation of database data.\n\nNOTE: this issue exists because of an incomplete fix for CVE-2024-53900.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vg7j-7cwx-8wgw",
+      "publishedAt": "2025-01-15T06:30:49Z",
+      "modifiedAt": "2025-01-17T18:02:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vg7j-7cwx-8wgw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-23061"
+        }
+      ],
+      "affectedRange": "< 6.13.6",
+      "fixedVersion": "6.13.6"
+    },
+    {
+      "id": "GHSA-m7xq-9374-9rvx",
+      "title": "Mongoose search injection vulnerability",
+      "description": "Mongoose versions prior to 8.8.3, 7.8.3, and 6.13.5 are vulnerable to improper use of the $where operator. This vulnerability arises from the ability of the $where clause to execute arbitrary JavaScript code in MongoDB queries, potentially leading to code injection attacks and unauthorized access or manipulation of database data.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m7xq-9374-9rvx",
+      "publishedAt": "2024-12-02T21:31:20Z",
+      "modifiedAt": "2024-12-04T16:41:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m7xq-9374-9rvx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-53900"
+        }
+      ],
+      "affectedRange": "< 6.13.5",
+      "fixedVersion": "6.13.5"
+    },
+    {
+      "id": "GHSA-h8hf-x3f4-xwgp",
+      "title": "Mongoose Vulnerable to Prototype Pollution in Schema Object",
+      "description": "### Description\nMongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.\n\nAffected versions of this package are vulnerable to Prototype Pollution. The `Schema.path()` function is vulnerable to prototype pollution when setting the `schema` object. This vulnerability allows modification of the Object prototype and could be manipulated into a Denial of Service (DoS) attack.\n\n### Proof of Concept\n```js\n// poc.js\nconst mongoose = require('mongoose');\nconst schema = ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-h8hf-x3f4-xwgp",
+      "publishedAt": "2022-08-27T00:00:54Z",
+      "modifiedAt": "2024-04-22T23:17:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h8hf-x3f4-xwgp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24304"
+        }
+      ],
+      "affectedRange": "< 5.13.15",
+      "fixedVersion": "5.13.15"
+    },
+    {
+      "id": "GHSA-f825-f98c-gj3g",
+      "title": "automattic/mongoose vulnerable to Prototype pollution via Schema.path",
+      "description": "Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. Affected versions of this package are vulnerable to Prototype Pollution. The `Schema.path()` function is vulnerable to prototype pollution when setting the schema object. This vulnerability allows modification of the Object prototype and could be manipulated into a Denial of Service (DoS) attack.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f825-f98c-gj3g",
+      "publishedAt": "2022-07-29T00:00:18Z",
+      "modifiedAt": "2023-11-29T22:06:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f825-f98c-gj3g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-2564"
+        }
+      ],
+      "affectedRange": "< 5.13.15",
+      "fixedVersion": "5.13.15"
+    },
+    {
+      "id": "GHSA-9m93-w8w6-76hh",
+      "title": "Mongoose Prototype Pollution vulnerability",
+      "description": "Prototype Pollution in GitHub repository automattic/mongoose prior to 7.3.3, 6.11.3, and 5.13.20.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9m93-w8w6-76hh",
+      "publishedAt": "2023-07-17T03:30:20Z",
+      "modifiedAt": "2023-11-29T22:05:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9m93-w8w6-76hh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-3696"
+        }
+      ],
+      "affectedRange": "< 5.13.20",
+      "fixedVersion": "5.13.20"
+    }
+  ]
+}

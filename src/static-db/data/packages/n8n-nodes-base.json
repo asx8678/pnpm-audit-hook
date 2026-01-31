@@ -1,0 +1,22 @@
+{
+  "name": "n8n-nodes-base",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-365g-vjw2-grx8",
+      "title": "n8n: Execute Command Node Allows Authenticated Users to Run Arbitrary Commands on Host",
+      "description": "### Impact\n\nThe `Execute Command` node in n8n allows execution of arbitrary commands on the host system where n8n runs. While this functionality is intended for advanced automation and can be useful in certain workflows, it poses a security risk if all users with access to the n8n instance are not fully trusted.\n\nAn attacker—either a malicious user or someone who has compromised a legitimate user account—could exploit this node to run arbitrary commands on the host machine, potentially leading t",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-365g-vjw2-grx8",
+      "publishedAt": "2025-10-09T15:26:59Z",
+      "modifiedAt": "2025-10-09T15:27:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-365g-vjw2-grx8"
+        }
+      ],
+      "affectedRange": "<= 1.113.0"
+    }
+  ]
+}

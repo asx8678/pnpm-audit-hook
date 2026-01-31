@@ -1,0 +1,22 @@
+{
+  "name": "@actual-app/sync-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xvp7-8vm8-xfxx",
+      "title": "Actual Sync-server Gocardless service is logging sensitive data including bearer tokens and account numbers",
+      "description": "### Summary\nThe GoCardless components in Actualbudget in are logging responses to STDOUT in a parsed format using `console.log`and `console.debug` (Which in this version of node is an alias for `console.log`). This is exposing sensitive information in log files including, but not limited to:\n\n- Gocardless bearer tokens.\n- Account IBAN and Bank Account numbers.\n- PII of the account holder.\n- Transaction details (Payee bank information, Recipient account numbers, Transaction IDs)...\n\n### Details\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xvp7-8vm8-xfxx",
+      "publishedAt": "2025-10-20T17:55:59Z",
+      "modifiedAt": "2025-10-20T17:56:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xvp7-8vm8-xfxx"
+        }
+      ],
+      "affectedRange": "<= 25.10.0"
+    }
+  ]
+}

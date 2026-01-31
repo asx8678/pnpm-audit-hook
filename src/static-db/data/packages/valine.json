@@ -1,0 +1,68 @@
+{
+  "name": "valine",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p2c4-gxp4-j3xp",
+      "title": "Denial of service in Valine",
+      "description": "Valine is a fast, simple & powerful comment system. Valine 1.4.14 allows remote attackers to cause a denial of service (application outage) by supplying a ua (aka User-Agent) value that only specifies the product and version.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p2c4-gxp4-j3xp",
+      "publishedAt": "2021-06-21T17:11:25Z",
+      "modifiedAt": "2023-02-01T05:05:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p2c4-gxp4-j3xp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-34801"
+        }
+      ],
+      "affectedRange": "<= 1.4.14"
+    },
+    {
+      "id": "GHSA-mcvg-g9wx-v5vx",
+      "title": "Valine code injection vulnerability",
+      "description": "Valine was discovered to contain a remote code execution (RCE) vulnerability which allows attackers to execute arbitrary code via a crafted POST request.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mcvg-g9wx-v5vx",
+      "publishedAt": "2022-09-20T00:00:20Z",
+      "modifiedAt": "2023-01-31T05:03:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mcvg-g9wx-v5vx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-38545"
+        }
+      ],
+      "affectedRange": "< 1.5.0",
+      "fixedVersion": "1.5.0"
+    },
+    {
+      "id": "GHSA-6xvq-2gj8-4276",
+      "title": "Cross site scripting in valine",
+      "description": "valine is a fast, simple & powerful comment system. Cross Site Scripting (XSS) vulnerability in xCss Valine v1.4.14 via the nick parameter to /classes/Comment. A fix was released in version 1.4.15.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6xvq-2gj8-4276",
+      "publishedAt": "2022-04-06T00:01:29Z",
+      "modifiedAt": "2023-01-27T05:01:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6xvq-2gj8-4276"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28847"
+        }
+      ],
+      "affectedRange": "< 1.4.15",
+      "fixedVersion": "1.4.15"
+    }
+  ]
+}

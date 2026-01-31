@@ -1,0 +1,26 @@
+{
+  "name": "@parcel/reporter-dev-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qm9p-f9j5-w83w",
+      "title": "Parcel has an Origin Validation Error vulnerability",
+      "description": "parcel versions 1.6.1 and above have an Origin Validation Error vulnerability. Malicious websites can send XMLHTTPRequests to the application's development server and read the response to steal source code when developers visit them.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qm9p-f9j5-w83w",
+      "publishedAt": "2025-09-17T21:30:42Z",
+      "modifiedAt": "2026-01-29T02:38:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qm9p-f9j5-w83w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-56648"
+        }
+      ],
+      "affectedRange": ">= 1.6.1, <= 2.16.3"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@google-cloud/firestore",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4g6q-77j7-vvjc",
+      "title": "Logging of the firestore key within nodejs-firestore",
+      "description": "A potential logging of the firestore key via logging within nodejs-firestore exists - Developers who were logging objects through this._settings would be logging the firestore key as well potentially exposing it to anyone with logs read access. We recommend upgrading to version 6.1.0 to avoid this issue",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4g6q-77j7-vvjc",
+      "publishedAt": "2023-12-04T15:31:55Z",
+      "modifiedAt": "2024-11-07T20:14:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4g6q-77j7-vvjc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-6460"
+        }
+      ],
+      "affectedRange": "< 6.1.0",
+      "fixedVersion": "6.1.0"
+    }
+  ]
+}

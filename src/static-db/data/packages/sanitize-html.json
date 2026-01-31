@@ -1,0 +1,111 @@
+{
+  "name": "sanitize-html",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qhxp-v273-g94h",
+      "title": "sanitize-html is vulnerable to XSS through incomprehensive sanitization",
+      "description": "`sanitize-html` prior to version 2.0.0-beta is vulnerable to Cross-site Scripting (XSS). The `sanitizeHtml()` function in `index.js` does not sanitize content when using the custom `transformTags` option, which is intended to convert attribute values into text. As a result, malicious input can be transformed into executable code.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qhxp-v273-g94h",
+      "publishedAt": "2025-09-08T12:30:33Z",
+      "modifiedAt": "2025-09-12T20:01:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qhxp-v273-g94h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-25225"
+        }
+      ],
+      "affectedRange": "< 2.0.0-beta",
+      "fixedVersion": "2.0.0-beta"
+    },
+    {
+      "id": "GHSA-rm97-x556-q36h",
+      "title": "sanitize-html Information Exposure vulnerability",
+      "description": "Versions of the package sanitize-html before 2.12.1 are vulnerable to Information Exposure when used on the backend and with the style attribute allowed, allowing enumeration of files in the system (including project dependencies). An attacker could exploit this vulnerability to gather details about the file system structure and dependencies of the targeted server.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rm97-x556-q36h",
+      "publishedAt": "2024-02-24T06:30:17Z",
+      "modifiedAt": "2024-08-28T21:58:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rm97-x556-q36h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21501"
+        }
+      ],
+      "affectedRange": "< 2.12.1",
+      "fixedVersion": "2.12.1"
+    },
+    {
+      "id": "GHSA-cgfm-xwp7-2cvr",
+      "title": "Sanitize-html Vulnerable To REDoS Attacks",
+      "description": "The package sanitize-html before 2.7.1 are vulnerable to Regular Expression Denial of Service (ReDoS) due to insecure global regular expression replacement logic of HTML comment removal.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cgfm-xwp7-2cvr",
+      "publishedAt": "2022-08-31T00:00:24Z",
+      "modifiedAt": "2024-04-22T23:16:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cgfm-xwp7-2cvr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25887"
+        }
+      ],
+      "affectedRange": "< 2.7.1",
+      "fixedVersion": "2.7.1"
+    },
+    {
+      "id": "GHSA-rjqq-98f6-6j3r",
+      "title": "Improper Input Validation in sanitize-html",
+      "description": "Apostrophe Technologies sanitize-html before 2.3.1 does not properly handle internationalized domain name (IDN) which could allow an attacker to bypass hostname whitelist validation set by the \"allowedIframeHostnames\" option.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rjqq-98f6-6j3r",
+      "publishedAt": "2021-05-06T16:10:05Z",
+      "modifiedAt": "2023-04-21T19:19:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rjqq-98f6-6j3r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-26539"
+        }
+      ],
+      "affectedRange": "< 2.3.1",
+      "fixedVersion": "2.3.1"
+    },
+    {
+      "id": "GHSA-mjxr-4v3x-q3m4",
+      "title": "Improper Input Validation in sanitize-html",
+      "description": "Apostrophe Technologies sanitize-html before 2.3.2 does not properly validate the hostnames set by the \"allowedIframeHostnames\" option when the \"allowIframeRelativeUrls\" is set to true, which allows attackers to bypass hostname whitelist for iframe element, related using an src value that starts with \"/\\\\example.com\".",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mjxr-4v3x-q3m4",
+      "publishedAt": "2021-05-06T16:10:19Z",
+      "modifiedAt": "2023-02-01T05:05:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mjxr-4v3x-q3m4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-26540"
+        }
+      ],
+      "affectedRange": "< 2.3.2",
+      "fixedVersion": "2.3.2"
+    }
+  ]
+}

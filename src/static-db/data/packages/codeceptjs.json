@@ -1,0 +1,27 @@
+{
+  "name": "codeceptjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-34w8-mcwr-vg29",
+      "title": "CodeceptJS's incomprehensive sanitation can lead to Command Injection",
+      "description": "CodeceptJS versions 3.5.0 through 3.7.5-beta.18 contain a command injection vulnerability in the emptyFolder function (lib/utils.js). The execSync command directly concatenates the user-controlled directoryPath parameter without sanitization or escaping, allowing attackers to execute arbitrary commands.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-34w8-mcwr-vg29",
+      "publishedAt": "2025-09-08T18:31:42Z",
+      "modifiedAt": "2025-09-23T20:19:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-34w8-mcwr-vg29"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57285"
+        }
+      ],
+      "affectedRange": ">= 3.5.0, < 3.7.5",
+      "fixedVersion": "3.7.5"
+    }
+  ]
+}

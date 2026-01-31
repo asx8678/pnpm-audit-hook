@@ -1,0 +1,27 @@
+{
+  "name": "@apollo/sandbox",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w87v-7w53-wwxv",
+      "title": "Apollo Embedded Sandbox and Explorer vulnerable to CSRF via window.postMessage origin-validation bypass",
+      "description": "### Impact\n\nA **Cross-Site Request Forgery (CSRF)** vulnerability was identified in Apollo’s **Embedded Sandbox** and **Embedded Explorer**.\n\nThe vulnerability arises from missing origin validation in the client-side code that handles `window.postMessage` events. A malicious website can send forged messages to the embedding page, causing the victim’s browser to execute arbitrary GraphQL queries or mutations against their GraphQL server while authenticated with the victim’s cookies.\n\n#### Who is ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w87v-7w53-wwxv",
+      "publishedAt": "2025-09-26T15:00:05Z",
+      "modifiedAt": "2025-12-27T16:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w87v-7w53-wwxv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59845"
+        }
+      ],
+      "affectedRange": "< 2.7.2",
+      "fixedVersion": "2.7.2"
+    }
+  ]
+}

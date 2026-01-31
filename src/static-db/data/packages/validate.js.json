@@ -1,0 +1,26 @@
+{
+  "name": "validate.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rv73-9c8w-jp4c",
+      "title": "validate.js Regular Expression Denial of Service vulnerability",
+      "description": "Validate.js provides a declarative way of validating javascript objects. Versions 0.13.1 and prior contain one or more regular expressions that are vulnerable to Regular Expression Denial of Service (ReDoS). As of time of publication, no known patches are available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rv73-9c8w-jp4c",
+      "publishedAt": "2024-10-26T21:30:46Z",
+      "modifiedAt": "2024-10-28T14:51:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rv73-9c8w-jp4c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26308"
+        }
+      ],
+      "affectedRange": "<= 0.13.1"
+    }
+  ]
+}

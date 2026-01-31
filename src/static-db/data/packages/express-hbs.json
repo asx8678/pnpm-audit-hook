@@ -1,0 +1,26 @@
+{
+  "name": "express-hbs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rwxp-hwwf-653v",
+      "title": "Insecure template handling in express-hbs",
+      "description": "express-hbs is an Express handlebars template engine. express-hbs mixes pure template data with engine configuration options through the Express render API. More specifically, the layout parameter may trigger file disclosure vulnerabilities in downstream applications. This potential vulnerability is somewhat restricted in that only files with existing extentions (i.e. file.extension) can be included, files that lack an extension will have .hbs appended to them. For complete details refer to the ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rwxp-hwwf-653v",
+      "publishedAt": "2021-05-17T20:58:51Z",
+      "modifiedAt": "2023-04-04T17:30:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rwxp-hwwf-653v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32817"
+        }
+      ],
+      "affectedRange": "<= 2.4.0"
+    }
+  ]
+}

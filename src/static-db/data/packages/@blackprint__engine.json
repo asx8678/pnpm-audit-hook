@@ -1,0 +1,27 @@
+{
+  "name": "@blackprint/engine",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g3q2-vcjq-rgrc",
+      "title": "Blackprint @blackprint/engine Prototype Pollution issue",
+      "description": "A Prototype Pollution issue in Blackprint @blackprint/engine 0.8.12 through 0.9.1 allows an attacker to execute arbitrary code via the `_utils.setDeepProperty` function of `engine.min.js`.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-g3q2-vcjq-rgrc",
+      "publishedAt": "2024-05-20T18:31:22Z",
+      "modifiedAt": "2024-07-05T20:59:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g3q2-vcjq-rgrc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-24294"
+        }
+      ],
+      "affectedRange": ">= 0.8.12, < 0.9.2",
+      "fixedVersion": "0.9.2"
+    }
+  ]
+}

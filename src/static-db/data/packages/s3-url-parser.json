@@ -1,0 +1,26 @@
+{
+  "name": "s3-url-parser",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r4q9-xx5g-j24p",
+      "title": "s3-url-parser vulnerable to Denial of Service via regexes component",
+      "description": "s3-url-parser 1.0.3 is vulnerable to denial of service via the regexes component.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r4q9-xx5g-j24p",
+      "publishedAt": "2024-05-01T21:30:37Z",
+      "modifiedAt": "2024-07-05T20:54:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r4q9-xx5g-j24p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-25355"
+        }
+      ],
+      "affectedRange": "= 1.0.3"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "node-red-dashboard",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2hw7-mxvj-m455",
+      "title": "Path traversal in Node-RED-Dashboard",
+      "description": "In Node-RED-Dashboard before 2.26.2 there is a path traversal vulnerability. It allows ui_base/js/..%2f directory traversal to read files.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2hw7-mxvj-m455",
+      "publishedAt": "2021-01-29T18:13:52Z",
+      "modifiedAt": "2023-02-01T05:05:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2hw7-mxvj-m455"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3223"
+        }
+      ],
+      "affectedRange": "< 2.26.2",
+      "fixedVersion": "2.26.2"
+    },
+    {
+      "id": "GHSA-vrv9-3x3w-ffxw",
+      "title": "node-red-dashboard vulnerable to Cross-site Scripting",
+      "description": "node-red-dashboard contains a cross-site scripting vulnerability. This issue affects some unknown processing of the file `components/ui-component/ui-component-ctrl.js` of the component ui_text Format Handler. The attack may be initiated remotely. The issue is patched in version 3.2.0. ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vrv9-3x3w-ffxw",
+      "publishedAt": "2022-11-01T12:00:36Z",
+      "modifiedAt": "2023-02-01T05:04:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vrv9-3x3w-ffxw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-3783"
+        }
+      ],
+      "affectedRange": "< 3.2.0",
+      "fixedVersion": "3.2.0"
+    }
+  ]
+}

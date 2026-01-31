@@ -1,0 +1,27 @@
+{
+  "name": "codecov",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mh2h-6j8q-x246",
+      "title": "Improper Neutralization of Special Elements in Output Used by a Downstream Component in Codecov",
+      "description": "Codecov npm module before 3.6.2 allows remote attackers to execute arbitrary commands via the \"gcov-args\" argument.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mh2h-6j8q-x246",
+      "publishedAt": "2022-05-24T17:07:19Z",
+      "modifiedAt": "2023-01-27T05:02:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mh2h-6j8q-x246"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7596"
+        }
+      ],
+      "affectedRange": "<= 3.6.1",
+      "fixedVersion": "3.6.2"
+    }
+  ]
+}

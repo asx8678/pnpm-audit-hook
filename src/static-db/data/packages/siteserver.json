@@ -1,0 +1,26 @@
+{
+  "name": "siteserver",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q469-j32f-h7vm",
+      "title": "RCE in SiteServer CMS",
+      "description": "SiteServer CMS  v7.x, which SiteServer UI relies on, allows attackers to execute arbitrary code via a crafted plug-in.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-q469-j32f-h7vm",
+      "publishedAt": "2022-05-04T00:00:26Z",
+      "modifiedAt": "2023-07-11T00:21:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q469-j32f-h7vm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-28118"
+        }
+      ],
+      "affectedRange": ">= 7.0.0"
+    }
+  ]
+}

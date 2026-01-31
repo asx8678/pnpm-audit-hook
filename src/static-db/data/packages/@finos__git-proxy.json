@@ -1,0 +1,90 @@
+{
+  "name": "@finos/git-proxy",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-39p2-8hq9-fwj6",
+      "title": "GitProxy New Branch Approval Exploit",
+      "description": "### Summary\nAn attacker can exploit the way GitProxy handles new branch creation to bypass the approval of prior commits on the parent branch.\n\nBecause it can greatly affect system integrity, we classify this as a High impact vulnerability.\n\n### Details\nGitProxy checks for the `0000000000000000000000000000000000000000` hash to detect new branches. This is used to process the commit accordingly in both `getDiff.ts` and `parsePush.ts`. However, the logic can be exploited as follows:\n\n1. Make a com",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-39p2-8hq9-fwj6",
+      "publishedAt": "2025-07-30T16:40:35Z",
+      "modifiedAt": "2025-08-13T23:21:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-39p2-8hq9-fwj6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54585"
+        }
+      ],
+      "affectedRange": "<= 1.19.1",
+      "fixedVersion": "1.19.2"
+    },
+    {
+      "id": "GHSA-xxmh-rf63-qwjv",
+      "title": "GitProxy Backfile Parsing Exploit",
+      "description": "### Summary\nAn attacker can craft a malicious Git packfile to exploit the PACK signature detection in the `parsePush.ts`. By embedding a misleading PACK signature within commit content and carefully constructing the packet structure, the attacker can trick the parser into treating invalid or unintended data as the packfile. Potentially, this would allow bypassing approval or hiding commits.\n\n### Details\nThe affected version of `parsePush.ts` attempts to locate the Git PACK file by looking for th",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xxmh-rf63-qwjv",
+      "publishedAt": "2025-07-30T16:40:07Z",
+      "modifiedAt": "2025-08-01T07:39:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xxmh-rf63-qwjv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54584"
+        }
+      ],
+      "affectedRange": "<= 1.19.1",
+      "fixedVersion": "1.19.2"
+    },
+    {
+      "id": "GHSA-qr93-8wwf-22g4",
+      "title": "GitProxy Approval Bypass When Pushing Multiple Branches",
+      "description": "### Summary\nThis vulnerability allows a user to push to the remote repository while bypassing policies and explicit approval. Since checks and plugins are skipped, code containing secrets or unwanted changes could be pushed into a repository.\n\nBecause it can allow policy violations to go undetected, we classify this as a High impact vulnerability.\n\n### Details\nThe source of the vulnerability is the push parser action `parsePush.ts`. It reads the first branch and parses it, while ignoring subsequ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qr93-8wwf-22g4",
+      "publishedAt": "2025-07-30T16:34:50Z",
+      "modifiedAt": "2025-08-01T07:39:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qr93-8wwf-22g4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54583"
+        }
+      ],
+      "affectedRange": "<= 1.19.1",
+      "fixedVersion": "1.19.2"
+    },
+    {
+      "id": "GHSA-v98g-8rqx-g93g",
+      "title": "GitProxy Hidden Commits Injection",
+      "description": "### Summary\nAn attacker can inject extra commits into the pack sent to GitHub, commits that aren’t pointed to by any branch. Although these “hidden” commits never show up in the repository’s visible history, GitHub still serves them at their direct commit URLs. This lets an attacker exfiltrate sensitive data without ever leaving a trace in the branch view. We rate this a High‑impact vulnerability because it completely compromises repository confidentiality.\n\n### Details\n\nThe proxy currently trus",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v98g-8rqx-g93g",
+      "publishedAt": "2025-07-30T16:40:40Z",
+      "modifiedAt": "2025-07-31T12:02:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v98g-8rqx-g93g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54586"
+        }
+      ],
+      "affectedRange": "<= 1.19.1",
+      "fixedVersion": "1.19.2"
+    }
+  ]
+}

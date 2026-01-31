@@ -1,0 +1,27 @@
+{
+  "name": "@ensdomains/ens-contracts",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rrxv-q8m4-wch3",
+      "title": ".eth registrar controller can shorten the duration of registered names",
+      "description": "### Description\nAccording to the documentation, controllers are allowed to register new domains and extend the expiry of existing domains, but they cannot change the ownership or reduce the expiration time of existing domains. However, a preliminary analysis suggests that an attacker-controlled controller may be able to reduce the expiration time of existing domains due to an integer overflow in the renew function.\n\nThe vulnerability resides in the following GitHub repository: https://github.com",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rrxv-q8m4-wch3",
+      "publishedAt": "2023-08-01T19:48:31Z",
+      "modifiedAt": "2023-11-12T05:01:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rrxv-q8m4-wch3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-38698"
+        }
+      ],
+      "affectedRange": "<= 0.0.21",
+      "fixedVersion": "0.0.22"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "storybook",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8452-54wp-rmv6",
+      "title": "Storybook manager bundle may expose environment variables during build",
+      "description": "On December 11th, the Storybook team received a responsible disclosure alerting them to a potential vulnerability in certain built and published Storybooks. \n\nThe vulnerability is a bug in how Storybook handles environment variables defined in a `.env` file, which could, in specific circumstances, lead to those variables being unexpectedly bundled into the artifacts created by the `storybook build` command. When a built Storybook is published to the web, the bundle’s source is viewable, thus pot",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8452-54wp-rmv6",
+      "publishedAt": "2025-12-18T18:49:21Z",
+      "modifiedAt": "2026-01-07T14:09:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8452-54wp-rmv6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-68429"
+        }
+      ],
+      "affectedRange": ">= 10.0.0, < 10.1.10",
+      "fixedVersion": "10.1.10"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "@clerk/nextjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9mp4-77wg-rwx9",
+      "title": "@clerk/backend Performs Insufficient Verification of Data Authenticity",
+      "description": "### Impact\n\nApplications that use the `verifyWebhook()` helper to verify incoming Clerk webhooks are susceptible to accepting improperly signed webhook events.\n\n### Patches\n\n* `@clerk/backend`: the helper has been patched as of `2.4.0`\n* `@clerk/astro`: the helper has been patched as of `2.10.2`\n* `@clerk/express`: the helper has been patched as of `1.7.4`\n* `@clerk/fastify`: the helper has been patched as of `2.4.4`\n* `@clerk/nextjs`: the helper has been patched as of `6.23.3`\n* `@clerk/nuxt`: ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9mp4-77wg-rwx9",
+      "publishedAt": "2025-07-09T18:07:40Z",
+      "modifiedAt": "2025-07-09T20:15:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9mp4-77wg-rwx9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-53548"
+        }
+      ],
+      "affectedRange": ">= 6.2.10, < 6.23.3",
+      "fixedVersion": "6.23.3"
+    },
+    {
+      "id": "GHSA-q6w5-jg5q-47vg",
+      "title": "@clerk/nextjs auth() and getAuth() methods vulnerable to insecure direct object reference (IDOR) ",
+      "description": "### Impact\nUnauthorized access or privilege escalation due to a logic flaw in `auth()` in the App Router or `getAuth()` in the Pages Router.\n\n### Affected Versions\nAll applications that that use `@clerk/nextjs` versions in the range of `>= 4.7.0`,`< 4.29.3` in a Next.js backend to authenticate API Routes, App Router, or Route handlers. Specifically, those that call `auth()` in the App Router or `getAuth()` in the Pages Router. Only the `@clerk/nextjs` SDK is impacted. Other SDKs, including other",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-q6w5-jg5q-47vg",
+      "publishedAt": "2024-01-12T20:27:29Z",
+      "modifiedAt": "2024-01-15T12:24:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q6w5-jg5q-47vg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-22206"
+        }
+      ],
+      "affectedRange": ">= 4.7.0, < 4.29.3",
+      "fixedVersion": "4.29.3"
+    }
+  ]
+}

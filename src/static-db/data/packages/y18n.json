@@ -1,0 +1,27 @@
+{
+  "name": "y18n",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c4w7-xm78-47vh",
+      "title": "Prototype Pollution in y18n",
+      "description": "### Overview\n\nThe npm package `y18n` before versions 3.2.2, 4.0.1, and 5.0.5 is vulnerable to Prototype Pollution. \n\n### POC\n\n```js\nconst y18n = require('y18n')();\n\ny18n.setLocale('__proto__');\ny18n.updateLocale({polluted: true});\n\nconsole.log(polluted); // true\n```\n\n### Recommendation\n\nUpgrade to version 3.2.2, 4.0.1, 5.0.5 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-c4w7-xm78-47vh",
+      "publishedAt": "2021-03-29T16:05:12Z",
+      "modifiedAt": "2023-11-29T22:45:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c4w7-xm78-47vh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7774"
+        }
+      ],
+      "affectedRange": ">= 5.0.0, < 5.0.5",
+      "fixedVersion": "5.0.5"
+    }
+  ]
+}

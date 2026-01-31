@@ -1,0 +1,27 @@
+{
+  "name": "snyk-go-plugin",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hpqj-7cj6-hfj8",
+      "title": "Snyk CLI affected by Command Injection vulnerability",
+      "description": "Snyk CLI before 1.996.0 allows arbitrary command execution, affecting Snyk IDE plugins and the snyk npm package. Exploitation could follow from the common practice of viewing untrusted files in the Visual Studio Code editor, for example. The original demonstration was with shell metacharacters in the vendor.json ignore field, affecting snyk-go-plugin before 1.19.1. This affects, for example, the Snyk TeamCity plugin (which does not update automatically) before 20220930.142957.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hpqj-7cj6-hfj8",
+      "publishedAt": "2022-10-04T00:00:22Z",
+      "modifiedAt": "2023-08-17T05:02:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hpqj-7cj6-hfj8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-40764"
+        }
+      ],
+      "affectedRange": "< 1.19.1",
+      "fixedVersion": "1.19.1"
+    }
+  ]
+}

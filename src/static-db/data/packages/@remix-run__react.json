@@ -1,0 +1,48 @@
+{
+  "name": "@remix-run/react",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8v8x-cx79-35w7",
+      "title": "React Router SSR XSS in ScrollRestoration",
+      "description": "A XSS vulnerability exists in in React Router's `<ScrollRestoration>` API in [Framework Mode](https://reactrouter.com/start/modes#framework) when using the `getKey`/`storageKey` props during Server-Side Rendering which could allow arbitrary JavaScript execution during SSR if untrusted content is used to generate the keys.\n\n> [!NOTE]\n> This does not impact applications if developers have [disabled server-side rendering](https://reactrouter.com/how-to/spa) in Framework Mode, or if they are using [",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8v8x-cx79-35w7",
+      "publishedAt": "2026-01-08T20:50:05Z",
+      "modifiedAt": "2026-01-11T14:54:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8v8x-cx79-35w7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-21884"
+        }
+      ],
+      "affectedRange": "< 2.17.3",
+      "fixedVersion": "2.17.3"
+    },
+    {
+      "id": "GHSA-3cgp-3xvw-98x8",
+      "title": "React Router has XSS Vulnerability",
+      "description": "A XSS vulnerability exists in in React Router's `meta()`/`<Meta>` APIs in [Framework Mode](https://reactrouter.com/start/modes#framework) when generating `script:ld+json` tags which could allow arbitrary JavaScript execution during SSR if untrusted content is used to generate the tag.\n\n> [!NOTE]\n> This does not impact applications using [Declarative Mode](https://reactrouter.com/start/modes#declarative) (`<BrowserRouter>`) or [Data Mode](https://reactrouter.com/start/modes#data) (`createBrowserR",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3cgp-3xvw-98x8",
+      "publishedAt": "2026-01-08T20:42:20Z",
+      "modifiedAt": "2026-01-11T14:53:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3cgp-3xvw-98x8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59057"
+        }
+      ],
+      "affectedRange": ">= 1.15.0, <= 2.17.0",
+      "fixedVersion": "2.17.1"
+    }
+  ]
+}

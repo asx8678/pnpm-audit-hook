@@ -1,0 +1,278 @@
+{
+  "name": "joplin",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hff8-hjwv-j9q7",
+      "title": "Remote Code Execution on click of <a> Link in markdown preview",
+      "description": "### Summary\n\nThere is a vulnerability in `Joplin-desktop` that leads to remote code execution (RCE) when a user clicks on an `<a>` link within untrusted notes. The issue arises due to insufficient sanitization of `<a>` tag attributes introduced by the `Mermaid`. This vulnerability allows the execution of untrusted HTML content within the Electron window, which has full access to Node.js APIs, enabling arbitrary shell command execution.\n\n### Details\n\nIn the markdown preview iframe, `Joplin` only ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hff8-hjwv-j9q7",
+      "publishedAt": "2024-11-14T17:38:14Z",
+      "modifiedAt": "2025-01-30T18:05:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hff8-hjwv-j9q7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-49362"
+        }
+      ],
+      "affectedRange": "= 3.0.0",
+      "fixedVersion": "3.1.0"
+    },
+    {
+      "id": "GHSA-mjr5-v9c9-mm7g",
+      "title": "Joplin Remote Code Execution",
+      "description": "Joplin version 2.8.8 allows an external attacker to execute arbitrary commands remotely on any client that opens a link in a malicious markdown file, via Joplin. This is possible because the application does not properly validate the schema/protocol of existing links in the markdown file before passing them to the `shell.openExternal` function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mjr5-v9c9-mm7g",
+      "publishedAt": "2022-10-01T00:00:20Z",
+      "modifiedAt": "2024-04-23T17:43:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mjr5-v9c9-mm7g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-40277"
+        }
+      ],
+      "affectedRange": "<= 2.8.8"
+    },
+    {
+      "id": "GHSA-phj8-2p6x-hq5r",
+      "title": "Joplin Cross Site Scripting Vulnerability via NOSCRIPT tags",
+      "description": "Cross Site Scripting (XSS) vulnerability in Joplin Desktop App before 1.8.5 allows attackers to execute aribrary code due to improper sanitizing of html.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-phj8-2p6x-hq5r",
+      "publishedAt": "2022-06-17T00:01:21Z",
+      "modifiedAt": "2024-04-23T17:43:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-phj8-2p6x-hq5r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-33295"
+        }
+      ],
+      "affectedRange": "< 1.8.5",
+      "fixedVersion": "1.8.5"
+    },
+    {
+      "id": "GHSA-m6mf-hmrh-ph4j",
+      "title": "Joplin Vulnerable to Cross-site Scripting in Note Content ",
+      "description": "Joplin version prior to 1.0.90 contains a Cross-site Scripting (XSS) evolving into code execution due to enabled nodeIntegration for that particular BrowserWindow instance where XSS was identified from vulnerability in Note content field - information on the fix can be found here https://github.com/laurent22/joplin/commit/494e235e18659574f836f84fcf9f4d4fcdcfcf89 that can result in executing unauthorized code within the rights in which the application is running. This attack appear to be exploita",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m6mf-hmrh-ph4j",
+      "publishedAt": "2022-05-14T03:06:11Z",
+      "modifiedAt": "2024-04-23T17:42:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m6mf-hmrh-ph4j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-1000534"
+        }
+      ],
+      "affectedRange": "< 1.0.90",
+      "fixedVersion": "1.0.90"
+    },
+    {
+      "id": "GHSA-8478-53pv-jxvm",
+      "title": "Joplin Vulnerable to Code Injection",
+      "description": "Joplin prior to version 2.7.1 allows remote attackers to execute system commands through malicious code in user search results.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8478-53pv-jxvm",
+      "publishedAt": "2022-02-09T00:00:29Z",
+      "modifiedAt": "2024-04-23T17:42:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8478-53pv-jxvm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-23340"
+        }
+      ],
+      "affectedRange": "< 2.7.1",
+      "fixedVersion": "2.7.1"
+    },
+    {
+      "id": "GHSA-mrmf-755g-w2vw",
+      "title": "Joplin vulnerable to Cross-site Scripting in notes",
+      "description": "Joplin before 2.0.9 allows Cross-site Scripting via button and form in the note body.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mrmf-755g-w2vw",
+      "publishedAt": "2022-05-24T19:09:53Z",
+      "modifiedAt": "2024-04-23T17:41:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mrmf-755g-w2vw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-37916"
+        }
+      ],
+      "affectedRange": "< 2.0.9",
+      "fixedVersion": "2.0.9"
+    },
+    {
+      "id": "GHSA-4jjv-p8x9-rrf7",
+      "title": "Joplin Cross-site Scripting vulnerability",
+      "description": "Joplin before 2.11.5 allows XSS via an AREA element of an image map.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4jjv-p8x9-rrf7",
+      "publishedAt": "2023-06-30T15:30:22Z",
+      "modifiedAt": "2023-11-10T05:02:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4jjv-p8x9-rrf7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-37299"
+        }
+      ],
+      "affectedRange": "< 2.11.5",
+      "fixedVersion": "2.11.5"
+    },
+    {
+      "id": "GHSA-7grw-xfx6-qhx6",
+      "title": "Joplin Cross-site Scripting vulnerability",
+      "description": "Joplin before 2.11.5 allows XSS via a USE element in an SVG document.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7grw-xfx6-qhx6",
+      "publishedAt": "2023-06-30T15:30:22Z",
+      "modifiedAt": "2023-11-10T05:02:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7grw-xfx6-qhx6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-37298"
+        }
+      ],
+      "affectedRange": "< 2.11.5",
+      "fixedVersion": "2.11.5"
+    },
+    {
+      "id": "GHSA-h6c2-879r-jffh",
+      "title": "Joplin Desktop App vulnerable to Cross-site Scripting",
+      "description": "Cross Site Scripting vulnerability in Joplin Desktop App before v2.9.17 allows attacker to execute arbitrary code via improper santization.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h6c2-879r-jffh",
+      "publishedAt": "2023-01-31T18:30:22Z",
+      "modifiedAt": "2023-02-08T21:56:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h6c2-879r-jffh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-45598"
+        }
+      ],
+      "affectedRange": "< 2.9.17",
+      "fixedVersion": "2.9.17"
+    },
+    {
+      "id": "GHSA-gjwp-7v3g-99pj",
+      "title": "Cross-site Request Forgery (CSRF) in joplin",
+      "description": "The package joplin before 2.3.2 are vulnerable to Cross-site Request Forgery (CSRF) due to missing CSRF checks in various forms.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gjwp-7v3g-99pj",
+      "publishedAt": "2021-09-02T17:09:05Z",
+      "modifiedAt": "2023-02-01T05:06:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gjwp-7v3g-99pj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23431"
+        }
+      ],
+      "affectedRange": "< 2.3.2",
+      "fixedVersion": "2.3.2"
+    },
+    {
+      "id": "GHSA-q26w-wjj2-22vv",
+      "title": "Cross-site scripting in Joplin",
+      "description": "Joplin allows XSS via a LINK element in a note.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q26w-wjj2-22vv",
+      "publishedAt": "2021-05-10T18:47:36Z",
+      "modifiedAt": "2023-02-01T05:05:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q26w-wjj2-22vv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28249"
+        }
+      ],
+      "affectedRange": "< 1.3.11",
+      "fixedVersion": "1.3.11"
+    },
+    {
+      "id": "GHSA-ww2v-frv5-pj5x",
+      "title": "Joplin is vulnerable to arbitrary code execution",
+      "description": "Joplin v2.8.8 allows attackers to execute arbitrary commands via a crafted payload injected into the Node titles.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-ww2v-frv5-pj5x",
+      "publishedAt": "2022-07-26T00:00:28Z",
+      "modifiedAt": "2023-01-30T05:01:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ww2v-frv5-pj5x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-35131"
+        }
+      ],
+      "affectedRange": "< 2.9.1",
+      "fixedVersion": "2.9.1"
+    },
+    {
+      "id": "GHSA-cgc7-mwp4-3ccx",
+      "title": "Cross-site Scripting in Joplin",
+      "description": "An XSS issue in Joplin desktop allows arbitrary code execution via a malicious HTML embed tag.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cgc7-mwp4-3ccx",
+      "publishedAt": "2021-05-07T16:29:05Z",
+      "modifiedAt": "2023-01-29T05:02:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cgc7-mwp4-3ccx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15930"
+        }
+      ],
+      "affectedRange": ">= 1.0.190, < 1.1.7",
+      "fixedVersion": "1.1.7"
+    }
+  ]
+}

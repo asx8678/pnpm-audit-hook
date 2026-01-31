@@ -1,0 +1,26 @@
+{
+  "name": "mootools-more",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fw45-938v-p26j",
+      "title": "mootools-more vulnerable to prototype pollution",
+      "description": "Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution') in mootools-more 1.6.0 allows a malicious user to inject properties into Object.prototype.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fw45-938v-p26j",
+      "publishedAt": "2022-05-24T22:01:34Z",
+      "modifiedAt": "2024-04-22T23:15:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fw45-938v-p26j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-20088"
+        }
+      ],
+      "affectedRange": "<= 1.6.0"
+    }
+  ]
+}

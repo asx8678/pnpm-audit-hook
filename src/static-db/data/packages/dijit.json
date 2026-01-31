@@ -1,0 +1,27 @@
+{
+  "name": "dijit",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wp32-wq34-2rqh",
+      "title": "dijit editor cross-site scripting vulnerability",
+      "description": "dijit.Editor in Dojo Toolkit 1.13 allows XSS via the onload attribute of an SVG element.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wp32-wq34-2rqh",
+      "publishedAt": "2022-05-14T03:44:34Z",
+      "modifiedAt": "2023-08-28T23:09:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wp32-wq34-2rqh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-6561"
+        }
+      ],
+      "affectedRange": "< 1.13.1",
+      "fixedVersion": "1.13.1"
+    }
+  ]
+}

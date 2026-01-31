@@ -1,0 +1,26 @@
+{
+  "name": "jsen",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vm64-cfqx-3698",
+      "title": "Code Injection in jsen",
+      "description": "This affects all versions of package jsen. If an attacker can control the schema file, it could run arbitrary JavaScript code on the victim machine. In the module description and README file there is no mention about the risks of untrusted schema files, so it is assumed that this is applicable. In particular the required field of the schema is not properly sanitized. The resulting string that is build based on the schema definition is then passed to a `Function.apply();`, leading to an Arbitrary",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vm64-cfqx-3698",
+      "publishedAt": "2022-02-10T20:18:37Z",
+      "modifiedAt": "2023-09-11T23:08:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vm64-cfqx-3698"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7777"
+        }
+      ],
+      "affectedRange": "<= 0.6.6"
+    }
+  ]
+}

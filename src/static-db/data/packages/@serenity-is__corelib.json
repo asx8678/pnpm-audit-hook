@@ -1,0 +1,27 @@
+{
+  "name": "@serenity-is/corelib",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5jjq-8cvj-v6m9",
+      "title": "Cross-site Scripting in Serenity",
+      "description": "Serenity before 6.8.0 allows XSS via an email link because LoginPage.tsx permits return URLs that do not begin with a / character.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5jjq-8cvj-v6m9",
+      "publishedAt": "2024-02-19T06:30:33Z",
+      "modifiedAt": "2025-02-13T19:14:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5jjq-8cvj-v6m9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-26318"
+        }
+      ],
+      "affectedRange": "< 6.8.0",
+      "fixedVersion": "6.8.0"
+    }
+  ]
+}

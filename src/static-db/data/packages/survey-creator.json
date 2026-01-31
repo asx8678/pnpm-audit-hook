@@ -1,0 +1,27 @@
+{
+  "name": "survey-creator",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xgj4-2hrf-j4xg",
+      "title": "Cross-site scripting in Survey Creator",
+      "description": "Cross Site Scripting (XSS) vulnerability in SurveyJS Survey Creator v.1.9.132 and before, allows attackers to execute arbitrary code and obtain sensitive information via the title parameter in form.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xgj4-2hrf-j4xg",
+      "publishedAt": "2024-03-21T06:33:04Z",
+      "modifiedAt": "2024-03-21T18:58:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xgj4-2hrf-j4xg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-28635"
+        }
+      ],
+      "affectedRange": "< 1.9.133",
+      "fixedVersion": "1.9.133"
+    }
+  ]
+}

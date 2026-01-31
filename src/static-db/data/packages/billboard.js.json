@@ -1,0 +1,48 @@
+{
+  "name": "billboard.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rpc5-pm7q-hjmp",
+      "title": "billboard.js is vulnerable to XSS during chart option binding",
+      "description": "billboard.js before 3.18.0 allows an attacker to execute malicious JavaScript due to improper sanitization during chart option binding.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rpc5-pm7q-hjmp",
+      "publishedAt": "2026-01-28T03:30:30Z",
+      "modifiedAt": "2026-01-28T22:07:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rpc5-pm7q-hjmp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-1513"
+        }
+      ],
+      "affectedRange": "< 3.18.0",
+      "fixedVersion": "3.18.0"
+    },
+    {
+      "id": "GHSA-65p9-j6pg-72hj",
+      "title": "billboard.js allows prototype pollution via the function generate",
+      "description": "billboard.js before 3.15.1 was discovered to contain a prototype pollution via the function generate, which could allow attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-65p9-j6pg-72hj",
+      "publishedAt": "2025-06-04T03:30:27Z",
+      "modifiedAt": "2025-07-29T21:42:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-65p9-j6pg-72hj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-49223"
+        }
+      ],
+      "affectedRange": "< 3.15.1",
+      "fixedVersion": "3.15.1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@hoppscotch/cli",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qmmm-73r2-f8xr",
+      "title": "@hoppscotch/cli affected by Sandbox Escape in @hoppscotch/js-sandbox leads to RCE",
+      "description": "### Observations\n\nThe Hoppscotch desktop app takes multiple precautions to be secure against arbitrary JavaScript and system command execution. It does not render user-controlled HTML or Markdown, uses Tauri instead of Electron, and sandboxes pre-request scripts with a simple yet secure implementation using web workers.\n\nUnfortunately, web workers are not available in a pure Node.js application like Hoppscotch CLI. That is why the [@hoppscotch/js-sandbox](https://github.com/hoppscotch/hoppscotch",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qmmm-73r2-f8xr",
+      "publishedAt": "2024-04-22T18:38:11Z",
+      "modifiedAt": "2025-06-10T15:33:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qmmm-73r2-f8xr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-34347"
+        }
+      ],
+      "affectedRange": ">= 0.5.0, < 0.8.0",
+      "fixedVersion": "0.8.0"
+    }
+  ]
+}

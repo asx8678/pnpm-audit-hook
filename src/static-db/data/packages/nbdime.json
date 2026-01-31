@@ -1,0 +1,27 @@
+{
+  "name": "nbdime",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p6rw-44q7-3fw4",
+      "title": "Stored XSS in Jupyter nbdime",
+      "description": "### Impact\n\nImproper handling of user controlled input caused a stored cross-site scripting (XSS) vulnerability. All previous versions of nbdime are affected.\n\n### Patches\n\nSecurity patches will be released for each of the major versions of the nbdime packages since version 1.x of the nbdime python package.\n\n#### Python\n- nbdime 1.x: Patched in v. 1.1.1\n- nbdime 2.x: Patched in v. 2.1.1\n- nbdime 3.x: Patched in v. 3.1.1\n\n#### npm\n- nbdime 6.x version: Patched in 6.1.2\n- nbdime 5.x version: Patch",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p6rw-44q7-3fw4",
+      "publishedAt": "2021-11-08T18:09:27Z",
+      "modifiedAt": "2024-10-01T19:31:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p6rw-44q7-3fw4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-41134"
+        }
+      ],
+      "affectedRange": ">= 6.0.0, < 6.1.2",
+      "fixedVersion": "6.1.2"
+    }
+  ]
+}

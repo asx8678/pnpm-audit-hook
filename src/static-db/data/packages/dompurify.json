@@ -1,0 +1,111 @@
+{
+  "name": "dompurify",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gx9m-whjm-85jf",
+      "title": "DOMpurify has a nesting-based mXSS",
+      "description": "DOMpurify was vulnerable to nesting-based mXSS \n\nfixed by [0ef5e537](https://github.com/cure53/DOMPurify/tree/0ef5e537a514f904b6aa1d7ad9e749e365d7185f) (2.x) and\n[merge 943](https://github.com/cure53/DOMPurify/pull/943)\n\nBackporter should be aware of GHSA-mmhx-hmjr-r674 (CVE-2024-45801) when cherry-picking\n\nPOC is avaible under [test](https://github.com/cure53/DOMPurify/blob/0ef5e537a514f904b6aa1d7ad9e749e365d7185f/test/test-suite.js#L2098)",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gx9m-whjm-85jf",
+      "publishedAt": "2024-10-11T17:27:29Z",
+      "modifiedAt": "2025-11-03T22:48:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gx9m-whjm-85jf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-47875"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.1.3",
+      "fixedVersion": "3.1.3"
+    },
+    {
+      "id": "GHSA-p3vf-v8qc-cwcr",
+      "title": "DOMPurify vulnerable to tampering by prototype polution",
+      "description": "dompurify was vulnerable to prototype pollution\n\nFixed by https://github.com/cure53/DOMPurify/commit/d1dd0374caef2b4c56c3bd09fe1988c3479166dc",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-p3vf-v8qc-cwcr",
+      "publishedAt": "2024-10-31T14:23:34Z",
+      "modifiedAt": "2025-11-03T21:31:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p3vf-v8qc-cwcr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-48910"
+        }
+      ],
+      "affectedRange": "< 2.4.2",
+      "fixedVersion": "2.4.2"
+    },
+    {
+      "id": "GHSA-vhxf-7vqr-mrjg",
+      "title": "DOMPurify allows Cross-site Scripting (XSS)",
+      "description": "DOMPurify before 3.2.4 has an incorrect template literal regular expression when SAFE_FOR_TEMPLATES is set to true, sometimes leading to mutation cross-site scripting (mXSS).",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vhxf-7vqr-mrjg",
+      "publishedAt": "2025-02-14T09:31:22Z",
+      "modifiedAt": "2025-06-30T14:24:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vhxf-7vqr-mrjg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-26791"
+        }
+      ],
+      "affectedRange": "< 3.2.4",
+      "fixedVersion": "3.2.4"
+    },
+    {
+      "id": "GHSA-mmhx-hmjr-r674",
+      "title": "DOMPurify allows tampering by prototype pollution",
+      "description": "It has been discovered that malicious HTML using special nesting techniques can bypass the depth checking added to DOMPurify in recent releases. It was also possible to use Prototype Pollution to weaken the depth check.\n\nThis renders dompurify unable to avoid XSS attack.\n\nFixed by https://github.com/cure53/DOMPurify/commit/1e520262bf4c66b5efda49e2316d6d1246ca7b21 (3.x branch) and https://github.com/cure53/DOMPurify/commit/26e1d69ca7f769f5c558619d644d90dd8bf26ebc (2.x branch).",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mmhx-hmjr-r674",
+      "publishedAt": "2024-09-16T20:34:26Z",
+      "modifiedAt": "2024-09-16T22:37:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mmhx-hmjr-r674"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-45801"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.1.3",
+      "fixedVersion": "3.1.3"
+    },
+    {
+      "id": "GHSA-8hgg-xxm5-3873",
+      "title": "DOMPurify Open Redirect vulnerability",
+      "description": "DOMPurify before 1.0.11 allows reverse tabnabbing in demos/hooks-target-blank-demo.html because links lack a 'rel=\"noopener noreferrer\"' attribute.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8hgg-xxm5-3873",
+      "publishedAt": "2023-11-14T21:30:51Z",
+      "modifiedAt": "2023-11-15T20:11:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8hgg-xxm5-3873"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-25155"
+        }
+      ],
+      "affectedRange": "< 1.0.11",
+      "fixedVersion": "1.0.11"
+    }
+  ]
+}

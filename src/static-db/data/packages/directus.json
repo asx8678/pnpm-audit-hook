@@ -1,0 +1,954 @@
+{
+  "name": "directus",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gggm-66rh-pp98",
+      "title": "Incorrect Permission Checking for GraphQL Subscriptions",
+      "description": "### Summary\n\nCWE-200: Exposure of Sensitive Information to an Unauthorized Actor\nAccess to information you should not have access to when the permissions rely on `$CURRENT_USER` for filtering.\n\n### Details\n\nThe permission filters (i.e. `user_created IS $CURRENT_USER`) are not properly checked when using GraphQL subscription resulting in unauthorized users getting event on their subscription which they should not be receiving according to the permissions.\nThis can be any collection but out-of-the",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gggm-66rh-pp98",
+      "publishedAt": "2023-07-25T23:31:10Z",
+      "modifiedAt": "2026-01-16T21:51:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gggm-66rh-pp98"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-38503"
+        }
+      ],
+      "affectedRange": ">= 10.3.0, < 10.5.0",
+      "fixedVersion": "10.5.0"
+    },
+    {
+      "id": "GHSA-3573-4c68-g8cc",
+      "title": "Directus has open redirect in SAML",
+      "description": "## Security Advisory: Open Redirect in Directus SAML Authentication\n\n### Summary\n\nAn open redirect vulnerability exists in the Directus SAML authentication callback endpoint. The `RelayState` parameter is used in redirects without proper validation against an allowlist of permitted domains.\n\n### Vulnerability Description\n\nDuring SAML authentication, the `RelayState` parameter is intended to preserve the user's original destination. However, while the login initiation flow validates redirect targ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3573-4c68-g8cc",
+      "publishedAt": "2026-01-06T19:22:38Z",
+      "modifiedAt": "2026-01-08T21:19:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3573-4c68-g8cc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22032"
+        }
+      ],
+      "affectedRange": "< 11.14.0",
+      "fixedVersion": "11.14.0"
+    },
+    {
+      "id": "GHSA-r6wx-627v-gh2f",
+      "title": "Directus has an HTML Injection in Comment",
+      "description": "### Summary\nThe Comment feature has implemented a filter to prevent users from adding restricted characters, such as HTML tags. However, this filter operates on the client-side, which can be bypassed, making the application vulnerable to HTML Injection.\n\n### Details\nThe Comment feature implements a character filter on the client-side, this can be bypassed by directly sending a request to the endpoint.\n\nExample Request:\n\n```\nPATCH /activity/comment/3 HTTP/2\nHost: directus.local\n\n{\n  \"comment\": \"<",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-r6wx-627v-gh2f",
+      "publishedAt": "2024-12-05T22:37:32Z",
+      "modifiedAt": "2025-11-19T17:50:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r6wx-627v-gh2f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-54128"
+        }
+      ],
+      "affectedRange": ">= 11.0.0-rc.1, < 11.2.2",
+      "fixedVersion": "11.2.2"
+    },
+    {
+      "id": "GHSA-cff8-x7jv-4fm8",
+      "title": "Session is cached for OpenID and OAuth2 if `redirect` is not used",
+      "description": "### Summary\nUnauthenticated user can access credentials of last authenticated user via OpenID or OAuth2 where the authentication URL did not include `redirect` query string.\n\nFor example:\n- Project is configured with OpenID or OAuth2\n- Project is configured with cache enabled\n- User tries to login via SSO link, but without `redirect` query string\n- After successful login, credentials are cached\n- If an unauthenticated user tries to login via SSO link, it will return the credentials of the other ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cff8-x7jv-4fm8",
+      "publishedAt": "2024-09-10T19:43:00Z",
+      "modifiedAt": "2025-11-17T21:35:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cff8-x7jv-4fm8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-45596"
+        }
+      ],
+      "affectedRange": ">= 11.0.0-rc.1, < 11.1.0",
+      "fixedVersion": "11.1.0"
+    },
+    {
+      "id": "GHSA-cph6-524f-3hgr",
+      "title": "Directus Vulnerable to Information Leakage in Existing Collections",
+      "description": "### Summary:\n\nAn observable difference in error messaging was found in the Directus REST API. The `/items/{collection}` API returns different error messages for these two cases:\n1. A user tries to access an existing collection which they are not authorized to access.\n2. A user tries to access a non-existing collection.\n\nThe two differing error messages leak the existence of collections to users which are not authorized to access these collections.\n\n### Details:\n\nThe following response returns an",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cph6-524f-3hgr",
+      "publishedAt": "2025-11-13T23:07:31Z",
+      "modifiedAt": "2025-11-15T03:15:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cph6-524f-3hgr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64749"
+        }
+      ],
+      "affectedRange": "< 11.13.0",
+      "fixedVersion": "11.13.0"
+    },
+    {
+      "id": "GHSA-8jpw-gpr4-8cmh",
+      "title": "Directus's conceal fields are searchable if read permissions enabled",
+      "description": "## Summary\n\nA vulnerability allows authenticated users to search concealed/sensitive fields when they have read permissions. While actual values remain masked (`****`), successful matches can be detected through returned records, enabling enumeration attacks on sensitive data.\n\n## Details\n\nThe system permits search operations on concealed fields in the `directus_users` collection, including `token`, `tfa_secret`, `password`. Matching records are returned with masked values, but their presence co",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8jpw-gpr4-8cmh",
+      "publishedAt": "2025-11-13T23:06:41Z",
+      "modifiedAt": "2025-11-15T03:15:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8jpw-gpr4-8cmh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64748"
+        }
+      ],
+      "affectedRange": "< 11.13.0",
+      "fixedVersion": "11.13.0"
+    },
+    {
+      "id": "GHSA-vv2v-pw69-8crf",
+      "title": "Directus is Vulnerable to Stored Cross-site Scripting",
+      "description": "### Summary\n\nA stored cross-site scripting (XSS) vulnerability exists that allows users with `upload files` and `edit item` permissions to inject malicious JavaScript through the Block Editor interface. Attackers can bypass Content Security Policy (CSP) restrictions by combining file uploads with iframe srcdoc attributes, resulting in persistent XSS execution.\n\n### Details\n\nThe vulnerability arises from insufficient sanitization in the Block Editor interface when processing JSON content containi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vv2v-pw69-8crf",
+      "publishedAt": "2025-11-14T21:45:36Z",
+      "modifiedAt": "2025-11-14T21:45:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vv2v-pw69-8crf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64747"
+        }
+      ],
+      "affectedRange": "< 11.13.0",
+      "fixedVersion": "11.13.0"
+    },
+    {
+      "id": "GHSA-9x5g-62gj-wqf2",
+      "title": "Directus has Improper Permission Handling on Deleted Fields",
+      "description": "### Summary\nDirectus does not properly clean up field-level permissions when a field is deleted. If a new field with the same name is created later, the system automatically re-applies the old permissions, which can lead to unauthorized access.\n\n### Details\nWhen a field is removed from a collection, its reference in the permissions table remains intact. This stale reference creates a security gap: if another field is later created using the same name, it inherits the outdated permission entry.  ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9x5g-62gj-wqf2",
+      "publishedAt": "2025-11-14T21:45:15Z",
+      "modifiedAt": "2025-11-14T21:45:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9x5g-62gj-wqf2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64746"
+        }
+      ],
+      "affectedRange": "< 11.13.0",
+      "fixedVersion": "11.13.0"
+    },
+    {
+      "id": "GHSA-hxgm-ghmv-xjjm",
+      "title": "Directus incorrectly handles `_in` filter",
+      "description": "### Summary\nDirectus >=9.23.0, <=v10.5.3 improperly handles _in, _nin operators.\nIt evaluates empty arrays as valid so expressions like {\"role\": {\"_in\": $CURRENT_USER.some_field}} would evaluate to true allowing the request to pass.\n\n### Details\nThis results in Broken Access Control because the rule fails to do what it was intended to do: Pass rule if **field** matches any of the **values**. ref: https://docs.directus.io/reference/filter-rules.html#filter-operators\nIn my example this would trans",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hxgm-ghmv-xjjm",
+      "publishedAt": "2024-07-08T18:37:54Z",
+      "modifiedAt": "2025-09-04T15:33:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hxgm-ghmv-xjjm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-39701"
+        }
+      ],
+      "affectedRange": ">= 9.23.0, <= 10.5.3",
+      "fixedVersion": "10.6.0"
+    },
+    {
+      "id": "GHSA-mv33-9f6j-pfmc",
+      "title": "Directus allows unauthenticated file upload and file modification due to lacking input sanitization",
+      "description": "## Summary\n\nA vulnerability exists in the file update mechanism which allows an unauthenticated actor to modify existing files with arbitrary contents (without changes being applied to the files' database-resident metadata) and / or upload new files, with arbitrary content and extensions, which won't show up in the Directus UI.\n\n## Details\n\nDirectus exposes the CRUD operations for uploading or handling files under the `/files` route.\n\nThe endpoint handler is responsible for updating an existing ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mv33-9f6j-pfmc",
+      "publishedAt": "2025-08-20T19:08:20Z",
+      "modifiedAt": "2025-08-20T19:08:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mv33-9f6j-pfmc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-55746"
+        }
+      ],
+      "affectedRange": ">= 10.8.0, < 11.9.3",
+      "fixedVersion": "11.9.3"
+    },
+    {
+      "id": "GHSA-7cvf-pxgp-42fc",
+      "title": "Directus' insufficient permission checks can enable unauthenticated users to manually trigger Flows",
+      "description": "### Summary\n\nDirectus Flows with a manual trigger are not validating whether the user triggering the Flow has permissions to the items provided as payload to the Flow. Depending on what the Flow is set up to do this can lead to the Flow executing potential tasks on the attacker's behalf without authenticating.\n\n### Impact\n\nBad actors could execute the manual trigger Flows without authentication, or access rights to the said collection(s) or item(s).\n\nUsers with manual trigger Flows configured ar",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7cvf-pxgp-42fc",
+      "publishedAt": "2025-07-15T15:36:59Z",
+      "modifiedAt": "2025-07-15T15:37:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7cvf-pxgp-42fc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-53889"
+        }
+      ],
+      "affectedRange": "< 11.9.0",
+      "fixedVersion": "11.9.0"
+    },
+    {
+      "id": "GHSA-rmjh-cf9q-pv7q",
+      "title": "Directus' exact version number is exposed by the OpenAPI Spec",
+      "description": "### Summary\n\nThe exact Directus version number is incorrectly being used as OpenAPI Spec version this means that it is being exposed by the `/server/specs/oas` endpoint without authentication. \n\n### Impact\n\nWith the exact version information a malicious attacker can look for known vulnerabilities in Directus core or any of its shipped dependencies in that specific running version.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rmjh-cf9q-pv7q",
+      "publishedAt": "2025-07-15T15:29:38Z",
+      "modifiedAt": "2025-07-15T15:29:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rmjh-cf9q-pv7q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-53887"
+        }
+      ],
+      "affectedRange": "< 11.9.0",
+      "fixedVersion": "11.9.0"
+    },
+    {
+      "id": "GHSA-f24x-rm6g-3w5v",
+      "title": "Directus tokens are not redacted in flow logs, exposing session credentials to all admin",
+      "description": "### Summary\n\nWhen using Directus Flows with the WebHook trigger, all incoming request details are logged including security sensitive data like access and refresh tokens in cookies.\n\n### Impact\n\nMalicious admins with access to the logs can hijack the user sessions within the token expiration time of them triggering the Flow.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f24x-rm6g-3w5v",
+      "publishedAt": "2025-07-15T15:28:26Z",
+      "modifiedAt": "2025-07-15T15:28:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f24x-rm6g-3w5v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-53886"
+        }
+      ],
+      "affectedRange": "< 11.9.0",
+      "fixedVersion": "11.9.0"
+    },
+    {
+      "id": "GHSA-x3vm-88hf-gpxp",
+      "title": "Directus is vulnerable to sensitive data exposure as user data is not being redacted when logged",
+      "description": "### Summary\n\nWhen using Directus Flows to handle CRUD events for users it is possible to log the incoming data to console using the \"Log to Console\" operation and a template string. \n\n### Impact\n\nMalicious admins can log sensitive data from other users when they are created or updated.\n\n### Workarounds\nAvoid logging sensitive data to the console outside the context of development.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x3vm-88hf-gpxp",
+      "publishedAt": "2025-07-15T15:18:06Z",
+      "modifiedAt": "2025-07-15T15:18:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x3vm-88hf-gpxp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-53885"
+        }
+      ],
+      "affectedRange": ">= 9.0.0, < 11.9.0",
+      "fixedVersion": "11.9.0"
+    },
+    {
+      "id": "GHSA-56p6-qw3c-fq2g",
+      "title": "Suspended Directus user can continue to use session token to access API",
+      "description": "### Summary\nSince the user status is not checked when verifying a session token a suspended user can use the token generated in session auth mode to access the API despite their status.\n\n### Details\nThere is a check missing in `verifySessionJWT` to verify that a user is actually still active and allowed to access the API. Right now one can extract the session token obtained by, e.g. login in to the app while still active and then, after the user has been suspended continue to use that token unti",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-56p6-qw3c-fq2g",
+      "publishedAt": "2025-03-26T18:30:43Z",
+      "modifiedAt": "2025-06-09T18:12:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-56p6-qw3c-fq2g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-30351"
+        }
+      ],
+      "affectedRange": ">= 10.10.0, < 11.5.0",
+      "fixedVersion": "11.5.0"
+    },
+    {
+      "id": "GHSA-g27j-74fp-xfpr",
+      "title": "Insecure default value for CORS configuration",
+      "description": "### Impact\n\nThe default value for the `CORS_ENABLED` and `CORS_ORIGIN` configuration was set to be very permissive by default. This could lead to unauthorized access in uncontrolled environments when the configuration hasn't been changed.\n\n### Patches\n\nThe default values for CORS have been changed in https://github.com/directus/directus/pull/12022 which is released under 9.7.0\n\n### Workarounds\n\nConfigure the CORS environment variables to match your project's usage, rather than leaving them at th",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-g27j-74fp-xfpr",
+      "publishedAt": "2022-04-05T18:31:22Z",
+      "modifiedAt": "2025-04-14T22:07:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g27j-74fp-xfpr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-26969"
+        }
+      ],
+      "affectedRange": "< 9.7.0",
+      "fixedVersion": "9.7.0"
+    },
+    {
+      "id": "GHSA-j8xj-7jff-46mx",
+      "title": "Directus's S3 assets become unavailable after a burst of malformed transformations",
+      "description": "### Summary\nWhen making many malformed transformation requests at once, at some point, all assets are being served as 403.\n\n### Details\nWhen I was investigating this issue, I have found that after a burst of malformed asset transformation requests, the amount of `sockets` held on [Agent on NodeHttpHandler](https://github.com/smithy-lang/smithy-typescript/blob/main/packages/node-http-handler/src/node-http-handler.ts#L189) was always equal to [`STORAGE_CLOUD_MAX_SOCKETS`](https://github.com/direct",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j8xj-7jff-46mx",
+      "publishedAt": "2025-03-26T17:19:28Z",
+      "modifiedAt": "2025-03-27T03:42:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j8xj-7jff-46mx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-30225"
+        }
+      ],
+      "affectedRange": ">= 9.22.0, < 11.5.0",
+      "fixedVersion": "11.5.0"
+    },
+    {
+      "id": "GHSA-rv78-qqrq-73m5",
+      "title": "Directus's S3 assets become unavailable after a burst of HEAD requests",
+      "description": "### Summary\nThere's some tools that use Directus to sync content and assets.\nSome of those tools use HEAD method, like Shopify, to check the existence of files.\nAlthough, when making many HEAD requests at once, at some point, all assets are being served as 403.\n\n### Details\nWhen I was investigating this issue, I have found that after the burst of HEAD requests, the amount of `sockets` held on [Agent on NodeHttpHandler](https://github.com/smithy-lang/smithy-typescript/blob/main/packages/node-http",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rv78-qqrq-73m5",
+      "publishedAt": "2025-03-26T17:20:05Z",
+      "modifiedAt": "2025-03-27T03:42:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rv78-qqrq-73m5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-30350"
+        }
+      ],
+      "affectedRange": ">= 9.22, < 11.5.0",
+      "fixedVersion": "11.5.0"
+    },
+    {
+      "id": "GHSA-fm3h-p9wm-h74h",
+      "title": "Directus's webhook trigger flows can leak sensitive data",
+      "description": "### Describe the Bug\n\n In Directus, when a **Flow** with the \"_Webhook_\" trigger and the \"_Data of Last Operation_\" response body encounters a ValidationError thrown by a failed condition operation, the API response includes sensitive data. This includes environmental variables, sensitive API keys, user accountability information, and operational data.\n\nThis issue poses a significant security risk, as any unintended exposure of this data could lead to potential misuse.\n\n![Image](https://github.c",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fm3h-p9wm-h74h",
+      "publishedAt": "2025-03-26T20:08:58Z",
+      "modifiedAt": "2025-03-26T20:10:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fm3h-p9wm-h74h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-30353"
+        }
+      ],
+      "affectedRange": ">= 9.12.0, < 11.5.0",
+      "fixedVersion": "11.5.0"
+    },
+    {
+      "id": "GHSA-7wq3-jr35-275c",
+      "title": "Directus `search` query parameter allows enumeration of non permitted fields",
+      "description": "### Summary\n\nThe `search` query parameter allows users with access to a collection to filter items based on fields they do not have permission to view. This allows the enumeration of unknown field contents.\n\n### Details\n\nThe searchable columns (numbers & strings) are not checked against permissions when injecting the `where` clauses for applying the search query. This leads to the possibility of enumerating those un-permitted fields.\n\n### PoC\n\n- Create a collection with a string / numeric field,",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7wq3-jr35-275c",
+      "publishedAt": "2025-03-26T18:44:23Z",
+      "modifiedAt": "2025-03-26T18:44:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7wq3-jr35-275c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-30352"
+        }
+      ],
+      "affectedRange": ">= 9.0.0-alpha.4, < 11.5.0",
+      "fixedVersion": "11.5.0"
+    },
+    {
+      "id": "GHSA-qf6h-p3mr-vmh5",
+      "title": "Duplicate Advisory: Code injection in Directus",
+      "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-9qrm-48qf-r2rw. This link is maintained to preserve external references.\n\n## Original Description\nDirectus v10.13.0 allows an authenticated external attacker to execute arbitrary JavaScript on the client. This is possible because the application injects an attacker-controlled parameter that will be stored in the server and used by the client into an unsanitized DOM element. When chained with CVE-2024-6534, i",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qf6h-p3mr-vmh5",
+      "publishedAt": "2024-08-15T03:30:28Z",
+      "modifiedAt": "2025-03-22T00:35:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qf6h-p3mr-vmh5"
+        }
+      ],
+      "affectedRange": "<= 10.13.0"
+    },
+    {
+      "id": "GHSA-3fff-gqw3-vj86",
+      "title": "Directus has an insecure object reference via PATH presets",
+      "description": "### Impact\nDirectus v10.13.0 allows an authenticated external attacker to modify presets created by the same user to assign them to another user. This is possible because the application only validates the user parameter in the `POST /presets` request but not in the PATCH request. When chained with [CVE-2024-6533](https://github.com/directus/directus/security/advisories/GHSA-9qrm-48qf-r2rw), it could result in account takeover.\n\nThis vulnerability occurs because the application only validates th",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3fff-gqw3-vj86",
+      "publishedAt": "2024-08-27T19:54:29Z",
+      "modifiedAt": "2025-03-20T18:36:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3fff-gqw3-vj86"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-6534"
+        }
+      ],
+      "affectedRange": "<= 10.13.1",
+      "fixedVersion": "10.13.2"
+    },
+    {
+      "id": "GHSA-q83v-hq3j-4pq3",
+      "title": "Duplicate Advisory: Improper access control in Directus",
+      "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-3fff-gqw3-vj86. This link is maintained to preserve external references.\n\n## Original Description\nDirectus v10.13.0 allows an authenticated external attacker to modify presets created by the same user to assign them to another user. This is possible because the application only validates the user parameter in the 'POST /presets' request but not in the PATCH request. When chained with CVE-2024-6533, it could ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q83v-hq3j-4pq3",
+      "publishedAt": "2024-08-15T06:32:22Z",
+      "modifiedAt": "2025-03-20T18:34:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q83v-hq3j-4pq3"
+        }
+      ],
+      "affectedRange": "<= 10.13.0"
+    },
+    {
+      "id": "GHSA-99vm-5v2h-h6r6",
+      "title": "Directus allows updates to non-allowed fields due to overlapping policies",
+      "description": "### Summary\nIf there are two overlapping policies for the `update` action that allow access to different fields, instead of correctly checking access permissions against the item they apply for the user is allowed to update the superset of fields allowed by any of the policies. \n\nE.g. have one policy allowing update access to `field_a` if the `id == 1` and one policy allowing update access to `field_b` if the `id == 2`. The user with both these policies is allowed to update both `field_a` and `f",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-99vm-5v2h-h6r6",
+      "publishedAt": "2025-02-19T17:46:27Z",
+      "modifiedAt": "2025-02-19T19:59:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-99vm-5v2h-h6r6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-27089"
+        }
+      ],
+      "affectedRange": ">= 11.0.0, < 11.1.2",
+      "fixedVersion": "11.1.2"
+    },
+    {
+      "id": "GHSA-pmf4-v838-29hg",
+      "title": "Directus allows privilege escalation using Share feature",
+      "description": "### Summary\nWhen sharing an item, user can specify an arbitrary role. It allows user to use a higher-privileged role to see fields that otherwise the user should not be able to see.\n\n### Details\nSpecifying `role` on share should be available only for admins. The current flow has a security flaw.\n\nEach other role should allow to share only in the context of the same role. As there is no role hierarchy in Directus, it is impossible to tell which role is _higher_ or _lower_, so only admins should b",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pmf4-v838-29hg",
+      "publishedAt": "2025-01-23T22:35:52Z",
+      "modifiedAt": "2025-02-11T22:09:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pmf4-v838-29hg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-24353"
+        }
+      ],
+      "affectedRange": "< 11.2.0",
+      "fixedVersion": "11.2.0"
+    },
+    {
+      "id": "GHSA-9qrm-48qf-r2rw",
+      "title": "Directus has a DOM-Based cross-site scripting (XSS) via layout_options",
+      "description": "### Impact\nDirectus allows an authenticated attacker to save cross site scripting code to the database. This is possible because the application injects an attacker-controlled parameter that will be stored in the server and used by the client into an unsanitized DOM element. When chained with [CVE-2024-6534](https://github.com/directus/directus/security/advisories/GHSA-3fff-gqw3-vj86), it could result in account takeover.\n\n### PoC\nTo exploit this vulnerability, we need to do the following steps ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-9qrm-48qf-r2rw",
+      "publishedAt": "2025-01-23T22:36:50Z",
+      "modifiedAt": "2025-01-23T22:36:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9qrm-48qf-r2rw"
+        }
+      ],
+      "affectedRange": "< 11.3.3",
+      "fixedVersion": "11.3.3"
+    },
+    {
+      "id": "GHSA-849r-qrwj-8rv4",
+      "title": "Directus allows unauthenticated access to WebSocket events and operations",
+      "description": "### Summary\nWhen setting `WEBSOCKETS_GRAPHQL_AUTH` or `WEBSOCKETS_REST_AUTH` to \"public\", an unauthenticated user is able to do any of the supported operations (CRUD, subscriptions) with full admin privileges.\n\n### Details\nAccountability for unauthenticated WebSocket requests is set to null, which used to be \"public permissions\" until the Permissions Policy update which now defaults that to system/admin level access. So instead of null we need to make use of `createDefaultAccountability()` to en",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-849r-qrwj-8rv4",
+      "publishedAt": "2024-12-09T20:40:54Z",
+      "modifiedAt": "2024-12-09T21:54:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-849r-qrwj-8rv4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-54151"
+        }
+      ],
+      "affectedRange": ">= 11.0.0, < 11.3.0",
+      "fixedVersion": "11.3.0"
+    },
+    {
+      "id": "GHSA-68g8-c275-xf2m",
+      "title": "Directus vulnerable to SSRF Loopback IP filter bypass",
+      "description": "### Impact\nIf you're relying on blocking access to localhost using the default `0.0.0.0` filter this can be bypassed using other registered loopback devices (like `127.0.0.2` - `127.127.127.127`)\n\n### Workaround\nYou can block this bypass by manually adding the `127.0.0.0/8` CIDR range which will block access to any `127.X.X.X` ip instead of just `127.0.0.1`.\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-68g8-c275-xf2m",
+      "publishedAt": "2024-09-18T17:42:05Z",
+      "modifiedAt": "2024-09-19T15:42:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-68g8-c275-xf2m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-46990"
+        }
+      ],
+      "affectedRange": ">= 11.0.0, < 11.1.0",
+      "fixedVersion": "11.1.0"
+    },
+    {
+      "id": "GHSA-jgf4-vwc3-r46v",
+      "title": "Directus Allows Single Sign-On User Enumeration",
+      "description": "### Impact\nWhen relying on SSO providers in combination with local authentication it can be possible to enumerate existing SSO users in the instance. This is possible because if an email address exists in Directus and belongs to a known SSO provider then it will throw a \"helpful\" error that the user belongs to another provider.\n\n### Reproduction\n\n1. Create a user using a SSO provider `test@directus.io`.\n2. Try to log-in using the regular login form (or the API)\n3. When using a valid email addres",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jgf4-vwc3-r46v",
+      "publishedAt": "2024-07-08T18:41:57Z",
+      "modifiedAt": "2024-08-07T05:01:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jgf4-vwc3-r46v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-39896"
+        }
+      ],
+      "affectedRange": ">= 9.11, < 10.13.0",
+      "fixedVersion": "10.13.0"
+    },
+    {
+      "id": "GHSA-632p-p495-25m5",
+      "title": "Directus is soft-locked by providing a string value to random string util",
+      "description": "### Describe the Bug\n\nProviding a non-numeric length value to the random string generation utility will create a memory issue breaking the capability to generate random strings platform wide. This creates a denial of service situation where logged in sessions can no longer be refreshed as sessions depend on the capability to generate a random session ID.\n\n### To Reproduce\n\n1. Test if the endpoint is working and accessible, `GET http://localhost:8055/utils/random/string`\n2. Do a bad request `GET ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-632p-p495-25m5",
+      "publishedAt": "2024-06-04T17:53:29Z",
+      "modifiedAt": "2024-06-04T17:53:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-632p-p495-25m5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-36128"
+        }
+      ],
+      "affectedRange": "<= 10.11.1",
+      "fixedVersion": "10.11.2"
+    },
+    {
+      "id": "GHSA-g65h-35f3-x2w3",
+      "title": "Directus Lacks Session Tokens Invalidation",
+      "description": "### Summary\nCurrently session tokens function like the other JWT tokens where they are not actually invalidated when logging out. The `directus_session` gets destroyed and the cookie gets deleted but if you captured the cookie value it will still work for the entire expiry time which is set to 1 day by default. Making it effectively a long lived unrevokable stateless token instead of the stateful session token it was meant to be.\nWhen authenticating a session token JWT, Directus should also chec",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g65h-35f3-x2w3",
+      "publishedAt": "2024-05-13T19:59:39Z",
+      "modifiedAt": "2024-05-14T20:04:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g65h-35f3-x2w3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-34709"
+        }
+      ],
+      "affectedRange": ">= 10.10.0, < 10.11.0",
+      "fixedVersion": "10.11.0"
+    },
+    {
+      "id": "GHSA-p8v3-m643-4xqx",
+      "title": "Directus allows redacted data extraction on the API through \"alias\"",
+      "description": "## Summary\nA user with permission to view any collection using redacted hashed fields can get access the raw stored version using the `alias` functionality on the API.\nNormally, these redacted fields will return `**********` however  if we change the request to `?alias[workaround]=redacted` we can instead retrieve the plain text value for the field.\n\n## Steps to reproduce\n- Set up a simple role with read-access to users.\n- Create a new user with the role from the previous step\n- Assign a passwor",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p8v3-m643-4xqx",
+      "publishedAt": "2024-05-13T19:40:08Z",
+      "modifiedAt": "2024-05-14T20:04:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p8v3-m643-4xqx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-34708"
+        }
+      ],
+      "affectedRange": "< 10.11.0",
+      "fixedVersion": "10.11.0"
+    },
+    {
+      "id": "GHSA-fr3w-2p22-6w7p",
+      "title": "URL Redirection to Untrusted Site in OAuth2/OpenID in directus",
+      "description": "### Summary\nThe authentication API has a `redirect` parameter that can be exploited as an open redirect vulnerability as the user tries to log in via the API URL https://docs.directus.io/reference/authentication.html#login-using-sso-providers /auth/login/google?redirect for example.\n\n### Details\nThere's a redirect that is done after successful login via the Auth API GET request to `directus/auth/login/google?redirect=http://malicious-fishing-site.com`, which I think is here: https://github.com/d",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fr3w-2p22-6w7p",
+      "publishedAt": "2024-03-12T20:50:48Z",
+      "modifiedAt": "2024-03-13T22:25:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fr3w-2p22-6w7p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-28239"
+        }
+      ],
+      "affectedRange": "< 10.10.0",
+      "fixedVersion": "10.10.0"
+    },
+    {
+      "id": "GHSA-2ccr-g2rv-h677",
+      "title": "Session Token in URL in directus",
+      "description": "### Impact\n\nWhen reaching the /files page, a JWT is passed via GET request. Inclusion of session tokens in URLs poses a security risk as URLs are often logged in various places (e.g., web server logs, browser history). Attackers gaining access to these logs may hijack active user sessions, leading to unauthorized access to sensitive information or actions on behalf of the user.\n\n### Patches\n\n_Has the problem been patched? What versions should users upgrade to?_\n\n### Workarounds\n\nThere's no worka",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-2ccr-g2rv-h677",
+      "publishedAt": "2024-03-12T20:47:18Z",
+      "modifiedAt": "2024-03-13T22:25:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2ccr-g2rv-h677"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-28238"
+        }
+      ],
+      "affectedRange": "< 10.10.0",
+      "fixedVersion": "10.10.0"
+    },
+    {
+      "id": "GHSA-qw9g-7549-7wg5",
+      "title": "Directus has MySQL accent insensitive email matching",
+      "description": "## Password reset vulnerable to accent confusion\n\nThe password reset mechanism of the Directus backend is implemented in a way where combined with (specific, need to double check if i can work around) configuration in MySQL or MariaDB. As such, it allows attackers to receive a password reset email of a victim user, specifically having it arrive at a similar email address as the victim with a one or more characters changed to use accents. \n\nThis is due to the fact that by default MySQL/MariaDB ar",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qw9g-7549-7wg5",
+      "publishedAt": "2024-03-01T16:58:20Z",
+      "modifiedAt": "2024-03-02T22:17:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qw9g-7549-7wg5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-27295"
+        }
+      ],
+      "affectedRange": "<= 10.8.2",
+      "fixedVersion": "10.8.3"
+    },
+    {
+      "id": "GHSA-5mhg-wv8w-p59j",
+      "title": "Directus version number disclosure",
+      "description": "### Impact\n\nCurrently the exact Directus version number is being shipped in compiled JS bundles which are accessible without authentication. With this information a malicious attacker can trivially look for known vulnerabilities in Directus core or any of its shipped dependencies in that specific running version.\n\n### Patches\n\nThe problem has been resolved in versions 10.8.3 and newer\n\n### Workarounds\n\nNone",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5mhg-wv8w-p59j",
+      "publishedAt": "2024-03-01T20:11:05Z",
+      "modifiedAt": "2024-03-01T20:11:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5mhg-wv8w-p59j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-27296"
+        }
+      ],
+      "affectedRange": "<= 10.8.2",
+      "fixedVersion": "10.8.3"
+    },
+    {
+      "id": "GHSA-hmgw-9jrg-hf2m",
+      "title": "Directus crashes on invalid WebSocket message",
+      "description": "### Summary\nIt seems that any Directus installation that has websockets enabled can be crashed if the websocket server receives an invalid frame. This could probably be posted as an issue and I might even be able to put together a pull request for a fix (if only I had some extra time...), but I decided to instead post as a vulnerability just for the maintainers, since this seemingly can be used to crash any live Directus server if websockets are enabled, so public disclosure is not a good idea u",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hmgw-9jrg-hf2m",
+      "publishedAt": "2023-10-19T20:02:04Z",
+      "modifiedAt": "2023-11-06T05:01:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hmgw-9jrg-hf2m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-45820"
+        }
+      ],
+      "affectedRange": ">= 10.4.0, < 10.6.2",
+      "fixedVersion": "10.6.2"
+    },
+    {
+      "id": "GHSA-22rr-f3p8-5gf8",
+      "title": "Directus affected by VM2 sandbox escape vulnerability",
+      "description": "### Impact\nIn vm2 for versions up to 3.9.19, Promise handler sanitization can be bypassed, allowing attackers to escape the sandbox and run arbitrary code. Within Directus this applies to the \"Run Script\" operation in flows being able to escape the sandbox running code in the main nodejs context.\n\n### Patches\nPatched in v10.6.0 by replacing `vm2` with `isolated-vm`\n\n### Workarounds\nNone\n\n### References\nhttps://github.com/patriksimek/vm2/security/advisories/GHSA-cchq-frgv-rjh5",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-22rr-f3p8-5gf8",
+      "publishedAt": "2023-09-15T17:12:42Z",
+      "modifiedAt": "2023-09-18T15:16:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-22rr-f3p8-5gf8"
+        }
+      ],
+      "affectedRange": "< 10.6.0",
+      "fixedVersion": "10.6.0"
+    },
+    {
+      "id": "GHSA-3gvp-54v2-2jrp",
+      "title": "Directus API vulnerable to denial of service",
+      "description": "An issue found in Directus API v.2.2.0 allows a remote attacker to cause a denial of service via a great amount of HTTP requests.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3gvp-54v2-2jrp",
+      "publishedAt": "2023-04-04T15:30:27Z",
+      "modifiedAt": "2023-04-07T22:09:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3gvp-54v2-2jrp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-19850"
+        }
+      ],
+      "affectedRange": "= 2.2.0",
+      "fixedVersion": "2.2.1"
+    },
+    {
+      "id": "GHSA-m5q3-8wgf-x8xf",
+      "title": "Directus vulnerable to extraction of password hashes through export querying",
+      "description": "### Impact\n\nUsers with read access to the `password` field in `directus_users` can extract the argon2 password hashes by brute forcing the export functionality combined with a `_starts_with` filter. This allows the user to enumerate the password hashes.\n\n### Patches\n\nThe problem has been patched by preventing any hashed/concealed field to be filtered against with the `_starts_with` or other string operator.\n\n### Workarounds\n\nEnsuring that no user has `read` access to the `password` field in `dir",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m5q3-8wgf-x8xf",
+      "publishedAt": "2023-03-08T17:13:05Z",
+      "modifiedAt": "2023-03-26T17:17:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m5q3-8wgf-x8xf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-27481"
+        }
+      ],
+      "affectedRange": "< 9.16.0",
+      "fixedVersion": "9.16.0"
+    },
+    {
+      "id": "GHSA-8vg2-wf3q-mwv7",
+      "title": "directus vulnerable to Insertion of Sensitive Information into Log File",
+      "description": "### Summary\n\nCWE-532: Insertion of Sensitive Information into Log File discovered in v9.23.1. The `directus_refresh_token` is not redacted properly from the log outputs and can be used to impersonate users without their permission. \n\n### Details\n\nUsing `v9.23.1`, I am seeing that the `directus_refresh_token` is not properly redacted as indicated by https://github.com/directus/directus/blob/7c479c5161639aac466c763b6b958a9524201d74/api/src/logger.ts#L13\n\nI'm classifying this as a security vulnerab",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8vg2-wf3q-mwv7",
+      "publishedAt": "2023-03-23T19:47:12Z",
+      "modifiedAt": "2023-03-24T13:32:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8vg2-wf3q-mwv7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-28443"
+        }
+      ],
+      "affectedRange": "< 9.23.3",
+      "fixedVersion": "9.23.3"
+    },
+    {
+      "id": "GHSA-4hmq-ggrm-qfc6",
+      "title": "directus vulnerable to HTML Injection in Password Reset email to custom Reset URL",
+      "description": "### Impact\n\nInstances relying on an allow-listed reset URL are vulnerable to an HTML injection attack through the use of query parameters in the reset URL. \n\n### Patches\n\nThe problem has been resolved and released under version 9.23.0. People relying on a custom password reset URL should upgrade to 9.23.0 or later, or remove the custom reset url from the configured allow list.\n\n### Workarounds\n\nDisable the custom reset URL allow list.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4hmq-ggrm-qfc6",
+      "publishedAt": "2023-03-07T20:35:54Z",
+      "modifiedAt": "2023-03-07T20:35:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4hmq-ggrm-qfc6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-27474"
+        }
+      ],
+      "affectedRange": "< 9.23.0",
+      "fixedVersion": "9.23.0"
+    },
+    {
+      "id": "GHSA-j3rg-3rgm-537h",
+      "title": "Directus vulnerable to Server-Side Request Forgery On File Import",
+      "description": "### Summary\nDirectus versions <=9.22.4 is vulnerable to Server-Side Request Forgery (SSRF) when importing a file from a remote web server (POST to `/files/import`). An attacker can bypass the security controls that were implemented to patch vulnerability [CVE-2022-23080](https://security.snyk.io/vuln/SNYK-JS-DIRECTUS-2934713) by performing a [DNS rebinding attack](https://en.wikipedia.org/wiki/DNS_rebinding) and view sensitive data from internal servers or perform a local port scan (eg. can acce",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j3rg-3rgm-537h",
+      "publishedAt": "2023-03-03T23:07:35Z",
+      "modifiedAt": "2023-03-06T01:44:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j3rg-3rgm-537h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26492"
+        }
+      ],
+      "affectedRange": "< 9.23.0",
+      "fixedVersion": "9.23.0"
+    },
+    {
+      "id": "GHSA-77qm-wvqq-fg79",
+      "title": "Directus vulnerable to unhandled exception on illegal filename_disk value",
+      "description": "The Directus process can be aborted by having an authorized user update the `filename_disk` value to a folder and accessing that file through the `/assets` endpoint. \n\nThe vulnerability is patched and released in v9.15.0.\n\nYou can prevent this problem by making sure no (untrusted) non-admin users have permissions to update the `filename_disk` field on `directus_files`.\n\n### For more information\n\nIf you have any questions or comments about this advisory:\n* Open a Discussion in [directus/directus]",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-77qm-wvqq-fg79",
+      "publishedAt": "2022-08-30T20:18:48Z",
+      "modifiedAt": "2023-01-28T05:02:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-77qm-wvqq-fg79"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-36031"
+        }
+      ],
+      "affectedRange": "< 9.15.0",
+      "fixedVersion": "9.15.0"
+    },
+    {
+      "id": "GHSA-5h75-pvq4-82c9",
+      "title": "Server-Side Request Forgery in Directus",
+      "description": "Directus versions v9.0.0-beta.2 through 9.6.0 are vulnerable to server-side request forgery (SSRF) in the media upload functionality, which allows a low privileged user to perform internal network port scans.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5h75-pvq4-82c9",
+      "publishedAt": "2022-06-23T00:00:33Z",
+      "modifiedAt": "2023-01-27T05:05:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5h75-pvq4-82c9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-23080"
+        }
+      ],
+      "affectedRange": ">= 9.0.0-beta.2, < 9.7.0",
+      "fixedVersion": "9.7.0"
+    },
+    {
+      "id": "GHSA-xmjj-3c76-5w84",
+      "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') in directus",
+      "description": "### Impact\n\nUnauthorized JavaScript can be executed by inserting an iframe into the rich text html interface that links to a file uploaded HTML file that loads another uploaded JS file in its script tag. This satisfies the regular content security policy header, which in turn allows the file to run any arbitrary JS.\n\n### Patches\n\nThis was resolved in https://github.com/directus/directus/pull/12020 which is released in 9.7.0\n\n### Workarounds\n\nYou can disable the live embed in the WYSIWYG by addin",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xmjj-3c76-5w84",
+      "publishedAt": "2022-04-05T18:30:15Z",
+      "modifiedAt": "2023-01-27T05:01:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xmjj-3c76-5w84"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24814"
+        }
+      ],
+      "affectedRange": "< 9.7.0",
+      "fixedVersion": "9.7.0"
+    }
+  ]
+}

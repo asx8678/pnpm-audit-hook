@@ -1,0 +1,125 @@
+{
+  "name": "open-webui",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8wvc-869r-xfqf",
+      "title": "Open WebUI Vulnerable to Stored DOM XSS via Note 'Download PDF'",
+      "description": "## Summary\n\nA **Stored XSS vulnerability** has been discovered in Open-WebUI's Notes PDF download functionality. \nAn attacker can import a Markdown file containing malicious SVG tags into Notes, allowing them to **execute arbitrary JavaScript code** and **steal session tokens** when a victim downloads the note as PDF. \n\nThis vulnerability can be exploited by **any authenticated user**, and unauthenticated external attackers can steal session tokens from users (both admin and regular users) by sh",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8wvc-869r-xfqf",
+      "publishedAt": "2025-12-04T22:03:24Z",
+      "modifiedAt": "2025-12-05T01:12:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8wvc-869r-xfqf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-65959"
+        }
+      ],
+      "affectedRange": "<= 0.6.36",
+      "fixedVersion": "0.6.37"
+    },
+    {
+      "id": "GHSA-w7xj-8fx7-wfch",
+      "title": "Open WebUI vulnerable to Stored DOM XSS via prompts when 'Insert Prompt as Rich Text' is enabled resulting in ATO/RCE",
+      "description": "### Summary\n\nThe functionality that inserts custom prompts into the chat window is vulnerable to DOM XSS when 'Insert Prompt as Rich Text' is enabled, since the prompt body is assigned to the DOM sink `.innerHtml` without sanitisation. Any user with permissions to create prompts can abuse this to plant a payload that could be triggered by other users if they run the corresponding `/` command to insert the prompt.\n\n### Details\n\nThe affected line is https://github.com/open-webui/open-webui/blob/7a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w7xj-8fx7-wfch",
+      "publishedAt": "2025-11-07T15:25:23Z",
+      "modifiedAt": "2025-11-27T09:05:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w7xj-8fx7-wfch"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64495"
+        }
+      ],
+      "affectedRange": "<= 0.6.34",
+      "fixedVersion": "0.6.35"
+    },
+    {
+      "id": "GHSA-cm35-v4vp-5xvx",
+      "title": "Open WebUI Affected by an External Model Server (Direct Connections) Code Injection via SSE Events",
+      "description": "### Summary\nOpen WebUI v0.6.33 and below contains a code injection vulnerability in the Direct Connections feature that allows malicious external model servers to execute arbitrary JavaScript in victim browsers via Server-Sent Event (SSE) `execute` events. This leads to authentication token theft, complete account takeover, and when chained with the Functions API, enables remote code execution on the backend server. The attack requires the victim to enable Direct Connections (disabled by default",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cm35-v4vp-5xvx",
+      "publishedAt": "2025-11-07T17:37:33Z",
+      "modifiedAt": "2025-11-15T02:10:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cm35-v4vp-5xvx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64496"
+        }
+      ],
+      "affectedRange": "<= 0.6.34",
+      "fixedVersion": "0.6.35"
+    },
+    {
+      "id": "GHSA-5ccf-884p-4jjq",
+      "title": "Open WebUI Unauthenticated Multipart Boundary Denial of Service (DoS) Vulnerability",
+      "description": "A Denial of Service (DoS) vulnerability exists in open-webui/open-webui version 0.3.21. This vulnerability affects multiple endpoints, including `/ollama/models/upload`, `/audio/api/v1/transcriptions`, and `/rag/api/v1/doc`. The application processes multipart boundaries without authentication, leading to resource exhaustion. By appending additional characters to the multipart boundary, an attacker can cause the server to parse each byte of the boundary, ultimately leading to service unavailabil",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5ccf-884p-4jjq",
+      "publishedAt": "2025-03-20T12:32:51Z",
+      "modifiedAt": "2025-04-15T19:37:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5ccf-884p-4jjq"
+        }
+      ],
+      "affectedRange": "<= 0.3.21"
+    },
+    {
+      "id": "GHSA-chf7-q7m5-fq92",
+      "title": "Open WebUI Uncontrolled Resource Consumption vulnerability",
+      "description": "In version 0.3.32 of open-webui/open-webui, the absence of authentication mechanisms allows any unauthenticated attacker to access the `api/v1/utils/code/format` endpoint. If a malicious actor sends a POST request with an excessively high volume of content, the server could become completely unresponsive. This could lead to severe performance issues, causing the server to become unresponsive or experience significant degradation, ultimately resulting in service interruptions for legitimate users",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-chf7-q7m5-fq92",
+      "publishedAt": "2025-03-20T12:32:43Z",
+      "modifiedAt": "2025-04-01T23:12:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-chf7-q7m5-fq92"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-12537"
+        }
+      ],
+      "affectedRange": "<= 0.3.32"
+    },
+    {
+      "id": "GHSA-g3mx-83mp-3rwc",
+      "title": "Open WebUI Uncontrolled Resource Consumption vulnerability",
+      "description": "In version v0.3.32 of open-webui/open-webui, the application allows users to submit large payloads in the email and password fields during the sign-in process due to the lack of character length validation on these inputs. This vulnerability can lead to a Denial of Service (DoS) condition when a user submits excessively large strings, exhausting server resources such as CPU, memory, and disk space, and rendering the service unavailable for legitimate users. This makes the server susceptible to r",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g3mx-83mp-3rwc",
+      "publishedAt": "2025-03-20T12:32:43Z",
+      "modifiedAt": "2025-03-21T17:30:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g3mx-83mp-3rwc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-12534"
+        }
+      ],
+      "affectedRange": "<= 0.3.32"
+    }
+  ]
+}

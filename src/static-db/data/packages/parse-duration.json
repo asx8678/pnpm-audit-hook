@@ -1,0 +1,27 @@
+{
+  "name": "parse-duration",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hcrg-fc28-fcg5",
+      "title": "parse-duration has a Regex Denial of Service that results in event loop delay and out of memory",
+      "description": "### Summary\n\nThis report finds 2 availability issues due to the regex used in the `parse-duration` npm package:\n1. An event loop delay due to the CPU-bound operation of resolving the provided string, from a 0.5ms and up to ~50ms per one operation, with a varying size from 0.01 MB and up to 4.3 MB respectively.\n2. An out of memory that would crash a running Node.js application due to a string size of roughly 10 MB that utilizes unicode characters.\n\n### PoC\n\nRefer to the following proof of concept",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hcrg-fc28-fcg5",
+      "publishedAt": "2025-02-12T19:45:51Z",
+      "modifiedAt": "2025-02-12T21:35:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hcrg-fc28-fcg5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-25283"
+        }
+      ],
+      "affectedRange": "< 2.1.3",
+      "fixedVersion": "2.1.3"
+    }
+  ]
+}

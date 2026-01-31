@@ -1,0 +1,48 @@
+{
+  "name": "@modelcontextprotocol/sdk",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8r9q-7v3j-jr4g",
+      "title": "Anthropic's MCP TypeScript SDK has a ReDoS vulnerability",
+      "description": "### Impact\n\nA ReDoS vulnerability in the `UriTemplate` class allows attackers to cause denial of service. The `partToRegExp()` function generates a regex pattern with nested quantifiers (`([^/]+(?:,[^/]+)*)`) for exploded template variables (e.g., `{/id*}`, `{?tags*}`), causing catastrophic backtracking on malicious input.\n\n**Who is affected:** MCP servers that register resource templates with exploded array patterns and accept requests from untrusted clients.\n\n**Attack result:** An attacker sen",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8r9q-7v3j-jr4g",
+      "publishedAt": "2026-01-05T21:30:33Z",
+      "modifiedAt": "2026-01-07T16:16:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8r9q-7v3j-jr4g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-0621"
+        }
+      ],
+      "affectedRange": "< 1.25.2",
+      "fixedVersion": "1.25.2"
+    },
+    {
+      "id": "GHSA-w48q-cv73-mx4w",
+      "title": "Model Context Protocol (MCP) TypeScript SDK does not enable DNS rebinding protection by default",
+      "description": "The Model Context Protocol (MCP) TypeScript SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication with `StreamableHTTPServerTransport` or `SSEServerTransport` and has not enabled `enableDnsRebindingProtection`, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access re",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w48q-cv73-mx4w",
+      "publishedAt": "2025-12-02T16:51:57Z",
+      "modifiedAt": "2025-12-02T21:43:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w48q-cv73-mx4w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-66414"
+        }
+      ],
+      "affectedRange": "< 1.24.0",
+      "fixedVersion": "1.24.0"
+    }
+  ]
+}

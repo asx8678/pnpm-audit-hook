@@ -1,0 +1,44 @@
+{
+  "name": "shelljs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4rq4-32rv-6wp6",
+      "title": "Improper Privilege Management in shelljs",
+      "description": "shelljs is vulnerable to Improper Privilege Management",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4rq4-32rv-6wp6",
+      "publishedAt": "2022-01-21T23:37:28Z",
+      "modifiedAt": "2023-11-29T22:21:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4rq4-32rv-6wp6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0144"
+        }
+      ],
+      "affectedRange": "< 0.8.5",
+      "fixedVersion": "0.8.5"
+    },
+    {
+      "id": "GHSA-64g7-mvw6-v9qj",
+      "title": "Improper Privilege Management in shelljs",
+      "description": "### Impact\nOutput from the synchronous version of `shell.exec()` may be visible to other users on the same system. You may be affected if you execute `shell.exec()` in multi-user Mac, Linux, or WSL environments, or if you execute `shell.exec()` as the root user.\n\nOther shelljs functions (including the asynchronous version of `shell.exec()`) are not impacted.\n\n### Patches\nPatched in shelljs 0.8.5\n\n### Workarounds\nRecommended action is to upgrade to 0.8.5.\n\n### References\nhttps://huntr.dev/bountie",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-64g7-mvw6-v9qj",
+      "publishedAt": "2022-01-14T21:09:50Z",
+      "modifiedAt": "2023-01-11T05:03:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-64g7-mvw6-v9qj"
+        }
+      ],
+      "affectedRange": "< 0.8.5",
+      "fixedVersion": "0.8.5"
+    }
+  ]
+}

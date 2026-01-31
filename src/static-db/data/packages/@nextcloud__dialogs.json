@@ -1,0 +1,27 @@
+{
+  "name": "@nextcloud/dialogs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g3fq-3v3g-mh32",
+      "title": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) in @nextcloud/dialogs",
+      "description": "### Impact\n\nThe Nextcloud dialogs library before 3.1.2 did insufficiently escape text input passed to a toast. If your application displays toasts with user-supplied input, this could lead to a XSS vulnerability.\n\n_Note_: Nextcloud Server employs a strict Content Security Policy that mitigates the risk of these XSS vulnerabilities.\n\n### Patches\n\nThe vulnerability has been patched in version 3.1.2. If you need to display HTML in the toast, explicitly pass the `options.isHTML` config flag.\n\n### Wo",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g3fq-3v3g-mh32",
+      "publishedAt": "2021-04-16T19:52:58Z",
+      "modifiedAt": "2023-02-01T05:05:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g3fq-3v3g-mh32"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-29438"
+        }
+      ],
+      "affectedRange": "< 3.1.2",
+      "fixedVersion": "3.1.2"
+    }
+  ]
+}

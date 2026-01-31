@@ -1,0 +1,27 @@
+{
+  "name": "@mozilla/readability",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3p6v-hrg8-8qj7",
+      "title": "@mozilla/readability Denial of Service through Regex",
+      "description": "Specially crafted titles may have caused a regular expression to excessively backtrack and cause a local denial of service.\n\nAdditional Details are [available at Bugzilla](https://bugzilla.mozilla.org/show_bug.cgi?id=1948833)\n\nCredit: DayShift",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-3p6v-hrg8-8qj7",
+      "publishedAt": "2025-03-26T14:08:48Z",
+      "modifiedAt": "2025-03-26T14:08:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3p6v-hrg8-8qj7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-2792"
+        }
+      ],
+      "affectedRange": "< 0.6.0",
+      "fixedVersion": "0.6.0"
+    }
+  ]
+}

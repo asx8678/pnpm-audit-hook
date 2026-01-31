@@ -1,0 +1,27 @@
+{
+  "name": "@theia/console",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cwg9-c9cr-p5fq",
+      "title": "Improper Neutralization of Input in Theia console",
+      "description": "In Eclipse Theia versions up to and including 1.8.0, in the debug console there is no HTML escaping, so arbitrary Javascript code can be injected.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cwg9-c9cr-p5fq",
+      "publishedAt": "2021-04-13T15:18:53Z",
+      "modifiedAt": "2023-02-01T05:05:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cwg9-c9cr-p5fq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-28161"
+        }
+      ],
+      "affectedRange": "< 1.8.1",
+      "fixedVersion": "1.8.1"
+    }
+  ]
+}

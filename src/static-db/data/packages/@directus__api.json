@@ -1,0 +1,237 @@
+{
+  "name": "@directus/api",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3573-4c68-g8cc",
+      "title": "Directus has open redirect in SAML",
+      "description": "## Security Advisory: Open Redirect in Directus SAML Authentication\n\n### Summary\n\nAn open redirect vulnerability exists in the Directus SAML authentication callback endpoint. The `RelayState` parameter is used in redirects without proper validation against an allowlist of permitted domains.\n\n### Vulnerability Description\n\nDuring SAML authentication, the `RelayState` parameter is intended to preserve the user's original destination. However, while the login initiation flow validates redirect targ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3573-4c68-g8cc",
+      "publishedAt": "2026-01-06T19:22:38Z",
+      "modifiedAt": "2026-01-08T21:19:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3573-4c68-g8cc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22032"
+        }
+      ],
+      "affectedRange": "< 32.1.1",
+      "fixedVersion": "32.1.1"
+    },
+    {
+      "id": "GHSA-cff8-x7jv-4fm8",
+      "title": "Session is cached for OpenID and OAuth2 if `redirect` is not used",
+      "description": "### Summary\nUnauthenticated user can access credentials of last authenticated user via OpenID or OAuth2 where the authentication URL did not include `redirect` query string.\n\nFor example:\n- Project is configured with OpenID or OAuth2\n- Project is configured with cache enabled\n- User tries to login via SSO link, but without `redirect` query string\n- After successful login, credentials are cached\n- If an unauthenticated user tries to login via SSO link, it will return the credentials of the other ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cff8-x7jv-4fm8",
+      "publishedAt": "2024-09-10T19:43:00Z",
+      "modifiedAt": "2025-11-17T21:35:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cff8-x7jv-4fm8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-45596"
+        }
+      ],
+      "affectedRange": ">= 22.0.0, < 22.2.0",
+      "fixedVersion": "22.2.0"
+    },
+    {
+      "id": "GHSA-cph6-524f-3hgr",
+      "title": "Directus Vulnerable to Information Leakage in Existing Collections",
+      "description": "### Summary:\n\nAn observable difference in error messaging was found in the Directus REST API. The `/items/{collection}` API returns different error messages for these two cases:\n1. A user tries to access an existing collection which they are not authorized to access.\n2. A user tries to access a non-existing collection.\n\nThe two differing error messages leak the existence of collections to users which are not authorized to access these collections.\n\n### Details:\n\nThe following response returns an",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cph6-524f-3hgr",
+      "publishedAt": "2025-11-13T23:07:31Z",
+      "modifiedAt": "2025-11-15T03:15:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cph6-524f-3hgr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64749"
+        }
+      ],
+      "affectedRange": "< 32.0.0",
+      "fixedVersion": "32.0.0"
+    },
+    {
+      "id": "GHSA-8jpw-gpr4-8cmh",
+      "title": "Directus's conceal fields are searchable if read permissions enabled",
+      "description": "## Summary\n\nA vulnerability allows authenticated users to search concealed/sensitive fields when they have read permissions. While actual values remain masked (`****`), successful matches can be detected through returned records, enabling enumeration attacks on sensitive data.\n\n## Details\n\nThe system permits search operations on concealed fields in the `directus_users` collection, including `token`, `tfa_secret`, `password`. Matching records are returned with masked values, but their presence co",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8jpw-gpr4-8cmh",
+      "publishedAt": "2025-11-13T23:06:41Z",
+      "modifiedAt": "2025-11-15T03:15:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8jpw-gpr4-8cmh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64748"
+        }
+      ],
+      "affectedRange": "< 32.0.0",
+      "fixedVersion": "32.0.0"
+    },
+    {
+      "id": "GHSA-mv33-9f6j-pfmc",
+      "title": "Directus allows unauthenticated file upload and file modification due to lacking input sanitization",
+      "description": "## Summary\n\nA vulnerability exists in the file update mechanism which allows an unauthenticated actor to modify existing files with arbitrary contents (without changes being applied to the files' database-resident metadata) and / or upload new files, with arbitrary content and extensions, which won't show up in the Directus UI.\n\n## Details\n\nDirectus exposes the CRUD operations for uploading or handling files under the `/files` route.\n\nThe endpoint handler is responsible for updating an existing ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mv33-9f6j-pfmc",
+      "publishedAt": "2025-08-20T19:08:20Z",
+      "modifiedAt": "2025-08-20T19:08:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mv33-9f6j-pfmc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-55746"
+        }
+      ],
+      "affectedRange": ">= 14.1.0, < 28.0.2",
+      "fixedVersion": "28.0.2"
+    },
+    {
+      "id": "GHSA-56p6-qw3c-fq2g",
+      "title": "Suspended Directus user can continue to use session token to access API",
+      "description": "### Summary\nSince the user status is not checked when verifying a session token a suspended user can use the token generated in session auth mode to access the API despite their status.\n\n### Details\nThere is a check missing in `verifySessionJWT` to verify that a user is actually still active and allowed to access the API. Right now one can extract the session token obtained by, e.g. login in to the app while still active and then, after the user has been suspended continue to use that token unti",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-56p6-qw3c-fq2g",
+      "publishedAt": "2025-03-26T18:30:43Z",
+      "modifiedAt": "2025-06-09T18:12:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-56p6-qw3c-fq2g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-30351"
+        }
+      ],
+      "affectedRange": ">= 18.0.0, < 24.0.1",
+      "fixedVersion": "24.0.1"
+    },
+    {
+      "id": "GHSA-vw58-ph65-6rxp",
+      "title": "Directus inserts access token from query string into logs",
+      "description": "### Summary\nAccess token from query string is not redacted and is potentially exposed in system logs which may be persisted.\n\n### Details\nThe access token in `req.query` is not redacted when the `LOG_STYLE` is set to `raw`. If these logs are not properly sanitized or protected, an attacker with access to it can potentially gain administrative control, leading to unauthorized data access and manipulation.\n\n### PoC\n1. Set `LOG_LEVEL=\"raw\"` in the environment.\n2. Send a request with the `access_tok",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vw58-ph65-6rxp",
+      "publishedAt": "2025-04-14T15:20:40Z",
+      "modifiedAt": "2025-04-14T15:20:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vw58-ph65-6rxp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-47822"
+        }
+      ],
+      "affectedRange": "< 21.0.0",
+      "fixedVersion": "21.0.0"
+    },
+    {
+      "id": "GHSA-99vm-5v2h-h6r6",
+      "title": "Directus allows updates to non-allowed fields due to overlapping policies",
+      "description": "### Summary\nIf there are two overlapping policies for the `update` action that allow access to different fields, instead of correctly checking access permissions against the item they apply for the user is allowed to update the superset of fields allowed by any of the policies. \n\nE.g. have one policy allowing update access to `field_a` if the `id == 1` and one policy allowing update access to `field_b` if the `id == 2`. The user with both these policies is allowed to update both `field_a` and `f",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-99vm-5v2h-h6r6",
+      "publishedAt": "2025-02-19T17:46:27Z",
+      "modifiedAt": "2025-02-19T19:59:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-99vm-5v2h-h6r6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-27089"
+        }
+      ],
+      "affectedRange": ">= 22.0.0, < 23.1.0",
+      "fixedVersion": "23.1.0"
+    },
+    {
+      "id": "GHSA-849r-qrwj-8rv4",
+      "title": "Directus allows unauthenticated access to WebSocket events and operations",
+      "description": "### Summary\nWhen setting `WEBSOCKETS_GRAPHQL_AUTH` or `WEBSOCKETS_REST_AUTH` to \"public\", an unauthenticated user is able to do any of the supported operations (CRUD, subscriptions) with full admin privileges.\n\n### Details\nAccountability for unauthenticated WebSocket requests is set to null, which used to be \"public permissions\" until the Permissions Policy update which now defaults that to system/admin level access. So instead of null we need to make use of `createDefaultAccountability()` to en",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-849r-qrwj-8rv4",
+      "publishedAt": "2024-12-09T20:40:54Z",
+      "modifiedAt": "2024-12-09T21:54:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-849r-qrwj-8rv4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-54151"
+        }
+      ],
+      "affectedRange": ">= 22.2.0, < 23.2.0",
+      "fixedVersion": "23.2.0"
+    },
+    {
+      "id": "GHSA-68g8-c275-xf2m",
+      "title": "Directus vulnerable to SSRF Loopback IP filter bypass",
+      "description": "### Impact\nIf you're relying on blocking access to localhost using the default `0.0.0.0` filter this can be bypassed using other registered loopback devices (like `127.0.0.2` - `127.127.127.127`)\n\n### Workaround\nYou can block this bypass by manually adding the `127.0.0.0/8` CIDR range which will block access to any `127.X.X.X` ip instead of just `127.0.0.1`.\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-68g8-c275-xf2m",
+      "publishedAt": "2024-09-18T17:42:05Z",
+      "modifiedAt": "2024-09-19T15:42:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-68g8-c275-xf2m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-46990"
+        }
+      ],
+      "affectedRange": ">= 22.0.0, < 22.1.1",
+      "fixedVersion": "22.1.1"
+    },
+    {
+      "id": "GHSA-8p72-rcq4-h6pw",
+      "title": "Directus Blind SSRF On File Import",
+      "description": "### Summary\nThere was already a reported SSRF vulnerability via file import. [https://github.com/directus/directus/security/advisories/GHSA-j3rg-3rgm-537h](https://github.com/directus/directus/security/advisories/GHSA-j3rg-3rgm-537h)\nIt was fixed by resolving all DNS names and checking if the requested IP is an internal IP address. \n\nHowever it is possible to bypass this security measure and execute a SSRF using redirects. Directus allows redirects when importing file from the URL and does not c",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8p72-rcq4-h6pw",
+      "publishedAt": "2024-07-08T15:25:50Z",
+      "modifiedAt": "2024-08-07T05:01:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8p72-rcq4-h6pw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-39699"
+        }
+      ],
+      "affectedRange": "< 17.1.0",
+      "fixedVersion": "17.1.0"
+    }
+  ]
+}

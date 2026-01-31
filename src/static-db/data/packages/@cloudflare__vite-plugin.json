@@ -1,0 +1,27 @@
+{
+  "name": "@cloudflare/vite-plugin",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4pfg-2mw5-f8jx",
+      "title": "Cloudflare Vite plugin exposes secrets over the built-in dev server",
+      "description": "### Summary\n\nNote: [originally posted on H1](https://hackerone.com/reports/3117837) but closed. Cross-posting over to here in abundance of caution instead of a public issue. \n\nWhen utilising the Cloudflare Vite plugin in its default configuration, all files are exposed by the local dev server, including files in the root directory that contain secret information such as:\n- `.env`\n- `.dev.vars`\n\n### PoC\n1. Create a Workers project that utilises the `@cloudflare/vite-plugin`. For example:\n   - `np",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4pfg-2mw5-f8jx",
+      "publishedAt": "2025-07-08T19:07:47Z",
+      "modifiedAt": "2025-09-22T21:39:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4pfg-2mw5-f8jx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59427"
+        }
+      ],
+      "affectedRange": "< 1.6.0",
+      "fixedVersion": "1.6.0"
+    }
+  ]
+}

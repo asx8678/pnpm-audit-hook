@@ -1,0 +1,48 @@
+{
+  "name": "outray",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3pqc-836w-jgr7",
+      "title": "Outray cli is vulnerable to race conditions in tunnels creation",
+      "description": "### Summary\n\nA TOCTOU race condition vulnerability allows a user to exceed the set number of active tunnels in their subscription plan.\n\n### Details\n\nAffected conponent: `apps/web/src/routes/api/tunnel/register.ts`\n- `/tunnel/register` endpoint code-:\n\n```ts\n// Check if tunnel already exists in database\n          const [existingTunnel] = await db\n            .select()\n            .from(tunnels)\n            .where(eq(tunnels.url, tunnelUrl));\n\n          const isReconnection = !!existingTunnel;\n\n ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3pqc-836w-jgr7",
+      "publishedAt": "2026-01-13T21:53:44Z",
+      "modifiedAt": "2026-01-21T16:17:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3pqc-836w-jgr7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22820"
+        }
+      ],
+      "affectedRange": "< 0.1.5",
+      "fixedVersion": "0.1.5"
+    },
+    {
+      "id": "GHSA-45hj-9x76-wp9g",
+      "title": "Outray has a Race Condition in the cli's webapp",
+      "description": "### Summary\nThis vulnerability allows a user i.e a free plan user to get more than the desired subdomains due to lack of db transaction lock mechanisms in `https://github.com/akinloluwami/outray/blob/main/apps/web/src/routes/api/%24orgSlug/subdomains/index.ts`\n\n### Details\n- The affected code-:\n\n```ts\n//Race condition\n        const [subscription] = await db\n          .select()\n          .from(subscriptions)\n          .where(eq(subscriptions.organizationId, organization.id));\n\n        const curre",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-45hj-9x76-wp9g",
+      "publishedAt": "2026-01-13T21:53:30Z",
+      "modifiedAt": "2026-01-14T19:50:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-45hj-9x76-wp9g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22819"
+        }
+      ],
+      "affectedRange": "< 0.1.5",
+      "fixedVersion": "0.1.5"
+    }
+  ]
+}

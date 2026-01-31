@@ -1,0 +1,26 @@
+{
+  "name": "ps-kill",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7qmm-q394-fmch",
+      "title": "Command Injection in ps-kill",
+      "description": "This affects all versions of package ps-kill. If (attacker-controlled) user input is given to the kill function, it is possible for an attacker to execute arbitrary commands. This is due to use of the child_process exec function without input sanitization in the index.js file. \n\nPoC (provided by reporter): \n```js\nvar ps_kill = require('ps-kill');\nps_kill.kill('$(touch success)', function() {});\n```",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7qmm-q394-fmch",
+      "publishedAt": "2021-03-19T21:19:29Z",
+      "modifiedAt": "2023-09-05T23:01:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7qmm-q394-fmch"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23355"
+        }
+      ],
+      "affectedRange": "<= 1.0.0"
+    }
+  ]
+}

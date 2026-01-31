@@ -1,0 +1,23 @@
+{
+  "name": "x402",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3j63-5h8p-gf7c",
+      "title": "x402 SDK vulnerable in outdated versions in resource servers for builders",
+      "description": "### Impact\nThere is a security vulnerability in outdated versions of the x402 SDK. This does not directly affect users' keys, smart contracts, or funds.\n\nThis primarily impacts builders working on resource servers.\n\n### Patches\nPlease update to the following package versions:\n* x402 >= 0.5.2\n* x402-next >= 0.5.2\n* x402-express >= 0.5.2\n* x402-hono >= 0.5.2",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3j63-5h8p-gf7c",
+      "publishedAt": "2025-08-20T20:51:55Z",
+      "modifiedAt": "2025-08-20T20:51:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3j63-5h8p-gf7c"
+        }
+      ],
+      "affectedRange": "< 0.5.2",
+      "fixedVersion": "0.5.2"
+    }
+  ]
+}

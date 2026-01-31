@@ -1,0 +1,26 @@
+{
+  "name": "markdown-pdf",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qghr-877h-f9jh",
+      "title": "markdown-pdf vulnerable to local file read via server side cross-site scripting (XSS)",
+      "description": "markdown-pdf version 11.0.0 allows an external attacker to remotely obtain arbitrary local files. This is possible because the application does not validate the Markdown content entered by the user.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qghr-877h-f9jh",
+      "publishedAt": "2023-04-05T00:30:38Z",
+      "modifiedAt": "2025-02-13T18:51:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qghr-877h-f9jh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-0835"
+        }
+      ],
+      "affectedRange": "<= 11.0.0"
+    }
+  ]
+}

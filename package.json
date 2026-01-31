@@ -18,7 +18,10 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "node --import tsx --test 'test/**/*.test.ts'",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "update-vuln-db": "tsx scripts/update-vuln-db.ts --since=2021-01-01",
+    "update-vuln-db:incremental": "tsx scripts/update-vuln-db.ts --incremental",
+    "update-vuln-db:full": "tsx scripts/update-vuln-db.ts"
   },
   "dependencies": {
     "semver": "^7.6.3",

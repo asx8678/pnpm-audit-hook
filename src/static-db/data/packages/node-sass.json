@@ -1,0 +1,27 @@
+{
+  "name": "node-sass",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r8f7-9pfq-mjmv",
+      "title": "Improper Certificate Validation in node-sass",
+      "description": "Certificate validation in node-sass 2.0.0 to 6.0.1 is disabled when requesting binaries even if the user is not specifying an alternative download path.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-r8f7-9pfq-mjmv",
+      "publishedAt": "2022-02-09T22:22:24Z",
+      "modifiedAt": "2023-04-30T05:00:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r8f7-9pfq-mjmv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-24025"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 7.0.0",
+      "fixedVersion": "7.0.0"
+    }
+  ]
+}

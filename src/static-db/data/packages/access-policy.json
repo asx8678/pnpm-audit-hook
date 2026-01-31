@@ -1,0 +1,26 @@
+{
+  "name": "access-policy",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fw2f-7f87-5r6c",
+      "title": "Improper Input Validation in access-policy",
+      "description": "access-policy through 3.1.0 is vulnerable to Arbitrary Code Execution. User input provided to the `template` function is executed by the `eval` function resulting in code execution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fw2f-7f87-5r6c",
+      "publishedAt": "2021-05-17T21:00:29Z",
+      "modifiedAt": "2023-02-01T05:05:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fw2f-7f87-5r6c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7674"
+        }
+      ],
+      "affectedRange": "<= 3.1.0"
+    }
+  ]
+}

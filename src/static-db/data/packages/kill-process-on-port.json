@@ -1,0 +1,26 @@
+{
+  "name": "kill-process-on-port",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5wqj-f379-6jh4",
+      "title": "Command injection in kill-process-on-port",
+      "description": "All versions of package kill-process-on-port are vulnerable to Command Injection via a.getProcessPortId.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5wqj-f379-6jh4",
+      "publishedAt": "2021-03-19T21:19:47Z",
+      "modifiedAt": "2023-02-01T05:05:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5wqj-f379-6jh4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28426"
+        }
+      ],
+      "affectedRange": "<= 1.0.2"
+    }
+  ]
+}

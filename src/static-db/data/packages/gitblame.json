@@ -1,0 +1,26 @@
+{
+  "name": "gitblame",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3486-rvxc-hrrj",
+      "title": "gitblame susceptible to command injection",
+      "description": "A command injection vulnerability affects all versions of package gitblame. The injection point is located in line 15 in lib/gitblame.js.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3486-rvxc-hrrj",
+      "publishedAt": "2022-08-03T00:00:57Z",
+      "modifiedAt": "2023-01-30T05:01:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3486-rvxc-hrrj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28434"
+        }
+      ],
+      "affectedRange": "<= 0.1.1"
+    }
+  ]
+}

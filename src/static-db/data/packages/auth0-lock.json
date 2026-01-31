@@ -1,0 +1,48 @@
+{
+  "name": "auth0-lock",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jr3j-whm4-9wwm",
+      "title": "Reflected XSS when using flashMessages or languageDictionary",
+      "description": "### Overview\n\nVersions before and including `11.30.0` are vulnerable to reflected XSS.  An attacker can execute arbitrary code when the library's\n- `flashMessage` feature is utilized and user input or data from URL parameters is incorporated into the `flashMessage`.\n- `languageDictionary` feature is utilized and user input or data from URL parameters is incorporated into the `languageDictionary`.\n\n### Am I affected?\nYou are affected by this vulnerability if you are using `auth0-lock` version `11",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jr3j-whm4-9wwm",
+      "publishedAt": "2021-06-04T19:10:34Z",
+      "modifiedAt": "2023-02-01T05:05:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jr3j-whm4-9wwm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32641"
+        }
+      ],
+      "affectedRange": "< 11.30.1",
+      "fixedVersion": "11.30.1"
+    },
+    {
+      "id": "GHSA-7ww6-75fj-jcj7",
+      "title": "Cross-site Scripting in Auth0 Lock",
+      "description": "### Overview\n\nIn versions before and including `11.32.2`, when the “additional signup fields” feature [is configured](https://github.com/auth0/lock#additional-sign-up-fields), a malicious actor can inject invalidated HTML code into these additional fields, which is then stored in the service `user_metdata` payload (using the `name` property).\n\nVerification emails, when applicable, are generated using this metadata. It is therefor possible for an actor to craft a malicious link by injecting HTML,",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7ww6-75fj-jcj7",
+      "publishedAt": "2022-05-24T20:49:20Z",
+      "modifiedAt": "2023-01-27T05:01:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7ww6-75fj-jcj7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-29172"
+        }
+      ],
+      "affectedRange": "< 11.33.0",
+      "fixedVersion": "11.33.0"
+    }
+  ]
+}

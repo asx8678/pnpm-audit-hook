@@ -1,0 +1,26 @@
+{
+  "name": "commonregex",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pmvv-57rg-5g86",
+      "title": "CommonRegexJS Regular Expression Denial of Service vulnerability",
+      "description": "CommonRegexJS is a CommonRegex port for JavaScript. All available versions contain one or more regular expressions that are vulnerable to Regular Expression Denial of Service (ReDoS). As of time of publication, no known patches are available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pmvv-57rg-5g86",
+      "publishedAt": "2024-10-26T21:30:46Z",
+      "modifiedAt": "2024-11-13T23:24:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pmvv-57rg-5g86"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26305"
+        }
+      ],
+      "affectedRange": "<= 0.3.1"
+    }
+  ]
+}

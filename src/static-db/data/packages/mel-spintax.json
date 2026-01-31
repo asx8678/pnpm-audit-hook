@@ -1,0 +1,27 @@
+{
+  "name": "mel-spintax",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qjm7-55vv-3c5f",
+      "title": "mel-spintax has Inefficient Regular Expression Complexity",
+      "description": "A vulnerability was found in melnaron mel-spintax. It has been rated as problematic. Affected by this issue is some unknown functionality of the file `lib/spintax.js`. The manipulation of the argument text leads to inefficient regular expression complexity. The name of the patch is 37767617846e27b87b63004e30216e8f919637d3. It is recommended to apply a patch to fix this issue. The identifier of this vulnerability is VDB-218456.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qjm7-55vv-3c5f",
+      "publishedAt": "2023-01-18T03:31:17Z",
+      "modifiedAt": "2023-01-20T23:35:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qjm7-55vv-3c5f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-25077"
+        }
+      ],
+      "affectedRange": "< 1.0.3",
+      "fixedVersion": "1.0.3"
+    }
+  ]
+}

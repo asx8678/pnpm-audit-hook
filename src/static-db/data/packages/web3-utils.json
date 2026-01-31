@@ -1,0 +1,44 @@
+{
+  "name": "web3-utils",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2g4c-8fpm-c46v",
+      "title": "web3-utils Prototype Pollution vulnerability",
+      "description": "### Impact: \nThe mergeDeep() function in the web3-utils package has been identified for Prototype Pollution vulnerability. An attacker has the ability to modify an object's prototype, which could result in changing the behavior of all objects that inherit from the impacted prototype by providing carefully crafted input to function.\n\n### Patches: \nIt has been fixed in web3-utils version 4.2.1 so all packages and apps depending on web3-utils >=4.0.1 and <=4.2.0 should upgrade to web3-utils 4.2.1.\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2g4c-8fpm-c46v",
+      "publishedAt": "2024-03-27T21:57:42Z",
+      "modifiedAt": "2024-03-27T21:57:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2g4c-8fpm-c46v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21505"
+        }
+      ],
+      "affectedRange": ">= 4.0.1, < 4.2.1",
+      "fixedVersion": "4.2.1"
+    },
+    {
+      "id": "GHSA-87qp-7cw8-8q9c",
+      "title": "Duplicate Advisory: web3-utils Prototype Pollution vulnerability",
+      "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-2g4c-8fpm-c46v. This link is maintained to preserve external references.\n\n## Original Description\nVersions of the package web3-utils before 4.2.1 are vulnerable to Prototype Pollution via the utility functions format and mergeDeep, due to insecure recursive merge.\nAn attacker can manipulate an object's prototype, potentially leading to the alteration of the behavior of all objects inheriting from the affecte",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-87qp-7cw8-8q9c",
+      "publishedAt": "2024-03-25T06:30:24Z",
+      "modifiedAt": "2024-03-27T21:57:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-87qp-7cw8-8q9c"
+        }
+      ],
+      "affectedRange": "< 4.2.1",
+      "fixedVersion": "4.2.1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@backstage/cli-common",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2p49-45hj-7mc9",
+      "title": "@backstage/cli-common has a possible `resolveSafeChildPath` Symlink Chain Bypass",
+      "description": "### Impact\n\nThe `resolveSafeChildPath` utility function in `@backstage/backend-plugin-api`, which is used to prevent path traversal attacks, failed to properly validate symlink chains and dangling symlinks. An attacker could bypass the path validation by:\n\n1. **Symlink chains**: Creating `link1 → link2 → /outside` where intermediate symlinks eventually resolve outside the allowed directory\n2. **Dangling symlinks**: Creating symlinks pointing to non-existent paths outside the base directory, whic",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2p49-45hj-7mc9",
+      "publishedAt": "2026-01-21T22:40:51Z",
+      "modifiedAt": "2026-01-22T15:41:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2p49-45hj-7mc9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24047"
+        }
+      ],
+      "affectedRange": "<= 0.1.16",
+      "fixedVersion": "0.1.17"
+    }
+  ]
+}

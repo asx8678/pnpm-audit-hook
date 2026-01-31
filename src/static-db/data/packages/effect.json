@@ -1,0 +1,26 @@
+{
+  "name": "effect",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6hr9-4692-fch9",
+      "title": "Withdrawn Advisory: OS Command Injection in effect",
+      "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because the [npm package effect](https://www.npmjs.com/package/effect), for which alerts were issued, does not correspond with https://github.com/Javascipt/effect, the repository with the vulnerable code. https://github.com/Javascipt/effect is not in any [supported ecosystem](https://docs.github.com/en/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-the-github-advisory-databas",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6hr9-4692-fch9",
+      "publishedAt": "2022-02-10T23:45:54Z",
+      "modifiedAt": "2024-06-04T18:25:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6hr9-4692-fch9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7624"
+        }
+      ],
+      "affectedRange": "<= 1.0.4"
+    }
+  ]
+}

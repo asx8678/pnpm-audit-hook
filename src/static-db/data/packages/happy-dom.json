@@ -1,0 +1,69 @@
+{
+  "name": "happy-dom",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qpm2-6cq5-7pq5",
+      "title": "happy-dom's `--disallow-code-generation-from-strings` is not sufficient for isolating untrusted JavaScript",
+      "description": "### Summary\nThe mitigation proposed in GHSA-37j7-fg3j-429f for disabling eval/Function when executing untrusted code in happy-dom does not suffice, since it still allows prototype pollution payloads.\n\n### Details\nThe untrusted script and the rest of the application still run in the same Isolate/process, so attackers can deploy prototype pollution payloads to hijack important references like \"process\" in the example below, or to hijack control flow via flipping checks of undefined property. There",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qpm2-6cq5-7pq5",
+      "publishedAt": "2025-10-15T20:29:04Z",
+      "modifiedAt": "2025-11-27T08:54:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qpm2-6cq5-7pq5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-62410"
+        }
+      ],
+      "affectedRange": ">= 19.0.0, < 20.0.2",
+      "fixedVersion": "20.0.2"
+    },
+    {
+      "id": "GHSA-37j7-fg3j-429f",
+      "title": "Happy DOM: VM Context Escape can lead to Remote Code Execution",
+      "description": "# Escape of VM Context gives access to process level functionality\n\n## Summary\nHappy DOM v19 and lower contains a security vulnerability that puts the owner system at the risk of RCE (Remote Code Execution) attacks.\n\nA Node.js VM Context is not an isolated environment, and if the user runs untrusted JavaScript code within the Happy DOM VM Context, it may escape the VM and get access to process level functionality.\n\nIt seems like what the attacker can get control over depends on if the process is",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-37j7-fg3j-429f",
+      "publishedAt": "2025-10-10T23:46:42Z",
+      "modifiedAt": "2025-10-13T15:48:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-37j7-fg3j-429f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-61927"
+        }
+      ],
+      "affectedRange": "< 20.0.0",
+      "fixedVersion": "20.0.0"
+    },
+    {
+      "id": "GHSA-96g7-g7g9-jxw8",
+      "title": "happy-dom allows for server side code to be executed by a <script> tag",
+      "description": "### Impact\nConsumers of the NPM package `happy-dom`\n\n### Patches\nThe security vulnerability has been patched in v15.10.2\n\n### Workarounds\nNo easy workarounds to my knowledge\n\n### References\n[#1585](https://github.com/capricorn86/happy-dom/issues/1585)\n",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-96g7-g7g9-jxw8",
+      "publishedAt": "2024-11-06T15:27:50Z",
+      "modifiedAt": "2024-11-06T23:39:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-96g7-g7g9-jxw8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-51757"
+        }
+      ],
+      "affectedRange": "< 15.10.2",
+      "fixedVersion": "15.10.2"
+    }
+  ]
+}

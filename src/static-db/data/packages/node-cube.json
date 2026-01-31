@@ -1,0 +1,26 @@
+{
+  "name": "node-cube",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8v65-5fw5-23wj",
+      "title": "node-cube vulnerable to prototype pollution",
+      "description": "The node-cube package (prior to version 5.0.0) contains a vulnerability in its handling of prototype chain initialization, which could allow an attacker to inject properties into the prototype of built-in objects. This issue, categorized under CWE-1321, arises from improper validation of user-supplied input in the package's resource initialization process. Successful exploitation may lead to denial of service or arbitrary code execution in affected environments. The vulnerability affects version",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-8v65-5fw5-23wj",
+      "publishedAt": "2025-09-24T21:30:37Z",
+      "modifiedAt": "2025-09-25T17:48:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8v65-5fw5-23wj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57348"
+        }
+      ],
+      "affectedRange": "<= 5.0.0-beta.19"
+    }
+  ]
+}

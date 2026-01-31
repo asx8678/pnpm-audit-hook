@@ -1,0 +1,23 @@
+{
+  "name": "highcharts-export-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hfwx-c7q6-g54c",
+      "title": "Vulnerability allowing for reading internal HTTP resources",
+      "description": "### Impact\n\nThe vulnerability allows for reading and outputting files served by other services on the internal network in which the export server is hosted. If the export server is exposed to the internet, this potentially allows a malicious user to gain read access to internal web-resources.\n\nThe impact is limited to internal services that serve content via. HTTP(S), and requires the attacker to know internal hostnames/IP addresses.\n\nThe previous versions have been marked as deprecated on NPM.\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hfwx-c7q6-g54c",
+      "publishedAt": "2021-03-12T23:04:46Z",
+      "modifiedAt": "2023-01-09T05:04:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hfwx-c7q6-g54c"
+        }
+      ],
+      "affectedRange": "<= 2.0.30",
+      "fixedVersion": "2.1.0"
+    }
+  ]
+}

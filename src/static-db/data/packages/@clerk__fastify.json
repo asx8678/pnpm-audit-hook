@@ -1,0 +1,27 @@
+{
+  "name": "@clerk/fastify",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9mp4-77wg-rwx9",
+      "title": "@clerk/backend Performs Insufficient Verification of Data Authenticity",
+      "description": "### Impact\n\nApplications that use the `verifyWebhook()` helper to verify incoming Clerk webhooks are susceptible to accepting improperly signed webhook events.\n\n### Patches\n\n* `@clerk/backend`: the helper has been patched as of `2.4.0`\n* `@clerk/astro`: the helper has been patched as of `2.10.2`\n* `@clerk/express`: the helper has been patched as of `1.7.4`\n* `@clerk/fastify`: the helper has been patched as of `2.4.4`\n* `@clerk/nextjs`: the helper has been patched as of `6.23.3`\n* `@clerk/nuxt`: ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9mp4-77wg-rwx9",
+      "publishedAt": "2025-07-09T18:07:40Z",
+      "modifiedAt": "2025-07-09T20:15:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9mp4-77wg-rwx9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-53548"
+        }
+      ],
+      "affectedRange": ">= 2.3.0, < 2.4.4",
+      "fixedVersion": "2.4.4"
+    }
+  ]
+}

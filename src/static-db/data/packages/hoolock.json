@@ -1,0 +1,27 @@
+{
+  "name": "hoolock",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4c2g-hx49-7h25",
+      "title": "Prototype pollution not blocked by object-path related utilities in hoolock",
+      "description": "### Impact\nUtility functions related to object paths (`get`, `set` and `update`) did not block attempts to access or alter object prototypes.\n\n### Patches\nThe `get`, `set` and `update` functions will throw a `TypeError` when a user attempts to access or alter inherited properties in versions >=2.2.1.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4c2g-hx49-7h25",
+      "publishedAt": "2024-01-23T14:43:13Z",
+      "modifiedAt": "2024-11-12T01:50:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4c2g-hx49-7h25"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-23339"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.2.1",
+      "fixedVersion": "2.2.1"
+    }
+  ]
+}

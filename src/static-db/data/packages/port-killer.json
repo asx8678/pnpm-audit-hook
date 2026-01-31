@@ -1,0 +1,26 @@
+{
+  "name": "port-killer",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2548-q746-x5x6",
+      "title": "Code injection in port-killer",
+      "description": "This affects all versions of package port-killer. If (attacker-controlled) user input is given, it is possible for an attacker to execute arbitrary commands. This is due to use of the child_process exec function without input sanitization. Running this PoC will cause the command touch success to be executed, leading to the creation of a file called success.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2548-q746-x5x6",
+      "publishedAt": "2021-04-13T15:20:49Z",
+      "modifiedAt": "2023-02-01T05:05:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2548-q746-x5x6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23359"
+        }
+      ],
+      "affectedRange": "<= 1.0.1"
+    }
+  ]
+}

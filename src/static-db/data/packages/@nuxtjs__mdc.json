@@ -1,0 +1,48 @@
+{
+  "name": "@nuxtjs/mdc",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cj6r-rrr9-fg82",
+      "title": "Nuxt MDC has an XSS vulnerability in markdown rendering that bypasses HTML filtering",
+      "description": "### Summary\nA **remote script-inclusion / stored XSS** vulnerability in **@nuxtjs/mdc** lets a Markdown author inject a `<base href=\"https://attacker.tld\">` element.  \nThe `<base>` tag rewrites how all subsequent relative URLs are resolved, so an attacker can make the page load scripts, styles, or images from an external, attacker-controlled origin and execute arbitrary JavaScript in the site’s context.\n\n### Details\n- **Affected file** : `src/runtime/parser/utils/props.ts`  \n- **Core logic**  : ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cj6r-rrr9-fg82",
+      "publishedAt": "2025-07-20T16:36:14Z",
+      "modifiedAt": "2025-07-20T16:36:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cj6r-rrr9-fg82"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54075"
+        }
+      ],
+      "affectedRange": "< 0.17.2",
+      "fixedVersion": "0.17.2"
+    },
+    {
+      "id": "GHSA-j82m-pc2v-2484",
+      "title": "Parsed HTML anchor links in Markdown provided to parseMarkdown can result in XSS in @nuxtjs/mdc",
+      "description": "### Summary\nAn unsafe parsing logic of the URL from markdown can lead to arbitrary JavaScript code due to a bypass to the existing guards around the `javascript:` protocol scheme in the URL.\n\n### Details\n\nThe parsing logic implement at [https://github.com/nuxt-modules/mdc/blob/main/src/runtime/parser/utils/props.ts#L16](https://github.com/nuxt-modules/mdc/blob/main/src/runtime/parser/utils/props.ts#L16) maintains a deny-list approach to filtering potential malicious payload. It does so by matchi",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-j82m-pc2v-2484",
+      "publishedAt": "2025-02-06T17:16:27Z",
+      "modifiedAt": "2025-02-06T19:56:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j82m-pc2v-2484"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-24981"
+        }
+      ],
+      "affectedRange": "<= 0.13.2",
+      "fixedVersion": "0.13.3"
+    }
+  ]
+}

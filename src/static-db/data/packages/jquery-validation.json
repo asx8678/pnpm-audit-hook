@@ -1,0 +1,90 @@
+{
+  "name": "jquery-validation",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rrj2-ph5q-jxw2",
+      "title": "jquery-validation vulnerable to Cross-site Scripting",
+      "description": "Versions of the package jquery-validation before 1.20.0 are vulnerable to Cross-site Scripting (XSS) in the showLabel() function, which may take input from a user-controlled placeholder value. This value will populate a message via $.validator.messages in a user localizable dictionary.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rrj2-ph5q-jxw2",
+      "publishedAt": "2025-04-15T06:30:34Z",
+      "modifiedAt": "2025-04-15T14:24:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rrj2-ph5q-jxw2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-3573"
+        }
+      ],
+      "affectedRange": "< 1.20.0",
+      "fixedVersion": "1.20.0"
+    },
+    {
+      "id": "GHSA-j9m2-h2pv-wvph",
+      "title": "Regular expression denial of service in jquery-validation",
+      "description": "An exponential ReDoS (Regular Expression Denial of Service) can be triggered in the jquery-validation npm package, when an attacker is able to supply arbitrary input to the url2 method",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-j9m2-h2pv-wvph",
+      "publishedAt": "2022-06-03T00:00:59Z",
+      "modifiedAt": "2024-11-12T14:55:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j9m2-h2pv-wvph"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-43306"
+        }
+      ],
+      "affectedRange": "< 1.19.4",
+      "fixedVersion": "1.19.4"
+    },
+    {
+      "id": "GHSA-jxwx-85vp-gvwm",
+      "title": "Regular Expression Denial of Service in jquery-validation",
+      "description": "The GitHub Security Lab team has identified potential security vulnerabilities in jquery.validation.\n\nThe project contains one or more regular expressions that are vulnerable to ReDoS (Regular Expression Denial of Service)\n\nThis issue was discovered and reported by GitHub team member @erik-krogh (Erik Krogh Kristensen).",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jxwx-85vp-gvwm",
+      "publishedAt": "2021-01-13T18:21:54Z",
+      "modifiedAt": "2023-08-31T18:35:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jxwx-85vp-gvwm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-21252"
+        }
+      ],
+      "affectedRange": "< 1.19.3",
+      "fixedVersion": "1.19.3"
+    },
+    {
+      "id": "GHSA-ffmh-x56j-9rc3",
+      "title": "jquery-validation Regular Expression Denial of Service due to arbitrary input to url2 method",
+      "description": "Summary\n\nIncomplete fix of CVE-2021-43306: An exponential ReDoS (Regular Expression Denial of Service) can be triggered in the jquery-validation npm package, when an attacker is able to supply arbitrary input to the url2 method.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-ffmh-x56j-9rc3",
+      "publishedAt": "2022-07-05T22:56:58Z",
+      "modifiedAt": "2023-01-27T05:04:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ffmh-x56j-9rc3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31147"
+        }
+      ],
+      "affectedRange": "< 1.19.5",
+      "fixedVersion": "1.19.5"
+    }
+  ]
+}

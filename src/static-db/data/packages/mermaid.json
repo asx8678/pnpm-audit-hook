@@ -1,0 +1,128 @@
+{
+  "name": "mermaid",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7rqq-prvp-x9jh",
+      "title": "Mermaid improperly sanitizes sequence diagram labels leading to XSS",
+      "description": "### Summary\nIn the default configuration of mermaid 11.9.0, user supplied input for sequence diagram labels is passed to `innerHTML` during calculation of element size, causing XSS.\n\n### Details\nSequence diagram node labels with KaTeX delimiters are passed through `calculateMathMLDimensions`. This method passes the full label to `innerHTML` which allows allows malicious users to inject arbitrary HTML and cause XSS when mermaid-js is used in it's default configuration (with KaTeX support enabled)",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7rqq-prvp-x9jh",
+      "publishedAt": "2025-08-19T20:16:58Z",
+      "modifiedAt": "2025-09-04T12:53:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7rqq-prvp-x9jh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54881"
+        }
+      ],
+      "affectedRange": ">= 10.9.0-rc.1, < 10.9.4",
+      "fixedVersion": "10.9.4"
+    },
+    {
+      "id": "GHSA-8gwm-58g9-j8pw",
+      "title": "Mermaid does not properly sanitize architecture diagram iconText leading to XSS",
+      "description": "### Summary\nIn the default configuration of mermaid 11.9.0, user supplied input for architecture diagram icons is passed to the d3 `html()` method, creating a sink for cross site scripting.\n\n### Details\nArchitecture diagram service `iconText` values are passed to the d3 `html()` method, allowing malicious users to inject arbitrary HTML and cause XSS when mermaid-js is used in it's default configuration. \n\nThe vulnerability lies here:\n\n```ts\nexport const drawServices = async function (\n  db: Arch",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8gwm-58g9-j8pw",
+      "publishedAt": "2025-08-19T20:16:45Z",
+      "modifiedAt": "2025-08-20T19:13:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8gwm-58g9-j8pw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54880"
+        }
+      ],
+      "affectedRange": ">= 11.1.0, < 11.10.0",
+      "fixedVersion": "11.10.0"
+    },
+    {
+      "id": "GHSA-m4gq-x24j-jpmf",
+      "title": "Prototype pollution vulnerability found in Mermaid's bundled version of DOMPurify",
+      "description": "The following bundled files within the Mermaid NPM package contain a bundled version of DOMPurify that is vulnerable to https://github.com/cure53/DOMPurify/security/advisories/GHSA-mmhx-hmjr-r674, potentially resulting in an XSS attack.\n\nThis affects the built:\n\n- `dist/mermaid.min.js`\n- `dist/mermaid.js`\n- `dist/mermaid.esm.mjs`\n- `dist/mermaid.esm.min.mjs`\n\nThis will also affect users that use the above files via a CDN link, e.g. `https://cdn.jsdelivr.net/npm/mermaid@10.9.2/dist/mermaid.min.js",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m4gq-x24j-jpmf",
+      "publishedAt": "2024-10-22T18:17:02Z",
+      "modifiedAt": "2024-10-23T16:58:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m4gq-x24j-jpmf"
+        }
+      ],
+      "affectedRange": "<= 10.9.2",
+      "fixedVersion": "10.9.3"
+    },
+    {
+      "id": "GHSA-x3vm-38hw-55wf",
+      "title": "Possible inject arbitrary `CSS` into the generated graph affecting the container HTML",
+      "description": "An attacker is able to inject arbitrary `CSS` into the generated graph allowing them to change the styling of elements outside of the generated graph, and potentially exfiltrate sensitive information by using specially crafted `CSS` selectors.\n\nThe following example shows how an attacker can exfiltrate the contents of an input field by bruteforcing the `value` attribute one character at a time. Whenever there is an actual match, an `http` request will be made by the browser in order to \"load\" a ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x3vm-38hw-55wf",
+      "publishedAt": "2022-07-05T18:29:31Z",
+      "modifiedAt": "2023-07-21T19:28:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x3vm-38hw-55wf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31108"
+        }
+      ],
+      "affectedRange": ">= 8.0.0, < 9.1.2",
+      "fixedVersion": "9.1.2"
+    },
+    {
+      "id": "GHSA-p3rp-vmj9-gv6v",
+      "title": "Incorrect sanitisation function leads to `XSS` in mermaid",
+      "description": "### Impact\nMalicious diagrams can contain javascript code that can be run at diagram readers machines.\n\n### Patches\nThe users should upgrade to version 8.13.8\n\n### Workarounds\nYou need to upgrade in order to avoid this issue.\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p3rp-vmj9-gv6v",
+      "publishedAt": "2022-01-06T19:45:59Z",
+      "modifiedAt": "2023-02-03T05:04:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p3rp-vmj9-gv6v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-43861"
+        }
+      ],
+      "affectedRange": "< 8.13.8",
+      "fixedVersion": "8.13.8"
+    },
+    {
+      "id": "GHSA-4f6x-49g2-99fm",
+      "title": "Cross-site Scripting in Mermaid",
+      "description": "Mermaid before 8.11.0 allows XSS when the antiscript feature is used.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4f6x-49g2-99fm",
+      "publishedAt": "2021-12-10T18:57:41Z",
+      "modifiedAt": "2023-02-01T05:06:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4f6x-49g2-99fm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-35513"
+        }
+      ],
+      "affectedRange": "< 8.11.0",
+      "fixedVersion": "8.11.0"
+    }
+  ]
+}

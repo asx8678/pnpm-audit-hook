@@ -1,0 +1,27 @@
+{
+  "name": "web-node-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3fwq-qv5v-2wxf",
+      "title": "Path Traversal in web-node-server",
+      "description": "A vulnerability has been found in youngerheart nodeserver and classified as critical. Affected by this vulnerability is an unknown functionality of the file nodeserver.js. The manipulation leads to path traversal. The name of the patch is c4c0f0138ab5afbac58e03915d446680421bde28. It is recommended to apply a patch to fix this issue. The identifier VDB-218461 was assigned to this vulnerability.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3fwq-qv5v-2wxf",
+      "publishedAt": "2023-01-18T03:31:17Z",
+      "modifiedAt": "2023-10-20T22:39:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3fwq-qv5v-2wxf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-36651"
+        }
+      ],
+      "affectedRange": "< 0.0.11",
+      "fixedVersion": "0.0.11"
+    }
+  ]
+}

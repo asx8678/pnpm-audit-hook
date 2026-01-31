@@ -1,0 +1,27 @@
+{
+  "name": "fs-git",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wp3j-gv53-4pg8",
+      "title": "fs-git command injection vulnerability",
+      "description": "fs-git is a file system like api for git repository. The fs-git version 1.0.1 module relies on child_process.exec, however, the buildCommand method used to construct exec strings does not properly sanitize data and is vulnerable to command injection across all methods that use it and call exec.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wp3j-gv53-4pg8",
+      "publishedAt": "2022-05-13T01:41:14Z",
+      "modifiedAt": "2023-07-31T22:09:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wp3j-gv53-4pg8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-1000451"
+        }
+      ],
+      "affectedRange": "< 1.0.2",
+      "fixedVersion": "1.0.2"
+    }
+  ]
+}

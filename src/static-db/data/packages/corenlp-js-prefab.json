@@ -1,0 +1,26 @@
+{
+  "name": "corenlp-js-prefab",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h73g-8g27-xxcx",
+      "title": "Command injection in corenlp-js-prefab",
+      "description": "This affects all versions of package corenlp-js-prefab. The injection point is located in line 10 in 'index.js.' It depends on a vulnerable package 'corenlp-js-interface.'",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-h73g-8g27-xxcx",
+      "publishedAt": "2021-04-13T15:22:58Z",
+      "modifiedAt": "2023-02-01T05:05:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h73g-8g27-xxcx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28439"
+        }
+      ],
+      "affectedRange": "<= 1.0.1"
+    }
+  ]
+}

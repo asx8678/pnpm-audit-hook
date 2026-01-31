@@ -1,0 +1,60 @@
+{
+  "name": "node-ipc",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3mpp-xfvh-qh37",
+      "title": "node-ipc behavior change",
+      "description": "node-ipc starting in version 11.0.0 and prior to version 12.0.0 includes a message from the maintainer that is written to the user’s desktop. Please review the version changes before proceeding.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-3mpp-xfvh-qh37",
+      "publishedAt": "2022-03-16T23:54:35Z",
+      "modifiedAt": "2024-08-14T22:13:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3mpp-xfvh-qh37"
+        }
+      ],
+      "affectedRange": ">= 11.0.0, < 12.0.0",
+      "fixedVersion": "12.0.0"
+    },
+    {
+      "id": "GHSA-97m3-w2cp-4xx6",
+      "title": "Embedded Malicious Code in node-ipc",
+      "description": "The package node-ipc versions 10.1.1 and 10.1.2 are vulnerable to embedded malicious code that was introduced by the maintainer. The malicious code was intended to overwrite arbitrary files dependent upon the geo-location of the user IP address. The maintainer removed the malicious code in version 10.1.3.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-97m3-w2cp-4xx6",
+      "publishedAt": "2022-03-16T23:54:32Z",
+      "modifiedAt": "2023-01-27T05:00:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-97m3-w2cp-4xx6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-23812"
+        }
+      ],
+      "affectedRange": ">= 10.1.1, < 10.1.3",
+      "fixedVersion": "10.1.3"
+    },
+    {
+      "id": "GHSA-8gr3-2gjw-jj7g",
+      "title": "Hidden functionality in node-ipc",
+      "description": "The package node-ipc version 9.2.2 is vulnerable to hidden functionality that was introduced by the maintainer. The package uses a dependency that writes a file to disk that does not pertain to the functionality of the package and is not included in versions < 9.2.2.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-8gr3-2gjw-jj7g",
+      "publishedAt": "2022-03-16T23:54:33Z",
+      "modifiedAt": "2023-01-11T05:05:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8gr3-2gjw-jj7g"
+        }
+      ],
+      "affectedRange": "= 9.2.2"
+    }
+  ]
+}

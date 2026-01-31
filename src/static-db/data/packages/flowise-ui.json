@@ -1,0 +1,40 @@
+{
+  "name": "flowise-ui",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fjh6-8679-9pch",
+      "title": "Flowise does not Prevent Bypass of Password Confirmation - Unverified Password Change",
+      "description": "### Summary\nBypass of Password Confirmation - Unverified Password Change (authenticated change without current password)\n\nAn authenticated user is allowed to change their account password without supplying the current password or any additional verification. The application does not verify the actor’s authority to perform that credential change (no current-password check, no authorization enforcement). An attacker who is merely authenticated (or who can trick or coerce an authenticated session) ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fjh6-8679-9pch",
+      "publishedAt": "2025-11-14T20:57:31Z",
+      "modifiedAt": "2025-11-14T20:57:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fjh6-8679-9pch"
+        }
+      ],
+      "affectedRange": "< 3.0.10",
+      "fixedVersion": "3.0.10"
+    },
+    {
+      "id": "GHSA-x39m-3393-3qp4",
+      "title": "Flowise doesn't Prevent Bypass of Password Confirmation through Unverified Email Change (credentials)",
+      "description": "### Summary\nUnverified Email Change - Email as part of Credential / Unverified Account Recovery Channel Change\n\nThe application allows changing the account email address (used as a login identifier and/or password recovery address) without verifying the requester’s authority to make that change (no confirmation to the old email, no authentication step). Because email often functions as a credential or recovery channel, unverified email changes enable attackers to take over accounts by switching ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x39m-3393-3qp4",
+      "publishedAt": "2025-11-14T20:56:02Z",
+      "modifiedAt": "2025-11-14T20:56:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x39m-3393-3qp4"
+        }
+      ],
+      "affectedRange": "< 3.0.10",
+      "fixedVersion": "3.0.10"
+    }
+  ]
+}

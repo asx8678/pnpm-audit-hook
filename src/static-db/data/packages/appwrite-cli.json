@@ -1,0 +1,27 @@
+{
+  "name": "appwrite-cli",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g777-crp9-m27g",
+      "title": "Apprite CLI makes Use of Hard-coded Credentials",
+      "description": "In Appwrite CLI before 3.0.0, when using the login command, the credentials of the Appwrite user are stored in a ~/.appwrite/prefs.json file with 0644 as UNIX permissions. Any user of the local system can access those credentials.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g777-crp9-m27g",
+      "publishedAt": "2024-01-09T09:30:29Z",
+      "modifiedAt": "2024-09-13T14:16:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g777-crp9-m27g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-50974"
+        }
+      ],
+      "affectedRange": "< 3.0.0",
+      "fixedVersion": "3.0.0"
+    }
+  ]
+}

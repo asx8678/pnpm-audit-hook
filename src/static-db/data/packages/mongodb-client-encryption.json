@@ -1,0 +1,27 @@
+{
+  "name": "mongodb-client-encryption",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rjmf-p882-645m",
+      "title": "mongodb-client-encryption vulnerable to Improper Certificate Validation",
+      "description": "A specific version of the Node.js mongodb-client-encryption module does not perform correct validation of the KMS server’s certificate. This vulnerability in combination with a privileged network position active MITM attack could result in interception of traffic between the Node.js driver and the KMS service rendering client-side field level encryption (CSFLE) ineffective. This issue was discovered during internal testing and affects mongodb-client-encryption module version 1.2.0, which was ava",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rjmf-p882-645m",
+      "publishedAt": "2021-04-12T18:51:17Z",
+      "modifiedAt": "2024-09-16T22:04:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rjmf-p882-645m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-20327"
+        }
+      ],
+      "affectedRange": "= 1.2.0",
+      "fixedVersion": "1.2.1"
+    }
+  ]
+}

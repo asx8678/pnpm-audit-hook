@@ -1,0 +1,69 @@
+{
+  "name": "layui",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j827-6rgf-9629",
+      "title": "Layui has DOM Clobbering gadgets that leads to Cross-site Scripting",
+      "description": "### Summary\nA DOM Clobbering vulnerability has been discovered in `layui` that can lead to Cross-site Scripting (XSS) on web pages where attacker-controlled HTML elements (e.g., `img` tags with unsanitized `name` attributes) are present.\n\nIt's worth noting that we’ve identifed similar issues in other popular client-side libraries like Webpack ([CVE-2024-43788](https://github.com/webpack/webpack/security/advisories/GHSA-4vvj-4cpr-p986)) and Vite ([CVE-2024-45812](https://github.com/vitejs/vite/se",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j827-6rgf-9629",
+      "publishedAt": "2024-09-26T17:54:24Z",
+      "modifiedAt": "2024-09-26T21:11:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j827-6rgf-9629"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-47075"
+        }
+      ],
+      "affectedRange": "< 2.9.17",
+      "fixedVersion": "2.9.17"
+    },
+    {
+      "id": "GHSA-rcvr-8whx-3m5p",
+      "title": "Layui cross-site scripting (XSS) vulnerability",
+      "description": "layui up to v2.74 was discovered to contain a cross-site scripting (XSS) vulnerability via the data-content parameter.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rcvr-8whx-3m5p",
+      "publishedAt": "2023-12-30T18:30:35Z",
+      "modifiedAt": "2024-01-08T15:56:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rcvr-8whx-3m5p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-50550"
+        }
+      ],
+      "affectedRange": "<= 2.7.4",
+      "fixedVersion": "2.7.5"
+    },
+    {
+      "id": "GHSA-hx4h-676r-j3qp",
+      "title": "layui vulnerable to cross-site scripting",
+      "description": "A vulnerability, which was classified as problematic, was found in layui up to v2.8.0-rc.16. This affects an unknown part of the component HTML Attribute Handler. The manipulation of the argument title leads to cross site scripting. It is possible to initiate the attack remotely. Upgrading to version 2.8.0 is able to address this issue. It is recommended to upgrade the affected component. The identifier VDB-234237 was assigned to this vulnerability.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hx4h-676r-j3qp",
+      "publishedAt": "2023-07-16T18:30:54Z",
+      "modifiedAt": "2023-11-05T05:02:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hx4h-676r-j3qp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-3691"
+        }
+      ],
+      "affectedRange": "< 2.8.0",
+      "fixedVersion": "2.8.0"
+    }
+  ]
+}

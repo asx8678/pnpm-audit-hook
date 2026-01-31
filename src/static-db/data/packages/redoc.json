@@ -1,0 +1,27 @@
+{
+  "name": "redoc",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9rhg-254w-fh9x",
+      "title": "Redoc Prototype Pollution via `Module.mergeObjects` Component",
+      "description": "A prototype pollution in the component Module.mergeObjects (redoc/bundles/redoc.lib.js:2) of redoc <= 2.2.0 allows attackers to cause a Denial of Service (DoS) via supplying a crafted payload.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9rhg-254w-fh9x",
+      "publishedAt": "2025-03-28T21:30:47Z",
+      "modifiedAt": "2025-03-31T15:58:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9rhg-254w-fh9x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-57083"
+        }
+      ],
+      "affectedRange": "< 2.4.0",
+      "fixedVersion": "2.4.0"
+    }
+  ]
+}

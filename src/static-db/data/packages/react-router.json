@@ -1,0 +1,153 @@
+{
+  "name": "react-router",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cpj6-fhp6-mr6j",
+      "title": "React Router allows pre-render data spoofing on React-Router framework mode",
+      "description": "## Summary\nAfter some research, it turns out that it's possible to modify pre-rendered data by adding a header to the request. This allows to completely spoof its contents and modify all the values ​​of the data object passed to the HTML. Latest versions are impacted.\n\n## Details\nThe vulnerable header is `X-React-Router-Prerender-Data`, a specific JSON object must be passed to it in order for the spoofing to be successful as we will see shortly. Here is [the vulnerable code](https://github.com/r",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cpj6-fhp6-mr6j",
+      "publishedAt": "2025-04-24T16:31:32Z",
+      "modifiedAt": "2026-01-16T22:01:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cpj6-fhp6-mr6j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-43865"
+        }
+      ],
+      "affectedRange": ">= 7.0.0-pre.0, <= 7.5.1",
+      "fixedVersion": "7.5.2"
+    },
+    {
+      "id": "GHSA-h5cw-625j-3rxh",
+      "title": "React Router has CSRF issue in Action/Server Action Request Processing",
+      "description": "React Router (or Remix v2) is vulnerable to CSRF attacks on document POST requests to UI routes when using server-side route `action` handlers in [Framework Mode](https://reactrouter.com/start/modes#framework), or when using React Server Actions in the new unstable RSC modes.\n\n> [!NOTE]\n> This does not impact applications that use [Declarative Mode](https://reactrouter.com/start/modes#declarative) (`<BrowserRouter>`) or [Data Mode](https://reactrouter.com/start/modes#data) (`createBrowserRouter`",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h5cw-625j-3rxh",
+      "publishedAt": "2026-01-08T20:57:09Z",
+      "modifiedAt": "2026-01-11T14:54:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h5cw-625j-3rxh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22030"
+        }
+      ],
+      "affectedRange": ">= 7.0.0, <= 7.11.0",
+      "fixedVersion": "7.12.0"
+    },
+    {
+      "id": "GHSA-2w69-qvjg-hvjx",
+      "title": "React Router vulnerable to XSS via Open Redirects",
+      "description": "React Router (and Remix v1/v2) SPA open navigation redirects originating from loaders or actions in [Framework Mode](https://reactrouter.com/start/modes#framework), [Data Mode](https://reactrouter.com/start/modes#data), or the unstable RSC modes can result in unsafe URLs causing unintended javascript execution on the client. This is only an issue if developers are creating redirect paths from untrusted content or via an open redirect.\n\n> [!NOTE]\n> This does not impact applications that use [Decl",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2w69-qvjg-hvjx",
+      "publishedAt": "2026-01-08T20:54:18Z",
+      "modifiedAt": "2026-01-11T14:54:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2w69-qvjg-hvjx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22029"
+        }
+      ],
+      "affectedRange": ">= 7.0.0, <= 7.11.0",
+      "fixedVersion": "7.12.0"
+    },
+    {
+      "id": "GHSA-8v8x-cx79-35w7",
+      "title": "React Router SSR XSS in ScrollRestoration",
+      "description": "A XSS vulnerability exists in in React Router's `<ScrollRestoration>` API in [Framework Mode](https://reactrouter.com/start/modes#framework) when using the `getKey`/`storageKey` props during Server-Side Rendering which could allow arbitrary JavaScript execution during SSR if untrusted content is used to generate the keys.\n\n> [!NOTE]\n> This does not impact applications if developers have [disabled server-side rendering](https://reactrouter.com/how-to/spa) in Framework Mode, or if they are using [",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8v8x-cx79-35w7",
+      "publishedAt": "2026-01-08T20:50:05Z",
+      "modifiedAt": "2026-01-11T14:54:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8v8x-cx79-35w7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-21884"
+        }
+      ],
+      "affectedRange": ">= 7.0.0, < 7.12.0",
+      "fixedVersion": "7.12.0"
+    },
+    {
+      "id": "GHSA-9jcx-v3wj-wh4m",
+      "title": "React Router has unexpected external redirect via untrusted paths",
+      "description": "An attacker-supplied path can be crafted so that when a React Router application navigates to it via `navigate()`, `<Link>`, or `redirect()`, the app performs a navigation/redirect to an external URL. This is only an issue if developers pass untrusted content into navigation paths in their application code.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9jcx-v3wj-wh4m",
+      "publishedAt": "2026-01-08T20:48:21Z",
+      "modifiedAt": "2026-01-11T14:54:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9jcx-v3wj-wh4m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-68470"
+        }
+      ],
+      "affectedRange": ">= 7.0.0, < 7.9.6",
+      "fixedVersion": "7.9.6"
+    },
+    {
+      "id": "GHSA-3cgp-3xvw-98x8",
+      "title": "React Router has XSS Vulnerability",
+      "description": "A XSS vulnerability exists in in React Router's `meta()`/`<Meta>` APIs in [Framework Mode](https://reactrouter.com/start/modes#framework) when generating `script:ld+json` tags which could allow arbitrary JavaScript execution during SSR if untrusted content is used to generate the tag.\n\n> [!NOTE]\n> This does not impact applications using [Declarative Mode](https://reactrouter.com/start/modes#declarative) (`<BrowserRouter>`) or [Data Mode](https://reactrouter.com/start/modes#data) (`createBrowserR",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3cgp-3xvw-98x8",
+      "publishedAt": "2026-01-08T20:42:20Z",
+      "modifiedAt": "2026-01-11T14:53:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3cgp-3xvw-98x8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59057"
+        }
+      ],
+      "affectedRange": ">= 7.0.0, <= 7.8.2",
+      "fixedVersion": "7.9.0"
+    },
+    {
+      "id": "GHSA-f46r-rw29-r322",
+      "title": "React Router allows a DoS via cache poisoning by forcing SPA mode",
+      "description": "## Summary\nAfter some research, it turns out that it is possible to force an application to switch to SPA mode by adding a header to the request. If the application uses SSR and is forced to switch to SPA, this causes an error that completely corrupts the page. If a cache system is in place, this allows the response containing the error to be cached, resulting in a cache poisoning that strongly impacts the availability of the application.\n\n## Details\nThe vulnerable header is `X-React-Router-SPA-",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f46r-rw29-r322",
+      "publishedAt": "2025-04-24T16:31:16Z",
+      "modifiedAt": "2025-04-25T14:32:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f46r-rw29-r322"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-43864"
+        }
+      ],
+      "affectedRange": ">= 7.2.0, <= 7.5.1",
+      "fixedVersion": "7.5.2"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "vitest",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9crc-q9x8-hgqq",
+      "title": "Vitest allows Remote Code Execution when accessing a malicious website while Vitest API server is listening",
+      "description": "### Summary\nArbitrary remote Code Execution when accessing a malicious website while Vitest API server is listening by Cross-site WebSocket hijacking (CSWSH) attacks.\n\n### Details\nWhen [`api` option](https://vitest.dev/config/#api) is enabled (Vitest UI enables it), Vitest starts a WebSocket server. This WebSocket server did not check Origin header and did not have any authorization mechanism and was vulnerable to CSWSH attacks.\nhttps://github.com/vitest-dev/vitest/blob/9a581e1c43e5c02b11e2a8026",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9crc-q9x8-hgqq",
+      "publishedAt": "2025-02-04T17:00:57Z",
+      "modifiedAt": "2025-02-04T22:04:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9crc-q9x8-hgqq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-24964"
+        }
+      ],
+      "affectedRange": "<= 0.0.125"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "graphql-modules",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-53wg-r69p-v3r7",
+      "title": "GraphQL Modules has a Race Condition issue",
+      "description": "### Summary\nOriginally reported as an issue #2613 but should be elevated to a security issue as the ExecutionContext is often used to pass authentication tokens from incoming requests to services loading data from backend APIs.\n\n### Details\nWhen 2 or more parallel requests are made which trigger the same service, the context of the requests is mixed up in the service when the context is injected via `@ExecutionContext()`\n\n### PoC\n\nIn a new project/folder, create and install the following `packag",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-53wg-r69p-v3r7",
+      "publishedAt": "2026-01-16T21:09:08Z",
+      "modifiedAt": "2026-01-21T16:20:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-53wg-r69p-v3r7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23735"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.1.1",
+      "fixedVersion": "3.1.1"
+    }
+  ]
+}

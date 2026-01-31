@@ -1,0 +1,27 @@
+{
+  "name": "@fastify/secure-session",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9wwp-q7wq-jx35",
+      "title": "@fastify/secure-session: Reuse of destroyed secure session cookie",
+      "description": "### Impact\n\nAt the end of the request handling, it will encrypt all data in the session with a secret key and attach the ciphertext as a cookie value with the defined cookie name. After that, the session on the server side is destroyed. When an encrypted cookie with matching session name is provided with subsequent requests, it will decrypt the ciphertext to get the data. The plugin then creates a new session with the data in the ciphertext. Thus theoretically the web instance is still accessing",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9wwp-q7wq-jx35",
+      "publishedAt": "2024-04-10T17:15:50Z",
+      "modifiedAt": "2024-05-15T19:40:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9wwp-q7wq-jx35"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-31999"
+        }
+      ],
+      "affectedRange": "< 7.3.0",
+      "fixedVersion": "7.3.0"
+    }
+  ]
+}

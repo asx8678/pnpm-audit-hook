@@ -1,0 +1,89 @@
+{
+  "name": "erxes",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rq9r-qvwg-829q",
+      "title": "Erxes Path Traversal vulnerability",
+      "description": "In Erxes <1.6.2, an unauthenticated attacker can read arbitrary files from the system using a Path Traversal vulnerability in the /read-file endpoint handler.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rq9r-qvwg-829q",
+      "publishedAt": "2025-06-10T18:32:27Z",
+      "modifiedAt": "2025-06-10T20:27:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rq9r-qvwg-829q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-57186"
+        }
+      ],
+      "affectedRange": "< 1.6.2",
+      "fixedVersion": "1.6.2"
+    },
+    {
+      "id": "GHSA-7rhv-xm4q-wh42",
+      "title": "Erxes Incorrect Access Control vulnerability",
+      "description": "Erxes <1.6.1 is vulnerable to Incorrect Access Control. An attacker can bypass authentication by providing a \"User\" HTTP header that contains any user, allowing them to talk to any GraphQL endpoint.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7rhv-xm4q-wh42",
+      "publishedAt": "2025-06-10T18:32:27Z",
+      "modifiedAt": "2025-06-10T20:26:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7rhv-xm4q-wh42"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-57190"
+        }
+      ],
+      "affectedRange": "< 1.6.1",
+      "fixedVersion": "1.6.1"
+    },
+    {
+      "id": "GHSA-2977-5php-6789",
+      "title": "Erxes Path Traversal vulnerability",
+      "description": "In Erxes <1.6.2, an authenticated attacker can write to arbitrary files on the system using a Path Traversal vulnerability in the importHistoriesCreate GraphQL mutation handler.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2977-5php-6789",
+      "publishedAt": "2025-06-10T18:32:27Z",
+      "modifiedAt": "2025-06-10T20:25:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2977-5php-6789"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-57189"
+        }
+      ],
+      "affectedRange": "< 1.6.2",
+      "fixedVersion": "1.6.2"
+    },
+    {
+      "id": "GHSA-g9ph-r9hc-34r8",
+      "title": "Erxes vulnerable to Cross-site Scripting",
+      "description": "Erxes, an experience operating system (XOS) with a set of plugins, is vulnerable to cross-site scripting in all versions. This results in client-side code execution. The victim must follow a malicious link or be redirected there from malicious web site. There are no known patches.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g9ph-r9hc-34r8",
+      "publishedAt": "2023-02-21T00:30:20Z",
+      "modifiedAt": "2023-02-22T19:16:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g9ph-r9hc-34r8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32853"
+        }
+      ],
+      "affectedRange": "<= 1.0.1"
+    }
+  ]
+}

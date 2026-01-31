@@ -1,0 +1,61 @@
+{
+  "name": "@vendure/core",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6f65-4fv2-wwch",
+      "title": "Vendure vulnerable to timing attack that enables user enumeration in NativeAuthenticationStrategy",
+      "description": "### Summary\nThe `NativeAuthenticationStrategy.authenticate()` method is vulnerable to a timing attack that allows attackers to enumerate valid usernames (email addresses).\n\n### Details\nIn `packages/core/src/config/auth/native-authentication-strategy.ts`, the authenticate method returns immediately if a user is not found:\n\n```typescript\nconst user = await this.userService.getUserByEmailAddress(ctx, data.username);\nif (!user) {\n    return false; // Instant return (~1-5ms)\n}\nconst passwordMatch = a",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-6f65-4fv2-wwch",
+      "publishedAt": "2026-01-30T19:35:40Z",
+      "modifiedAt": "2026-01-30T19:35:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6f65-4fv2-wwch"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25050"
+        }
+      ],
+      "affectedRange": "< 3.5.3",
+      "fixedVersion": "3.5.3"
+    },
+    {
+      "id": "GHSA-wm63-7627-ch33",
+      "title": "@vendure/core's insecure currencyCode handling allows wrong payment amounts",
+      "description": "### Impact\n\nCurrently, in many Vendure deployments it's possible to select any currencyCode (really any, doesn't need to be assigned to the channel) and pay through Mollie and Stripe in that particular currencyCode.\nThe prices are not transformed. The result is the Order is in Payment Settled in the foreign currency.\nSee SS, CZK is not in the channel.\nI've tested with Mollie and Stripe it both works.\n\n**Further notes**\n\nAfter looking into this further and with help from the comments below, the r",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wm63-7627-ch33",
+      "publishedAt": "2023-11-17T21:50:31Z",
+      "modifiedAt": "2023-11-17T21:50:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wm63-7627-ch33"
+        }
+      ],
+      "affectedRange": "< 2.1.3",
+      "fixedVersion": "2.1.3"
+    },
+    {
+      "id": "GHSA-h9wq-xcqx-mqxm",
+      "title": "Vendure Cross Site Request Forgery vulnerability impacting all API requests",
+      "description": "### Impact\nVendure is an e-commerce GraphQL framework with a number of APIs and different levels of\nauthorization. By default the Cookie settings are insecure, having the SameSite setting as false\nwhich results in not having one (originates from the cookie-session npm package’s default\nsettings).\n\n### Patches\nIn progress\n\n### Workarounds\nManually set the `authOptions.cookieOptions.sameSite` configuration option to `'strict'`, `'lax'` or `true`.\n\n### References\n_Are there any links users can visi",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-h9wq-xcqx-mqxm",
+      "publishedAt": "2023-07-11T22:46:19Z",
+      "modifiedAt": "2023-07-11T22:46:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h9wq-xcqx-mqxm"
+        }
+      ],
+      "affectedRange": "< 2.0.3",
+      "fixedVersion": "2.0.3"
+    }
+  ]
+}

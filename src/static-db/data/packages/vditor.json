@@ -1,0 +1,110 @@
+{
+  "name": "vditor",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m5jf-8crm-r65m",
+      "title": "Vditor allows Cross-site Scripting via an attribute of an `A` element",
+      "description": "Vditor 3.10.3 allows XSS via an attribute of an `A` element.\n\nNOTE: the vendor indicates that a user is supposed to mitigate this via `sanitize=true`.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m5jf-8crm-r65m",
+      "publishedAt": "2024-05-03T18:30:37Z",
+      "modifiedAt": "2024-05-03T20:38:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m5jf-8crm-r65m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-34449"
+        }
+      ],
+      "affectedRange": "= 3.10.3"
+    },
+    {
+      "id": "GHSA-cxm3-v4mv-6mh8",
+      "title": "vditor Vulnerable to Cross-site Scripting in SVG events",
+      "description": "vditor does not filter user input in SVG events, leading to XSS \n\n### PoC\n\n```html\n</a>\n<svg><animate onbegin=alert(11) attributeName=x dur=1s>\n```",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cxm3-v4mv-6mh8",
+      "publishedAt": "2022-01-28T22:04:11Z",
+      "modifiedAt": "2023-09-12T19:28:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cxm3-v4mv-6mh8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-4103"
+        }
+      ],
+      "affectedRange": "< 3.8.11",
+      "fixedVersion": "3.8.11"
+    },
+    {
+      "id": "GHSA-vfmp-9999-6wqj",
+      "title": "Vditor Cross-site Scripting vulnerability",
+      "description": "Vditor is a browser-side Markdown editor. Versions prior to 3.8.7 are vulnerable to copy-paste cross-site scripting (XSS). For this particular type of XSS, the victim needs to be fooled into copying a malicious payload into the text editor. Version 3.8.7 contains a patch for this issue.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vfmp-9999-6wqj",
+      "publishedAt": "2023-02-21T15:30:23Z",
+      "modifiedAt": "2023-02-22T00:10:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vfmp-9999-6wqj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32855"
+        }
+      ],
+      "affectedRange": "< 3.8.7",
+      "fixedVersion": "3.8.7"
+    },
+    {
+      "id": "GHSA-689x-x68p-fph3",
+      "title": "Cross-site Scripting in vditor",
+      "description": "Cross-site Scripting (XSS) - Stored in GitHub repository vanessa219/vditor prior to 3.8.13.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-689x-x68p-fph3",
+      "publishedAt": "2022-04-01T00:00:41Z",
+      "modifiedAt": "2023-01-27T05:01:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-689x-x68p-fph3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0350"
+        }
+      ],
+      "affectedRange": "< 3.8.13",
+      "fixedVersion": "3.8.13"
+    },
+    {
+      "id": "GHSA-pq37-4c4g-v38c",
+      "title": "Cross-site Scripting in vditor",
+      "description": "vditor prior to version 3.8.11 is vulnerable to cross-site scripting.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pq37-4c4g-v38c",
+      "publishedAt": "2022-03-15T00:01:02Z",
+      "modifiedAt": "2023-01-27T05:00:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pq37-4c4g-v38c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0341"
+        }
+      ],
+      "affectedRange": "< 3.8.11",
+      "fixedVersion": "3.8.11"
+    }
+  ]
+}

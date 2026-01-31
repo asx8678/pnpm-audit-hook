@@ -1,0 +1,48 @@
+{
+  "name": "karma",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rc3x-jf5g-xvc5",
+      "title": "Open redirect in karma",
+      "description": "Karma before 6.3.16 is vulnerable to Open Redirect due to missing validation of the return_url query parameter.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rc3x-jf5g-xvc5",
+      "publishedAt": "2022-02-26T00:00:38Z",
+      "modifiedAt": "2023-02-03T05:06:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rc3x-jf5g-xvc5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23495"
+        }
+      ],
+      "affectedRange": "< 6.3.16",
+      "fixedVersion": "6.3.16"
+    },
+    {
+      "id": "GHSA-7x7c-qm48-pq9c",
+      "title": "Cross-site Scripting in karma",
+      "description": "karma prior to version 6.3.14 contains a cross-site scripting vulnerability.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7x7c-qm48-pq9c",
+      "publishedAt": "2022-02-06T00:00:54Z",
+      "modifiedAt": "2023-02-03T05:05:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7x7c-qm48-pq9c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0437"
+        }
+      ],
+      "affectedRange": "< 6.3.14",
+      "fixedVersion": "6.3.14"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "opencode-ai",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c83v-7274-4vgp",
+      "title": "Malicious website can execute commands on the local system through XSS in the OpenCode web UI",
+      "description": "### Summary\nA malicious website can abuse the server URL override feature of the OpenCode web UI to achieve cross-site scripting on `http://localhost:4096`. From there, it is possible to run arbitrary commands on the local system using the `/pty/` endpoints provided by the OpenCode API.\n\n### Code execution via OpenCode API\n\n- The OpenCode API has `/pty/` endpoints that allow spawning arbitrary processes on the local machine.\n- When you run `opencode` in your terminal, OpenCode automatically star",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-c83v-7274-4vgp",
+      "publishedAt": "2026-01-13T20:36:41Z",
+      "modifiedAt": "2026-01-13T20:36:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c83v-7274-4vgp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22813"
+        }
+      ],
+      "affectedRange": "< 1.1.10",
+      "fixedVersion": "1.1.10"
+    },
+    {
+      "id": "GHSA-vxw4-wv6m-9hhh",
+      "title": "OpenCode's Unauthenticated HTTP Server Allows Arbitrary Command Execution",
+      "description": "*Previously reported via email to support@sst.dev on 2025-11-17 per the security policy in [opencode-sdk-js/SECURITY.md](https://github.com/sst/opencode-sdk-js/blob/main/SECURITY.md). No response received.*\n\n### Summary\n\nOpenCode automatically starts an unauthenticated HTTP server that allows any local process—or any website via permissive CORS—to execute arbitrary shell commands with the user's privileges.\n\n### Details\n\nWhen OpenCode starts, it spawns an HTTP server (default port 4096+) with no",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vxw4-wv6m-9hhh",
+      "publishedAt": "2026-01-13T20:35:08Z",
+      "modifiedAt": "2026-01-13T20:35:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vxw4-wv6m-9hhh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22812"
+        }
+      ],
+      "affectedRange": "< 1.0.216",
+      "fixedVersion": "1.0.216"
+    }
+  ]
+}

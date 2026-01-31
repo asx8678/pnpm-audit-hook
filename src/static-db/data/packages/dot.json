@@ -1,0 +1,27 @@
+{
+  "name": "dot",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-297x-8xj4-vcxv",
+      "title": "Improper Control of Generation of Code in doT",
+      "description": "The dot package v1.1.2 uses Function() to compile templates. This can be exploited by the attacker if they can control the given template or if they can control the value set on Object.prototype.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-297x-8xj4-vcxv",
+      "publishedAt": "2022-05-24T17:11:32Z",
+      "modifiedAt": "2023-01-27T05:02:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-297x-8xj4-vcxv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8141"
+        }
+      ],
+      "affectedRange": "<= 1.1.2",
+      "fixedVersion": "1.1.3"
+    }
+  ]
+}

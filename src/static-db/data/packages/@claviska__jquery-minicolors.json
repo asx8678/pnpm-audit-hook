@@ -1,0 +1,48 @@
+{
+  "name": "@claviska/jquery-minicolors",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-crh5-vv2v-c82q",
+      "title": "@claviska/jquery-minicolors vulnerable to Cross-site Scripting",
+      "description": "jQuery MiniColors is a color picker built on jQuery. Prior to version 2.3.6, jQuery MiniColors is prone to cross-site scripting when handling untrusted color names. This issue is patched in version 2.3.6.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-crh5-vv2v-c82q",
+      "publishedAt": "2023-02-21T00:30:20Z",
+      "modifiedAt": "2023-06-12T16:44:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-crh5-vv2v-c82q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32850"
+        }
+      ],
+      "affectedRange": "< 2.3.6",
+      "fixedVersion": "2.3.6"
+    },
+    {
+      "id": "GHSA-vc9x-gmmr-p7jj",
+      "title": "Duplicate advisory: @claviska/jquery-minicolors vulnerable to Cross-site Scripting",
+      "description": "## Duplicate advisory\nThis advisory has been withdrawn because it is a duplicate of [GHSA-crh5-vv2v-c82q](https://github.com/advisories/GHSA-crh5-vv2v-c82q). This link is maintained to preserve external references.\n\n## Original Description\nA vulnerability was found in claviska jquery-minicolors up to 2.3.5. It has been rated as problematic. Affected by this issue is some unknown functionality of the file jquery.minicolors.js. The manipulation leads to cross site scripting. The attack may be laun",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vc9x-gmmr-p7jj",
+      "publishedAt": "2022-12-12T15:30:31Z",
+      "modifiedAt": "2023-02-22T00:11:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vc9x-gmmr-p7jj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-4243"
+        }
+      ],
+      "affectedRange": "< 2.3.6",
+      "fixedVersion": "2.3.6"
+    }
+  ]
+}

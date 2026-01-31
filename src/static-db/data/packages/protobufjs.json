@@ -1,0 +1,48 @@
+{
+  "name": "protobufjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h755-8qp9-cq85",
+      "title": "protobufjs Prototype Pollution vulnerability",
+      "description": "protobuf.js (aka protobufjs) 6.10.0 until 6.11.4 and 7.0.0 until 7.2.4 allows Prototype Pollution, a different vulnerability than CVE-2022-25878. A user-controlled protobuf message can be used by an attacker to pollute the prototype of Object.prototype by adding and overwriting its data and functions. Exploitation can involve: (1) using the function parse to parse protobuf messages on the fly, (2) loading .proto files by using load/loadSync functions, or (3) providing untrusted input to the func",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-h755-8qp9-cq85",
+      "publishedAt": "2023-07-05T15:30:24Z",
+      "modifiedAt": "2024-06-28T18:31:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h755-8qp9-cq85"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-36665"
+        }
+      ],
+      "affectedRange": ">= 7.0.0, < 7.2.5",
+      "fixedVersion": "7.2.5"
+    },
+    {
+      "id": "GHSA-g954-5hwp-pp24",
+      "title": "Prototype Pollution in protobufjs",
+      "description": "The package protobufjs is vulnerable to Prototype Pollution, which can allow an attacker to add/modify properties of the Object.prototype. Versions after and including 6.10.0 until 6.10.3 and after and including 6.11.0 until 6.11.3 are vulnerable.\n\nThis vulnerability can occur in multiple ways:\n1. by providing untrusted user input to util.setProperty or to ReflectionObject.setParsedOption functions\n2. by parsing/loading .proto files\n\n\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g954-5hwp-pp24",
+      "publishedAt": "2022-05-28T00:00:20Z",
+      "modifiedAt": "2023-11-29T22:15:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g954-5hwp-pp24"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25878"
+        }
+      ],
+      "affectedRange": ">= 6.10.0, < 6.10.3",
+      "fixedVersion": "6.10.3"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@github/paste-markdown",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gpfj-4j6g-c4w9",
+      "title": "Clipboard-based DOM-XSS",
+      "description": "### Impact\n\nA self Cross-Site Scripting vulnerability exists in the @github/paste-markdown library. If the clipboard data contains the string `<table>`, a **div** is dynamically created, and the clipboard content is copied into its **innerHTML** property without any sanitization, resulting in improper execution of JavaScript in the browser of the victim (the user who pasted the code). Users directed to copy text from a malicious website and paste it into pages that utilize this library are affec",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gpfj-4j6g-c4w9",
+      "publishedAt": "2021-08-12T20:42:17Z",
+      "modifiedAt": "2023-02-01T05:06:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gpfj-4j6g-c4w9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-37700"
+        }
+      ],
+      "affectedRange": "< 0.3.4",
+      "fixedVersion": "0.3.4"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "s3-uploader",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gwp3-f7mr-qpfv",
+      "title": "OS Command Injection in s3-uploader",
+      "description": "OS command injection vulnerability in Turistforeningen node-s3-uploader through 2.0.3 for Node.js allows attackers to execute arbitrary commands via the metadata() function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gwp3-f7mr-qpfv",
+      "publishedAt": "2022-06-03T00:00:59Z",
+      "modifiedAt": "2023-01-27T05:07:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gwp3-f7mr-qpfv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-34084"
+        }
+      ],
+      "affectedRange": "<= 2.0.3"
+    }
+  ]
+}

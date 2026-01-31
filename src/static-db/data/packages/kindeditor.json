@@ -1,0 +1,46 @@
+{
+  "name": "kindeditor",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wv83-jrfh-rp33",
+      "title": "Cross site scripting in kindeditor",
+      "description": "Cross SIte Scripting (XSS) vulnerability exists in KindEditor 4.1.x via a Google search inurl:/examples/uploadbutton.html and then the .html file on the website that uses this editor (the file suffix is allowed).",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wv83-jrfh-rp33",
+      "publishedAt": "2021-10-18T19:44:32Z",
+      "modifiedAt": "2023-02-01T05:06:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wv83-jrfh-rp33"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-42227"
+        }
+      ],
+      "affectedRange": "<= 4.1.12"
+    },
+    {
+      "id": "GHSA-3ww4-cp53-6g2x",
+      "title": "Cross Site Request Forgery in kindeditor",
+      "description": "Cross Site Request Forgery (CSRF) vulnerability exists in KindEditor 4.1.x. First, you upload an html file containing csrf on the website that uses a google editor, (you only need to search in google: inurl:/examples/uploadbutton.html) and then use the authority of this website to trick users into clicking your malicious html link.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3ww4-cp53-6g2x",
+      "publishedAt": "2021-10-18T19:44:06Z",
+      "modifiedAt": "2023-02-01T05:06:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3ww4-cp53-6g2x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-42228"
+        }
+      ],
+      "affectedRange": "<= 4.1.12"
+    }
+  ]
+}

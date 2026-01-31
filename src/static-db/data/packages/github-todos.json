@@ -1,0 +1,26 @@
+{
+  "name": "github-todos",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-792j-9wj3-j634",
+      "title": "Command injection in github-todos",
+      "description": "naholyr github-todos 3.1.0 is vulnerable to command injection. The range argument for the _hook subcommand is concatenated without any validation, and is directly used by the exec function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-792j-9wj3-j634",
+      "publishedAt": "2021-12-10T20:30:52Z",
+      "modifiedAt": "2023-09-07T18:46:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-792j-9wj3-j634"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-44684"
+        }
+      ],
+      "affectedRange": "<= 3.1.0"
+    }
+  ]
+}

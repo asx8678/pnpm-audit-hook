@@ -1,0 +1,27 @@
+{
+  "name": "@grafana/data",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3j9m-hcv9-rpj8",
+      "title": "XSS vulnerability allowing arbitrary JavaScript execution",
+      "description": "Today we are releasing Grafana 8.2.3. This patch release includes an important security fix for an issue that affects all Grafana versions from 8.0.0-beta1.\n\n[Grafana Cloud](https://grafana.com/cloud) instances have already been patched and an audit did not find any usage of this attack vector. [Grafana Enterprise](https://grafana.com/products/enterprise) customers were provided with updated binaries under embargo.\n\n## CVE-2021-41174 XSS vulnerability on unauthenticated pages\n\n### Summary\n\nCVSS ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3j9m-hcv9-rpj8",
+      "publishedAt": "2021-11-08T18:13:19Z",
+      "modifiedAt": "2023-02-01T05:06:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3j9m-hcv9-rpj8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-41174"
+        }
+      ],
+      "affectedRange": ">= 8.0.0, < 8.2.3",
+      "fixedVersion": "8.2.3"
+    }
+  ]
+}

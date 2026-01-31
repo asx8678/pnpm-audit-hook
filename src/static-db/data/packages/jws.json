@@ -1,0 +1,27 @@
+{
+  "name": "jws",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-869p-cjfg-cm3x",
+      "title": "auth0/node-jws Improperly Verifies HMAC Signature",
+      "description": "### Overview\nAn improper signature verification vulnerability exists when using auth0/node-jws with the HS256 algorithm under specific conditions.\n\n### Am I Affected?\nYou are affected by this vulnerability if you meet all of the following preconditions:\n\n1. Application uses the auth0/node-jws implementation of JSON Web Signatures, versions <=3.2.2 || 4.0.0\n2. Application uses the jws.createVerify() function for HMAC algorithms\n3. Application uses user-provided data from the JSON Web Signature Pr",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-869p-cjfg-cm3x",
+      "publishedAt": "2025-12-04T16:54:15Z",
+      "modifiedAt": "2025-12-04T22:50:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-869p-cjfg-cm3x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-65945"
+        }
+      ],
+      "affectedRange": "= 4.0.0",
+      "fixedVersion": "4.0.1"
+    }
+  ]
+}

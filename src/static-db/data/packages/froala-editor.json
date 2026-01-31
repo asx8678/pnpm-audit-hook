@@ -1,0 +1,109 @@
+{
+  "name": "froala-editor",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-549p-5c7f-c5p4",
+      "title": "Froala WYSIWYG editor allows cross-site scripting (XSS)",
+      "description": "Inconsistent <plaintext> tag parsing allows for XSS in Froala WYSIWYG editor 4.3.0 and earlier.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-549p-5c7f-c5p4",
+      "publishedAt": "2024-11-08T00:30:45Z",
+      "modifiedAt": "2025-03-14T18:51:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-549p-5c7f-c5p4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-51434"
+        }
+      ],
+      "affectedRange": "<= 4.3.0"
+    },
+    {
+      "id": "GHSA-hvpq-7vcc-5hj5",
+      "title": "Froala Editor Cross-site Scripting vulnerability",
+      "description": "Froala Editor v4.0.1 to v4.1.1 was discovered to contain a cross-site scripting (XSS) vulnerability.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hvpq-7vcc-5hj5",
+      "publishedAt": "2023-09-15T00:30:29Z",
+      "modifiedAt": "2025-03-14T14:50:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hvpq-7vcc-5hj5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-41592"
+        }
+      ],
+      "affectedRange": ">= 4.0.1, <= 4.1.3",
+      "fixedVersion": "4.1.4"
+    },
+    {
+      "id": "GHSA-97x5-cc53-cv4v",
+      "title": "Cross site scripting in froala-editor",
+      "description": "A cross site scripting (XSS) vulnerability in the Insert Video function of Froala WYSIWYG Editor allows attackers to execute arbitrary web scripts or HTML.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-97x5-cc53-cv4v",
+      "publishedAt": "2021-10-28T23:14:06Z",
+      "modifiedAt": "2023-02-13T18:05:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-97x5-cc53-cv4v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-22864"
+        }
+      ],
+      "affectedRange": "<= 4.0.6",
+      "fixedVersion": "4.0.11"
+    },
+    {
+      "id": "GHSA-cq6w-w5rj-p9x8",
+      "title": "Cross-site Scripting in Froala Editor",
+      "description": "Froala Editor 3.2.6 is affected by Cross Site Scripting (XSS). Under certain conditions, a base64 crafted string leads to persistent Cross-site scripting (XSS) vulnerability within the hyperlink creation module.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cq6w-w5rj-p9x8",
+      "publishedAt": "2021-10-06T17:47:05Z",
+      "modifiedAt": "2023-02-01T05:06:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cq6w-w5rj-p9x8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-30109"
+        }
+      ],
+      "affectedRange": "<= 3.2.6"
+    },
+    {
+      "id": "GHSA-h236-g5gh-vq6c",
+      "title": "DOM-based cross-site scripting in Froala Editor",
+      "description": "Froala WYSIWYG HTML Editor is a lightweight WYSIWYG HTML Editor written in JavaScript that enables rich text editing capabilities for web applications. A DOM-based cross-site scripting (XSS) vulnerability exists in versions before 3.2.3 because HTML code in the editor is not correctly sanitized when inserted into the DOM. This allows an attacker that can control the editor content to execute arbitrary JavaScript in the context of the victim’s session.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h236-g5gh-vq6c",
+      "publishedAt": "2022-02-10T23:32:51Z",
+      "modifiedAt": "2023-01-29T05:06:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h236-g5gh-vq6c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-19935"
+        }
+      ],
+      "affectedRange": "< 3.2.3",
+      "fixedVersion": "3.2.3"
+    }
+  ]
+}

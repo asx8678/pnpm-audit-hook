@@ -1,0 +1,87 @@
+{
+  "name": "libxmljs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jv72-59wq-8rxm",
+      "title": "libxmljs has segmentation fault, potentially leading to a denial-of-service (DoS)",
+      "description": "A vulnerability exists in the libxmljs 1.0.11 when parsing a specially crafted XML document. Accessing the internal _ref property on entity_ref and entity_decl nodes causes a segmentation fault, potentially leading to a denial-of-service (DoS).",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jv72-59wq-8rxm",
+      "publishedAt": "2025-12-26T15:30:17Z",
+      "modifiedAt": "2025-12-26T19:47:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jv72-59wq-8rxm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-25341"
+        }
+      ],
+      "affectedRange": "<= 1.0.11"
+    },
+    {
+      "id": "GHSA-6433-x5p4-8jc7",
+      "title": "libxmljs vulnerable to type confusion when parsing specially crafted XML",
+      "description": "libxmljs is vulnerable to a type confusion vulnerability when parsing a specially crafted XML while invoking a function on the result of `attrs()` that was called on a parsed node. This vulnerability might lead to denial of service (on both 32-bit systems and 64-bit systems), data leak, infinite loop and remote code execution (on 32-bit systems with the XML_PARSE_HUGE flag enabled).",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6433-x5p4-8jc7",
+      "publishedAt": "2024-05-02T21:30:29Z",
+      "modifiedAt": "2024-11-25T19:27:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6433-x5p4-8jc7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-34391"
+        }
+      ],
+      "affectedRange": "<= 1.0.11"
+    },
+    {
+      "id": "GHSA-mg49-jqgw-gcj6",
+      "title": "libxmljs vulnerable to type confusion when parsing specially crafted XML ",
+      "description": "libxmljs is vulnerable to a type confusion vulnerability when parsing a specially crafted XML while invoking the `namespaces()` function (which invokes `_wrap__xmlNode_nsDef_get()`) on a grand-child of a node that refers to an entity. This vulnerability can lead to denial of service and remote code execution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mg49-jqgw-gcj6",
+      "publishedAt": "2024-05-02T21:30:29Z",
+      "modifiedAt": "2024-11-18T16:26:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mg49-jqgw-gcj6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-34392"
+        }
+      ],
+      "affectedRange": "<= 1.0.11"
+    },
+    {
+      "id": "GHSA-773h-w45w-f2f9",
+      "title": "Denial of service vulnerability exists in libxmljs",
+      "description": "libxmljs provides libxml bindings for v8 javascript engine. This affects all versions of package libxmljs. When invoking the libxmljs.parseXml function with a non-buffer argument the V8 code will attempt invoking the .toString method of the argument. If the argument's toString value is not a Function object V8 will crash.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-773h-w45w-f2f9",
+      "publishedAt": "2022-05-03T00:00:46Z",
+      "modifiedAt": "2023-08-17T05:02:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-773h-w45w-f2f9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21144"
+        }
+      ],
+      "affectedRange": "< 0.19.8",
+      "fixedVersion": "0.19.8"
+    }
+  ]
+}

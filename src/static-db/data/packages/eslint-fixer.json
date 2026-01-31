@@ -1,0 +1,26 @@
+{
+  "name": "eslint-fixer",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-45w5-pvr8-4rh5",
+      "title": "Command injection in eslint-fixer",
+      "description": "The eslint-fixer package through 0.1.5 for Node.js allows command injection via shell metacharacters to the fix function. NOTE: This vulnerability only affects products that are no longer supported by the maintainer. The ozum/eslint-fixer GitHub repository has been intentionally deleted.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-45w5-pvr8-4rh5",
+      "publishedAt": "2021-04-13T15:19:14Z",
+      "modifiedAt": "2023-02-01T05:05:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-45w5-pvr8-4rh5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-26275"
+        }
+      ],
+      "affectedRange": "<= 0.1.5"
+    }
+  ]
+}

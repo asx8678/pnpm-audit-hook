@@ -1,0 +1,26 @@
+{
+  "name": "vnu-jar",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fccg-7w3p-w66f",
+      "title": "Nu Html Checker (vnu) contains a Server-Side Request Forgery (SSRF) vulnerability",
+      "description": "Nu Html Checker (validator.nu) contains a restriction bypass that allows remote attackers to make the server perform arbitrary HTTP/HTTPS requests to internal resources, including localhost services. While the validator implements hostname-based protections to block direct access to localhost and 127.0.0.1, these controls can be bypassed using DNS rebinding techniques or domains that resolve to loopback addresses.This issue affects The Nu Html Checker (vnu): latest (commit 23f090a11bab8d0d4e698f",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fccg-7w3p-w66f",
+      "publishedAt": "2026-01-16T15:31:25Z",
+      "modifiedAt": "2026-01-16T19:57:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fccg-7w3p-w66f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-15104"
+        }
+      ],
+      "affectedRange": "<= 26.1.11"
+    }
+  ]
+}

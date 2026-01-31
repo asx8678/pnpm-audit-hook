@@ -1,0 +1,26 @@
+{
+  "name": "Proto",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-58g2-9fqr-36q2",
+      "title": "Prototype Pollution in Proto",
+      "description": "This affects all versions of package Proto. It is possible to inject pollute the object property of an application using Proto by leveraging the merge function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-58g2-9fqr-36q2",
+      "publishedAt": "2021-09-02T22:01:01Z",
+      "modifiedAt": "2023-02-01T05:06:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-58g2-9fqr-36q2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23426"
+        }
+      ],
+      "affectedRange": "<= 1.1.4"
+    }
+  ]
+}

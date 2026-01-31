@@ -1,0 +1,26 @@
+{
+  "name": "freediskspace",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4gfq-6m28-m5mg",
+      "title": "Improper neutralization of arguments in freediskspace",
+      "description": "This affects all versions of package freediskspace. The vulnerability arises out of improper neutralization of arguments in line 71 of freediskspace.js.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4gfq-6m28-m5mg",
+      "publishedAt": "2021-04-13T15:16:11Z",
+      "modifiedAt": "2023-02-01T05:05:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4gfq-6m28-m5mg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7775"
+        }
+      ],
+      "affectedRange": "<= 1.2.0"
+    }
+  ]
+}

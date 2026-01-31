@@ -1,0 +1,69 @@
+{
+  "name": "@strapi/utils",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v8gg-4mq2-88q4",
+      "title": "Strapi may leak sensitive user information, user reset password, tokens via content-manager views",
+      "description": "### Summary\nI can get access to user  reset password tokens if I have the configure view permissions\n![b37a6fd9eae06027e7d91266f1908a3d](https://user-images.githubusercontent.com/34578426/246782921-fbc007d3-ffec-45de-a1f1-a4287cd507ac.png)\n![6c1da5b3bfbb3bca97c8d064be0ecb05](https://user-images.githubusercontent.com/34578426/246783044-7d716dde-6f27-4d01-9521-42720c6ce92e.gif)\n\n### Details\n/content-manager/relations route does not remove private fields or ensure that they can't be selected\n\n### P",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v8gg-4mq2-88q4",
+      "publishedAt": "2023-09-13T16:31:31Z",
+      "modifiedAt": "2023-11-11T05:02:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v8gg-4mq2-88q4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-36472"
+        }
+      ],
+      "affectedRange": "< 4.11.7",
+      "fixedVersion": "4.11.7"
+    },
+    {
+      "id": "GHSA-chmr-rg2f-9jmf",
+      "title": "Making all attributes on a content-type public without noticing it",
+      "description": "### Summary\nAnyone (Strapi developers, users, plugins) can make every attribute of a Content-Type public without knowing it.\n\n### Details\nWhen dealing with content-types inside a Strapi instance, we can extend those using the appropriate container:\n```javascript\nstrapi.container.get('content-types').extend(contentTypeUID, (contentType) => newContentType);\n```\nThe vulnerability only affects the handling of content types by Strapi, not the actual content types themselves. Users can use plugins or ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-chmr-rg2f-9jmf",
+      "publishedAt": "2023-07-25T17:17:12Z",
+      "modifiedAt": "2023-11-05T05:00:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-chmr-rg2f-9jmf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-34093"
+        }
+      ],
+      "affectedRange": "< 4.10.8",
+      "fixedVersion": "4.10.8"
+    },
+    {
+      "id": "GHSA-9xg4-3qfm-9w8f",
+      "title": "Leaking sensitive user information still possible by filtering on private with prefix fields",
+      "description": "### Summary\nStill able to leak private fields if using the t(number) prefix \n\n### Details\nKnex query allows you to change there default prefix \n```SqliteError: select distinct `t0`.* from `pages` as `t0` left join `admin_users` as `t1` on `t0`.`updated_by_id` = `t1`.`id` where (`t1`.`password` = 1)```\nso if you change the prefix to the same as it was before or to an other table you want to query you query changes from password to t1.password password is protected by filtering protections but t1.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9xg4-3qfm-9w8f",
+      "publishedAt": "2023-07-25T17:17:37Z",
+      "modifiedAt": "2023-11-04T05:02:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9xg4-3qfm-9w8f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-34235"
+        }
+      ],
+      "affectedRange": "<= 4.10.7",
+      "fixedVersion": "4.10.8"
+    }
+  ]
+}

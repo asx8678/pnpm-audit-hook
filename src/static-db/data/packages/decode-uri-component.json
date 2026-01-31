@@ -1,0 +1,27 @@
+{
+  "name": "decode-uri-component",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w573-4hg7-7wgq",
+      "title": "decode-uri-component vulnerable to Denial of Service (DoS)",
+      "description": "decode-uri-component 0.2.0 is vulnerable to Improper Input Validation resulting in DoS.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w573-4hg7-7wgq",
+      "publishedAt": "2022-11-28T15:30:24Z",
+      "modifiedAt": "2023-09-21T22:16:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w573-4hg7-7wgq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-38900"
+        }
+      ],
+      "affectedRange": "< 0.2.1",
+      "fixedVersion": "0.2.1"
+    }
+  ]
+}

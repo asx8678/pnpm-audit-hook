@@ -1,0 +1,23 @@
+{
+  "name": "serve-handler",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9vhv-p9r7-rm53",
+      "title": "HTML tag injection",
+      "description": "Serve Handler, before 5.0.3, has a XSS via HTML tag injection in directory lisiting page.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9vhv-p9r7-rm53",
+      "publishedAt": "2021-02-23T21:37:48Z",
+      "modifiedAt": "2023-01-09T05:01:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9vhv-p9r7-rm53"
+        }
+      ],
+      "affectedRange": "< 5.0.3",
+      "fixedVersion": "5.0.3"
+    }
+  ]
+}

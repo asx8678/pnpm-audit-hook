@@ -1,0 +1,112 @@
+{
+  "name": "@saltcorn/server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cr3w-cw5w-h3fj",
+      "title": "Saltcorn's Reflected XSS and Command Injection vulnerabilities can be chained for 1-click-RCE",
+      "description": "### Summary\n1. There is a reflected XSS vulnerability in the GET /admin/edit-codepage/:name route through the name parameter. This can be used to hijack the session of an admin if they click a specially crafted link.\n2. Additionally, there is a Command Injection vulnerability in GET /admin/backup. The admin can inject a shell command in the backup password which is inserted in the command used to create the backup zip.\n\n\nBoth vulnerabilities can be chained to craft a malicious link which will ex",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cr3w-cw5w-h3fj",
+      "publishedAt": "2026-01-26T23:34:49Z",
+      "modifiedAt": "2026-01-26T23:34:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cr3w-cw5w-h3fj"
+        }
+      ],
+      "affectedRange": ">= 1.1.1, < 1.5.0-beta.19",
+      "fixedVersion": "1.5.0-beta.19"
+    },
+    {
+      "id": "GHSA-43f3-h63w-p6f6",
+      "title": "Saltcorn Server allows logged-in users to delete arbitrary files because of a path traversal vulnerability",
+      "description": "### Summary\n\nA logged-in user with any role can delete arbitrary files on the filesystem by calling the `sync/clean_sync_dir` endpoint. The `dir_name` POST parameter is not validated/sanitized and is used to construct the `syncDir` that is deleted by calling `fs.rm`.\n\n### Details\n\n- file: https://github.com/saltcorn/saltcorn/blob/v1.0.0-beta.15/packages/server/routes/sync.js#L337-L346\n\n```js\nrouter.post(\n  \"/clean_sync_dir\",\n  error_catcher(async (req, res) => {\n    const { dir_name } = req.body",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-43f3-h63w-p6f6",
+      "publishedAt": "2024-10-07T15:10:52Z",
+      "modifiedAt": "2024-10-08T14:19:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-43f3-h63w-p6f6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-47818"
+        }
+      ],
+      "affectedRange": "<= 1.0.0-beta.15",
+      "fixedVersion": "1.0.0-beta.16"
+    },
+    {
+      "id": "GHSA-pf56-h9qf-rxq4",
+      "title": "Saltcorn Server Stored Cross-Site Scripting (XSS) in event logs page",
+      "description": "### Summary\n\nEvent log data is not properly sanitized leading to stored Cross-Site Scripting (XSS) vulnerability.\n### Details\n\n- file: https://github.com/saltcorn/saltcorn/blob/v1.0.0-beta.13/packages/server/routes/eventlog.js#L445\n\n```js\nrouter.get(\n  \"/:id\",\n  isAdmin,\n  error_catcher(async (req, res) => {\n    const { id } = req.params;\n    const ev = await EventLog.findOneWithUser(id);\n    send_events_page({\n      [...]\n      contents: {\n        type: \"card\",\n        contents:\n          [...]",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pf56-h9qf-rxq4",
+      "publishedAt": "2024-10-07T15:14:40Z",
+      "modifiedAt": "2024-10-07T15:14:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pf56-h9qf-rxq4"
+        }
+      ],
+      "affectedRange": "< 1.0.0-beta.16",
+      "fixedVersion": "1.0.0-beta.16"
+    },
+    {
+      "id": "GHSA-277h-px4m-62q8",
+      "title": "@saltcorn/server arbitrary file zip read and download when downloading auto backups",
+      "description": "### Summary\n\nA user with admin permission can read and download arbitrary zip files when downloading auto backups. The file name used to identify the zip file is not properly sanitized when passed to `res.download` API.\n\n### Details\n\n- file: https://github.com/saltcorn/saltcorn/blob/v1.0.0-beta.13/packages/server/routes/admin.js#L671-L682\n\n```js\nrouter.get(\n  \"/auto-backup-download/:filename\",\n  isAdmin,\n  error_catcher(async (req, res) => {\n    const { filename } = req.params; // [1] source\n   ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-277h-px4m-62q8",
+      "publishedAt": "2024-10-03T19:46:12Z",
+      "modifiedAt": "2024-10-04T16:51:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-277h-px4m-62q8"
+        }
+      ],
+      "affectedRange": "<= 1.0.0-beta.13",
+      "fixedVersion": "1.0.0-beta.14"
+    },
+    {
+      "id": "GHSA-cfqx-f43m-vfh7",
+      "title": "@saltcorn/server arbitrary file and directory listing when accessing build mobile app results",
+      "description": "### Summary\n\nA user with admin permission can read arbitrary file and directory names on the filesystem by calling the `admin/build-mobile-app/result?build_dir_name=` endpoint.  The `build_dir_name` parameter is not properly validated and it's then used to construct the `buildDir` that is read. The file/directory names under the `buildDir` will be returned. \n\n### Details\n\n- file: https://github.com/saltcorn/saltcorn/blob/v1.0.0-beta.13/packages/server/routes/admin.js#L2884-L2893\n\n```js\nrouter.ge",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cfqx-f43m-vfh7",
+      "publishedAt": "2024-10-03T19:46:42Z",
+      "modifiedAt": "2024-10-04T16:51:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cfqx-f43m-vfh7"
+        }
+      ],
+      "affectedRange": "<= 1.0.0-beta.13",
+      "fixedVersion": "1.0.0-beta.14"
+    },
+    {
+      "id": "GHSA-78p3-fwcq-62c2",
+      "title": "@saltcorn/server Remote Code Execution (RCE) / SQL injection via prototype pollution  by manipulating `lang` and  `defstring` parameters when setting localizer strings",
+      "description": "### Summary\n\nThe endpoint `/site-structure/localizer/save-string/:lang/:defstring` accepts two parameter values: `lang` and `defstring`. These values are used in an unsafe way to set the keys and value of the `cfgStrings` object. It allows to add/modify properties of the `Object prototype` that result in several logic issues, including:\n- RCE vulnerabilities by polluting the `tempRootFolder` property \n- SQL injection vulnerabilities by polluting the `schema` property when using `PostgreSQL` data",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-78p3-fwcq-62c2",
+      "publishedAt": "2024-10-03T19:50:59Z",
+      "modifiedAt": "2024-10-04T16:51:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-78p3-fwcq-62c2"
+        }
+      ],
+      "affectedRange": "<= 1.0.0-beta.13",
+      "fixedVersion": "1.0.0-beta.14"
+    }
+  ]
+}

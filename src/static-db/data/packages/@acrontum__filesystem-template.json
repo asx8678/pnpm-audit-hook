@@ -1,0 +1,27 @@
+{
+  "name": "@acrontum/filesystem-template",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m2fc-9h5m-29cm",
+      "title": "@acrontum/filesystem-template vulnerable to Command Injection due to fetchRepo API missing sanitization",
+      "description": "The package @acrontum/filesystem-template before 0.0.2 is vulnerable to Arbitrary Command Injection due to the fetchRepo API missing sanitization of the href field of external input.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m2fc-9h5m-29cm",
+      "publishedAt": "2022-08-06T00:00:51Z",
+      "modifiedAt": "2023-08-17T05:02:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m2fc-9h5m-29cm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21186"
+        }
+      ],
+      "affectedRange": "< 0.0.2",
+      "fixedVersion": "0.0.2"
+    }
+  ]
+}

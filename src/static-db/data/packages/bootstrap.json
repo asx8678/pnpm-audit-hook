@@ -1,0 +1,108 @@
+{
+  "name": "bootstrap",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vxmc-5x29-h64v",
+      "title": "Bootstrap Cross-Site Scripting (XSS) vulnerability for data-* attributes",
+      "description": "A security vulnerability has been discovered in bootstrap that could enable Cross-Site Scripting (XSS) attacks. The vulnerability is associated with the data-loading-text attribute within the button plugin. This vulnerability can be exploited by injecting malicious JavaScript code into the attribute, which would then be executed when the button's loading state is triggered.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vxmc-5x29-h64v",
+      "publishedAt": "2024-07-11T18:31:14Z",
+      "modifiedAt": "2025-11-03T21:31:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vxmc-5x29-h64v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-6485"
+        }
+      ],
+      "affectedRange": ">= 1.4.0, <= 3.4.1"
+    },
+    {
+      "id": "GHSA-vc8w-jr9v-vj7f",
+      "title": "Withdrawn Advisory: Bootstrap Cross-Site Scripting (XSS) vulnerability",
+      "description": "## Withdrawn Advisory\nThis advisory is withdrawn because it was not a security issue in Bootstrap. Bootstrap’s JavaScript is not intended to sanitize unsafe or intentionally dangerous HTML. As such, the reported behavior fell outside the scope of Bootstrap’s security model, and the associated CVE has been rescinded.\n\n## Original Descripton\n\nA vulnerability has been identified in Bootstrap that exposes users to Cross-Site Scripting (XSS) attacks. The issue is present in the carousel component, wh",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vc8w-jr9v-vj7f",
+      "publishedAt": "2024-07-11T18:31:14Z",
+      "modifiedAt": "2025-10-09T20:55:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vc8w-jr9v-vj7f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-6531"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, <= 4.6.2",
+      "fixedVersion": "5.0.0"
+    },
+    {
+      "id": "GHSA-q58r-hwc8-rm9j",
+      "title": "Bootstrap Vulnerable to Cross-Site Scripting in its Popover and Tooltip Components",
+      "description": "Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in Bootstrap allows Cross-Site Scripting (XSS). This issue affects Bootstrap version 3.4.1. At time of publication, there is no publicly available patched version.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q58r-hwc8-rm9j",
+      "publishedAt": "2025-05-15T18:31:47Z",
+      "modifiedAt": "2025-09-18T17:14:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q58r-hwc8-rm9j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-1647"
+        }
+      ],
+      "affectedRange": "= 3.4.1"
+    },
+    {
+      "id": "GHSA-9mvj-f7w8-pvh2",
+      "title": "Withdrawn Advisory: Bootstrap Cross-Site Scripting (XSS) vulnerability",
+      "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because it was determined to not be a vulnerability in Bootstrap. From the CVE:\n\n> This was not a security issue in Bootstrap. Bootstrap’s JavaScript is not intended to sanitize unsafe or intentionally dangerous HTML. As such, the reported behavior fell outside the scope of Bootstrap’s security model, and the associated CVE has been rescinded.\n\n## Original Description\nA vulnerability has been identified in Bootstrap that exposes users to Cro",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9mvj-f7w8-pvh2",
+      "publishedAt": "2024-07-11T18:31:14Z",
+      "modifiedAt": "2025-09-11T16:19:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9mvj-f7w8-pvh2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-6484"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, <= 3.4.1"
+    },
+    {
+      "id": "GHSA-3wqf-4x89-9g79",
+      "title": "Bootstrap vulnerable to Cross-Site Scripting (XSS)",
+      "description": "In Bootstrap starting in version 2.3.0 and prior to 3.4.0, as well as 4.x before 4.1.2, XSS is possible in the collapse data-parent attribute.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3wqf-4x89-9g79",
+      "publishedAt": "2022-05-13T01:07:54Z",
+      "modifiedAt": "2024-08-05T16:34:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3wqf-4x89-9g79"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-14040"
+        }
+      ],
+      "affectedRange": ">= 2.3.0, < 3.4.0",
+      "fixedVersion": "3.4.0"
+    }
+  ]
+}

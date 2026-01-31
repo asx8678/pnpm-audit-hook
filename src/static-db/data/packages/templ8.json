@@ -1,0 +1,26 @@
+{
+  "name": "templ8",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c7m7-4257-h698",
+      "title": "Prototype Pollution in templ8",
+      "description": "All versions of package templ8 up to and including 0.0.44 are vulnerable to Prototype Pollution via the parse function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-c7m7-4257-h698",
+      "publishedAt": "2021-05-06T17:29:13Z",
+      "modifiedAt": "2023-01-27T05:09:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c7m7-4257-h698"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7702"
+        }
+      ],
+      "affectedRange": "<= 0.0.44"
+    }
+  ]
+}

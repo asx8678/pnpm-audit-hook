@@ -1,0 +1,23 @@
+{
+  "name": "@keep-network/tbtc-v2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wg2x-rv86-mmpx",
+      "title": "SPV Merkle proof malleability allows the maintainer to prove invalid transactions",
+      "description": "## Summary\nBy publishing specially crafted transactions on the Bitcoin blockchain, the SPV maintainer can produce seemingly valid SPV proofs for fraudulent transactions.\n\nThe issue was originally identified by Least Authority in the tBTC Bridge V2 Security Audit Report as _Issue B: Bitcoin SPV Merkle Proofs Can Be Faked_. A mitigation was believed to have been in place, but this turned out to contain an error, and the issue had not been effectively mitigated.\n\n### Details\nThis is achieved by cre",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wg2x-rv86-mmpx",
+      "publishedAt": "2024-01-19T22:07:47Z",
+      "modifiedAt": "2024-01-19T22:07:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wg2x-rv86-mmpx"
+        }
+      ],
+      "affectedRange": "<= 1.5.1",
+      "fixedVersion": "1.5.2"
+    }
+  ]
+}

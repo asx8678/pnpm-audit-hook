@@ -1,0 +1,48 @@
+{
+  "name": "color-string",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-286p-vc9p-p5qv",
+      "title": "color-string@2.1.1 contains malware after npm account takeover",
+      "description": "### Impact\nOn 8 September 2025, the npm publishing account for `color-string` was taken over after a phishing attack. Version `2.1.1` was published, functionally identical to the previous patch version, but with a malware payload added attempting to redirect cryptocurrency transactions to the attacker's own addresses from within browser environments.\n\nLocal environments, server environments, command line applications, etc. are not affected. If the package was used in a browser context (e.g. a di",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-286p-vc9p-p5qv",
+      "publishedAt": "2025-09-15T21:23:54Z",
+      "modifiedAt": "2025-09-15T21:59:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-286p-vc9p-p5qv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59142"
+        }
+      ],
+      "affectedRange": "= 2.1.1",
+      "fixedVersion": "2.1.2"
+    },
+    {
+      "id": "GHSA-257v-vj4p-3w2h",
+      "title": "Regular Expression Denial of Service (ReDOS)",
+      "description": "In the npm package `color-string`, there is a  ReDos (Regular Expression Denial of Service) vulnerability regarding an exponential time complexity for\nlinearly increasing input lengths for `hwb()` color strings.\n\nStrings reaching more than 5000 characters would see several\nmilliseconds of processing time; strings reaching more than\n50,000 characters began seeing 1500ms (1.5s) of processing time.\n\nThe cause was due to a the regular expression that parses\nhwb() strings - specifically, the hue valu",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-257v-vj4p-3w2h",
+      "publishedAt": "2021-06-22T01:14:09Z",
+      "modifiedAt": "2023-02-01T05:05:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-257v-vj4p-3w2h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-29060"
+        }
+      ],
+      "affectedRange": "< 1.5.5",
+      "fixedVersion": "1.5.5"
+    }
+  ]
+}

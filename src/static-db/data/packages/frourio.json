@@ -1,0 +1,27 @@
+{
+  "name": "frourio",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8xxm-h73r-ghfj",
+      "title": "Validation bypass in frourio",
+      "description": "## 日本語\n\n### 影響\nv0.26.0以前のfrourioを使用している、かつvalidators/を利用している場合、ネストされたバリデータがリクエストのボディーとクエリに対して正しく働かないケースがあります。また、リクエストに対してバリデーションが効かなくなる入力があります。\n\n### パッチ\nfrourioをv0.26.0かそれ以降のバージョンにアップデートをお願いします。frourio を使用したプロジェクトには `class-transformer` と `reflect-metadata` の依存への追加も必要となります。\n\n### ワークアラウンド\ncontroller側で自分でclass-transformerを使用してチェックする、vaildatorを使わない、など。\n\n### さらなる情報\n\nこのセキュリティ勧告に関する質問やコメントについては、以下の方法でお問い合わせいただけます。\n* [frourio](https://github.com/frouriojs/frourio)にIssueを開く。\n\n## English\n\n### Impact\nFrour",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8xxm-h73r-ghfj",
+      "publishedAt": "2022-02-07T22:37:45Z",
+      "modifiedAt": "2023-07-13T19:05:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8xxm-h73r-ghfj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-23623"
+        }
+      ],
+      "affectedRange": "< 0.26.0",
+      "fixedVersion": "0.26.0"
+    }
+  ]
+}

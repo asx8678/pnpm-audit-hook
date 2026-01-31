@@ -1,0 +1,27 @@
+{
+  "name": "@ronomon/opened",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fg5w-w99f-rj6w",
+      "title": "Command Injection in @ronomon/opened",
+      "description": "The @ronomon/opened library before 1.5.2 is vulnerable to a command injection vulnerability which would allow a remote attacker to execute commands on the system if the library was used with untrusted input.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fg5w-w99f-rj6w",
+      "publishedAt": "2021-06-08T23:15:35Z",
+      "modifiedAt": "2023-01-27T05:00:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fg5w-w99f-rj6w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-29300"
+        }
+      ],
+      "affectedRange": "< 1.5.2",
+      "fixedVersion": "1.5.2"
+    }
+  ]
+}

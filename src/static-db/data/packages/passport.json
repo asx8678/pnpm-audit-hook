@@ -1,0 +1,27 @@
+{
+  "name": "passport",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v923-w3x8-wh69",
+      "title": "Passport vulnerable to session regeneration when a users logs in or out",
+      "description": "This affects the package passport before 0.6.0. When a user logs in or logs out, the session is regenerated instead of being closed.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v923-w3x8-wh69",
+      "publishedAt": "2022-07-02T00:00:19Z",
+      "modifiedAt": "2023-09-11T16:22:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v923-w3x8-wh69"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25896"
+        }
+      ],
+      "affectedRange": "< 0.6.0",
+      "fixedVersion": "0.6.0"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "global-modules-path",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vvj3-85vf-fgmw",
+      "title": "global-modules-path Command Injection vulnerability",
+      "description": "Versions of the package global-modules-path before 3.0.0 are vulnerable to Command Injection due to missing input sanitization or other checks and sandboxes being employed to the getPath function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vvj3-85vf-fgmw",
+      "publishedAt": "2023-01-13T06:30:22Z",
+      "modifiedAt": "2025-04-04T19:33:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vvj3-85vf-fgmw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21191"
+        }
+      ],
+      "affectedRange": "< 3.0.0",
+      "fixedVersion": "3.0.0"
+    }
+  ]
+}

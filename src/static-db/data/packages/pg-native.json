@@ -1,0 +1,27 @@
+{
+  "name": "pg-native",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j32j-2hxv-rqf7",
+      "title": "pg-native and libpq vulnerable to uncontrolled resource consumption",
+      "description": "pg-native before 3.0.1 and libpq before 1.8.10 are vulnerable to Denial of Service (DoS) when the addons attempt to cast the second argument to an array and fail. This happens for every non-array argument passed. **Note:** pg-native is a mere binding to npm's libpq library, which in turn has the addons and bindings to the actual C libpq library. This means that problems found in pg-native may transitively impact npm's libpq.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j32j-2hxv-rqf7",
+      "publishedAt": "2022-06-18T00:00:20Z",
+      "modifiedAt": "2023-10-19T18:45:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j32j-2hxv-rqf7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25852"
+        }
+      ],
+      "affectedRange": "<= 3.0.0",
+      "fixedVersion": "3.0.1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "rollup",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gcx4-mw62-g8wm",
+      "title": "DOM Clobbering Gadget found in rollup bundled scripts that leads to XSS",
+      "description": "### Summary\n\nWe discovered a DOM Clobbering vulnerability in rollup when bundling scripts that use `import.meta.url` or with plugins that emit and reference asset files from code  in `cjs`/`umd`/`iife` format. The DOM Clobbering gadget can lead to cross-site scripting (XSS) in web pages where scriptless attacker-controlled HTML elements (e.g., an `img` tag with an unsanitized `name` attribute) are present.\n\nIt's worth noting that we’ve identifed similar issues in other popular bundlers like Webp",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gcx4-mw62-g8wm",
+      "publishedAt": "2024-09-23T22:11:02Z",
+      "modifiedAt": "2024-09-26T21:11:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gcx4-mw62-g8wm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-47068"
+        }
+      ],
+      "affectedRange": "< 2.79.2",
+      "fixedVersion": "2.79.2"
+    }
+  ]
+}

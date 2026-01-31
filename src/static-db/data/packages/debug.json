@@ -1,0 +1,48 @@
+{
+  "name": "debug",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4x49-vf9v-38px",
+      "title": "debug@4.4.2 contains malware after npm account takeover",
+      "description": "### Impact\nOn 8 September 2025, the npm publishing account for `debug` was taken over after a phishing attack. Version `4.4.2` was published, functionally identical to the previous patch version, but with a malware payload added attempting to redirect cryptocurrency transactions to the attacker's own addresses from within browser environments.\n\nLocal environments, server environments, command line applications, etc. are not affected. If the package was used in a browser context (e.g. a direct `<",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4x49-vf9v-38px",
+      "publishedAt": "2025-09-15T21:30:55Z",
+      "modifiedAt": "2025-09-15T21:59:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4x49-vf9v-38px"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59144"
+        }
+      ],
+      "affectedRange": "= 4.4.2",
+      "fixedVersion": "4.4.3"
+    },
+    {
+      "id": "GHSA-9vvw-cc9w-f27h",
+      "title": "debug Inefficient Regular Expression Complexity vulnerability",
+      "description": "A vulnerability classified as problematic has been found in debug-js debug up to 3.0.x. This affects the function useColors of the file src/node.js. The manipulation of the argument str leads to inefficient regular expression complexity. Upgrading to version 3.1.0 is able to address this issue. The name of the patch is c38a0166c266a679c8de012d4eaccec3f944e685. It is recommended to upgrade the affected component. The identifier VDB-217665 was assigned to this vulnerability. The patch has been bac",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9vvw-cc9w-f27h",
+      "publishedAt": "2023-01-09T12:30:19Z",
+      "modifiedAt": "2023-10-24T22:46:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9vvw-cc9w-f27h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-20165"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.1.0",
+      "fixedVersion": "3.1.0"
+    }
+  ]
+}

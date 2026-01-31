@@ -1,0 +1,26 @@
+{
+  "name": "safe-object2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jpq3-xf27-5jf2",
+      "title": "Prototype Pollution in safe-object2",
+      "description": "All versions of package safe-object2 are vulnerable to Prototype Pollution via the setter function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-jpq3-xf27-5jf2",
+      "publishedAt": "2021-05-06T18:26:42Z",
+      "modifiedAt": "2023-02-01T05:05:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jpq3-xf27-5jf2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7726"
+        }
+      ],
+      "affectedRange": "<= 1.0.3"
+    }
+  ]
+}

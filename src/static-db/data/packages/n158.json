@@ -1,0 +1,26 @@
+{
+  "name": "n158",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-549h-r7g9-2qpf",
+      "title": "n158 vulnerable to Command Injection due to improper input sanitization in the 'module.exports' function",
+      "description": "All versions of the package n158 are vulnerable to Command Injection due to improper input sanitization in the 'module.exports' function.\n\n**Note:**\n\nTo execute the code snippet and potentially exploit the vulnerability, the attacker needs to have the ability to run Node.js code within the target environment. This typically requires some level of access to the system or application hosting the Node.js environment.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-549h-r7g9-2qpf",
+      "publishedAt": "2023-05-27T06:30:41Z",
+      "modifiedAt": "2025-01-14T15:51:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-549h-r7g9-2qpf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26127"
+        }
+      ],
+      "affectedRange": "<= 1.4.1"
+    }
+  ]
+}

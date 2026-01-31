@@ -1,0 +1,47 @@
+{
+  "name": "deep-get-set",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-85cp-p426-42f5",
+      "title": "Prototype Pollution in deep-get-set",
+      "description": "All versions of package deep-get-set prior to version 1.1.1 are vulnerable to Prototype Pollution via the main function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-85cp-p426-42f5",
+      "publishedAt": "2021-05-06T18:12:59Z",
+      "modifiedAt": "2023-02-01T05:05:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-85cp-p426-42f5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7715"
+        }
+      ],
+      "affectedRange": "< 1.1.1",
+      "fixedVersion": "1.1.1"
+    },
+    {
+      "id": "GHSA-mjjj-6p43-vhhv",
+      "title": "Prototype Pollution in deep-get-set",
+      "description": "All versions of package deep-get-set are vulnerable to Prototype Pollution via the 'deep' function. **Note:** This vulnerability derives from an incomplete fix of [CVE-2020-7715](https://security.snyk.io/vuln/SNYK-JS-DEEPGETSET-598666)",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mjjj-6p43-vhhv",
+      "publishedAt": "2022-06-25T00:00:51Z",
+      "modifiedAt": "2023-01-27T05:05:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mjjj-6p43-vhhv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21231"
+        }
+      ],
+      "affectedRange": "<= 1.1.1"
+    }
+  ]
+}

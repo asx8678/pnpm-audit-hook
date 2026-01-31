@@ -1,0 +1,26 @@
+{
+  "name": "scratch-svg-renderer",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h3vq-wv8j-36gw",
+      "title": "Cross-site Scripting in Scratch-Svg-Renderer",
+      "description": "A DOM-based cross-site scripting (XSS) vulnerability in Scratch-Svg-Renderer v0.2.0 allows attackers to execute arbitrary web scripts or HTML via a crafted sb3 file.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h3vq-wv8j-36gw",
+      "publishedAt": "2022-01-08T00:44:33Z",
+      "modifiedAt": "2023-02-03T05:04:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h3vq-wv8j-36gw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-27428"
+        }
+      ],
+      "affectedRange": "<= 0.2.0"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "markdown-it-decorate",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rhf5-2378-3w3w",
+      "title": "markdown-it-decorate vulnerable to cross-site scripting (XSS)",
+      "description": "markdown-it-decorate adds attributes, IDs and classes to Markdown, and the most recent version 1.2.2 was published in 2017. All versions are currently vulnerable to cross-site scripting (XSS) and there is no fixed version at this time",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rhf5-2378-3w3w",
+      "publishedAt": "2022-07-19T14:16:06Z",
+      "modifiedAt": "2023-01-30T05:01:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rhf5-2378-3w3w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28459"
+        }
+      ],
+      "affectedRange": "<= 1.2.2"
+    }
+  ]
+}

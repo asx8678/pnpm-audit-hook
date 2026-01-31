@@ -1,0 +1,26 @@
+{
+  "name": "easy-static-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wcwm-c3mr-pxcr",
+      "title": "easy-static-server vulnerable to Directory Traversal",
+      "description": "All versions of package easy-static-server are vulnerable to Directory Traversal due to missing input sanitization and sandboxes being employed to the `req.url` user input that is passed to the server code.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wcwm-c3mr-pxcr",
+      "publishedAt": "2022-12-20T06:30:36Z",
+      "modifiedAt": "2023-01-27T05:06:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wcwm-c3mr-pxcr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25931"
+        }
+      ],
+      "affectedRange": "<= 0.1.1"
+    }
+  ]
+}

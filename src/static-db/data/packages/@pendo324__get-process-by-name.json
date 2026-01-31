@@ -1,0 +1,26 @@
+{
+  "name": "@pendo324/get-process-by-name",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qhxv-296x-hjv7",
+      "title": "@pendo324/get-process-by-name are vulnerable to Arbitrary Code Execution",
+      "description": "All versions of package @pendo324/get-process-by-name are vulnerable to Arbitrary Code Execution due to improper sanitization of getProcessByName function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qhxv-296x-hjv7",
+      "publishedAt": "2022-08-29T20:06:55Z",
+      "modifiedAt": "2023-01-27T05:02:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qhxv-296x-hjv7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25644"
+        }
+      ],
+      "affectedRange": ">= 0"
+    }
+  ]
+}

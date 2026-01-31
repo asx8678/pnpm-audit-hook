@@ -1,0 +1,86 @@
+{
+  "name": "svelte",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6738-r8g5-qwp3",
+      "title": "svelte vulnerable to Cross-site Scripting",
+      "description": "## Summary\n\nAn XSS vulnerability exists in Svelte 5.46.0-2 resulting from improper escaping of `hydratable` keys. If these keys incorporate untrusted user input, arbitrary JavaScript can be injected into server-rendered HTML.\n\n## Details\n\nWhen using the [`hydratable`](https://svelte.dev/docs/svelte/hydratable) function, the first argument is used as a key to uniquely identify the data, such that the value is not regenerated in the browser.\n\nThis key is embedded into a `<script>` block in the ser",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6738-r8g5-qwp3",
+      "publishedAt": "2026-01-15T20:13:33Z",
+      "modifiedAt": "2026-01-19T21:50:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6738-r8g5-qwp3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-15265"
+        }
+      ],
+      "affectedRange": ">= 5.46.0, <= 5.46.3",
+      "fixedVersion": "5.46.4"
+    },
+    {
+      "id": "GHSA-gw32-9rmw-qwww",
+      "title": "svelte is vulnerable to XSS with textarea bind:value",
+      "description": "### Summary\n\nA server-side rendered `<textarea>` with two-way bound value does not have its value correctly escaped in the rendered HTML.\n\n### Details\n\nIn SSR, `<textarea bind:value={...}>` does not have its value escaped when it is rendered into the HTML as `<textarea>...</textarea>`.\n\n### PoC\n\nPut this in a server-side-rendered Svelte component:\n\n```\n<script>\n  let value = `test'\"></textarea><script` + `>alert('BIM');</sc` + `ript>`;\n</script>\n\n<textarea bind:value />\n```\n\n### Impact\n\n- Only a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gw32-9rmw-qwww",
+      "publishedAt": "2026-01-16T21:02:56Z",
+      "modifiedAt": "2026-01-16T21:02:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gw32-9rmw-qwww"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.59.2",
+      "fixedVersion": "3.59.2"
+    },
+    {
+      "id": "GHSA-8266-84wp-wv5c",
+      "title": "Svelte has a potential mXSS vulnerability due to improper HTML escaping",
+      "description": "### Summary\n\nA potential XSS vulnerability exists in Svelte for versions prior to 4.2.19.\n\n### Details\n\nSvelte improperly escapes HTML on server-side rendering. It converts strings according to the following rules:\n\n- If the string is an attribute value:\n    - `\"` -> `&quot;`\n    - `&` -> `&amp;`\n    - Other characters -> No conversion\n- Otherwise:\n    - `<` -> `&lt;`\n    - `&` -> `&amp;`\n    - Other characters -> No conversion\n\nThe assumption is that attributes will always stay as such, but in ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8266-84wp-wv5c",
+      "publishedAt": "2024-08-30T16:49:10Z",
+      "modifiedAt": "2024-08-30T20:01:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8266-84wp-wv5c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-45047"
+        }
+      ],
+      "affectedRange": "< 4.2.19",
+      "fixedVersion": "4.2.19"
+    },
+    {
+      "id": "GHSA-wv8q-r932-8hc7",
+      "title": "Svelte vulnerable to XSS when using objects during server-side rendering",
+      "description": "The package svelte before 3.49.0 is vulnerable to Cross-site Scripting (XSS) due to improper input sanitization and to improper escape of attributes when using objects during SSR (Server-Side Rendering). Exploiting this vulnerability is possible via objects with a custom toString() function.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wv8q-r932-8hc7",
+      "publishedAt": "2022-07-13T00:00:41Z",
+      "modifiedAt": "2023-09-07T00:13:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wv8q-r932-8hc7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25875"
+        }
+      ],
+      "affectedRange": "< 3.49.0",
+      "fixedVersion": "3.49.0"
+    }
+  ]
+}

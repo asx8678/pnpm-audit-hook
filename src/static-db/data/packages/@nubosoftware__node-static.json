@@ -1,0 +1,46 @@
+{
+  "name": "@nubosoftware/node-static",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-27w5-gj5q-82fv",
+      "title": "@nubosoftware/node-static failure to catch exception can result in server crash",
+      "description": "This affects all versions of the package node-static; all versions of the package @nubosoftware/node-static. The package fails to catch an exception when user input includes null bytes. This allows attackers to access http://host/%00 and crash the server.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-27w5-gj5q-82fv",
+      "publishedAt": "2025-09-30T12:30:51Z",
+      "modifiedAt": "2025-10-03T18:26:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-27w5-gj5q-82fv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-11149"
+        }
+      ],
+      "affectedRange": "<= 0.7.11"
+    },
+    {
+      "id": "GHSA-5g97-whc9-8g7j",
+      "title": "node-static and @nubosoftware/node-static vulnerable to Directory Traversal",
+      "description": "node-static and its fork, @nubosoftware/node-static, are vulnerable to Directory Traversal due to improper file path sanitization in the startsWith() method in the servePath function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5g97-whc9-8g7j",
+      "publishedAt": "2023-03-06T06:30:18Z",
+      "modifiedAt": "2025-09-26T21:58:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5g97-whc9-8g7j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26111"
+        }
+      ],
+      "affectedRange": "<= 0.7.11"
+    }
+  ]
+}

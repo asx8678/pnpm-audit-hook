@@ -1,0 +1,46 @@
+{
+  "name": "apidoc-core",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6vj3-p34w-xxjp",
+      "title": "apidoc-core has a prototype pollution vulnerability",
+      "description": "Prototype pollution vulnerability in apidoc-core versions 0.2.0 and all subsequent versions allows remote attackers to modify JavaScript object prototypes via malformed data structures, including the “define” property processed by the application, potentially leading to denial of service or unintended behavior in applications relying on the integrity of prototype chains. This affects the preProcess() function in api_group.js, api_param_title.js, api_use.js, and api_permission.js worker modules.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6vj3-p34w-xxjp",
+      "publishedAt": "2025-12-26T18:30:26Z",
+      "modifiedAt": "2025-12-26T19:50:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6vj3-p34w-xxjp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-13158"
+        }
+      ],
+      "affectedRange": ">= 0.2.0, <= 0.15.0"
+    },
+    {
+      "id": "GHSA-5q53-78f2-6gf8",
+      "title": "apidoc-core is vulnerable to prototype pollution",
+      "description": "apidoc-core is the core parser library to generate apidoc result following the apidoc-spec. A Prototype Pollution vulnerability in the preProcess function of apidoc-core versions thru 0.15.0 allows attackers to inject properties on Object.prototype via supplying a crafted payload, causing denial of service (DoS) as the minimum consequence.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5q53-78f2-6gf8",
+      "publishedAt": "2025-09-25T15:30:24Z",
+      "modifiedAt": "2025-09-26T12:56:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5q53-78f2-6gf8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57317"
+        }
+      ],
+      "affectedRange": "<= 0.15.0"
+    }
+  ]
+}

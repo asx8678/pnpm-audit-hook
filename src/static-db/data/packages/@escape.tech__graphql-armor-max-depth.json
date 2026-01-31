@@ -1,0 +1,40 @@
+{
+  "name": "@escape.tech/graphql-armor-max-depth",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-224p-v68g-5g8f",
+      "title": "GraphQL Armor Max-Depth Plugin Bypass via fragment caching",
+      "description": "### Summary\nA query depth restriction using the max-depth can be bypassed if `ignoreIntrospection` is enabled (which is the default configuration) by naming your query/fragment `__schema`.\n\n### Details\nIn the `countDepth` function, we have the following code that calculates the depth of a used fragment:\n\n```typescript\n    } else if (node.kind == Kind.FRAGMENT_SPREAD) {\n      if (this.visitedFragments.has(node.name.value)) {\n        return this.visitedFragments.get(node.name.value) ?? 0;\n      } ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-224p-v68g-5g8f",
+      "publishedAt": "2025-08-26T18:45:55Z",
+      "modifiedAt": "2025-08-26T18:45:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-224p-v68g-5g8f"
+        }
+      ],
+      "affectedRange": "<= 2.4.1",
+      "fixedVersion": "2.4.2"
+    },
+    {
+      "id": "GHSA-hmfr-rx46-4jx2",
+      "title": "GraphQL Armor Max-Depth Plugin Bypass via Introspection Query Obfuscation",
+      "description": "### Summary\nA query depth restriction using the `max-depth` property can be bypassed if `ignoreIntrospection` is enabled (which is the default configuration) by naming your query/fragment `__schema`.\n\n### Details\nAt the start of the `countDepth` function, we have the following check for the `ignoreIntrospection` option:\n\n```typescript\n    if (this.config.ignoreIntrospection && 'name' in node && node.name?.value === '__schema') {\n        return 0;\n    }\n```\n\nHowever, the `node` can be one of: `Fi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hmfr-rx46-4jx2",
+      "publishedAt": "2025-08-26T18:42:37Z",
+      "modifiedAt": "2025-08-26T18:42:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hmfr-rx46-4jx2"
+        }
+      ],
+      "affectedRange": "<= 2.4.1",
+      "fixedVersion": "2.4.2"
+    }
+  ]
+}

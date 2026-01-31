@@ -1,0 +1,27 @@
+{
+  "name": "script-manager",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rhwf-hqpr-q8g2",
+      "title": "Code Injection in script-manager",
+      "description": "An unintended require vulnerability in script-manager npm package version 0.8.6 and earlier may allow attackers to execute arbitrary code.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rhwf-hqpr-q8g2",
+      "publishedAt": "2021-04-13T15:24:38Z",
+      "modifiedAt": "2023-02-01T05:05:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rhwf-hqpr-q8g2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8129"
+        }
+      ],
+      "affectedRange": "<= 0.8.6",
+      "fixedVersion": "0.9.0"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "ts-nodash",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5xjx-4xcm-hpcm",
+      "title": "Prototype Pollution in ts-nodash",
+      "description": "`ts-nodash` before version 1.2.7 is vulnerable to Prototype Pollution via the Merge() function due to lack of validation input.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5xjx-4xcm-hpcm",
+      "publishedAt": "2021-12-10T18:53:42Z",
+      "modifiedAt": "2023-01-27T05:00:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5xjx-4xcm-hpcm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23403"
+        }
+      ],
+      "affectedRange": "< 1.2.7",
+      "fixedVersion": "1.2.7"
+    }
+  ]
+}

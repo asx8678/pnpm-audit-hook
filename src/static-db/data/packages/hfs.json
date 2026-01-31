@@ -1,0 +1,44 @@
+{
+  "name": "hfs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xcxh-6cv4-q8p8",
+      "title": "HFS user adding a \"web link\" in HFS is vulnerable to \"target=_blank\" exploit",
+      "description": "### Summary\nWhen adding a \"web link\" to the HFS virtual filesystem, the frontend opens it with `target=\"_blank\"` but without the `rel=\"noopener noreferrer\"` attribute. This allows the opened page to use the `window.opener` property to change the location of the original HFS tab.\n\n### Details\nWhile most modern browsers have fixes already implemented for this `target=\"_blank\"` exploit at the browser level, users on outdated browsers remain vulnerable. This means that if an admin of the HFS instanc",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-xcxh-6cv4-q8p8",
+      "publishedAt": "2025-08-12T00:13:03Z",
+      "modifiedAt": "2025-08-12T20:23:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xcxh-6cv4-q8p8"
+        }
+      ],
+      "affectedRange": "<= 0.57.9",
+      "fixedVersion": "0.57.10"
+    },
+    {
+      "id": "GHSA-5f4x-hwv2-w9w2",
+      "title": "rejetto HFS vulnerable to OS Command Execution by remote authenticated users",
+      "description": "rejetto HFS (aka HTTP File Server) 3 before 0.52.10 on Linux, UNIX, and macOS allows OS command execution by remote authenticated users (if they have Upload permissions). This occurs because a shell is used to execute df (i.e., with execSync instead of spawnSync in child_process in Node.js).",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5f4x-hwv2-w9w2",
+      "publishedAt": "2024-07-05T00:31:07Z",
+      "modifiedAt": "2024-11-18T16:26:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5f4x-hwv2-w9w2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-39943"
+        }
+      ],
+      "affectedRange": "< 0.52.10",
+      "fixedVersion": "0.52.10"
+    }
+  ]
+}

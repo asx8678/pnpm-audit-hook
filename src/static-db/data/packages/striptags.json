@@ -1,0 +1,27 @@
+{
+  "name": "striptags",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qxg5-2qff-p49r",
+      "title": "Passing in a non-string 'html' argument can lead to unsanitized output",
+      "description": "A type-confusion vulnerability can cause `striptags` to concatenate unsanitized strings when an array-like object is passed in as the `html` parameter. This can be abused by an attacker who can control the shape of their input, e.g. if query parameters are passed directly into the function.\n\n### Impact\n\nXSS\n\n### Patches\n\n`3.2.0`\n\n### Workarounds\n\nEnsure that the `html` parameter is a string before calling the function.\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qxg5-2qff-p49r",
+      "publishedAt": "2021-06-18T19:31:35Z",
+      "modifiedAt": "2023-02-01T05:05:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qxg5-2qff-p49r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32696"
+        }
+      ],
+      "affectedRange": "< 3.2.0",
+      "fixedVersion": "3.2.0"
+    }
+  ]
+}

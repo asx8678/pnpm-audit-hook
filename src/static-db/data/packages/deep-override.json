@@ -1,0 +1,27 @@
+{
+  "name": "deep-override",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v659-54cx-g4qr",
+      "title": "Prototype Pollution in deep-override",
+      "description": "Prototype pollution vulnerability in 'deep-override' versions 1.0.0 through 1.0.1 allows an attacker to cause a denial of service and may lead to remote code execution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-v659-54cx-g4qr",
+      "publishedAt": "2021-05-17T20:57:25Z",
+      "modifiedAt": "2023-02-01T05:05:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v659-54cx-g4qr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-25941"
+        }
+      ],
+      "affectedRange": ">= 1.0.0, < 1.0.2",
+      "fixedVersion": "1.0.2"
+    }
+  ]
+}

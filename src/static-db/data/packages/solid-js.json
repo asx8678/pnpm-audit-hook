@@ -1,0 +1,27 @@
+{
+  "name": "solid-js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3qxh-p7jc-5xh6",
+      "title": "Solid Lacks Escaping of HTML in JSX Fragments allows for Cross-Site Scripting (XSS)",
+      "description": "Inserts/JSX expressions inside illegal inlined JSX fragments lacked escaping, allowing user input to be rendered as HTML when put directly inside JSX fragments.\n\nFor instance, `?text=<svg/onload=alert(1)>` would trigger XSS here.\n```js\n  const [text] = createResource(() => {\n    return new URL(getRequestEvent().request.url).searchParams.get(\"text\");\n  });\n\n  return (\n    <>\n      Text: {text()}\n    </>\n  );\n  ```",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3qxh-p7jc-5xh6",
+      "publishedAt": "2025-02-25T17:49:40Z",
+      "modifiedAt": "2025-02-25T17:49:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3qxh-p7jc-5xh6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-27109"
+        }
+      ],
+      "affectedRange": "< 1.9.4",
+      "fixedVersion": "1.9.4"
+    }
+  ]
+}

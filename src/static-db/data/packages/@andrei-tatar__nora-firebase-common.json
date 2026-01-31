@@ -1,0 +1,27 @@
+{
+  "name": "@andrei-tatar/nora-firebase-common",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jjff-q3q4-5hh8",
+      "title": "@andrei-tatar/nora-firebase-common Prototype Pollution vulnerability",
+      "description": "An issue inandrei-tatar nora-firebase-common between v.1.0.41 and v.1.12.2 allows a remote attacker to execute arbitrary code via a crafted script to the updateState parameter of the updateStateInternal method.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jjff-q3q4-5hh8",
+      "publishedAt": "2024-04-18T15:30:49Z",
+      "modifiedAt": "2024-04-18T16:58:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jjff-q3q4-5hh8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-30564"
+        }
+      ],
+      "affectedRange": ">= 1.0.41, < 1.12.3",
+      "fixedVersion": "1.12.3"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "dojo",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m8gw-hjpr-rjv7",
+      "title": "Prototype Pollution in dojo",
+      "description": "All versions of package dojo are vulnerable to Prototype Pollution via the setObject function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m8gw-hjpr-rjv7",
+      "publishedAt": "2022-01-05T15:01:46Z",
+      "modifiedAt": "2023-01-31T01:30:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m8gw-hjpr-rjv7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23450"
+        }
+      ],
+      "affectedRange": "<= 1.16.4"
+    }
+  ]
+}

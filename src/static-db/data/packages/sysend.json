@@ -1,0 +1,27 @@
+{
+  "name": "sysend",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4vvg-x86p-mvqc",
+      "title": "Leaking of user information on Cross-Domain communication in sysend",
+      "description": "### Impact\nUsers that use Cross-Origin communication and send sensitive information make it possible for this data to be intercepted.\nThis is not a big impact because it happens only on the same browser.\n\n### Patches\nIt has been patched in version 1.10.0\n\n### Workarounds\nThe only workaround is to not send sensitive information with sysend messages.\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4vvg-x86p-mvqc",
+      "publishedAt": "2022-03-14T22:43:23Z",
+      "modifiedAt": "2023-07-03T21:35:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4vvg-x86p-mvqc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24762"
+        }
+      ],
+      "affectedRange": "< 1.10.0",
+      "fixedVersion": "1.10.0"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "haml-coffee",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m7mf-vm62-7x3q",
+      "title": "Insecure template handling in haml-coffee",
+      "description": "haml-coffee is a JavaScript templating solution. haml-coffee mixes pure template data with engine configuration options through the Express render API. More specifically, haml-coffee supports overriding a series of HTML helper functions through its configuration options. A vulnerable application that passes user controlled request objects to the haml-coffee template engine may introduce RCE vulnerabilities. Additionally control over the escapeHtml parameter through template configuration polluti",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m7mf-vm62-7x3q",
+      "publishedAt": "2021-05-17T20:58:21Z",
+      "modifiedAt": "2023-02-01T05:05:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m7mf-vm62-7x3q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32818"
+        }
+      ],
+      "affectedRange": "<= 1.14.1"
+    }
+  ]
+}

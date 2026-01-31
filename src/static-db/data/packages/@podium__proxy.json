@@ -1,0 +1,27 @@
+{
+  "name": "@podium/proxy",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3hjg-vc7r-rcrw",
+      "title": "Denial of Service vulnerability in @podium/layout and @podium/proxy",
+      "description": "### Impact\nAn attacker using the `Trailer` header as part of the request against proxy endpoints has the ability to take down the server.\nAll Podium layouts that include podlets with proxy endpoints are affected.\n\n### Patches\n`@podium/layout` which is the main way developers/users are vulnerable to this exploit, has been patched in version `4.6.110`. All earlier versions are vulnerable.\n`@podium/proxy` which is the source of the vulnerability and is used by `@podium/layout` has been patched in v",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3hjg-vc7r-rcrw",
+      "publishedAt": "2022-04-07T15:20:23Z",
+      "modifiedAt": "2023-01-27T05:01:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3hjg-vc7r-rcrw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24822"
+        }
+      ],
+      "affectedRange": "< 4.2.74",
+      "fixedVersion": "4.2.74"
+    }
+  ]
+}

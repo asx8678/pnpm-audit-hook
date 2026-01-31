@@ -1,0 +1,27 @@
+{
+  "name": "webcrack",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-ccqh-278p-xq6w",
+      "title": "webcrack has an Arbitrary File Write Vulnerability on Windows when Parsing and Saving a Malicious Bundle",
+      "description": "### Summary\nAn arbitrary file write vulnerability exists in the webcrack module when processing specifically crafted malicious code on Windows systems. This vulnerability is triggered when using the unpack bundles feature in conjunction with the saving feature. If a module name includes a path traversal sequence with Windows path separators, an attacker can exploit this to overwrite files on the host system.\n\n### Details\n\nSource: [packages/webcrack/src/unpack/bundle.ts#L79](https://github.com/j4",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-ccqh-278p-xq6w",
+      "publishedAt": "2024-08-14T18:01:06Z",
+      "modifiedAt": "2024-11-18T16:27:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ccqh-278p-xq6w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-43373"
+        }
+      ],
+      "affectedRange": "<= 2.14.0",
+      "fixedVersion": "2.14.1"
+    }
+  ]
+}

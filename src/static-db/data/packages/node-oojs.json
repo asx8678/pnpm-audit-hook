@@ -1,0 +1,26 @@
+{
+  "name": "node-oojs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j4rw-x3vg-c8r7",
+      "title": "Prototype Pollution in node-oojs",
+      "description": "All versions of package node-oojs up to and including version 1.4.0 are vulnerable to Prototype Pollution via the setPath function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-j4rw-x3vg-c8r7",
+      "publishedAt": "2021-05-06T18:12:37Z",
+      "modifiedAt": "2023-02-01T05:05:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j4rw-x3vg-c8r7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7721"
+        }
+      ],
+      "affectedRange": "<= 1.4.0"
+    }
+  ]
+}

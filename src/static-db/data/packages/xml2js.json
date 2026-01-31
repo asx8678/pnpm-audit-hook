@@ -1,0 +1,27 @@
+{
+  "name": "xml2js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-776f-qx25-q3cc",
+      "title": "xml2js is vulnerable to prototype pollution",
+      "description": "xml2js versions before 0.5.0 allows an external attacker to edit or add new properties to an object. This is possible because the application does not properly validate incoming JSON keys, thus allowing the `__proto__` property to be edited.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-776f-qx25-q3cc",
+      "publishedAt": "2023-04-05T21:30:24Z",
+      "modifiedAt": "2024-03-14T21:47:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-776f-qx25-q3cc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-0842"
+        }
+      ],
+      "affectedRange": "< 0.5.0",
+      "fixedVersion": "0.5.0"
+    }
+  ]
+}

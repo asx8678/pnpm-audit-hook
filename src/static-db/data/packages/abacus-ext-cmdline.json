@@ -1,0 +1,26 @@
+{
+  "name": "abacus-ext-cmdline",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m5v8-wpw4-rj3x",
+      "title": "abacus-ext-cmdline vulnerable to Command Injection",
+      "description": "All versions of package abacus-ext-cmdline are vulnerable to Command Injection via the execute function due to improper user-input sanitization.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m5v8-wpw4-rj3x",
+      "publishedAt": "2022-12-21T06:30:29Z",
+      "modifiedAt": "2023-08-17T05:02:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m5v8-wpw4-rj3x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24431"
+        }
+      ],
+      "affectedRange": "<= 0.0.6-dev.9"
+    }
+  ]
+}

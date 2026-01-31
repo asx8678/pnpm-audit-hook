@@ -1,0 +1,48 @@
+{
+  "name": "@uppy/companion",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x8rq-rc7x-5fg5",
+      "title": "uppy's companion module is vulnerable to Server-Side Request Forgery (SSRF)",
+      "description": "uppy's companion module is vulnerable to Server-Side Request Forgery (SSRF) via IPv4-mapped IPv6 addresses.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x8rq-rc7x-5fg5",
+      "publishedAt": "2022-01-06T22:24:35Z",
+      "modifiedAt": "2025-12-22T17:42:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x8rq-rc7x-5fg5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0086"
+        }
+      ],
+      "affectedRange": "< 3.1.5",
+      "fixedVersion": "3.1.5"
+    },
+    {
+      "id": "GHSA-q24h-5rq3-63j9",
+      "title": "Incorrect Authorization in @uppy/companion",
+      "description": "@uppy/companion prior to version 3.3.1 is vulnerable to incorrect authorization. A user with URL upload access could enumerate internal companion server networks, send local webservers files to the destination server, and finally download them If each of these files had a guessable and regular name.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q24h-5rq3-63j9",
+      "publishedAt": "2022-03-04T00:00:19Z",
+      "modifiedAt": "2023-06-27T19:53:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q24h-5rq3-63j9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0528"
+        }
+      ],
+      "affectedRange": "< 3.3.1",
+      "fixedVersion": "3.3.1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "snyk-docker-plugin",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4x6g-3cmx-w76r",
+      "title": "Snyk plugins vulnerable to Command Injection",
+      "description": "The package snyk before 1.1064.0; the package snyk-mvn-plugin before 2.31.3; the package snyk-gradle-plugin before 3.24.5; the package @snyk/snyk-cocoapods-plugin before 2.5.3; the package snyk-sbt-plugin before 2.16.2; the package snyk-python-plugin before 1.24.2; the package snyk-docker-plugin before 5.6.5; the package @snyk/snyk-hex-plugin before 1.1.6 are vulnerable to Command Injection due to an incomplete fix for [CVE-2022-40764](https://security.snyk.io/vuln/SNYK-JS-SNYK-3037342). A succe",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4x6g-3cmx-w76r",
+      "publishedAt": "2022-11-30T15:30:27Z",
+      "modifiedAt": "2023-08-17T05:02:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4x6g-3cmx-w76r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-22984"
+        }
+      ],
+      "affectedRange": "< 5.6.5",
+      "fixedVersion": "5.6.5"
+    }
+  ]
+}

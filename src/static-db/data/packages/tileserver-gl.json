@@ -1,0 +1,27 @@
+{
+  "name": "tileserver-gl",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3fr8-mwpp-8h9p",
+      "title": "Cross-site scripting in TileServer GL",
+      "description": "An issue was discovered in server.js in TileServer GL through 3.0.0. The content of the key GET parameter is reflected unsanitized in an HTTP response for the application's main page, causing reflected XSS.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3fr8-mwpp-8h9p",
+      "publishedAt": "2021-05-17T21:01:15Z",
+      "modifiedAt": "2023-10-02T20:24:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3fr8-mwpp-8h9p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15500"
+        }
+      ],
+      "affectedRange": "<= 3.0.0",
+      "fixedVersion": "3.1.0"
+    }
+  ]
+}

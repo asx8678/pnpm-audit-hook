@@ -1,0 +1,48 @@
+{
+  "name": "@backstage/plugin-scaffolder-node",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rq6q-wr2q-7pgp",
+      "title": "Backstage has a Possible Symlink Path Traversal in Scaffolder Actions",
+      "description": "### Impact\n\nMultiple Scaffolder actions and archive extraction utilities were vulnerable to symlink-based path traversal attacks. An attacker with access to create and execute Scaffolder templates could exploit symlinks to:\n\n1. **Read arbitrary files** via the `debug:log` action by creating a symlink pointing to sensitive files (e.g., `/etc/passwd`, configuration files, secrets)\n2. **Delete arbitrary files** via the `fs:delete` action by creating symlinks pointing outside the workspace\n3. **Writ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rq6q-wr2q-7pgp",
+      "publishedAt": "2026-01-21T22:36:36Z",
+      "modifiedAt": "2026-01-22T15:41:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rq6q-wr2q-7pgp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24046"
+        }
+      ],
+      "affectedRange": ">= 0.12.0, < 0.12.3",
+      "fixedVersion": "0.12.3"
+    },
+    {
+      "id": "GHSA-qmc2-jpr5-7rg9",
+      "title": "Backstage Scaffolder plugin vulnerable to Server-Side Request Forgery",
+      "description": "### Impact\n\nA vulnerability is identified in Backstage Scaffolder template functionality where Server-Side Template Injection (SSTI) can be exploited to perform Git config injection. The vulnerability allows an attacker to capture privileged git tokens used by the Backstage Scaffolder plugin. With these tokens, unauthorized access to sensitive resources in git can be achieved. The impact is considered medium severity as the Backstage Threat Model recommends restricting access to adding and editi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qmc2-jpr5-7rg9",
+      "publishedAt": "2024-12-02T21:36:21Z",
+      "modifiedAt": "2024-12-02T21:36:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qmc2-jpr5-7rg9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-53983"
+        }
+      ],
+      "affectedRange": "= 0.6.0",
+      "fixedVersion": "0.6.1"
+    }
+  ]
+}

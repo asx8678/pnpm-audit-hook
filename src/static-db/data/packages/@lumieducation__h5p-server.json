@@ -1,0 +1,27 @@
+{
+  "name": "@lumieducation/h5p-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m7gm-v253-56hh",
+      "title": "@lumieducation/h5p-server Fails to Sanitize Plain Text Strings",
+      "description": "Lumi H5P-Nodejs-library before 9.3.3 omits a sanitizeHtml call for plain text strings.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m7gm-v253-56hh",
+      "publishedAt": "2025-05-11T03:30:28Z",
+      "modifiedAt": "2025-05-12T20:50:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m7gm-v253-56hh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-47828"
+        }
+      ],
+      "affectedRange": "< 9.3.3",
+      "fixedVersion": "9.3.3"
+    }
+  ]
+}

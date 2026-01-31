@@ -1,0 +1,23 @@
+{
+  "name": "nobelprizeparser",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4wv4-mgfq-598v",
+      "title": "Code injection in nobelprizeparser",
+      "description": "Code injection through use of eval.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4wv4-mgfq-598v",
+      "publishedAt": "2021-03-12T23:00:19Z",
+      "modifiedAt": "2023-01-09T05:04:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4wv4-mgfq-598v"
+        }
+      ],
+      "affectedRange": "< 1.0.2",
+      "fixedVersion": "1.0.2"
+    }
+  ]
+}

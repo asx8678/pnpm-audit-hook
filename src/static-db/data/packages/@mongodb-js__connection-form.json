@@ -1,0 +1,27 @@
+{
+  "name": "@mongodb-js/connection-form",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jxr4-4prv-mh83",
+      "title": "ejson shell parser in MongoDB Compass maybe bypassed",
+      "description": "MongoDB Compass may be susceptible to code injection due to insufficient sandbox protection settings with the usage of ejson shell parser in Compass' connection handling. This issue affects MongoDB Compass versions prior to version 1.42.2.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jxr4-4prv-mh83",
+      "publishedAt": "2024-07-01T15:32:47Z",
+      "modifiedAt": "2025-02-27T20:59:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jxr4-4prv-mh83"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-6376"
+        }
+      ],
+      "affectedRange": "< 1.20.1",
+      "fixedVersion": "1.20.1"
+    }
+  ]
+}

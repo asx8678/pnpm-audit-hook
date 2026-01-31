@@ -1,0 +1,27 @@
+{
+  "name": "ftp-srv",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pmw4-jgxx-pcq9",
+      "title": "File System Bounds Escape",
+      "description": "### Impact\n\nClients of FTP servers utilizing `ftp-srv` hosted on Windows machines can escape the  FTP user's defined root folder using the expected FTP commands, for example, `CWD` and `UPDR`.\n\n### Background\n\nWhen windows separators exist within the path (`\\`), `path.resolve` leaves the upper pointers intact and allows the user to move beyond the root folder defined for that user. We did not take that into account when creating the path resolve function.\n\n![Screen Shot 2020-12-15 at 6 42 52 PM]",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pmw4-jgxx-pcq9",
+      "publishedAt": "2021-02-10T18:11:34Z",
+      "modifiedAt": "2023-02-01T05:05:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pmw4-jgxx-pcq9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26299"
+        }
+      ],
+      "affectedRange": "< 4.4.0",
+      "fixedVersion": "4.4.0"
+    }
+  ]
+}

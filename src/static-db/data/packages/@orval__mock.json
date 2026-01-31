@@ -1,0 +1,27 @@
+{
+  "name": "@orval/mock",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f456-rf33-4626",
+      "title": "Orval Mock Generation Code Injection via const",
+      "description": "I am reporting a code injection vulnerability in Orval’s mock generation pipeline affecting @orval/mock in both the 7.x and 8.x series. This issue is related in impact to the previously reported enum x-enumDescriptions (https://github.com/advisories/GHSA-h526-wf6g-67jv), but it affects a different code path in the faker-based mock generator rather than @orval/core.\n\nThe vulnerability allows untrusted OpenAPI specifications to inject arbitrary TypeScript/JavaScript into generated mock files via t",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f456-rf33-4626",
+      "publishedAt": "2026-01-22T18:09:13Z",
+      "modifiedAt": "2026-01-23T15:49:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f456-rf33-4626"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24132"
+        }
+      ],
+      "affectedRange": ">= 8.0.0-rc.0, < 8.0.3",
+      "fixedVersion": "8.0.3"
+    }
+  ]
+}

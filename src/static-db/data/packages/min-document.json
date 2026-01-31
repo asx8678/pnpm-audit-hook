@@ -1,0 +1,27 @@
+{
+  "name": "min-document",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rx8g-88g5-qh64",
+      "title": "min-document vulnerable to prototype pollution",
+      "description": "A vulnerability exists in the 'min-document' package prior to version 2.19.1, stemming from improper handling of namespace operations in the removeAttributeNS method. By processing malicious input involving the __proto__ property, an attacker can manipulate the prototype chain of JavaScript objects, leading to denial of service or arbitrary code execution. This issue arises from insufficient validation of attribute namespace removal operations, allowing unintended modification of critical object",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-rx8g-88g5-qh64",
+      "publishedAt": "2025-09-24T18:30:31Z",
+      "modifiedAt": "2025-11-06T18:20:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rx8g-88g5-qh64"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57352"
+        }
+      ],
+      "affectedRange": "<= 2.19.0",
+      "fixedVersion": "2.19.1"
+    }
+  ]
+}

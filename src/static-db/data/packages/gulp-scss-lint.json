@@ -1,0 +1,26 @@
+{
+  "name": "gulp-scss-lint",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g4hj-r7r3-9rwv",
+      "title": "OS Command Injection in gulp-scss-lint",
+      "description": "gulp-scss-lint through 1.0.0 allows execution of arbitrary commands. It is possible to inject arbitrary commands to the &quot;exec&quot; function located in &quot;src/command.js&quot; via the provided options.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-g4hj-r7r3-9rwv",
+      "publishedAt": "2021-05-07T16:15:37Z",
+      "modifiedAt": "2023-02-16T22:50:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g4hj-r7r3-9rwv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7601"
+        }
+      ],
+      "affectedRange": "<= 1.0.0"
+    }
+  ]
+}

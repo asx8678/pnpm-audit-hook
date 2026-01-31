@@ -1,0 +1,26 @@
+{
+  "name": "sassdoc-extras",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3mpm-jx38-9m8w",
+      "title": "sassdoc-extras vulnerable to prototype pollution",
+      "description": "A Prototype Pollution vulnerability in the byGroupAndType function of sassdoc-extras v2.5.1 and before allows attackers to inject properties on Object.prototype via supplying a crafted payload, causing denial of service (DoS) as the minimum consequence.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-3mpm-jx38-9m8w",
+      "publishedAt": "2025-09-24T21:30:37Z",
+      "modifiedAt": "2025-09-25T19:29:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3mpm-jx38-9m8w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57326"
+        }
+      ],
+      "affectedRange": "<= 3.0.0"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "name": "@strapi/strapi",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4r8w-3jww-m2rp",
+      "title": "Strapi is vulnerable to Insufficient Session Expiration",
+      "description": "Strapi uses JSON Web Tokens (JWT) for authentication. After logout or account deactivation, the JWT is not invalidated, which allows an attacker who has stolen or intercepted the token to freely reuse it until its expiration date (which is set to 30 days by default, but can be changed). The existence of /admin/renew-token endpoint allows anyone to renew near-expiration tokens indefinitely, further increasing the impact of this attack. This issue has been fixed in version 5.24.1.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4r8w-3jww-m2rp",
+      "publishedAt": "2025-10-16T12:30:23Z",
+      "modifiedAt": "2025-10-22T19:36:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4r8w-3jww-m2rp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-3930"
+        }
+      ],
+      "affectedRange": "< 5.24.1",
+      "fixedVersion": "5.24.1"
+    },
+    {
+      "id": "GHSA-p9ff-j98v-p435",
+      "title": "Strapi Server-Side Request Forgery (SSRF)",
+      "description": "Strapi v4.24.4 was discovered to contain a Server-Side Request Forgery (SSRF) via the component /strapi.io/_next/image. This vulnerability allows attackers to scan for open ports or access sensitive information via a crafted GET request.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p9ff-j98v-p435",
+      "publishedAt": "2024-06-20T21:31:45Z",
+      "modifiedAt": "2024-10-04T23:33:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p9ff-j98v-p435"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-37818"
+        }
+      ],
+      "affectedRange": "= 4.24.4"
+    },
+    {
+      "id": "GHSA-4vm8-j95f-j6v5",
+      "title": "Strapi 4.1.12 Cross-site Scripting via crafted file",
+      "description": "An unrestricted file upload vulnerability in the Add New Assets function of Strapi v4.1.12 allows attackers to execute arbitrary code via a crafted file. After an authenticated attacker uploads a file containing a malicious URL, a victim copies and pastes the malicious URL into a new tab to receive the XSS payload.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4vm8-j95f-j6v5",
+      "publishedAt": "2022-07-14T00:00:16Z",
+      "modifiedAt": "2024-03-21T17:37:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4vm8-j95f-j6v5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-32114"
+        }
+      ],
+      "affectedRange": "<= 4.1.12"
+    },
+    {
+      "id": "GHSA-jjqf-j4w7-92w8",
+      "title": "Strapi leaking sensitive user information by filtering on private fields",
+      "description": "### Summary\n\nStrapi through 4.7.1 allows unauthenticated attackers to discover sensitive user details for Strapi administrators and API users.\n\n### Details\n\nStrapi through 4.7.1 allows unauthenticated attackers to discover sensitive user details for Strapi administrators and API users. The unauthenticated attacker can filter users by columns that contain sensitive information and infer the values by the changes in the API responses. An unauthenticated attacker can exploit this vulnerability to h",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jjqf-j4w7-92w8",
+      "publishedAt": "2023-04-19T21:41:26Z",
+      "modifiedAt": "2023-11-07T05:05:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jjqf-j4w7-92w8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-22894"
+        }
+      ],
+      "affectedRange": ">= 3.2.1, < 4.8.0",
+      "fixedVersion": "4.8.0"
+    },
+    {
+      "id": "GHSA-gc7p-j5xm-xxh2",
+      "title": "Unauthorized Access to Private Fields in User Registration API",
+      "description": "### System Details\n| Name     | Value                  |\n|----------|------------------------|\n| OS       | Windows 11             |\n| Version  | 4.11.1 (node v16.14.2) |\n| Database | mysql                  |\n\n\n### Description\nI marked some fields as private fields in user content-type, and tried to register as a new user via api, at the same time I added content to fill the private fields and sent a post request, and as you can see from the images below, I can write to the private fields.\n\n![re",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gc7p-j5xm-xxh2",
+      "publishedAt": "2023-11-03T19:01:11Z",
+      "modifiedAt": "2023-11-06T21:59:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gc7p-j5xm-xxh2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-39345"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 4.13.1",
+      "fixedVersion": "4.13.1"
+    },
+    {
+      "id": "GHSA-chmr-rg2f-9jmf",
+      "title": "Making all attributes on a content-type public without noticing it",
+      "description": "### Summary\nAnyone (Strapi developers, users, plugins) can make every attribute of a Content-Type public without knowing it.\n\n### Details\nWhen dealing with content-types inside a Strapi instance, we can extend those using the appropriate container:\n```javascript\nstrapi.container.get('content-types').extend(contentTypeUID, (contentType) => newContentType);\n```\nThe vulnerability only affects the handling of content types by Strapi, not the actual content types themselves. Users can use plugins or ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-chmr-rg2f-9jmf",
+      "publishedAt": "2023-07-25T17:17:12Z",
+      "modifiedAt": "2023-11-05T05:00:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-chmr-rg2f-9jmf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-34093"
+        }
+      ],
+      "affectedRange": "< 4.10.8",
+      "fixedVersion": "4.10.8"
+    },
+    {
+      "id": "GHSA-4phg-hpqm-c3j4",
+      "title": "Strapi mishandles hidden attributes within admin API responses",
+      "description": "Strapi before 3.6.10 and 4.x before 4.1.10 mishandles hidden attributes within admin API responses.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4phg-hpqm-c3j4",
+      "publishedAt": "2022-09-28T00:00:17Z",
+      "modifiedAt": "2023-02-02T05:01:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4phg-hpqm-c3j4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31367"
+        }
+      ],
+      "affectedRange": ">= 4.0.0-next.0, < 4.1.10",
+      "fixedVersion": "4.1.10"
+    },
+    {
+      "id": "GHSA-85vg-grr5-pw42",
+      "title": "Insecure password handling vulnerability in Strapi",
+      "description": "Storing passwords in a recoverable format in the DOCUMENTATION plugin component of Strapi before 3.6.9 and 4.x before 4.1.5 allows an attacker to access a victim's HTTP request. From this, the attacker can get the victim's cookie, base64 decode it, and obtain a cleartext password, leading to getting API documentation for further API attacks.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-85vg-grr5-pw42",
+      "publishedAt": "2022-05-04T00:00:22Z",
+      "modifiedAt": "2023-02-01T05:01:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-85vg-grr5-pw42"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-46440"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 4.1.5",
+      "fixedVersion": "4.1.5"
+    },
+    {
+      "id": "GHSA-f6fm-r26q-p747",
+      "title": "Improper Removal of Sensitive Information Before Storage or Transfer in Strapi",
+      "description": "An authenticated user with access to the Strapi admin panel can view private and sensitive data, such as email and password reset tokens, for other admin panel users that have a relationship (e.g., created by, updated by) with content accessible to the authenticated user. For example, a low-privileged “author” role account can view these details in the JSON response for an “editor” or “super admin” that has updated one of the author’s blog posts. There are also many other scenarios where such de",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f6fm-r26q-p747",
+      "publishedAt": "2022-05-20T00:00:28Z",
+      "modifiedAt": "2023-01-27T05:02:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f6fm-r26q-p747"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-30617"
+        }
+      ],
+      "affectedRange": "<= 4.0.0-beta.14",
+      "fixedVersion": "4.0.0-beta.15"
+    },
+    {
+      "id": "GHSA-vgj7-895j-gpr6",
+      "title": "Improper Removal of Sensitive Information Before Storage or Transfer in Strapi",
+      "description": "An authenticated user with access to the Strapi admin panel can view private and sensitive data, such as email and password reset tokens, for API users if content types accessible to the authenticated user contain relationships to API users (from:users-permissions). There are many scenarios in which such details from API users can leak in the JSON response within the admin panel, either through a direct or indirect relationship. Access to this information enables a user to compromise these users",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vgj7-895j-gpr6",
+      "publishedAt": "2022-05-20T00:00:28Z",
+      "modifiedAt": "2023-01-27T05:02:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vgj7-895j-gpr6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-30618"
+        }
+      ],
+      "affectedRange": "< 4.1.9",
+      "fixedVersion": "4.1.9"
+    }
+  ]
+}

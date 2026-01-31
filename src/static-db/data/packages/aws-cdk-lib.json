@@ -1,0 +1,99 @@
+{
+  "name": "aws-cdk-lib",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qc59-cxj2-c2w4",
+      "title": "aws-cdk-lib's aspect order change causes different Permissions Boundary assigned to Role",
+      "description": "### Summary\n\nThe [AWS Cloud Development Kit (AWS CDK)](https://aws.amazon.com/cdk/) is an open-source software development framework for defining cloud infrastructure in code and provisioning it through AWS CloudFormation. In the CDK, developers organize their applications into reusable components called \"[constructs](https://docs.aws.amazon.com/cdk/v2/guide/constructs.html),\" which are organized into a hierarchical tree structure. One of the features of this framework is the ability to call \"[A",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-qc59-cxj2-c2w4",
+      "publishedAt": "2025-04-15T14:48:49Z",
+      "modifiedAt": "2025-04-15T14:48:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qc59-cxj2-c2w4"
+        }
+      ],
+      "affectedRange": ">= 2.172.0, < 2.189.1",
+      "fixedVersion": "2.189.1"
+    },
+    {
+      "id": "GHSA-5pq3-h73f-66hr",
+      "title": "AWS CDK CodePipeline: trusted entities are too broad",
+      "description": "### Summary\n\nThe [AWS Cloud Development Kit (CDK)](https://aws.amazon.com/cdk/) is an open-source framework for defining cloud infrastructure using code. Users use it to create their own applications, which are converted to AWS CloudFormation templates during deployment to a user's AWS account. AWS CDK contains pre-built components called \"constructs,\" which are higher-level abstractions providing defaults and best practices. This approach enables developers to use familiar programming languages",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-5pq3-h73f-66hr",
+      "publishedAt": "2025-03-24T15:45:39Z",
+      "modifiedAt": "2025-04-10T02:03:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5pq3-h73f-66hr"
+        }
+      ],
+      "affectedRange": "< 2.189.0",
+      "fixedVersion": "2.189.0"
+    },
+    {
+      "id": "GHSA-qq4x-c6h6-rfxh",
+      "title": "aws-cdk-lib has Insertion of Sensitive Information into Log File vulnerability when using Cognito UserPoolClient Construct",
+      "description": "### Summary\nThe [AWS Cloud Development Kit (CDK)](https://aws.amazon.com/cdk/) is an open-source framework for defining cloud infrastructure using code. Customers use it to create their own applications which are converted to AWS CloudFormation templates during deployment to a customer’s AWS account. CDK contains pre-built components called \"[constructs](https://docs.aws.amazon.com/cdk/v2/guide/constructs.html)\" that are higher-level abstractions providing defaults and best practices. This appro",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qq4x-c6h6-rfxh",
+      "publishedAt": "2025-03-31T22:37:42Z",
+      "modifiedAt": "2025-03-31T22:37:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qq4x-c6h6-rfxh"
+        }
+      ],
+      "affectedRange": ">= 2.37.0, < 2.187.0",
+      "fixedVersion": "2.187.0"
+    },
+    {
+      "id": "GHSA-v4mq-x674-ff73",
+      "title": "AWS Cloud Development Kit (AWS CDK) IAM OIDC custom resource allows connection to unauthorized OIDC provider",
+      "description": "### Impact\nUsers who use IAM OIDC custom resource provider package will download CA Thumbprints as part of the custom resource workflow, https://github.com/aws/aws-cdk/blob/d16482fc8a4a3e1f62751f481b770c09034df7d2/packages/%40aws-cdk/custom-resource-handlers/lib/aws-iam/oidc-handler/external.ts#L34. \n\nHowever, the current `tls.connect` method will always set `rejectUnauthorized: false` which is a potential security concern. CDK should follow the best practice and set `rejectUnauthorized: true`. ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-v4mq-x674-ff73",
+      "publishedAt": "2025-01-17T21:22:25Z",
+      "modifiedAt": "2025-01-29T18:22:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v4mq-x674-ff73"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-23206"
+        }
+      ],
+      "affectedRange": "< 2.177.0",
+      "fixedVersion": "2.177.0"
+    },
+    {
+      "id": "GHSA-rx28-r23p-2qc3",
+      "title": "AWS CDK EKS overly permissive trust policies",
+      "description": "If you are using the `eks.Cluster` or `eks.FargateCluster` construct we need you to take action. Other users are not affected and can stop reading.\n\n### Impact \n\nThe AWS Cloud Development Kit (CDK) allows for the definition of Amazon Elastic Container Service for Kubernetes (EKS) clusters. `eks.Cluster` and `eks.FargateCluster` constructs create two roles that have an overly permissive trust policy. \n \nThe first, referred to as the _CreationRole_, is used by lambda handlers to create the cluster",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rx28-r23p-2qc3",
+      "publishedAt": "2023-06-19T22:47:26Z",
+      "modifiedAt": "2023-11-07T05:02:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rx28-r23p-2qc3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-35165"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.80.0",
+      "fixedVersion": "2.80.0"
+    }
+  ]
+}

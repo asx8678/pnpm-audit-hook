@@ -1,0 +1,27 @@
+{
+  "name": "cocotais-bot",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mj2c-8hxf-ffvq",
+      "title": "Cocotais Bot has builtin .echo command injection",
+      "description": "### Summary\n﻿\nA command echoing feature in the framework allows users to indirectly trigger privileged behavior by injecting special platform tags. Specifically, an unauthorized user can use the `/echo <qqbot-at-everyone />` command to cause the bot to send a message that mentions all members in the chat, bypassing any permission controls. This can lead to spam, disruption, or abuse of notification systems.\n﻿\n### Details\n﻿\nThe framework provides a command `/echo` that causes the bot to repeat an",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mj2c-8hxf-ffvq",
+      "publishedAt": "2025-05-19T16:25:05Z",
+      "modifiedAt": "2025-05-19T16:25:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mj2c-8hxf-ffvq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-47948"
+        }
+      ],
+      "affectedRange": ">= 1.5.0-test2-hotfix, < 1.6.2",
+      "fixedVersion": "1.6.2"
+    }
+  ]
+}

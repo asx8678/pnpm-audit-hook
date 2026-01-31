@@ -1,0 +1,22 @@
+{
+  "name": "socket.io-file",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r2gr-fhmr-66c5",
+      "title": "Duplicate Advisory: \"Arbitrary code execution in socket.io-file\"",
+      "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-6495-8jvh-f28x. This link is maintained to preserve external references.\n\n## Original Description\n\"The socket.io-file package through 2.0.31 for Node.js relies on client-side validation of file types, which allows remote attackers to execute arbitrary code by uploading an executable file via a modified JSON name field. NOTE: This vulnerability only affects products that are no longer supported by the maintai",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r2gr-fhmr-66c5",
+      "publishedAt": "2021-05-10T18:38:11Z",
+      "modifiedAt": "2026-01-22T22:29:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r2gr-fhmr-66c5"
+        }
+      ],
+      "affectedRange": "<= 2.0.31"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@jitbit/htmlsanitizer",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vhv4-fh94-jm5x",
+      "title": "JS Html Sanitizer allows XSS when used with contentEditable",
+      "description": "### Impact\nXSS vulnerability when the sanitizer is used with a `contentEditable` element to set the elements `innerHTML` to a sanitized string produced by the package. If the code is particularly crafted to abuse the code beautifier, that runs AFTER sanitation.\n\n### Patches\nPatched in version 2.0.3",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vhv4-fh94-jm5x",
+      "publishedAt": "2025-03-14T19:54:52Z",
+      "modifiedAt": "2025-03-14T21:41:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vhv4-fh94-jm5x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-29771"
+        }
+      ],
+      "affectedRange": "< 2.0.3",
+      "fixedVersion": "2.0.3"
+    }
+  ]
+}

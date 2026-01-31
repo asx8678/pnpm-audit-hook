@@ -1,0 +1,26 @@
+{
+  "name": "kill-process-by-name",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qc65-cgvr-93p6",
+      "title": "Code injection in kill-process-by-name",
+      "description": "This affects all versions of package kill-process-by-name. If (attacker-controlled) user input is given, it is possible for an attacker to execute arbitrary commands. This is due to use of the child_process exec function without input sanitization in the index.js file.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qc65-cgvr-93p6",
+      "publishedAt": "2021-03-19T21:19:18Z",
+      "modifiedAt": "2023-01-27T05:00:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qc65-cgvr-93p6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23356"
+        }
+      ],
+      "affectedRange": "<= 1.0.5"
+    }
+  ]
+}

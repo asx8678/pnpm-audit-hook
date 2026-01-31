@@ -1,0 +1,27 @@
+{
+  "name": "es6-crawler-detect",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jxg6-fhwc-9v9c",
+      "title": "Regular Expression Denial of Service (ReDoS) in es6-crawler-detect",
+      "description": "This affects the package es6-crawler-detect before 3.1.3. No limitation of user agent string length supplied to regex operators.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jxg6-fhwc-9v9c",
+      "publishedAt": "2021-04-13T15:19:39Z",
+      "modifiedAt": "2023-02-01T05:05:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jxg6-fhwc-9v9c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28501"
+        }
+      ],
+      "affectedRange": "< 3.1.3",
+      "fixedVersion": "3.1.3"
+    }
+  ]
+}

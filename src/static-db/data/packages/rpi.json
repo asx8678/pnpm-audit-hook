@@ -1,0 +1,26 @@
+{
+  "name": "rpi",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vf26-7gjf-f92r",
+      "title": "OS Command Injection in rpi",
+      "description": "rpi through 0.0.3 allows execution of arbritary commands. The variable pinNumbver in function GPIO within src/lib/gpio.js is used as part of the arguement of exec function without any sanitization.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vf26-7gjf-f92r",
+      "publishedAt": "2021-04-13T15:23:29Z",
+      "modifiedAt": "2023-02-01T05:05:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vf26-7gjf-f92r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10796"
+        }
+      ],
+      "affectedRange": "<= 0.0.3"
+    }
+  ]
+}

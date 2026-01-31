@@ -1,0 +1,27 @@
+{
+  "name": "serve-static",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cm22-4g7w-348p",
+      "title": "serve-static vulnerable to template injection that can lead to XSS",
+      "description": "### Impact\n\npassing untrusted user input - even after sanitizing it - to `redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in serve-static 1.16.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST c",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-cm22-4g7w-348p",
+      "publishedAt": "2024-09-10T19:42:33Z",
+      "modifiedAt": "2024-11-18T16:27:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cm22-4g7w-348p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-43800"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.1.0",
+      "fixedVersion": "2.1.0"
+    }
+  ]
+}

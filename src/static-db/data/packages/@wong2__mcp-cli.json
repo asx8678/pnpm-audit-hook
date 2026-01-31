@@ -1,0 +1,26 @@
+{
+  "name": "@wong2/mcp-cli",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p6rm-483j-37jf",
+      "title": "wong2 mcp-cli Command Injection Vulnerability",
+      "description": "A flaw has been found in wong2 mcp-cli 1.13.0. Affected is the function redirectToAuthorization of the file /src/oauth/provider.js of the component oAuth Handler. This manipulation causes os command injection. The attack may be initiated remotely. The attack is considered to have high complexity. The exploitability is told to be difficult. The exploit has been published and may be used.\n\nThis issue has been patched via commit 3562966.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-p6rm-483j-37jf",
+      "publishedAt": "2025-08-21T00:30:20Z",
+      "modifiedAt": "2025-09-13T04:47:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p6rm-483j-37jf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-9262"
+        }
+      ],
+      "affectedRange": "<= 1.13.0"
+    }
+  ]
+}

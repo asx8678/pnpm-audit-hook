@@ -1,0 +1,26 @@
+{
+  "name": "expand-hash",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x3wr-v4wx-5qpc",
+      "title": "Prototype Pollution",
+      "description": "Prototype pollution vulnerability in ‘expand-hash’ versions 0.1.0 through 1.0.1 allows an attacker to cause a denial of service and may lead to remote code execution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-x3wr-v4wx-5qpc",
+      "publishedAt": "2021-06-21T17:14:01Z",
+      "modifiedAt": "2023-01-27T05:00:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x3wr-v4wx-5qpc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-25948"
+        }
+      ],
+      "affectedRange": "<= 1.0.1"
+    }
+  ]
+}

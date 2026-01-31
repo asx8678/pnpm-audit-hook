@@ -1,0 +1,26 @@
+{
+  "name": "safetydance",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6m85-wvcr-pgw3",
+      "title": "Prototype Pollution in safetydance",
+      "description": "All versions of package safetydance are vulnerable to Prototype Pollution via the set function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6m85-wvcr-pgw3",
+      "publishedAt": "2022-02-10T20:33:49Z",
+      "modifiedAt": "2023-01-27T05:07:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6m85-wvcr-pgw3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7737"
+        }
+      ],
+      "affectedRange": "<= 1.1.1"
+    }
+  ]
+}

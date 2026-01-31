@@ -1,0 +1,27 @@
+{
+  "name": "@shopify/hydrogen",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6j22-wv8g-894f",
+      "title": "Potential Cross-site Scripting vulnerability in Hydrogen",
+      "description": "### Impact\nThere is a potential Cross-Site Scripting (XSS) vulnerability where an arbitrary user is able to execute scripts on pages that are built with Hydrogen. This affects all versions of Hydrogen starting from version 0.10.0 to 0.18.0. This vulnerability is exploitable in applications whose hydrating data is user controlled. \n\n### Patches\nAll Hydrogen users should upgrade their project to v0.19.0.\n\n### Workarounds\nThere is no current workaround, and users should update as soon as possible.\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6j22-wv8g-894f",
+      "publishedAt": "2022-05-19T20:29:04Z",
+      "modifiedAt": "2023-01-27T05:01:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6j22-wv8g-894f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-29230"
+        }
+      ],
+      "affectedRange": ">= 0.10.0, < 0.19.0",
+      "fixedVersion": "0.19.0"
+    }
+  ]
+}

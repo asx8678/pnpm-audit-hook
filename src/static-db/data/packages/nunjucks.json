@@ -1,0 +1,27 @@
+{
+  "name": "nunjucks",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x77j-w7wf-fjmw",
+      "title": "Nunjucks autoescape bypass leads to cross site scripting",
+      "description": "### Impact\nIn Nunjucks versions prior to version 3.2.4, it was possible to bypass the restrictions which are provided by the autoescape functionality. If there are two user-controlled parameters on the same line used in the views, it was possible to inject cross site scripting payloads using the backslash `\\` character.\n\n#### Example\nIf the user-controlled parameters were used in the views similar to the following:\n```\n<script>\nlet testObject = { lang: '{{ lang }}', place: '{{ place }}' };\n</scr",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x77j-w7wf-fjmw",
+      "publishedAt": "2023-04-20T21:19:24Z",
+      "modifiedAt": "2024-11-26T18:54:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x77j-w7wf-fjmw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-2142"
+        }
+      ],
+      "affectedRange": "< 3.2.4",
+      "fixedVersion": "3.2.4"
+    }
+  ]
+}

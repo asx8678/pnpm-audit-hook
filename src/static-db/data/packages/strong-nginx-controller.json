@@ -1,0 +1,26 @@
+{
+  "name": "strong-nginx-controller",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4v9w-pvwr-38h3",
+      "title": "OS Command Injection in strong-nginx-controller",
+      "description": "strong-nginx-controller through 1.0.2 is vulnerable to Command Injection. It allows execution of arbitrary command as part of the '_nginxCmd()' function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4v9w-pvwr-38h3",
+      "publishedAt": "2022-02-10T23:36:54Z",
+      "modifiedAt": "2023-02-01T05:05:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4v9w-pvwr-38h3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7621"
+        }
+      ],
+      "affectedRange": "<= 1.0.2"
+    }
+  ]
+}

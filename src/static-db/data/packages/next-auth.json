@@ -1,0 +1,212 @@
+{
+  "name": "next-auth",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5jpx-9hw9-2fx4",
+      "title": "NextAuthjs Email misdelivery Vulnerability",
+      "description": "### Summary\n\nNextAuth.js's email sign-in can be forced to deliver authentication emails to an attacker-controlled mailbox due to a bug in `nodemailer`'s address parser used by the project (fixed in `nodemailer` **v7.0.7**). A crafted input such as:\n\n```\n\"e@attacker.com\"@victim.com\n```\n\nis parsed incorrectly and results in the message being delivered to `e@attacker.com` (attacker) instead of `\"<e@attacker.com>@victim.com\"` (the intended recipient at `victim.com`) in violation of RFC 5321/5322 sem",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5jpx-9hw9-2fx4",
+      "publishedAt": "2025-10-29T10:43:57Z",
+      "modifiedAt": "2025-10-29T10:43:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5jpx-9hw9-2fx4"
+        }
+      ],
+      "affectedRange": ">= 5.0.0-beta.0, < 5.0.0-beta.30",
+      "fixedVersion": "5.0.0-beta.30"
+    },
+    {
+      "id": "GHSA-v64w-49xw-qq89",
+      "title": "Possible user mocking that bypasses basic authentication",
+      "description": "### Impact\n\n`next-auth` applications prior to version **4.24.5** that rely on the default [Middleware authorization](https://next-auth.js.org/configuration/nextjs#middleware) are affected.\n\nA bad actor could create an empty/mock user, by getting hold of a NextAuth.js-issued JWT from an interrupted OAuth sign-in flow (state, PKCE or nonce).\n\nManually overriding the `next-auth.session-token` cookie value with this non-related JWT would let the user simulate a logged in user, albeit having no user ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v64w-49xw-qq89",
+      "publishedAt": "2023-11-20T23:25:36Z",
+      "modifiedAt": "2023-11-20T23:25:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v64w-49xw-qq89"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-48309"
+        }
+      ],
+      "affectedRange": "< 4.24.5",
+      "fixedVersion": "4.24.5"
+    },
+    {
+      "id": "GHSA-7r7x-4c4q-c4qf",
+      "title": "Missing proper state, nonce and PKCE checks for OAuth authentication",
+      "description": "### Impact\n`next-auth` applications using OAuth provider versions before `v4.20.1` are affected.\n\nA bad actor who can spy on the victim's network or able to social engineer the victim to click a manipulated login link could intercept and tamper with the authorization URL to **log in as the victim**, bypassing the CSRF protection.\n\nAs an example, an attack can happen in the following scenario. \n\n> TL;DR: The attacker steals the victim's authenticated callback by intercepting and tampering with th",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7r7x-4c4q-c4qf",
+      "publishedAt": "2023-03-13T20:52:50Z",
+      "modifiedAt": "2023-04-20T14:23:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7r7x-4c4q-c4qf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-27490"
+        }
+      ],
+      "affectedRange": "< 4.20.1",
+      "fixedVersion": "4.20.1"
+    },
+    {
+      "id": "GHSA-pg53-56cg-4m8q",
+      "title": "Token verification bug in next-auth",
+      "description": "### Impact\n\nImplementations using the **Prisma database adapter** with the **Email provider** **are impacted**.\n\nImplementations using the Prisma database adapter that are not using the Email provider are not impacted.\nImplementations using the default database adapter (TypeORM) with the Email provider are not impacted.\nImplementations not using a database are not impacted.\n\n### Patches\n\nThis issue is fixed in 3.3.0 and newer versions.\n\n### Workarounds\n\nThose not able to upgrade can alternativel",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-pg53-56cg-4m8q",
+      "publishedAt": "2021-02-11T21:36:24Z",
+      "modifiedAt": "2023-02-01T05:05:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pg53-56cg-4m8q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-21310"
+        }
+      ],
+      "affectedRange": "< 3.3.0",
+      "fixedVersion": "3.3.0"
+    },
+    {
+      "id": "GHSA-xv97-c62v-4587",
+      "title": "NextAuth.js before 4.10.3 and 3.29.10 sending verification requests (magic link) to unwanted emails",
+      "description": "### Impact\n`next-auth` users who are using the `EmailProvider` either in versions before `4.10.3` or `3.29.10` are affected.\n\nIf an attacker could forge a request that sent a comma-separated list of emails (eg.: `attacker@attacker.com,victim@victim.com`) to the sign-in endpoint, NextAuth.js would send emails to both the attacker and the victim's e-mail addresses. The attacker could then login as a newly created user with the email being `attacker@attacker.com,victim@victim.com`. This means that ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-xv97-c62v-4587",
+      "publishedAt": "2022-08-02T18:00:33Z",
+      "modifiedAt": "2023-01-31T05:01:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xv97-c62v-4587"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-35924"
+        }
+      ],
+      "affectedRange": "< 3.29.10",
+      "fixedVersion": "3.29.10"
+    },
+    {
+      "id": "GHSA-p6mm-27gq-9v3p",
+      "title": "next-auth before v4.10.2 and v3.29.9 leaks excessive information into log",
+      "description": "### Impact\nAn information disclosure vulnerability in `next-auth` before `v4.10.2` and `v3.29.9` allows an attacker with log access privilege to obtain excessive information such as an identity provider's secret in the log (which is thrown during OAuth error handling) and use it to leverage further attacks on the system, like impersonating the client to ask for extensive permissions.\n\n### Patches\nWe patched this vulnerability in `v4.10.2` and `v3.29.9` by moving the log for `provider` informatio",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-p6mm-27gq-9v3p",
+      "publishedAt": "2022-08-06T05:29:45Z",
+      "modifiedAt": "2023-01-27T05:07:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p6mm-27gq-9v3p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31186"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 4.10.2",
+      "fixedVersion": "4.10.2"
+    },
+    {
+      "id": "GHSA-pgjx-7f9g-9463",
+      "title": "Improper handling of email input",
+      "description": "### Impact\n\nAn attacker can pass a compromised input to the e-mail [signin endpoint](https://next-auth.js.org/getting-started/rest-api#post-apiauthsigninprovider) that contains some malicious HTML, tricking the e-mail server to send it to the user, so they can perform a phishing attack. Eg.: `balazs@email.com, <a href=\"http://attacker.com\">Before signing in, claim your money!</a>`. This was previously sent to `balazs@email.com`, and the content of the email containing a link to the attacker's si",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pgjx-7f9g-9463",
+      "publishedAt": "2022-07-06T19:27:45Z",
+      "modifiedAt": "2023-01-27T05:05:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pgjx-7f9g-9463"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31127"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 4.9.0",
+      "fixedVersion": "4.9.0"
+    },
+    {
+      "id": "GHSA-g5fm-jp9v-2432",
+      "title": "Improper Handling of `callbackUrl` parameter in next-auth",
+      "description": "### Impact\n\nAn attacker can send a request to an app using NextAuth.js with an invalid `callbackUrl` query parameter, which internally we convert to a `URL` object. The URL instantiation would fail due to a malformed URL being passed into the constructor, causing it to throw an unhandled error which led to our **API route handler timing out and logging in to fail**. This has been remedied in the following releases:\n\nnext-auth v3 users before version 3.29.5 are impacted. (We recommend upgrading t",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g5fm-jp9v-2432",
+      "publishedAt": "2022-06-21T20:06:36Z",
+      "modifiedAt": "2023-01-27T05:04:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g5fm-jp9v-2432"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31093"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 4.5.0",
+      "fixedVersion": "4.5.0"
+    },
+    {
+      "id": "GHSA-q2mx-j4x2-2h74",
+      "title": "URL Redirection to Untrusted Site ('Open Redirect') in next-auth",
+      "description": "### Impact\n\nWe found that this vulnerability is present when the developer is implementing an OAuth 1 provider (by extension, it means Twitter, which is the only built-in provider using OAuth 1), but **upgrading** is **still recommended**.\n\n`next-auth` v3 users before version 3.29.3 are impacted. (We recommend upgrading to v4, as v3 is considered unmaintained. See our [migration guide](https://next-auth.js.org/getting-started/upgrade-v4))\n\n`next-auth` v4 users before version 4.3.3 are impacted.\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q2mx-j4x2-2h74",
+      "publishedAt": "2022-05-24T22:03:07Z",
+      "modifiedAt": "2023-01-27T05:02:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q2mx-j4x2-2h74"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-29214"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 4.3.3",
+      "fixedVersion": "4.3.3"
+    },
+    {
+      "id": "GHSA-f9wg-5f46-cjmw",
+      "title": "NextAuth.js default redirect callback vulnerable to open redirects",
+      "description": "`next-auth` v3 users before version 3.29.2 are impacted. (We recommend upgrading to v4 in most cases. See our [migration guide](https://next-auth.js.org/getting-started/upgrade-v4)).`next-auth` v4 users before version 4.3.2 are impacted. Upgrading to 3.29.2 or 4.3.2 will patch this vulnerability. If you are not able to upgrade for any reason, you can add a configuration to your `callbacks` option:\n\n```js\n// async redirect(url, baseUrl) { // v3\nasync redirect({ url, baseUrl }) { // v4\n    // Allo",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f9wg-5f46-cjmw",
+      "publishedAt": "2022-04-22T20:49:09Z",
+      "modifiedAt": "2023-01-27T05:01:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f9wg-5f46-cjmw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24858"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 4.3.2",
+      "fixedVersion": "4.3.2"
+    }
+  ]
+}

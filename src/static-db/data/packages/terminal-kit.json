@@ -1,0 +1,27 @@
+{
+  "name": "terminal-kit",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wxgh-8gmr-3qh3",
+      "title": "terminal-kit Inefficient Regular Expression Complexity vulnerability",
+      "description": "A vulnerability classified as problematic has been found in cronvel terminal-kit up to 2.1.7. Affected is an unknown function. The manipulation leads to inefficient regular expression complexity. Upgrading to version 2.1.8 can address this issue. The name of the patch is a2e446cc3927b559d0281683feb9b821e83b758c. It is recommended to upgrade the affected component. The identifier of this vulnerability is VDB-217620.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wxgh-8gmr-3qh3",
+      "publishedAt": "2023-01-07T18:30:20Z",
+      "modifiedAt": "2023-01-28T05:04:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wxgh-8gmr-3qh3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-4306"
+        }
+      ],
+      "affectedRange": "< 2.1.8",
+      "fixedVersion": "2.1.8"
+    }
+  ]
+}

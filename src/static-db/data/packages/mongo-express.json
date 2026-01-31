@@ -1,0 +1,67 @@
+{
+  "name": "mongo-express",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fffg-cwc9-xvj7",
+      "title": "mongo-express Cross-site Request Forgery vulnerability",
+      "description": "In mongo-express 1.0.2, /admin allows CSRF, as demonstrated by deletion of a Collection.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fffg-cwc9-xvj7",
+      "publishedAt": "2024-03-01T09:31:06Z",
+      "modifiedAt": "2024-08-30T14:30:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fffg-cwc9-xvj7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-52555"
+        }
+      ],
+      "affectedRange": "<= 1.0.2"
+    },
+    {
+      "id": "GHSA-m2r3-8492-vx59",
+      "title": "Denial of Service (DoS) in mongo-express",
+      "description": "All versions of package mongo-express are vulnerable to Denial of Service (DoS) when exporting an empty collection as CSV, due to an unhandled exception, leading to a crash.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m2r3-8492-vx59",
+      "publishedAt": "2021-10-06T17:47:46Z",
+      "modifiedAt": "2023-02-01T05:06:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m2r3-8492-vx59"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23372"
+        }
+      ],
+      "affectedRange": "<= 0.54.0"
+    },
+    {
+      "id": "GHSA-7p8h-86p5-wv3p",
+      "title": "Cross-site scripting",
+      "description": "Two kinds of XSS were found:\n\n1.  As mentioned in https://github.com/mongo-express/mongo-express/issues/577 when the content of a cell grows larger than supported size, clicking on a row will show full document unescaped, however this needs admin interaction on cell.\n2. Data cells identified as media will be rendered as media, without being sanitized. Example of different renders: image, audio, video, etc.\n\n\n\n### Impact\nAs an example of type 1 attack, an unauthorized user who only can send a lar",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7p8h-86p5-wv3p",
+      "publishedAt": "2021-06-28T17:18:04Z",
+      "modifiedAt": "2023-02-01T05:05:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7p8h-86p5-wv3p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-21422"
+        }
+      ],
+      "affectedRange": "<= 1.0.0-alpha.2",
+      "fixedVersion": "1.0.0-alpha.4"
+    }
+  ]
+}

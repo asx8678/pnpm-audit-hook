@@ -1,0 +1,48 @@
+{
+  "name": "@fastify/passport",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2ccf-ffrj-m4qw",
+      "title": "CSRF token fixation in fastify-passport",
+      "description": "The [CSRF](https://owasp.org/www-community/attacks/csrf) protection enforced by the `@fastify/csrf-protection` library, when combined with `@fastify/passport`, can be bypassed by network and same-site attackers.\n\n## Details\n`fastify/csrf-protection` implements the [synchronizer token pattern](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html#synchronizer-token-pattern) (using plugins `@fastify/session` and `@fastify/secure-session`) by storing ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2ccf-ffrj-m4qw",
+      "publishedAt": "2023-04-21T22:32:47Z",
+      "modifiedAt": "2023-11-09T05:00:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2ccf-ffrj-m4qw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-29020"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.3.0",
+      "fixedVersion": "2.3.0"
+    },
+    {
+      "id": "GHSA-4m3m-ppvx-xgw9",
+      "title": "Session fixation in fastify-passport",
+      "description": "Applications using `@fastify/passport` for user authentication, in combination with `@fastify/session` as the underlying session management mechanism, are vulnerable to [session fixation attacks](https://owasp.org/www-community/attacks/Session_fixation) from network and same-site attackers.\n\n## Details\nfastify applications rely on the `@fastify/passport` library for user authentication. The login and user validation are performed by the `authenticate` function. When executing this function, the ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4m3m-ppvx-xgw9",
+      "publishedAt": "2023-04-21T22:33:30Z",
+      "modifiedAt": "2023-11-09T05:00:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4m3m-ppvx-xgw9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-29019"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.3.0",
+      "fixedVersion": "2.3.0"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "path-sanitizer",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-94p5-r7cc-3rpr",
+      "title": "path-sanitizer allows bypassing the existing filters to achieve path-traversal vulnerability ",
+      "description": "### Summary\nThis is a POC for a path-sanitizer [npm package](https://www.npmjs.com/package/path-sanitizer). The filters can be bypassed and can result in path traversal.\n\nPayload: `..=%5c` can be used to bypass this on CLI (along with other candidates). Something similar would likely work on web apps as well. \n\n### PoC\nHere's the code to test for the filter bypass:\n\n```js\nconst sanitize = require(\"path-sanitizer\")\nconst path = require(\"path\")\nconst fs = require(\"fs\")\n\n// Real scenario:\nfunction ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-94p5-r7cc-3rpr",
+      "publishedAt": "2025-01-02T12:52:42Z",
+      "modifiedAt": "2025-01-02T12:52:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-94p5-r7cc-3rpr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-56198"
+        }
+      ],
+      "affectedRange": "< 3.1.0",
+      "fixedVersion": "3.1.0"
+    }
+  ]
+}

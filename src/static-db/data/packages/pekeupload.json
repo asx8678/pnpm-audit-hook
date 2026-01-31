@@ -1,0 +1,26 @@
+{
+  "name": "pekeupload",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-89q5-mj78-pw5w",
+      "title": "Cross-site Scripting in pekeupload",
+      "description": "This affects all versions of package pekeupload. If an attacker induces a user to upload a file whose name contains javascript code, the javascript code will be executed.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-89q5-mj78-pw5w",
+      "publishedAt": "2021-12-02T17:52:26Z",
+      "modifiedAt": "2023-02-01T05:06:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-89q5-mj78-pw5w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23673"
+        }
+      ],
+      "affectedRange": "<= 2.1.1"
+    }
+  ]
+}

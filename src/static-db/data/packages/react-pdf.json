@@ -1,0 +1,27 @@
+{
+  "name": "react-pdf",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-87hq-q4gp-9wr4",
+      "title": "react-pdf vulnerable to arbitrary JavaScript execution upon opening a malicious PDF with PDF.js",
+      "description": "### Summary\n\nIf PDF.js is used to load a malicious PDF, and PDF.js is configured with `isEvalSupported` set to `true` (which is the default value), unrestricted attacker-controlled JavaScript will be executed in the context of the hosting domain.\n\n### Patches\n[This patch](https://github.com/wojtekmaj/react-pdf/commit/671e6eaa2e373e404040c13cc6b668fe39839cad) forces `isEvalSupported` to `false`, removing the attack vector.\n\n### Workarounds\nSet `options.isEvalSupported` to `false`, where `options`",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-87hq-q4gp-9wr4",
+      "publishedAt": "2024-05-07T16:48:59Z",
+      "modifiedAt": "2024-05-08T10:10:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-87hq-q4gp-9wr4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-34342"
+        }
+      ],
+      "affectedRange": ">= 8.0.0, < 8.0.2",
+      "fixedVersion": "8.0.2"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "ssri",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vx3p-948g-6vhq",
+      "title": "Regular Expression Denial of Service (ReDoS)",
+      "description": "npm `ssri` 5.2.2-6.0.1 and 7.0.0-8.0.0, processes SRIs using a regular expression which is vulnerable to a denial of service. Malicious SRIs could take an extremely long time to process, leading to denial of service. This issue only affects consumers using the strict option.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vx3p-948g-6vhq",
+      "publishedAt": "2021-03-19T21:24:36Z",
+      "modifiedAt": "2023-09-21T21:52:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vx3p-948g-6vhq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-27290"
+        }
+      ],
+      "affectedRange": "= 8.0.0",
+      "fixedVersion": "8.0.1"
+    }
+  ]
+}

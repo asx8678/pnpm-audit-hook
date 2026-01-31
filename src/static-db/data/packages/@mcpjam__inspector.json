@@ -1,0 +1,27 @@
+{
+  "name": "@mcpjam/inspector",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-232v-j27c-5pp6",
+      "title": "REC in MCPJam inspector due to HTTP Endpoint exposes",
+      "description": "### Summary\nMCPJam inspector is the local-first development platform for MCP servers. The Latest version Versions 1.4.2 and earlier are vulnerable to remote code execution (RCE) vulnerability, which allows an attacker to send a crafted HTTP request that triggers the installation of an MCP server, leading to RCE.\n\nThis vulnerability is similar to CVE-2025-49596, but more severe. While CVE-2025-49596 requires tricking a user into clicking a malicious link, this vulnerability is exploitable with no",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-232v-j27c-5pp6",
+      "publishedAt": "2026-01-16T21:15:35Z",
+      "modifiedAt": "2026-01-16T21:57:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-232v-j27c-5pp6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23744"
+        }
+      ],
+      "affectedRange": "<= 1.4.2",
+      "fixedVersion": "1.4.3"
+    }
+  ]
+}

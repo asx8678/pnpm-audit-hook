@@ -1,0 +1,26 @@
+{
+  "name": "im-metadata",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qfxv-qqvg-24pg",
+      "title": "OS Command Injection in im-metadata",
+      "description": "im-metadata through 3.0.1 allows remote attackers to execute arbitrary commands via the \"exec\" argument. It is possible to inject arbitrary commands as part of the metadata options which is given to the \"exec\" function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qfxv-qqvg-24pg",
+      "publishedAt": "2021-04-13T15:17:36Z",
+      "modifiedAt": "2023-02-01T05:05:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qfxv-qqvg-24pg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10788"
+        }
+      ],
+      "affectedRange": "<= 3.0.1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@dapperduckling/keycloak-connector-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w5rq-g9r6-vrcg",
+      "title": "@dapperduckling/keycloak-connector-server has Reflected XSS Vulnerability in Authentication Flow URL Handling",
+      "description": "**Impact**\nA Reflected Cross-Site Scripting (XSS) vulnerability was discovered in the authentication flow of the application. This issue arises due to improper sanitization of the URL parameters, allowing the URL bar's contents to be injected and reflected into the HTML page. An attacker could craft a malicious URL to execute arbitrary JavaScript in the browser of a victim who visits the link.\n\n**Who is impacted?**\nAny application utilizing this authentication library is vulnerable. Users of the",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w5rq-g9r6-vrcg",
+      "publishedAt": "2024-11-26T16:51:05Z",
+      "modifiedAt": "2024-11-26T16:51:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w5rq-g9r6-vrcg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-53843"
+        }
+      ],
+      "affectedRange": "< 2.5.5",
+      "fixedVersion": "2.5.5"
+    }
+  ]
+}

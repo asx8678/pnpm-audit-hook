@@ -1,0 +1,26 @@
+{
+  "name": "@adolph_dudu/ratio-swiper",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-88vr-hjqx-57qh",
+      "title": "adolph_dudu ratio-swiper was discovered to contain a prototype pollution via the function extendDefaults",
+      "description": "adolph_dudu ratio-swiper v0.0.2 was discovered to contain a prototype pollution via the function extendDefaults. This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-88vr-hjqx-57qh",
+      "publishedAt": "2024-07-01T15:32:17Z",
+      "modifiedAt": "2024-07-03T20:04:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-88vr-hjqx-57qh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-38997"
+        }
+      ],
+      "affectedRange": "= 0.0.2"
+    }
+  ]
+}

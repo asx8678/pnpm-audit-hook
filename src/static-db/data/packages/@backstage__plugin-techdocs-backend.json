@@ -1,0 +1,48 @@
+{
+  "name": "@backstage/plugin-techdocs-backend",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-39v3-f278-vj3g",
+      "title": "@backstage/plugin-techdocs-backend storage bucket Directory Traversal vulnerability",
+      "description": "### Impact\n\nWhen using the AWS S3 or GCS storage provider for TechDocs it is possible to access content in the entire storage bucket. This can leak contents of the bucket that are not intended to be accessible, as well as bypass permission checks in Backstage.\n\n### Patches\n\nThis has been fixed in the 1.10.13 release of the `@backstage/plugin-techdocs-backend` package.\n\n### References\n\nIf you have any questions or comments about this advisory:\n\nOpen an issue in the [Backstage repository](https://",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-39v3-f278-vj3g",
+      "publishedAt": "2024-09-17T21:30:20Z",
+      "modifiedAt": "2025-01-03T16:12:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-39v3-f278-vj3g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-45816"
+        }
+      ],
+      "affectedRange": "< 1.10.13",
+      "fixedVersion": "1.10.13"
+    },
+    {
+      "id": "GHSA-5j94-f3mf-8685",
+      "title": "@backstage/plugin-techdocs-backend vulnerable to circumvention of cross site scripting protection",
+      "description": "### Impact\n\nAn attacker with control of the contents of the TechDocs storage buckets is able to inject executable scripts in the TechDocs content that will be executed in the victim's browser when browsing documentation or navigating to an attacker provided link.\n\n### Patches\n\nThis has been fixed in the 1.10.13 release of the `@backstage/plugin-techdocs-backend` package.\n\n### References\n\nIf you have any questions or comments about this advisory:\n\nOpen an issue in the [Backstage repository](https",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5j94-f3mf-8685",
+      "publishedAt": "2024-09-17T21:31:28Z",
+      "modifiedAt": "2024-09-17T21:31:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5j94-f3mf-8685"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-46976"
+        }
+      ],
+      "affectedRange": "< 1.10.13",
+      "fixedVersion": "1.10.13"
+    }
+  ]
+}

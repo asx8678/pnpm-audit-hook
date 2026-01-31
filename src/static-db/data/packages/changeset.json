@@ -1,0 +1,27 @@
+{
+  "name": "changeset",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2gqw-q9r9-7f79",
+      "title": "Changeset vulnerable to prototype pollution",
+      "description": "### Overview\nPrototype pollution vulnerability in 'changeset' versions 0.0.1 through 0.2.5 allows attackers to cause a denial of service and may lead to remote code execution.\n\n### Details\nThe npm module 'changeset' can be abused by Prototype Pollution vulnerability since the function 'apply()' does not check for the type of object before assigning value to the property. Due to this flaw an attacker could create a non-existent property or able to manipulate the property which leads to Denial of ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-2gqw-q9r9-7f79",
+      "publishedAt": "2022-05-24T17:44:00Z",
+      "modifiedAt": "2023-10-19T18:27:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2gqw-q9r9-7f79"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-25915"
+        }
+      ],
+      "affectedRange": ">= 0.0.1, < 0.2.5",
+      "fixedVersion": "0.2.5"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "jszip",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-36fh-84j7-cv5h",
+      "title": "JSZip contains Path Traversal via loadAsync",
+      "description": "loadAsync in JSZip before 3.8.0 allows Directory Traversal via a crafted ZIP archive.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-36fh-84j7-cv5h",
+      "publishedAt": "2023-01-29T06:30:52Z",
+      "modifiedAt": "2024-11-18T16:26:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-36fh-84j7-cv5h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-48285"
+        }
+      ],
+      "affectedRange": "< 3.8.0",
+      "fixedVersion": "3.8.0"
+    },
+    {
+      "id": "GHSA-jg8v-48h5-wgxg",
+      "title": "jszip Vulnerable to Prototype Pollution",
+      "description": "This affects the package jszip before 3.7.0. Crafting a new zip file with filenames set to Object prototype values (e.g `__proto__`, `toString`, etc) results in a returned object with a modified prototype instance.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jg8v-48h5-wgxg",
+      "publishedAt": "2021-08-10T16:02:18Z",
+      "modifiedAt": "2023-09-21T05:03:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jg8v-48h5-wgxg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23413"
+        }
+      ],
+      "affectedRange": "< 2.7.0",
+      "fixedVersion": "2.7.0"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@urql/next",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qhjf-hm5j-335w",
+      "title": "@urql/next Cross-site Scripting vulnerability",
+      "description": "## impact\n\nThe `@urql/next` package is vulnerable to XSS. To exploit this an attacker would need to ensure that the response returns `html` tags and that the web-application is using streamed responses (non-RSC). This vulnerability is due to improper escaping of html-like characters in the response-stream.\n\nTo fix this vulnerability upgrade to version 1.1.1",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qhjf-hm5j-335w",
+      "publishedAt": "2024-01-30T20:57:28Z",
+      "modifiedAt": "2024-01-30T20:57:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qhjf-hm5j-335w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-24556"
+        }
+      ],
+      "affectedRange": "< 1.1.1",
+      "fixedVersion": "1.1.1"
+    }
+  ]
+}

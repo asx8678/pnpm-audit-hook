@@ -1,0 +1,27 @@
+{
+  "name": "@hotwired/turbo",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qppm-g56g-fpvp",
+      "title": "Turbo Frame responses can restore stale session cookies",
+      "description": "###  Summary\nA race condition in Turbo Frames allows delayed HTTP responses to restore stale session cookies after session-modifying operations.\n\n### Details\nBrowsers automatically process Set-Cookie headers from HTTP responses. When a Turbo Frame request is in-flight during a session-modifying action (such as logout), the delayed response may include a Set-Cookie header reflecting the session state at request time. This can result in stale session cookies being restored after the session was in",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-qppm-g56g-fpvp",
+      "publishedAt": "2026-01-20T18:58:15Z",
+      "modifiedAt": "2026-01-21T21:11:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qppm-g56g-fpvp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-66803"
+        }
+      ],
+      "affectedRange": "<= 8.0.20",
+      "fixedVersion": "8.0.21"
+    }
+  ]
+}

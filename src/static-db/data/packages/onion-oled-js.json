@@ -1,0 +1,26 @@
+{
+  "name": "onion-oled-js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rhwp-9vm9-547q",
+      "title": "Command Injection in onion-oled-js",
+      "description": "This affects all versions up to and including version 0.0.2 of package onion-oled-js. If attacker-controlled user input is given to the scroll function, it is possible for an attacker to execute arbitrary commands. This is due to use of the child_process exec function without input sanitization.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-rhwp-9vm9-547q",
+      "publishedAt": "2021-05-07T16:06:16Z",
+      "modifiedAt": "2023-01-27T05:00:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rhwp-9vm9-547q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23377"
+        }
+      ],
+      "affectedRange": "<= 0.0.2"
+    }
+  ]
+}

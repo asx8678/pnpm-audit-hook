@@ -1,0 +1,63 @@
+{
+  "packageName": "lodash",
+  "lastUpdated": "2025-01-15T00:00:00Z",
+  "vulnerabilities": [
+    {
+      "id": "CVE-2024-12345",
+      "packageName": "lodash",
+      "severity": "critical",
+      "publishedAt": "2024-12-15T00:00:00Z",
+      "modifiedAt": "2024-12-20T00:00:00Z",
+      "affectedVersions": [
+        {
+          "range": ">=4.0.0 <4.17.21",
+          "fixed": "4.17.21"
+        }
+      ],
+      "source": "github",
+      "title": "Prototype Pollution in lodash",
+      "url": "https://github.com/advisories/GHSA-test-1234-5678",
+      "identifiers": [
+        { "type": "CVE", "value": "CVE-2024-12345" },
+        { "type": "GHSA", "value": "GHSA-test-1234-5678" }
+      ]
+    },
+    {
+      "id": "CVE-2024-11111",
+      "packageName": "lodash",
+      "severity": "high",
+      "publishedAt": "2024-06-01T00:00:00Z",
+      "affectedVersions": [
+        {
+          "range": ">=3.0.0 <4.17.15",
+          "fixed": "4.17.15"
+        }
+      ],
+      "source": "github",
+      "title": "Command Injection in lodash",
+      "url": "https://github.com/advisories/GHSA-test-1111-2222",
+      "identifiers": [
+        { "type": "CVE", "value": "CVE-2024-11111" },
+        { "type": "GHSA", "value": "GHSA-test-1111-2222" }
+      ]
+    },
+    {
+      "id": "CVE-2023-99999",
+      "packageName": "lodash",
+      "severity": "medium",
+      "publishedAt": "2023-01-15T00:00:00Z",
+      "affectedVersions": [
+        {
+          "range": "<3.10.0"
+        }
+      ],
+      "source": "github",
+      "title": "Denial of Service in lodash",
+      "url": "https://github.com/advisories/GHSA-test-9999-0000",
+      "identifiers": [
+        { "type": "CVE", "value": "CVE-2023-99999" },
+        { "type": "GHSA", "value": "GHSA-test-9999-0000" }
+      ]
+    }
+  ]
+}

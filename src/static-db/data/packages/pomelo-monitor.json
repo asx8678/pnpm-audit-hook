@@ -1,0 +1,26 @@
+{
+  "name": "pomelo-monitor",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4j54-mxf6-wxx2",
+      "title": "OS Command Injection in pomelo-monitor",
+      "description": "pomelo-monitor through 0.3.7 is vulnerable to Command Injection.It allows injection of arbitrary commands as part of 'pomelo-monitor' params.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4j54-mxf6-wxx2",
+      "publishedAt": "2021-05-10T18:37:16Z",
+      "modifiedAt": "2023-02-01T05:05:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4j54-mxf6-wxx2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7620"
+        }
+      ],
+      "affectedRange": "<= 0.3.7"
+    }
+  ]
+}

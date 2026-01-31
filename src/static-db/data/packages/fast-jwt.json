@@ -1,0 +1,48 @@
+{
+  "name": "fast-jwt",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gm45-q3v2-6cf8",
+      "title": "Fast-JWT Improperly Validates iss Claims",
+      "description": "### Summary\nThe `fast-jwt` library does not properly validate the `iss` claim based on the RFC https://datatracker.ietf.org/doc/html/rfc7519#page-9.\n\n#### Details\nThe `iss` (issuer) claim validation within the fast-jwt library permits an array of strings as a valid `iss` value. This design flaw enables a potential attack where a malicious actor crafts a JWT with an `iss` claim structured as `['https://attacker-domain/', 'https://valid-iss']`. Due to the permissive validation, the JWT will be dee",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gm45-q3v2-6cf8",
+      "publishedAt": "2025-03-19T15:48:43Z",
+      "modifiedAt": "2025-03-20T18:58:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gm45-q3v2-6cf8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-30144"
+        }
+      ],
+      "affectedRange": "< 5.0.6",
+      "fixedVersion": "5.0.6"
+    },
+    {
+      "id": "GHSA-c2ff-88x2-x9pg",
+      "title": "JWT Algorithm Confusion",
+      "description": "### Summary\nThe fast-jwt library does not properly prevent JWT algorithm confusion for all public key types.\n\n### Details\nThe 'publicKeyPemMatcher' in 'fast-jwt/src/crypto.js' does not properly match all common PEM formats for public keys. To exploit this vulnerability, an attacker needs to craft a malicious JWT token containing the HS256 algorithm, signed with the public RSA key of the victim application. This attack will only work if the victim application utilizes a public key containing the ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c2ff-88x2-x9pg",
+      "publishedAt": "2023-11-20T20:58:56Z",
+      "modifiedAt": "2023-11-20T20:58:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c2ff-88x2-x9pg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-48223"
+        }
+      ],
+      "affectedRange": "< 3.3.2",
+      "fixedVersion": "3.3.2"
+    }
+  ]
+}

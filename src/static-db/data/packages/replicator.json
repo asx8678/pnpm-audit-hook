@@ -1,0 +1,27 @@
+{
+  "name": "replicator",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hw46-vg6w-88fj",
+      "title": "replicator vulnerable to Deserialization of Untrusted Data",
+      "description": "A deserialization issue discovered in inikulin replicator before 1.0.4 allows remote attackers to run arbitrary code via the fromSerializable function in TypedArray object.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-hw46-vg6w-88fj",
+      "publishedAt": "2022-12-15T21:30:28Z",
+      "modifiedAt": "2023-01-29T05:01:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hw46-vg6w-88fj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-33420"
+        }
+      ],
+      "affectedRange": "< 1.0.4",
+      "fixedVersion": "1.0.4"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "deepmerge-ts",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r9w3-g83q-m6hq",
+      "title": "Prototype Pollution in deepmerge-ts",
+      "description": "deepmerge-ts is used to merge 2 or more objects respecting type information. deepmerge-ts is vulnerable to Prototype Pollution via file deepmerge.ts, function defaultMergeRecords(). A fix was released in version 4.0.2. Currently, there is no known workaround.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r9w3-g83q-m6hq",
+      "publishedAt": "2022-04-01T17:26:03Z",
+      "modifiedAt": "2023-01-27T05:01:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r9w3-g83q-m6hq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24802"
+        }
+      ],
+      "affectedRange": "< 4.0.2",
+      "fixedVersion": "4.0.2"
+    }
+  ]
+}

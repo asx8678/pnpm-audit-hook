@@ -1,0 +1,27 @@
+{
+  "name": "url-js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rf54-44jr-q5vf",
+      "title": "Improper Input Validation in url-js",
+      "description": "The package url-js before 2.1.0 is vulnerable to Improper Input Validation due to improper parsing, which makes it is possible for the hostname to be spoofed. http://\\\\\\\\\\\\\\\\localhost and http://localhost are the same URL. However, the hostname is not parsed as localhost, and the backslash is reflected as it is.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rf54-44jr-q5vf",
+      "publishedAt": "2022-03-12T00:00:26Z",
+      "modifiedAt": "2023-01-27T05:00:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rf54-44jr-q5vf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25839"
+        }
+      ],
+      "affectedRange": "< 2.1.0",
+      "fixedVersion": "2.1.0"
+    }
+  ]
+}

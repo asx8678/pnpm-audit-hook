@@ -1,0 +1,23 @@
+{
+  "name": "@seal-security/mongoose-fixed",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rc4v-99cr-pjcm",
+      "title": "Prototype Pollution in ali-security/mongoose",
+      "description": "### Impact\nThis vulnerability causes a Prototype Pollution in document.js, through functions such as findByIdAndUpdate().\nFor applications using Express and EJS, this can potentially allow remote code execution.\n\n### Patches\nThe original patched version for mongoose 5.3.3 did not include a fix for CVE-2023-3696. Therefore the existing version @seal-security/mongoose-fixed version 5.3.3 is affected by this vulnerability (though it is protected from CVE-2022-2564 and CVE-2019-17426). To mitigate t",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-rc4v-99cr-pjcm",
+      "publishedAt": "2023-10-17T14:21:16Z",
+      "modifiedAt": "2023-10-17T14:21:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rc4v-99cr-pjcm"
+        }
+      ],
+      "affectedRange": "= 5.3.3",
+      "fixedVersion": "5.3.4"
+    }
+  ]
+}

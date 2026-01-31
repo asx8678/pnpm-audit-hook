@@ -1,0 +1,230 @@
+{
+  "name": "strapi",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-49vv-6q7q-w5cf",
+      "title": "Duplicate Advisory: OS Command Injection in Strapi",
+      "description": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-9p2w-rmx4-9mw7. This link is maintained to preserve external references.\n\n### Original Description\nThe Strapi framework before 3.0.0-beta.17.8 is vulnerable to Remote Code Execution in the Install and Uninstall Plugin components of the Admin panel, because it does not sanitize the plugin name, and attackers can inject arbitrary shell commands to be executed by the execa function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-49vv-6q7q-w5cf",
+      "publishedAt": "2021-12-10T17:22:12Z",
+      "modifiedAt": "2025-12-29T15:34:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-49vv-6q7q-w5cf"
+        }
+      ],
+      "affectedRange": "<= 3.0.0-beta.17.7",
+      "fixedVersion": "3.0.0-beta.17.8"
+    },
+    {
+      "id": "GHSA-37hx-4mcq-wc3h",
+      "title": "Weak Password Recovery Mechanism for Forgotten Password in Strapi",
+      "description": "In Strapi through 3.6.0, the admin panel allows the changing of one's own password without entering the current password. An attacker who gains access to a valid session can use this to take over an account by changing the password.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-37hx-4mcq-wc3h",
+      "publishedAt": "2021-10-06T17:48:16Z",
+      "modifiedAt": "2023-09-13T20:11:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-37hx-4mcq-wc3h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-28128"
+        }
+      ],
+      "affectedRange": "<= 3.6.0"
+    },
+    {
+      "id": "GHSA-7frv-9phw-vrvr",
+      "title": "Authorization bypass in Strapi",
+      "description": "`admin/src/containers/InputModalStepperProvider/index.js` in Strapi before 3.2.5 has unwanted `/proxy?url=` functionality.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7frv-9phw-vrvr",
+      "publishedAt": "2021-05-10T18:43:59Z",
+      "modifiedAt": "2023-09-13T19:20:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7frv-9phw-vrvr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-27664"
+        }
+      ],
+      "affectedRange": "< 3.2.5",
+      "fixedVersion": "3.2.5"
+    },
+    {
+      "id": "GHSA-xrjf-phvv-r4vr",
+      "title": "Command injection in strapi",
+      "description": "When creating a strapi app using npxcreate-strapi-app, we can inject arbitrary commands through the template cli argument as per the code in this particular [link](https://github.com/strapi/strapi/blob/master/packages/generators/app/lib/utils/fetch-npm-template.js#L13), this happens due to improper sanitization of user input.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xrjf-phvv-r4vr",
+      "publishedAt": "2022-02-27T00:00:15Z",
+      "modifiedAt": "2023-02-03T05:06:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xrjf-phvv-r4vr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0764"
+        }
+      ],
+      "affectedRange": "< 4.1.0",
+      "fixedVersion": "4.1.0"
+    },
+    {
+      "id": "GHSA-4phg-hpqm-c3j4",
+      "title": "Strapi mishandles hidden attributes within admin API responses",
+      "description": "Strapi before 3.6.10 and 4.x before 4.1.10 mishandles hidden attributes within admin API responses.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4phg-hpqm-c3j4",
+      "publishedAt": "2022-09-28T00:00:17Z",
+      "modifiedAt": "2023-02-02T05:01:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4phg-hpqm-c3j4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31367"
+        }
+      ],
+      "affectedRange": "< 3.6.10",
+      "fixedVersion": "3.6.10"
+    },
+    {
+      "id": "GHSA-85vg-grr5-pw42",
+      "title": "Insecure password handling vulnerability in Strapi",
+      "description": "Storing passwords in a recoverable format in the DOCUMENTATION plugin component of Strapi before 3.6.9 and 4.x before 4.1.5 allows an attacker to access a victim's HTTP request. From this, the attacker can get the victim's cookie, base64 decode it, and obtain a cleartext password, leading to getting API documentation for further API attacks.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-85vg-grr5-pw42",
+      "publishedAt": "2022-05-04T00:00:22Z",
+      "modifiedAt": "2023-02-01T05:01:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-85vg-grr5-pw42"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-46440"
+        }
+      ],
+      "affectedRange": "< 3.6.9",
+      "fixedVersion": "3.6.9"
+    },
+    {
+      "id": "GHSA-mcqm-6ff4-53qx",
+      "title": "Cross-site Scripting in Strapi",
+      "description": "Strapi v3.x.x versions and earlier contain a stored cross-site scripting vulnerability in file upload function. By exploiting this vulnerability, an arbitrary script may be executed on the web browser of the user who is logging in to the product with the administrative privilege.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mcqm-6ff4-53qx",
+      "publishedAt": "2022-06-14T00:00:38Z",
+      "modifiedAt": "2023-01-27T05:03:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mcqm-6ff4-53qx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-29894"
+        }
+      ],
+      "affectedRange": "<= 3.6.10"
+    },
+    {
+      "id": "GHSA-65wv-528r-m892",
+      "title": "Improper Input Validation in strapi",
+      "description": "Strapi before 3.0.2 could allow a remote authenticated attacker to bypass security restrictions because templates are stored in a global variable without any sanitation. By sending a specially crafted request, an attacker could exploit this vulnerability to update the email template for both password reset and account confirmation emails.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-65wv-528r-m892",
+      "publishedAt": "2022-05-24T17:21:16Z",
+      "modifiedAt": "2023-01-27T05:02:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-65wv-528r-m892"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-13961"
+        }
+      ],
+      "affectedRange": "< 3.0.2",
+      "fixedVersion": "3.0.2"
+    },
+    {
+      "id": "GHSA-f6fm-r26q-p747",
+      "title": "Improper Removal of Sensitive Information Before Storage or Transfer in Strapi",
+      "description": "An authenticated user with access to the Strapi admin panel can view private and sensitive data, such as email and password reset tokens, for other admin panel users that have a relationship (e.g., created by, updated by) with content accessible to the authenticated user. For example, a low-privileged “author” role account can view these details in the JSON response for an “editor” or “super admin” that has updated one of the author’s blog posts. There are also many other scenarios where such de",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f6fm-r26q-p747",
+      "publishedAt": "2022-05-20T00:00:28Z",
+      "modifiedAt": "2023-01-27T05:02:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f6fm-r26q-p747"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-30617"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.6.9",
+      "fixedVersion": "3.6.9"
+    },
+    {
+      "id": "GHSA-vgj7-895j-gpr6",
+      "title": "Improper Removal of Sensitive Information Before Storage or Transfer in Strapi",
+      "description": "An authenticated user with access to the Strapi admin panel can view private and sensitive data, such as email and password reset tokens, for API users if content types accessible to the authenticated user contain relationships to API users (from:users-permissions). There are many scenarios in which such details from API users can leak in the JSON response within the admin panel, either through a direct or indirect relationship. Access to this information enables a user to compromise these users",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vgj7-895j-gpr6",
+      "publishedAt": "2022-05-20T00:00:28Z",
+      "modifiedAt": "2023-01-27T05:02:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vgj7-895j-gpr6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-30618"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.6.9",
+      "fixedVersion": "3.6.9"
+    },
+    {
+      "id": "GHSA-9qgm-w87q-hx89",
+      "title": "Unrestricted Upload of File with Dangerous Type in Strapi",
+      "description": "An arbitrary file upload vulnerability in the file upload module of Strapi v4.1.5 allows attackers to execute arbitrary code via a crafted file.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9qgm-w87q-hx89",
+      "publishedAt": "2022-04-13T00:00:25Z",
+      "modifiedAt": "2023-01-27T05:01:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9qgm-w87q-hx89"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-27263"
+        }
+      ],
+      "affectedRange": "<= 4.1.5"
+    }
+  ]
+}

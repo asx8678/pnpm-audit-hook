@@ -1,0 +1,27 @@
+{
+  "name": "node-etsy-client",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xw22-wv29-3299",
+      "title": "ApiKey secret could be revelated on network issue",
+      "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\nApplications that are using node-etsy-client and reporting client error to the end user will offer api key value too\n\n### Patches\n_Has the problem been patched? What versions should users upgrade to?_\n\ncreharmony/node-etsy-client#18 fixes this issue. This is fixed in [node-etsy-client v0.3.0](https://github.com/creharmony/node-etsy-client/tree/v0.3.0) and later.\n\n### Workarounds\n_Is there a way for users to fix or remediate the vuln",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xw22-wv29-3299",
+      "publishedAt": "2021-04-06T17:29:52Z",
+      "modifiedAt": "2023-01-29T05:07:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xw22-wv29-3299"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-21421"
+        }
+      ],
+      "affectedRange": "<= 0.2.0",
+      "fixedVersion": "0.3.0"
+    }
+  ]
+}

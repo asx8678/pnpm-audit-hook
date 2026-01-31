@@ -1,0 +1,27 @@
+{
+  "name": "es5-ext",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4gmj-3p3h-gm8h",
+      "title": "es5-ext vulnerable to Regular Expression Denial of Service in `function#copy` and `function#toStringTokens`",
+      "description": "### Impact\n\nPassing functions with very long names or complex default argument names into `function#copy` or`function#toStringTokens` may put script to stall\n\n### Patches\nFixed with https://github.com/medikoo/es5-ext/commit/3551cdd7b2db08b1632841f819d008757d28e8e2 and https://github.com/medikoo/es5-ext/commit/a52e95736690ad1d465ebcd9791d54570e294602\nPublished with v0.10.63\n\n### Workarounds\nNo real workaround aside of refraining from using above utilities.\n\n### References\nhttps://github.com/medik",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-4gmj-3p3h-gm8h",
+      "publishedAt": "2024-02-26T20:01:28Z",
+      "modifiedAt": "2024-02-26T20:01:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4gmj-3p3h-gm8h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-27088"
+        }
+      ],
+      "affectedRange": ">= 0.10.0, < 0.10.63",
+      "fixedVersion": "0.10.63"
+    }
+  ]
+}

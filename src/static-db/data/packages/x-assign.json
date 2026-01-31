@@ -1,0 +1,26 @@
+{
+  "name": "x-assign",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4mvj-rq4v-2fxw",
+      "title": "Prototype Pollution in x-assign",
+      "description": "This vulnerability affects all versions of package x-assign. The global proto object can be polluted using the __proto__ object.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4mvj-rq4v-2fxw",
+      "publishedAt": "2021-10-21T17:50:44Z",
+      "modifiedAt": "2023-01-27T05:08:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4mvj-rq4v-2fxw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23452"
+        }
+      ],
+      "affectedRange": "<= 0.1.4"
+    }
+  ]
+}

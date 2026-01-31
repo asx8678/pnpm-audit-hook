@@ -1,0 +1,27 @@
+{
+  "name": "liquidjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-45rm-2893-5f49",
+      "title": "liquidjs may leak properties of a prototype",
+      "description": "The package liquidjs before 10.0.0 is vulnerable to Information Exposure when `ownPropertyOnly` parameter is set to `False`, which results in leaking properties of a prototype. Workaround For versions 9.34.0 and higher, an option to disable this functionality is provided.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-45rm-2893-5f49",
+      "publishedAt": "2022-12-22T06:30:15Z",
+      "modifiedAt": "2023-02-02T05:06:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-45rm-2893-5f49"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25948"
+        }
+      ],
+      "affectedRange": "< 10.0.0",
+      "fixedVersion": "10.0.0"
+    }
+  ]
+}

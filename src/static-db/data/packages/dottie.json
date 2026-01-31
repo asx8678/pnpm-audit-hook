@@ -1,0 +1,27 @@
+{
+  "name": "dottie",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4gxf-g5gf-22h4",
+      "title": "dottie vulnerable to Prototype Pollution",
+      "description": "Versions of the package dottie before 2.0.4 are vulnerable to Prototype Pollution due to insufficient checks, via the `set()` function and the current variable in the `/dottie.js` file.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4gxf-g5gf-22h4",
+      "publishedAt": "2023-06-10T06:30:25Z",
+      "modifiedAt": "2023-11-29T00:14:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4gxf-g5gf-22h4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26132"
+        }
+      ],
+      "affectedRange": "< 2.0.4",
+      "fixedVersion": "2.0.4"
+    }
+  ]
+}

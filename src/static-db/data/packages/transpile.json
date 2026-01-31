@@ -1,0 +1,26 @@
+{
+  "name": "transpile",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7xrj-f5rp-j55h",
+      "title": "Uncontrolled Resource Consumption in transpile",
+      "description": "All versions of package transpile are vulnerable to Denial of Service (DoS) due to a lack of input sanitization or whitelisting, coupled with improper exception handling in the .to() function.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7xrj-f5rp-j55h",
+      "publishedAt": "2021-09-02T17:10:42Z",
+      "modifiedAt": "2023-02-01T05:06:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7xrj-f5rp-j55h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23429"
+        }
+      ],
+      "affectedRange": "<= 2.7.2"
+    }
+  ]
+}

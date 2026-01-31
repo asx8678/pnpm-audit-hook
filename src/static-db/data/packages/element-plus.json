@@ -1,0 +1,47 @@
+{
+  "name": "element-plus",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5m5x-9j46-h678",
+      "title": "Element Plus Link component (el-link) implements insufficient input validation for the href attribute",
+      "description": "Element Plus Link component (el-link) prior to 2.11.0 implements insufficient input validation for the href attribute, creating a security abstraction gap that obscures URL-based attack vectors. The component passes user-controlled href values directly to underlying anchor elements without protocol validation, URL sanitization, or security headers. This allows attackers to inject malicious URLs using dangerous protocols (javascript:, data:, file:) or redirect users to external malicious sites. W",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5m5x-9j46-h678",
+      "publishedAt": "2025-09-09T18:31:25Z",
+      "modifiedAt": "2025-09-12T19:05:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5m5x-9j46-h678"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57665"
+        }
+      ],
+      "affectedRange": "<= 2.11.0"
+    },
+    {
+      "id": "GHSA-rjvg-8v36-xv9r",
+      "title": "element-plus vulnerable to cross-site scripting (XSS) via el-table-column",
+      "description": "element-plus below 2.0.5 is vulnerable to Cross Site Scripting (XSS) when attribute `show-tooltips-overflow` of `el-table-column` is true. The mouseover action will make the text of this column render as html.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rjvg-8v36-xv9r",
+      "publishedAt": "2022-04-26T00:00:42Z",
+      "modifiedAt": "2023-04-11T14:26:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rjvg-8v36-xv9r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-27103"
+        }
+      ],
+      "affectedRange": "< 2.0.6",
+      "fixedVersion": "2.0.6"
+    }
+  ]
+}

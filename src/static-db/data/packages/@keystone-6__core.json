@@ -1,0 +1,106 @@
+{
+  "name": "@keystone-6/core",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hg9m-67mm-7pg3",
+      "title": "Keystone has an unintended `isFilterable` bypass that can be used as an oracle to match hidden fields",
+      "description": "# Summary  \n`{field}.isFilterable` access control can be bypassed in `update` and `delete` mutations by adding additional unique filters. These filters can be used as an oracle to probe the existence or value of otherwise unreadable fields.\n\nSpecifically, when a mutation includes a `where` clause with multiple unique filters (e.g. `id` and `email`), Keystone will attempt to match records even if filtering by the latter fields would normally be rejected by `field.isFilterable` or `list.defaultIsF",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-hg9m-67mm-7pg3",
+      "publishedAt": "2025-05-05T18:51:34Z",
+      "modifiedAt": "2025-05-05T22:06:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hg9m-67mm-7pg3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-46720"
+        }
+      ],
+      "affectedRange": "<= 6.4.0",
+      "fixedVersion": "6.5.0"
+    },
+    {
+      "id": "GHSA-9cvc-v7wm-992c",
+      "title": "When `ui.isAccessAllowed` is `undefined`, the `adminMeta` GraphQL query is publicly accessible",
+      "description": "### Summary\nWhen `ui.isAccessAllowed` is `undefined`, the `adminMeta` GraphQL query is publicly accessible, that is to say, no session is required for the query.\n\nThis is different to the behaviour of the default AdminUI middleware, which by default will only be publicly accessible if a `session` strategy is not defined. \n\n### Impact\nThis vulnerability does not affect developers using the `@keystone-6/auth` package, or any users that have written their own `ui.isAccessAllowed` (that is to say, y",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9cvc-v7wm-992c",
+      "publishedAt": "2023-08-15T20:04:14Z",
+      "modifiedAt": "2023-11-08T05:06:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9cvc-v7wm-992c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-40027"
+        }
+      ],
+      "affectedRange": "< 5.5.1",
+      "fixedVersion": "5.5.1"
+    },
+    {
+      "id": "GHSA-5fp6-4xw3-xqq3",
+      "title": "@keystone-6/core's bundled cuid package known to be insecure",
+      "description": "### Summary\nThe `cuid` package used by `@keystone-6/*` and upstream dependencies is deprecated and [marked as insecure by the author](https://github.com/paralleldrive/cuid#status-deprecated-due-to-security-use-cuid2-instead).\n\nAs reported by the author\n> Cuid and other k-sortable and non-cryptographic ids (Ulid, ObjectId, KSUID, all UUIDs) are all insecure. Use @paralleldrive/cuid2 instead.\n\n### What are doing about this?\n- [We are waiting on Prisma](https://github.com/keystonejs/keystone/issues",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-5fp6-4xw3-xqq3",
+      "publishedAt": "2023-06-12T18:37:31Z",
+      "modifiedAt": "2023-06-23T13:56:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5fp6-4xw3-xqq3"
+        }
+      ],
+      "affectedRange": "<= 5.3.1"
+    },
+    {
+      "id": "GHSA-25mx-2mxm-6343",
+      "title": "@keystone-6/core's NODE_ENV defaults to development with esbuild",
+      "description": "### Impact\n`@keystone-6/core@3.0.0 || 3.0.1` users that use `NODE_ENV` in their own code (**not dependencies**) to trigger security-sensitive functionality in a production build are vulnerable to `NODE_ENV` being inlined to `\"development\"` for user code.\n\nIf your dependencies use `NODE_ENV` to trigger particular behaviours (optimisations, security or otherwise), they should still respect your environment's configured `NODE_ENV` variable and thereby be unaffected.\n\nIf you do not use `NODE_ENV` in",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-25mx-2mxm-6343",
+      "publishedAt": "2022-11-03T18:14:05Z",
+      "modifiedAt": "2023-02-02T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-25mx-2mxm-6343"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39382"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.0.2",
+      "fixedVersion": "3.0.2"
+    },
+    {
+      "id": "GHSA-6mhr-52mv-6v6f",
+      "title": "Field-level access-control bypass for multiselect field",
+      "description": "#### Impact\n\n`@keystone-6/core@2.2.0 || 2.3.0` users who are using the `multiselect` field, and provided field-level access control - are vulnerable to their field-level access control not being used.\n\nList-level access control is **NOT** affected.\n\nField-level access control for fields other than `multiselect` are **NOT** affected.\n\nExample, **you are vulnerable if** you are using field-level access control on a `multiselect` like the following:\n```ts\nconst yourList = list({\n  access: {\n    // ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6mhr-52mv-6v6f",
+      "publishedAt": "2022-10-18T17:12:46Z",
+      "modifiedAt": "2023-01-30T05:02:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6mhr-52mv-6v6f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39322"
+        }
+      ],
+      "affectedRange": ">= 2.2.0, < 2.3.1",
+      "fixedVersion": "2.3.1"
+    }
+  ]
+}

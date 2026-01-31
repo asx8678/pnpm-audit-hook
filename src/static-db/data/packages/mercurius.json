@@ -1,0 +1,48 @@
+{
+  "name": "mercurius",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cm8h-q92v-xcfc",
+      "title": "mercurius has Uncaught Exception when using subscriptions",
+      "description": "### Impact\n\nAny users of Mercurius until version v11.5.0 are subjected to a denial of service attack by sending a malformed packet over WebSocket to `/graphql`.\n\n### Patches\n\nThis was patched in https://github.com/mercurius-js/mercurius/pull/940.\nThe patch was released as v11.5.0 and v8.13.2.\n\n### Workarounds\n\nDisable subscriptions.\n\n### References\n\nReported publicly as https://github.com/mercurius-js/mercurius/issues/939.\nThe same problem was solved in https://github.com/fastify/fastify-websock",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cm8h-q92v-xcfc",
+      "publishedAt": "2023-01-09T21:55:44Z",
+      "modifiedAt": "2023-02-03T05:01:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cm8h-q92v-xcfc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-22477"
+        }
+      ],
+      "affectedRange": "< 8.13.2",
+      "fixedVersion": "8.13.2"
+    },
+    {
+      "id": "GHSA-273r-rm8g-7f3x",
+      "title": "Uncaught Exception in mercurius",
+      "description": "### Impact\n\nAny users from Mercurius@8.10.0 to 8.11.1 are subjected to a denial of service attack by sending a malformed JSON to `/graphql` unless they are using a custom error handler.\n\n### Patches\n\nThe vulnerability has been fixed in https://github.com/mercurius-js/mercurius/pull/678 and shipped as v8.11.2.\n\n### Workarounds\n\nUse a custom error handler.\n\n### References\n\nSee https://github.com/mercurius-js/mercurius/issues/677\n\n### For more information\nIf you have any questions or comments about",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-273r-rm8g-7f3x",
+      "publishedAt": "2021-12-13T21:33:04Z",
+      "modifiedAt": "2023-02-01T05:07:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-273r-rm8g-7f3x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-43801"
+        }
+      ],
+      "affectedRange": ">= 8.10.0, < 8.11.2",
+      "fixedVersion": "8.11.2"
+    }
+  ]
+}

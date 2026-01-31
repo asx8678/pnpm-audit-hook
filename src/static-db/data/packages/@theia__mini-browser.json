@@ -1,0 +1,48 @@
+{
+  "name": "@theia/mini-browser",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f7vx-j8mp-3h2x",
+      "title": "Insufficient Verification of Data Authenticity in Eclipse Theia",
+      "description": "In Eclipse Theia versions 0.3.9 through 0.15.0, one of the default pre-packaged Theia extensions is \"Mini-Browser\", published as \"@theia/mini-browser\" on npmjs.com. This extension, for its own needs, exposes a HTTP endpoint that allows to read the content of files on the hosts filesystem, given their path, without restrictions on the requesters origin. This design is vulnerable to being exploited remotely through a DNS rebinding attack or a drive-by download of a carefully crafted exploit.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f7vx-j8mp-3h2x",
+      "publishedAt": "2021-04-13T15:18:01Z",
+      "modifiedAt": "2023-02-01T05:05:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f7vx-j8mp-3h2x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-17636"
+        }
+      ],
+      "affectedRange": ">= 0.3.9, < 0.16.0",
+      "fixedVersion": "0.16.0"
+    },
+    {
+      "id": "GHSA-v9w2-v7j9-rjpr",
+      "title": "Remote code execution in Eclipse Theia",
+      "description": "In Eclipse Theia 0.3.9 to 1.8.1, the \"mini-browser\" extension allows a user to preview HTML files in an iframe inside the IDE. But with the way it is made it is possible for a previewed HTML file to trigger an RCE. This exploit only happens if a user previews a malicious file.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v9w2-v7j9-rjpr",
+      "publishedAt": "2021-09-02T22:02:36Z",
+      "modifiedAt": "2023-01-29T05:07:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v9w2-v7j9-rjpr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-34435"
+        }
+      ],
+      "affectedRange": ">= 0.3.9, < 1.9.0",
+      "fixedVersion": "1.9.0"
+    }
+  ]
+}

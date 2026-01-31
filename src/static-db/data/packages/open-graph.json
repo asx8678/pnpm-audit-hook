@@ -1,0 +1,27 @@
+{
+  "name": "open-graph",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g452-6rfc-vrvx",
+      "title": "Prototype Pollution in open-graph",
+      "description": "This affects the package open-graph before 0.2.6. The function parse could be tricked into adding or modifying properties of Object.prototype using a __proto__ or constructor payload.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g452-6rfc-vrvx",
+      "publishedAt": "2021-09-01T18:31:53Z",
+      "modifiedAt": "2023-01-27T05:07:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g452-6rfc-vrvx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23419"
+        }
+      ],
+      "affectedRange": "< 0.2.6",
+      "fixedVersion": "0.2.6"
+    }
+  ]
+}

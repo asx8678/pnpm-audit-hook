@@ -1,0 +1,27 @@
+{
+  "name": "@sap/hana-client",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6339-gv7w-g5f4",
+      "title": "SAP HANA Node.js client package vulnerable to Prototype Pollution",
+      "description": "The SAP HANA Node.js client package versions from 2.0.0 before 2.21.31 is impacted by Prototype Pollution vulnerability allowing an attacker to add arbitrary properties to global object prototypes. This is due to improper user input sanitation when using the nestTables feature causing low impact on the availability of the application. This has no impact on Confidentiality and Integrity.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6339-gv7w-g5f4",
+      "publishedAt": "2024-10-08T06:30:47Z",
+      "modifiedAt": "2024-10-08T14:37:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6339-gv7w-g5f4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-45277"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.21.31",
+      "fixedVersion": "2.21.31"
+    }
+  ]
+}

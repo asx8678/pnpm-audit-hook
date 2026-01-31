@@ -1,0 +1,27 @@
+{
+  "name": "killport",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fc42-h7q4-qp8h",
+      "title": "Command Injection in killport",
+      "description": "This affects the package killport before 1.0.2. If (attacker-controlled) user input is given, it is possible for an attacker to execute arbitrary commands. This is due to use of the child_process exec function without input sanitization. Running this PoC will cause the command touch success to be executed, leading to the creation of a file called success.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fc42-h7q4-qp8h",
+      "publishedAt": "2021-04-13T15:16:20Z",
+      "modifiedAt": "2023-02-01T05:05:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fc42-h7q4-qp8h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23360"
+        }
+      ],
+      "affectedRange": "< 1.0.2",
+      "fixedVersion": "1.0.2"
+    }
+  ]
+}

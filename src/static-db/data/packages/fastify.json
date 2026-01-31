@@ -1,0 +1,69 @@
+{
+  "name": "fastify",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mg2h-6x62-wpwc",
+      "title": "Fastify vulnerable to invalid content-type parsing, which could lead to validation bypass",
+      "description": "### Impact\n\nIn applications that specify different validation strategies for different content types, it's possible to bypass the validation by providing a _slightly altered_ content type such as with different casing or altered whitespacing before `;`.\n\nUsers using the the following pattern are affected:\n\n```js\nfastify.post('/', {\n  handler(request, reply) {\n    reply.code(200).send(request.body)\n  },\n  schema: {\n    body: {\n      content: {\n        'application/json': {\n          schema: {\n   ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mg2h-6x62-wpwc",
+      "publishedAt": "2025-04-18T15:02:41Z",
+      "modifiedAt": "2025-05-29T21:04:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mg2h-6x62-wpwc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-32442"
+        }
+      ],
+      "affectedRange": "= 4.29.0",
+      "fixedVersion": "4.29.1"
+    },
+    {
+      "id": "GHSA-455w-c45v-86rg",
+      "title": "fastify vulnerable to denial of service via malicious Content-Type",
+      "description": "### Impact\nAn attacker can send an invalid `Content-Type` header that can cause the application to crash, leading to a possible Denial of Service attack. Only the v4.x line is affected.\n\n(This was updated: upon a close inspection, v3.x is not affected after all).\n\n### Patches\nYes, update to `> v4.8.0`.\n\n### Workarounds\nYou can reject the malicious content types before the body parser enters in action.\n```js\n  const badNames = Object.getOwnPropertyNames({}.__proto__)\n  fastify.addHook('onRequest'",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-455w-c45v-86rg",
+      "publishedAt": "2022-10-11T13:45:14Z",
+      "modifiedAt": "2023-02-02T05:02:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-455w-c45v-86rg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39288"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 4.8.1",
+      "fixedVersion": "4.8.1"
+    },
+    {
+      "id": "GHSA-3fjj-p79j-c9hh",
+      "title": "Fastify: Incorrect Content-Type parsing can lead to CSRF attack ",
+      "description": "### Impact\n\nThe attacker can use the incorrect `Content-Type` to bypass the `Pre-Flight` checking of `fetch`. `fetch()` requests with Content-Type’s [essence](https://mimesniff.spec.whatwg.org/#mime-type-essence) as \"application/x-www-form-urlencoded\", \"multipart/form-data\", or \"text/plain\", could potentially be used to invoke routes that only accepts `application/json` content type, thus bypassing any [CORS protection](https://fetch.spec.whatwg.org/#simple-header), and therefore they could lead",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3fjj-p79j-c9hh",
+      "publishedAt": "2022-11-21T22:28:11Z",
+      "modifiedAt": "2023-01-31T05:07:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3fjj-p79j-c9hh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-41919"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.29.4",
+      "fixedVersion": "3.29.4"
+    }
+  ]
+}

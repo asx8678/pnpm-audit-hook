@@ -1,0 +1,27 @@
+{
+  "name": "google-closure-library",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vh5w-fg69-rc8m",
+      "title": "Improper Input Validation in Google Closure Library",
+      "description": "A URL parsing issue in goog.uri of the Google Closure Library versions up to and including v20200224 allows an attacker to send malicious URLs to be parsed by the library and return the wrong authority. Mitigation -- update your library to version v20200315.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vh5w-fg69-rc8m",
+      "publishedAt": "2021-05-07T16:06:34Z",
+      "modifiedAt": "2023-01-29T05:05:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vh5w-fg69-rc8m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8910"
+        }
+      ],
+      "affectedRange": "<= 20200224.0.0",
+      "fixedVersion": "20200315.0.0"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "unzip-stream",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6jrj-vc65-c983",
+      "title": "unzip-stream allows Arbitrary File Write via artifact extraction",
+      "description": "### Impact\n\nWhen using the `Extract()` method of unzip-stream, malicious zip files were able to write to paths they shouldn't be allowed to.\n\n### Patches\n\nFixed in 0.3.2\n\n### References\n\n- https://snyk.io/research/zip-slip-vulnerability\n- https://github.com/mhr3/unzip-stream/compare/v0.3.1...v0.3.2\n\n### Credits\n\nJustin Taft from Google",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6jrj-vc65-c983",
+      "publishedAt": "2024-08-26T15:17:40Z",
+      "modifiedAt": "2024-08-26T15:17:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6jrj-vc65-c983"
+        }
+      ],
+      "affectedRange": "< 0.3.2",
+      "fixedVersion": "0.3.2"
+    }
+  ]
+}

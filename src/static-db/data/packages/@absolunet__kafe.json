@@ -1,0 +1,27 @@
+{
+  "name": "@absolunet/kafe",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hgpf-97c5-74fc",
+      "title": "Regular expression denial of service in @absolunet/kafe",
+      "description": "This affects the package @absolunet/kafe before 3.2.10. It allows cause a denial of service when validating crafted invalid emails.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hgpf-97c5-74fc",
+      "publishedAt": "2021-05-10T19:08:29Z",
+      "modifiedAt": "2023-02-01T05:05:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hgpf-97c5-74fc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7761"
+        }
+      ],
+      "affectedRange": "< 3.2.10",
+      "fixedVersion": "3.2.10"
+    }
+  ]
+}

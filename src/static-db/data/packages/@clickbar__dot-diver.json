@@ -1,0 +1,27 @@
+{
+  "name": "@clickbar/dot-diver",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9w5f-mw3p-pj47",
+      "title": "Prototype Pollution(PP) vulnerability in setByPath",
+      "description": "### Summary\nThere is a Prototype Pollution(PP) vulnerability in dot-diver. It can leads to RCE.\n\n### Details\n```javascript\n//https://github.com/clickbar/dot-diver/tree/main/src/index.ts:277\n\n// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access\n  objectToSet[lastKey] = value\n```\nIn this code, there is no validation for Prototpye Pollution.\n\n### PoC\n```javascript\nimport { getByPath, setByPath } from '@clickbar/dot-diver'\n\nconsole.log({}.polluted); // undefined\nsetByPath({},'const",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9w5f-mw3p-pj47",
+      "publishedAt": "2023-11-03T19:03:40Z",
+      "modifiedAt": "2023-11-06T19:34:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9w5f-mw3p-pj47"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-45827"
+        }
+      ],
+      "affectedRange": "< 1.0.2",
+      "fixedVersion": "1.0.2"
+    }
+  ]
+}

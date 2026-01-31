@@ -1,0 +1,27 @@
+{
+  "name": "irisnet-crypto",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5fh8-x9xc-hxmc",
+      "title": "irisnet-crypto RCE Vulnerability",
+      "description": "In irisnet-crypto before 1.1.7 for IRISnet, the util/utils.js file allows code execution because of unsafe eval usage.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5fh8-x9xc-hxmc",
+      "publishedAt": "2022-05-13T01:08:18Z",
+      "modifiedAt": "2023-09-28T20:00:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5fh8-x9xc-hxmc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-9115"
+        }
+      ],
+      "affectedRange": "< 1.1.7",
+      "fixedVersion": "1.1.7"
+    }
+  ]
+}

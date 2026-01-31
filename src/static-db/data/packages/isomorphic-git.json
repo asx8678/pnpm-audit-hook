@@ -1,0 +1,27 @@
+{
+  "name": "isomorphic-git",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fgxq-p49f-qw99",
+      "title": "Directory Traversal in isomorphic-git",
+      "description": "isomorphic-git before 1.8.2 allows Directory Traversal via a crafted repository.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fgxq-p49f-qw99",
+      "publishedAt": "2021-09-02T22:00:20Z",
+      "modifiedAt": "2023-02-01T05:05:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fgxq-p49f-qw99"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-30483"
+        }
+      ],
+      "affectedRange": "< 1.8.2",
+      "fixedVersion": "1.8.2"
+    }
+  ]
+}

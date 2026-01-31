@@ -1,0 +1,27 @@
+{
+  "name": "@actions/artifact",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6q32-hq47-5qq3",
+      "title": "@actions/artifact has an Arbitrary File Write via artifact extraction",
+      "description": "### Impact\n\nVersions of `actions/artifact` before 2.1.7 are vulnerable to arbitrary file write when using `downloadArtifactInternal`, `downloadArtifactPublic`, or `streamExtractExternal` for extracting a specifically crafted artifact that contains path traversal filenames.\n\n### Patches\n\nUpgrade to version 2.1.7 or higher. \n\n### References\n\n- https://snyk.io/research/zip-slip-vulnerability\n- https://github.com/actions/toolkit/pull/1724\n\n### CVE\n\nCVE-2024-42471\n\n### Credits\n\nJustin Taft from Googl",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6q32-hq47-5qq3",
+      "publishedAt": "2024-09-03T20:08:30Z",
+      "modifiedAt": "2025-01-22T18:45:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6q32-hq47-5qq3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-42471"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.1.2",
+      "fixedVersion": "2.1.2"
+    }
+  ]
+}

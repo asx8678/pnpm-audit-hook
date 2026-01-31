@@ -1,0 +1,48 @@
+{
+  "name": "fastify-multipart",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qh73-qc3p-rjv2",
+      "title": "Uncaught Exception in fastify-multipart",
+      "description": "### Impact\n\nThis is a bypass of CVE-2020-8136 (https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8136).\nBy providing a `name=constructor` property it is still possible to crash the application.\nThe original fix only checks for the key `__proto__` (https://github.com/fastify/fastify-multipart/pull/116).\n\nAll users are recommended to upgrade\n\n### Patches\n\nv5.3.1 includes a patch\n \n### Workarounds\n\nNo workarounds are possible.\n\n### References\n\nRead up https://www.fastify.io/docs/latest/Guides",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qh73-qc3p-rjv2",
+      "publishedAt": "2022-02-11T18:57:53Z",
+      "modifiedAt": "2023-02-03T05:05:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qh73-qc3p-rjv2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23597"
+        }
+      ],
+      "affectedRange": "< 5.3.1",
+      "fixedVersion": "5.3.1"
+    },
+    {
+      "id": "GHSA-p9f8-gqjf-m75j",
+      "title": "Uncontrolled Resource Consumption in fastify-multipart",
+      "description": "Prototype pollution vulnerability in `fastify-multipart` < 1.0.5 allows an attacker to crash fastify applications parsing multipart requests by sending a specially crafted request.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p9f8-gqjf-m75j",
+      "publishedAt": "2021-05-06T17:28:36Z",
+      "modifiedAt": "2023-02-01T05:05:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p9f8-gqjf-m75j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8136"
+        }
+      ],
+      "affectedRange": "< 1.0.5",
+      "fixedVersion": "1.0.5"
+    }
+  ]
+}

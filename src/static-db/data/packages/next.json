@@ -1,0 +1,616 @@
+{
+  "name": "next",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h25m-26qc-wcjf",
+      "title": "Next.js HTTP request deserialization can lead to DoS when using insecure React Server Components",
+      "description": "A vulnerability affects certain React Server Components packages for versions 19.0.x, 19.1.x, and 19.2.x and frameworks that use the affected packages, including Next.js 13.x, 14.x, 15.x, and 16.x using the App Router. The issue is tracked upstream as [CVE-2026-23864](https://github.com/facebook/react/security/advisories/GHSA-83fc-fqcc-2hmg).\n\nA specially crafted HTTP request can be sent to any App Router Server Function endpoint that, when deserialized, may trigger excessive CPU usage, out-of-m",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h25m-26qc-wcjf",
+      "publishedAt": "2026-01-28T15:38:01Z",
+      "modifiedAt": "2026-01-28T15:38:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h25m-26qc-wcjf"
+        }
+      ],
+      "affectedRange": ">= 16.1.0-canary.0, < 16.1.5",
+      "fixedVersion": "16.1.5"
+    },
+    {
+      "id": "GHSA-5f7q-jpqc-wp7h",
+      "title": "Next.js has Unbounded Memory Consumption via PPR Resume Endpoint ",
+      "description": "A denial of service vulnerability exists in Next.js versions with Partial Prerendering (PPR) enabled when running in minimal mode. The PPR resume endpoint accepts unauthenticated POST requests with the `Next-Resume: 1` header and processes attacker-controlled postponed state data. Two closely related vulnerabilities allow an attacker to crash the server process through memory exhaustion:\n\n1. **Unbounded request body buffering**: The server buffers the entire POST request body into memory using `",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5f7q-jpqc-wp7h",
+      "publishedAt": "2026-01-28T15:20:55Z",
+      "modifiedAt": "2026-01-28T15:20:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5f7q-jpqc-wp7h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59472"
+        }
+      ],
+      "affectedRange": ">= 16.0.0-beta.0, < 16.1.5",
+      "fixedVersion": "16.1.5"
+    },
+    {
+      "id": "GHSA-9g9p-9gw9-jx7f",
+      "title": "Next.js self-hosted applications vulnerable to DoS via Image Optimizer remotePatterns configuration",
+      "description": "A DoS vulnerability exists in self-hosted Next.js applications that have `remotePatterns` configured for the Image Optimizer. The image optimization endpoint (`/_next/image`) loads external images entirely into memory without enforcing a maximum size limit, allowing an attacker to cause out-of-memory conditions by requesting optimization of arbitrarily large images. This vulnerability requires that `remotePatterns` is configured to allow image optimization from external domains and that the atta",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9g9p-9gw9-jx7f",
+      "publishedAt": "2026-01-27T19:18:25Z",
+      "modifiedAt": "2026-01-27T19:18:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9g9p-9gw9-jx7f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59471"
+        }
+      ],
+      "affectedRange": ">= 15.6.0-canary.0, < 16.1.5",
+      "fixedVersion": "16.1.5"
+    },
+    {
+      "id": "GHSA-5j59-xgg2-r9c4",
+      "title": "Next has a Denial of Service with Server Components - Incomplete Fix Follow-Up",
+      "description": "It was discovered that the fix for [CVE-2025-55184](https://github.com/advisories/GHSA-2m3v-v2m8-q956) in React Server Components was incomplete and did not fully mitigate denial-of-service conditions across all payload types.  As a result, certain crafted inputs could still trigger excessive resource consumption. \n\nThis vulnerability affects React versions 19.0.2, 19.1.3, and 19.2.2, as well as frameworks that bundle or depend on these versions, including Next.js 13.x, 14.x, 15.x, and 16.x when",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5j59-xgg2-r9c4",
+      "publishedAt": "2025-12-12T17:21:57Z",
+      "modifiedAt": "2026-01-15T21:55:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5j59-xgg2-r9c4"
+        }
+      ],
+      "affectedRange": ">= 16.1.0-canary.17, < 16.1.0-canary.19",
+      "fixedVersion": "16.1.0-canary.19"
+    },
+    {
+      "id": "GHSA-w37m-7fhw-fmv9",
+      "title": "Next Server Actions Source Code Exposure ",
+      "description": "A vulnerability affects certain React packages for versions 19.0.0, 19.0.1, 19.1.0, 19.1.1, 19.1.2, 19.2.0, and 19.2.1 and frameworks that use the affected packages, including Next.js 15.x and 16.x using the App Router. The issue is tracked upstream as [CVE-2025-55183](https://www.cve.org/CVERecord?id=CVE-2025-55183).\n\nA malicious HTTP request can be crafted and sent to any App Router endpoint that can return the compiled source code of [Server Functions](https://react.dev/reference/rsc/server-f",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w37m-7fhw-fmv9",
+      "publishedAt": "2025-12-11T22:49:56Z",
+      "modifiedAt": "2025-12-11T22:49:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w37m-7fhw-fmv9"
+        }
+      ],
+      "affectedRange": ">= 16.1.0-canary.0, < 16.1.0-canary.17",
+      "fixedVersion": "16.1.0-canary.17"
+    },
+    {
+      "id": "GHSA-mwv6-3258-q52c",
+      "title": "Next Vulnerable to Denial of Service with Server Components",
+      "description": "A vulnerability affects certain React packages for versions 19.0.0, 19.0.1, 19.1.0, 19.1.1, 19.1.2, 19.2.0, and 19.2.1 and frameworks that use the affected packages, including Next.js 15.x and 16.x using the App Router. The issue is tracked upstream as [CVE-2025-55184](https://www.cve.org/CVERecord?id=CVE-2025-55184).\n\nA malicious HTTP request can be crafted and sent to any App Router endpoint that, when deserialized, can cause the server process to hang and consume CPU. This can result in denia",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mwv6-3258-q52c",
+      "publishedAt": "2025-12-11T22:49:27Z",
+      "modifiedAt": "2025-12-11T22:49:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mwv6-3258-q52c"
+        }
+      ],
+      "affectedRange": ">= 16.1.0-canary.0, < 16.1.0-canary.17",
+      "fixedVersion": "16.1.0-canary.17"
+    },
+    {
+      "id": "GHSA-9qr9-h5gf-34mp",
+      "title": "Next.js is vulnerable to RCE in React flight protocol",
+      "description": "A vulnerability affects certain React packages<sup>1</sup> for versions 19.0.0, 19.1.0, 19.1.1, and 19.2.0 and frameworks that use the affected packages, including Next.js 15.x and 16.x using the App Router. The issue is tracked upstream as [CVE-2025-55182](https://www.cve.org/CVERecord?id=CVE-2025-55182). \n\nFixed in:\nReact: 19.0.1, 19.1.2, 19.2.1\nNext.js: 15.0.5, 15.1.9, 15.2.6, 15.3.6, 15.4.8, 15.5.7, 16.0.7, 15.6.0-canary.58, 16.1.0-canary.12+\n\nThe vulnerability also affects experimental cana",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9qr9-h5gf-34mp",
+      "publishedAt": "2025-12-03T19:07:11Z",
+      "modifiedAt": "2025-12-11T19:31:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9qr9-h5gf-34mp"
+        }
+      ],
+      "affectedRange": ">= 15.5.0-canary.0, < 15.5.7",
+      "fixedVersion": "15.5.7"
+    },
+    {
+      "id": "GHSA-223j-4rm8-mrmf",
+      "title": "Next.js may leak x-middleware-subrequest-id to external hosts",
+      "description": "## Summary\nIn the process of remediating [CVE-2025-29927](https://github.com/advisories/GHSA-f82v-jwr5-mffw), we looked at other possible exploits of Middleware. We independently verified this low severity vulnerability in parallel with two reports from independent researchers.\n\nLearn more [here](https://vercel.com/changelog/cve-2025-30218-5DREmEH765PoeAsrNNQj3O).\n\n## Credit\n\nThank you to Jinseo Kim [kjsman](https://hackerone.com/kjsman?type=user) and [RyotaK](https://hackerone.com/ryotak?type=u",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-223j-4rm8-mrmf",
+      "publishedAt": "2025-04-02T22:35:37Z",
+      "modifiedAt": "2025-10-13T15:35:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-223j-4rm8-mrmf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-30218"
+        }
+      ],
+      "affectedRange": "= 15.2.3",
+      "fixedVersion": "15.2.4"
+    },
+    {
+      "id": "GHSA-f82v-jwr5-mffw",
+      "title": "Authorization Bypass in Next.js Middleware",
+      "description": "# Impact\nIt is possible to bypass authorization checks within a Next.js application, if the authorization check occurs in middleware.\n\n# Patches\n* For Next.js 15.x, this issue is fixed in `15.2.3`\n* For Next.js 14.x, this issue is fixed in `14.2.25`\n* For Next.js 13.x, this issue is fixed in 13.5.9\n* For Next.js 12.x, this issue is fixed in 12.3.5\n* For Next.js 11.x, consult the below workaround.\n\n_Note: Next.js deployments hosted on Vercel are automatically protected against this vulnerability.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-f82v-jwr5-mffw",
+      "publishedAt": "2025-03-21T15:20:12Z",
+      "modifiedAt": "2025-10-13T15:32:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f82v-jwr5-mffw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-29927"
+        }
+      ],
+      "affectedRange": ">= 11.1.4, < 12.3.5",
+      "fixedVersion": "12.3.5"
+    },
+    {
+      "id": "GHSA-qpjv-v59x-3qc4",
+      "title": "Next.js Race Condition to Cache Poisoning",
+      "description": "**Summary**  \nWe received a responsible disclosure from Allam Rachid (zhero) for a low-severity race-condition vulnerability in Next.js. This issue only affects the **Pages Router** under certain misconfigurations, causing normal endpoints to serve `pageProps` data instead of standard HTML.\n\n[Learn more here](https://vercel.com/changelog/cve-2025-32421)\n\n**Credit**  \nThank you to **Allam Rachid (zhero)** for the responsible disclosure. This research was rewarded as part of our bug bounty program",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-qpjv-v59x-3qc4",
+      "publishedAt": "2025-05-15T14:12:26Z",
+      "modifiedAt": "2025-09-26T17:48:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qpjv-v59x-3qc4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-32421"
+        }
+      ],
+      "affectedRange": ">= 0.9.9, < 14.2.24",
+      "fixedVersion": "14.2.24"
+    },
+    {
+      "id": "GHSA-4342-x723-ch2f",
+      "title": "Next.js Improper Middleware Redirect Handling Leads to SSRF",
+      "description": "A vulnerability in **Next.js Middleware** has been fixed in **v14.2.32** and **v15.4.7**. The issue occurred when request headers were directly passed into `NextResponse.next()`. In self-hosted applications, this could allow Server-Side Request Forgery (SSRF) if certain sensitive headers from the incoming request were reflected back into the response.\n\nAll users implementing custom middleware logic in self-hosted environments are strongly encouraged to upgrade and verify correct usage of the `ne",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4342-x723-ch2f",
+      "publishedAt": "2025-08-29T21:33:09Z",
+      "modifiedAt": "2025-09-11T15:41:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4342-x723-ch2f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57822"
+        }
+      ],
+      "affectedRange": ">= 0.9.9, < 14.2.32",
+      "fixedVersion": "14.2.32"
+    },
+    {
+      "id": "GHSA-xv57-4mr9-wg8v",
+      "title": "Next.js Content Injection Vulnerability for Image Optimization",
+      "description": "A vulnerability in **Next.js Image Optimization** has been fixed in **v15.4.5** and **v14.2.31**. The issue allowed attacker-controlled external image sources to trigger file downloads with arbitrary content and filenames under specific configurations. This behavior could be abused for phishing or malicious file delivery.\n\nAll users relying on `images.domains` or `images.remotePatterns` are encouraged to upgrade and verify that external image sources are strictly validated.\n\nMore details at [Ver",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xv57-4mr9-wg8v",
+      "publishedAt": "2025-08-29T21:59:55Z",
+      "modifiedAt": "2025-09-11T15:35:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xv57-4mr9-wg8v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-55173"
+        }
+      ],
+      "affectedRange": ">= 0.9.9, < 14.2.31",
+      "fixedVersion": "14.2.31"
+    },
+    {
+      "id": "GHSA-7gfc-8cq8-jh5f",
+      "title": "Next.js authorization bypass vulnerability",
+      "description": "### Impact\nIf a Next.js application is performing authorization in middleware based on pathname, it was possible for this authorization to be bypassed.\n\n### Patches\nThis issue was patched in Next.js `14.2.15` and later.\n\nIf your Next.js application is hosted on Vercel, this vulnerability has been automatically mitigated, regardless of Next.js version.\n\n### Workarounds\nThere are no official workarounds for this vulnerability.\n\n#### Credits\nWe'd like to thank [tyage](http://github.com/tyage) (GMO ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7gfc-8cq8-jh5f",
+      "publishedAt": "2024-12-17T15:09:06Z",
+      "modifiedAt": "2025-09-10T21:12:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7gfc-8cq8-jh5f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-51479"
+        }
+      ],
+      "affectedRange": ">= 9.5.5, < 14.2.15",
+      "fixedVersion": "14.2.15"
+    },
+    {
+      "id": "GHSA-g5qg-72qw-gw5v",
+      "title": "Next.js Affected by Cache Key Confusion for Image Optimization API Routes",
+      "description": "A vulnerability in Next.js Image Optimization has been fixed in v15.4.5 and v14.2.31. When images returned from API routes vary based on request headers (such as `Cookie` or `Authorization`), these responses could be incorrectly cached and served to unauthorized users due to a cache key confusion bug.\n\nAll users are encouraged to upgrade if they use API routes to serve images that depend on request headers and have image optimization enabled.\n\nMore details at [Vercel Changelog](https://vercel.co",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g5qg-72qw-gw5v",
+      "publishedAt": "2025-08-29T22:06:22Z",
+      "modifiedAt": "2025-09-03T13:01:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g5qg-72qw-gw5v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57752"
+        }
+      ],
+      "affectedRange": ">= 0.9.9, < 14.2.31",
+      "fixedVersion": "14.2.31"
+    },
+    {
+      "id": "GHSA-67rr-84xm-4c7r",
+      "title": "Next.JS vulnerability can lead to DoS via cache poisoning ",
+      "description": "### Summary\nA vulnerability affecting Next.js has been addressed. It impacted versions 15.0.4 through 15.1.8 and involved a cache poisoning bug leading to a Denial of Service (DoS) condition.\n\nUnder certain conditions, this issue may allow a HTTP 204 response to be cached for static pages, leading to the 204 response being served to all users attempting to access the page\n\nMore details: [CVE-2025-49826](https://vercel.com/changelog/cve-2025-49826)\n\n## Credits\n- Allam Rachid [zhero;](https://zher",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-67rr-84xm-4c7r",
+      "publishedAt": "2025-07-03T21:14:48Z",
+      "modifiedAt": "2025-07-03T21:49:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-67rr-84xm-4c7r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-49826"
+        }
+      ],
+      "affectedRange": ">= 15.0.4-canary.51, < 15.1.8",
+      "fixedVersion": "15.1.8"
+    },
+    {
+      "id": "GHSA-r2fc-ccr8-96c4",
+      "title": "Next.js has a Cache poisoning vulnerability due to omission of the Vary header",
+      "description": "### Summary\n\nA cache poisoning issue in **Next.js App Router >=15.3.0 and < 15.3.3** may have allowed RSC payloads to be cached and served in place of HTML, under specific conditions involving middleware and redirects. This issue has been fixed in **Next.js 15.3.3**.\n\nUsers on affected versions should **upgrade immediately** and **redeploy** to ensure proper caching behavior.\n\nMore details: [CVE-2025-49005](https://vercel.com/changelog/cve-2025-49005)",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-r2fc-ccr8-96c4",
+      "publishedAt": "2025-07-03T20:30:18Z",
+      "modifiedAt": "2025-07-03T21:49:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r2fc-ccr8-96c4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-49005"
+        }
+      ],
+      "affectedRange": ">= 15.3.0, < 15.3.3",
+      "fixedVersion": "15.3.3"
+    },
+    {
+      "id": "GHSA-3h52-269p-cp9r",
+      "title": "Information exposure in Next.js dev server due to lack of origin verification",
+      "description": "## Summary\n\nA low-severity vulnerability in **Next.js** has been fixed in **version 15.2.2**. This issue may have allowed limited source code exposure when the dev server was running with the App Router enabled. The vulnerability only affects local development environments and requires the user to visit a malicious webpage while `npm run dev` is active.\n\nBecause the mitigation is potentially a breaking change for some development setups, to opt-in to the fix, you must configure `allowedDevOrigin",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-3h52-269p-cp9r",
+      "publishedAt": "2025-05-28T21:52:13Z",
+      "modifiedAt": "2025-06-13T14:41:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3h52-269p-cp9r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-48068"
+        }
+      ],
+      "affectedRange": ">= 13.0, < 14.2.30",
+      "fixedVersion": "14.2.30"
+    },
+    {
+      "id": "GHSA-7m27-7ghc-44w9",
+      "title": "Next.js Allows a Denial of Service (DoS) with Server Actions",
+      "description": "### Impact\nA Denial of Service (DoS) attack allows attackers to construct requests that leaves requests to Server Actions hanging until the hosting provider cancels the function execution.\n\n_Note: Next.js server is idle during that time and only keeps the connection open. CPU and memory footprint are low during that time._\n\nDeployments without any protection against long running Server Action invocations are especially vulnerable. Hosting providers like Vercel or Netlify set a default maximum du",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7m27-7ghc-44w9",
+      "publishedAt": "2025-01-03T20:19:29Z",
+      "modifiedAt": "2025-01-07T16:24:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7m27-7ghc-44w9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-56332"
+        }
+      ],
+      "affectedRange": ">= 15.0.0, < 15.1.2",
+      "fixedVersion": "15.1.2"
+    },
+    {
+      "id": "GHSA-g77x-44xx-532m",
+      "title": "Denial of Service condition in Next.js image optimization",
+      "description": "### Impact\nThe image optimization feature of Next.js contained a vulnerability which allowed for a potential Denial of Service (DoS) condition which could lead to excessive CPU consumption.\n\n**Not affected:**\n- The `next.config.js` file is configured with `images.unoptimized` set to `true` or `images.loader` set to a non-default value.\n- The Next.js application is hosted on Vercel. \n\n### Patches\nThis issue was fully patched in Next.js `14.2.7`. We recommend that users upgrade to at least this ve",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g77x-44xx-532m",
+      "publishedAt": "2024-10-14T19:45:21Z",
+      "modifiedAt": "2024-11-08T18:55:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g77x-44xx-532m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-47831"
+        }
+      ],
+      "affectedRange": ">= 10.0.0, < 14.2.7",
+      "fixedVersion": "14.2.7"
+    },
+    {
+      "id": "GHSA-fq54-2j52-jc42",
+      "title": "Next.js Denial of Service (DoS) condition",
+      "description": "### Impact\nA Denial of Service (DoS) condition was identified in Next.js. Exploitation of the bug can trigger a crash, affecting the availability of the server.\n\n**This vulnerability can affect all Next.js deployments on the affected versions.**\n\n### Patches\nThis vulnerability was resolved in Next.js 13.5 and later. We recommend that users upgrade to a safe version.\n\n### Workarounds\nThere are no official workarounds for this vulnerability.\n\n#### Credit\n* Thai Vu of [flyseccorp.com](http://flysec",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fq54-2j52-jc42",
+      "publishedAt": "2024-07-10T16:03:06Z",
+      "modifiedAt": "2024-11-06T14:30:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fq54-2j52-jc42"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-39693"
+        }
+      ],
+      "affectedRange": ">= 13.3.1, < 13.5.0",
+      "fixedVersion": "13.5.0"
+    },
+    {
+      "id": "GHSA-gp8f-8m3g-qvj9",
+      "title": "Next.js Cache Poisoning",
+      "description": "### Impact\n\nBy sending a crafted HTTP request, it is possible to poison the cache of a non-dynamic server-side rendered route in the pages router (this does not affect the app router). When this crafted request is sent it could coerce Next.js to cache a route that is meant to not be cached and send a `Cache-Control: s-maxage=1, stale-while-revalidate` header which some upstream CDNs may cache as well. \n\nTo be potentially affected all of the following must apply: \n\n- Next.js between 13.5.1 and 14",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gp8f-8m3g-qvj9",
+      "publishedAt": "2024-09-17T21:58:09Z",
+      "modifiedAt": "2024-09-18T14:28:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gp8f-8m3g-qvj9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-46982"
+        }
+      ],
+      "affectedRange": ">= 14.0.0, < 14.2.10",
+      "fixedVersion": "14.2.10"
+    },
+    {
+      "id": "GHSA-77r5-gw3j-2mpf",
+      "title": "Next.js Vulnerable to HTTP Request Smuggling",
+      "description": "### Impact\nInconsistent interpretation of a crafted HTTP request meant that requests are treated as both a single request, and two separate requests by Next.js, leading to desynchronized responses. This led to a response queue poisoning vulnerability in the affected Next.js versions.\n\nFor a request to be exploitable, the affected route also had to be making use of the [rewrites](https://nextjs.org/docs/app/api-reference/next-config-js/rewrites) feature in Next.js.\n\n### Patches\nThe vulnerability ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-77r5-gw3j-2mpf",
+      "publishedAt": "2024-05-09T21:07:00Z",
+      "modifiedAt": "2024-07-09T18:28:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-77r5-gw3j-2mpf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-34350"
+        }
+      ],
+      "affectedRange": ">= 13.4.0, < 13.5.1",
+      "fixedVersion": "13.5.1"
+    },
+    {
+      "id": "GHSA-fr5h-rqp8-mj6g",
+      "title": "Next.js Server-Side Request Forgery in Server Actions",
+      "description": "### Impact\nA Server-Side Request Forgery (SSRF) vulnerability was identified in Next.js Server Actions by security researchers at Assetnote. If the `Host` header is modified, and the below conditions are also met, an attacker may be able to make requests that appear to be originating from the Next.js application server itself.\n\n#### Prerequisites\n* Next.js (`<14.1.1`) is running in a self-hosted* manner.\n* The Next.js application makes use of Server Actions.\n* The Server Action performs a redire",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fr5h-rqp8-mj6g",
+      "publishedAt": "2024-05-09T21:18:57Z",
+      "modifiedAt": "2024-05-14T20:02:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fr5h-rqp8-mj6g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-34351"
+        }
+      ],
+      "affectedRange": ">= 13.4.0, < 14.1.1",
+      "fixedVersion": "14.1.1"
+    },
+    {
+      "id": "GHSA-25mp-g6fv-mqxx",
+      "title": "Unexpected server crash in Next.js.",
+      "description": "Next.js is a React framework. In versions of Next.js prior to 12.0.5 or 11.1.3, invalid or malformed URLs could lead to a server crash. In order to be affected by this issue, the deployment must use Next.js versions above 11.1.0 and below 12.0.5, Node.js above 15.0.0, and next start or a custom server. Deployments on Vercel are not affected, along with similar environments where invalid requests are filtered before reaching Next.js. Versions 12.0.5 and 11.1.3 contain patches for this issue. Note",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-25mp-g6fv-mqxx",
+      "publishedAt": "2021-12-07T21:12:09Z",
+      "modifiedAt": "2024-03-13T22:14:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-25mp-g6fv-mqxx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-43803"
+        }
+      ],
+      "affectedRange": ">= 0.9.9, < 11.1.3",
+      "fixedVersion": "11.1.3"
+    },
+    {
+      "id": "GHSA-wr66-vrwm-5g5x",
+      "title": "Denial of Service Vulnerability in next.js",
+      "description": "### Impact\n\nVulnerable code could allow a bad actor to trigger a denial of service attack for anyone running a Next.js app at version >= 12.0.0, and using i18n functionality.\n\n- **Affected:** All of the following must be true to be affected by this CVE\n  - Next.js versions above v12.0.0\n  - Using next start or a custom server\n  - Using the built-in i18n support\n- **Not affected:**\n  - Deployments on Vercel (vercel.com) are not affected along with similar environments where invalid requests are f",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wr66-vrwm-5g5x",
+      "publishedAt": "2022-01-28T23:09:22Z",
+      "modifiedAt": "2023-12-20T16:39:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wr66-vrwm-5g5x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21721"
+        }
+      ],
+      "affectedRange": ">= 12.0.0, < 12.0.9",
+      "fixedVersion": "12.0.9"
+    },
+    {
+      "id": "GHSA-c59h-r6p8-q9wc",
+      "title": "Next.js missing cache-control header may lead to CDN caching empty reply",
+      "description": "Next.js before 13.4.20-canary.13 lacks a cache-control header and thus empty prefetch responses may sometimes be cached by a CDN, causing a denial of service to all users requesting the same URL via that CDN. Cloudflare considers these requests cacheable assets.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-c59h-r6p8-q9wc",
+      "publishedAt": "2023-10-22T03:30:23Z",
+      "modifiedAt": "2023-11-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c59h-r6p8-q9wc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-46298"
+        }
+      ],
+      "affectedRange": ">= 0.9.9, < 13.4.20-canary.13",
+      "fixedVersion": "13.4.20-canary.13"
+    },
+    {
+      "id": "GHSA-9gr3-7897-pp7m",
+      "title": "XSS in Image Optimization API for Next.js",
+      "description": "### Impact\n- **Affected:** All of the following must be true to be affected\n    - Next.js between version 10.0.0 and 11.1.0\n    - The `next.config.js` file has [`images.domains`](https://nextjs.org/docs/basic-features/image-optimization#domains) array assigned\n    - The image host assigned in [`images.domains`](https://nextjs.org/docs/basic-features/image-optimization#domains) allows user-provided SVG\n- **Not affected**: The `next.config.js` file has [`images.loader`](https://nextjs.org/docs/bas",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9gr3-7897-pp7m",
+      "publishedAt": "2021-09-01T18:24:22Z",
+      "modifiedAt": "2023-03-31T15:47:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9gr3-7897-pp7m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-39178"
+        }
+      ],
+      "affectedRange": ">= 10.0.0, < 11.1.1",
+      "fixedVersion": "11.1.1"
+    },
+    {
+      "id": "GHSA-fmvm-x8mv-47mj",
+      "title": "Improper CSP in Image Optimization API for Next.js versions between 10.0.0 and 12.1.0",
+      "description": "Next.js is a React framework. Starting with version 10.0.0 and prior to version 12.1.0, Next.js is vulnerable to User Interface (UI) Misrepresentation of Critical Information. In order to be affected, the `next.config.js` file must have an `images.domains` array assigned and the image host assigned in `images.domains` must allow user-provided SVG. If the `next.config.js` file has `images.loader` assigned to something other than default, the instance is not affected. Version 12.1.0 contains a pat",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fmvm-x8mv-47mj",
+      "publishedAt": "2022-02-17T17:19:18Z",
+      "modifiedAt": "2023-02-03T05:06:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fmvm-x8mv-47mj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-23646"
+        }
+      ],
+      "affectedRange": ">= 10.0.0, < 12.1.0",
+      "fixedVersion": "12.1.0"
+    },
+    {
+      "id": "GHSA-vxf5-wxwp-m7g9",
+      "title": "Open Redirect in Next.js",
+      "description": "Next.js is an open source website development framework to be used with the React library. In affected versions specially encoded paths could be used when `pages/_error.js` was statically generated, allowing an open redirect to occur to an external site. In general, this redirect does not directly harm users although it can allow for phishing attacks by redirecting to an attacker's domain from a trusted domain.\n\n### Impact\n\n- **Affected:** Users of Next.js between `10.0.5` and `10.2.0`\n- **Affec",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vxf5-wxwp-m7g9",
+      "publishedAt": "2021-08-12T14:51:14Z",
+      "modifiedAt": "2023-02-01T05:06:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vxf5-wxwp-m7g9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-37699"
+        }
+      ],
+      "affectedRange": ">= 0.9.9, < 11.1.0",
+      "fixedVersion": "11.1.0"
+    },
+    {
+      "id": "GHSA-wff4-fpwg-qqv3",
+      "title": "Unexpected server crash in Next.js",
+      "description": "### Impact\n\nWhen specific requests are made to the Next.js server it can cause an `unhandledRejection` in the server which can crash the process to exit in specific Node.js versions with strict `unhandledRejection` handling. \n\n- Affected: All of the following must be true to be affected by this CVE\n  - Node.js version above v15.0.0 being used with strict `unhandledRejection` exiting\n  - Next.js version v12.2.3\n  - Using next start or a [custom server](https://nextjs.org/docs/advanced-features/cu",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wff4-fpwg-qqv3",
+      "publishedAt": "2022-08-30T20:38:34Z",
+      "modifiedAt": "2023-01-29T05:06:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wff4-fpwg-qqv3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-36046"
+        }
+      ],
+      "affectedRange": "= 12.2.3",
+      "fixedVersion": "12.2.4"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@nx/azure-cache",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rrr2-jcr8-7q3x",
+      "title": "@nx/azure-cache Vulnerable to Build Cache Poisoning via Untrusted Pull Requests",
+      "description": "A critical security vulnerability exists in remote cache extensions for common build systems utilizing bucket-based remote cache (such as those using Amazon S3, Google Cloud Storage, or similar object storage) that allows any contributor with pull request privileges to inject compromised artifacts from an untrusted environment into trusted production environments without detection. \n\nThe vulnerability exploits a fundamental design flaw in the \"first-to-cache wins\" principle, where artifacts buil",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-rrr2-jcr8-7q3x",
+      "publishedAt": "2025-06-10T21:31:23Z",
+      "modifiedAt": "2025-10-14T19:17:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rrr2-jcr8-7q3x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-36852"
+        }
+      ],
+      "affectedRange": "<= 4.0.0"
+    }
+  ]
+}

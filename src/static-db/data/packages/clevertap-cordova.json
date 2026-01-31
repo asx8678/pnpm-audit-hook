@@ -1,0 +1,27 @@
+{
+  "name": "clevertap-cordova",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x2ph-qqwm-9cc6",
+      "title": "CleverTap Cordova plugin vulnerable to Cross-site Scripting",
+      "description": "CleverTap Cordova Plugin version 2.6.2 allows a remote attacker to execute JavaScript code in any application that is opened via a specially constructed deeplink by an attacker.\n\nThis is possible because the plugin does not correctly validate the data coming from the deeplinks before using them.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-x2ph-qqwm-9cc6",
+      "publishedAt": "2023-07-15T21:30:16Z",
+      "modifiedAt": "2025-09-24T20:50:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x2ph-qqwm-9cc6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-2507"
+        }
+      ],
+      "affectedRange": "< 2.7.0",
+      "fixedVersion": "2.7.0"
+    }
+  ]
+}

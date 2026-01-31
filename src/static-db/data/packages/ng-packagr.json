@@ -1,0 +1,27 @@
+{
+  "name": "ng-packagr",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qm28-7hqv-wg5j",
+      "title": "OS Command Injection in ng-packagr",
+      "description": "The package ng-packagr before 10.1.1 are vulnerable to Command Injection via the styleIncludePaths option.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qm28-7hqv-wg5j",
+      "publishedAt": "2021-05-07T16:47:32Z",
+      "modifiedAt": "2023-02-01T05:05:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qm28-7hqv-wg5j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7735"
+        }
+      ],
+      "affectedRange": "< 10.1.1",
+      "fixedVersion": "10.1.1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "js-toml",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-65fc-cr5f-v7r2",
+      "title": "js-toml Prototype Pollution Vulnerability",
+      "description": "A prototype pollution vulnerability in `js-toml` allows a remote attacker to add or modify properties of the global `Object.prototype` by parsing a maliciously crafted TOML input.\n\n### Impact\n\nThe `js-toml` library is vulnerable to Prototype Pollution. When parsing a TOML string containing the specially crafted key `__proto__`, an attacker can add or modify properties on the global `Object.prototype`.\n\nWhile the `js-toml` library itself does not contain known vulnerable \"gadgets\", this can lead ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-65fc-cr5f-v7r2",
+      "publishedAt": "2025-08-04T16:07:05Z",
+      "modifiedAt": "2025-08-05T17:11:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-65fc-cr5f-v7r2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54803"
+        }
+      ],
+      "affectedRange": "< 1.0.2",
+      "fixedVersion": "1.0.2"
+    }
+  ]
+}

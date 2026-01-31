@@ -1,0 +1,26 @@
+{
+  "name": "thinkjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q5mq-6fjg-4mw8",
+      "title": "SQL Injection in thinkjs",
+      "description": "SQL injection vulnerability in the model.increment and model.decrement function in ThinkJS 3.2.10 allows remote attackers to execute arbitrary SQL commands via the step parameter.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q5mq-6fjg-4mw8",
+      "publishedAt": "2021-11-19T20:42:32Z",
+      "modifiedAt": "2023-02-01T05:06:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q5mq-6fjg-4mw8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-21176"
+        }
+      ],
+      "affectedRange": "<= 3.2.14"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "diskusage-ng",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3269-x4pw-vffg",
+      "title": "OS Command Injection in diskusage-ng",
+      "description": "diskusage-ng through 0.2.4 is vulnerable to Command Injection.It allows execution of arbitrary commands via the path argument.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3269-x4pw-vffg",
+      "publishedAt": "2022-01-07T00:21:08Z",
+      "modifiedAt": "2023-02-01T05:05:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3269-x4pw-vffg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7631"
+        }
+      ],
+      "affectedRange": "<= 0.2.4"
+    }
+  ]
+}

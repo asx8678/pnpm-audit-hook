@@ -1,0 +1,27 @@
+{
+  "name": "cattown",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-455v-w7r9-3vv9",
+      "title": "Cattown is Vulnerable to Uncontrolled Resource Consumption through Inefficient Regular Expression Complexity",
+      "description": "### Overview\nA security review of the Cattown identified multiple weaknesses that could potentially impact its stability and security.\n\n### Affected Versions\n- All versions below 1.0.2\n\n### Description of Vulnerabilities\n1. CWE-1333: Inefficient Regular Expression Complexity\nThe package used regular expressions with inefficient, potentially exponential worst-case complexity. This can cause excessive CPU usage due to excessive backtracking on crafted inputs, potentially leading to denial of servi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-455v-w7r9-3vv9",
+      "publishedAt": "2025-09-09T20:44:25Z",
+      "modifiedAt": "2025-09-25T21:44:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-455v-w7r9-3vv9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-58451"
+        }
+      ],
+      "affectedRange": "< 1.0.2",
+      "fixedVersion": "1.0.2"
+    }
+  ]
+}

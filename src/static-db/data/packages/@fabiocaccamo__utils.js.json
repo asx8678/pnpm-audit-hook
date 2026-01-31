@@ -1,0 +1,27 @@
+{
+  "name": "@fabiocaccamo/utils.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3xph-cp8f-2229",
+      "title": "Prototype Pollution in @fabiocaccamo/utils.js",
+      "description": "utils.js is vulnerable to Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution').",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3xph-cp8f-2229",
+      "publishedAt": "2021-12-10T20:31:32Z",
+      "modifiedAt": "2023-02-01T05:06:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3xph-cp8f-2229"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3815"
+        }
+      ],
+      "affectedRange": "< 0.17.2",
+      "fixedVersion": "0.17.2"
+    }
+  ]
+}

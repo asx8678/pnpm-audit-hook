@@ -1,0 +1,46 @@
+{
+  "name": "@angular/compiler",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jrmj-c5cx-3cw6",
+      "title": "Angular has XSS Vulnerability via Unsanitized SVG Script Attributes",
+      "description": "A Cross-Site Scripting (XSS) vulnerability has been identified in the Angular Template Compiler. The vulnerability exists because Angular’s internal sanitization schema fails to recognize the `href` and `xlink:href` attributes of SVG `<script>` elements as a **Resource URL** context.\n\nIn a standard security model, attributes that can load and execute code (like a script's source) should be strictly validated. However, because the compiler does not classify these specific SVG attributes correctly",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jrmj-c5cx-3cw6",
+      "publishedAt": "2026-01-09T18:52:14Z",
+      "modifiedAt": "2026-01-15T17:09:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jrmj-c5cx-3cw6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22610"
+        }
+      ],
+      "affectedRange": "<= 18.2.14"
+    },
+    {
+      "id": "GHSA-v4hv-rgfq-gp49",
+      "title": "Angular Stored XSS Vulnerability via SVG Animation, SVG URL and MathML Attributes",
+      "description": "A **Stored Cross-Site Scripting ([XSS](https://angular.dev/best-practices/security#preventing-cross-site-scripting-xss))** vulnerability has been identified in the **Angular Template Compiler**. It occurs because the compiler's internal security schema is incomplete, allowing attackers to bypass Angular's built-in security sanitization. Specifically, the schema fails to classify certain URL-holding attributes (e.g., those that could contain [`javascript:` URLs](https://developer.mozilla.org/en-U",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v4hv-rgfq-gp49",
+      "publishedAt": "2025-12-02T01:20:30Z",
+      "modifiedAt": "2025-12-03T21:45:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v4hv-rgfq-gp49"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-66412"
+        }
+      ],
+      "affectedRange": "<= 18.2.14"
+    }
+  ]
+}

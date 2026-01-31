@@ -1,0 +1,27 @@
+{
+  "name": "secp256k1",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-584q-6j8j-r5pm",
+      "title": "secp256k1-node allows private key extraction over ECDH",
+      "description": "### Summary\n\nIn `elliptic`-based version, `loadUncompressedPublicKey` has a check that the public key is on the curve: https://github.com/cryptocoinjs/secp256k1-node/blob/6d3474b81d073cc9c8cc8cfadb580c84f8df5248/lib/elliptic.js#L37-L39\n\n`loadCompressedPublicKey` is, however, missing that check: https://github.com/cryptocoinjs/secp256k1-node/blob/6d3474b81d073cc9c8cc8cfadb580c84f8df5248/lib/elliptic.js#L17-L19\n\nThat allows the attacker to use public keys on low-cardinality curves to extract enoug",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-584q-6j8j-r5pm",
+      "publishedAt": "2024-10-21T17:28:26Z",
+      "modifiedAt": "2024-10-21T19:09:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-584q-6j8j-r5pm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-48930"
+        }
+      ],
+      "affectedRange": "<= 3.8.0",
+      "fixedVersion": "3.8.1"
+    }
+  ]
+}

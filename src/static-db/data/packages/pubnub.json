@@ -1,0 +1,27 @@
+{
+  "name": "pubnub",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5844-q3fc-56rh",
+      "title": "pubnub Insufficient Entropy vulnerability",
+      "description": "Versions of the package pubnub before 7.4.0; all versions of the package com.pubnub:pubnub; versions of the package pubnub before 6.19.0; all versions of the package github.com/pubnub/go; versions of the package github.com/pubnub/go/v7 before 7.2.0; versions of the package pubnub before 7.3.0; versions of the package pubnub/pubnub before 6.1.0; versions of the package pubnub before 5.3.0; versions of the package pubnub before 0.4.0; versions of the package pubnub/c-core before 4.5.0; versions of",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5844-q3fc-56rh",
+      "publishedAt": "2023-12-06T06:30:20Z",
+      "modifiedAt": "2025-07-22T15:15:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5844-q3fc-56rh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26154"
+        }
+      ],
+      "affectedRange": "< 7.4.0",
+      "fixedVersion": "7.4.0"
+    }
+  ]
+}

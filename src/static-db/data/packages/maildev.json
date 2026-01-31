@@ -1,0 +1,26 @@
+{
+  "name": "maildev",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vc6q-ccj9-9r89",
+      "title": "MailDev Remote Code Execution",
+      "description": "MailDev 2 through 2.1.0 allows Remote Code Execution via a crafted Content-ID header for an e-mail attachment, leading to `lib/mailserver.js` writing arbitrary code into the `routes.js` file.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vc6q-ccj9-9r89",
+      "publishedAt": "2024-04-05T06:30:46Z",
+      "modifiedAt": "2025-03-14T19:53:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vc6q-ccj9-9r89"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-27448"
+        }
+      ],
+      "affectedRange": ">= 2.0.0-beta1, <= 2.1.0"
+    }
+  ]
+}

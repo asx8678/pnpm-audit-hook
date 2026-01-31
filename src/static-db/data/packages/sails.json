@@ -1,0 +1,64 @@
+{
+  "name": "sails",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gpw9-fwm8-7rx7",
+      "title": "DoS vulnerability for apps with sockets enabled",
+      "description": "### Impact\nIn Sails apps <=v1.5.6, an attacker can send a virtual request that will cause the node process to crash. \n\n### Patches\nThis behavior was fixed in Sails [v1.5.7](https://github.com/balderdashy/sails/releases/tag/v1.5.7)\n\n### Workarounds\nDisable the sockets hook and remove the `sails.io.js` client\n\n### References\nhttps://github.com/balderdashy/sails/pull/7287\n\nBig thanks to @ThomasRinsma at [Codean](https://www.linkedin.com/company/codeanio/)!",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gpw9-fwm8-7rx7",
+      "publishedAt": "2023-07-27T17:13:14Z",
+      "modifiedAt": "2023-11-06T05:03:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gpw9-fwm8-7rx7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-38504"
+        }
+      ],
+      "affectedRange": "< 1.5.7",
+      "fixedVersion": "1.5.7"
+    },
+    {
+      "id": "GHSA-8v3j-jfg3-v3fv",
+      "title": "Prototype Pollution in Sails.js",
+      "description": "Sails.js <= 1.5.2 is vulnerable to Prototype Pollution via controller/load-action-modules.js, function loadActionModules(). A [patch](https://github.com/balderdashy/sails/commit/7c5379a656bb305c958df1dcc2b51a9668830358) is available in the `master` branch of Sails.js's GItHub repository.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8v3j-jfg3-v3fv",
+      "publishedAt": "2022-03-18T00:01:11Z",
+      "modifiedAt": "2023-01-27T05:02:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8v3j-jfg3-v3fv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-44908"
+        }
+      ],
+      "affectedRange": "<= 1.5.2"
+    },
+    {
+      "id": "GHSA-j95h-wmx9-4279",
+      "title": "Denial of Service",
+      "description": "\n**Withdrawn:** Duplicate of GHSA-j95h-wmx9-4279.\n\nAffected versions of the package are vulnerable to a Denial of Service attack sending an OPTIONS request for an undefined route.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j95h-wmx9-4279",
+      "publishedAt": "2021-02-25T17:15:39Z",
+      "modifiedAt": "2023-01-09T05:01:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j95h-wmx9-4279"
+        }
+      ],
+      "affectedRange": "< 0.12.0",
+      "fixedVersion": "0.12.0"
+    }
+  ]
+}

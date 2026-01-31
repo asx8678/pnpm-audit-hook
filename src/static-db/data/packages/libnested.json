@@ -1,0 +1,47 @@
+{
+  "name": "libnested",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3r9x-mjrm-2725",
+      "title": "Prototype pollution vulnerability in 'libnested'",
+      "description": "Prototype pollution vulnerability in 'libnested' versions 0.0.0 through 1.5.0 allows an attacker to cause a denial of service and may lead to remote code execution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3r9x-mjrm-2725",
+      "publishedAt": "2021-10-12T16:27:02Z",
+      "modifiedAt": "2023-02-01T05:06:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3r9x-mjrm-2725"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28283"
+        }
+      ],
+      "affectedRange": ">= 0.0.0, <= 1.5.0"
+    },
+    {
+      "id": "GHSA-x5m8-2r8v-8f97",
+      "title": "Prototype Pollution in libnested",
+      "description": "The package libnested before 1.5.2 are vulnerable to Prototype Pollution via the set function in index.js. **Note:** This vulnerability derives from an incomplete fix for [CVE-2020-28283](https://security.snyk.io/vuln/SNYK-JS-LIBNESTED-1054930)",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-x5m8-2r8v-8f97",
+      "publishedAt": "2022-03-18T00:01:11Z",
+      "modifiedAt": "2023-01-27T05:00:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x5m8-2r8v-8f97"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25352"
+        }
+      ],
+      "affectedRange": "< 1.5.2",
+      "fixedVersion": "1.5.2"
+    }
+  ]
+}

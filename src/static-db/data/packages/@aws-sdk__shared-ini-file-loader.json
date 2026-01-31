@@ -1,0 +1,27 @@
+{
+  "name": "@aws-sdk/shared-ini-file-loader",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rrc9-gqf8-8rwg",
+      "title": "Prototype Pollution via file load in aws-sdk and @aws-sdk/shared-ini-file-loader",
+      "description": "This affects the package @aws-sdk/shared-ini-file-loader before 1.0.0-rc.9; the package aws-sdk before 2.814.0. If an attacker submits a malicious INI file to an application that parses it with loadSharedConfigFiles , they will pollute the prototype on the application. This can be exploited further depending on the context.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rrc9-gqf8-8rwg",
+      "publishedAt": "2021-11-16T21:26:43Z",
+      "modifiedAt": "2023-01-29T05:06:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rrc9-gqf8-8rwg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28472"
+        }
+      ],
+      "affectedRange": "<= 1.0.0-rc.8",
+      "fixedVersion": "1.0.0-rc.9"
+    }
+  ]
+}

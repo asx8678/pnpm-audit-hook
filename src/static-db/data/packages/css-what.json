@@ -1,0 +1,48 @@
+{
+  "name": "css-what",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p28h-cc7q-c4fg",
+      "title": "css-what vulnerable to ReDoS due to use of insecure regular expression",
+      "description": "The package css-what before 2.1.3 is vulnerable to Regular Expression Denial of Service (ReDoS) due to the use of insecure regular expression in the `re_attr` variable of index.js. The exploitation of this vulnerability could be triggered via the parse function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p28h-cc7q-c4fg",
+      "publishedAt": "2022-10-01T00:00:24Z",
+      "modifiedAt": "2025-05-20T21:02:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p28h-cc7q-c4fg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21222"
+        }
+      ],
+      "affectedRange": "< 2.1.3",
+      "fixedVersion": "2.1.3"
+    },
+    {
+      "id": "GHSA-q8pj-2vqx-8ggc",
+      "title": "Denial of service in css-what",
+      "description": "The css-what package 4.0.0 through 5.0.0 for Node.js does not ensure that attribute parsing has Linear Time Complexity relative to the size of the input.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q8pj-2vqx-8ggc",
+      "publishedAt": "2021-06-07T22:11:39Z",
+      "modifiedAt": "2025-02-12T05:11:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q8pj-2vqx-8ggc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-33587"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, <= 5.0.0",
+      "fixedVersion": "5.0.1"
+    }
+  ]
+}

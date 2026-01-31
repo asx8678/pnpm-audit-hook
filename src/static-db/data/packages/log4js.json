@@ -1,0 +1,27 @@
+{
+  "name": "log4js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-82v2-mx6x-wq7q",
+      "title": "Incorrect Default Permissions in log4js",
+      "description": "### Impact\r\nDefault file permissions for log files created by the file, fileSync and dateFile appenders are world-readable (in unix). This could cause problems if log files contain sensitive information. This would affect any users that have not supplied their own permissions for the files via the mode parameter in the config.\r\n\r\n### Patches\r\nFixed by:\r\n* https://github.com/log4js-node/log4js-node/pull/1141\r\n* https://github.com/log4js-node/streamroller/pull/87\r\n\r\nReleased to NPM in log4js@6.4.0",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-82v2-mx6x-wq7q",
+      "publishedAt": "2022-01-21T18:53:27Z",
+      "modifiedAt": "2024-01-24T08:54:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-82v2-mx6x-wq7q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21704"
+        }
+      ],
+      "affectedRange": "< 6.4.0",
+      "fixedVersion": "6.4.0"
+    }
+  ]
+}

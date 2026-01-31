@@ -1,0 +1,48 @@
+{
+  "name": "node-fetch",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r683-j2x4-v87g",
+      "title": "node-fetch forwards secure headers to untrusted sites",
+      "description": "node-fetch forwards secure headers such as `authorization`, `www-authenticate`, `cookie`, & `cookie2` when redirecting to a untrusted site.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r683-j2x4-v87g",
+      "publishedAt": "2022-01-21T23:55:52Z",
+      "modifiedAt": "2023-11-29T22:08:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r683-j2x4-v87g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0235"
+        }
+      ],
+      "affectedRange": "< 2.6.7",
+      "fixedVersion": "2.6.7"
+    },
+    {
+      "id": "GHSA-vp56-6g26-6827",
+      "title": "node-fetch Inefficient Regular Expression Complexity ",
+      "description": "[node-fetch](https://www.npmjs.com/package/node-fetch) is a light-weight module that brings window.fetch to node.js.\n\nAffected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS) in the `isOriginPotentiallyTrustworthy()` function in `referrer.js`, when processing a URL string with alternating letters and periods, such as `'http://' + 'a.a.'.repeat(i) + 'a'`.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vp56-6g26-6827",
+      "publishedAt": "2022-08-02T00:00:25Z",
+      "modifiedAt": "2023-07-11T13:42:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vp56-6g26-6827"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-2596"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.2.10",
+      "fixedVersion": "3.2.10"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "name": "mongosh",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f5w3-73h4-jpcm",
+      "title": "mongosh vulnerable to local privilege escalation",
+      "description": "mongosh may be susceptible to local privilege escalation under certain conditions potentially enabling unauthorized actions on a user's system with elevated privilege, when a crafted file is stored in C:\\node_modules\\. This issue affects mongosh prior to 2.3.0.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f5w3-73h4-jpcm",
+      "publishedAt": "2025-02-27T18:31:13Z",
+      "modifiedAt": "2025-02-27T20:59:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f5w3-73h4-jpcm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-1756"
+        }
+      ],
+      "affectedRange": "< 2.3.0",
+      "fixedVersion": "2.3.0"
+    },
+    {
+      "id": "GHSA-r95j-4jvf-mrrw",
+      "title": "MongoDB Shell may be susceptible to control character Injection via shell output",
+      "description": "The MongoDB Shell may be susceptible to control character injection where an attacker with control over the database cluster contents can inject control characters into the shell output. This may result in the display of falsified messages that appear to originate from mongosh or the underlying operating system, potentially misleading users into executing unsafe actions.\n\nThe vulnerability is exploitable only when mongosh is connected to a cluster that is partially or fully controlled by an atta",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-r95j-4jvf-mrrw",
+      "publishedAt": "2025-02-27T15:31:51Z",
+      "modifiedAt": "2025-02-27T17:16:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r95j-4jvf-mrrw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-1693"
+        }
+      ],
+      "affectedRange": "< 2.3.9",
+      "fixedVersion": "2.3.9"
+    },
+    {
+      "id": "GHSA-973h-3x6p-qg37",
+      "title": "MongoDB Shell may be susceptible to control character injection via pasting",
+      "description": "The MongoDB Shell may be susceptible to control character injection where an attacker with control of the user’s clipboard could manipulate them to paste text into mongosh that evaluates arbitrary code. Control characters in the pasted text can be used to obfuscate malicious code. This issue affects mongosh versions prior to 2.3.9.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-973h-3x6p-qg37",
+      "publishedAt": "2025-02-27T15:31:51Z",
+      "modifiedAt": "2025-02-27T17:15:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-973h-3x6p-qg37"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-1692"
+        }
+      ],
+      "affectedRange": "< 2.3.9",
+      "fixedVersion": "2.3.9"
+    },
+    {
+      "id": "GHSA-43g5-2wr2-q7vj",
+      "title": "MongoDB Shell may be susceptible to Control Character Injection via autocomplete",
+      "description": "The MongoDB Shell may be susceptible to control character injection where an attacker with control of the mongosh autocomplete feature, can use the autocompletion feature to input and run obfuscated malicious text. This requires user interaction in the form of the user using ‘tab’ to autocomplete text that is a prefix of the attacker’s prepared autocompletion. This issue affects mongosh versions prior to 2.3.9. \n\nThe vulnerability is exploitable only when mongosh is connected to a cluster that i",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-43g5-2wr2-q7vj",
+      "publishedAt": "2025-02-27T15:31:51Z",
+      "modifiedAt": "2025-02-27T17:15:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-43g5-2wr2-q7vj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-1691"
+        }
+      ],
+      "affectedRange": "< 2.3.9",
+      "fixedVersion": "2.3.9"
+    }
+  ]
+}

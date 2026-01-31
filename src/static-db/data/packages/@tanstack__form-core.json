@@ -1,0 +1,27 @@
+{
+  "name": "@tanstack/form-core",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-ggv3-vmgw-xv2q",
+      "title": "@tanstack/form-core prototype pollution",
+      "description": "A prototype pollution in the lib.mutateMergeDeep function of @tanstack/form-core v0.35.0 allows attackers to cause a Denial of Service (DoS) via supplying a crafted payload.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-ggv3-vmgw-xv2q",
+      "publishedAt": "2025-02-06T06:31:25Z",
+      "modifiedAt": "2025-02-20T22:59:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ggv3-vmgw-xv2q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-57068"
+        }
+      ],
+      "affectedRange": "< 0.42.1",
+      "fixedVersion": "0.42.1"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "packageName": "react",
+  "lastUpdated": "2025-01-15T00:00:00Z",
+  "vulnerabilities": [
+    {
+      "id": "CVE-2024-22222",
+      "packageName": "react",
+      "severity": "high",
+      "publishedAt": "2024-11-01T00:00:00Z",
+      "affectedVersions": [
+        {
+          "range": ">=17.0.0 <17.0.3",
+          "fixed": "17.0.3"
+        },
+        {
+          "range": ">=18.0.0 <18.2.1",
+          "fixed": "18.2.1"
+        }
+      ],
+      "source": "github",
+      "title": "XSS vulnerability in React DOM",
+      "url": "https://github.com/advisories/GHSA-react-2222-3333",
+      "identifiers": [
+        { "type": "CVE", "value": "CVE-2024-22222" },
+        { "type": "GHSA", "value": "GHSA-react-2222-3333" }
+      ]
+    },
+    {
+      "id": "GHSA-react-old-vuln",
+      "packageName": "react",
+      "severity": "medium",
+      "publishedAt": "2024-05-01T00:00:00Z",
+      "affectedVersions": [
+        {
+          "range": "<16.0.0"
+        }
+      ],
+      "source": "github",
+      "title": "Legacy vulnerability in older React",
+      "url": "https://github.com/advisories/GHSA-react-old-vuln",
+      "identifiers": [
+        { "type": "GHSA", "value": "GHSA-react-old-vuln" }
+      ]
+    }
+  ]
+}

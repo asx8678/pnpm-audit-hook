@@ -1,0 +1,27 @@
+{
+  "name": "keypair",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3f99-hvg4-qjwj",
+      "title": "Insecure random number generation in keypair",
+      "description": "## Description and Impact\n\nA bug in the pseudo-random number generator used by [keypair](https://github.com/juliangruber/keypair) versions up to and including 1.0.3 could allow for weak RSA key generation. This could enable an attacker to decrypt confidential messages or gain authorized access to an account belonging to the victim. We recommend replacing any RSA keys that were generated using keypair version 1.0.3 or earlier.\n\n## Fix\n\n* The [bug](https://github.com/juliangruber/keypair/blob/87c6",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3f99-hvg4-qjwj",
+      "publishedAt": "2021-10-11T17:09:05Z",
+      "modifiedAt": "2023-02-01T05:06:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3f99-hvg4-qjwj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-41117"
+        }
+      ],
+      "affectedRange": "< 1.0.4",
+      "fixedVersion": "1.0.4"
+    }
+  ]
+}

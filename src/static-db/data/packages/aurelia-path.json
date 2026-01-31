@@ -1,0 +1,27 @@
+{
+  "name": "aurelia-path",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3c9c-2p65-qvwv",
+      "title": "Prototype pollution in aurelia-path",
+      "description": "### Impact\nThe vulnerability exposes Aurelia application that uses `aurelia-path` package to parse a string. The majority of this will be Aurelia applications that employ the `aurelia-router` package. An example is this could allow an attacker to change the prototype of base object class `Object` by tricking an application to parse the following URL: `https://aurelia.io/blog/?__proto__[asdf]=asdf`\n\n### Patches\nThe problem should be patched in version `1.1.7`. Any version earlier than this is vul",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3c9c-2p65-qvwv",
+      "publishedAt": "2021-09-27T20:12:16Z",
+      "modifiedAt": "2023-02-01T05:06:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3c9c-2p65-qvwv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-41097"
+        }
+      ],
+      "affectedRange": "< 1.1.7",
+      "fixedVersion": "1.1.7"
+    }
+  ]
+}

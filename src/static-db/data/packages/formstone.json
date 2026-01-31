@@ -1,0 +1,27 @@
+{
+  "name": "formstone",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wc29-h54q-q8qx",
+      "title": "Formstone Vulnerable to Reflected XSS",
+      "description": "Formstone <=1.4.16 is vulnerable to a Reflected Cross-Site Scripting (XSS) vulnerability caused by improper validation of user supplied input in the `upload-target.php` and `upload-chunked.php` files. A remote attacker could exploit this vulnerability using a specially crafted URL to execute a script in a victim's Web browser within the security context of the hosting Web site once the URL is clicked or visited. An attacker could use this vulnerability to steal the victim's cookie-based authenti",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wc29-h54q-q8qx",
+      "publishedAt": "2022-05-24T17:38:12Z",
+      "modifiedAt": "2024-04-01T22:02:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wc29-h54q-q8qx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26768"
+        }
+      ],
+      "affectedRange": "<= 1.4.16",
+      "fixedVersion": "1.4.17"
+    }
+  ]
+}

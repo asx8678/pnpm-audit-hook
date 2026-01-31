@@ -1,0 +1,27 @@
+{
+  "name": "json",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3c6g-pvg8-gqw2",
+      "title": "trentm/json vulnerable to command injection",
+      "description": "This affects the package json before 10.0.0. It is possible to inject arbritary commands using the parseLookup function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3c6g-pvg8-gqw2",
+      "publishedAt": "2021-05-06T18:11:21Z",
+      "modifiedAt": "2023-09-11T20:29:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3c6g-pvg8-gqw2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7712"
+        }
+      ],
+      "affectedRange": "< 10.0.0",
+      "fixedVersion": "10.0.0"
+    }
+  ]
+}

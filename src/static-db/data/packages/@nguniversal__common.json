@@ -1,0 +1,43 @@
+{
+  "name": "@nguniversal/common",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-68x2-mx4q-78m7",
+      "title": "Angular SSR: Global Platform Injector Race Condition Leads to Cross-Request Data Leakage",
+      "description": "### Impact\n\nAngular uses a DI container (the \"platform injector\") to hold request-specific state during server-side rendering. For historical reasons, the container was stored as a JavaScript module-scoped global variable. When multiple requests are processed concurrently, they could inadvertently share or overwrite the global injector state.\n\nIn practical terms, this can lead to one request responding with data meant for a completely different request, leaking data or tokens included on the ren",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-68x2-mx4q-78m7",
+      "publishedAt": "2025-09-10T21:56:01Z",
+      "modifiedAt": "2025-09-10T21:56:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-68x2-mx4q-78m7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59052"
+        }
+      ],
+      "affectedRange": ">= 16.0.0-next.0, <= 16.2.0"
+    },
+    {
+      "id": "GHSA-r3hf-q8q7-fv2p",
+      "title": "Angular critical CSS inlining Cross-site Scripting Vulnerability Advisory",
+      "description": "### Impact\nAngular Universal applications on 16.1.0 and 16.1.1 using critical CSS inlining are vulnerable to a [cross-site scripting (XSS)](https://owasp.org/www-community/attacks/xss/) attack where an attacker can trick another user into visiting a page which injects malicious JavaScript.\n\nAngular CLI applications without Universal do perform critical CSS inlining as well, however exploiting this requires a malicious actor to already have access to modify source code directly.\n\n### Patches\n`@ng",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r3hf-q8q7-fv2p",
+      "publishedAt": "2023-08-09T12:51:51Z",
+      "modifiedAt": "2023-08-18T05:03:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r3hf-q8q7-fv2p"
+        }
+      ],
+      "affectedRange": ">= 16.1.0, < 16.1.2",
+      "fixedVersion": "16.1.2"
+    }
+  ]
+}

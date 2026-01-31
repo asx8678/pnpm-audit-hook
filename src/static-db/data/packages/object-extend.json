@@ -1,0 +1,26 @@
+{
+  "name": "object-extend",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m639-9whg-fw97",
+      "title": "Prototype Pollution in object-extend",
+      "description": "The package object-extend from 0.0.0 through 0.5.0 is vulnerable to Prototype Pollution via object-extend.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m639-9whg-fw97",
+      "publishedAt": "2022-02-19T00:01:25Z",
+      "modifiedAt": "2023-02-03T05:06:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m639-9whg-fw97"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23702"
+        }
+      ],
+      "affectedRange": "<= 0.5.0"
+    }
+  ]
+}

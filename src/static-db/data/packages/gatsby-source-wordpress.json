@@ -1,0 +1,27 @@
+{
+  "name": "gatsby-source-wordpress",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rqjw-p5vr-c695",
+      "title": "Basic-auth app bundle credential exposure in gatsby-source-wordpress",
+      "description": "### Impact\nThe gatsby-source-wordpress plugin prior to versions 4.0.8 and 5.9.2 leaks .htaccess HTTP Basic Authentication variables into the app.js bundle during build-time.  Users who are not initializing basic authentication credentials in the gatsby-config.js are not affected.\n\nExample affected gatsby-config.js:\n```\n      resolve: 'gatsby-source-wordpress',\n        auth: {\n          htaccess: {\n            username: leaked_username\n            password: leaked_password,\n          },\n        }",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rqjw-p5vr-c695",
+      "publishedAt": "2021-07-19T15:21:41Z",
+      "modifiedAt": "2023-02-01T05:06:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rqjw-p5vr-c695"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32770"
+        }
+      ],
+      "affectedRange": ">= 5.0.0, < 5.9.2",
+      "fixedVersion": "5.9.2"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@nestjs/common",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cj7v-w2c7-cp7c",
+      "title": "nest allows a remote attacker to execute arbitrary code via the Content-Type header",
+      "description": "File Upload vulnerability in nestjs nest prior to v.11.0.16 allows a remote attacker to execute arbitrary code via the Content-Type header.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cj7v-w2c7-cp7c",
+      "publishedAt": "2025-03-14T18:30:51Z",
+      "modifiedAt": "2025-04-14T22:25:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cj7v-w2c7-cp7c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-29409"
+        }
+      ],
+      "affectedRange": "< 10.4.16",
+      "fixedVersion": "10.4.16"
+    }
+  ]
+}

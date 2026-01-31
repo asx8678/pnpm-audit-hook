@@ -1,0 +1,27 @@
+{
+  "name": "@thi.ng/egf",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rj44-gpjc-29r7",
+      "title": "[thi.ng/egf] Potential arbitrary code execution of `#gpg`-tagged property values",
+      "description": "### Impact\n\nPotential for arbitrary code execution in `#gpg`-tagged property values (only if `decrypt: true` option is enabled)\n\n### Patches\n\n[A fix](https://github.com/thi-ng/umbrella/commit/3e14765d6bfd8006742c9e7860bc7d58ae94dfa5) has already been released as v0.4.0\n\n### Workarounds\n\nBy default, EGF parse functions do NOT attempt to decrypt values (since GPG is only available in non-browser env).\n\nHowever, if GPG encrypted values are used/required:\n\n1. Perform a regex search for `#gpg`-tagged",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rj44-gpjc-29r7",
+      "publishedAt": "2021-04-06T17:22:41Z",
+      "modifiedAt": "2023-02-01T05:05:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rj44-gpjc-29r7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-21412"
+        }
+      ],
+      "affectedRange": "< 0.4.0",
+      "fixedVersion": "0.4.0"
+    }
+  ]
+}

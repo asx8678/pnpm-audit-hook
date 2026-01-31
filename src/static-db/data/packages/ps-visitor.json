@@ -1,0 +1,26 @@
+{
+  "name": "ps-visitor",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v2jv-33gh-xx29",
+      "title": "Command Injection in ps-visitor",
+      "description": "This affects all versions up to and including version 0.0.2 of package ps-visitor. If attacker-controlled user input is given to the kill function, it is possible for an attacker to execute arbitrary commands. This is due to use of the child_process exec function without input sanitization.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-v2jv-33gh-xx29",
+      "publishedAt": "2021-05-07T16:06:23Z",
+      "modifiedAt": "2023-01-27T05:00:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v2jv-33gh-xx29"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23374"
+        }
+      ],
+      "affectedRange": "<= 0.0.2"
+    }
+  ]
+}

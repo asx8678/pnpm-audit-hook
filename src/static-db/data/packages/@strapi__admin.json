@@ -1,0 +1,69 @@
+{
+  "name": "@strapi/admin",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v8wj-f5c7-pvxf",
+      "title": "Strapi allows Server-Side Request Forgery in Webhook function",
+      "description": "## Description\nIn Strapi latest version, at function Settings -> Webhooks, the application allows us to input a URL in order to create a Webook connection. However, we can input into this field the local domains such as `localhost`, `127.0.0.1`, `0.0.0.0`,.... in order to make the Application fetching into the internal itself, which causes the vulnerability `Server - Side Request Forgery (SSRF)`.\n\n\n## Payloads\n- `http://127.0.0.1:80` -> `The Port is not open`\n- `http://127.0.0.1:1337` -> `The Po",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v8wj-f5c7-pvxf",
+      "publishedAt": "2025-05-27T17:59:52Z",
+      "modifiedAt": "2025-05-29T21:04:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v8wj-f5c7-pvxf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-52588"
+        }
+      ],
+      "affectedRange": "< 4.25.2",
+      "fixedVersion": "4.25.2"
+    },
+    {
+      "id": "GHSA-24q2-59hm-rh9r",
+      "title": "Strapi Improper Rate Limiting vulnerability",
+      "description": "### 1. Summary\nThere is a rate limit on the login function of Strapi's admin screen, but it is possible to circumvent it.\n\n### 2. Details\nIt is possible to avoid this by modifying the rate-limited request path as follows.\n1. Manipulating request paths to upper or lower case. (Pattern 1)\n   - In this case, avoidance is possible with various patterns.\n2. Add path slashes to the end of the request path. (Pattern 2)\n\n### 3. PoC\nAccess the administrator's login screen (`/admin/auth/login`) and execut",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-24q2-59hm-rh9r",
+      "publishedAt": "2023-09-13T16:32:26Z",
+      "modifiedAt": "2023-11-11T05:02:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-24q2-59hm-rh9r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-38507"
+        }
+      ],
+      "affectedRange": "< 4.12.1",
+      "fixedVersion": "4.12.1"
+    },
+    {
+      "id": "GHSA-v8gg-4mq2-88q4",
+      "title": "Strapi may leak sensitive user information, user reset password, tokens via content-manager views",
+      "description": "### Summary\nI can get access to user  reset password tokens if I have the configure view permissions\n![b37a6fd9eae06027e7d91266f1908a3d](https://user-images.githubusercontent.com/34578426/246782921-fbc007d3-ffec-45de-a1f1-a4287cd507ac.png)\n![6c1da5b3bfbb3bca97c8d064be0ecb05](https://user-images.githubusercontent.com/34578426/246783044-7d716dde-6f27-4d01-9521-42720c6ce92e.gif)\n\n### Details\n/content-manager/relations route does not remove private fields or ensure that they can't be selected\n\n### P",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v8gg-4mq2-88q4",
+      "publishedAt": "2023-09-13T16:31:31Z",
+      "modifiedAt": "2023-11-11T05:02:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v8gg-4mq2-88q4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-36472"
+        }
+      ],
+      "affectedRange": "< 4.11.7",
+      "fixedVersion": "4.11.7"
+    }
+  ]
+}

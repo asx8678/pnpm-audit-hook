@@ -1,0 +1,27 @@
+{
+  "name": "slim-select",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qvqv-mcxr-x8qw",
+      "title": "Slim Select has potential Cross-site Scripting issue",
+      "description": "Slim Select 2.0 versions through 2.9.0 are affected by a potential cross-site scripting vulnerability. In select.ts:createOption(), the text variable from the user-provided Options object is assigned to an innerHTML without sanitation. Software that depends on this library to dynamically generate lists using unsanitized user-provided input may be vulnerable to cross-site scripting, resulting in attacker executed JavaScript. This vulnerability is fixed in 2.9.2.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qvqv-mcxr-x8qw",
+      "publishedAt": "2024-10-02T21:30:34Z",
+      "modifiedAt": "2024-10-18T15:03:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qvqv-mcxr-x8qw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-9440"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.9.2",
+      "fixedVersion": "2.9.2"
+    }
+  ]
+}

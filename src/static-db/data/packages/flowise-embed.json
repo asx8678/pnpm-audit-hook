@@ -1,0 +1,27 @@
+{
+  "name": "flowise-embed",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m5p9-xvxj-64c8",
+      "title": "Flowise and Flowise Chat Embed vulnerable to Stored Cross-site Scripting",
+      "description": "Flowise < 2.1.1 suffers from a Stored Cross-Site vulnerability due to a lack of input sanitization in Flowise Chat Embed < 2.0.0.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m5p9-xvxj-64c8",
+      "publishedAt": "2024-09-25T03:30:36Z",
+      "modifiedAt": "2024-09-30T20:56:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m5p9-xvxj-64c8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-9148"
+        }
+      ],
+      "affectedRange": "< 2.0.0",
+      "fixedVersion": "2.0.0"
+    }
+  ]
+}

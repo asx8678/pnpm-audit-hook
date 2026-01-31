@@ -1,0 +1,26 @@
+{
+  "name": "semver-tags",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8h3g-hcwp-6hxq",
+      "title": "semver-tags is vulnerable to Command Injection via the getGitTagsRemote function",
+      "description": "All versions of the package semver-tags are vulnerable to Command Injection via the getGitTagsRemote function due to improper input sanitization.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8h3g-hcwp-6hxq",
+      "publishedAt": "2023-02-06T06:30:25Z",
+      "modifiedAt": "2025-03-25T21:46:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8h3g-hcwp-6hxq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25853"
+        }
+      ],
+      "affectedRange": "<= 0.4.10"
+    }
+  ]
+}

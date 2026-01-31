@@ -1,0 +1,27 @@
+{
+  "name": "wazuh",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w36g-q975-37rg",
+      "title": "Improper Input Validation (RCE)",
+      "description": "Wazuh API in Wazuh from 4.0.0 to 4.0.3 allows authenticated users to execute arbitrary code with administrative privileges via /manager/files URI. An authenticated user to the service may exploit incomplete input validation on the /manager/files API to inject arbitrary code within the API service script.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w36g-q975-37rg",
+      "publishedAt": "2021-03-18T19:30:20Z",
+      "modifiedAt": "2023-02-01T05:05:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w36g-q975-37rg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-26814"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, <= 4.0.3",
+      "fixedVersion": "4.0.4"
+    }
+  ]
+}

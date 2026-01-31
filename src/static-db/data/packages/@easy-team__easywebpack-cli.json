@@ -1,0 +1,27 @@
+{
+  "name": "@easy-team/easywebpack-cli",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-252h-2cmq-pmr6",
+      "title": "easywebpack-cli Path Traversal vulnerability",
+      "description": "Directory Traversal vulnerability in easywebpack-cli before 4.5.2 allows attackers to obtain sensitive information via crafted GET request.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-252h-2cmq-pmr6",
+      "publishedAt": "2022-12-15T21:30:28Z",
+      "modifiedAt": "2023-01-29T05:01:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-252h-2cmq-pmr6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-24855"
+        }
+      ],
+      "affectedRange": "< 4.5.2",
+      "fixedVersion": "4.5.2"
+    }
+  ]
+}

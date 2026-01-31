@@ -1,0 +1,27 @@
+{
+  "name": "@backstage/backend-common",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2fc9-xpp8-2g9h",
+      "title": "`@backstage/backend-common` vulnerable to path traversal through symlinks",
+      "description": "### Impact\n\nPaths checks with the `resolveSafeChildPath` utility were not exhaustive enough, leading to risk of path traversal vulnerabilities if symlinks can be injected by attackers.\n\n### Patches\nPatched in `@backstage/backend-common` version `0.21.1`.\nPatched in `@backstage/backend-common` version `0.20.2`.\nPatched in `@backstage/backend-common` version `0.19.10`.\n\n\n### For more information\nIf you have any questions or comments about this advisory:\n\n- Open an issue in the [Backstage repositor",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2fc9-xpp8-2g9h",
+      "publishedAt": "2024-02-23T18:02:08Z",
+      "modifiedAt": "2024-02-23T19:43:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2fc9-xpp8-2g9h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-26150"
+        }
+      ],
+      "affectedRange": ">= 0.20.0, < 0.20.2",
+      "fixedVersion": "0.20.2"
+    }
+  ]
+}

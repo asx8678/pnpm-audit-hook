@@ -1,0 +1,46 @@
+{
+  "name": "@oakserver/oak",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r3v7-pc4g-7xp9",
+      "title": "Oak Server has ReDoS in x-forwarded-proto and x-forwarded-for headers",
+      "description": "### Summary\n\nWith specially crafted value of the `x-forwarded-proto` or `x-forwarded-for` headers, it's possible to significantly slow down an oak server.\n\n### Vulnerable Code\n\n- https://github.com/oakserver/oak/blob/v17.1.5/request.ts#L87\n- https://github.com/oakserver/oak/blob/v17.1.5/request.ts#L142\n\n### PoC\n\n- setup\n```\ndeno --version\ndeno 2.4.3\nv8 13.7.152.14-rusty\ntypescript 5.8.3\n```\n\n- `server.ts`\n```ts\nimport { Application } from \"https://deno.land/x/oak/mod.ts\";\n\nconst app = new Applic",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-r3v7-pc4g-7xp9",
+      "publishedAt": "2025-08-12T00:15:00Z",
+      "modifiedAt": "2025-08-12T00:15:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r3v7-pc4g-7xp9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-55152"
+        }
+      ],
+      "affectedRange": "<= 14.1.0"
+    },
+    {
+      "id": "GHSA-qm92-93fv-vh7m",
+      "title": "Path traversal in oak allows transfer of hidden files within the served root directory",
+      "description": "### Summary\n\nBy default `oak` does not allow transferring of hidden files with `Context.send` API. However, this can be bypassed by\nencoding `/` as its URL encoded form `%2F`.\n\n### Details\n\n1.) Oak uses [decodeComponent](https://github.com/oakserver/oak/blob/3896fe568b25ac0b4c5afbf822ff8344c3d1712a/send.ts#L182C10-L182C25) which seems to be unexpected. This is also the reason why it is not possible to access a file that\ncontains URL encoded characters unless the client URL encodes it first.\n\n2.)",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qm92-93fv-vh7m",
+      "publishedAt": "2024-11-01T21:37:10Z",
+      "modifiedAt": "2024-11-01T21:37:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qm92-93fv-vh7m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-49770"
+        }
+      ],
+      "affectedRange": "<= 14.1.0"
+    }
+  ]
+}

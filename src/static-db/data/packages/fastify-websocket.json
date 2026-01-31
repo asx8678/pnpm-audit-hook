@@ -1,0 +1,26 @@
+{
+  "name": "fastify-websocket",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4pcg-wr6c-h9cq",
+      "title": "fastify/websocket vulnerable to uncaught exception via crash on malformed packet",
+      "description": "### Impact\n\nAny application using @fastify/websocket could crash if a specific, malformed packet is sent. \n\nAll versions of fastify-websocket are also impacted. That module is deprecated, so it will not be patched.\n\n### Patches\n\nThis has been patched in v7.1.1 (fastify v4) and v5.0.1 (fastify v3).\n\n### Workarounds\n\nNo known workaround is available. However, it should be possible to attach the error handler manually.\nThe recommended path is upgrading to the patched versions.\n\n## Credits\n\n[marcola",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4pcg-wr6c-h9cq",
+      "publishedAt": "2022-11-07T21:13:57Z",
+      "modifiedAt": "2023-03-29T15:52:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4pcg-wr6c-h9cq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39386"
+        }
+      ],
+      "affectedRange": "<= 4.3.0"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "pug",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p493-635q-r6gr",
+      "title": "Remote code execution via the `pretty` option.",
+      "description": "### Impact\n\nIf a remote attacker was able to control the `pretty` option of the pug compiler, e.g. if you spread a user provided object such as the query parameters of a request into the pug template inputs, it was possible for them to achieve remote code execution on the node.js backend.\n\n### Patches\n\nUpgrade to `pug@3.0.1` or `pug-code-gen@3.0.2` or `pug-code-gen@2.0.3`, which correctly sanitise the parameter.\n\n### Workarounds\n\nIf there is no way for un-trusted input to be passed to pug as the",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p493-635q-r6gr",
+      "publishedAt": "2021-03-03T02:03:52Z",
+      "modifiedAt": "2025-05-28T19:42:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p493-635q-r6gr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-21353"
+        }
+      ],
+      "affectedRange": "< 3.0.1",
+      "fixedVersion": "3.0.1"
+    },
+    {
+      "id": "GHSA-3965-hpx2-q597",
+      "title": "Pug allows JavaScript code execution if an application accepts untrusted input",
+      "description": "Pug through 3.0.2 allows JavaScript code execution if an application accepts untrusted input for the name option of the `compileClient`, `compileFileClient`, or `compileClientWithDependenciesTracked` function. NOTE: these functions are for compiling Pug templates into JavaScript, and there would typically be no reason to allow untrusted callers.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3965-hpx2-q597",
+      "publishedAt": "2024-05-24T14:45:02Z",
+      "modifiedAt": "2025-04-28T14:20:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3965-hpx2-q597"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-36361"
+        }
+      ],
+      "affectedRange": "<= 3.0.2",
+      "fixedVersion": "3.0.3"
+    }
+  ]
+}

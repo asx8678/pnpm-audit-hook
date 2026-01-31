@@ -1,0 +1,27 @@
+{
+  "name": "enclave-vm",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7qm7-455j-5p63",
+      "title": "enclave-vm Vulnerable to Sandbox Escape via Host Error Prototype Chain",
+      "description": "A critical sandbox escape vulnerability exists in **enclave-vm** (affected: **< 2.6.0**, patched: **2.7.0**) that can allow untrusted, sandboxed JavaScript to execute arbitrary code in the **host Node.js runtime**.\n\nWhen a tool invocation fails, enclave-vm exposes a **host-side Error object** to sandboxed code. This Error object retains its **host realm prototype chain**, which can be traversed to reach the **host `Function` constructor**:\n\n`Error instance → Error.prototype → Error constructor →",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7qm7-455j-5p63",
+      "publishedAt": "2026-01-14T16:52:30Z",
+      "modifiedAt": "2026-01-15T17:46:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7qm7-455j-5p63"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22686"
+        }
+      ],
+      "affectedRange": "< 2.7.0",
+      "fixedVersion": "2.7.0"
+    }
+  ]
+}

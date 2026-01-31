@@ -1,0 +1,26 @@
+{
+  "name": "karma-mojo",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pf8j-vhg8-xmc3",
+      "title": "karma-mojo enables OS Command Injection",
+      "description": "karma-mojo through 1.0.1 is vulnerable to Command Injection. It allows execution of arbitrary commands via the config argument.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-pf8j-vhg8-xmc3",
+      "publishedAt": "2022-02-10T23:42:58Z",
+      "modifiedAt": "2023-09-08T23:51:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pf8j-vhg8-xmc3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7626"
+        }
+      ],
+      "affectedRange": "<= 1.0.1"
+    }
+  ]
+}

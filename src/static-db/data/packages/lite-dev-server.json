@@ -1,0 +1,26 @@
+{
+  "name": "lite-dev-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pppv-ch8p-rp2w",
+      "title": "lite-dev-server vulnerable to Directory Traversal",
+      "description": "All versions of package lite-dev-server are vulnerable to Directory Traversal due to missing input sanitization and sandboxes being employed to the `req.url` user input that is passed to the server code.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pppv-ch8p-rp2w",
+      "publishedAt": "2022-12-21T06:30:29Z",
+      "modifiedAt": "2023-01-27T05:06:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pppv-ch8p-rp2w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25895"
+        }
+      ],
+      "affectedRange": "<= 3.2.7"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "lite-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-89w7-5q45-r53w",
+      "title": "lite-server vulnerable to Denial of Service",
+      "description": "All versions of package lite-server are vulnerable to Denial of Service (DoS) when an attacker sends an HTTP request and includes control characters that the `decodeURI()` function is unable to parse.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-89w7-5q45-r53w",
+      "publishedAt": "2022-12-20T06:30:36Z",
+      "modifiedAt": "2025-04-16T21:41:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-89w7-5q45-r53w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25940"
+        }
+      ],
+      "affectedRange": "<= 2.6.1"
+    }
+  ]
+}

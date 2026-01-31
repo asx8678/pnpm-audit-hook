@@ -1,0 +1,27 @@
+{
+  "name": "playwright",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7mvr-c777-76hp",
+      "title": "Playwright downloads and installs browsers without verifying the authenticity of the SSL certificate",
+      "description": "### Summary\nUse of `curl` with the `-k` (or `--insecure`) flag in installer scripts allows attackers to deliver arbitrary executables via Man-in-the-Middle (MitM) attacks. This can lead to full system compromise, as the downloaded files are installed as privileged applications.\n\n### Details\nThe following scripts in the `microsoft/playwright` repository at commit [`bee11cbc28f24bd18e726163d0b9b1571b4f26a8`](https://github.com/microsoft/playwright/commit/bee11cbc28f24bd18e726163d0b9b1571b4f26a8) u",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7mvr-c777-76hp",
+      "publishedAt": "2025-10-14T18:30:36Z",
+      "modifiedAt": "2025-10-24T20:05:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7mvr-c777-76hp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59288"
+        }
+      ],
+      "affectedRange": "< 1.55.1",
+      "fixedVersion": "1.55.1"
+    }
+  ]
+}

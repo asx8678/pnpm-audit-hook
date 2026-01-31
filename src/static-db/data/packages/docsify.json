@@ -1,0 +1,69 @@
+{
+  "name": "docsify",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5h7x-68wj-jhwc",
+      "title": "Docsify vulnerable to cross-site scripting due to mishandled encoding",
+      "description": "docsify versions 4.12.1 and earlier are vulnerable to cross-site scripting (XSS) because the search component does not appropriately encode Code Blocks and mishandles the `\"` character.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5h7x-68wj-jhwc",
+      "publishedAt": "2022-05-24T17:46:27Z",
+      "modifiedAt": "2023-10-19T18:37:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5h7x-68wj-jhwc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-30074"
+        }
+      ],
+      "affectedRange": "<= 4.12.1",
+      "fixedVersion": "4.12.2"
+    },
+    {
+      "id": "GHSA-2mm9-c2fx-c7m4",
+      "title": "Docsify XSS Vulnerability",
+      "description": "This affects the package docsify before 4.12.0. It is possible to bypass the remediation done by CVE-2020-7680 and execute malicious JavaScript through the following methods 1) When parsing HTML from remote URLs, the HTML code on the main page is sanitized, but this sanitization is not taking place in the sidebar. 2) The isURL external check can be bypassed by inserting more `////` characters",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2mm9-c2fx-c7m4",
+      "publishedAt": "2021-03-01T19:44:27Z",
+      "modifiedAt": "2023-09-13T20:21:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2mm9-c2fx-c7m4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23342"
+        }
+      ],
+      "affectedRange": "< 4.12.0",
+      "fixedVersion": "4.12.0"
+    },
+    {
+      "id": "GHSA-qpqh-46qj-vwcw",
+      "title": "Cross-site Scripting in docsify",
+      "description": "docsify prior to 4.11.4 is susceptible to Cross-site Scripting (XSS). Docsify.js uses fragment identifiers (parameters after # sign) to load resources from server-side .md files. Due to lack of validation here, it is possible to provide external URLs after the /#/ (domain.com/#//attacker.com) and render arbitrary JavaScript/HTML inside docsify page.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qpqh-46qj-vwcw",
+      "publishedAt": "2021-05-18T01:53:18Z",
+      "modifiedAt": "2023-02-01T05:05:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qpqh-46qj-vwcw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7680"
+        }
+      ],
+      "affectedRange": "< 4.11.4",
+      "fixedVersion": "4.11.4"
+    }
+  ]
+}

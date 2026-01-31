@@ -1,0 +1,23 @@
+{
+  "name": "derby",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-82jv-9wjw-pqh6",
+      "title": "Prototype pollution in emit function",
+      "description": "### Summary\nA prototype pollution in derby can crash the application, if the application author has atypical HTML templates that feed user input into an object key.\n\nAttribute keys are almost always developer-controlled, not end-user-controlled, so this shouldn't be an issue in practice for most applications.\n\n### Details\n```\nemit(context: Context, target: T) {\n  const node = traverseAndCreate(context.controller, this.segments);\n    node[this.lastSegment] = target;\n    this.addListeners(target, ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-82jv-9wjw-pqh6",
+      "publishedAt": "2024-04-17T22:26:37Z",
+      "modifiedAt": "2024-04-17T22:26:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-82jv-9wjw-pqh6"
+        }
+      ],
+      "affectedRange": ">= 4.0.0-beta1, <= 4.0.0-beta.10",
+      "fixedVersion": "4.0.0-beta.11"
+    }
+  ]
+}

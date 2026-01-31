@@ -1,0 +1,27 @@
+{
+  "name": "@zowe/imperative",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6q8m-42qq-64r7",
+      "title": "Imperative CLI vulnerable to Command Injection",
+      "description": "A vulnerability in Imperative framework which allows already-privileged local actors to execute arbitrary shell commands via plugin install/update commands, or maliciously formed environment variables. Impacts Zowe CLI.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-6q8m-42qq-64r7",
+      "publishedAt": "2023-03-01T09:30:29Z",
+      "modifiedAt": "2023-03-13T15:31:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6q8m-42qq-64r7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-4326"
+        }
+      ],
+      "affectedRange": "< 4.18.10",
+      "fixedVersion": "4.18.10"
+    }
+  ]
+}

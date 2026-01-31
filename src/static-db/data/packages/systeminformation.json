@@ -1,0 +1,132 @@
+{
+  "name": "systeminformation",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wphj-fx3q-84ch",
+      "title": "systeminformation has a Command Injection vulnerability in fsSize() function on Windows",
+      "description": "## Summary\n\nThe `fsSize()` function in `systeminformation` is vulnerable to **OS Command Injection (CWE-78)** on Windows systems. The optional `drive` parameter is directly concatenated into a PowerShell command without sanitization, allowing arbitrary command execution when user-controlled input reaches this function.\n\n**Affected Platforms:** Windows only  \n\n**CVSS Breakdown:**\n- **Attack Vector (AV:N):** Network - if used in a web application/API\n- **Attack Complexity (AC:H):** High - requires",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wphj-fx3q-84ch",
+      "publishedAt": "2025-12-16T22:37:23Z",
+      "modifiedAt": "2025-12-16T22:37:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wphj-fx3q-84ch"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-68154"
+        }
+      ],
+      "affectedRange": "< 5.27.14",
+      "fixedVersion": "5.27.14"
+    },
+    {
+      "id": "GHSA-2m8v-572m-ff2v",
+      "title": "Command Injection Vulnerability",
+      "description": "### Impact\ncommand injection vulnerability\n\n### Patches\nProblem was fixed with a parameter check. Please upgrade to version >= 5.3.1\n\n### Workarounds\nIf you cannot upgrade, be sure to check or sanitize service parameters that are passed to si.inetLatency(), si.inetChecksite(), si.services(), si.processLoad() ... do only allow strings, reject any arrays. String sanitation works as expected.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2m8v-572m-ff2v",
+      "publishedAt": "2021-02-16T16:51:04Z",
+      "modifiedAt": "2025-10-22T19:06:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2m8v-572m-ff2v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-21315"
+        }
+      ],
+      "affectedRange": "< 5.3.1",
+      "fixedVersion": "5.3.1"
+    },
+    {
+      "id": "GHSA-cvv5-9h9w-qp2m",
+      "title": "Systeminformation has command injection vulnerability in getWindowsIEEE8021x (SSID)",
+      "description": "### Summary\nThe SSID is not sanitized when before it is passed as a parameter to cmd.exe in the `getWindowsIEEE8021x` function. This means that malicious content in the SSID can be executed as OS commands. \n\n### Details\nI have exploited this vulnerability in a Windows service using version 5.22.11 of the module, to escalate privileges (in an environment where I am authorized to do so). However, as far as I can see from the code, it is still present in master branch at time of writing, on line [4",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cvv5-9h9w-qp2m",
+      "publishedAt": "2024-12-20T19:13:23Z",
+      "modifiedAt": "2024-12-20T21:37:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cvv5-9h9w-qp2m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-56334"
+        }
+      ],
+      "affectedRange": "<= 5.23.6",
+      "fixedVersion": "5.23.7"
+    },
+    {
+      "id": "GHSA-gx6r-qc2v-3p3v",
+      "title": "systeminformation SSID Command Injection Vulnerability",
+      "description": "### Impact\nSSID Command Injection Vulnerability\n\n### Patches\nProblem was fixed with a parameter check. Please upgrade to version >= 5.21.7, Version 4 was not affected\n\n### Workarounds\nIf you cannot upgrade, be sure to check or sanitize parameter strings that are passed to wifiConnections(), wifiNetworks() (string only)\n\n### References\nSee also https://systeminformation.io/security.html\n",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-gx6r-qc2v-3p3v",
+      "publishedAt": "2023-09-21T17:15:53Z",
+      "modifiedAt": "2023-11-04T05:04:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gx6r-qc2v-3p3v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-42810"
+        }
+      ],
+      "affectedRange": ">= 5.0.0, < 5.21.7",
+      "fixedVersion": "5.21.7"
+    },
+    {
+      "id": "GHSA-8j36-q8x7-pm6q",
+      "title": "OS Command Injection in systeminformation",
+      "description": "This affects the package systeminformation before 4.30.2. The attacker can overwrite the properties and functions of an object, which can lead to executing OS commands.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8j36-q8x7-pm6q",
+      "publishedAt": "2022-02-09T23:14:11Z",
+      "modifiedAt": "2023-02-01T05:05:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8j36-q8x7-pm6q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7778"
+        }
+      ],
+      "affectedRange": "< 4.30.2",
+      "fixedVersion": "4.30.2"
+    },
+    {
+      "id": "GHSA-jff2-qjw8-5476",
+      "title": "Command Injection Vulnerability in systeminformation",
+      "description": "### Impact\ncommand injection vulnerability\n\n### Patches\nProblem was fixed with a parameter check. Please upgrade to version >= 5.6.4\n\n### Workarounds\nIf you cannot upgrade, be sure to check or sanitize service parameters that are passed to si.inetLatency(), si.inetChecksite(), si.services(), si.processLoad() ... do only allow strings, reject any arrays. String sanitation works as expected.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jff2-qjw8-5476",
+      "publishedAt": "2021-04-06T17:30:14Z",
+      "modifiedAt": "2023-02-01T05:05:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jff2-qjw8-5476"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-21388"
+        }
+      ],
+      "affectedRange": "< 5.6.4",
+      "fixedVersion": "5.6.4"
+    }
+  ]
+}

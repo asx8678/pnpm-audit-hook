@@ -1,0 +1,27 @@
+{
+  "name": "forms",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c56f-grv3-gpfr",
+      "title": "Regular expression denial of service in forms",
+      "description": "The package forms before 1.3.2 are vulnerable to Regular Expression Denial of Service (ReDoS) via email validation.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c56f-grv3-gpfr",
+      "publishedAt": "2021-06-07T22:10:13Z",
+      "modifiedAt": "2023-02-01T05:05:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c56f-grv3-gpfr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23388"
+        }
+      ],
+      "affectedRange": "< 1.3.2",
+      "fixedVersion": "1.3.2"
+    }
+  ]
+}

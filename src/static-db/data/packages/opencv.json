@@ -1,0 +1,27 @@
+{
+  "name": "opencv",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mc7w-4cjf-c973",
+      "title": "OS Command Injection in node-opencv",
+      "description": "utils/find-opencv.js in node-opencv (aka OpenCV bindings for Node.js) prior to 6.1.0 is vulnerable to Command Injection. It does not validate user input allowing attackers to execute arbitrary commands.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mc7w-4cjf-c973",
+      "publishedAt": "2021-10-12T22:06:57Z",
+      "modifiedAt": "2023-01-09T05:05:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mc7w-4cjf-c973"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10061"
+        }
+      ],
+      "affectedRange": "< 6.1.0",
+      "fixedVersion": "6.1.0"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@blakeembrey/template",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q765-wm9j-66qj",
+      "title": "@blakeembrey/template vulnerable to code injection when attacker controls template input",
+      "description": "### Impact\n\nIt is possible to inject and run code within the template if the attacker has access to write the template name.\n\n```js\nconst { template } = require('@blakeembrey/template');\n\ntemplate(\"Hello {{name}}!\", \"exploit() {} && ((()=>{ console.log('success'); })()) && function pwned\");\n```\n\n### Patches\n\nUpgrade to 1.2.0.\n\n### Workarounds\n\nDon't pass untrusted input as the template display name, or don't use the display name feature.\n\n### References\n\nFixed by removing in https://github.com/b",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q765-wm9j-66qj",
+      "publishedAt": "2024-09-03T19:42:25Z",
+      "modifiedAt": "2024-11-18T16:27:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q765-wm9j-66qj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-45390"
+        }
+      ],
+      "affectedRange": "< 1.2.0",
+      "fixedVersion": "1.2.0"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "browserless-chrome",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8p9r-f949-699g",
+      "title": "Path Traversal in browserless-chrome",
+      "description": "This affects all versions of browserless-chrome before 1.43.0. User input flowing from the workspace endpoint gets used to create a file path filePath and this is fetched and then sent back to a user. This can be escaped to fetch arbitrary files from a server.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8p9r-f949-699g",
+      "publishedAt": "2021-05-10T18:46:48Z",
+      "modifiedAt": "2023-02-01T05:05:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8p9r-f949-699g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7758"
+        }
+      ],
+      "affectedRange": "< 1.43.0",
+      "fixedVersion": "1.43.0"
+    }
+  ]
+}

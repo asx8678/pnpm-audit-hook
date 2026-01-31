@@ -1,0 +1,26 @@
+{
+  "name": "node-worker-threads-pool",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7vxc-q7rv-qfj8",
+      "title": "SUCHMOKUO node-worker-threads-pool denial of service Vulnerability",
+      "description": "An issue was discovered in StaticPool in SUCHMOKUO node-worker-threads-pool version 1.4.3 that allows attackers to cause a denial of service.\n\nThis can be mitigated by manually creating a timeout. For example:\n\n```ts\nconst { StaticPool } = require(\\\"node-worker-threads-pool\\\");\n\t\n\tconst staticPool = new StaticPool({\n size: 1,\n task: (n) => {\n while (n) {\n console.log(\\\"a\\\");\n }\n return n;\n }\n});\n \n staticPool.createExecutor().setTimeout(10).exec(1).then((result) => {\n console.log(\\\"result from t",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7vxc-q7rv-qfj8",
+      "publishedAt": "2023-08-11T15:30:46Z",
+      "modifiedAt": "2024-10-03T17:26:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7vxc-q7rv-qfj8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-29057"
+        }
+      ],
+      "affectedRange": "<= 1.4.3"
+    }
+  ]
+}

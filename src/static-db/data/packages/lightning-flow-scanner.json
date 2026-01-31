@@ -1,0 +1,27 @@
+{
+  "name": "lightning-flow-scanner",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-55jh-84jv-8mx8",
+      "title": "Lightning Flow Scanner Vulnerable to Code Injection via Unsafe Use of `new Function()` in APIVersion Rule",
+      "description": "### Impact\nThe APIVersion rule uses `new Function()` to evaluate expression strings. A malicious crafted flow metadata file can cause arbitrary JavaScript execution during scanning. An attacker could execute arbitrary JavaScript during a scan by supplying a malicious expression within rule configuration or crafted flow metadata. This could compromise developer machines, CI runners, or editor environments.\n\n### Patches\nThe patch removes all uses of `new Function()` and replaces them with a safer ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-55jh-84jv-8mx8",
+      "publishedAt": "2025-12-12T20:20:34Z",
+      "modifiedAt": "2025-12-20T05:00:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-55jh-84jv-8mx8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-67750"
+        }
+      ],
+      "affectedRange": "< 6.10.6",
+      "fixedVersion": "6.10.6"
+    }
+  ]
+}

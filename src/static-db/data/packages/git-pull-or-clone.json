@@ -1,0 +1,27 @@
+{
+  "name": "git-pull-or-clone",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3x62-x456-q2vm",
+      "title": "OS Command Injection in git-pull-or-clone",
+      "description": "The package git-pull-or-clone before 2.0.2 is vulnerable to Command Injection due to the use of the --upload-pack feature of git which is also supported for git clone. The source includes the use of the secure child process API spawn(). However, the outpath parameter passed to it may be a command-line argument to the git clone command and result in arbitrary command injection.\n## Credits\n\nCredit @lirantal for discovering this vulnerability.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3x62-x456-q2vm",
+      "publishedAt": "2022-05-03T00:00:46Z",
+      "modifiedAt": "2023-01-27T05:02:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3x62-x456-q2vm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24437"
+        }
+      ],
+      "affectedRange": "< 2.0.2",
+      "fixedVersion": "2.0.2"
+    }
+  ]
+}

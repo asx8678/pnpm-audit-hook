@@ -1,0 +1,27 @@
+{
+  "name": "gsap",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6g8v-hpgw-h2v7",
+      "title": "Prototype pollution in gsap",
+      "description": "There is a prototype pollution vulnerability in gsap which affects all versions before 3.6.0.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6g8v-hpgw-h2v7",
+      "publishedAt": "2021-01-20T21:21:50Z",
+      "modifiedAt": "2023-09-12T20:56:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6g8v-hpgw-h2v7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28478"
+        }
+      ],
+      "affectedRange": "< 3.6.0",
+      "fixedVersion": "3.6.0"
+    }
+  ]
+}

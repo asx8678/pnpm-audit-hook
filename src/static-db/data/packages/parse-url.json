@@ -1,0 +1,132 @@
+{
+  "name": "parse-url",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j9fq-vwqv-2fm2",
+      "title": "Server-Side Request Forgery (SSRF) in GitHub repository ionicabizau/parse-url",
+      "description": "Server-Side Request Forgery (SSRF) in GitHub repository ionicabizau/parse-url prior to 8.1.0.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-j9fq-vwqv-2fm2",
+      "publishedAt": "2022-09-15T00:00:24Z",
+      "modifiedAt": "2023-06-21T18:10:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j9fq-vwqv-2fm2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-2900"
+        }
+      ],
+      "affectedRange": "< 8.1.0",
+      "fixedVersion": "8.1.0"
+    },
+    {
+      "id": "GHSA-pqw5-jmp5-px4v",
+      "title": "parse-url parses http URLs incorrectly, making it vulnerable to host name spoofing",
+      "description": "parse-url prior to 8.1.0 is vulnerable to Misinterpretation of Input. parse-url parses certain http or https URLs incorrectly, identifying the URL's protocol as ssh. It may also parse the host name incorrectly.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pqw5-jmp5-px4v",
+      "publishedAt": "2022-09-16T00:00:39Z",
+      "modifiedAt": "2023-01-28T05:03:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pqw5-jmp5-px4v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-3224"
+        }
+      ],
+      "affectedRange": "< 8.1.0",
+      "fixedVersion": "8.1.0"
+    },
+    {
+      "id": "GHSA-jpp7-7chh-cf67",
+      "title": "Cross site scripting in parse-url",
+      "description": "Cross-site Scripting (XSS) - Stored in GitHub repository ionicabizau/parse-url prior to 7.0.0.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jpp7-7chh-cf67",
+      "publishedAt": "2022-06-28T00:01:01Z",
+      "modifiedAt": "2023-01-27T05:05:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jpp7-7chh-cf67"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-2218"
+        }
+      ],
+      "affectedRange": "< 6.0.1",
+      "fixedVersion": "6.0.1"
+    },
+    {
+      "id": "GHSA-q6wq-5p59-983w",
+      "title": "Cross site scripting in parse-url",
+      "description": "Cross-site Scripting (XSS) - Generic in GitHub repository ionicabizau/parse-url prior to 6.0.1",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q6wq-5p59-983w",
+      "publishedAt": "2022-06-28T00:01:02Z",
+      "modifiedAt": "2023-01-27T05:04:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q6wq-5p59-983w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-2217"
+        }
+      ],
+      "affectedRange": "< 6.0.1",
+      "fixedVersion": "6.0.1"
+    },
+    {
+      "id": "GHSA-7f3x-x4pr-wqhj",
+      "title": "Server-Side Request Forgery in parse-url",
+      "description": "Server-Side Request Forgery (SSRF) in GitHub repository ionicabizau/parse-url prior to 7.0.0.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7f3x-x4pr-wqhj",
+      "publishedAt": "2022-06-28T00:01:02Z",
+      "modifiedAt": "2023-01-27T05:04:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7f3x-x4pr-wqhj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-2216"
+        }
+      ],
+      "affectedRange": "< 6.0.1",
+      "fixedVersion": "6.0.1"
+    },
+    {
+      "id": "GHSA-4p35-cfcx-8653",
+      "title": "Hostname confusion in parse-url",
+      "description": "Exposure of Sensitive Information to an Unauthorized Actor via hostname confusion in GitHub repository ionicabizau/parse-url prior to 6.0.1",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4p35-cfcx-8653",
+      "publishedAt": "2022-06-28T00:01:01Z",
+      "modifiedAt": "2023-01-27T05:04:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4p35-cfcx-8653"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0722"
+        }
+      ],
+      "affectedRange": "< 6.0.1",
+      "fixedVersion": "6.0.1"
+    }
+  ]
+}

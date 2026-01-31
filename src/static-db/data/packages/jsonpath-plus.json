@@ -1,0 +1,48 @@
+{
+  "name": "jsonpath-plus",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hw8r-x6gr-5gjp",
+      "title": "JSONPath Plus allows Remote Code Execution",
+      "description": "Versions of the package jsonpath-plus before 10.3.0 are vulnerable to Remote Code Execution (RCE) due to improper input sanitization. An attacker can execute aribitrary code on the system by exploiting the unsafe default usage of eval='safe' mode.\n\n**Note:**\n\nThis is caused by an incomplete fix for CVE-2024-21534.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hw8r-x6gr-5gjp",
+      "publishedAt": "2025-02-15T06:30:51Z",
+      "modifiedAt": "2025-02-18T19:25:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hw8r-x6gr-5gjp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-1302"
+        }
+      ],
+      "affectedRange": "< 10.3.0",
+      "fixedVersion": "10.3.0"
+    },
+    {
+      "id": "GHSA-pppg-cpfq-h7wr",
+      "title": "JSONPath Plus Remote Code Execution (RCE) Vulnerability",
+      "description": "Versions of the package jsonpath-plus before 10.0.7 are vulnerable to Remote Code Execution (RCE) due to improper input sanitization. An attacker can execute aribitrary code on the system by exploiting the unsafe default usage of vm in Node.\n\n**Note:**\n\nThere were several attempts to fix it in versions [10.0.0-10.1.0](https://github.com/JSONPath-Plus/JSONPath/compare/v9.0.0...v10.1.0) but it could still be exploited using [different payloads](https://github.com/JSONPath-Plus/JSONPath/issues/226)",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-pppg-cpfq-h7wr",
+      "publishedAt": "2024-10-11T15:30:32Z",
+      "modifiedAt": "2025-02-06T19:11:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pppg-cpfq-h7wr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21534"
+        }
+      ],
+      "affectedRange": "< 10.2.0",
+      "fixedVersion": "10.2.0"
+    }
+  ]
+}

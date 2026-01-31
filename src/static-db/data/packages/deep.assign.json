@@ -1,0 +1,26 @@
+{
+  "name": "deep.assign",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3829-mgmw-jcg4",
+      "title": "Prototype Pollution in deep.assign",
+      "description": "deep.assign npm package 0.0.0-alpha.0 is vulnerable to Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution').",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3829-mgmw-jcg4",
+      "publishedAt": "2022-07-01T00:01:14Z",
+      "modifiedAt": "2023-01-29T05:06:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3829-mgmw-jcg4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-40663"
+        }
+      ],
+      "affectedRange": "= 0.0.0-alpha.0"
+    }
+  ]
+}

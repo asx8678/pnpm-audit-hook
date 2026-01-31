@@ -1,0 +1,174 @@
+{
+  "name": "@sveltejs/kit",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j2f3-wq62-6q46",
+      "title": "@sveltejs/kit has memory amplification DoS vulnerability in Remote Functions binary form deserializer (application/x-sveltekit-formdata)",
+      "description": "## Summary\n\nThe experimental `form` remote function uses a binary data format containing a representation of submitted form data. A specially-crafted payload can cause the server to allocate a large amount of memory, causing DoS via memory exhaustion.\n\n## Details\n\nWhen a form is submitted to a remote function endpoint, the SvelteKit client encodes the data using a custom format, and POSTs it to the endpoint as a request with an `application/x-sveltekit-formdata` content type.\n\nThe first few byte",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j2f3-wq62-6q46",
+      "publishedAt": "2026-01-15T18:10:52Z",
+      "modifiedAt": "2026-01-15T22:33:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j2f3-wq62-6q46"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22803"
+        }
+      ],
+      "affectedRange": ">= 2.49.0, <= 2.49.4",
+      "fixedVersion": "2.49.5"
+    },
+    {
+      "id": "GHSA-j62c-4x62-9r35",
+      "title": "SvelteKit is vulnerable to denial of service and possible SSRF when using prerendering",
+      "description": "### Summary\n\nVersions of SvelteKit are vulnerable to a server side request forgery (SSRF) and denial of service (DoS) under certain conditions.\n\n### Details\n\nAffected versions from 2.44.0 onwards are vulnerable to DoS if:\n\n- your app has at least one prerendered route (`export const prerender = true`)\n\nAffected versions from 2.19.0 onwards are vulnerable to DoS and SSRF if:\n\n- your app has at least one prerendered route (`export const prerender = true`)\n- AND you are using `adapter-node` without",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j62c-4x62-9r35",
+      "publishedAt": "2026-01-15T18:09:59Z",
+      "modifiedAt": "2026-01-15T22:33:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j62c-4x62-9r35"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-67647"
+        }
+      ],
+      "affectedRange": ">= 2.19.0, <= 2.49.4",
+      "fixedVersion": "2.49.5"
+    },
+    {
+      "id": "GHSA-6q87-84jw-cjhp",
+      "title": "@sveltejs/kit vulnerable to Cross-site Scripting via tracked search_params",
+      "description": "### Summary\n\nUnsanitized search param names cause XSS vulnerability. You are affected if you iterate over all entries of `event.url.searchParams` inside a server `load` function. Attackers can exploit it by crafting a malicious URL and getting a user to click a link with said URL.\n\n### Details\n\nSvelteKit tracks which parameters in `event.url.searchParams` are read inside server `load` functions. If the application iterates over the these parameters, the `uses.search_params` array included in the",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6q87-84jw-cjhp",
+      "publishedAt": "2025-04-14T19:10:42Z",
+      "modifiedAt": "2025-04-16T00:40:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6q87-84jw-cjhp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-32388"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.20.6",
+      "fixedVersion": "2.20.6"
+    },
+    {
+      "id": "GHSA-rjjv-87mx-6x3h",
+      "title": "@sveltejs/kit vulnerable to XSS on dev mode 404 page",
+      "description": "### Summary\n\n\"Unsanitized input from *the request URL* flows into `end`, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).\"\n\n### Details\n\nSource of potentially tainted data is in `packages/kit/src/exports/vite/dev/index.js`, line 437. This potentially tainted data is passed through a number of steps (which I could detail if you'd like) all the way down to line 91 in `packages/kit/src/exports/vite/utils.js`, which performs an ope",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-rjjv-87mx-6x3h",
+      "publishedAt": "2024-11-25T15:33:19Z",
+      "modifiedAt": "2025-01-22T20:54:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rjjv-87mx-6x3h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-53261"
+        }
+      ],
+      "affectedRange": "< 2.8.3",
+      "fixedVersion": "2.8.3"
+    },
+    {
+      "id": "GHSA-mh2x-fcqh-fmqv",
+      "title": "@sveltejs/kit has unescaped error message included on error page",
+      "description": "### Summary\n\nThe static error.html template for errors contains placeholders that are replaced without escaping the content first.\n\n### Details\n\nFrom https://kit.svelte.dev/docs/errors:\n\n> error.html is the page that is rendered when everything else fails. It can contain the following placeholders:\n%sveltekit.status% — the HTTP status\n%sveltekit.error.message% — the error message\n\nThis leads to possible injection if an app explicitly creates an error with a message that contains user controlled ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-mh2x-fcqh-fmqv",
+      "publishedAt": "2024-11-25T15:32:45Z",
+      "modifiedAt": "2024-11-25T21:46:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mh2x-fcqh-fmqv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-53262"
+        }
+      ],
+      "affectedRange": "< 2.8.3",
+      "fixedVersion": "2.8.3"
+    },
+    {
+      "id": "GHSA-g5m6-hxpp-fc49",
+      "title": "Sending a GET or HEAD request with a body crashes SvelteKit",
+      "description": "### Summary\nIn SvelteKit 2 sending a GET request with a body eg `{}` to a SvelteKit app in preview or with `adapter-node` throws `Request with GET/HEAD method cannot have body.` and crashes the app.\n\n```\nnode:internal/deps/undici/undici:6066\n          throw new TypeError(\"Request with GET/HEAD method cannot have body.\");\n                ^\n\nTypeError: Request with GET/HEAD method cannot have body.\n    at new Request (node:internal/deps/undici/undici:6066:17)\n    at getRequest (file:///C:/Users/ad",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g5m6-hxpp-fc49",
+      "publishedAt": "2024-01-24T14:22:22Z",
+      "modifiedAt": "2024-01-24T19:13:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g5m6-hxpp-fc49"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-23641"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.4.3",
+      "fixedVersion": "2.4.3"
+    },
+    {
+      "id": "GHSA-gv7g-x59x-wf8f",
+      "title": "SvelteKit framework has Insufficient CSRF protection for CORS requests",
+      "description": "### Summary\nThe SvelteKit framework offers developers an option to create simple REST APIs. This is done by defining a `+server.js` file, containing endpoint handlers for different HTTP methods.\n\nSvelteKit provides out-of-the-box cross-site request forgery (CSRF) protection to its users. The protection is implemented at `kit/src/runtime/server/respond.js`. While the implementation does a sufficient job of mitigating common CSRF attacks, the protection can be bypassed by simply specifying an uppe",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gv7g-x59x-wf8f",
+      "publishedAt": "2023-04-07T19:23:31Z",
+      "modifiedAt": "2023-04-14T20:30:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gv7g-x59x-wf8f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-29008"
+        }
+      ],
+      "affectedRange": "< 1.15.2",
+      "fixedVersion": "1.15.2"
+    },
+    {
+      "id": "GHSA-5p75-vc5g-8rv2",
+      "title": "SvelteKit vulnerable to Cross-Site Request Forgery",
+      "description": "### Summary\nThe SvelteKit framework offers developers an option to create simple REST APIs. This is done by defining a `+server.js` file, containing endpoint handlers for different HTTP methods.\n\nSvelteKit provides out-of-the-box cross-site request forgery (CSRF) protection to it’s users. The protection is implemented at `kit/src/runtime/server/respond.js#L52`. While the implementation does a sufficient job in mitigating common CSRF attacks, the protection can be bypassed by simply specifying a ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5p75-vc5g-8rv2",
+      "publishedAt": "2023-04-04T21:20:47Z",
+      "modifiedAt": "2023-04-06T22:52:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5p75-vc5g-8rv2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-29003"
+        }
+      ],
+      "affectedRange": "< 1.15.1",
+      "fixedVersion": "1.15.1"
+    }
+  ]
+}

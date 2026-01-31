@@ -1,0 +1,26 @@
+{
+  "name": "deep-parse-json",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-ff9j-pwxg-q5p2",
+      "title": "deep-parse-json vulnerable to Prototype Pollution",
+      "description": "deep-parse-json version 1.0.2 allows an external attacker to edit or add new properties to an object. This is possible because the application does not correctly validate the incoming JSON keys, thus allowing the `__proto__` property to be edited.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-ff9j-pwxg-q5p2",
+      "publishedAt": "2022-11-04T12:00:25Z",
+      "modifiedAt": "2023-01-29T05:05:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ff9j-pwxg-q5p2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-42743"
+        }
+      ],
+      "affectedRange": "<= 1.0.2"
+    }
+  ]
+}

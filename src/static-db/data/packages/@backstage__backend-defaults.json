@@ -1,0 +1,48 @@
+{
+  "name": "@backstage/backend-defaults",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q2x5-4xjx-c6p9",
+      "title": "Backstage has a Possible SSRF when reading from allowed URL's in `backend.reading.allow`",
+      "description": "### Impact\n\nThe `FetchUrlReader` component, used by the catalog and other plugins to fetch content from URLs, followed HTTP redirects automatically. This allowed an attacker who controls a host listed in `backend.reading.allow` to redirect requests to internal or sensitive URLs that are not on the allowlist, bypassing the URL allowlist security control.\n\nThis is a Server-Side Request Forgery (SSRF) vulnerability that could allow access to internal resources, but it does not allow attackers to in",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-q2x5-4xjx-c6p9",
+      "publishedAt": "2026-01-21T22:49:37Z",
+      "modifiedAt": "2026-01-22T15:41:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q2x5-4xjx-c6p9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24048"
+        }
+      ],
+      "affectedRange": ">= 0.14.0, < 0.14.1",
+      "fixedVersion": "0.14.1"
+    },
+    {
+      "id": "GHSA-rq6q-wr2q-7pgp",
+      "title": "Backstage has a Possible Symlink Path Traversal in Scaffolder Actions",
+      "description": "### Impact\n\nMultiple Scaffolder actions and archive extraction utilities were vulnerable to symlink-based path traversal attacks. An attacker with access to create and execute Scaffolder templates could exploit symlinks to:\n\n1. **Read arbitrary files** via the `debug:log` action by creating a symlink pointing to sensitive files (e.g., `/etc/passwd`, configuration files, secrets)\n2. **Delete arbitrary files** via the `fs:delete` action by creating symlinks pointing outside the workspace\n3. **Writ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rq6q-wr2q-7pgp",
+      "publishedAt": "2026-01-21T22:36:36Z",
+      "modifiedAt": "2026-01-22T15:41:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rq6q-wr2q-7pgp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24046"
+        }
+      ],
+      "affectedRange": ">= 0.14.0, < 0.14.1",
+      "fixedVersion": "0.14.1"
+    }
+  ]
+}

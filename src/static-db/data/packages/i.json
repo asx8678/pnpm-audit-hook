@@ -1,0 +1,27 @@
+{
+  "name": "i",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x55w-vjjp-222r",
+      "title": "inflect vulnerable to Inefficient Regular Expression Complexity",
+      "description": "inflect is customizable inflections for nodejs. inflect is vulnerable to Inefficient Regular Expression Complexity",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x55w-vjjp-222r",
+      "publishedAt": "2021-09-29T17:12:19Z",
+      "modifiedAt": "2023-01-29T05:02:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x55w-vjjp-222r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3820"
+        }
+      ],
+      "affectedRange": "< 0.3.7",
+      "fixedVersion": "0.3.7"
+    }
+  ]
+}

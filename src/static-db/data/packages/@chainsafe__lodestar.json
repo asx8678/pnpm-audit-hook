@@ -1,0 +1,27 @@
+{
+  "name": "@chainsafe/lodestar",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cvj7-5f3c-9vg9",
+      "title": "AttesterSlashing number overflow",
+      "description": "### Impact\n\nPossible consensus split given maliciously-crafted `AttesterSlashing` or `ProposerSlashing` being included on-chain.\n\nSince we represent `uint64` values as native javascript `number`s, there is an issue when those variables with large (greater than 2^53) `uint64` values are included on chain. In those cases, Lodestar may view _valid_ `AttesterSlashing` or `ProposerSlashing` as _invalid_, due to rounding errors in large `number` values. This causes a consensus split, where Lodestar no",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cvj7-5f3c-9vg9",
+      "publishedAt": "2022-05-24T22:21:10Z",
+      "modifiedAt": "2023-01-27T05:01:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cvj7-5f3c-9vg9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-29219"
+        }
+      ],
+      "affectedRange": "< 0.36.0",
+      "fixedVersion": "0.36.0"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "openzeppelin-solidity",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7grf-83vw-6f5x",
+      "title": "OpenZeppelin Contracts ERC165Checker unbounded gas consumption",
+      "description": "### Impact\n\nThe target contract of an EIP-165 `supportsInterface` query can cause unbounded gas consumption by returning a lot of data, while it is generally assumed that this operation has a bounded cost.\n\n### Patches\n\nThe issue has been fixed in v4.7.2.\n\n### References\n\nhttps://github.com/OpenZeppelin/openzeppelin-contracts/pull/3587\n\n### For more information\n\nIf you have any questions or comments about this advisory, or need assistance deploying a fix, email us at [security@openzeppelin.com](",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7grf-83vw-6f5x",
+      "publishedAt": "2022-08-14T00:23:34Z",
+      "modifiedAt": "2023-07-21T21:32:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7grf-83vw-6f5x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-35915"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, <= 4.6.0"
+    }
+  ]
+}

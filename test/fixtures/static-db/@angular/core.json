@@ -1,0 +1,57 @@
+{
+  "packageName": "@angular/core",
+  "lastUpdated": "2025-01-15T00:00:00Z",
+  "vulnerabilities": [
+    {
+      "id": "CVE-2024-33333",
+      "packageName": "@angular/core",
+      "severity": "medium",
+      "publishedAt": "2024-10-01T00:00:00Z",
+      "affectedVersions": [
+        {
+          "range": ">=14.0.0 <14.3.0",
+          "fixed": "14.3.0"
+        },
+        {
+          "range": ">=15.0.0 <15.2.5",
+          "fixed": "15.2.5"
+        }
+      ],
+      "source": "github",
+      "title": "Security bypass in Angular sanitizer",
+      "url": "https://github.com/advisories/GHSA-angular-3333-4444",
+      "identifiers": [
+        { "type": "CVE", "value": "CVE-2024-33333" },
+        { "type": "GHSA", "value": "GHSA-angular-3333-4444" }
+      ]
+    },
+    {
+      "id": "CVE-2024-44444",
+      "packageName": "@angular/core",
+      "severity": "low",
+      "publishedAt": "2024-08-01T00:00:00Z",
+      "affectedVersions": [
+        {
+          "range": "<13.0.0"
+        }
+      ],
+      "source": "github",
+      "title": "Information disclosure in Angular forms",
+      "url": "https://github.com/advisories/GHSA-angular-4444-5555"
+    },
+    {
+      "id": "CVE-2024-55555",
+      "packageName": "@angular/core",
+      "severity": "medium",
+      "publishedAt": "2024-03-01T00:00:00Z",
+      "affectedVersions": [
+        {
+          "range": ">=16.0.0 <16.1.0",
+          "fixed": "16.1.0"
+        }
+      ],
+      "source": "github",
+      "title": "Template injection in Angular compiler"
+    }
+  ]
+}

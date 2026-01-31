@@ -1,0 +1,26 @@
+{
+  "name": "grapesjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-589f-c66p-hxr4",
+      "title": "grapesjs before 0.19.5 vulnerable to Cross-site Scripting",
+      "description": "The package grapesjs before 0.19.5 is vulnerable to Cross-site Scripting (XSS) due to an improper sanitization of the class name in Selector Manager.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-589f-c66p-hxr4",
+      "publishedAt": "2022-07-26T00:01:08Z",
+      "modifiedAt": "2023-01-27T05:07:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-589f-c66p-hxr4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21802"
+        }
+      ],
+      "affectedRange": "< 0.19.5"
+    }
+  ]
+}

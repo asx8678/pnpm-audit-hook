@@ -1,0 +1,27 @@
+{
+  "name": "@fastify/csrf-protection",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qrgf-9gpc-vrxw",
+      "title": "Bypass of CSRF protection in the presence of predictable userInfo",
+      "description": "## Description\nThe [CSRF](https://owasp.org/www-community/attacks/csrf) protection enforced by the `@fastify/csrf-protection` library in combination with `@fastify/cookie` can be bypassed from network and same-site attackers under certain conditions.\n\n`@fastify/csrf-protection` supports an optional `userInfo` parameter that binds the CSRF token to the user. This parameter has been introduced to prevent cookie-tossing attacks as a fix for [CVE-2021-29624](https://www.cvedetails.com/cve/CVE-2021-2",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qrgf-9gpc-vrxw",
+      "publishedAt": "2023-04-20T21:18:51Z",
+      "modifiedAt": "2023-11-09T05:00:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qrgf-9gpc-vrxw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-27495"
+        }
+      ],
+      "affectedRange": ">= 5.0.0, < 6.3.0",
+      "fixedVersion": "6.3.0"
+    }
+  ]
+}

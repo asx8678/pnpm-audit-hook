@@ -1,0 +1,27 @@
+{
+  "name": "cloudinary",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g4mf-96x5-5m2c",
+      "title": "Cloudinary Node SDK is vulnerable to Arbitrary Argument Injection through parameters that include an ampersand",
+      "description": "Versions of the package cloudinary before 2.7.0 are vulnerable to Arbitrary Argument Injection due to improper parsing of parameter values containing an ampersand. An attacker can inject additional, unintended parameters. This could lead to a variety of malicious outcomes, such as bypassing security checks, altering data, or manipulating the application's behavior.\n\n**Note:**\nFollowing our established security policy, we attempted to contact the maintainer regarding this vulnerability, but haven",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g4mf-96x5-5m2c",
+      "publishedAt": "2025-11-10T06:30:26Z",
+      "modifiedAt": "2025-11-12T23:41:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g4mf-96x5-5m2c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-12613"
+        }
+      ],
+      "affectedRange": "< 2.7.0",
+      "fixedVersion": "2.7.0"
+    }
+  ]
+}

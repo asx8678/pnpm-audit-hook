@@ -1,0 +1,27 @@
+{
+  "name": "body-parser-xml",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2ghc-6v89-pw9j",
+      "title": "body-parser-xml vulnerable to Prototype Pollution",
+      "description": "body-parser-xml is vulnerable to Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution').",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2ghc-6v89-pw9j",
+      "publishedAt": "2021-09-14T20:25:35Z",
+      "modifiedAt": "2023-01-28T05:02:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2ghc-6v89-pw9j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3666"
+        }
+      ],
+      "affectedRange": "< 2.0.3",
+      "fixedVersion": "2.0.3"
+    }
+  ]
+}

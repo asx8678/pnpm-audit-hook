@@ -1,0 +1,43 @@
+{
+  "name": "@alizeait/unflatto",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q8jq-4rm5-4hm5",
+      "title": "@alizeait/unflatto Prototype Pollution",
+      "description": "### Impact\nalizeait unflatto <= 1.0.2 was discovered to contain a prototype pollution via the method exports.unflatto at /dist/index.js. This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.\n\n### Patches\nThe problem has been patched in 1.0.3\n\n\n### References\nhttps://github.com/advisories/GHSA-799q-f2px-wx8c",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q8jq-4rm5-4hm5",
+      "publishedAt": "2025-04-01T14:54:36Z",
+      "modifiedAt": "2025-04-01T14:54:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q8jq-4rm5-4hm5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-38988"
+        }
+      ],
+      "affectedRange": "< 1.0.3",
+      "fixedVersion": "1.0.3"
+    },
+    {
+      "id": "GHSA-799q-f2px-wx8c",
+      "title": "Duplicate Advisory: @alizeait/unflatto Prototype Pollution via `exports.unflatto` Method",
+      "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-q8jq-4rm5-4hm5. This link is maintained to preserve external references.\n\n## Original Description\nalizeait unflatto <= 1.0.2 was discovered to contain a prototype pollution via the method exports.unflatto at /dist/index.js. This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-799q-f2px-wx8c",
+      "publishedAt": "2025-03-28T21:30:46Z",
+      "modifiedAt": "2025-04-01T14:32:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-799q-f2px-wx8c"
+        }
+      ],
+      "affectedRange": "<= 1.0.2"
+    }
+  ]
+}

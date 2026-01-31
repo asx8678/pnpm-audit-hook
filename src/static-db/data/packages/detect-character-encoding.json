@@ -1,0 +1,48 @@
+{
+  "name": "detect-character-encoding",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jqfh-8hw5-fqjr",
+      "title": "Improper Handling of Exceptional Conditions in detect-character-encoding",
+      "description": "### Impact\n\nIn detect-character-encoding v0.6.0 and earlier, data matching no charset causes the Node.js process to crash.\n\n### Patches\n\nThe problem has been patched in [detect-character-encoding v0.7.0](https://github.com/sonicdoe/detect-character-encoding/releases/tag/v0.7.0).\n\n### CVSS score\n\n[CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/RL:O/RC:C](https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/RL:O/RC:C)\n\nBase Score: 7.5 (High)\nTemporal Score: 7.2 (Hig",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jqfh-8hw5-fqjr",
+      "publishedAt": "2021-08-25T14:44:48Z",
+      "modifiedAt": "2023-02-01T05:06:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jqfh-8hw5-fqjr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-39157"
+        }
+      ],
+      "affectedRange": "< 0.7.0",
+      "fixedVersion": "0.7.0"
+    },
+    {
+      "id": "GHSA-5rwj-j5m3-3chj",
+      "title": "Missing Release of Memory after Effective Lifetime in detect-character-encoding",
+      "description": "### Impact\n\nIn detect-character-encoding v0.3.0 and earlier, allocated memory is not released.\n\n### Patches\n\nThe problem has been patched in [detect-character-encoding v0.3.1](https://github.com/sonicdoe/detect-character-encoding/releases/tag/v0.3.1).\n\n### CVSS score\n\n[CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/RL:O/RC:C](https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/RL:O/RC:C)\n\nBase Score: 7.5 (High)\nTemporal Score: 7.2 (High)\n\nSince detect-character-e",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5rwj-j5m3-3chj",
+      "publishedAt": "2021-09-01T18:25:16Z",
+      "modifiedAt": "2023-02-01T05:06:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5rwj-j5m3-3chj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-39176"
+        }
+      ],
+      "affectedRange": "< 0.3.1",
+      "fixedVersion": "0.3.1"
+    }
+  ]
+}

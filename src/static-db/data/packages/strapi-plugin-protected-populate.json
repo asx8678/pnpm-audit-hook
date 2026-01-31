@@ -1,0 +1,27 @@
+{
+  "name": "strapi-plugin-protected-populate",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6h67-934r-82g7",
+      "title": "Bypass of field access control in strapi-plugin-protected-populate",
+      "description": "### Impact\nUsers are able to bypass the field level security. This means fields that they where not allowed to populate could be populated anyway even in the event that they tried to populate something that they don't have access to.\n\n### Patches\nThis issue has been patched in 1.3.4\n\n### Workarounds\nNone\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6h67-934r-82g7",
+      "publishedAt": "2023-11-20T21:01:43Z",
+      "modifiedAt": "2023-11-20T21:01:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6h67-934r-82g7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-48218"
+        }
+      ],
+      "affectedRange": "< 1.3.4",
+      "fixedVersion": "1.3.4"
+    }
+  ]
+}

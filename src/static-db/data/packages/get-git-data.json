@@ -1,0 +1,26 @@
+{
+  "name": "get-git-data",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wj6h-7chw-x4h2",
+      "title": "Command injection in get-git-data",
+      "description": "get-git-data through 1.3.1 is vulnerable to Command Injection. It is possible to inject arbitrary commands as part of the arguments provided to get-git-data.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wj6h-7chw-x4h2",
+      "publishedAt": "2021-05-10T15:59:14Z",
+      "modifiedAt": "2023-02-01T05:05:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wj6h-7chw-x4h2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7619"
+        }
+      ],
+      "affectedRange": "<= 1.3.1"
+    }
+  ]
+}

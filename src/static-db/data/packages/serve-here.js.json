@@ -1,0 +1,27 @@
+{
+  "name": "serve-here.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4448-rc82-fcr7",
+      "title": "Path Traversal in serve-here.js",
+      "description": "Versions of serve-here.js prior to 1.2.0 are vulnerable to path traversal. The package fails to sanitize URLs, allowing attackers to access server files outside of the served folder using relative paths.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4448-rc82-fcr7",
+      "publishedAt": "2021-09-22T18:40:57Z",
+      "modifiedAt": "2023-01-27T05:09:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4448-rc82-fcr7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-5444"
+        }
+      ],
+      "affectedRange": "< 1.2.0",
+      "fixedVersion": "1.2.0"
+    }
+  ]
+}

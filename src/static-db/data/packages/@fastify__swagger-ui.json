@@ -1,0 +1,27 @@
+{
+  "name": "@fastify/swagger-ui",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-62jr-84gf-wmg4",
+      "title": "Default swagger-ui configuration exposes all files in the module",
+      "description": "### Impact\n\nThe default configuration of `@fastify/swagger-ui` without `baseDir` set will lead to all files in the module's directory being exposed via http routes served by the module.\n\n### Patches\n\nUpdate to v2.1.0\n\n### Workarounds\n\nUse  the `baseDir` option\n\n### References\n\n[HackerOne report\n](https://hackerone.com/reports/2312369).",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-62jr-84gf-wmg4",
+      "publishedAt": "2024-01-16T15:24:41Z",
+      "modifiedAt": "2024-02-16T15:30:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-62jr-84gf-wmg4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-22207"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.1.0",
+      "fixedVersion": "2.1.0"
+    }
+  ]
+}

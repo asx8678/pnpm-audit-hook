@@ -1,0 +1,26 @@
+{
+  "name": "gammautils",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pgmg-gf5p-54j8",
+      "title": "Prototype Pollution in gammautils",
+      "description": "All versions of package gammautils up to and including version 0.0.81 are vulnerable to Prototype Pollution via the `deepSet` and `deepMerge` functions.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-pgmg-gf5p-54j8",
+      "publishedAt": "2021-05-06T18:26:14Z",
+      "modifiedAt": "2023-09-07T00:00:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pgmg-gf5p-54j8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7718"
+        }
+      ],
+      "affectedRange": "<= 0.0.81"
+    }
+  ]
+}

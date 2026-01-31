@@ -1,0 +1,26 @@
+{
+  "name": "docsgpt",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9gff-5v8w-x922",
+      "title": "DocsGPT Allows Remote Code Execution",
+      "description": "A vulnerability, that could result in Remote Code Execution (RCE), has been found in DocsGPT. Due to improper parsing of JSON data using eval() an unauthorized attacker could send arbitrary Python code to be executed via /api/remote endpoint.\n\nThis issue affects DocsGPT: from 0.8.1 through 0.12.0.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9gff-5v8w-x922",
+      "publishedAt": "2025-02-20T12:31:15Z",
+      "modifiedAt": "2025-10-03T13:27:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9gff-5v8w-x922"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-0868"
+        }
+      ],
+      "affectedRange": ">= 0.8.1, <= 0.12.0"
+    }
+  ]
+}

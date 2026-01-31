@@ -1,0 +1,27 @@
+{
+  "name": "@astrojs/cloudflare",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qpr4-c339-7vq8",
+      "title": "Server-Side Request Forgery via /_image endpoint in Astro Cloudflare adapter",
+      "description": "### Summary\n\nWhen using Astro's Cloudflare adapter (`@astrojs/cloudflare`) configured with `output: 'server'` while using the default `imageService: 'compile'`, the generated image optimization endpoint doesn't check the URLs it receives, allowing content from unauthorized third-party domains to be served.\n\n### Details\n\nOn-demand rendered sites built with Astro include an `/_image` endpoint, which returns optimized versions of images.\n\nThe `/_image` endpoint is restricted to processing local ima",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qpr4-c339-7vq8",
+      "publishedAt": "2025-09-04T19:24:11Z",
+      "modifiedAt": "2025-09-05T16:10:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qpr4-c339-7vq8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-58179"
+        }
+      ],
+      "affectedRange": ">= 11.0.3, < 12.6.6",
+      "fixedVersion": "12.6.6"
+    }
+  ]
+}

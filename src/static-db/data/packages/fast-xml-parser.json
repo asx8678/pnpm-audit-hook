@@ -1,0 +1,107 @@
+{
+  "name": "fast-xml-parser",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-37qj-frw5-hhjh",
+      "title": "fast-xml-parser has RangeError DoS Numeric Entities Bug",
+      "description": "### Summary\nA RangeError vulnerability exists in the numeric entity processing of fast-xml-parser when parsing XML with out-of-range entity code points (e.g., `&#9999999;` or `&#xFFFFFF;`). This causes the parser to throw an uncaught exception, crashing any application that processes untrusted XML input.\n\n### Details\nThe vulnerability exists in `/src/xmlparser/OrderedObjParser.js` at lines 44-45:\n\n```javascript\n\"num_dec\": { regex: /&#([0-9]{1,7});/g, val : (_, str) => String.fromCodePoint(Number",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-37qj-frw5-hhjh",
+      "publishedAt": "2026-01-30T20:10:14Z",
+      "modifiedAt": "2026-01-30T20:10:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-37qj-frw5-hhjh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25128"
+        }
+      ],
+      "affectedRange": ">= 4.3.6, <= 5.3.3",
+      "fixedVersion": "5.3.4"
+    },
+    {
+      "id": "GHSA-mpg4-rc92-vx8v",
+      "title": "fast-xml-parser vulnerable to ReDOS at currency parsing",
+      "description": "### Summary\nA ReDOS that exists on currency.js was discovered by Gauss Security Labs R&D team.\n\n### Details\nhttps://github.com/NaturalIntelligence/fast-xml-parser/blob/v4.4.0/src/v5/valueParsers/currency.js#L10 contains a vulnerable regex \n\n### PoC\npass the following string '\\t'.repeat(13337)  + '.'\n\n### Impact\nDenial of service during currency parsing in experimental version 5 of fast-xml-parser-library\n\nhttps://gauss-security.com",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mpg4-rc92-vx8v",
+      "publishedAt": "2024-07-29T17:46:16Z",
+      "modifiedAt": "2024-10-11T14:14:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mpg4-rc92-vx8v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-41818"
+        }
+      ],
+      "affectedRange": ">= 4.3.5, < 4.4.1",
+      "fixedVersion": "4.4.1"
+    },
+    {
+      "id": "GHSA-6w63-h3fj-q4vw",
+      "title": "fast-xml-parser vulnerable to Regex Injection via Doctype Entities",
+      "description": "### Impact\n\"fast-xml-parser\" allows special characters in entity names, which are not escaped or sanitized. Since the entity name is used for creating a regex for searching and replacing entities in the XML body, an attacker can abuse it for DoS attacks. By crafting an entity name that results in an intentionally bad performing regex and utilizing it in the entity replacement step of the parser, this can cause the parser to stall for an indefinite amount of time.\n\n### Patches\nThe problem has bee",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6w63-h3fj-q4vw",
+      "publishedAt": "2023-06-06T17:33:13Z",
+      "modifiedAt": "2024-01-25T21:05:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6w63-h3fj-q4vw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-34104"
+        }
+      ],
+      "affectedRange": ">= 4.1.3, < 4.2.4",
+      "fixedVersion": "4.2.4"
+    },
+    {
+      "id": "GHSA-x3cc-x39p-42qx",
+      "title": "fast-xml-parser vulnerable to Prototype Pollution through tag or attribute name",
+      "description": "### Impact\nAs a part of this vulnerability, user was able to se code using `__proto__` as a tag or attribute name.\n\n```js\nconst { XMLParser, XMLBuilder, XMLValidator} = require(\"fast-xml-parser\");\n\nlet XMLdata = \"<__proto__><polluted>hacked</polluted></__proto__>\"\n\nconst parser = new XMLParser();\nlet jObj = parser.parse(XMLdata);\n\nconsole.log(jObj.polluted) // should return hacked\n``` \n\n### Patches\nThe problem has been patched in v4.1.2\n\n### Workarounds\nUser can check for \"__proto__\" in the XML ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x3cc-x39p-42qx",
+      "publishedAt": "2023-06-13T12:44:34Z",
+      "modifiedAt": "2023-12-14T22:27:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x3cc-x39p-42qx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26920"
+        }
+      ],
+      "affectedRange": "< 4.1.2",
+      "fixedVersion": "4.1.2"
+    },
+    {
+      "id": "GHSA-gpv5-7x3g-ghjv",
+      "title": "fast-xml-parser regex vulnerability patch could be improved from a safety perspective",
+      "description": "### Summary\nThis is a comment on https://github.com/NaturalIntelligence/fast-xml-parser/security/advisories/GHSA-6w63-h3fj-q4vw and the patches fixing it.\n\n### Details\nThe code which validates a name calls the validator:\nhttps://github.com/NaturalIntelligence/fast-xml-parser/blob/ecf6016f9b48aec1a921e673158be0773d07283e/src/xmlparser/DocTypeReader.js#L145-L153\nThis checks for the presence of an invalid character.  Such an approach is always risky, as it is so easy to forget to include an invalid",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-gpv5-7x3g-ghjv",
+      "publishedAt": "2023-06-15T19:05:13Z",
+      "modifiedAt": "2023-11-29T00:28:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gpv5-7x3g-ghjv"
+        }
+      ],
+      "affectedRange": "= 4.2.4",
+      "fixedVersion": "4.2.5"
+    }
+  ]
+}

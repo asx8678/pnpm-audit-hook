@@ -1,0 +1,27 @@
+{
+  "name": "merge",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7wpw-2hjm-89gp",
+      "title": "Prototype Pollution in merge",
+      "description": "All versions of package merge <2.1.1 are vulnerable to Prototype Pollution via _recursiveMerge .",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7wpw-2hjm-89gp",
+      "publishedAt": "2021-05-04T20:18:47Z",
+      "modifiedAt": "2024-02-13T22:31:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7wpw-2hjm-89gp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28499"
+        }
+      ],
+      "affectedRange": "< 2.1.1",
+      "fixedVersion": "2.1.1"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "name": "llhttp",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cggh-pq45-6h9x",
+      "title": "llhttp vulnerable to HTTP request smuggling",
+      "description": "The llhttp parser in the http module in Node v20.2.0 does not strictly use the CRLF sequence to delimit HTTP requests. This can lead to HTTP Request Smuggling (HRS).\n\nThe CR character (without LF) is sufficient to delimit HTTP header fields in the llhttp parser. According to RFC7230 section 3, only the CRLF sequence should delimit each header-field. This impacts all Node.js active versions: v16, v18, and, v20",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cggh-pq45-6h9x",
+      "publishedAt": "2023-07-01T00:30:46Z",
+      "modifiedAt": "2025-11-04T19:38:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cggh-pq45-6h9x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-30589"
+        }
+      ],
+      "affectedRange": "< 8.1.1",
+      "fixedVersion": "8.1.1"
+    },
+    {
+      "id": "GHSA-q5vx-44v4-gch4",
+      "title": "llhttp allows HTTP Request Smuggling via Improper Delimiting of Header Fields",
+      "description": "The llhttp parser in the http module in Node.js does not strictly use the CRLF sequence to delimit HTTP requests. The LF character (without CR) is sufficient to delimit HTTP header fields in the lihttp parser. According to RFC7230 section 3, only the CRLF sequence should delimit each header-field. This can lead to HTTP Request Smuggling (HRS).",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-q5vx-44v4-gch4",
+      "publishedAt": "2022-07-15T00:00:18Z",
+      "modifiedAt": "2023-07-11T00:18:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q5vx-44v4-gch4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-32214"
+        }
+      ],
+      "affectedRange": "< 6.0.7",
+      "fixedVersion": "6.0.7"
+    },
+    {
+      "id": "GHSA-5689-v88g-g6rv",
+      "title": "llhttp allows HTTP Request Smuggling via Flawed Parsing of Transfer-Encoding",
+      "description": "The llhttp parser in the http module in Node.js v17.x does not correctly parse and validate Transfer-Encoding headers and can lead to HTTP Request Smuggling (HRS).\n\nImpacts:\n\n- All versions of the nodejs 18.x, 16.x, and 14.x releases lines.\n- llhttp v6.0.7 and llhttp v2.1.5 contains the fixes that were updated inside Node.js",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5689-v88g-g6rv",
+      "publishedAt": "2022-07-15T00:00:18Z",
+      "modifiedAt": "2023-07-10T21:31:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5689-v88g-g6rv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-32213"
+        }
+      ],
+      "affectedRange": "< 6.0.7",
+      "fixedVersion": "6.0.7"
+    }
+  ]
+}

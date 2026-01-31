@@ -1,0 +1,108 @@
+{
+  "name": "total4",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jj45-24rw-v6jw",
+      "title": "Cross-site scripting in TotalJS",
+      "description": "A stored cross-site scripting (XSS) vulnerability in TotalJS allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the platform name field in the settings module.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jj45-24rw-v6jw",
+      "publishedAt": "2023-05-04T21:30:27Z",
+      "modifiedAt": "2023-11-10T05:00:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jj45-24rw-v6jw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-30094"
+        }
+      ],
+      "affectedRange": "< 0.0.81",
+      "fixedVersion": "0.0.81"
+    },
+    {
+      "id": "GHSA-g7mq-rfj2-25wq",
+      "title": "Code Injection in total4",
+      "description": "The package total4 before 0.0.43 are vulnerable to Arbitrary Code Execution via the `U.set()` and `U.get()` functions.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-g7mq-rfj2-25wq",
+      "publishedAt": "2021-12-10T17:26:33Z",
+      "modifiedAt": "2023-09-11T16:19:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g7mq-rfj2-25wq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23390"
+        }
+      ],
+      "affectedRange": "< 0.0.43",
+      "fixedVersion": "0.0.43"
+    },
+    {
+      "id": "GHSA-pwvp-h579-hfxg",
+      "title": "Total.js CMS Path Traversal",
+      "description": "An issue was discovered in Total.js CMS 12.0.0. An authenticated user with the Pages privilege can conduct a path traversal attack (../) to include .html files that are outside the permitted directory. Also, if a page contains a template directive, then the directive will be server side processed. Thus, if a user can control the content of a .html file, then they can inject a payload with a malicious template directive to gain Remote Command Execution. The exploit will work only with the .html e",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pwvp-h579-hfxg",
+      "publishedAt": "2022-05-24T16:55:31Z",
+      "modifiedAt": "2023-07-17T23:19:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pwvp-h579-hfxg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15952"
+        }
+      ],
+      "affectedRange": "= 12.0"
+    },
+    {
+      "id": "GHSA-q3x9-28f7-w8rc",
+      "title": "Total.js CMS Unauthorized Access",
+      "description": "An issue was discovered in Total.js CMS 12.0.0. An authenticated user with limited privileges can get access to a resource that they do not own by calling the associated API. The product correctly manages privileges only for the front-end resource path, not for API requests. This leads to vertical and horizontal privilege escalation.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q3x9-28f7-w8rc",
+      "publishedAt": "2022-05-24T16:55:31Z",
+      "modifiedAt": "2023-07-17T23:17:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q3x9-28f7-w8rc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15953"
+        }
+      ],
+      "affectedRange": "= 12.0"
+    },
+    {
+      "id": "GHSA-v287-9w3v-x5c5",
+      "title": "Total.js CMS RCE Vulnerability",
+      "description": "An issue was discovered in Total.js CMS 12.0.0. An authenticated user with the widgets privilege can gain achieve Remote Command Execution (RCE) on the remote server by creating a malicious widget with a special tag containing JavaScript code that will be evaluated server side. In the process of evaluating the tag by the back-end, it is possible to escape the sandbox object by using the following payload: `<script total>global.process.mainModule.require(child_process).exec(RCE);</script>`",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-v287-9w3v-x5c5",
+      "publishedAt": "2022-05-24T16:55:31Z",
+      "modifiedAt": "2023-07-17T23:14:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v287-9w3v-x5c5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15954"
+        }
+      ],
+      "affectedRange": "= 12.0.0"
+    }
+  ]
+}

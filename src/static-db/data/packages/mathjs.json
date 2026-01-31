@@ -1,0 +1,27 @@
+{
+  "name": "mathjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x2fc-mxcx-w4mf",
+      "title": "Prototype Pollution in mathjs",
+      "description": "The package mathjs before 7.5.1 are vulnerable to Prototype Pollution via the deepExtend function that runs upon configuration updates.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x2fc-mxcx-w4mf",
+      "publishedAt": "2021-05-10T18:39:04Z",
+      "modifiedAt": "2023-01-27T05:00:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x2fc-mxcx-w4mf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7743"
+        }
+      ],
+      "affectedRange": "< 7.5.1",
+      "fixedVersion": "7.5.1"
+    }
+  ]
+}

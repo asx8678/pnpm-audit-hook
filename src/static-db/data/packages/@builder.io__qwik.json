@@ -1,0 +1,69 @@
+{
+  "name": "@builder.io/qwik",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2rwj-7xq8-4gx4",
+      "title": "Qwik has a potential mXSS vulnerability due to improper HTML escaping",
+      "description": "### Summary\n\nA potential mXSS vulnerability exists in Qwik for versions up to 1.6.0.\n\n### Details\n\nQwik improperly escapes HTML on server-side rendering. It converts strings according to the following rules:\n\nhttps://github.com/QwikDev/qwik/blob/v1.5.5/packages/qwik/src/core/render/ssr/render-ssr.ts#L1182-L1208\n\n- If the string is an attribute value:\n    - `\"` -> `&quot;`\n    - `&` -> `&amp;`\n    - Other characters -> No conversion\n- Otherwise:\n    - `<` -> `&lt;`\n    - `>` -> `&gt;`\n    - `&` -",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2rwj-7xq8-4gx4",
+      "publishedAt": "2024-08-06T18:24:47Z",
+      "modifiedAt": "2024-08-07T07:55:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2rwj-7xq8-4gx4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-41677"
+        }
+      ],
+      "affectedRange": "< 1.7.3",
+      "fixedVersion": "1.7.3"
+    },
+    {
+      "id": "GHSA-9wf9-qvvp-2929",
+      "title": "builderio/qwik is vulnerable to code injection",
+      "description": "Code Injection in GitHub repository builderio/qwik prior to 0.21.0. The Function deserializer can be accessed using the pureServerFunction feature. This allows any Javascript code to be run by node.js.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9wf9-qvvp-2929",
+      "publishedAt": "2023-03-09T00:30:18Z",
+      "modifiedAt": "2023-10-10T21:23:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9wf9-qvvp-2929"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-1283"
+        }
+      ],
+      "affectedRange": "< 0.21.0",
+      "fixedVersion": "0.21.0"
+    },
+    {
+      "id": "GHSA-hm7f-rq7q-j9xp",
+      "title": "@builder.io/qwik vulnerable to Cross-site Scripting",
+      "description": "@builder.io/qwik prior to version 0.16.2 is vulnerable to cross-site scripting due to attribute names and the class attribute values not being properly handled.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hm7f-rq7q-j9xp",
+      "publishedAt": "2023-01-20T03:30:28Z",
+      "modifiedAt": "2023-01-26T17:04:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hm7f-rq7q-j9xp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-0410"
+        }
+      ],
+      "affectedRange": "< 0.16.2",
+      "fixedVersion": "0.16.2"
+    }
+  ]
+}

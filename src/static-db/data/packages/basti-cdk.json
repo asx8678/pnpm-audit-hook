@@ -1,0 +1,23 @@
+{
+  "name": "basti-cdk",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q4pp-j36h-3gqg",
+      "title": "Minimal `basti` IAM Policy Allows Shell Access",
+      "description": "### Summary\n\nThe provided Minimal IAM Policy for `bastic connect` does not include `ssm:SessionDocumentAccessCheck`. This results in the ability to get a shell session on the bastion, not just the intended access for Port Forwarding.\n\n### Details\n\n`basti connect` is designed to \"securely connect to your RDS/Aurora/Elasticache/EC2 instances\", using a bastion instance \"with [AWS Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html) port forwarding capa",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-q4pp-j36h-3gqg",
+      "publishedAt": "2023-08-24T12:53:06Z",
+      "modifiedAt": "2023-08-24T12:53:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q4pp-j36h-3gqg"
+        }
+      ],
+      "affectedRange": "< 1.0.1",
+      "fixedVersion": "1.0.1"
+    }
+  ]
+}

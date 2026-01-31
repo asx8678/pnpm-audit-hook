@@ -1,0 +1,27 @@
+{
+  "name": "@rocket.chat/message-parser",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6375-pg5j-8wph",
+      "title": "Denial of service in rocket chat message parser",
+      "description": "Rocket.Chat 6.12.0, 6.11.2, 6.10.5, 6.9.6, 6.8.6, 6.7.8, and earlier is vulnerable to denial of service (DoS). Attackers who craft messages with specific characters may crash the workspace due to an issue in the message parser.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6375-pg5j-8wph",
+      "publishedAt": "2024-09-25T03:30:36Z",
+      "modifiedAt": "2024-09-26T21:10:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6375-pg5j-8wph"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-46935"
+        }
+      ],
+      "affectedRange": "< 0.31.30",
+      "fixedVersion": "0.31.30"
+    }
+  ]
+}

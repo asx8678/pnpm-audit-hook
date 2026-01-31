@@ -1,0 +1,48 @@
+{
+  "name": "@umbraco-cms/backoffice",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wv8v-rmw2-25wc",
+      "title": "XSS/HTML Injection Vulnerability in Umbraco Backoffice Components",
+      "description": "### Impact\nAuthenticated users are able to exploit an XSS vulnerability when viewing certain localized backoffice components.\n\n### Patches\nWill be patched in 14.3.2 and 15.1.2.\n\nNote:\nThis issue was reported by Pratik Patil from NetSPI @Nexusss-ppatil",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wv8v-rmw2-25wc",
+      "publishedAt": "2025-01-21T19:59:13Z",
+      "modifiedAt": "2025-01-21T19:59:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wv8v-rmw2-25wc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-24012"
+        }
+      ],
+      "affectedRange": ">= 15.0.0, < 15.1.2",
+      "fixedVersion": "15.1.2"
+    },
+    {
+      "id": "GHSA-c5g6-6xf7-qxp3",
+      "title": "Umbraco CMS vulnerable to stored Cross-site Scripting in the \"dictionary name\" on Dictionary section",
+      "description": "### Impact\nThis can be leveraged to gain access to higher-privilege endpoints, e.g. if you get a user with admin privileges to run the code, you can potentially elevate all users and grant them admin privileges or access protected content.\n\n### Patches\nWill be patched in 14.3.1 and 15.0.0.\n\n### Workarounds\nEnsure that access to the Dictionary section is only granted to trusted users.\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c5g6-6xf7-qxp3",
+      "publishedAt": "2024-10-22T17:50:08Z",
+      "modifiedAt": "2024-10-22T19:22:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c5g6-6xf7-qxp3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-47819"
+        }
+      ],
+      "affectedRange": ">= 14.0.0, < 14.3.1",
+      "fixedVersion": "14.3.1"
+    }
+  ]
+}

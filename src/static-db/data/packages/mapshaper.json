@@ -1,0 +1,27 @@
+{
+  "name": "mapshaper",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8m36-62rw-9mxw",
+      "title": "mapshaper Path Traversal vulnerability",
+      "description": "Path Traversal in GitHub repository mbloch/mapshaper prior to 0.6.44.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8m36-62rw-9mxw",
+      "publishedAt": "2024-02-13T15:31:12Z",
+      "modifiedAt": "2024-11-04T15:29:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8m36-62rw-9mxw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-1163"
+        }
+      ],
+      "affectedRange": "< 0.6.44",
+      "fixedVersion": "0.6.44"
+    }
+  ]
+}

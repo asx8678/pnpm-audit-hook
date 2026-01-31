@@ -1,0 +1,27 @@
+{
+  "name": "@conventional-changelog/git-client",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vh25-5764-9wcr",
+      "title": "@conventional-changelog/git-client has Argument Injection vulnerability",
+      "description": "## Background on exploitation\n\nThis vulnerability manifests with the library's `getTags()` API,\nwhich allows specifying extra parameters passed to the `git log` command. In another API by this library - `getRawCommits()` there are secure practices taken to ensure that the extra parameter `path` is unable to inject an argument by ending the `git log` command with the special shell syntax `--`.\nHowever, the library does not follow the same practice for `getTags()` not attempts to sanitize for user",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vh25-5764-9wcr",
+      "publishedAt": "2025-09-22T18:01:01Z",
+      "modifiedAt": "2025-09-22T22:00:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vh25-5764-9wcr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59433"
+        }
+      ],
+      "affectedRange": "< 2.0.0",
+      "fixedVersion": "2.0.0"
+    }
+  ]
+}

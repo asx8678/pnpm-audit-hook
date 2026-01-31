@@ -1,0 +1,23 @@
+{
+  "name": "@budibase/server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4g2x-vq5p-5vj6",
+      "title": "Budibase affected by VM2 Constructor Escape Vulnerability",
+      "description": "### Impact\nPreviously, budibase used a library called `vm2` for code execution inside the Budibase builder and apps, such as the UI below for configuring bindings in the design section.\n\n![Screenshot 2024-03-01 at 13 50 16](https://github.com/Budibase/budibase/assets/11256663/5f049b64-cd99-48fd-a184-644cd312c82e)\n\nDue to a [vulnerability in vm2](https://github.com/advisories/GHSA-cchq-frgv-rjh5), any environment that executed the code server side (automations and column formulas) was susceptible",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4g2x-vq5p-5vj6",
+      "publishedAt": "2024-03-01T20:09:00Z",
+      "modifiedAt": "2024-03-01T20:09:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4g2x-vq5p-5vj6"
+        }
+      ],
+      "affectedRange": "< 2.20.0",
+      "fixedVersion": "2.20.0"
+    }
+  ]
+}

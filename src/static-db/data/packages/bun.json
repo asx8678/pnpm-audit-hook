@@ -1,0 +1,47 @@
+{
+  "name": "bun",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4j66-8f4r-3pjx",
+      "title": "Withdrawn Advisory: bun vulnerable to OS Command Injection",
+      "description": "### Withdrawn Advisory\nThis advisory has been withdrawn because it does not describe a vulnerability in Bun itself. See the following rejection message from the CVE Numbering Authority:\n\n> Rejected reason: Bun Shell does not invoke /bin/sh, or any other interpreter, for template literals created with the $ function. Each ${…} interpolation is treated as a single argument. The security responsibility for this usage pattern lies with the calling application, which must ensure the sanitization and ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4j66-8f4r-3pjx",
+      "publishedAt": "2025-07-23T06:33:50Z",
+      "modifiedAt": "2025-08-11T21:15:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4j66-8f4r-3pjx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-8022"
+        }
+      ],
+      "affectedRange": "> 0.0.12, <= 1.1.39"
+    },
+    {
+      "id": "GHSA-v9mx-4pqq-h232",
+      "title": "Bun has an Application-level Prototype Pollution vulnerability in the runtime native API for Glo",
+      "description": "Versions of the package bun before 1.1.30 are vulnerable to Prototype Pollution due to improper input sanitization. An attacker can exploit this vulnerability through Bun's APIs that accept objects.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v9mx-4pqq-h232",
+      "publishedAt": "2024-12-18T06:30:49Z",
+      "modifiedAt": "2025-07-24T15:04:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v9mx-4pqq-h232"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21548"
+        }
+      ],
+      "affectedRange": "> 0.0.12, < 1.1.30",
+      "fixedVersion": "1.1.30"
+    }
+  ]
+}

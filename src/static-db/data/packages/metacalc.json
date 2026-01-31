@@ -1,0 +1,27 @@
+{
+  "name": "metacalc",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5gc4-cx9x-9c43",
+      "title": "Code Injection in metacalc",
+      "description": "The package metacalc before 0.0.2 is vulnerable to Arbitrary Code Execution when it exposes JavaScript's Math class to the v8 context. As the Math class is exposed to user-land, it can be used to get access to JavaScript's Function constructor.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5gc4-cx9x-9c43",
+      "publishedAt": "2022-06-09T00:00:29Z",
+      "modifiedAt": "2023-01-27T05:03:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5gc4-cx9x-9c43"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21122"
+        }
+      ],
+      "affectedRange": "< 0.0.2",
+      "fixedVersion": "0.0.2"
+    }
+  ]
+}

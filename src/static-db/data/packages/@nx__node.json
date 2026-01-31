@@ -1,0 +1,26 @@
+{
+  "name": "@nx/node",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cxm3-wv7p-598c",
+      "title": "Malicious versions of Nx were published",
+      "description": "## Summary\n\nMalicious versions of the [`nx` package](https://www.npmjs.com/package/nx), as well as some supporting plugin packages, were published to npm, containing code that scans the file system, collects credentials, and posts them to GitHub as a repo under user's accounts.\n\n## Immediate Actions Required\n\n### For all users, check if you were impacted\n\n1. Check your account's audit logs (https://github.com/settings/security-log?q=action%3Arepo.create) to see if a repo containing s1ngularity-r",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cxm3-wv7p-598c",
+      "publishedAt": "2025-08-27T16:42:47Z",
+      "modifiedAt": "2025-09-25T16:34:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cxm3-wv7p-598c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-10894"
+        }
+      ],
+      "affectedRange": "= 20.9.0"
+    }
+  ]
+}

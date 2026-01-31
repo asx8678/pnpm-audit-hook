@@ -1,0 +1,27 @@
+{
+  "name": "posthog-js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8775-5hwv-wr6v",
+      "title": "Potential for cross-site scripting in PostHog-js",
+      "description": "### Impact\n\nPotential for cross-site scripting in `posthog-js`.\n\n### Patches\n\nThe problem has been patched in `posthog-js` version 1.57.2.\n\n### Workarounds\n\n- This isn't an issue for sites that have a Content Security Policy in place.\n- Using the HTML tracking snippet on PostHog Cloud always guarantees the latest version of the library – in that case no action is required to upgrade to the patched version.\n\n### References\n\nWe will publish details of the vulnerability in 30 days as per our [secur",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8775-5hwv-wr6v",
+      "publishedAt": "2023-05-22T20:35:03Z",
+      "modifiedAt": "2023-11-12T05:01:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8775-5hwv-wr6v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-32325"
+        }
+      ],
+      "affectedRange": "< 1.57.2",
+      "fixedVersion": "1.57.2"
+    }
+  ]
+}

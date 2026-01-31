@@ -1,0 +1,90 @@
+{
+  "name": "jsonwebtoken",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qwph-4952-7xr6",
+      "title": "jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify()",
+      "description": "# Overview\n\nIn versions <=8.5.1 of jsonwebtoken library, lack of algorithm definition and a falsy secret or key in the `jwt.verify()` function can lead to signature validation bypass due to defaulting to the `none` algorithm for signature verification.\n\n# Am I affected?\nYou will be affected if all the following are true in the `jwt.verify()` function:\n- a token with no signature is received\n- no algorithms are specified \n- a falsy (e.g. null, false, undefined) secret or key is passed \n\n# How do ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qwph-4952-7xr6",
+      "publishedAt": "2022-12-22T03:32:59Z",
+      "modifiedAt": "2025-02-13T18:33:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qwph-4952-7xr6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-23540"
+        }
+      ],
+      "affectedRange": "< 9.0.0",
+      "fixedVersion": "9.0.0"
+    },
+    {
+      "id": "GHSA-hjrf-2m68-5959",
+      "title": "jsonwebtoken's insecure implementation of key retrieval function could lead to Forgeable Public/Private Tokens from RSA to HMAC",
+      "description": "# Overview\n\nVersions `<=8.5.1` of `jsonwebtoken` library can be misconfigured so that passing a poorly implemented key retrieval function (referring to the `secretOrPublicKey` argument from the [readme link](https://github.com/auth0/node-jsonwebtoken#jwtverifytoken-secretorpublickey-options-callback)) will result in incorrect verification of tokens. There is a possibility of using a different algorithm and key combination in verification  than the one that was used to sign the tokens. Specifical",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hjrf-2m68-5959",
+      "publishedAt": "2022-12-22T03:33:19Z",
+      "modifiedAt": "2024-06-24T21:24:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hjrf-2m68-5959"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-23541"
+        }
+      ],
+      "affectedRange": "<= 8.5.1",
+      "fixedVersion": "9.0.0"
+    },
+    {
+      "id": "GHSA-8cf7-32gw-wr33",
+      "title": "jsonwebtoken unrestricted key type could lead to legacy keys usage ",
+      "description": "# Overview\n\nVersions `<=8.5.1` of `jsonwebtoken` library could be misconfigured so that legacy, insecure key types are used for signature verification. For example, DSA keys could be used with the RS256 algorithm. \n\n# Am I affected?\n\nYou are affected if you are using an algorithm and a key type other than the combinations mentioned below\n\n| Key type |  algorithm                                    |\n|----------|------------------------------------------|\n| ec           | ES256, ES384, ES512      ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8cf7-32gw-wr33",
+      "publishedAt": "2022-12-22T03:32:22Z",
+      "modifiedAt": "2024-06-24T21:23:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8cf7-32gw-wr33"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-23539"
+        }
+      ],
+      "affectedRange": "<= 8.5.1",
+      "fixedVersion": "9.0.0"
+    },
+    {
+      "id": "GHSA-27h2-hvpr-p74q",
+      "title": "jsonwebtoken has insecure input validation in jwt.verify function",
+      "description": "# Overview\n\nFor versions `<=8.5.1` of `jsonwebtoken` library, if a malicious actor has the ability to modify the key retrieval parameter (referring to the `secretOrPublicKey` argument from the [readme link](https://github.com/auth0/node-jsonwebtoken#jwtverifytoken-secretorpublickey-options-callback)) of the `jwt.verify()` function, they can gain remote code execution (RCE).\n\n# Am I affected?\n\nThis security issue is a concern when the `jsonwebtoken` library is used in an insecure way. Users are a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-27h2-hvpr-p74q",
+      "publishedAt": "2022-12-22T03:31:28Z",
+      "modifiedAt": "2023-01-27T21:51:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-27h2-hvpr-p74q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-23529"
+        }
+      ],
+      "affectedRange": "<= 8.5.1",
+      "fixedVersion": "9.0.0"
+    }
+  ]
+}

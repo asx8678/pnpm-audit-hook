@@ -1,0 +1,27 @@
+{
+  "name": "canvg",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v2mw-5mch-w8c5",
+      "title": "canvg Prototype Pollution vulnerability",
+      "description": "An issue in canvg prior to v.4.0.3 and v3.0.11 can lead to prototype pollution via the Constructor of the class StyleElement.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v2mw-5mch-w8c5",
+      "publishedAt": "2025-03-10T18:31:56Z",
+      "modifiedAt": "2025-03-17T15:41:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v2mw-5mch-w8c5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-25977"
+        }
+      ],
+      "affectedRange": "< 3.0.11",
+      "fixedVersion": "3.0.11"
+    }
+  ]
+}

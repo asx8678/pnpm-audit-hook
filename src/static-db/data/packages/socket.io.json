@@ -1,0 +1,48 @@
+{
+  "name": "socket.io",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-25hc-qcg6-38wj",
+      "title": "socket.io has an unhandled 'error' event",
+      "description": "### Impact\n\nA specially crafted Socket.IO packet can trigger an uncaught exception on the Socket.IO server, thus killing the Node.js process.\n\n```\nnode:events:502\n    throw err; // Unhandled 'error' event\n    ^\n\nError [ERR_UNHANDLED_ERROR]: Unhandled error. (undefined)\n    at new NodeError (node:internal/errors:405:5)\n    at Socket.emit (node:events:500:17)\n    at /myapp/node_modules/socket.io/lib/socket.js:531:14\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-25hc-qcg6-38wj",
+      "publishedAt": "2024-06-19T15:04:41Z",
+      "modifiedAt": "2024-11-18T16:26:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-25hc-qcg6-38wj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-38355"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 4.6.2",
+      "fixedVersion": "4.6.2"
+    },
+    {
+      "id": "GHSA-fxwf-4rqh-v8g3",
+      "title": "CORS misconfiguration in socket.io",
+      "description": "The package socket.io before 2.4.0 are vulnerable to Insecure Defaults due to CORS Misconfiguration. All domains are whitelisted by default.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fxwf-4rqh-v8g3",
+      "publishedAt": "2021-01-20T21:22:37Z",
+      "modifiedAt": "2023-09-11T22:46:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fxwf-4rqh-v8g3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28481"
+        }
+      ],
+      "affectedRange": "< 2.4.0",
+      "fixedVersion": "2.4.0"
+    }
+  ]
+}

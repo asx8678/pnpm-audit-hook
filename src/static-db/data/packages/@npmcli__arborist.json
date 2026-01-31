@@ -1,0 +1,48 @@
+{
+  "name": "@npmcli/arborist",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gmw6-94gg-2rc2",
+      "title": "UNIX Symbolic Link (Symlink) Following in @npmcli/arborist",
+      "description": "### Impact\n\nArbitrary File Creation, Arbitrary File Overwrite, Arbitrary Code Execution\n\n`@npmcli/arborist`, the library that calculates dependency trees and manages the node_modules folder hierarchy for the npm command line interface, aims to guarantee that package dependency contracts will be met, and the extraction of package contents will always be performed into the expected folder.\n\nThis is accomplished by extracting package contents into a project's `node_modules` folder.\n\nIf the `node_mo",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gmw6-94gg-2rc2",
+      "publishedAt": "2021-08-31T16:03:34Z",
+      "modifiedAt": "2025-02-26T12:45:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gmw6-94gg-2rc2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-39135"
+        }
+      ],
+      "affectedRange": "< 2.8.2",
+      "fixedVersion": "2.8.2"
+    },
+    {
+      "id": "GHSA-2h3h-q99f-3fhc",
+      "title": "@npmcli/arborist vulnerable to UNIX Symbolic Link (Symlink) Following",
+      "description": "### Impact\n\nArbitrary File Creation, Arbitrary File Overwrite, Arbitrary Code Execution\n\n`@npmcli/arborist`, the library that calculates dependency trees and manages the `node_modules` folder hierarchy for the npm command line interface, aims to guarantee that package dependency contracts will be met, and the extraction of package contents will always be performed into the expected folder.\n\nThis is, in part, accomplished by resolving dependency specifiers defined in `package.json` manifests for ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2h3h-q99f-3fhc",
+      "publishedAt": "2021-08-31T16:04:03Z",
+      "modifiedAt": "2023-01-27T05:00:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2h3h-q99f-3fhc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-39134"
+        }
+      ],
+      "affectedRange": "< 2.8.2",
+      "fixedVersion": "2.8.2"
+    }
+  ]
+}

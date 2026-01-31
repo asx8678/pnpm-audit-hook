@@ -1,0 +1,23 @@
+{
+  "name": "@napi-rs/image",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4vjr-crvh-383h",
+      "title": "@napi-rs/image affected by libwebp CVE",
+      "description": "### Impact\nHeap buffer overflow in `libwebp` allows a remote attacker to perform an out of bounds memory write via a crafted webp image.\n\n### References\n- https://github.com/advisories/GHSA-j7hp-h8jx-5ppr\n- https://blog.isosceles.com/the-webp-0day/\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4vjr-crvh-383h",
+      "publishedAt": "2023-09-27T20:17:00Z",
+      "modifiedAt": "2023-09-27T20:17:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4vjr-crvh-383h"
+        }
+      ],
+      "affectedRange": "< 1.7.0",
+      "fixedVersion": "1.7.0"
+    }
+  ]
+}

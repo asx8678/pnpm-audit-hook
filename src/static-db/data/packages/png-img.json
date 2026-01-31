@@ -1,0 +1,27 @@
+{
+  "name": "png-img",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q5wr-fvpq-p67g",
+      "title": "Integer Overflow in png-img",
+      "description": "An integer overflow in the PngImg::InitStorage_() function of png-img before 3.1.0 leads to an under-allocation of heap memory and subsequently an exploitable heap-based buffer overflow when loading a crafted PNG file.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q5wr-fvpq-p67g",
+      "publishedAt": "2021-12-10T17:23:30Z",
+      "modifiedAt": "2023-02-01T05:05:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q5wr-fvpq-p67g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28248"
+        }
+      ],
+      "affectedRange": "< 3.1.0",
+      "fixedVersion": "3.1.0"
+    }
+  ]
+}

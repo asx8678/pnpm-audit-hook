@@ -1,0 +1,27 @@
+{
+  "name": "studiocms",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8cw6-53m5-4932",
+      "title": "StudioCMS has Authorization Bypass Through User-Controlled Key",
+      "description": "### Summary\nStudioCMS contains a Broken Object Level Authorization (BOLA) vulnerability in the Content Management feature that allows users with the \"Visitor\" role to access draft content created by Editor/Admin/Owner users.\n\n### Details\n**The Issue:**\nThe endpoint `/dashboard/content-management/edit?edit={UUID}` validates user authentication but does NOT validate:\n1. User role (should require Editor/Admin/Owner)\n2. Content ownership (should verify the draft belongs to the user)\n\nThis allows use",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8cw6-53m5-4932",
+      "publishedAt": "2026-01-27T22:13:52Z",
+      "modifiedAt": "2026-01-29T03:43:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8cw6-53m5-4932"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24134"
+        }
+      ],
+      "affectedRange": "< 0.2.0",
+      "fixedVersion": "0.2.0"
+    }
+  ]
+}

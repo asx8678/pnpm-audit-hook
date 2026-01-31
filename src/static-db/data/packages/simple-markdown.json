@@ -1,0 +1,48 @@
+{
+  "name": "simple-markdown",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j533-2g8v-pmpg",
+      "title": "Regular Expression Denial of Service in simple-markdown",
+      "description": "A vulnerability, which was classified as problematic, was found in simple-markdown 0.6.0. Affected is an unknown function of the file simple-markdown.js. The manipulation with the input <<<<<<<<<<:/:/:/:/:/:/:/:/:/:/ leads to inefficient regular expression complexity. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. Upgrading to version 0.6.1 is able to address this issue. The name of the patch is 015a719bf5cdc561feea05500ecb3274ef609cd2",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j533-2g8v-pmpg",
+      "publishedAt": "2023-02-12T15:30:25Z",
+      "modifiedAt": "2023-10-20T22:44:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j533-2g8v-pmpg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-25102"
+        }
+      ],
+      "affectedRange": "< 0.6.1",
+      "fixedVersion": "0.6.1"
+    },
+    {
+      "id": "GHSA-gpvj-gp8c-c7p2",
+      "title": "Regular Expression Denial of Service in simple-markdown",
+      "description": "A vulnerability has been found in simple-markdown 0.5.1 and classified as problematic. Affected by this vulnerability is an unknown functionality of the file simple-markdown.js. The manipulation leads to inefficient regular expression complexity. The attack can be launched remotely. Upgrading to version 0.5.2 is able to address this issue. The name of the patch is 89797fef9abb4cab2fb76a335968266a92588816. It is recommended to upgrade the affected component. The associated identifier of this vuln",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gpvj-gp8c-c7p2",
+      "publishedAt": "2023-02-12T15:30:24Z",
+      "modifiedAt": "2023-10-20T22:44:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gpvj-gp8c-c7p2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-25103"
+        }
+      ],
+      "affectedRange": "< 0.5.2",
+      "fixedVersion": "0.5.2"
+    }
+  ]
+}

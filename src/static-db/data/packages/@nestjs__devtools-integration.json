@@ -1,0 +1,27 @@
+{
+  "name": "@nestjs/devtools-integration",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-85cg-cmq5-qjm7",
+      "title": "@nestjs/devtools-integration: CSRF to Sandbox Escape Allows for RCE against JS Developers",
+      "description": "## Summary\nA critical Remote Code Execution (RCE) vulnerability was discovered in the `@nestjs/devtools-integration` package. When enabled, the package exposes a local development HTTP server with an API endpoint that uses an unsafe JavaScript sandbox (`safe-eval`-like implementation). Due to improper sandboxing and missing cross-origin protections, any malicious website visited by a developer can execute arbitrary code on their local machine.\n\nA full blog post about how this vulnerability was u",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-85cg-cmq5-qjm7",
+      "publishedAt": "2025-08-01T18:43:13Z",
+      "modifiedAt": "2025-08-04T15:28:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-85cg-cmq5-qjm7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54782"
+        }
+      ],
+      "affectedRange": "<= 0.2.0",
+      "fixedVersion": "0.2.1"
+    }
+  ]
+}

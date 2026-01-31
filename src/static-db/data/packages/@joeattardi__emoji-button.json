@@ -1,0 +1,27 @@
+{
+  "name": "@joeattardi/emoji-button",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f34m-x9pj-62vq",
+      "title": "Cross-Site Scripting Vulnerability in @joeattardi/emoji-button",
+      "description": "### Impact\n\nThere are two vectors for XSS attacks with versions of @joeattardi/emoji-button before 4.6.2:\n\n- A URL for a custom emoji\n- An i18n string\n\nIn both of these cases, a value can be crafted such that it can insert a `script` tag into the page and execute malicious code.\n\n### Patches\n\nThis vulnerability is fixed starting in version 4.6.2. This is resolved by properly escaping strings that are inserted into the HTML document.\n\n### Workarounds\n\nThere is no workaround other than upgrading t",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f34m-x9pj-62vq",
+      "publishedAt": "2021-12-01T18:29:02Z",
+      "modifiedAt": "2023-02-01T05:06:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f34m-x9pj-62vq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-43785"
+        }
+      ],
+      "affectedRange": "< 4.6.2",
+      "fixedVersion": "4.6.2"
+    }
+  ]
+}

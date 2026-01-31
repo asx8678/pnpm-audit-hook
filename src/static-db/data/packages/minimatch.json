@@ -1,0 +1,27 @@
+{
+  "name": "minimatch",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f8q6-p94x-37v3",
+      "title": "minimatch ReDoS vulnerability",
+      "description": "A vulnerability was found in the minimatch package. This flaw allows a Regular Expression Denial of Service (ReDoS) when calling the braceExpand function with specific arguments, resulting in a Denial of Service.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f8q6-p94x-37v3",
+      "publishedAt": "2022-10-18T12:00:32Z",
+      "modifiedAt": "2024-02-14T18:15:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f8q6-p94x-37v3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-3517"
+        }
+      ],
+      "affectedRange": "< 3.0.5",
+      "fixedVersion": "3.0.5"
+    }
+  ]
+}

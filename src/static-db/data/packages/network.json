@@ -1,0 +1,27 @@
+{
+  "name": "network",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vvh2-82c7-ppfg",
+      "title": "network Arbitrary Command Injection vulnerability",
+      "description": "Versions of the package network before 0.7.0 are vulnerable to Arbitrary Command Injection due to use of the `child_process` exec function without input sanitization. If (attacker-controlled) user input is given to the `mac_address_for` function of the package, it is possible for an attacker to execute arbitrary commands on the operating system that this package is being run on.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vvh2-82c7-ppfg",
+      "publishedAt": "2024-01-30T06:30:23Z",
+      "modifiedAt": "2024-01-30T18:43:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vvh2-82c7-ppfg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21488"
+        }
+      ],
+      "affectedRange": "< 0.7.0",
+      "fixedVersion": "0.7.0"
+    }
+  ]
+}

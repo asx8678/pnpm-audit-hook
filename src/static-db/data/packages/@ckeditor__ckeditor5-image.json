@@ -1,0 +1,27 @@
+{
+  "name": "@ckeditor/ckeditor5-image",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3rh3-wfr4-76mj",
+      "title": "Regular expression Denial of Service in multiple packages",
+      "description": "\n### Impact\nA regular expression denial of service (ReDoS) vulnerability has been discovered in multiple CKEditor 5 packages. The vulnerability allowed to abuse particular regular expressions, which could cause a significant performance drop resulting in a browser tab freeze. It affects all users using the CKEditor 5 packages listed above at version <= 26.0.0.\n\n### Patches\nThe problem has been recognized and patched. The fix will be available in version 27.0.0.\n\n### For more information\nEmail us",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3rh3-wfr4-76mj",
+      "publishedAt": "2021-04-06T17:28:41Z",
+      "modifiedAt": "2023-02-01T05:05:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3rh3-wfr4-76mj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-21391"
+        }
+      ],
+      "affectedRange": "<= 26.0.0",
+      "fixedVersion": "27.0.0"
+    }
+  ]
+}

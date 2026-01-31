@@ -1,0 +1,27 @@
+{
+  "name": "org.webjars.npm:json-pointer",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-282f-qqgm-c34q",
+      "title": "Prototype Pollution in node-jsonpointer",
+      "description": "This affects the package `jsonpointer` before `5.0.0`. A type confusion vulnerability can lead to a bypass of a previous Prototype Pollution fix when the pointer components are arrays.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-282f-qqgm-c34q",
+      "publishedAt": "2021-11-08T17:44:45Z",
+      "modifiedAt": "2025-03-05T19:06:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-282f-qqgm-c34q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23807"
+        }
+      ],
+      "affectedRange": "< 5.0.0",
+      "fixedVersion": "5.0.0"
+    }
+  ]
+}

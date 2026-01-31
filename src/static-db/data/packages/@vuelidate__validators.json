@@ -1,0 +1,27 @@
+{
+  "name": "@vuelidate/validators",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vvf2-ppj9-pp49",
+      "title": "Inefficient Regular Expression Complexity in vuelidate",
+      "description": "vuelidate is a simple, lightweight model-based validation for Vue.js 2.x & 3.0. A ReDoS (regular expression denial of service) flaw was found in the `@vuelidate/validators` package. An attacker that is able to provide crafted input to the url(input) function may cause an application to consume an excessive amount of CPU.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vvf2-ppj9-pp49",
+      "publishedAt": "2021-09-20T20:42:06Z",
+      "modifiedAt": "2023-01-30T05:02:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vvf2-ppj9-pp49"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3794"
+        }
+      ],
+      "affectedRange": "<= 2.0.0-alpha.21",
+      "fixedVersion": "2.0.0-alpha.22"
+    }
+  ]
+}

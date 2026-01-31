@@ -1,0 +1,111 @@
+{
+  "name": "react-server-dom-webpack",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-83fc-fqcc-2hmg",
+      "title": "React Server Components have multiple Denial of Service Vulnerabilities",
+      "description": "## Impact\n\nIt was found that the fixes to address DoS in React Server Components were incomplete and we found multiple denial of service vulnerabilities still exist in React Server Components.\n\nWe recommend updating immediately.\n\nThe vulnerability exists in versions 19.0.0, 19.0.1, 19.0.2, 19.0.3, 19.1.0, 19.1.1, 19.1.2, 19.1.3, 19.1.4, 19.2.0, 19.2.1, 19.2.2, 19.2.3 of:\n\n- [react-server-dom-webpack](https://www.npmjs.com/package/react-server-dom-webpack)  \n- [react-server-dom-parcel](https://ww",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-83fc-fqcc-2hmg",
+      "publishedAt": "2026-01-29T15:00:30Z",
+      "modifiedAt": "2026-01-29T15:00:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-83fc-fqcc-2hmg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23864"
+        }
+      ],
+      "affectedRange": ">= 19.0.0, < 19.0.4",
+      "fixedVersion": "19.0.4"
+    },
+    {
+      "id": "GHSA-7gmr-mq3h-m5h9",
+      "title": "Denial of Service Vulnerability in React Server Components",
+      "description": "## Impact\n\nIt was found that the fix to address [CVE-2025-55184](https://github.com/facebook/react/security/advisories/GHSA-2m3v-v2m8-q956) in React Server Components was incomplete and does not prevent a denial of service attack in a specific case.\n\nWe recommend updating immediately.\n\nThe vulnerability exists in versions 19.0.2, 19.1.3, and 19.2.2 of:\n\n- [react-server-dom-webpack](https://www.npmjs.com/package/react-server-dom-webpack)\n- [react-server-dom-parcel](https://www.npmjs.com/package/r",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7gmr-mq3h-m5h9",
+      "publishedAt": "2025-12-12T16:32:43Z",
+      "modifiedAt": "2025-12-12T16:32:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7gmr-mq3h-m5h9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-67779"
+        }
+      ],
+      "affectedRange": ">= 19.2.2, < 19.2.3",
+      "fixedVersion": "19.2.3"
+    },
+    {
+      "id": "GHSA-2m3v-v2m8-q956",
+      "title": "Denial of Service Vulnerability in React Server Components",
+      "description": "## Impact\n\nThere is a denial of service vulnerability in React Server Components.\n\nReact recommends updating immediately.\n\nThe vulnerability exists in versions 19.0.0, 19.0.1 19.1.0, 19.1.1, 19.1.2, 19.2.0 and 19.2.1 of:\n\n- [react-server-dom-webpack](https://www.npmjs.com/package/react-server-dom-webpack)\n- [react-server-dom-parcel](https://www.npmjs.com/package/react-server-dom-parcel)\n- [react-server-dom-turbopack](https://www.npmjs.com/package/react-server-dom-turbopack?activeTab=readme)\n\nThe",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2m3v-v2m8-q956",
+      "publishedAt": "2025-12-11T22:36:44Z",
+      "modifiedAt": "2025-12-11T22:36:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2m3v-v2m8-q956"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-55184"
+        }
+      ],
+      "affectedRange": ">= 19.2.0, < 19.2.2",
+      "fixedVersion": "19.2.2"
+    },
+    {
+      "id": "GHSA-925w-6v3x-g4j4",
+      "title": "Source Code Exposure Vulnerability in React Server Components",
+      "description": "## Impact\n\nThere is a source code exposure vulnerability in React Server Components.\n\nReact recommends updating immediately.\n\nThe vulnerability exists in versions 19.0.0, 19.0.1 19.1.0, 19.1.1, 19.1.2, 19.2.0 and 19.2.1 of:\n\n- [react-server-dom-webpack](https://www.npmjs.com/package/react-server-dom-webpack)\n- [react-server-dom-parcel](https://www.npmjs.com/package/react-server-dom-parcel)\n- [react-server-dom-turbopack](https://www.npmjs.com/package/react-server-dom-turbopack?activeTab=readme)\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-925w-6v3x-g4j4",
+      "publishedAt": "2025-12-11T22:36:08Z",
+      "modifiedAt": "2025-12-11T22:36:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-925w-6v3x-g4j4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-55183"
+        }
+      ],
+      "affectedRange": ">= 19.2.0, < 19.2.2",
+      "fixedVersion": "19.2.2"
+    },
+    {
+      "id": "GHSA-fv66-9v8q-g76r",
+      "title": "React Server Components are Vulnerable to RCE",
+      "description": "### Impact\n\nThere is an unauthenticated remote code execution vulnerability in React Server Components.\n\nWe recommend upgrading immediately.\n\nThe vulnerability is present in versions 19.0.0, 19.1.0, 19.1.1, and 19.2.0 of:\n* [react-server-dom-webpack](https://www.npmjs.com/package/react-server-dom-webpack)\n* [react-server-dom-parcel](https://www.npmjs.com/package/react-server-dom-parcel)\n* [react-server-dom-turbopack](https://www.npmjs.com/package/react-server-dom-turbopack?activeTab=readme)\n\n###",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fv66-9v8q-g76r",
+      "publishedAt": "2025-12-03T19:07:39Z",
+      "modifiedAt": "2025-12-09T16:53:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fv66-9v8q-g76r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-55182"
+        }
+      ],
+      "affectedRange": "= 19.0.0",
+      "fixedVersion": "19.0.1"
+    }
+  ]
+}

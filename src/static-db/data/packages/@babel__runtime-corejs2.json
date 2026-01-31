@@ -1,0 +1,27 @@
+{
+  "name": "@babel/runtime-corejs2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-968p-4wvh-cqc8",
+      "title": "Babel has inefficient RegExp complexity in generated code with .replace when transpiling named capturing groups",
+      "description": "### Impact\n\nWhen using Babel to compile [regular expression named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group), Babel will generate a polyfill for the `.replace` method that has quadratic complexity on some specific replacement pattern strings (i.e. the second argument passed to `.replace`).\n\nYour generated code is vulnerable if _all_ the following conditions are true:\n- You use Babel to compile [regular expression",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-968p-4wvh-cqc8",
+      "publishedAt": "2025-03-11T20:30:18Z",
+      "modifiedAt": "2025-04-16T15:39:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-968p-4wvh-cqc8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-27789"
+        }
+      ],
+      "affectedRange": ">= 8.0.0-alpha.0, < 8.0.0-alpha.16",
+      "fixedVersion": "8.0.0-alpha.17"
+    }
+  ]
+}

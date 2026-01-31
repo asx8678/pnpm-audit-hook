@@ -1,0 +1,27 @@
+{
+  "name": "node-code-sandbox-mcp",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5w57-2ccq-8w95",
+      "title": "Node.js Sandbox MCP Server vulnerability can lead to Sandbox Escape via Command Injection",
+      "description": "### Summary\n\nA command injection vulnerability exists in the `node-code-sandbox-mcp` MCP Server. The vulnerability is caused by the unsanitized use of input parameters within a call to `child_process.execSync`, enabling an attacker to inject arbitrary system commands. Successful exploitation can lead to remote code execution under the server process's privileges on the host machine, bypassing the sandbox protection of running code inside docker.\n\nThe server constructs and executes shell commands",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5w57-2ccq-8w95",
+      "publishedAt": "2025-07-08T16:27:18Z",
+      "modifiedAt": "2025-07-08T16:27:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5w57-2ccq-8w95"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-53372"
+        }
+      ],
+      "affectedRange": "<= 1.2.0",
+      "fixedVersion": "1.3.0"
+    }
+  ]
+}

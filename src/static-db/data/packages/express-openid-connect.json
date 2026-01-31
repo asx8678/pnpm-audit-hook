@@ -1,0 +1,48 @@
+{
+  "name": "express-openid-connect",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7rg2-qxmf-hhx9",
+      "title": "Session fixation in express-openid-connect",
+      "description": "### Overview\n\nVersions `2.3.0` up to and including `2.5.1` do not regenerate the session id and session cookie when user logs in.  This behavior opens up the application to various session fixation vulnerabilities.\n\n### Am I affected?\nYou are affected by this vulnerability if you are using `express-openid-connect` version `2.3.0` up to and including `2.5.1` and use a custom session store.\n\n\n### How to fix that?\nUpgrade to version `>= 2.5.2`.\n\n### Will this update impact my users?\nThe fix provide",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7rg2-qxmf-hhx9",
+      "publishedAt": "2021-12-09T19:08:58Z",
+      "modifiedAt": "2023-02-01T05:06:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7rg2-qxmf-hhx9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-41246"
+        }
+      ],
+      "affectedRange": ">= 2.3.0, < 2.5.2",
+      "fixedVersion": "2.5.2"
+    },
+    {
+      "id": "GHSA-7p99-3798-f85c",
+      "title": "URL Redirection to Untrusted Site ('Open Redirect') in express-openid-connect",
+      "description": "### Impact\nUsers of the `requiresAuth` middleware, either directly or through the default `authRequired` option, are vulnerable to an Open Redirect when the middleware is applied to a catch all route.\n\nIf all routes under `example.com` are protected with the `requiresAuth` middleware, a visit to `http://example.com//google.com` will be redirected to `google.com` after login because the original url reported by the Express framework is not properly sanitised.\n\n### Am I affected?\nYou are affected ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7p99-3798-f85c",
+      "publishedAt": "2022-03-31T22:44:47Z",
+      "modifiedAt": "2023-01-27T05:01:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7p99-3798-f85c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24794"
+        }
+      ],
+      "affectedRange": "< 2.7.2",
+      "fixedVersion": "2.7.2"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "name": "ses",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h9w6-f932-gq62",
+      "title": "ses's global contour bindings leak into Compartment lexical scope",
+      "description": "### Impact\n\nWeb pages and web extensions using `ses` and the `Compartment` API to evaluate third-party code in an isolated execution environment that have also elsewhere used `const`, `let`, and `class` bindings in the top-level scope of a `<script>` tag will have inadvertently revealed these bindings in the lexical scope of third-party code.\n\n### Patches\n\nThis compromise is addressed in `ses` version `1.12.0`. The mechanism for confining third-party code involves a `with` block and a semi-opaqu",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h9w6-f932-gq62",
+      "publishedAt": "2025-04-18T15:10:05Z",
+      "modifiedAt": "2025-04-22T01:49:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h9w6-f932-gq62"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-32792"
+        }
+      ],
+      "affectedRange": "< 1.12.0",
+      "fixedVersion": "1.12.0"
+    },
+    {
+      "id": "GHSA-9c4h-3f7h-322r",
+      "title": "SES's dynamic import and spread operator provides possible path to arbitrary exfiltration and execution",
+      "description": "### Impact\n\nThis is a hole in the confinement of guest applications under SES that may manifest as either the ability to exfiltrate information or execute arbitrary code depending on the configuration and implementation of the surrounding host.\n\nGuest program running inside a Compartment with as few as no endowments can gain access to the surrounding host’s dynamic import by using dynamic import after the spread operator, like `{...import(arbitraryModuleSpecifier)}`.\n\nOn the web or in web extens",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9c4h-3f7h-322r",
+      "publishedAt": "2023-08-09T14:43:20Z",
+      "modifiedAt": "2023-11-11T05:02:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9c4h-3f7h-322r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-39532"
+        }
+      ],
+      "affectedRange": ">= 0.18.0, < 0.18.7",
+      "fixedVersion": "0.18.7"
+    },
+    {
+      "id": "GHSA-whpx-q3rq-w8jc",
+      "title": "Hardening of TypedArrays with non-canonical numeric property names in SES",
+      "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\n\nIn Hardened JavaScript, programs can `harden` objects to safely share objects with co-tenant programs without risk of these other programs tampering with their API surface. Hardening does not guarantee that objects are pure or immutable, so a hardened `Map`, for example is superficially tamper-proof, but any party holding a reference to the object can both read and write its contents. Based on this precedent, and because `TypedArra",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-whpx-q3rq-w8jc",
+      "publishedAt": "2022-10-20T18:38:35Z",
+      "modifiedAt": "2023-01-09T05:07:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-whpx-q3rq-w8jc"
+        }
+      ],
+      "affectedRange": "< 0.16.0",
+      "fixedVersion": "0.16.0"
+    }
+  ]
+}

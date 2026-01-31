@@ -1,0 +1,26 @@
+{
+  "name": "deeps",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rgfv-v3jh-7ffp",
+      "title": "Prototype Pollution in deeps",
+      "description": "All versions of package deeps up to and including version 1.4.5 are vulnerable to Prototype Pollution via the set function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-rgfv-v3jh-7ffp",
+      "publishedAt": "2021-05-06T18:11:52Z",
+      "modifiedAt": "2023-02-01T05:05:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rgfv-v3jh-7ffp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7716"
+        }
+      ],
+      "affectedRange": "<= 1.4.5"
+    }
+  ]
+}

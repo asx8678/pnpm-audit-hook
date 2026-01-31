@@ -1,0 +1,48 @@
+{
+  "name": "object-path",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8v63-cqqc-6r2c",
+      "title": "Prototype Pollution in object-path",
+      "description": "object-path is vulnerable to Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution'). The `del()` function fails to validate which Object properties it deletes. This allows attackers to modify the prototype of Object, causing the modification of default properties like `toString` on all objects.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8v63-cqqc-6r2c",
+      "publishedAt": "2021-09-20T20:46:43Z",
+      "modifiedAt": "2023-11-29T22:12:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8v63-cqqc-6r2c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3805"
+        }
+      ],
+      "affectedRange": "< 0.11.8",
+      "fixedVersion": "0.11.8"
+    },
+    {
+      "id": "GHSA-v39p-96qg-c8rf",
+      "title": "Prototype Pollution in object-path",
+      "description": "This affects the package object-path before 0.11.6. A type confusion vulnerability can lead to a bypass of CVE-2020-15256 when the path components used in the path parameter are arrays. In particular, the condition `currentPath === '__proto__'` returns false if `currentPath` is `['__proto__']`. This is because the `===` operator returns always false when the type of the operands is different.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v39p-96qg-c8rf",
+      "publishedAt": "2021-09-01T18:37:11Z",
+      "modifiedAt": "2023-09-08T21:25:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v39p-96qg-c8rf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23434"
+        }
+      ],
+      "affectedRange": "< 0.11.6",
+      "fixedVersion": "0.11.6"
+    }
+  ]
+}

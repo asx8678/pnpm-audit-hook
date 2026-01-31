@@ -1,0 +1,27 @@
+{
+  "name": "irrelon-path",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j7cg-h9v9-6vqp",
+      "title": "Prototype Pollution in irrelon-path and @irrelon/path",
+      "description": "The package irrelon-path before 4.7.0; the package @irrelon/path before 4.7.0 are vulnerable to Prototype Pollution via the set, unSet, pushVal and pullVal functions.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-j7cg-h9v9-6vqp",
+      "publishedAt": "2021-05-06T17:29:19Z",
+      "modifiedAt": "2023-09-07T22:07:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j7cg-h9v9-6vqp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7708"
+        }
+      ],
+      "affectedRange": "< 4.7.0",
+      "fixedVersion": "4.7.0"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "phantomjs-seo",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j9pj-hx76-92v6",
+      "title": "Server-Side Request Forgery in phantomjs-seo",
+      "description": "This affects all versions of package phantomjs-seo. It is possible for an attacker to craft a url that will be passed to a PhantomJS instance allowing for an SSRF attack.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j9pj-hx76-92v6",
+      "publishedAt": "2021-05-10T18:38:21Z",
+      "modifiedAt": "2023-02-01T05:05:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j9pj-hx76-92v6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7739"
+        }
+      ],
+      "affectedRange": "<= 1.0.0"
+    }
+  ]
+}

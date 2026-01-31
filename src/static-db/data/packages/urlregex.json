@@ -1,0 +1,27 @@
+{
+  "name": "urlregex",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rw72-v6c7-hf9r",
+      "title": "ReDoS in urlregex",
+      "description": "A vulnerability was found in nescalante urlregex up to 0.5.0 and classified as problematic. This issue affects some unknown processing of the file index.js of the component Backtracking. The manipulation leads to inefficient regular expression complexity. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. Upgrading to version 0.5.1 is able to address this issue. The identifier of the patch is e5a085afe6abfaea1d1a78f54c45af9ef43ca1f9. It is recomme",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rw72-v6c7-hf9r",
+      "publishedAt": "2024-09-02T18:31:24Z",
+      "modifiedAt": "2024-09-03T21:03:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rw72-v6c7-hf9r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-36830"
+        }
+      ],
+      "affectedRange": "< 0.5.1",
+      "fixedVersion": "0.5.1"
+    }
+  ]
+}

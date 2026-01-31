@@ -1,0 +1,48 @@
+{
+  "name": "@modelcontextprotocol/server-filesystem",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hc55-p739-j48w",
+      "title": "@modelcontextprotocol/server-filesystem vulnerability allows for path validation bypass via colliding path prefix",
+      "description": "Versions of Filesystem prior to 0.6.3 & 2025.7.1 could allow access to unintended files in cases where the prefix matches an allowed directory. Users are advised to upgrade to 2025.7.1 to resolve the issue.\n\nThank you to Elad Beber (Cymulate) for reporting these issues.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hc55-p739-j48w",
+      "publishedAt": "2025-07-01T20:14:00Z",
+      "modifiedAt": "2025-07-02T18:57:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hc55-p739-j48w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-53110"
+        }
+      ],
+      "affectedRange": ">= 2025.1.14, < 2025.7.1",
+      "fixedVersion": "2025.7.1"
+    },
+    {
+      "id": "GHSA-q66q-fx2p-7w4m",
+      "title": "@modelcontextprotocol/server-filesystem allows for path validation bypass via prefix matching and symlink handling",
+      "description": "Versions of Filesystem prior to 0.6.3 & 2025.7.1 could allow access to unintended files via symlinks within allowed directories. Users are advised to upgrade to 2025.7.1 to resolve.\n\nThank you to Elad Beber (Cymulate) for reporting these issues.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q66q-fx2p-7w4m",
+      "publishedAt": "2025-07-01T20:13:56Z",
+      "modifiedAt": "2025-07-02T18:56:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q66q-fx2p-7w4m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-53109"
+        }
+      ],
+      "affectedRange": ">= 2025.1.14, < 2025.7.1",
+      "fixedVersion": "2025.7.1"
+    }
+  ]
+}

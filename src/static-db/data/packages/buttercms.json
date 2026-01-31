@@ -1,0 +1,26 @@
+{
+  "name": "buttercms",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3v5x-qjrp-q2hq",
+      "title": "Unrestricted Upload of File with Dangerous Type in ButterCMS",
+      "description": "An arbitrary file upload vulnerability in the file upload component of ButterCMS v1.2.8 allows attackers to execute arbitrary code via a crafted SVG file.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3v5x-qjrp-q2hq",
+      "publishedAt": "2022-04-13T00:00:24Z",
+      "modifiedAt": "2023-01-27T05:01:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3v5x-qjrp-q2hq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-27260"
+        }
+      ],
+      "affectedRange": "<= 1.2.8"
+    }
+  ]
+}

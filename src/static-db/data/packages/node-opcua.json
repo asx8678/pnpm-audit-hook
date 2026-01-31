@@ -1,0 +1,69 @@
+{
+  "name": "node-opcua",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vh4f-fgpp-x8x2",
+      "title": "node-opcua DoS when bypassing limitations for excessive memory consumption",
+      "description": "The package node-opcua before 2.74.0 are vulnerable to Denial of Service (DoS) when bypassing the limitations for excessive memory consumption by sending multiple `CloseSession` requests with the `deleteSubscription` parameter equal to `False`.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vh4f-fgpp-x8x2",
+      "publishedAt": "2022-08-25T00:00:29Z",
+      "modifiedAt": "2023-01-30T05:01:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vh4f-fgpp-x8x2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24375"
+        }
+      ],
+      "affectedRange": "< 2.74.0",
+      "fixedVersion": "2.74.0"
+    },
+    {
+      "id": "GHSA-qpgc-xh7j-52q8",
+      "title": "node-opcua DoS vulnerability via message with memory allocation that exceeds v8's memory limit",
+      "description": "The package node-opcua before 2.74.0 are vulnerable to Denial of Service (DoS) by sending a specifically crafted OPC UA message with a special OPC UA NodeID, when the requested memory allocation exceeds the v8’s memory limit.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qpgc-xh7j-52q8",
+      "publishedAt": "2022-08-24T00:00:31Z",
+      "modifiedAt": "2023-01-30T05:01:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qpgc-xh7j-52q8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25231"
+        }
+      ],
+      "affectedRange": "< 2.74.0",
+      "fixedVersion": "2.74.0"
+    },
+    {
+      "id": "GHSA-4hr4-pjjh-2q2w",
+      "title": "Uncontrolled Resource Consumption in node-opcua",
+      "description": "The package node-opcua before 2.74.0 are vulnerable to Denial of Service (DoS) due to a missing limitation on the number of received chunks - per single session or in total for all concurrent sessions. An attacker can exploit this vulnerability by sending an unlimited number of huge chunks (e.g. 2GB each) without sending the Final closing chunk.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4hr4-pjjh-2q2w",
+      "publishedAt": "2022-08-24T00:00:31Z",
+      "modifiedAt": "2023-01-28T05:01:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4hr4-pjjh-2q2w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21208"
+        }
+      ],
+      "affectedRange": "< 2.74.0",
+      "fixedVersion": "2.74.0"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "thenify",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-29xr-v42j-r956",
+      "title": "thenify before 3.3.1 made use of unsafe calls to `eval`.",
+      "description": "Versions of thenify prior to 3.3.1 made use of unsafe calls to `eval`. Untrusted user input could thus lead to arbitrary code execution on the host. The patch in version 3.3.1 removes calls to `eval`.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-29xr-v42j-r956",
+      "publishedAt": "2022-07-18T19:15:29Z",
+      "modifiedAt": "2023-01-23T18:54:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-29xr-v42j-r956"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7677"
+        }
+      ],
+      "affectedRange": "< 3.3.1",
+      "fixedVersion": "3.3.1"
+    }
+  ]
+}

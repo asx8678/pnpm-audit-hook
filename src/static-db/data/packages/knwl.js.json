@@ -1,0 +1,26 @@
+{
+  "name": "knwl.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-68qg-g787-3rp5",
+      "title": "Knwl.js Regular Expression Denial of Service vulnerability",
+      "description": "Knwl.js is a Javascript library that parses through text for dates, times, phone numbers, emails, places, and more. Versions 1.0.2 and prior contain one or more regular expressions that are vulnerable to Regular Expression Denial of Service (ReDoS). As of time of publication, no known patches are available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-68qg-g787-3rp5",
+      "publishedAt": "2024-10-26T21:30:46Z",
+      "modifiedAt": "2024-10-28T14:50:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-68qg-g787-3rp5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26306"
+        }
+      ],
+      "affectedRange": "<= 1.0.2"
+    }
+  ]
+}

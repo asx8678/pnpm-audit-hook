@@ -1,0 +1,90 @@
+{
+  "name": "engine.io",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j4f2-536g-r55m",
+      "title": "Resource exhaustion in engine.io",
+      "description": "Engine.IO before 4.0.0 and 3.6.0 allows attackers to cause a denial of service (resource consumption) via a POST request to the long polling transport.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j4f2-536g-r55m",
+      "publishedAt": "2022-02-09T22:29:04Z",
+      "modifiedAt": "2025-05-29T23:06:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j4f2-536g-r55m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-36048"
+        }
+      ],
+      "affectedRange": "< 3.6.0",
+      "fixedVersion": "3.6.0"
+    },
+    {
+      "id": "GHSA-q9mw-68c2-j6m5",
+      "title": "engine.io Uncaught Exception vulnerability",
+      "description": "### Impact\n\nA specially crafted HTTP request can trigger an uncaught exception on the Engine.IO server, thus killing the Node.js process.\n\n```\nTypeError: Cannot read properties of undefined (reading 'handlesUpgrades')\n    at Server.onWebSocket (build/server.js:515:67)\n```\n\nThis impacts all the users of the [`engine.io`](https://www.npmjs.com/package/engine.io) package, including those who uses depending packages like [`socket.io`](https://www.npmjs.com/package/socket.io).\n\n### Patches\n\nA fix has",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q9mw-68c2-j6m5",
+      "publishedAt": "2023-05-03T21:56:51Z",
+      "modifiedAt": "2025-02-13T18:54:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q9mw-68c2-j6m5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-31125"
+        }
+      ],
+      "affectedRange": ">= 5.1.0, < 6.4.2",
+      "fixedVersion": "6.4.2"
+    },
+    {
+      "id": "GHSA-273r-mgr4-v34f",
+      "title": "Uncaught Exception in engine.io",
+      "description": "### Impact\n\nA specially crafted HTTP request can trigger an uncaught exception on the Engine.IO server, thus killing the Node.js process.\n\n> RangeError: Invalid WebSocket frame: RSV2 and RSV3 must be clear\n>   at Receiver.getInfo (/.../node_modules/ws/lib/receiver.js:176:14)\n>   at Receiver.startLoop (/.../node_modules/ws/lib/receiver.js:136:22)\n>   at Receiver._write (/.../node_modules/ws/lib/receiver.js:83:10)\n>   at writeOrBuffer (internal/streams/writable.js:358:12)\n\nThis impacts all the use",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-273r-mgr4-v34f",
+      "publishedAt": "2022-01-13T16:14:17Z",
+      "modifiedAt": "2023-06-27T22:26:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-273r-mgr4-v34f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21676"
+        }
+      ],
+      "affectedRange": ">= 6.0.0, < 6.1.1",
+      "fixedVersion": "6.1.1"
+    },
+    {
+      "id": "GHSA-r7qp-cfhv-p84w",
+      "title": "Uncaught exception in engine.io",
+      "description": "### Impact\n\nA specially crafted HTTP request can trigger an uncaught exception on the Engine.IO server, thus killing the Node.js process.\n\n```\nevents.js:292\n      throw er; // Unhandled 'error' event\n      ^\n\nError: read ECONNRESET\n    at TCP.onStreamRead (internal/stream_base_commons.js:209:20)\nEmitted 'error' event on Socket instance at:\n    at emitErrorNT (internal/streams/destroy.js:106:8)\n    at emitErrorCloseNT (internal/streams/destroy.js:74:3)\n    at processTicksAndRejections (internal/p",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-r7qp-cfhv-p84w",
+      "publishedAt": "2022-11-21T23:55:41Z",
+      "modifiedAt": "2023-02-01T05:03:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r7qp-cfhv-p84w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-41940"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 6.2.1",
+      "fixedVersion": "6.2.1"
+    }
+  ]
+}

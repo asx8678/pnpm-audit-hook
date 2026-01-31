@@ -1,0 +1,111 @@
+{
+  "name": "nuxt",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p6jq-8vc4-79f6",
+      "title": "Nuxt has Client-Side Path Traversal in Nuxt Island Payload Revival",
+      "description": "### Summary\n\nA client-side path traversal vulnerability in Nuxt's Island payload revival mechanism allowed attackers to manipulate client-side requests to different endpoints within the same application domain when specific prerendering conditions are met.\n\n### Technical Details\n\nThe vulnerability occurs in the client-side payload revival process (revive-payload.client.ts) where Nuxt Islands are automatically fetched when encountering serialized `__nuxt_island` objects. The issue affects the fol",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-p6jq-8vc4-79f6",
+      "publishedAt": "2025-09-17T20:42:28Z",
+      "modifiedAt": "2025-09-18T13:04:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p6jq-8vc4-79f6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59414"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 4.1.0",
+      "fixedVersion": "4.1.0"
+    },
+    {
+      "id": "GHSA-vf6r-87q4-2vjf",
+      "title": "nuxt vulnerable to Cross-site Scripting in navigateTo if used after SSR",
+      "description": "### Summary\nThe `navigateTo` function attempts to blockthe `javascript:` protocol, but does not correctly use API's provided by `unjs/ufo`. This library also contains parsing discrepancies.\n\n### Details\nThe function first tests to see if the specified [URL has a protocol](https://github.com/nuxt/nuxt/blob/fa9d43753d25fc2e8c3107f194b2bab6d4ebcb9a/packages/nuxt/src/app/composables/router.ts#L142). This uses the [unjs/ufo](https://github.com/unjs/ufo) package for URL parsing. This function works ef",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vf6r-87q4-2vjf",
+      "publishedAt": "2024-08-05T19:49:22Z",
+      "modifiedAt": "2025-05-15T21:26:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vf6r-87q4-2vjf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-34343"
+        }
+      ],
+      "affectedRange": "< 3.12.4",
+      "fixedVersion": "3.12.4"
+    },
+    {
+      "id": "GHSA-jvhm-gjrh-3h93",
+      "title": "Nuxt allows DOS via cache poisoning with payload rendering response",
+      "description": "### Summary\n\nBy sending a crafted HTTP request to a server behind an CDN, it is possible in some circumstances to poison the CDN cache and highly impacts the availability of a site.\n\nIt is possible to craft a request, such as `https://mysite.com/?/_payload.json` which will be rendered as JSON. If the CDN in front of a Nuxt site ignores the query string when determining whether to cache a route, then this JSON response could be served to future visitors to the site.\n\n### Impact\n\nAn attacker can p",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jvhm-gjrh-3h93",
+      "publishedAt": "2025-03-19T19:54:25Z",
+      "modifiedAt": "2025-03-20T19:31:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jvhm-gjrh-3h93"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-27415"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.16.0",
+      "fixedVersion": "3.16.0"
+    },
+    {
+      "id": "GHSA-v784-fjjh-f8r4",
+      "title": "Nuxt vulnerable to remote code execution via the browser when running the test locally",
+      "description": "### Summary\nDue to the insufficient validation of the `path` parameter in the NuxtTestComponentWrapper, an attacker can execute arbitrary JavaScript on the server side, which allows them to execute arbitrary commands.\n\n### Details\nWhile running the test, a special component named `NuxtTestComponentWrapper` is available.\nhttps://github.com/nuxt/nuxt/blob/4779f5906fa4d3c784c2e2d6fe5a5c5f181faaec/packages/nuxt/src/app/components/nuxt-root.vue#L42-L43\n\nThis component loads the specified path as a co",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-v784-fjjh-f8r4",
+      "publishedAt": "2024-08-05T19:49:45Z",
+      "modifiedAt": "2024-11-18T16:27:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v784-fjjh-f8r4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-34344"
+        }
+      ],
+      "affectedRange": ">= 3.4.0, < 3.12.4",
+      "fixedVersion": "3.12.4"
+    },
+    {
+      "id": "GHSA-gc34-5v43-h7v8",
+      "title": "nuxt Code Injection vulnerability",
+      "description": "he Nuxt dev server between versions 3.4.0 and 3.4.3 is vulnerable to code injection when it is exposed publicly.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-gc34-5v43-h7v8",
+      "publishedAt": "2023-06-13T18:30:40Z",
+      "modifiedAt": "2024-11-18T16:26:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gc34-5v43-h7v8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-3224"
+        }
+      ],
+      "affectedRange": ">= 3.4.0, < 3.4.3",
+      "fixedVersion": "3.4.3"
+    }
+  ]
+}

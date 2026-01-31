@@ -1,0 +1,23 @@
+{
+  "name": "nats",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-prmc-5v5w-c465",
+      "title": "Client TLS credentials sent raw to server in npm package nats",
+      "description": "Nats is a Node.js client for the NATS messaging system.\n\n## Problem Description\n\n_Preview versions_ of two NPM packages and one Deno package from the NATS project contain an information disclosure flaw, leaking options to the NATS server; for one package, this includes TLS private credentials.\n\nThe _connection_ configuration options in these JavaScript-based implementations were fully serialized and sent to the server in the client's `CONNECT` message, immediately after TLS establishment.\n\nThe n",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-prmc-5v5w-c465",
+      "publishedAt": "2021-04-06T17:32:38Z",
+      "modifiedAt": "2023-01-09T05:04:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-prmc-5v5w-c465"
+        }
+      ],
+      "affectedRange": ">= 2.0.0-201, <= 2.0.0-208",
+      "fixedVersion": "2.0.0-209"
+    }
+  ]
+}

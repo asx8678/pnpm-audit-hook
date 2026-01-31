@@ -1,0 +1,26 @@
+{
+  "name": "insane",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w455-mfq9-hf74",
+      "title": "insane vulnerable to Regular Expression Denial of Service",
+      "description": "insane is a whitelist-oriented HTML sanitizer. Versions 2.6.2 and prior contain one or more regular expressions that are vulnerable to Regular Expression Denial of Service (ReDoS). As of time of publication, no known patches are available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w455-mfq9-hf74",
+      "publishedAt": "2024-10-26T21:30:46Z",
+      "modifiedAt": "2024-11-13T23:24:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w455-mfq9-hf74"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26303"
+        }
+      ],
+      "affectedRange": "<= 2.6.2"
+    }
+  ]
+}

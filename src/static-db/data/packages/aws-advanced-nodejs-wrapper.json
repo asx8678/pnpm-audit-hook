@@ -1,0 +1,23 @@
+{
+  "name": "aws-advanced-nodejs-wrapper",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8wj8-cfxr-9374",
+      "title": "AWS Advanced NodeJS Wrapper: Privilege Escalation in Aurora PostgreSQL instance",
+      "description": "### Description of Vulnerability: \nAn issue in AWS Wrappers for Amazon Aurora PostgreSQL may allow for privilege escalation to rds_superuser role. A low privilege authenticated user can create a crafted function that could be executed with permissions of other Amazon Relational Database Service (RDS) users.\n\nAWS recommends that customers upgrade to the following version:  AWS NodeJS Wrapper to v2.0.1.\n\n\n### Source of Vulnerability Report:\nAllistair Ishmael Hakim [allistair.hakim@gmail.com](mailt",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8wj8-cfxr-9374",
+      "publishedAt": "2025-11-13T22:22:37Z",
+      "modifiedAt": "2025-11-13T22:22:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8wj8-cfxr-9374"
+        }
+      ],
+      "affectedRange": "< 2.0.1",
+      "fixedVersion": "2.0.1"
+    }
+  ]
+}

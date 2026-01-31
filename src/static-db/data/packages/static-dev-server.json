@@ -1,0 +1,26 @@
+{
+  "name": "static-dev-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7fxm-c848-89q8",
+      "title": "static-dev-server vulnerable to path traversal",
+      "description": "A path traversal vulnerability affects all versions of package static-dev-server. This is because when paths from users to the root directory are joined, the assets for the path accessed are relative to that of the root directory. There is currently no known workaround or fix for this issue.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7fxm-c848-89q8",
+      "publishedAt": "2022-11-29T18:30:18Z",
+      "modifiedAt": "2023-01-27T05:06:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7fxm-c848-89q8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25848"
+        }
+      ],
+      "affectedRange": "= 1.0.0"
+    }
+  ]
+}

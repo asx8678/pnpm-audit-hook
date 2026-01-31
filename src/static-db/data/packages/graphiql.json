@@ -1,0 +1,27 @@
+{
+  "name": "graphiql",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x4r7-m2q9-69c8",
+      "title": "GraphiQL introspection schema template injection attack",
+      "description": "  - [1. Impact](#11-impact)\n  - [2. Scope](#12-scope)\n  - [3. Patches](#13-patches)\n    - [3.1 CDN bundle implementations may be automatically patched](#131-cdn-bundle-implementations-may-be-automatically-patched)\n  - [4. Workarounds for Older Versions](#14-workarounds-for-older-versions)\n  - [5. How to Re-create the Exploit](#15-how-to-re-create-the-exploit)\n  - [6. Credit](#16-credit)\n  - [7. References](#17-references)\n  - [8. For more information](#18-for-more-information)\n\nThis is a securit",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x4r7-m2q9-69c8",
+      "publishedAt": "2021-11-08T18:03:50Z",
+      "modifiedAt": "2023-02-01T05:06:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x4r7-m2q9-69c8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-41248"
+        }
+      ],
+      "affectedRange": ">= 0.5.0, < 1.4.7",
+      "fixedVersion": "1.4.7"
+    }
+  ]
+}

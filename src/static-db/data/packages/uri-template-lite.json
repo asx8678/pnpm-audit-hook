@@ -1,0 +1,27 @@
+{
+  "name": "uri-template-lite",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-chw2-6c7r-37p7",
+      "title": "uri-template-lite Regular Expression Denial of Service",
+      "description": "An exponential ReDoS (Regular Expression Denial of Service) can be triggered in the uri-template-lite npm package, when an attacker is able to supply arbitrary input to the \"URI.expand\" method.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-chw2-6c7r-37p7",
+      "publishedAt": "2022-08-25T00:00:27Z",
+      "modifiedAt": "2023-11-28T23:49:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-chw2-6c7r-37p7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-43309"
+        }
+      ],
+      "affectedRange": "< 22.9.0",
+      "fixedVersion": "22.9.0"
+    }
+  ]
+}

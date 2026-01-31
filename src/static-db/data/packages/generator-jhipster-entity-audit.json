@@ -1,0 +1,27 @@
+{
+  "name": "generator-jhipster-entity-audit",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7rmp-3g9f-cvq8",
+      "title": "generator-jhipster-entity-audit vulnerable to Unsafe Reflection when having Javers selected as Entity Audit Framework",
+      "description": "### Summary\nCWE-470 (Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection') when having Javers selected as Entity Audit Framework\n\n### Details\nIn the following two occurences, user input directly leads to class loading without checking against e.g. a whitelist of allowed classes. This is also known as CWE-470\nhttps://github.com/jhipster/generator-jhipster-entity-audit/blob/e21e83135d10c77d92203c89cb0b0063914e8fe0/generators/spring-boot-javers/templates/src/main/java/_",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7rmp-3g9f-cvq8",
+      "publishedAt": "2025-04-04T14:06:35Z",
+      "modifiedAt": "2025-04-04T14:06:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7rmp-3g9f-cvq8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-31119"
+        }
+      ],
+      "affectedRange": "< 5.9.1",
+      "fixedVersion": "5.9.1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@azure/ms-rest-nodeauth",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qpfw-4m9x-rxx8",
+      "title": "Improper Privilege Management in Azure ms-rest-nodeauth",
+      "description": "Azure ms-rest-nodeauth Library Elevation of Privilege Vulnerability",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qpfw-4m9x-rxx8",
+      "publishedAt": "2022-05-24T17:47:26Z",
+      "modifiedAt": "2024-01-02T14:13:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qpfw-4m9x-rxx8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-28458"
+        }
+      ],
+      "affectedRange": "<= 3.0.7",
+      "fixedVersion": "3.0.8"
+    }
+  ]
+}

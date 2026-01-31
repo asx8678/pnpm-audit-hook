@@ -1,0 +1,27 @@
+{
+  "name": "gatsby-plugin-sharp",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h2pm-378c-pcxx",
+      "title": "Path traversal vulnerability in gatsby-plugin-sharp",
+      "description": "### Impact\n\nThe gatsby-plugin-sharp plugin prior to versions 5.8.1 and 4.25.1 contains a path traversal vulnerability exposed when running the Gatsby develop server (`gatsby develop`).\n\nThe following steps can be used to reproduce the vulnerability:\n\n```\n# Create a new Gatsby project, and install gatsby-plugin-sharp\n$ npm init gatsby\n$ cd my-gatsby-site\n$ npm install gatsby-plugin-sharp\n\n\n# Add the plugin to gatsby-config.js\nmodule.exports = {\n  plugins: [\n    {\n      resolve: `gatsby-plugin-sha",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h2pm-378c-pcxx",
+      "publishedAt": "2023-04-20T19:05:34Z",
+      "modifiedAt": "2023-11-04T05:06:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h2pm-378c-pcxx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-30548"
+        }
+      ],
+      "affectedRange": "< 4.25.1",
+      "fixedVersion": "4.25.1"
+    }
+  ]
+}

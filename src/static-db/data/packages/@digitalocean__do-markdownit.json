@@ -1,0 +1,26 @@
+{
+  "name": "@digitalocean/do-markdownit",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2h8j-8r9p-849f",
+      "title": "@digitalocean/do-markdownit has Type Confusion vulnerability",
+      "description": "### Overview\nA type confusion issue exists in the `@digitalocean/do-markdownit` package. In the `callout` and `fence_environment` plugins, the `allowedClasses` and `allowedEnvironments` options are expected to be arrays of strings. If these options are provided as a single string, the code applies `.includes` directly on the string, resulting in substring matching instead of membership checks against an array.\n\n### Affected Versions\nAll versions up to and including 1.16.1 (npm).\n\n### Impact\nSupp",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2h8j-8r9p-849f",
+      "publishedAt": "2025-09-19T06:31:21Z",
+      "modifiedAt": "2025-09-22T22:55:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2h8j-8r9p-849f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59717"
+        }
+      ],
+      "affectedRange": "<= 1.16.1"
+    }
+  ]
+}

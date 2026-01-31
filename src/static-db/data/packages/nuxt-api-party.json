@@ -1,0 +1,48 @@
+{
+  "name": "nuxt-api-party",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q6hx-3m4p-749h",
+      "title": "DOS by abusing `fetchOptions.retry`. ",
+      "description": "### Summary\n`nuxt-api-party` allows developers to proxy requests to an API without exposing credentials to the client. [`ofetch`](https://github.com/unjs/ofetch) is used to send the requests. \n\nThe library allows the user to send many options directly to `ofetch`. There is no filter on which options are available. We can abuse the retry logic to cause the server to crash from a stack overflow.\n\n### Details\n`fetchOptions` [are obtained directly from the request body](https://github.com/johannscho",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q6hx-3m4p-749h",
+      "publishedAt": "2023-12-11T20:29:10Z",
+      "modifiedAt": "2023-12-13T18:58:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q6hx-3m4p-749h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-49800"
+        }
+      ],
+      "affectedRange": "< 0.22.1",
+      "fixedVersion": "0.22.1"
+    },
+    {
+      "id": "GHSA-3wfp-253j-5jxv",
+      "title": "SSRF & Credentials Leak ",
+      "description": "### Summary\n`nuxt-api-party` allows developers to proxy requests to an API without exposing credentials to the client. [A previous vulnerability](https://huntr.dev/bounties/4c57a3f6-0d0e-4431-9494-4a1e7b062fbf/) allowed an attacker to change the baseURL of the request, potentially leading to credentials being leaked or SSRF. \n\nThis vulnerability is similar, and was caused by a recent change to the detection of absolute URLs, which is no longer sufficient to prevent SSRF. \n\n### Details\n`nuxt-api-",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3wfp-253j-5jxv",
+      "publishedAt": "2023-12-12T00:49:44Z",
+      "modifiedAt": "2023-12-12T00:49:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3wfp-253j-5jxv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-49799"
+        }
+      ],
+      "affectedRange": "< 0.22.0",
+      "fixedVersion": "0.22.0"
+    }
+  ]
+}

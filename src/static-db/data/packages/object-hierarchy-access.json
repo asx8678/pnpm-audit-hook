@@ -1,0 +1,27 @@
+{
+  "name": "object-hierarchy-access",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fxwf-45c7-4ppr",
+      "title": "Prototype pollution in object-hierarchy-access",
+      "description": "Overview:Prototype pollution vulnerability in ‘object-hierarchy-access’ versions 0.2.0 through 0.32.0 allows attacker to cause a denial of service and may lead to remote code execution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fxwf-45c7-4ppr",
+      "publishedAt": "2021-10-12T16:40:58Z",
+      "modifiedAt": "2023-02-01T05:06:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fxwf-45c7-4ppr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28270"
+        }
+      ],
+      "affectedRange": ">= 0.2.0, < 0.33.0",
+      "fixedVersion": "0.33.0"
+    }
+  ]
+}

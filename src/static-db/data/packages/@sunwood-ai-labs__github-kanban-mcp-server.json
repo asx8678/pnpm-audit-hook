@@ -1,0 +1,26 @@
+{
+  "name": "@sunwood-ai-labs/github-kanban-mcp-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6jx8-rcjx-vmwf",
+      "title": "GitHub Kanban MCP Server vulnerable to Command Injection",
+      "description": "The MCP Server at https://github.com/Sunwood-ai-labs/github-kanban-mcp-server/ is written in a way that is vulnerable to command injection vulnerability attacks as part of some of its MCP Server tool definition and implementation.\n\n## Vulnerable tool\n\nThe MCP Server exposes the tool `add_comment` which relies on Node.js child process API `exec` to execute the GitHub (`gh`) command, is an unsafe and vulnerable API if concatenated with untrusted user input.\n\nData flows from the tool definition [he",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6jx8-rcjx-vmwf",
+      "publishedAt": "2025-07-15T17:06:32Z",
+      "modifiedAt": "2025-07-15T17:06:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6jx8-rcjx-vmwf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-53818"
+        }
+      ],
+      "affectedRange": "<= 0.3.0"
+    }
+  ]
+}

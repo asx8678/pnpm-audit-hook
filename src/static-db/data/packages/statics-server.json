@@ -1,0 +1,26 @@
+{
+  "name": "statics-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-393x-fr59-r8fg",
+      "title": "statics-server Cross-site Scripting vulnerability",
+      "description": "An XSS in statics-server <= 0.0.9 can be used via injected iframe in the filename when statics-server displays directory index in the browser. Statics-server does not implement any HTML escaping when displays directory index in the browser. Variable `v` is used in `<a href>` element without escaping, which allows to embed HTML `<iframe>` tag with `src` attribute points to another HTML file in the directory. This file can contain malicious JavaScript code, which will be executed:\n\n```js\n// ./node",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-393x-fr59-r8fg",
+      "publishedAt": "2022-05-13T01:32:20Z",
+      "modifiedAt": "2024-05-02T05:04:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-393x-fr59-r8fg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3771"
+        }
+      ],
+      "affectedRange": "<= 0.0.9"
+    }
+  ]
+}

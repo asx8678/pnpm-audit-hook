@@ -1,0 +1,26 @@
+{
+  "name": "node-email-check",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9242-6p36-6256",
+      "title": "Inefficient Regular Expression Complexity in node-email-check",
+      "description": "ReDos in NPMJS Node Email Check v.1.0.4 allows an attacker to cause a denial of service via a crafted string to the scpSyntax component.\n\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9242-6p36-6256",
+      "publishedAt": "2023-10-25T18:32:22Z",
+      "modifiedAt": "2023-11-08T05:04:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9242-6p36-6256"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-39619"
+        }
+      ],
+      "affectedRange": "<= 1.0.4"
+    }
+  ]
+}

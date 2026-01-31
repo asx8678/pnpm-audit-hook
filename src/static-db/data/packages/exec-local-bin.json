@@ -1,0 +1,27 @@
+{
+  "name": "exec-local-bin",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f259-h6m8-hm8m",
+      "title": "exec-local-bin vulnerable to Command Injection",
+      "description": "Versions of the package exec-local-bin before 1.2.0 are vulnerable to Command Injection via the `theProcess()` functionality due to improper user-input sanitization.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-f259-h6m8-hm8m",
+      "publishedAt": "2023-01-06T06:30:25Z",
+      "modifiedAt": "2025-04-10T22:56:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f259-h6m8-hm8m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25923"
+        }
+      ],
+      "affectedRange": "< 1.2.0",
+      "fixedVersion": "1.2.0"
+    }
+  ]
+}

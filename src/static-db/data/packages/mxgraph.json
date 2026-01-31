@@ -1,0 +1,68 @@
+{
+  "name": "mxgraph",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wvpv-8524-wg6x",
+      "title": "mxGraph vulnerable to XXE attacks",
+      "description": "In `mxGraphViewImageReader.java` in mxGraph before 3.7.6, the `SAXParserFactory` instance in `convert()` is missing flags to prevent XML External Entity (XXE) attacks, as demonstrated by `/ServerView`.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wvpv-8524-wg6x",
+      "publishedAt": "2022-05-14T03:38:59Z",
+      "modifiedAt": "2023-10-19T19:08:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wvpv-8524-wg6x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-18197"
+        }
+      ],
+      "affectedRange": "< 3.7.6",
+      "fixedVersion": "3.7.6"
+    },
+    {
+      "id": "GHSA-j4rv-pr9g-q8jv",
+      "title": "mxGraph vulnerable to cross-site scripting in setTooltips function",
+      "description": "mxGraph v4.2.2 was discovered to contain a cross-site scripting (XSS) vulnerability via the `setTooltips()` function.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j4rv-pr9g-q8jv",
+      "publishedAt": "2022-10-12T12:00:19Z",
+      "modifiedAt": "2023-10-19T19:07:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j4rv-pr9g-q8jv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-40440"
+        }
+      ],
+      "affectedRange": "<= 4.2.2"
+    },
+    {
+      "id": "GHSA-xm59-jvxm-cp3v",
+      "title": "mxGraph vulnerable to cross-site scripting in color field",
+      "description": "mxGraph through 4.0.0, related to the [draw.io Diagrams](https://github.com/jgraph/drawio) plugin before 8.3.14 for Confluence and other products, is vulnerable to cross-site scripting. draw.io Diagrams allows the creation and editing of draw.io-based diagrams in Confluence. Among other things, it allows to set the background color of text displayed in the diagram. The color provided by the user is notproperly sanitized, leading to HTML and JavaScript code to be displayed \"as it is\" to visitors ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xm59-jvxm-cp3v",
+      "publishedAt": "2022-05-24T16:49:07Z",
+      "modifiedAt": "2023-10-19T18:54:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xm59-jvxm-cp3v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-13127"
+        }
+      ],
+      "affectedRange": "<= 4.0.0",
+      "fixedVersion": "4.0.1"
+    }
+  ]
+}

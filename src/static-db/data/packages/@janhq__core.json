@@ -1,0 +1,66 @@
+{
+  "name": "@janhq/core",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-878h-rqcq-mv3x",
+      "title": "Jan path traversal vulnerability",
+      "description": "An arbitrary file upload vulnerability in the /v1/app/appendFileSync interface of Jan v0.4.12 allows attackers to execute arbitrary code via uploading a crafted file.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-878h-rqcq-mv3x",
+      "publishedAt": "2024-06-04T21:32:21Z",
+      "modifiedAt": "2024-08-15T17:02:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-878h-rqcq-mv3x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-37273"
+        }
+      ],
+      "affectedRange": "<= 0.1.11"
+    },
+    {
+      "id": "GHSA-5jqc-qj57-4hrc",
+      "title": "Jan path traversal vulnerability",
+      "description": "Jan v0.4.12 was discovered to contain an arbitrary file read vulnerability via the /v1/app/readFileSync interface.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5jqc-qj57-4hrc",
+      "publishedAt": "2024-06-04T21:32:20Z",
+      "modifiedAt": "2024-08-14T22:14:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5jqc-qj57-4hrc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-36857"
+        }
+      ],
+      "affectedRange": "<= 0.1.11"
+    },
+    {
+      "id": "GHSA-qfjh-mvq6-c5p8",
+      "title": "Jan path traversal vulnerability",
+      "description": "An arbitrary file upload vulnerability in the /v1/app/writeFileSync interface of Jan v0.4.12 allows attackers to execute arbitrary code via uploading a crafted file. @janhq/core has been deprecated in favor of janhq/jan, this vulnerability has been patched there in v0.5.2.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qfjh-mvq6-c5p8",
+      "publishedAt": "2024-06-04T21:32:20Z",
+      "modifiedAt": "2024-07-17T16:23:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qfjh-mvq6-c5p8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-36858"
+        }
+      ],
+      "affectedRange": "<= 0.1.11"
+    }
+  ]
+}

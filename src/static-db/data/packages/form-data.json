@@ -1,0 +1,27 @@
+{
+  "name": "form-data",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fjxv-7rqg-78g4",
+      "title": "form-data uses unsafe random function in form-data for choosing boundary",
+      "description": "### Summary\n\nform-data uses `Math.random()` to select a boundary value for multipart form-encoded data. This can lead to a security issue if an attacker:\n1. can observe other values produced by Math.random in the target application, and\n2. can control one field of a request made using form-data\n\nBecause the values of Math.random() are pseudo-random and predictable (see: https://blog.securityevaluators.com/hacking-the-javascript-lottery-80cc437e3b7f), an attacker who can observe a few sequential ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fjxv-7rqg-78g4",
+      "publishedAt": "2025-07-21T19:04:54Z",
+      "modifiedAt": "2025-11-03T21:34:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fjxv-7rqg-78g4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-7783"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 4.0.4",
+      "fixedVersion": "4.0.4"
+    }
+  ]
+}

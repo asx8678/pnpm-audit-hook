@@ -1,0 +1,26 @@
+{
+  "name": "deep-set",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wgxm-rg53-h2c6",
+      "title": "Prototype pollution vulnerability in 'deep-set'",
+      "description": "The NPM module 'deep-set' can be abused by Prototype Pollution vulnerability since the function `deepSet()` does not check for the type of object before assigning value to the property. Due to this flaw an attacker could create a non-existent property or able to manipulate the property which leads to Denial of Service or potentially Remote code execution.\n\n### PoC\n```js\nvar deepSet = require('deep-set')\nvar obj = {'1':'2'}\nconsole.log(obj.isAdmin);\ndeepSet(obj, '__proto__.isAdmin', 'true')\nconso",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wgxm-rg53-h2c6",
+      "publishedAt": "2022-05-24T17:37:25Z",
+      "modifiedAt": "2024-04-22T23:14:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wgxm-rg53-h2c6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28276"
+        }
+      ],
+      "affectedRange": ">= 1.0.0, <= 1.0.1"
+    }
+  ]
+}

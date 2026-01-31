@@ -1,0 +1,47 @@
+{
+  "name": "@angular/core",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jrmj-c5cx-3cw6",
+      "title": "Angular has XSS Vulnerability via Unsanitized SVG Script Attributes",
+      "description": "A Cross-Site Scripting (XSS) vulnerability has been identified in the Angular Template Compiler. The vulnerability exists because Angular’s internal sanitization schema fails to recognize the `href` and `xlink:href` attributes of SVG `<script>` elements as a **Resource URL** context.\n\nIn a standard security model, attributes that can load and execute code (like a script's source) should be strictly validated. However, because the compiler does not classify these specific SVG attributes correctly",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jrmj-c5cx-3cw6",
+      "publishedAt": "2026-01-09T18:52:14Z",
+      "modifiedAt": "2026-01-15T17:09:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jrmj-c5cx-3cw6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22610"
+        }
+      ],
+      "affectedRange": "<= 18.2.14"
+    },
+    {
+      "id": "GHSA-c75v-2vq8-878f",
+      "title": "Angular vulnerable to Cross-site Scripting",
+      "description": "A vulnerability was found in Angular up to 11.0.4/11.1.0-next.2. It has been classified as problematic. Affected is the handling of comments. The manipulation leads to cross site scripting. It is possible to launch the attack remotely but it might require an authentication first. Upgrading to version 10.2.5, 11.0.5 or 11.1.0-next.3 is advised to to address this issue.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c75v-2vq8-878f",
+      "publishedAt": "2022-05-27T00:01:08Z",
+      "modifiedAt": "2025-11-20T21:47:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c75v-2vq8-878f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-4231"
+        }
+      ],
+      "affectedRange": "< 10.2.5",
+      "fixedVersion": "10.2.5"
+    }
+  ]
+}

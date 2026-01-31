@@ -1,0 +1,27 @@
+{
+  "name": "@playwright/mcp",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6fg3-hvw7-2fwq",
+      "title": "Microsoft Playwright MCP Server vulnerable to DNS Rebinding Attack; Allows Attackers Access to All Server Tools",
+      "description": "Microsoft Playwright MCP Server versions prior to 0.0.40 fails to validate the Origin header on incoming connections. This allows an attacker to perform a DNS rebinding attack via a victim’s web browser and send unauthorized requests to a locally running MCP server, resulting in unintended invocation of MCP tool endpoints.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6fg3-hvw7-2fwq",
+      "publishedAt": "2026-01-07T12:31:25Z",
+      "modifiedAt": "2026-01-07T20:02:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6fg3-hvw7-2fwq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-9611"
+        }
+      ],
+      "affectedRange": "< 0.0.40",
+      "fixedVersion": "0.0.40"
+    }
+  ]
+}

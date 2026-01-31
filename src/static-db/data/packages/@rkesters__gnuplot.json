@@ -1,0 +1,27 @@
+{
+  "name": "@rkesters/gnuplot",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f2jw-pr2c-9x96",
+      "title": "Code injection in @rkesters/gnuplot",
+      "description": "@rkesters/gnuplot is an easy to use node module to draw charts using gnuplot and ps2pdf. The gnuplot package prior to version 0.1.0 for Node.js allows code execution via shell metacharacters in Gnuplot commands.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-f2jw-pr2c-9x96",
+      "publishedAt": "2022-02-10T23:41:49Z",
+      "modifiedAt": "2023-02-01T05:06:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f2jw-pr2c-9x96"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-29369"
+        }
+      ],
+      "affectedRange": "< 0.1.1",
+      "fixedVersion": "0.1.1"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "libxmljs2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-78h3-pg4x-j8cv",
+      "title": "libxmljs2 vulnerable to type confusion when parsing specially crafted XML",
+      "description": "libxmljs2 is vulnerable to a type confusion vulnerability when parsing a specially crafted XML while invoking the `namespaces()` function (which invokes `XmlNode::get_local_namespaces()`) on a grand-child of a node that refers to an entity. This vulnerability can lead to denial of service and remote code execution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-78h3-pg4x-j8cv",
+      "publishedAt": "2024-05-02T21:30:29Z",
+      "modifiedAt": "2024-11-25T19:28:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-78h3-pg4x-j8cv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-34394"
+        }
+      ],
+      "affectedRange": "<= 0.35.0"
+    },
+    {
+      "id": "GHSA-mjr4-7xg5-pfvh",
+      "title": "libxmljs2 type confusion vulnerability when parsing specially crafted XML",
+      "description": "libxmljs2 is vulnerable to type confusion when parsing a specially crafted XML while invoking a function on the result of attrs() that was called on a parsed node. This vulnerability might lead to denial of service (on both 32-bit systems and 64-bit systems), data leak, infinite loop and remote code execution (on 32-bit systems with the XML_PARSE_HUGE flag enabled). At the time of publication, there is no fix.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mjr4-7xg5-pfvh",
+      "publishedAt": "2024-05-02T21:30:29Z",
+      "modifiedAt": "2024-11-25T19:27:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mjr4-7xg5-pfvh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-34393"
+        }
+      ],
+      "affectedRange": "<= 0.33.0"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "decap-cms",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xp8g-32qh-mv28",
+      "title": "Decap CMS Cross Site Scripting (XSS) vulnerability",
+      "description": "Decap CMS through 3.8.3 is vulnerable to stored Cross-Site Scripting (XSS) in the admin preview pane. User-controlled fields (e.g., title, description, tags, and body) are rendered in the preview without sufficient sanitization/escaping. An attacker with low-privilege author/contributor access can persist a JavaScript payload in content; when a maintainer or reviewer opens the preview, the payload executes in the CMS admin origin, enabling token/session theft or the execution of privileged actio",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xp8g-32qh-mv28",
+      "publishedAt": "2025-09-10T18:30:16Z",
+      "modifiedAt": "2025-09-23T20:24:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xp8g-32qh-mv28"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57520"
+        }
+      ],
+      "affectedRange": "<= 3.8.3"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "ffmpeg-sdk",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rwvf-c3wm-qm6w",
+      "title": "ffmpeg-sdk vulnerable to OS Command Injection",
+      "description": "A command injection vulnerability affects all versions of package ffmpeg-sdk. The injection point is located in line 9 in index.js.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-rwvf-c3wm-qm6w",
+      "publishedAt": "2022-07-26T00:01:06Z",
+      "modifiedAt": "2023-01-27T05:07:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rwvf-c3wm-qm6w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28435"
+        }
+      ],
+      "affectedRange": "<= 0.0.5"
+    }
+  ]
+}

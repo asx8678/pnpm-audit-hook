@@ -1,0 +1,48 @@
+{
+  "name": "pbkdf2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v62p-rq8g-8h59",
+      "title": "pbkdf2 silently disregards Uint8Array input, returning static keys",
+      "description": "### Summary\n\nOn historic but declared as supported Node.js versions (0.12-2.x), pbkdf2 silently disregards Uint8Array input\n\nThis only affects Node.js <3.0.0, but `pbkdf2` claims to:\n * Support Node.js [>= 0.12](https://github.com/browserify/pbkdf2/blob/v3.1.2/package.json#L62) (and there seems to be ongoing effort in this repo to maintain that)\n * Support `Uint8Array` input (input is typechecked against Uint8Array, and the error message includes e.g. \"Password must be a string, a Buffer, a type",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-v62p-rq8g-8h59",
+      "publishedAt": "2025-06-23T22:42:00Z",
+      "modifiedAt": "2025-06-23T22:42:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v62p-rq8g-8h59"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-6547"
+        }
+      ],
+      "affectedRange": "<= 3.1.2",
+      "fixedVersion": "3.1.3"
+    },
+    {
+      "id": "GHSA-h7cp-r72f-jxh6",
+      "title": "pbkdf2 returns predictable uninitialized/zero-filled memory for non-normalized or unimplemented algos",
+      "description": "### Summary\n\nThis affects both:\n 1. Unsupported algos (e.g. `sha3-256` / `sha3-512` / `sha512-256`)\n 2. Supported but non-normalized algos (e.g. `Sha256` / `Sha512` / `SHA1` / `sha-1` / `sha-256` / `sha-512`)\n\nAll of those work correctly in Node.js, but this polyfill silently returns highly predictable ouput\n\nUnder Node.js (only with `pbkdf2/browser` import, unlikely) / Bun (`pbkdf2` top-level import is affected), the memory is not zero-filled but is uninitialized, as `Buffer.allocUnsafe` is use",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-h7cp-r72f-jxh6",
+      "publishedAt": "2025-06-23T22:41:50Z",
+      "modifiedAt": "2025-06-23T22:41:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h7cp-r72f-jxh6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-6545"
+        }
+      ],
+      "affectedRange": ">= 3.0.10, <= 3.1.2",
+      "fixedVersion": "3.1.3"
+    }
+  ]
+}

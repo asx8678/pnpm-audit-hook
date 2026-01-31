@@ -1,0 +1,66 @@
+{
+  "name": "@frangoteam/fuxa",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-45c3-c4c3-8rqg",
+      "title": "FUXA vulnerable to Local File Inclusion",
+      "description": "FUXA <= 1.1.12 has a Local File Inclusion vulnerability via file=fuxa.log",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-45c3-c4c3-8rqg",
+      "publishedAt": "2023-09-22T00:30:29Z",
+      "modifiedAt": "2024-09-25T17:57:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-45c3-c4c3-8rqg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-31716"
+        }
+      ],
+      "affectedRange": "<= 1.1.12"
+    },
+    {
+      "id": "GHSA-r87q-fq37-pvr6",
+      "title": "A remote command execution (RCE) vulnerability in the /api/runscript endpoint of FUXA",
+      "description": "A remote command execution (RCE) vulnerability in the /api/runscript endpoint of FUXA 1.1.13 allows attackers to execute arbitrary commands via a crafted POST request.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-r87q-fq37-pvr6",
+      "publishedAt": "2023-09-18T21:30:42Z",
+      "modifiedAt": "2023-11-11T05:01:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r87q-fq37-pvr6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-33831"
+        }
+      ],
+      "affectedRange": "<= 1.1.13"
+    },
+    {
+      "id": "GHSA-9vp3-7qwq-83r9",
+      "title": "Server-Side Request Forgery in FUXA",
+      "description": "A Server-Side Request Forgery (SSRF) attack in FUXA 1.1.3 can be carried out leading to the obtaining of sensitive information from the server's internal environment and services, often potentially leading to the attacker executing commands on the server.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9vp3-7qwq-83r9",
+      "publishedAt": "2022-03-17T00:00:48Z",
+      "modifiedAt": "2023-01-27T05:00:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9vp3-7qwq-83r9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-45851"
+        }
+      ],
+      "affectedRange": "<= 1.1.3"
+    }
+  ]
+}

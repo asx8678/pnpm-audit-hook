@@ -1,0 +1,48 @@
+{
+  "name": "@trpc/server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-43p4-m455-4f4j",
+      "title": "tRPC has possible prototype pollution in `experimental_nextAppDirCaller`",
+      "description": "> Note that this vulnerability is only present when using `experimental_caller` / `experimental_nextAppDirCaller`.\n\n## Summary\n\nA Prototype Pollution vulnerability exists in `@trpc/server`'s `formDataToObject` function, which is used by the Next.js App Router adapter. An attacker can pollute `Object.prototype` by submitting specially crafted FormData field names, potentially leading to authorization bypass, denial of service, or other security impacts.\n\n## Affected Versions\n\n- **Package:** `@trp",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-43p4-m455-4f4j",
+      "publishedAt": "2025-12-16T19:37:57Z",
+      "modifiedAt": "2025-12-16T19:37:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-43p4-m455-4f4j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-68130"
+        }
+      ],
+      "affectedRange": ">= 11.0.0, < 11.8.0",
+      "fixedVersion": "11.8.0"
+    },
+    {
+      "id": "GHSA-pj3v-9cm8-gvj8",
+      "title": "tRPC 11 WebSocket DoS Vulnerability",
+      "description": "### Summary\n\nAn unhandled error is thrown when validating invalid connectionParams which crashes a tRPC WebSocket server. This allows any unauthenticated user to crash a tRPC 11 WebSocket server.\n\n### Details\nAny tRPC 11 server with WebSocket enabled with a `createContext` method set is vulnerable. Here is an example:\n\nhttps://github.com/user-attachments/assets/ce1b2d32-6103-4e54-8446-51535b293b05\n\nI have a working reproduction here if you would like to test: https://github.com/lukechilds/trpc-v",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pj3v-9cm8-gvj8",
+      "publishedAt": "2025-04-24T16:03:57Z",
+      "modifiedAt": "2025-04-24T16:03:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pj3v-9cm8-gvj8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-43855"
+        }
+      ],
+      "affectedRange": ">= 11.0.0, < 11.1.1",
+      "fixedVersion": "11.1.1"
+    }
+  ]
+}

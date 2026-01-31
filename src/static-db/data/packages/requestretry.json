@@ -1,0 +1,27 @@
+{
+  "name": "requestretry",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hjp8-2cm3-cc45",
+      "title": "Cookie exposure in requestretry",
+      "description": "Exposure of Sensitive Information to an Unauthorized Actor in GitHub repository fgribreau/node-request-retry prior to 7.0.0 via cookies being leaked to external sites.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hjp8-2cm3-cc45",
+      "publishedAt": "2022-02-24T00:00:54Z",
+      "modifiedAt": "2023-02-03T05:06:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hjp8-2cm3-cc45"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0654"
+        }
+      ],
+      "affectedRange": "< 7.0.0",
+      "fixedVersion": "7.0.0"
+    }
+  ]
+}

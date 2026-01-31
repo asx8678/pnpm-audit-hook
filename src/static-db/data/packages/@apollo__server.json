@@ -1,0 +1,57 @@
+{
+  "name": "@apollo/server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j5g3-5c8r-7qfx",
+      "title": "Prevent logging invalid header values",
+      "description": "## Impact\n### What kind of vulnerability is it?\nApollo Server can log sensitive information (Studio API keys) if they are passed incorrectly (with leading/trailing whitespace) or if they have any characters that are invalid as part of a header value.\n\n### Who is impacted?\nUsers who (all of the below):\n* use either the schema reporting or usage reporting feature\n* use an Apollo Studio API key which has invalid header values\n* use the default fetcher (`node-fetch`) or configured their own `node-fe",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-j5g3-5c8r-7qfx",
+      "publishedAt": "2023-08-30T21:24:57Z",
+      "modifiedAt": "2023-08-30T21:24:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j5g3-5c8r-7qfx"
+        }
+      ],
+      "affectedRange": "< 4.9.3",
+      "fixedVersion": "4.9.3"
+    },
+    {
+      "id": "GHSA-68jh-rf6x-836f",
+      "title": "@apollo/server vulnerable to unsafe application of Content Security Policy via reused nonces",
+      "description": "### Context\nContent Security Policies (CSP) are a defense-in-depth strategy against XSS attacks. Improper application of CSP isn't itself a vulnerability, but it does fail to prevent XSS in the event that there is a viable attack vector for an XSS attack.\n\n### Impact\nThere aren't any XSS attack vectors via the Apollo Server landing pages _known to Apollo_, so to our knowledge there is no impact. However, if there are existing XSS vectors that haven't been reported and patched, then all users of ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-68jh-rf6x-836f",
+      "publishedAt": "2023-06-16T19:40:53Z",
+      "modifiedAt": "2023-06-20T19:50:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-68jh-rf6x-836f"
+        }
+      ],
+      "affectedRange": ">= 4.7.1, < 4.7.4",
+      "fixedVersion": "4.7.4"
+    },
+    {
+      "id": "GHSA-8r69-3cvp-wxc3",
+      "title": "Batched HTTP requests may set incorrect `cache-control` response header",
+      "description": "### Impact\nIn Apollo Server 3 and 4, the `cache-control` HTTP response header may not reflect the cache policy that should apply to an HTTP request when that HTTP request contains multiple operations using HTTP batching. This could lead to data being inappropriately cached and shared.\n\nApollo Server allows clients to send multiple operations in a single HTTP request.  The results of these operations are returned in a single HTTP response, with a single set of headers.  Apollo Client Web and Apol",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8r69-3cvp-wxc3",
+      "publishedAt": "2022-11-02T18:18:10Z",
+      "modifiedAt": "2023-01-08T05:03:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8r69-3cvp-wxc3"
+        }
+      ],
+      "affectedRange": "< 4.1.0",
+      "fixedVersion": "4.1.0"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "name": "@xmldom/xmldom",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5fg8-2547-mr8q",
+      "title": "Misinterpretation of malicious XML input",
+      "description": "### Impact\nxmldom versions 0.6.0 and older do not correctly escape special characters when serializing elements removed from their ancestor. This may lead to unexpected syntactic changes during XML processing in some downstream applications.\n\n### Patches\nUpdate to one of the fixed versions of `@xmldom/xmldom` (`>=0.7.0`)\n\nSee issue #271 for the status of publishing `xmldom` to npm or join #270 for Q&A/discussion until it's resolved.\n\n### Workarounds\n\nDownstream applications can validate the inpu",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5fg8-2547-mr8q",
+      "publishedAt": "2021-08-03T16:57:05Z",
+      "modifiedAt": "2024-02-22T19:03:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5fg8-2547-mr8q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32796"
+        }
+      ],
+      "affectedRange": "< 0.7.0",
+      "fixedVersion": "0.7.0"
+    },
+    {
+      "id": "GHSA-crh6-fp67-6883",
+      "title": "xmldom allows multiple root nodes in a DOM",
+      "description": "### Impact\nxmldom parses XML that is not well-formed because it contains multiple top level elements, and adds all root nodes to the `childNodes` collection of the `Document`, without reporting any error or throwing.\nThis breaks the assumption that there is only a single root node in the tree, which led to https://nvd.nist.gov/vuln/detail/CVE-2022-39299 and is a potential issue for dependents.\n\n### Patches\nUpdate to `@xmldom/xmldom@~0.7.7`, `@xmldom/xmldom@~0.8.4` (dist-tag `latest`) or `@xmldom",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-crh6-fp67-6883",
+      "publishedAt": "2022-11-01T17:29:11Z",
+      "modifiedAt": "2023-03-31T16:06:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-crh6-fp67-6883"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39353"
+        }
+      ],
+      "affectedRange": ">= 0.9.0-beta.1, < 0.9.0-beta.4",
+      "fixedVersion": "0.9.0-beta.4"
+    },
+    {
+      "id": "GHSA-9pgh-qqpf-7wqj",
+      "title": "Withdrawn: Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution') in @xmldom/xmldom and xmldom",
+      "description": "## Withdrawn\n\nThis advisory has been withdrawn because the maintainers of `@xmldom/xmldom` and multiple third parties disputed the validity of the issue. Attempts to create or replicate a proof of concept have been unsuccessful.\n\n## Original Description\n\n### Impact\nA prototype pollution vulnerability exists in the function copy in dom.js in the xmldom (published as @xmldom/xmldom) package.\n\n### Patches\nUpdate to `@xmldom/xmldom@~0.7.6`, `@xmldom/xmldom@~0.8.3` (dist-tag `latest`) or `@xmldom/xml",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9pgh-qqpf-7wqj",
+      "publishedAt": "2022-10-11T20:42:57Z",
+      "modifiedAt": "2023-02-02T05:07:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9pgh-qqpf-7wqj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-37616"
+        }
+      ],
+      "affectedRange": "< 0.7.6",
+      "fixedVersion": "0.7.6"
+    }
+  ]
+}

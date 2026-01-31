@@ -1,0 +1,27 @@
+{
+  "name": "@quasar/quasar-ui-qmarkdown",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wm65-ph3w-587c",
+      "title": "QMarkdown Cross-Site Scripting (XSS) vulnerability",
+      "description": "QMarkdown (aka quasar-ui-qmarkdown) before 2.0.5 allows XSS via headers even when when no-html is set.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wm65-ph3w-587c",
+      "publishedAt": "2025-04-20T21:30:25Z",
+      "modifiedAt": "2025-04-21T16:18:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wm65-ph3w-587c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-43954"
+        }
+      ],
+      "affectedRange": "< 2.0.5",
+      "fixedVersion": "2.0.5"
+    }
+  ]
+}

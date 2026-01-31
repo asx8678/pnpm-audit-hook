@@ -1,0 +1,23 @@
+{
+  "name": "@sentry/react-native",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-68c2-4mpx-qh95",
+      "title": "Potential leakage of Sentry auth tokens by React Native SDK with Expo plugin",
+      "description": "### Impact\nSDK versions between and including 5.16.0 and 5.19.0 allowed Sentry auth tokens to be set in the optional authToken configuration parameter, for debugging purposes. Doing so would result in the auth token being built into the application bundle, and therefore the auth token could be potentially exposed in case the application bundle is subsequently published.\n\nYou may ignore this notification if you are not using `authToken` configuration parameter in your React Native SDK configurati",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-68c2-4mpx-qh95",
+      "publishedAt": "2024-03-01T16:57:56Z",
+      "modifiedAt": "2024-03-01T16:57:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-68c2-4mpx-qh95"
+        }
+      ],
+      "affectedRange": ">= 5.16.0, <= 5.19.0",
+      "fixedVersion": "5.19.1"
+    }
+  ]
+}

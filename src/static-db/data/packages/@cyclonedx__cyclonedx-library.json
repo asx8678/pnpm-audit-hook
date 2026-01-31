@@ -1,0 +1,27 @@
+{
+  "name": "@cyclonedx/cyclonedx-library",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-38gf-rh2w-gmj7",
+      "title": "@cyclonedx/cyclonedx-library Improper Restriction of XML External Entity Reference vulnerability",
+      "description": "### Impact\n\nXML External entity injections could be possible, when running the provided XML Validator on arbitrary input.\n\n#### POC\n\n```js\nconst {\n  Spec: { Version },\n  Validation: { XmlValidator }\n} = require('@cyclonedx/cyclonedx-library');\n\nconst version = Version.v1dot5;\nconst validator = new XmlValidator(version);\nconst input = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE poc [\n  <!ENTITY xxe SYSTEM \"file:///etc/passwd\">\n]>\n<bom xmlns=\"http://cyclonedx.org/schema/bom/1.5\">\n  <componen",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-38gf-rh2w-gmj7",
+      "publishedAt": "2024-05-08T19:55:37Z",
+      "modifiedAt": "2024-05-14T20:01:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-38gf-rh2w-gmj7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-34345"
+        }
+      ],
+      "affectedRange": "= 6.7.0",
+      "fixedVersion": "6.7.1"
+    }
+  ]
+}

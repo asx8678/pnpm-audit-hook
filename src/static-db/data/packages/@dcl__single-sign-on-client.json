@@ -1,0 +1,27 @@
+{
+  "name": "@dcl/single-sign-on-client",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vp4f-wxgw-7x8x",
+      "title": "Improper Neutralization of Script in Attributes in @dcl/single-sign-on-client",
+      "description": "### Impact\nImproper input validation in the `init` function allows arbitrary javascript to be executed using  the `javascript:` prefix\n\n```ts\n    SSO.init('javascript:alert(\"javascript successfully injected\")')\n```\n\n### Patches\n\nThis vulnerability was patched on version `0.1.0`\n\n### Workarounds\n\nThis vulnerability can be prevented if user input correctly sanitized or there is no user input pass to the `init` function\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vp4f-wxgw-7x8x",
+      "publishedAt": "2023-09-04T16:36:27Z",
+      "modifiedAt": "2023-11-05T05:04:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vp4f-wxgw-7x8x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-41049"
+        }
+      ],
+      "affectedRange": "< 0.1.0",
+      "fixedVersion": "0.1.0"
+    }
+  ]
+}

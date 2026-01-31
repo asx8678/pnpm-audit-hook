@@ -1,0 +1,27 @@
+{
+  "name": "minimist",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xvch-5gv4-984h",
+      "title": "Prototype Pollution in minimist",
+      "description": "Minimist prior to 1.2.6 and 0.2.4 is vulnerable to Prototype Pollution via file `index.js`, function `setKey()` (lines 69-95).",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-xvch-5gv4-984h",
+      "publishedAt": "2022-03-18T00:01:09Z",
+      "modifiedAt": "2024-06-21T21:33:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xvch-5gv4-984h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-44906"
+        }
+      ],
+      "affectedRange": "< 0.2.4",
+      "fixedVersion": "0.2.4"
+    }
+  ]
+}

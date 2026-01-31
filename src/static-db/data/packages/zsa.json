@@ -1,0 +1,27 @@
+{
+  "name": "zsa",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wjmj-h3xc-hxp8",
+      "title": "Generation of Error Message Containing Sensitive Information in zsa",
+      "description": "### Impact\nAll users are impacted. The zsa application transfers the parse error stack from the server to the client in production build mode. This can potentially reveal sensitive information about the server environment, such as the machine username and directory paths. An attacker could exploit this vulnerability to gain unauthorized access to sensitive server information. This information could be used to plan further attacks or gain a deeper understanding of the server infrastructure.\n\n### ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wjmj-h3xc-hxp8",
+      "publishedAt": "2024-06-06T22:58:46Z",
+      "modifiedAt": "2024-10-31T22:24:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wjmj-h3xc-hxp8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-37162"
+        }
+      ],
+      "affectedRange": "< 0.3.3",
+      "fixedVersion": "0.3.3"
+    }
+  ]
+}

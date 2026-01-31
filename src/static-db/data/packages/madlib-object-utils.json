@@ -1,0 +1,48 @@
+{
+  "name": "madlib-object-utils",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jvf5-q4h5-2jmj",
+      "title": "Prototype Pollution in madlib-object-utils",
+      "description": "madlib-object-utils before 0.1.7 is vulnerable to Prototype Pollution via setValue.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-jvf5-q4h5-2jmj",
+      "publishedAt": "2021-05-06T17:28:57Z",
+      "modifiedAt": "2023-01-27T05:08:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jvf5-q4h5-2jmj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7701"
+        }
+      ],
+      "affectedRange": "< 0.1.7",
+      "fixedVersion": "0.1.7"
+    },
+    {
+      "id": "GHSA-pfv6-prqm-85q8",
+      "title": "Prototype Pollution in madlib-object-utils",
+      "description": "The package madlib-object-utils before version 0.1.8 is vulnerable to Prototype Pollution via the `setValue` method, as it allows an attacker to merge object prototypes into it. *Note:* This vulnerability derives from an incomplete fix of [CVE-2020-7701](https://security.snyk.io/vuln/SNYK-JS-MADLIBOBJECTUTILS-598676)",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pfv6-prqm-85q8",
+      "publishedAt": "2022-04-16T00:00:26Z",
+      "modifiedAt": "2023-01-27T05:01:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pfv6-prqm-85q8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24279"
+        }
+      ],
+      "affectedRange": "< 0.1.8",
+      "fixedVersion": "0.1.8"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "figma-developer-mcp",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gxw4-4fc5-9gr5",
+      "title": "figma-developer-mcp vulnerable to command injection in get_figma_data tool",
+      "description": "### Summary\n\nA command injection vulnerability exists in the `figma-developer-mcp` MCP Server. The vulnerability is caused by the unsanitized use of input parameters within a call to `child_process.exec`, enabling an attacker to inject arbitrary system commands. Successful exploitation can lead to remote code execution under the server process's privileges. \n\nThe server constructs and executes shell commands using unvalidated user input directly within command-line strings. This introduces the p",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gxw4-4fc5-9gr5",
+      "publishedAt": "2025-09-30T17:01:42Z",
+      "modifiedAt": "2025-09-30T17:01:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gxw4-4fc5-9gr5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-53967"
+        }
+      ],
+      "affectedRange": "<= 0.6.2",
+      "fixedVersion": "0.6.3"
+    }
+  ]
+}

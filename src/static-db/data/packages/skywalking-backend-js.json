@@ -1,0 +1,27 @@
+{
+  "name": "skywalking-backend-js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8gpg-466c-5cpj",
+      "title": "Apache SkyWalking NodeJS Agent can lose availability if header includes illegal SkyWalking header",
+      "description": "A vulnerability in Apache SkyWalking NodeJS Agent prior to 0.5.1. The vulnerability will cause NodeJS services that has this agent installed to be unavailable if the OAP is unhealthy and NodeJS agent can't establish the connection.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8gpg-466c-5cpj",
+      "publishedAt": "2022-07-19T00:00:27Z",
+      "modifiedAt": "2023-01-27T05:06:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8gpg-466c-5cpj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-36127"
+        }
+      ],
+      "affectedRange": "< 0.5.1",
+      "fixedVersion": "0.5.1"
+    }
+  ]
+}

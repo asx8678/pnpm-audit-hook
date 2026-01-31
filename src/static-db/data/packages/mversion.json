@@ -1,0 +1,27 @@
+{
+  "name": "mversion",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6m8p-4fxj-pgc2",
+      "title": "OS Command Injection in mversion",
+      "description": "The issue occurs because tagName user input is formatted inside the exec function is executed without any checks.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6m8p-4fxj-pgc2",
+      "publishedAt": "2021-05-17T21:01:08Z",
+      "modifiedAt": "2023-02-01T05:05:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6m8p-4fxj-pgc2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7688"
+        }
+      ],
+      "affectedRange": "<= 1.13.0",
+      "fixedVersion": "2.0.1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@replit/crosis",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7w54-gp8x-f33m",
+      "title": "Potential exposure of tokens to an Unauthorized Actor",
+      "description": "### Impact\n\nWhen using this library as a way to programmatically communicate with Replit in a standalone fashion, if there are multiple failed attempts to contact Replit through a WebSocket, the library will attempt to communicate using a fallback poll-based proxy. The URL of the proxy has changed, so any communication done to the previous URL could potentially reach a server that is outside of Replit's control and the token used to connect to the Repl could be obtained by an attacker, leading t",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7w54-gp8x-f33m",
+      "publishedAt": "2022-01-12T22:44:47Z",
+      "modifiedAt": "2023-07-24T19:33:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7w54-gp8x-f33m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21671"
+        }
+      ],
+      "affectedRange": "< 7.3.1",
+      "fixedVersion": "7.3.1"
+    }
+  ]
+}

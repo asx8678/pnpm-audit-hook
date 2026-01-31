@@ -1,0 +1,27 @@
+{
+  "name": "color",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qrmh-qg46-72pp",
+      "title": "color@5.0.1 contains malware after npm account takeover",
+      "description": "### Impact\nOn 8 September 2025, the npm publishing account for `color` was taken over after a phishing attack. Version `5.0.1` was published, functionally identical to the previous patch version, but with a malware payload added attempting to redirect cryptocurrency transactions to the attacker's own addresses from within browser environments.\n\nLocal environments, server environments, command line applications, etc. are not affected. If the package was used in a browser context (e.g. a direct `<",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qrmh-qg46-72pp",
+      "publishedAt": "2025-09-15T21:29:40Z",
+      "modifiedAt": "2025-09-15T21:59:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qrmh-qg46-72pp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59143"
+        }
+      ],
+      "affectedRange": "= 5.0.1",
+      "fixedVersion": "5.0.2"
+    }
+  ]
+}

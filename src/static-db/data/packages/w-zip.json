@@ -1,0 +1,27 @@
+{
+  "name": "w-zip",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fr6q-jv7j-35g3",
+      "title": "Path Traversal in w-zip",
+      "description": "Path Traversal in NPM w-zip prior to 1.0.12.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fr6q-jv7j-35g3",
+      "publishedAt": "2022-02-02T00:01:46Z",
+      "modifiedAt": "2023-02-03T05:05:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fr6q-jv7j-35g3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0401"
+        }
+      ],
+      "affectedRange": "< 1.0.12",
+      "fixedVersion": "1.0.12"
+    }
+  ]
+}

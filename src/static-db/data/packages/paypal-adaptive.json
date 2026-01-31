@@ -1,0 +1,26 @@
+{
+  "name": "paypal-adaptive",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v3r2-3fp4-rp46",
+      "title": "Prototype pollution in paypal-adaptive",
+      "description": "paypal-adaptive through 0.4.2 manipulation of JavaScript objects resulting in Prototype Pollution. The PayPal function could be tricked into adding or modifying properties of Object.prototype using a `__proto__` payload.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v3r2-3fp4-rp46",
+      "publishedAt": "2021-12-10T20:05:57Z",
+      "modifiedAt": "2023-09-06T20:14:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v3r2-3fp4-rp46"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7643"
+        }
+      ],
+      "affectedRange": "<= 0.4.2"
+    }
+  ]
+}

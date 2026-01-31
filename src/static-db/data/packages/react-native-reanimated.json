@@ -1,0 +1,27 @@
+{
+  "name": "react-native-reanimated",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2j79-8pqc-r7x6",
+      "title": "react-native-reanimated vulnerable to ReDoS",
+      "description": "The package react-native-reanimated before 2.10.0 is vulnerable to Regular Expression Denial of Service (ReDoS) due to improper usage of regular expression in the parser of Colors.js.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2j79-8pqc-r7x6",
+      "publishedAt": "2022-10-01T00:00:24Z",
+      "modifiedAt": "2023-08-17T05:02:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2j79-8pqc-r7x6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24373"
+        }
+      ],
+      "affectedRange": "< 2.10.0",
+      "fixedVersion": "2.10.0"
+    }
+  ]
+}

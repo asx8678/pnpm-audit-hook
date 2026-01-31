@@ -1,0 +1,27 @@
+{
+  "name": "json8-merge-patch",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8v9x-9xqg-r8mr",
+      "title": "Prototype pollution in json8-merge-patch",
+      "description": "Prototype pollution vulnerability in json8-merge-patch npm package < 1.0.3 may allow attackers to inject or modify methods and properties of the global object constructor.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8v9x-9xqg-r8mr",
+      "publishedAt": "2021-05-10T19:17:15Z",
+      "modifiedAt": "2023-02-01T05:05:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8v9x-9xqg-r8mr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8268"
+        }
+      ],
+      "affectedRange": "< 1.0.3",
+      "fixedVersion": "1.0.3"
+    }
+  ]
+}

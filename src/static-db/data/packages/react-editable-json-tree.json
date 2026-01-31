@@ -1,0 +1,27 @@
+{
+  "name": "react-editable-json-tree",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j3rv-w43q-f9x2",
+      "title": "React Editable Json Tree vulnerable to arbitrary code execution via function parsing",
+      "description": "### Impact\nOur library allows strings to be parsed as functions and stored as a specialized component, [`JsonFunctionValue`](https://github.com/oxyno-zeta/react-editable-json-tree/blob/09a0ca97835b0834ad054563e2fddc6f22bc5d8c/src/components/JsonFunctionValue.js). To do this, Javascript's [`eval`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) function was used to execute strings that begin with \"function\" as Javascript. This was an oversight that unfortuna",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-j3rv-w43q-f9x2",
+      "publishedAt": "2022-08-18T19:15:28Z",
+      "modifiedAt": "2023-01-30T05:06:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j3rv-w43q-f9x2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-36010"
+        }
+      ],
+      "affectedRange": "< 2.2.2",
+      "fixedVersion": "2.2.2"
+    }
+  ]
+}

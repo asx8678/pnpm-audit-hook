@@ -1,0 +1,27 @@
+{
+  "name": "dash-html-components",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-547x-748v-vp6p",
+      "title": "Dash apps vulnerable to Cross-site Scripting",
+      "description": "Versions of the package dash-core-components before 2.13.0; versions of the package dash-core-components before 2.0.0; versions of the package dash before 2.15.0; versions of the package dash-html-components before 2.0.0; versions of the package dash-html-components before 2.0.16 are vulnerable to Cross-site Scripting (XSS) when the href of the a tag is controlled by an adversary. An authenticated attacker who stores a view that exploits this vulnerability could steal the data that's visible to ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-547x-748v-vp6p",
+      "publishedAt": "2024-02-02T06:30:31Z",
+      "modifiedAt": "2024-09-16T14:29:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-547x-748v-vp6p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21485"
+        }
+      ],
+      "affectedRange": "< 2.0.16",
+      "fixedVersion": "2.0.16"
+    }
+  ]
+}

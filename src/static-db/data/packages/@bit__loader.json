@@ -1,0 +1,26 @@
+{
+  "name": "@bit/loader",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8vr4-h4rr-8ph6",
+      "title": "MiguelCastillo @bit/loader Prototype Pollution issue",
+      "description": "A Prototype Pollution issue in MiguelCastillo @bit/loader v.10.0.3 allows an attacker to execute arbitrary code via the M function e argument in index.js.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8vr4-h4rr-8ph6",
+      "publishedAt": "2024-05-20T18:31:23Z",
+      "modifiedAt": "2024-08-20T18:03:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8vr4-h4rr-8ph6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-24293"
+        }
+      ],
+      "affectedRange": "<= 10.0.3"
+    }
+  ]
+}

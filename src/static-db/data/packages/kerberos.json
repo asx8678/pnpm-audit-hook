@@ -1,0 +1,23 @@
+{
+  "name": "kerberos",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f478-xwv9-p93q",
+      "title": "Duplicate Advisory: Kerberos for NodeJS allows DLL Injection",
+      "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-m2mx-rfpw-jghv. This link is maintained to preserve external references.\n\n## Original Description\nThe kerberos package before 1.0.0 for Node.js allows arbitrary code execution and privilege escalation via injection of malicious DLLs through use of the kerberos_sspi LoadLibrary() method, because of a DLL path search.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f478-xwv9-p93q",
+      "publishedAt": "2022-05-24T17:18:00Z",
+      "modifiedAt": "2023-08-21T19:55:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f478-xwv9-p93q"
+        }
+      ],
+      "affectedRange": "< 1.0.0",
+      "fixedVersion": "1.0.0"
+    }
+  ]
+}

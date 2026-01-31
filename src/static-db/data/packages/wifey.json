@@ -1,0 +1,26 @@
+{
+  "name": "wifey",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xj9v-6q2f-vqhx",
+      "title": "wifey vulnerable to Command Injection due to improper input sanitization",
+      "description": "All versions of the package wifey are vulnerable to Command Injection via the `connect()` function due to improper input sanitization.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-xj9v-6q2f-vqhx",
+      "publishedAt": "2023-01-09T06:30:26Z",
+      "modifiedAt": "2023-01-29T05:03:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xj9v-6q2f-vqhx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25890"
+        }
+      ],
+      "affectedRange": "<= 2.0.7"
+    }
+  ]
+}

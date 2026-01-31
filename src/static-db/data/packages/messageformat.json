@@ -1,0 +1,27 @@
+{
+  "name": "messageformat",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xfqm-j7pc-xrfc",
+      "title": "messageformat has a prototype pollution vulnerability",
+      "description": "The messageformat package, an implementation of the Unicode MessageFormat 2 specification for JavaScript, is vulnerable to prototype pollution due to improper handling of message key paths in versions prior to 2.3.0. The flaw arises when processing nested message keys containing special characters (e.g., __proto__ ), which can lead to unintended modification of the JavaScript Object prototype. This vulnerability may allow a remote attacker to inject properties into the global object prototype vi",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-xfqm-j7pc-xrfc",
+      "publishedAt": "2025-09-24T21:30:37Z",
+      "modifiedAt": "2025-09-25T16:46:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xfqm-j7pc-xrfc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57349"
+        }
+      ],
+      "affectedRange": "< 2.3.0",
+      "fixedVersion": "3.0.0-beta.0"
+    }
+  ]
+}

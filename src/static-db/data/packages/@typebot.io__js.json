@@ -1,0 +1,27 @@
+{
+  "name": "@typebot.io/js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4xc5-wfwc-jw47",
+      "title": "Typebot affected by Credential Theft via Client-Side Script Execution and API Authorization Bypass",
+      "description": "### Summary\n\nClient-side script execution in Typebot allows stealing all stored credentials from any user. When a victim previews a malicious typebot by clicking \"Run\", JavaScript executes in their browser and exfiltrates their OpenAI keys, Google Sheets tokens, and SMTP passwords. The `/api/trpc/credentials.getCredentials` endpoint returns plaintext API keys without verifying credential ownership\n\n---\n\n### Details\n\nThe Script block with \"Execute on client\" enabled runs arbitrary JavaScript in t",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4xc5-wfwc-jw47",
+      "publishedAt": "2026-01-22T18:02:12Z",
+      "modifiedAt": "2026-01-22T18:02:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4xc5-wfwc-jw47"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-65098"
+        }
+      ],
+      "affectedRange": "< 0.9.15",
+      "fixedVersion": "0.9.15"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "zx",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w87r-vg9q-crqm",
+      "title": "zx Uses Incorrectly-Resolved Name or Reference",
+      "description": "When zx is invoked with --prefer-local=<path>, the CLI creates a symlink named ./node_modules pointing to <path>/node_modules. Due to a logic error in src/cli.ts (linkNodeModules / cleanup), the function returns the target path instead of the alias (symlink path). The later cleanup routine removes what it received, which deletes the target directory itself. Result: zx can delete an external <path>/node_modules outside the current working directory.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w87r-vg9q-crqm",
+      "publishedAt": "2025-11-20T18:31:01Z",
+      "modifiedAt": "2025-11-21T18:01:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w87r-vg9q-crqm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-13437"
+        }
+      ],
+      "affectedRange": "< 8.8.5",
+      "fixedVersion": "8.8.5"
+    },
+    {
+      "id": "GHSA-qwp8-x4ff-5h87",
+      "title": "ZX Allows Environment Variable Injection for dotenv API",
+      "description": "### Impact\nThis vulnerability is an **Environment Variable Injection** issue in `dotenv.stringify`, affecting `google/zx`  version **8.3.1**.\n\nAn attacker with control over environment variable values can inject unintended environment variables into `process.env`. This can lead to **arbitrary command execution** or **unexpected behavior** in applications that rely on environment variables for security-sensitive operations. Applications that process untrusted input and pass it through `dotenv.str",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qwp8-x4ff-5h87",
+      "publishedAt": "2025-02-03T22:34:08Z",
+      "modifiedAt": "2025-02-04T17:29:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qwp8-x4ff-5h87"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-24959"
+        }
+      ],
+      "affectedRange": "= 8.3.1",
+      "fixedVersion": "8.3.2"
+    }
+  ]
+}

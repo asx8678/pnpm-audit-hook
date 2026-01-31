@@ -1,0 +1,27 @@
+{
+  "name": "node-tar",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f5x3-32g6-xq36",
+      "title": "Denial of service while parsing a tar file due to lack of folders count validation",
+      "description": "## Description: \nDuring some analysis today on npm's `node-tar` package I came across the folder creation process, Basicly if you provide node-tar with a path like this `./a/b/c/foo.txt` it would create every folder and sub-folder here a, b and c until it reaches the last folder to create `foo.txt`, In-this case I noticed that there's no validation at all on the amount of folders being created, that said we're actually able to CPU and memory consume the system running node-tar and even crash the",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f5x3-32g6-xq36",
+      "publishedAt": "2024-03-22T16:57:05Z",
+      "modifiedAt": "2024-06-10T18:30:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f5x3-32g6-xq36"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-28863"
+        }
+      ],
+      "affectedRange": "< 6.2.1",
+      "fixedVersion": "6.2.1"
+    }
+  ]
+}

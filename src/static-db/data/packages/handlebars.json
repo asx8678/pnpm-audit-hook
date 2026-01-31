@@ -1,0 +1,90 @@
+{
+  "name": "handlebars",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-765h-qjxv-5f44",
+      "title": "Prototype Pollution in handlebars",
+      "description": "The package handlebars before 4.7.7 are vulnerable to Prototype Pollution when selecting certain compiling options to compile templates coming from an untrusted source.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-765h-qjxv-5f44",
+      "publishedAt": "2022-02-10T23:51:42Z",
+      "modifiedAt": "2025-02-12T05:06:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-765h-qjxv-5f44"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23383"
+        }
+      ],
+      "affectedRange": "< 4.7.7",
+      "fixedVersion": "4.7.7"
+    },
+    {
+      "id": "GHSA-f2jv-r9rf-7988",
+      "title": "Remote code execution in handlebars when compiling templates",
+      "description": "The package handlebars before 4.7.7 are vulnerable to Remote Code Execution (RCE) when selecting certain compiling options to compile templates coming from an untrusted source.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-f2jv-r9rf-7988",
+      "publishedAt": "2021-05-06T15:57:44Z",
+      "modifiedAt": "2023-11-29T20:35:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f2jv-r9rf-7988"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23369"
+        }
+      ],
+      "affectedRange": "< 4.7.7",
+      "fixedVersion": "4.7.7"
+    },
+    {
+      "id": "GHSA-3cqr-58rm-57f8",
+      "title": "Arbitrary Code Execution in Handlebars",
+      "description": "Handlebars before 3.0.8 and 4.x before 4.5.3 is vulnerable to Arbitrary Code Execution. The lookup helper fails to properly validate templates, allowing attackers to submit templates that execute arbitrary JavaScript. This can be used to run arbitrary code on a server processing Handlebars templates or in a victim's browser (effectively serving as XSS).",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3cqr-58rm-57f8",
+      "publishedAt": "2022-02-10T20:38:19Z",
+      "modifiedAt": "2023-11-29T20:34:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3cqr-58rm-57f8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-20920"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 4.5.3",
+      "fixedVersion": "4.5.3"
+    },
+    {
+      "id": "GHSA-62gr-4qp9-h98f",
+      "title": "Regular Expression Denial of Service in Handlebars",
+      "description": "Handlebars before 4.4.5 allows Regular Expression Denial of Service (ReDoS) because of eager matching. The parser may be forced into an endless loop while processing crafted templates. This may allow attackers to exhaust system resources.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-62gr-4qp9-h98f",
+      "publishedAt": "2022-02-10T20:38:22Z",
+      "modifiedAt": "2023-11-29T20:32:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-62gr-4qp9-h98f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-20922"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 4.4.5",
+      "fixedVersion": "4.4.5"
+    }
+  ]
+}

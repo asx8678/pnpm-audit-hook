@@ -1,0 +1,27 @@
+{
+  "name": "bestzip",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6xv6-jpvw-cx6q",
+      "title": "Command injection in bestzip",
+      "description": "The package bestzip before 2.1.7 are vulnerable to Command Injection via the options param.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6xv6-jpvw-cx6q",
+      "publishedAt": "2021-05-06T18:27:36Z",
+      "modifiedAt": "2023-02-01T05:05:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6xv6-jpvw-cx6q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7730"
+        }
+      ],
+      "affectedRange": "< 2.1.7",
+      "fixedVersion": "2.1.7"
+    }
+  ]
+}

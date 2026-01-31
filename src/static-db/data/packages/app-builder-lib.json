@@ -1,0 +1,27 @@
+{
+  "name": "app-builder-lib",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r4pf-3v7r-hh55",
+      "title": "electron-builder's NSIS installer - execute arbitrary code on the target machine (Windows only)",
+      "description": "### Impact\nWindows-Only: The NSIS installer makes a system call to open cmd.exe via NSExec in the `.nsh` installer script. NSExec by default searches the current directory of where the installer is located before searching `PATH`. This means that if an attacker can place a malicious executable file named cmd.exe in the same folder as the installer, the installer will run the malicious file.\n\n### Patches\nFixed in https://github.com/electron-userland/electron-builder/pull/8059\n\n### Workarounds\nNon",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r4pf-3v7r-hh55",
+      "publishedAt": "2024-03-04T20:42:45Z",
+      "modifiedAt": "2024-03-16T05:01:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r4pf-3v7r-hh55"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-27303"
+        }
+      ],
+      "affectedRange": "< 24.13.2",
+      "fixedVersion": "24.13.2"
+    }
+  ]
+}

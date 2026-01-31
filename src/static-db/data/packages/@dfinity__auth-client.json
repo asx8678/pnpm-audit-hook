@@ -1,0 +1,27 @@
+{
+  "name": "@dfinity/auth-client",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c9vv-fhgv-cjc3",
+      "title": "agent-js: Insecure Key Generation in `Ed25519KeyIdentity.generate`",
+      "description": "## Impact\n\nThe library offers a function to generate an ed25519 key pair via `Ed25519KeyIdentity.generate` with an optional param to provide a 32 byte seed value, which will then be used as the secret key. **When no seed value is provided, it is expected that the library generates the secret key using secure randomness**. However, a recent change **broke this guarantee** and **uses an insecure seed for key pair generation**.\n\nSince the private key of this identity (`535yc-uxytb-gfk7h-tny7p-vjkoe",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-c9vv-fhgv-cjc3",
+      "publishedAt": "2024-02-21T02:54:56Z",
+      "modifiedAt": "2024-02-21T18:58:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c9vv-fhgv-cjc3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-1631"
+        }
+      ],
+      "affectedRange": ">= 0.20.0-beta.0, < 1.0.1",
+      "fixedVersion": "1.0.1"
+    }
+  ]
+}

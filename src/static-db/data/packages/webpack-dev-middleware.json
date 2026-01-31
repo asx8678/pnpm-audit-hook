@@ -1,0 +1,27 @@
+{
+  "name": "webpack-dev-middleware",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wr3j-pwj9-hqq6",
+      "title": "Path traversal in webpack-dev-middleware",
+      "description": "### Summary\n_The **webpack-dev-middleware** middleware does not validate the supplied URL address sufficiently before returning the local file. It is possible to access any file on the developer's machine._\n\n### Details\nThe middleware can either work with the physical filesystem when reading the files or it can use a virtualized in-memory _memfs_ filesystem.\nIf _writeToDisk_ configuration option is set to **true**, the physical filesystem is used:\n[https://github.com/webpack/webpack-dev-middlewa",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wr3j-pwj9-hqq6",
+      "publishedAt": "2024-03-21T18:59:28Z",
+      "modifiedAt": "2024-03-21T18:59:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wr3j-pwj9-hqq6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-29180"
+        }
+      ],
+      "affectedRange": "<= 5.3.3",
+      "fixedVersion": "5.3.4"
+    }
+  ]
+}

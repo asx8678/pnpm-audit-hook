@@ -1,0 +1,47 @@
+{
+  "name": "js-data",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mqgv-67vx-g4m5",
+      "title": "Prototype Pollution in js-data",
+      "description": "All versions of package js-data prior to 3.0.10 are vulnerable to Prototype Pollution via the `deepFillIn` function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mqgv-67vx-g4m5",
+      "publishedAt": "2022-02-09T22:45:52Z",
+      "modifiedAt": "2023-09-05T22:43:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mqgv-67vx-g4m5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28442"
+        }
+      ],
+      "affectedRange": "< 3.0.10",
+      "fixedVersion": "3.0.10"
+    },
+    {
+      "id": "GHSA-c6h4-gc3f-hgjq",
+      "title": "Prototype Pollution in js-data",
+      "description": "All versions of package js-data are vulnerable to Prototype Pollution via the deepFillIn and the set functions. This is an incomplete fix of [CVE-2020-28442](https://snyk.io/vuln/SNYK-JS-JSDATA-1023655).",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-c6h4-gc3f-hgjq",
+      "publishedAt": "2022-01-06T21:58:56Z",
+      "modifiedAt": "2023-02-03T05:03:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c6h4-gc3f-hgjq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23574"
+        }
+      ],
+      "affectedRange": "<= 3.0.10"
+    }
+  ]
+}

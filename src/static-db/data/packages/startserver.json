@@ -1,0 +1,26 @@
+{
+  "name": "startserver",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hqv3-qq72-78cv",
+      "title": "Directory Traversal in startserver",
+      "description": "All versions of package startserver are vulnerable to Directory Traversal due to missing sanitization.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hqv3-qq72-78cv",
+      "publishedAt": "2021-09-02T17:09:40Z",
+      "modifiedAt": "2023-02-01T05:06:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hqv3-qq72-78cv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23430"
+        }
+      ],
+      "affectedRange": "<= 1.4.1"
+    }
+  ]
+}

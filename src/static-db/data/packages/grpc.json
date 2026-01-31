@@ -1,0 +1,27 @@
+{
+  "name": "grpc",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pp75-xfpw-37g9",
+      "title": "Prototype pollution in grpc and @grpc/grpc-js",
+      "description": "\"The package grpc before 1.24.4 and the package @grpc/grpc-js before 1.1.8 are vulnerable to Prototype Pollution via loadPackageDefinition.\"",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pp75-xfpw-37g9",
+      "publishedAt": "2021-05-10T19:16:14Z",
+      "modifiedAt": "2023-01-27T05:09:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pp75-xfpw-37g9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7768"
+        }
+      ],
+      "affectedRange": "< 1.24.4",
+      "fixedVersion": "1.24.4"
+    }
+  ]
+}

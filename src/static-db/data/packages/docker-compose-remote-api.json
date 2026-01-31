@@ -1,0 +1,26 @@
+{
+  "name": "docker-compose-remote-api",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q6pj-jh94-5fpr",
+      "title": "OS Command Injection in docker-compose-remote-api",
+      "description": "docker-compose-remote-api through 0.1.4 allows execution of arbitrary commands. Within `index.js` of the package, the function `exec(serviceName, cmd, fnStdout, fnStderr, fnExit)` uses the variable `serviceName` which can be controlled by users without any sanitization.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-q6pj-jh94-5fpr",
+      "publishedAt": "2021-05-07T16:14:39Z",
+      "modifiedAt": "2023-09-11T22:26:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q6pj-jh94-5fpr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7606"
+        }
+      ],
+      "affectedRange": "<= 0.1.4"
+    }
+  ]
+}

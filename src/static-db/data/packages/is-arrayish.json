@@ -1,0 +1,27 @@
+{
+  "name": "is-arrayish",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-frh7-2f84-v9mw",
+      "title": "is-arrayish@0.3.3 contains malware after npm account takeover",
+      "description": "### Impact\nOn 8 September 2025, an npm publishing account for `is-arrayish` was taken over after a phishing attack. Version `0.3.3` was published, functionally identical to the previous patch version, but with a malware payload added attempting to redirect cryptocurrency transactions to the attacker's own addresses from within browser environments.\n\nLocal environments, server environments, command line applications, etc. are not affected. If the package was used in a browser context (e.g. a dire",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-frh7-2f84-v9mw",
+      "publishedAt": "2025-09-15T23:58:46Z",
+      "modifiedAt": "2025-09-15T23:58:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-frh7-2f84-v9mw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59331"
+        }
+      ],
+      "affectedRange": "= 0.3.3",
+      "fixedVersion": "0.3.4"
+    }
+  ]
+}

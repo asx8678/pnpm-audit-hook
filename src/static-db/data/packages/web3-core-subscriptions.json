@@ -1,0 +1,26 @@
+{
+  "name": "web3-core-subscriptions",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hhf6-3xpg-pggx",
+      "title": "web3-core-subscriptions has a Prototype Pollution vulnerability",
+      "description": "The web3-core-subscriptions is a package designed to manages web3 subscriptions. A Prototype Pollution vulnerability in the attachToObject function of web3-core-subscriptions version 1.10.4 and before allows attackers to inject properties on Object.prototype via supplying a crafted payload, causing denial of service (DoS) as the minimum consequence.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-hhf6-3xpg-pggx",
+      "publishedAt": "2025-09-24T21:30:37Z",
+      "modifiedAt": "2025-09-25T16:46:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hhf6-3xpg-pggx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57330"
+        }
+      ],
+      "affectedRange": "<= 2.0.0-alpha.1"
+    }
+  ]
+}

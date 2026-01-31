@@ -1,0 +1,27 @@
+{
+  "name": "jsdom",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f4c9-cqv8-9v98",
+      "title": "Withdrawn Advisory: Insufficient Granularity of Access Control in JSDom",
+      "description": "# Withdrawn Advisory\n\nThis advisory has been withdrawn because the user must configure jsdom to allow access to local files.\n\n# Original Description\n\nJSDom improperly allows the loading of local resources, which allows for local files to be manipulated by a malicious web page when script execution is enabled.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-f4c9-cqv8-9v98",
+      "publishedAt": "2022-05-24T17:42:20Z",
+      "modifiedAt": "2024-07-19T18:34:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f4c9-cqv8-9v98"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-20066"
+        }
+      ],
+      "affectedRange": "<= 16.4.0",
+      "fixedVersion": "16.5.0"
+    }
+  ]
+}

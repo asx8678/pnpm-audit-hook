@@ -1,0 +1,27 @@
+{
+  "name": "ts-deepmerge",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7qqq-gh2f-wq76",
+      "title": "ts-deepmerge before 2.0.2 vulnerable to Prototype Pollution",
+      "description": "The package ts-deepmerge before version 2.0.2 is vulnerable to Prototype Pollution due to missing sanitization of the `merge` function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7qqq-gh2f-wq76",
+      "publishedAt": "2022-08-10T00:00:31Z",
+      "modifiedAt": "2023-01-27T05:07:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7qqq-gh2f-wq76"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25907"
+        }
+      ],
+      "affectedRange": "< 2.0.2",
+      "fixedVersion": "2.0.2"
+    }
+  ]
+}

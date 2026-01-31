@@ -1,0 +1,40 @@
+{
+  "name": "@lodestar/reqresp",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m9c9-mc2h-9wjw",
+      "title": "Lodestar snappy checksum issue",
+      "description": "### Impact\nUnintended permanent chain split affecting greater than or equal to 25% of the network, requiring hard fork (network partition requiring hard fork)\n\nLodestar does not verify checksum in snappy framing uncompressed chunks.\n\n### Vulnerability Details\nIn Req/Resp protocol the messages are encoded by using ssz_snappy encoding, which is a snappy framing compression over ssz encoded message.\n\nIn snappy framing format there are uncompressed chunks, each such chunk is prefixed with a checksum",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-m9c9-mc2h-9wjw",
+      "publishedAt": "2025-01-14T22:04:02Z",
+      "modifiedAt": "2025-01-14T22:04:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m9c9-mc2h-9wjw"
+        }
+      ],
+      "affectedRange": "< 1.25.0",
+      "fixedVersion": "1.25.0"
+    },
+    {
+      "id": "GHSA-53rv-hcvm-rpp9",
+      "title": "Lodestar snappy decompression issue",
+      "description": "### Impact\nUnintended permanent chain split affecting greater than or equal to 25% of the network, requiring hard fork (network partition requiring hard fork)\n\n### Description\nLodestar client may fail to decode snappy framing compressed messages.\n\n### Vulnerability Details\nIn Req/Resp protocol the message are encoded by using ssz_snappy encoding, which is basically snappy framing compression over ssz encoded message.\n\nIt's mentioned here - https://github.com/ethereum/consensus-specs/blob/dev/spe",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-53rv-hcvm-rpp9",
+      "publishedAt": "2025-01-14T22:03:59Z",
+      "modifiedAt": "2025-01-14T22:04:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-53rv-hcvm-rpp9"
+        }
+      ],
+      "affectedRange": "< 1.25.0",
+      "fixedVersion": "1.25.0"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "react-native-fast-image",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6xhg-q9c8-rj32",
+      "title": "Credential leak in react-native-fast-image",
+      "description": "This affects all versions before version 8.3.0 of package react-native-fast-image. When an image with `source={{uri: \"...\", headers: { host: \"somehost.com\", authorization: \"...\" }}` is loaded, all other subsequent images will use the same headers, this can lead to signing credentials or other session tokens being leaked to other servers.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6xhg-q9c8-rj32",
+      "publishedAt": "2021-05-18T01:52:54Z",
+      "modifiedAt": "2023-09-12T18:18:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6xhg-q9c8-rj32"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7696"
+        }
+      ],
+      "affectedRange": "< 8.3.0",
+      "fixedVersion": "8.3.0"
+    }
+  ]
+}

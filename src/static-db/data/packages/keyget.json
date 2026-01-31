@@ -1,0 +1,47 @@
+{
+  "name": "keyget",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8mp8-28xh-r486",
+      "title": "keyget vulnerable to prototype pollution",
+      "description": "### Overview\nPrototype pollution vulnerability in 'keyget' versions 1.0.0 through 2.2.0 allows attacker to cause a denial of service and may lead to remote code execution.\n\n### Details\nThe npm module 'keyget' can be abused by Prototype Pollution vulnerability since the function 'setByPath()' did not check for the type of object before assigning value to the property. Due to this flaw an attacker could create a non-existent property or able to manipulate the property which leads to Denial of Serv",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8mp8-28xh-r486",
+      "publishedAt": "2022-05-24T17:35:13Z",
+      "modifiedAt": "2023-10-19T18:24:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8mp8-28xh-r486"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28272"
+        }
+      ],
+      "affectedRange": ">= 1.0.0, <= 2.2.0",
+      "fixedVersion": "2.3.0"
+    },
+    {
+      "id": "GHSA-9fp7-4fjm-q3mf",
+      "title": "Prototype Pollution in keyget",
+      "description": "The package keyget from 0.0.0 are vulnerable to Prototype Pollution via the methods set, push, and at which could allow an attacker to cause a denial of service and may lead to remote code execution. **Note:** This vulnerability derives from an incomplete fix to [CVE-2020-28272](https://security.snyk.io/vuln/SNYK-JS-KEYGET-1048048)",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9fp7-4fjm-q3mf",
+      "publishedAt": "2022-02-01T00:51:01Z",
+      "modifiedAt": "2023-02-03T05:05:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9fp7-4fjm-q3mf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23760"
+        }
+      ],
+      "affectedRange": "<= 2.4.0"
+    }
+  ]
+}

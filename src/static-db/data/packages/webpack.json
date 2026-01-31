@@ -1,0 +1,48 @@
+{
+  "name": "webpack",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4vvj-4cpr-p986",
+      "title": "Webpack's AutoPublicPathRuntimeModule has a DOM Clobbering Gadget that leads to XSS",
+      "description": "### Summary\n\nWe discovered a DOM Clobbering vulnerability in Webpack’s `AutoPublicPathRuntimeModule`. The DOM Clobbering gadget in the module can lead to cross-site scripting (XSS) in web pages where scriptless attacker-controlled HTML elements (e.g., an `img` tag with an unsanitized `name` attribute) are present.\n\nWe found the real-world exploitation of this gadget in the Canvas LMS which allows XSS attack happens through an javascript code compiled by Webpack (the vulnerable part is from Webpa",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4vvj-4cpr-p986",
+      "publishedAt": "2024-08-27T19:50:40Z",
+      "modifiedAt": "2024-09-03T17:09:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4vvj-4cpr-p986"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-43788"
+        }
+      ],
+      "affectedRange": ">= 5.0.0-alpha.0, < 5.94.0",
+      "fixedVersion": "5.94.0"
+    },
+    {
+      "id": "GHSA-hc6q-2mpp-qw7j",
+      "title": "Cross-realm object access in Webpack 5",
+      "description": "Webpack 5 before 5.76.0 does not avoid cross-realm object access. ImportParserPlugin.js mishandles the magic comment feature. An attacker who controls a property of an untrusted object can obtain access to the real global object.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-hc6q-2mpp-qw7j",
+      "publishedAt": "2023-03-13T03:30:15Z",
+      "modifiedAt": "2023-10-30T13:11:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hc6q-2mpp-qw7j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-28154"
+        }
+      ],
+      "affectedRange": ">= 5.0.0, < 5.76.0",
+      "fixedVersion": "5.76.0"
+    }
+  ]
+}

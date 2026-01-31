@@ -1,0 +1,128 @@
+{
+  "name": "trix",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g9jg-w8vm-g96v",
+      "title": "Trix has a stored XSS vulnerability through its attachment attribute",
+      "description": "### Impact\nThe Trix editor, in versions prior to 2.1.16, is vulnerable to XSS attacks through attachment payloads.\n\nAn attacker could inject malicious code into a data-trix-attachment attribute that, when rendered as HTML and clicked on, could execute arbitrary JavaScript code within the context of the user's session, potentially leading to unauthorized actions being performed or sensitive information being disclosed.\n\n### Patches\nUpdate Recommendation: Users should upgrade to Trix editor versio",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g9jg-w8vm-g96v",
+      "publishedAt": "2025-12-31T22:07:25Z",
+      "modifiedAt": "2026-01-08T21:34:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g9jg-w8vm-g96v"
+        }
+      ],
+      "affectedRange": "< 2.1.16",
+      "fixedVersion": "2.1.16"
+    },
+    {
+      "id": "GHSA-mcrw-746g-9q8h",
+      "title": "Trix vulnerable to Cross-site Scripting on copy & paste",
+      "description": "### Impact\nThe Trix editor, in versions prior to 2.1.15, is vulnerable to XSS attacks when pasting malicious code.\n\nAn attacker could trick a user to copy and paste malicious code that would execute arbitrary JavaScript code within the context of the user's session, potentially leading to unauthorized actions being performed or sensitive information being disclosed.\n\n### Patches\nUpdate Recommendation: Users should upgrade to Trix editor version 2.1.15 or later.\n\n### References\nThe XSS vulnerabil",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-mcrw-746g-9q8h",
+      "publishedAt": "2025-05-08T14:48:23Z",
+      "modifiedAt": "2025-05-08T22:00:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mcrw-746g-9q8h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-46812"
+        }
+      ],
+      "affectedRange": "< 2.1.15",
+      "fixedVersion": "2.1.15"
+    },
+    {
+      "id": "GHSA-j386-3444-qgwg",
+      "title": "Trix allows Cross-site Scripting via `javascript:` url in a link",
+      "description": "The Trix editor, versions prior to 2.1.11, is vulnerable to XSS when pasting malicious code in the link field.\n\n### Impact\n\nAn attacker could trick the user to copy&paste a malicious `javascript:` URL as a link that would execute arbitrary JavaScript code within the context of the user's session, potentially leading to unauthorized actions being performed or sensitive information being disclosed.\n\nSee https://gist.github.com/th4s1s/3921fd9c3e324ad9a3e0d846166e3eb8\n\n### Patches\n\nUpdate Recommenda",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j386-3444-qgwg",
+      "publishedAt": "2025-01-03T16:29:58Z",
+      "modifiedAt": "2025-01-03T19:26:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j386-3444-qgwg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-21610"
+        }
+      ],
+      "affectedRange": "< 2.1.12",
+      "fixedVersion": "2.1.12"
+    },
+    {
+      "id": "GHSA-6vx4-v2jw-qwqh",
+      "title": "Trix editor subject to XSS vulnerabilities on copy & paste",
+      "description": "The Trix editor, in versions prior to 2.1.9 and 1.3.3, is vulnerable to XSS + mutation XSS attacks when pasting malicious code.\n\n### Impact\n\nAn attacker could trick a user to copy and paste malicious code that would execute arbitrary JavaScript code within the context of the user's session, potentially leading to unauthorized actions being performed or sensitive information being disclosed.\n\n### Patches\n\nUpdate Recommendation: Users should upgrade to Trix editor version 2.1.9 or later, which use",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6vx4-v2jw-qwqh",
+      "publishedAt": "2024-12-09T20:38:42Z",
+      "modifiedAt": "2024-12-09T21:53:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6vx4-v2jw-qwqh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-53847"
+        }
+      ],
+      "affectedRange": ">= 1.0.0, < 1.3.3",
+      "fixedVersion": "1.3.3"
+    },
+    {
+      "id": "GHSA-qm2q-9f3q-2vcv",
+      "title": "Trix has a cross-site Scripting vulnerability on copy & paste ",
+      "description": "The Trix editor, versions prior to 2.1.4, is vulnerable to XSS when pasting malicious code. This vulnerability is a bypass of the fix put in place for https://github.com/basecamp/trix/security/advisories/GHSA-qjqp-xr96-cj99. In https://github.com/basecamp/trix/pull/1149, we added sanitation for Trix attachments with a `text/html` content type. However, Trix only checks the content type on the paste event's `dataTransfer` object. As long as the `dataTransfer` has a content type of `text/html`, Tr",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qm2q-9f3q-2vcv",
+      "publishedAt": "2024-08-14T18:11:53Z",
+      "modifiedAt": "2024-08-15T16:58:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qm2q-9f3q-2vcv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-43368"
+        }
+      ],
+      "affectedRange": "< 2.1.4",
+      "fixedVersion": "2.1.4"
+    },
+    {
+      "id": "GHSA-qjqp-xr96-cj99",
+      "title": "Trix Editor Arbitrary Code Execution Vulnerability",
+      "description": "The Trix editor, versions prior to 2.1.1, is vulnerable to arbitrary code execution when copying and pasting content from the web or other documents with markup into the editor. The vulnerability stems from improper sanitization of pasted content, allowing an attacker to embed malicious scripts which are executed within the context of the application.\n\n**Vulnerable Versions**: \n\n- 1.x series up to and including 1.3.1\n- 2.x series up to and including 2.1.0\n\n**Fixed Versions**: \n\n- v1.3.2\n- v2.1.1",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qjqp-xr96-cj99",
+      "publishedAt": "2024-05-07T16:49:24Z",
+      "modifiedAt": "2024-06-03T17:24:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qjqp-xr96-cj99"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-34341"
+        }
+      ],
+      "affectedRange": ">= 0.9.0, < 1.3.2",
+      "fixedVersion": "1.3.2"
+    }
+  ]
+}

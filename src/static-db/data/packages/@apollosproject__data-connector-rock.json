@@ -1,0 +1,27 @@
+{
+  "name": "@apollosproject/data-connector-rock",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r578-pj6f-r4ff",
+      "title": "Auto-merging Person Records Compromised",
+      "description": "### Impact\n\nNew user registrations are able to access anyone's account by only knowing their basic profile information (name, birthday, gender, etc). This includes all app functionality within the app, as well as any authenticated links to Rock-based webpages (such as giving and events).\n\n### Patches\n\nWe have released a security patch on v2.20.0. The solution was to create a duplicate person and then patch the new person with their profile details.\n\n### Workarounds\n\nIf you do not wish to upgrade",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r578-pj6f-r4ff",
+      "publishedAt": "2021-06-21T17:07:47Z",
+      "modifiedAt": "2023-02-01T05:06:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r578-pj6f-r4ff"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32691"
+        }
+      ],
+      "affectedRange": "< 2.20.0",
+      "fixedVersion": "2.20.0"
+    }
+  ]
+}

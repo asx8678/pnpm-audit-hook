@@ -1,0 +1,26 @@
+{
+  "name": "browserstack-local",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g4w6-c99w-4wh7",
+      "title": "BrowserStack Local vulnerable to Command Injection through logfile variable",
+      "description": "The Node.js package browserstack-local 1.5.8 contains a command injection vulnerability. This occurs because the logfile variable is not properly sanitized in lib/Local.js.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g4w6-c99w-4wh7",
+      "publishedAt": "2026-01-28T18:30:47Z",
+      "modifiedAt": "2026-01-29T15:46:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g4w6-c99w-4wh7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57283"
+        }
+      ],
+      "affectedRange": "<= 1.5.8"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "react-native-keys",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fj44-h6xw-896g",
+      "title": "react-native-keys insecurely stores encryption cipher and Base64 chunks",
+      "description": "react-native-keys 0.7.11 is vulnerable to sensitive information disclosure (remote) as encryption cipher and Base64 chunks are stored as plaintext in the compiled native binary. Attackers can extract these secrets using basic static analysis tools.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fj44-h6xw-896g",
+      "publishedAt": "2025-06-09T18:32:16Z",
+      "modifiedAt": "2025-07-02T19:46:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fj44-h6xw-896g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-45001"
+        }
+      ],
+      "affectedRange": "<= 0.7.11"
+    }
+  ]
+}

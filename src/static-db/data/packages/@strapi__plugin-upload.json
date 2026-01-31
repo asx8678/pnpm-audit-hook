@@ -1,0 +1,27 @@
+{
+  "name": "@strapi/plugin-upload",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pm9q-xj9p-96pm",
+      "title": "@strapi/plugin-upload  has a Denial-of-Service via Improper Exception Handling",
+      "description": "### Summary\nA Denial-of-Service was found in the media upload process causing the server to crash without restarting, affecting either development and production environments.\n\n### Details\nUsually, errors in the application cause it to log the error and keep it running for other clients. This behavior, in contrast, stops the server execution, making it unavailable for any clients until it's manually restarted. \n\n### PoC\nDue to a bug in what we believe to be Burp’s decoding system, we couldn’t pr",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pm9q-xj9p-96pm",
+      "publishedAt": "2024-06-12T19:38:24Z",
+      "modifiedAt": "2024-06-12T19:38:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pm9q-xj9p-96pm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-31217"
+        }
+      ],
+      "affectedRange": "< 4.22.0",
+      "fixedVersion": "4.22.0"
+    }
+  ]
+}

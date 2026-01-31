@@ -1,0 +1,27 @@
+{
+  "name": "mysql",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f982-mxwc-3mrx",
+      "title": "MySQL for Node.js Unsafe Options",
+      "description": "An issue was discovered in the mysql (aka mysqljs) module 2.17.1 for Node.js. `The LOAD DATA LOCAL INFILE` option is open by default.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f982-mxwc-3mrx",
+      "publishedAt": "2022-05-24T16:53:05Z",
+      "modifiedAt": "2023-09-25T19:28:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f982-mxwc-3mrx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-14939"
+        }
+      ],
+      "affectedRange": "= 2.17.1",
+      "fixedVersion": "2.18.0"
+    }
+  ]
+}

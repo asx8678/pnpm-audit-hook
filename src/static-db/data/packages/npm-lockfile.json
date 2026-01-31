@@ -1,0 +1,27 @@
+{
+  "name": "npm-lockfile",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cr6m-62pq-hmqh",
+      "title": "OS Command injection in npm-lockfile",
+      "description": "npm-lockfile safely generates an npm lockfile and output it to the filename of your choice. npm-lockfile before 2.0.4 does not santize unsafe external input and invoke sensitive command execution API with the input, causing command injection vulnerability. A fix was released in version 2.0.5.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cr6m-62pq-hmqh",
+      "publishedAt": "2022-03-04T00:00:18Z",
+      "modifiedAt": "2023-02-03T05:06:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cr6m-62pq-hmqh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0841"
+        }
+      ],
+      "affectedRange": ">= 2.0.3, < 2.0.5",
+      "fixedVersion": "2.0.5"
+    }
+  ]
+}

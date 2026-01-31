@@ -1,0 +1,22 @@
+{
+  "name": "@liquity/contracts",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xh2p-7p87-fhgh",
+      "title": "Incorrect TCR calculation in batchLiquidateTroves() during Recovery Mode",
+      "description": "TCR is temporarily miscalculated in the `batchLiquidateTroves` function during Recovery Mode.\n\nThe bug lies in [`batchLiquidateTroves` of `TroveManager`](https://github.com/liquity/dev/blob/7c83ea11378454629618b3808b16fbfda69ee3e5/packages/contracts/contracts/TroveManager.sol#L722). \n\nWhen calculating system's entire collateral, we should also exclude the liquidated trove's surplus collateral, since liquidation closes the trove and makes the surplus collateral claimable by the trove owner. This ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-xh2p-7p87-fhgh",
+      "publishedAt": "2021-08-05T16:56:58Z",
+      "modifiedAt": "2023-01-09T05:04:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xh2p-7p87-fhgh"
+        }
+      ],
+      "affectedRange": "<= 1.0.0"
+    }
+  ]
+}

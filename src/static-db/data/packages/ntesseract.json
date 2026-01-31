@@ -1,0 +1,27 @@
+{
+  "name": "ntesseract",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w868-4576-rv24",
+      "title": "ntesseract vulnerable to Command Injection",
+      "description": "The package ntesseract before 0.2.9 is vulnerable to Command Injection via lib/tesseract.js.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-w868-4576-rv24",
+      "publishedAt": "2022-07-26T00:01:05Z",
+      "modifiedAt": "2023-01-27T05:07:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w868-4576-rv24"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28446"
+        }
+      ],
+      "affectedRange": "< 0.2.9",
+      "fixedVersion": "0.2.9"
+    }
+  ]
+}

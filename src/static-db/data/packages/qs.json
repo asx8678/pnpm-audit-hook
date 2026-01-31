@@ -1,0 +1,48 @@
+{
+  "name": "qs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6rw7-vpxm-498p",
+      "title": "qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion",
+      "description": "### Summary\n\nThe `arrayLimit` option in qs does not enforce limits for bracket notation (`a[]=1&a[]=2`), allowing attackers to cause denial-of-service via memory exhaustion. Applications using `arrayLimit` for DoS protection are vulnerable.\n\n### Details\n\nThe `arrayLimit` option only checks limits for indexed notation (`a[0]=1&a[1]=2`) but completely bypasses it for bracket notation (`a[]=1&a[]=2`).\n\n**Vulnerable code** (`lib/parse.js:159-162`):\n```javascript\nif (root === '[]' && options.parseArr",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6rw7-vpxm-498p",
+      "publishedAt": "2025-12-30T21:02:54Z",
+      "modifiedAt": "2025-12-30T21:02:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6rw7-vpxm-498p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-15284"
+        }
+      ],
+      "affectedRange": "< 6.14.1",
+      "fixedVersion": "6.14.1"
+    },
+    {
+      "id": "GHSA-hrpp-h998-j3pp",
+      "title": "qs vulnerable to Prototype Pollution",
+      "description": "qs before 6.10.3 allows attackers to cause a Node process hang because an `__ proto__` key can be used. In many typical web framework use cases, an unauthenticated remote attacker can place the attack payload in the query string of the URL that is used to visit the application, such as `a[__proto__]=b&a[__proto__]&a[length]=100000000`. The fix was backported to qs 6.9.7, 6.8.3, 6.7.3, 6.6.1, 6.5.3, 6.4.1, 6.3.3, and 6.2.4.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hrpp-h998-j3pp",
+      "publishedAt": "2022-11-27T00:30:50Z",
+      "modifiedAt": "2025-04-29T15:41:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hrpp-h998-j3pp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24999"
+        }
+      ],
+      "affectedRange": "< 6.2.4",
+      "fixedVersion": "6.2.4"
+    }
+  ]
+}

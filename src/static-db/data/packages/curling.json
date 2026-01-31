@@ -1,0 +1,27 @@
+{
+  "name": "curling",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xmxh-g7wj-8m4m",
+      "title": "OS Command Injection in curling",
+      "description": "npm package `curling` before version 1.1.0 is vulnerable to Command Injection via the run function. The command argument can be controlled by users without any sanitization.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xmxh-g7wj-8m4m",
+      "publishedAt": "2021-04-13T15:32:26Z",
+      "modifiedAt": "2023-02-01T05:05:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xmxh-g7wj-8m4m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10789"
+        }
+      ],
+      "affectedRange": "<= 1.0.0",
+      "fixedVersion": "1.1.0"
+    }
+  ]
+}

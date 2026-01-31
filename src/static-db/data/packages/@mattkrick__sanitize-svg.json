@@ -1,0 +1,27 @@
+{
+  "name": "@mattkrick/sanitize-svg",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h857-2g56-468g",
+      "title": "@mattkrick/sanitize-svg vulnerable to Cross-Site Scripting (XSS)",
+      "description": "### Impact\nThe *sanitize-svg* package uses a deny-list-pattern to sanitize SVGs to prevent cross-site scripting (XSS). In doing so, literal `<script>`-tags and on-event handlers were detected:\n```typescript\n[...]\n  const svgEl = div.firstElementChild!\n  const attributes = Array.from(svgEl.attributes).map(({ name }) => name)\n  const hasScriptAttr = !!attributes.find((attr) => attr.startsWith('on'))\n  const scripts = svgEl.getElementsByTagName('script')\n  return scripts.length === 0 && !hasScriptA",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h857-2g56-468g",
+      "publishedAt": "2023-01-05T12:18:35Z",
+      "modifiedAt": "2023-01-29T05:01:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h857-2g56-468g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-22461"
+        }
+      ],
+      "affectedRange": "<= 0.3.1",
+      "fixedVersion": "0.4.0"
+    }
+  ]
+}

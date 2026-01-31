@@ -1,0 +1,27 @@
+{
+  "name": "replaywebpage",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w765-jm6w-4hhj",
+      "title": "Webrecorder packages are vulnerable to XSS through 404 error handling logic",
+      "description": "A Reflected Cross-Site Scripting (XSS) vulnerability exists in the 404 error handling logic of wabac.js v2.23.10 and below. The parameter `requestURL` (derived from the original request target) is directly embedded into an inline `<script>` block without sanitization or escaping.\n\nThis allows an attacker to craft a malicious URL that executes arbitrary JavaScript in the victim’s browser.\n\nThe scope may be limited by CORS policies, depending on the situation in which wabac.js is used.\n\n### Patche",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w765-jm6w-4hhj",
+      "publishedAt": "2025-09-10T17:13:45Z",
+      "modifiedAt": "2025-09-10T17:13:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w765-jm6w-4hhj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-58765"
+        }
+      ],
+      "affectedRange": "< 2.3.17",
+      "fixedVersion": "2.3.17"
+    }
+  ]
+}

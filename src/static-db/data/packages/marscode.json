@@ -1,0 +1,26 @@
+{
+  "name": "marscode",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8pww-pp5r-rff8",
+      "title": "Path Traversal in marscode",
+      "description": "This affects all versionsup to and including version 1.0.1-0 of package marscode. There is no path sanitization in the path provided at `fs.readFile` in `index.js`.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8pww-pp5r-rff8",
+      "publishedAt": "2021-05-07T16:06:03Z",
+      "modifiedAt": "2023-09-05T23:32:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8pww-pp5r-rff8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7681"
+        }
+      ],
+      "affectedRange": "<= 1.0.1-0"
+    }
+  ]
+}

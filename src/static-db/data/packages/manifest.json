@@ -1,0 +1,27 @@
+{
+  "name": "manifest",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h8h6-7752-g28c",
+      "title": "Manifest Uses a One-Way Hash without a Salt",
+      "description": "### Summary\nManifest employs a weak password hashing implementation that uses SHA3 without a salt. This exposes user passwords to a higher risk of being cracked if an attacker gains access to the database. Without the use of a salt, identical passwords across multiple users will result in the same hash, making it easier for attackers to identify and exploit patterns, thereby accelerating the cracking process.\n\n### Details\nAnalysis of the application source code reveals that user passwords are ha",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h8h6-7752-g28c",
+      "publishedAt": "2025-03-03T19:55:33Z",
+      "modifiedAt": "2025-03-04T22:23:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h8h6-7752-g28c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-27408"
+        }
+      ],
+      "affectedRange": "< 4.9.2",
+      "fixedVersion": "4.9.2"
+    }
+  ]
+}

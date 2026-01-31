@@ -1,0 +1,27 @@
+{
+  "name": "gatsby",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c6f8-8r25-c4gc",
+      "title": "Gatsby develop server has Local File Inclusion vulnerability",
+      "description": "### Impact\n\nThe Gatsby framework prior to versions 4.25.7 and 5.9.1 contain a Local File Inclusion vulnerability in the `__file-code-frame` and `__original-stack-frame` paths, exposed when running the Gatsby develop server (`gatsby develop`).\n\nThe following steps can be used to reproduce the vulnerability:\n\n```\n# Create a new Gatsby project\n$ npm init gatsby\n$ cd my-gatsby-site\n\n# Start the Gatsby develop server\n$ gatsby develop\n\n# Execute the Local File Inclusion vulnerability in __file-code-fr",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c6f8-8r25-c4gc",
+      "publishedAt": "2023-06-09T22:52:01Z",
+      "modifiedAt": "2023-11-11T05:06:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c6f8-8r25-c4gc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-34238"
+        }
+      ],
+      "affectedRange": ">= 5.0.0, <= 5.9.0",
+      "fixedVersion": "5.9.1"
+    }
+  ]
+}

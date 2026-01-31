@@ -1,0 +1,99 @@
+{
+  "name": "@vitejs/plugin-rsc",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g239-q96q-x4qm",
+      "title": "@vitejs/plugin-rsc has an Arbitrary File Read via `/__vite_rsc_findSourceMapURL` Endpoint",
+      "description": "## Summary\n\nThe `/__vite_rsc_findSourceMapURL` endpoint in `@vitejs/plugin-rsc` allows **unauthenticated arbitrary file read** during development mode. An attacker can read any file accessible to the Node.js process by sending a crafted HTTP request with a `file://` URL in the `filename` query parameter.\n\n**Severity:** High\n**Attack Vector:** Network  \n**Privileges Required:** None  \n**Scope:** Development mode only (`vite dev`)\n\n---\n\n## Impact\n\n### Who Is Affected?\n\n- **All developers** using `",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g239-q96q-x4qm",
+      "publishedAt": "2025-12-16T22:32:26Z",
+      "modifiedAt": "2025-12-16T22:32:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g239-q96q-x4qm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-68155"
+        }
+      ],
+      "affectedRange": "< 0.5.8",
+      "fixedVersion": "0.5.8"
+    },
+    {
+      "id": "GHSA-c6m7-q6pr-c64r",
+      "title": "Vite Plugin React has a Source Code Exposure Vulnerability in React Server Components",
+      "description": "### Impact\n\n`@vitejs/plugin-rsc` vendors `react-server-dom-webpack`, which contained a vulnerability in versions prior to 19.2.3. See details in React repository's advisory https://github.com/facebook/react/security/advisories/GHSA-925w-6v3x-g4j4\n\n### Patches\n\nUpgrade immediately to `@vitejs/plugin-rsc@0.5.7` or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c6m7-q6pr-c64r",
+      "publishedAt": "2025-12-12T16:41:58Z",
+      "modifiedAt": "2025-12-12T16:41:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c6m7-q6pr-c64r"
+        }
+      ],
+      "affectedRange": "<= 0.5.6",
+      "fixedVersion": "0.5.7"
+    },
+    {
+      "id": "GHSA-cpqf-f22c-r95x",
+      "title": "Vite Plugin React has a Denial of Service Vulnerability in React Server Components",
+      "description": "### Impact\n\n`@vitejs/plugin-rsc` vendors `react-server-dom-webpack`, which contained a vulnerability in versions prior to 19.2.3. See details in React repository's advisory https://github.com/facebook/react/security/advisories/GHSA-7gmr-mq3h-m5h9\n\n### Patches\n\nUpgrade immediately to `@vitejs/plugin-rsc@0.5.7` or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cpqf-f22c-r95x",
+      "publishedAt": "2025-12-12T16:41:08Z",
+      "modifiedAt": "2025-12-12T16:41:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cpqf-f22c-r95x"
+        }
+      ],
+      "affectedRange": "<= 0.5.6",
+      "fixedVersion": "0.5.7"
+    },
+    {
+      "id": "GHSA-fmh4-wr37-44fp",
+      "title": "React Server Components are Vulnerable to RCE",
+      "description": "### Summary\n\n`@vitejs/plugin-rsc` vendors `react-server-dom-webpack`, which contained an unauthenticated remote code execution vulnerability in versions prior to 19.0.1, 19.1.2, and 19.2.1. See details in React repository's advisory https://github.com/facebook/react/security/advisories/GHSA-fv66-9v8q-g76r\n\n### Impact\n\nApplications using affected versions of `@vitejs/plugin-rsc` are vulnerable to unauthenticated remote code execution through deserialization of untrusted data. An attacker can exec",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fmh4-wr37-44fp",
+      "publishedAt": "2025-12-03T19:07:52Z",
+      "modifiedAt": "2025-12-11T18:20:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fmh4-wr37-44fp"
+        }
+      ],
+      "affectedRange": "<= 0.5.2",
+      "fixedVersion": "0.5.3"
+    },
+    {
+      "id": "GHSA-j76j-5p5g-9wfr",
+      "title": "@vitejs/plugin-rsc Remote Code Execution through unsafe dynamic imports in RSC server function APIs on development server",
+      "description": "## Summary\n\nArbitrary Remote Code Execution on development server via unsafe dynamic imports in `@vitejs/plugin-rsc` server function APIs (`loadServerAction`, `decodeReply`, `decodeAction`) when integrated into RSC applications that expose server function endpoints.\n\n## Impact\n\nAttackers with network access to the development server can execute arbitrary JavaScript code with Node.js privileges, allowing them to read/modify files, exfiltrate sensitive data (source code, environment variables, cre",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-j76j-5p5g-9wfr",
+      "publishedAt": "2025-12-08T22:16:31Z",
+      "modifiedAt": "2025-12-10T00:38:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j76j-5p5g-9wfr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-67489"
+        }
+      ],
+      "affectedRange": "<= 0.5.5",
+      "fixedVersion": "0.5.6"
+    }
+  ]
+}

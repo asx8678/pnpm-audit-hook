@@ -1,0 +1,26 @@
+{
+  "name": "@aofl/cli-lib",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vg6v-jcg3-5mp7",
+      "title": "@aofl/cli-lib Prototype Pollution vulnerability",
+      "description": "aofl cli-lib v3.14.0 was discovered to contain a prototype pollution via the component defaultsDeep. This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vg6v-jcg3-5mp7",
+      "publishedAt": "2024-07-01T15:32:09Z",
+      "modifiedAt": "2024-07-31T05:02:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vg6v-jcg3-5mp7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-38987"
+        }
+      ],
+      "affectedRange": "<= 4.0.0-alpha.45"
+    }
+  ]
+}

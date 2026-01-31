@@ -1,0 +1,27 @@
+{
+  "name": "requirejs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x3m3-4wpv-5vgc",
+      "title": "jrburke requirejs vulnerable to prototype pollution",
+      "description": "jrburke requirejs v2.3.6 was discovered to contain a prototype pollution via the function `s.contexts._.configure`. This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x3m3-4wpv-5vgc",
+      "publishedAt": "2024-07-01T15:32:19Z",
+      "modifiedAt": "2024-08-04T05:05:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x3m3-4wpv-5vgc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-38999"
+        }
+      ],
+      "affectedRange": "<= 2.3.6",
+      "fixedVersion": "2.3.7"
+    }
+  ]
+}

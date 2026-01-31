@@ -1,0 +1,26 @@
+{
+  "name": "deepref",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7c7g-72q7-4xhm",
+      "title": "Prototype pollution vulnerability in 'deepref'",
+      "description": "Prototype pollution vulnerability in 'deepref' versions 1.1.1 through 1.2.1 allows attacker to cause a denial of service and may lead to remote code execution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7c7g-72q7-4xhm",
+      "publishedAt": "2021-10-12T16:27:35Z",
+      "modifiedAt": "2023-02-01T05:06:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7c7g-72q7-4xhm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28274"
+        }
+      ],
+      "affectedRange": ">= 1.1.1, <= 1.2.1"
+    }
+  ]
+}

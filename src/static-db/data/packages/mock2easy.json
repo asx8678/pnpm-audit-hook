@@ -1,0 +1,26 @@
+{
+  "name": "mock2easy",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g4xj-wcq6-qwx5",
+      "title": "Code injection in mock2easy",
+      "description": "This affects all versions up to and including version 0.0.24 of package mock2easy. a malicious user could inject commands through the `_data` variable: \n\nAffected Area\n\n```js\nrequire('../server/getJsonByCurl')(mock2easy, function(error, stdout) {\n    if (error) {\n        return res.json(500, error);\n    }\n    res.json(JSON.parse(stdout));\n}, '', _data.interfaceUrl, query, _data.cookie, _data.interfaceType);```",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-g4xj-wcq6-qwx5",
+      "publishedAt": "2021-05-06T18:25:58Z",
+      "modifiedAt": "2023-09-08T19:29:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g4xj-wcq6-qwx5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7697"
+        }
+      ],
+      "affectedRange": "<= 0.0.24"
+    }
+  ]
+}

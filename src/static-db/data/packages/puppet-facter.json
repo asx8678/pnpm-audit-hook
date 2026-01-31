@@ -1,0 +1,26 @@
+{
+  "name": "puppet-facter",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g5qr-xgg7-8q2w",
+      "title": "Command Injection in puppet-facter",
+      "description": "All versions of the package puppet-facter are vulnerable to Command Injection via the getFact function due to improper input sanitization.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g5qr-xgg7-8q2w",
+      "publishedAt": "2023-01-26T21:30:25Z",
+      "modifiedAt": "2025-04-01T23:03:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g5qr-xgg7-8q2w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25350"
+        }
+      ],
+      "affectedRange": "<= 0.0.2"
+    }
+  ]
+}

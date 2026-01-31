@@ -1,0 +1,40 @@
+{
+  "name": "apollo-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2p3c-p3qw-69r4",
+      "title": "The graphql-upload library included in Apollo Server 2 is vulnerable to CSRF mutations",
+      "description": "### Impact\nThe [graphql-upload](https://www.npmjs.com/package/graphql-upload) npm package can execute GraphQL operations contained in `content-type: multipart/form-data` POST requests. Because they are POST requests, they can contain GraphQL mutations. Because they use `content-type: multipart/form-data`, they can be \"simple requests\" which are not preflighted by browsers.\n\nIf your GraphQL server uses `graphql-upload` and uses `SameSite=None` cookies for authentication, then JS on any origin can",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2p3c-p3qw-69r4",
+      "publishedAt": "2022-10-12T14:15:48Z",
+      "modifiedAt": "2023-07-31T20:39:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2p3c-p3qw-69r4"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.25.4",
+      "fixedVersion": "2.25.4"
+    },
+    {
+      "id": "GHSA-qm7x-rc44-rrqw",
+      "title": "Cross-site Scripting Vulnerability in GraphQL Playground (distributed by Apollo Server)",
+      "description": "### Impact\nIn certain configurations, Apollo Server serves the client-side web app \"GraphQL Playground\" from the same web server that executes GraphQL operations. This web app has access to cookies and other credentials associated with the web server's operations. There is a cross-site scripting vulnerability in GraphQL Playground that allows for arbitrary JavaScript code execution in your web server's origin. If a user clicks a specially crafted link to your GraphQL Playground page served by Ap",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qm7x-rc44-rrqw",
+      "publishedAt": "2021-11-08T18:07:42Z",
+      "modifiedAt": "2023-01-09T05:05:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qm7x-rc44-rrqw"
+        }
+      ],
+      "affectedRange": ">= 3.0.0, < 3.4.1",
+      "fixedVersion": "3.4.1"
+    }
+  ]
+}

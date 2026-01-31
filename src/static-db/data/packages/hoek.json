@@ -1,0 +1,26 @@
+{
+  "name": "hoek",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c429-5p7v-vgjp",
+      "title": "hoek subject to prototype pollution via the clone function.",
+      "description": "hoek versions prior to 8.5.1, and 9.x prior to 9.0.3 are vulnerable to prototype pollution in the clone function. If an object with the __proto__ key is passed to clone() the key is converted to a prototype. This issue has been patched in version 9.0.3, and backported to 8.5.1.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-c429-5p7v-vgjp",
+      "publishedAt": "2022-09-25T00:00:27Z",
+      "modifiedAt": "2025-05-28T19:34:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c429-5p7v-vgjp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-36604"
+        }
+      ],
+      "affectedRange": "<= 6.1.3"
+    }
+  ]
+}

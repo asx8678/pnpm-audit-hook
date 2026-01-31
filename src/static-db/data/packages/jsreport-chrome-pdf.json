@@ -1,0 +1,27 @@
+{
+  "name": "jsreport-chrome-pdf",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-934w-hvj4-7fr6",
+      "title": "Path Traversal in jsreport-chrome-pdf",
+      "description": "This affects the package jsreport-chrome-pdf before 1.10.0.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-934w-hvj4-7fr6",
+      "publishedAt": "2021-04-13T15:25:15Z",
+      "modifiedAt": "2023-02-01T05:05:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-934w-hvj4-7fr6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7762"
+        }
+      ],
+      "affectedRange": "< 1.10.0",
+      "fixedVersion": "1.10.0"
+    }
+  ]
+}

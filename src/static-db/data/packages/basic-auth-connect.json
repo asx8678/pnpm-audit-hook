@@ -1,0 +1,27 @@
+{
+  "name": "basic-auth-connect",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7p89-p6hx-q4fw",
+      "title": "basic-auth-connect's callback uses time unsafe string comparison",
+      "description": "### Impact\n\nbasic-auth-connect <1.1.0 uses a timing-unsafe equality comparison that can leak timing information\n\n### Patches\n\nthis issue has been fixed in basic-auth-connect 1.1.0\n\n### References\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7p89-p6hx-q4fw",
+      "publishedAt": "2024-09-30T17:48:29Z",
+      "modifiedAt": "2024-09-30T20:11:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7p89-p6hx-q4fw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-47178"
+        }
+      ],
+      "affectedRange": "< 1.1.0",
+      "fixedVersion": "1.1.0"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "fiora",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hg3j-6pmh-mvjr",
+      "title": "Fiora chat user avatar is vulnerable to XSS via SVG files",
+      "description": "Cross Site Scripting (XSS) vulnerability in Fiora chat application 1.0.0 allows arbitrary JavaScript execution when malicious SVG files are rendered by other users.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-hg3j-6pmh-mvjr",
+      "publishedAt": "2025-10-01T18:30:38Z",
+      "modifiedAt": "2025-10-13T15:19:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hg3j-6pmh-mvjr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-56514"
+        }
+      ],
+      "affectedRange": "= 1.0.0"
+    },
+    {
+      "id": "GHSA-2c6j-vw6r-mfch",
+      "title": "Fiora chat group avatar is vulnerable to XSS via SVG files",
+      "description": "File upload vulnerability in Fiora chat application 1.0.0 through user avatar upload functionality. The application fails to validate SVG file content, allowing malicious SVG files with embedded foreignObject elements containing iframe tags and JavaScript event handlers (onmouseover) to be uploaded and stored. When rendered, these SVG files execute arbitrary JavaScript, enabling attackers to steal user sessions, cookies, and perform unauthorized actions in the context of users viewing affected p",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-2c6j-vw6r-mfch",
+      "publishedAt": "2025-10-01T18:30:38Z",
+      "modifiedAt": "2025-10-01T20:57:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2c6j-vw6r-mfch"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-56515"
+        }
+      ],
+      "affectedRange": "= 1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "kill-by-port",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mm4f-47ch-f7hx",
+      "title": "Arbitrary code execution in kill-by-port",
+      "description": "This affects the package kill-by-port before 0.0.2. If (attacker-controlled) user input is given to the killByPort function, it is possible for an attacker to execute arbitrary commands. This is due to use of the child_process exec function without input sanitization.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mm4f-47ch-f7hx",
+      "publishedAt": "2021-04-13T15:32:43Z",
+      "modifiedAt": "2023-01-27T05:00:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mm4f-47ch-f7hx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23363"
+        }
+      ],
+      "affectedRange": "< 0.0.2",
+      "fixedVersion": "0.0.2"
+    }
+  ]
+}

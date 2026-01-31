@@ -1,0 +1,153 @@
+{
+  "name": "urijs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p6j9-7xhc-rhwp",
+      "title": "URIjs Hostname spoofing via backslashes in URL",
+      "description": "### Impact\nIf using affected versions to determine a URL's hostname, the hostname can be spoofed by using a backslash (`\\`) character as part of the scheme delimiter, e.g. `scheme:/\\hostname`. If the hostname is used in security decisions, the decision may be incorrect.\n\nDepending on library usage and attacker intent, impacts may include allow/block list bypasses, SSRF attacks, open redirects, or other undesired behavior.\n\nExample URL: `https:/\\expected-example.com/path`\nEscaped string: `https:/",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p6j9-7xhc-rhwp",
+      "publishedAt": "2021-03-01T20:03:53Z",
+      "modifiedAt": "2023-12-08T05:05:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p6j9-7xhc-rhwp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-27516"
+        }
+      ],
+      "affectedRange": "< 1.19.6",
+      "fixedVersion": "1.19.6"
+    },
+    {
+      "id": "GHSA-3vjf-82ff-p4r3",
+      "title": "Incorrect protocol extraction via \\r, \\n and \\t characters",
+      "description": "\\r, \\n and \\t characters in user-input URLs can potentially lead to incorrect protocol extraction when using npm package urijs prior to version 1.19.11.\n\nThis can lead to XSS when the module is used to prevent passing in malicious javascript: links into HTML or Javascript (see following example):\n````\nconst parse = require('urijs')\nconst express = require('express')\nconst app = express()\nconst port = 3000\n\ninput = \"ja\\r\\nvascript:alert(1)\"\nurl = parse(input)\n\nconsole.log(url)\n\napp.get('/', (req,",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3vjf-82ff-p4r3",
+      "publishedAt": "2022-04-06T00:01:31Z",
+      "modifiedAt": "2023-11-29T22:38:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3vjf-82ff-p4r3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-1243"
+        }
+      ],
+      "affectedRange": "< 1.19.11",
+      "fixedVersion": "1.19.11"
+    },
+    {
+      "id": "GHSA-89gv-h8wf-cg8r",
+      "title": "URIjs Vulnerable to Hostname spoofing via backslashes in URL ",
+      "description": "### Impact\nIf using affected versions to determine a URL's hostname, the hostname can be spoofed by using a combination of backslash (`\\`) and slash (`/`) characters as part of the scheme delimiter, e.g. `scheme:/\\/\\/\\hostname`. If the hostname is used in security decisions, the decision may be incorrect.\n\nDepending on library usage and attacker intent, impacts may include allow/block list bypasses, SSRF attacks, open redirects, or other undesired behavior.\n\nExample URL: `https:/\\/\\/\\expected-ex",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-89gv-h8wf-cg8r",
+      "publishedAt": "2021-07-19T21:22:36Z",
+      "modifiedAt": "2023-09-07T20:18:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-89gv-h8wf-cg8r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3647"
+        }
+      ],
+      "affectedRange": "< 1.19.7",
+      "fixedVersion": "1.19.7"
+    },
+    {
+      "id": "GHSA-8h2f-7jc4-7m3m",
+      "title": "Open Redirect in urijs",
+      "description": "urijs prior to version 1.19.10 is vulnerable to open redirect. This is the result of a bypass for the fix to CVE-2022-0613.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8h2f-7jc4-7m3m",
+      "publishedAt": "2022-03-07T00:00:40Z",
+      "modifiedAt": "2023-02-03T05:06:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8h2f-7jc4-7m3m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0868"
+        }
+      ],
+      "affectedRange": "< 1.19.10",
+      "fixedVersion": "1.19.10"
+    },
+    {
+      "id": "GHSA-gmv4-r438-p67f",
+      "title": "Leading white space bypasses protocol validation",
+      "description": "### Impact\nWhitespace characters are not removed from the beginning of the protocol, so URLs are not parsed properly and protocol validation mechanisms may fail.\n\n### Patches\nPatched in 1.19.9\n\n### Workarounds\nRemove leading whitespace from values before passing them to URI.parse (e.g. via `.href(value)` or `new URI(value)`), e.g. by using\n\n```js\nfunction remove_whitespace(url){\n     const whitespace = /^[\\x00-\\x20\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+/;\n     url = url.r",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gmv4-r438-p67f",
+      "publishedAt": "2022-03-03T19:23:36Z",
+      "modifiedAt": "2023-02-03T05:06:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gmv4-r438-p67f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24723"
+        }
+      ],
+      "affectedRange": "< 1.19.9",
+      "fixedVersion": "1.19.9"
+    },
+    {
+      "id": "GHSA-gcv8-gh4r-25x6",
+      "title": "Authorization Bypass Through User-Controlled Key in urijs",
+      "description": "Attacker can use case-insensitive protocol schemes like HTTP, htTP, HTtp etc. in order to bypass the patch for CVE-2021-3647.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gcv8-gh4r-25x6",
+      "publishedAt": "2022-02-17T00:00:35Z",
+      "modifiedAt": "2023-02-03T05:06:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gcv8-gh4r-25x6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0613"
+        }
+      ],
+      "affectedRange": "< 1.19.8",
+      "fixedVersion": "1.19.8"
+    },
+    {
+      "id": "GHSA-g694-m8vq-gv9h",
+      "title": "URL Confusion When Scheme Not Supplied in medialize/uri.js",
+      "description": "Medialize is a Javascript URL mutation library. When parsing a URL without a scheme and with excessive slashes, like ///www.example.com, URI.js will parse the hostname as null and the path as /www.example.com. Such behaviour is different from that exhibited by browsers, which will parse ///www.example.com as http://www.example.com instead. For example, the following will cause a redirect to http://www.example.com: A fix was released in version 1.19.11.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g694-m8vq-gv9h",
+      "publishedAt": "2022-04-05T00:00:17Z",
+      "modifiedAt": "2023-01-27T05:01:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g694-m8vq-gv9h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-1233"
+        }
+      ],
+      "affectedRange": "< 1.19.11",
+      "fixedVersion": "1.19.11"
+    }
+  ]
+}

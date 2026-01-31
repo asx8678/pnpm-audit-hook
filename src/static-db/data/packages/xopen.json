@@ -1,0 +1,26 @@
+{
+  "name": "xopen",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-74wf-cwjg-9cf2",
+      "title": "xopen is vulnerable to OS Command Injection in Exported Function xopen(filepath)",
+      "description": "A command injection vulnerability affects all versions of package xopen. The injection point is located in line 14 in index.js in the exported function `xopen(filepath)`.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-74wf-cwjg-9cf2",
+      "publishedAt": "2022-07-26T00:01:05Z",
+      "modifiedAt": "2023-01-27T05:07:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-74wf-cwjg-9cf2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28447"
+        }
+      ],
+      "affectedRange": "<= 1.0.0"
+    }
+  ]
+}

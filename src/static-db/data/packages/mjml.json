@@ -1,0 +1,47 @@
+{
+  "name": "mjml",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-45h5-66jx-r2wf",
+      "title": "MJML allows mj-include directory traversal due to an incomplete fix for CVE-2020-12827",
+      "description": "MJML through 4.18.0 allows mj-include directory traversal to test file existence and (in the type=\"css\" case) read files. NOTE: this issue exists because of an incomplete fix for CVE-2020-12827.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-45h5-66jx-r2wf",
+      "publishedAt": "2025-12-15T00:30:25Z",
+      "modifiedAt": "2025-12-17T18:12:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-45h5-66jx-r2wf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-67898"
+        }
+      ],
+      "affectedRange": "<= 4.18.0"
+    },
+    {
+      "id": "GHSA-4hch-r9xf-6vfr",
+      "title": "MJML vulnerable to path traversal",
+      "description": "MJML prior to 4.6.3 contains a path traversal vulnerability when processing the `mj-include` directive within an MJML document.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4hch-r9xf-6vfr",
+      "publishedAt": "2022-05-24T17:20:46Z",
+      "modifiedAt": "2023-10-19T19:05:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4hch-r9xf-6vfr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-12827"
+        }
+      ],
+      "affectedRange": "< 4.6.3",
+      "fixedVersion": "4.6.3"
+    }
+  ]
+}

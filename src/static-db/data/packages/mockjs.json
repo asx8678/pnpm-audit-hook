@@ -1,0 +1,26 @@
+{
+  "name": "mockjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mh8j-9jvh-gjf6",
+      "title": "mockjs vulnerable to Prototype Pollution via the Util.extend function",
+      "description": "All versions of the package mockjs are vulnerable to Prototype Pollution via the Util.extend function due to missing check if the attribute resolves to the object prototype. By adding or modifying attributes of an object prototype, it is possible to create attributes that exist on every object, or replace critical attributes with malicious ones. This can be problematic if the software depends on existence or non-existence of certain attributes, or uses pre-defined attributes of object prototype ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mh8j-9jvh-gjf6",
+      "publishedAt": "2023-12-08T06:30:38Z",
+      "modifiedAt": "2023-12-17T05:05:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mh8j-9jvh-gjf6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26158"
+        }
+      ],
+      "affectedRange": "<= 1.1.0"
+    }
+  ]
+}

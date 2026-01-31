@@ -1,0 +1,26 @@
+{
+  "name": "react-bootstrap-table",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2589-w6xf-983r",
+      "title": "Cross-site scripting in react-bootstrap-table",
+      "description": "All versions of package react-bootstrap-table are vulnerable to Cross-site Scripting (XSS) via the dataFormat parameter. The problem is triggered when an invalid React element is returned, leading to dangerouslySetInnerHTML being used, which does not sanitize the output.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2589-w6xf-983r",
+      "publishedAt": "2021-12-10T18:58:49Z",
+      "modifiedAt": "2023-02-01T05:05:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2589-w6xf-983r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23398"
+        }
+      ],
+      "affectedRange": "<= 4.3.1"
+    }
+  ]
+}

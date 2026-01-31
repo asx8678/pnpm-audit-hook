@@ -1,0 +1,27 @@
+{
+  "name": "@backstage/plugin-auth-backend",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w7fj-336r-vw49",
+      "title": "Cross-Site Scripting vulnerability in @backstage/plugin-auth-backend",
+      "description": "### Impact\nThis vulnerability allows a malicious actor to trick another user into visiting a vulnerable URL that executes an XSS attack. This attack can potentially allow the attacker to exfiltrate access tokens or other secrets from the user's browser. The default CSP does prevent this attack, but it is expected that some deployments have these policies disabled due to incompatibilities.\n\n### Patches\nThis is vulnerability is patched in version `0.4.9` of `@backstage/plugin-auth-backend`.\n\n### F",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w7fj-336r-vw49",
+      "publishedAt": "2021-12-01T18:29:21Z",
+      "modifiedAt": "2023-02-01T05:06:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w7fj-336r-vw49"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-43776"
+        }
+      ],
+      "affectedRange": "< 0.4.9",
+      "fixedVersion": "0.4.9"
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "name": "tarteaucitronjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q5f6-qxm2-mcqm",
+      "title": "tarteaucitron.js has Regular Expression Denial of Service (ReDoS) vulnerability",
+      "description": "## Summary\n\nA potential Regular Expression Denial of Service (ReDoS) vulnerability was identified in tarteaucitron.js in the handling of the `issuu_id` parameter. \n\n## Details\n\nThe issue was caused by the use of insufficiently constrained regular expressions applied to attacker-controlled input:\n\n    if (issuu_id.match(/\\d+\\/\\d+/)) {\n        issuu_embed = '#' + issuu_id;\n    } else if (issuu_id.match(/d=(.*)&u=(.*)/)) {\n        issuu_embed = '?' + issuu_id;\n    }\n\nThese expressions are not ancho",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q5f6-qxm2-mcqm",
+      "publishedAt": "2026-01-13T20:35:28Z",
+      "modifiedAt": "2026-01-14T00:35:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q5f6-qxm2-mcqm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22809"
+        }
+      ],
+      "affectedRange": "< 1.29.0",
+      "fixedVersion": "1.29.0"
+    },
+    {
+      "id": "GHSA-q43x-79jr-cq98",
+      "title": "tarteaucitron.js vulnerable to DOM Clobbering via document.currentScript",
+      "description": "A vulnerability was identified in tarteaucitron.js where document.currentScript was accessed without verifying that it referenced an actual `<script>` element. If an attacker injected an HTML element such as:\n\n```\n<img name=\"currentScript\" src=\"https://malicious.example.com\">\n```\n\nit could clobber the document.currentScript property. This causes the script to resolve incorrectly to an <img> element instead of the <script> tag, leading to unexpected behavior or failure to load the script path cor",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q43x-79jr-cq98",
+      "publishedAt": "2025-07-03T16:59:09Z",
+      "modifiedAt": "2025-07-03T18:50:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q43x-79jr-cq98"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-48939"
+        }
+      ],
+      "affectedRange": "< 1.22.0",
+      "fixedVersion": "1.22.0"
+    },
+    {
+      "id": "GHSA-p5g4-v748-6fh8",
+      "title": "tarteaucitron.js allows url scheme injection via unfiltered inputs",
+      "description": "A vulnerability was identified in `tarteaucitron.js`, allowing a user with high privileges (access to the site's source code or a CMS plugin) to enter a URL containing an insecure scheme such as `javascript:alert()`. Before the fix, URL validation was insufficient, which could allow arbitrary JavaScript execution if a user clicked on a malicious link.\n\n## Impact\nAn attacker with high privileges could insert a link exploiting an insecure URL scheme, leading to:\n- Execution of arbitrary JavaScript",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p5g4-v748-6fh8",
+      "publishedAt": "2025-04-07T16:46:57Z",
+      "modifiedAt": "2025-04-07T16:47:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p5g4-v748-6fh8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-31476"
+        }
+      ],
+      "affectedRange": "< 1.20.1",
+      "fixedVersion": "1.20.1"
+    },
+    {
+      "id": "GHSA-4hwx-xcc5-2hfc",
+      "title": "tarteaucitron.js allows prototype pollution via custom text injection",
+      "description": "A vulnerability was identified in `tarteaucitron.js`, where the `addOrUpdate` function, used for applying custom texts, did not properly validate input. This allowed an attacker with direct access to the site's source code or a CMS plugin to manipulate JavaScript object prototypes, leading to potential security risks such as data corruption or unintended code execution.\n\n## Impact\nAn attacker with high privileges could exploit this vulnerability to:\n- Modify object prototypes, affecting core Jav",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4hwx-xcc5-2hfc",
+      "publishedAt": "2025-04-07T16:38:52Z",
+      "modifiedAt": "2025-04-07T16:38:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4hwx-xcc5-2hfc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-31475"
+        }
+      ],
+      "affectedRange": "< 1.20.1",
+      "fixedVersion": "1.20.1"
+    },
+    {
+      "id": "GHSA-7524-3396-fqv3",
+      "title": "tarteaucitron.js allows UI manipulation via unrestricted CSS injection",
+      "description": "A vulnerability was identified in `tarteaucitron.js`, where user-controlled inputs for element dimensions (`width` and `height`) were not properly validated. This allowed an attacker with direct access to the site's source code or a CMS plugin to set values like `100%;height:100%;position:fixed;`, potentially covering the entire viewport and facilitating clickjacking attacks.\n\n## Impact\nAn attacker with high privileges could exploit this vulnerability to:\n- Overlay malicious UI elements on top o",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7524-3396-fqv3",
+      "publishedAt": "2025-04-07T16:38:24Z",
+      "modifiedAt": "2025-04-07T16:38:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7524-3396-fqv3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-31138"
+        }
+      ],
+      "affectedRange": "< 1.20.1",
+      "fixedVersion": "1.20.1"
+    },
+    {
+      "id": "GHSA-8wp9-x25p-8794",
+      "title": "tarteaucitron Cross-site Scripting (XSS)",
+      "description": "Versions of the package tarteaucitronjs before 1.17.0 are vulnerable to Cross-site Scripting (XSS) via the getElemWidth() and getElemHeight(). This is related to [SNYK-JS-TARTEAUCITRONJS-8366541](https://security.snyk.io/vuln/SNYK-JS-TARTEAUCITRONJS-8366541)",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-8wp9-x25p-8794",
+      "publishedAt": "2025-02-23T18:30:24Z",
+      "modifiedAt": "2025-02-24T18:30:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8wp9-x25p-8794"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-1467"
+        }
+      ],
+      "affectedRange": "< 1.17.0",
+      "fixedVersion": "1.17.0"
+    },
+    {
+      "id": "GHSA-f44m-65h3-99vc",
+      "title": "tarteaucitron.js vulnerable to Cross-site Scripting",
+      "description": "Cross-site Scripting (XSS) - Stored in GitHub repository amauric/tarteaucitron.js prior to v1.13.1.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f44m-65h3-99vc",
+      "publishedAt": "2023-07-11T15:31:18Z",
+      "modifiedAt": "2023-11-06T05:05:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f44m-65h3-99vc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-3620"
+        }
+      ],
+      "affectedRange": "< 1.13.1",
+      "fixedVersion": "1.13.1"
+    }
+  ]
+}

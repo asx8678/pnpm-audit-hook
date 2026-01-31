@@ -1,0 +1,27 @@
+{
+  "name": "passport-oauth2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f794-r6xc-hf3v",
+      "title": "Improper Access Control in passport-oauth2",
+      "description": "The passport-oauth2 package before 1.6.1 for Node.js mishandles the error condition of failure to obtain an access token. This is exploitable in certain use cases where an OAuth identity provider uses an HTTP 200 status code for authentication-failure error reports, and an application grants authorization upon simply receiving the access token (i.e., does not try to use the token). NOTE: the passport-oauth2 vendor does not consider this a passport-oauth2 vulnerability.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f794-r6xc-hf3v",
+      "publishedAt": "2021-09-29T17:18:32Z",
+      "modifiedAt": "2023-02-01T05:06:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f794-r6xc-hf3v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-41580"
+        }
+      ],
+      "affectedRange": "< 1.6.1",
+      "fixedVersion": "1.6.1"
+    }
+  ]
+}

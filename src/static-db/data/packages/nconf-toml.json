@@ -1,0 +1,26 @@
+{
+  "name": "nconf-toml",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hx7j-43w2-7rj7",
+      "title": "Prototype pollution in nconf-toml",
+      "description": "Prototype pollution vulnerability in `nconf-toml` versions 0.0.1 through 0.0.2 allows an attacker to cause a denial of service and may lead to remote code execution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-hx7j-43w2-7rj7",
+      "publishedAt": "2021-06-07T22:12:13Z",
+      "modifiedAt": "2023-02-01T05:05:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hx7j-43w2-7rj7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-25946"
+        }
+      ],
+      "affectedRange": ">= 0.0.1, <= 0.0.2"
+    }
+  ]
+}

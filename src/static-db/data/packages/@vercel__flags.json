@@ -1,0 +1,26 @@
+{
+  "name": "@vercel/flags",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-892p-pqrr-hxqr",
+      "title": "Information Disclosure via Flags override link",
+      "description": "## Summary\n\nAn information disclosure vulnerability affecting Flags SDK has been addressed. It impacted `flags` ≤3.2.0 and `@vercel/flags` ≤3.1.1 and in certain circumstances, allowed a bad actor with detailed knowledge of the vulnerability to list all flags returned by the flags discovery endpoint (`.well-known/vercel/flags`).\n\n## Impact\n\nThis vulnerability allowed for information disclosure, where a bad actor could gain access to a list of all feature flags exposed through the flags discovery ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-892p-pqrr-hxqr",
+      "publishedAt": "2025-05-02T19:28:40Z",
+      "modifiedAt": "2025-05-02T19:28:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-892p-pqrr-hxqr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-46332"
+        }
+      ],
+      "affectedRange": "<= 3.1.1"
+    }
+  ]
+}

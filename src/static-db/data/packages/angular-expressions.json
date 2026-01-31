@@ -1,0 +1,48 @@
+{
+  "name": "angular-expressions",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5462-4vcx-jh7j",
+      "title": "Angular Expressions - Remote Code Execution when using locals",
+      "description": "### Impact\n\nAn attacker can write a malicious expression that escapes the sandbox to execute arbitrary code on the system.\n\nExample of vulnerable code:\n\n```js\nconst expressions = require(\"angular-expressions\");\nconst result = expressions.compile(\"__proto__.constructor\")({}, {});\n// result should be undefined, however for versions <=1.4.2, it returns an object.\n```\n\nWith a more complex (undisclosed) payload, one can get full access to Arbitrary code execution on the system.\n\n### Patches\n\nThe prob",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5462-4vcx-jh7j",
+      "publishedAt": "2024-12-10T16:54:50Z",
+      "modifiedAt": "2024-12-10T20:59:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5462-4vcx-jh7j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-54152"
+        }
+      ],
+      "affectedRange": "< 1.4.3",
+      "fixedVersion": "1.4.3"
+    },
+    {
+      "id": "GHSA-j6px-jwvv-vpwq",
+      "title": "Angular Expressions - Remote Code Execution",
+      "description": "### Impact\n\nThe vulnerability, reported by GoSecure Inc, allows Remote Code Execution, if you call `expressions.compile(userControlledInput)` where `userControlledInput` is text that comes from user input.\n\nThis time, the security of the package could be bypassed by using a more complex payload, using a `.constructor.constructor` technique.\n\n* If running angular-expressions in the browser, an attacker could run any browser script when the application code calls expressions.compile(userControlled",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j6px-jwvv-vpwq",
+      "publishedAt": "2021-02-01T15:01:26Z",
+      "modifiedAt": "2023-02-01T05:05:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j6px-jwvv-vpwq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-21277"
+        }
+      ],
+      "affectedRange": "< 1.1.2",
+      "fixedVersion": "1.1.2"
+    }
+  ]
+}

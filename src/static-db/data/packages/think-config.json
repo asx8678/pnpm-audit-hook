@@ -1,0 +1,23 @@
+{
+  "name": "think-config",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6cj2-92m5-7mvp",
+      "title": "Improperly Controlled Modification of Object Prototype Attributes",
+      "description": "### Impact\n\nThe software receives input from an upstream component that specifies attributes that are to be initialized or updated in an object, but it does not properly control modifications of attributes of the object prototype.\n\n### Patches\n\n`think-config@1.1.3` patched it, anyone used `think-config` should upgrade to `>=1.1.3` version.\n\n### References\n\nhttps://cwe.mitre.org/data/definitions/1321.html\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Open ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6cj2-92m5-7mvp",
+      "publishedAt": "2021-08-03T16:48:46Z",
+      "modifiedAt": "2023-01-09T05:05:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6cj2-92m5-7mvp"
+        }
+      ],
+      "affectedRange": "< 1.1.3",
+      "fixedVersion": "1.1.3"
+    }
+  ]
+}

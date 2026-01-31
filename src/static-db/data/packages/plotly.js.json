@@ -1,0 +1,27 @@
+{
+  "name": "plotly.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wjc4-73q6-gv3m",
+      "title": "plotly.js prototype pollution vulnerability",
+      "description": "In Plotly plotly.js before 2.25.2, plot API calls have a risk of __proto__ being polluted in expandObjectPaths or nestedProperty.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wjc4-73q6-gv3m",
+      "publishedAt": "2024-01-03T06:30:27Z",
+      "modifiedAt": "2025-12-26T15:16:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wjc4-73q6-gv3m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-46308"
+        }
+      ],
+      "affectedRange": "< 2.25.2",
+      "fixedVersion": "2.25.2"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "adb-driver",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4m6q-rxhm-675w",
+      "title": " OS Command Injection in adb-driver",
+      "description": "adb-driver through 0.1.8 is vulnerable to Command Injection.It allows execution of arbitrary commands via the command function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4m6q-rxhm-675w",
+      "publishedAt": "2021-12-09T19:54:29Z",
+      "modifiedAt": "2023-02-01T05:05:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4m6q-rxhm-675w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7636"
+        }
+      ],
+      "affectedRange": "<= 0.1.8"
+    }
+  ]
+}

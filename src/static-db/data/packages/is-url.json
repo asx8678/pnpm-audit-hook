@@ -1,0 +1,27 @@
+{
+  "name": "is-url",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p9w8-2mpq-49h9",
+      "title": "is-url Inefficient Regular Expression Complexity vulnerability",
+      "description": "A vulnerability was found in Segmentio is-url up to 1.2.2. It has been rated as problematic. Affected by this issue is an unknown functionality of the file index.js. The manipulation leads to inefficient regular expression complexity. The attack may be launched remotely. Upgrading to version 1.2.3 is able to address this issue. The name of the patch is 149550935c63a98c11f27f694a7c4a9479e53794. It is recommended to upgrade the affected component. VDB-220058 is the identifier assigned to this vuln",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p9w8-2mpq-49h9",
+      "publishedAt": "2023-02-04T06:30:15Z",
+      "modifiedAt": "2023-10-20T22:45:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p9w8-2mpq-49h9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-25079"
+        }
+      ],
+      "affectedRange": "< 1.2.3",
+      "fixedVersion": "1.2.3"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "oauth2orize-fprm",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p77r-c6m3-gj2r",
+      "title": "oauth2orize-fprm XSS vulnerability",
+      "description": "index.js in oauth2orize-fprm before 0.2.1 has XSS via a crafted URL.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p77r-c6m3-gj2r",
+      "publishedAt": "2022-05-14T03:09:04Z",
+      "modifiedAt": "2023-07-25T21:30:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p77r-c6m3-gj2r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-11647"
+        }
+      ],
+      "affectedRange": "< 0.2.1",
+      "fixedVersion": "0.2.1"
+    }
+  ]
+}

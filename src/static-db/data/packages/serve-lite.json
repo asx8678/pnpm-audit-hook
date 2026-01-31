@@ -1,0 +1,46 @@
+{
+  "name": "serve-lite",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j8x7-qcw4-xx85",
+      "title": "Cross-site Scripting (XSS) in serve-lite",
+      "description": "All versions of the package serve-lite are vulnerable to Cross-site Scripting (XSS) because when it detects a request to a directory, it renders a file listing of all of its contents with links that include the actual file names without any sanitization or output encoding.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j8x7-qcw4-xx85",
+      "publishedAt": "2023-01-26T21:30:25Z",
+      "modifiedAt": "2023-01-30T18:17:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j8x7-qcw4-xx85"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25847"
+        }
+      ],
+      "affectedRange": "<= 1.1.0"
+    },
+    {
+      "id": "GHSA-5qq4-m6c3-xxmf",
+      "title": "Directory Traversal vulnerability in serve-lite",
+      "description": "All versions of the package serve-lite are vulnerable to Directory Traversal due to missing input sanitization or other checks and protections employed to the req.url passed as-is to path.join().",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5qq4-m6c3-xxmf",
+      "publishedAt": "2023-01-26T21:30:28Z",
+      "modifiedAt": "2023-01-30T18:17:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5qq4-m6c3-xxmf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21192"
+        }
+      ],
+      "affectedRange": "<= 1.1.0"
+    }
+  ]
+}

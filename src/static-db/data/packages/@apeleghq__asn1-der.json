@@ -1,0 +1,27 @@
+{
+  "name": "@apeleghq/asn1-der",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p4qw-7j9g-5h53",
+      "title": "ts-asn1-der has Incorrect DER Encoding of Numbers Leading to Denial of Service and Incorrect Value Representation",
+      "description": "### Impact\n\nIncorrect `number` DER encoding can lead to denial on service for absolute values in the range `2**31` -- `2**32 - 1`. The arithmetic in the `numBitLen` didn't take into account that values in this range could result in a negative result upon applying the `>>` operator, leading to an infinite loop.\n\nIn addition, `number` encoding had a few other issues that resulted it in it not encoding values correctly.\n\n### Patches\n\nThe issue is patched in version `1.0.4`. Users are recommended to",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p4qw-7j9g-5h53",
+      "publishedAt": "2025-04-07T21:11:19Z",
+      "modifiedAt": "2025-04-08T17:49:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p4qw-7j9g-5h53"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-32029"
+        }
+      ],
+      "affectedRange": "< 1.0.4",
+      "fixedVersion": "1.0.4"
+    }
+  ]
+}

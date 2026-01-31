@@ -1,0 +1,26 @@
+{
+  "name": "post-loader",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-66ww-999q-mffq",
+      "title": "Arbitrary code execution in post-loader",
+      "description": "post-loader is webpack loader for blog posts written in Markdown. The package post-loader from 0.0.0 is vulnerable to Arbitrary Code Execution which uses a markdown parser in an unsafe way so that any javascript code inside the markdown input files gets evaluated and executed. At this time, there is no known workaround or patch available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-66ww-999q-mffq",
+      "publishedAt": "2022-03-18T00:01:11Z",
+      "modifiedAt": "2023-08-17T05:02:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-66ww-999q-mffq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0748"
+        }
+      ],
+      "affectedRange": ">= 0.0.0"
+    }
+  ]
+}

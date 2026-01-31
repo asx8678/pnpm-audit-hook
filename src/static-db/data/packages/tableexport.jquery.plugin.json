@@ -1,0 +1,27 @@
+{
+  "name": "tableexport.jquery.plugin",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j636-crp3-m584",
+      "title": "Cross-site Scripting in tableexport.jquery.plugin",
+      "description": "There is a cross-site scripting vulnerability with default `onCellHtmlData` function in GitHub repository hhurz/tableexport.jquery.plugin prior to 1.25.0. This can result in transmitting cookies to third-party servers and/or sending data from secure sessions to third-party servers.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j636-crp3-m584",
+      "publishedAt": "2022-04-11T00:00:22Z",
+      "modifiedAt": "2023-01-27T05:01:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j636-crp3-m584"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-1291"
+        }
+      ],
+      "affectedRange": "< 1.25.0",
+      "fixedVersion": "1.25.0"
+    }
+  ]
+}

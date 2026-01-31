@@ -1,0 +1,26 @@
+{
+  "name": "json-web-token",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4xw9-cx39-r355",
+      "title": "json-web-token library is vulnerable to a JWT algorithm confusion attack",
+      "description": "### Summary\nThe json-web-token library is vulnerable to a JWT algorithm confusion attack.\n\n### Details\nOn line 86 of the 'index.js' file, the algorithm to use for verifying the signature of the JWT token is taken from the JWT token, which at that point is still unverified and thus shouldn't be trusted. To exploit this vulnerability, an attacker needs to craft a malicious JWT token containing the HS256 algorithm, signed with the public RSA key of the victim application. This attack will only work",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4xw9-cx39-r355",
+      "publishedAt": "2023-11-17T22:48:15Z",
+      "modifiedAt": "2023-11-20T22:06:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4xw9-cx39-r355"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-48238"
+        }
+      ],
+      "affectedRange": "<= 3.1.1"
+    }
+  ]
+}

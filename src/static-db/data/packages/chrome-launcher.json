@@ -1,0 +1,27 @@
+{
+  "name": "chrome-launcher",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gp2j-mg4w-2rh5",
+      "title": "chrome-launcher subject to OS Command Injection",
+      "description": "chrome-launcher prior to 0.13.2 is subject to OS Command Injection via the `$HOME` environment variable in Linux operating systems. This issue is patched in version 0.13.2.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-gp2j-mg4w-2rh5",
+      "publishedAt": "2022-05-24T17:17:04Z",
+      "modifiedAt": "2023-09-06T20:12:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gp2j-mg4w-2rh5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7645"
+        }
+      ],
+      "affectedRange": "< 0.13.2",
+      "fixedVersion": "0.13.2"
+    }
+  ]
+}

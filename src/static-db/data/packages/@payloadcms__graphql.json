@@ -1,0 +1,48 @@
+{
+  "name": "@payloadcms/graphql",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-26rv-h2hf-3fw4",
+      "title": "Payload's SQLite adapter Session Fixation vulnerability",
+      "description": "A Session Fixation vulnerability existed in Payload's SQLite adapter due to identifier reuse during account creation. A malicious attacker could create a new account, save its JSON Web Token (JWT), and then delete the account, which did not invalidate the JWT. As a result, the next newly created user would receive the same identifier, allowing the attacker to reuse the JWT to authenticate and perform actions as that user.\n\nThis issue has been fixed in version 3.44.0 of Payload.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-26rv-h2hf-3fw4",
+      "publishedAt": "2025-08-29T12:31:11Z",
+      "modifiedAt": "2025-08-29T16:59:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-26rv-h2hf-3fw4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-4644"
+        }
+      ],
+      "affectedRange": "< 3.44.0",
+      "fixedVersion": "3.44.0"
+    },
+    {
+      "id": "GHSA-5v66-m237-hwf7",
+      "title": "Payload does not invalidate JWTs after log out",
+      "description": "Payload uses JSON Web Tokens (JWT) for authentication. After log out JWT is not invalidated, which allows an attacker who has stolen or intercepted token to freely reuse it until expiration date (which is by default set to 2 hours, but can be changed). \n\nThis issue has been fixed in version 3.44.0 of Payload.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5v66-m237-hwf7",
+      "publishedAt": "2025-08-29T12:31:11Z",
+      "modifiedAt": "2025-08-29T16:57:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5v66-m237-hwf7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-4643"
+        }
+      ],
+      "affectedRange": "< 3.44.0",
+      "fixedVersion": "3.44.0"
+    }
+  ]
+}

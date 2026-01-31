@@ -1,0 +1,26 @@
+{
+  "name": "curly-bracket-parser",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rqf8-8c89-mw29",
+      "title": "Cross-site Scripting in curly-bracket-parser",
+      "description": "This affects all versions of package curly-bracket-parser.\n When used as a template library, it does not properly sanitize the user input.\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rqf8-8c89-mw29",
+      "publishedAt": "2021-08-10T16:08:16Z",
+      "modifiedAt": "2023-02-01T05:06:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rqf8-8c89-mw29"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23416"
+        }
+      ],
+      "affectedRange": "<= 1.0.2"
+    }
+  ]
+}

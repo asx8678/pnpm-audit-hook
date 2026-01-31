@@ -1,0 +1,111 @@
+{
+  "name": "seroval",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3j22-8qj3-26mx",
+      "title": "Seroval affected by Denial of Service via Deeply Nested Objects",
+      "description": "Serialization of objects with extreme depth can **exceed the maximum call stack limit**.  \n\n**Mitigation**:  \n`Seroval` introduces a `depthLimit` parameter in serialization/deserialization methods. **An error will be thrown if the depth limit is reached.**",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3j22-8qj3-26mx",
+      "publishedAt": "2026-01-22T18:02:22Z",
+      "modifiedAt": "2026-01-22T18:02:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3j22-8qj3-26mx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24006"
+        }
+      ],
+      "affectedRange": "<= 1.4.0",
+      "fixedVersion": "1.4.1"
+    },
+    {
+      "id": "GHSA-66fc-rw6m-c2q6",
+      "title": "Seroval affected by Denial of Service via Array serialization",
+      "description": "Overriding encoded array lengths by replacing them with an excessively large value causes the deserialization process to **significantly increase processing time**.  \n\n**Mitigation**:  \n`Seroval` no longer encodes array lengths.\nInstead, it computes length using `Array.prototype.length` during deserialization.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-66fc-rw6m-c2q6",
+      "publishedAt": "2026-01-21T17:05:54Z",
+      "modifiedAt": "2026-01-22T15:44:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-66fc-rw6m-c2q6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23957"
+        }
+      ],
+      "affectedRange": "<= 1.4.0",
+      "fixedVersion": "1.4.1"
+    },
+    {
+      "id": "GHSA-hx9m-jf43-8ffr",
+      "title": "seroval affected by Denial of Service via RegExp serialization",
+      "description": "Overriding RegExp serialization with extremely large patterns can **exhaust JavaScript runtime memory** during deserialization. Additionally, overriding RegExp serialization with patterns that trigger **catastrophic backtracking** can lead to ReDoS (Regular Expression Denial of Service).  \n\n**Mitigation**:  \n`Seroval` introduces `disabledFeatures` (a bitmask) in serialization/deserialization methods, with `Feature.RegExp` as a dedicated flag. **Users are recommended to configure `disabledFeature",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hx9m-jf43-8ffr",
+      "publishedAt": "2026-01-21T16:57:06Z",
+      "modifiedAt": "2026-01-22T15:43:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hx9m-jf43-8ffr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23956"
+        }
+      ],
+      "affectedRange": "<= 1.4.0",
+      "fixedVersion": "1.4.1"
+    },
+    {
+      "id": "GHSA-3rxj-6cgf-8cfw",
+      "title": "seroval Affected by Remote Code Execution via JSON Deserialization",
+      "description": "Improper input handling in the JSON deserialization component can lead to arbitrary JavaScript code execution.\n\nThe vulnerability can be exploited via overriding constant value and error deserialization, which allows indirect access to unsafe JS evaluation. This requires at least the ability to perform 4 separate requests on the same function and partial knowledge of how the serialized data is used during later runtime processing. \n\nThis vulnerability affects the `fromJSON` and `fromCrossJSON` f",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3rxj-6cgf-8cfw",
+      "publishedAt": "2026-01-21T15:41:22Z",
+      "modifiedAt": "2026-01-22T15:39:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3rxj-6cgf-8cfw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23737"
+        }
+      ],
+      "affectedRange": "< 1.4.1",
+      "fixedVersion": "1.4.1"
+    },
+    {
+      "id": "GHSA-hj76-42vx-jwp4",
+      "title": "seroval Affected by Prototype Pollution via JSON Deserialization",
+      "description": "Due to improper input validation, a malicious object key can lead to prototype pollution during JSON deserialization.\nThis affects only JSON deserialization functionality.\n\nAs there is no known workaround, please upgrade to the latest version.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hj76-42vx-jwp4",
+      "publishedAt": "2026-01-21T15:41:14Z",
+      "modifiedAt": "2026-01-22T15:39:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hj76-42vx-jwp4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23736"
+        }
+      ],
+      "affectedRange": "< 1.4.1",
+      "fixedVersion": "1.4.1"
+    }
+  ]
+}

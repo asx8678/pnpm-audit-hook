@@ -1,0 +1,27 @@
+{
+  "name": "express-param",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fr54-72wr-cqvq",
+      "title": "express-param vulnerable to Improper Handling of Extra Parameters",
+      "description": "A vulnerability was found in flitto express-param up to 0.x. It has been classified as critical. This affects an unknown part of the file `lib/fetchParams.js`. The manipulation leads to improper handling of extra parameters. It is possible to initiate the attack remotely. Upgrading to version 1.0.0 can address this issue. The name of the patch is db94f7391ad0a16dcfcba8b9be1af385b25c42db. It is recommended to upgrade the affected component. The identifier VDB-217149 was assigned to this vulnerabi",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fr54-72wr-cqvq",
+      "publishedAt": "2022-12-31T21:30:20Z",
+      "modifiedAt": "2023-10-20T21:39:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fr54-72wr-cqvq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-20160"
+        }
+      ],
+      "affectedRange": "< 1.0.0",
+      "fixedVersion": "1.0.0"
+    }
+  ]
+}

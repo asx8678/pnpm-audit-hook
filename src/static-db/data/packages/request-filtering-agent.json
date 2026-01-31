@@ -1,0 +1,27 @@
+{
+  "name": "request-filtering-agent",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pw25-c82r-75mm",
+      "title": "request-filtering-agent SSRF Bypass via HTTPS Requests to 127.0.0.1",
+      "description": "request-filtering-agent versions 1.x.x and earlier contain a vulnerability where HTTPS requests to 127.0.0.1 bypass IP address filtering, while HTTP requests are correctly blocked.\n\n**Impact:**\n\nVulnerable patterns (requests that should be blocked but are allowed):\n- https://127.0.0.1:443/api\n- https://127.0.0.1:8443/admin\n- Any HTTPS request using direct IP address `https://127.0.0.1`\n\nThis vulnerability primarily affects services using self-signed certificates on `127.0.0.1`.\n\n**Not affected (",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pw25-c82r-75mm",
+      "publishedAt": "2025-08-25T21:48:01Z",
+      "modifiedAt": "2025-08-26T17:12:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pw25-c82r-75mm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57814"
+        }
+      ],
+      "affectedRange": "< 2.0.0",
+      "fixedVersion": "2.0.0"
+    }
+  ]
+}

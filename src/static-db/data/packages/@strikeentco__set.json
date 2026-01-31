@@ -1,0 +1,48 @@
+{
+  "name": "@strikeentco/set",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-39qv-prmh-x37f",
+      "title": "Prototype Pollution in @strikeentco/set",
+      "description": "This affects the package @strikeentco/set before 1.0.2. It allows an attacker to cause a denial of service and may lead to remote code execution. **Note:** This vulnerability derives from an incomplete fix in https://security.snyk.io/vuln/SNYK-JS-STRIKEENTCOSET-1038821",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-39qv-prmh-x37f",
+      "publishedAt": "2022-02-05T00:00:26Z",
+      "modifiedAt": "2023-02-03T05:05:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-39qv-prmh-x37f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23497"
+        }
+      ],
+      "affectedRange": "< 1.0.2",
+      "fixedVersion": "1.0.2"
+    },
+    {
+      "id": "GHSA-wwg2-2crq-6grr",
+      "title": "Prototype pollution in @strikeentco/set",
+      "description": "Prototype pollution vulnerability in '@strikeentco/set' version 1.0.0 allows attacker to cause a denial of service and may lead to remote code execution.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wwg2-2crq-6grr",
+      "publishedAt": "2022-05-24T17:34:03Z",
+      "modifiedAt": "2023-01-27T05:02:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wwg2-2crq-6grr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28267"
+        }
+      ],
+      "affectedRange": "= 1.0.0",
+      "fixedVersion": "1.0.1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "connie-lang",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8vv3-jxm8-f4vf",
+      "title": "Prototype Pollution in connie-lang",
+      "description": "The package connie-lang before 0.1.1 are vulnerable to Prototype Pollution in the configuration language library used by connie.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8vv3-jxm8-f4vf",
+      "publishedAt": "2021-05-06T17:29:25Z",
+      "modifiedAt": "2023-01-27T05:08:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8vv3-jxm8-f4vf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7706"
+        }
+      ],
+      "affectedRange": "< 0.1.1",
+      "fixedVersion": "0.1.1"
+    }
+  ]
+}

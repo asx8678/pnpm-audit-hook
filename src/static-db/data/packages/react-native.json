@@ -1,0 +1,27 @@
+{
+  "name": "react-native",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7f53-fmmv-mfjv",
+      "title": "Regular expression denial of service in react-native",
+      "description": "A regular expression denial of service (ReDoS) vulnerability in the validateBaseUrl function can cause the application to use excessive resources, become unresponsive, or crash. This was introduced in react-native version 0.59.0 and fixed in version 0.64.1.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7f53-fmmv-mfjv",
+      "publishedAt": "2021-07-20T17:33:28Z",
+      "modifiedAt": "2023-01-27T05:05:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7f53-fmmv-mfjv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-1920"
+        }
+      ],
+      "affectedRange": ">= 0.63.0, < 0.64.1",
+      "fixedVersion": "0.64.1"
+    }
+  ]
+}

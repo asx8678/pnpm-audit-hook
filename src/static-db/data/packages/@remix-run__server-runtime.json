@@ -1,0 +1,27 @@
+{
+  "name": "@remix-run/server-runtime",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h5cw-625j-3rxh",
+      "title": "React Router has CSRF issue in Action/Server Action Request Processing",
+      "description": "React Router (or Remix v2) is vulnerable to CSRF attacks on document POST requests to UI routes when using server-side route `action` handlers in [Framework Mode](https://reactrouter.com/start/modes#framework), or when using React Server Actions in the new unstable RSC modes.\n\n> [!NOTE]\n> This does not impact applications that use [Declarative Mode](https://reactrouter.com/start/modes#declarative) (`<BrowserRouter>`) or [Data Mode](https://reactrouter.com/start/modes#data) (`createBrowserRouter`",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h5cw-625j-3rxh",
+      "publishedAt": "2026-01-08T20:57:09Z",
+      "modifiedAt": "2026-01-11T14:54:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h5cw-625j-3rxh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22030"
+        }
+      ],
+      "affectedRange": "<= 2.17.2",
+      "fixedVersion": "2.17.3"
+    }
+  ]
+}

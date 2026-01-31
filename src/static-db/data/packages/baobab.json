@@ -1,0 +1,27 @@
+{
+  "name": "baobab",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wvr2-q86m-6whp",
+      "title": "Baobab vulnerable to Prototype Pollution",
+      "description": "A vulnerability was found in Yomguithereal Baobab up to 2.6.0. It has been declared as critical. Affected by this vulnerability is an unknown functionality. The manipulation leads to improperly controlled modification of object prototype attributes ('prototype pollution'). The attack can be launched remotely. Upgrading to version 2.6.1 is able to address this issue. The name of the patch is c56639532a923d9a1600fb863ec7551b188b5d19. It is recommended to upgrade the affected component. The associa",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wvr2-q86m-6whp",
+      "publishedAt": "2023-01-07T21:30:38Z",
+      "modifiedAt": "2023-10-20T22:33:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wvr2-q86m-6whp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-4307"
+        }
+      ],
+      "affectedRange": "< 2.6.1",
+      "fixedVersion": "2.6.1"
+    }
+  ]
+}

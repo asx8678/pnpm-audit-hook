@@ -1,0 +1,337 @@
+{
+  "name": "ckeditor4",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7r32-vfj5-c2jv",
+      "title": "Code Snippet GeSHi plugin in CKEditor 4 has reflected cross-site scripting (XSS) vulnerability",
+      "description": "### Affected packages\nThe vulnerability has been discovered in [Code Snippet GeSHi](https://ckeditor.com/cke4/addon/codesnippetgeshi) plugin. All integrators that use [GeSHi syntax highlighter](https://github.com/GeSHi/geshi-1.0) on the backend side can be affected.\n\n### Impact\nA potential vulnerability has been discovered in CKEditor 4 [Code Snippet GeSHi](https://ckeditor.com/cke4/addon/codesnippetgeshi) plugin. The vulnerability allowed a reflected XSS attack by exploiting a flaw in the [GeSH",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7r32-vfj5-c2jv",
+      "publishedAt": "2024-08-21T18:29:15Z",
+      "modifiedAt": "2025-02-18T19:04:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7r32-vfj5-c2jv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-43407"
+        }
+      ],
+      "affectedRange": "< 4.25.0",
+      "fixedVersion": "4.25.0"
+    },
+    {
+      "id": "GHSA-6v96-m24v-f58j",
+      "title": "CKEditor4 low-risk cross-site scripting (XSS) vulnerability linked to potential domain takeover",
+      "description": "### Affected Packages\n\nThe issue impacts only editor instances with enabled [version notifications](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html#cfg-versionCheck).\n\nPlease note that this feature is disabled by default in all CKEditor 4 LTS versions. Therefore, if you use CKEditor 4 LTS, it is highly unlikely that you are affected by this vulnerability. If you are unsure, please [contact us](mailto:security@cksource.com).\n\n### Impact\n\nA theoretical vulnerability has been id",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6v96-m24v-f58j",
+      "publishedAt": "2024-08-21T18:31:00Z",
+      "modifiedAt": "2024-11-18T16:27:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6v96-m24v-f58j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-43411"
+        }
+      ],
+      "affectedRange": ">= 4.22.0, < 4.25.0",
+      "fixedVersion": "4.25.0"
+    },
+    {
+      "id": "GHSA-fq6h-4g8v-qqvm",
+      "title": "CKEditor4 Cross-site Scripting vulnerability caused by incorrect CDATA detection",
+      "description": "### Affected packages\nThe vulnerability has been discovered in the core HTML parsing module and may affect all editor instances that:\n* Enabled [full-page editing](https://ckeditor.com/docs/ckeditor4/latest/features/fullpage.html) mode,\n* or enabled [CDATA](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_dtd.html#property-S-cdata) elements in [Advanced Content Filtering](https://ckeditor.com/docs/ckeditor4/latest/guide/dev_advanced_content_filter.html) configuration (defaults to `script`",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fq6h-4g8v-qqvm",
+      "publishedAt": "2024-02-07T17:30:37Z",
+      "modifiedAt": "2024-03-06T15:35:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fq6h-4g8v-qqvm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-24815"
+        }
+      ],
+      "affectedRange": "< 4.24.0-lts",
+      "fixedVersion": "4.24.0-lts"
+    },
+    {
+      "id": "GHSA-mw2c-vx6j-mg76",
+      "title": "CKEditor4 Cross-site Scripting vulnerability in samples with enabled the preview feature",
+      "description": "### Affected packages\nThe vulnerability has been discovered in the samples that use the [preview](https://ckeditor.com/cke4/addon/preview) feature:\n\n* `samples/old/**/*.html`\n* `plugins/[plugin name]/samples/**/*.html`\n\nAll integrators that use these samples in the production code can be affected.\n\n### Impact\n\nA potential vulnerability has been discovered in one of CKEditor's 4 samples that are shipped with production code. The vulnerability allowed to execute JavaScript code by abusing the misc",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mw2c-vx6j-mg76",
+      "publishedAt": "2024-02-07T17:31:34Z",
+      "modifiedAt": "2024-03-01T15:00:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mw2c-vx6j-mg76"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-24816"
+        }
+      ],
+      "affectedRange": "< 4.24.0-lts",
+      "fixedVersion": "4.24.0-lts"
+    },
+    {
+      "id": "GHSA-rgx6-rjj4-c388",
+      "title": "ckeditor4 vulnerable to cross-site scripting",
+      "description": "A cross-site scripting (XSS) vulnerability in the HTML Data Processor in CKEditor 4 4.14.0 through 4.16.x before 4.16.1 allows remote attackers to inject executable JavaScript code through a crafted comment because `--!>` is mishandled.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rgx6-rjj4-c388",
+      "publishedAt": "2021-06-21T17:16:42Z",
+      "modifiedAt": "2024-02-08T09:40:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rgx6-rjj4-c388"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-33829"
+        }
+      ],
+      "affectedRange": ">= 4.14.0, < 4.16.1",
+      "fixedVersion": "4.16.1"
+    },
+    {
+      "id": "GHSA-wh5w-82f3-wrxh",
+      "title": "CKEditor cross-site scripting vulnerability in AJAX sample",
+      "description": "### Affected packages\nThe vulnerability has been discovered in the AJAX sample available at the `samples/old/ajax.html` file location. All integrators that use that sample in the production code can be affected.\n\n### Impact\n\nA potential vulnerability has been discovered in one of CKEditor's 4 samples that are shipped with production code. The vulnerability allowed to execute JavaScript code by abusing the AJAX sample. It affects all users using the CKEditor 4 at version < 4.24.0-lts where `sampl",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wh5w-82f3-wrxh",
+      "publishedAt": "2024-02-07T17:34:11Z",
+      "modifiedAt": "2024-02-07T18:21:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wh5w-82f3-wrxh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-4771"
+        }
+      ],
+      "affectedRange": "< 4.24.0-lts",
+      "fixedVersion": "4.24.0-lts"
+    },
+    {
+      "id": "GHSA-hxjc-9j8v-v9pr",
+      "title": "Duplicate Advisory: CKEditor Cross-site Scripting vulnerability",
+      "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-wh5w-82f3-wrxh. This link is maintained to preserve external references.\n\n## Original Description\nA Cross-Site scripting vulnerability has been found in CKSource CKEditor affecting versions 4.15.1 and earlier. An attacker could send malicious javascript code through the /`ckeditor/samples/old/ajax.html` file and retrieve an authorized user's information.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hxjc-9j8v-v9pr",
+      "publishedAt": "2023-11-16T15:30:20Z",
+      "modifiedAt": "2024-02-07T18:20:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hxjc-9j8v-v9pr"
+        }
+      ],
+      "affectedRange": "<= 4.15.1"
+    },
+    {
+      "id": "GHSA-7h26-63m7-qhf2",
+      "title": "HTML comments vulnerability allowing to execute JavaScript code",
+      "description": "### Affected packages\nThe vulnerability has been discovered in the core HTML processing module and may affect all plugins used by CKEditor 4.\n\n### Impact\nA potential vulnerability has been discovered in CKEditor 4 HTML processing core module. The vulnerability allowed to inject malformed comments HTML bypassing content sanitization, which could result in executing JavaScript code. It affects all users using the CKEditor 4 at version < 4.17.0.\n\n### Patches\nThe problem has been recognized and patc",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7h26-63m7-qhf2",
+      "publishedAt": "2021-11-17T21:58:25Z",
+      "modifiedAt": "2023-12-28T05:05:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7h26-63m7-qhf2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-41165"
+        }
+      ],
+      "affectedRange": "< 4.17.0",
+      "fixedVersion": "4.17.0"
+    },
+    {
+      "id": "GHSA-vcjf-mgcg-jxjq",
+      "title": "CKEditor 4.0 vulnerability in the HTML Data Processor",
+      "description": "A cross-site scripting (XSS) vulnerability in the HTML Data Processor for CKEditor 4.0 before 4.14.0 allows remote attackers to inject arbitrary web script through a crafted \"protected\" comment (with the cke_protected syntax).",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vcjf-mgcg-jxjq",
+      "publishedAt": "2021-05-07T16:32:17Z",
+      "modifiedAt": "2023-03-31T18:24:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vcjf-mgcg-jxjq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-9281"
+        }
+      ],
+      "affectedRange": "< 4.14.0",
+      "fixedVersion": "4.14.0"
+    },
+    {
+      "id": "GHSA-wpvm-wqr4-p7cw",
+      "title": "Inclusion of Functionality from Untrusted Control Sphere in CKEditor 4",
+      "description": "It was possible to execute a ReDoS-type attack inside CKEditor 4 before 4.16 by persuading a victim to paste crafted URL-like text into the editor, and then press Enter or Space (in the Autolink plugin).",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wpvm-wqr4-p7cw",
+      "publishedAt": "2021-10-13T15:34:09Z",
+      "modifiedAt": "2023-02-01T05:06:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wpvm-wqr4-p7cw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-26272"
+        }
+      ],
+      "affectedRange": "< 4.16.0",
+      "fixedVersion": "4.16.0"
+    },
+    {
+      "id": "GHSA-m94c-37g6-cjhc",
+      "title": "Fake objects feature vulnerability allowing to execute JavaScript code using malformed HTML.",
+      "description": "### Affected packages\nThe vulnerability has been discovered in [Fake Objects](https://ckeditor.com/cke4/addon/fakeobjects) plugin. All plugins with [Fake Objects](https://ckeditor.com/cke4/addon/fakeobjects) plugin dependency are affected:\n\n* [Fake Objects](https://ckeditor.com/cke4/addon/fakeobjects)\n* [Link](https://ckeditor.com/cke4/addon/link)\n* [Flash](https://ckeditor.com/cke4/addon/flash)\n* [Iframe](https://ckeditor.com/cke4/addon/iframe)\n* [Forms](https://ckeditor.com/cke4/addon/forms)\n*",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m94c-37g6-cjhc",
+      "publishedAt": "2021-08-23T19:42:15Z",
+      "modifiedAt": "2023-02-01T05:06:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m94c-37g6-cjhc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-37695"
+        }
+      ],
+      "affectedRange": "< 4.16.2",
+      "fixedVersion": "4.16.2"
+    },
+    {
+      "id": "GHSA-7889-rm5j-hpgg",
+      "title": "Clipboard feature vulnerability allowing to inject arbitrary HTML into the editor using paste functionality",
+      "description": "### Affected packages\nThe vulnerability has been discovered in [clipboard](https://ckeditor.com/cke4/addon/clipboard) plugin. All plugins with [clipboard](https://ckeditor.com/cke4/addon/clipboard) plugin dependency are affected:\n\n* [clipboard](https://ckeditor.com/cke4/addon/clipboard)\n* [pastetext](https://ckeditor.com/cke4/addon/pastetext)\n* [pastetools](https://ckeditor.com/cke4/addon/pastetools)\n* [widget](https://ckeditor.com/cke4/addon/widget)\n* [uploadwidget](https://ckeditor.com/cke4/ad",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7889-rm5j-hpgg",
+      "publishedAt": "2021-08-23T19:40:57Z",
+      "modifiedAt": "2023-02-01T05:05:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7889-rm5j-hpgg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32809"
+        }
+      ],
+      "affectedRange": ">= 4.5.2, < 4.16.2",
+      "fixedVersion": "4.16.2"
+    },
+    {
+      "id": "GHSA-6226-h7ff-ch6c",
+      "title": "Widget feature vulnerability allowing to execute JavaScript code using undo functionality",
+      "description": "### Affected packages\nThe vulnerability has been discovered in [Widget](https://ckeditor.com/cke4/addon/clipboard) plugin if used alongside [Undo](https://ckeditor.com/cke4/addon/undo) feature.\n\n### Impact\nA potential vulnerability has been discovered in CKEditor 4 [Widget](https://ckeditor.com/cke4/addon/widget) package. The vulnerability allowed to abuse undo functionality using malformed widget HTML, which could result in executing JavaScript code. It affects all users using the CKEditor 4 pl",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6226-h7ff-ch6c",
+      "publishedAt": "2021-08-23T19:40:48Z",
+      "modifiedAt": "2023-02-01T05:05:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6226-h7ff-ch6c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32808"
+        }
+      ],
+      "affectedRange": ">= 4.13.0, < 4.16.2",
+      "fixedVersion": "4.16.2"
+    },
+    {
+      "id": "GHSA-4m44-5j2g-xf64",
+      "title": "Improper Neutralization of Input During Web Page Generation in CKEditor4",
+      "description": "A cross-site scripting (XSS) vulnerability in the Color Dialog plugin for CKEditor 4.15.0 allows remote attackers to run arbitrary web script after persuading a user to copy and paste crafted HTML code into one of editor inputs.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4m44-5j2g-xf64",
+      "publishedAt": "2022-05-24T17:34:01Z",
+      "modifiedAt": "2023-01-27T05:02:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4m44-5j2g-xf64"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-27193"
+        }
+      ],
+      "affectedRange": "<= 4.15.0",
+      "fixedVersion": "4.15.1"
+    },
+    {
+      "id": "GHSA-pvmx-g8h5-cprj",
+      "title": "Advanced Content Filter (ACF) vulnerability allowing to execute JavaScript code using malformed HTML",
+      "description": "### Affected packages\nThe vulnerability has been discovered in the Advanced Content Filter (ACF) module and may affect all plugins used by CKEditor 4.\n\n### Impact\nA potential vulnerability has been discovered in CKEditor 4 Advanced Content Filter (ACF) core module. The vulnerability allowed to inject malformed HTML bypassing content sanitization, which could result in executing JavaScript code. It affects all users using the CKEditor 4 at version < 4.17.0.\n\n### Patches\nThe problem has been recog",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pvmx-g8h5-cprj",
+      "publishedAt": "2021-11-17T21:55:10Z",
+      "modifiedAt": "2023-01-27T05:00:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pvmx-g8h5-cprj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-41164"
+        }
+      ],
+      "affectedRange": "< 4.17.0",
+      "fixedVersion": "4.17.0"
+    },
+    {
+      "id": "GHSA-4fc4-4p5g-6w89",
+      "title": "Cross-site Scripting in CKEditor4",
+      "description": "### Affected packages\nThe vulnerability has been discovered in the core HTML processing module and may affect all plugins used by CKEditor 4.\n\n### Impact\nA potential vulnerability has been discovered in CKEditor 4 HTML processing core module. The vulnerability allowed to inject malformed HTML bypassing content sanitization, which could result in executing JavaScript code. It affects all users using the CKEditor 4 at version < 4.18.0.\n\n### Patches\nThe problem has been recognized and patched. The ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4fc4-4p5g-6w89",
+      "publishedAt": "2022-03-16T22:47:55Z",
+      "modifiedAt": "2023-01-27T05:00:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4fc4-4p5g-6w89"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24728"
+        }
+      ],
+      "affectedRange": "< 4.18.0",
+      "fixedVersion": "4.18.0"
+    }
+  ]
+}

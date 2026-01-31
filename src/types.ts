@@ -92,6 +92,8 @@ export interface AuditConfigInput {
   failOnNoSources?: boolean;
   /** Block installation when a source fails (default: true for security) */
   failOnSourceError?: boolean;
+  /** Static baseline configuration for historical vulnerabilities */
+  staticBaseline?: StaticBaselineConfigInput;
 }
 
 /** Fully-resolved config returned by loadConfig() */
@@ -115,10 +117,29 @@ export interface AuditConfig {
   failOnNoSources: boolean;
   /** Block installation when a source fails (default: true for security) */
   failOnSourceError: boolean;
+  /** Static baseline configuration for historical vulnerabilities */
+  staticBaseline: StaticBaselineConfig;
 }
 
 export interface RuntimeOptions {
   cwd: string;
   registryUrl: string;
   env: Record<string, string | undefined>;
+}
+
+/** Configuration for static vulnerability baseline */
+export interface StaticBaselineConfig {
+  /** Enable/disable static baseline (default: true) */
+  enabled: boolean;
+  /** Vulnerabilities before this date use static DB (ISO date string) */
+  cutoffDate: string;
+  /** Optional custom path to static data directory */
+  dataPath?: string;
+}
+
+/** User-provided static baseline config (all fields optional) */
+export interface StaticBaselineConfigInput {
+  enabled?: boolean;
+  cutoffDate?: string;
+  dataPath?: string;
 }

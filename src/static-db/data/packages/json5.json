@@ -1,0 +1,27 @@
+{
+  "name": "json5",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9c47-m6qq-7p4h",
+      "title": "Prototype Pollution in JSON5 via Parse Method",
+      "description": "The `parse` method of the JSON5 library before and including version `2.2.1` does not restrict parsing of keys named `__proto__`, allowing specially crafted strings to pollute the prototype of the resulting object.\n\nThis vulnerability pollutes the prototype of the object returned by `JSON5.parse` and not the global Object prototype, which is the commonly understood definition of Prototype Pollution. However, polluting the prototype of a single object can have significant security impact for an a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9c47-m6qq-7p4h",
+      "publishedAt": "2022-12-29T01:51:03Z",
+      "modifiedAt": "2024-02-22T05:08:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9c47-m6qq-7p4h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-46175"
+        }
+      ],
+      "affectedRange": "< 1.0.2",
+      "fixedVersion": "1.0.2"
+    }
+  ]
+}

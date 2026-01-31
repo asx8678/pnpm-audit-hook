@@ -1,0 +1,27 @@
+{
+  "name": "rollup-plugin-serve",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4j46-mp85-mv8c",
+      "title": "Path traversal in rollup-plugin-serve",
+      "description": "Path traversal in npm package `rollup-plugin-serve` before version 1.0.2. There is no path sanitization in `readFile` operation.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4j46-mp85-mv8c",
+      "publishedAt": "2021-05-18T01:52:24Z",
+      "modifiedAt": "2023-02-01T05:05:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4j46-mp85-mv8c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7684"
+        }
+      ],
+      "affectedRange": "< 1.0.2",
+      "fixedVersion": "1.0.2"
+    }
+  ]
+}

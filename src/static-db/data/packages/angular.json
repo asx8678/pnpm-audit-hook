@@ -1,0 +1,186 @@
+{
+  "name": "angular",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mqm9-c95h-x2p6",
+      "title": "AngularJS allows attackers to bypass common image source restrictions",
+      "description": "Improper sanitization of the value of the `[srcset]` attribute in `<source>` HTML elements in AngularJS allows attackers to bypass common image source restrictions, which can also lead to a form of  Content Spoofing https://owasp.org/www-community/attacks/Content_Spoofing .\n\nThis issue affects all versions of AngularJS.\n\nNote:\nThe AngularJS project is End-of-Life and will not receive any updates to address this issue. For more information see  here https://docs.angularjs.org/misc/version-support",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-mqm9-c95h-x2p6",
+      "publishedAt": "2024-09-09T15:30:41Z",
+      "modifiedAt": "2025-11-03T22:48:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mqm9-c95h-x2p6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-8373"
+        }
+      ],
+      "affectedRange": "<= 1.8.3"
+    },
+    {
+      "id": "GHSA-m9gf-397r-hwpg",
+      "title": "AngularJS allows attackers to bypass common image source restrictions",
+      "description": "Improper sanitization of the value of the `[srcset]` attribute in AngularJS allows attackers to bypass common image source restrictions, which can also lead to a form of  Content Spoofing https://owasp.org/www-community/attacks/Content_Spoofing .\n\nThis issue affects AngularJS versions 1.3.0-rc.4 and greater.\n\nNote:\nThe AngularJS project is End-of-Life and will not receive any updates to address this issue. For more information see  here https://docs.angularjs.org/misc/version-support-status .",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-m9gf-397r-hwpg",
+      "publishedAt": "2024-09-09T15:30:41Z",
+      "modifiedAt": "2025-11-03T22:48:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m9gf-397r-hwpg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-8372"
+        }
+      ],
+      "affectedRange": ">= 1.3.0-rc.4, <= 1.8.3"
+    },
+    {
+      "id": "GHSA-4w4v-5hc9-xrr2",
+      "title": "angular vulnerable to super-linear runtime due to backtracking",
+      "description": "This affects versions of the package angular from 1.3.0. A regular expression used to split the value of the ng-srcset directive is vulnerable to super-linear runtime due to backtracking. With a large carefully-crafted input, this can result in catastrophic backtracking and cause a denial of service. \n\n\n**Note:**\n\nThis package is EOL and will not receive any updates to address this issue. Users should migrate to [@angular/core](https://www.npmjs.com/package/@angular/core).",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4w4v-5hc9-xrr2",
+      "publishedAt": "2024-02-10T06:30:19Z",
+      "modifiedAt": "2025-11-03T22:32:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4w4v-5hc9-xrr2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21490"
+        }
+      ],
+      "affectedRange": ">= 1.3.0, <= 1.8.3"
+    },
+    {
+      "id": "GHSA-2vrf-hf26-jrp5",
+      "title": "angular vulnerable to regular expression denial of service via the angular.copy() utility",
+      "description": "All versions of the package angular are vulnerable to Regular Expression Denial of Service (ReDoS) via the angular.copy() utility function due to the usage of an insecure regular expression. Exploiting this vulnerability is possible by a large carefully-crafted input, which can result in catastrophic backtracking.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2vrf-hf26-jrp5",
+      "publishedAt": "2023-03-30T06:30:26Z",
+      "modifiedAt": "2025-11-03T22:30:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2vrf-hf26-jrp5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26116"
+        }
+      ],
+      "affectedRange": "<= 1.8.3"
+    },
+    {
+      "id": "GHSA-2qqx-w9hr-q5gx",
+      "title": "angular vulnerable to regular expression denial of service via the $resource service",
+      "description": "All versions of the package angular are vulnerable to Regular Expression Denial of Service (ReDoS) via the $resource service due to the usage of an insecure regular expression. Exploiting this vulnerability is possible by a large carefully-crafted input, which can result in catastrophic backtracking.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2qqx-w9hr-q5gx",
+      "publishedAt": "2023-03-30T06:30:26Z",
+      "modifiedAt": "2025-11-03T22:30:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2qqx-w9hr-q5gx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26117"
+        }
+      ],
+      "affectedRange": "<= 1.8.3"
+    },
+    {
+      "id": "GHSA-qwqh-hm9m-p5hr",
+      "title": "angular vulnerable to regular expression denial of service via the <input type=\"url\"> element",
+      "description": "All versions of the package angular are vulnerable to Regular Expression Denial of Service (ReDoS) via the <input type=\"url\"> element due to the usage of an insecure regular expression in the input[url] functionality. Exploiting this vulnerability is possible by a large carefully-crafted input, which can result in catastrophic backtracking.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qwqh-hm9m-p5hr",
+      "publishedAt": "2023-03-30T06:30:25Z",
+      "modifiedAt": "2025-11-03T22:30:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qwqh-hm9m-p5hr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26118"
+        }
+      ],
+      "affectedRange": "<= 1.8.3"
+    },
+    {
+      "id": "GHSA-m2h2-264f-f486",
+      "title": "angular vulnerable to regular expression denial of service (ReDoS)",
+      "description": "AngularJS lets users write client-side web applications. The package angular after 1.7.0 is vulnerable to Regular Expression Denial of Service (ReDoS) by providing a custom locale rule that makes it possible to assign the parameter in posPre: ' '.repeat() of NUMBER_FORMATS.PATTERNS[1].posPre with a very high value.\n\n**Note:**\n1. This package has been deprecated and is no longer maintained.\n2. The vulnerable versions are 1.7.0 and higher.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m2h2-264f-f486",
+      "publishedAt": "2022-05-03T00:00:44Z",
+      "modifiedAt": "2025-11-03T22:29:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m2h2-264f-f486"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25844"
+        }
+      ],
+      "affectedRange": ">= 1.7.0"
+    },
+    {
+      "id": "GHSA-j58c-ww9w-pwp5",
+      "title": "AngularJS improperly sanitizes SVG elements",
+      "description": "Improper sanitization of the value of the 'href' and 'xlink:href' attributes in '<image>' SVG elements in AngularJS allows attackers to bypass common image source restrictions. This can lead to a form of  Content Spoofing https://owasp.org/www-community/attacks/Content_Spoofing  and also negatively affect the application's performance and behavior by using too large or slow-to-load images.\n\nThis issue affects all versions of AngularJS.\n\nNote:\nThe AngularJS project is End-of-Life and will not rec",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-j58c-ww9w-pwp5",
+      "publishedAt": "2025-04-29T18:30:59Z",
+      "modifiedAt": "2025-11-03T21:34:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j58c-ww9w-pwp5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-0716"
+        }
+      ],
+      "affectedRange": "<= 1.8.3"
+    },
+    {
+      "id": "GHSA-prc3-vjfx-vhm9",
+      "title": "Angular (deprecated package) Cross-site Scripting",
+      "description": "All versions of package angular are vulnerable to Cross-site Scripting (XSS) due to insecure page caching in the Internet Explorer browser, which allows interpolation of `<textarea>` elements.\n\nNPM package [angular](https://www.npmjs.com/package/angular) is deprecated. Those who want to receive security updates should use the actively maintained package [@angular/core](https://www.npmjs.com/package/@angular/core).",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-prc3-vjfx-vhm9",
+      "publishedAt": "2022-07-16T00:00:20Z",
+      "modifiedAt": "2025-07-28T13:10:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-prc3-vjfx-vhm9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25869"
+        }
+      ],
+      "affectedRange": "<= 1.8.3"
+    }
+  ]
+}

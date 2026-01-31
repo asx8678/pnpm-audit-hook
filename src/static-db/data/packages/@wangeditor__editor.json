@@ -1,0 +1,27 @@
+{
+  "name": "@wangeditor/editor",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9hfw-cvf4-5x25",
+      "title": "wangEditor was discovered to contain a cross-site scripting (XSS) vulnerability via the image upload function",
+      "description": "There is a cross-site scripting (XSS) issue in wangEditor via the image upload function in version 4.7.11. This issue has been fixed in version 4.7.12.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9hfw-cvf4-5x25",
+      "publishedAt": "2024-05-31T18:31:14Z",
+      "modifiedAt": "2024-06-04T00:38:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9hfw-cvf4-5x25"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25037"
+        }
+      ],
+      "affectedRange": "<= 4.7.11",
+      "fixedVersion": "4.7.12"
+    }
+  ]
+}

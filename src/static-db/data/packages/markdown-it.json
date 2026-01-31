@@ -1,0 +1,48 @@
+{
+  "name": "markdown-it",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6vfc-qv3f-vr6c",
+      "title": "Uncontrolled Resource Consumption in markdown-it",
+      "description": "### Impact\n\nSpecial patterns with length > 50K chars can slow down parser significantly.\n\n```js\nconst md = require('markdown-it')();\n\nmd.render(`x ${' '.repeat(150000)} x  \\nx`);\n```\n\n\n### Patches\n\nUpgrade to v12.3.2+\n\n### Workarounds\n\nNo.\n\n### References\n\nFix + test sample: https://github.com/markdown-it/markdown-it/commit/ffc49ab46b5b751cd2be0aabb146f2ef84986101\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6vfc-qv3f-vr6c",
+      "publishedAt": "2022-01-12T22:20:22Z",
+      "modifiedAt": "2023-07-24T19:33:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6vfc-qv3f-vr6c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21670"
+        }
+      ],
+      "affectedRange": "< 12.3.2",
+      "fixedVersion": "12.3.2"
+    },
+    {
+      "id": "GHSA-j5p7-jf4q-742q",
+      "title": "markdown-it vulnerable to Inefficient Regular Expression Complexity",
+      "description": "A vulnerability was found in markdown-it up to 2.x. It has been classified as problematic. Affected is an unknown function of the file `lib/common/html_re.js`. The manipulation leads to inefficient regular expression complexity. Upgrading to version 3.0.0 is able to address this issue. The name of the patch is 89c8620157d6e38f9872811620d25138fc9d1b0d. It is recommended to upgrade the affected component. The identifier of this vulnerability is VDB-216852.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j5p7-jf4q-742q",
+      "publishedAt": "2022-12-27T09:30:41Z",
+      "modifiedAt": "2023-02-03T05:01:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j5p7-jf4q-742q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-10005"
+        }
+      ],
+      "affectedRange": "< 3.0.0",
+      "fixedVersion": "3.0.0"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "launchpad",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7h8x-wmq2-7mff",
+      "title": "Command injection in launchpad",
+      "description": "All versions of package launchpad are vulnerable to Command Injection via stop.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7h8x-wmq2-7mff",
+      "publishedAt": "2021-04-13T15:20:20Z",
+      "modifiedAt": "2023-01-27T05:00:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7h8x-wmq2-7mff"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23330"
+        }
+      ],
+      "affectedRange": "<= 0.7.5"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "@builder.io/qwik-city",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qr9h-j6xg-2j72",
+      "title": "Qwik's unhandled exception vulnerabilty can cause server crashes from malicious requests",
+      "description": "### Summary\n\nPossibility to craft a request that will crash the Qwik Server in the default configuration.\n\n### Details\n\nWhen a Qwik Server Action QRL is executed it dynamically load the file containing the symbol. When an invalid qfunc is sent, the server does not handle the thrown error. The error then causes Node JS to exit.\n\n### PoC\n\n 1. Setup a Qwik Project `pnpm create qwik@latest`\n 2. Start the Qwik Server using `pnpm run preview`\n 3. Execute the following curl command to crash the instanc",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qr9h-j6xg-2j72",
+      "publishedAt": "2025-07-09T18:10:29Z",
+      "modifiedAt": "2025-07-09T22:37:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qr9h-j6xg-2j72"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-53620"
+        }
+      ],
+      "affectedRange": "< 1.13.0",
+      "fixedVersion": "1.13.0"
+    },
+    {
+      "id": "GHSA-c54w-7j5f-xg98",
+      "title": "@builder.io/qwik-city Cross-Site Request Forgery  vulnerability",
+      "description": "Cross-Site Request Forgery (CSRF) in GitHub repository builderio/qwik prior to 0.104.0.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c54w-7j5f-xg98",
+      "publishedAt": "2023-04-26T18:30:21Z",
+      "modifiedAt": "2023-11-05T05:05:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c54w-7j5f-xg98"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-2307"
+        }
+      ],
+      "affectedRange": "< 0.104.0",
+      "fixedVersion": "0.104.0"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@react-native-community/cli",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-399j-vxmf-hjvr",
+      "title": "@react-native-community/cli has arbitrary OS command injection",
+      "description": "The Metro Development Server, which is opened by the React Native CLI, binds to external interfaces by default. The server exposes an endpoint that is vulnerable to OS command injection. This allows unauthenticated network attackers to send a POST request to the server and run arbitrary executables. On Windows, the attackers can also execute arbitrary shell commands with fully controlled arguments.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-399j-vxmf-hjvr",
+      "publishedAt": "2025-11-03T18:31:52Z",
+      "modifiedAt": "2025-11-13T16:25:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-399j-vxmf-hjvr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-11953"
+        }
+      ],
+      "affectedRange": ">= 18.0.0, < 18.0.1",
+      "fixedVersion": "18.0.1"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "sds",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-ph28-wwfj-fv7f",
+      "title": "Prototype Pollution in sds",
+      "description": "This affects the package sds from 0.0.0. The library could be tricked into adding or modifying properties of the Object.prototype by abusing the set function located in js/set.js. **Note:** This vulnerability derives from an incomplete fix to CVE-2020-7618",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-ph28-wwfj-fv7f",
+      "publishedAt": "2022-05-14T00:01:08Z",
+      "modifiedAt": "2023-02-02T05:02:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ph28-wwfj-fv7f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25862"
+        }
+      ],
+      "affectedRange": "<= 4.4.0"
+    }
+  ]
+}

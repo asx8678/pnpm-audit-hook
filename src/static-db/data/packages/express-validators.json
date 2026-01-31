@@ -1,0 +1,26 @@
+{
+  "name": "express-validators",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cf2x-rqc8-grfq",
+      "title": "Regular expression deinal of service in express-validators",
+      "description": "All versions of package express-validators are vulnerable to Regular Expression Denial of Service (ReDoS) when validating specifically-crafted invalid urls.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cf2x-rqc8-grfq",
+      "publishedAt": "2021-05-10T19:16:27Z",
+      "modifiedAt": "2023-02-01T05:05:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cf2x-rqc8-grfq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7767"
+        }
+      ],
+      "affectedRange": "<= 1.0.4"
+    }
+  ]
+}

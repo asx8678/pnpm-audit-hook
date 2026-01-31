@@ -1,0 +1,26 @@
+{
+  "name": "deep-defaults",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h6xg-rg33-9mf4",
+      "title": "deep-defaults vulnerable to prototype pollution",
+      "description": "### Overview\nPrototype pollution vulnerability in 'deep-defaults' versions 1.0.0 through 1.0.5 allows attacker to cause a denial of service and may lead to remote code execution.\n\n### Details\nThe NPM module `deep-defaults` can be abused by Prototype Pollution vulnerability since the function `_deepDefaults()` does not check for the type of object before assigning value to the property. Due to this flaw an attacker could create a non-existent property or able to manipulate the property which lead",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-h6xg-rg33-9mf4",
+      "publishedAt": "2022-05-24T19:03:10Z",
+      "modifiedAt": "2024-04-22T23:22:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h6xg-rg33-9mf4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-25944"
+        }
+      ],
+      "affectedRange": ">= 1.0.0, <= 1.0.5"
+    }
+  ]
+}

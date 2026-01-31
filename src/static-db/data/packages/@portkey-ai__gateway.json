@@ -1,0 +1,27 @@
+{
+  "name": "@portkey-ai/gateway",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hhh5-2cvx-vmfp",
+      "title": "Portkey.ai Gateway: Server-Side Request Forgery (SSRF) in Custom Host",
+      "description": "### Summary\nThe gateway determines the destination baseURL by prioritizing the value in the x-portkey-custom-host request header. The proxy route then appends the client-specified path to perform an external fetch. This can be maliciously used by users for SSRF (CWE-918) attack\n\n### Impact\nThis vulnerability can be exploited to force the server to make requests to arbitrary hosts on the internal network. This could allow an attacker to exfiltrate sensitive data, for instance, by accessing the AW",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hhh5-2cvx-vmfp",
+      "publishedAt": "2025-12-02T01:08:37Z",
+      "modifiedAt": "2025-12-02T01:08:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hhh5-2cvx-vmfp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-66405"
+        }
+      ],
+      "affectedRange": "< 1.14.0",
+      "fixedVersion": "1.14.0"
+    }
+  ]
+}

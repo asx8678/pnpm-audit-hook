@@ -1,0 +1,47 @@
+{
+  "name": "vxe-table",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-89fp-f5mx-748x",
+      "title": "vxe-table prototype pollution",
+      "description": "A prototype pollution in the lib.install function of vxe-table v4.8.10 allows attackers to cause a Denial of Service (DoS) via supplying a crafted payload.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-89fp-f5mx-748x",
+      "publishedAt": "2025-02-06T06:31:26Z",
+      "modifiedAt": "2025-02-06T23:40:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-89fp-f5mx-748x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-57080"
+        }
+      ],
+      "affectedRange": "<= 4.8.10"
+    },
+    {
+      "id": "GHSA-2qjp-fg8c-g878",
+      "title": "vxe-table Cross-site Scripting vulnerability",
+      "description": "A vulnerability, which was classified as problematic, has been found in xuliangzhan vxe-table up to 3.7.9. This issue affects the function export of the file packages/textarea/src/textarea.js of the component vxe-textarea. The manipulation of the argument inputValue leads to cross site scripting. The attack may be initiated remotely. Upgrading to version 3.7.10 is able to address this issue. The patch is named d70b0e089740b65a22c89c106ebc4627ac48a22d. It is recommended to upgrade the affected co",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-2qjp-fg8c-g878",
+      "publishedAt": "2024-05-24T14:45:19Z",
+      "modifiedAt": "2024-05-24T14:45:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2qjp-fg8c-g878"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-1001"
+        }
+      ],
+      "affectedRange": "< 3.7.10",
+      "fixedVersion": "3.7.10"
+    }
+  ]
+}

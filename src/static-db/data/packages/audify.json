@@ -1,0 +1,26 @@
+{
+  "name": "audify",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7vhm-fmph-7wxw",
+      "title": "audify vulnerable to Improper Validation of Array Index",
+      "description": "All versions of the package audify are vulnerable to Improper Validation of Array Index when frameSize is provided to the new OpusDecoder().decode or new OpusDecoder().decodeFloat functions it is not checked for negative values. This can lead to a process crash.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7vhm-fmph-7wxw",
+      "publishedAt": "2024-07-10T06:33:51Z",
+      "modifiedAt": "2024-08-09T05:01:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7vhm-fmph-7wxw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21522"
+        }
+      ],
+      "affectedRange": "<= 1.9.0"
+    }
+  ]
+}

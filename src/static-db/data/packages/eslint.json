@@ -1,0 +1,44 @@
+{
+  "name": "eslint",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p5wg-g6qr-c7cg",
+      "title": "eslint has a Stack Overflow when serializing objects with circular references",
+      "description": "There is a Stack Overflow vulnerability in eslint before 9.26.0 when serializing objects with circular references in `eslint/lib/shared/serialization.js`. The exploit is triggered via the `RuleTester.run()` method, which validates test cases and checks for duplicates. During validation, the internal function `checkDuplicateTestCase()` is called, which in turn uses the `isSerializable()` function for serialization checks. When a circular reference object is passed in, `isSerializable()` enters in",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p5wg-g6qr-c7cg",
+      "publishedAt": "2026-01-26T18:31:29Z",
+      "modifiedAt": "2026-01-29T14:58:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p5wg-g6qr-c7cg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-50537"
+        }
+      ],
+      "affectedRange": "< 9.26.0",
+      "fixedVersion": "9.26.0"
+    },
+    {
+      "id": "GHSA-jcgq-xh2f-2hfm",
+      "title": "Regular Expression Denial of Service",
+      "description": "A vulnerability was descovered in eslint before 4.18.2. One of the regexes in eslint is vulnerable to catastrophic backtracking.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jcgq-xh2f-2hfm",
+      "publishedAt": "2021-02-25T01:20:42Z",
+      "modifiedAt": "2023-01-09T05:01:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jcgq-xh2f-2hfm"
+        }
+      ],
+      "affectedRange": "< 4.18.2",
+      "fixedVersion": "4.18.2"
+    }
+  ]
+}

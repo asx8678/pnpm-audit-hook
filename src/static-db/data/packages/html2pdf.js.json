@@ -1,0 +1,27 @@
+{
+  "name": "html2pdf.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w8x4-x68c-m6fc",
+      "title": "html2pdf.js contains a cross-site scripting vulnerability",
+      "description": "### Impact\nhtml2pdf.js contains a cross-site scripting (XSS) vulnerability when given a text source rather than an element. This text is not sufficiently sanitized before being attached to the DOM, allowing malicious scripts to be run on the client browser and risking the confidentiality, integrity, and availability of the page's data.\n\nExample attack vector:\n\n```js\nimport html2pdf from 'html2pdf.js/src/index.js';\n\nconst maliciousHTML = '<img src=x onerror=\"alert(document.cookie)\">';\nhtml2pdf(ma",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w8x4-x68c-m6fc",
+      "publishedAt": "2026-01-14T16:53:10Z",
+      "modifiedAt": "2026-01-21T16:37:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w8x4-x68c-m6fc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22787"
+        }
+      ],
+      "affectedRange": "< 0.14.0",
+      "fixedVersion": "0.14.0"
+    }
+  ]
+}

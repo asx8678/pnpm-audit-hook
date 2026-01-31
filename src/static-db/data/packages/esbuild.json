@@ -1,0 +1,23 @@
+{
+  "name": "esbuild",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-67mh-4wv8-2f99",
+      "title": "esbuild enables any website to send any requests to the development server and read the response",
+      "description": "### Summary\n\nesbuild allows any websites to send any request to the development server and read the response due to default CORS settings.\n\n### Details\n\nesbuild sets `Access-Control-Allow-Origin: *` header to all requests, including the SSE connection, which allows any websites to send any request to the development server and read the response.\n\nhttps://github.com/evanw/esbuild/blob/df815ac27b84f8b34374c9182a93c94718f8a630/pkg/api/serve_other.go#L121\nhttps://github.com/evanw/esbuild/blob/df815a",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-67mh-4wv8-2f99",
+      "publishedAt": "2025-02-10T17:48:07Z",
+      "modifiedAt": "2025-02-10T17:48:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-67mh-4wv8-2f99"
+        }
+      ],
+      "affectedRange": "<= 0.24.2",
+      "fixedVersion": "0.25.0"
+    }
+  ]
+}

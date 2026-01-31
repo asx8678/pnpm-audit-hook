@@ -1,0 +1,26 @@
+{
+  "name": "angular-redactor",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-88fh-8979-q2rr",
+      "title": "Angular Redactor XSS Vulnerability",
+      "description": "Imperavi Redactor 3 in Angular Redactor 1.1.6, when HTML content mode is used, allows stored XSS, as demonstrated by an onerror attribute of an IMG element, a related issue to CVE-2018-7035.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-88fh-8979-q2rr",
+      "publishedAt": "2022-05-14T03:04:23Z",
+      "modifiedAt": "2023-10-06T17:33:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-88fh-8979-q2rr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-13339"
+        }
+      ],
+      "affectedRange": "<= 1.1.6"
+    }
+  ]
+}

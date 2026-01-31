@@ -1,0 +1,27 @@
+{
+  "name": "axios-cache-interceptor",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x4m5-4cw8-vc44",
+      "title": "axios-cache-interceptor Vulnerable to Cache Poisoning via Ignored HTTP Vary Header",
+      "description": "## Summary\n\nWhen a server calls an upstream service using different auth tokens, axios-cache-interceptor returns incorrect cached responses, leading to authorization bypass.\n\n## Details\n\nThe cache key is generated only from the URL, ignoring request headers like `Authorization`. When the server responds with `Vary: Authorization` (indicating the response varies by auth token), the library ignores this, causing all requests to share the same cache regardless of authorization.\n\n## Impact\n\n**Affect",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x4m5-4cw8-vc44",
+      "publishedAt": "2025-12-30T15:37:55Z",
+      "modifiedAt": "2026-01-05T22:35:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x4m5-4cw8-vc44"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-69202"
+        }
+      ],
+      "affectedRange": "< 1.11.1",
+      "fixedVersion": "1.11.1"
+    }
+  ]
+}

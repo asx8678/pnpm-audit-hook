@@ -1,0 +1,27 @@
+{
+  "name": "obsidian-dataview",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xfg5-vrmc-24wc",
+      "title": "Obsidian Dataview vulnerable to code injection due to unsafe eval",
+      "description": "Obsidian Dataview through 0.4.12-hotfix1 allows eval injection. The `evalInContext` function in executes user input, which allows an attacker to craft malicious Markdown files that will execute arbitrary code once opened. NOTE: 0.4.13 provides a mitigation for some use cases.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xfg5-vrmc-24wc",
+      "publishedAt": "2022-05-24T19:19:42Z",
+      "modifiedAt": "2023-10-19T18:29:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xfg5-vrmc-24wc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-42057"
+        }
+      ],
+      "affectedRange": "<= 0.4.12-hotfix1",
+      "fixedVersion": "0.4.13"
+    }
+  ]
+}

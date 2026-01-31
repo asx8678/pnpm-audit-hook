@@ -1,0 +1,27 @@
+{
+  "name": "csvtojson",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vrw9-g62v-7fmf",
+      "title": "CSVTOJSON has a prototype pollution vulnerability",
+      "description": "The csvtojson package, a tool for converting CSV data to JSON with customizable parsing capabilities, contains a prototype pollution vulnerability in versions prior to 2.0.10. This issue arises due to insufficient sanitization of nested header names during the parsing process in the parser_jsonarray component. When processing CSV input containing specially crafted header fields that reference prototype chains (e.g., using __proto__ syntax), the application may unintentionally modify properties o",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vrw9-g62v-7fmf",
+      "publishedAt": "2025-09-24T18:30:31Z",
+      "modifiedAt": "2026-01-27T21:06:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vrw9-g62v-7fmf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57350"
+        }
+      ],
+      "affectedRange": "< 2.0.13",
+      "fixedVersion": "2.0.13"
+    }
+  ]
+}

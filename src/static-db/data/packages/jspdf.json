@@ -1,0 +1,132 @@
+{
+  "name": "jspdf",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f8cm-6447-x5h2",
+      "title": "jsPDF has Local File Inclusion/Path Traversal vulnerability",
+      "description": "### Impact\nUser control of the first argument of the loadFile method in the node.js build allows local file inclusion/path traversal.\n\nIf given the possibility to pass unsanitized paths to the loadFile method, a user can retrieve file contents of arbitrary files in the local file system the node process is running in. The file contents are included verbatim in the generated PDFs.\n\nOther affected methods are: `addImage`, `html`, `addFont`.\n\nOnly the node.js builds of the library are affected, nam",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-f8cm-6447-x5h2",
+      "publishedAt": "2026-01-05T17:35:29Z",
+      "modifiedAt": "2026-01-16T21:53:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f8cm-6447-x5h2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-68428"
+        }
+      ],
+      "affectedRange": "<= 3.0.4",
+      "fixedVersion": "4.0.0"
+    },
+    {
+      "id": "GHSA-8mvj-3j78-4qmw",
+      "title": "jsPDF Denial of Service (DoS)",
+      "description": "### Impact\nUser control of the first argument of the addImage method results in CPU utilization and denial of service.\n\nIf given the possibility to pass unsanitized image data or URLs to the addImage method, a user can provide a harmful PNG file that results in high CPU utilization and denial of service.\n\nOther affected methods are: `html`.\n\nExample payload:\n\n```js\nimport { jsPDF } from \"jspdf\" \n\nconst payload = new Uint8Array([117, 171, 90, 253, 166, 154, 105, 166, 154])\n\nconst doc = new jsPDF(",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8mvj-3j78-4qmw",
+      "publishedAt": "2025-08-26T16:19:04Z",
+      "modifiedAt": "2025-09-10T21:07:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8mvj-3j78-4qmw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57810"
+        }
+      ],
+      "affectedRange": "<= 3.0.1",
+      "fixedVersion": "3.0.2"
+    },
+    {
+      "id": "GHSA-w532-jxjh-hjhj",
+      "title": "jsPDF Bypass Regular Expression Denial of Service (ReDoS)",
+      "description": "### Impact\nUser control of the first argument of the `addImage` method results in CPU utilization and denial of service.\n\nIf given the possibility to pass unsanitized image urls to the `addImage` method, a user can provide a harmful data-url that results in high CPU utilization and denial of service.\n\nOther affected methods are: `html`, `addSvgAsImage`.\n\nExample payload:\n```js\nimport { jsPDF } from \"jpsdf\" \n\nconst doc = new jsPDF();\nconst payload = 'data:/charset=scharset=scharset=scharset=schar",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w532-jxjh-hjhj",
+      "publishedAt": "2025-03-18T21:07:47Z",
+      "modifiedAt": "2025-03-19T05:58:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w532-jxjh-hjhj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-29907"
+        }
+      ],
+      "affectedRange": "< 3.0.1",
+      "fixedVersion": "3.0.1"
+    },
+    {
+      "id": "GHSA-57f3-gghm-9mhc",
+      "title": "jspdf vulnerable to Regular Expression Denial of Service (ReDoS)",
+      "description": "This affects the package jspdf before 2.3.1. ReDoS is possible via the addImage function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-57f3-gghm-9mhc",
+      "publishedAt": "2021-03-12T21:28:46Z",
+      "modifiedAt": "2023-09-08T20:22:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-57f3-gghm-9mhc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23353"
+        }
+      ],
+      "affectedRange": "< 2.3.1",
+      "fixedVersion": "2.3.1"
+    },
+    {
+      "id": "GHSA-3q6f-8grx-pr4v",
+      "title": "Cross-site scripting in jspdf",
+      "description": "It's possible to use nested script tags in order to bypass the filtering regex.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3q6f-8grx-pr4v",
+      "publishedAt": "2021-05-11T16:43:52Z",
+      "modifiedAt": "2023-09-08T19:19:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3q6f-8grx-pr4v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7691"
+        }
+      ],
+      "affectedRange": "< 2.0.0",
+      "fixedVersion": "2.0.0"
+    },
+    {
+      "id": "GHSA-vh59-v9r5-4mh4",
+      "title": "Cross-site scripting in jspdf",
+      "description": "Affected versions of this package are vulnerable to Cross-site Scripting (XSS). It's possible to inject JavaScript code via the `html` method.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vh59-v9r5-4mh4",
+      "publishedAt": "2021-05-17T21:01:32Z",
+      "modifiedAt": "2023-09-08T19:18:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vh59-v9r5-4mh4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7690"
+        }
+      ],
+      "affectedRange": "< 2.0.0",
+      "fixedVersion": "2.0.0"
+    }
+  ]
+}

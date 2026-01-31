@@ -1,0 +1,47 @@
+{
+  "name": "deephas",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2733-6c58-pf27",
+      "title": "deepHas vulnerable to Prototype Pollution via constructor.prototype",
+      "description": "### Summary\nA prototype pollution vulnerability exists in version 1.0.7 of the deephas npm package that allows an attacker to modify global object behavior. This issue was fixed in version 1.0.8.\n\n### Details\nThe vulnerability resides in the `add()` function and `indexer()` function implemented within `deepHas.js`. Although version 1.0.7 attempts to prevent prototype pollution by checking property ownership (e.g., using Object.hasOwnProperty) and by checking against forbidden string usage (using",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-2733-6c58-pf27",
+      "publishedAt": "2026-01-29T22:21:32Z",
+      "modifiedAt": "2026-01-30T00:31:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2733-6c58-pf27"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25047"
+        }
+      ],
+      "affectedRange": "< 1.0.8",
+      "fixedVersion": "1.0.8"
+    },
+    {
+      "id": "GHSA-4fr2-j4g9-mppf",
+      "title": "Prototype Pollution in deephas",
+      "description": "Prototype pollution vulnerability in 'deephas' versions 1.0.0 through 1.0.5 allows attacker to cause a denial of service and may lead to remote code execution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4fr2-j4g9-mppf",
+      "publishedAt": "2021-09-24T15:42:21Z",
+      "modifiedAt": "2023-09-07T22:37:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4fr2-j4g9-mppf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28271"
+        }
+      ],
+      "affectedRange": ">= 1.0.0, <= 1.0.5"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "html-parse-stringify2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-545q-3fg6-48m7",
+      "title": "html-parse-stringify and html-parse-stringify2 vulnerable to Regular expression denial of service (ReDoS)",
+      "description": "This affects the package html-parse-stringify before 2.0.1; all versions of package html-parse-stringify2. Sending certain input could cause one of the regular expressions that is used for parsing to backtrack, freezing the process.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-545q-3fg6-48m7",
+      "publishedAt": "2021-03-18T19:39:31Z",
+      "modifiedAt": "2023-09-12T20:51:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-545q-3fg6-48m7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23346"
+        }
+      ],
+      "affectedRange": "<= 2.0.1"
+    }
+  ]
+}

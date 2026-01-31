@@ -1,0 +1,27 @@
+{
+  "name": "flattenizer",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vq33-26pr-r4h6",
+      "title": "flattenizer vulnerable to prototype pollution",
+      "description": "### Overview\nPrototype pollution vulnerability in ‘flattenizer’ versions 0.0.5 through 1.0.5 allows an attacker to cause a denial of service and may lead to remote code execution.\n\n### Details\nThe NPM module 'flattenizer' can be abused by Prototype Pollution vulnerability since the function 'unflatten()' did not check for the type of object before assigning value to the property. Due to this flaw an attacker could create a non-existent property or able to manipulate the property which leads to D",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vq33-26pr-r4h6",
+      "publishedAt": "2022-05-24T17:37:25Z",
+      "modifiedAt": "2024-04-10T18:19:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vq33-26pr-r4h6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28279"
+        }
+      ],
+      "affectedRange": ">= 0.0.5, <= 1.0.5",
+      "fixedVersion": "1.1.1"
+    }
+  ]
+}

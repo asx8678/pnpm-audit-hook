@@ -1,0 +1,48 @@
+{
+  "name": "@cubejs-backend/api-gateway",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9759-3276-g2pm",
+      "title": "Cube API denial of service attack",
+      "description": "### Impact\nIt is possible to make the entire Cube API unavailable by submitting a specially crafted request to a Cube API endpoint.\n\n### Patches\nThe issue has been patched in the `v0.34.34` and it's recommended that all users exposing Cube APIs to the public internet upgrade to the latest version to prevent service disruption.\n\n### Workarounds\nThere are currently no workaround for older versions, and the recommendation is to upgrade.\n\n### References\nThe issue was reported by [y0d3n](https://gith",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9759-3276-g2pm",
+      "publishedAt": "2023-12-13T23:15:56Z",
+      "modifiedAt": "2023-12-19T20:39:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9759-3276-g2pm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-50709"
+        }
+      ],
+      "affectedRange": "< 0.34.34",
+      "fixedVersion": "0.34.34"
+    },
+    {
+      "id": "GHSA-6jqm-3c9g-pch7",
+      "title": "@cubejs-backend/api-gateway row level security bypass",
+      "description": "### Impact\nAll authenticated Cube clients could bypass row-level security and run arbitrary SQL via the newly introduced /v1/sql-runner endpoint.\n\n### Patches\nThe change has been reverted in 0.31.24\n\n### Workarounds\nUpgrade to >=0.31.24 or downgrade to <=0.31.22\n\n### Post mortem\nAs part of implementing the Cube Cloud SQL runner functionality, we’ve added a new endpoint to the Cube Core so that we could add arbitrary queries directly to the queue, bypassing the modeling layer.\n\nThe endpoint was a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6jqm-3c9g-pch7",
+      "publishedAt": "2022-12-12T21:28:35Z",
+      "modifiedAt": "2023-01-28T05:05:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6jqm-3c9g-pch7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-23510"
+        }
+      ],
+      "affectedRange": "= 0.31.23",
+      "fixedVersion": "0.31.24"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "serve",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5rc4-8qqh-vq7f",
+      "title": "vercel/serve allows access to restricted files if filename is URL encoded.",
+      "description": "serve node module suffers from Improper Handling of URL Encoding by permitting access to ignored files if a filename is URL encoded.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5rc4-8qqh-vq7f",
+      "publishedAt": "2021-08-09T22:24:26Z",
+      "modifiedAt": "2023-09-12T20:58:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5rc4-8qqh-vq7f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3718"
+        }
+      ],
+      "affectedRange": "< 6.5.2",
+      "fixedVersion": "6.5.2"
+    }
+  ]
+}

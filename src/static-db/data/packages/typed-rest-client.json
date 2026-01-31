@@ -1,0 +1,27 @@
+{
+  "name": "typed-rest-client",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-558p-m34m-vpmq",
+      "title": "Potential leak of authentication data to 3rd parties",
+      "description": "### Impact\nUsers of typed-rest-client library version 1.7.3 or lower are vulnerable to leak authentication data to 3rd parties. \n\nThe flow of the vulnerability is as follows:\n\n1. Send any request with `BasicCredentialHandler`, `BearerCredentialHandler` or `PersonalAccessTokenCredentialHandler` \n2. The target host may return a redirection (3xx), with a link to a second host.\n3. The next request will use the credentials to authenticate with the second host, by setting the `Authorization` header.\n\n",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-558p-m34m-vpmq",
+      "publishedAt": "2023-04-27T14:02:11Z",
+      "modifiedAt": "2023-11-12T05:01:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-558p-m34m-vpmq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-30846"
+        }
+      ],
+      "affectedRange": "< 1.8.0",
+      "fixedVersion": "1.8.0"
+    }
+  ]
+}

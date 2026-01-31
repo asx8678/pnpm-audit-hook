@@ -1,0 +1,27 @@
+{
+  "name": "react-native-mmkv",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4jh3-6jhv-2mgp",
+      "title": "react-native-mmkv Insertion of Sensitive Information into Log File vulnerability",
+      "description": "## Summary\nBefore version [v2.11.0](https://github.com/mrousavy/react-native-mmkv/releases/tag/v2.11.0), the react-native-mmkv logged the optional encryption key for the MMKV database into the Android system log. The key can be obtained by anyone with access to the Android Debugging Bridge (ADB) if it is enabled in the phone settings. This bug is not present on iOS devices.\n\n## Details\nThe bridge for communicating between JS code and native code on Android logs the encryption key. This was fixed",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4jh3-6jhv-2mgp",
+      "publishedAt": "2024-01-09T19:33:09Z",
+      "modifiedAt": "2024-01-19T12:07:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4jh3-6jhv-2mgp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21668"
+        }
+      ],
+      "affectedRange": "< 2.11.0",
+      "fixedVersion": "2.11.0"
+    }
+  ]
+}

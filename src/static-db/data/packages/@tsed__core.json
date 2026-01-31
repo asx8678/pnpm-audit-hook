@@ -1,0 +1,27 @@
+{
+  "name": "@tsed/core",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-77xq-cpvg-7xm2",
+      "title": "Prototype pollution in @tsed/core",
+      "description": "This affects the package @tsed/core before 5.65.7. This vulnerability relates to the `deepExtend` function which is used as part of the utils directory. Depending on if user input is provided, an attacker can overwrite and pollute the object prototype of a program.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-77xq-cpvg-7xm2",
+      "publishedAt": "2021-05-10T19:07:56Z",
+      "modifiedAt": "2023-09-05T22:45:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-77xq-cpvg-7xm2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7748"
+        }
+      ],
+      "affectedRange": "< 5.65.7",
+      "fixedVersion": "5.65.7"
+    }
+  ]
+}

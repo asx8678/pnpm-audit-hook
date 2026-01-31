@@ -1,0 +1,26 @@
+{
+  "name": "webui-aria2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-crv8-r5wq-gv2w",
+      "title": "webui-aria2 Path Traversal vulnerability",
+      "description": "webui-aria2 commit 4fe2e was discovered to contain a path traversal vulnerability.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-crv8-r5wq-gv2w",
+      "publishedAt": "2023-08-22T21:30:27Z",
+      "modifiedAt": "2024-03-01T14:58:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-crv8-r5wq-gv2w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-39141"
+        }
+      ],
+      "affectedRange": "<= 1.0.1"
+    }
+  ]
+}

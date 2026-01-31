@@ -1,0 +1,27 @@
+{
+  "name": "@marp-team/marp-core",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x52f-h5g4-8qv5",
+      "title": "Marp Core allows XSS by improper neutralization of HTML sanitization",
+      "description": "Marp Core ([`@marp-team/marp-core`](https://www.npmjs.com/package/@marp-team/marp-core)) from v3.0.2 to v3.9.0 and v4.0.0, are vulnerable to cross-site scripting (XSS)  due to improper neutralization of HTML sanitization.\n\n### Impact\n\nMarp Core includes an HTML sanitizer with allowlist support. In the affected versions, the built-in allowlist is enabled by default. When the allowlist is active, if insufficient HTML comments are included, the sanitizer may fail to properly sanitize HTML content a",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x52f-h5g4-8qv5",
+      "publishedAt": "2024-12-26T18:25:25Z",
+      "modifiedAt": "2024-12-26T21:46:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x52f-h5g4-8qv5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-56510"
+        }
+      ],
+      "affectedRange": "= 4.0.0",
+      "fixedVersion": "4.0.1"
+    }
+  ]
+}

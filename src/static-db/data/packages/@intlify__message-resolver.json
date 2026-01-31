@@ -1,0 +1,27 @@
+{
+  "name": "@intlify/message-resolver",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p2ph-7g93-hw3m",
+      "title": "Vue I18n Allows Prototype Pollution in `handleFlatJson`",
+      "description": "**Vulnerability type:**\nPrototype Pollution\n\n**Vulnerability Location(s):**\n```js\n# v9.1\nnode_modules/@intlify/message-resolver/index.js\n\n# v9.2 or later\nnode_modules/@intlify/vue-i18n-core/index.js\n```\n\n**Description:**\n\nThe latest version of `@intlify/message-resolver (9.1)` and `@intlify/vue-i18n-core (9.2 or later)`, (previous versions might also affected), is vulnerable to Prototype Pollution through the entry function(s) `handleFlatJson`. An attacker can supply a payload with Object.protot",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p2ph-7g93-hw3m",
+      "publishedAt": "2025-03-07T15:58:24Z",
+      "modifiedAt": "2025-03-10T19:17:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p2ph-7g93-hw3m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-27597"
+        }
+      ],
+      "affectedRange": ">= 9.1.0, < 9.1.11",
+      "fixedVersion": "9.1.11"
+    }
+  ]
+}

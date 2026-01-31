@@ -1,0 +1,48 @@
+{
+  "name": "expo",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wr5g-q49g-548w",
+      "title": "Expo SDK has an OAuth vulnerability",
+      "description": "A vulnerability in the expo.io framework allows an attacker to take over accounts and steal credentials on an application/website that configured the \"Expo AuthSession Redirect Proxy\" for social sign-in. This can be achieved once a victim clicks a malicious link. The link itself may be sent to the victim in various ways (including email, text message, an attacker-controlled website, etc).",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wr5g-q49g-548w",
+      "publishedAt": "2023-04-24T06:31:20Z",
+      "modifiedAt": "2025-10-15T18:55:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wr5g-q49g-548w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-28131"
+        }
+      ],
+      "affectedRange": "< 48.0.0",
+      "fixedVersion": "48.0.0"
+    },
+    {
+      "id": "GHSA-rwx9-wqj8-vr77",
+      "title": "Expo on iOS is insecure due incorrect security attribute application",
+      "description": "secure-store in Expo through 9.1.0 on iOS provides the insecure kSecAttrAccessibleAlwaysThisDeviceOnly policy when WHEN_UNLOCKED_THIS_DEVICE_ONLY is used.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rwx9-wqj8-vr77",
+      "publishedAt": "2022-05-24T17:26:43Z",
+      "modifiedAt": "2023-02-02T05:07:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rwx9-wqj8-vr77"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-24653"
+        }
+      ],
+      "affectedRange": "< 9.1.0",
+      "fixedVersion": "9.1.0"
+    }
+  ]
+}

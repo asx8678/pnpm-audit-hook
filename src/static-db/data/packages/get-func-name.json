@@ -1,0 +1,27 @@
+{
+  "name": "get-func-name",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4q6p-r6v2-jvc5",
+      "title": "Chaijs/get-func-name vulnerable to ReDoS",
+      "description": "The current regex implementation for parsing values in the module is susceptible to excessive backtracking, leading to potential DoS attacks. The regex implementation in question is as follows:\n\n```js\nconst functionNameMatch = /\\s*function(?:\\s|\\s*\\/\\*[^(?:*/)]+\\*\\/\\s*)*([^\\s(/]+)/;\n```\n\nThis vulnerability can be exploited when there is an imbalance in parentheses, which results in excessive backtracking and subsequently increases the CPU load and processing time significantly. This vulnerabilit",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4q6p-r6v2-jvc5",
+      "publishedAt": "2023-09-27T20:16:00Z",
+      "modifiedAt": "2023-11-06T05:02:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4q6p-r6v2-jvc5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-43646"
+        }
+      ],
+      "affectedRange": "< 2.0.1",
+      "fixedVersion": "2.0.1"
+    }
+  ]
+}

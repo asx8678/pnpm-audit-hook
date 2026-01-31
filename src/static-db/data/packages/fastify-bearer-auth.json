@@ -1,0 +1,26 @@
+{
+  "name": "fastify-bearer-auth",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-376v-xgjx-7mfr",
+      "title": "fastify-bearer-auth vulnerable to Timing Attack Vector",
+      "description": "### Impact\n\nfastify-bearer-auth does not securely use crypto.timingSafeEqual. A malicious attacker could estimate the length of one valid bearer token. According to the corresponding RFC 6750, the bearer token has only base64 valid characters, reducing the range of characters for a brute force attack.\n\nAll versions of fastify-bearer-auth are also affected.\n\n### Patches\n\nWe released:\n\n* v8.0.1 with a fix for the Fastify v4 line\n* v7.0.2 with a fix for the Fastify v3 line\n\n### Workarounds\n\nThere a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-376v-xgjx-7mfr",
+      "publishedAt": "2022-07-15T19:14:27Z",
+      "modifiedAt": "2023-01-27T05:05:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-376v-xgjx-7mfr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31142"
+        }
+      ],
+      "affectedRange": ">= 5.0.1, <= 6.0.3"
+    }
+  ]
+}

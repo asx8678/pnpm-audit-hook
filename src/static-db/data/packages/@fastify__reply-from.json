@@ -1,0 +1,48 @@
+{
+  "name": "@fastify/reply-from",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2q7r-29rg-6m5h",
+      "title": "fastify-reply-from affected by bypass of reply forwarding",
+      "description": "### Summary\nBy crafting a malicious URL, an attacker could access routes that are not allowed, even though the `reply.from` is defined for specific routes in `@fastify/reply-from`.\n\n### Details\n\nAn attacker can bypass the route defined by the `@fastify/reply-from` package by adding a `..` symbol, which, for `curl` version `8.7.1`, is `%2e%2e`.\n\n### Impact\n\nEveryone is using this package with the routes option to protect a 3rd-party resource.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2q7r-29rg-6m5h",
+      "publishedAt": "2025-12-02T00:38:57Z",
+      "modifiedAt": "2025-12-02T00:39:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2q7r-29rg-6m5h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-66415"
+        }
+      ],
+      "affectedRange": "<= 12.4.0",
+      "fixedVersion": "12.5.0"
+    },
+    {
+      "id": "GHSA-v2v2-hph8-q5xp",
+      "title": "@fastify/reply-from JSON Content-Type parsing confusion",
+      "description": "### Impact\n\nThe main repo of fastify use [fast-content-type-parse](https://github.com/fastify/fast-content-type-parse) to parse request Content-Type, which will [trim after split](https://github.com/fastify/fast-content-type-parse/blob/2776d054dd48e9ce40b8d5e5ff9b46fee82b95f1/index.js#L59).\n\nThe [fastify-reply-from](https://github.com/fastify/fastify-reply-from/blob/b79a22d6eb9a0b52cfbe8eb2cb22ad65f5a39e64/index.js#L118C14-L118C14) have not use this repo to unify the parse of Content-Type, which",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v2v2-hph8-q5xp",
+      "publishedAt": "2024-01-08T15:22:40Z",
+      "modifiedAt": "2024-01-08T16:47:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v2v2-hph8-q5xp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-51701"
+        }
+      ],
+      "affectedRange": "< 9.6.0",
+      "fixedVersion": "9.6.0"
+    }
+  ]
+}

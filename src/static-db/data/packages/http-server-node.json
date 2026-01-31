@@ -1,0 +1,26 @@
+{
+  "name": "http-server-node",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hj3m-v758-jwx5",
+      "title": "Path Traversal in http-server-node",
+      "description": "All versions of package http-server-node are vulnerable to Directory Traversal via use of `--path-as-is`.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hj3m-v758-jwx5",
+      "publishedAt": "2022-01-05T15:02:43Z",
+      "modifiedAt": "2023-09-11T22:36:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hj3m-v758-jwx5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23797"
+        }
+      ],
+      "affectedRange": "<= 1.0.2"
+    }
+  ]
+}

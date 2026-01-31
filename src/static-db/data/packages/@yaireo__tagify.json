@@ -1,0 +1,27 @@
+{
+  "name": "@yaireo/tagify",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pxpf-v376-7xx5",
+      "title": "tagify can pass a malicious placeholder to initiate the cross-site scripting (XSS) payload",
+      "description": "This affects the package @yaireo/tagify before 4.9.8. The package is used for rendering UI components inside the input or text fields, and an attacker can pass a malicious placeholder value to it to fire the cross-site scripting (XSS) payload.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pxpf-v376-7xx5",
+      "publishedAt": "2022-04-30T00:00:33Z",
+      "modifiedAt": "2023-01-30T05:03:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pxpf-v376-7xx5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25854"
+        }
+      ],
+      "affectedRange": "< 4.9.8",
+      "fixedVersion": "4.9.8"
+    }
+  ]
+}

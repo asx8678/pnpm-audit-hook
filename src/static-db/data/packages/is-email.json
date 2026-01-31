@@ -1,0 +1,27 @@
+{
+  "name": "is-email",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j377-2x76-558h",
+      "title": "Improper Input Validation in is-email",
+      "description": "is-email helps validate an email address. A ReDoS (regular expression denial of service) flaw was found in the Segment is-email package before 1.0.1 for Node.js. An attacker that is able to provide crafted input to the isEmail(input) function may cause an application to consume an excessive amount of CPU.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j377-2x76-558h",
+      "publishedAt": "2021-12-10T17:25:21Z",
+      "modifiedAt": "2023-02-01T05:06:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j377-2x76-558h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-36716"
+        }
+      ],
+      "affectedRange": "< 1.0.1",
+      "fixedVersion": "1.0.1"
+    }
+  ]
+}

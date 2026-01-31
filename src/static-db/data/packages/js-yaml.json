@@ -1,0 +1,27 @@
+{
+  "name": "js-yaml",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mh29-5h37-fv8m",
+      "title": "js-yaml has prototype pollution in merge (<<)",
+      "description": "### Impact\n\nIn js-yaml 4.1.0, 4.0.0, and 3.14.1 and below, it's possible for an attacker to modify the prototype of the result of a parsed yaml document via prototype pollution (`__proto__`). All users who parse untrusted yaml documents may be impacted.\n\n### Patches\n\nProblem is patched in js-yaml 4.1.1 and 3.14.2.\n\n### Workarounds\n\nYou can protect against this kind of attack on the server by using `node --disable-proto=delete` or `deno` (in Deno, pollution protection is on by default).\n\n### Refe",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mh29-5h37-fv8m",
+      "publishedAt": "2025-11-14T14:29:48Z",
+      "modifiedAt": "2026-01-31T03:32:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mh29-5h37-fv8m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64718"
+        }
+      ],
+      "affectedRange": "< 3.14.2",
+      "fixedVersion": "3.14.2"
+    }
+  ]
+}

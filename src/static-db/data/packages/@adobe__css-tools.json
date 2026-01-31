@@ -1,0 +1,48 @@
+{
+  "name": "@adobe/css-tools",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-prr3-c3m5-p7q2",
+      "title": "@adobe/css-tools Improper Input Validation and Inefficient Regular Expression Complexity",
+      "description": "### Impact\n@adobe/css-tools version 4.3.1 and earlier are affected by an Improper Input Validation vulnerability that could result in a denial of service while attempting to parse CSS.\n\n### Patches\nThe issue has been resolved in 4.3.2.\n\n### Workarounds\nNone\n\n### References\nN/A\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-prr3-c3m5-p7q2",
+      "publishedAt": "2023-11-30T19:51:29Z",
+      "modifiedAt": "2023-12-14T22:02:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-prr3-c3m5-p7q2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-48631"
+        }
+      ],
+      "affectedRange": "< 4.3.2",
+      "fixedVersion": "4.3.2"
+    },
+    {
+      "id": "GHSA-hpx4-r86g-5jrg",
+      "title": "@adobe/css-tools Regular Expression Denial of Service (ReDOS) while Parsing CSS",
+      "description": "### Impact\n@adobe/css-tools version 4.3.0 and earlier are affected by an Improper Input Validation vulnerability that could result in a denial of service while attempting to parse CSS.\n\n### Patches\nThe issue has been resolved in 4.3.1.\n\n### Workarounds\nNone\n\n### References\nN/A\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hpx4-r86g-5jrg",
+      "publishedAt": "2023-08-29T23:33:26Z",
+      "modifiedAt": "2023-11-17T22:06:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hpx4-r86g-5jrg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26364"
+        }
+      ],
+      "affectedRange": "< 4.3.1",
+      "fixedVersion": "4.3.1"
+    }
+  ]
+}

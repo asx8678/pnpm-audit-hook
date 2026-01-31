@@ -1,0 +1,27 @@
+{
+  "name": "primefaces",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fw5f-7c6c-3vmv",
+      "title": "Cross-site Scripting in PrimeFaces",
+      "description": "An XSS issue was discovered in tooltip/tooltip.js in PrimeTek PrimeFaces 7.0.11. In a web application using PrimeFaces, an attacker can provide JavaScript code in an input field whose data is later used as a tooltip title without any input validation.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fw5f-7c6c-3vmv",
+      "publishedAt": "2021-05-07T16:16:30Z",
+      "modifiedAt": "2023-11-21T11:37:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fw5f-7c6c-3vmv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-10544"
+        }
+      ],
+      "affectedRange": "< 8.0",
+      "fixedVersion": "8.0"
+    }
+  ]
+}

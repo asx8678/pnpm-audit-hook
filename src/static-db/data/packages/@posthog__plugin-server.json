@@ -1,0 +1,26 @@
+{
+  "name": "@posthog/plugin-server",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v64v-fq96-c5wv",
+      "title": "PostHog Plugin Server SQL Injection Vulnerability",
+      "description": "PostHog ClickHouse Table Functions SQL Injection Remote Code Execution Vulnerability. This vulnerability allows network-adjacent attackers to execute arbitrary code on affected installations of PostHog. Authentication is required to exploit this vulnerability.\n\nThe specific flaw exists within the implementation of the SQL parser. The issue results from the lack of proper validation of a user-supplied string before using it to construct SQL queries. An attacker can leverage this vulnerability to ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v64v-fq96-c5wv",
+      "publishedAt": "2025-04-23T18:30:58Z",
+      "modifiedAt": "2025-04-23T19:38:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v64v-fq96-c5wv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-1520"
+        }
+      ],
+      "affectedRange": "<= 1.10.7"
+    }
+  ]
+}

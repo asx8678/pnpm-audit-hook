@@ -1,0 +1,27 @@
+{
+  "name": "google-translate-api-browser",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4233-7q5q-m7p6",
+      "title": "google-translate-api-browser Server-Side Request Forgery (SSRF) Vulnerability",
+      "description": "### Summary\nA Server-Side Request Forgery (SSRF) Vulnerability is present in applications utilizing the `google-translate-api-browser` package and exposing the `translateOptions` to the end user. An attacker can set a malicious `tld`, causing the application to return unsafe URLs pointing towards local resources.\n\n### Details\nThe `translateOptions.tld` field is not properly sanitized before being placed in the Google translate URL. This can allow an attacker with control over the `translateOptio",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-4233-7q5q-m7p6",
+      "publishedAt": "2023-11-27T23:30:14Z",
+      "modifiedAt": "2023-11-27T23:30:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4233-7q5q-m7p6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-48711"
+        }
+      ],
+      "affectedRange": "< 4.1.0",
+      "fixedVersion": "4.1.0"
+    }
+  ]
+}

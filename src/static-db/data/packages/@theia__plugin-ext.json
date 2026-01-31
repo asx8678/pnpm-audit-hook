@@ -1,0 +1,27 @@
+{
+  "name": "@theia/plugin-ext",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w6v7-w58j-pg5r",
+      "title": "Improper Verification of Communication Channel in @theia/plugin-ext",
+      "description": "In versions of the @theia/plugin-ext component of Eclipse Theia prior to 1.18.0, Webview contents can be hijacked via postMessage().",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w6v7-w58j-pg5r",
+      "publishedAt": "2021-11-15T17:40:51Z",
+      "modifiedAt": "2023-02-01T05:06:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w6v7-w58j-pg5r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-41038"
+        }
+      ],
+      "affectedRange": "< 1.18.0",
+      "fixedVersion": "1.18.0"
+    }
+  ]
+}

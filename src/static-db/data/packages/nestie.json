@@ -1,0 +1,27 @@
+{
+  "name": "nestie",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m7rg-8wvq-846v",
+      "title": "Prototype pollution in nestie",
+      "description": "Prototype pollution vulnerability in 'nestie' versions 0.0.0 through 1.0.0 allows an attacker to cause a denial of service and may lead to remote code execution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m7rg-8wvq-846v",
+      "publishedAt": "2021-06-07T21:49:14Z",
+      "modifiedAt": "2023-08-17T05:02:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m7rg-8wvq-846v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-25947"
+        }
+      ],
+      "affectedRange": "< 1.0.1",
+      "fixedVersion": "1.0.1"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "csrf-csrf",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jjmg-x456-w976",
+      "title": "Incorrect default cookie name and recommendation",
+      "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\n\nThe default cookie name (and documentation recommendation) was prefixed with `Host__` instead of `__Host-`. The point of this prefix is for additional security, to ensure that, when no domain option is provided in the cookie options, we can guarantee the cookie came from the correct domain.\n\n### Patches\n_Has the problem been patched? What versions should users upgrade to?_\n\nYes, the problem is patched from version 2.2.1, this will ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-jjmg-x456-w976",
+      "publishedAt": "2022-10-10T20:59:02Z",
+      "modifiedAt": "2023-01-09T05:00:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jjmg-x456-w976"
+        }
+      ],
+      "affectedRange": "< 2.2.1",
+      "fixedVersion": "2.2.1"
+    }
+  ]
+}

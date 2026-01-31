@@ -1,0 +1,48 @@
+{
+  "name": "multi-ini",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g78f-549w-c354",
+      "title": "Prototype Pollution in multi-ini",
+      "description": "This affects the package multi-ini before 2.1.1. It is possible to pollute an object's prototype by specifying the proto object as part of an array.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-g78f-549w-c354",
+      "publishedAt": "2021-04-13T15:23:59Z",
+      "modifiedAt": "2023-02-01T05:05:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g78f-549w-c354"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28448"
+        }
+      ],
+      "affectedRange": "< 2.1.1",
+      "fixedVersion": "2.1.1"
+    },
+    {
+      "id": "GHSA-67mq-h2r9-rh2m",
+      "title": "Prototype pollution in multi-ini",
+      "description": "This affects the package multi-ini before 2.1.2. It is possible to pollute an object's prototype by specifying the constructor.proto object as part of an array. This is a bypass of CVE-2020-28448.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-67mq-h2r9-rh2m",
+      "publishedAt": "2021-04-13T15:23:41Z",
+      "modifiedAt": "2023-01-27T05:08:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-67mq-h2r9-rh2m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28460"
+        }
+      ],
+      "affectedRange": "< 2.1.2",
+      "fixedVersion": "2.1.2"
+    }
+  ]
+}

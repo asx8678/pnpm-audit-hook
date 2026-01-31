@@ -1,0 +1,48 @@
+{
+  "name": "mout",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vvv8-xw5f-3f88",
+      "title": "Prototype Pollution in mout",
+      "description": "This affects all versions of package mout. The deepFillIn function can be used to 'fill missing properties recursively', while the deepMixIn mixes objects into the target object, recursively mixing existing child objects as well. In both cases, the key used to access the target object recursively is not checked, leading to exploiting this vulnerability. **Note:** This vulnerability derives from an incomplete fix of [CVE-2020-7792](https://security.snyk.io/vuln/SNYK-JS-MOUT-1014544).",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vvv8-xw5f-3f88",
+      "publishedAt": "2022-06-18T00:00:20Z",
+      "modifiedAt": "2023-01-30T05:03:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vvv8-xw5f-3f88"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21213"
+        }
+      ],
+      "affectedRange": "<= 1.2.3",
+      "fixedVersion": "1.2.4"
+    },
+    {
+      "id": "GHSA-pc58-wgmc-hfjr",
+      "title": "Prototype Pollution in mout",
+      "description": "This affects all versions of package mout. The deepFillIn function can be used to 'fill missing properties recursively', while the deepMixIn 'mixes objects into the target object, recursively mixing existing child objects as well'. In both cases, the key used to access the target object recursively is not checked, leading to a Prototype Pollution.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pc58-wgmc-hfjr",
+      "publishedAt": "2022-02-09T22:49:10Z",
+      "modifiedAt": "2023-01-27T05:00:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pc58-wgmc-hfjr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7792"
+        }
+      ],
+      "affectedRange": "< 1.2.3",
+      "fixedVersion": "1.2.3"
+    }
+  ]
+}

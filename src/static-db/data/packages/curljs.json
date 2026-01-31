@@ -1,0 +1,26 @@
+{
+  "name": "curljs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cqfc-9452-r36j",
+      "title": "curljs Command Injection vulnerability",
+      "description": "A command injection vulnerability affects all versions of the package curljs.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cqfc-9452-r36j",
+      "publishedAt": "2022-08-03T00:00:57Z",
+      "modifiedAt": "2023-01-30T05:01:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cqfc-9452-r36j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28425"
+        }
+      ],
+      "affectedRange": "<= 0.1.2"
+    }
+  ]
+}

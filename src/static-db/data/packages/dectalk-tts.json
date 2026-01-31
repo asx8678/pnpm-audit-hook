@@ -1,0 +1,27 @@
+{
+  "name": "dectalk-tts",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6cf6-8hvr-r68w",
+      "title": "dectalk-tts Uses Unencrypted HTTP Request",
+      "description": "### Impact\n\nIn `dectalk-tts@1.0.0`, network requests to the third-party API are sent over HTTP, which is unencrypted. Unencrypted traffic can be easily intercepted and modified by attackers. Anyone who uses the package could be the victim of a [man-in-the-middle (MITM)](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) attack.\n\n<ins>Theft</ins>\n\nBecause `dectalk-tts` is a text-to-speech package, user requests are expected to only contain natural language. The package [README](https://githu",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6cf6-8hvr-r68w",
+      "publishedAt": "2024-04-04T14:21:19Z",
+      "modifiedAt": "2024-04-05T15:44:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6cf6-8hvr-r68w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-31206"
+        }
+      ],
+      "affectedRange": "= 1.0.0",
+      "fixedVersion": "1.0.1"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "name": "@excalidraw/excalidraw",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m64q-4jqh-f72f",
+      "title": "Stored Cross-site Scripting (XSS) in excalidraw's web embed component",
+      "description": "### Summary\n\nA stored XSS vulnerability in Excalidraw's web embeddable component. This allows arbitrary JavaScript to be run in the context of the domain where the editor is hosted. \n\n### Poc\n\nInserting an embed with the below url (can be copy/pasted onto canvas to insert as embed) will log `42` to the console:\n\n```\nhttps://gist.github.com/vv=v<script>console.log(42)</script>\n```\n\n### Details\n\nThere were two vectors. One rendering untrusted string as iframe's `srcdoc` without properly sanitizing",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m64q-4jqh-f72f",
+      "publishedAt": "2024-04-17T21:32:57Z",
+      "modifiedAt": "2024-04-18T00:31:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m64q-4jqh-f72f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-32472"
+        }
+      ],
+      "affectedRange": ">= 0.17.0, < 0.17.6",
+      "fixedVersion": "0.17.6"
+    },
+    {
+      "id": "GHSA-fr9g-2m2h-c27j",
+      "title": "Duplicate Advisory: @excalidraw/excalidraw Cross-site Scripting vulnerability",
+      "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-v7v8-gjv7-ffmr. This link is maintained to preserve external references.\n\n## Original Description\nVersions of the package @excalidraw/excalidraw from 0.0.0 are vulnerable to Cross-site Scripting (XSS) via embedded links in whiteboard objects due to improper input sanitization.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fr9g-2m2h-c27j",
+      "publishedAt": "2023-08-16T06:30:24Z",
+      "modifiedAt": "2023-11-09T05:06:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fr9g-2m2h-c27j"
+        }
+      ],
+      "affectedRange": "< 0.15.3",
+      "fixedVersion": "0.15.3"
+    },
+    {
+      "id": "GHSA-v7v8-gjv7-ffmr",
+      "title": "@excalidraw/excalidraw Cross-site Scripting vulnerability",
+      "description": "### Impact\n\nXSS vulnerability due to improperly sanitizing URLs of links that can be attached on canvas elements. This affects users of the npm package `@excalidraw/excalidraw` provided it was deployed in environments where untrusted user input in drawings that are then shared with third parties is a concern. If you only hosted the editor in trusted environments, or sharing didn't take place, the impact is minimized.\n\n### Patches\n\nPatch is available on version 0.15.3 and up (stable), or latest `",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v7v8-gjv7-ffmr",
+      "publishedAt": "2023-08-16T21:00:33Z",
+      "modifiedAt": "2023-08-16T21:00:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v7v8-gjv7-ffmr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26140"
+        }
+      ],
+      "affectedRange": "< 0.15.3",
+      "fixedVersion": "0.15.3"
+    }
+  ]
+}

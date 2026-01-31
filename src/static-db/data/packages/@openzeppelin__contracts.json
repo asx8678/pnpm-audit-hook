@@ -1,0 +1,439 @@
+{
+  "name": "@openzeppelin/contracts",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9vx6-7xxf-x967",
+      "title": "OpenZeppelin Contracts base64 encoding may read from potentially dirty memory",
+      "description": "### Impact\n\nThe `Base64.encode` function encodes a `bytes` input by iterating over it in chunks of 3 bytes. When this input is not a multiple of 3, the last iteration may read parts of the memory that are beyond the input buffer.\n\nAlthough the `encode` function pads the output for these cases, up to 4 bits of data are kept between the encoding and padding, corrupting the output if these bits were dirty (i.e. memory after the input is not 0). These conditions are more frequent in the following sc",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9vx6-7xxf-x967",
+      "publishedAt": "2024-02-29T20:09:53Z",
+      "modifiedAt": "2025-12-04T22:49:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9vx6-7xxf-x967"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-27094"
+        }
+      ],
+      "affectedRange": ">= 5.0.0-rc.0, < 5.0.2",
+      "fixedVersion": "5.0.2"
+    },
+    {
+      "id": "GHSA-9rcw-c2f9-2j55",
+      "title": "OpenZeppelin Contracts Bytes's lastIndexOf function with position argument performs out-of-bound memory access on empty buffers",
+      "description": "### Impact\n\nThe `lastIndexOf(bytes,byte,uint256)` function of the `Bytes.sol` library may access uninitialized memory when the following two conditions hold: 1) the provided buffer length is empty (i.e. `buffer.length == 0`) and position is not `2**256 - 1` (i.e. `pos != type(uint256).max`).\n\nThe `pos` argument could be used to access arbitrary data outside of the buffer bounds. This could lead to the operation running out of gas, or returning an invalid index (outside of the empty buffer). Proc",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9rcw-c2f9-2j55",
+      "publishedAt": "2025-07-17T21:19:32Z",
+      "modifiedAt": "2025-07-17T22:06:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9rcw-c2f9-2j55"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54070"
+        }
+      ],
+      "affectedRange": ">= 5.2.0, < 5.4.0",
+      "fixedVersion": "5.4.0"
+    },
+    {
+      "id": "GHSA-699g-q6qh-q4v8",
+      "title": "OpenZeppelin Contracts and Contracts Upgradeable duplicated execution of subcalls in v4.9.4",
+      "description": "\n### Context\nMerge conflict resolution issue when porting the v5.0.1 `Multicall` update to the v4.9 branch caused a duplicated line.\n\n### Impact\nVersions using `Multicall` from `@openzeppelin/contracts@4.9.4` and `@openzeppelin/contracts-upgradeable@4.9.4` will execute each subcall twice. Concretely, this exposes a user to unintentionally duplicate operations like asset transfers.\n\n### Patches\nThe duplicated `delegatecall` was removed in 4.9.5. The 4.9.4 version is marked as deprecated.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-699g-q6qh-q4v8",
+      "publishedAt": "2023-12-12T00:49:25Z",
+      "modifiedAt": "2023-12-12T00:49:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-699g-q6qh-q4v8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-49798"
+        }
+      ],
+      "affectedRange": "= 4.9.4",
+      "fixedVersion": "4.9.5"
+    },
+    {
+      "id": "GHSA-5h3x-9wvq-w4m2",
+      "title": "OpenZeppelin Contracts's governor proposal creation may be blocked by frontrunning",
+      "description": "### Impact\n\nBy frontrunning the creation of a proposal, an attacker can become the proposer and gain the ability to cancel it. The attacker can do this repeatedly to try to prevent a proposal from being proposed at all.\n\nThis impacts the `Governor` contract in v4.9.0 only, and the `GovernorCompatibilityBravo` contract since v4.3.0.\n\n### Patches\n\nThe problem has been patched in 4.9.1 by introducing opt-in frontrunning protection.\n\n### Workarounds\n\nSubmit the proposal creation transaction to an en",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5h3x-9wvq-w4m2",
+      "publishedAt": "2023-06-08T18:03:11Z",
+      "modifiedAt": "2023-11-27T21:30:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5h3x-9wvq-w4m2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-34234"
+        }
+      ],
+      "affectedRange": ">= 4.3.0, < 4.9.1",
+      "fixedVersion": "4.9.1"
+    },
+    {
+      "id": "GHSA-mx2q-35m2-x2rh",
+      "title": "OpenZeppelin Contracts TransparentUpgradeableProxy clashing selector calls may not be delegated",
+      "description": "### Impact\n\nA function in the implementation contract may be inaccessible if its selector clashes with one of the proxy's own selectors. Specifically, if the clashing function has a different signature with incompatible ABI encoding, the proxy could revert while attempting to decode the arguments from calldata.\n\nThe probability of an accidental clash is negligible, but one could be caused deliberately.\n\n### Patches\n\nThe issue has been fixed in v4.8.3.\n\n### Workarounds\n\nIf a function appears to b",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mx2q-35m2-x2rh",
+      "publishedAt": "2023-04-17T16:45:21Z",
+      "modifiedAt": "2023-11-23T03:36:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mx2q-35m2-x2rh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-30541"
+        }
+      ],
+      "affectedRange": ">= 3.2.0, < 4.8.3",
+      "fixedVersion": "4.8.3"
+    },
+    {
+      "id": "GHSA-wprv-93r4-jj2p",
+      "title": "OpenZeppelin Contracts using MerkleProof multiproofs may allow proving arbitrary leaves for specific trees",
+      "description": "### Impact\n\nWhen the `verifyMultiProof`, `verifyMultiProofCalldata`, `processMultiProof`, or `processMultiProofCalldata` functions are in use, it is possible to construct merkle trees that allow forging a valid multiproof for an arbitrary set of leaves.\n\nA contract may be vulnerable if it uses multiproofs for verification and the merkle tree that is processed includes a node with value 0 at depth 1 (just under the root). This could happen inadvertently for balanced trees with 3 leaves or less, i",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wprv-93r4-jj2p",
+      "publishedAt": "2023-06-19T19:46:37Z",
+      "modifiedAt": "2023-11-08T05:04:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wprv-93r4-jj2p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-34459"
+        }
+      ],
+      "affectedRange": ">= 4.7.0, < 4.9.2",
+      "fixedVersion": "4.9.2"
+    },
+    {
+      "id": "GHSA-g4vp-m682-qqmp",
+      "title": "OpenZeppelin Contracts vulnerable to Improper Escaping of Output",
+      "description": "### Impact\n\nOpenZeppelin Contracts is a library for secure smart contract development. Starting in version 4.0.0 and prior to version 4.9.3, contracts using `ERC2771Context` along with a custom trusted forwarder may see `_msgSender` return `address(0)` in calls that originate from the forwarder with calldata shorter than 20 bytes. This combination of circumstances does not appear to be common, in particular it is not the case for `MinimalForwarder` from OpenZeppelin Contracts, or any deployed fo",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g4vp-m682-qqmp",
+      "publishedAt": "2023-08-11T19:00:48Z",
+      "modifiedAt": "2023-11-04T05:05:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g4vp-m682-qqmp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-40014"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 4.9.3",
+      "fixedVersion": "4.9.3"
+    },
+    {
+      "id": "GHSA-7grf-83vw-6f5x",
+      "title": "OpenZeppelin Contracts ERC165Checker unbounded gas consumption",
+      "description": "### Impact\n\nThe target contract of an EIP-165 `supportsInterface` query can cause unbounded gas consumption by returning a lot of data, while it is generally assumed that this operation has a bounded cost.\n\n### Patches\n\nThe issue has been fixed in v4.7.2.\n\n### References\n\nhttps://github.com/OpenZeppelin/openzeppelin-contracts/pull/3587\n\n### For more information\n\nIf you have any questions or comments about this advisory, or need assistance deploying a fix, email us at [security@openzeppelin.com](",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7grf-83vw-6f5x",
+      "publishedAt": "2022-08-14T00:23:34Z",
+      "modifiedAt": "2023-07-21T21:32:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7grf-83vw-6f5x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-35915"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 4.7.2",
+      "fixedVersion": "4.7.2"
+    },
+    {
+      "id": "GHSA-93hq-5wgc-jc82",
+      "title": "GovernorCompatibilityBravo may trim proposal calldata",
+      "description": "### Impact\n\nThe proposal creation entrypoint (`propose`) in `GovernorCompatibilityBravo` allows the creation of proposals with a `signatures` array shorter than the `calldatas` array. This causes the additional elements of the latter to be ignored, and if the proposal succeeds the corresponding actions would eventually execute without any calldata. The `ProposalCreated` event correctly represents what will eventually execute, but the proposal parameters as queried through `getActions` appear to ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-93hq-5wgc-jc82",
+      "publishedAt": "2023-04-20T14:11:03Z",
+      "modifiedAt": "2023-04-27T15:35:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-93hq-5wgc-jc82"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-30542"
+        }
+      ],
+      "affectedRange": ">= 4.3.0, < 4.8.3",
+      "fixedVersion": "4.8.3"
+    },
+    {
+      "id": "GHSA-878m-3g6q-594q",
+      "title": "OpenZeppelin Contracts contains Incorrect Calculation",
+      "description": "### Impact\n\nThe ERC721Consecutive contract designed for minting NFTs in batches does not update balances when a batch has size 1 and consists of a single token. Subsequent transfers from the receiver of that token may overflow the balance as reported by `balanceOf`.\n\nThe issue exclusively presents with batches of size 1.\n\n### Patches\n\nThe issue has been patched in 4.8.2.\n\n<!-- ### References -->\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-878m-3g6q-594q",
+      "publishedAt": "2023-03-03T20:02:16Z",
+      "modifiedAt": "2023-03-10T15:30:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-878m-3g6q-594q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26488"
+        }
+      ],
+      "affectedRange": ">= 4.8.0, < 4.8.2",
+      "fixedVersion": "4.8.2"
+    },
+    {
+      "id": "GHSA-88g8-f5mf-f5rj",
+      "title": "Improper Initialization in OpenZeppelin",
+      "description": "In OpenZeppelin <=v4.4.0, initializer functions that are invoked separate from contract creation (the most prominent example being minimal proxies) may be reentered if they make an untrusted non-view external call. Once an initializer has finished running it can never be re-executed. However, an exception put in place to support multiple inheritance made reentrancy possible, breaking the expectation that there is a single execution.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-88g8-f5mf-f5rj",
+      "publishedAt": "2022-02-05T00:00:31Z",
+      "modifiedAt": "2023-02-03T05:05:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-88g8-f5mf-f5rj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-46320"
+        }
+      ],
+      "affectedRange": "< 4.4.1",
+      "fixedVersion": "4.4.1"
+    },
+    {
+      "id": "GHSA-4h98-2769-gh6h",
+      "title": "OpenZeppelin Contracts vulnerable to ECDSA signature malleability",
+      "description": "### Impact\n\nThe functions `ECDSA.recover` and `ECDSA.tryRecover` are vulnerable to a kind of signature malleability due to accepting EIP-2098 compact signatures in addition to the traditional 65 byte signature format. This is only an issue for the functions that take a single `bytes` argument, and not the functions that take `r, v, s` or `r, vs` as separate arguments.\n\nThe potentially affected contracts are those that implement signature reuse or replay protection by marking the signature itself",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4h98-2769-gh6h",
+      "publishedAt": "2022-08-18T19:00:43Z",
+      "modifiedAt": "2023-02-02T05:07:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4h98-2769-gh6h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-35961"
+        }
+      ],
+      "affectedRange": ">= 4.1.0, < 4.7.3",
+      "fixedVersion": "4.7.3"
+    },
+    {
+      "id": "GHSA-9j3m-g383-29qr",
+      "title": "OpenZeppelin Contracts's Cross chain utilities for Arbitrum L2 see EOA calls as cross chain calls",
+      "description": "### Impact\n\nContracts using the cross chain utilies for Arbitrum L2, `CrossChainEnabledArbitrumL2` or `LibArbitrumL2`, will classify direct interactions of externally owned accounts (EOAs) as cross chain calls, even though they are not started on L1. This is assessed as low severity because any action taken by an EOA on the contract could also be taken by the EOA through the bridge if the issue was not present.\n\n### Patches\n\nThis issue has been patched in v4.7.2.\n\n### References\n\nhttps://github.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9j3m-g383-29qr",
+      "publishedAt": "2022-08-14T00:25:11Z",
+      "modifiedAt": "2023-02-02T05:02:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9j3m-g383-29qr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-35916"
+        }
+      ],
+      "affectedRange": ">= 4.6.0, < 4.7.2",
+      "fixedVersion": "4.7.2"
+    },
+    {
+      "id": "GHSA-fg47-3c2x-m2wr",
+      "title": "TimelockController vulnerability in OpenZeppelin Contracts ",
+      "description": "### Impact\n\nA vulnerability in `TimelockController` allowed an actor with the executor role to take immediate control of the timelock, by resetting the delay to 0 and escalating privileges, thus gaining unrestricted access to assets held in the contract. Instances with the executor role set to \"open\" allow anyone to use the executor role, thus leaving the timelock at risk of being taken over by an attacker.\n\n### Patches\n\nA fix is included in the following releases of `@openzeppelin/contracts` an",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fg47-3c2x-m2wr",
+      "publishedAt": "2021-08-30T16:12:38Z",
+      "modifiedAt": "2023-02-01T05:06:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fg47-3c2x-m2wr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-39167"
+        }
+      ],
+      "affectedRange": ">= 3.3.0, < 3.4.2",
+      "fixedVersion": "3.4.2"
+    },
+    {
+      "id": "GHSA-xrc4-737v-9q75",
+      "title": "OpenZeppelin Contracts's GovernorVotesQuorumFraction updates to quorum may affect past defeated proposals",
+      "description": "### Impact\n\nThis issue concerns instances of Governor that use the module `GovernorVotesQuorumFraction`, a mechanism that determines quorum requirements as a percentage of the voting token's total supply. In affected instances, when a proposal is passed to lower the quorum requirement, past proposals may become executable if they had been defeated only due to lack of quorum, and the number of votes it received meets the new quorum requirement.\n\nAnalysis of instances on chain found only one propo",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xrc4-737v-9q75",
+      "publishedAt": "2022-08-18T18:48:41Z",
+      "modifiedAt": "2023-01-30T05:06:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xrc4-737v-9q75"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31198"
+        }
+      ],
+      "affectedRange": ">= 4.3.0, < 4.7.2",
+      "fixedVersion": "4.7.2"
+    },
+    {
+      "id": "GHSA-qh9x-gcfh-pcrw",
+      "title": "OpenZeppelin Contracts's ERC165Checker may revert instead of returning false",
+      "description": "### Impact\n\n`ERC165Checker.supportsInterface` is designed to always successfully return a boolean, and under no circumstance revert. However, an incorrect assumption about Solidity 0.8's `abi.decode` allows some cases to revert, given a target contract that doesn't implement EIP-165 as expected, specifically if it returns a value other than 0 or 1.\n\nThe contracts that may be affected are those that use `ERC165Checker` to check for support for an interface and then handle the lack of support in a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qh9x-gcfh-pcrw",
+      "publishedAt": "2022-07-21T22:33:01Z",
+      "modifiedAt": "2023-01-30T05:01:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qh9x-gcfh-pcrw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31170"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 4.7.1",
+      "fixedVersion": "4.7.1"
+    },
+    {
+      "id": "GHSA-9c22-pwxw-p6hx",
+      "title": "OpenZeppelin Contracts initializer reentrancy may lead to double initialization",
+      "description": "### Impact\n\nInitializer functions that are invoked separate from contract creation (the most prominent example being minimal proxies) may be reentered if they make an untrusted non-view external call.\n\nOnce an initializer has finished running it can never be re-executed. However, an exception put in place to support multiple inheritance made reentrancy possible in the scenario described above, breaking the expectation that there is a single execution.\n\nNote that upgradeable proxies are commonly ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9c22-pwxw-p6hx",
+      "publishedAt": "2021-12-14T21:47:33Z",
+      "modifiedAt": "2023-01-28T05:04:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9c22-pwxw-p6hx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39384"
+        }
+      ],
+      "affectedRange": ">= 3.2.0, < 4.4.1",
+      "fixedVersion": "4.4.1"
+    },
+    {
+      "id": "GHSA-5vp3-v4hc-gx76",
+      "title": "UUPSUpgradeable vulnerability in @openzeppelin/contracts",
+      "description": "### Impact\n\nUpgradeable contracts using `UUPSUpgradeable` may be vulnerable to an attack affecting uninitialized implementation contracts. We will update this advisory with more information soon.\n\n### Patches\n\nA fix is included in version 4.3.2 of `@openzeppelin/contracts` and `@openzeppelin/contracts-upgradeable`.\n\n### Workarounds\n\nInitialize implementation contracts using `UUPSUpgradeable` by invoking the initializer function (usually called `initialize`). An example is provided [in the forum]",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5vp3-v4hc-gx76",
+      "publishedAt": "2021-09-15T20:23:17Z",
+      "modifiedAt": "2023-01-28T05:02:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5vp3-v4hc-gx76"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-41264"
+        }
+      ],
+      "affectedRange": ">= 4.1.0, < 4.3.2",
+      "fixedVersion": "4.3.2"
+    },
+    {
+      "id": "GHSA-4g63-c64m-25w9",
+      "title": "OpenZeppelin Contracts's SignatureChecker may revert on invalid EIP-1271 signers",
+      "description": "### Impact\n\n`SignatureChecker.isValidSignatureNow` is not expected to revert. However, an incorrect assumption about Solidity 0.8's `abi.decode` allows some cases to revert, given a target contract that doesn't implement EIP-1271 as expected.\n\nThe contracts that may be affected are those that use `SignatureChecker` to check the validity of a signature and handle invalid signatures in a way other than reverting. We believe this to be unlikely.\n\n### Patches\n\nThe issue was patched in 4.7.1.\n\n### Re",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4g63-c64m-25w9",
+      "publishedAt": "2022-07-21T22:33:37Z",
+      "modifiedAt": "2023-01-27T05:07:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4g63-c64m-25w9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31172"
+        }
+      ],
+      "affectedRange": ">= 4.1.0, < 4.7.1",
+      "fixedVersion": "4.7.1"
+    },
+    {
+      "id": "GHSA-m6w8-fq7v-ph4m",
+      "title": "GovernorCompatibilityBravo incorrect ABI encoding may lead to unexpected behavior",
+      "description": "### Impact\n\nThe `GovernorCompatibilityBravo` module may lead to the creation of governance proposals that execute function calls with incorrect arguments due to bad ABI encoding. This happens if the proposal is created using explicit function signatures, e.g. a proposal to invoke the function `foo(uint256)` is created as `propose([target], [0], [\"foo(uint256)\"], [\"0x00..01\"])`. If the function selector is provided as part of the encoded proposal data the issue is not present, e.g. the same propo",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m6w8-fq7v-ph4m",
+      "publishedAt": "2022-01-13T16:09:36Z",
+      "modifiedAt": "2023-01-11T05:03:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m6w8-fq7v-ph4m"
+        }
+      ],
+      "affectedRange": ">= 4.3.0, < 4.4.2",
+      "fixedVersion": "4.4.2"
+    },
+    {
+      "id": "GHSA-wmpv-c2jp-j2xg",
+      "title": "ERC1155Supply vulnerability in OpenZeppelin Contracts",
+      "description": "When ERC1155 tokens are minted, a callback is invoked on the receiver of those tokens, as required by the spec. When including the `ERC1155Supply` extension, total supply is not updated until after the callback, thus during the callback the reported total supply is lower than the real number of tokens in circulation.\n\n### Impact\nIf a system relies on accurately reported supply, an attacker may be able to mint tokens and invoke that system after receiving the token balance but before the supply i",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-wmpv-c2jp-j2xg",
+      "publishedAt": "2021-11-15T23:28:18Z",
+      "modifiedAt": "2023-01-09T05:05:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wmpv-c2jp-j2xg"
+        }
+      ],
+      "affectedRange": ">= 4.2.0, < 4.3.3",
+      "fixedVersion": "4.3.3"
+    }
+  ]
+}

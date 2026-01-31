@@ -1,0 +1,27 @@
+{
+  "name": "bostr",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5cf7-cxrf-mq73",
+      "title": "Bostr Improper Authorization vulnerability",
+      "description": "Even with `authorized_keys` is filled with allowed pubkeys, If `noscraper` is enabled, It will allow anyone to use bouncer even it's pubkey is not in `authorized_keys`.\n\n### Impact\n- Private bouncer\n\n### Patches\nAvailable on version [3.0.10](https://github.com/Yonle/bostr/releases/tag/3.0.10)\n\n### Workarounds\nDisable `noscraper` if you have `authorized_keys` being set in config\n\n### References\nThis [line of code](https://github.com/Yonle/bostr/blob/8665374a66e2afb9f92d0414b0d6f420a95d5d2d/auth.j",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5cf7-cxrf-mq73",
+      "publishedAt": "2024-08-02T01:20:13Z",
+      "modifiedAt": "2024-08-02T16:02:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5cf7-cxrf-mq73"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-41962"
+        }
+      ],
+      "affectedRange": "< 3.0.10",
+      "fixedVersion": "3.0.10"
+    }
+  ]
+}

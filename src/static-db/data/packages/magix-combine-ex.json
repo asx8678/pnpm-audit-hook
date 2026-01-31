@@ -1,0 +1,26 @@
+{
+  "name": "magix-combine-ex",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cr7h-93fh-whwm",
+      "title": "magix-combine-ex vulnerable to prototype pollution",
+      "description": "A Prototype Pollution vulnerability in the util-deps.addFileDepend function of magix-combine-ex versions through 2.2.2 allows attackers to inject properties on Object.prototype via supplying a crafted payload, causing denial of service (DoS) as the minimum consequence.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-cr7h-93fh-whwm",
+      "publishedAt": "2025-09-24T21:30:37Z",
+      "modifiedAt": "2025-09-25T17:52:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cr7h-93fh-whwm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57321"
+        }
+      ],
+      "affectedRange": "<= 2.2.2"
+    }
+  ]
+}

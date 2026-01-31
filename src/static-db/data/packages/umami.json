@@ -1,0 +1,23 @@
+{
+  "name": "umami",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8www-cffh-4q98",
+      "title": "Anyone with a share link can RESET all website data in Umami",
+      "description": "### Summary\nAnyone with a share link (permissions to view) can reset the website data.\n\n### Details\nWhen a user navigates to a `/share/` URL, he receives a share token which is used for authentication. This token is later verified by `useAuth`. After the token is verified, the user can call most of the `GET` APIs that allow fetching stats about a website.\n\nThe `POST /reset` endpoint is secured using `canViewWebsite` which is the incorrect verification for such destructive action. This makes it p",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8www-cffh-4q98",
+      "publishedAt": "2023-07-28T15:33:14Z",
+      "modifiedAt": "2023-07-28T15:33:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8www-cffh-4q98"
+        }
+      ],
+      "affectedRange": "< 2.3.1",
+      "fixedVersion": "2.3.1"
+    }
+  ]
+}

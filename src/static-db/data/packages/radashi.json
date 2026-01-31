@@ -1,0 +1,27 @@
+{
+  "name": "radashi",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2xv9-ghh9-xc69",
+      "title": "radashi Allows Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')",
+      "description": "### Impact\n\nThis is a prototype pollution vulnerability. It impacts users of the `set` function within the Radashi library. If an attacker can control parts of the `path` argument to the `set` function, they could potentially modify the prototype of all objects in the JavaScript runtime, leading to unexpected behavior, denial of service, or even remote code execution in some specific scenarios.\n\n### Patches\n\nThe vulnerability has been patched in commit [`8147abc8cfc3cfe9b9a17cd389076a5d97235a66`",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2xv9-ghh9-xc69",
+      "publishedAt": "2025-05-27T15:03:05Z",
+      "modifiedAt": "2025-05-27T15:03:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2xv9-ghh9-xc69"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-48054"
+        }
+      ],
+      "affectedRange": "< 12.5.1",
+      "fixedVersion": "12.5.1"
+    }
+  ]
+}

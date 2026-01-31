@@ -1,0 +1,47 @@
+{
+  "name": "formio",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m654-769v-qjv7",
+      "title": "Formio improperly authorized permission elevation through specially crafted request path",
+      "description": "# Security Advisory: Unauthorized permission elevation through specially crafted request path\n\n**Summary:** A flaw in path handling could allow an attacker to access protected API endpoints by sending a crafted request path. This issue could result in unauthorized data disclosure under certain configurations.\n\n**Impact:** In affected configurations, an unauthenticated or unauthorized request could retrieve data from endpoints that should be protected.\n\n**Affected versions:** \n<= 3.5.6\n<= 4.4.2\n\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m654-769v-qjv7",
+      "publishedAt": "2025-12-10T20:11:40Z",
+      "modifiedAt": "2025-12-11T15:51:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m654-769v-qjv7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-67718"
+        }
+      ],
+      "affectedRange": ">= 4.0.0-rc.1, < 4.4.3",
+      "fixedVersion": "4.4.3"
+    },
+    {
+      "id": "GHSA-52vj-mr2j-f8jh",
+      "title": "Server-Side Template Injection in formio",
+      "description": "A Server-Side Template Injection (SSTI) was discovered in Form.io 2.0.0. This leads to Remote Code Execution during deletion of the default Email template URL. NOTE: the email templating service was removed after 2020. Additionally, the vendor disputes this issue indicating this is sandboxed and only executable by admins.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-52vj-mr2j-f8jh",
+      "publishedAt": "2022-06-03T00:00:58Z",
+      "modifiedAt": "2024-05-03T20:20:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-52vj-mr2j-f8jh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28246"
+        }
+      ],
+      "affectedRange": "<= 2.0.0"
+    }
+  ]
+}

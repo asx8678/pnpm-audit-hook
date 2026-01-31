@@ -1,0 +1,67 @@
+{
+  "name": "openmct",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4g88-4hgm-m99x",
+      "title": "NASA Open MCT Cross Site Request Forgery (CSRF) vulnerability",
+      "description": "Cross Site Request Forgery (CSRF) vulnerability in NASA Open MCT (aka openmct) through 3.1.0 allows attackers to view sensitive information via the flexibleLayout plugin.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4g88-4hgm-m99x",
+      "publishedAt": "2023-11-09T18:34:55Z",
+      "modifiedAt": "2023-11-22T17:02:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4g88-4hgm-m99x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-45884"
+        }
+      ],
+      "affectedRange": "<= 3.1.0",
+      "fixedVersion": "3.1.1"
+    },
+    {
+      "id": "GHSA-v8fc-qxvj-f3mg",
+      "title": "NASA Open MCT Cross Site Scripting vulnerability",
+      "description": "Cross Site Scripting (XSS) vulnerability in NASA Open MCT (aka openmct) through 3.1.0 allows attackers to run arbitrary code via the new component feature in the `flexibleLayout` plugin.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v8fc-qxvj-f3mg",
+      "publishedAt": "2023-11-09T18:34:55Z",
+      "modifiedAt": "2023-11-22T16:49:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v8fc-qxvj-f3mg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-45885"
+        }
+      ],
+      "affectedRange": "<= 3.1.0"
+    },
+    {
+      "id": "GHSA-4xcx-cwrq-w792",
+      "title": "Prototype Pollution in NASA Open MCT",
+      "description": "In NASA Open MCT (aka openmct) before commit 545a177 is subject to a prototype pollution which can occur via an import action.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4xcx-cwrq-w792",
+      "publishedAt": "2023-10-06T21:30:49Z",
+      "modifiedAt": "2023-11-11T05:05:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4xcx-cwrq-w792"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-45282"
+        }
+      ],
+      "affectedRange": "<= 3.0.2"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@haxtheweb/open-apis",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fvx2-x7ff-fc56",
+      "title": "Unauthenticated Disclosure of PSU HAX CMS Site Listings via haxPsuUsage API Endpoint",
+      "description": "### Summary\nAn **unauthenticated information disclosure vulnerability** exists in the PSU deployment of HAX CMS via the `haxPsuUsage` API endpoint. This allows **any remote unauthenticated user** to retrieve a full list of PSU websites hosted on HAX CMS. When chained with other authorization issues (e.g., HAX-3), this could assist in targeted attacks such as unauthorized content modification or deletion.\n\n---\n\n### Details\nThe endpoint [`https://open-apis.hax.cloud/api/services/stats/haxPsuUsage`",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fvx2-x7ff-fc56",
+      "publishedAt": "2025-06-05T01:07:47Z",
+      "modifiedAt": "2025-06-05T01:07:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fvx2-x7ff-fc56"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-48996"
+        }
+      ],
+      "affectedRange": "<= 10.0.1"
+    }
+  ]
+}

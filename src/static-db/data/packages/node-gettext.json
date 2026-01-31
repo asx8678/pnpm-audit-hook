@@ -1,0 +1,26 @@
+{
+  "name": "node-gettext",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g974-hxvm-x689",
+      "title": "node-gettext vulnerable to Prototype Pollution",
+      "description": "All versions of the package node-gettext are vulnerable to Prototype Pollution via the addTranslations() function in gettext.js due to improper user input sanitization.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g974-hxvm-x689",
+      "publishedAt": "2024-09-10T06:30:48Z",
+      "modifiedAt": "2024-11-18T16:27:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g974-hxvm-x689"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21528"
+        }
+      ],
+      "affectedRange": "<= 3.0.0"
+    }
+  ]
+}

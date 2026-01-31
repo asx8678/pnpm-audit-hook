@@ -1,0 +1,48 @@
+{
+  "name": "@dependencytrack/frontend",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7xvh-c266-cfr5",
+      "title": "@dependencytrack/frontend vulnerable to Persistent Cross-Site-Scripting via welcome message",
+      "description": "### Description\n\nSince version 4.12.0, Dependency-Track users with the `SYSTEM_CONFIGURATION` permission can configure a \"welcome message\", which is HTML that is to be rendered on the login page for branding purposes.\n\nWhen rendering the welcome message, Dependency-Track versions before 4.13.6 did not properly sanitize the HTML, allowing arbitrary JavaScript to be executed.\n\n### Impact\n\nUsers with the `SYSTEM_CONFIGURATION` permission (i.e., administrators), can exploit this weakness to execute ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7xvh-c266-cfr5",
+      "publishedAt": "2025-11-17T18:15:55Z",
+      "modifiedAt": "2025-11-17T18:57:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7xvh-c266-cfr5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64758"
+        }
+      ],
+      "affectedRange": ">= 4.12.0, < 4.13.6",
+      "fixedVersion": "4.13.6"
+    },
+    {
+      "id": "GHSA-c33w-pm52-mqvf",
+      "title": "@dependencytrack/frontend vulnerable to  Persistent Cross-Site-Scripting via Vulnerability Details",
+      "description": "### Description\n\nDue to the common practice of providing vulnerability details in markdown format, the Dependency-Track frontend renders them using the JavaScript library [Showdown](https://github.com/showdownjs/showdown). Showdown [does not have any XSS countermeasures built in](https://github.com/showdownjs/showdown/wiki/Markdown's-XSS-Vulnerability-(and-how-to-mitigate-it)), and versions before 4.6.1 of the Dependency-Track frontend did not encode or sanitize Showdown's output. This made it p",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c33w-pm52-mqvf",
+      "publishedAt": "2022-10-25T20:22:01Z",
+      "modifiedAt": "2023-01-30T05:02:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c33w-pm52-mqvf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39350"
+        }
+      ],
+      "affectedRange": "< 4.6.1",
+      "fixedVersion": "4.6.1"
+    }
+  ]
+}

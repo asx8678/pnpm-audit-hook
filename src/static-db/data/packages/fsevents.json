@@ -1,0 +1,27 @@
+{
+  "name": "fsevents",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8r6j-v8pm-fqw3",
+      "title": "Code injection in fsevents",
+      "description": "fsevents before 1.2.11 depends on the https://fsevents-binaries.s3-us-west-2.amazonaws.com URL, which might allow an adversary to execute arbitrary code if any JavaScript project (that depends on fsevents) distributes code that was obtained from that URL at a time when it was controlled by an adversary.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8r6j-v8pm-fqw3",
+      "publishedAt": "2023-10-06T21:30:49Z",
+      "modifiedAt": "2023-11-28T19:01:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8r6j-v8pm-fqw3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-45311"
+        }
+      ],
+      "affectedRange": "<= 1.2.10",
+      "fixedVersion": "1.2.11"
+    }
+  ]
+}

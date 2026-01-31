@@ -1,0 +1,27 @@
+{
+  "name": "mcp-package-docs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vf9j-h32g-2764",
+      "title": "mcp-package-docs vulnerable to command injection in several tools",
+      "description": "### Summary\n\nA command injection vulnerability exists in the `mcp-package-docs` MCP Server. The vulnerability is caused by the unsanitized use of input parameters within a call to `child_process.exec`, enabling an attacker to inject arbitrary system commands. Successful exploitation can lead to remote code execution under the server process's privileges. \n\nThe server constructs and executes shell commands using unvalidated user input directly within command-line strings. This introduces the poss",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vf9j-h32g-2764",
+      "publishedAt": "2025-08-05T14:12:33Z",
+      "modifiedAt": "2025-08-05T14:12:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vf9j-h32g-2764"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54073"
+        }
+      ],
+      "affectedRange": "<= 0.1.27",
+      "fixedVersion": "0.1.28"
+    }
+  ]
+}

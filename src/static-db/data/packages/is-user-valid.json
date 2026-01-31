@@ -1,0 +1,26 @@
+{
+  "name": "is-user-valid",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-22cm-3qf2-2wc7",
+      "title": "LDAP Injection in is-user-valid",
+      "description": "All versions of package is-user-valid are vulnerable to LDAP Injection which can lead to either authentication bypass or information exposure.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-22cm-3qf2-2wc7",
+      "publishedAt": "2021-04-13T15:30:27Z",
+      "modifiedAt": "2023-02-01T05:05:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-22cm-3qf2-2wc7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23335"
+        }
+      ],
+      "affectedRange": "<= 1.1.2"
+    }
+  ]
+}

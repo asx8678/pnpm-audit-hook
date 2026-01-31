@@ -1,0 +1,27 @@
+{
+  "name": "yaml",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f9xv-q969-pqx4",
+      "title": "Uncaught Exception in yaml",
+      "description": "Uncaught Exception in GitHub repository eemeli/yaml starting at version 2.0.0-5 and prior to 2.2.2.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f9xv-q969-pqx4",
+      "publishedAt": "2023-04-24T15:30:34Z",
+      "modifiedAt": "2023-11-10T05:01:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f9xv-q969-pqx4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-2251"
+        }
+      ],
+      "affectedRange": ">= 2.0.0-5, < 2.2.2",
+      "fixedVersion": "2.2.2"
+    }
+  ]
+}

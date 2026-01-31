@@ -1,0 +1,27 @@
+{
+  "name": "git-commit-info",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h42j-mrmp-9369",
+      "title": "git-commit-info vulnerable to Command Injection",
+      "description": "Versions of the package git-commit-info before 2.0.2 are vulnerable to Command Injection such that the package-exported method gitCommitInfo() fails to sanitize its parameter commit, which later flows into a sensitive command execution API. As a result, attackers may inject arguments to the git binary.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h42j-mrmp-9369",
+      "publishedAt": "2023-06-28T06:30:22Z",
+      "modifiedAt": "2024-10-30T18:00:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h42j-mrmp-9369"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26134"
+        }
+      ],
+      "affectedRange": "< 2.0.2",
+      "fixedVersion": "2.0.2"
+    }
+  ]
+}

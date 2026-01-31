@@ -1,0 +1,26 @@
+{
+  "name": "buns",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-487w-pqcm-63hq",
+      "title": "Command injection in buns",
+      "description": "There is a command injection vulnerability in all versions of package buns. The injection point is located in line 678 in index file lib/index.js in the exported function install(requestedModule).",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-487w-pqcm-63hq",
+      "publishedAt": "2021-01-13T18:22:13Z",
+      "modifiedAt": "2023-09-08T22:44:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-487w-pqcm-63hq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7794"
+        }
+      ],
+      "affectedRange": "<= 1.1.6"
+    }
+  ]
+}

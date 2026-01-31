@@ -1,0 +1,66 @@
+{
+  "name": "safe-eval",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-79xf-67r4-q2jj",
+      "title": "safe-eval vulnerable to Sandbox Bypass due to improper input sanitization",
+      "description": "All versions of the package safe-eval are vulnerable to Sandbox Bypass due to improper input sanitization. The vulnerability is derived from prototype pollution exploitation. Exploiting this vulnerability might result in remote code execution (RCE).\n\n**Vulnerable functions:**\n\n__defineGetter__, stack(), toLocaleString(), propertyIsEnumerable.call(),  valueOf().",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-79xf-67r4-q2jj",
+      "publishedAt": "2023-04-11T06:30:29Z",
+      "modifiedAt": "2023-04-19T17:10:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-79xf-67r4-q2jj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26122"
+        }
+      ],
+      "affectedRange": "<= 0.4.2"
+    },
+    {
+      "id": "GHSA-hcg3-56jf-x4vh",
+      "title": "safe-eval vulnerable to Prototype Pollution via the safeEval function",
+      "description": "All versions of the package safe-eval are vulnerable to Prototype Pollution via the safeEval function, due to improper sanitization of its parameter content.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-hcg3-56jf-x4vh",
+      "publishedAt": "2023-04-11T06:30:29Z",
+      "modifiedAt": "2023-04-14T21:35:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hcg3-56jf-x4vh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26121"
+        }
+      ],
+      "affectedRange": "<= 0.4.2"
+    },
+    {
+      "id": "GHSA-33vh-7x8q-mg35",
+      "title": "safe-eval vulnerable to Prototype Pollution",
+      "description": "All versions of package safe-eval are vulnerable to Prototype Pollution which allows an attacker to add or modify properties of the Object.prototype.Consolidate when using the function safeEval. This is because the function uses vm variable, leading an attacker to modify properties of the Object.prototype.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-33vh-7x8q-mg35",
+      "publishedAt": "2022-12-20T06:30:36Z",
+      "modifiedAt": "2023-02-02T05:07:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-33vh-7x8q-mg35"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25904"
+        }
+      ],
+      "affectedRange": "<= 0.4.1"
+    }
+  ]
+}

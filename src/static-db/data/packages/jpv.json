@@ -1,0 +1,27 @@
+{
+  "name": "jpv",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vh6r-g38f-q3w8",
+      "title": "Validation bypass in jpv",
+      "description": "jpv (aka Json Pattern Validator) before 2.2.2 does not properly validate input, as demonstrated by a corrupted array.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vh6r-g38f-q3w8",
+      "publishedAt": "2021-05-06T17:27:58Z",
+      "modifiedAt": "2023-02-01T05:05:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vh6r-g38f-q3w8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-17479"
+        }
+      ],
+      "affectedRange": "< 2.2.2",
+      "fixedVersion": "2.2.2"
+    }
+  ]
+}

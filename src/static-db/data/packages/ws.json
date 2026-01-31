@@ -1,0 +1,48 @@
+{
+  "name": "ws",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3h5v-q93c-6h6q",
+      "title": "ws affected by a DoS when handling a request with many HTTP headers",
+      "description": "### Impact\n\nA request with a number of headers exceeding the[`server.maxHeadersCount`][] threshold could be used to crash a ws server.\n\n### Proof of concept\n\n```js\nconst http = require('http');\nconst WebSocket = require('ws');\n\nconst wss = new WebSocket.Server({ port: 0 }, function () {\n  const chars = \"!#$%&'*+-.0123456789abcdefghijklmnopqrstuvwxyz^_`|~\".split('');\n  const headers = {};\n  let count = 0;\n\n  for (let i = 0; i < chars.length; i++) {\n    if (count === 2000) break;\n\n    for (let j =",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3h5v-q93c-6h6q",
+      "publishedAt": "2024-06-17T19:09:10Z",
+      "modifiedAt": "2024-08-05T05:02:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3h5v-q93c-6h6q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-37890"
+        }
+      ],
+      "affectedRange": ">= 8.0.0, < 8.17.1",
+      "fixedVersion": "8.17.1"
+    },
+    {
+      "id": "GHSA-6fc8-4gx4-v693",
+      "title": "ReDoS in Sec-Websocket-Protocol header",
+      "description": "### Impact\n\nA specially crafted value of the `Sec-Websocket-Protocol` header can be used to significantly slow down a ws server.\n\n### Proof of concept\n\n```js\nfor (const length of [1000, 2000, 4000, 8000, 16000, 32000]) {\n  const value = 'b' + ' '.repeat(length) + 'x';\n  const start = process.hrtime.bigint();\n\n  value.trim().split(/ *, */);\n\n  const end = process.hrtime.bigint();\n\n  console.log('length = %d, time = %f ns', length, end - start);\n}\n```\n\n### Patches\n\nThe vulnerability was fixed in w",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6fc8-4gx4-v693",
+      "publishedAt": "2021-05-28T19:19:03Z",
+      "modifiedAt": "2023-02-03T05:02:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6fc8-4gx4-v693"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32640"
+        }
+      ],
+      "affectedRange": ">= 5.0.0, < 5.2.3",
+      "fixedVersion": "5.2.3"
+    }
+  ]
+}

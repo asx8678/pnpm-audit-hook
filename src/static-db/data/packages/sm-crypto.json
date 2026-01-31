@@ -1,0 +1,69 @@
+{
+  "name": "sm-crypto",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hpwg-xg7m-3p6m",
+      "title": "sm-crypto Affected by Signature Forgery in SM2-DSA",
+      "description": "### Summary\n\nA signature forgery vulnerability exists in the SM2 signature verification logic of sm-crypto. Under default configurations, an attacker can forge valid signatures for arbitrary public keys. If the message space contains sufficient redundancy, the attacker can fix the prefix of the message associated with the forged signature to satisfy specific formatting requirements.\n\n### Credit\n\nThis vulnerability was discovered by:\n- XlabAI Team of Tencent Xuanwu Lab\n- Atuin Automated Vulnerabi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hpwg-xg7m-3p6m",
+      "publishedAt": "2026-01-21T16:13:44Z",
+      "modifiedAt": "2026-01-22T15:43:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hpwg-xg7m-3p6m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23965"
+        }
+      ],
+      "affectedRange": "< 0.4.0",
+      "fixedVersion": "0.4.0"
+    },
+    {
+      "id": "GHSA-qv7w-v773-3xqm",
+      "title": "sm-crypto Affected by Signature Malleability in SM2-DSA",
+      "description": "### Summary\n\nA signature malleability vulnerability exists in the SM2 signature verification logic of the sm-crypto library. An attacker can derive a new valid signature for a previously signed message from an existing signature.\n\n### Credit\n\nThis vulnerability was discovered by:\n- XlabAI Team of Tencent Xuanwu Lab\n- Atuin Automated Vulnerability Discovery Engine",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qv7w-v773-3xqm",
+      "publishedAt": "2026-01-21T16:13:35Z",
+      "modifiedAt": "2026-01-22T15:43:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qv7w-v773-3xqm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23967"
+        }
+      ],
+      "affectedRange": "< 0.3.14",
+      "fixedVersion": "0.3.14"
+    },
+    {
+      "id": "GHSA-pgx9-497m-6c4v",
+      "title": "sm-crypto Affected by Private Key Recovery in SM2-PKE",
+      "description": "### Summary\n\nA private key recovery vulnerability exists in the SM2 decryption logic of sm-crypto. By interacting with the SM2 decryption interface multiple times, an attacker can fully recover the private key within approximately several hundred interactions.\n\n\n### Credit\n\nThis vulnerability was discovered by:\n- XlabAI Team of Tencent Xuanwu Lab\n- Atuin Automated Vulnerability Discovery Engine",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-pgx9-497m-6c4v",
+      "publishedAt": "2026-01-21T16:13:25Z",
+      "modifiedAt": "2026-01-22T15:43:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pgx9-497m-6c4v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23966"
+        }
+      ],
+      "affectedRange": "< 0.3.14",
+      "fixedVersion": "0.3.14"
+    }
+  ]
+}

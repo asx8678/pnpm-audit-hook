@@ -1,0 +1,27 @@
+{
+  "name": "@zowe/cli",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-ghgq-x6wc-6jr5",
+      "title": "Zowe CLI allows storage of previously entered secure credentials in a plaintext file",
+      "description": "A vulnerability in Zowe CLI allows local, privileged actors to store previously entered secure credentials in a plaintext file as part of an auto-init operation.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-ghgq-x6wc-6jr5",
+      "publishedAt": "2024-07-17T15:30:52Z",
+      "modifiedAt": "2024-08-06T05:04:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ghgq-x6wc-6jr5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-6833"
+        }
+      ],
+      "affectedRange": ">= 7.18.0, < 7.23.5",
+      "fixedVersion": "7.23.5"
+    }
+  ]
+}

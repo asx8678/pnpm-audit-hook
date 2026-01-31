@@ -1,0 +1,69 @@
+{
+  "name": "raneto",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vc68-6x72-w22f",
+      "title": "Raneto vulnerable to Cross-site Scripting",
+      "description": "Renato v0.17.0 was discovered to contain a cross-site scripting (XSS) vulnerability. This issue is fixed in version 0.17.1.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vc68-6x72-w22f",
+      "publishedAt": "2022-08-05T00:00:23Z",
+      "modifiedAt": "2023-09-11T22:58:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vc68-6x72-w22f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-35144"
+        }
+      ],
+      "affectedRange": "<= 0.17.0",
+      "fixedVersion": "0.17.1"
+    },
+    {
+      "id": "GHSA-xxc2-j7jj-6g5m",
+      "title": "Raneto Denial of Service via crafted payload injected into `Search` parameter",
+      "description": "An issue in Renato v0.17.0 allows attackers to cause a Denial of Service (DoS) via a crafted payload injected into the `Search` parameter.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xxc2-j7jj-6g5m",
+      "publishedAt": "2022-08-05T00:00:23Z",
+      "modifiedAt": "2023-01-31T05:01:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xxc2-j7jj-6g5m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-35142"
+        }
+      ],
+      "affectedRange": "<= 0.17.0",
+      "fixedVersion": "0.17.1"
+    },
+    {
+      "id": "GHSA-7942-2fx8-qhpf",
+      "title": "Raneto v0.17.0 employs weak password complexity requirements",
+      "description": "Raneto v0.17.0 employs weak password complexity requirements, allowing attackers to crack user passwords via brute-force attacks. Version 0.17.1 contains security mitigations for this and other vulnerabilities.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7942-2fx8-qhpf",
+      "publishedAt": "2022-08-05T00:00:23Z",
+      "modifiedAt": "2023-01-31T05:01:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7942-2fx8-qhpf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-35143"
+        }
+      ],
+      "affectedRange": "<= 0.17.0",
+      "fixedVersion": "0.17.1"
+    }
+  ]
+}

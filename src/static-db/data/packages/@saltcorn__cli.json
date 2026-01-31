@@ -1,0 +1,23 @@
+{
+  "name": "@saltcorn/cli",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wxf3-4fvj-vqqx",
+      "title": "Unsafe plugins can be installed via pack import by tenant admins",
+      "description": "### Summary\nUnsafe plugins (for instance `sql-list`) can be installed in subdomain tenants via pack import even if unsafe plugin installation for tenants is disables\n\n### Details\nI have an example\nhttps://bot20230704.saltcorn.com/view/all_plugins\nIt's publicly accessible (but has not so secure values except list of tenants).\nBut using this mech one can read **any** data from other tenants.\n\n### Impact\nAll tenants of installation (i.e. `saltcorn.com`), can be compromised from tenant user has admi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wxf3-4fvj-vqqx",
+      "publishedAt": "2023-07-27T19:28:02Z",
+      "modifiedAt": "2026-01-16T21:55:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wxf3-4fvj-vqqx"
+        }
+      ],
+      "affectedRange": "< 0.8.8-beta.2",
+      "fixedVersion": "0.8.8-beta.2"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@scullyio/ng-lib",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r96p-v3cr-gfv8",
+      "title": "Cross-site Scripting (XSS) in @scullyio/scully",
+      "description": "This affects the package @scullyio/scully before 1.0.9. The transfer state is serialised with the JSON.stringify() function and then written into the HTML page.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r96p-v3cr-gfv8",
+      "publishedAt": "2021-04-13T15:28:01Z",
+      "modifiedAt": "2025-10-20T19:43:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r96p-v3cr-gfv8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28470"
+        }
+      ],
+      "affectedRange": "< 1.0.1",
+      "fixedVersion": "1.0.1"
+    }
+  ]
+}

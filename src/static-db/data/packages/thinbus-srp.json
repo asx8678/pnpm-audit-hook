@@ -1,0 +1,27 @@
+{
+  "name": "thinbus-srp",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8q6v-474h-whgg",
+      "title": "The Thinbus Javascript Secure Remote Password (SRP) Client Generates Fewer Bits of Entropy Than Intended",
+      "description": "### Impact\nA protocol compliance bug in thinbus-srp-npm versions prior to 2.0.1 causes the client to generate a fixed 252 bits of entropy instead of the intended bit length of the safe prime (defaulted to 2048 bits). RFC 5054 states in section [2.5.4 Client Key Exchange ](https://datatracker.ietf.org/doc/html/rfc5054#section-2.5.4)\n\n> The client key exchange message carries the client's public value\n   (A).  The client calculates this value as A = g^a % N, where a is a\n   random number that SHOU",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8q6v-474h-whgg",
+      "publishedAt": "2025-08-06T17:11:42Z",
+      "modifiedAt": "2025-08-07T15:11:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8q6v-474h-whgg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54885"
+        }
+      ],
+      "affectedRange": "< 2.0.1",
+      "fixedVersion": "2.0.1"
+    }
+  ]
+}

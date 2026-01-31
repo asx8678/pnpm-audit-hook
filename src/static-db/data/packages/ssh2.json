@@ -1,0 +1,27 @@
+{
+  "name": "ssh2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-652h-xwhf-q4h6",
+      "title": "OS Command Injection in ssh2",
+      "description": "ssh2 is client and server modules written in pure JavaScript for node.js. In ssh2 before version 1.4.0 there is a command injection vulnerability. The issue only exists on Windows. This issue may lead to remote code execution if a client of the library calls the vulnerable method with untrusted input. This is fixed in version 1.4.0.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-652h-xwhf-q4h6",
+      "publishedAt": "2021-09-21T16:50:46Z",
+      "modifiedAt": "2024-02-12T15:03:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-652h-xwhf-q4h6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26301"
+        }
+      ],
+      "affectedRange": "< 1.4.0",
+      "fixedVersion": "1.4.0"
+    }
+  ]
+}

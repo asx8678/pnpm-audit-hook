@@ -1,0 +1,48 @@
+{
+  "name": "parse",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9g8m-v378-pcg3",
+      "title": "parse is vulnerable to prototype pollution",
+      "description": "parse is a package designed to parse JavaScript SDK. A Prototype Pollution vulnerability in the SingleInstanceStateController.initializeState function of parse allows attackers to inject properties on Object.prototype via supplying a crafted payload, causing denial of service (DoS) as the minimum consequence.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9g8m-v378-pcg3",
+      "publishedAt": "2025-09-24T21:30:37Z",
+      "modifiedAt": "2025-11-27T08:57:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9g8m-v378-pcg3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57324"
+        }
+      ],
+      "affectedRange": "< 7.0.0-alpha.1",
+      "fixedVersion": "7.0.0-alpha.1"
+    },
+    {
+      "id": "GHSA-9f2h-7v79-mxw3",
+      "title": "Parse Javascript SDK vulnerable to prototype pollution in `Parse.Object` and internal APIs",
+      "description": "### Summary\n\nPrototype pollution capabilities on various APIs.\n\n### Details\n\nInjection of malicious payload allows attacker to remotely execute arbitrary code. `Parse.Object` and internal APIs are affected, specifically:\n- `ParseObject.fromJSON`\n- `ParseObject.pin`\n- `ParseObject.registerSubclass`\n- `ObjectStateMutations` (internal)\n- `encode`/`decode` (internal)\n\n### PoC\n\nDemonstrative tests added as part of the fix.\n\n### References\n\n- https://github.com/parse-community/Parse-SDK-JS/security/ad",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9f2h-7v79-mxw3",
+      "publishedAt": "2025-10-14T22:24:10Z",
+      "modifiedAt": "2025-10-14T22:24:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9f2h-7v79-mxw3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-62374"
+        }
+      ],
+      "affectedRange": "< 7.0.0",
+      "fixedVersion": "7.0.0"
+    }
+  ]
+}

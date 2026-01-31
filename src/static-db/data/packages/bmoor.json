@@ -1,0 +1,48 @@
+{
+  "name": "bmoor",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4m8h-h59m-m34j",
+      "title": "Prototype Pollution in bmoor",
+      "description": "The package bmoor before 0.10.1 is vulnerable to Prototype Pollution due to missing sanitization in set function. **Note:** This vulnerability derives from an incomplete fix in [CVE-2020-7736](https://security.snyk.io/vuln/SNYK-JS-BMOOR-598664)",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4m8h-h59m-m34j",
+      "publishedAt": "2022-02-01T00:50:09Z",
+      "modifiedAt": "2023-02-03T05:05:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4m8h-h59m-m34j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23558"
+        }
+      ],
+      "affectedRange": "< 0.10.1",
+      "fixedVersion": "0.10.1"
+    },
+    {
+      "id": "GHSA-h3rx-g5c9-8q4x",
+      "title": "Prototype Pollution in bmoor",
+      "description": "The package bmoor before 0.8.12 are vulnerable to Prototype Pollution via the set function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h3rx-g5c9-8q4x",
+      "publishedAt": "2021-05-10T18:37:26Z",
+      "modifiedAt": "2023-01-27T05:08:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h3rx-g5c9-8q4x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7736"
+        }
+      ],
+      "affectedRange": "< 0.8.12",
+      "fixedVersion": "0.8.12"
+    }
+  ]
+}

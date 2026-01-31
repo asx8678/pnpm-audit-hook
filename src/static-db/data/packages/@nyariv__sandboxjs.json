@@ -1,0 +1,48 @@
+{
+  "name": "@nyariv/sandboxjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wxhw-j4hc-fmq6",
+      "title": "SandboxJS has Sandbox Escape via Unprotected AsyncFunction Constructor",
+      "description": "### Summary\nA sandbox escape vulnerability due to `AsyncFunction` not being isolated in `SandboxFunction`\n\n### Details\n\nThe library attempts to sandbox code execution by replacing the global `Function` constructor with a safe, sandboxed version (`SandboxFunction`). This is handled in `utils.ts` by mapping `Function` to `sandboxFunction` within a map used for lookups.\n\nHowever, the library did not include mappings for `AsyncFunction`, `GeneratorFunction`, and `AsyncGeneratorFunction`. These const",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wxhw-j4hc-fmq6",
+      "publishedAt": "2026-01-27T19:55:11Z",
+      "modifiedAt": "2026-01-29T03:43:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wxhw-j4hc-fmq6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23830"
+        }
+      ],
+      "affectedRange": "< 0.8.26",
+      "fixedVersion": "0.8.26"
+    },
+    {
+      "id": "GHSA-9qm3-6qrr-c76m",
+      "title": "@nyariv/sandboxjs has Prototype Pollution vulnerability that may lead to RCE",
+      "description": "A prototype pollution vulnerability exists in @nyariv/sandboxjs versions <= 0.8.23, allowing attackers to inject arbitrary properties into Object.prototype via crafted JavaScript code. This can result in a denial-of-service (DoS) condition or, under certain conditions, escape the sandboxed environment intended to restrict code execution. The vulnerability stems from insufficient prototype access checks in the sandbox’s executor logic, particularly in the handling of JavaScript function objects r",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9qm3-6qrr-c76m",
+      "publishedAt": "2025-07-31T15:35:50Z",
+      "modifiedAt": "2025-07-31T19:28:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9qm3-6qrr-c76m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-34146"
+        }
+      ],
+      "affectedRange": "< 0.8.24",
+      "fixedVersion": "0.8.24"
+    }
+  ]
+}

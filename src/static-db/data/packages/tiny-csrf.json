@@ -1,0 +1,27 @@
+{
+  "name": "tiny-csrf",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pj2c-h76w-vv6f",
+      "title": "tiny-csrf has openly visible CSRF tokens",
+      "description": "### Impact\n\nWeak encryption on CSRF so tokens can be read by malicious attackers. \n\n### Patches\n\nProblems have been patched as of v1.1.0\n\n### Workarounds\n\nUpgrade to v1.1.0\n\n### References\n\nhttps://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html \n\n### For more information\n\nSubmit an issue at [the github repo](https://github.com/valexandersaulys/tiny-csrf)",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pj2c-h76w-vv6f",
+      "publishedAt": "2022-10-07T21:23:18Z",
+      "modifiedAt": "2023-02-01T05:01:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pj2c-h76w-vv6f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39287"
+        }
+      ],
+      "affectedRange": "< 1.1.0",
+      "fixedVersion": "1.1.0"
+    }
+  ]
+}

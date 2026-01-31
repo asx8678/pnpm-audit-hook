@@ -1,0 +1,27 @@
+{
+  "name": "loopback-connector-postgresql",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j259-6c58-9m58",
+      "title": "loopback-connector-postgresql Vulnerable to Improper Sanitization of `contains` Filter",
+      "description": "Improper input validation on the `contains` LoopBack filter may allow for arbitrary SQL injection.\n\n### Impact\n\nWhen the extended filter property `contains` is permitted to be interpreted by the Postgres connector, it is possible to inject arbitrary SQL which may affect the confidentiality and integrity of data stored on the connected database.\n\nThis affects users who does any of the following:\n\n- Connect to the database via the DataSource with `allowExtendedProperties: true` setting OR\n- Uses t",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-j259-6c58-9m58",
+      "publishedAt": "2022-08-11T21:13:43Z",
+      "modifiedAt": "2023-01-27T05:06:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j259-6c58-9m58"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-35942"
+        }
+      ],
+      "affectedRange": "< 5.5.1",
+      "fixedVersion": "5.5.1"
+    }
+  ]
+}

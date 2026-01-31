@@ -1,0 +1,48 @@
+{
+  "name": "langchain",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r399-636x-v7f6",
+      "title": "LangChain serialization injection vulnerability enables secret extraction",
+      "description": "## Context\n\nA serialization injection vulnerability exists in LangChain JS's `toJSON()` method (and subsequently when string-ifying objects using `JSON.stringify()`. The method did not escape objects with `'lc'` keys when serializing free-form data in kwargs. The `'lc'` key is used internally by LangChain to mark serialized objects. When user-controlled data contains this key structure, it is treated as a legitimate LangChain object during deserialization rather than plain user data.\n\n### Attack",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r399-636x-v7f6",
+      "publishedAt": "2025-12-23T20:08:48Z",
+      "modifiedAt": "2025-12-24T01:08:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r399-636x-v7f6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-68665"
+        }
+      ],
+      "affectedRange": "< 0.3.37",
+      "fixedVersion": "0.3.37"
+    },
+    {
+      "id": "GHSA-hc5w-c9f8-9cc4",
+      "title": "Langchain Path Traversal vulnerability",
+      "description": "A path traversal vulnerability exists in the `getFullPath` method of langchain-ai/langchainjs version 0.2.5. This vulnerability allows attackers to save files anywhere in the filesystem, overwrite existing text files, read `.txt` files, and delete files. The vulnerability is exploited through the `setFileContent`, `getParsedFile`, and `mdelete` methods, which do not properly sanitize user input.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hc5w-c9f8-9cc4",
+      "publishedAt": "2024-10-29T15:32:05Z",
+      "modifiedAt": "2024-11-01T15:24:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hc5w-c9f8-9cc4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-7774"
+        }
+      ],
+      "affectedRange": "< 0.2.19",
+      "fixedVersion": "0.2.19"
+    }
+  ]
+}

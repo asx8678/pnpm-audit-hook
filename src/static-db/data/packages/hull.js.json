@@ -1,0 +1,23 @@
+{
+  "name": "hull.js",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q849-wxrc-vqrp",
+      "title": "hull.js Code Injection Vulnerability",
+      "description": "Versions of the library from 0.2.2 to 1.0.9 are vulnerable to the arbitrary code execution due to unsafe usage of `new Function(...)` in the module that handles points format. Applications passing the 3rd parameter to the `hull` function without sanitising may be impacted. The vulnerability has been fixed in version 1.0.10, please update the library. Check project homepage on GitHub to see how to fetch the latest version: https://github.com/andriiheonia/hull?tab=readme-ov-file#npm-package",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-q849-wxrc-vqrp",
+      "publishedAt": "2024-12-02T20:11:39Z",
+      "modifiedAt": "2024-12-02T20:11:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q849-wxrc-vqrp"
+        }
+      ],
+      "affectedRange": ">= 0.2.2, < 1.0.10",
+      "fixedVersion": "1.0.10"
+    }
+  ]
+}

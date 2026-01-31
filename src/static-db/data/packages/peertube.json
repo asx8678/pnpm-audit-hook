@@ -1,0 +1,27 @@
+{
+  "name": "peertube",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f2c5-997w-7f5c",
+      "title": "Cross-site Scripting in peertube",
+      "description": "peertube is vulnerable to Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting'). It was found that one could upload a SVG image and then send the url of that to other users and when they open the link we can get their complete session keys as the session keys stored in local storage and with Javascript easily can be stolen by attackers.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f2c5-997w-7f5c",
+      "publishedAt": "2021-09-20T20:42:41Z",
+      "modifiedAt": "2023-02-01T05:06:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f2c5-997w-7f5c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3780"
+        }
+      ],
+      "affectedRange": "< 3.4.0",
+      "fixedVersion": "3.4.0"
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "name": "url-parse",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8v38-pw62-9cw2",
+      "title": "url-parse Incorrectly parses URLs that include an '@'",
+      "description": "A specially crafted URL with an '@' sign but empty user info and no hostname, when parsed with url-parse, url-parse will return the incorrect href. In particular,\n\n```js\nparse(\\\"http://@/127.0.0.1\\\")\n```\nWill return:\n```yaml\n{\n slashes: true,\n protocol: 'http:',\n hash: '',\n query: '',\n pathname: '/127.0.0.1',\n auth: '',\n host: '',\n port: '',\n hostname: '',\n password: '',\n username: '',\n origin: 'null',\n href: 'http:///127.0.0.1'\n }\n```\nIf the 'hostname' or 'origin' attributes of the output from ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8v38-pw62-9cw2",
+      "publishedAt": "2022-02-18T00:00:33Z",
+      "modifiedAt": "2025-12-20T03:15:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8v38-pw62-9cw2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0639"
+        }
+      ],
+      "affectedRange": "< 1.5.7",
+      "fixedVersion": "1.5.7"
+    },
+    {
+      "id": "GHSA-hgjh-723h-mx2j",
+      "title": "Authorization Bypass Through User-Controlled Key in url-parse",
+      "description": "url-parse prior to version 1.5.8 is vulnerable to Authorization Bypass Through User-Controlled Key.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-hgjh-723h-mx2j",
+      "publishedAt": "2022-02-21T00:00:21Z",
+      "modifiedAt": "2023-11-29T22:39:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hgjh-723h-mx2j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0686"
+        }
+      ],
+      "affectedRange": "< 1.5.8",
+      "fixedVersion": "1.5.8"
+    },
+    {
+      "id": "GHSA-jf5r-8hm2-f872",
+      "title": "url-parse incorrectly parses hostname / protocol due to unstripped leading control characters.",
+      "description": "Leading control characters in a URL are not stripped when passed into url-parse. This can cause input URLs to be mistakenly be interpreted as a relative URL without a hostname and protocol, while the WHATWG URL parser will trim control characters and treat it as an absolute URL.\n\nIf url-parse is used in security decisions involving the hostname / protocol, and the input URL is used in a client which uses the WHATWG URL parser, the decision may be incorrect.\n\nThis can also lead to a cross-site sc",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jf5r-8hm2-f872",
+      "publishedAt": "2022-02-22T00:00:30Z",
+      "modifiedAt": "2023-09-11T22:57:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jf5r-8hm2-f872"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0691"
+        }
+      ],
+      "affectedRange": "< 1.5.9",
+      "fixedVersion": "1.5.9"
+    },
+    {
+      "id": "GHSA-hh27-ffr2-f2jc",
+      "title": "Open redirect in url-parse",
+      "description": "# Overview\n\nAffected versions of npm `url-parse` are vulnerable to URL Redirection to Untrusted Site.\n\n# Impact\n\nDepending on library usage and attacker intent, impacts may include allow/block list bypasses, SSRF attacks, open redirects, or other undesired behavior.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hh27-ffr2-f2jc",
+      "publishedAt": "2021-08-10T16:07:08Z",
+      "modifiedAt": "2023-02-23T22:08:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hh27-ffr2-f2jc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3664"
+        }
+      ],
+      "affectedRange": "< 1.5.2",
+      "fixedVersion": "1.5.2"
+    },
+    {
+      "id": "GHSA-9m6j-fcg5-2442",
+      "title": "Path traversal in url-parse",
+      "description": "url-parse before 1.5.0 mishandles certain uses of backslash such as http:\\/ and interprets the URI as a relative path.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9m6j-fcg5-2442",
+      "publishedAt": "2021-05-06T16:10:51Z",
+      "modifiedAt": "2023-02-23T22:07:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9m6j-fcg5-2442"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-27515"
+        }
+      ],
+      "affectedRange": "< 1.5.0",
+      "fixedVersion": "1.5.0"
+    },
+    {
+      "id": "GHSA-rqff-837h-mm52",
+      "title": "Authorization bypass in url-parse",
+      "description": "Authorization Bypass Through User-Controlled Key in NPM url-parse prior to 1.5.6.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rqff-837h-mm52",
+      "publishedAt": "2022-02-15T00:02:46Z",
+      "modifiedAt": "2023-02-23T22:07:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rqff-837h-mm52"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0512"
+        }
+      ],
+      "affectedRange": "< 1.5.6",
+      "fixedVersion": "1.5.6"
+    },
+    {
+      "id": "GHSA-46c4-8wrp-j99v",
+      "title": "Improper Validation and Sanitization in url-parse",
+      "description": "Insufficient validation and sanitization of user input exists in url-parse npm package version 1.4.4 and earlier may allow attacker to bypass security checks.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-46c4-8wrp-j99v",
+      "publishedAt": "2022-01-06T20:30:34Z",
+      "modifiedAt": "2023-02-01T05:05:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-46c4-8wrp-j99v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8124"
+        }
+      ],
+      "affectedRange": "< 1.4.5",
+      "fixedVersion": "1.4.5"
+    }
+  ]
+}

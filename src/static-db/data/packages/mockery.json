@@ -1,0 +1,26 @@
+{
+  "name": "mockery",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gmwp-3pwc-3j3g",
+      "title": "mockery is vulnerable to prototype pollution",
+      "description": "Prototype pollution vulnerability in function enable in mockery.js in mfncooper mockery commit 822f0566fd6d72af8c943ae5ca2aa92e516aa2cf via the key variable in mockery.js.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-gmwp-3pwc-3j3g",
+      "publishedAt": "2022-10-12T19:00:41Z",
+      "modifiedAt": "2023-07-28T21:01:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gmwp-3pwc-3j3g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-37614"
+        }
+      ],
+      "affectedRange": "<= 2.1.0"
+    }
+  ]
+}

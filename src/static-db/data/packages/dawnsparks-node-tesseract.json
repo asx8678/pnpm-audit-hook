@@ -1,0 +1,27 @@
+{
+  "name": "dawnsparks-node-tesseract",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-88qf-5f3v-pm6m",
+      "title": "Remote code execution in dawnsparks-node-tesseract",
+      "description": "dawnsparks-node-tesseract before 0.4.1 was discovered to contain a remote code execution (RCE) vulnerability via the child_process function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-88qf-5f3v-pm6m",
+      "publishedAt": "2023-04-24T18:30:31Z",
+      "modifiedAt": "2023-11-11T05:02:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-88qf-5f3v-pm6m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-29566"
+        }
+      ],
+      "affectedRange": "< 0.4.1",
+      "fixedVersion": "0.4.1"
+    }
+  ]
+}

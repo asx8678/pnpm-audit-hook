@@ -1,0 +1,26 @@
+{
+  "name": "deepmergefn",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vj72-mwrj-m2xq",
+      "title": "Prototype Pollution in deepmergefn",
+      "description": "All versions of package deepmergefn are vulnerable to Prototype Pollution via deepMerge function.\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vj72-mwrj-m2xq",
+      "publishedAt": "2021-08-10T16:09:25Z",
+      "modifiedAt": "2023-02-01T05:06:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vj72-mwrj-m2xq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23417"
+        }
+      ],
+      "affectedRange": "<= 1.1.0"
+    }
+  ]
+}

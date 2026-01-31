@@ -1,0 +1,27 @@
+{
+  "name": "mdast-util-to-hast",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4fh9-h7wg-q85m",
+      "title": "mdast-util-to-hast has unsanitized class attribute",
+      "description": "### Impact\n\nMultiple (unprefixed) classnames could be added in markdown source by using character references.\nThis could make rendered user supplied markdown `code` elements appear like the rest of the page.\nThe following markdown:\n\n````markdown\n```js&#x20;xss\n```\n````\n\nWould create `<pre><code class=\"language-js xss\"></code></pre>`\nIf your page then applied `.xss` classes (or listeners in JS), those apply to this element.\nFor more info see <https://github.com/ChALkeR/notes/blob/master/Improper-",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4fh9-h7wg-q85m",
+      "publishedAt": "2025-12-02T01:25:46Z",
+      "modifiedAt": "2025-12-02T01:25:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4fh9-h7wg-q85m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-66400"
+        }
+      ],
+      "affectedRange": ">= 13.0.0, < 13.2.1",
+      "fixedVersion": "13.2.1"
+    }
+  ]
+}

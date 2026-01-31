@@ -1,0 +1,48 @@
+{
+  "name": "moment",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wc69-rhjr-hc9g",
+      "title": "Moment.js vulnerable to Inefficient Regular Expression Complexity",
+      "description": "### Impact\n\n* using string-to-date parsing in moment (more specifically rfc2822 parsing, which is tried by default) has quadratic (N^2) complexity on specific inputs\n* noticeable slowdown is observed with inputs above 10k characters\n* users who pass user-provided strings without sanity length checks to moment constructor are vulnerable to (Re)DoS attacks\n\n### Patches\nThe problem is patched in 2.29.4, the patch can be applied to all affected versions with minimal tweaking.\n\n### Workarounds\nIn gen",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wc69-rhjr-hc9g",
+      "publishedAt": "2022-07-06T18:38:49Z",
+      "modifiedAt": "2025-11-04T16:39:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wc69-rhjr-hc9g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-31129"
+        }
+      ],
+      "affectedRange": ">= 2.18.0, < 2.29.4",
+      "fixedVersion": "2.29.4"
+    },
+    {
+      "id": "GHSA-8hfj-j24r-96c4",
+      "title": "Path Traversal: 'dir/../../filename' in moment.locale",
+      "description": "### Impact\nThis vulnerability impacts npm (server) users of moment.js, especially if user provided locale string, eg `fr` is directly used to switch moment locale.\n\n### Patches\nThis problem is patched in 2.29.2, and the patch can be applied to all affected versions (from 1.0.1 up until 2.29.1, inclusive).\n\n### Workarounds\nSanitize user-provided locale name before passing it to moment.js.\n\n### References\n_Are there any links users can visit to find out more?_\n\n### For more information\nIf you have",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8hfj-j24r-96c4",
+      "publishedAt": "2022-04-04T21:25:48Z",
+      "modifiedAt": "2025-11-04T16:35:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8hfj-j24r-96c4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24785"
+        }
+      ],
+      "affectedRange": "< 2.29.2",
+      "fixedVersion": "2.29.2"
+    }
+  ]
+}

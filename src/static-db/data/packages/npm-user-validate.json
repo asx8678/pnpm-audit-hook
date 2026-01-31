@@ -1,0 +1,27 @@
+{
+  "name": "npm-user-validate",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pw54-mh39-w3hc",
+      "title": "Regular expression denial of service in npm-user-validate",
+      "description": "This affects the package npm-user-validate before 1.0.1. The regex that validates user emails took exponentially longer to process long input strings beginning with @ characters.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pw54-mh39-w3hc",
+      "publishedAt": "2021-05-10T19:08:15Z",
+      "modifiedAt": "2023-02-01T05:05:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pw54-mh39-w3hc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7754"
+        }
+      ],
+      "affectedRange": "< 1.0.1",
+      "fixedVersion": "1.0.1"
+    }
+  ]
+}

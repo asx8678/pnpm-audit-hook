@@ -1,0 +1,111 @@
+{
+  "name": "mysql2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-49j4-86m8-q2jw",
+      "title": "mysql2 vulnerable to Prototype Poisoning",
+      "description": "Versions of the package mysql2 before 3.9.4 are vulnerable to Prototype Poisoning due to insecure results object creation and improper user input sanitization passed through `parserFn` in `text_parser.js` and `binary_parser.js`.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-49j4-86m8-q2jw",
+      "publishedAt": "2024-04-10T15:30:39Z",
+      "modifiedAt": "2024-08-22T16:17:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-49j4-86m8-q2jw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21509"
+        }
+      ],
+      "affectedRange": "< 3.9.4",
+      "fixedVersion": "3.9.4"
+    },
+    {
+      "id": "GHSA-mqr2-w7wj-jjgr",
+      "title": "mysql2 cache poisoning vulnerability",
+      "description": "Versions of the package mysql2 before 3.9.3 are vulnerable to Improper Input Validation through the `keyFromFields` function, resulting in cache poisoning. An attacker can inject a colon `:` character within a value of the attacker-crafted key.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mqr2-w7wj-jjgr",
+      "publishedAt": "2024-04-10T15:30:39Z",
+      "modifiedAt": "2024-08-02T15:40:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mqr2-w7wj-jjgr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21507"
+        }
+      ],
+      "affectedRange": "< 3.9.3",
+      "fixedVersion": "3.9.3"
+    },
+    {
+      "id": "GHSA-pmh2-wpjm-fj45",
+      "title": "mysql2 vulnerable to Prototype Pollution",
+      "description": "Versions of the package mysql2 before 3.9.8 are vulnerable to Prototype Pollution due to improper user input sanitization passed to fields and tables when using nestTables.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pmh2-wpjm-fj45",
+      "publishedAt": "2024-05-30T18:34:32Z",
+      "modifiedAt": "2024-06-06T16:49:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pmh2-wpjm-fj45"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21512"
+        }
+      ],
+      "affectedRange": "< 3.9.8",
+      "fixedVersion": "3.9.8"
+    },
+    {
+      "id": "GHSA-4rch-2fh8-94vw",
+      "title": "MySQL2 for Node Arbitrary Code Injection",
+      "description": "Versions of the package mysql2 before 3.9.7 are vulnerable to Arbitrary Code Injection due to improper sanitization of the timezone parameter in the readCodeFor function by calling a native MySQL Server date/time function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4rch-2fh8-94vw",
+      "publishedAt": "2024-04-23T06:30:47Z",
+      "modifiedAt": "2024-04-23T20:50:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4rch-2fh8-94vw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21511"
+        }
+      ],
+      "affectedRange": "< 3.9.7",
+      "fixedVersion": "3.9.7"
+    },
+    {
+      "id": "GHSA-fpw7-j2hg-69v5",
+      "title": "mysql2 Remote Code Execution (RCE) via the readCodeFor function",
+      "description": "Versions of the package mysql2 before 3.9.4 are vulnerable to Remote Code Execution (RCE) via the `readCodeFor` function due to improper validation of the `supportBigNumbers` and `bigNumberStrings` values.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fpw7-j2hg-69v5",
+      "publishedAt": "2024-04-11T06:30:35Z",
+      "modifiedAt": "2024-04-12T13:50:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fpw7-j2hg-69v5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21508"
+        }
+      ],
+      "affectedRange": "< 3.9.4",
+      "fixedVersion": "3.9.4"
+    }
+  ]
+}

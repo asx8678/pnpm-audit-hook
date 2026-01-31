@@ -1,0 +1,27 @@
+{
+  "name": "cookie",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pxg6-pf52-xh8x",
+      "title": "cookie accepts cookie name, path, and domain with out of bounds characters",
+      "description": "### Impact\n\nThe cookie name could be used to set other fields of the cookie, resulting in an unexpected cookie value. For example, `serialize(\"userName=<script>alert('XSS3')</script>; Max-Age=2592000; a\", value)` would result in `\"userName=<script>alert('XSS3')</script>; Max-Age=2592000; a=test\"`, setting `userName` cookie to `<script>` and ignoring `value`.\n\nA similar escape can be used for `path` and `domain`, which could be abused to alter other fields of the cookie.\n\n### Patches\n\nUpgrade to ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-pxg6-pf52-xh8x",
+      "publishedAt": "2024-10-04T20:31:00Z",
+      "modifiedAt": "2025-04-15T13:56:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pxg6-pf52-xh8x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-47764"
+        }
+      ],
+      "affectedRange": "< 0.7.0",
+      "fixedVersion": "0.7.0"
+    }
+  ]
+}

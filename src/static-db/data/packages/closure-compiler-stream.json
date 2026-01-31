@@ -1,0 +1,26 @@
+{
+  "name": "closure-compiler-stream",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m647-5wf9-3jp3",
+      "title": "OS Command Injection in closure-compiler-stream",
+      "description": "closure-compiler-stream through 0.1.15 allows execution of arbitrary commands. The argument `options` of the exports function in `index.js` can be controlled by users without any sanitization.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m647-5wf9-3jp3",
+      "publishedAt": "2021-05-07T16:16:06Z",
+      "modifiedAt": "2023-09-06T19:55:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m647-5wf9-3jp3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7603"
+        }
+      ],
+      "affectedRange": "<= 0.1.15"
+    }
+  ]
+}

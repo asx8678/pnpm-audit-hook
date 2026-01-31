@@ -1,0 +1,26 @@
+{
+  "name": "cool-path",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4h4x-4m75-47j4",
+      "title": "depath and cool-path vulnerable to Prototype Pollution via `set()` Method",
+      "description": "janryWang products depath v1.0.6 and cool-path v1.1.2 were discovered to contain a prototype pollution via the set() method at setIn (lib/index.js:90). This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4h4x-4m75-47j4",
+      "publishedAt": "2025-03-28T21:30:46Z",
+      "modifiedAt": "2025-03-31T15:56:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4h4x-4m75-47j4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-38985"
+        }
+      ],
+      "affectedRange": "<= 1.1.2"
+    }
+  ]
+}

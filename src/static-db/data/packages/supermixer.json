@@ -1,0 +1,27 @@
+{
+  "name": "supermixer",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7prf-vw4p-qr59",
+      "title": "Prototype pollution in supermixer",
+      "description": "Prototype pollution in Stampit supermixer allows an attacker to modify the prototype of a base object which can vary in severity depending on the implementation.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7prf-vw4p-qr59",
+      "publishedAt": "2021-12-10T19:03:07Z",
+      "modifiedAt": "2023-01-27T05:01:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7prf-vw4p-qr59"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-24939"
+        }
+      ],
+      "affectedRange": "< 1.0.5",
+      "fixedVersion": "1.0.5"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@solid/identity-token-verifier",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xmh9-rg6f-j3mr",
+      "title": "Verification flaw in Solid identity-token-verifier",
+      "description": "### Impact\n#### Severity\nAny Pod on a Solid server using a vulnerable version of the identity-token-verifier library is at risk of a spoofed Demonstration of Proof-of-Possession (DPoP) token binding. This vulnerability could give total and complete access to a targeted Pod.\n\n#### Summary\nA verification flaw in the implementation of the identity token verifier library (https://github.com/solid/identity-token-verifier) allows DPoP proofs to be spoofed. \n\nDPoP proofs are used to bind access tokens ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xmh9-rg6f-j3mr",
+      "publishedAt": "2021-03-12T22:39:01Z",
+      "modifiedAt": "2023-01-09T05:04:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xmh9-rg6f-j3mr"
+        }
+      ],
+      "affectedRange": "< 0.5.2",
+      "fixedVersion": "0.5.2"
+    }
+  ]
+}

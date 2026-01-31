@@ -1,0 +1,26 @@
+{
+  "name": "create-choo-electron",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j8wr-fwf2-vvr9",
+      "title": "Command Injection in create-choo-electron",
+      "description": "All versions of the package create-choo-electron are vulnerable to Command Injection via the devInstall function due to improper user-input sanitization.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-j8wr-fwf2-vvr9",
+      "publishedAt": "2023-01-26T21:30:25Z",
+      "modifiedAt": "2025-04-01T23:03:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j8wr-fwf2-vvr9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25908"
+        }
+      ],
+      "affectedRange": "<= 2.0.0"
+    }
+  ]
+}

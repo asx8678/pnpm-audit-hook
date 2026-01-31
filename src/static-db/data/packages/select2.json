@@ -1,0 +1,27 @@
+{
+  "name": "select2",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rf66-hmqf-q3fc",
+      "title": "Improper Neutralization of Input During Web Page Generation in Select2",
+      "description": "In Select2 through 4.0.5, as used in Snipe-IT and other products, rich selectlists allow XSS. This affects use cases with Ajax remote data loading when HTML templates are used to display listbox data.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rf66-hmqf-q3fc",
+      "publishedAt": "2022-05-14T01:14:56Z",
+      "modifiedAt": "2023-01-27T05:02:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rf66-hmqf-q3fc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10744"
+        }
+      ],
+      "affectedRange": "< 4.0.6",
+      "fixedVersion": "4.0.6"
+    }
+  ]
+}

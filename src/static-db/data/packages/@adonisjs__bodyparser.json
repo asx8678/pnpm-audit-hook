@@ -1,0 +1,27 @@
+{
+  "name": "@adonisjs/bodyparser",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gvq6-hvvp-h34h",
+      "title": "AdonisJS Path Traversal in Multipart File Handling",
+      "description": "### Summary\n\n**Description**\nA Path Traversal (CWE-22) vulnerability in AdonisJS multipart file handling may allow a remote attacker to write arbitrary files to arbitrary locations on the server filesystem. This impacts @adonisjs/bodyparser through version 10.1.1 and 11.x prerelease versions prior to 11.0.0-next.6. This issue has been patched in @adonisjs/bodyparser versions 10.1.2 and 11.0.0-next.6.\n\n### Details\nAdonisJS parses `multipart/form-data` via `BodyParser` and exposes uploads as `Mult",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-gvq6-hvvp-h34h",
+      "publishedAt": "2026-01-02T18:58:32Z",
+      "modifiedAt": "2026-01-03T00:32:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gvq6-hvvp-h34h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-21440"
+        }
+      ],
+      "affectedRange": ">= 11.0.0-next.0, < 11.0.0-next.6",
+      "fixedVersion": "11.0.0-next.6"
+    }
+  ]
+}

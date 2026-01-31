@@ -1,0 +1,27 @@
+{
+  "name": "proxy",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mj6p-3pc9-wf5m",
+      "title": "proxy denial of service vulnerability",
+      "description": "A remote attacker can trigger a denial of service in the `socket.remoteAddress` variable, by sending a crafted HTTP request. Usage of the undefined variable raises a TypeError exception.\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mj6p-3pc9-wf5m",
+      "publishedAt": "2023-05-30T18:30:23Z",
+      "modifiedAt": "2023-11-11T05:00:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mj6p-3pc9-wf5m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-2968"
+        }
+      ],
+      "affectedRange": ">= 2.0.0, < 2.1.1",
+      "fixedVersion": "2.1.1"
+    }
+  ]
+}

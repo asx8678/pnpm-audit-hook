@@ -1,0 +1,258 @@
+{
+  "name": "matrix-js-sdk",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xvg8-m4x3-w6xr",
+      "title": "matrix-js-sdk has insufficient MXC URI validation which allows client-side path traversal",
+      "description": "### Summary\n\nmatrix-js-sdk before 34.11.0 is vulnerable to client-side path traversal via crafted MXC URIs. A malicious room member can trigger clients based on the matrix-js-sdk to issue arbitrary authenticated GET requests to the client's homeserver.\n\n### Details\n\nThe Matrix specification demands homeservers to [perform validation](https://spec.matrix.org/v1.12/client-server-api/#security-considerations-5) of the `server-name` and `media-id` components of MXC URIs with the intent to prevent pa",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xvg8-m4x3-w6xr",
+      "publishedAt": "2024-11-12T19:54:38Z",
+      "modifiedAt": "2025-11-04T16:53:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xvg8-m4x3-w6xr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-50336"
+        }
+      ],
+      "affectedRange": "< 34.11.1",
+      "fixedVersion": "34.11.1"
+    },
+    {
+      "id": "GHSA-mp7c-m3rh-r56v",
+      "title": "matrix-js-sdk has insufficient validation when considering a room to be upgraded by another",
+      "description": "### Impact\nmatrix-js-sdk before 38.2.0 has insufficient validation of room predecessor links in `MatrixClient::getJoinedRooms`, allowing a remote attacker to attempt to replace a tombstoned room with an unrelated attacker-supplied room.\n\n### Patches\nThe issue has been patched and users should upgrade to 38.2.0.\n\n### Workarounds\nAvoid using `MatrixClient::getJoinedRooms` in favour of `getRooms()` and filtering upgraded rooms separately.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mp7c-m3rh-r56v",
+      "publishedAt": "2025-09-16T20:18:57Z",
+      "modifiedAt": "2025-09-22T22:59:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mp7c-m3rh-r56v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59160"
+        }
+      ],
+      "affectedRange": "< 38.2.0",
+      "fixedVersion": "38.2.0"
+    },
+    {
+      "id": "GHSA-4jf8-g8wp-cx7c",
+      "title": "Matrix JavaScript SDK's key history sharing could share keys to malicious devices",
+      "description": "### Impact\nIn matrix-js-sdk versions 9.11.0 through 34.7.0, the method `MatrixClient.sendSharedHistoryKeys` is vulnerable to interception by malicious homeservers.  The method implements functionality proposed in [MSC3061](https://github.com/matrix-org/matrix-spec-proposals/pull/3061) and can be used by clients to share historical message keys with newly invited users, granting them access to past messages in the room.\n\nHowever, it unconditionally sends these \"shared\" keys to all of the invited ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4jf8-g8wp-cx7c",
+      "publishedAt": "2024-10-15T18:07:26Z",
+      "modifiedAt": "2024-10-15T18:07:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4jf8-g8wp-cx7c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-47080"
+        }
+      ],
+      "affectedRange": ">= 9.11.0, < 34.8.0",
+      "fixedVersion": "34.8.0"
+    },
+    {
+      "id": "GHSA-vhr5-g3pm-49fm",
+      "title": "matrix-js-sdk will freeze when a user sets a room with itself as a its predecessor",
+      "description": "### Impact\nA malicious homeserver can craft a room or room structure such that the predecessors form a cycle. The matrix-js-sdk's `getRoomUpgradeHistory` function will infinitely recurse in this case, causing the code to hang. This method is public but also called by the 'leaveRoomChain()' method, so leaving a room will also trigger the bug.\n\nEven if the CVSS score would be 4.1 ([AV:N/AC:L/PR:L/UI:R/S:C/C:N/I:N/A:L](https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:L/UI:R/",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vhr5-g3pm-49fm",
+      "publishedAt": "2024-08-20T18:35:27Z",
+      "modifiedAt": "2024-08-20T18:35:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vhr5-g3pm-49fm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-42369"
+        }
+      ],
+      "affectedRange": "< 34.3.1",
+      "fixedVersion": "34.3.1"
+    },
+    {
+      "id": "GHSA-23cm-x6j7-6hq3",
+      "title": "matrix-js-sdk can be tricked into disclosing E2EE room keys to a participating homeserver",
+      "description": "### Impact\n\nA logic error in the room key sharing functionality of matrix-js-sdk before 12.4.1 allows a malicious Matrix homeserver† participating in an encrypted room to steal room encryption keys from affected Matrix clients participating in that room. This allows the homeserver to decrypt end-to-end encrypted messages sent by affected clients.\n\n† Or anyone with access to the account of the original recipient of an encrypted message.\n\nKnown clients affected (via their use of vulnerable version",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-23cm-x6j7-6hq3",
+      "publishedAt": "2021-09-14T20:24:18Z",
+      "modifiedAt": "2023-08-08T19:58:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-23cm-x6j7-6hq3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-40823"
+        }
+      ],
+      "affectedRange": "< 12.4.1",
+      "fixedVersion": "12.4.1"
+    },
+    {
+      "id": "GHSA-mwq8-fjpf-c2gr",
+      "title": "Prototype pollution in matrix-js-sdk (part 2)",
+      "description": "### Impact\n\nIn certain configurations, data sent by remote servers containing special strings in key locations could cause modifications of the `Object.prototype`, disrupting matrix-js-sdk functionality, causing denial of service and potentially affecting program logic.\n\n(This is part 2, where [CVE-2022-36059](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-36059) / [GHSA-rfv9-x7hh-xc32](https://github.com/matrix-org/matrix-js-sdk/security/advisories/GHSA-rfv9-x7hh-xc32) is part 1. Part ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mwq8-fjpf-c2gr",
+      "publishedAt": "2023-03-30T20:19:18Z",
+      "modifiedAt": "2023-05-30T06:44:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mwq8-fjpf-c2gr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-28427"
+        }
+      ],
+      "affectedRange": "< 24.0.0",
+      "fixedVersion": "24.0.0"
+    },
+    {
+      "id": "GHSA-6g67-q39g-r79q",
+      "title": "matrix-js-sdk vulnerable to invisible eavesdropping in group calls",
+      "description": "### Impact\n\nAn attacker present in a room where an [MSC3401](https://github.com/matrix-org/matrix-spec-proposals/pull/3401) group call is taking place can eavesdrop on the video and audio of participants using matrix-js-sdk, without their knowledge. To affected matrix-js-sdk users, the attacker will not appear to be participating in the call.\n\nThis attack is possible because matrix-js-sdk's group call implementation accepts incoming direct calls from other users, even if they have not yet declar",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6g67-q39g-r79q",
+      "publishedAt": "2023-04-14T16:14:17Z",
+      "modifiedAt": "2023-04-25T16:35:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6g67-q39g-r79q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-29529"
+        }
+      ],
+      "affectedRange": "< 24.1.0",
+      "fixedVersion": "24.1.0"
+    },
+    {
+      "id": "GHSA-rfv9-x7hh-xc32",
+      "title": "matrix-js-sdk Prototype Pollution vulnerability",
+      "description": "### Impact\nEvents sent with special strings in key places can temporarily disrupt or impede the matrix-js-sdk from functioning properly, potentially impacting the consumer's ability to process data safely. Note that the matrix-js-sdk can appear to be operating normally but be excluding or corrupting runtime data presented to the consumer.\n\n### Patches\nThis is fixed in matrix-js-sdk 19.4.0.\n\n### Workarounds\nRedacting applicable events, waiting for the sync processor to store data, and restarting ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rfv9-x7hh-xc32",
+      "publishedAt": "2023-03-28T18:59:28Z",
+      "modifiedAt": "2023-03-28T23:09:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rfv9-x7hh-xc32"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-36059"
+        }
+      ],
+      "affectedRange": "< 19.4.0",
+      "fixedVersion": "19.4.0"
+    },
+    {
+      "id": "GHSA-r48r-j8fx-mq2c",
+      "title": "matrix-js-sdk subject to user spoofing via Olm/Megolm protocol confusion",
+      "description": "### Impact\n\nAn attacker cooperating with a malicious homeserver can construct messages that legitimately appear to have come from another person, without any indication such as a grey shield.\n\nAdditionally, a sophisticated attacker cooperating with a malicious homeserver could employ this vulnerability to perform a targeted attack in order to send fake to-device messages appearing to originate from another user. This can allow, for example, to inject the key backup secret during a self-verificat",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r48r-j8fx-mq2c",
+      "publishedAt": "2022-09-30T00:41:24Z",
+      "modifiedAt": "2023-01-30T05:02:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r48r-j8fx-mq2c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39251"
+        }
+      ],
+      "affectedRange": "< 19.7.0",
+      "fixedVersion": "19.7.0"
+    },
+    {
+      "id": "GHSA-6263-x97c-c4gg",
+      "title": "matrix-js-sdk subject to impersonated messages due to permissive key forwarding",
+      "description": "## Impact\n\nAn attacker cooperating with a malicious homeserver can construct messages appearing to have come from another person. Such messages will be marked with a grey shield on some platforms, but this may be missing in others.\n\nThis attack is possible due to the matrix-js-sdk implementing a too permissive [key forwarding](https://spec.matrix.org/v1.3/client-server-api/#key-requests) strategy on the receiving end.\n\nKey forwarding is a mechanism allowing clients to recover from “unable to dec",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6263-x97c-c4gg",
+      "publishedAt": "2022-09-30T00:40:35Z",
+      "modifiedAt": "2023-01-30T05:02:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6263-x97c-c4gg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39249"
+        }
+      ],
+      "affectedRange": "< 19.7.0",
+      "fixedVersion": "19.7.0"
+    },
+    {
+      "id": "GHSA-hvv8-5v86-r45x",
+      "title": "Improper beacon events in matrix-js-sdk can result in availability issues",
+      "description": "### Impact\nImproperly formed beacon events (from [MSC3488](https://github.com/matrix-org/matrix-spec-proposals/pull/3488)) can disrupt or impede the matrix-js-sdk from functioning properly, potentially impacting the consumer's ability to process data safely. Note that the matrix-js-sdk can appear to be operating normally but be excluding or corrupting runtime data presented to the consumer.\n\n### Patches\nThis is patched in matrix-js-sdk v19.7.0\n\n### Workarounds\nRedacting applicable events, waitin",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hvv8-5v86-r45x",
+      "publishedAt": "2022-09-29T14:36:38Z",
+      "modifiedAt": "2023-01-30T05:02:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hvv8-5v86-r45x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39236"
+        }
+      ],
+      "affectedRange": ">= 17.1.0-rc.1, < 19.7.0",
+      "fixedVersion": "19.7.0"
+    },
+    {
+      "id": "GHSA-5w8r-8pgj-5jmf",
+      "title": "matrix-js-sdk subject to user impersonation due to key/device identifier confusion in SAS verification",
+      "description": "## Impact\n\nAn attacker cooperating with a malicious homeserver could interfere with the verification flow between two users, injecting its own cross-signing user identity in place of one of the users’ identities, leading to the other device trusting/verifying the user identity under the control of the homeserver instead of the intended one.\n\nThe vulnerability is a bug in the matrix-js-sdk, caused by checking and signing user identities and devices in two separate steps, and inadequately fixing t",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5w8r-8pgj-5jmf",
+      "publishedAt": "2022-09-30T22:46:50Z",
+      "modifiedAt": "2023-01-30T05:02:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5w8r-8pgj-5jmf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-39250"
+        }
+      ],
+      "affectedRange": "< 19.7.0",
+      "fixedVersion": "19.7.0"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "name": "yapi-vendor",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4jqw-vfmj-9rmh",
+      "title": "Cross-site Scripting in yapi-vendor",
+      "description": "Cross Site Scripting (XSS) vulnerability in yapi 1.9.1 allows attackers to execute arbitrary code via the /interface/api edit page.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4jqw-vfmj-9rmh",
+      "publishedAt": "2023-01-26T21:30:29Z",
+      "modifiedAt": "2023-03-01T05:06:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4jqw-vfmj-9rmh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-36686"
+        }
+      ],
+      "affectedRange": "<= 1.9.1"
+    },
+    {
+      "id": "GHSA-2h3h-vw8r-82rp",
+      "title": "Weak JSON Web Token in yapi-vendor",
+      "description": "Weak JSON Web Token (JWT) signing secret generation in YMFE YApi through 1.9.2 allows recreation of other users' JWT tokens. This occurs because Math.random in Node.js is used as a source of randomness in jwt signing. Math.random does not provide cryptographically secure random numbers. This has been patched in version 1.9.3.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2h3h-vw8r-82rp",
+      "publishedAt": "2021-03-26T16:49:26Z",
+      "modifiedAt": "2023-02-01T05:05:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2h3h-vw8r-82rp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-27884"
+        }
+      ],
+      "affectedRange": "<= 1.9.2",
+      "fixedVersion": "1.9.3"
+    }
+  ]
+}

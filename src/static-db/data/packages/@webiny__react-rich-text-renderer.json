@@ -1,0 +1,27 @@
+{
+  "name": "@webiny/react-rich-text-renderer",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3x59-vrmc-5mx6",
+      "title": "@webiny/react-rich-text-renderer vulnerable to insecure rendering of rich text content",
+      "description": "## Overview\n`@webiny/react-rich-text-renderer` is a react component to render data coming from Webiny Headless CMS and Webiny Form Builder. The `@webiny/react-rich-text-renderer` package depends on the [editor.js](https://editorjs.io/) rich text editor to handle rich text content. The CMS stores rich text content from the `editor.js` into the database. When the `@webiny/react-rich-text-renderer` is used to render such content, it uses the `dangerouslySetInnerHTML` prop, without applying HTML san",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3x59-vrmc-5mx6",
+      "publishedAt": "2023-08-24T22:16:20Z",
+      "modifiedAt": "2023-11-08T05:00:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3x59-vrmc-5mx6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-41167"
+        }
+      ],
+      "affectedRange": "<= 5.37.1",
+      "fixedVersion": "5.37.2"
+    }
+  ]
+}

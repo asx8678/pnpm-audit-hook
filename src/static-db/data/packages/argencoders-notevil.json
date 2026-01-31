@@ -1,0 +1,26 @@
+{
+  "name": "argencoders-notevil",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8g4m-cjm2-96wq",
+      "title": "Sandbox escape in notevil and argencoders-notevil",
+      "description": "This affects all versions of package notevil; all versions of package argencoders-notevil. It is vulnerable to Sandbox Escape leading to Prototype pollution. The package fails to restrict access to the main context, allowing an attacker to add or modify an object's prototype. **Note:** This vulnerability derives from an incomplete fix in [SNYK-JS-NOTEVIL-608878](https://security.snyk.io/vuln/SNYK-JS-NOTEVIL-608878). This package has been deprecated.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8g4m-cjm2-96wq",
+      "publishedAt": "2022-03-18T00:01:11Z",
+      "modifiedAt": "2023-01-27T05:00:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8g4m-cjm2-96wq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23771"
+        }
+      ],
+      "affectedRange": "<= 2.5.0"
+    }
+  ]
+}

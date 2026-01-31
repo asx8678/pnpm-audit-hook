@@ -1,0 +1,27 @@
+{
+  "name": "strapi-admin",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-23fp-fmrv-f5px",
+      "title": "Uncontrolled Resource Consumption in strapi",
+      "description": "A denial of service exists in strapi v3.0.0-beta.18.3 and earlier that can be abused in the admin console using admin rights can lead to arbitrary restart of the application.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-23fp-fmrv-f5px",
+      "publishedAt": "2021-12-10T17:22:01Z",
+      "modifiedAt": "2023-11-27T21:11:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-23fp-fmrv-f5px"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8123"
+        }
+      ],
+      "affectedRange": "<= 3.0.0-beta.18.3",
+      "fixedVersion": "3.0.0-beta.18.4"
+    }
+  ]
+}

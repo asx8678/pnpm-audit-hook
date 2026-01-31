@@ -1,0 +1,27 @@
+{
+  "name": "tooljet",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hgp8-w8fj-r4cm",
+      "title": "ToolJet is vulnerable to Denial of Service (DoS)",
+      "description": "ToolJet/ToolJet placed no limit on the file size for user avatars. This could cause a denial of service if too many users upload large files. This is fixed in commit 01cd3f0464747973ec329e9fb1ea12743d3235cc in version 1.27.0.\n\n`tooljet` is no longer listed on npmjs.com but was [listed on npmjs.com in the past](https://web.archive.org/web/20220210014826/https://www.npmjs.com/package/tooljet). This advisory is maintained for historical completeness.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hgp8-w8fj-r4cm",
+      "publishedAt": "2022-11-22T03:30:56Z",
+      "modifiedAt": "2023-07-11T13:52:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hgp8-w8fj-r4cm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-4111"
+        }
+      ],
+      "affectedRange": "< 1.27.0",
+      "fixedVersion": "1.27.0"
+    }
+  ]
+}

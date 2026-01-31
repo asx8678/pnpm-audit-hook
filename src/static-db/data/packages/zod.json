@@ -1,0 +1,27 @@
+{
+  "name": "zod",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m95q-7qp3-xv42",
+      "title": "Zod denial of service vulnerability",
+      "description": "Zod version 3.22.2 allows an attacker to perform a denial of service while validating emails.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m95q-7qp3-xv42",
+      "publishedAt": "2023-09-28T21:30:58Z",
+      "modifiedAt": "2024-09-06T19:11:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m95q-7qp3-xv42"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-4316"
+        }
+      ],
+      "affectedRange": "<= 3.22.2",
+      "fixedVersion": "3.22.3"
+    }
+  ]
+}

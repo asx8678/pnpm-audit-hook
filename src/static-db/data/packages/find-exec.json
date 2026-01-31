@@ -1,0 +1,27 @@
+{
+  "name": "find-exec",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-95rp-6gqp-6622",
+      "title": "Command Injection Vulnerability in find-exec",
+      "description": "Older versions of the package are vulnerable to Command Injection as an attacker controlled parameter. As a result, attackers may run malicious commands.\n\nFor example:\n\n```\nconst find = require(\"find-exec\");\nfind(\"mplayer; touch hacked\")\n```\n\nThis creates a file named \"hacked\" on the filesystem.\n\nYou should never allow users to control commands to find, since this package attempts to run every command provided.\n\nThanks to @miguelafmonteiro for reporting.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-95rp-6gqp-6622",
+      "publishedAt": "2023-08-30T20:08:58Z",
+      "modifiedAt": "2023-11-07T05:00:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-95rp-6gqp-6622"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-40582"
+        }
+      ],
+      "affectedRange": "< 1.0.3",
+      "fixedVersion": "1.0.3"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "node-twain",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wxr3-2hgv-qm8f",
+      "title": "node-twain vulnerable to Improper Check or Handling of Exceptional Conditions",
+      "description": "All versions of the package node-twain are vulnerable to Improper Check or Handling of Exceptional Conditions due to the length of the source data not being checked. Creating a new twain.TwainSDK with a productName or productFamily, manufacturer, version.info property of length >= 34 chars leads to a buffer overflow vulnerability.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wxr3-2hgv-qm8f",
+      "publishedAt": "2024-07-10T06:33:52Z",
+      "modifiedAt": "2024-08-09T05:01:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wxr3-2hgv-qm8f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21525"
+        }
+      ],
+      "affectedRange": "<= 0.0.16"
+    }
+  ]
+}

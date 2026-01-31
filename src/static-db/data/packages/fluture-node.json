@@ -1,0 +1,27 @@
+{
+  "name": "fluture-node",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-32x6-qvw6-mxj4",
+      "title": "Forwarding of confidentials headers to third parties in fluture-node",
+      "description": "### Impact\n\nUsing `followRedirects` or `followRedirectsWith` with any of the redirection strategies built into fluture-node 4.0.0 or 4.0.1, paired with a request that includes confidential headers such as Authorization or Cookie, exposes you to a vulnerability where, if the destination server were to redirect the request to a server on a third-party domain, or the same domain over unencrypted HTTP, the headers would be included in the follow-up request and be exposed to the third party, or poten",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-32x6-qvw6-mxj4",
+      "publishedAt": "2022-03-01T22:14:57Z",
+      "modifiedAt": "2024-10-24T21:46:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-32x6-qvw6-mxj4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24719"
+        }
+      ],
+      "affectedRange": ">= 4.0.0, < 4.0.2",
+      "fixedVersion": "4.0.2"
+    }
+  ]
+}

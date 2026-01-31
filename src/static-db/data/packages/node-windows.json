@@ -1,0 +1,27 @@
+{
+  "name": "node-windows",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-53xv-c2hx-5w6q",
+      "title": "Command Injection in node-windows",
+      "description": "lib/cmd.js in the node-windows package before 1.0.0-beta.6 for Node.js allows command injection via the PID parameter.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-53xv-c2hx-5w6q",
+      "publishedAt": "2022-01-05T20:39:21Z",
+      "modifiedAt": "2023-04-14T17:27:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-53xv-c2hx-5w6q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-45459"
+        }
+      ],
+      "affectedRange": "<= 1.0.0-beta.5",
+      "fixedVersion": "1.0.0-beta.6"
+    }
+  ]
+}

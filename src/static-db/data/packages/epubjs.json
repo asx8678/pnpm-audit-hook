@@ -1,0 +1,27 @@
+{
+  "name": "epubjs",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c6rp-xvqv-mwmf",
+      "title": "Cross-site Scripting in epubjs",
+      "description": "managers/views/iframe.js in FuturePress EPub.js before 0.3.89 allows XSS.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c6rp-xvqv-mwmf",
+      "publishedAt": "2022-01-21T23:52:17Z",
+      "modifiedAt": "2023-09-21T05:03:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c6rp-xvqv-mwmf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-33040"
+        }
+      ],
+      "affectedRange": "< 0.3.89",
+      "fixedVersion": "0.3.89"
+    }
+  ]
+}

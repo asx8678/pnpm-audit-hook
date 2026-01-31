@@ -1,0 +1,27 @@
+{
+  "name": "@n8n/n8n-nodes-langchain",
+  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v2x8-97xq-8xrr",
+      "title": "N8N's Chat Trigger component is vulnerable to XSS",
+      "description": "An arbitrary file upload vulnerability in the Chat Trigger component of N8N v1.95.3, v1.100.1, and v1.101.1 allows attackers to execute arbitrary code via uploading a crafted HTML file.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v2x8-97xq-8xrr",
+      "publishedAt": "2025-09-08T18:31:42Z",
+      "modifiedAt": "2025-09-10T14:51:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v2x8-97xq-8xrr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-56265"
+        }
+      ],
+      "affectedRange": "< 1.107.0",
+      "fixedVersion": "1.107.0"
+    }
+  ]
+}

@@ -1,16 +1,20 @@
 import type { AuditConfig, PackageRef, VulnerabilityFinding } from "../types";
 import type { Cache } from "../cache/types";
 import type { SourceContext } from "./connector";
+import type { StaticDbReader } from "../static-db/reader";
 import { HttpClient } from "../utils/http";
 import { GitHubAdvisorySource } from "./github-advisory";
 import { enrichFindingsWithNvd } from "./nvd";
 import { logger } from "../utils/logger";
+import { createStaticDbReader } from "../static-db/reader";
 
 export interface AggregateContext {
   cfg: AuditConfig;
   env: Record<string, string | undefined>;
   cache: Cache;
   registryUrl: string;
+  /** Pre-initialized static DB reader (optional, will be created if not provided) */
+  staticDb?: StaticDbReader | null;
 }
 
 export interface AggregateResult {
@@ -56,8 +60,32 @@ export async function aggregateVulnerabilities(
 
   const sourceStatus: Record<string, { ok: boolean; error?: string; durationMs: number }> = {};
 
+  // Initialize static DB if enabled and not provided
+  let staticDb: StaticDbReader | null = ctx.staticDb ?? null;
+  const staticBaselineCfg = ctx.cfg.staticBaseline;
+
+  if (staticBaselineCfg?.enabled && !staticDb) {
+    try {
+      staticDb = await createStaticDbReader({
+        dataPath: staticBaselineCfg.dataPath ?? "data/static-db",
+        cutoffDate: staticBaselineCfg.cutoffDate,
+      });
+      if (staticDb) {
+        logger.debug(`Static DB loaded, cutoff date: ${staticDb.getCutoffDate()}`);
+      } else {
+        logger.warn("Static baseline enabled but database could not be loaded");
+      }
+    } catch (e) {
+      logger.warn(`Failed to load static DB: ${e instanceof Error ? e.message : String(e)}`);
+    }
+  }
+
   // GitHub Advisory is the primary (and only) vulnerability source
-  const githubSource = new GitHubAdvisorySource();
+  // Pass static DB for hybrid lookup if available
+  const githubSource = new GitHubAdvisorySource({
+    staticDb,
+    cutoffDate: staticBaselineCfg?.cutoffDate,
+  });
   const githubEnabled = githubSource.isEnabled(ctx.cfg, ctx.env);
 
   if (!githubEnabled) {
