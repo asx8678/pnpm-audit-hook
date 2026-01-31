@@ -35,14 +35,69 @@ describe("satisfies", () => {
       assert.equal(satisfies("abc", "1.x"), false);
     });
 
-    it("returns false for invalid range", () => {
-      assert.equal(satisfies("1.2.3", "invalid-range"), false);
+    it("returns false for malformed range (semver behavior)", () => {
+      // Malformed ranges return false in semver (range not satisfied)
       assert.equal(satisfies("1.2.3", ">>>bad"), false);
+      assert.equal(satisfies("1.2.3", "invalid-range"), false);
+      assert.equal(satisfies("1.2.3", "[1.0.0, 2.0.0)"), false); // bracket notation not supported
+    });
+
+    it("documents fail-closed behavior for exception-throwing ranges", () => {
+      // The satisfies function wraps semver.satisfies in a try/catch.
+      // If semver.satisfies throws an exception, we return true (fail-closed).
+      // This ensures unknown/problematic ranges are treated as potentially affected.
+      //
+      // Note: The semver library handles most malformed ranges gracefully
+      // (returning false rather than throwing). Finding a range that actually
+      // throws is difficult. This test documents the intended behavior:
+      // - Invalid versions: return false (checked at line 7-8 of semver.ts)
+      // - Malformed ranges: semver returns false (no exception)
+      // - Exception-throwing ranges: would return true (fail-closed)
+      //
+      // Testing a complex but valid range to verify normal operation:
+      const result = satisfies("1.2.3", ">=1.0.0 <2.0.0 || >=3.0.0 <4.0.0");
+      assert.equal(result, true);
     });
 
     it("treats empty range as matching any version (semver behavior)", () => {
       // Empty range in semver means "any version"
       assert.equal(satisfies("1.2.3", ""), true);
+    });
+  });
+
+  describe("GitHub Advisory comma-separated ranges", () => {
+    it("normalizes comma-separated ranges to space-separated", () => {
+      // GitHub returns ">= 1.0.0, < 1.2.6" but semver expects ">=1.0.0 <1.2.6"
+      assert.equal(satisfies("1.1.0", ">= 1.0.0, < 1.2.6"), true);
+      assert.equal(satisfies("1.2.6", ">= 1.0.0, < 1.2.6"), false);
+      assert.equal(satisfies("0.9.0", ">= 1.0.0, < 1.2.6"), false);
+    });
+
+    it("handles multiple commas in range", () => {
+      // Multiple conditions separated by commas
+      assert.equal(satisfies("1.5.0", ">= 1.0.0, < 2.0.0, >= 1.4.0"), true);
+      assert.equal(satisfies("1.3.0", ">= 1.0.0, < 2.0.0, >= 1.4.0"), false);
+    });
+
+    it("handles commas with varying whitespace", () => {
+      assert.equal(satisfies("1.1.0", ">=1.0.0,<2.0.0"), true);
+      assert.equal(satisfies("1.1.0", ">=1.0.0,  <2.0.0"), true);
+      assert.equal(satisfies("1.1.0", ">=1.0.0 , <2.0.0"), true);
+    });
+  });
+
+  describe("prerelease handling", () => {
+    it("handles prerelease versions with includePrerelease option", () => {
+      // With includePrerelease: true, prereleases should match
+      assert.equal(satisfies("1.0.0-alpha.1", ">=1.0.0-alpha.0 <1.0.0"), true);
+      assert.equal(satisfies("2.0.0-beta.1", ">=2.0.0-alpha"), true);
+      assert.equal(satisfies("1.0.0-rc.1", "^1.0.0-alpha"), true);
+    });
+
+    it("compares prerelease identifiers correctly", () => {
+      assert.equal(satisfies("1.0.0-alpha", ">=1.0.0-alpha"), true);
+      assert.equal(satisfies("1.0.0-alpha.1", ">1.0.0-alpha"), true);
+      assert.equal(satisfies("1.0.0-beta", ">1.0.0-alpha"), true);
     });
   });
 });

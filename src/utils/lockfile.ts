@@ -1,4 +1,9 @@
-import type { PackageRef } from "../types";
+import type {
+  LockfileImporter,
+  LockfilePackageEntry,
+  PackageRef,
+  PnpmLockfile,
+} from "../types";
 
 export interface LockfileParseResult {
   packages: PackageRef[];
@@ -55,8 +60,8 @@ export function parsePnpmPackageKey(key: string): { name: string; version: strin
   return { name, version: stripPeerSuffix(version) };
 }
 
-function isRegistryPackage(entry: any): boolean {
-  const res = entry?.resolution ?? {};
+function isRegistryPackage(entry: LockfilePackageEntry): boolean {
+  const res = entry.resolution ?? {};
   if (res.type === "directory" || res.directory || res.path) return false;
   if (typeof res.tarball === "string") return res.tarball.startsWith("http");
   return typeof res.integrity === "string";
@@ -64,11 +69,11 @@ function isRegistryPackage(entry: any): boolean {
 
 /** Extract registry packages from a pnpm lockfile object. */
 export function extractPackagesFromLockfile(
-  lockfile: any,
+  lockfile: PnpmLockfile,
 ): LockfileParseResult {
   const packages: PackageRef[] = [];
 
-  const packageEntries: Record<string, any> = lockfile?.packages ?? {};
+  const packageEntries: Record<string, LockfilePackageEntry> = lockfile?.packages ?? {};
   const keyToRef: Record<string, PackageRef> = {};
 
   for (const [k, entry] of Object.entries(packageEntries)) {
@@ -87,8 +92,9 @@ export function extractPackagesFromLockfile(
   }
 
   // Direct deps via importers
-  for (const [_, imp] of Object.entries((lockfile?.importers ?? {}) as Record<string, any>)) {
-    const deps = { ...imp?.dependencies, ...imp?.devDependencies, ...imp?.optionalDependencies };
+  const importers: Record<string, LockfileImporter> = lockfile?.importers ?? {};
+  for (const [_, imp] of Object.entries(importers)) {
+    const deps = { ...imp.dependencies, ...imp.devDependencies, ...imp.optionalDependencies };
     for (const [depName, depVersion] of Object.entries(deps)) {
       const v = stripPeerSuffix(String(depVersion));
       const ref = keyToRef[`${depName}@${v}`];

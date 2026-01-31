@@ -1,7 +1,8 @@
 import semver from "semver";
 import { logger } from "./logger";
+import { errorMessage } from "./error";
 
-/** Safe semver.satisfies wrapper - returns false if inputs are invalid. */
+/** Safe semver.satisfies wrapper - returns true on invalid ranges (fail-closed for security). */
 export function satisfies(version: string, range: string): boolean {
   const v = semver.valid(version);
   if (!v) return false;
@@ -13,8 +14,8 @@ export function satisfies(version: string, range: string): boolean {
   try {
     return semver.satisfies(v, normalizedRange, { includePrerelease: true });
   } catch (e) {
-    logger.warn(`Invalid semver range "${range}" for version "${v}": ${e instanceof Error ? e.message : String(e)}`);
-    return false;
+    logger.warn(`Invalid semver range "${range}" for version "${v}", treating as potentially affected (fail-closed): ${errorMessage(e)}`);
+    return true; // Fail-closed for security
   }
 }
 

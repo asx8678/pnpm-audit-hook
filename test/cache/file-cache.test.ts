@@ -194,14 +194,130 @@ describe("FileCache", () => {
       for (let i = 0; i < 10; i++) {
         promises.push(cache.set(`concurrent-key-${i}`, `value-${i}`, 60));
       }
-      
+
       await Promise.all(promises);
-      
+
       for (let i = 0; i < 10; i++) {
         const result = await cache.get(`concurrent-key-${i}`);
         assert.ok(result !== null);
         assert.equal(result.value, `value-${i}`);
       }
+    });
+  });
+
+  describe("prune", () => {
+    it("removes expired entries", async () => {
+      // Create an entry that will expire immediately
+      await cache.set("expire-soon", "value", 0.001);
+      // Wait for expiration
+      await new Promise(resolve => setTimeout(resolve, 10));
+
+      const result = await cache.prune();
+
+      assert.equal(result.pruned, 1);
+      assert.equal(result.failed, 0);
+
+      // Verify entry is gone
+      const entry = await cache.get("expire-soon");
+      assert.equal(entry, null);
+    });
+
+    it("does not remove non-expired entries", async () => {
+      await cache.set("still-valid", "value", 3600); // 1 hour TTL
+
+      const result = await cache.prune();
+
+      assert.equal(result.pruned, 0);
+      assert.equal(result.failed, 0);
+
+      // Verify entry still exists
+      const entry = await cache.get("still-valid");
+      assert.ok(entry !== null);
+      assert.equal(entry.value, "value");
+    });
+
+    it("handles corrupted cache files (deletes them)", async () => {
+      // First create a valid entry to get the directory structure
+      await cache.set("valid-key", "value", 3600);
+
+      // Find the subdirectory
+      const subdirs = await fs.readdir(tempDir);
+      const subdir = subdirs[0]!;
+      const subdirPath = path.join(tempDir, subdir);
+
+      // Write a corrupted file
+      await fs.writeFile(
+        path.join(subdirPath, "corrupted.json"),
+        "not valid json {"
+      );
+
+      const result = await cache.prune();
+
+      // Corrupted file should be deleted (counted as pruned)
+      assert.equal(result.pruned, 1);
+      assert.equal(result.failed, 0);
+    });
+
+    it("handles non-existent cache directory", async () => {
+      const nonExistentDir = path.join(tempDir, "does-not-exist");
+      const emptyCache = new FileCache<string>({ dir: nonExistentDir });
+
+      const result = await emptyCache.prune();
+
+      assert.equal(result.pruned, 0);
+      assert.equal(result.failed, 0);
+    });
+
+    it("returns correct counts (pruned and failed)", async () => {
+      // Create multiple entries with different expiration states
+      await cache.set("expired-1", "value", 0.001);
+      await cache.set("expired-2", "value", 0.001);
+      await cache.set("valid-1", "value", 3600);
+      await cache.set("valid-2", "value", 3600);
+
+      // Wait for expiration
+      await new Promise(resolve => setTimeout(resolve, 10));
+
+      const result = await cache.prune();
+
+      assert.equal(result.pruned, 2);
+      assert.equal(result.failed, 0);
+
+      // Verify valid entries still exist
+      const valid1 = await cache.get("valid-1");
+      const valid2 = await cache.get("valid-2");
+      assert.ok(valid1 !== null);
+      assert.ok(valid2 !== null);
+    });
+
+    it("handles empty cache directory", async () => {
+      // tempDir exists but has no cache entries
+      const result = await cache.prune();
+
+      assert.equal(result.pruned, 0);
+      assert.equal(result.failed, 0);
+    });
+
+    it("handles entries with invalid structure (missing expiresAt)", async () => {
+      // Create a valid entry first to ensure directory structure
+      await cache.set("setup-key", "value", 3600);
+
+      // Find the subdirectory
+      const subdirs = await fs.readdir(tempDir);
+      const subdir = subdirs[0]!;
+      const subdirPath = path.join(tempDir, subdir);
+
+      // Write file with invalid structure (missing expiresAt)
+      await fs.writeFile(
+        path.join(subdirPath, "invalid-structure.json"),
+        JSON.stringify({ value: "test", storedAt: Date.now() })
+      );
+
+      const result = await cache.prune();
+
+      // Invalid structure should be deleted
+      assert.ok(result.pruned >= 1);
+      assert.equal(result.failed, 0);
     });
   });
 });

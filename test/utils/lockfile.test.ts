@@ -73,6 +73,39 @@ describe("parsePnpmPackageKey", () => {
       assert.equal(parsePnpmPackageKey("/@types/node"), null); // missing version
     });
   });
+
+  describe("v9 format (@ separator)", () => {
+    it("parses v9 format unscoped package", () => {
+      const result = parsePnpmPackageKey("lodash@4.17.21");
+      assert.deepEqual(result, { name: "lodash", version: "4.17.21" });
+    });
+
+    it("parses v9 format scoped package", () => {
+      const result = parsePnpmPackageKey("@types/node@20.10.0");
+      assert.deepEqual(result, { name: "@types/node", version: "20.10.0" });
+    });
+
+    it("parses v9 format with peer suffix", () => {
+      const result = parsePnpmPackageKey("react-dom@18.2.0(react@18.2.0)");
+      assert.deepEqual(result, { name: "react-dom", version: "18.2.0" });
+    });
+
+    it("parses v9 format scoped package with peer suffix", () => {
+      const result = parsePnpmPackageKey("@testing-library/react@14.0.0(@types/react@18.2.0)(react@18.2.0)");
+      assert.deepEqual(result, { name: "@testing-library/react", version: "14.0.0" });
+    });
+
+    it("parses various v9 scoped packages", () => {
+      assert.deepEqual(
+        parsePnpmPackageKey("@babel/core@7.23.0"),
+        { name: "@babel/core", version: "7.23.0" }
+      );
+      assert.deepEqual(
+        parsePnpmPackageKey("@vue/compiler-sfc@3.4.0"),
+        { name: "@vue/compiler-sfc", version: "3.4.0" }
+      );
+    });
+  });
 });
 
 describe("extractPackagesFromLockfile", () => {
@@ -244,6 +277,34 @@ describe("extractPackagesFromLockfile", () => {
       assert.deepEqual(result.packages, []);
     });
 
+    it("handles empty packages object", () => {
+      const lockfile = {
+        packages: {},
+        importers: {
+          ".": {
+            dependencies: { lodash: "4.17.21" },
+          },
+        },
+      };
+      const result = extractPackagesFromLockfile(lockfile);
+      assert.deepEqual(result.packages, []);
+    });
+
+    it("handles missing importers", () => {
+      const lockfile = {
+        packages: {
+          "/lodash/4.17.21": {
+            resolution: { integrity: "sha512-abc" },
+          },
+        },
+      };
+      const result = extractPackagesFromLockfile(lockfile);
+      assert.equal(result.packages.length, 1);
+      assert.equal(result.packages[0]!.name, "lodash");
+      // Without importers, package should not be marked as direct
+      assert.equal(result.packages[0]!.direct, undefined);
+    });
+
     it("handles null/undefined lockfile", () => {
       const result = extractPackagesFromLockfile(null);
       assert.deepEqual(result.packages, []);
@@ -269,6 +330,106 @@ describe("extractPackagesFromLockfile", () => {
       };
 
       const result = extractPackagesFromLockfile(lockfile);
+      const reactDom = result.packages.find(p => p.name === "react-dom");
+      assert.equal(reactDom?.version, "18.2.0");
+      assert.equal(reactDom?.direct, true);
+    });
+  });
+
+  describe("filtering non-registry packages (git, local)", () => {
+    it("excludes git packages without integrity", () => {
+      const lockfile = {
+        packages: {
+          "/lodash/4.17.21": {
+            resolution: { integrity: "sha512-abc" },
+          },
+          "github.com/user/repo/abc123": {
+            resolution: {},
+          },
+        },
+      };
+
+      const result = extractPackagesFromLockfile(lockfile);
+      assert.equal(result.packages.length, 1);
+      assert.equal(result.packages[0]!.name, "lodash");
+    });
+
+    it("excludes local file references", () => {
+      const lockfile = {
+        packages: {
+          "/lodash/4.17.21": {
+            resolution: { integrity: "sha512-abc" },
+          },
+          "file:packages/local-pkg": {
+            resolution: { directory: "packages/local-pkg", type: "directory" },
+          },
+        },
+      };
+
+      const result = extractPackagesFromLockfile(lockfile);
+      assert.equal(result.packages.length, 1);
+      assert.equal(result.packages[0]!.name, "lodash");
+    });
+
+    it("excludes link packages", () => {
+      const lockfile = {
+        packages: {
+          "/lodash/4.17.21": {
+            resolution: { integrity: "sha512-abc" },
+          },
+          "link:../other-workspace": {
+            resolution: { path: "../other-workspace" },
+          },
+        },
+      };
+
+      const result = extractPackagesFromLockfile(lockfile);
+      assert.equal(result.packages.length, 1);
+    });
+  });
+
+  describe("v9 format extraction", () => {
+    it("extracts v9 format packages with integrity", () => {
+      const lockfile = {
+        packages: {
+          "lodash@4.17.21": {
+            resolution: { integrity: "sha512-abc" },
+          },
+          "@types/node@20.10.0": {
+            resolution: { integrity: "sha512-def" },
+          },
+        },
+      };
+
+      const result = extractPackagesFromLockfile(lockfile);
+      assert.equal(result.packages.length, 2);
+
+      const names = result.packages.map(p => p.name).sort();
+      assert.deepEqual(names, ["@types/node", "lodash"]);
+    });
+
+    it("handles v9 format with peer suffix in packages", () => {
+      const lockfile = {
+        importers: {
+          ".": {
+            dependencies: {
+              "react-dom": "18.2.0(react@18.2.0)",
+            },
+          },
+        },
+        packages: {
+          "react-dom@18.2.0(react@18.2.0)": {
+            resolution: { integrity: "sha512-abc" },
+          },
+          "react@18.2.0": {
+            resolution: { integrity: "sha512-def" },
+          },
+        },
+      };
+
+      const result = extractPackagesFromLockfile(lockfile);
+      assert.equal(result.packages.length, 2);
+
       const reactDom = result.packages.find(p => p.name === "react-dom");
       assert.equal(reactDom?.version, "18.2.0");
       assert.equal(reactDom?.direct, true);

@@ -399,7 +399,13 @@ async function fileExists(path: string): Promise<boolean> {
   try {
     await access(path);
     return true;
-  } catch {
+  } catch (err) {
+    const error = err as NodeJS.ErrnoException;
+    if (error.code === "ENOENT") {
+      return false;
+    }
+    // Log warning for unexpected errors (permission denied, etc.)
+    console.warn(`Unexpected error checking file existence for ${path}: ${error.message ?? String(err)}`);
     return false;
   }
 }
@@ -445,17 +451,28 @@ export async function decompressFile(inputPath: string): Promise<string> {
  */
 export async function readMaybeCompressed<T>(basePath: string): Promise<T | null> {
   // Try compressed version first (more efficient)
+  // Use try/catch on readFile directly instead of pre-checking with fileExists
   const gzPath = `${basePath}.gz`;
-  if (await fileExists(gzPath)) {
+  try {
     const gzBuffer = await readFile(gzPath);
     const decompressed = await decompressBuffer(gzBuffer);
     return JSON.parse(decompressed.toString("utf-8")) as T;
+  } catch (err) {
+    const error = err as NodeJS.ErrnoException;
+    if (error.code !== "ENOENT") {
+      throw err;
+    }
   }
 
   // Fall back to uncompressed
-  if (await fileExists(basePath)) {
+  try {
     const content = await readFile(basePath, "utf-8");
     return JSON.parse(content) as T;
+  } catch (err) {
+    const error = err as NodeJS.ErrnoException;
+    if (error.code !== "ENOENT") {
+      throw err;
+    }
   }
 
   return null;
@@ -471,7 +488,10 @@ async function decompressBuffer(buffer: Buffer): Promise<Buffer> {
 
     gunzip.on("data", (chunk: Buffer) => chunks.push(chunk));
     gunzip.on("end", () => resolve(Buffer.concat(chunks)));
-    gunzip.on("error", reject);
+    gunzip.on("error", (err) => {
+      const message = err instanceof Error ? err.message : String(err);
+      reject(new Error(`Gzip decompression failed: ${message}`));
+    });
 
     gunzip.write(buffer);
     gunzip.end();

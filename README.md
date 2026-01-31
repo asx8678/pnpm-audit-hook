@@ -1,6 +1,6 @@
 # pnpm-audit-hook
 
-A pnpm hook that audits dependencies for vulnerabilities **before packages are downloaded**. It queries 2 vulnerability databases in parallel and blocks installs when critical or high severity issues are found.
+A pnpm hook that audits dependencies for vulnerabilities **before packages are downloaded**. It queries the GitHub Advisory Database for vulnerabilities and optionally enriches severity data from NVD, blocking installs when critical or high severity issues are found.
 
 ## Quick Start
 
@@ -48,12 +48,26 @@ cache:
 
 All fields are optional. Set any source to `false` to disable it.
 
+### Configuration Constraints
+
+The following validation rules are applied to configuration values:
+
+| Setting | Constraint | Default |
+|---------|------------|---------|
+| `performance.timeoutMs` | 1 to 300,000 ms (5 minutes max) | 15,000 |
+| `cache.ttlSeconds` | 1 to 86,400 seconds (24 hours max) | 3,600 |
+| `staticBaseline.cutoffDate` | Valid ISO date format, must not be in the future | 2025-12-31 |
+
+Invalid values are silently replaced with defaults to ensure safe operation.
+
 ## Vulnerability Sources
 
 | Source | Description | Auth |
 |--------|-------------|------|
-| **GitHub Advisory** | GitHub Security Advisory database (GHSA) | Optional |
-| **NVD** | NIST National Vulnerability Database (enrichment data) | Optional |
+| **GitHub Advisory** | Primary source - GitHub Security Advisory database (GHSA) | Optional |
+| **NVD** | Severity enrichment only - NIST National Vulnerability Database | Optional |
+
+GitHub Advisory is the primary vulnerability source. NVD provides additional severity metadata but does not add new vulnerability entries.
 
 ## Allowlist
 
@@ -81,13 +95,18 @@ policy:
 | `PNPM_AUDIT_CONFIG_PATH` | Override config file location |
 | `PNPM_AUDIT_DISABLE_GITHUB` | Disable GitHub Advisory source |
 | `GITHUB_TOKEN` | GitHub API token (optional) |
+| `GH_TOKEN` | Alternative to GITHUB_TOKEN |
 | `NVD_API_KEY` | NVD API key (optional) |
+| `NIST_NVD_API_KEY` | Alternative to NVD_API_KEY |
+| `PNPM_AUDIT_QUIET` | Suppress info/warn output (`true` to enable) |
+| `PNPM_AUDIT_DEBUG` | Enable debug logging (`true` to enable) |
+| `PNPM_AUDIT_JSON` | Enable JSON output format (`true` to enable) |
 
 ## How It Works
 
 1. pnpm resolves the full dependency graph
 2. `.pnpmfile.cjs` hook runs `afterAllResolved()` before downloads
-3. The hook queries all 2 vulnerability sources in parallel
+3. The hook queries GitHub Advisory (and optionally NVD for severity enrichment)
 4. Findings are deduplicated and checked against the severity policy
 5. If any blocking vulnerabilities exist, pnpm aborts the install
 
@@ -144,10 +163,12 @@ Enable or disable the static baseline in `.pnpm-audit.yaml`:
 staticBaseline:
   enabled: true
   cutoffDate: "2025-12-31"
+  dataPath: "src/static-db/data"  # optional custom path
 ```
 
 - `enabled` - Whether to use the static database (default: `true`)
-- `cutoffDate` - Vulnerabilities published before this date use the static database
+- `cutoffDate` - Vulnerabilities published before this date use the static database (must be valid ISO format, not in future)
+- `dataPath` - Optional custom path to static data directory (default: bundled data)
 
 ### Updating the Database
 

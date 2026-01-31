@@ -1,10 +1,21 @@
 import { runAudit } from "./audit";
-import type { RuntimeOptions } from "./types";
+import type { PnpmHookContext, PnpmLockfile, RuntimeOptions } from "./types";
 import { getRegistryUrl } from "./utils/env";
 import { logger } from "./utils/logger";
 
+/** Return type for pnpm hooks export */
+export interface PnpmHooks {
+  hooks: {
+    afterAllResolved: (
+      lockfile: PnpmLockfile,
+      context: PnpmHookContext
+    ) => Promise<PnpmLockfile>;
+  };
+}
+
 function createRuntime(cwdOverride?: string): RuntimeOptions {
-  const env = process.env as Record<string, string | undefined>;
+  // process.env is NodeJS.ProcessEnv which satisfies Record<string, string | undefined>
+  const env: Record<string, string | undefined> = process.env;
   return {
     cwd: cwdOverride ?? process.cwd(),
     env,
@@ -12,10 +23,10 @@ function createRuntime(cwdOverride?: string): RuntimeOptions {
   };
 }
 
-export function createPnpmHooks(): { hooks: Record<string, any> } {
+export function createPnpmHooks(): PnpmHooks {
   return {
     hooks: {
-      afterAllResolved: async (lockfile: any, context: any) => {
+      afterAllResolved: async (lockfile: PnpmLockfile, context: PnpmHookContext) => {
         const runtime = createRuntime(context?.lockfileDir);
         try {
           const result = await runAudit(lockfile, runtime);

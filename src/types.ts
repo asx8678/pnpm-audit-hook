@@ -4,6 +4,46 @@ export type PolicyAction = "allow" | "warn" | "block";
 export type DecisionSource = "severity" | "source" | "allowlist";
 export type VulnerabilityIdType = "CVE" | "GHSA" | "OSV" | "OTHER";
 
+/** Resolution info for a lockfile package entry */
+export interface LockfileResolution {
+  type?: string;
+  directory?: string;
+  path?: string;
+  tarball?: string;
+  integrity?: string;
+}
+
+/** A package entry in pnpm lockfile packages section */
+export interface LockfilePackageEntry {
+  resolution?: LockfileResolution;
+  dependencies?: Record<string, string>;
+  devDependencies?: Record<string, string>;
+  optionalDependencies?: Record<string, string>;
+  peerDependencies?: Record<string, string>;
+}
+
+/** An importer entry (workspace root or workspace package) */
+export interface LockfileImporter {
+  dependencies?: Record<string, string>;
+  devDependencies?: Record<string, string>;
+  optionalDependencies?: Record<string, string>;
+  specifiers?: Record<string, string>;
+}
+
+/** Pnpm lockfile structure passed to hooks */
+export interface PnpmLockfile {
+  lockfileVersion?: string | number;
+  packages?: Record<string, LockfilePackageEntry>;
+  importers?: Record<string, LockfileImporter>;
+}
+
+/** Context provided by pnpm to hook functions */
+export interface PnpmHookContext {
+  lockfileDir?: string;
+  storeDir?: string;
+  registries?: Record<string, string>;
+}
+
 interface AllowlistEntryBase {
   version?: string; // Semver range to match (e.g., "<1.0.0", ">=2.0.0 <3.0.0")
   reason?: string; // Why it's allowed

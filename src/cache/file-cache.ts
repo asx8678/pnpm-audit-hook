@@ -1,3 +1,4 @@
+import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { sha256Hex } from "../utils/hash";
@@ -8,33 +9,90 @@ export interface FileCacheOptions {
   dir: string;
 }
 
+/** Type guard for NodeJS.ErrnoException */
+function isNodeError(e: unknown): e is NodeJS.ErrnoException {
+  return e instanceof Error && "code" in e;
+}
+
+/**
+ * Type guard to validate a parsed JSON object as a CacheEntry.
+ * Returns true if the object has the required structure.
+ */
+function isCacheEntry<T>(parsed: unknown): parsed is CacheEntry<T> {
+  if (!parsed || typeof parsed !== "object") return false;
+  const obj = parsed as Record<string, unknown>;
+  return (
+    typeof obj.expiresAt === "number" &&
+    typeof obj.storedAt === "number" &&
+    "value" in obj
+  );
+}
+
 export class FileCache<T = unknown> implements Cache<T> {
   private readonly dir: string;
+  // In-memory cache for key-to-path mappings (SHA256 is CPU intensive)
+  private readonly pathCache = new Map<string, string>();
 
   constructor(opts: FileCacheOptions) {
     this.dir = opts.dir;
   }
 
   private filePathForKey(key: string): string {
+    const cached = this.pathCache.get(key);
+    if (cached) return cached;
+
     const h = sha256Hex(key);
     // Two-level fanout to avoid too many files in one directory
-    return path.join(this.dir, h.slice(0, 2), `${h}.json`);
+    const filePath = path.join(this.dir, h.slice(0, 2), `${h}.json`);
+    this.pathCache.set(key, filePath);
+    return filePath;
+  }
+
+  private async isSymlink(filePath: string): Promise<boolean> {
+    try {
+      const stat = await fs.lstat(filePath);
+      return stat.isSymbolicLink();
+    } catch {
+      return false;
+    }
   }
 
   async get(key: string): Promise<CacheEntry<T> | null> {
+    const filePath = this.filePathForKey(key);
     try {
-      const raw = await fs.readFile(this.filePathForKey(key), "utf-8");
-      const entry = JSON.parse(raw) as CacheEntry<T>;
-      if (!entry || typeof entry !== "object") return null;
-      if (typeof entry.expiresAt !== "number" || typeof entry.storedAt !== "number") return null;
-      if (entry.expiresAt > Date.now()) return entry;
+      // Protect against symlink attacks
+      if (await this.isSymlink(filePath)) {
+        logger.warn(`Symlink detected at cache path, ignoring: ${filePath}`);
+        return null;
+      }
+
+      const raw = await fs.readFile(filePath, "utf-8");
+      const parsed: unknown = JSON.parse(raw);
+      if (!isCacheEntry<T>(parsed)) {
+        await this.deleteCorruptedFile(filePath);
+        return null;
+      }
+      if (parsed.expiresAt > Date.now()) return parsed;
       return null;
     } catch (e) {
       // Log non-ENOENT errors as they may indicate real problems
-      if (e instanceof Error && "code" in e && (e as NodeJS.ErrnoException).code !== "ENOENT") {
+      if (isNodeError(e) && e.code !== "ENOENT") {
         logger.error(`Cache read error for ${key}: ${e.message}`);
+        // Delete corrupted cache file to prevent repeated failures
+        await this.deleteCorruptedFile(filePath);
       }
       return null;
+    }
+  }
+
+  private async deleteCorruptedFile(filePath: string): Promise<void> {
+    try {
+      await fs.unlink(filePath);
+      logger.debug(`Deleted corrupted cache file: ${filePath}`);
+    } catch (unlinkErr) {
+      if (!isNodeError(unlinkErr) || unlinkErr.code !== "ENOENT") {
+        logger.debug(`Failed to delete corrupted cache file: ${filePath}`);
+      }
     }
   }
 
@@ -44,7 +102,13 @@ export class FileCache<T = unknown> implements Cache<T> {
     }
     const filePath = this.filePathForKey(key);
     const dir = path.dirname(filePath);
-    await fs.mkdir(dir, { recursive: true });
+
+    // Protect against symlink attacks on parent directory
+    if (await this.isSymlink(dir)) {
+      throw new Error(`Symlink detected at cache directory: ${dir}`);
+    }
+
+    await fs.mkdir(dir, { recursive: true, mode: 0o700 });
 
     const now = Date.now();
     const entry: CacheEntry<T> = {
@@ -54,16 +118,18 @@ export class FileCache<T = unknown> implements Cache<T> {
     };
 
     // Atomic-ish write: write temp then rename
-    const tmp = `${filePath}.${process.pid}.${Math.random().toString(16).slice(2)}.tmp`;
+    // Use crypto.randomBytes for secure temp file names
+    const randomSuffix = crypto.randomBytes(16).toString("hex");
+    const tmp = `${filePath}.${process.pid}.${randomSuffix}.tmp`;
     try {
-      await fs.writeFile(tmp, JSON.stringify(entry), "utf-8");
+      await fs.writeFile(tmp, JSON.stringify(entry), { encoding: "utf-8", mode: 0o600 });
       await fs.rename(tmp, filePath);
     } catch (e) {
       // Clean up temp file on failure
       try {
         await fs.unlink(tmp);
-      } catch {
-        /* ignore cleanup errors */
+      } catch (cleanupErr) {
+        logger.debug(`Failed to clean up temp file ${tmp}: ${cleanupErr instanceof Error ? cleanupErr.message : String(cleanupErr)}`);
       }
       throw e;
     }
@@ -76,8 +142,9 @@ export class FileCache<T = unknown> implements Cache<T> {
       const subdirs = await fs.readdir(this.dir);
       for (const subdir of subdirs) {
         const subdirPath = path.join(this.dir, subdir);
-        const stat = await fs.stat(subdirPath);
-        if (!stat.isDirectory()) continue;
+        // Use lstat to prevent symlink traversal attacks
+        const stat = await fs.lstat(subdirPath);
+        if (!stat.isDirectory() || stat.isSymbolicLink()) continue;
 
         const files = await fs.readdir(subdirPath);
         for (const file of files) {
@@ -85,13 +152,8 @@ export class FileCache<T = unknown> implements Cache<T> {
           const filePath = path.join(subdirPath, file);
           try {
             const raw = await fs.readFile(filePath, "utf-8");
-            const entry = JSON.parse(raw) as CacheEntry<unknown>;
-            if (
-              !entry ||
-              typeof entry !== "object" ||
-              typeof entry.expiresAt !== "number" ||
-              entry.expiresAt <= Date.now()
-            ) {
+            const parsed: unknown = JSON.parse(raw);
+            if (!isCacheEntry<unknown>(parsed) || parsed.expiresAt <= Date.now()) {
               await fs.unlink(filePath);
               pruned++;
             }
@@ -112,7 +174,7 @@ export class FileCache<T = unknown> implements Cache<T> {
       }
     } catch (e) {
       // Cache directory may not exist yet, which is not an error
-      if (e instanceof Error && "code" in e && (e as NodeJS.ErrnoException).code !== "ENOENT") {
+      if (isNodeError(e) && e.code !== "ENOENT") {
         logger.error(`Cache prune error: ${e.message}`);
       }
     }

@@ -5,6 +5,7 @@ import { ttlForFindings } from "../cache/ttl";
 import { satisfies } from "../utils/semver";
 import { mapSeverity } from "../utils/severity";
 import { logger } from "../utils/logger";
+import { errorMessage } from "../utils/error";
 
 interface GitHubAdvisory {
   id?: string;
@@ -101,7 +102,7 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
         const staticFindings = await this.queryStaticDb(targets, seen, perPkg);
         logger.debug(`Static DB returned ${staticFindings.length} findings for ${targets.length} packages`);
       } catch (e) {
-        logger.warn(`Static DB query failed, falling back to full API: ${e instanceof Error ? e.message : String(e)}`);
+        logger.warn(`Static DB query failed, falling back to full API: ${errorMessage(e)}`);
         // Continue with API query - don't fail the entire operation
       }
     } else if (ctx.cfg.staticBaseline?.enabled) {
@@ -126,14 +127,24 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
 
     // Cache and collect results (parallel writes with dynamic TTL)
     const baseTtl = ctx.cfg.cache?.ttlSeconds ?? 3600;
-    await Promise.all(
+    const cacheWriteResults = await Promise.allSettled(
       targets.map(p => {
         const key = `${p.name}@${p.version}`;
-        const fs = perPkg[key] ?? [];
-        findings.push(...fs);
-        return ctx.cache.set(`github:${key}`, fs, ttlForFindings(baseTtl, fs));
+        const pkgFindings = perPkg[key] ?? [];
+        findings.push(...pkgFindings);
+        return ctx.cache.set(`github:${key}`, pkgFindings, ttlForFindings(baseTtl, pkgFindings));
       })
     );
+
+    // Log cache write failures (non-fatal, but useful for debugging)
+    for (let i = 0; i < cacheWriteResults.length; i++) {
+      const result = cacheWriteResults[i];
+      if (result?.status === "rejected") {
+        const target = targets[i];
+        const reason = errorMessage(result.reason);
+        logger.warn(`Cache write failed for github:${target?.name}@${target?.version}: ${reason}`);
+      }
+    }
 
     if (errors.length > 0) {
       if (errors.length === targets.length) {
@@ -164,10 +175,14 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
     if (!this.staticDb) return [];
 
     const allFindings: VulnerabilityFinding[] = [];
+    const db = this.staticDb;
 
-    for (const p of targets) {
-      const staticFindings = await this.staticDb.queryPackage(p.name);
+    // Parallelize static DB queries for better performance
+    const staticResults = await Promise.all(
+      targets.map(p => db.queryPackage(p.name).then(findings => ({ pkg: p, findings })))
+    );
 
+    for (const { pkg: p, findings: staticFindings } of staticResults) {
       for (const finding of staticFindings) {
         // Check if this finding affects the specific version
         if (finding.affectedRange && !satisfies(p.version, finding.affectedRange)) {
@@ -241,8 +256,8 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
           let data: GitHubAdvisory[];
           try {
             data = (await response.json()) as GitHubAdvisory[];
-          } catch {
-            throw new Error("GitHub API returned invalid JSON response");
+          } catch (parseError) {
+            throw new Error(`GitHub API returned invalid JSON response: ${parseError instanceof Error ? parseError.message : String(parseError)}`);
           }
 
           if (!Array.isArray(data)) {
@@ -341,7 +356,7 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
           }
         }
       } catch (e: unknown) {
-        errors.push(`${p.name}@${p.version}: ${e instanceof Error ? e.message : String(e)}`);
+        errors.push(`${p.name}@${p.version}: ${errorMessage(e)}`);
       }
     };
 

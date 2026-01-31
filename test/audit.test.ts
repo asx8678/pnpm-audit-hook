@@ -508,6 +508,11 @@ describe("AuditResult type", () => {
       blocked: false,
       warnings: false,
       decisions: [],
+      exitCode: 0,
+      findings: [],
+      sourceStatus: {},
+      totalPackages: 0,
+      durationMs: 0,
     };
 
     assert.ok(true);

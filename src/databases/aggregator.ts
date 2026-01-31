@@ -6,6 +6,7 @@ import { HttpClient } from "../utils/http";
 import { GitHubAdvisorySource } from "./github-advisory";
 import { enrichFindingsWithNvd } from "./nvd";
 import { logger } from "../utils/logger";
+import { errorMessage } from "../utils/error";
 import { createStaticDbReader } from "../static-db/reader";
 
 export interface AggregateContext {
@@ -76,7 +77,7 @@ export async function aggregateVulnerabilities(
         logger.warn("Static baseline enabled but database could not be loaded");
       }
     } catch (e) {
-      logger.warn(`Failed to load static DB: ${e instanceof Error ? e.message : String(e)}`);
+      logger.warn(`Failed to load static DB: ${errorMessage(e)}`);
     }
   }
 
@@ -111,9 +112,9 @@ export async function aggregateVulnerabilities(
       throw new Error(`GitHub Advisory source failed: ${result.error}`);
     }
   } catch (e) {
-    const errorMessage = e instanceof Error ? e.message : String(e);
-    logger.error(`GitHub Advisory source failed: ${errorMessage}`);
-    sourceStatus[githubSource.id] = { ok: false, error: errorMessage, durationMs: 0 };
+    const errMsg = errorMessage(e);
+    logger.error(`GitHub Advisory source failed: ${errMsg}`);
+    sourceStatus[githubSource.id] = { ok: false, error: errMsg, durationMs: 0 };
 
     // Fail-closed on exception (default: true for security)
     if (ctx.cfg.failOnSourceError !== false) {

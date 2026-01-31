@@ -1,4 +1,4 @@
-const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+export const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
 export async function retry<T>(
   fn: () => Promise<T>,
@@ -76,6 +76,21 @@ export class HttpClient {
     body?: unknown,
     extraHeaders?: Record<string, string>,
   ): Promise<Response> {
+    // Validate URL scheme before making request
+    let parsedUrl: URL;
+    try {
+      parsedUrl = new URL(url);
+    } catch {
+      throw new HttpError(`Invalid URL: ${url}`, { url });
+    }
+
+    if (!["http:", "https:"].includes(parsedUrl.protocol)) {
+      throw new HttpError(
+        `Invalid URL protocol "${parsedUrl.protocol}": only http: and https: are allowed`,
+        { url }
+      );
+    }
+
     const headers: Record<string, string> = {
       "user-agent": this.userAgent,
       accept: "application/json",
@@ -129,9 +144,13 @@ export class HttpClient {
     const res = await this.requestRaw(method, url, body, extraHeaders);
     const text = await res.text();
     try {
+      // Trust boundary: callers are responsible for validating the response shape.
+      // The generic type T is a compile-time hint; runtime validation must be done
+      // by the caller if the data source is untrusted (e.g., external APIs).
       return JSON.parse(text) as T;
-    } catch {
-      throw new HttpError(`Invalid JSON response`, {
+    } catch (parseError) {
+      const parseMessage = parseError instanceof Error ? parseError.message : String(parseError);
+      throw new HttpError(`Invalid JSON response: ${parseMessage}`, {
         url,
         status: res.status,
         responseText: text,

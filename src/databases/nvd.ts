@@ -3,8 +3,13 @@ import type { SourceContext } from "./connector";
 import { ttlForFindings } from "../cache/ttl";
 import { logger } from "../utils/logger";
 import { mapSeverity } from "../utils/severity";
+import { sleep } from "../utils/http";
+import { errorMessage } from "../utils/error";
 
-const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+/** NVD rate limit delay with API key (ms) - 50 req/30s */
+const NVD_DELAY_WITH_KEY_MS = 700;
+/** NVD rate limit delay without API key (ms) - 5 req/30s */
+const NVD_DELAY_NO_KEY_MS = 6500;
 
 interface NvdCvssData {
   baseScore?: number;
@@ -98,7 +103,7 @@ async function fetchNvdCve(cveId: string, ctx: SourceContext): Promise<NvdCveDet
     await ctx.cache.set(key, detail, dynamicTtl);
     return detail;
   } catch (e) {
-    logger.error(`Failed to fetch NVD data for ${cveId}: ${e instanceof Error ? e.message : String(e)}`);
+    logger.error(`Failed to fetch NVD data for ${cveId}: ${errorMessage(e)}`);
     return null;
   }
 }
@@ -134,7 +139,7 @@ export async function enrichFindingsWithNvd(
 
     // NVD rate limits: 5 req/30s (no key), 50 req/30s (with key)
     const hasApiKey = !!(ctx.env.NVD_API_KEY || ctx.env.NIST_NVD_API_KEY);
-    const delayMs = hasApiKey ? 700 : 6500;
+    const delayMs = hasApiKey ? NVD_DELAY_WITH_KEY_MS : NVD_DELAY_NO_KEY_MS;
     const concurrency = hasApiKey ? 2 : 1;
 
     // Use queue.shift() pattern to avoid race conditions with shared index
@@ -163,7 +168,8 @@ export async function enrichFindingsWithNvd(
 
     // Log summary error if any CVE enrichments failed
     if (failedCveIds.length > 0) {
-      logger.error(`NVD enrichment failed for ${failedCveIds.length} CVE(s): ${failedCveIds.join(", ")}`);
+      const hint = hasApiKey ? "" : " (hint: set NVD_API_KEY to increase rate limits)";
+      logger.error(`NVD enrichment failed for ${failedCveIds.length} CVE(s): ${failedCveIds.join(", ")}${hint}`);
     }
 
     // Enrich findings with NVD data (mutates findings array in-place intentionally)
@@ -190,7 +196,6 @@ export async function enrichFindingsWithNvd(
 
     return { ok: true, durationMs: Date.now() - start };
   } catch (e: unknown) {
-    const message = e instanceof Error ? e.message : String(e);
-    return { ok: false, error: message, durationMs: Date.now() - start };
+    return { ok: false, error: errorMessage(e), durationMs: Date.now() - start };
   }
 }
