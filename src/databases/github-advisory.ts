@@ -61,19 +61,13 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
     const perPkg: Record<string, VulnerabilityFinding[]> = {};
     for (const p of targets) perPkg[`${p.name}@${p.version}`] = [];
 
-    // GitHub API limit is 100 packages per request, so batch them
-    const BATCH_SIZE = 100;
-    const batches: PackageRef[][] = [];
-    for (let i = 0; i < targets.length; i += BATCH_SIZE) {
-      batches.push(targets.slice(i, i + BATCH_SIZE));
-    }
-
     const errors: string[] = [];
-
-    // Parallelize batches (max 5 concurrent batches to respect GitHub API limits)
-    const MAX_CONCURRENT_BATCHES = 5;
     const seen = new Set<string>();
-  const processBatch = async (batch: PackageRef[]) => {
+
+    // Query each package individually - GitHub API returns incomplete results
+    // when multiple `affects` parameters are used in a single request
+    const MAX_CONCURRENT = 10;
+    const queryPackage = async (p: PackageRef) => {
       try {
         let page = 1;
         let hasNextPage = true;
@@ -83,10 +77,8 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
             ecosystem: "npm",
             per_page: "100",
             page: String(page),
+            affects: `${p.name}@${p.version}`,
           });
-          for (const p of batch) {
-            params.append("affects", `${p.name}@${p.version}`);
-          }
 
           const url = `https://api.github.com/advisories?${params}`;
           const response = await ctx.http.getRaw(url, headers);
@@ -131,29 +123,27 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
               const name = String(pkg.name ?? "");
               const range = v.vulnerable_version_range;
 
-              for (const p of batch) {
-                if (p.name !== name) continue;
-                if (range && !satisfies(p.version, range)) continue;
+              if (p.name !== name) continue;
+              if (range && !satisfies(p.version, range)) continue;
 
-                const key = `${p.name}@${p.version}`;
-                const dedupKey = `${key}:${canonicalId}`;
-                if (seen.has(dedupKey)) continue;
-                seen.add(dedupKey);
-                (perPkg[key] ??= []).push({
-                  id: canonicalId,
-                  source: "github",
-                  packageName: p.name,
-                  packageVersion: p.version,
-                  title: adv.summary,
-                  url: adv.html_url,
-                  severity,
-                  affectedRange: range,
-                  fixedVersion:
-                    typeof v.first_patched_version === "string"
-                      ? v.first_patched_version
-                      : v.first_patched_version?.identifier,
-                });
-              }
+              const key = `${p.name}@${p.version}`;
+              const dedupKey = `${key}:${canonicalId}`;
+              if (seen.has(dedupKey)) continue;
+              seen.add(dedupKey);
+              (perPkg[key] ??= []).push({
+                id: canonicalId,
+                source: "github",
+                packageName: p.name,
+                packageVersion: p.version,
+                title: adv.summary,
+                url: adv.html_url,
+                severity,
+                affectedRange: range,
+                fixedVersion:
+                  typeof v.first_patched_version === "string"
+                    ? v.first_patched_version
+                    : v.first_patched_version?.identifier,
+              });
             }
           }
 
@@ -164,13 +154,13 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
           }
         }
       } catch (e: unknown) {
-        errors.push(e instanceof Error ? e.message : String(e));
+        errors.push(`${p.name}@${p.version}: ${e instanceof Error ? e.message : String(e)}`);
       }
     };
 
-    // Run batches with limited concurrency
-    for (let i = 0; i < batches.length; i += MAX_CONCURRENT_BATCHES) {
-      await Promise.all(batches.slice(i, i + MAX_CONCURRENT_BATCHES).map(processBatch));
+    // Run queries with limited concurrency
+    for (let i = 0; i < targets.length; i += MAX_CONCURRENT) {
+      await Promise.all(targets.slice(i, i + MAX_CONCURRENT).map(queryPackage));
     }
 
     // Cache and collect results (parallel writes with dynamic TTL)
@@ -185,15 +175,15 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
     );
 
     if (errors.length > 0) {
-      if (errors.length === batches.length) {
-        // All batches failed
+      if (errors.length === targets.length) {
+        // All queries failed
         return { source: this.id, ok: false, error: errors[0], durationMs: Date.now() - start, findings };
       }
-      // Partial failure - some batches succeeded, but fail-closed for security
+      // Partial failure - some queries succeeded, but fail-closed for security
       return {
         source: this.id,
         ok: false,
-        error: `Partial failure: ${errors.length}/${batches.length} batches failed`,
+        error: `Partial failure: ${errors.length}/${targets.length} packages failed`,
         durationMs: Date.now() - start,
         findings,
       };

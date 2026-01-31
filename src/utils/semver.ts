@@ -5,8 +5,13 @@ import { logger } from "./logger";
 export function satisfies(version: string, range: string): boolean {
   const v = semver.valid(version);
   if (!v) return false;
+
+  // Normalize GitHub Advisory's comma-separated ranges to space-separated
+  // GitHub returns: ">= 1.0.0, < 1.2.6" but semver expects ">=1.0.0 <1.2.6"
+  const normalizedRange = range.replace(/,\s*/g, ' ');
+
   try {
-    return semver.satisfies(v, range, { includePrerelease: true });
+    return semver.satisfies(v, normalizedRange, { includePrerelease: true });
   } catch (e) {
     logger.warn(`Invalid semver range "${range}" for version "${v}": ${e instanceof Error ? e.message : String(e)}`);
     return false;

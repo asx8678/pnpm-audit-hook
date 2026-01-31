@@ -278,26 +278,25 @@ describe("GitHubAdvisorySource", () => {
     });
   });
 
-  describe("batch processing", () => {
-    it("batches packages into groups of 100", async () => {
+  describe("per-package querying", () => {
+    it("queries each package individually", async () => {
       const cache = createMockCache();
-      const packages = Array.from({ length: 150 }, (_, i) => ({
+      const packages = Array.from({ length: 15 }, (_, i) => ({
         name: `pkg-${i}`,
         version: "1.0.0",
       }));
 
-      const http = createMockHttpClient([
-        { data: [] },
-        { data: [] },
-      ]);
+      const http = createMockHttpClient(
+        packages.map(() => ({ data: [] }))
+      );
       const ctx = createContext(cache, http);
 
       await source.query(packages, ctx);
 
-      assert.equal(http.calls.length, 2, "Should split 150 packages into 2 batches");
+      assert.equal(http.calls.length, 15, "Should query each package individually");
     });
 
-    it("includes all packages in batch request params", async () => {
+    it("each request has single affects param", async () => {
       const cache = createMockCache();
       const packages = [
         { name: "pkg-a", version: "1.0.0" },
@@ -305,15 +304,15 @@ describe("GitHubAdvisorySource", () => {
         { name: "pkg-c", version: "3.0.0" },
       ];
 
-      const http = createMockHttpClient([{ data: [] }]);
+      const http = createMockHttpClient([{ data: [] }, { data: [] }, { data: [] }]);
       const ctx = createContext(cache, http);
 
       await source.query(packages, ctx);
 
-      const url = http.calls[0]!;
-      assert.ok(url.includes("affects=pkg-a%401.0.0"));
-      assert.ok(url.includes("affects=pkg-b%402.0.0"));
-      assert.ok(url.includes("affects=pkg-c%403.0.0"));
+      // Each call should have exactly one affects param
+      assert.ok(http.calls[0]!.includes("affects=pkg-a%401.0.0"));
+      assert.ok(http.calls[1]!.includes("affects=pkg-b%402.0.0"));
+      assert.ok(http.calls[2]!.includes("affects=pkg-c%403.0.0"));
     });
   });
 
@@ -329,12 +328,12 @@ describe("GitHubAdvisorySource", () => {
       assert.ok(result.error);
     });
 
-    it("reports partial failure when some batches fail", async () => {
+    it("reports partial failure when some queries fail", async () => {
       const cache = createMockCache();
-      const packages = Array.from({ length: 200 }, (_, i) => ({
-        name: `pkg-${i}`,
-        version: "1.0.0",
-      }));
+      const packages = [
+        { name: "pkg-a", version: "1.0.0" },
+        { name: "pkg-b", version: "2.0.0" },
+      ];
 
       let callCount = 0;
       const http = {
