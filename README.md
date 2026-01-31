@@ -2,29 +2,35 @@
 
 A pnpm hook that audits dependencies for vulnerabilities **before packages are downloaded**. It queries the GitHub Advisory Database for vulnerabilities and optionally enriches severity data from NVD, blocking installs when critical or high severity issues are found.
 
-## Installation
-
-### From npm/pnpm (Easiest)
+## Quick Start
 
 ```bash
-# Install the package
+pnpm add -D pnpm-audit-hook && pnpm exec pnpm-audit-setup
+```
+
+Done! Every `pnpm install` will now audit packages before downloading.
+
+## Installation
+
+### Per-Project (Recommended)
+
+```bash
+# 1. Install
 pnpm add -D pnpm-audit-hook
 
-# Run setup to create .pnpmfile.cjs in your project
+# 2. Setup (creates .pnpmfile.cjs in your project)
 pnpm exec pnpm-audit-setup
 ```
 
-That's it! Every `pnpm install` will now audit packages for vulnerabilities.
+### Global (All Projects)
 
-### Global Setup (All Projects)
-
-To enable for all pnpm projects on your machine:
+Enable vulnerability auditing for all pnpm projects on your machine:
 
 ```bash
 # Install globally
 pnpm add -g pnpm-audit-hook
 
-# Create global hooks directory
+# Create global hooks directory and copy files
 mkdir -p ~/.pnpm-hooks
 cp $(pnpm root -g)/pnpm-audit-hook/dist ~/.pnpm-hooks/ -r
 cp $(pnpm root -g)/pnpm-audit-hook/.pnpmfile.cjs ~/.pnpm-hooks/
@@ -33,7 +39,7 @@ cp $(pnpm root -g)/pnpm-audit-hook/.pnpmfile.cjs ~/.pnpm-hooks/
 pnpm config set global-pnpmfile ~/.pnpm-hooks/.pnpmfile.cjs
 ```
 
-### Manual Setup
+### From Source
 
 ```bash
 git clone https://github.com/asx8678/pnpm-audit-hook.git
@@ -45,14 +51,34 @@ cp -r dist /path/to/your/project/
 cp .pnpmfile.cjs /path/to/your/project/
 ```
 
-## Quick Test
+## Verify Installation
 
 ```bash
-pnpm add lodash              # Safe - installs normally
-pnpm add event-stream@3.3.6  # Vulnerable - blocked!
+# This should work (safe package)
+pnpm add lodash
+
+# This should be BLOCKED (known vulnerable)
+pnpm add event-stream@3.3.6
 ```
 
-If vulnerabilities are found, install fails before any packages are downloaded.
+If vulnerabilities are found, the install fails **before** any packages are downloaded.
+
+## Uninstall
+
+### Per-Project
+
+```bash
+rm .pnpmfile.cjs
+pnpm remove pnpm-audit-hook
+```
+
+### Global
+
+```bash
+pnpm config delete global-pnpmfile
+rm -rf ~/.pnpm-hooks
+pnpm remove -g pnpm-audit-hook
+```
 
 ## Configuration
 
