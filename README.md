@@ -83,8 +83,9 @@ policy:
       expires: "2025-06-01"
 ```
 
-- `id` - CVE or GHSA identifier to ignore
-- `package` - Package name to ignore entirely
+- `id` - CVE or GHSA identifier to ignore (case-insensitive)
+- `package` - Package name to ignore entirely (case-insensitive)
+- If both `id` and `package` are set, **both must match** (scoped allowlist)
 - `reason` - Why it's allowed (for audit trail)
 - `expires` - ISO date when the allowlist entry expires
 
@@ -163,7 +164,7 @@ Enable or disable the static baseline in `.pnpm-audit.yaml`:
 staticBaseline:
   enabled: true
   cutoffDate: "2025-12-31"
-  dataPath: "src/static-db/data"  # optional custom path
+  dataPath: "node_modules/pnpm-audit-hook/dist/static-db/data"  # optional custom path
 ```
 
 - `enabled` - Whether to use the static database (default: `true`)
@@ -186,7 +187,7 @@ After updating, rebuild and commit the changes:
 
 ```bash
 npm run build
-git add data/
+git add src/static-db/data/ dist/static-db/data/
 git commit -m "chore: update vulnerability database"
 ```
 

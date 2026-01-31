@@ -24,4 +24,4 @@ cache:
 # staticBaseline:
 #   enabled: true              # Enable/disable static baseline (default: true)
 #   cutoffDate: "2025-12-31"   # Vulnerabilities before this use static DB (ISO date, must not be in future)
-#   dataPath: "./node_modules/pnpm-audit-hook/data"  # Optional custom path to static data directory
+#   dataPath: "node_modules/pnpm-audit-hook/dist/static-db/data"  # Optional custom path to static data directory

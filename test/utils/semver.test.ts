@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { satisfies, isVersionAffectedByOsvSemverRange, npmPurl } from "../../src/utils/semver";
+import { satisfies, satisfiesStrict, isVersionAffectedByOsvSemverRange, npmPurl } from "../../src/utils/semver";
 
 describe("satisfies", () => {
   describe("valid versions and ranges", () => {
@@ -29,10 +29,10 @@ describe("satisfies", () => {
   });
 
   describe("invalid inputs", () => {
-    it("returns false for invalid version", () => {
-      assert.equal(satisfies("not-a-version", "^1.0.0"), false);
-      assert.equal(satisfies("", "^1.0.0"), false);
-      assert.equal(satisfies("abc", "1.x"), false);
+    it("returns true for invalid version (fail-closed)", () => {
+      assert.equal(satisfies("not-a-version", "^1.0.0"), true);
+      assert.equal(satisfies("", "^1.0.0"), true);
+      assert.equal(satisfies("abc", "1.x"), true);
     });
 
     it("returns false for malformed range (semver behavior)", () => {
@@ -50,7 +50,7 @@ describe("satisfies", () => {
       // Note: The semver library handles most malformed ranges gracefully
       // (returning false rather than throwing). Finding a range that actually
       // throws is difficult. This test documents the intended behavior:
-      // - Invalid versions: return false (checked at line 7-8 of semver.ts)
+      // - Invalid versions: return true (fail-closed)
       // - Malformed ranges: semver returns false (no exception)
       // - Exception-throwing ranges: would return true (fail-closed)
       //
@@ -99,6 +99,21 @@ describe("satisfies", () => {
       assert.equal(satisfies("1.0.0-alpha.1", ">1.0.0-alpha"), true);
       assert.equal(satisfies("1.0.0-beta", ">1.0.0-alpha"), true);
     });
+  });
+});
+
+describe("satisfiesStrict", () => {
+  it("returns true when version satisfies range", () => {
+    assert.equal(satisfiesStrict("1.2.3", "^1.0.0"), true);
+  });
+
+  it("returns false for invalid versions", () => {
+    assert.equal(satisfiesStrict("not-a-version", "^1.0.0"), false);
+    assert.equal(satisfiesStrict("", "^1.0.0"), false);
+  });
+
+  it("returns false for malformed ranges", () => {
+    assert.equal(satisfiesStrict("1.2.3", ">>>bad"), false);
   });
 });
 

@@ -2,20 +2,47 @@ import semver from "semver";
 import { logger } from "./logger";
 import { errorMessage } from "./error";
 
-/** Safe semver.satisfies wrapper - returns true on invalid ranges (fail-closed for security). */
+const normalizeRange = (range: string) => range.replace(/,\s*/g, " ");
+
+/**
+ * Safe semver.satisfies wrapper - returns true on invalid versions or ranges
+ * (fail-closed for security).
+ */
 export function satisfies(version: string, range: string): boolean {
   const v = semver.valid(version);
-  if (!v) return false;
+  if (!v) return true;
 
   // Normalize GitHub Advisory's comma-separated ranges to space-separated
   // GitHub returns: ">= 1.0.0, < 1.2.6" but semver expects ">=1.0.0 <1.2.6"
-  const normalizedRange = range.replace(/,\s*/g, ' ');
+  const normalizedRange = normalizeRange(range);
 
   try {
     return semver.satisfies(v, normalizedRange, { includePrerelease: true });
   } catch (e) {
-    logger.warn(`Invalid semver range "${range}" for version "${v}", treating as potentially affected (fail-closed): ${errorMessage(e)}`);
-    return true; // Fail-closed for security
+    logger.warn(
+      `Invalid semver range "${range}" for version "${v}", treating as potentially affected (fail-closed): ${errorMessage(e)}`
+    );
+    return true;
+  }
+}
+
+/**
+ * Strict semver.satisfies wrapper - returns false on invalid versions or ranges.
+ * Useful for allowlist matching, where we don't want to allow on ambiguity.
+ */
+export function satisfiesStrict(version: string, range: string): boolean {
+  const v = semver.valid(version);
+  if (!v) return false;
+
+  const normalizedRange = normalizeRange(range);
+
+  try {
+    return semver.satisfies(v, normalizedRange, { includePrerelease: true });
+  } catch (e) {
+    logger.warn(
+      `Invalid semver range "${range}" for version "${v}", treating as non-matching (strict): ${errorMessage(e)}`
+    );
+    return false;
   }
 }
 

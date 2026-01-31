@@ -118,6 +118,50 @@ test("allowlist by package name suppresses all findings for that package", () =>
   assert.equal(res.decisions[0].action, "allow");
 });
 
+test("allowlist entry with both id and package requires both to match", () => {
+  const cfg: AuditConfig = {
+    ...baseConfig(),
+    policy: {
+      block: ["critical"],
+      warn: [],
+      allowlist: [{ id: "CVE-2024-001", package: "lodash" }],
+    },
+  };
+  const f: VulnerabilityFinding = {
+    id: "CVE-2024-001",
+    source: "github",
+    packageName: "other",
+    packageVersion: "1.0.0",
+    severity: "critical",
+    title: "Test",
+  };
+
+  const res = evaluatePackagePolicies(pkgResult("other", "1.0.0", [f]), cfg);
+  assert.equal(res.decisions[0].action, "block");
+});
+
+test("allowlist entry with both id and package matches when both align", () => {
+  const cfg: AuditConfig = {
+    ...baseConfig(),
+    policy: {
+      block: ["critical"],
+      warn: [],
+      allowlist: [{ id: "CVE-2024-001", package: "lodash" }],
+    },
+  };
+  const f: VulnerabilityFinding = {
+    id: "CVE-2024-001",
+    source: "github",
+    packageName: "lodash",
+    packageVersion: "4.17.0",
+    severity: "critical",
+    title: "Test",
+  };
+
+  const res = evaluatePackagePolicies(pkgResult("lodash", "4.17.0", [f]), cfg);
+  assert.equal(res.decisions[0].action, "allow");
+});
+
 test("expired allowlist entries are ignored", () => {
   const cfg: AuditConfig = {
     ...baseConfig(),
@@ -283,7 +327,7 @@ test("invalid version constraint in allowlist is handled gracefully (fails close
     title: "Test vuln",
   };
 
-  // Should block because invalid version range returns false from satisfies() (fail-closed)
+  // Should block because invalid version range returns false from satisfiesStrict()
   const res = evaluatePackagePolicies(pkgResult("test", "1.0.0", [f]), cfg);
   assert.equal(res.decisions[0].action, "block");
 });

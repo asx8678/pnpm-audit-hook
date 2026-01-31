@@ -7,6 +7,8 @@ import type { Cache, CacheEntry } from "./types";
 
 export interface FileCacheOptions {
   dir: string;
+  /** Max entries to keep in the in-memory path cache (0 disables caching). */
+  maxPathCacheEntries?: number;
 }
 
 /** Type guard for NodeJS.ErrnoException */
@@ -32,19 +34,36 @@ export class FileCache<T = unknown> implements Cache<T> {
   private readonly dir: string;
   // In-memory cache for key-to-path mappings (SHA256 is CPU intensive)
   private readonly pathCache = new Map<string, string>();
+  private readonly maxPathCacheEntries: number;
 
   constructor(opts: FileCacheOptions) {
     this.dir = opts.dir;
+    this.maxPathCacheEntries = Math.max(0, opts.maxPathCacheEntries ?? 10000);
   }
 
   private filePathForKey(key: string): string {
     const cached = this.pathCache.get(key);
-    if (cached) return cached;
+    if (cached) {
+      if (this.maxPathCacheEntries > 0) {
+        this.pathCache.delete(key);
+        this.pathCache.set(key, cached);
+      }
+      return cached;
+    }
 
     const h = sha256Hex(key);
     // Two-level fanout to avoid too many files in one directory
     const filePath = path.join(this.dir, h.slice(0, 2), `${h}.json`);
-    this.pathCache.set(key, filePath);
+    if (this.maxPathCacheEntries > 0) {
+      this.pathCache.set(key, filePath);
+      if (this.pathCache.size > this.maxPathCacheEntries) {
+        let toEvict = this.pathCache.size - this.maxPathCacheEntries;
+        for (const staleKey of this.pathCache.keys()) {
+          this.pathCache.delete(staleKey);
+          if (--toEvict <= 0) break;
+        }
+      }
+    }
     return filePath;
   }
 

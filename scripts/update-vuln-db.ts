@@ -20,6 +20,7 @@ import * as path from "path";
 // Types matching src/static-db/types.ts
 interface StaticVulnerabilityEntry {
   id: string;
+  packageName: string;
   title?: string;
   description?: string;
   severity: "critical" | "high" | "medium" | "low" | "unknown";
@@ -27,12 +28,12 @@ interface StaticVulnerabilityEntry {
   publishedAt?: string;
   modifiedAt?: string;
   identifiers?: { type: string; value: string }[];
-  affectedRange: string;
-  fixedVersion?: string;
+  affectedVersions: { range: string; fixed?: string }[];
+  source: "github";
 }
 
 interface StaticPackageData {
-  name: string;
+  packageName: string;
   lastUpdated: string;
   vulnerabilities: StaticVulnerabilityEntry[];
 }
@@ -43,7 +44,10 @@ interface StaticDbIndex {
   cutoffDate: string;
   totalVulnerabilities: number;
   totalPackages: number;
-  packages: Record<string, { vulnCount: number; lastModified: string }>;
+  packages: Record<
+    string,
+    { count: number; latestVuln?: string; maxSeverity: "critical" | "high" | "medium" | "low" | "unknown" }
+  >;
   buildInfo: {
     generator: string;
     sources: string[];
@@ -240,6 +244,14 @@ function mapSeverity(
   return "unknown";
 }
 
+const SEVERITY_RANK: Record<StaticVulnerabilityEntry["severity"], number> = {
+  critical: 4,
+  high: 3,
+  medium: 2,
+  low: 1,
+  unknown: 0,
+};
+
 /**
  * Convert GitHub advisory to our vulnerability entry format
  */
@@ -251,6 +263,7 @@ function convertAdvisory(
     packageName: vuln.package.name,
     entry: {
       id: advisory.ghsaId,
+      packageName: vuln.package.name,
       title: advisory.summary,
       description: advisory.description?.slice(0, 500), // Truncate long descriptions
       severity: mapSeverity(advisory.severity),
@@ -261,8 +274,13 @@ function convertAdvisory(
         type: id.type,
         value: id.value,
       })),
-      affectedRange: vuln.vulnerableVersionRange,
-      fixedVersion: vuln.firstPatchedVersion?.identifier,
+      affectedVersions: [
+        {
+          range: vuln.vulnerableVersionRange,
+          fixed: vuln.firstPatchedVersion?.identifier,
+        },
+      ],
+      source: "github",
     },
   };
 }
@@ -289,7 +307,8 @@ function loadExistingPackageData(packageName: string): StaticPackageData | null 
   const filePath = path.join(PACKAGES_DIR, `${safeName}.json`);
   try {
     if (fs.existsSync(filePath)) {
-      return JSON.parse(fs.readFileSync(filePath, "utf-8"));
+      const raw = JSON.parse(fs.readFileSync(filePath, "utf-8")) as unknown;
+      return normalizePackageData(raw, packageName);
     }
   } catch {
     // Ignore errors
@@ -297,11 +316,82 @@ function loadExistingPackageData(packageName: string): StaticPackageData | null 
   return null;
 }
 
+function normalizePackageData(raw: unknown, packageName: string): StaticPackageData | null {
+  if (!raw || typeof raw !== "object") return null;
+  const obj = raw as Record<string, unknown>;
+  const name =
+    typeof obj.packageName === "string"
+      ? obj.packageName
+      : typeof obj.name === "string"
+        ? obj.name
+        : packageName;
+
+  if (!name) return null;
+
+  const vulnerabilitiesRaw = Array.isArray(obj.vulnerabilities) ? obj.vulnerabilities : [];
+  const vulnerabilities: StaticVulnerabilityEntry[] = [];
+
+  for (const vuln of vulnerabilitiesRaw) {
+    if (!vuln || typeof vuln !== "object") continue;
+    const v = vuln as Record<string, unknown>;
+    const id = typeof v.id === "string" ? v.id : "";
+    if (!id) continue;
+    const affectedVersions = Array.isArray(v.affectedVersions)
+      ? (v.affectedVersions as Array<{ range?: unknown; fixed?: unknown }>)
+          .map((av) => {
+            const range = typeof av?.range === "string" ? av.range : "";
+            if (!range) return null;
+            const fixed = typeof av.fixed === "string" ? av.fixed : undefined;
+            return { range, fixed };
+          })
+          .filter((av): av is { range: string; fixed?: string } => av !== null)
+      : typeof v.affectedRange === "string"
+        ? [
+            {
+              range: v.affectedRange,
+              fixed: typeof v.fixedVersion === "string" ? v.fixedVersion : undefined,
+            },
+          ]
+        : [];
+
+    vulnerabilities.push({
+      id,
+      packageName: typeof v.packageName === "string" ? v.packageName : name,
+      title: typeof v.title === "string" ? v.title : undefined,
+      description: typeof v.description === "string" ? v.description : undefined,
+      severity: mapSeverity(typeof v.severity === "string" ? v.severity : "unknown"),
+      url: typeof v.url === "string" ? v.url : undefined,
+      publishedAt: typeof v.publishedAt === "string" ? v.publishedAt : undefined,
+      modifiedAt: typeof v.modifiedAt === "string" ? v.modifiedAt : undefined,
+      identifiers: Array.isArray(v.identifiers)
+        ? v.identifiers
+            .map((idEntry) => {
+              if (!idEntry || typeof idEntry !== "object") return null;
+              const idObj = idEntry as Record<string, unknown>;
+              const type = typeof idObj.type === "string" ? idObj.type : "";
+              const value = typeof idObj.value === "string" ? idObj.value : "";
+              if (!type || !value) return null;
+              return { type, value };
+            })
+            .filter((i): i is { type: string; value: string } => i !== null)
+        : undefined,
+      affectedVersions,
+      source: "github",
+    });
+  }
+
+  return {
+    packageName: name,
+    lastUpdated: typeof obj.lastUpdated === "string" ? obj.lastUpdated : new Date().toISOString(),
+    vulnerabilities,
+  };
+}
+
 /**
  * Save package data to file
  */
 function savePackageData(data: StaticPackageData): void {
-  const safeName = data.name.replace(/\//g, "__");
+  const safeName = data.packageName.replace(/\//g, "__");
   const filePath = path.join(PACKAGES_DIR, `${safeName}.json`);
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
@@ -313,9 +403,21 @@ function generateSampleData(): Map<string, StaticVulnerabilityEntry[]> {
   const vulns = new Map<string, StaticVulnerabilityEntry[]>();
 
   // Real vulnerability data for popular packages
+  type SampleVulnerability = {
+    id: string;
+    title?: string;
+    description?: string;
+    severity: "critical" | "high" | "medium" | "low" | "unknown";
+    url?: string;
+    publishedAt?: string;
+    modifiedAt?: string;
+    identifiers?: { type: string; value: string }[];
+    affectedRange: string;
+    fixedVersion?: string;
+  };
   const sampleVulns: Array<{
     pkg: string;
-    vulns: StaticVulnerabilityEntry[];
+    vulns: SampleVulnerability[];
   }> = [
     {
       pkg: "lodash",
@@ -1299,7 +1401,25 @@ function generateSampleData(): Map<string, StaticVulnerabilityEntry[]> {
   ];
 
   for (const item of sampleVulns) {
-    vulns.set(item.pkg, item.vulns);
+    const normalized = item.vulns.map((v) => ({
+      id: v.id,
+      packageName: item.pkg,
+      title: v.title,
+      description: v.description,
+      severity: v.severity,
+      url: v.url,
+      publishedAt: v.publishedAt,
+      modifiedAt: v.modifiedAt,
+      identifiers: v.identifiers,
+      affectedVersions: [
+        {
+          range: v.affectedRange,
+          fixed: v.fixedVersion,
+        },
+      ],
+      source: "github" as const,
+    }));
+    vulns.set(item.pkg, normalized);
   }
 
   return vulns;
@@ -1453,18 +1573,32 @@ async function main(): Promise<void> {
 
   // Save package files
   const now = new Date().toISOString();
-  const packagesIndex: Record<string, { vulnCount: number; lastModified: string }> = {};
+  const packagesIndex: Record<
+    string,
+    { count: number; latestVuln?: string; maxSeverity: StaticVulnerabilityEntry["severity"] }
+  > = {};
 
   for (const [pkgName, vulns] of packageVulns) {
     const pkgData: StaticPackageData = {
-      name: pkgName,
+      packageName: pkgName,
       lastUpdated: now,
       vulnerabilities: vulns,
     };
     savePackageData(pkgData);
+    const maxSeverity = vulns.reduce<StaticVulnerabilityEntry["severity"]>(
+      (max, v) => (SEVERITY_RANK[v.severity] > SEVERITY_RANK[max] ? v.severity : max),
+      "unknown",
+    );
+    const latestVuln = vulns.reduce<string | undefined>((latest, v) => {
+      const candidate = v.publishedAt ?? v.modifiedAt;
+      if (!candidate) return latest;
+      if (!latest) return candidate;
+      return new Date(candidate).getTime() > new Date(latest).getTime() ? candidate : latest;
+    }, undefined);
     packagesIndex[pkgName] = {
-      vulnCount: vulns.length,
-      lastModified: now,
+      count: vulns.length,
+      latestVuln,
+      maxSeverity,
     };
   }
 

@@ -6,6 +6,10 @@ import type { AuditConfig, VulnerabilityFinding } from "../../src/types";
 import type { Cache, CacheEntry } from "../../src/cache/types";
 import type { HttpClient } from "../../src/utils/http";
 
+const REGISTRY_URL = "https://registry.npmjs.org";
+const githubCacheKey = (name: string, version: string) =>
+  `github:${REGISTRY_URL}:${name}@${version}`;
+
 function baseConfig(): AuditConfig {
   return {
     policy: {
@@ -95,7 +99,7 @@ function createContext(
     env,
     cache,
     http,
-    registryUrl: "https://registry.npmjs.org",
+    registryUrl: REGISTRY_URL,
   };
 }
 
@@ -211,7 +215,7 @@ describe("GitHubAdvisorySource", () => {
     it("returns cached findings without API call", async () => {
       const cache = createMockCache();
       const cachedFindings = [finding({ id: "CACHED-001", packageName: "cached-pkg", packageVersion: "1.0.0" })];
-      await cache.set("github:cached-pkg@1.0.0", cachedFindings, 3600);
+      await cache.set(githubCacheKey("cached-pkg", "1.0.0"), cachedFindings, 3600);
 
       const http = createMockHttpClient([]);
       const ctx = createContext(cache, http);
@@ -225,7 +229,7 @@ describe("GitHubAdvisorySource", () => {
 
     it("queries API for uncached packages only", async () => {
       const cache = createMockCache();
-      await cache.set("github:cached@1.0.0", [finding({ packageName: "cached", packageVersion: "1.0.0" })], 3600);
+      await cache.set(githubCacheKey("cached", "1.0.0"), [finding({ packageName: "cached", packageVersion: "1.0.0" })], 3600);
 
       const http = createMockHttpClient([{ data: [] }]);
       const ctx = createContext(cache, http);
@@ -251,15 +255,15 @@ describe("GitHubAdvisorySource", () => {
 
       await source.query([{ name: "new-pkg", version: "1.0.0" }], ctx);
 
-      const cached = await cache.get("github:new-pkg@1.0.0");
+      const cached = await cache.get(githubCacheKey("new-pkg", "1.0.0"));
       assert.ok(cached, "Findings should be cached");
       assert.ok(Array.isArray(cached.value));
     });
 
     it("returns early when all packages are cached", async () => {
       const cache = createMockCache();
-      await cache.set("github:pkg1@1.0.0", [finding({ packageName: "pkg1" })], 3600);
-      await cache.set("github:pkg2@2.0.0", [finding({ packageName: "pkg2" })], 3600);
+      await cache.set(githubCacheKey("pkg1", "1.0.0"), [finding({ packageName: "pkg1" })], 3600);
+      await cache.set(githubCacheKey("pkg2", "2.0.0"), [finding({ packageName: "pkg2" })], 3600);
 
       const http = createMockHttpClient([]);
       const ctx = createContext(cache, http);

@@ -47,11 +47,14 @@ function findPrimaryMetric(metrics: NvdCvssMetric[] | undefined): NvdCvssMetric 
   return metrics.find((m) => m.type === "Primary") ?? metrics[0];
 }
 
-function extractCveIds(findings: VulnerabilityFinding[]): string[] {
+function extractUnknownSeverityCveIds(findings: VulnerabilityFinding[]): string[] {
   const ids = new Set<string>();
   for (const f of findings) {
+    if (f.severity !== "unknown") continue;
     if (f.id.toUpperCase().startsWith("CVE-")) ids.add(normalizeCve(f.id));
-    (f.identifiers ?? []).filter((i) => i.type === "CVE").forEach((i) => ids.add(normalizeCve(i.value)));
+    for (const ident of f.identifiers ?? []) {
+      if (ident.type === "CVE") ids.add(normalizeCve(ident.value));
+    }
   }
   return [...ids];
 }
@@ -119,15 +122,8 @@ export async function enrichFindingsWithNvd(
 ): Promise<{ ok: boolean; error?: string; durationMs: number }> {
   const start = Date.now();
 
-  const cveIds = extractCveIds(findings);
-
   // Only fetch NVD data for findings with unknown severity
-  const needs = cveIds.filter((id) =>
-    findings.some((f) =>
-      (f.id.toUpperCase() === id || (f.identifiers ?? []).some((i) => i.type === "CVE" && i.value.toUpperCase() === id)) &&
-      f.severity === "unknown"
-    )
-  );
+  const needs = extractUnknownSeverityCveIds(findings);
 
   if (needs.length === 0) {
     return { ok: true, durationMs: Date.now() - start };

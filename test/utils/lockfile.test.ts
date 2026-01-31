@@ -183,6 +183,41 @@ describe("extractPackagesFromLockfile", () => {
       assert.equal(semver?.direct, undefined);
     });
 
+    it("handles v9 importer dependency objects", () => {
+      const lockfile = {
+        importers: {
+          ".": {
+            dependencies: {
+              lodash: { specifier: "^4.17.0", version: "4.17.21" },
+            },
+            devDependencies: {
+              typescript: { specifier: "^5.0.0", version: "5.3.0" },
+            },
+          },
+        },
+        packages: {
+          "lodash@4.17.21": {
+            resolution: { integrity: "sha512-abc" },
+          },
+          "typescript@5.3.0": {
+            resolution: { integrity: "sha512-def" },
+          },
+          "semver@7.5.0": {
+            resolution: { integrity: "sha512-ghi" },
+          },
+        },
+      };
+
+      const result = extractPackagesFromLockfile(lockfile);
+      const lodash = result.packages.find(p => p.name === "lodash");
+      const typescript = result.packages.find(p => p.name === "typescript");
+      const semver = result.packages.find(p => p.name === "semver");
+
+      assert.equal(lodash?.direct, true);
+      assert.equal(typescript?.direct, true);
+      assert.equal(semver?.direct, undefined);
+    });
+
     it("handles optionalDependencies", () => {
       const lockfile = {
         importers: {

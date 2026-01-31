@@ -1,9 +1,18 @@
 import { join } from "path";
-import type { VulnerabilityFinding, Severity, FindingSource } from "../types";
+import type {
+  VulnerabilityFinding,
+  Severity,
+  FindingSource,
+  VulnerabilityIdentifier,
+} from "../types";
 import { logger } from "../utils/logger";
 import { errorMessage } from "../utils/error";
+import { mapSeverity } from "../utils/severity";
+import { satisfies } from "../utils/semver";
 import type {
   StaticDbIndex,
+  AffectedVersionRange,
+  PackageIndexEntry,
   PackageShard,
   StaticVulnerability,
   StaticDbQueryOptions,
@@ -62,6 +71,139 @@ function isValidNameSegment(segment: string): boolean {
   return /^[a-z0-9][a-z0-9._-]*$/.test(segment);
 }
 
+function normalizeFindingSource(value: unknown): FindingSource {
+  return value === "nvd" || value === "github" ? value : "github";
+}
+
+function normalizeIdentifiers(value: unknown): VulnerabilityIdentifier[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  const identifiers: VulnerabilityIdentifier[] = [];
+  for (const entry of value) {
+    if (!entry || typeof entry !== "object") continue;
+    const obj = entry as Record<string, unknown>;
+    const type = typeof obj.type === "string" ? obj.type : "";
+    const val = typeof obj.value === "string" ? obj.value : "";
+    if (!type || !val) continue;
+    identifiers.push({ type: type as VulnerabilityIdentifier["type"], value: val });
+  }
+  return identifiers.length > 0 ? identifiers : undefined;
+}
+
+function normalizeAffectedVersions(
+  value: unknown,
+  affectedRange?: unknown,
+  fixedVersion?: unknown,
+): AffectedVersionRange[] {
+  if (Array.isArray(value)) {
+    const ranges: AffectedVersionRange[] = [];
+    for (const entry of value) {
+      if (!entry || typeof entry !== "object") continue;
+      const obj = entry as Record<string, unknown>;
+      const range = typeof obj.range === "string" ? obj.range : "";
+      if (!range) continue;
+      const fixed = typeof obj.fixed === "string" ? obj.fixed : undefined;
+      ranges.push({ range, fixed });
+    }
+    return ranges;
+  }
+
+  if (typeof affectedRange === "string" && affectedRange.length > 0) {
+    const fixed = typeof fixedVersion === "string" ? fixedVersion : undefined;
+    return [{ range: affectedRange, fixed }];
+  }
+
+  return [];
+}
+
+function normalizeVulnerability(
+  value: unknown,
+  packageName: string,
+): StaticVulnerability | null {
+  if (!value || typeof value !== "object") return null;
+  const obj = value as Record<string, unknown>;
+  const id = typeof obj.id === "string" ? obj.id : "";
+  if (!id) return null;
+
+  const pkgName =
+    typeof obj.packageName === "string" && obj.packageName.length > 0
+      ? obj.packageName
+      : packageName;
+
+  return {
+    id,
+    packageName: pkgName,
+    severity: mapSeverity(typeof obj.severity === "string" ? obj.severity : undefined),
+    publishedAt: typeof obj.publishedAt === "string" ? obj.publishedAt : undefined,
+    modifiedAt: typeof obj.modifiedAt === "string" ? obj.modifiedAt : undefined,
+    affectedVersions: normalizeAffectedVersions(
+      obj.affectedVersions,
+      obj.affectedRange,
+      obj.fixedVersion,
+    ),
+    source: normalizeFindingSource(obj.source),
+    title: typeof obj.title === "string" ? obj.title : undefined,
+    url: typeof obj.url === "string" ? obj.url : undefined,
+    description: typeof obj.description === "string" ? obj.description : undefined,
+    identifiers: normalizeIdentifiers(obj.identifiers),
+  };
+}
+
+function normalizePackageShardData(
+  data: unknown,
+  packageNameHint: string,
+): PackageShard | null {
+  if (!data || typeof data !== "object") return null;
+  const obj = data as Record<string, unknown>;
+
+  const packageName =
+    typeof obj.packageName === "string"
+      ? obj.packageName
+      : typeof obj.name === "string"
+        ? obj.name
+        : packageNameHint;
+
+  if (!packageName) return null;
+
+  const vulnerabilitiesRaw = Array.isArray(obj.vulnerabilities) ? obj.vulnerabilities : [];
+  const vulnerabilities = vulnerabilitiesRaw
+    .map((v) => normalizeVulnerability(v, packageName))
+    .filter((v): v is StaticVulnerability => v !== null);
+
+  return {
+    packageName,
+    lastUpdated: typeof obj.lastUpdated === "string" ? obj.lastUpdated : "",
+    vulnerabilities,
+  };
+}
+
+function normalizeIndexData(index: StaticDbIndex): StaticDbIndex {
+  const rawPackages = (index.packages ?? {}) as Record<string, unknown>;
+  const packages: Record<string, PackageIndexEntry> = {};
+
+  for (const [name, entry] of Object.entries(rawPackages)) {
+    if (!entry || typeof entry !== "object") continue;
+    const obj = entry as Record<string, unknown>;
+    const count =
+      typeof obj.count === "number"
+        ? obj.count
+        : typeof obj.vulnCount === "number"
+          ? obj.vulnCount
+          : 0;
+    const latestVuln =
+      typeof obj.latestVuln === "string"
+        ? obj.latestVuln
+        : typeof obj.lastModified === "string"
+          ? obj.lastModified
+          : undefined;
+    const maxSeverity =
+      typeof obj.maxSeverity === "string" ? mapSeverity(obj.maxSeverity) : "unknown";
+
+    packages[name] = { count, latestVuln, maxSeverity };
+  }
+
+  return { ...index, packages };
+}
+
 /**
  * Static vulnerability database reader.
  * Provides fast lookups for historical vulnerabilities from a pre-built database.
@@ -115,6 +257,8 @@ export interface StaticDbReaderConfig {
   cutoffDate: string;
   /** Whether to use optimized (compressed) format */
   useOptimized?: boolean;
+  /** Max package shards to keep in memory (0 disables caching). */
+  packageCacheMaxEntries?: number;
 }
 
 /**
@@ -127,6 +271,7 @@ class StaticDbReaderImpl implements StaticDbReader {
   private index: StaticDbIndex | null = null;
   private optimizedIndex: OptimizedIndex | null = null;
   private packageCache: Map<string, PackageShard> = new Map();
+  private packageCacheMaxEntries: number;
   private bloomFilter: PackageBloomFilter | null = null;
   private ready = false;
 
@@ -134,6 +279,7 @@ class StaticDbReaderImpl implements StaticDbReader {
     this.dataPath = config.dataPath;
     this.cutoffDate = config.cutoffDate;
     this.useOptimized = config.useOptimized ?? true;
+    this.packageCacheMaxEntries = Math.max(0, config.packageCacheMaxEntries ?? 2000);
   }
 
   /**
@@ -164,7 +310,7 @@ class StaticDbReaderImpl implements StaticDbReader {
           }
         }
       } else {
-        this.index = data as StaticDbIndex;
+        this.index = normalizeIndexData(data as StaticDbIndex);
         this.optimizedIndex = null;
 
         // Create bloom filter from index packages
@@ -232,26 +378,36 @@ class StaticDbReaderImpl implements StaticDbReader {
     const shard = await this.loadPackageShard(packageName);
     if (!shard) return [];
 
-    // Convert to findings and apply filters
-    let findings = shard.vulnerabilities.map((v) => this.vulnToFinding(v, options?.version));
+    let vulnerabilities = shard.vulnerabilities;
 
-    // Apply filters
+    if (options?.version) {
+      const version = options.version;
+      vulnerabilities = vulnerabilities.filter((v) => {
+        if (!v.affectedVersions || v.affectedVersions.length === 0) return true;
+        return v.affectedVersions.some((av) => satisfies(version, av.range));
+      });
+    }
+
     if (options?.publishedAfter) {
       const afterDate = new Date(options.publishedAfter);
-      findings = findings.filter((f) => f.publishedAt && new Date(f.publishedAt) > afterDate);
+      vulnerabilities = vulnerabilities.filter(
+        (v) => v.publishedAt && new Date(v.publishedAt) > afterDate
+      );
     }
 
     if (options?.publishedBefore) {
       const beforeDate = new Date(options.publishedBefore);
-      findings = findings.filter((f) => f.publishedAt && new Date(f.publishedAt) < beforeDate);
+      vulnerabilities = vulnerabilities.filter(
+        (v) => v.publishedAt && new Date(v.publishedAt) < beforeDate
+      );
     }
 
     if (options?.minSeverity) {
       const minLevel = severityLevel(options.minSeverity);
-      findings = findings.filter((f) => severityLevel(f.severity) >= minLevel);
+      vulnerabilities = vulnerabilities.filter((v) => severityLevel(v.severity) >= minLevel);
     }
 
-    return findings;
+    return vulnerabilities.map((v) => this.vulnToFinding(v, options?.version));
   }
 
   /**
@@ -259,33 +415,62 @@ class StaticDbReaderImpl implements StaticDbReader {
    */
   private async loadPackageShard(packageName: string): Promise<PackageShard | null> {
     // Check cache first
-    const cached = this.packageCache.get(packageName);
-    if (cached) return cached;
-
-    // Determine file path (validates package name)
-    const filePath = this.getShardPath(packageName);
-    if (!filePath) return null;
-
-    try {
-      const data = await readMaybeCompressed<PackageShard | OptimizedPackageData>(filePath);
-      if (!data) return null;
-
-      // Detect optimized format
-      let shard: PackageShard;
-      if ("pkg" in data && "v" in data) {
-        shard = expandPackageData(data as OptimizedPackageData);
-      } else {
-        shard = data as PackageShard;
+    if (this.packageCacheMaxEntries > 0) {
+      const cached = this.packageCache.get(packageName);
+      if (cached) {
+        this.packageCache.delete(packageName);
+        this.packageCache.set(packageName, cached);
+        return cached;
       }
+    }
 
-      // Cache for future lookups
-      this.packageCache.set(packageName, shard);
+    const filePaths = this.getShardPaths(packageName);
+    if (filePaths.length === 0) return null;
 
-      return shard;
-    } catch (e) {
-      logger.warn(`Failed to load shard for ${packageName} from ${filePath}: ${errorMessage(e)}`);
+    let lastError: unknown = null;
+
+    for (const filePath of filePaths) {
+      try {
+        const data = await readMaybeCompressed<PackageShard | OptimizedPackageData>(filePath);
+        if (!data) continue;
+
+        let shard: PackageShard | null = null;
+        if (typeof data === "object" && data !== null && "pkg" in data && "v" in data) {
+          shard = expandPackageData(data as OptimizedPackageData);
+        } else {
+          shard = normalizePackageShardData(data, packageName);
+        }
+
+        if (!shard) continue;
+
+        // Cache for future lookups (LRU eviction)
+        if (this.packageCacheMaxEntries > 0) {
+          if (this.packageCache.has(packageName)) {
+            this.packageCache.delete(packageName);
+          }
+          this.packageCache.set(packageName, shard);
+          if (this.packageCache.size > this.packageCacheMaxEntries) {
+            let toEvict = this.packageCache.size - this.packageCacheMaxEntries;
+            for (const staleKey of this.packageCache.keys()) {
+              this.packageCache.delete(staleKey);
+              if (--toEvict <= 0) break;
+            }
+          }
+        }
+
+        return shard;
+      } catch (e) {
+        lastError = e;
+        logger.warn(`Failed to load shard for ${packageName} from ${filePath}: ${errorMessage(e)}`);
+      }
+    }
+
+    if (lastError) {
       return null;
     }
+
+    logger.warn(`Shard for ${packageName} not found (tried: ${filePaths.join(", ")})`);
+    return null;
   }
 
   /**
@@ -312,6 +497,23 @@ class StaticDbReaderImpl implements StaticDbReader {
     return join(this.dataPath, `${packageName}.json`);
   }
 
+  private getLegacyShardPath(packageName: string): string | null {
+    if (!isValidPackageName(packageName)) {
+      return null;
+    }
+    const safeName = packageName.replace(/\//g, "__");
+    return join(this.dataPath, "packages", `${safeName}.json`);
+  }
+
+  private getShardPaths(packageName: string): string[] {
+    const paths: string[] = [];
+    const primary = this.getShardPath(packageName);
+    if (primary) paths.push(primary);
+    const legacy = this.getLegacyShardPath(packageName);
+    if (legacy && legacy !== primary) paths.push(legacy);
+    return paths;
+  }
+
   /**
    * Convert a static vulnerability to a finding.
    */
@@ -332,6 +534,7 @@ class StaticDbReaderImpl implements StaticDbReader {
       packageVersion: version ?? "*",
       title: vuln.title,
       url: vuln.url,
+      description: vuln.description,
       severity: vuln.severity,
       publishedAt: vuln.publishedAt,
       modifiedAt: vuln.modifiedAt,

@@ -14,6 +14,15 @@ const stripPeerSuffix = (v: string) => {
   return idx === -1 ? v : v.slice(0, idx);
 };
 
+function normalizeDepVersion(dep: unknown): string | null {
+  if (typeof dep === "string") return dep;
+  if (dep && typeof dep === "object") {
+    const version = (dep as { version?: unknown }).version;
+    return typeof version === "string" ? version : null;
+  }
+  return null;
+}
+
 /** Parse a pnpm lockfile package key into name + version.
  * Supports both old format (/react/18.2.0, react/18.2.0, /@types/node/20.10.0) and
  * new v9 format (react@18.2.0, @types/node@20.10.0)
@@ -96,7 +105,9 @@ export function extractPackagesFromLockfile(
   for (const [_, imp] of Object.entries(importers)) {
     const deps = { ...imp.dependencies, ...imp.devDependencies, ...imp.optionalDependencies };
     for (const [depName, depVersion] of Object.entries(deps)) {
-      const v = stripPeerSuffix(String(depVersion));
+      const rawVersion = normalizeDepVersion(depVersion);
+      if (!rawVersion) continue;
+      const v = stripPeerSuffix(rawVersion);
       const ref = keyToRef[`${depName}@${v}`];
       if (ref) ref.direct = true;
     }

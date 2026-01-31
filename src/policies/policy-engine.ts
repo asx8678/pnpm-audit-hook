@@ -7,7 +7,7 @@ import type {
   Severity,
   VulnerabilityFinding,
 } from "../types";
-import { satisfies } from "../utils/semver";
+import { satisfiesStrict } from "../utils/semver";
 import { mapSeverity } from "../utils/severity";
 
 /**
@@ -43,19 +43,34 @@ function findAllowlistMatch(
   for (const entry of allowlist) {
     if (isExpired(entry)) continue;
 
+    const idMatches =
+      entry.id !== undefined && entry.id.toUpperCase() === finding.id.toUpperCase();
+    const packageMatches =
+      entry.package !== undefined &&
+      entry.package.toLowerCase() === finding.packageName.toLowerCase();
+
+    // If both id and package are provided, require both to match
+    if (entry.id && entry.package) {
+      if (!idMatches || !packageMatches) continue;
+      if (entry.version && !satisfiesStrict(finding.packageVersion, entry.version)) {
+        continue;
+      }
+      return entry;
+    }
+
     // Match by vulnerability ID (case-insensitive)
-    if (entry.id && entry.id.toUpperCase() === finding.id.toUpperCase()) {
+    if (entry.id && idMatches) {
       // If entry has version constraint, check it
-      if (entry.version && !satisfies(finding.packageVersion, entry.version)) {
+      if (entry.version && !satisfiesStrict(finding.packageVersion, entry.version)) {
         continue; // Version doesn't match, try next entry
       }
       return entry;
     }
 
     // Match by package name (case-insensitive)
-    if (entry.package && entry.package.toLowerCase() === finding.packageName.toLowerCase()) {
+    if (entry.package && packageMatches) {
       // If entry has version constraint, check it
-      if (entry.version && !satisfies(finding.packageVersion, entry.version)) {
+      if (entry.version && !satisfiesStrict(finding.packageVersion, entry.version)) {
         continue; // Version doesn't match, try next entry
       }
       return entry;

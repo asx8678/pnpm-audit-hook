@@ -4,6 +4,10 @@ import type { AuditConfig, VulnerabilityFinding } from "../../src/types";
 import type { Cache, CacheEntry } from "../../src/cache/types";
 import type { AggregateContext, AggregateResult } from "../../src/databases/aggregator";
 
+const REGISTRY_URL = "https://registry.npmjs.org";
+const githubCacheKey = (name: string, version: string) =>
+  `github:${REGISTRY_URL}:${name}@${version}`;
+
 /**
  * Mock implementations for testing aggregator.ts
  */
@@ -54,7 +58,7 @@ function createMockContext(cfgOverrides: Partial<AuditConfig> = {}): AggregateCo
     cfg: { ...baseConfig(), ...cfgOverrides },
     env: {},
     cache: createMockCache(),
-    registryUrl: "https://registry.npmjs.org",
+    registryUrl: REGISTRY_URL,
   };
 }
 
@@ -158,7 +162,7 @@ describe("aggregateVulnerabilities", () => {
       ];
 
       // Set up cache to return the duplicate findings
-      await ctx.cache.set("github:lodash@4.17.0", duplicateFindings, 3600);
+      await ctx.cache.set(githubCacheKey("lodash", "4.17.0"), duplicateFindings, 3600);
 
       const result = await aggregateVulnerabilities([{ name: "lodash", version: "4.17.0" }], ctx);
 
@@ -189,7 +193,7 @@ describe("aggregateVulnerabilities", () => {
         }),
       ];
 
-      await ctx.cache.set("github:pkg@1.0.0", findingsWithDupes, 3600);
+      await ctx.cache.set(githubCacheKey("pkg", "1.0.0"), findingsWithDupes, 3600);
 
       const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
 
@@ -204,12 +208,12 @@ describe("aggregateVulnerabilities", () => {
 
       // Set up cache with findings for different versions
       await ctx.cache.set(
-        "github:pkg@1.0.0",
+        githubCacheKey("pkg", "1.0.0"),
         [finding({ id: "CVE-2025-0001", packageName: "pkg", packageVersion: "1.0.0" })],
         3600
       );
       await ctx.cache.set(
-        "github:pkg@2.0.0",
+        githubCacheKey("pkg", "2.0.0"),
         [finding({ id: "CVE-2025-0001", packageName: "pkg", packageVersion: "2.0.0" })],
         3600
       );
@@ -235,7 +239,7 @@ describe("aggregateVulnerabilities", () => {
 
       // Set up cache with a finding that has unknown severity
       await ctx.cache.set(
-        "github:unknown-pkg@1.0.0",
+        githubCacheKey("unknown-pkg", "1.0.0"),
         [
           finding({
             id: "CVE-2025-9999",
@@ -269,7 +273,7 @@ describe("aggregateVulnerabilities", () => {
 
       // Set up cache with a finding that has unknown severity
       await ctx.cache.set(
-        "github:unknown-pkg@1.0.0",
+        githubCacheKey("unknown-pkg", "1.0.0"),
         [
           finding({
             id: "CVE-2025-9999",
@@ -294,7 +298,7 @@ describe("aggregateVulnerabilities", () => {
 
       // Set up cache with findings that all have known severities
       await ctx.cache.set(
-        "github:known-pkg@1.0.0",
+        githubCacheKey("known-pkg", "1.0.0"),
         [
           finding({
             id: "CVE-2025-0001",
@@ -327,7 +331,7 @@ describe("aggregateVulnerabilities", () => {
       const ctx = createMockContext();
 
       // Pre-populate cache
-      await ctx.cache.set("github:cached-pkg@1.0.0", [finding()], 3600);
+      await ctx.cache.set(githubCacheKey("cached-pkg", "1.0.0"), [finding()], 3600);
 
       const result = await aggregateVulnerabilities([{ name: "cached-pkg", version: "1.0.0" }], ctx);
 
@@ -361,7 +365,7 @@ describe("aggregateVulnerabilities", () => {
       const ctx = createMockContext();
 
       // Pre-populate cache so we don't make network calls
-      await ctx.cache.set("github:pkg@1.0.0", [], 3600);
+      await ctx.cache.set(githubCacheKey("pkg", "1.0.0"), [], 3600);
 
       const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
 
@@ -396,7 +400,7 @@ describe("aggregateVulnerabilities", () => {
         finding({ id: "CACHED-CVE-001", packageName: "cached-pkg", packageVersion: "1.0.0" }),
       ];
 
-      await ctx.cache.set("github:cached-pkg@1.0.0", cachedFindings, 3600);
+      await ctx.cache.set(githubCacheKey("cached-pkg", "1.0.0"), cachedFindings, 3600);
 
       const result = await aggregateVulnerabilities([{ name: "cached-pkg", version: "1.0.0" }], ctx);
 
@@ -411,7 +415,7 @@ describe("aggregateVulnerabilities", () => {
 
       // Only cache one package
       await ctx.cache.set(
-        "github:cached@1.0.0",
+        githubCacheKey("cached", "1.0.0"),
         [finding({ id: "CACHED-001", packageName: "cached", packageVersion: "1.0.0" })],
         3600
       );
@@ -435,7 +439,7 @@ describe("aggregateVulnerabilities", () => {
       const { aggregateVulnerabilities } = await import("../../src/databases/aggregator");
 
       const ctx = createMockContext();
-      await ctx.cache.set("github:pkg@1.0.0", [], 3600);
+      await ctx.cache.set(githubCacheKey("pkg", "1.0.0"), [], 3600);
 
       const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
 
@@ -474,7 +478,7 @@ describe("dedupeFindings (unit)", () => {
     const { aggregateVulnerabilities } = await import("../../src/databases/aggregator");
 
     const ctx = createMockContext();
-    await ctx.cache.set("github:pkg@1.0.0", [], 3600);
+    await ctx.cache.set(githubCacheKey("pkg", "1.0.0"), [], 3600);
 
     const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
 
@@ -485,7 +489,7 @@ describe("dedupeFindings (unit)", () => {
     const { aggregateVulnerabilities } = await import("../../src/databases/aggregator");
 
     const ctx = createMockContext();
-    await ctx.cache.set("github:pkg@1.0.0", [finding()], 3600);
+    await ctx.cache.set(githubCacheKey("pkg", "1.0.0"), [finding()], 3600);
 
     const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
 
@@ -503,7 +507,7 @@ describe("dedupeFindings (unit)", () => {
       finding({ id: "CVE-2025-0001", packageName: "pkg", packageVersion: "1.0.0", title: "Duplicate" }),
     ];
 
-    await ctx.cache.set("github:pkg@1.0.0", findings, 3600);
+    await ctx.cache.set(githubCacheKey("pkg", "1.0.0"), findings, 3600);
 
     const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
 
@@ -521,7 +525,7 @@ describe("dedupeFindings (unit)", () => {
       finding({ id: "CVE-2025-0002", packageName: "pkg", packageVersion: "1.0.0" }),
     ];
 
-    await ctx.cache.set("github:pkg@1.0.0", findings, 3600);
+    await ctx.cache.set(githubCacheKey("pkg", "1.0.0"), findings, 3600);
 
     const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
 
@@ -534,12 +538,12 @@ describe("dedupeFindings (unit)", () => {
     const ctx = createMockContext();
 
     await ctx.cache.set(
-      "github:pkg@1.0.0",
+      githubCacheKey("pkg", "1.0.0"),
       [finding({ id: "CVE-2025-0001", packageName: "pkg", packageVersion: "1.0.0" })],
       3600
     );
     await ctx.cache.set(
-      "github:pkg@2.0.0",
+      githubCacheKey("pkg", "2.0.0"),
       [finding({ id: "CVE-2025-0001", packageName: "pkg", packageVersion: "2.0.0" })],
       3600
     );

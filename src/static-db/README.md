@@ -214,8 +214,8 @@ See `src/static-db/types.ts` for complete TypeScript interfaces:
 
 - `AffectedVersionRange` - Version range with optional fixed version
 - `StaticVulnerability` - Core vulnerability record
-- `StaticPackageData` - Package shard file structure (uses `name` field)
-- `PackageShard` - Alias for package data (uses `packageName` field)
+- `StaticPackageData` - Package shard file structure (uses `packageName` field; legacy datasets may use `name`)
+- `PackageShard` - Alias for package data (normalized `packageName` field)
 - `StaticDbIndex` - Main index with O(1) lookup map
 - `PackageIndexEntry` - Summary info per package
 - `StaticDatabase` - Runtime query interface

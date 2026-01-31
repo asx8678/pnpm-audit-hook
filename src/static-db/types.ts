@@ -61,7 +61,7 @@ export interface StaticVulnerability {
  */
 export interface StaticPackageData {
   /** Package name (for validation) */
-  name: string;
+  packageName: string;
   /** ISO date string when this package's data was last updated */
   lastUpdated: string;
   /** List of vulnerabilities affecting this package, sorted by publishedAt desc */

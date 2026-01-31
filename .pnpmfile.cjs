@@ -13,7 +13,7 @@
  */
 const path = require('node:path');
 
-const distEntry = path.join(__dirname, 'dist', 'src', 'index.js');
+const distEntry = path.join(__dirname, 'dist', 'index.js');
 
 try {
   const mod = require(distEntry);

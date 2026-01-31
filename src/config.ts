@@ -145,15 +145,13 @@ export interface LoadConfigOptions {
 
 /**
  * Validate a path to prevent path traversal attacks.
- * Rejects paths containing '..' or absolute paths.
+ * Rejects absolute paths or any path containing ".." segments.
  */
 function isValidRelativePath(p: string): boolean {
-  // Reject absolute paths
   if (path.isAbsolute(p)) return false;
-  // Reject paths with traversal sequences
-  const normalized = path.normalize(p);
-  if (normalized.includes("..")) return false;
-  return true;
+  const normalized = path.posix.normalize(p.replace(/\\/g, "/"));
+  const segments = normalized.split("/");
+  return !segments.includes("..");
 }
 
 export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> {

@@ -6,6 +6,11 @@ import { satisfies } from "../utils/semver";
 import { mapSeverity } from "../utils/severity";
 import { logger } from "../utils/logger";
 import { errorMessage } from "../utils/error";
+import { mapWithConcurrency } from "../utils/concurrency";
+
+const CACHE_READ_CONCURRENCY = 50;
+const CACHE_WRITE_CONCURRENCY = 25;
+const STATIC_DB_CONCURRENCY = 10;
 
 interface GitHubAdvisory {
   id?: string;
@@ -49,6 +54,10 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
     return cfg.sources?.github?.enabled !== false && env.PNPM_AUDIT_DISABLE_GITHUB !== "true";
   }
 
+  private cacheKey(ctx: SourceContext, pkg: PackageRef): string {
+    return `github:${ctx.registryUrl}:${pkg.name}@${pkg.version}`;
+  }
+
   /**
    * Query GitHub Advisory Database for vulnerabilities affecting the given packages.
    *
@@ -72,8 +81,10 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
 
     // Check cache first (parallel reads)
     const targets: PackageRef[] = [];
-    const cacheResults = await Promise.all(
-      pkgs.map(p => ctx.cache.get(`github:${p.name}@${p.version}`))
+    const cacheResults = await mapWithConcurrency(
+      pkgs,
+      CACHE_READ_CONCURRENCY,
+      (p) => ctx.cache.get(this.cacheKey(ctx, p)),
     );
     pkgs.forEach((p, i) => {
       const cached = cacheResults[i];
@@ -127,20 +138,36 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
 
     // Cache and collect results (parallel writes with dynamic TTL)
     const baseTtl = ctx.cfg.cache?.ttlSeconds ?? 3600;
-    const cacheWriteResults = await Promise.allSettled(
-      targets.map(p => {
-        const key = `${p.name}@${p.version}`;
-        const pkgFindings = perPkg[key] ?? [];
-        findings.push(...pkgFindings);
-        return ctx.cache.set(`github:${key}`, pkgFindings, ttlForFindings(baseTtl, pkgFindings));
-      })
+    const perTarget = targets.map((p) => {
+      const key = `${p.name}@${p.version}`;
+      const pkgFindings = perPkg[key] ?? [];
+      return { pkg: p, findings: pkgFindings };
+    });
+    for (const entry of perTarget) {
+      findings.push(...entry.findings);
+    }
+    const cacheWriteResults = await mapWithConcurrency(
+      perTarget,
+      CACHE_WRITE_CONCURRENCY,
+      async (entry) => {
+        try {
+          await ctx.cache.set(
+            this.cacheKey(ctx, entry.pkg),
+            entry.findings,
+            ttlForFindings(baseTtl, entry.findings),
+          );
+          return { status: "fulfilled" as const };
+        } catch (reason) {
+          return { status: "rejected" as const, reason };
+        }
+      },
     );
 
     // Log cache write failures (non-fatal, but useful for debugging)
     for (let i = 0; i < cacheWriteResults.length; i++) {
       const result = cacheWriteResults[i];
       if (result?.status === "rejected") {
-        const target = targets[i];
+        const target = perTarget[i]?.pkg;
         const reason = errorMessage(result.reason);
         logger.warn(`Cache write failed for github:${target?.name}@${target?.version}: ${reason}`);
       }
@@ -177,18 +204,18 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
     const allFindings: VulnerabilityFinding[] = [];
     const db = this.staticDb;
 
-    // Parallelize static DB queries for better performance
-    const staticResults = await Promise.all(
-      targets.map(p => db.queryPackage(p.name).then(findings => ({ pkg: p, findings })))
+    // Parallelize static DB queries with a concurrency cap to avoid I/O spikes
+    const staticResults = await mapWithConcurrency(
+      targets,
+      STATIC_DB_CONCURRENCY,
+      async (p) => ({
+        pkg: p,
+        findings: await db.queryPackageWithOptions(p.name, { version: p.version }),
+      }),
     );
 
     for (const { pkg: p, findings: staticFindings } of staticResults) {
       for (const finding of staticFindings) {
-        // Check if this finding affects the specific version
-        if (finding.affectedRange && !satisfies(p.version, finding.affectedRange)) {
-          continue;
-        }
-
         const key = `${p.name}@${p.version}`;
         const dedupKey = `${key}:${finding.id}`;
         if (seen.has(dedupKey)) continue;
@@ -231,7 +258,12 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
 
     // Query each package individually - GitHub API returns incomplete results
     // when multiple `affects` parameters are used in a single request
-    const MAX_CONCURRENT = 10;
+    const configured = Number(ctx.env.PNPM_AUDIT_GITHUB_CONCURRENCY);
+    const defaultConcurrency = token ? 10 : 3;
+    const MAX_CONCURRENT =
+      Number.isFinite(configured) && configured > 0
+        ? Math.min(50, Math.floor(configured))
+        : defaultConcurrency;
     const queryPackage = async (p: PackageRef) => {
       try {
         let page = 1;

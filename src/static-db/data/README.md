@@ -13,11 +13,10 @@ The static database provides fast, offline lookup of npm package vulnerabilities
 
 ## Current Status
 
-- **Last Updated**: 2026-01-31
-- **Cutoff Date**: 2025-12-31
-- **Total Packages**: 45
-- **Total Vulnerabilities**: 54
-- **Data Source**: GitHub Advisory Database (sample dataset)
+- **Last Updated**: See `index.json`
+- **Cutoff Date**: See `index.json`
+- **Totals**: See `index.json`
+- **Data Source**: GitHub Advisory Database
 
 ## Data Schema
 
@@ -32,8 +31,9 @@ The static database provides fast, offline lookup of npm package vulnerabilities
   "totalPackages": number,
   "packages": {
     "package-name": {
-      "vulnCount": number,
-      "lastModified": "ISO date string"
+      "count": number,
+      "latestVuln": "ISO date string",
+      "maxSeverity": "critical|high|medium|low|unknown"
     }
   },
   "buildInfo": {
@@ -44,11 +44,14 @@ The static database provides fast, offline lookup of npm package vulnerabilities
 }
 ```
 
+Legacy index files may use `vulnCount` and `lastModified` instead of
+`count`/`latestVuln`. The reader normalizes both formats at runtime.
+
 ### packages/{name}.json
 
 ```json
 {
-  "name": "package-name",
+  "packageName": "package-name",
   "lastUpdated": "ISO date string",
   "vulnerabilities": [
     {
@@ -59,16 +62,22 @@ The static database provides fast, offline lookup of npm package vulnerabilities
       "url": "https://github.com/advisories/...",
       "publishedAt": "ISO date string",
       "modifiedAt": "ISO date string",
+      "source": "github",
       "identifiers": [
         { "type": "GHSA", "value": "GHSA-xxxx" },
         { "type": "CVE", "value": "CVE-2021-xxxx" }
       ],
-      "affectedRange": "semver range (e.g., '<4.17.21')",
-      "fixedVersion": "4.17.21"
+      "affectedVersions": [
+        { "range": "semver range (e.g., '<4.17.21')", "fixed": "4.17.21" }
+      ]
     }
   ]
 }
 ```
+
+Note: Older datasets may use `name` instead of `packageName`, and flatten
+`affectedVersions` into `affectedRange` + `fixedVersion`. The reader supports
+both formats for backward compatibility.
 
 ## Regenerating the Database
 

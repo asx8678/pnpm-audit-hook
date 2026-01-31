@@ -1,3 +1,4 @@
+import path from "node:path";
 import type { AuditConfig, PackageRef, VulnerabilityFinding } from "../types";
 import type { Cache } from "../cache/types";
 import type { SourceContext } from "./connector";
@@ -67,8 +68,9 @@ export async function aggregateVulnerabilities(
 
   if (staticBaselineCfg?.enabled && !staticDb) {
     try {
+      const defaultDataPath = path.resolve(__dirname, "..", "static-db", "data");
       staticDb = await createStaticDbReader({
-        dataPath: staticBaselineCfg.dataPath ?? "data/static-db",
+        dataPath: staticBaselineCfg.dataPath ?? defaultDataPath,
         cutoffDate: staticBaselineCfg.cutoffDate,
       });
       if (staticDb) {
