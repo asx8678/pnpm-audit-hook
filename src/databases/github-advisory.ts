@@ -72,7 +72,8 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
 
     // Parallelize batches (max 5 concurrent batches to respect GitHub API limits)
     const MAX_CONCURRENT_BATCHES = 5;
-    const processBatch = async (batch: PackageRef[]) => {
+    const seen = new Set<string>();
+  const processBatch = async (batch: PackageRef[]) => {
       try {
         let page = 1;
         let hasNextPage = true;
@@ -89,9 +90,19 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
 
           const url = `https://api.github.com/advisories?${params}`;
           const response = await ctx.http.getRaw(url, headers);
-          const data = (await response.json()) as GitHubAdvisory[];
+          let data: GitHubAdvisory[];
+          try {
+            data = (await response.json()) as GitHubAdvisory[];
+          } catch {
+            throw new Error("GitHub API returned invalid JSON response");
+          }
 
-          if (!data || data.length === 0) {
+          if (!Array.isArray(data)) {
+            const errorMsg = (data as Record<string, unknown>)?.message;
+            throw new Error(errorMsg ? String(errorMsg) : "GitHub API returned invalid response format");
+          }
+
+          if (data.length === 0) {
             hasNextPage = false;
             break;
           }
@@ -125,6 +136,9 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
                 if (range && !satisfies(p.version, range)) continue;
 
                 const key = `${p.name}@${p.version}`;
+                const dedupKey = `${key}:${canonicalId}`;
+                if (seen.has(dedupKey)) continue;
+                seen.add(dedupKey);
                 (perPkg[key] ??= []).push({
                   id: canonicalId,
                   source: "github",
@@ -175,10 +189,10 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
         // All batches failed
         return { source: this.id, ok: false, error: errors[0], durationMs: Date.now() - start, findings };
       }
-      // Partial failure - some batches succeeded
+      // Partial failure - some batches succeeded, but fail-closed for security
       return {
         source: this.id,
-        ok: true,
+        ok: false,
         error: `Partial failure: ${errors.length}/${batches.length} batches failed`,
         durationMs: Date.now() - start,
         findings,

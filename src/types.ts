@@ -2,15 +2,25 @@ export type Severity = "critical" | "high" | "medium" | "low" | "unknown";
 export type FindingSource = "github" | "nvd";
 export type PolicyAction = "allow" | "warn" | "block";
 export type DecisionSource = "severity" | "source" | "allowlist";
-export type VulnerabilityIdType = "CVE" | "GHSA" | "OTHER";
+export type VulnerabilityIdType = "CVE" | "GHSA" | "OSV" | "OTHER";
 
-export interface AllowlistEntry {
-  id?: string; // CVE-XXXX-XXXX, GHSA-XXXX, etc.
-  package?: string; // Package name to ignore
+interface AllowlistEntryBase {
   version?: string; // Semver range to match (e.g., "<1.0.0", ">=2.0.0 <3.0.0")
   reason?: string; // Why it's allowed
   expires?: string; // ISO date string, optional expiration
 }
+
+interface AllowlistEntryById extends AllowlistEntryBase {
+  id: string; // CVE-XXXX-XXXX, GHSA-XXXX, etc.
+  package?: string; // Package name to ignore
+}
+
+interface AllowlistEntryByPackage extends AllowlistEntryBase {
+  id?: string; // CVE-XXXX-XXXX, GHSA-XXXX, etc.
+  package: string; // Package name to ignore
+}
+
+export type AllowlistEntry = AllowlistEntryById | AllowlistEntryByPackage;
 
 export interface PackageRef {
   name: string;

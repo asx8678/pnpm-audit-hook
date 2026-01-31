@@ -53,8 +53,23 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
   const asAllowlist = (v: unknown): AllowlistEntry[] =>
     Array.isArray(v)
       ? v.filter((e): e is AllowlistEntry =>
-          e && typeof e === "object" && ("id" in e || "package" in e))
+          e &&
+          typeof e === "object" &&
+          (typeof (e as any).id === "string" || typeof (e as any).package === "string") &&
+          ((e as any).version === undefined || typeof (e as any).version === "string") &&
+          ((e as any).reason === undefined || typeof (e as any).reason === "string") &&
+          ((e as any).expires === undefined ||
+           (typeof (e as any).expires === "string" && !isNaN(Date.parse((e as any).expires))))
+        )
       : [];
+
+  const isSourceEnabled = (v: unknown): boolean => {
+    if (v === false) return false;
+    if (typeof v === "object" && v !== null && "enabled" in v) {
+      return (v as { enabled?: boolean }).enabled !== false;
+    }
+    return true; // default enabled
+  };
 
   return {
     ...DEFAULT_CONFIG,
@@ -64,18 +79,22 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
       allowlist: asAllowlist(policy?.allowlist),
     },
     sources: {
-      github: { enabled: sources?.github !== false },
-      nvd: { enabled: sources?.nvd !== false },
+      github: { enabled: isSourceEnabled(sources?.github) },
+      nvd: { enabled: isSourceEnabled(sources?.nvd) },
     },
     performance: {
       timeoutMs:
-        typeof performance?.timeoutMs === "number" && performance.timeoutMs > 0
+        typeof performance?.timeoutMs === "number" &&
+        performance.timeoutMs > 0 &&
+        performance.timeoutMs <= 300000
           ? performance.timeoutMs
           : 15000,
     },
     cache: {
       ttlSeconds:
-        typeof cache?.ttlSeconds === "number" && cache.ttlSeconds > 0
+        typeof cache?.ttlSeconds === "number" &&
+        cache.ttlSeconds > 0 &&
+        cache.ttlSeconds <= 86400
           ? cache.ttlSeconds
           : 3600,
     },

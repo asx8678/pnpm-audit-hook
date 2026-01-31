@@ -60,13 +60,28 @@ describe("FileCache", () => {
     });
 
     it("returns null after expiration", async () => {
-      await cache.set("expire-key", "value", 0); // 0 second TTL = immediate expiration
-      
+      await cache.set("expire-key", "value", 0.001); // 1ms TTL = near-immediate expiration
+
       // Small delay to ensure expiration
       await new Promise(resolve => setTimeout(resolve, 10));
-      
+
       const result = await cache.get("expire-key");
       assert.equal(result, null);
+    });
+
+    it("throws error for invalid TTL values", async () => {
+      await assert.rejects(
+        cache.set("zero-ttl", "value", 0),
+        { message: "Invalid TTL: 0" }
+      );
+      await assert.rejects(
+        cache.set("negative-ttl", "value", -1),
+        { message: "Invalid TTL: -1" }
+      );
+      await assert.rejects(
+        cache.set("infinity-ttl", "value", Infinity),
+        { message: "Invalid TTL: Infinity" }
+      );
     });
 
     it("includes storedAt and expiresAt timestamps", async () => {

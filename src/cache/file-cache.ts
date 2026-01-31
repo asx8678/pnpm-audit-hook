@@ -32,13 +32,16 @@ export class FileCache<T = unknown> implements Cache<T> {
     } catch (e) {
       // Log non-ENOENT errors as they may indicate real problems
       if (e instanceof Error && "code" in e && (e as NodeJS.ErrnoException).code !== "ENOENT") {
-        logger.warn(`Cache read error for ${key}: ${e.message}`);
+        logger.error(`Cache read error for ${key}: ${e.message}`);
       }
       return null;
     }
   }
 
   async set(key: string, value: T, ttlSeconds: number): Promise<void> {
+    if (ttlSeconds <= 0 || !Number.isFinite(ttlSeconds)) {
+      throw new Error(`Invalid TTL: ${ttlSeconds}`);
+    }
     const filePath = this.filePathForKey(key);
     const dir = path.dirname(filePath);
     await fs.mkdir(dir, { recursive: true });
@@ -66,8 +69,9 @@ export class FileCache<T = unknown> implements Cache<T> {
     }
   }
 
-  async prune(): Promise<number> {
+  async prune(): Promise<{ pruned: number; failed: number }> {
     let pruned = 0;
+    let failed = 0;
     try {
       const subdirs = await fs.readdir(this.dir);
       for (const subdir of subdirs) {
@@ -91,20 +95,27 @@ export class FileCache<T = unknown> implements Cache<T> {
               await fs.unlink(filePath);
               pruned++;
             }
-          } catch {
-            // If we can't read/parse, delete the corrupted file
+          } catch (readErr) {
+            // If we can't read/parse, try to delete the corrupted file
+            logger.warn(`Cache file unreadable, attempting deletion: ${filePath}`);
             try {
               await fs.unlink(filePath);
               pruned++;
-            } catch {
-              /* ignore */
+            } catch (unlinkErr) {
+              failed++;
+              logger.error(
+                `Failed to delete corrupted cache file ${filePath}: ${unlinkErr instanceof Error ? unlinkErr.message : String(unlinkErr)}`
+              );
             }
           }
         }
       }
-    } catch {
-      // Cache directory may not exist yet
+    } catch (e) {
+      // Cache directory may not exist yet, which is not an error
+      if (e instanceof Error && "code" in e && (e as NodeJS.ErrnoException).code !== "ENOENT") {
+        logger.error(`Cache prune error: ${e.message}`);
+      }
     }
-    return pruned;
+    return { pruned, failed };
   }
 }

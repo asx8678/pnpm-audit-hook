@@ -77,8 +77,20 @@ export async function aggregateVulnerabilities(
     const result = await githubSource.query(pkgs, queryCtx);
     findings = result.findings;
     sourceStatus[githubSource.id] = { ok: result.ok, error: result.error, durationMs: result.durationMs };
+
+    // Fail-closed on partial failure (default: true for security)
+    if (!result.ok && ctx.cfg.failOnSourceError !== false) {
+      throw new Error(`GitHub Advisory source failed: ${result.error}`);
+    }
   } catch (e) {
-    sourceStatus[githubSource.id] = { ok: false, error: String(e instanceof Error ? e.message : e), durationMs: 0 };
+    const errorMessage = e instanceof Error ? e.message : String(e);
+    logger.error(`GitHub Advisory source failed: ${errorMessage}`);
+    sourceStatus[githubSource.id] = { ok: false, error: errorMessage, durationMs: 0 };
+
+    // Fail-closed on exception (default: true for security)
+    if (ctx.cfg.failOnSourceError !== false) {
+      throw e;
+    }
   }
 
   // Deduplicate findings (in case of duplicates within GitHub response)

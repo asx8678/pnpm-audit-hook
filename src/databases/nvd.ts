@@ -98,7 +98,7 @@ async function fetchNvdCve(cveId: string, ctx: SourceContext): Promise<NvdCveDet
     await ctx.cache.set(key, detail, dynamicTtl);
     return detail;
   } catch (e) {
-    logger.warn(`Failed to fetch NVD data for ${cveId}: ${e instanceof Error ? e.message : String(e)}`);
+    logger.error(`Failed to fetch NVD data for ${cveId}: ${e instanceof Error ? e.message : String(e)}`);
     return null;
   }
 }
@@ -130,6 +130,7 @@ export async function enrichFindingsWithNvd(
 
   try {
     const details: Record<string, NvdCveDetail> = {};
+    const failedCveIds: string[] = [];
 
     // NVD rate limits: 5 req/30s (no key), 50 req/30s (with key)
     const hasApiKey = !!(ctx.env.NVD_API_KEY || ctx.env.NIST_NVD_API_KEY);
@@ -146,7 +147,11 @@ export async function enrichFindingsWithNvd(
           if (!cveId) break;
 
           const d = await fetchNvdCve(cveId, ctx);
-          if (d) details[cveId] = d;
+          if (d) {
+            details[cveId] = d;
+          } else {
+            failedCveIds.push(cveId);
+          }
 
           // Only sleep if there are more items in the queue
           if (queue.length > 0) {
@@ -155,6 +160,11 @@ export async function enrichFindingsWithNvd(
         }
       })
     );
+
+    // Log summary error if any CVE enrichments failed
+    if (failedCveIds.length > 0) {
+      logger.error(`NVD enrichment failed for ${failedCveIds.length} CVE(s): ${failedCveIds.join(", ")}`);
+    }
 
     // Enrich findings with NVD data (mutates findings array in-place intentionally)
     for (const f of findings) {

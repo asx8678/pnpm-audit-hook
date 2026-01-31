@@ -13,8 +13,9 @@ export async function retry<T>(
       if (++attempt > retries || !shouldRetry(err)) throw err;
       const ra = err instanceof HttpError ? err.retryAfter : undefined;
       const base = 250 * 2 ** (attempt - 1);
-      const delay = (typeof ra === "number" || (typeof ra === "string" && !Number.isNaN(+ra)))
-        ? Math.min(30000, +ra * 1000)  // Cap at 30 seconds
+      const raNum = typeof ra === "number" ? ra : (typeof ra === "string" && !Number.isNaN(+ra) ? +ra : null);
+      const delay = (raNum !== null && raNum > 0)
+        ? Math.min(30000, raNum * 1000)
         : Math.min(8000, base + base * 0.2 * Math.random());
       await sleep(delay);
     }
