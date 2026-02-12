@@ -1,0 +1,16 @@
+{
+  "onViolation": "fail",
+  "onError": "fail",
+  "rules": [
+    {
+      "name": "event-stream",
+      "versions": ["3.3.6"],
+      "reason": "Known compromised release"
+    },
+    {
+      "name": "example-package",
+      "versions": ["1.2.*"],
+      "reason": "Example wildcard match"
+    }
+  ]
+}
