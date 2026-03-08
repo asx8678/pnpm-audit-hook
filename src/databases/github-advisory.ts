@@ -11,6 +11,7 @@ import { mapWithConcurrency } from "../utils/concurrency";
 const CACHE_READ_CONCURRENCY = 50;
 const CACHE_WRITE_CONCURRENCY = 25;
 const STATIC_DB_CONCURRENCY = 10;
+const VALID_ID_TYPES = new Set(["CVE", "GHSA", "OSV", "OTHER"]);
 
 interface GitHubAdvisory {
   id?: string;
@@ -311,7 +312,7 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
           try {
             data = (await response.json()) as GitHubAdvisory[];
           } catch (parseError) {
-            throw new Error(`GitHub API returned invalid JSON response: ${parseError instanceof Error ? parseError.message : String(parseError)}`);
+            throw new Error(`GitHub API returned invalid JSON response: ${errorMessage(parseError)}`);
           }
 
           if (!Array.isArray(data)) {
@@ -326,12 +327,11 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
 
           for (const adv of data) {
             const severity = mapSeverity(adv.severity);
-            const validIdTypes = new Set(["CVE", "GHSA", "OSV", "OTHER"]);
             const identifiers: VulnerabilityIdentifier[] = (adv.identifiers ?? [])
               .map((x) => {
                 const t = String(x.type ?? "OTHER").toUpperCase();
                 return {
-                  type: (validIdTypes.has(t) ? t : "OTHER") as VulnerabilityIdentifier["type"],
+                  type: (VALID_ID_TYPES.has(t) ? t : "OTHER") as VulnerabilityIdentifier["type"],
                   value: String(x.value ?? ""),
                 };
               })
@@ -354,37 +354,7 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
               const key = `${p.name}@${p.version}`;
               const dedupKey = `${key}:${canonicalId}`;
 
-              // Deduplication: prefer API data over static DB (more recent)
-              // If we've already seen this from static DB, replace it
-              if (seen.has(dedupKey)) {
-                // Check if this is from static DB by looking for it in perPkg
-                const pkgFindings = perPkg[key] ?? [];
-                const existingIdx = pkgFindings.findIndex(f => f.id === canonicalId);
-                const existingFinding = existingIdx >= 0 ? pkgFindings[existingIdx] : undefined;
-                if (existingIdx >= 0 && existingFinding) {
-                  // Replace static DB entry with API data (more recent)
-                  pkgFindings[existingIdx] = {
-                    id: canonicalId,
-                    source: "github",
-                    packageName: p.name,
-                    packageVersion: p.version,
-                    title: adv.summary,
-                    url: adv.html_url,
-                    severity,
-                    affectedRange: range,
-                    fixedVersion:
-                      typeof v.first_patched_version === "string"
-                        ? v.first_patched_version
-                        : v.first_patched_version?.identifier,
-                    publishedAt: adv.published_at,
-                    modifiedAt: adv.updated_at,
-                  };
-                }
-                continue;
-              }
-
-              seen.add(dedupKey);
-              (perPkg[key] ??= []).push({
+              const finding: VulnerabilityFinding = {
                 id: canonicalId,
                 source: "github",
                 packageName: p.name,
@@ -399,7 +369,20 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
                     : v.first_patched_version?.identifier,
                 publishedAt: adv.published_at,
                 modifiedAt: adv.updated_at,
-              });
+              };
+
+              // Deduplication: prefer API data over static DB (more recent)
+              if (seen.has(dedupKey)) {
+                const pkgFindings = perPkg[key] ?? [];
+                const existingIdx = pkgFindings.findIndex(f => f.id === canonicalId);
+                if (existingIdx >= 0) {
+                  pkgFindings[existingIdx] = finding;
+                }
+                continue;
+              }
+
+              seen.add(dedupKey);
+              (perPkg[key] ??= []).push(finding);
             }
           }
 

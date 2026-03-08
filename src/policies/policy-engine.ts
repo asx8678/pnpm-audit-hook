@@ -22,6 +22,8 @@ function actionForSeverity(sev: Severity, cfg: AuditConfig["policy"]): PolicyAct
   return "allow";
 }
 
+const DATE_ONLY_RE = /^\d{4}-\d{2}-\d{2}$/;
+
 /**
  * Checks if an allowlist entry has expired.
  * Invalid date formats are treated as expired (fail-closed) for security.
@@ -30,7 +32,7 @@ function isExpired(entry: AllowlistEntry): boolean {
   if (!entry.expires) return false;
   // If expires is a date-only string (YYYY-MM-DD), treat as end-of-day UTC
   // to avoid timezone-dependent early expiration
-  if (/^\d{4}-\d{2}-\d{2}$/.test(entry.expires)) {
+  if (DATE_ONLY_RE.test(entry.expires)) {
     const endOfDay = new Date(entry.expires + "T23:59:59.999Z");
     return endOfDay.getTime() < Date.now();
   }

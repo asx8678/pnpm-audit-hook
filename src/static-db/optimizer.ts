@@ -19,6 +19,7 @@ import type {
   PackageIndexEntry,
 } from "./types";
 import { severityLevel } from "./types";
+import { errorMessage, isNodeError } from "../utils/error";
 
 // ============================================================================
 // Optimized Data Types (Compact Format)
@@ -400,12 +401,10 @@ async function fileExists(path: string): Promise<boolean> {
     await access(path);
     return true;
   } catch (err) {
-    const error = err as NodeJS.ErrnoException;
-    if (error.code === "ENOENT") {
+    if (isNodeError(err) && err.code === "ENOENT") {
       return false;
     }
-    // Log warning for unexpected errors (permission denied, etc.)
-    console.warn(`Unexpected error checking file existence for ${path}: ${error.message ?? String(err)}`);
+    console.warn(`Unexpected error checking file existence for ${path}: ${errorMessage(err)}`);
     return false;
   }
 }
@@ -458,8 +457,7 @@ export async function readMaybeCompressed<T>(basePath: string): Promise<T | null
     const decompressed = await decompressBuffer(gzBuffer);
     return JSON.parse(decompressed.toString("utf-8")) as T;
   } catch (err) {
-    const error = err as NodeJS.ErrnoException;
-    if (error.code !== "ENOENT") {
+    if (!isNodeError(err) || err.code !== "ENOENT") {
       throw err;
     }
   }
@@ -469,8 +467,7 @@ export async function readMaybeCompressed<T>(basePath: string): Promise<T | null
     const content = await readFile(basePath, "utf-8");
     return JSON.parse(content) as T;
   } catch (err) {
-    const error = err as NodeJS.ErrnoException;
-    if (error.code !== "ENOENT") {
+    if (!isNodeError(err) || err.code !== "ENOENT") {
       throw err;
     }
   }
@@ -490,8 +487,7 @@ async function decompressBuffer(buffer: Buffer): Promise<Buffer> {
     gunzip.on("end", () => resolve(Buffer.concat(chunks)));
     gunzip.on("error", (err) => {
       gunzip.destroy();
-      const message = err instanceof Error ? err.message : String(err);
-      reject(new Error(`Gzip decompression failed: ${message}`));
+      reject(new Error(`Gzip decompression failed: ${errorMessage(err)}`));
     });
 
     gunzip.write(buffer);

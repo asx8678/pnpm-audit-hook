@@ -2,7 +2,7 @@ import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { sha256Hex } from "../utils/hash";
-import { isNodeError } from "../utils/error";
+import { errorMessage, isNodeError } from "../utils/error";
 import { logger } from "../utils/logger";
 import type { Cache, CacheEntry } from "./types";
 
@@ -164,7 +164,7 @@ export class FileCache<T = unknown> implements Cache<T> {
       try {
         await fs.unlink(tmp);
       } catch (cleanupErr) {
-        logger.debug(`Failed to clean up temp file ${tmp}: ${cleanupErr instanceof Error ? cleanupErr.message : String(cleanupErr)}`);
+        logger.debug(`Failed to clean up temp file ${tmp}: ${errorMessage(cleanupErr)}`);
       }
       throw e;
     }
@@ -207,7 +207,7 @@ export class FileCache<T = unknown> implements Cache<T> {
             } catch (unlinkErr) {
               failed++;
               logger.error(
-                `Failed to delete corrupted cache file ${filePath}: ${unlinkErr instanceof Error ? unlinkErr.message : String(unlinkErr)}`
+                `Failed to delete corrupted cache file ${filePath}: ${errorMessage(unlinkErr)}`
               );
             }
           }
