@@ -1,9 +1,10 @@
 {
-  "name": "chownr",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "chownr",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-c6rq-rjc2-86v2",
+      "packageName": "chownr",
       "title": "Time-of-check Time-of-use (TOCTOU) Race Condition in chownr",
       "description": "A TOCTOU issue in the chownr package before 1.1.0 for Node.js 10.10 could allow a local attacker to trick it into descending into unintended directories via symlink attacks.",
       "severity": "low",
@@ -20,8 +21,13 @@
           "value": "CVE-2017-18869"
         }
       ],
-      "affectedRange": "< 1.1.0",
-      "fixedVersion": "1.1.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

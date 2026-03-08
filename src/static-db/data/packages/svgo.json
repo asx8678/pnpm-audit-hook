@@ -1,0 +1,33 @@
+{
+  "packageName": "svgo",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xpqw-6gx7-v673",
+      "packageName": "svgo",
+      "title": "SVGO DoS through entity expansion in DOCTYPE (Billion Laughs)",
+      "description": "### Summary\n\nSVGO accepts XML with custom entities, without guards against entity expansion or recursion. This can result in a small XML file (811 bytes) stalling the application and even crashing the Node.js process with `JavaScript heap out of memory`.\n\n### Details\n\nThe upstream XML parser ([sax](https://www.npmjs.com/package/sax)) doesn't interpret custom XML entities by default. We pattern matched custom XML entities from the `DOCTYPE`, inserting them into `parser.ENTITIES`, and enabled `unp",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xpqw-6gx7-v673",
+      "publishedAt": "2026-03-04T22:59:28Z",
+      "modifiedAt": "2026-03-06T21:58:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xpqw-6gx7-v673"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29074"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 4.0.0",
+          "fixed": "4.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

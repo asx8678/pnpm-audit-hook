@@ -1,9 +1,10 @@
 {
-  "name": "katex",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "katex",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-cg87-wmx4-v546",
+      "packageName": "katex",
       "title": "KaTeX \\htmlData does not validate attribute names",
       "description": "### Impact\nKaTeX users who render untrusted mathematical expressions with `renderToString` could encounter malicious input using `\\htmlData` that runs arbitrary JavaScript, or generate invalid HTML.\n\n### Patches\nUpgrade to KaTeX v0.16.21 to remove this vulnerability.\n\n### Workarounds\n- Avoid use of or turn off the `trust` option, or set it to forbid `\\htmlData` commands.\n- Forbid inputs containing the substring `\"\\\\htmlData\"`.\n- Sanitize HTML output from KaTeX.\n\n### Details\n`\\htmlData` did not v",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-23207"
         }
       ],
-      "affectedRange": ">= 0.12.0, <= 0.16.20",
-      "fixedVersion": "0.16.21"
+      "affectedVersions": [
+        {
+          "range": ">= 0.12.0, <= 0.16.20",
+          "fixed": "0.16.21"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-3wc5-fcw2-2329",
+      "packageName": "katex",
       "title": "KaTeX missing normalization of the protocol in URLs allows bypassing forbidden protocols",
       "description": "### Impact\n\nCode that uses KaTeX's `trust` option, specifically that provides a function to block-list certain URL protocols, can be fooled by URLs in malicious inputs that use uppercase characters in the protocol. In particular, this can allow for malicious input to generate `javascript:` links in the output, even if the `trust` function tries to forbid this protocol via `trust: (context) => context.protocol !== 'javascript'`.\n\n### Patches\nUpgrade to KaTeX v0.16.10 to remove this vulnerability.",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2024-28246"
         }
       ],
-      "affectedRange": ">= 0.11.0, < 0.16.10",
-      "fixedVersion": "0.16.10"
+      "affectedVersions": [
+        {
+          "range": ">= 0.11.0, < 0.16.10",
+          "fixed": "0.16.10"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-f98w-7cxr-ff2h",
+      "packageName": "katex",
       "title": "KaTeX's `\\includegraphics` does not escape filename",
       "description": "### Impact\nKaTeX users who render untrusted mathematical expressions could encounter malicious input using `\\includegraphics` that runs arbitrary JavaScript, or generate invalid HTML.\n\n### Patches\nUpgrade to KaTeX v0.16.10 to remove this vulnerability.\n\n### Workarounds\n* Avoid use of or turn off the `trust` option, or set it to forbid `\\includegraphics` commands.\n* Forbid inputs containing the substring `\"\\\\includegraphics\"`.\n* Sanitize HTML output from KaTeX.\n\n### Details\n`\\includegraphics` did",
       "severity": "medium",
@@ -62,11 +75,17 @@
           "value": "CVE-2024-28245"
         }
       ],
-      "affectedRange": ">= 0.11.0, < 0.16.10",
-      "fixedVersion": "0.16.10"
+      "affectedVersions": [
+        {
+          "range": ">= 0.11.0, < 0.16.10",
+          "fixed": "0.16.10"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-cvr6-37gx-v8wc",
+      "packageName": "katex",
       "title": "KaTeX's maxExpand bypassed by Unicode sub/superscripts",
       "description": "### Impact\nKaTeX users who render untrusted mathematical expressions could encounter malicious input using `\\def` or `\\newcommand` that causes a near-infinite loop, despite setting `maxExpand` to avoid such loops. This can be used as an availability attack, where e.g. a client rendering another user's KaTeX input will be unable to use the site due to memory overflow, tying up the main thread, or stack overflow.\n\n### Patches\nUpgrade to KaTeX v0.16.10 to remove this vulnerability.\n\n### Workarounds",
       "severity": "medium",
@@ -83,11 +102,17 @@
           "value": "CVE-2024-28244"
         }
       ],
-      "affectedRange": ">= 0.15.4, < 0.16.10",
-      "fixedVersion": "0.16.10"
+      "affectedVersions": [
+        {
+          "range": ">= 0.15.4, < 0.16.10",
+          "fixed": "0.16.10"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-64fm-8hw2-v72w",
+      "packageName": "katex",
       "title": "KaTeX's maxExpand bypassed by `\\edef`",
       "description": "### Impact\nKaTeX users who render untrusted mathematical expressions could encounter malicious input using `\\edef` that causes a near-infinite loop, despite setting `maxExpand` to avoid such loops. This can be used as an availability attack, where e.g. a client rendering another user's KaTeX input will be unable to use the site due to memory overflow, tying up the main thread, or stack overflow.\n\n### Patches\nUpgrade to KaTeX v0.16.10 to remove this vulnerability.\n\n### Workarounds\nForbid inputs c",
       "severity": "medium",
@@ -104,8 +129,13 @@
           "value": "CVE-2024-28243"
         }
       ],
-      "affectedRange": ">= 0.10.0-beta, < 0.16.10",
-      "fixedVersion": "0.16.10"
+      "affectedVersions": [
+        {
+          "range": ">= 0.10.0-beta, < 0.16.10",
+          "fixed": "0.16.10"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

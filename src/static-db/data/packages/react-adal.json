@@ -1,9 +1,10 @@
 {
-  "name": "react-adal",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "react-adal",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7mpx-vg3c-cmr4",
+      "packageName": "react-adal",
       "title": "Improper Authentication in react-adal",
       "description": "This affects versions of react-adal < 0.5.1. It is possible for a specially crafted JWT token and request URL can cause the nonce, session and refresh values to be incorrectly validated, causing the application to treat an attacker-generated JWT token as authentic. The logical defect is caused by how the nonce, session and refresh values are stored in the browser local storage or session storage. Each key is automatically appended by ||. When the received nonce and session keys are generated, th",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-7787"
         }
       ],
-      "affectedRange": "< 0.5.1",
-      "fixedVersion": "0.5.1"
+      "affectedVersions": [
+        {
+          "range": "< 0.5.1",
+          "fixed": "0.5.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

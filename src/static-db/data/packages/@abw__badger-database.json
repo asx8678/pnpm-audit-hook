@@ -1,9 +1,10 @@
 {
-  "name": "@abw/badger-database",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@abw/badger-database",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-69r2-2fg7-7hf9",
+      "packageName": "@abw/badger-database",
       "title": "Badger Database Prototype Pollution",
       "description": "A Prototype Pollution issue in abw badger-database 1.2.1 allows an attacker to execute arbitrary code via dist/badger-database.esm.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-36581"
         }
       ],
-      "affectedRange": "<= 1.2.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

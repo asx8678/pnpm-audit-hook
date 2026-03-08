@@ -1,9 +1,10 @@
 {
-  "name": "@kottster/server",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@kottster/server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j3w7-9qc3-g96p",
+      "packageName": "@kottster/server",
       "title": "Kottster app reinitialization can be re-triggered allowing command injection in development mode",
       "description": "### Impact\n\n**Development mode only**. Kottster contains a pre-authentication remote code execution (RCE) vulnerability when running in development mode.\n\nThe vulnerability combines two issues:\n1. The `initApp` action can be called repeatedly without checking if the app is already initialized, allowing attackers to create a new root admin account and obtain a JWT token\n2. The `installPackagesForDataSource` action uses unescaped command arguments, enabling command injection\n\nAn attacker with acce",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-62713"
         }
       ],
-      "affectedRange": ">= 3.2.0, < 3.3.2",
-      "fixedVersion": "3.3.2"
+      "affectedVersions": [
+        {
+          "range": ">= 3.2.0, < 3.3.2",
+          "fixed": "3.3.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

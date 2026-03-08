@@ -1,9 +1,10 @@
 {
-  "name": "browserless-chrome",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "browserless-chrome",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8p9r-f949-699g",
+      "packageName": "browserless-chrome",
       "title": "Path Traversal in browserless-chrome",
       "description": "This affects all versions of browserless-chrome before 1.43.0. User input flowing from the workspace endpoint gets used to create a file path filePath and this is fetched and then sent back to a user. This can be escaped to fetch arbitrary files from a server.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-7758"
         }
       ],
-      "affectedRange": "< 1.43.0",
-      "fixedVersion": "1.43.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.43.0",
+          "fixed": "1.43.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

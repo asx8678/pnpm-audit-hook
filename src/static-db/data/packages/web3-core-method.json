@@ -1,9 +1,10 @@
 {
-  "name": "web3-core-method",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "web3-core-method",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-2j4c-9qqq-896r",
+      "packageName": "web3-core-method",
       "title": "web3-core-method is vulnerable to prototype pollution",
       "description": "web3-core-method is a package designed to creates the methods on the web3 modules. A Prototype Pollution vulnerability in the attachToObject function of web3-core-method version 1.10.4 and before allows attackers to inject properties on Object.prototype via supplying a crafted payload, causing denial of service (DoS) as the minimum consequence.",
       "severity": "low",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-57329"
         }
       ],
-      "affectedRange": "<= 1.10.3"
+      "affectedVersions": [
+        {
+          "range": "<= 1.10.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

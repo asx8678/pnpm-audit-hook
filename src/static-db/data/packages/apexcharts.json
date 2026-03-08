@@ -1,9 +1,10 @@
 {
-  "name": "apexcharts",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "apexcharts",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-w46j-8hm6-h8mm",
+      "packageName": "apexcharts",
       "title": "XSS in apexcharts",
       "description": "The package apexcharts before 3.24.0 are vulnerable to Cross-site Scripting (XSS) via lack of sanitization of graph legend fields.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23327"
         }
       ],
-      "affectedRange": "< 3.24.0",
-      "fixedVersion": "3.24.0"
+      "affectedVersions": [
+        {
+          "range": "< 3.24.0",
+          "fixed": "3.24.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

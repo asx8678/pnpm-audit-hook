@@ -1,9 +1,10 @@
 {
-  "name": "psitransfer",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "psitransfer",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xphh-5v4r-r3rx",
+      "packageName": "psitransfer",
       "title": "PsiTransfer has Zip Slip Path Traversal via TAR Archive Download",
       "description": "### Summary\n\nA Zip Slip vulnerability in PsiTransfer allows an unauthenticated attacker to upload files with path traversal sequences in the filename (e.g. `../../../.ssh/authorized_keys`). When a victim downloads the bucket as a **.tar.gz** archive and extracts it, malicious files are written outside the intended directory, potentially leading to RCE.\n\n### Details\n\nThe vulnerability exists in the archive download functionality in **lib/endpoints.js** where user controlled metadata.name is used ",
       "severity": "high",
@@ -16,11 +17,17 @@
           "value": "GHSA-xphh-5v4r-r3rx"
         }
       ],
-      "affectedRange": "< 2.3.1",
-      "fixedVersion": "2.3.1"
+      "affectedVersions": [
+        {
+          "range": "< 2.3.1",
+          "fixed": "2.3.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-2p2x-p7wj-j5h2",
+      "packageName": "psitransfer",
       "title": "PsiTransfer: File integrity violation",
       "description": "### Summary\nThe absence of restrictions on the endpoint, which is designed for uploading files, allows an attacker who received the id of a file distribution to change the files that are in this distribution.\n\n### Details\nVulnerable endpoint: PATCH /files/{{id}}\n\n### PoC\n1. Create a file distribution.\n\n2. Go to the link address for downloading files and download the file (in this case, the attacker receives the file id from the download request).\n\n3. Send a PATCH /files/{{id}} request with arbit",
       "severity": "medium",
@@ -37,11 +44,17 @@
           "value": "CVE-2024-31454"
         }
       ],
-      "affectedRange": "< 2.2.0",
-      "fixedVersion": "2.2.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.2.0",
+          "fixed": "2.2.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-xg8v-m2mh-45m6",
+      "packageName": "psitransfer",
       "title": "PsiTransfer: Violation of the integrity of file distribution",
       "description": "**Summary**\nThe absence of restrictions on the endpoint, which allows you to create a path for uploading a file in a file distribution, allows an attacker to add arbitrary files to the distribution.\n\n**Details**\nVulnerable endpoint: POST /files\n\n**PoC**\n1. Create a file distribution.\n<img width=\"1434\" alt=\"Снимок экрана 2024-03-17 в 21 27 30\" src=\"https://github.com/psi-4ward/psitransfer/assets/163760990/4634a6f7-6e7d-486e-9929-76156aaa1340\">\n\n2. Go to the link address (id of the file distributi",
       "severity": "medium",
@@ -58,8 +71,13 @@
           "value": "CVE-2024-31453"
         }
       ],
-      "affectedRange": "< 2.2.0",
-      "fixedVersion": "2.2.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.2.0",
+          "fixed": "2.2.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

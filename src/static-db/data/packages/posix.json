@@ -1,9 +1,10 @@
 {
-  "name": "posix",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "posix",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-27mx-gchc-6xjp",
+      "packageName": "posix",
       "title": "Unhandled crash in npm posix",
       "description": "This affects all versions of package posix. When invoking the toString method, it will fallback to 0x0 value, as the value of toString is not invokable (not a function), and then it will crash with type-check.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2022-21211"
         }
       ],
-      "affectedRange": "<= 4.2.0"
+      "affectedVersions": [
+        {
+          "range": "<= 4.2.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

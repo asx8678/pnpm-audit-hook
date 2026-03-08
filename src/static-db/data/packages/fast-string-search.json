@@ -1,9 +1,10 @@
 {
-  "name": "fast-string-search",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "fast-string-search",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4263-q746-94mw",
+      "packageName": "fast-string-search",
       "title": "Uncontrolled Resource Consumption in fast-string-search",
       "description": "All versions of package fast-string-search are vulnerable to Denial of Service (DoS) when computations are incorrect for non-string inputs. One can cause the V8 to attempt reading from non-permitted locations and cause a segmentation fault due to the violation.",
       "severity": "high",
@@ -20,10 +21,16 @@
           "value": "CVE-2022-22138"
         }
       ],
-      "affectedRange": "<= 1.4.3"
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-hmqg-p8f8-3qrw",
+      "packageName": "fast-string-search",
       "title": "Out-of-bounds Read in fast-string-search",
       "description": "All versions of package fast-string-search are vulnerable to Out-of-bounds Read due to incorrect memory freeing and length calculation for any non-string input as the source. This allows the attacker to read previously allocated memory.",
       "severity": "medium",
@@ -40,7 +47,12 @@
           "value": "CVE-2022-25872"
         }
       ],
-      "affectedRange": "<= 1.4.3"
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

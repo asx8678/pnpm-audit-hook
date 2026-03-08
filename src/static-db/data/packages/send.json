@@ -1,9 +1,10 @@
 {
-  "name": "send",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "send",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-m6fv-jmcg-4jfg",
+      "packageName": "send",
       "title": "send vulnerable to template injection that can lead to XSS",
       "description": "### Impact\n\npassing untrusted user input - even after sanitizing it - to `SendStream.redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in send 0.19.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUS",
       "severity": "low",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-43799"
         }
       ],
-      "affectedRange": "< 0.19.0",
-      "fixedVersion": "0.19.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.19.0",
+          "fixed": "0.19.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

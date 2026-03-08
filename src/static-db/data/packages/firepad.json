@@ -1,9 +1,10 @@
 {
-  "name": "firepad",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "firepad",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4fh7-m2wx-6wfm",
+      "packageName": "firepad",
       "title": "Firepad allows insecure document access",
       "description": "Firepad through 1.5.11 allows remote attackers, who have knowledge of a pad ID, to retrieve both the current text of a document and all content that has previously been pasted into the document. NOTE: in several similar products, this is the intentional behavior for anyone who knows the full document ID and corresponding URL. NOTE: This vulnerability only affects products that are no longer supported by the maintainer.",
       "severity": "low",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-51210"
         }
       ],
-      "affectedRange": "<= 1.5.11"
+      "affectedVersions": [
+        {
+          "range": "<= 1.5.11"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

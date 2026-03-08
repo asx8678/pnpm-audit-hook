@@ -1,9 +1,10 @@
 {
-  "name": "ghost",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "ghost",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gv6q-2m97-882h",
+      "packageName": "ghost",
       "title": "Ghost vulnerable to XSS via malicious Portal preview links",
       "description": "### Impact\nAn attacker was able to craft a malicious link that, when accessed by an authenticated staff user or member, would execute JavaScript with the victim's permissions, potentially leading to account takeover. \n\n### Vulnerable versions\nThis vulnerability is present in Ghost versions:\n- v5.43.0 to v5.120.4\n- v6.0.0 to v6.14.0\n\nAs well as in Portal versions:\n- v2.29.1 to v2.51.4\n- v2.52.0 to v2.57.0\n\n### Patches\nGhost automatically loads the latest patch of the members Portal component via ",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2026-24778"
         }
       ],
-      "affectedRange": ">= 6.0.0, < 6.15.0",
-      "fixedVersion": "6.15.0"
+      "affectedVersions": [
+        {
+          "range": ">= 6.0.0, < 6.15.0",
+          "fixed": "6.15.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-vmc4-9828-r48r",
+      "packageName": "ghost",
       "title": "Ghost has SSRF via External Media Inliner",
       "description": "### Impact\nA vulnerability in Ghost’s media inliner mechanism allows staff users in possession of a valid authentication token for the Ghost Admin API to exfiltrate data from internal systems via SSRF.\n\n### Vulnerable versions\nThis vulnerability is present in Ghost v5.38.0 to v5.130.5 to and Ghost v6.0.0 to v6.10.3.\n\n### Patches\nv5.130.6 and v6.11.0 contain a fix for this issue.\n\n### References\nGhost thanks Sho Odagiri of GMO Cybersecurity by Ierae, Inc. for discovering and disclosing this vulne",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2026-22597"
         }
       ],
-      "affectedRange": ">= 5.105.0, <= 5.130.5",
-      "fixedVersion": "5.130.6"
+      "affectedVersions": [
+        {
+          "range": ">= 5.105.0, <= 5.130.5",
+          "fixed": "5.130.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-gjrp-xgmh-x9qq",
+      "packageName": "ghost",
       "title": "Ghost has SQL Injection in Members Activity Feed",
       "description": "### Impact\nA vulnerability in Ghost's `/ghost/api/admin/members/events` endpoint allows users with authentication credentials for the Admin API to execute arbitrary SQL.\n\n### Vulnerable versions\nThis vulnerability is present in Ghost v5.90.0 to v5.130.5 to and Ghost v6.0.0 to v6.10.3.\n\n### Patches\nv5.130.6 and v6.11.0 contain a fix for this issue.\n\n### References\nGhost thanks Sho Odagiri of GMO Cybersecurity by Ierae, Inc. for discovering and disclosing this vulnerability responsibly.\n\n### For m",
       "severity": "medium",
@@ -62,11 +75,17 @@
           "value": "CVE-2026-22596"
         }
       ],
-      "affectedRange": ">= 5.105.0, <= 5.130.5",
-      "fixedVersion": "5.130.6"
+      "affectedVersions": [
+        {
+          "range": ">= 5.105.0, <= 5.130.5",
+          "fixed": "5.130.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9xg7-mwmp-xmjx",
+      "packageName": "ghost",
       "title": "Ghost has Staff Token permission bypass",
       "description": "### Impact\nA vulnerability in Ghost's handling of Staff Token authentication allowed certain endpoints to be accessed that were only intended to be accessible via Staff Session authentication. External systems that have been authenticated via Staff Tokens for Admin/Owner-role users would have had access to these endpoints. \n\n### Vulnerable versions\nThis vulnerability is present in Ghost v5.121.0 to v5.130.5 to and Ghost v6.0.0 to v6.10.3.\n\n### Patches\nv5.130.6 and v6.11.0 contain a fix for this ",
       "severity": "high",
@@ -83,11 +102,17 @@
           "value": "CVE-2026-22595"
         }
       ],
-      "affectedRange": ">= 5.105.0, <= 5.130.5",
-      "fixedVersion": "5.130.6"
+      "affectedVersions": [
+        {
+          "range": ">= 5.105.0, <= 5.130.5",
+          "fixed": "5.130.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5fp7-g646-ccf4",
+      "packageName": "ghost",
       "title": "Ghost has Staff 2FA bypass",
       "description": "### Impact\nA vulnerability in Ghost's 2FA mechanism allows staff users to skip email 2FA.\n\n### Vulnerable versions\nThis vulnerability is present in Ghost v5.105.0 to v5.130.5 to and Ghost v6.0.0 to v6.10.3.\n\n### Patches\nv5.130.6 and v6.11.0 contain a fix for this issue.\n\n### References\nGhost thanks Sho Odagiri of GMO Cybersecurity by Ierae, Inc. for discovering and disclosing this vulnerability responsibly.\n\n### For more information\nIf there are any questions or comments about this advisory, ema",
       "severity": "high",
@@ -104,11 +129,17 @@
           "value": "CVE-2026-22594"
         }
       ],
-      "affectedRange": ">= 5.105.0, <= 5.130.5",
-      "fixedVersion": "5.130.6"
+      "affectedVersions": [
+        {
+          "range": ">= 5.105.0, <= 5.130.5",
+          "fixed": "5.130.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-f7qg-xj45-w956",
+      "packageName": "ghost",
       "title": "Ghost vulnerable to Server Side Request Forgery (SSRF) via oEmbed Bookmark",
       "description": "### Impact\n\nA vulnerability in Ghost's oEmbed mechanism allows staff users to exfiltrate data from internal systems via SSRF.\n\n### Vulnerable versions\n\nThis vulnerability is present in Ghost v5.99.0 to v5.130.3 to and Ghost v6.0.0 to v6.0.8.\n\n### Patches\n\nv5.130.4 and v6.0.9 contain a fix for this issue.\n\n### References\n\nThe original report is available here: https://fluidattacks.com/advisories/regida\n\nWe thank Cristian Vargas for discovering and disclosing this vulnerability responsibly. \n\n### ",
       "severity": "medium",
@@ -125,11 +156,17 @@
           "value": "CVE-2025-9862"
         }
       ],
-      "affectedRange": ">= 5.99.0, <= 5.130.3",
-      "fixedVersion": "5.130.4"
+      "affectedVersions": [
+        {
+          "range": ">= 5.99.0, <= 5.130.3",
+          "fixed": "5.130.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-78x2-cwp9-5j42",
+      "packageName": "ghost",
       "title": "Ghost's improper authentication allows access to member information and actions",
       "description": "### Impact\n\nImproper authentication on some endpoints used for member actions would allow an attacker to perform member-only actions, and read member information.\n\n### Vulnerable versions\n\nThis security vulnerability is present in Ghost v4.46.0-v5.89.5.\n\nGhost(Pro) customers are automatically updated to fixed versions ahead of disclosure.\n\nIf you're a self-hoster, please follow our [update instructions](https://ghost.org/docs/update).\n\n### Patches\n\nv5.89.5 contains a fix for this issue.\n\n### Wor",
       "severity": "medium",
@@ -146,11 +183,17 @@
           "value": "CVE-2024-43409"
         }
       ],
-      "affectedRange": ">= 4.46.0, < 5.89.5",
-      "fixedVersion": "5.89.5"
+      "affectedVersions": [
+        {
+          "range": ">= 4.46.0, < 5.89.5",
+          "fixed": "5.89.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-99vc-xw8j-phjm",
+      "packageName": "ghost",
       "title": "Ghost has possible Cross-site Scripting issue",
       "description": "Ghost through 5.76.0 allows stored XSS, and resultant privilege escalation in which a contributor can take over any account, via an SVG profile picture that contains JavaScript code to interact with the API on localhost TCP port 3001. NOTE: The discoverer reports that \"The vendor does not view this as a valid vector.\"",
       "severity": "medium",
@@ -167,10 +210,16 @@
           "value": "CVE-2024-23724"
         }
       ],
-      "affectedRange": "<= 5.76.0"
+      "affectedVersions": [
+        {
+          "range": "<= 5.76.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-ffhq-g856-9f2p",
+      "packageName": "ghost",
       "title": "Arbitrary file upload in Ghost",
       "description": "An arbitrary file upload vulnerability in the file upload module of Ghost CMS v4.42.0 allows attackers to execute arbitrary code via a crafted file.",
       "severity": "critical",
@@ -187,10 +236,16 @@
           "value": "CVE-2022-28397"
         }
       ],
-      "affectedRange": "<= 4.42.0"
+      "affectedVersions": [
+        {
+          "range": "<= 4.42.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-fh38-9fgr-454w",
+      "packageName": "ghost",
       "title": "Cross-site Scripting in Ghost",
       "description": "Ghost before 5.76.0 allows XSS via a post excerpt in excerpt.js. An XSS payload can be rendered in post summaries.",
       "severity": "medium",
@@ -207,11 +262,17 @@
           "value": "CVE-2024-23725"
         }
       ],
-      "affectedRange": "< 5.76.0",
-      "fixedVersion": "5.76.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.76.0",
+          "fixed": "5.76.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-wf7x-fh6w-34r6",
+      "packageName": "ghost",
       "title": "Path Traversal in Ghost",
       "description": "Ghost before 5.42.1 allows remote attackers to read arbitrary files within the active theme's folder via /assets/built%2F..%2F..%2F/ directory traversal. This occurs in frontend/web/middleware/static-theme.js.",
       "severity": "high",
@@ -228,11 +289,17 @@
           "value": "CVE-2023-32235"
         }
       ],
-      "affectedRange": "< 5.42.1",
-      "fixedVersion": "5.42.1"
+      "affectedVersions": [
+        {
+          "range": "< 5.42.1",
+          "fixed": "5.42.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9c9v-w225-v5rg",
+      "packageName": "ghost",
       "title": "Ghost vulnerable to arbitrary file read via symlinks in content import",
       "description": "### Impact\n\nA vulnerability in Ghost allows authenticated users to upload files which are symlinks. This can be exploited to perform an arbitrary file read of any file on the operating system.\n\nSite administrators can check for exploitation of this issue by looking for unknown symlinks within Ghost's `content/` folder\n\n### Vulnerable versions\n\nThis security vulnerability is present in Ghost ≤ v5.59.0.\n\n### Patches\n\nv5.59.1 contains a fix for this issue.\n\n### For more information\n\nIf you have any",
       "severity": "medium",
@@ -249,11 +316,17 @@
           "value": "CVE-2023-40028"
         }
       ],
-      "affectedRange": "< 5.59.1",
-      "fixedVersion": "5.59.1"
+      "affectedVersions": [
+        {
+          "range": "< 5.59.1",
+          "fixed": "5.59.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-r97q-ghch-82j9",
+      "packageName": "ghost",
       "title": "Ghost vulnerable to information disclosure of private API fields",
       "description": "### Impact\n\nDue to a lack of validation when filtering on the public API endpoints, it is possible to reveal private fields via a brute force attack.\n\nGhost(Pro) has already been patched. We can find no evidence that the issue was exploited on Ghost(Pro) prior to the patch being added.\n\nSelf-hosters are impacted if running Ghost a version below v5.46.1. Immediate action should be taken to secure your site - see patches and workarounds below.\n\n### Patches\n\nv5.46.1 contains a fix for this issue.\n\n",
       "severity": "high",
@@ -270,11 +343,17 @@
           "value": "CVE-2023-31133"
         }
       ],
-      "affectedRange": "< 5.46.1",
-      "fixedVersion": "5.46.1"
+      "affectedVersions": [
+        {
+          "range": "< 5.46.1",
+          "fixed": "5.46.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-wfrj-qqc2-83cm",
+      "packageName": "ghost",
       "title": "Remote command injection when using sendmail email transport",
       "description": "### Impact\n\nSites using the `sendmail` transport as part of their `mail` config are vulnerable to remote command injection due to a [vulnerability](https://github.com/advisories/GHSA-48ww-j4fc-435p) in the `nodemailer` dependency.\n\nGhost defaults to the `direct` transport so this is only exploitable if the `sendmail` transport is explicitly used.\n\n### Patches\n\nFixed in 4.15.0, all sites should upgrade as soon as possible.\n\n### Workarounds\n\n* Use an alternative email transport as described in the",
       "severity": "medium",
@@ -287,11 +366,17 @@
           "value": "GHSA-wfrj-qqc2-83cm"
         }
       ],
-      "affectedRange": "< 4.15.0",
-      "fixedVersion": "4.15.0"
+      "affectedVersions": [
+        {
+          "range": "< 4.15.0",
+          "fixed": "4.15.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9fgx-q25h-jxrg",
+      "packageName": "ghost",
       "title": "DOM XSS in Theme Preview",
       "description": "### Impact\nAn unused endpoint added during the development of 4.0.0 has left sites vulnerable to untrusted users gaining access to Ghost Admin. Attackers can gain access by getting logged in users to click a link containing malicious code. Users do not need to enter credentials and may not know they've visited a malicious site. \n\nGhost(Pro) has already been patched. We can find no evidence that the issue was exploited on Ghost(Pro) prior to the patch being added. \n\nSelf-hosters are impacted if r",
       "severity": "medium",
@@ -308,11 +393,17 @@
           "value": "CVE-2021-29484"
         }
       ],
-      "affectedRange": ">= 4.0.0, < 4.3.3",
-      "fixedVersion": "4.3.3"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.3.3",
+          "fixed": "4.3.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-j5c2-hm46-wp5c",
+      "packageName": "ghost",
       "title": "Privilege escalation: all users can access Admin-level API keys",
       "description": "### Impact\nAn error in the implementation of the limits service in 4.0.0 allows all authenticated users (including contributors) to view admin-level API keys via the integrations API endpoint, leading to a privilege escalation vulnerability.\n\nGhost(Pro) has already been patched. Self-hosters are impacted if running Ghost a version between 4.0.0 and 4.9.4. Immediate action should be taken to secure your site - see patches & workarounds below.\n\nIt is highly recommended to regenerate all API keys a",
       "severity": "medium",
@@ -329,11 +420,17 @@
           "value": "CVE-2021-39192"
         }
       ],
-      "affectedRange": ">= 4.0.0, < 4.10.0",
-      "fixedVersion": "4.10.0"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.10.0",
+          "fixed": "4.10.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-q4h8-7qff-gh6c",
+      "packageName": "ghost",
       "title": "Server-side request forgery in Ghost CMS",
       "description": "Server-side request forgery (SSRF) vulnerability in Ghost CMS < 3.10.0 allows an attacker to scan local or external network or otherwise interact with internal systems.",
       "severity": "medium",
@@ -350,11 +447,17 @@
           "value": "CVE-2020-8134"
         }
       ],
-      "affectedRange": "< 3.10.0",
-      "fixedVersion": "3.10.0"
+      "affectedVersions": [
+        {
+          "range": "< 3.10.0",
+          "fixed": "3.10.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9gh8-wp53-ccc6",
+      "packageName": "ghost",
       "title": "ghost vulnerable to unauthorized newsletter modification via improper access controls",
       "description": "### Impact\n\nOn sites where members is enabled (this is the default) it is possible for members (unprivileged users) to make changes to newsletter settings. This gives unprivileged users the ability to view and change settings they were not intended to have access to. They are not able to escalate their privileges permanently or get access to further information. This issue was caused by a gap in our API validation for nested objects.\n\nGhost(Pro) has already been patched. We can find no evidence ",
       "severity": "high",
@@ -371,11 +474,17 @@
           "value": "CVE-2022-41654"
         }
       ],
-      "affectedRange": ">= 4.46.0, < 4.48.8",
-      "fixedVersion": "4.48.8"
+      "affectedVersions": [
+        {
+          "range": ">= 4.46.0, < 4.48.8",
+          "fixed": "4.48.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-fvc6-qjp7-m4g4",
+      "packageName": "ghost",
       "title": "Arbitrary file upload in Ghost",
       "description": "An arbitrary file upload vulnerability in the file upload module of Ghost v4.39.0 allows attackers to execute arbitrary code via a crafted SVG file.",
       "severity": "critical",
@@ -392,10 +501,16 @@
           "value": "CVE-2022-27139"
         }
       ],
-      "affectedRange": "<= 4.39.0"
+      "affectedVersions": [
+        {
+          "range": "<= 4.39.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-65p7-pjj8-ggmr",
+      "packageName": "ghost",
       "title": "Member account takeover",
       "description": "### Impact\n\nAn error in the implementation of the member email change functionality allows unauthenticated users to change the email address of arbitrary member accounts to one they control by crafting a request to the relevant API endpoint, and validating the new address via magic link sent to the new email address.\n\nGhost(Pro) has already been patched. Self-hosters are impacted if running Ghost a version between 3.18.0 and 4.15.0 with members functionality enabled.\n\n### Patches\n\nFixed in 4.15.",
       "severity": "medium",
@@ -408,11 +523,17 @@
           "value": "GHSA-65p7-pjj8-ggmr"
         }
       ],
-      "affectedRange": ">= 4.0.0, < 4.15.1",
-      "fixedVersion": "4.15.1"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.15.1",
+          "fixed": "4.15.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-7v28-g2pq-ggg8",
+      "packageName": "ghost",
       "title": "Ghost vulnerable to remote code execution in locale setting change",
       "description": "### Impact\n\nA [vulnerability](https://www.cve.org/CVERecord?id=CVE-2022-24785) in an upstream library means an authenticated attacker can abuse locale input to execute arbitrary commands from a file that has previously been uploaded using the file upload functionality in the post editor.\n\n### Patches\n\nFixed in 5.2.3, all 5.x sites should update as soon as possible.\nFixed in 4.48.2, all 4.x sites should update as soon as possible.\n\n### Workarounds\n\nPatched versions of Ghost add validation to the ",
       "severity": "medium",
@@ -425,8 +546,94 @@
           "value": "GHSA-7v28-g2pq-ggg8"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.2.3",
-      "fixedVersion": "5.2.3"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.2.3",
+          "fixed": "5.2.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9m84-wc28-w895",
+      "packageName": "ghost",
+      "title": "Ghost has incomplete CSRF protections around OTC use",
+      "description": "### Impact\n\nIncomplete CSRF protections around `/session/verify` made it possible to use OTCs in login sessions different from the requesting session. In some scenarios this might have made it easier for phishers to take over a Ghost site. \n\n### Vulnerable versions\n\nThis vulnerability is present in Ghost from v5.101.6 up to v6.19.2.\n\n### Patches\n\nv6.19.3 contains a fix for this issue.\n\n### How to update\n\nFor self-hosters using Docker, find [Docker's official Ghost image here](https://hub.docker.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9m84-wc28-w895",
+      "publishedAt": "2026-03-05T00:42:55Z",
+      "modifiedAt": "2026-03-05T22:05:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9m84-wc28-w895"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29784"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.101.6, <= 6.19.2",
+          "fixed": "6.19.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cgc2-rcrh-qr5x",
+      "packageName": "ghost",
+      "title": "Ghost Vulnerable to Remote Code Execution via Malicious Themes",
+      "description": "### Impact\n\nSpecifically crafted malicious themes can execute arbitrary code on the server running Ghost. \n\n### Vulnerable Versions\n\nThis vulnerability is present in Ghost v0.7.2 to v6.19.0.\n\n### Patches\n\nv6.19.1 contains a fix for this issue.\n\n### Workarounds\n\nGhost generally recommends users refrain from installing untrusted themes. If a malicious theme has already been installed, it is recommended to uninstall the theme and then inspect it to understand its impact, which will be attack-specif",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cgc2-rcrh-qr5x",
+      "publishedAt": "2026-03-03T20:01:21Z",
+      "modifiedAt": "2026-03-05T15:28:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cgc2-rcrh-qr5x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29053"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.7.2, <= 6.19.0",
+          "fixed": "6.19.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w52v-v783-gw97",
+      "packageName": "ghost",
+      "title": "Ghost has a SQL injection in Content API",
+      "description": "### Impact\n\nA SQL injection vulnerability existed in Ghost's Content API that allowed unauthenticated attackers to read arbitrary data from the database. \n\n### Vulnerable Versions\n\nThis vulnerability is present in Ghost v3.24.0 to v6.19.0.\n\n### Patches\n\nv6.19.1 contains a fix for this issue.\n\n### Workarounds\n\nThere is no application-level workaround. The Content API key is public by design, so restricting key access does not mitigate this vulnerability.\n\nAs a temporary mitigation, a reverse prox",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-w52v-v783-gw97",
+      "publishedAt": "2026-02-18T21:50:23Z",
+      "modifiedAt": "2026-02-20T16:48:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w52v-v783-gw97"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26980"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.24.0, < 6.19.1",
+          "fixed": "6.19.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

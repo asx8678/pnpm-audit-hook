@@ -1,9 +1,10 @@
 {
-  "name": "@awsui/components-react",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@awsui/components-react",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mf22-92pm-m8p8",
+      "packageName": "@awsui/components-react",
       "title": "Cross site scripting in @awsui/components-react",
       "description": "### Impact\nComponents could potentially allow cross-site scripting (XSS) in certain circumstances. These components could render content without adequate neutralization.\n\n### Patches\nFixed in 3.0.367.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-24709"
         }
       ],
-      "affectedRange": "< 3.0.367",
-      "fixedVersion": "3.0.367"
+      "affectedVersions": [
+        {
+          "range": "< 3.0.367",
+          "fixed": "3.0.367"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

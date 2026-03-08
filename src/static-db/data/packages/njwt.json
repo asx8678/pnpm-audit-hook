@@ -1,9 +1,10 @@
 {
-  "name": "njwt",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "njwt",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3hvj-2783-34x2",
+      "packageName": "njwt",
       "title": "njwt Prototype Pollution vulnerability",
       "description": "njwt up to v0.4.0 was discovered to contain a prototype pollution in the `Parser.prototype.parse` method.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-34273"
         }
       ],
-      "affectedRange": "< 2.0.1",
-      "fixedVersion": "2.0.1"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.1",
+          "fixed": "2.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

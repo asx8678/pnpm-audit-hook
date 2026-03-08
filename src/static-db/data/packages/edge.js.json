@@ -1,9 +1,10 @@
 {
-  "name": "edge.js",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "edge.js",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-55r9-7mf8-m382",
+      "packageName": "edge.js",
       "title": "Cross-site Scripting in edge.js",
       "description": "Edge is a logical and batteries included template engine for Node.js. This affects the package edge.js before 5.3.2. A type confusion vulnerability can be used to bypass input sanitization when the input to be rendered is an array (instead of a string or a SafeValue), even if `{{ }}` are used.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23443"
         }
       ],
-      "affectedRange": "< 5.3.2",
-      "fixedVersion": "5.3.2"
+      "affectedVersions": [
+        {
+          "range": "< 5.3.2",
+          "fixed": "5.3.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

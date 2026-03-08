@@ -1,9 +1,10 @@
 {
-  "name": "stage-js",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "stage-js",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-fp3m-g5rc-4c28",
+      "packageName": "stage-js",
       "title": "Stage.js DOM Clobbering vulnerabilty",
       "description": "Stage.js through 0.8.10 allows DOM Clobbering (with resultant XSS for untrusted input that contains HTML but does not directly contain JavaScript), because document.currentScript lookup can be shadowed by attacker-injected HTML elements.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-53386"
         }
       ],
-      "affectedRange": "<= 0.8.10"
+      "affectedVersions": [
+        {
+          "range": "<= 0.8.10"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

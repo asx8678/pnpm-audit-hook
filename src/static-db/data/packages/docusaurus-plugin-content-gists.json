@@ -1,9 +1,10 @@
 {
-  "name": "docusaurus-plugin-content-gists",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "docusaurus-plugin-content-gists",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-qf34-qpr4-5pph",
+      "packageName": "docusaurus-plugin-content-gists",
       "title": "docusaurus-plugin-content-gists vulnerability exposes GitHub Personal Access Token",
       "description": "## GitHub Personal Access Token Exposure in docusaurus-plugin-content-gists\n\n### Summary\n\ndocusaurus-plugin-content-gists versions prior to 4.0.0 are vulnerable to exposing GitHub Personal Access Tokens in production build artifacts when passed through plugin configuration options. The token, intended for build-time API access only, is inadvertently included in client-side JavaScript bundles, making it accessible to anyone who can view the website's source code.\n\n### Affected Versions\n\n- All ver",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-53624"
         }
       ],
-      "affectedRange": "< 4.0.0",
-      "fixedVersion": "4.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 4.0.0",
+          "fixed": "4.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "pac-resolver",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "pac-resolver",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9j49-mfvp-vmhm",
+      "packageName": "pac-resolver",
       "title": "Code Injection in pac-resolver",
       "description": "This affects the package pac-resolver before 5.0.0. This can occur when used with untrusted input, due to unsafe PAC file handling. **NOTE:** The fix for this vulnerability is applied in the node-degenerator library, a dependency written by the same maintainer.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23406"
         }
       ],
-      "affectedRange": "< 5.0.0",
-      "fixedVersion": "5.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.0.0",
+          "fixed": "5.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

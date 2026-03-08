@@ -1,9 +1,10 @@
 {
-  "name": "casperjs",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "casperjs",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vrr3-5r3v-7xfw",
+      "packageName": "casperjs",
       "title": "Improperly Controlled Modification of Dynamically-Determined Object Attributes in casperjs",
       "description": "### Overview\ncasperjs is a navigation scripting & testing utility for PhantomJS and SlimerJS.\n\nAffected versions of this package are vulnerable to Prototype Pollution via the mergeObjects utility function.\n\n### PoC\n```js\nvar payload = JSON.parse('{\"__proto__\": {\"a\": \"pwned\"}}');\nmergeObjects({}, payload);\nconsole.log({}.a); // prints \"pwned\"\n```",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7679"
         }
       ],
-      "affectedRange": "<= 1.1.4"
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

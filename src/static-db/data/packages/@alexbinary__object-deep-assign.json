@@ -1,9 +1,10 @@
 {
-  "name": "@alexbinary/object-deep-assign",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@alexbinary/object-deep-assign",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4xg3-7w7q-856q",
+      "packageName": "@alexbinary/object-deep-assign",
       "title": "object-deep-assign Prototype Pollution",
       "description": "alexbinary object-deep-assign 1.0.11 is vulnerable to Prototype Pollution via the extend() method of Module.deepAssign (/src/index.js)",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-36582"
         }
       ],
-      "affectedRange": "<= 1.0.11"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.11"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

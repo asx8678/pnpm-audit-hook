@@ -1,9 +1,10 @@
 {
-  "name": "@haxtheweb/haxcms-nodejs",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@haxtheweb/haxcms-nodejs",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3fm2-xfq7-7778",
+      "packageName": "@haxtheweb/haxcms-nodejs",
       "title": "HAXcms Has Stored XSS Vulnerability that May Lead to Account Takeover",
       "description": "### Summary\nStored XSS Leading to Account Takeover\n\n### Details\nThe Exploit Chain:\n1.Upload: The attacker uploads an `.html` file containing a JavaScript payload.\n2.Execution: A logged-in administrator is tricked into visiting the URL of this uploaded file.\n3.Token Refresh: The JavaScript payload makes a `fetch` request to the `/system/api/refreshAccessToken` endpoint. Because the administrator is logged in, their browser automatically attaches the `haxcms_refresh_token` cookie to this request.\n",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2026-22704"
         }
       ],
-      "affectedRange": ">= 11.0.6, < 25.0.0",
-      "fixedVersion": "25.0.0"
+      "affectedVersions": [
+        {
+          "range": ">= 11.0.6, < 25.0.0",
+          "fixed": "25.0.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9jr9-8ff3-m894",
+      "packageName": "@haxtheweb/haxcms-nodejs",
       "title": "HAX CMS API Lacks Authorization Checks",
       "description": "### Summary\n\nThe HAX CMS API endpoints do not perform authorization checks when interacting with a resource. Both the JS and PHP versions of the CMS do not verify that a user has permission to interact with a resource before performing a given operation.\n\n### Details\n\nThe API endpoints within the HAX CMS application check if a user is authenticated, but don't check for authorization before performing an operation.\n\n#### Affected Resources\n\n- [Operations.php: 760](https://github.com/haxtheweb/hax",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2025-54378"
         }
       ],
-      "affectedRange": "< 11.0.14",
-      "fixedVersion": "11.0.14"
+      "affectedVersions": [
+        {
+          "range": "< 11.0.14",
+          "fixed": "11.0.14"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-54vw-f4xf-f92j",
+      "packageName": "@haxtheweb/haxcms-nodejs",
       "title": "HAX CMS application pages vulnerable to clickjacking",
       "description": "### Summary\n\nAll pages within the HAX CMS application do not contain headers to stop other websites from loading the site within an iframe. This applies to both the CMS and generated sites.\n\n### PoC\n\nTo replicate this vulnerability, load the target page in an iframe and observe the rendered content.\n\n![image](https://github.com/user-attachments/assets/84526738-7101-4842-9bac-d33a41091600)\n\n\n### Impact\n\nAn unauthenticated attacker can load the standalone login page or other sensitive functionalit",
       "severity": "medium",
@@ -62,11 +75,17 @@
           "value": "CVE-2025-54139"
         }
       ],
-      "affectedRange": "< 11.0.13",
-      "fixedVersion": "11.0.13"
+      "affectedVersions": [
+        {
+          "range": "< 11.0.13",
+          "fixed": "11.0.13"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5fpv-5qvh-7cf3",
+      "packageName": "@haxtheweb/haxcms-nodejs",
       "title": "NodeJS version of the HAX CMS application is distributed with Default Secrets",
       "description": "### Summary\n\nThe NodeJS version of the HAX CMS application is distributed with hardcoded default credentials for the user and superuser accounts. Additionally, the application has default private keys for JWTs. Users aren't prompted to change credentials or secrets during installation, and there is no way to change them through the UI.\n\n### Affected Resources\n\n- [HAXCMS.js](https://github.com/haxtheweb/haxcms-nodejs/blob/main/src/lib/HAXCMS.js#L1614) HAXCMSClass\n\n### Impact\n\nAn unauthenticated a",
       "severity": "high",
@@ -83,11 +102,17 @@
           "value": "CVE-2025-54137"
         }
       ],
-      "affectedRange": "< 11.0.10",
-      "fixedVersion": "11.0.10"
+      "affectedVersions": [
+        {
+          "range": "< 11.0.10",
+          "fixed": "11.0.10"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-pjj3-j5j6-qj27",
+      "packageName": "@haxtheweb/haxcms-nodejs",
       "title": "HAX CMS NodeJS Application Has Improper Error Handling That Leads to Denial of Service",
       "description": "### Summary\nThe HAX CMS NodeJS application crashes when an authenticated attacker provides an API request lacking required URL parameters. This vulnerability affects the `listFiles` and `saveFiles` endpoints.\n\n### Details\nThis vulnerability exists because the application does not properly handle exceptions which occur as a result of changes to user-modifiable URL parameters.\n\n#### Affected Resources\n• [listFiles.js:22](https://github.com/haxtheweb/haxcms-nodejs/blob/main/src/routes/listFiles.js#",
       "severity": "high",
@@ -104,11 +129,17 @@
           "value": "CVE-2025-54134"
         }
       ],
-      "affectedRange": "< 11.0.9",
-      "fixedVersion": "11.0.9"
+      "affectedVersions": [
+        {
+          "range": "< 11.0.9",
+          "fixed": "11.0.9"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-59g8-h59f-8hjp",
+      "packageName": "@haxtheweb/haxcms-nodejs",
       "title": "NodeJS version of HAX CMS Has Disabled Content Security Policy That Enables Cross-Site Scripting",
       "description": "### Summary\nThe NodeJS version of HAX CMS has a disabled Content Security Policy (CSP). This configuration is insecure for a production application because it does not protect against cross-site-scripting attacks.\n\n### Details\nThe `contentSecurityPolicy` value is explicitly disabled in the application's Helmet configuration in `app.js`.\n\n![permissive-csp-code](https://github.com/user-attachments/assets/8ec6c63c-9f9f-413e-be7e-ed14913da91c)\n\n#### Affected Resources\n- [app.js:52](https://github.co",
       "severity": "high",
@@ -125,11 +156,17 @@
           "value": "CVE-2025-54128"
         }
       ],
-      "affectedRange": "<= 11.0.7",
-      "fixedVersion": "11.0.8"
+      "affectedVersions": [
+        {
+          "range": "<= 11.0.7",
+          "fixed": "11.0.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-f38f-jvqj-mfg6",
+      "packageName": "@haxtheweb/haxcms-nodejs",
       "title": "NodeJS version of HAX CMS Has Insecure Default Configuration That Leads to Unauthenticated Access",
       "description": "### Summary\nThe NodeJS version of HAX CMS uses an insecure default configuration designed for local\ndevelopment. The default configuration does not perform authorization or authentication checks.\n\n### Details\nIf a user were to deploy haxcms-nodejs without modifying the default settings, ‘HAXCMS_DISABLE_JWT_CHECKS‘ would be set to ‘true‘ and their deployment would lack session authentication. \n\n![insecure-default-configuration-code](https://github.com/user-attachments/assets/af58b08a-8a26-4ef5-8d",
       "severity": "critical",
@@ -146,11 +183,17 @@
           "value": "CVE-2025-54127"
         }
       ],
-      "affectedRange": "<= 11.0.6",
-      "fixedVersion": "11.0.7"
+      "affectedVersions": [
+        {
+          "range": "<= 11.0.6",
+          "fixed": "11.0.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-g4cf-pp4x-hqgw",
+      "packageName": "@haxtheweb/haxcms-nodejs",
       "title": "HaxCMS-PHP Command Injection Vulnerability",
       "description": "### Summary\nThe 'gitImportSite' functionality obtains a URL string from a POST request and insufficiently validates user input. The ’set_remote’ function later passes this input into ’proc_open’, yielding OS command injection.\n\n### Details\nThe vulnerability exists in the logic of the ’gitImportSite’ function, located in ’Operations.php’. The current implementation only relies on the ’filter_var’ and 'strpos' functions to validate the URL, which is not sufficient to ensure absence of all Bash spe",
       "severity": "high",
@@ -167,11 +210,17 @@
           "value": "CVE-2025-49141"
         }
       ],
-      "affectedRange": "< 11.0.3",
-      "fixedVersion": "11.0.3"
+      "affectedVersions": [
+        {
+          "range": "< 11.0.3",
+          "fixed": "11.0.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-v3ph-2q5q-cg88",
+      "packageName": "@haxtheweb/haxcms-nodejs",
       "title": "@haxtheweb/haxcms-nodejs Iframe Phishing vulnerability",
       "description": "### Summary\n\nIn the HAX site editor, users can create a website block to load another site in an iframe. The application allows users to supply a target URL in the website block. When the HAX site is visited, the client's browser will query the supplied URL.\n\n### Affected Resources\n\n- [Operations.php:868](https://github.com/haxtheweb/haxcms-php/blob/master/system/backend/php/lib/Operations.php#L868)\n- `https://<site>/<user>/system/api/saveNode`\n\n### PoC\n\n1. Set the URL in an iframe pointing to a",
       "severity": "medium",
@@ -188,8 +237,13 @@
           "value": "CVE-2025-49139"
         }
       ],
-      "affectedRange": "< 11.0.0",
-      "fixedVersion": "11.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 11.0.0",
+          "fixed": "11.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

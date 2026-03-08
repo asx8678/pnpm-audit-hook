@@ -1,9 +1,10 @@
 {
-  "name": "node-jose",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "node-jose",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jfxm-w8g2-4rcv",
+      "packageName": "node-jose",
       "title": "Cisco node-jose improper validation of JWT signature",
       "description": "A vulnerability in the Cisco node-jose open source library before 0.11.0 could allow an unauthenticated, remote attacker to re-sign tokens using a key that is embedded within the token. The vulnerability is due to node-jose following the JSON Web Signature (JWS) standard for JSON Web Tokens (JWTs). This standard specifies that a JSON Web Key (JWK) representing a public key can be embedded within the header of a JWS. This public key is then trusted for verification. An attacker could exploit this",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2018-0114"
         }
       ],
-      "affectedRange": "< 0.11.0",
-      "fixedVersion": "0.11.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.11.0",
+          "fixed": "0.11.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5h4j-qrvg-9xhw",
+      "packageName": "node-jose",
       "title": "Improper calculations in ECC implementation can trigger a Denial-of-Service (DoS)",
       "description": "### Description\n\nWhen using the non-default \"fallback\" crypto back-end, ECC operations in `node-jose` can trigger a Denial-of-Service (DoS) condition, due to a possible infinite loop in an internal calculation.  For some ECC operations, this condition is triggered randomly; for others, it can be triggered by malicious input.\n\n#### Technical summary\n\nThe JOSE logic implemented by `node-jose` usually relies on an external cryptographic library for the underlying cryptographic primitives that JOSE ",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2023-25653"
         }
       ],
-      "affectedRange": "< 2.2.0",
-      "fixedVersion": "2.2.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.2.0",
+          "fixed": "2.2.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

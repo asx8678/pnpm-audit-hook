@@ -1,9 +1,10 @@
 {
-  "name": "@sveltejs/adapter-node",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@sveltejs/adapter-node",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j62c-4x62-9r35",
+      "packageName": "@sveltejs/adapter-node",
       "title": "SvelteKit is vulnerable to denial of service and possible SSRF when using prerendering",
       "description": "### Summary\n\nVersions of SvelteKit are vulnerable to a server side request forgery (SSRF) and denial of service (DoS) under certain conditions.\n\n### Details\n\nAffected versions from 2.44.0 onwards are vulnerable to DoS if:\n\n- your app has at least one prerendered route (`export const prerender = true`)\n\nAffected versions from 2.19.0 onwards are vulnerable to DoS and SSRF if:\n\n- your app has at least one prerendered route (`export const prerender = true`)\n- AND you are using `adapter-node` without",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-67647"
         }
       ],
-      "affectedRange": ">= 5.4.1, <= 5.5.0",
-      "fixedVersion": "5.5.1"
+      "affectedVersions": [
+        {
+          "range": ">= 5.4.1, <= 5.5.0",
+          "fixed": "5.5.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-g5m6-hxpp-fc49",
+      "packageName": "@sveltejs/adapter-node",
       "title": "Sending a GET or HEAD request with a body crashes SvelteKit",
       "description": "### Summary\nIn SvelteKit 2 sending a GET request with a body eg `{}` to a SvelteKit app in preview or with `adapter-node` throws `Request with GET/HEAD method cannot have body.` and crashes the app.\n\n```\nnode:internal/deps/undici/undici:6066\n          throw new TypeError(\"Request with GET/HEAD method cannot have body.\");\n                ^\n\nTypeError: Request with GET/HEAD method cannot have body.\n    at new Request (node:internal/deps/undici/undici:6066:17)\n    at getRequest (file:///C:/Users/ad",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2024-23641"
         }
       ],
-      "affectedRange": "= 4.0.0",
-      "fixedVersion": "4.0.1"
+      "affectedVersions": [
+        {
+          "range": "= 4.0.0",
+          "fixed": "4.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

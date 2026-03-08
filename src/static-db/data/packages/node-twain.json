@@ -1,9 +1,10 @@
 {
-  "name": "node-twain",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "node-twain",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wxr3-2hgv-qm8f",
+      "packageName": "node-twain",
       "title": "node-twain vulnerable to Improper Check or Handling of Exceptional Conditions",
       "description": "All versions of the package node-twain are vulnerable to Improper Check or Handling of Exceptional Conditions due to the length of the source data not being checked. Creating a new twain.TwainSDK with a productName or productFamily, manufacturer, version.info property of length >= 34 chars leads to a buffer overflow vulnerability.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-21525"
         }
       ],
-      "affectedRange": "<= 0.0.16"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.16"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

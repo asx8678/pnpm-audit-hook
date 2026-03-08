@@ -1,9 +1,10 @@
 {
-  "name": "prebid-universal-creative",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "prebid-universal-creative",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-m662-56rj-8fmm",
+      "packageName": "prebid-universal-creative",
       "title": "Prebid-universal-creative latest on npm briefly compromised",
       "description": "### Impact\nNpm users of PUC 1.17.3 or PUC latest were briefly affected by crypto-related malware detailed in the blog post below. This includes the extremely popular jsdelivr hosting of this file. \n\n### Patches\nWe unpublished the version on npm.\n\n### Workarounds\nThis has already been unpublished. See Prebid.js 9 release notes for suggestions on moving off the deprecated workflow of using the PUC or pointing to a dynamic version of it. PUC users pointing to latest should transition to 1.17.2 ASAP",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-59039"
         }
       ],
-      "affectedRange": "= 1.17.3"
+      "affectedVersions": [
+        {
+          "range": "= 1.17.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

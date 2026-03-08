@@ -1,9 +1,10 @@
 {
-  "name": "node-extend",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "node-extend",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-cg42-4wrc-gp47",
+      "packageName": "node-extend",
       "title": "Code Injection in node-extend",
       "description": "node-extend through 0.2.0 is vulnerable to Arbitrary Code Execution. User input provided to the argument `A` of `extend` function`(A,B,as,isAargs)` located within `lib/extend.js` is executed by the `eval` function, resulting in code execution.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7673"
         }
       ],
-      "affectedRange": "<= 0.2.0"
+      "affectedVersions": [
+        {
+          "range": "<= 0.2.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

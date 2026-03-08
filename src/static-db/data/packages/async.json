@@ -1,9 +1,10 @@
 {
-  "name": "async",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "async",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-fwr7-v2mv-hh25",
+      "packageName": "async",
       "title": "Prototype Pollution in async",
       "description": "A vulnerability exists in Async through 3.2.1 for 3.x and through 2.6.3 for 2.x (fixed in 3.2.2 and 2.6.4), which could let a malicious user obtain privileges via the `mapValues()` method.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-43138"
         }
       ],
-      "affectedRange": ">= 2.0.0, < 2.6.4",
-      "fixedVersion": "2.6.4"
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.6.4",
+          "fixed": "2.6.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

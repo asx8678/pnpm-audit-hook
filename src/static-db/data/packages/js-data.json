@@ -1,9 +1,10 @@
 {
-  "name": "js-data",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "js-data",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mqgv-67vx-g4m5",
+      "packageName": "js-data",
       "title": "Prototype Pollution in js-data",
       "description": "All versions of package js-data prior to 3.0.10 are vulnerable to Prototype Pollution via the `deepFillIn` function.",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2020-28442"
         }
       ],
-      "affectedRange": "< 3.0.10",
-      "fixedVersion": "3.0.10"
+      "affectedVersions": [
+        {
+          "range": "< 3.0.10",
+          "fixed": "3.0.10"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-c6h4-gc3f-hgjq",
+      "packageName": "js-data",
       "title": "Prototype Pollution in js-data",
       "description": "All versions of package js-data are vulnerable to Prototype Pollution via the deepFillIn and the set functions. This is an incomplete fix of [CVE-2020-28442](https://snyk.io/vuln/SNYK-JS-JSDATA-1023655).",
       "severity": "critical",
@@ -41,7 +48,12 @@
           "value": "CVE-2021-23574"
         }
       ],
-      "affectedRange": "<= 3.0.10"
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.10"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

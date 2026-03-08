@@ -1,9 +1,10 @@
 {
-  "name": "@backstage/plugin-techdocs",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@backstage/plugin-techdocs",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gg96-f8wr-p89f",
+      "packageName": "@backstage/plugin-techdocs",
       "title": "Script injection",
       "description": "### Impact\n\nA malicious internal actor can potentially upload documentation content with malicious scripts by embedding the script within an `object` element. This may give access to sensitive data when other users visit that same documentation page.\n\nThe ability to upload malicious content may be limited by internal code review processes, unless the chosen TechDocs deployment method is to use an object store and the actor has access to upload files directly to that store.\n\n### Patches\n\nThe vuln",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-32661"
         }
       ],
-      "affectedRange": "< 0.9.5",
-      "fixedVersion": "0.9.5"
+      "affectedVersions": [
+        {
+          "range": "< 0.9.5",
+          "fixed": "0.9.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

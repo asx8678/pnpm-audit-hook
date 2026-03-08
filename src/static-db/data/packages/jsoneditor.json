@@ -1,9 +1,10 @@
 {
-  "name": "jsoneditor",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "jsoneditor",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hhfg-6hfc-rvxm",
+      "packageName": "jsoneditor",
       "title": "Regular Expression Denial of Service in jsoneditor",
       "description": "JSON Editor is a web-based tool to view, edit, format, and validate JSON. It has various modes such as a tree editor, a code editor, and a plain text editor. The jsoneditor package is vulnerable to ReDoS (regular expression denial of service). An attacker that is able to provide a crafted element as input to the getInnerText function may cause an application to consume an excessive amount of CPU. Below pinned line using vulnerable regex.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2021-3822"
         }
       ],
-      "affectedRange": "< 9.5.6",
-      "fixedVersion": "9.5.6"
+      "affectedVersions": [
+        {
+          "range": "< 9.5.6",
+          "fixed": "9.5.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-q854-j362-cfq9",
+      "packageName": "jsoneditor",
       "title": "Cross-site Scripting in jsoneditor",
       "description": "Stored XSS was discovered in the tree mode of jsoneditor before 9.0.2 through injecting and executing JavaScript.",
       "severity": "medium",
@@ -41,8 +48,13 @@
           "value": "CVE-2020-23849"
         }
       ],
-      "affectedRange": "< 9.0.2",
-      "fixedVersion": "9.0.2"
+      "affectedVersions": [
+        {
+          "range": "< 9.0.2",
+          "fixed": "9.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

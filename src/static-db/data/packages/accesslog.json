@@ -1,9 +1,10 @@
 {
-  "name": "accesslog",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "accesslog",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8m2f-74r2-x3f2",
+      "packageName": "accesslog",
       "title": "Code injection in accesslog",
       "description": "All versions of package accesslog are vulnerable to Arbitrary Code Injection due to the usage of the Function constructor without input sanitization. If (attacker-controlled) user input is given to the format option of the package's exported constructor function, it is possible for an attacker to execute arbitrary JavaScript code on the host that this package is being run on.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2022-25760"
         }
       ],
-      "affectedRange": "<= 0.0.2"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

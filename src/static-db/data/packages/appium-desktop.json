@@ -1,9 +1,10 @@
 {
-  "name": "appium-desktop",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "appium-desktop",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xq6j-x8pq-g3gr",
+      "packageName": "appium-desktop",
       "title": "appium-desktop OS Command Injection vulnerability",
       "description": "appium-desktop v1.14.1 and prior is vulnerable to OS Command Injection.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-2479"
         }
       ],
-      "affectedRange": "<= 1.14.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.14.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

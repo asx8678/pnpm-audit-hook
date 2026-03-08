@@ -1,9 +1,10 @@
 {
-  "name": "bootbox",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "bootbox",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-m4ch-4m5f-2gp6",
+      "packageName": "bootbox",
       "title": "Bootbox.js Cross Site Scripting vulnerability",
       "description": "Cross Site Scripting vulnerability in BootBox Bootbox.js v.3.2 through 6.0 allows a remote attacker to execute arbitrary code via a crafted payload to alert(), confirm(), prompt() functions.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-46998"
         }
       ],
-      "affectedRange": ">= 3.2.0, <= 6.0.0"
+      "affectedVersions": [
+        {
+          "range": ">= 3.2.0, <= 6.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

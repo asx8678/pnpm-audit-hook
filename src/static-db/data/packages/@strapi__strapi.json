@@ -1,9 +1,10 @@
 {
-  "name": "@strapi/strapi",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@strapi/strapi",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4r8w-3jww-m2rp",
+      "packageName": "@strapi/strapi",
       "title": "Strapi is vulnerable to Insufficient Session Expiration",
       "description": "Strapi uses JSON Web Tokens (JWT) for authentication. After logout or account deactivation, the JWT is not invalidated, which allows an attacker who has stolen or intercepted the token to freely reuse it until its expiration date (which is set to 30 days by default, but can be changed). The existence of /admin/renew-token endpoint allows anyone to renew near-expiration tokens indefinitely, further increasing the impact of this attack. This issue has been fixed in version 5.24.1.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-3930"
         }
       ],
-      "affectedRange": "< 5.24.1",
-      "fixedVersion": "5.24.1"
+      "affectedVersions": [
+        {
+          "range": "< 5.24.1",
+          "fixed": "5.24.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-p9ff-j98v-p435",
+      "packageName": "@strapi/strapi",
       "title": "Strapi Server-Side Request Forgery (SSRF)",
       "description": "Strapi v4.24.4 was discovered to contain a Server-Side Request Forgery (SSRF) via the component /strapi.io/_next/image. This vulnerability allows attackers to scan for open ports or access sensitive information via a crafted GET request.",
       "severity": "high",
@@ -41,10 +48,16 @@
           "value": "CVE-2024-37818"
         }
       ],
-      "affectedRange": "= 4.24.4"
+      "affectedVersions": [
+        {
+          "range": "= 4.24.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4vm8-j95f-j6v5",
+      "packageName": "@strapi/strapi",
       "title": "Strapi 4.1.12 Cross-site Scripting via crafted file",
       "description": "An unrestricted file upload vulnerability in the Add New Assets function of Strapi v4.1.12 allows attackers to execute arbitrary code via a crafted file. After an authenticated attacker uploads a file containing a malicious URL, a victim copies and pastes the malicious URL into a new tab to receive the XSS payload.",
       "severity": "medium",
@@ -61,10 +74,16 @@
           "value": "CVE-2022-32114"
         }
       ],
-      "affectedRange": "<= 4.1.12"
+      "affectedVersions": [
+        {
+          "range": "<= 4.1.12"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-jjqf-j4w7-92w8",
+      "packageName": "@strapi/strapi",
       "title": "Strapi leaking sensitive user information by filtering on private fields",
       "description": "### Summary\n\nStrapi through 4.7.1 allows unauthenticated attackers to discover sensitive user details for Strapi administrators and API users.\n\n### Details\n\nStrapi through 4.7.1 allows unauthenticated attackers to discover sensitive user details for Strapi administrators and API users. The unauthenticated attacker can filter users by columns that contain sensitive information and infer the values by the changes in the API responses. An unauthenticated attacker can exploit this vulnerability to h",
       "severity": "high",
@@ -81,11 +100,17 @@
           "value": "CVE-2023-22894"
         }
       ],
-      "affectedRange": ">= 3.2.1, < 4.8.0",
-      "fixedVersion": "4.8.0"
+      "affectedVersions": [
+        {
+          "range": ">= 3.2.1, < 4.8.0",
+          "fixed": "4.8.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-gc7p-j5xm-xxh2",
+      "packageName": "@strapi/strapi",
       "title": "Unauthorized Access to Private Fields in User Registration API",
       "description": "### System Details\n| Name     | Value                  |\n|----------|------------------------|\n| OS       | Windows 11             |\n| Version  | 4.11.1 (node v16.14.2) |\n| Database | mysql                  |\n\n\n### Description\nI marked some fields as private fields in user content-type, and tried to register as a new user via api, at the same time I added content to fill the private fields and sent a post request, and as you can see from the images below, I can write to the private fields.\n\n![re",
       "severity": "high",
@@ -102,11 +127,17 @@
           "value": "CVE-2023-39345"
         }
       ],
-      "affectedRange": ">= 4.0.0, < 4.13.1",
-      "fixedVersion": "4.13.1"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.13.1",
+          "fixed": "4.13.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-chmr-rg2f-9jmf",
+      "packageName": "@strapi/strapi",
       "title": "Making all attributes on a content-type public without noticing it",
       "description": "### Summary\nAnyone (Strapi developers, users, plugins) can make every attribute of a Content-Type public without knowing it.\n\n### Details\nWhen dealing with content-types inside a Strapi instance, we can extend those using the appropriate container:\n```javascript\nstrapi.container.get('content-types').extend(contentTypeUID, (contentType) => newContentType);\n```\nThe vulnerability only affects the handling of content types by Strapi, not the actual content types themselves. Users can use plugins or ",
       "severity": "medium",
@@ -123,11 +154,17 @@
           "value": "CVE-2023-34093"
         }
       ],
-      "affectedRange": "< 4.10.8",
-      "fixedVersion": "4.10.8"
+      "affectedVersions": [
+        {
+          "range": "< 4.10.8",
+          "fixed": "4.10.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4phg-hpqm-c3j4",
+      "packageName": "@strapi/strapi",
       "title": "Strapi mishandles hidden attributes within admin API responses",
       "description": "Strapi before 3.6.10 and 4.x before 4.1.10 mishandles hidden attributes within admin API responses.",
       "severity": "high",
@@ -144,11 +181,17 @@
           "value": "CVE-2022-31367"
         }
       ],
-      "affectedRange": ">= 4.0.0-next.0, < 4.1.10",
-      "fixedVersion": "4.1.10"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0-next.0, < 4.1.10",
+          "fixed": "4.1.10"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-85vg-grr5-pw42",
+      "packageName": "@strapi/strapi",
       "title": "Insecure password handling vulnerability in Strapi",
       "description": "Storing passwords in a recoverable format in the DOCUMENTATION plugin component of Strapi before 3.6.9 and 4.x before 4.1.5 allows an attacker to access a victim's HTTP request. From this, the attacker can get the victim's cookie, base64 decode it, and obtain a cleartext password, leading to getting API documentation for further API attacks.",
       "severity": "high",
@@ -165,11 +208,17 @@
           "value": "CVE-2021-46440"
         }
       ],
-      "affectedRange": ">= 4.0.0, < 4.1.5",
-      "fixedVersion": "4.1.5"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.1.5",
+          "fixed": "4.1.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-f6fm-r26q-p747",
+      "packageName": "@strapi/strapi",
       "title": "Improper Removal of Sensitive Information Before Storage or Transfer in Strapi",
       "description": "An authenticated user with access to the Strapi admin panel can view private and sensitive data, such as email and password reset tokens, for other admin panel users that have a relationship (e.g., created by, updated by) with content accessible to the authenticated user. For example, a low-privileged “author” role account can view these details in the JSON response for an “editor” or “super admin” that has updated one of the author’s blog posts. There are also many other scenarios where such de",
       "severity": "high",
@@ -186,11 +235,17 @@
           "value": "CVE-2022-30617"
         }
       ],
-      "affectedRange": "<= 4.0.0-beta.14",
-      "fixedVersion": "4.0.0-beta.15"
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.0-beta.14",
+          "fixed": "4.0.0-beta.15"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-vgj7-895j-gpr6",
+      "packageName": "@strapi/strapi",
       "title": "Improper Removal of Sensitive Information Before Storage or Transfer in Strapi",
       "description": "An authenticated user with access to the Strapi admin panel can view private and sensitive data, such as email and password reset tokens, for API users if content types accessible to the authenticated user contain relationships to API users (from:users-permissions). There are many scenarios in which such details from API users can leak in the JSON response within the admin panel, either through a direct or indirect relationship. Access to this information enables a user to compromise these users",
       "severity": "high",
@@ -207,8 +262,13 @@
           "value": "CVE-2022-30618"
         }
       ],
-      "affectedRange": "< 4.1.9",
-      "fixedVersion": "4.1.9"
+      "affectedVersions": [
+        {
+          "range": "< 4.1.9",
+          "fixed": "4.1.9"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

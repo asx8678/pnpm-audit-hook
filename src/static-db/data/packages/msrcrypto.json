@@ -1,9 +1,10 @@
 {
-  "name": "msrcrypto",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "msrcrypto",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9x9j-836w-8f55",
+      "packageName": "msrcrypto",
       "title": "Incorrect Calculation in the MSR JavaScript Cryptography Library",
       "description": "A Security Feature Bypass vulnerability exists in the MSR JavaScript Cryptography Library that is caused by multiple bugs in the library's Elliptic Curve Cryptography (ECC) implementation.An attacker could potentially abuse these bugs to learn information about a server's private ECC key (a key leakage attack) or craft an invalid ECDSA signature that nevertheless passes as valid.The security update addresses the vulnerability by fixing the bugs disclosed in the ECC implementation, aka `MSR JavaS",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-1026"
         }
       ],
-      "affectedRange": "< 1.5.8",
-      "fixedVersion": "1.5.8"
+      "affectedVersions": [
+        {
+          "range": "< 1.5.8",
+          "fixed": "1.5.8"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

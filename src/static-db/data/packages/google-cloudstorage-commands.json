@@ -1,9 +1,10 @@
 {
-  "name": "google-cloudstorage-commands",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "google-cloudstorage-commands",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6367-p3v8-7mgw",
+      "packageName": "google-cloudstorage-commands",
       "title": "google-cloudstorage-commands Command Injection vulnerability",
       "description": "A command injection vulnerability affects all versions of the deprecated package google-cloudstorage-commands.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-28436"
         }
       ],
-      "affectedRange": "<= 0.0.1"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

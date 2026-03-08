@@ -1,9 +1,10 @@
 {
-  "name": "git-interface",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "git-interface",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-qffw-8wg7-h665",
+      "packageName": "git-interface",
       "title": "Command injection in git-interface",
       "description": "A command injection vulnerability exists in git-interface in the GitHub repository yarkeev/git-interface prior to 2.1.2. If both the git remote and destination directory are provided by user input, then the use of an `--upload-pack` command-line argument feature of git is also supported for `git clone`, which would then allow for any operating system command to be spawned by the attacker.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-1440"
         }
       ],
-      "affectedRange": "< 2.1.2",
-      "fixedVersion": "2.1.2"
+      "affectedVersions": [
+        {
+          "range": "< 2.1.2",
+          "fixed": "2.1.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

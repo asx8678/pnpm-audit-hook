@@ -1,9 +1,10 @@
 {
-  "name": "switcher-client",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "switcher-client",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wqxw-8h5g-hq56",
+      "packageName": "switcher-client",
       "title": "Switcher Client contains Regular Expression Denial of Service (ReDoS)",
       "description": "### Impact\nUnsanitized input flows into Strategy match operation (EXIST), where it is used to build a regular expression. This may result in a Regular expression Denial of Service attack (reDOS).\n\n### Patches\nPatched in 3.1.4\n\n### Workarounds\nAvoid using Strategy settings that use REGEX in conjunction with EXIST and NOT_EXIST operations.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-23925"
         }
       ],
-      "affectedRange": "< 3.1.4",
-      "fixedVersion": "3.1.4"
+      "affectedVersions": [
+        {
+          "range": "< 3.1.4",
+          "fixed": "3.1.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

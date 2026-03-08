@@ -1,9 +1,10 @@
 {
-  "name": "bsock",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "bsock",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jj93-39pf-7mcf",
+      "packageName": "bsock",
       "title": "bsock uses weak hashing algorithms",
       "description": "An issue was discovered in the bsock component of bcoin-org bcoin that allows remote attackers to obtain sensitive information via weak hashing algorithms in the component `\\vendor\\faye-websocket.js`.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-50475"
         }
       ],
-      "affectedRange": "<= 0.1.11"
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.11"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

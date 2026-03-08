@@ -1,9 +1,10 @@
 {
-  "name": "nobelprizeparser",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "nobelprizeparser",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4wv4-mgfq-598v",
+      "packageName": "nobelprizeparser",
       "title": "Code injection in nobelprizeparser",
       "description": "Code injection through use of eval.",
       "severity": "critical",
@@ -16,8 +17,13 @@
           "value": "GHSA-4wv4-mgfq-598v"
         }
       ],
-      "affectedRange": "< 1.0.2",
-      "fixedVersion": "1.0.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.2",
+          "fixed": "1.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

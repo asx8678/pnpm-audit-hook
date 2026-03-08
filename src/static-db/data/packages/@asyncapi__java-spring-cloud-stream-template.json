@@ -1,9 +1,10 @@
 {
-  "name": "@asyncapi/java-spring-cloud-stream-template",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@asyncapi/java-spring-cloud-stream-template",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xj6r-2jpm-qvxp",
+      "packageName": "@asyncapi/java-spring-cloud-stream-template",
       "title": "Code injection issue for java-spring-cloud-stream-template",
       "description": "The following was initially reported by @jonaslagoni:\n\nGiven the following command:\n`ag ./dummy.json @asyncapi/java-spring-cloud-stream-template --force-write --output ./output`\n\nWith the following AsyncAPI document:\n```json\n{\n  \"asyncapi\": \"2.0.0\",\n  \"info\": {\n    \"title\": \"Streetlight\",\n    \"version\": \"1.0.0\"\n  },\n  \"defaultContentType\": \"json\",\n  \"channels\": {\n    \"security/audit/channel\": {\n      \"description\": \"Channel for the turn on command which should turn on the streetlight\",\n      \"pa",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-37694"
         }
       ],
-      "affectedRange": "<= 0.6.9",
-      "fixedVersion": "0.7.0"
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.9",
+          "fixed": "0.7.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

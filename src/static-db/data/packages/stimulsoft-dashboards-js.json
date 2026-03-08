@@ -1,9 +1,10 @@
 {
-  "name": "stimulsoft-dashboards-js",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "stimulsoft-dashboards-js",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9cgf-pxwq-2cpw",
+      "packageName": "stimulsoft-dashboards-js",
       "title": "Stimulsoft Dashboard.JS Cross Site Scripting vulnerability",
       "description": "Cross Site Scripting vulnerability in Stimulsoft GmbH Stimulsoft Dashboard.JS before v.2024.1.2 allows a remote attacker to execute arbitrary code via a crafted payload to the ReportName field.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2024-24397"
         }
       ],
-      "affectedRange": "< 2024.1.2",
-      "fixedVersion": "2024.1.2"
+      "affectedVersions": [
+        {
+          "range": "< 2024.1.2",
+          "fixed": "2024.1.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9m6m-c64r-w4f4",
+      "packageName": "stimulsoft-dashboards-js",
       "title": "Stimulsoft Dashboard.JS Cross Site Scripting vulnerability",
       "description": "Cross Site Scripting vulnerability in Stimulsoft GmbH Stimulsoft Dashboard.JS before v.2024.1.2 allows a remote attacker to execute arbitrary code via a crafted payload to the search bar component.",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2024-24396"
         }
       ],
-      "affectedRange": "< 2024.1.2",
-      "fixedVersion": "2024.1.2"
+      "affectedVersions": [
+        {
+          "range": "< 2024.1.2",
+          "fixed": "2024.1.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-gfqf-9w98-7jmx",
+      "packageName": "stimulsoft-dashboards-js",
       "title": "Stimulsoft Dashboard.JS directory traversal vulnerability",
       "description": "Directory Traversal vulnerability in Stimulsoft GmbH Stimulsoft Dashboard.JS before v.2024.1.3 allows a remote attacker to execute arbitrary code via a crafted payload to the fileName parameter of the Save function.",
       "severity": "critical",
@@ -62,8 +75,13 @@
           "value": "CVE-2024-24398"
         }
       ],
-      "affectedRange": "< 2024.1.3",
-      "fixedVersion": "2024.1.3"
+      "affectedVersions": [
+        {
+          "range": "< 2024.1.3",
+          "fixed": "2024.1.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

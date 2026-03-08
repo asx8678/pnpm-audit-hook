@@ -1,9 +1,10 @@
 {
-  "name": "@tinacms/cli",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@tinacms/cli",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-529f-9qwm-9628",
+      "packageName": "@tinacms/cli",
       "title": "tinacms is vulnerable to arbitrary code execution",
       "description": "### Summary\n```tinacms``` uses the ```gray-matter``` package in an insecure way allowing attackers that can control the content of the processed markdown files, e.g., blog posts, to execute arbitrary code.\n\n### Details\nThe ```gray-matter``` package executes by default the code in the markdown file's front matter. ```tinacms``` does not change this behavior when process markdown file, e.g., by passing a custom engine property for js/javascript in the options object.\n\n### PoC\n1. Create a tinacms a",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-68278"
         }
       ],
-      "affectedRange": "< 2.0.4",
-      "fixedVersion": "2.0.4"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.4",
+          "fixed": "2.0.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4qrm-9h4r-v2fx",
+      "packageName": "@tinacms/cli",
       "title": "Tina search token leak via lock file in TinaCMS",
       "description": "### Impact\nTina search token leaked via lock file (tina-lock.json) in TinaCMS. Sites building with @tinacms/cli < 1.6.2 that use a search token are impacted.\n\nIf your Tina-enabled website has search setup, you should rotate that key immediately.\n\n### Patches\nThis issue has been patched in @tinacms/cli@1.6.2\n\n### Workarounds\nUpgrading, and rotating search token is required for the proper fix.\n\n### References\nhttps://github.com/tinacms/tinacms/pull/4758\n",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2024-45391"
         }
       ],
-      "affectedRange": "< 1.6.2",
-      "fixedVersion": "1.6.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.6.2",
+          "fixed": "1.6.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-pc2q-jcxq-rjrr",
+      "packageName": "@tinacms/cli",
       "title": "Sensitive Information leak via Script File in TinaCMS",
       "description": "### Impact\n\nSensitive Information leaked via script File in TinaCMS. Sites building with @tinacms/cli >= 1.0.0 && < 1.0.9 that store sensitive values in process.env var are impacted. If you're on a version prior to 1.0.0 this vulnerability does not affect you.\n\nIf your Tina-enabled website has sensitive credentials stored as environment variables (eg. Algolia API keys) you should rotate those keys immediately.\n\n### Patches\n\nThis issue has been patched in @tinacms/cli@1.0.9\n\n### Workarounds\n\nUpgr",
       "severity": "high",
@@ -62,8 +75,13 @@
           "value": "CVE-2023-25164"
         }
       ],
-      "affectedRange": ">= 1.0.0, < 1.0.9",
-      "fixedVersion": "1.0.9"
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0, < 1.0.9",
+          "fixed": "1.0.9"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

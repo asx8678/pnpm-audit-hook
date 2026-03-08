@@ -1,9 +1,10 @@
 {
-  "name": "aurelia-framework",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "aurelia-framework",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-m6j2-v3gq-45r5",
+      "packageName": "aurelia-framework",
       "title": "Cross-site Scripting in aurelia-framework",
       "description": "The HTMLSanitizer class in html-sanitizer.ts in all released versions of the Aurelia framework 1.x repository is vulnerable to XSS. The sanitizer only attempts to filter SCRIPT elements, which makes it feasible for remote attackers to conduct XSS attacks via (for example) JavaScript code in an attribute of various other elements. An attacker might also exploit a bug in how the SCRIPT string is processed by splitting and nesting them for example.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2019-10062"
         }
       ],
-      "affectedRange": "< 1.4.1",
-      "fixedVersion": "1.4.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.4.1",
+          "fixed": "1.4.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

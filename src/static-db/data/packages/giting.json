@@ -1,9 +1,10 @@
 {
-  "name": "giting",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "giting",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-53xj-v576-3ch2",
+      "packageName": "giting",
       "title": "OS Command Injection in giting",
       "description": "giting version prior to 0.0.8 allows execution of arbritary commands. The first argument `repo` of function `pull()` is executed by the package without any validation.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2019-10802"
         }
       ],
-      "affectedRange": "<= 0.0.8"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.8"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,0 +1,33 @@
+{
+  "packageName": "@coding-solo/godot-mcp",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8jx2-rhfh-q928",
+      "packageName": "@coding-solo/godot-mcp",
+      "title": "godot-mcp has Command Injection via unsanitized projectPath",
+      "description": "### Impact \nA Command Injection vulnerability in godot-mcp allows remote code execution. The `executeOperation` function passed user-controlled input (e.g., `projectPath`) directly to `exec()`, which spawns a shell. An attacker could inject shell metacharacters like `$(command)` or `&calc` to execute arbitrary commands with the privileges of the MCP server process. \n\nThis affects any tool that accepts `projectPath`, including `create_scene`, `add_node`, `load_sprite`, and others. \n\n### Patches \n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8jx2-rhfh-q928",
+      "publishedAt": "2026-02-04T20:02:32Z",
+      "modifiedAt": "2026-02-08T03:14:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8jx2-rhfh-q928"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25546"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.1.1",
+          "fixed": "0.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

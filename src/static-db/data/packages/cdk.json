@@ -1,9 +1,10 @@
 {
-  "name": "cdk",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "cdk",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-v63m-x9r9-8gqp",
+      "packageName": "cdk",
       "title": "AWS CDK CLI prints AWS credentials retrieved by custom credential plugins",
       "description": "## Summary\n\nThe AWS Cloud Development Kit (AWS CDK) [1] is an open-source software development framework for defining cloud infrastructure in code and provisioning it through AWS CloudFormation. The AWS CDK CLI [2] is a command line tool for interacting with CDK applications. Customers can use the CDK CLI to create, manage, and deploy their AWS CDK projects. \n\nAn issue exists in the AWS CDK CLI where, under certain conditions, AWS credentials may be returned in the console output. Plugins that r",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-2598"
         }
       ],
-      "affectedRange": ">= 2.172.0, < 2.178.2",
-      "fixedVersion": "2.178.2"
+      "affectedVersions": [
+        {
+          "range": ">= 2.172.0, < 2.178.2",
+          "fixed": "2.178.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

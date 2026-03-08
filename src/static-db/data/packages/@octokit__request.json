@@ -1,9 +1,10 @@
 {
-  "name": "@octokit/request",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@octokit/request",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rmvr-2pp2-xj38",
+      "packageName": "@octokit/request",
       "title": "@octokit/request has a Regular Expression in fetchWrapper that Leads to ReDoS Vulnerability Due to Catastrophic Backtracking",
       "description": "### Summary\nThe regular expression `/<([^>]+)>; rel=\"deprecation\"/` used to match the `link` header in HTTP responses is vulnerable to a ReDoS (Regular Expression Denial of Service) attack. This vulnerability arises due to the unbounded nature of the regex's matching behavior, which can lead to catastrophic backtracking when processing specially crafted input. An attacker could exploit this flaw by sending a malicious `link` header, resulting in excessive CPU usage and potentially causing the se",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-25290"
         }
       ],
-      "affectedRange": ">= 1.0.0, < 8.4.1",
-      "fixedVersion": "8.4.1"
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0, < 8.4.1",
+          "fixed": "8.4.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

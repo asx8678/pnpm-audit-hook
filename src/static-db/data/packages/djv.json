@@ -1,9 +1,10 @@
 {
-  "name": "djv",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "djv",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4hv7-3q38-97m8",
+      "packageName": "djv",
       "title": "Arbitrary code execution in djv",
       "description": "This affects the package djv before 2.1.4. By controlling the schema file, an attacker can run arbitrary JavaScript code on the victim machine.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-28464"
         }
       ],
-      "affectedRange": "< 2.1.4",
-      "fixedVersion": "2.1.4"
+      "affectedVersions": [
+        {
+          "range": "< 2.1.4",
+          "fixed": "2.1.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

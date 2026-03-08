@@ -1,9 +1,10 @@
 {
-  "name": "hbs",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "hbs",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7f5c-rpf4-86p8",
+      "packageName": "hbs",
       "title": "Insertion of Sensitive Information into Externally-Accessible File or Directory and Exposure of Sensitive Information to an Unauthorized Actor in hbs",
       "description": "The npm hbs package is an Express view engine wrapper for Handlebars. Depending on usage, users of hbs may be vulnerable to a file disclosure vulnerability. There is currently no patch for this vulnerability. hbs mixes pure template data with engine configuration options through the Express render API. By overwriting internal configuration options a file disclosure vulnerability may be triggered in downstream applications. For an example PoC see the referenced GHSL-2021-020.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-32822"
         }
       ],
-      "affectedRange": "<= 4.1.2"
+      "affectedVersions": [
+        {
+          "range": "<= 4.1.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "@clerk/nuxt",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@clerk/nuxt",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9mp4-77wg-rwx9",
+      "packageName": "@clerk/nuxt",
       "title": "@clerk/backend Performs Insufficient Verification of Data Authenticity",
       "description": "### Impact\n\nApplications that use the `verifyWebhook()` helper to verify incoming Clerk webhooks are susceptible to accepting improperly signed webhook events.\n\n### Patches\n\n* `@clerk/backend`: the helper has been patched as of `2.4.0`\n* `@clerk/astro`: the helper has been patched as of `2.10.2`\n* `@clerk/express`: the helper has been patched as of `1.7.4`\n* `@clerk/fastify`: the helper has been patched as of `2.4.4`\n* `@clerk/nextjs`: the helper has been patched as of `6.23.3`\n* `@clerk/nuxt`: ",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-53548"
         }
       ],
-      "affectedRange": ">= 1.7.0, < 1.7.5",
-      "fixedVersion": "1.7.5"
+      "affectedVersions": [
+        {
+          "range": ">= 1.7.0, < 1.7.5",
+          "fixed": "1.7.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

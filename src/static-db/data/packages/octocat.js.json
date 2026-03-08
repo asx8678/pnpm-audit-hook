@@ -1,9 +1,10 @@
 {
-  "name": "octocat.js",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "octocat.js",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-r4jg-5v89-9v62",
+      "packageName": "octocat.js",
       "title": "Withdrawn: Octocat.js vulnerable to code injection",
       "description": "## Withdrawn\n\nThis advisory has been withdrawn because it is a test.\n\n## Original Description\n\n### Impact\nUsers can include their own images for accessories via provided URLs. These URLs are not validated and can result in execution of injected code.\n\n### Patches\nThis vulnerability was fixed in version 1.2 of octocat.js\n\n### Workarounds\nDirectly exposing rendered images to a website can introduce the vulnerability to users. To avoid, writing an image to disk then using that image in an image ele",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-39390"
         }
       ],
-      "affectedRange": "< 1.2",
-      "fixedVersion": "1.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.2",
+          "fixed": "1.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "mcp-fetch-server",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mcp-fetch-server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8fxj-2g9q-8fjw",
+      "packageName": "mcp-fetch-server",
       "title": "Fetch MCP Server has a Server-Side Request Forgery (SSRF) vulnerability",
       "description": "fetch-mcp v1.0.2 and before is vulnerable to Server-Side Request Forgery (SSRF) vulnerability, which allows attackers to bypass private IP validation and access internal network resources.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-65513"
         }
       ],
-      "affectedRange": "<= 1.0.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

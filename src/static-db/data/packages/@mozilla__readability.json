@@ -1,9 +1,10 @@
 {
-  "name": "@mozilla/readability",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@mozilla/readability",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3p6v-hrg8-8qj7",
+      "packageName": "@mozilla/readability",
       "title": "@mozilla/readability Denial of Service through Regex",
       "description": "Specially crafted titles may have caused a regular expression to excessively backtrack and cause a local denial of service.\n\nAdditional Details are [available at Bugzilla](https://bugzilla.mozilla.org/show_bug.cgi?id=1948833)\n\nCredit: DayShift",
       "severity": "low",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-2792"
         }
       ],
-      "affectedRange": "< 0.6.0",
-      "fixedVersion": "0.6.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.6.0",
+          "fixed": "0.6.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

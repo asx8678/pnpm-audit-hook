@@ -1,0 +1,33 @@
+{
+  "packageName": "bn.js",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-378v-28hj-76wf",
+      "packageName": "bn.js",
+      "title": "bn.js affected by an infinite loop",
+      "description": "This affects versions of the package bn.js before 4.12.3 and 5.2.3. Calling maskn(0) on any BN instance corrupts the internal state, causing toString(), divmod(), and other methods to enter an infinite loop, hanging the process indefinitely.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-378v-28hj-76wf",
+      "publishedAt": "2026-02-20T06:30:39Z",
+      "modifiedAt": "2026-02-24T14:45:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-378v-28hj-76wf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-2739"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.2.3",
+          "fixed": "5.2.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

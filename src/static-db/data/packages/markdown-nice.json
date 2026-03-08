@@ -1,9 +1,10 @@
 {
-  "name": "markdown-nice",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "markdown-nice",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-462r-wxvm-jvxh",
+      "packageName": "markdown-nice",
       "title": "Markdown-Nice v1.8.22 vulnerable to Cross-site Scripting",
       "description": "A cross-site scripting (XSS) vulnerability in Markdown-Nice v1.8.22 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Community Posting field.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2022-38639"
         }
       ],
-      "affectedRange": "<= 1.8.22"
+      "affectedVersions": [
+        {
+          "range": "<= 1.8.22"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

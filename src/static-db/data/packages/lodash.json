@@ -1,9 +1,10 @@
 {
-  "name": "lodash",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "lodash",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xxjr-mmjv-4gpg",
+      "packageName": "lodash",
       "title": "Lodash has Prototype Pollution Vulnerability in `_.unset` and `_.omit` functions",
       "description": "### Impact\n\nLodash versions 4.0.0 through 4.17.22 are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. An attacker can pass crafted paths which cause Lodash to delete methods from global prototypes. \n\nThe issue permits deletion of properties but does not allow overwriting their original behavior.  \n\n### Patches\n\nThis issue is patched on 4.17.23.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-13465"
         }
       ],
-      "affectedRange": ">= 4.0.0, <= 4.17.22",
-      "fixedVersion": "4.17.23"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, <= 4.17.22",
+          "fixed": "4.17.23"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-29mw-wpgm-hmr9",
+      "packageName": "lodash",
       "title": "Regular Expression Denial of Service (ReDoS) in lodash",
       "description": "All versions of package lodash prior to 4.17.21 are vulnerable to Regular Expression Denial of Service (ReDoS) via the `toNumber`, `trim` and `trimEnd` functions. \n\nSteps to reproduce (provided by reporter Liyuan Chen):\n```js\nvar lo = require('lodash');\n\nfunction build_blank(n) {\n    var ret = \"1\"\n    for (var i = 0; i < n; i++) {\n        ret += \" \"\n    }\n    return ret + \"1\";\n}\nvar s = build_blank(50000) var time0 = Date.now();\nlo.trim(s) \nvar time_cost0 = Date.now() - time0;\nconsole.log(\"time_",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2020-28500"
         }
       ],
-      "affectedRange": ">= 4.0.0, < 4.17.21",
-      "fixedVersion": "4.17.21"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.17.21",
+          "fixed": "4.17.21"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-35jh-r3h4-6jhm",
+      "packageName": "lodash",
       "title": "Command Injection in lodash",
       "description": "`lodash` versions prior to 4.17.21 are vulnerable to Command Injection via the template function.",
       "severity": "high",
@@ -62,8 +75,13 @@
           "value": "CVE-2021-23337"
         }
       ],
-      "affectedRange": "< 4.17.21",
-      "fixedVersion": "4.17.21"
+      "affectedVersions": [
+        {
+          "range": "< 4.17.21",
+          "fixed": "4.17.21"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

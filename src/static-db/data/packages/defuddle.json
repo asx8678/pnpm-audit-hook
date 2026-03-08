@@ -1,0 +1,33 @@
+{
+  "packageName": "defuddle",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5mq8-78gm-pjmq",
+      "packageName": "defuddle",
+      "title": "defuddle vulnerable to XSS via unescaped string interpolation in _findContentBySchemaText image tag",
+      "description": "### Summary\n\nThe `_findContentBySchemaText` method in `src/defuddle.ts` interpolates image `src` and `alt` attributes directly into an HTML string without escaping:\n\n```typescript\nhtml += `<img src=\"${imageSrc}\" alt=\"${imageAlt}\">`;\n```\n\nAn attacker can use a `\"` in the `alt` attribute to break out of the attribute context and inject event handlers. This is a separate vulnerability from the sanitization bypass fixed in f154cb7 — the injection happens during string construction, not in the DOM, s",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-5mq8-78gm-pjmq",
+      "publishedAt": "2026-03-06T18:39:35Z",
+      "modifiedAt": "2026-03-06T18:39:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5mq8-78gm-pjmq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30830"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.9.0",
+          "fixed": "0.9.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

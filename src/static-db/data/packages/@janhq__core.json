@@ -1,9 +1,10 @@
 {
-  "name": "@janhq/core",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@janhq/core",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-878h-rqcq-mv3x",
+      "packageName": "@janhq/core",
       "title": "Jan path traversal vulnerability",
       "description": "An arbitrary file upload vulnerability in the /v1/app/appendFileSync interface of Jan v0.4.12 allows attackers to execute arbitrary code via uploading a crafted file.",
       "severity": "critical",
@@ -20,10 +21,16 @@
           "value": "CVE-2024-37273"
         }
       ],
-      "affectedRange": "<= 0.1.11"
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.11"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5jqc-qj57-4hrc",
+      "packageName": "@janhq/core",
       "title": "Jan path traversal vulnerability",
       "description": "Jan v0.4.12 was discovered to contain an arbitrary file read vulnerability via the /v1/app/readFileSync interface.",
       "severity": "high",
@@ -40,10 +47,16 @@
           "value": "CVE-2024-36857"
         }
       ],
-      "affectedRange": "<= 0.1.11"
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.11"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-qfjh-mvq6-c5p8",
+      "packageName": "@janhq/core",
       "title": "Jan path traversal vulnerability",
       "description": "An arbitrary file upload vulnerability in the /v1/app/writeFileSync interface of Jan v0.4.12 allows attackers to execute arbitrary code via uploading a crafted file. @janhq/core has been deprecated in favor of janhq/jan, this vulnerability has been patched there in v0.5.2.",
       "severity": "critical",
@@ -60,7 +73,12 @@
           "value": "CVE-2024-36858"
         }
       ],
-      "affectedRange": "<= 0.1.11"
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.11"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

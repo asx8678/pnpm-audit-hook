@@ -1,0 +1,33 @@
+{
+  "packageName": "@farmfe/core",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p773-8mf4-rjm5",
+      "packageName": "@farmfe/core",
+      "title": "@farmfe/core is Missing Origin Validation in WebSocket",
+      "description": "npm @farmfe/core before 1.7.6 is Missing Origin Validation in WebSocket. The development (hot module reloading) server does not validate origin when connecting to a WebSocket client. This allows attackers to surveil developers running Farm who visit their webpage and steal source code that is leaked by the WebSocket server.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p773-8mf4-rjm5",
+      "publishedAt": "2026-02-12T18:30:23Z",
+      "modifiedAt": "2026-02-12T22:14:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p773-8mf4-rjm5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-56647"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.7.6",
+          "fixed": "1.7.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

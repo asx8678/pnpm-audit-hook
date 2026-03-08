@@ -1,9 +1,10 @@
 {
-  "name": "multer",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "multer",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-fjgf-rc76-4x9p",
+      "packageName": "multer",
       "title": "Multer vulnerable to Denial of Service via unhandled exception from malformed request",
       "description": "### Impact\n\nA vulnerability in Multer versions >= 1.4.4-lts.1, < 2.0.2 allows an attacker to trigger a Denial of Service (DoS) by sending a malformed request. This request causes an unhandled exception, leading to a crash of the process.\n\n### Patches\n\nUsers should upgrade to `2.0.2`\n\n### Workarounds\n\nNone",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-7338"
         }
       ],
-      "affectedRange": ">= 1.4.4-lts.1, < 2.0.2",
-      "fixedVersion": "2.0.2"
+      "affectedVersions": [
+        {
+          "range": ">= 1.4.4-lts.1, < 2.0.2",
+          "fixed": "2.0.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-44fp-w29j-9vj5",
+      "packageName": "multer",
       "title": "Multer vulnerable to Denial of Service via memory leaks from unclosed streams",
       "description": "### Impact\n\nMulter <2.0.0 is vulnerable to a resource exhaustion and memory leak issue due to improper stream handling. When the HTTP request stream emits an error, the internal `busboy` stream is not closed, violating Node.js stream safety guidance.\n\nThis leads to unclosed streams accumulating over time, consuming memory and file descriptors. Under sustained or repeated failure conditions, this can result in denial of service, requiring manual server restarts to recover. All users of Multer han",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2025-47935"
         }
       ],
-      "affectedRange": "< 2.0.0",
-      "fixedVersion": "2.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-g5hg-p3ph-g8qg",
+      "packageName": "multer",
       "title": "Multer vulnerable to Denial of Service via unhandled exception",
       "description": "### Impact\n\nA vulnerability in Multer versions >=1.4.4-lts.1, <2.0.1 allows an attacker to trigger a Denial of Service (DoS) by sending an upload file request with an empty string field name. This request causes an unhandled exception, leading to a crash of the process.\n\n### Patches\n\nUsers should upgrade to `2.0.1`\n\n### Workarounds\n\nNone\n\n### References\n\nhttps://github.com/expressjs/multer/commit/35a3272b611945155e046dd5cef11088587635e9\nhttps://github.com/expressjs/multer/issues/1233\nhttps://git",
       "severity": "high",
@@ -62,11 +75,17 @@
           "value": "CVE-2025-48997"
         }
       ],
-      "affectedRange": ">= 1.4.4-lts.1, < 2.0.1",
-      "fixedVersion": "2.0.1"
+      "affectedVersions": [
+        {
+          "range": ">= 1.4.4-lts.1, < 2.0.1",
+          "fixed": "2.0.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4pg4-qvpc-4q3h",
+      "packageName": "multer",
       "title": "Multer vulnerable to Denial of Service from maliciously crafted requests",
       "description": "### Impact\nA vulnerability in Multer versions >=1.4.4-lts.1 allows an attacker to trigger a Denial of Service (DoS) by sending a malformed multi-part upload request. This request causes an unhandled exception, leading to a crash of the process.\n\n### Patches\nUsers should upgrade to `2.0.0`\n\n### Workarounds\nNone\n\n### References\n\n- https://github.com/expressjs/multer/issues/1176\n- https://github.com/expressjs/multer/commit/2c8505f207d923dd8de13a9f93a4563e59933665",
       "severity": "high",
@@ -83,8 +102,94 @@
           "value": "CVE-2025-47944"
         }
       ],
-      "affectedRange": ">= 1.4.4-lts.1, < 2.0.0",
-      "fixedVersion": "2.0.0"
+      "affectedVersions": [
+        {
+          "range": ">= 1.4.4-lts.1, < 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5528-5vmv-3xc2",
+      "packageName": "multer",
+      "title": "Multer Vulnerable to Denial of Service via Uncontrolled Recursion",
+      "description": "### Impact\n\nA vulnerability in Multer versions < 2.1.1 allows an attacker to trigger a Denial of Service (DoS) by sending malformed requests, potentially causing stack overflow.\n\n### Patches\n\nUsers should upgrade to `2.1.1`\n\n### Workarounds\n\nNone\n\n### Resources\n\n- https://github.com/expressjs/multer/security/advisories/GHSA-5528-5vmv-3xc2\n- https://www.cve.org/CVERecord?id=CVE-2026-3520\n- https://github.com/expressjs/multer/commit/7e66481f8b2e6c54b982b34c152479e096ce2752\n- https://cna.openjsf.or",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5528-5vmv-3xc2",
+      "publishedAt": "2026-03-05T00:27:50Z",
+      "modifiedAt": "2026-03-05T00:27:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5528-5vmv-3xc2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-3520"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.1",
+          "fixed": "2.1.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v52c-386h-88mc",
+      "packageName": "multer",
+      "title": "Multer vulnerable to Denial of Service via resource exhaustion",
+      "description": "### Impact\n\nA vulnerability in Multer versions < 2.1.0 allows an attacker to trigger a Denial of Service (DoS) by dropping connection during file upload, potentially causing resource exhaustion.\n\n### Patches\n\nUsers should upgrade to `2.1.0`\n\n### Workarounds\n\nNone",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v52c-386h-88mc",
+      "publishedAt": "2026-03-01T01:18:27Z",
+      "modifiedAt": "2026-03-01T01:19:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v52c-386h-88mc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-2359"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.0",
+          "fixed": "2.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xf7r-hgr6-v32p",
+      "packageName": "multer",
+      "title": "Multer vulnerable to Denial of Service via incomplete cleanup",
+      "description": "### Impact\n\nA vulnerability in Multer versions < 2.1.0 allows an attacker to trigger a Denial of Service (DoS) by sending malformed requests, potentially causing resource exhaustion.\n\n### Patches\n\nUsers should upgrade to `2.1.0`\n\n### Workarounds\n\nNone",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xf7r-hgr6-v32p",
+      "publishedAt": "2026-03-01T01:18:50Z",
+      "modifiedAt": "2026-03-01T01:18:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xf7r-hgr6-v32p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-3304"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.0",
+          "fixed": "2.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

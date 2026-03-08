@@ -1,9 +1,10 @@
 {
-  "name": "@valtimo/components",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@valtimo/components",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xcp4-62vj-cq3r",
+      "packageName": "@valtimo/components",
       "title": "@valtimo/components exposes access token to form.io",
       "description": "### Impact\nWhen opening a form in Valtimo, the access token (JWT) of the user is exposed to `api.form.io` via the the `x-jwt-token` header. An attacker can retrieve personal information from this token, or use it to execute requests to the Valtimo REST API on behalf of the logged-in user.\n\nThis issue is caused by a misconfiguration of the Form.io component.\n\n### Attack requirements ###\nThe following conditions have to be met in order to perform this attack:\n- An attacker needs to have access to ",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-34706"
         }
       ],
-      "affectedRange": ">= 11.2.0, < 11.2.2",
-      "fixedVersion": "11.2.2"
+      "affectedVersions": [
+        {
+          "range": ">= 11.2.0, < 11.2.2",
+          "fixed": "11.2.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,0 +1,33 @@
+{
+  "packageName": "lettermint",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-49pc-8936-wvfp",
+      "packageName": "lettermint",
+      "title": "Lettermint Node.js SDK leaks email properties to unintended recipients when client instance is reused",
+      "description": "### Impact\nEmail properties (such as to, subject, html, text, and attachments) are not reset between sends when a single client instance is reused across multiple .send() calls. This can cause properties from a previous send to leak into a subsequent one, potentially delivering content or recipient addresses to unintended parties. Applications sending emails to different recipients in sequence — such as transactional flows like password resets or notifications — are affected.\n\n### Patches\nYes, t",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-49pc-8936-wvfp",
+      "publishedAt": "2026-02-20T21:14:49Z",
+      "modifiedAt": "2026-02-23T22:30:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-49pc-8936-wvfp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27492"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.5.1",
+          "fixed": "1.5.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

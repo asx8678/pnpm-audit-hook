@@ -1,9 +1,10 @@
 {
-  "name": "diff",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "diff",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-73rr-hh4g-fpgx",
+      "packageName": "diff",
       "title": "jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch",
       "description": "### Impact\n\nAttempting to parse a patch whose filename headers contain the line break characters `\\r`, `\\u2028`, or `\\u2029` can cause the `parsePatch` method to enter an infinite loop. It then consumes memory without limit until the process crashes due to running out of memory.\n\nApplications are therefore likely to be vulnerable to a denial-of-service attack if they call `parsePatch` with a user-provided patch as input. A large payload is not needed to trigger the vulnerability, so size limits ",
       "severity": "low",
@@ -20,8 +21,13 @@
           "value": "CVE-2026-24001"
         }
       ],
-      "affectedRange": "< 3.5.1",
-      "fixedVersion": "3.5.1"
+      "affectedVersions": [
+        {
+          "range": "< 3.5.1",
+          "fixed": "3.5.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

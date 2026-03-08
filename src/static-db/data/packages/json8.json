@@ -1,9 +1,10 @@
 {
-  "name": "json8",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "json8",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7h43-gx24-p529",
+      "packageName": "json8",
       "title": "Prototype pollution in json8",
       "description": "This affects the package json8 before 1.0.3. The function adds in the target object the property specified in the path, however it does not properly check the key being set, leading to a prototype pollution.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-7770"
         }
       ],
-      "affectedRange": "< 1.0.3",
-      "fixedVersion": "1.0.3"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.3",
+          "fixed": "1.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

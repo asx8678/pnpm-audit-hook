@@ -1,0 +1,32 @@
+{
+  "packageName": "@clawdbot/voice-call",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3m3q-x3gj-f79x",
+      "packageName": "@clawdbot/voice-call",
+      "title": "OpenClaw optional voice-call plugin: webhook verification may be bypassed behind certain proxy configurations",
+      "description": "## Affected Packages / Versions\n\nThis issue affects the optional voice-call plugin only. It is not enabled by default; it only applies to installations where the plugin is installed and enabled.\n\n- Package: `@openclaw/voice-call`\n- Vulnerable versions: `< 2026.2.3`\n- Patched versions: `>= 2026.2.3`\n\nLegacy package name (if you are still using it):\n\n- Package: `@clawdbot/voice-call`\n- Vulnerable versions: `<= 2026.1.24`\n- Patched versions: none published under this package name; migrate to `@open",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3m3q-x3gj-f79x",
+      "publishedAt": "2026-02-17T21:31:58Z",
+      "modifiedAt": "2026-03-06T01:01:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3m3q-x3gj-f79x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28465"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2026.1.24"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

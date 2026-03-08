@@ -1,9 +1,10 @@
 {
-  "name": "@remix-run/deno",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@remix-run/deno",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9583-h5hc-x8cw",
+      "packageName": "@remix-run/deno",
       "title": "React Router has Path Traversal in File Session Storage",
       "description": "If applications use `createFileSessionStorage()` from `@react-router/node` (or `@remix-run/node`/`@remix-run/deno` in Remix v2) with an [**unsigned cookie**](https://reactrouter.com/explanation/sessions-and-cookies#signing-cookies), it is possible for an attacker to cause the session to try to read/write from a location outside the specified session file directory. The success of the attack would depend on the permissions of the web server process to access those files. \n\nRead files cannot be re",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-61686"
         }
       ],
-      "affectedRange": "<= 2.17.1",
-      "fixedVersion": "2.17.2"
+      "affectedVersions": [
+        {
+          "range": "<= 2.17.1",
+          "fixed": "2.17.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "@adolph_dudu/ratio-swiper",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@adolph_dudu/ratio-swiper",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-88vr-hjqx-57qh",
+      "packageName": "@adolph_dudu/ratio-swiper",
       "title": "adolph_dudu ratio-swiper was discovered to contain a prototype pollution via the function extendDefaults",
       "description": "adolph_dudu ratio-swiper v0.0.2 was discovered to contain a prototype pollution via the function extendDefaults. This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-38997"
         }
       ],
-      "affectedRange": "= 0.0.2"
+      "affectedVersions": [
+        {
+          "range": "= 0.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

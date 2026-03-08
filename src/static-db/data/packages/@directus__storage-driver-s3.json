@@ -1,9 +1,10 @@
 {
-  "name": "@directus/storage-driver-s3",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@directus/storage-driver-s3",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j8xj-7jff-46mx",
+      "packageName": "@directus/storage-driver-s3",
       "title": "Directus's S3 assets become unavailable after a burst of malformed transformations",
       "description": "### Summary\nWhen making many malformed transformation requests at once, at some point, all assets are being served as 403.\n\n### Details\nWhen I was investigating this issue, I have found that after a burst of malformed asset transformation requests, the amount of `sockets` held on [Agent on NodeHttpHandler](https://github.com/smithy-lang/smithy-typescript/blob/main/packages/node-http-handler/src/node-http-handler.ts#L189) was always equal to [`STORAGE_CLOUD_MAX_SOCKETS`](https://github.com/direct",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-30225"
         }
       ],
-      "affectedRange": ">= 9.22.0, < 12.0.1",
-      "fixedVersion": "12.0.1"
+      "affectedVersions": [
+        {
+          "range": ">= 9.22.0, < 12.0.1",
+          "fixed": "12.0.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-rv78-qqrq-73m5",
+      "packageName": "@directus/storage-driver-s3",
       "title": "Directus's S3 assets become unavailable after a burst of HEAD requests",
       "description": "### Summary\nThere's some tools that use Directus to sync content and assets.\nSome of those tools use HEAD method, like Shopify, to check the existence of files.\nAlthough, when making many HEAD requests at once, at some point, all assets are being served as 403.\n\n### Details\nWhen I was investigating this issue, I have found that after the burst of HEAD requests, the amount of `sockets` held on [Agent on NodeHttpHandler](https://github.com/smithy-lang/smithy-typescript/blob/main/packages/node-http",
       "severity": "medium",
@@ -41,8 +48,13 @@
           "value": "CVE-2025-30350"
         }
       ],
-      "affectedRange": ">= 9.22.0, < 12.0.1",
-      "fixedVersion": "12.0.1"
+      "affectedVersions": [
+        {
+          "range": ">= 9.22.0, < 12.0.1",
+          "fixed": "12.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

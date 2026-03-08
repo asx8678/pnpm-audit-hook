@@ -1,9 +1,10 @@
 {
-  "name": "jscover",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "jscover",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-c5hm-xc74-pqrg",
+      "packageName": "jscover",
       "title": "OS Command Injection in jscover",
       "description": "jscover through 1.0.0 is vulnerable to Command Injection. It allows execution of arbitrary command via the source argument.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7623"
         }
       ],
-      "affectedRange": "<= 1.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

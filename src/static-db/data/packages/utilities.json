@@ -1,9 +1,10 @@
 {
-  "name": "utilities",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "utilities",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wxfj-84xf-7gxv",
+      "packageName": "utilities",
       "title": "mde utilities contains Prototype Pollution",
       "description": "All versions of the package utilities are vulnerable to Prototype Pollution via the _mix function.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-26105"
         }
       ],
-      "affectedRange": "<= 1.0.6"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

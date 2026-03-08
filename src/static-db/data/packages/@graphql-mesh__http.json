@@ -1,9 +1,10 @@
 {
-  "name": "@graphql-mesh/http",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@graphql-mesh/http",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j2wh-wrv3-4x4g",
+      "packageName": "@graphql-mesh/http",
       "title": "Unwanted access to the entire file system vulnerability due to a missing check in `staticFiles` HTTP handler",
       "description": "### Summary\nMissing check vulnerability in the static file handler allows any client to access the files in the server's file system\n\n### Details\nWhen `staticFiles` is set in the `serve` settings in the configuration file, the following handler doesn't check if `absolutePath` is still under the directory provided as `staticFiles`;\n\n```ts\n  if (staticFiles) {\n    router.get('/:relativePath+', async request => {\n      let { relativePath } = request.params;\n      if (!relativePath) {\n        relati",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-27098"
         }
       ],
-      "affectedRange": "< 0.3.19",
-      "fixedVersion": "0.3.19"
+      "affectedVersions": [
+        {
+          "range": "< 0.3.19",
+          "fixed": "0.3.19"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

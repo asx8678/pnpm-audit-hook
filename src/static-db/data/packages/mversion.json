@@ -1,9 +1,10 @@
 {
-  "name": "mversion",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mversion",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6m8p-4fxj-pgc2",
+      "packageName": "mversion",
       "title": "OS Command Injection in mversion",
       "description": "The issue occurs because tagName user input is formatted inside the exec function is executed without any checks.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-7688"
         }
       ],
-      "affectedRange": "<= 1.13.0",
-      "fixedVersion": "2.0.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.13.0",
+          "fixed": "2.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

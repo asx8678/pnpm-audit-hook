@@ -1,9 +1,10 @@
 {
-  "name": "w-zip",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "w-zip",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-fr6q-jv7j-35g3",
+      "packageName": "w-zip",
       "title": "Path Traversal in w-zip",
       "description": "Path Traversal in NPM w-zip prior to 1.0.12.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-0401"
         }
       ],
-      "affectedRange": "< 1.0.12",
-      "fixedVersion": "1.0.12"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.12",
+          "fixed": "1.0.12"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

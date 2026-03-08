@@ -1,0 +1,114 @@
+{
+  "packageName": "parse-dashboard",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jhp4-jvq3-w5xr",
+      "packageName": "parse-dashboard",
+      "title": "Parse Dashboard Has a Cache Key Collision that Leaks Master Key to Read-Only Sessions",
+      "description": "### Impact\n\nThe `ConfigKeyCache` uses the same cache key for both master key and read-only master key when resolving function-typed keys. Under specific timing conditions, a read-only user can receive the cached full master key, or a regular user can receive the cached read-only master key.\n\n### Patches\n\nThe fix uses distinct cache keys for master key and read-only master key.\n\n### Workarounds\n\nAvoid using function-typed master keys, or remove the `agent` configuration block from your dashboard ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jhp4-jvq3-w5xr",
+      "publishedAt": "2026-02-25T19:00:07Z",
+      "modifiedAt": "2026-02-25T19:00:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jhp4-jvq3-w5xr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27610"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 7.3.0-alpha.42, < 9.0.0-alpha.8",
+          "fixed": "9.0.0-alpha.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3534-xp88-25rc",
+      "packageName": "parse-dashboard",
+      "title": "Parse Dashboard is Missing CSRF Protection for its Agent Endpoint",
+      "description": "### Impact\n\nThe AI Agent API endpoint (`POST /apps/:appId/agent`) lacks CSRF protection. An attacker can craft a malicious page that, when visited by an authenticated dashboard user, submits requests to the agent endpoint using the victim's session.\n\n### Patches\n\nThe fix adds CSRF middleware to the agent endpoint and embeds a CSRF token in the dashboard page.\n\n### Workarounds\n\nRemove the `agent` configuration block from your dashboard configuration. Dashboards without an `agent` config are not a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3534-xp88-25rc",
+      "publishedAt": "2026-02-25T18:59:58Z",
+      "modifiedAt": "2026-02-25T18:59:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3534-xp88-25rc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27609"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 7.3.0-alpha.42, < 9.0.0-alpha.8",
+          "fixed": "9.0.0-alpha.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cvwj-6c9h-jg6v",
+      "packageName": "parse-dashboard",
+      "title": "Parse Dashboard is Missing Authorization for its Agent Endpoint",
+      "description": "### Impact\n\nThe AI Agent API endpoint (`POST /apps/:appId/agent`) does not enforce authorization. Authenticated users scoped to specific apps can access any other app's agent endpoint by changing the app ID in the URL. Read-only users are given the full master key instead of the read-only master key and can supply write permissions in the request body to perform write and delete operations.\n\nAffected are only dashboards with `agent` configuration enabled.\n\n### Patches\n\nThe fix adds per-app autho",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cvwj-6c9h-jg6v",
+      "publishedAt": "2026-02-25T18:59:44Z",
+      "modifiedAt": "2026-02-25T18:59:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cvwj-6c9h-jg6v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27608"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 7.3.0-alpha.42, <= 9.0.0-alpha.7",
+          "fixed": "9.0.0-alpha.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qwc3-h9mg-4582",
+      "packageName": "parse-dashboard",
+      "title": "Parse Dashboard has incomplete authentication on AI Agent endpoint",
+      "description": "### Impact\n\nThe AI Agent API endpoint (POST `/apps/:appId/agent`) lacks authentication. Unauthenticated remote attackers can send requests to the endpoint and perform arbitrary database operations against any connected Parse Server using the master key.\n\n### Patches\n\nThe fix adds authentication middleware to the agent endpoint.\n\n### Workarounds\n\nRemove the `agent` configuration block from your dashboard configuration. Dashboards without an `agent` config are not affected.\n\n### Resources\n\n- GitHu",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qwc3-h9mg-4582",
+      "publishedAt": "2026-02-25T18:37:53Z",
+      "modifiedAt": "2026-02-25T18:37:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qwc3-h9mg-4582"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27595"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 7.3.0-alpha.42, < 9.0.0-alpha.8",
+          "fixed": "9.0.0-alpha.8"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

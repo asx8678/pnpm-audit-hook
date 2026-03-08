@@ -1,9 +1,10 @@
 {
-  "name": "@nuxtlabs/github-module",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@nuxtlabs/github-module",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-fp2w-g92g-fgq4",
+      "packageName": "@nuxtlabs/github-module",
       "title": "@nuxtlabs/github-module made Use of Hard-coded Credentials",
       "description": "https://nuxt.com had a hardcoded GitHub token in the source code of the page. This token had access to multiple repositories under `nuxt`, `nuxtlabs` and `nuxt-themes` GitHub organizations. A patch in version 1.6.2 fixed the issue.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-2138"
         }
       ],
-      "affectedRange": "< 1.6.2",
-      "fixedVersion": "1.6.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.6.2",
+          "fixed": "1.6.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

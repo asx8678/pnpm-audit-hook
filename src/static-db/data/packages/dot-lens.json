@@ -1,9 +1,10 @@
 {
-  "name": "dot-lens",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "dot-lens",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rmhg-2cvv-q7vx",
+      "packageName": "dot-lens",
       "title": "dot-lens vulnerable to Prototype Pollution",
       "description": "All versions of the package dot-lens are vulnerable to Prototype Pollution via the `set()` function in `index.js` file.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-26106"
         }
       ],
-      "affectedRange": "<= 1.2.3"
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

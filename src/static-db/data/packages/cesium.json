@@ -1,9 +1,10 @@
 {
-  "name": "cesium",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "cesium",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4532-pmx7-9ww7",
+      "packageName": "cesium",
       "title": "Cross-site Scripting in cesium",
       "description": "A cross-site scripting (XSS) vulnerability in CesiumJS v1.111 allows attackers to execute arbitrary code in the context of the victim's browser via sending a crafted payload to /container_files/public_html/doc/index.html. NOTE: the vendor’s position is that Apps/Sandcastle/standalone.html is part of the CesiumGS/cesium GitHub repository, but is demo code that is not part of the CesiumJS JavaScript library product.'",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-48094"
         }
       ],
-      "affectedRange": "<= 1.111.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.111.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

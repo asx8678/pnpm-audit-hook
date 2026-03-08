@@ -1,0 +1,33 @@
+{
+  "packageName": "express-rate-limit",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-46wh-pxpv-q5gq",
+      "packageName": "express-rate-limit",
+      "title": "express-rate-limit: IPv4-mapped IPv6 addresses bypass per-client rate limiting on servers with dual-stack network",
+      "description": "## Summary\n\nThe default `keyGenerator` in express-rate-limit applies IPv6 subnet masking (`/56` by default) to all addresses that `net.isIPv6()` returns true for. This includes IPv4-mapped IPv6 addresses (`::ffff:x.x.x.x`), which Node.js returns as `request.ip` on dual-stack servers.\n\nBecause the first 80 bits of all IPv4-mapped addresses are zero, a `/56` (or any `/32` to `/80`) subnet mask produces the same network key (`::/56`) for **every** IPv4 client. This collapses all IPv4 traffic into a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-46wh-pxpv-q5gq",
+      "publishedAt": "2026-03-06T18:36:56Z",
+      "modifiedAt": "2026-03-06T18:36:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-46wh-pxpv-q5gq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30827"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 8.0.0, < 8.0.2",
+          "fixed": "8.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

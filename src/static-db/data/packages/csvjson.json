@@ -1,9 +1,10 @@
 {
-  "name": "csvjson",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "csvjson",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xq4f-3jxp-qv6m",
+      "packageName": "csvjson",
       "title": "csvjson vulnerable to prototype injection",
       "description": "A Prototype Pollution vulnerability in the toCsv function of csvjson versions thru 5.1.0 allows attackers to inject properties on Object.prototype via supplying a crafted payload, causing denial of service (DoS) as the minimum consequence.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-57318"
         }
       ],
-      "affectedRange": "<= 5.1.0"
+      "affectedVersions": [
+        {
+          "range": "<= 5.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

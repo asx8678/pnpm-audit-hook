@@ -1,9 +1,10 @@
 {
-  "name": "stimulus_reflex",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "stimulus_reflex",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-f78j-4w3g-4q65",
+      "packageName": "stimulus_reflex",
       "title": "StimulusReflex arbitrary method call",
       "description": "### Summary\nMore methods than expected can be called on reflex instances. Being able to call some of them has security implications.\n\n### Details\nTo invoke a reflex a websocket message of the following shape is sent:\n```json\n{ \n  \"target\": \"[class_name]#[method_name]\", \n  \"args\": [] \n}\n```\nThe server will proceed to instantiate `reflex` using the provided `class_name` as long as it extends `StimulusReflex::Reflex`.\nIt then attempts to call `method_name` on the instance with the provided argument",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-28121"
         }
       ],
-      "affectedRange": ">= 3.5.0-pre0, < 3.5.0-rc4",
-      "fixedVersion": "3.5.0-rc4"
+      "affectedVersions": [
+        {
+          "range": ">= 3.5.0-pre0, < 3.5.0-rc4",
+          "fixed": "3.5.0-rc4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,0 +1,29 @@
+{
+  "packageName": "cline",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9ppg-jx86-fqw7",
+      "packageName": "cline",
+      "title": "Unauthorized npm publish of cline@2.3.0 with modified postinstall script",
+      "description": "### Description\nOn February 17, 2026 at 3:26 AM PT, an unauthorized party used a compromised npm publish token to publish an update to Cline CLI on the NPM registry: cline@2.3.0. The published package contains a modified package.json with an added postinstall script:\n`\"postinstall\": \"npm install -g openclaw@latest\"`\nThis causes openclaw (an unrelated, non-malicious open source package) to be globally installed when cline@2.3.0 is installed. No other files were modified -- the CLI binary (dist/cl",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-9ppg-jx86-fqw7",
+      "publishedAt": "2026-02-19T15:17:10Z",
+      "modifiedAt": "2026-02-19T15:17:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9ppg-jx86-fqw7"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 2.3.0",
+          "fixed": "2.4.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

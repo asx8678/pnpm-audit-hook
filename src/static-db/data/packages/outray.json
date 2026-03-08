@@ -1,9 +1,10 @@
 {
-  "name": "outray",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "outray",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3pqc-836w-jgr7",
+      "packageName": "outray",
       "title": "Outray cli is vulnerable to race conditions in tunnels creation",
       "description": "### Summary\n\nA TOCTOU race condition vulnerability allows a user to exceed the set number of active tunnels in their subscription plan.\n\n### Details\n\nAffected conponent: `apps/web/src/routes/api/tunnel/register.ts`\n- `/tunnel/register` endpoint code-:\n\n```ts\n// Check if tunnel already exists in database\n          const [existingTunnel] = await db\n            .select()\n            .from(tunnels)\n            .where(eq(tunnels.url, tunnelUrl));\n\n          const isReconnection = !!existingTunnel;\n\n ",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2026-22820"
         }
       ],
-      "affectedRange": "< 0.1.5",
-      "fixedVersion": "0.1.5"
+      "affectedVersions": [
+        {
+          "range": "< 0.1.5",
+          "fixed": "0.1.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-45hj-9x76-wp9g",
+      "packageName": "outray",
       "title": "Outray has a Race Condition in the cli's webapp",
       "description": "### Summary\nThis vulnerability allows a user i.e a free plan user to get more than the desired subdomains due to lack of db transaction lock mechanisms in `https://github.com/akinloluwami/outray/blob/main/apps/web/src/routes/api/%24orgSlug/subdomains/index.ts`\n\n### Details\n- The affected code-:\n\n```ts\n//Race condition\n        const [subscription] = await db\n          .select()\n          .from(subscriptions)\n          .where(eq(subscriptions.organizationId, organization.id));\n\n        const curre",
       "severity": "medium",
@@ -41,8 +48,13 @@
           "value": "CVE-2026-22819"
         }
       ],
-      "affectedRange": "< 0.1.5",
-      "fixedVersion": "0.1.5"
+      "affectedVersions": [
+        {
+          "range": "< 0.1.5",
+          "fixed": "0.1.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "get-ip-range",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "get-ip-range",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6q4w-3wp4-q5wf",
+      "packageName": "get-ip-range",
       "title": "Denial of Service in get-ip-range",
       "description": "The get-ip-range package before 4.0.0 for Node.js is vulnerable to denial of service (DoS) if the range is untrusted input. An attacker could send a large range (such as 128.0.0.0/1) that causes resource exhaustion. Update get-ip-range dependency to 4.0.0 or above.\n\n",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-27191"
         }
       ],
-      "affectedRange": "< 4.0.0",
-      "fixedVersion": "4.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 4.0.0",
+          "fixed": "4.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "@directus/env",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@directus/env",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7hmh-pfrp-vcx4",
+      "packageName": "@directus/env",
       "title": "Directus GraphQL Field Duplication Denial of Service (DoS)",
       "description": "### Summary\nA denial of service (DoS) attack by field duplication in GraphQL is a type of attack where an attacker exploits the flexibility of GraphQL to overwhelm a server by requesting the same field multiple times in a single query. This can cause the server to perform redundant computations and consume excessive resources, leading to a denial of service for legitimate users.\n\n### Details\nRequest to the endpoint /graphql are sent when visualizing graphs generated at a dashboard:\n![image](http",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-39895"
         }
       ],
-      "affectedRange": "< 1.1.6",
-      "fixedVersion": "1.1.6"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.6",
+          "fixed": "1.1.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

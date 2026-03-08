@@ -1,9 +1,10 @@
 {
-  "name": "@npmcli/arborist",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@npmcli/arborist",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gmw6-94gg-2rc2",
+      "packageName": "@npmcli/arborist",
       "title": "UNIX Symbolic Link (Symlink) Following in @npmcli/arborist",
       "description": "### Impact\n\nArbitrary File Creation, Arbitrary File Overwrite, Arbitrary Code Execution\n\n`@npmcli/arborist`, the library that calculates dependency trees and manages the node_modules folder hierarchy for the npm command line interface, aims to guarantee that package dependency contracts will be met, and the extraction of package contents will always be performed into the expected folder.\n\nThis is accomplished by extracting package contents into a project's `node_modules` folder.\n\nIf the `node_mo",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2021-39135"
         }
       ],
-      "affectedRange": "< 2.8.2",
-      "fixedVersion": "2.8.2"
+      "affectedVersions": [
+        {
+          "range": "< 2.8.2",
+          "fixed": "2.8.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-2h3h-q99f-3fhc",
+      "packageName": "@npmcli/arborist",
       "title": "@npmcli/arborist vulnerable to UNIX Symbolic Link (Symlink) Following",
       "description": "### Impact\n\nArbitrary File Creation, Arbitrary File Overwrite, Arbitrary Code Execution\n\n`@npmcli/arborist`, the library that calculates dependency trees and manages the `node_modules` folder hierarchy for the npm command line interface, aims to guarantee that package dependency contracts will be met, and the extraction of package contents will always be performed into the expected folder.\n\nThis is, in part, accomplished by resolving dependency specifiers defined in `package.json` manifests for ",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2021-39134"
         }
       ],
-      "affectedRange": "< 2.8.2",
-      "fixedVersion": "2.8.2"
+      "affectedVersions": [
+        {
+          "range": "< 2.8.2",
+          "fixed": "2.8.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

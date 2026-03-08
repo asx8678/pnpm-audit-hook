@@ -1,9 +1,10 @@
 {
-  "name": "whatsapp-api-js",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "whatsapp-api-js",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mwhf-vhr5-7j23",
+      "packageName": "whatsapp-api-js",
       "title": "whatsapp-api-js fails to validate message's signature",
       "description": "### Impact\nIncorrect Access Control, anyone using the post or verifyRequestSignature methods to handle messages is impacted.\n\n### Patches\nPatched in version 4.0.3.\n\n### Workarounds\nIt's possible to check the payload validation using the WhatsAppAPI.verifyRequestSignature and expect false when the signature is valid.\n\n```ts\nfunction doPost(payload, header_signature) {\n    if (whatsapp.verifyRequestSignature(payload.toString(), header_signature) {\n        throw 403;\n    }\n    \n    // Now the paylo",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-45607"
         }
       ],
-      "affectedRange": ">= 4.0.0, < 4.0.3",
-      "fixedVersion": "4.0.3"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.0.3",
+          "fixed": "4.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

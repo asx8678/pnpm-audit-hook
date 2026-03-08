@@ -1,9 +1,10 @@
 {
-  "name": "parse-url",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "parse-url",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j9fq-vwqv-2fm2",
+      "packageName": "parse-url",
       "title": "Server-Side Request Forgery (SSRF) in GitHub repository ionicabizau/parse-url",
       "description": "Server-Side Request Forgery (SSRF) in GitHub repository ionicabizau/parse-url prior to 8.1.0.",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2022-2900"
         }
       ],
-      "affectedRange": "< 8.1.0",
-      "fixedVersion": "8.1.0"
+      "affectedVersions": [
+        {
+          "range": "< 8.1.0",
+          "fixed": "8.1.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-pqw5-jmp5-px4v",
+      "packageName": "parse-url",
       "title": "parse-url parses http URLs incorrectly, making it vulnerable to host name spoofing",
       "description": "parse-url prior to 8.1.0 is vulnerable to Misinterpretation of Input. parse-url parses certain http or https URLs incorrectly, identifying the URL's protocol as ssh. It may also parse the host name incorrectly.",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2022-3224"
         }
       ],
-      "affectedRange": "< 8.1.0",
-      "fixedVersion": "8.1.0"
+      "affectedVersions": [
+        {
+          "range": "< 8.1.0",
+          "fixed": "8.1.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-jpp7-7chh-cf67",
+      "packageName": "parse-url",
       "title": "Cross site scripting in parse-url",
       "description": "Cross-site Scripting (XSS) - Stored in GitHub repository ionicabizau/parse-url prior to 7.0.0.",
       "severity": "medium",
@@ -62,11 +75,17 @@
           "value": "CVE-2022-2218"
         }
       ],
-      "affectedRange": "< 6.0.1",
-      "fixedVersion": "6.0.1"
+      "affectedVersions": [
+        {
+          "range": "< 6.0.1",
+          "fixed": "6.0.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-q6wq-5p59-983w",
+      "packageName": "parse-url",
       "title": "Cross site scripting in parse-url",
       "description": "Cross-site Scripting (XSS) - Generic in GitHub repository ionicabizau/parse-url prior to 6.0.1",
       "severity": "medium",
@@ -83,11 +102,17 @@
           "value": "CVE-2022-2217"
         }
       ],
-      "affectedRange": "< 6.0.1",
-      "fixedVersion": "6.0.1"
+      "affectedVersions": [
+        {
+          "range": "< 6.0.1",
+          "fixed": "6.0.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-7f3x-x4pr-wqhj",
+      "packageName": "parse-url",
       "title": "Server-Side Request Forgery in parse-url",
       "description": "Server-Side Request Forgery (SSRF) in GitHub repository ionicabizau/parse-url prior to 7.0.0.",
       "severity": "critical",
@@ -104,11 +129,17 @@
           "value": "CVE-2022-2216"
         }
       ],
-      "affectedRange": "< 6.0.1",
-      "fixedVersion": "6.0.1"
+      "affectedVersions": [
+        {
+          "range": "< 6.0.1",
+          "fixed": "6.0.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4p35-cfcx-8653",
+      "packageName": "parse-url",
       "title": "Hostname confusion in parse-url",
       "description": "Exposure of Sensitive Information to an Unauthorized Actor via hostname confusion in GitHub repository ionicabizau/parse-url prior to 6.0.1",
       "severity": "high",
@@ -125,8 +156,13 @@
           "value": "CVE-2022-0722"
         }
       ],
-      "affectedRange": "< 6.0.1",
-      "fixedVersion": "6.0.1"
+      "affectedVersions": [
+        {
+          "range": "< 6.0.1",
+          "fixed": "6.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

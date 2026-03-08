@@ -1,0 +1,33 @@
+{
+  "packageName": "mcp-maigret",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2g7v-hghf-grg4",
+      "packageName": "mcp-maigret",
+      "title": "mcp-maigret vulnerable to command injection",
+      "description": "A vulnerability was determined in BurtTheCoder mcp-maigret up to 1.0.12. This affects an unknown part of the file src/index.ts of the component search_username. Executing a manipulation of the argument Username can lead to command injection. The attack may be launched remotely. Upgrading to version 1.0.13 is able to mitigate this issue. This patch is called b1ae073c4b3e789ab8de36dc6ca8111ae9399e7a. Upgrading the affected component is advised.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2g7v-hghf-grg4",
+      "publishedAt": "2026-02-08T03:30:27Z",
+      "modifiedAt": "2026-02-10T00:22:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2g7v-hghf-grg4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-2130"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.13",
+          "fixed": "1.0.13"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

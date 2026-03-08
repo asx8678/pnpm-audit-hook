@@ -1,9 +1,10 @@
 {
-  "name": "docker-tester",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "docker-tester",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rj88-4777-828h",
+      "packageName": "docker-tester",
       "title": "Command injection in docker-tester",
       "description": "OS Command injection vulnerability in Mintzo Docker-Tester through 1.2.1 allows attackers to execute arbitrary commands via shell metacharacters in the 'ports' entry of a crafted docker-compose.yml file.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-34079"
         }
       ],
-      "affectedRange": "<= 1.2.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

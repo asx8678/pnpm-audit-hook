@@ -1,9 +1,10 @@
 {
-  "name": "whistle",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "whistle",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gg6x-448q-pqqm",
+      "packageName": "whistle",
       "title": "Avenwu Whistle Cross-Site Request Forgery (CSRF)",
       "description": "Cross-Site Request Forgery (CSRF) in Avenwu Whistle v.2.9.90 and before allows attackers to perform malicious API calls, resulting in the execution of arbitrary code on the victim's machine.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-55500"
         }
       ],
-      "affectedRange": "<= 2.9.90"
+      "affectedVersions": [
+        {
+          "range": "<= 2.9.90"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

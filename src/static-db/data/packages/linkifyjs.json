@@ -1,9 +1,10 @@
 {
-  "name": "linkifyjs",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "linkifyjs",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-95jq-xph2-cx9h",
+      "packageName": "linkifyjs",
       "title": "Linkify Allows Prototype Pollution & HTML Attribute Injection (XSS)",
       "description": "Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution') vulnerability in Linkify (linkifyjs) allows XSS Targeting HTML Attributes and Manipulating User-Controlled Variables.This issue affects Linkify: from 4.3.1 before 4.3.2.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-8101"
         }
       ],
-      "affectedRange": "< 4.3.2",
-      "fixedVersion": "4.3.2"
+      "affectedVersions": [
+        {
+          "range": "< 4.3.2",
+          "fixed": "4.3.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

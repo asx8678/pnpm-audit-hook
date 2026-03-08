@@ -1,9 +1,10 @@
 {
-  "name": "@aiondadotcom/mcp-ssh",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@aiondadotcom/mcp-ssh",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-694p-3fxc-m92h",
+      "packageName": "@aiondadotcom/mcp-ssh",
       "title": "AiondaDotCom mcp-ssh command injection vulnerability in SSH operations",
       "description": "A security flaw has been discovered in AiondaDotCom mcp-ssh up to 1.0.3. Affected by this issue is some unknown functionality of the file server-simple.mjs. Performing manipulation results in command injection. The attack can be initiated remotely. Upgrading to version 1.0.4 and 1.1.0 can resolve this issue. The patch is named cd2566a948b696501abfa6c6b03462cac5fb43d8. It is advisable to upgrade the affected component.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-9654"
         }
       ],
-      "affectedRange": "< 1.1.0",
-      "fixedVersion": "1.1.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

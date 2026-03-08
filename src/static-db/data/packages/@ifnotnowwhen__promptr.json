@@ -1,9 +1,10 @@
 {
-  "name": "@ifnotnowwhen/promptr",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@ifnotnowwhen/promptr",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hwxp-6qf7-q3rc",
+      "packageName": "@ifnotnowwhen/promptr",
       "title": "Remote command execution in promptr",
       "description": "A remote command execution (RCE) vulnerability in promptr v6.0.7 allows attackers to execute arbitrary commands via a crafted URL.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-46489"
         }
       ],
-      "affectedRange": "<= 6.0.7"
+      "affectedVersions": [
+        {
+          "range": "<= 6.0.7"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

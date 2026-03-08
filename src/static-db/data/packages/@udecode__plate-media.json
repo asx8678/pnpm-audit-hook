@@ -1,9 +1,10 @@
 {
-  "name": "@udecode/plate-media",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@udecode/plate-media",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-h3pq-667x-r789",
+      "packageName": "@udecode/plate-media",
       "title": "Plate media plugins has a XSS in media embed element when using custom URL parsers",
       "description": "### Impact\nEditors that use `MediaEmbedElement` and pass custom `urlParsers` to the `useMediaState` hook may be vulnerable to XSS if a custom parser allows `javascript:`, `data:` or `vbscript:` URLs to be embedded. Editors that do not use `urlParsers` and instead consume the `url` property directly may also be vulnerable if the URL is not sanitised.\n\nThe default parsers `parseTwitterUrl` and `parseVideoUrl` are not affected.\n\nExamples of vulnerable code:\n\n```tsx\nconst { embed } = useMediaState({",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-40631"
         }
       ],
-      "affectedRange": "< 36.0.10",
-      "fixedVersion": "36.0.10"
+      "affectedVersions": [
+        {
+          "range": "< 36.0.10",
+          "fixed": "36.0.10"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

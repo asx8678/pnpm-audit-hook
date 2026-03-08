@@ -1,9 +1,10 @@
 {
-  "name": "msgpack5",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "msgpack5",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gmjw-49p4-pcfm",
+      "packageName": "msgpack5",
       "title": "Prototype poisoning",
       "description": "### Impact\n\nThe issue is as follows: when `msgpack5` decodes a map containing a \nkey `\"__proto__\"`, it assigns the decoded value to `__proto__`. As you \nare no doubt aware, `Object.prototype.__proto__` is an accessor \nproperty for the receiver's prototype. If the value corresponding to \nthe key `__proto__` decodes to an object or `null`, `msgpack5` sets \nthe decoded object's prototype to that value. \n\nAn attacker who can submit crafted MessagePack data to a service can \nuse this to produce value",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-21368"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.2.1",
-      "fixedVersion": "5.2.1"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.2.1",
+          "fixed": "5.2.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

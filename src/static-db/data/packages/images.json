@@ -1,9 +1,10 @@
 {
-  "name": "images",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "images",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vjpv-x8p9-7p85",
+      "packageName": "images",
       "title": "images vulnerable to Denial of Service",
       "description": "All versions of the package images are vulnerable to Denial of Service (DoS) due to providing unexpected input types to several different functions. This makes it possible to reach an assert macro, leading to a process crash.\n\n**Note:**\nBy providing some specific integer values (like 0) to the size function, it is possible to obtain a Segmentation fault error, leading to the process crash.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-21523"
         }
       ],
-      "affectedRange": "<= 3.2.4"
+      "affectedVersions": [
+        {
+          "range": "<= 3.2.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

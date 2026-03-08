@@ -1,9 +1,10 @@
 {
-  "name": "@actual-app/sync-server",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@actual-app/sync-server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xvp7-8vm8-xfxx",
+      "packageName": "@actual-app/sync-server",
       "title": "Actual Sync-server Gocardless service is logging sensitive data including bearer tokens and account numbers",
       "description": "### Summary\nThe GoCardless components in Actualbudget in are logging responses to STDOUT in a parsed format using `console.log`and `console.debug` (Which in this version of node is an alias for `console.log`). This is exposing sensitive information in log files including, but not limited to:\n\n- Gocardless bearer tokens.\n- Account IBAN and Bank Account numbers.\n- PII of the account holder.\n- Transaction details (Payee bank information, Recipient account numbers, Transaction IDs)...\n\n### Details\n\n",
       "severity": "medium",
@@ -16,7 +17,66 @@
           "value": "GHSA-xvp7-8vm8-xfxx"
         }
       ],
-      "affectedRange": "<= 25.10.0"
+      "affectedVersions": [
+        {
+          "range": "<= 25.10.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qmjj-p7m9-wjrv",
+      "packageName": "@actual-app/sync-server",
+      "title": "@actual-app/sync-server: Missing authorization in sync endpoints allows cross-user budget file access in multi-user mode",
+      "description": "In multi-user mode (OpenID), the sync API endpoints (`/sync/*`) don't verify that the authenticated user owns or has access to the file being operated on. Any authenticated user can read, modify, and overwrite any other user's budget files by providing their file ID.\n\n## Affected Code\n\nFile: `packages/sync-server/src/app-sync.ts`\n\nThe `validateSessionMiddleware` on line 31 confirms the user is authenticated, but individual endpoints only check that the file *exists* (via `verifyFileExists`), nev",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qmjj-p7m9-wjrv",
+      "publishedAt": "2026-02-27T19:29:46Z",
+      "modifiedAt": "2026-02-27T19:29:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qmjj-p7m9-wjrv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27638"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 26.2.0",
+          "fixed": "26.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m2cq-xjgm-f668",
+      "packageName": "@actual-app/sync-server",
+      "title": "ActualBudget server is Missing Authentication for SimpleFIN and Pluggy AI bank sync endpoints",
+      "description": "### Summary\n\nMissing authentication middleware in the ActualBudget server component allows any unauthenticated user to query the SimpleFIN and Pluggy.ai integration endpoints and read sensitive bank account balance and transaction information.\n\n### Impact\n\nThis vulnerability allows an unauthenticated attacker to read the bank account balance and transaction history of ActualBudget users. This vulnerability impacts all ActualBudget Server users with the SimpleFIN or Pluggy.ai integrations configu",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m2cq-xjgm-f668",
+      "publishedAt": "2026-02-24T20:13:30Z",
+      "modifiedAt": "2026-02-24T20:13:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m2cq-xjgm-f668"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27584"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 26.2.1",
+          "fixed": "26.2.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

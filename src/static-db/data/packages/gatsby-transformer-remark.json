@@ -1,9 +1,10 @@
 {
-  "name": "gatsby-transformer-remark",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "gatsby-transformer-remark",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7ch4-rr99-cqcw",
+      "packageName": "gatsby-transformer-remark",
       "title": "gatsby-transformer-remark has possible unsanitized JavaScript code injection",
       "description": "### Impact\nThe gatsby-transformer-remark plugin prior to versions 5.25.1 and 6.3.2 passes input through to the `gray-matter` npm package, which is vulnerable to JavaScript injection in its default configuration, unless input is sanitized.  The vulnerability is present in gatsby-transformer-remark when passing input in data mode (querying MarkdownRemark nodes via GraphQL).  Injected JavaScript executes in the context of the build server.\n\nTo exploit this vulnerability untrusted/unsanitized input ",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-22491"
         }
       ],
-      "affectedRange": "< 5.25.1",
-      "fixedVersion": "5.25.1"
+      "affectedVersions": [
+        {
+          "range": "< 5.25.1",
+          "fixed": "5.25.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "netmask",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "netmask",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-pch5-whg9-qr2r",
+      "packageName": "netmask",
       "title": "netmask npm package mishandles octal input data",
       "description": "The netmask package before 2.0.1 for Node.js mishandles certain unexpected characters in an IP address string, such as an octal digit of 9. This (in some situations) allows attackers to bypass access control that is based on IP addresses. NOTE: this issue exists because of an incomplete fix for CVE-2021-28918.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2021-29418"
         }
       ],
-      "affectedRange": "< 2.0.1",
-      "fixedVersion": "2.0.1"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.1",
+          "fixed": "2.0.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4c7m-wxvm-r7gc",
+      "packageName": "netmask",
       "title": "Improper parsing of octal bytes in netmask",
       "description": "Improper input validation of octal strings in netmask npm package v1.0.6 and below allows unauthenticated remote attackers to perform indeterminate SSRF, RFI, and LFI attacks on many of the dependent packages. A remote unauthenticated attacker can bypass packages relying on netmask to filter IPs and reach critical VPN or LAN hosts.\n\n:exclamation: NOTE: The fix for this issue was incomplete. A subsequent fix was made in version `2.0.1` which was assigned [CVE-2021-29418 / GHSA-pch5-whg9-qr2r](htt",
       "severity": "critical",
@@ -41,8 +48,13 @@
           "value": "CVE-2021-28918"
         }
       ],
-      "affectedRange": "< 1.1.0",
-      "fixedVersion": "1.1.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

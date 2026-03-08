@@ -1,9 +1,10 @@
 {
-  "name": "@anthropic-ai/claude-code",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@anthropic-ai/claude-code",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jh7p-qr78-84p7",
+      "packageName": "@anthropic-ai/claude-code",
       "title": "Claude Code Leaks Data via Malicious Environment Configuration Before Trust Confirmation",
       "description": "A vulnerability in Claude Code's project-load flow allowed malicious repositories to exfiltrate data including Anthropic API keys before users confirmed trust. If a user started Claude Code in an attacker-controller repository, and the repository included a settings file that set ANTHROPIC_BASE_URL to an attacker-controlled endpoint, Claude Code would issue API requests before showing the trust prompt, including potentially leaking the user's API keys.\n\nUsers on standard Claude Code auto-update ",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2026-21852"
         }
       ],
-      "affectedRange": "< 2.0.65",
-      "fixedVersion": "2.0.65"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.65",
+          "fixed": "2.0.65"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-2jjv-qf24-vfm4",
+      "packageName": "@anthropic-ai/claude-code",
       "title": "Claude Code Vulnerable to Arbitrary Code Execution via Plugin Autoloading with Specific Yarn Versions",
       "description": "When using Claude Code with Yarn installed, Yarn config files can trigger code execution when running `yarn --version`. This could lead to a bypass of the directory trust dialog in Claude Code, as plugins and `yarnPath` could be executed prior to the user accepting the risks of working in an untrusted directory. Users on standard Claude Code auto-update will have received this fix automatically. Users performing manual updates are advised to update to the latest version.\n\nThank you to Benjamin F",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2025-59828"
         }
       ],
-      "affectedRange": "< 1.0.39",
-      "fixedVersion": "1.0.39"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.39",
+          "fixed": "1.0.39"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5hhx-v7f6-x7gv",
+      "packageName": "@anthropic-ai/claude-code",
       "title": "Claude Code vulnerable to command execution prior to startup trust dialog",
       "description": "When using Claude Code with Yarn installed, Yarn config files can trigger code execution when running yarn --version. This could lead to a bypass of the directory trust dialog in Claude Code, as plugins and yarnPath could be executed prior to the user accepting the risks of working in an untrusted directory. Users on standard Claude Code auto-update will have received this fix automatically. Users performing manual updates are advised to update to the latest version.\n\nThank you to Benjamin Falle",
       "severity": "high",
@@ -62,11 +75,17 @@
           "value": "CVE-2025-65099"
         }
       ],
-      "affectedRange": "< 1.0.39",
-      "fixedVersion": "1.0.39"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.39",
+          "fixed": "1.0.39"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-xq4m-mc3c-vvg3",
+      "packageName": "@anthropic-ai/claude-code",
       "title": "Claude Code Command Validation Bypass Allows Arbitrary Code Execution",
       "description": "Due to errors in parsing shell commands related to $IFS and short CLI flags, it was possible to bypass the Claude Code read-only validation and trigger arbitrary code execution. Reliably exploiting this requires the ability to add untrusted content into a Claude Code context window.\n\nUsers on standard Claude Code auto-update have received this fix already. Users performing manual updates are advised to update to the latest version.\n\nThank you to [RyotaK](hxxps://ryotak.net) from [GMO Flatt Secur",
       "severity": "high",
@@ -83,11 +102,17 @@
           "value": "CVE-2025-66032"
         }
       ],
-      "affectedRange": "< 1.0.93",
-      "fixedVersion": "1.0.93"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.93",
+          "fixed": "1.0.93"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-7mv8-j34q-vp7q",
+      "packageName": "@anthropic-ai/claude-code",
       "title": "@anthropic-ai/claude-code has Sed Command Validation Bypass that Allows Arbitrary File Writes",
       "description": "Due to an error in sed command parsing, it was possible to bypass the Claude Code read-only validation and write to arbitrary files on the host system. \n\nUsers on standard Claude Code auto-update will have received this fix automatically. Users performing manual updates are advised to update to the latest version.\n\nThank you to Adam Chester - SpecterOps for reporting this issue!",
       "severity": "high",
@@ -104,11 +129,17 @@
           "value": "CVE-2025-64755"
         }
       ],
-      "affectedRange": "< 2.0.31",
-      "fixedVersion": "2.0.31"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.31",
+          "fixed": "2.0.31"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-66m2-gx93-v996",
+      "packageName": "@anthropic-ai/claude-code",
       "title": "Claude Code permission deny bypass through symlink",
       "description": "Claude Code failed to account for symlinks when checking permission deny rules. If a user explicitly denied Claude Code access to a file and Claude Code had access to a symlink pointing to that file, it was possible for Claude Code to access the file. \n\nUsers on standard Claude Code auto-update will have received this fix automatically. Users performing manual updates are advised to update to the latest version.\n\nThank you to https://hackerone.com/vinai for reporting this issue!",
       "severity": "low",
@@ -125,11 +156,17 @@
           "value": "CVE-2025-59829"
         }
       ],
-      "affectedRange": "< 1.0.120",
-      "fixedVersion": "1.0.120"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.120",
+          "fixed": "1.0.120"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4fgq-fpq9-mr3g",
+      "packageName": "@anthropic-ai/claude-code",
       "title": "Claude Code can execute commands prior to the startup trust dialog ",
       "description": "Due to a bug in the startup trust dialog implementation, Claude Code could be tricked to execute code contained in a project before the user accepted the startup trust dialog. Exploiting this requires a user to start Claude Code in an untrusted directory. \n\nUsers on standard Claude Code auto-update will have received this fix automatically. Users performing manual updates are advised to update to the latest version.\n\nThank you to https://hackerone.com/avivdon for reporting this issue!",
       "severity": "high",
@@ -146,11 +183,17 @@
           "value": "CVE-2025-59536"
         }
       ],
-      "affectedRange": "< 1.0.111",
-      "fixedVersion": "1.0.111"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.111",
+          "fixed": "1.0.111"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-j4h9-wv2m-wrf7",
+      "packageName": "@anthropic-ai/claude-code",
       "title": "Claude Code vulnerable to arbitrary code execution caused by maliciously configured git email ",
       "description": "At startup, Claude Code constructed a shell command that interpolated the value of `git config user.email` from the current workspace. If an attacker controlled the repository’s Git config (e.g., via a malicious `.git/config`) and set `user.email` to a crafted payload, the unescaped interpolation could trigger arbitrary command execution **before** the user accepted the workspace-trust dialog. The issue affects versions prior to `1.0.105`. The fix in `1.0.105` avoids executing commands built fro",
       "severity": "high",
@@ -167,11 +210,17 @@
           "value": "CVE-2025-59041"
         }
       ],
-      "affectedRange": "< 1.0.105",
-      "fixedVersion": "1.0.105"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.105",
+          "fixed": "1.0.105"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-qxfv-fcpc-w36x",
+      "packageName": "@anthropic-ai/claude-code",
       "title": "Claude Code rg vulnerability does not protect against approval prompt bypass",
       "description": "Due to an error in command parsing, it was possible to bypass the Claude Code confirmation prompt to trigger execution of an untrusted command. Reliably exploiting this requires the ability to add untrusted content into a Claude Code context window.\n\nUsers on standard Claude Code auto-update will have received this fix automatically. Users performing manual updates are advised to update to the latest version.\n\nThank you to the NVIDIA AI Red Team for reporting this issue!",
       "severity": "high",
@@ -188,11 +237,17 @@
           "value": "CVE-2025-58764"
         }
       ],
-      "affectedRange": "< 1.0.105",
-      "fixedVersion": "1.0.105"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.105",
+          "fixed": "1.0.105"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-ph6w-f82w-28w6",
+      "packageName": "@anthropic-ai/claude-code",
       "title": "Claude Code Vulnerable to Arbitrary Code Execution Due to Insufficient Startup Warning",
       "description": "When Claude Code was started in a new directory, it displayed a warning asking, \"Do you trust the files in this folder?\". This warning did not properly document that selecting \"Yes, proceed\" would allow Claude Code to execute files in the folder without additional confirmation. This may not have been clear to a user so we have updated the warning to clarify this functionality. \n\nUsers on standard Claude Code auto-update will have received this fix automatically. Users performing manual updates a",
       "severity": "high",
@@ -205,11 +260,17 @@
           "value": "GHSA-ph6w-f82w-28w6"
         }
       ],
-      "affectedRange": "< 1.0.87",
-      "fixedVersion": "1.0.87"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.87",
+          "fixed": "1.0.87"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-x5gv-jw7f-j6xj",
+      "packageName": "@anthropic-ai/claude-code",
       "title": "Claude Code's Permissive Default Allowlist Enables Unauthorized File Read and Network Exfiltration in Claude Code",
       "description": "Due to an overly broad allowlist of safe commands, it was possible to bypass the Claude Code confirmation prompts to read a file and then send file contents over the network without user confirmation. Reliably exploiting this requires the ability to add untrusted content into a Claude Code context window. \n\nUsers on standard Claude Code auto-update received this fix automatically after release. Current users of Claude Code are unaffected, as versions prior to 1.0.24 are deprecated and have been ",
       "severity": "high",
@@ -226,11 +287,17 @@
           "value": "CVE-2025-55284"
         }
       ],
-      "affectedRange": "< 1.0.4",
-      "fixedVersion": "1.0.4"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.4",
+          "fixed": "1.0.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-x56v-x2h6-7j34",
+      "packageName": "@anthropic-ai/claude-code",
       "title": "Claude Code echo command allowed bypass of user approval prompt for command execution",
       "description": "Due to an error in command parsing, it was possible to bypass the Claude Code confirmation prompt to trigger execution of an untrusted command. Reliably exploiting this requires the ability to add untrusted content into a Claude Code context window. \n\nUsers on standard Claude Code auto-update received this fix automatically after release. Current users of Claude Code are unaffected, as versions prior to 1.0.24 are deprecated and have been forced to update.\n\nThank you to Elad Beber (Cymulate) for",
       "severity": "high",
@@ -247,11 +314,17 @@
           "value": "CVE-2025-54795"
         }
       ],
-      "affectedRange": "< 1.0.20",
-      "fixedVersion": "1.0.20"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.20",
+          "fixed": "1.0.20"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-pmw4-pwvc-3hx2",
+      "packageName": "@anthropic-ai/claude-code",
       "title": "Claude Code Research Preview has a Path Restriction Bypass which could allow unauthorized file access",
       "description": "Due to a path validation flaw using prefix matching instead of canonical path comparison, it was possible to bypass directory restrictions and access files outside the CWD. Successful exploitation depends on the presence of (or ability to create) a directory with the same prefix as the CWD and the ability to add untrusted content into a Claude Code context window. \n\nUsers on standard Claude Code auto-update received this fix automatically after release. Current users of Claude Code are unaffecte",
       "severity": "high",
@@ -268,11 +341,17 @@
           "value": "CVE-2025-54794"
         }
       ],
-      "affectedRange": "< 0.2.111",
-      "fixedVersion": "0.2.111"
+      "affectedVersions": [
+        {
+          "range": "< 0.2.111",
+          "fixed": "0.2.111"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9f65-56v6-gxw7",
+      "packageName": "@anthropic-ai/claude-code",
       "title": "Claude Code Improper Authorization via websocket connections from arbitrary origins",
       "description": "Claude Code extensions in VSCode and forks (e.g., Cursor, Windsurf, and VSCodium) and JetBrains IDEs (e.g., IntelliJ, Pycharm, and Android Studio) are vulnerable to unauthorized websocket connections from an attacker when visiting attacker-controlled webpages. Claude Code for VSCode IDE extensions versions 0.2.116 through 1.0.23 are vulnerable. For Jetbrains IDE plugins, Claude Code [beta] versions 0.1.1 through 0.1.8 are vulnerable.  \n\nIn VSCode (and forks), exploitation would allow an attacker",
       "severity": "high",
@@ -289,8 +368,202 @@
           "value": "CVE-2025-52882"
         }
       ],
-      "affectedRange": ">= 0.2.116, < 1.0.24",
-      "fixedVersion": "1.0.24"
+      "affectedVersions": [
+        {
+          "range": ">= 0.2.116, < 1.0.24",
+          "fixed": "1.0.24"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-ff64-7w26-62rf",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code has Sandbox Escape via Persistent Configuration Injection in settings.json",
+      "description": "Claude Code's bubblewrap sandboxing mechanism failed to properly protect the .claude/settings.json configuration file when it did not exist at startup. While the parent directory was mounted as writable and .claude/settings.local.json was explicitly protected with read-only constraints, settings.json was not protected if it was missing. This allowed malicious code running inside the sandbox to create this file and inject persistent hooks (such as SessionStart commands) that would execute with ho",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-ff64-7w26-62rf",
+      "publishedAt": "2026-02-06T19:14:33Z",
+      "modifiedAt": "2026-02-06T19:14:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ff64-7w26-62rf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25725"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.2",
+          "fixed": "2.1.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4q92-rfm6-2cqx",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code has Permission Deny Bypass Through Symbolic Links",
+      "description": "Claude Code failed to strictly enforce deny rules configured in settings.json when accessing files through symbolic links. If a user explicitly denied Claude Code access to a file (such as /etc/passwd) and Claude Code had access to a symbolic link pointing to that file, it was possible for Claude Code to read the restricted file through the symlink without triggering deny rule enforcement. \n\nUsers on standard Claude Code auto-update received this fix automatically. Users performing manual update",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-4q92-rfm6-2cqx",
+      "publishedAt": "2026-02-06T19:08:04Z",
+      "modifiedAt": "2026-02-06T19:08:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4q92-rfm6-2cqx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25724"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.7",
+          "fixed": "2.1.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mhg7-666j-cqg4",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code Vulnerable to Command Injection via Piped sed Command Bypasses File Write Restrictions",
+      "description": "Claude Code failed to properly validate commands using piped sed operations with the echo command, allowing attackers to bypass file write restrictions. This vulnerability enabled writing to sensitive directories like the .claude folder and paths outside the project scope. Exploiting this required the ability to execute commands through Claude Code with the \"accept edits\" feature enabled. \n\nUsers on standard Claude Code auto-update received this fix automatically. Users performing manual updates",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mhg7-666j-cqg4",
+      "publishedAt": "2026-02-06T19:04:51Z",
+      "modifiedAt": "2026-02-06T19:04:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mhg7-666j-cqg4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25723"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.55",
+          "fixed": "2.0.55"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-66q4-vfjg-2qhh",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code Vulnerable to Command Injection via Directory Change Bypasses Write Protection",
+      "description": "Claude Code failed to properly validate directory changes when combined with write operations to protected folders. By using the `cd` command to navigate into sensitive directories like `.claude`, it was possible to bypass write protection and create or modify files without user confirmation. Reliably exploiting this required the ability to add untrusted content into a Claude Code context window. \n\nUsers on standard Claude Code auto-update received this fix automatically. Users performing manual",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-66q4-vfjg-2qhh",
+      "publishedAt": "2026-02-06T19:02:41Z",
+      "modifiedAt": "2026-02-06T19:02:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-66q4-vfjg-2qhh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25722"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.57",
+          "fixed": "2.0.57"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q728-gf8j-w49r",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code has a Path Restriction Bypass via ZSH Clobber which Allows Arbitrary File Writes",
+      "description": "Due to a Bash command validation flaw in parsing ZSH clobber syntax, it was possible to bypass directory restrictions and write files outside the current working directory without user permission prompts. Exploiting this required the user to use ZSH and the ability to add untrusted content into a Claude Code context window. \n\nUsers on standard Claude Code auto-update have received this fix already. Users performing manual updates are advised to update to the latest version.\n\nClaude Code thanks h",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q728-gf8j-w49r",
+      "publishedAt": "2026-02-03T19:32:01Z",
+      "modifiedAt": "2026-02-04T22:15:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q728-gf8j-w49r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24053"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.74",
+          "fixed": "2.0.74"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qgqw-h4xq-7w8w",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code has a Command Injection in find Command Bypasses User Approval Prompt",
+      "description": "Due to an error in command parsing, it was possible to bypass the Claude Code confirmation prompt to trigger execution of untrusted commands through the find command. Reliably exploiting this required the ability to add untrusted content into a Claude Code context window. \n\nUsers on standard Claude Code auto-update have received this fix already. Users performing manual updates are advised to update to the latest version.\n\nClaude Code thanks https://hackerone.com/alexbernier for reporting this i",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qgqw-h4xq-7w8w",
+      "publishedAt": "2026-02-03T19:33:32Z",
+      "modifiedAt": "2026-02-03T22:15:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qgqw-h4xq-7w8w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24887"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.72",
+          "fixed": "2.0.72"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vhw5-3g5m-8ggf",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code has a Domain Validation Bypass which Allows Automatic Requests to Attacker-Controlled Domains",
+      "description": "Claude Code contained insufficient URL validation in its trusted domain verification mechanism for WebFetch requests. The application used a `startsWith()` function to validate trusted domains (e.g., `docs.python.org`, `modelcontextprotocol.io`), this could have enabled attackers to register domains like `modelcontextprotocol.io.example.com` that would pass validation. This could enable automatic requests to attacker-controlled domains without user consent, potentially leading to data exfiltrati",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vhw5-3g5m-8ggf",
+      "publishedAt": "2026-02-03T19:15:59Z",
+      "modifiedAt": "2026-02-03T22:15:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vhw5-3g5m-8ggf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24052"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.111",
+          "fixed": "1.0.111"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

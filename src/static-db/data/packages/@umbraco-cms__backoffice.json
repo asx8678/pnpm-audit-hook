@@ -1,9 +1,10 @@
 {
-  "name": "@umbraco-cms/backoffice",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@umbraco-cms/backoffice",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wv8v-rmw2-25wc",
+      "packageName": "@umbraco-cms/backoffice",
       "title": "XSS/HTML Injection Vulnerability in Umbraco Backoffice Components",
       "description": "### Impact\nAuthenticated users are able to exploit an XSS vulnerability when viewing certain localized backoffice components.\n\n### Patches\nWill be patched in 14.3.2 and 15.1.2.\n\nNote:\nThis issue was reported by Pratik Patil from NetSPI @Nexusss-ppatil",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-24012"
         }
       ],
-      "affectedRange": ">= 15.0.0, < 15.1.2",
-      "fixedVersion": "15.1.2"
+      "affectedVersions": [
+        {
+          "range": ">= 15.0.0, < 15.1.2",
+          "fixed": "15.1.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-c5g6-6xf7-qxp3",
+      "packageName": "@umbraco-cms/backoffice",
       "title": "Umbraco CMS vulnerable to stored Cross-site Scripting in the \"dictionary name\" on Dictionary section",
       "description": "### Impact\nThis can be leveraged to gain access to higher-privilege endpoints, e.g. if you get a user with admin privileges to run the code, you can potentially elevate all users and grant them admin privileges or access protected content.\n\n### Patches\nWill be patched in 14.3.1 and 15.0.0.\n\n### Workarounds\nEnsure that access to the Dictionary section is only granted to trusted users.\n\n",
       "severity": "medium",
@@ -41,8 +48,13 @@
           "value": "CVE-2024-47819"
         }
       ],
-      "affectedRange": ">= 14.0.0, < 14.3.1",
-      "fixedVersion": "14.3.1"
+      "affectedVersions": [
+        {
+          "range": ">= 14.0.0, < 14.3.1",
+          "fixed": "14.3.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

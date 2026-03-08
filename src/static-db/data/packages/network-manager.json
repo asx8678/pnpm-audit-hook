@@ -1,9 +1,10 @@
 {
-  "name": "network-manager",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "network-manager",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-ph32-23p8-9rw5",
+      "packageName": "network-manager",
       "title": "Improper Input Validation in network-manager",
       "description": "network-manager through 1.0.2 allows remote attackers to execute arbitrary commands via the \"execSync()\" argument.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2019-10786"
         }
       ],
-      "affectedRange": "<= 1.0.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

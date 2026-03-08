@@ -1,9 +1,10 @@
 {
-  "name": "fastify",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "fastify",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mg2h-6x62-wpwc",
+      "packageName": "fastify",
       "title": "Fastify vulnerable to invalid content-type parsing, which could lead to validation bypass",
       "description": "### Impact\n\nIn applications that specify different validation strategies for different content types, it's possible to bypass the validation by providing a _slightly altered_ content type such as with different casing or altered whitespacing before `;`.\n\nUsers using the the following pattern are affected:\n\n```js\nfastify.post('/', {\n  handler(request, reply) {\n    reply.code(200).send(request.body)\n  },\n  schema: {\n    body: {\n      content: {\n        'application/json': {\n          schema: {\n   ",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-32442"
         }
       ],
-      "affectedRange": "= 4.29.0",
-      "fixedVersion": "4.29.1"
+      "affectedVersions": [
+        {
+          "range": "= 4.29.0",
+          "fixed": "4.29.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-455w-c45v-86rg",
+      "packageName": "fastify",
       "title": "fastify vulnerable to denial of service via malicious Content-Type",
       "description": "### Impact\nAn attacker can send an invalid `Content-Type` header that can cause the application to crash, leading to a possible Denial of Service attack. Only the v4.x line is affected.\n\n(This was updated: upon a close inspection, v3.x is not affected after all).\n\n### Patches\nYes, update to `> v4.8.0`.\n\n### Workarounds\nYou can reject the malicious content types before the body parser enters in action.\n```js\n  const badNames = Object.getOwnPropertyNames({}.__proto__)\n  fastify.addHook('onRequest'",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2022-39288"
         }
       ],
-      "affectedRange": ">= 4.0.0, < 4.8.1",
-      "fixedVersion": "4.8.1"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.8.1",
+          "fixed": "4.8.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-3fjj-p79j-c9hh",
+      "packageName": "fastify",
       "title": "Fastify: Incorrect Content-Type parsing can lead to CSRF attack ",
       "description": "### Impact\n\nThe attacker can use the incorrect `Content-Type` to bypass the `Pre-Flight` checking of `fetch`. `fetch()` requests with Content-Type’s [essence](https://mimesniff.spec.whatwg.org/#mime-type-essence) as \"application/x-www-form-urlencoded\", \"multipart/form-data\", or \"text/plain\", could potentially be used to invoke routes that only accepts `application/json` content type, thus bypassing any [CORS protection](https://fetch.spec.whatwg.org/#simple-header), and therefore they could lead",
       "severity": "medium",
@@ -62,8 +75,94 @@
           "value": "CVE-2022-41919"
         }
       ],
-      "affectedRange": ">= 3.0.0, < 3.29.4",
-      "fixedVersion": "3.29.4"
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 3.29.4",
+          "fixed": "3.29.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-573f-x89g-hqp9",
+      "packageName": "fastify",
+      "title": "Fastify's Missing End Anchor in \"subtypeNameReg\" Allows Malformed Content-Types to Pass Validation",
+      "description": "# Description\n\nFastify incorrectly accepts malformed `Content-Type` headers containing trailing characters after the subtype token, in violation of [RFC 9110 §8.3.1](https://httpwg.org/specs/rfc9110.html#field.content-type). For example, a request sent with `Content-Type: application/json garbage` passes validation and is processed normally, rather than being rejected with `415 Unsupported Media Type`.\n\nWhen regex-based content-type parsers are in use (a documented Fastify feature), the malforme",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-573f-x89g-hqp9",
+      "publishedAt": "2026-03-05T21:29:54Z",
+      "modifiedAt": "2026-03-06T22:44:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-573f-x89g-hqp9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-3419"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.7.2, <= 5.8.0",
+          "fixed": "5.8.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mrq3-vjjr-p77c",
+      "packageName": "fastify",
+      "title": "Fastify Vulnerable to DoS via Unbounded Memory Allocation in sendWebStream",
+      "description": "### Impact\nA Denial of Service vulnerability in Fastify’s Web Streams response handling can allow a remote client to exhaust server memory. Applications that return a `ReadableStream` (or `Response` with a Web Stream body) via `reply.send()` are impacted. A slow or non-reading client can trigger unbounded buffering when backpressure is ignored, leading to process crashes or severe degradation.\n\n### Patches\nThe issue is fixed in Fastify 5.7.3. Users should upgrade to 5.7.3 or later.\n\n### Workarou",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-mrq3-vjjr-p77c",
+      "publishedAt": "2026-02-02T22:25:05Z",
+      "modifiedAt": "2026-02-04T17:46:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mrq3-vjjr-p77c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25224"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.7.2",
+          "fixed": "5.7.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jx2c-rxcm-jvmq",
+      "packageName": "fastify",
+      "title": "Fastify's Content-Type header tab character allows body validation bypass",
+      "description": "### Impact\n\nA validation bypass vulnerability exists in Fastify where request body validation schemas specified by Content-Type can be completely circumvented. By appending a tab character (`\\t`) followed by arbitrary content to the Content-Type header, attackers can bypass body validation while the server still processes the body as the original content type.\n\nFor example, a request with `Content-Type: application/json\\ta` will bypass JSON schema validation but still be parsed as JSON.\n\nThis vu",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jx2c-rxcm-jvmq",
+      "publishedAt": "2026-02-02T22:23:29Z",
+      "modifiedAt": "2026-02-04T17:46:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jx2c-rxcm-jvmq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25223"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.7.2",
+          "fixed": "5.7.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

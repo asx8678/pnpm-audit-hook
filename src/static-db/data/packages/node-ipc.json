@@ -1,9 +1,10 @@
 {
-  "name": "node-ipc",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "node-ipc",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3mpp-xfvh-qh37",
+      "packageName": "node-ipc",
       "title": "node-ipc behavior change",
       "description": "node-ipc starting in version 11.0.0 and prior to version 12.0.0 includes a message from the maintainer that is written to the user’s desktop. Please review the version changes before proceeding.",
       "severity": "low",
@@ -16,11 +17,17 @@
           "value": "GHSA-3mpp-xfvh-qh37"
         }
       ],
-      "affectedRange": ">= 11.0.0, < 12.0.0",
-      "fixedVersion": "12.0.0"
+      "affectedVersions": [
+        {
+          "range": ">= 11.0.0, < 12.0.0",
+          "fixed": "12.0.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-97m3-w2cp-4xx6",
+      "packageName": "node-ipc",
       "title": "Embedded Malicious Code in node-ipc",
       "description": "The package node-ipc versions 10.1.1 and 10.1.2 are vulnerable to embedded malicious code that was introduced by the maintainer. The malicious code was intended to overwrite arbitrary files dependent upon the geo-location of the user IP address. The maintainer removed the malicious code in version 10.1.3.",
       "severity": "critical",
@@ -37,11 +44,17 @@
           "value": "CVE-2022-23812"
         }
       ],
-      "affectedRange": ">= 10.1.1, < 10.1.3",
-      "fixedVersion": "10.1.3"
+      "affectedVersions": [
+        {
+          "range": ">= 10.1.1, < 10.1.3",
+          "fixed": "10.1.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-8gr3-2gjw-jj7g",
+      "packageName": "node-ipc",
       "title": "Hidden functionality in node-ipc",
       "description": "The package node-ipc version 9.2.2 is vulnerable to hidden functionality that was introduced by the maintainer. The package uses a dependency that writes a file to disk that does not pertain to the functionality of the package and is not included in versions < 9.2.2.",
       "severity": "low",
@@ -54,7 +67,12 @@
           "value": "GHSA-8gr3-2gjw-jj7g"
         }
       ],
-      "affectedRange": "= 9.2.2"
+      "affectedVersions": [
+        {
+          "range": "= 9.2.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

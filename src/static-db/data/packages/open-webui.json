@@ -1,9 +1,10 @@
 {
-  "name": "open-webui",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "open-webui",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8wvc-869r-xfqf",
+      "packageName": "open-webui",
       "title": "Open WebUI Vulnerable to Stored DOM XSS via Note 'Download PDF'",
       "description": "## Summary\n\nA **Stored XSS vulnerability** has been discovered in Open-WebUI's Notes PDF download functionality. \nAn attacker can import a Markdown file containing malicious SVG tags into Notes, allowing them to **execute arbitrary JavaScript code** and **steal session tokens** when a victim downloads the note as PDF. \n\nThis vulnerability can be exploited by **any authenticated user**, and unauthenticated external attackers can steal session tokens from users (both admin and regular users) by sh",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-65959"
         }
       ],
-      "affectedRange": "<= 0.6.36",
-      "fixedVersion": "0.6.37"
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.36",
+          "fixed": "0.6.37"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-w7xj-8fx7-wfch",
+      "packageName": "open-webui",
       "title": "Open WebUI vulnerable to Stored DOM XSS via prompts when 'Insert Prompt as Rich Text' is enabled resulting in ATO/RCE",
       "description": "### Summary\n\nThe functionality that inserts custom prompts into the chat window is vulnerable to DOM XSS when 'Insert Prompt as Rich Text' is enabled, since the prompt body is assigned to the DOM sink `.innerHtml` without sanitisation. Any user with permissions to create prompts can abuse this to plant a payload that could be triggered by other users if they run the corresponding `/` command to insert the prompt.\n\n### Details\n\nThe affected line is https://github.com/open-webui/open-webui/blob/7a",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2025-64495"
         }
       ],
-      "affectedRange": "<= 0.6.34",
-      "fixedVersion": "0.6.35"
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.34",
+          "fixed": "0.6.35"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-cm35-v4vp-5xvx",
+      "packageName": "open-webui",
       "title": "Open WebUI Affected by an External Model Server (Direct Connections) Code Injection via SSE Events",
       "description": "### Summary\nOpen WebUI v0.6.33 and below contains a code injection vulnerability in the Direct Connections feature that allows malicious external model servers to execute arbitrary JavaScript in victim browsers via Server-Sent Event (SSE) `execute` events. This leads to authentication token theft, complete account takeover, and when chained with the Functions API, enables remote code execution on the backend server. The attack requires the victim to enable Direct Connections (disabled by default",
       "severity": "high",
@@ -62,11 +75,17 @@
           "value": "CVE-2025-64496"
         }
       ],
-      "affectedRange": "<= 0.6.34",
-      "fixedVersion": "0.6.35"
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.34",
+          "fixed": "0.6.35"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5ccf-884p-4jjq",
+      "packageName": "open-webui",
       "title": "Open WebUI Unauthenticated Multipart Boundary Denial of Service (DoS) Vulnerability",
       "description": "A Denial of Service (DoS) vulnerability exists in open-webui/open-webui version 0.3.21. This vulnerability affects multiple endpoints, including `/ollama/models/upload`, `/audio/api/v1/transcriptions`, and `/rag/api/v1/doc`. The application processes multipart boundaries without authentication, leading to resource exhaustion. By appending additional characters to the multipart boundary, an attacker can cause the server to parse each byte of the boundary, ultimately leading to service unavailabil",
       "severity": "high",
@@ -79,10 +98,16 @@
           "value": "GHSA-5ccf-884p-4jjq"
         }
       ],
-      "affectedRange": "<= 0.3.21"
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.21"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-chf7-q7m5-fq92",
+      "packageName": "open-webui",
       "title": "Open WebUI Uncontrolled Resource Consumption vulnerability",
       "description": "In version 0.3.32 of open-webui/open-webui, the absence of authentication mechanisms allows any unauthenticated attacker to access the `api/v1/utils/code/format` endpoint. If a malicious actor sends a POST request with an excessively high volume of content, the server could become completely unresponsive. This could lead to severe performance issues, causing the server to become unresponsive or experience significant degradation, ultimately resulting in service interruptions for legitimate users",
       "severity": "high",
@@ -99,10 +124,16 @@
           "value": "CVE-2024-12537"
         }
       ],
-      "affectedRange": "<= 0.3.32"
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.32"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-g3mx-83mp-3rwc",
+      "packageName": "open-webui",
       "title": "Open WebUI Uncontrolled Resource Consumption vulnerability",
       "description": "In version v0.3.32 of open-webui/open-webui, the application allows users to submit large payloads in the email and password fields during the sign-in process due to the lack of character length validation on these inputs. This vulnerability can lead to a Denial of Service (DoS) condition when a user submits excessively large strings, exhausting server resources such as CPU, memory, and disk space, and rendering the service unavailable for legitimate users. This makes the server susceptible to r",
       "severity": "high",
@@ -119,7 +150,12 @@
           "value": "CVE-2024-12534"
         }
       ],
-      "affectedRange": "<= 0.3.32"
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.32"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

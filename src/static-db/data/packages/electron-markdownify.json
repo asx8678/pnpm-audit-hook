@@ -1,9 +1,10 @@
 {
-  "name": "electron-markdownify",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "electron-markdownify",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-c942-mfmp-p4fh",
+      "packageName": "electron-markdownify",
       "title": "Markdownify subject to Remote Code Execution via malicious markdown file",
       "description": "Markdownify version 1.4.1 allows an external attacker to execute arbitrary code remotely on any client attempting to view a malicious markdown file through Markdownify. This is possible because the application has the \"nodeIntegration\" option enabled. There are currently no patched versions and no known workarounds.",
       "severity": "high",
@@ -20,10 +21,16 @@
           "value": "CVE-2022-41709"
         }
       ],
-      "affectedRange": "<= 1.4.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-qqhf-xfhw-7884",
+      "packageName": "electron-markdownify",
       "title": "Markdownify has Files or Directories Accessible to External Parties",
       "description": "Markdownify version 1.4.1 allows an external attacker to remotely obtain arbitrary local files on any client that attempts to view a malicious markdown file through Markdownify. This is possible because the application does not have a CSP policy (or at least not strict enough) and/or does not properly validate the contents of markdown files before rendering them.",
       "severity": "medium",
@@ -40,7 +47,12 @@
           "value": "CVE-2022-41710"
         }
       ],
-      "affectedRange": "<= 1.4.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "deepref",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "deepref",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7c7g-72q7-4xhm",
+      "packageName": "deepref",
       "title": "Prototype pollution vulnerability in 'deepref'",
       "description": "Prototype pollution vulnerability in 'deepref' versions 1.1.1 through 1.2.1 allows attacker to cause a denial of service and may lead to remote code execution.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-28274"
         }
       ],
-      "affectedRange": ">= 1.1.1, <= 1.2.1"
+      "affectedVersions": [
+        {
+          "range": ">= 1.1.1, <= 1.2.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "mcp-server-kubernetes",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mcp-server-kubernetes",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wvxp-jp4w-w8wg",
+      "packageName": "mcp-server-kubernetes",
       "title": "mcp-server-kubernetes has potential security issue in exec_in_pod tool",
       "description": "### Summary\nA security issue exists in the `exec_in_pod` tool of the `mcp-server-kubernetes` MCP Server. The tool accepts user-provided commands in both array and string formats. When a string format is provided, it is passed directly to shell interpretation (`sh -c`) without input validation, allowing shell metacharacters to be interpreted. This vulnerability can be exploited through direct command injection or indirect prompt injection attacks, where AI agents may execute commands without expl",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-66404"
         }
       ],
-      "affectedRange": "<= 2.9.7",
-      "fixedVersion": "2.9.8"
+      "affectedVersions": [
+        {
+          "range": "<= 2.9.7",
+          "fixed": "2.9.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-gjv4-ghm7-q58q",
+      "packageName": "mcp-server-kubernetes",
       "title": "MCP Server Kubernetes vulnerable to command injection in several tools",
       "description": "### Summary\n\nA command injection vulnerability exists in the `mcp-server-kubernetes` MCP Server. The vulnerability is caused by the unsanitized use of input parameters within a call to `child_process.execSync`, enabling an attacker to inject arbitrary system commands. Successful exploitation can lead to remote code execution under the server process's privileges. \n\nThe server constructs and executes shell commands using unvalidated user input directly within command-line strings. This introduces",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2025-53355"
         }
       ],
-      "affectedRange": "< 2.5.0",
-      "fixedVersion": "2.5.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.5.0",
+          "fixed": "2.5.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "generator-jhipster",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "generator-jhipster",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-cmm8-gw4m-26cw",
+      "packageName": "generator-jhipster",
       "title": "Withdrawn Advisory: JHipster allows privilege escalation via a modified authorities parameter",
       "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because the original report was found to be invalid. This link is maintained to preserve external references. For more information, see https://groups.google.com/g/jhipster-dev/c/ATSlWkEjw2w.\n\n## Original Description\n\nJHipster before v.8.9.0 allows privilege escalation via a modified authorities parameter. Upon registering in the JHipster portal and logging in as a standard user, the authorities parameter in the response from the api/account",
       "severity": "low",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-43712"
         }
       ],
-      "affectedRange": "< 8.9.0",
-      "fixedVersion": "8.9.0"
+      "affectedVersions": [
+        {
+          "range": "< 8.9.0",
+          "fixed": "8.9.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4gpm-r23h-gprw",
+      "packageName": "generator-jhipster",
       "title": "generator-jhipster allows a timing attack against validateToken due to a string comparison that stops at the first character",
       "description": "JHipster generator-jhipster before 2.23.0 allows a timing attack against validateToken due to a string comparison that stops at the first character that is different. Attackers can guess tokens by brute forcing one character at a time and observing the timing. This of course drastically reduces the search space to a linear amount of guesses based on the token length times the possible characters.",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2015-20110"
         }
       ],
-      "affectedRange": "< 2.23.0",
-      "fixedVersion": "2.23.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.23.0",
+          "fixed": "2.23.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-qjmq-8hjr-qcv6",
+      "packageName": "generator-jhipster",
       "title": "SQL Injection when creating an application with Reactive SQL backend ",
       "description": "### Impact\nSQL Injection vulnerability in entities for applications generated with the option \"reactive with Spring WebFlux\" enabled and an SQL database using r2dbc. Applications created without \"reactive with Spring WebFlux\" and applications with NoSQL databases are not affected. \n\nIf you have generated a microservice Gateway using the affected version, you might be impacted as Gateways are reactive by default.\n\nCurrently, SQL injection is possible in the `findAllBy(Pageable pageable, Criteria ",
       "severity": "high",
@@ -62,11 +75,17 @@
           "value": "CVE-2022-24815"
         }
       ],
-      "affectedRange": ">= 7.0.0, < 7.8.1",
-      "fixedVersion": "7.8.1"
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0, < 7.8.1",
+          "fixed": "7.8.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-8w7w-67mw-r5p7",
+      "packageName": "generator-jhipster",
       "title": "generator-jhipster vulnerable to login check Regular Expression Denial of Service",
       "description": "### Impact\nFor applications using JWT or session-based authentication (not OIDC), users can input a login string which can cause a denial of service, as parsing it will be too complex.\n\nHere is an example: https://gist.github.com/atomfrede/311f8a9c6eb74c5c5226af0481155207\n\nThe vulnerable expression was never officially released. So only when you generated an application from the master branch between 6.8.0 and 6.9.0 your generated application may be vulnerable.\n\n### Patches\n\nIf you only used off",
       "severity": "high",
@@ -79,7 +98,12 @@
           "value": "GHSA-8w7w-67mw-r5p7"
         }
       ],
-      "affectedRange": "> 6.8.0, < 6.9.0"
+      "affectedVersions": [
+        {
+          "range": "> 6.8.0, < 6.9.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

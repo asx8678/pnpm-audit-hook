@@ -1,9 +1,10 @@
 {
-  "name": "@fastify/session",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@fastify/session",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-pj27-2xvp-4qxg",
+      "packageName": "@fastify/session",
       "title": "@fastify/session reuses destroyed session cookie",
       "description": "### Impact\n\nWhen restoring the cookie from the session store, the `expires` field is overriden if the `maxAge` field was set.\nThis means a cookie is never correctly detected as expired and thus expired sessions are not destroyed.\n\n### Patches\n\nUpdating to v10.9.0 will solve this.\n\n### Workarounds\n\nNone\n\n### References\n\nPublicly reported at: https://github.com/fastify/session/issues/251",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-35220"
         }
       ],
-      "affectedRange": "< 10.9.0",
-      "fixedVersion": "10.9.0"
+      "affectedVersions": [
+        {
+          "range": "< 10.9.0",
+          "fixed": "10.9.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

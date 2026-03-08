@@ -1,9 +1,10 @@
 {
-  "name": "@allanlancioni/flatten-json",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@allanlancioni/flatten-json",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j8px-pjmp-325f",
+      "packageName": "@allanlancioni/flatten-json",
       "title": "flatten-json Prototype Pollution",
       "description": "A Prototype Pollution issue in flatten-json 1.0.1 allows an attacker to execute arbitrary code via module.exports.unflattenJSON (flatten-json/index.js:42)",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-36574"
         }
       ],
-      "affectedRange": "<= 1.0.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,0 +1,33 @@
+{
+  "packageName": "@tootallnate/once",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vpq2-c234-7xj6",
+      "packageName": "@tootallnate/once",
+      "title": "@tootallnate/once vulnerable to Incorrect Control Flow Scoping",
+      "description": "Versions of the package @tootallnate/once before 3.0.1 are vulnerable to Incorrect Control Flow Scoping in promise resolving when AbortSignal option is used. The Promise remains in a permanently pending state after the signal is aborted, causing any await or .then() usage to hang indefinitely. This can cause a control-flow leak that can lead to stalled requests, blocked workers, or degraded application availability.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-vpq2-c234-7xj6",
+      "publishedAt": "2026-03-03T06:31:14Z",
+      "modifiedAt": "2026-03-04T20:15:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vpq2-c234-7xj6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-3449"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.1",
+          "fixed": "3.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

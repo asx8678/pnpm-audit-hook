@@ -1,9 +1,10 @@
 {
-  "name": "m.static",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "m.static",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vcxh-qvgr-9fw9",
+      "packageName": "m.static",
       "title": "m.static Directory Traversal vulnerability",
       "description": "All versions of the package m.static are vulnerable to Directory Traversal due to improper input sanitization of the path being requested via the `requestFile` function.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-26126"
         }
       ],
-      "affectedRange": "<= 2.2.0"
+      "affectedVersions": [
+        {
+          "range": "<= 2.2.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

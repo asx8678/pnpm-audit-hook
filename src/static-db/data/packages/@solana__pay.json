@@ -1,9 +1,10 @@
 {
-  "name": "@solana/pay",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@solana/pay",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j47c-j42c-mwqq",
+      "packageName": "@solana/pay",
       "title": "Solana Pay Vulnerable to Weakness in Transfer Validation Logic",
       "description": "### Description\nWhen a Solana Pay transaction is located using a [reference key](https://github.com/solana-labs/solana-pay/blob/master/SPEC.md#reference), it may be checked to represent a transfer of the desired amount to the recipient, using the supplied [`validateTransfer` function](https://github.com/solana-labs/solana-pay/blob/master/core/src/validateTransfer.ts). An edge case regarding this mechanism could cause the validation logic to validate multiple transfers.\n\n### Impact\nMost known Sol",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-35917"
         }
       ],
-      "affectedRange": "<= 0.2.0",
-      "fixedVersion": "0.2.1"
+      "affectedVersions": [
+        {
+          "range": "<= 0.2.0",
+          "fixed": "0.2.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

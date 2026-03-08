@@ -1,9 +1,10 @@
 {
-  "name": "@builder.io/qwik-city",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@builder.io/qwik-city",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-qr9h-j6xg-2j72",
+      "packageName": "@builder.io/qwik-city",
       "title": "Qwik's unhandled exception vulnerabilty can cause server crashes from malicious requests",
       "description": "### Summary\n\nPossibility to craft a request that will crash the Qwik Server in the default configuration.\n\n### Details\n\nWhen a Qwik Server Action QRL is executed it dynamically load the file containing the symbol. When an invalid qfunc is sent, the server does not handle the thrown error. The error then causes Node JS to exit.\n\n### PoC\n\n 1. Setup a Qwik Project `pnpm create qwik@latest`\n 2. Start the Qwik Server using `pnpm run preview`\n 3. Execute the following curl command to crash the instanc",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-53620"
         }
       ],
-      "affectedRange": "< 1.13.0",
-      "fixedVersion": "1.13.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.13.0",
+          "fixed": "1.13.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-c54w-7j5f-xg98",
+      "packageName": "@builder.io/qwik-city",
       "title": "@builder.io/qwik-city Cross-Site Request Forgery  vulnerability",
       "description": "Cross-Site Request Forgery (CSRF) in GitHub repository builderio/qwik prior to 0.104.0.",
       "severity": "medium",
@@ -41,8 +48,148 @@
           "value": "CVE-2023-2307"
         }
       ],
-      "affectedRange": "< 0.104.0",
-      "fixedVersion": "0.104.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.104.0",
+          "fixed": "0.104.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vm6g-8r4h-22x8",
+      "packageName": "@builder.io/qwik-city",
+      "title": "Qwik City CSRF protection middleware does not work properly for content type header with parameters (eg. multipart/form-data)",
+      "description": "### Summary\nA typo in the regular expression within isContentType causes incorrect parsing of certain Content-Type headers.\n\n### Impact\nAn attacker can bypass Qwik City’s Origin-based CSRF protections and perform forged form submissions, potentially causing unauthorized state changes.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vm6g-8r4h-22x8",
+      "publishedAt": "2026-02-03T20:59:18Z",
+      "modifiedAt": "2026-02-11T14:13:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vm6g-8r4h-22x8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25155"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.12.0",
+          "fixed": "1.12.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-92j7-wgmg-f32m",
+      "packageName": "@builder.io/qwik-city",
+      "title": "Qwik City Open Redirect via fixTrailingSlash",
+      "description": "### Summary\n\n**Description**\nAn Open Redirect (CWE-601) vulnerability in Qwik City's default request handler middleware allows a remote attacker to redirect users to arbitrary protocol-relative URLs. Successful exploitation permits attackers to craft convincing phishing links that appear to originate from the trusted domain but redirect the victim to an attacker-controlled site. This affects qwik-city before version 1.19.0. This has been patched in qwik-city version 1.19.0.\n\n### Impact\nQwik City",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-92j7-wgmg-f32m",
+      "publishedAt": "2026-02-03T20:58:25Z",
+      "modifiedAt": "2026-02-04T17:45:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-92j7-wgmg-f32m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25149"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.19.0",
+          "fixed": "1.19.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r666-8gjf-4v5f",
+      "packageName": "@builder.io/qwik-city",
+      "title": "Qwik City has a CSRF Protection Bypass via Content-Type Header Validation",
+      "description": "### Summary\nQwik City’s server-side request handler inconsistently interprets HTTP request headers, which can be abused by a remote attacker to circumvent form submission CSRF protections using specially crafted or multi-valued Content-Type headers.\n\n### Impact\nA vulnerability in checkCSRF lets an attacker bypass Origin-based CSRF checks by using malformed or multi-valued Content-Type headers. Exploitation requires the CORS preflight to succeed (so it’s blocked if preflight is denied) and is pos",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-r666-8gjf-4v5f",
+      "publishedAt": "2026-02-03T20:49:58Z",
+      "modifiedAt": "2026-02-04T17:45:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r666-8gjf-4v5f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25151"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.19.0",
+          "fixed": "1.19.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xqg6-98cw-gxhq",
+      "packageName": "@builder.io/qwik-city",
+      "title": "Prototype Pollution via FormData Processing in Qwik City",
+      "description": "### Summary\n\nA Prototype Pollution vulnerability exists in the `formToObj()` function within `@builder.io/qwik-city` middleware. The function processes form field names with dot notation (e.g., `user.name`) to create nested objects, but fails to sanitize dangerous property names like `__proto__`, `constructor`, and `prototype`. This allows unauthenticated attackers to pollute `Object.prototype` by sending crafted HTTP POST requests, potentially leading to privilege escalation, authentication byp",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-xqg6-98cw-gxhq",
+      "publishedAt": "2026-02-03T20:49:22Z",
+      "modifiedAt": "2026-02-04T17:45:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xqg6-98cw-gxhq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25150"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.19.0",
+          "fixed": "1.19.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m6jq-g7gq-5w3c",
+      "packageName": "@builder.io/qwik-city",
+      "title": "Qwik SSR XSS via Unsafe Virtual Node Serialization",
+      "description": "### Summary\n\n**Description**\nA Cross-site Scripting (CWE-79) vulnerability in Qwik.js' server-side rendering virtual attribute serialization allows a remote attacker to inject arbitrary web scripts into server-rendered pages via virtual attributes. Successful exploitation permits script execution in a victim's browser in the context of the affected origin. This affects qwik-city before version 1.19.0. This has been patched in qwik-city version 1.19.0.\n\n### Impact\nThis vulnerability impacts appli",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m6jq-g7gq-5w3c",
+      "publishedAt": "2026-02-03T20:47:55Z",
+      "modifiedAt": "2026-02-04T17:45:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m6jq-g7gq-5w3c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25148"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.19.0",
+          "fixed": "1.19.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

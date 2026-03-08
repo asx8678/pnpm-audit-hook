@@ -1,9 +1,10 @@
 {
-  "name": "bun",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "bun",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4j66-8f4r-3pjx",
+      "packageName": "bun",
       "title": "Withdrawn Advisory: bun vulnerable to OS Command Injection",
       "description": "### Withdrawn Advisory\nThis advisory has been withdrawn because it does not describe a vulnerability in Bun itself. See the following rejection message from the CVE Numbering Authority:\n\n> Rejected reason: Bun Shell does not invoke /bin/sh, or any other interpreter, for template literals created with the $ function. Each ${…} interpolation is treated as a single argument. The security responsibility for this usage pattern lies with the calling application, which must ensure the sanitization and ",
       "severity": "high",
@@ -20,10 +21,16 @@
           "value": "CVE-2025-8022"
         }
       ],
-      "affectedRange": "> 0.0.12, <= 1.1.39"
+      "affectedVersions": [
+        {
+          "range": "> 0.0.12, <= 1.1.39"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-v9mx-4pqq-h232",
+      "packageName": "bun",
       "title": "Bun has an Application-level Prototype Pollution vulnerability in the runtime native API for Glo",
       "description": "Versions of the package bun before 1.1.30 are vulnerable to Prototype Pollution due to improper input sanitization. An attacker can exploit this vulnerability through Bun's APIs that accept objects.",
       "severity": "medium",
@@ -40,8 +47,13 @@
           "value": "CVE-2024-21548"
         }
       ],
-      "affectedRange": "> 0.0.12, < 1.1.30",
-      "fixedVersion": "1.1.30"
+      "affectedVersions": [
+        {
+          "range": "> 0.0.12, < 1.1.30",
+          "fixed": "1.1.30"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

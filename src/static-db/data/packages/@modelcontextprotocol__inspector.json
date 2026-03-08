@@ -1,9 +1,10 @@
 {
-  "name": "@modelcontextprotocol/inspector",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@modelcontextprotocol/inspector",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-g9hg-qhmf-q45m",
+      "packageName": "@modelcontextprotocol/inspector",
       "title": "MCP Inspector is Vulnerable to Potential Command Execution via XSS When Connecting to an Untrusted MCP Server",
       "description": "An XSS flaw exists in the MCP Inspector local development tool when it renders a redirect URL returned by a remote MCP server. If the Inspector connects to an untrusted server, a crafted redirect can inject script into the Inspector context and, via the built-in proxy, be leveraged to trigger arbitrary command execution on the developer machine. Version 0.16.6 hardens URL handling/validation and prevents script execution.\n\n> Thank you to the following researchers for their reports and contributi",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-58444"
         }
       ],
-      "affectedRange": "< 0.16.6",
-      "fixedVersion": "0.16.6"
+      "affectedVersions": [
+        {
+          "range": "< 0.16.6",
+          "fixed": "0.16.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-7f8r-222p-6f5g",
+      "packageName": "@modelcontextprotocol/inspector",
       "title": "MCP Inspector proxy server lacks authentication between the Inspector client and proxy",
       "description": "Versions of MCP Inspector below 0.14.1 are vulnerable to remote code execution due to lack of authentication between the Inspector client and proxy, allowing unauthenticated requests to launch MCP commands over stdio. Users should immediately upgrade to version 0.14.1 or later to address these vulnerabilities.\n\nCredit: Rémy Marot <bughunters@tenable.com>",
       "severity": "critical",
@@ -41,8 +48,13 @@
           "value": "CVE-2025-49596"
         }
       ],
-      "affectedRange": "< 0.14.1",
-      "fixedVersion": "0.14.1"
+      "affectedVersions": [
+        {
+          "range": "< 0.14.1",
+          "fixed": "0.14.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

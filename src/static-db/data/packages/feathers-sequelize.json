@@ -1,9 +1,10 @@
 {
-  "name": "feathers-sequelize",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "feathers-sequelize",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-5hq7-j5wq-p227",
+      "packageName": "feathers-sequelize",
       "title": "feathers-sequelize vulnerable to SQL injection due to improper parameter filtering",
       "description": "feathers-sequelize is vulnerable to improper parameter filtering in the Feathers js library, which may ultimately lead to SQL injection.",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2022-29822"
         }
       ],
-      "affectedRange": ">= 6.0.0, < 6.3.4",
-      "fixedVersion": "6.3.4"
+      "affectedVersions": [
+        {
+          "range": ">= 6.0.0, < 6.3.4",
+          "fixed": "6.3.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-p5m3-27vh-52j4",
+      "packageName": "feathers-sequelize",
       "title": "Feather-Sequelize cleanQuery method vulnerable to Prototype Pollution",
       "description": "Feather-Sequelize cleanQuery method uses insecure recursive logic to filter unsupported keys from the query object. This results in a Remote Code Execution (RCE) with privileges of application.",
       "severity": "critical",
@@ -41,11 +48,17 @@
           "value": "CVE-2022-29823"
         }
       ],
-      "affectedRange": ">= 6.0.0, < 6.3.3",
-      "fixedVersion": "6.3.3"
+      "affectedVersions": [
+        {
+          "range": ">= 6.0.0, < 6.3.3",
+          "fixed": "6.3.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-qpv8-4pjq-qqh7",
+      "packageName": "feathers-sequelize",
       "title": "feathers-sequelize contains improper input validation leading to SQL injection",
       "description": "Due to improper input validation in the Feathers js library, it is possible to perform a SQL injection attack on the back-end database, in case the feathers-sequelize package is used.",
       "severity": "critical",
@@ -62,8 +75,13 @@
           "value": "CVE-2022-2422"
         }
       ],
-      "affectedRange": ">= 6.0.0, < 6.3.4",
-      "fixedVersion": "6.3.4"
+      "affectedVersions": [
+        {
+          "range": ">= 6.0.0, < 6.3.4",
+          "fixed": "6.3.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,0 +1,33 @@
+{
+  "packageName": "pannellum",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8423-w5wx-h2r6",
+      "packageName": "pannellum",
+      "title": "Pannellum has a XSS vulnerability in hot spot attributes",
+      "description": "### Impact\nThe hot spot `attributes` configuration property allowed any attribute to be set, including HTML event handler attributes, allowing for potential XSS attacks. This affects websites hosting the standalone viewer HTML file and any other use of untrusted JSON config files (bypassing the protections of the `escapeHTML` parameter). As certain events fire without any additional user interaction, visiting a standalone viewer URL that points to a malicious config file&mdash;without additional",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8423-w5wx-h2r6",
+      "publishedAt": "2026-02-19T20:44:48Z",
+      "modifiedAt": "2026-02-23T22:27:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8423-w5wx-h2r6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27210"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.5.0, < 2.5.7",
+          "fixed": "2.5.7"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

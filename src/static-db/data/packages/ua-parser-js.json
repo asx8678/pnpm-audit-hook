@@ -1,9 +1,10 @@
 {
-  "name": "ua-parser-js",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "ua-parser-js",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-fhg7-m89q-25r3",
+      "packageName": "ua-parser-js",
       "title": "ReDoS Vulnerability in ua-parser-js version",
       "description": "### Description:\nA regular expression denial of service (ReDoS) vulnerability has been discovered in `ua-parser-js`.\n\n### Impact:\nThis vulnerability bypass the library's `MAX_LENGTH` input limit prevention. By crafting a very-very-long user-agent string with specific pattern, an attacker can turn the script to get stuck processing for a very long time which results in a denial of service (DoS) condition.\n\n### Affected Versions:\nFrom version `0.7.30` to before versions `0.7.33` / `1.0.33`.\n\n### P",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2022-25927"
         }
       ],
-      "affectedRange": ">= 0.7.30, < 0.7.33",
-      "fixedVersion": "0.7.33"
+      "affectedVersions": [
+        {
+          "range": ">= 0.7.30, < 0.7.33",
+          "fixed": "0.7.33"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-pjwm-rvh2-c87w",
+      "packageName": "ua-parser-js",
       "title": "Embedded malware in ua-parser-js",
       "description": "The npm package `ua-parser-js` had three versions published with malicious code. Users of affected versions (0.7.29, 0.8.0, 1.0.0) should upgrade as soon as possible and check their systems for suspicious activity. See [this issue](https://github.com/faisalman/ua-parser-js/issues/536) for details as they unfold.\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a differe",
       "severity": "high",
@@ -37,11 +44,17 @@
           "value": "GHSA-pjwm-rvh2-c87w"
         }
       ],
-      "affectedRange": "= 1.0.0",
-      "fixedVersion": "1.0.1"
+      "affectedVersions": [
+        {
+          "range": "= 1.0.0",
+          "fixed": "1.0.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-394c-5j6w-4xmx",
+      "packageName": "ua-parser-js",
       "title": "ua-parser-js Regular Expression Denial of Service vulnerability",
       "description": "The package ua-parser-js before 0.7.23 are vulnerable to Regular Expression Denial of Service (ReDoS) in multiple regexes (see linked commit for more info).",
       "severity": "high",
@@ -58,11 +71,17 @@
           "value": "CVE-2020-7793"
         }
       ],
-      "affectedRange": "< 0.7.23",
-      "fixedVersion": "0.7.23"
+      "affectedVersions": [
+        {
+          "range": "< 0.7.23",
+          "fixed": "0.7.23"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-78cj-fxph-m83p",
+      "packageName": "ua-parser-js",
       "title": "Regular Expression Denial of Service (ReDoS) in ua-parser-js",
       "description": "ua-parser-js >= 0.7.14, fixed in 0.7.24, uses a regular expression which is vulnerable to denial of service. If an attacker sends a malicious User-Agent header, ua-parser-js will get stuck processing it for an extended period of time.",
       "severity": "high",
@@ -79,11 +98,17 @@
           "value": "CVE-2021-27292"
         }
       ],
-      "affectedRange": ">= 0.7.14, < 0.7.24",
-      "fixedVersion": "0.7.24"
+      "affectedVersions": [
+        {
+          "range": ">= 0.7.14, < 0.7.24",
+          "fixed": "0.7.24"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-662x-fhqg-9p8v",
+      "packageName": "ua-parser-js",
       "title": "Regular Expression Denial of Service in ua-parser-js",
       "description": "The package ua-parser-js before 0.7.22 are vulnerable to Regular Expression Denial of Service (ReDoS) via the regex for Redmi Phones and Mi Pad Tablets UA.",
       "severity": "high",
@@ -100,8 +125,36 @@
           "value": "CVE-2020-7733"
         }
       ],
-      "affectedRange": "< 0.7.22",
-      "fixedVersion": "0.7.22"
+      "affectedVersions": [
+        {
+          "range": "< 0.7.22",
+          "fixed": "0.7.22"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-236c-vhj4-gfxg",
+      "packageName": "ua-parser-js",
+      "title": "Duplicate Advisory: Embedded malware in ua-parser-js",
+      "description": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-pjwm-rvh2-c87w. This link is maintained to preserve external references.\n\n### Original Description\nA vulnerability was found in ua-parser-js 0.7.29/0.8.0/1.0.0. It has been rated as critical. This issue affects the crypto mining component which introduces a backdoor. Upgrading to version 0.7.30, 0.8.1 and 1.0.1 is able to address this issue. It is recommended to upgrade the affected component.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-236c-vhj4-gfxg",
+      "publishedAt": "2022-05-25T00:00:31Z",
+      "modifiedAt": "2026-02-17T21:40:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-236c-vhj4-gfxg"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.0.0",
+          "fixed": "1.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

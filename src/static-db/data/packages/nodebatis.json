@@ -1,9 +1,10 @@
 {
-  "name": "nodebatis",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "nodebatis",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8ph8-9q2j-c3rq",
+      "packageName": "nodebatis",
       "title": "nodebatis SQL Injection vulnerability",
       "description": "A vulnerability was found in PeterMu nodebatis up to 2.1.x. It has been classified as critical. Affected is an unknown function. The manipulation leads to sql injection. Upgrading to version 2.2.0 can address this issue. The name of the patch is 6629ff5b7e3d62ad8319007a54589ec1f62c7c35. It is recommended to upgrade the affected component. VDB-217554 is the identifier assigned to this vulnerability.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2018-25066"
         }
       ],
-      "affectedRange": "< 2.2.0",
-      "fixedVersion": "2.2.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.2.0",
+          "fixed": "2.2.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

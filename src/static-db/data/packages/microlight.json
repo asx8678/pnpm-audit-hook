@@ -1,9 +1,10 @@
 {
-  "name": "microlight",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "microlight",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-64x7-m7rh-9m83",
+      "packageName": "microlight",
       "title": "Withdrawn Advisory: microlight.js has a null pointer dereference vulnerability",
       "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because a website owner has to set CSS color values. The proof of concept doesn't demonstrate how a malicious user who is not the website owner can cause an application crash. This link has been maintained to preserve external references.\n\n## Original Description\nA null pointer dereference vulnerability was discovered in microlight.js (version 0.0.7), a lightweight syntax highlighting library. When processing elements with non-standard CSS c",
       "severity": "low",
@@ -20,10 +21,16 @@
           "value": "CVE-2025-45525"
         }
       ],
-      "affectedRange": "<= 0.0.7"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-wgc6-9f6w-h8hx",
+      "packageName": "microlight",
       "title": "Withdrawn Advisory: microlight allows a denial of service",
       "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because the proof of concept does not demonstrate a practical security impact. This link is maintained to preserve external references.\n\n## Original Description\nA denial of service (DoS) vulnerability has been identified in the JavaScript library microlight version 0.0.7. This library, used for syntax highlighting, does not limit the size of textual content it processes in HTML elements with the microlight class. When excessively large conte",
       "severity": "low",
@@ -40,7 +47,12 @@
           "value": "CVE-2025-45526"
         }
       ],
-      "affectedRange": "<= 0.0.7"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.7"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

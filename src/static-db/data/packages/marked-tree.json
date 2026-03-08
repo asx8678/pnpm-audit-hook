@@ -1,9 +1,10 @@
 {
-  "name": "marked-tree",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "marked-tree",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xr8h-53xr-jhcm",
+      "packageName": "marked-tree",
       "title": "Path Traversal in marked-tree",
       "description": "This affects all versions up to and including version 0.8.1 of package marked-tree. There is no path sanitization in the path provided at fs.readFile in index.js.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7682"
         }
       ],
-      "affectedRange": "<= 0.8.1"
+      "affectedVersions": [
+        {
+          "range": "<= 0.8.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

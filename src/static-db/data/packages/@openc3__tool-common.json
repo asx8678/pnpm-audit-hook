@@ -1,9 +1,10 @@
 {
-  "name": "@openc3/tool-common",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@openc3/tool-common",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4xqv-47rm-37mm",
+      "packageName": "@openc3/tool-common",
       "title": "OpenC3 stores passwords in clear text (`GHSL-2024-129`)",
       "description": "### Summary\nOpenC3 COSMOS stores the password of a user unencrypted in the LocalStorage of a web browser. This makes the user password susceptible to exfiltration via Cross-site scripting (see GHSL-2024-128).\n\nNote: This CVE only affects Open Source edition, and not OpenC3 COSMOS Enterprise Edition\n\n### Impact\nThis issue may lead to Information Disclosure.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2024-47529"
         }
       ],
-      "affectedRange": "< 5.19.0",
-      "fixedVersion": "5.19.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.19.0",
+          "fixed": "5.19.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-vfj8-5pj7-2f9g",
+      "packageName": "@openc3/tool-common",
       "title": "OpenC3 Cross-site Scripting in Login functionality (`GHSL-2024-128`)",
       "description": "### Summary\nThe login functionality contains a reflected cross-site scripting (XSS) vulnerability.\n\nNote: This CVE only affects Open Source Edition, and not OpenC3 COSMOS Enterprise Edition\n\n### Impact\nThis issue may lead up to Remote Code Execution (RCE).",
       "severity": "medium",
@@ -41,8 +48,13 @@
           "value": "CVE-2024-43795"
         }
       ],
-      "affectedRange": "< 5.19.0",
-      "fixedVersion": "5.19.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.19.0",
+          "fixed": "5.19.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

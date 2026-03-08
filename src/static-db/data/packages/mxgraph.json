@@ -1,9 +1,10 @@
 {
-  "name": "mxgraph",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mxgraph",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wvpv-8524-wg6x",
+      "packageName": "mxgraph",
       "title": "mxGraph vulnerable to XXE attacks",
       "description": "In `mxGraphViewImageReader.java` in mxGraph before 3.7.6, the `SAXParserFactory` instance in `convert()` is missing flags to prevent XML External Entity (XXE) attacks, as demonstrated by `/ServerView`.",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2017-18197"
         }
       ],
-      "affectedRange": "< 3.7.6",
-      "fixedVersion": "3.7.6"
+      "affectedVersions": [
+        {
+          "range": "< 3.7.6",
+          "fixed": "3.7.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-j4rv-pr9g-q8jv",
+      "packageName": "mxgraph",
       "title": "mxGraph vulnerable to cross-site scripting in setTooltips function",
       "description": "mxGraph v4.2.2 was discovered to contain a cross-site scripting (XSS) vulnerability via the `setTooltips()` function.",
       "severity": "medium",
@@ -41,10 +48,16 @@
           "value": "CVE-2022-40440"
         }
       ],
-      "affectedRange": "<= 4.2.2"
+      "affectedVersions": [
+        {
+          "range": "<= 4.2.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-xm59-jvxm-cp3v",
+      "packageName": "mxgraph",
       "title": "mxGraph vulnerable to cross-site scripting in color field",
       "description": "mxGraph through 4.0.0, related to the [draw.io Diagrams](https://github.com/jgraph/drawio) plugin before 8.3.14 for Confluence and other products, is vulnerable to cross-site scripting. draw.io Diagrams allows the creation and editing of draw.io-based diagrams in Confluence. Among other things, it allows to set the background color of text displayed in the diagram. The color provided by the user is notproperly sanitized, leading to HTML and JavaScript code to be displayed \"as it is\" to visitors ",
       "severity": "medium",
@@ -61,8 +74,13 @@
           "value": "CVE-2019-13127"
         }
       ],
-      "affectedRange": "<= 4.0.0",
-      "fixedVersion": "4.0.1"
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.0",
+          "fixed": "4.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

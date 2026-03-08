@@ -1,9 +1,10 @@
 {
-  "name": "dompurify",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "dompurify",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gx9m-whjm-85jf",
+      "packageName": "dompurify",
       "title": "DOMpurify has a nesting-based mXSS",
       "description": "DOMpurify was vulnerable to nesting-based mXSS \n\nfixed by [0ef5e537](https://github.com/cure53/DOMPurify/tree/0ef5e537a514f904b6aa1d7ad9e749e365d7185f) (2.x) and\n[merge 943](https://github.com/cure53/DOMPurify/pull/943)\n\nBackporter should be aware of GHSA-mmhx-hmjr-r674 (CVE-2024-45801) when cherry-picking\n\nPOC is avaible under [test](https://github.com/cure53/DOMPurify/blob/0ef5e537a514f904b6aa1d7ad9e749e365d7185f/test/test-suite.js#L2098)",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2024-47875"
         }
       ],
-      "affectedRange": ">= 3.0.0, < 3.1.3",
-      "fixedVersion": "3.1.3"
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 3.1.3",
+          "fixed": "3.1.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-p3vf-v8qc-cwcr",
+      "packageName": "dompurify",
       "title": "DOMPurify vulnerable to tampering by prototype polution",
       "description": "dompurify was vulnerable to prototype pollution\n\nFixed by https://github.com/cure53/DOMPurify/commit/d1dd0374caef2b4c56c3bd09fe1988c3479166dc",
       "severity": "critical",
@@ -41,11 +48,17 @@
           "value": "CVE-2024-48910"
         }
       ],
-      "affectedRange": "< 2.4.2",
-      "fixedVersion": "2.4.2"
+      "affectedVersions": [
+        {
+          "range": "< 2.4.2",
+          "fixed": "2.4.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-vhxf-7vqr-mrjg",
+      "packageName": "dompurify",
       "title": "DOMPurify allows Cross-site Scripting (XSS)",
       "description": "DOMPurify before 3.2.4 has an incorrect template literal regular expression when SAFE_FOR_TEMPLATES is set to true, sometimes leading to mutation cross-site scripting (mXSS).",
       "severity": "medium",
@@ -62,11 +75,17 @@
           "value": "CVE-2025-26791"
         }
       ],
-      "affectedRange": "< 3.2.4",
-      "fixedVersion": "3.2.4"
+      "affectedVersions": [
+        {
+          "range": "< 3.2.4",
+          "fixed": "3.2.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-mmhx-hmjr-r674",
+      "packageName": "dompurify",
       "title": "DOMPurify allows tampering by prototype pollution",
       "description": "It has been discovered that malicious HTML using special nesting techniques can bypass the depth checking added to DOMPurify in recent releases. It was also possible to use Prototype Pollution to weaken the depth check.\n\nThis renders dompurify unable to avoid XSS attack.\n\nFixed by https://github.com/cure53/DOMPurify/commit/1e520262bf4c66b5efda49e2316d6d1246ca7b21 (3.x branch) and https://github.com/cure53/DOMPurify/commit/26e1d69ca7f769f5c558619d644d90dd8bf26ebc (2.x branch).",
       "severity": "high",
@@ -83,11 +102,17 @@
           "value": "CVE-2024-45801"
         }
       ],
-      "affectedRange": ">= 3.0.0, < 3.1.3",
-      "fixedVersion": "3.1.3"
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 3.1.3",
+          "fixed": "3.1.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-8hgg-xxm5-3873",
+      "packageName": "dompurify",
       "title": "DOMPurify Open Redirect vulnerability",
       "description": "DOMPurify before 1.0.11 allows reverse tabnabbing in demos/hooks-target-blank-demo.html because links lack a 'rel=\"noopener noreferrer\"' attribute.",
       "severity": "medium",
@@ -104,8 +129,66 @@
           "value": "CVE-2019-25155"
         }
       ],
-      "affectedRange": "< 1.0.11",
-      "fixedVersion": "1.0.11"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.11",
+          "fixed": "1.0.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v2wj-7wpq-c8vv",
+      "packageName": "dompurify",
+      "title": "DOMPurify contains a Cross-site Scripting vulnerability",
+      "description": "DOMPurify 3.1.3 through 3.3.1 and 2.5.3 through 2.5.8, fixed in 2.5.9 and 3.3.2, contain a cross-site scripting vulnerability that allows attackers to bypass attribute sanitization by exploiting five missing rawtext elements (noscript, xmp, noembed, noframes, iframe) in the `SAFE_FOR_XML` regex. Attackers can include payloads like `</noscript><img src=x onerror=alert(1)>` in attribute values to execute JavaScript when sanitized output is placed inside these unprotected rawtext contexts.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v2wj-7wpq-c8vv",
+      "publishedAt": "2026-03-03T18:31:33Z",
+      "modifiedAt": "2026-03-05T20:25:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v2wj-7wpq-c8vv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-0540"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.5.3, <= 2.5.8",
+          "fixed": "2.5.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v8jm-5vwx-cfxm",
+      "packageName": "dompurify",
+      "title": "DOMPurify contains a Cross-site Scripting vulnerability",
+      "description": "DOMPurify 3.1.3 through 3.2.6 and 2.5.3 through 2.5.8 contain a cross-site scripting vulnerability that allows attackers to bypass attribute sanitization by exploiting missing textarea rawtext element validation in the SAFE_FOR_XML regex. Attackers can include closing rawtext tags like </textarea> in attribute values to break out of rawtext contexts and execute JavaScript when sanitized output is placed inside rawtext elements. The 3.x branch was fixed in 3.2.7; the 2.x branch was never patched.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v8jm-5vwx-cfxm",
+      "publishedAt": "2026-03-03T18:31:33Z",
+      "modifiedAt": "2026-03-04T20:50:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v8jm-5vwx-cfxm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-15599"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.5.3, <= 2.5.8"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

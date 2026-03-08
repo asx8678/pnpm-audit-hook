@@ -1,9 +1,10 @@
 {
-  "name": "kibana",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "kibana",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hp5f-qqrw-c8gj",
+      "packageName": "kibana",
       "title": "Kibana Sensitive Data Disclosure",
       "description": "It was discovered that Kibana’s JIRA connector & IBM Resilient connector could be used to return HTTP response data on internal hosts, which may be intentionally hidden from public view. Using this vulnerability, a malicious user with the ability to create connectors, could utilize these connectors to view limited HTTP response data on hosts accessible to the cluster.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-37939"
         }
       ],
-      "affectedRange": ">= 7.8.0, <= 7.15.1",
-      "fixedVersion": "7.15.2"
+      "affectedVersions": [
+        {
+          "range": ">= 7.8.0, <= 7.15.1",
+          "fixed": "7.15.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

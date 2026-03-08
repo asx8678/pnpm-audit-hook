@@ -1,9 +1,10 @@
 {
-  "name": "git-it-electron",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "git-it-electron",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wjqc-j537-j9gj",
+      "packageName": "git-it-electron",
       "title": "Command injection in git-it-electron",
       "description": "Git-it through 4.4.0 allows OS command injection at the Branches Aren't Just For Birds challenge step. During the verification process, it attempts to run the reflog command followed by the current branch name (which is not sanitized for execution).",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-44685"
         }
       ],
-      "affectedRange": "<= 4.3.0"
+      "affectedVersions": [
+        {
+          "range": "<= 4.3.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

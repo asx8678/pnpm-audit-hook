@@ -1,9 +1,10 @@
 {
-  "name": "realms-shim",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "realms-shim",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-pwm7-qr6j-3vjg",
+      "packageName": "realms-shim",
       "title": "Prototype Pollution in realms-shim",
       "description": "All versions of package realms-shim are vulnerable to Sandbox Bypass via a Prototype Pollution attack vector.",
       "severity": "critical",
@@ -20,10 +21,16 @@
           "value": "CVE-2021-23594"
         }
       ],
-      "affectedRange": "<= 1.2.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-q4j7-v27r-fgcx",
+      "packageName": "realms-shim",
       "title": "Prototype Pollution in realms-shim",
       "description": "All versions of package realms-shim are vulnerable to Sandbox Bypass via a Prototype Pollution attack vector.",
       "severity": "critical",
@@ -40,7 +47,12 @@
           "value": "CVE-2021-23543"
         }
       ],
-      "affectedRange": "<= 1.2.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

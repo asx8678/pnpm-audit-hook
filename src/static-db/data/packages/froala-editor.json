@@ -1,9 +1,10 @@
 {
-  "name": "froala-editor",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "froala-editor",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-549p-5c7f-c5p4",
+      "packageName": "froala-editor",
       "title": "Froala WYSIWYG editor allows cross-site scripting (XSS)",
       "description": "Inconsistent <plaintext> tag parsing allows for XSS in Froala WYSIWYG editor 4.3.0 and earlier.",
       "severity": "medium",
@@ -20,10 +21,16 @@
           "value": "CVE-2024-51434"
         }
       ],
-      "affectedRange": "<= 4.3.0"
+      "affectedVersions": [
+        {
+          "range": "<= 4.3.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-hvpq-7vcc-5hj5",
+      "packageName": "froala-editor",
       "title": "Froala Editor Cross-site Scripting vulnerability",
       "description": "Froala Editor v4.0.1 to v4.1.1 was discovered to contain a cross-site scripting (XSS) vulnerability.",
       "severity": "medium",
@@ -40,11 +47,17 @@
           "value": "CVE-2023-41592"
         }
       ],
-      "affectedRange": ">= 4.0.1, <= 4.1.3",
-      "fixedVersion": "4.1.4"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.1, <= 4.1.3",
+          "fixed": "4.1.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-97x5-cc53-cv4v",
+      "packageName": "froala-editor",
       "title": "Cross site scripting in froala-editor",
       "description": "A cross site scripting (XSS) vulnerability in the Insert Video function of Froala WYSIWYG Editor allows attackers to execute arbitrary web scripts or HTML.",
       "severity": "medium",
@@ -61,11 +74,17 @@
           "value": "CVE-2020-22864"
         }
       ],
-      "affectedRange": "<= 4.0.6",
-      "fixedVersion": "4.0.11"
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.6",
+          "fixed": "4.0.11"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-cq6w-w5rj-p9x8",
+      "packageName": "froala-editor",
       "title": "Cross-site Scripting in Froala Editor",
       "description": "Froala Editor 3.2.6 is affected by Cross Site Scripting (XSS). Under certain conditions, a base64 crafted string leads to persistent Cross-site scripting (XSS) vulnerability within the hyperlink creation module.",
       "severity": "medium",
@@ -82,10 +101,16 @@
           "value": "CVE-2021-30109"
         }
       ],
-      "affectedRange": "<= 3.2.6"
+      "affectedVersions": [
+        {
+          "range": "<= 3.2.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-h236-g5gh-vq6c",
+      "packageName": "froala-editor",
       "title": "DOM-based cross-site scripting in Froala Editor",
       "description": "Froala WYSIWYG HTML Editor is a lightweight WYSIWYG HTML Editor written in JavaScript that enables rich text editing capabilities for web applications. A DOM-based cross-site scripting (XSS) vulnerability exists in versions before 3.2.3 because HTML code in the editor is not correctly sanitized when inserted into the DOM. This allows an attacker that can control the editor content to execute arbitrary JavaScript in the context of the victim’s session.",
       "severity": "medium",
@@ -102,8 +127,13 @@
           "value": "CVE-2019-19935"
         }
       ],
-      "affectedRange": "< 3.2.3",
-      "fixedVersion": "3.2.3"
+      "affectedVersions": [
+        {
+          "range": "< 3.2.3",
+          "fixed": "3.2.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

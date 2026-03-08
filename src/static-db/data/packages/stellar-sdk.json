@@ -1,9 +1,10 @@
 {
-  "name": "stellar-sdk",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "stellar-sdk",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6cgh-hjpw-q3gq",
+      "packageName": "stellar-sdk",
       "title": "Utils.readChallengeTx does not verify the server account signature",
       "description": "The `Utils.readChallengeTx` function used in [SEP-10 Stellar Web Authentication](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0010.md) states in its function documentation that it reads and validates the challenge transaction including verifying that the `serverAccountID` has signed the transaction. The function does not verify that the server has signed the transaction and has been fixed so that it does in v8.2.3.\n\nApplications that also used `Utils.verifyChallengeTxThr",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-32738"
         }
       ],
-      "affectedRange": "< 8.2.3",
-      "fixedVersion": "8.2.3"
+      "affectedVersions": [
+        {
+          "range": "< 8.2.3",
+          "fixed": "8.2.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

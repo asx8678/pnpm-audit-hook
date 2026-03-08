@@ -1,9 +1,10 @@
 {
-  "name": "conf-cfg-ini",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "conf-cfg-ini",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-m6mg-jvjf-w44x",
+      "packageName": "conf-cfg-ini",
       "title": "conf-cfg-ini Prototype Pollution via malicious INI file before v1.2.2",
       "description": "This affects the package conf-cfg-ini before 1.2.2. If an attacker submits a malicious INI file to an application that parses it with decode, they will pollute the prototype on the application. This can be exploited further depending on the context.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-28441"
         }
       ],
-      "affectedRange": "< 1.2.2",
-      "fixedVersion": "1.2.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.2.2",
+          "fixed": "1.2.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

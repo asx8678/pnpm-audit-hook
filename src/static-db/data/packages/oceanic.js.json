@@ -1,9 +1,10 @@
 {
-  "name": "oceanic.js",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "oceanic.js",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-5h5v-hw44-f6gg",
+      "packageName": "oceanic.js",
       "title": "Oceanic allows unsanitized user input to lead to path traversal in URLs",
       "description": "### Impact\nInput to functions such as `Client.rest.channels.removeBan` is not url-encoded, resulting in specially crafted input such as `../../../channels/{id}` being normalized into the url `/api/v10/channels/{id}`, and deleting a channel rather than removing a ban.\n\n### Workarounds\n* Sanitizing user input, ensuring strings are valid for the purpose they are being used for.\n* Encoding input with `encodeURIComponent` before providing it to the library.\n\n### References\nOceanicJS/Oceanic@8bf8ee837",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-34712"
         }
       ],
-      "affectedRange": "< 1.10.4",
-      "fixedVersion": "1.10.4"
+      "affectedVersions": [
+        {
+          "range": "< 1.10.4",
+          "fixed": "1.10.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

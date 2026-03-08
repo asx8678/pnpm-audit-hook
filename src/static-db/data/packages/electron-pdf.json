@@ -1,9 +1,10 @@
 {
-  "name": "electron-pdf",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "electron-pdf",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3jcv-5f9p-2f2p",
+      "packageName": "electron-pdf",
       "title": "Cross-site Scripting in electron-pdf",
       "description": "electron-pdf version 20.0.0 allows an external attacker to remotely obtain\n\narbitrary local files. This is possible because the application does not\n\nvalidate the HTML content entered by the user.\n\n\n\n",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-1648"
         }
       ],
-      "affectedRange": "<= 20.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 20.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

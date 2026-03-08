@@ -1,0 +1,33 @@
+{
+  "packageName": "@sync-in/server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9jmq-xgjm-p8c2",
+      "packageName": "@sync-in/server",
+      "title": "Sync-in Server has a stored cross-site scripting (XSS) vulnerability",
+      "description": "A Stored Cross-Site Scripting (XSS) vulnerability in Sync-in Server before 1.9.3 allows an authenticated attacker to execute arbitrary JavaScript in a victim's browser. By uploading a crafted SVG file containing a malicious payload, an attacker can access and exfiltrate sensitive information, including the user's session cookies.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9jmq-xgjm-p8c2",
+      "publishedAt": "2026-02-20T18:31:33Z",
+      "modifiedAt": "2026-02-20T21:15:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9jmq-xgjm-p8c2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-67438"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.9.3",
+          "fixed": "1.9.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

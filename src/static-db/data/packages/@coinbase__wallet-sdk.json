@@ -1,9 +1,10 @@
 {
-  "name": "@coinbase/wallet-sdk",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@coinbase/wallet-sdk",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8rgj-285w-qcq4",
+      "packageName": "@coinbase/wallet-sdk",
       "title": "Unknown vulnerability in Coinbase Wallet SDK",
       "description": "### Impact\nThere is a security vulnerability in outdated versions of Coinbase Wallet SDK. This does not directly affect users' keys, smart contracts, or funds.\n\n### Patches\nPlease update to version >= 4.3.0.",
       "severity": "high",
@@ -16,8 +17,13 @@
           "value": "GHSA-8rgj-285w-qcq4"
         }
       ],
-      "affectedRange": ">= 4.0.0-beta.0, < 4.3.0",
-      "fixedVersion": "4.3.0"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0-beta.0, < 4.3.0",
+          "fixed": "4.3.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

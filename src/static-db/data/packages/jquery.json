@@ -1,9 +1,10 @@
 {
-  "name": "jquery",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "jquery",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-579v-mp3v-rrw5",
+      "packageName": "jquery",
       "title": "jQuery vulnerable to Cross-Site Scripting (XSS)",
       "description": "Cross-site scripting (XSS) vulnerability in jQuery before 1.6.3, when using location.hash to select elements, allows remote attackers to inject arbitrary web script or HTML via a crafted tag.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2011-4969"
         }
       ],
-      "affectedRange": "< 1.6.3",
-      "fixedVersion": "1.6.3"
+      "affectedVersions": [
+        {
+          "range": "< 1.6.3",
+          "fixed": "1.6.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-257q-pv89-v3xv",
+      "packageName": "jquery",
       "title": "Duplicate Advisory: jQuery Cross Site Scripting vulnerability",
       "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of [GHSA-jpcq-cgw6-v4j6](https://github.com/advisories/GHSA-jpcq-cgw6-v4j6). This link is maintained to preserve external references.\n\n## Original Description\n\nCross Site Scripting vulnerability in jQuery v.2.2.0 until v.3.5.0 allows a remote attacker to execute arbitrary code via the `<options>` element.",
       "severity": "medium",
@@ -41,8 +48,13 @@
           "value": "CVE-2020-23064"
         }
       ],
-      "affectedRange": ">= 1.0.3, < 3.5.0",
-      "fixedVersion": "3.5.0"
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.3, < 3.5.0",
+          "fixed": "3.5.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

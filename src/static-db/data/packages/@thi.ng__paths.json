@@ -1,9 +1,10 @@
 {
-  "name": "@thi.ng/paths",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@thi.ng/paths",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8ppr-www8-hfjx",
+      "packageName": "@thi.ng/paths",
       "title": "@thi.ng/paths Prototype Pollution vulnerability",
       "description": "An issue in @thi.ng/paths v.5.1.62 and before allows a remote attacker to execute arbitrary code via the `mutIn` and `mutInManyUnsafe` components.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-29650"
         }
       ],
-      "affectedRange": "< 5.1.63",
-      "fixedVersion": "5.1.63"
+      "affectedVersions": [
+        {
+          "range": "< 5.1.63",
+          "fixed": "5.1.63"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

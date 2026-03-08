@@ -1,9 +1,10 @@
 {
-  "name": "@devicefarmer/stf",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@devicefarmer/stf",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7xm8-wjq7-88r5",
+      "packageName": "@devicefarmer/stf",
       "title": "DeviceFarmer stf uses DES-ECB",
       "description": "DeviceFarmer stf v3.6.6 suffers from Use of a Broken or Risky Cryptographic Algorithm.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-51839"
         }
       ],
-      "affectedRange": "<= 3.6.6"
+      "affectedVersions": [
+        {
+          "range": "<= 3.6.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

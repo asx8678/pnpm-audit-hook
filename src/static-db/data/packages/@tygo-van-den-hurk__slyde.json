@@ -1,0 +1,33 @@
+{
+  "packageName": "@tygo-van-den-hurk/slyde",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w7h5-55jg-cq2f",
+      "packageName": "@tygo-van-den-hurk/slyde",
+      "title": "Improper Control of Generation of Code ('Code Injection') in @tygo-van-den-hurk/slyde",
+      "description": "### Impact\nThis is a **remote code execution (RCE) vulnerability**. Node.js automatically imports `**/*.plugin.{js,mjs}` files including those from `node_modules`, so any malicious package with a `.plugin.js` file could execute arbitrary code when installed or required. **All projects using this loading behavior are affected**, especially those installing untrusted packages.\n\n### Patches\nThe issue has been **patched in v0.0.5**. Users should upgrade to **v0.0.5 or later** to mitigate the vulnera",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w7h5-55jg-cq2f",
+      "publishedAt": "2026-02-18T21:45:06Z",
+      "modifiedAt": "2026-02-20T16:48:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w7h5-55jg-cq2f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26974"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.0.5",
+          "fixed": "0.0.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

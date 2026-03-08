@@ -1,9 +1,10 @@
 {
-  "name": "svelecte",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "svelecte",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7h45-grc5-89wq",
+      "packageName": "svelecte",
       "title": "Svelecte item names vulnerable to execution of arbitrary JavaScript",
       "description": "### Summary\n\nSvelecte item names are rendered as raw HTML with no escaping. This allows the injection of arbitrary HTML into the Svelecte dropdown. This can be exploited to execute arbitrary JavaScript whenever a Svelecte dropdown is opened.\n\n### Details\n\nItem names given to Svelecte appear to be directly rendered as HTML by the default item renderer. This means that any HTML tags in the name are rendered as HTML elements not as text.\n\nNote that the custom item renderer shown in https://mskocik.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-38687"
         }
       ],
-      "affectedRange": "< 3.16.3",
-      "fixedVersion": "3.16.3"
+      "affectedVersions": [
+        {
+          "range": "< 3.16.3",
+          "fixed": "3.16.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

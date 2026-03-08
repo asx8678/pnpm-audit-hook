@@ -1,9 +1,10 @@
 {
-  "name": "meshcentral",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "meshcentral",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-cp68-qrhr-g9h8",
+      "packageName": "meshcentral",
       "title": "MeshCentral cross-site websocket hijacking (CSWSH) vulnerability",
       "description": "We have identified a cross-site websocket hijacking (CSWSH) vulnerability within the control.ashx endpoint of MeshCentral. This component is the primary mechanism used within MeshCentral to perform administrative actions on the server. To demonstrate the impact of the vulnerability we developed a proof-of-concept which leveraged the cross-site websocket hijacking vulnerability to read the server configuration file to leak the sessionKey variable, generating login tokens, and generating an authen",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2024-26135"
         }
       ],
-      "affectedRange": "< 1.1.21",
-      "fixedVersion": "1.1.21"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.21",
+          "fixed": "1.1.21"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-v269-rrr6-cx6r",
+      "packageName": "meshcentral",
       "title": "Ylianst MeshCentral 1.1.16 suffers from Use of a Broken or Risky Cryptographic Algorithm.",
       "description": "Ylianst MeshCentral 1.1.16 suffers from Use of a Broken or Risky Cryptographic Algorithm.",
       "severity": "high",
@@ -41,10 +48,16 @@
           "value": "CVE-2023-51838"
         }
       ],
-      "affectedRange": "<= 1.1.16"
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.16"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-wpxw-5xfm-x22v",
+      "packageName": "meshcentral",
       "title": "MeshCentral algorithm-downgrade issue",
       "description": "An algorithm-downgrade issue was discovered in Ylianst MeshCentral 1.1.16.",
       "severity": "high",
@@ -61,11 +74,17 @@
           "value": "CVE-2023-51842"
         }
       ],
-      "affectedRange": "< 1.1.17",
-      "fixedVersion": "1.1.17"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.17",
+          "fixed": "1.1.17"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-8xw6-9h78-c89j",
+      "packageName": "meshcentral",
       "title": "Ylianst MeshCentral Missing SSL Certificate Validation",
       "description": "Ylianst MeshCentral 1.1.16 is vulnerable to Missing SSL Certificate Validation.",
       "severity": "critical",
@@ -82,7 +101,12 @@
           "value": "CVE-2023-51837"
         }
       ],
-      "affectedRange": "<= 1.1.16"
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.16"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "aaptjs",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "aaptjs",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7fw7-gh23-f832",
+      "packageName": "aaptjs",
       "title": "Vulnerability in singleCrunch function leads to arbitrary code execution via filePath parameters",
       "description": "aaptjs is a node wraper for aapt. An issue was discovered in the singleCrunch function in shenzhim aaptjs 1.3.1, allows attackers to execute arbitrary code via the filePath parameters.",
       "severity": "critical",
@@ -20,10 +21,16 @@
           "value": "CVE-2020-36381"
         }
       ],
-      "affectedRange": "<= 1.3.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.3.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-m7p2-ghfh-pjvx",
+      "packageName": "aaptjs",
       "title": "Vulnerability in crunch function leads to arbitrary code execution via filePath parameters",
       "description": "aaptjs is a node wraper for aapt. An issue was discovered in the crunch function in shenzhim aaptjs 1.3.1, allows attackers to execute arbitrary code via the filePath parameters.",
       "severity": "critical",
@@ -40,10 +47,16 @@
           "value": "CVE-2020-36380"
         }
       ],
-      "affectedRange": "<= 1.3.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.3.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4qwq-q4pr-rr7r",
+      "packageName": "aaptjs",
       "title": "Vulnerability in packageCmd function leads to arbitrary code execution via filePath parameters",
       "description": "aaptjs is a node wraper for aapt. An issue was discovered in the packageCmd function in shenzhim aaptjs 1.3.1, allows attackers to execute arbitrary code via the filePath parameters.",
       "severity": "critical",
@@ -60,10 +73,16 @@
           "value": "CVE-2020-36378"
         }
       ],
-      "affectedRange": "<= 1.3.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.3.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9cq3-fj2h-ggj5",
+      "packageName": "aaptjs",
       "title": "Vulnerability in remove function leads to arbitrary code execution via filePath parameters",
       "description": "Aaptjs is a node wraper for aapt. An issue was discovered in the remove function in shenzhim aaptjs 1.3.1, allows attackers to execute arbitrary code via the filePath parameters.",
       "severity": "critical",
@@ -80,10 +99,16 @@
           "value": "CVE-2020-36379"
         }
       ],
-      "affectedRange": "<= 1.3.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.3.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-r496-7hgp-53wf",
+      "packageName": "aaptjs",
       "title": "Vulnerability in dump function leads to arbitrary code execution via filePath parameters",
       "description": "aaptjs is a node wraper for aapt. An issue was discovered in the dump function in shenzhim aaptjs 1.3.1, allows attackers to execute arbitrary code via the filePath parameters.",
       "severity": "critical",
@@ -100,10 +125,16 @@
           "value": "CVE-2020-36377"
         }
       ],
-      "affectedRange": "<= 1.3.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.3.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4g7x-7vgq-3j28",
+      "packageName": "aaptjs",
       "title": "Vulnerability in list function leads to arbitrary code execution via filePath parameters",
       "description": "aaptjs is a node wraper for aapt. An issue was discovered in the list function in shenzhim aaptjs 1.3.1, allows attackers to execute arbitrary code via the filePath parameters.",
       "severity": "critical",
@@ -120,7 +151,12 @@
           "value": "CVE-2020-36376"
         }
       ],
-      "affectedRange": "<= 1.3.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.3.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

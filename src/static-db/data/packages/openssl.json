@@ -1,9 +1,10 @@
 {
-  "name": "openssl",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "openssl",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-75w2-qv55-x7fv",
+      "packageName": "openssl",
       "title": "openssl npm package vulnerable to command execution",
       "description": "The openssl (aka node-openssl) NPM package through 2.0.0 was characterized as \"a nonsense wrapper with no real purpose\" by its author, and accepts an opts argument that contains a verb field (used for command execution). NOTE: This vulnerability only affects products that are no longer supported by the maintainer.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-49210"
         }
       ],
-      "affectedRange": "<= 2.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

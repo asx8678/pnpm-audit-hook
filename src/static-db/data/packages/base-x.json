@@ -1,9 +1,10 @@
 {
-  "name": "base-x",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "base-x",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xq7p-g2vc-g82p",
+      "packageName": "base-x",
       "title": "Homograph attack allows Unicode lookalike characters to bypass validation.",
       "description": "### Impact\n\nAttackers can deceive users into sending funds to an unintended address.\n\n### Patches\n\nhttps://github.com/cryptocoinjs/base-x/pull/86",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-27611"
         }
       ],
-      "affectedRange": "<= 3.0.10",
-      "fixedVersion": "3.0.11"
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.10",
+          "fixed": "3.0.11"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

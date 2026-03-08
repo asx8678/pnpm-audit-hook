@@ -1,9 +1,10 @@
 {
-  "name": "js-extend",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "js-extend",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mh82-55cm-6gfh",
+      "packageName": "js-extend",
       "title": "Prototype pollution vulnerability in js-extend",
       "description": "Prototype pollution vulnerability in 'js-extend' versions 0.0.1 through 1.0.1 allows attacker to cause a denial of service and may lead to remote code execution.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-25945"
         }
       ],
-      "affectedRange": "<= 1.0.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

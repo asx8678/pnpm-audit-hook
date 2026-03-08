@@ -1,9 +1,10 @@
 {
-  "name": "markdown-to-jsx",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "markdown-to-jsx",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4wx3-54gh-9fr9",
+      "packageName": "markdown-to-jsx",
       "title": "Cross site scripting in markdown-to-jsx",
       "description": "Versions of the package markdown-to-jsx before 7.4.0 are vulnerable to Cross-site Scripting (XSS) via the src property due to improper input sanitization. An attacker can execute arbitrary code by injecting a malicious iframe element in the markdown.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-21535"
         }
       ],
-      "affectedRange": "< 7.4.0",
-      "fixedVersion": "7.4.0"
+      "affectedVersions": [
+        {
+          "range": "< 7.4.0",
+          "fixed": "7.4.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

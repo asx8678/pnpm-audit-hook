@@ -1,9 +1,10 @@
 {
-  "name": "collection.js",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "collection.js",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-47pj-q2vm-46xc",
+      "packageName": "collection.js",
       "title": "Collection.js vulnerable to Prototype Pollution",
       "description": "Versions of the package collection.js before 6.8.1 are vulnerable to Prototype Pollution via the `extend` function in `Collection.js/dist/node/iterators/extend.js`.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-26113"
         }
       ],
-      "affectedRange": "< 6.8.1",
-      "fixedVersion": "6.8.1"
+      "affectedVersions": [
+        {
+          "range": "< 6.8.1",
+          "fixed": "6.8.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

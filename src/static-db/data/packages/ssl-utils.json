@@ -1,9 +1,10 @@
 {
-  "name": "ssl-utils",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "ssl-utils",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-552j-pv39-f3jf",
+      "packageName": "ssl-utils",
       "title": "OS Command injection in ssl-utils",
       "description": "OS Command Injection vulnerability in es128 ssl-utils 1.0.0 for Node.js allows attackers to execute arbitrary commands via unsanitized shell metacharacters provided to the createCertRequest() and the createCert() functions.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-34080"
         }
       ],
-      "affectedRange": "<= 1.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

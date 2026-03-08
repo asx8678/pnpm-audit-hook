@@ -1,9 +1,10 @@
 {
-  "name": "@astrojs/node",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@astrojs/node",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xf8x-j4p2-f749",
+      "packageName": "@astrojs/node",
       "title": "Astro allows unauthorized third-party images in _image endpoint",
       "description": "### Summary\n\nIn affected versions of `astro`, the image optimization endpoint in projects deployed with on-demand rendering allows images from unauthorized third-party domains to be served.\n\n### Details\n\nOn-demand rendered sites built with Astro include an `/_image` endpoint which returns optimized versions of images.\n\nThe `/_image` endpoint is restricted to processing local images bundled with the site and also supports remote images from domains the site developer has manually authorized (usin",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-55303"
         }
       ],
-      "affectedRange": "<= 9.1.0",
-      "fixedVersion": "9.1.1"
+      "affectedVersions": [
+        {
+          "range": "<= 9.1.0",
+          "fixed": "9.1.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9x9c-ghc5-jhw9",
+      "packageName": "@astrojs/node",
       "title": "@astrojs/node's trailing slash handling causes open redirect issue",
       "description": "### Summary\n\nFollowing https://github.com/withastro/astro/security/advisories/GHSA-cq8c-xv66-36gw, there's still an Open Redirect vulnerability in a subset of Astro deployment scenarios.\n\n### Details\n\nAstro 5.12.8 fixed a case where `https://example.com//astro.build/press` would redirect to the external origin `//astro.build/press`. However, with the Node deployment adapter in standalone mode and `trailingSlash` set to `\"always\"` in the Astro configuration, `https://example.com//astro.build/pres",
       "severity": "medium",
@@ -41,8 +48,94 @@
           "value": "CVE-2025-55207"
         }
       ],
-      "affectedRange": "<= 9.4.0",
-      "fixedVersion": "9.4.1"
+      "affectedVersions": [
+        {
+          "range": "<= 9.4.0",
+          "fixed": "9.4.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cj9f-h6r6-4cx2",
+      "packageName": "@astrojs/node",
+      "title": "Astro is vulnerable to SSRF due to missing allowlist enforcement in remote image inferSize",
+      "description": "## Summary\n\nA bug in Astro's image pipeline allows bypassing `image.domains` / `image.remotePatterns` restrictions, enabling the server to fetch content from unauthorized remote hosts.\n\n## Details\n\nAstro provides an `inferSize` option that fetches remote images at render time to determine their dimensions. Remote image fetches are intended to be restricted to domains the site developer has manually authorized (using the `image.domains` or `image.remotePatterns` options).\n\nHowever, when `inferSiz",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cj9f-h6r6-4cx2",
+      "publishedAt": "2026-02-25T18:11:47Z",
+      "modifiedAt": "2026-02-27T21:53:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cj9f-h6r6-4cx2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27829"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 9.0.0, < 9.5.4",
+          "fixed": "9.5.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jm64-8m5q-4qh8",
+      "packageName": "@astrojs/node",
+      "title": "Astro has memory exhaustion DoS due to missing request body size limit in Server Actions",
+      "description": "## Summary\n\nAstro server actions have no default request body size limit, which can lead to memory exhaustion DoS. A single large POST to a valid action endpoint can crash the server process on memory-constrained deployments.\n\n## Details\n\nOn-demand rendered sites built with Astro can define server actions, which automatically parse incoming request bodies (JSON or FormData). The body is buffered entirely into memory with no size limit — a single oversized request is sufficient to exhaust the pro",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jm64-8m5q-4qh8",
+      "publishedAt": "2026-02-25T22:33:13Z",
+      "modifiedAt": "2026-02-25T22:33:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jm64-8m5q-4qh8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27729"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 9.0.0, < 9.5.4",
+          "fixed": "9.5.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qq67-mvv5-fw3g",
+      "packageName": "@astrojs/node",
+      "title": "Astro has Full-Read SSRF in error rendering via Host: header injection",
+      "description": "### Summary\n\nServer-Side Rendered pages that return an error with a prerendered custom error page (eg. `404.astro` or `500.astro`) are vulnerable to SSRF. If the `Host:` header is changed to an attacker's server, it will be fetched on `/500.html` and they can redirect this to any internal URL to read the response body through the first request.\n\n### Details\n\nThe following line of code fetches `statusURL` and returns the response back to the client:\n\nhttps://github.com/withastro/astro/blob/bf0b4b",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qq67-mvv5-fw3g",
+      "publishedAt": "2026-02-23T21:54:32Z",
+      "modifiedAt": "2026-02-25T12:45:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qq67-mvv5-fw3g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25545"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 9.5.4",
+          "fixed": "9.5.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

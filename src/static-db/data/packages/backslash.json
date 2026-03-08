@@ -1,9 +1,10 @@
 {
-  "name": "backslash",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "backslash",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-53mq-f4w3-f7qv",
+      "packageName": "backslash",
       "title": "backslash@0.2.1 contains malware after npm account takeover",
       "description": "### Impact\nOn 8 September 2025, the npm publishing account for `backslash` was taken over after a phishing attack. Version `0.2.1` was published, functionally identical to the previous patch version, but with a malware payload added attempting to redirect cryptocurrency transactions to the attacker's own addresses from within browser environments.\n\nLocal environments, server environments, command line applications, etc. are not affected. If the package was used in a browser context (e.g. a direc",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-59140"
         }
       ],
-      "affectedRange": "= 0.2.1",
-      "fixedVersion": "0.2.2"
+      "affectedVersions": [
+        {
+          "range": "= 0.2.1",
+          "fixed": "0.2.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

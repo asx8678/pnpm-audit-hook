@@ -1,9 +1,10 @@
 {
-  "name": "nestie",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "nestie",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-m7rg-8wvq-846v",
+      "packageName": "nestie",
       "title": "Prototype pollution in nestie",
       "description": "Prototype pollution vulnerability in 'nestie' versions 0.0.0 through 1.0.0 allows an attacker to cause a denial of service and may lead to remote code execution.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-25947"
         }
       ],
-      "affectedRange": "< 1.0.1",
-      "fixedVersion": "1.0.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.1",
+          "fixed": "1.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

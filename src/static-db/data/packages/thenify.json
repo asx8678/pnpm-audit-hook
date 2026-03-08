@@ -1,9 +1,10 @@
 {
-  "name": "thenify",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "thenify",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-29xr-v42j-r956",
+      "packageName": "thenify",
       "title": "thenify before 3.3.1 made use of unsafe calls to `eval`.",
       "description": "Versions of thenify prior to 3.3.1 made use of unsafe calls to `eval`. Untrusted user input could thus lead to arbitrary code execution on the host. The patch in version 3.3.1 removes calls to `eval`.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-7677"
         }
       ],
-      "affectedRange": "< 3.3.1",
-      "fixedVersion": "3.3.1"
+      "affectedVersions": [
+        {
+          "range": "< 3.3.1",
+          "fixed": "3.3.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

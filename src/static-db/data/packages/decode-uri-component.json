@@ -1,9 +1,10 @@
 {
-  "name": "decode-uri-component",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "decode-uri-component",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-w573-4hg7-7wgq",
+      "packageName": "decode-uri-component",
       "title": "decode-uri-component vulnerable to Denial of Service (DoS)",
       "description": "decode-uri-component 0.2.0 is vulnerable to Improper Input Validation resulting in DoS.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-38900"
         }
       ],
-      "affectedRange": "< 0.2.1",
-      "fixedVersion": "0.2.1"
+      "affectedVersions": [
+        {
+          "range": "< 0.2.1",
+          "fixed": "0.2.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

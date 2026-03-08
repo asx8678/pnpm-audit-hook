@@ -1,9 +1,10 @@
 {
-  "name": "md-to-pdf",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "md-to-pdf",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-547r-qmjm-8hvw",
+      "packageName": "md-to-pdf",
       "title": "md-to-pdf vulnerable to arbitrary JavaScript code execution when parsing front matter",
       "description": "### Summary\nA Markdown front-matter block that contains JavaScript delimiter causes the JS engine in gray-matter library to execute arbitrary code in the Markdown to PDF converter process of **md-to-pdf** library, resulting in remote code execution.\n\n### Details\n**md-to-pdf** uses the gray-matter library to parse front-matter. Gray-matter exposes a JavaScript engine that, when enabled or triggered by certain front-matter delimiters (e.g. ---js or ---javascript), will evaluate the front-matter co",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-65108"
         }
       ],
-      "affectedRange": "< 5.2.5",
-      "fixedVersion": "5.2.5"
+      "affectedVersions": [
+        {
+          "range": "< 5.2.5",
+          "fixed": "5.2.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-x949-7cm6-fm6p",
+      "packageName": "md-to-pdf",
       "title": "Code Injection in md-to-pdf.",
       "description": "The package md-to-pdf before 5.0.0 are vulnerable to Remote Code Execution (RCE) due to utilizing the library gray-matter to parse front matter content, without disabling the JS engine.",
       "severity": "critical",
@@ -41,8 +48,13 @@
           "value": "CVE-2021-23639"
         }
       ],
-      "affectedRange": "< 5.0.0",
-      "fixedVersion": "5.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.0.0",
+          "fixed": "5.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

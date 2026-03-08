@@ -1,9 +1,10 @@
 {
-  "name": "@goauthentik/api",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@goauthentik/api",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vmf9-6pcv-xr87",
+      "packageName": "@goauthentik/api",
       "title": "Username enumeration attack in goauthentik",
       "description": "## Summary\nUsing a recovery flow with an identification stage an attacker is able to determine if a username exists.\n\n## Impact\nOnly setups configured with a recovery flow are impacted by this. Anyone with a user account on a system with the recovery flow described above is susceptible to having their username/email revealed as existing.\n\n## Details\n\nAn attacker can easily enumerate and check users' existence using the recovery flow, as a clear message is shown when a user doesn't exist. Dependi",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-39522"
         }
       ],
-      "affectedRange": "< 2023.5.6",
-      "fixedVersion": "2023.5.6"
+      "affectedVersions": [
+        {
+          "range": "< 2023.5.6",
+          "fixed": "2023.5.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

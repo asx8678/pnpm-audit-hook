@@ -1,9 +1,10 @@
 {
-  "name": "deep-object-diff",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "deep-object-diff",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-653v-rqx9-j85p",
+      "packageName": "deep-object-diff",
       "title": "deep-object-diff vulnerable to Prototype Pollution",
       "description": "deep-object-diff before version 1.1.6 allows an external attacker to edit or add new properties to an object. This is possible because the application does not properly validate incoming JSON keys, thus allowing the `__proto__` property to be edited. This issue was fixed in version 1.1.9.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-41713"
         }
       ],
-      "affectedRange": ">= 1.1.6, < 1.1.9",
-      "fixedVersion": "1.1.9"
+      "affectedVersions": [
+        {
+          "range": ">= 1.1.6, < 1.1.9",
+          "fixed": "1.1.9"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

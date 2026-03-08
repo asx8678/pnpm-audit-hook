@@ -1,9 +1,10 @@
 {
-  "name": "get-jwks",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "get-jwks",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-qc2q-qhf3-235m",
+      "packageName": "get-jwks",
       "title": "get-jwks: poisoned JWKS cache allows post-fetch issuer validation bypass",
       "description": "### Summary\nA vulnerability in `get-jwks` can lead to cache poisoning in the JWKS key-fetching mechanism. \n\n### Details\nWhen the `iss` (issuer) claim is validated only after keys are retrieved from the cache, it is possible for cached keys from an unexpected issuer to be reused, resulting in a bypass of issuer validation. This design flaw enables a potential attack where a malicious actor crafts a pair of JWTs, the first one ensuring that a chosen public key is fetched and stored in the shared J",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-59936"
         }
       ],
-      "affectedRange": "<= 11.0.1",
-      "fixedVersion": "11.0.2"
+      "affectedVersions": [
+        {
+          "range": "<= 11.0.1",
+          "fixed": "11.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

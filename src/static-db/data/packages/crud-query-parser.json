@@ -1,9 +1,10 @@
 {
-  "name": "crud-query-parser",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "crud-query-parser",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9r25-rp3p-h2w4",
+      "packageName": "crud-query-parser",
       "title": "crud-query-parser SQL Injection vulnerability",
       "description": "### Impact\n\nImproper neutralization of the `order`/`sort` parameter in the TypeORM adapter, which allows SQL injection.\n\nYou are impacted by this vulnerability if you are using the TypeORM adapter, ordering is enabled and you have not set-up a property filter.\n\nVersions 0.0.1, 0.0.2 and 0.0.3 are affected by this vulnerability.\n\n### Patches\n\nThis vulnerability has been fixed in version 0.1.0 and newer, which introduces TypeORM field validation (enabled by default).\n\n### Workarounds\n\n#### Add an ",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-32020"
         }
       ],
-      "affectedRange": "< 0.1.0",
-      "fixedVersion": "0.1.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.1.0",
+          "fixed": "0.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

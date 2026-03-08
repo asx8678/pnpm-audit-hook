@@ -1,9 +1,10 @@
 {
-  "name": "safe-object2",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "safe-object2",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jpq3-xf27-5jf2",
+      "packageName": "safe-object2",
       "title": "Prototype Pollution in safe-object2",
       "description": "All versions of package safe-object2 are vulnerable to Prototype Pollution via the setter function.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7726"
         }
       ],
-      "affectedRange": "<= 1.0.3"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

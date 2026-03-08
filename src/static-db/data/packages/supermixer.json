@@ -1,9 +1,10 @@
 {
-  "name": "supermixer",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "supermixer",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7prf-vw4p-qr59",
+      "packageName": "supermixer",
       "title": "Prototype pollution in supermixer",
       "description": "Prototype pollution in Stampit supermixer allows an attacker to modify the prototype of a base object which can vary in severity depending on the implementation.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-24939"
         }
       ],
-      "affectedRange": "< 1.0.5",
-      "fixedVersion": "1.0.5"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.5",
+          "fixed": "1.0.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

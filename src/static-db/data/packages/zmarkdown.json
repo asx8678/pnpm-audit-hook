@@ -1,9 +1,10 @@
 {
-  "name": "zmarkdown",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "zmarkdown",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mq6v-w35g-3c97",
+      "packageName": "zmarkdown",
       "title": "Local File Inclusion vulnerability in zmarkdown",
       "description": "### Impact\n\nA minor Local File Inclusion vulnerability has been found in\n`zmarkdown`, which allowed for images with a known path on\nthe host machine to be included inside a LaTeX document.\n\nTo prevent it, a new option has been created that allow to replace\ninvalid paths with a default image instead of linking the image on the\nhost directly. `zmarkdown` has been updated to make this setting the\ndefault.\n\nEvery user of `zmarkdown` is likely impacted, except if\ndisabling LaTeX generation or images ",
       "severity": "low",
@@ -16,8 +17,13 @@
           "value": "GHSA-mq6v-w35g-3c97"
         }
       ],
-      "affectedRange": "< 10.1.3",
-      "fixedVersion": "10.1.3"
+      "affectedVersions": [
+        {
+          "range": "< 10.1.3",
+          "fixed": "10.1.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

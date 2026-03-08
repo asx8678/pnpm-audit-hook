@@ -1,9 +1,10 @@
 {
-  "name": "@strapi/database",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@strapi/database",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-chmr-rg2f-9jmf",
+      "packageName": "@strapi/database",
       "title": "Making all attributes on a content-type public without noticing it",
       "description": "### Summary\nAnyone (Strapi developers, users, plugins) can make every attribute of a Content-Type public without knowing it.\n\n### Details\nWhen dealing with content-types inside a Strapi instance, we can extend those using the appropriate container:\n```javascript\nstrapi.container.get('content-types').extend(contentTypeUID, (contentType) => newContentType);\n```\nThe vulnerability only affects the handling of content types by Strapi, not the actual content types themselves. Users can use plugins or ",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2023-34093"
         }
       ],
-      "affectedRange": "< 4.10.8",
-      "fixedVersion": "4.10.8"
+      "affectedVersions": [
+        {
+          "range": "< 4.10.8",
+          "fixed": "4.10.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9xg4-3qfm-9w8f",
+      "packageName": "@strapi/database",
       "title": "Leaking sensitive user information still possible by filtering on private with prefix fields",
       "description": "### Summary\nStill able to leak private fields if using the t(number) prefix \n\n### Details\nKnex query allows you to change there default prefix \n```SqliteError: select distinct `t0`.* from `pages` as `t0` left join `admin_users` as `t1` on `t0`.`updated_by_id` = `t1`.`id` where (`t1`.`password` = 1)```\nso if you change the prefix to the same as it was before or to an other table you want to query you query changes from password to t1.password password is protected by filtering protections but t1.",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2023-34235"
         }
       ],
-      "affectedRange": "<= 4.10.7",
-      "fixedVersion": "4.10.8"
+      "affectedVersions": [
+        {
+          "range": "<= 4.10.7",
+          "fixed": "4.10.8"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

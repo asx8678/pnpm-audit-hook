@@ -1,9 +1,10 @@
 {
-  "name": "kurwov",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "kurwov",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hfrv-h3q8-9jpr",
+      "packageName": "kurwov",
       "title": "kurwov vulnerable to Denial of Service due to improper data sanitization",
       "description": "### Summary\nAn unsafe sanitization of dataset contents on the `MarkovData#getNext` method used in `Markov#generate` and `Markov#choose` allows a maliciously crafted string on the dataset to throw and stop the function from running properly.\n\n### Details\nhttps://github.com/xiboon/kurwov/blob/0d58dfa42135ab40e830e92622857282f980ca89/src/MarkovData.ts#L38-L44\n\nIf a string contains a forbidden substring (i.e. `__proto__`) followed by a space character, the second line will access a special property ",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-34075"
         }
       ],
-      "affectedRange": ">= 3.1.0, < 3.2.5",
-      "fixedVersion": "3.2.5"
+      "affectedVersions": [
+        {
+          "range": ">= 3.1.0, < 3.2.5",
+          "fixed": "3.2.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

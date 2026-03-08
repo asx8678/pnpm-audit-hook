@@ -1,9 +1,10 @@
 {
-  "name": "depath",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "depath",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4h4x-4m75-47j4",
+      "packageName": "depath",
       "title": "depath and cool-path vulnerable to Prototype Pollution via `set()` Method",
       "description": "janryWang products depath v1.0.6 and cool-path v1.1.2 were discovered to contain a prototype pollution via the set() method at setIn (lib/index.js:90). This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-38985"
         }
       ],
-      "affectedRange": "<= 1.0.6"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

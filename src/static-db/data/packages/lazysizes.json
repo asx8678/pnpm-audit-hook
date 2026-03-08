@@ -1,9 +1,10 @@
 {
-  "name": "lazysizes",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "lazysizes",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hg2p-2cvq-4ppv",
+      "packageName": "lazysizes",
       "title": "Cross-site scripting in lazysizes",
       "description": "lazysizes through 5.2.0 allows execution of malicious JavaScript. The following attributes are not sanitized by the video-embed plugin: `data-vimeo`, `data-vimeoparams`, `data-youtube` and `data-ytparams` which can be abused to inject malicious JavaScript.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-7642"
         }
       ],
-      "affectedRange": "<= 5.2.0",
-      "fixedVersion": "5.2.1"
+      "affectedVersions": [
+        {
+          "range": "<= 5.2.0",
+          "fixed": "5.2.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

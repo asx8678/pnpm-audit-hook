@@ -1,9 +1,10 @@
 {
-  "name": "@wangeditor/editor",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@wangeditor/editor",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9hfw-cvf4-5x25",
+      "packageName": "@wangeditor/editor",
       "title": "wangEditor was discovered to contain a cross-site scripting (XSS) vulnerability via the image upload function",
       "description": "There is a cross-site scripting (XSS) issue in wangEditor via the image upload function in version 4.7.11. This issue has been fixed in version 4.7.12.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-25037"
         }
       ],
-      "affectedRange": "<= 4.7.11",
-      "fixedVersion": "4.7.12"
+      "affectedVersions": [
+        {
+          "range": "<= 4.7.11",
+          "fixed": "4.7.12"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

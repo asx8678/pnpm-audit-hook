@@ -1,9 +1,10 @@
 {
-  "name": "nocodb",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "nocodb",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-95ff-46g6-6gw9",
+      "packageName": "nocodb",
       "title": "NocoDB has Prototype Pollution in Connection Test Endpoint, Leading to DoS",
       "description": "### Summary\n\nAn authenticated user with org-level-creator permissions can exploit prototype pollution in the `/api/v2/meta/connection/test` endpoint, causing all database write operations to fail application-wide until server restart.\n\nWhile the pollution technically bypasses SUPER_ADMIN authorization checks, no practical privileged actions can be performed because database operations fail immediately after pollution.\n\n### Details\n\nThe `deepMerge()` function in `packages/nocodb/src/utils/dataUti",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2026-24766"
         }
       ],
-      "affectedRange": "< 0.301.0",
-      "fixedVersion": "0.301.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.301.0",
+          "fixed": "0.301.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-xr7v-j379-34v9",
+      "packageName": "nocodb",
       "title": "NocoDB has Blind SSRF via Unvalidated HEAD Request in uploadViaURL Functionality",
       "description": "## Summary\n\nA **blind Server-Side Request Forgery (SSRF)** vulnerability exists in the `uploadViaURL` functionality due to an unprotected `HEAD` request. While the subsequent file retrieval logic correctly enforces SSRF protections, the initial metadata request executes without validation.\n\nThis allows limited outbound requests to arbitrary URLs before SSRF controls are applied.\n\n---\n\n## Vulnerability Details\n\nThe `uploadViaURL()` function issues an `axios.head()` request to retrieve metadata (c",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2026-24767"
         }
       ],
-      "affectedRange": "< 0.301.0",
-      "fixedVersion": "0.301.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.301.0",
+          "fixed": "0.301.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-3hmw-8mw3-rmpj",
+      "packageName": "nocodb",
       "title": "NocoDB has Unvalidated Redirect in Login Flow via continueAfterSignIn Parameter",
       "description": "### Summary\n\nAn **unvalidated redirect (open redirect)** vulnerability exists in NocoDB’s login flow due to missing validation of the `continueAfterSignIn` parameter.\n\nDuring authentication, NocoDB processes a user-controlled redirect value and conditionally performs client-side navigation without enforcing any restrictions on the destination’s origin, domain or protocol. This allows attackers to redirect authenticated users to arbitrary external websites after login.\n\n### Root Cause\n\nThe redire",
       "severity": "medium",
@@ -62,11 +75,17 @@
           "value": "CVE-2026-24768"
         }
       ],
-      "affectedRange": "< 0.301.0",
-      "fixedVersion": "0.301.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.301.0",
+          "fixed": "0.301.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-q5c6-h22r-qpwr",
+      "packageName": "nocodb",
       "title": "NocoDB Vulnerable to Stored Cross-Site Scripting via SVG upload",
       "description": "## Summary\n\nA **stored Cross-site Scripting (XSS)** vulnerability exists in NocoDB’s attachment handling mechanism. Authenticated users can upload malicious SVG files containing embedded JavaScript, which are later rendered inline and executed in the browsers of other users who view the attachment.\n\nBecause the malicious payload is stored server-side and executed under the application’s origin, successful exploitation can lead to account compromise, data exfiltration and unauthorized actions per",
       "severity": "high",
@@ -83,11 +102,17 @@
           "value": "CVE-2026-24769"
         }
       ],
-      "affectedRange": "< 0.301.0",
-      "fixedVersion": "0.301.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.301.0",
+          "fixed": "0.301.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-wf6c-hrhf-86cw",
+      "packageName": "nocodb",
       "title": "NocoDB Vulnerable to Reflected Cross-Site Scripting on Reset Password Page",
       "description": "### Summary\n\nThe API endpoint related to the password reset function is vulnerable to Reflected Cross-Site-Scripting. \n\n### Details\n\nThroughout the source-code analysis, it has been found that the endpoint /api/v1/db/auth/password/reset/:tokenId is vulnerable to Reflected Cross-Site-Scripting.\n \nThe flaw occurs due to implementation of the client-side template engine ejs, specifically on file resetPassword.ts where the template is using the insecure function “<%-“ \nhttps://github.com/nocodb/noco",
       "severity": "medium",
@@ -104,11 +129,17 @@
           "value": "CVE-2025-27506"
         }
       ],
-      "affectedRange": "< 0.258.0",
-      "fixedVersion": "0.258.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.258.0",
+          "fixed": "0.258.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-8fxg-mr34-jqr8",
+      "packageName": "nocodb",
       "title": "NocoDB SQL Injection vulnerability",
       "description": "### Summary\n---\nAn authenticated attacker with create access could conduct a SQL Injection attack on MySQL DB using unescaped table_name.\n\n### Details\n---\n### SQL Injection vulnerability occurs in **VitessClient.ts**.\n```javascript\nasync columnList(args: any = {}) {\n    const func = this.columnList.name;\n    const result = new Result();\n    log.api(`${func}:args:`, args);\n\n    try {\n      args.databaseName = this.connectionConfig.connection.database;\n\n      const response = await this.sqlClient.",
       "severity": "medium",
@@ -125,11 +156,17 @@
           "value": "CVE-2023-50718"
         }
       ],
-      "affectedRange": "<= 0.202.9",
-      "fixedVersion": "0.202.10"
+      "affectedVersions": [
+        {
+          "range": "<= 0.202.9",
+          "fixed": "0.202.10"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-qg73-g3cf-vhhh",
+      "packageName": "nocodb",
       "title": "NocoDB Allows Preview of Files with Dangerous Content",
       "description": "### Summary\n---\nAttacker can upload a html file with malicious content. If user tries to open that file in browser malicious scripts can be executed leading  Stored XSS(Cross-Site Script) attack.\n\n### PoC\n---\nNocoDB was configured using the Release Binary `Noco-macos-arm64`, and nocodb version 0.202.9 (currently the latest version) was used.\nbinary hash infos: md5(164b727f287af56168bc16fba622d0b4) / sha256(43e8e97f4c5f5330613abe071a359f84e4514b7186f92954b678087c37b7832e)\n<img width=\"665\" alt=\"im",
       "severity": "medium",
@@ -146,11 +183,17 @@
           "value": "CVE-2023-50717"
         }
       ],
-      "affectedRange": ">= 0.202.6, <= 0.202.9",
-      "fixedVersion": "0.202.10"
+      "affectedVersions": [
+        {
+          "range": ">= 0.202.6, <= 0.202.9",
+          "fixed": "0.202.10"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-h6r4-xvw6-jc5h",
+      "packageName": "nocodb",
       "title": "NocoDB Vulnerable to Stored Cross-Site Scripting in Formula.vue",
       "description": "### Summary\nA stored cross-site scripting vulnerability exists within the Formula virtual cell comments functionality.\n\n### Details\nThe nc-gui/components/virtual-cell/Formula.vue displays a v-html tag with the value of \"urls\" whose contents are processed by the function replaceUrlsWithLink(). This function recognizes the pattern URI::(XXX) and creates a hyperlink tag <a> with href=XXX. However, it leaves all the other contents outside of the pattern URI::(XXX) unchanged, which makes the evil use",
       "severity": "high",
@@ -167,11 +210,17 @@
           "value": "CVE-2023-49781"
         }
       ],
-      "affectedRange": "<= 0.202.8",
-      "fixedVersion": "0.202.9"
+      "affectedVersions": [
+        {
+          "range": "<= 0.202.8",
+          "fixed": "0.202.9"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-3m5q-q39v-xf8f",
+      "packageName": "nocodb",
       "title": "nocodb SQL Injection vulnerability",
       "description": "## Summary\n\nNocodb contains SQL injection vulnerability, that allows an authenticated attacker with creator access to query the underlying database.\n\n## Product\n\nnocodb/nocodb\n\n## Tested Version\n\n[0.109.2](https://github.com/nocodb/nocodb/releases/tag/0.109.2)\n\n## Details\n\n### SQL injection in `SqliteClient.ts` (`GHSL-2023-141`)\nBy supplying a specially crafted payload to the given below parameter and endpoint, an attacker can inject arbitrary SQL queries to be executed. Since this is a blind SQ",
       "severity": "medium",
@@ -188,11 +237,17 @@
           "value": "CVE-2023-43794"
         }
       ],
-      "affectedRange": "< 0.111.0",
-      "fixedVersion": "0.111.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.111.0",
+          "fixed": "0.111.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-xrpm-hccg-28x7",
+      "packageName": "nocodb",
       "title": "Improper Input Validation in nocodb",
       "description": "Improper Input Validation in GitHub repository nocodb/nocodb prior to 0.96.0.",
       "severity": "medium",
@@ -209,11 +264,17 @@
           "value": "CVE-2023-5104"
         }
       ],
-      "affectedRange": "< 0.96.0",
-      "fixedVersion": "0.96.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.96.0",
+          "fixed": "0.96.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-grv6-m753-3w2g",
+      "packageName": "nocodb",
       "title": "NocoDB vulnerable to Denial of Service",
       "description": "NocoDB prior to 0.92.0 allows actors to insert large characters into the input field `New Project` on the create field, which can cause a Denial of Service (DoS) via a crafted HTTP request. Version 0.92.0 fixes this issue.",
       "severity": "medium",
@@ -230,11 +291,17 @@
           "value": "CVE-2022-3423"
         }
       ],
-      "affectedRange": "< 0.92.0",
-      "fixedVersion": "0.92.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.92.0",
+          "fixed": "0.92.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-mx8q-jqwm-85mv",
+      "packageName": "nocodb",
       "title": "NocoDB information disclosure vulnerability",
       "description": "In NocoDB prior to 0.91.7, the SMTP plugin doesn't have verification or validation. This allows attackers to make requests to internal servers and read the contents.",
       "severity": "high",
@@ -251,11 +318,17 @@
           "value": "CVE-2022-2062"
         }
       ],
-      "affectedRange": "< 0.91.7",
-      "fixedVersion": "0.91.7"
+      "affectedVersions": [
+        {
+          "range": "< 0.91.7",
+          "fixed": "0.91.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-hv6q-5g4f-8897",
+      "packageName": "nocodb",
       "title": "Cross-site Scripting in NocoDB",
       "description": "Cross-site Scripting (XSS) - Stored in GitHub repository nocodb/nocodb prior to 0.91.9.",
       "severity": "medium",
@@ -272,11 +345,17 @@
           "value": "CVE-2022-2079"
         }
       ],
-      "affectedRange": "< 0.91.9",
-      "fixedVersion": "0.91.9"
+      "affectedVersions": [
+        {
+          "range": "< 0.91.9",
+          "fixed": "0.91.9"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-fq4h-m3c8-8m2v",
+      "packageName": "nocodb",
       "title": "Improper Privilege Management in NocoDB",
       "description": "Improper Privilege Management in GitHub repository nocodb/nocodb prior to 0.91.8.",
       "severity": "high",
@@ -293,11 +372,17 @@
           "value": "CVE-2022-2063"
         }
       ],
-      "affectedRange": "< 0.91.8",
-      "fixedVersion": "0.91.8"
+      "affectedVersions": [
+        {
+          "range": "< 0.91.8",
+          "fixed": "0.91.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-6293-2vg2-pmp5",
+      "packageName": "nocodb",
       "title": "Insufficient Session Expiration in NocoDB",
       "description": "Insufficient Session Expiration in GitHub repository nocodb/nocodb prior to 0.91.9.",
       "severity": "high",
@@ -314,8 +399,283 @@
           "value": "CVE-2022-2064"
         }
       ],
-      "affectedRange": "< 0.91.9",
-      "fixedVersion": "0.91.9"
+      "affectedVersions": [
+        {
+          "range": "< 0.91.9",
+          "fixed": "0.91.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wwp2-x4rj-j8rm",
+      "packageName": "nocodb",
+      "title": "NocoDB Vulnerable to Stored Cross-Site Scripting via Rich Text Cells",
+      "description": "### Summary\nRich text cell content rendered via `v-html` without sanitization, enabling stored XSS.\n\n### Details\nRich text in `TextArea.vue` was parsed by markdown-it with `html: true` and injected via `v-html` without DOMPurify. A user with Editor role can inject arbitrary HTML that executes for all viewers.\n\n### Impact\nStored XSS — malicious scripts execute for any user viewing the cell.\n\n### Credit\nThis issue was discovered by an AI agent developed by the GitHub Security Lab and reviewed by G",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wwp2-x4rj-j8rm",
+      "publishedAt": "2026-03-03T20:59:50Z",
+      "modifiedAt": "2026-03-03T20:59:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wwp2-x4rj-j8rm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28401"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.301.2",
+          "fixed": "0.301.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rcph-x7mj-54mm",
+      "packageName": "nocodb",
+      "title": "NocoDB Vulnerable to Stored Cross-site Scripting via Comments",
+      "description": "### Summary\nComments rendered via `v-html` without sanitization, enabling stored XSS.\n\n### Details\nComments in `Comments.vue` were parsed by markdown-it with `html: true` and injected via `v-html` without DOMPurify. A user with Commenter role can inject arbitrary HTML that executes for all viewers.\n\n### Impact\nStored XSS — malicious scripts execute for any user viewing the comment.\n\n### Credit\nThis issue was discovered by an AI agent developed by the GitHub Security Lab and reviewed by GHSL team",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rcph-x7mj-54mm",
+      "publishedAt": "2026-03-03T20:59:38Z",
+      "modifiedAt": "2026-03-03T20:59:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rcph-x7mj-54mm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28397"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.301.2",
+          "fixed": "0.301.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-45rp-9p97-h852",
+      "packageName": "nocodb",
+      "title": "NocoDB Vulnerable to SQL Injection via DATEADD Formula",
+      "description": "### Summary\nAn authenticated user with Creator role can inject arbitrary SQL via the DATEADD formula's unit parameter.\n\n### Details\nThe third argument (unit) of `DATEADD` was interpolated directly into `knex.raw()` queries after only stripping quote characters. Validation in `formulas.ts` only checked `Literal` AST node types — non-Literal types bypassed validation entirely. Affected MySQL, PostgreSQL, and SQLite function mappings.\n\n### Impact\nSQL injection allowing data exfiltration or modifica",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-45rp-9p97-h852",
+      "publishedAt": "2026-03-03T20:58:55Z",
+      "modifiedAt": "2026-03-03T20:58:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-45rp-9p97-h852"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28399"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.301.2",
+          "fixed": "0.301.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8vm4-g489-v3w7",
+      "packageName": "nocodb",
+      "title": "NocoDB Vulnerable to Stored Cross-Site Scripting via Comments and Rich Text Cells",
+      "description": "### Summary\nUser-controlled content in comments and rich text cells was rendered via `v-html` without sanitization, enabling stored XSS.\n\n### Details\nComments in `Comments.vue` and rich text in `TextArea.vue` were parsed by markdown-it with `html: true` and injected via `v-html`. The codebase had `vue-dompurify-html` available but these paths used raw `v-html`. Server-side, `Comment.insert()` used `extractProps()` instead of `extractPropsAndSanitize()`.\n\nCommenter role is sufficient for the comm",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8vm4-g489-v3w7",
+      "publishedAt": "2026-03-03T20:58:44Z",
+      "modifiedAt": "2026-03-03T20:58:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8vm4-g489-v3w7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28398"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.301.2",
+          "fixed": "0.301.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p9x3-w98f-7j3q",
+      "packageName": "nocodb",
+      "title": "NocoDB Missing Ownership Validation in MCP Token Operations",
+      "description": "### Summary\nThe MCP token service did not validate token ownership, allowing a Creator within the same base to read, regenerate, or delete another user's MCP tokens if the token ID was known.\n\n### Details\n`McpTokenService.get()`, `regenerateToken()`, and `delete()` did not filter by `fk_user_id`. The analogous `ApiTokensService` correctly enforced ownership.\n\n### Impact\nLimited — requires Creator role and knowledge of target token ID. Primary risk is denial of service (invalidating tokens) and s",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p9x3-w98f-7j3q",
+      "publishedAt": "2026-03-02T19:53:41Z",
+      "modifiedAt": "2026-03-02T19:53:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p9x3-w98f-7j3q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28361"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.301.2",
+          "fixed": "0.301.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x4vh-j75g-268g",
+      "packageName": "nocodb",
+      "title": "NocoDB's Refresh Tokens Not Revoked on Password Reset",
+      "description": "### Summary\nThe password reset flow did not revoke existing refresh tokens, allowing an attacker with a previously stolen refresh token to continue minting valid JWTs after the victim resets their password.\n\n### Details\n`passwordReset()` in `users.service.ts` updated `token_version` (invalidating JWTs) but did not call `UserRefreshToken.deleteAllUserToken()`. The `refreshToken()` method only checked token existence, not `token_version`. Both `passwordChange()` and `signOut()` correctly deleted a",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x4vh-j75g-268g",
+      "publishedAt": "2026-03-02T19:53:17Z",
+      "modifiedAt": "2026-03-02T19:53:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x4vh-j75g-268g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28396"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.301.2",
+          "fixed": "0.301.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mpp2-x7wv-38hv",
+      "packageName": "nocodb",
+      "title": "NocoDB has Plaintext Storage of Shared View Passwords",
+      "description": "### Summary\nShared view passwords were stored in plaintext in the database and compared using direct string equality.\n\n### Details\nThe `password` column in `nc_views` stored unhashed passwords. Verification used `!==` comparison across `public-datas.service.ts`, `public-metas.service.ts`, and `calendar-datas.service.ts`.\n\n### Impact\nIf the database is compromised, shared view passwords are immediately readable. Risk is limited to password reuse scenarios.\n\n### Credit\nThis issue was reported by [",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-mpp2-x7wv-38hv",
+      "publishedAt": "2026-03-02T19:52:57Z",
+      "modifiedAt": "2026-03-02T19:52:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mpp2-x7wv-38hv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28360"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.301.2",
+          "fixed": "0.301.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qxwq-q265-hc44",
+      "packageName": "nocodb",
+      "title": "NocoDB Vulnerable to Stored Cross-site Scripting via Rich Text Field",
+      "description": "### Summary\nAn authenticated user with Editor role can inject arbitrary HTML into Rich Text cells by bypassing the TipTap editor and sending raw HTML via the API.\n\n### Details\nThe TipTap editor sanitizes HTML client-side, but the backend stores raw HTML without server-side sanitization. The stored content is rendered via `v-html` in `TextArea.vue` through `NcMarkdownParser.parse()` which performs no sanitization.\n\n### Impact\nStored XSS — malicious scripts execute for any user viewing the cell.\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qxwq-q265-hc44",
+      "publishedAt": "2026-03-02T19:51:55Z",
+      "modifiedAt": "2026-03-02T19:51:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qxwq-q265-hc44"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28359"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.301.2",
+          "fixed": "0.301.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-387m-j3p9-3php",
+      "packageName": "nocodb",
+      "title": "NocoDB Vulnerable to User Enumeration via Password Reset Endpoint",
+      "description": "### Summary\nThe password forgot endpoint returned different responses for registered and unregistered emails, allowing user enumeration.\n\n### Details\n`POST /api/v2/auth/password/forgot` returned a success message for registered emails but `'Your email has not been registered.'` for unknown emails. The fix returns a uniform response regardless of whether the email exists.\n\n### Impact\nAn unauthenticated attacker can determine whether an email is registered. No credentials or data are exposed.\n\n###",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-387m-j3p9-3php",
+      "publishedAt": "2026-03-02T19:42:07Z",
+      "modifiedAt": "2026-03-02T19:42:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-387m-j3p9-3php"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28358"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.301.2",
+          "fixed": "0.301.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vx5p-q85x-xm3c",
+      "packageName": "nocodb",
+      "title": "NocoDB has Stored Cross-site Scripting via Formula Cell",
+      "description": "### Summary\nA stored XSS vulnerability exists in the Formula virtual cell. Formula results containing `URI::()` patterns are rendered via `v-html` without sanitization, allowing injected HTML to execute.\n\n### Details\nThe `replaceUrlsWithLink()` function in `urlUtils.ts` converts `URI::(url)` patterns to `<a>` tags but passes all other HTML through unchanged. A user with Creator role (minimum role for formula field creation) can craft a formula like `CONCAT(\"URI::(https://example.com)\", \"<img src",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vx5p-q85x-xm3c",
+      "publishedAt": "2026-03-02T19:36:29Z",
+      "modifiedAt": "2026-03-02T19:36:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vx5p-q85x-xm3c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28357"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.301.2",
+          "fixed": "0.301.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

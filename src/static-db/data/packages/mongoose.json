@@ -1,9 +1,10 @@
 {
-  "name": "mongoose",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mongoose",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vg7j-7cwx-8wgw",
+      "packageName": "mongoose",
       "title": "Mongoose search injection vulnerability",
       "description": "Mongoose versions prior to 8.9.5, 7.8.4, and 6.13.6 are vulnerable to improper use of the `$where` operator. This vulnerability arises from the ability of the `$where` clause to execute arbitrary JavaScript code in MongoDB queries, potentially leading to code injection attacks and unauthorized access or manipulation of database data.\n\nNOTE: this issue exists because of an incomplete fix for CVE-2024-53900.",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-23061"
         }
       ],
-      "affectedRange": "< 6.13.6",
-      "fixedVersion": "6.13.6"
+      "affectedVersions": [
+        {
+          "range": "< 6.13.6",
+          "fixed": "6.13.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-m7xq-9374-9rvx",
+      "packageName": "mongoose",
       "title": "Mongoose search injection vulnerability",
       "description": "Mongoose versions prior to 8.8.3, 7.8.3, and 6.13.5 are vulnerable to improper use of the $where operator. This vulnerability arises from the ability of the $where clause to execute arbitrary JavaScript code in MongoDB queries, potentially leading to code injection attacks and unauthorized access or manipulation of database data.",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2024-53900"
         }
       ],
-      "affectedRange": "< 6.13.5",
-      "fixedVersion": "6.13.5"
+      "affectedVersions": [
+        {
+          "range": "< 6.13.5",
+          "fixed": "6.13.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-h8hf-x3f4-xwgp",
+      "packageName": "mongoose",
       "title": "Mongoose Vulnerable to Prototype Pollution in Schema Object",
       "description": "### Description\nMongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.\n\nAffected versions of this package are vulnerable to Prototype Pollution. The `Schema.path()` function is vulnerable to prototype pollution when setting the `schema` object. This vulnerability allows modification of the Object prototype and could be manipulated into a Denial of Service (DoS) attack.\n\n### Proof of Concept\n```js\n// poc.js\nconst mongoose = require('mongoose');\nconst schema = ",
       "severity": "critical",
@@ -62,11 +75,17 @@
           "value": "CVE-2022-24304"
         }
       ],
-      "affectedRange": "< 5.13.15",
-      "fixedVersion": "5.13.15"
+      "affectedVersions": [
+        {
+          "range": "< 5.13.15",
+          "fixed": "5.13.15"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-f825-f98c-gj3g",
+      "packageName": "mongoose",
       "title": "automattic/mongoose vulnerable to Prototype pollution via Schema.path",
       "description": "Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. Affected versions of this package are vulnerable to Prototype Pollution. The `Schema.path()` function is vulnerable to prototype pollution when setting the schema object. This vulnerability allows modification of the Object prototype and could be manipulated into a Denial of Service (DoS) attack.",
       "severity": "high",
@@ -83,11 +102,17 @@
           "value": "CVE-2022-2564"
         }
       ],
-      "affectedRange": "< 5.13.15",
-      "fixedVersion": "5.13.15"
+      "affectedVersions": [
+        {
+          "range": "< 5.13.15",
+          "fixed": "5.13.15"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9m93-w8w6-76hh",
+      "packageName": "mongoose",
       "title": "Mongoose Prototype Pollution vulnerability",
       "description": "Prototype Pollution in GitHub repository automattic/mongoose prior to 7.3.3, 6.11.3, and 5.13.20.",
       "severity": "critical",
@@ -104,8 +129,13 @@
           "value": "CVE-2023-3696"
         }
       ],
-      "affectedRange": "< 5.13.20",
-      "fixedVersion": "5.13.20"
+      "affectedVersions": [
+        {
+          "range": "< 5.13.20",
+          "fixed": "5.13.20"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

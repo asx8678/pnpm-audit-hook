@@ -1,9 +1,10 @@
 {
-  "name": "strapi-plugin-ezforms",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "strapi-plugin-ezforms",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8mgq-6r2q-82w9",
+      "packageName": "strapi-plugin-ezforms",
       "title": "Captcha Bypass in strapi-plugin-ezforms",
       "description": "### Impact\nUsers using any captcha providers\n\n### Patches\n>0.1.0\n\n### References\n[Issue](https://github.com/excl-networks/strapi-plugin-ezforms/issues/15)\n",
       "severity": "medium",
@@ -16,8 +17,13 @@
           "value": "GHSA-8mgq-6r2q-82w9"
         }
       ],
-      "affectedRange": "< 0.1.0",
-      "fixedVersion": "0.1.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.1.0",
+          "fixed": "0.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

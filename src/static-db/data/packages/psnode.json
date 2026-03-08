@@ -1,9 +1,10 @@
 {
-  "name": "psnode",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "psnode",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-m8fm-mv5w-33pv",
+      "packageName": "psnode",
       "title": "Command Injection in psnode",
       "description": "This affects all current versions of package psnode. If attacker-controlled user input is given to the kill function, it is possible for an attacker to execute arbitrary commands. This is due to use of the child_process exec function without input sanitization.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23375"
         }
       ],
-      "affectedRange": "<= 0.0.1"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

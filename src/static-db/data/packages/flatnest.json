@@ -1,9 +1,10 @@
 {
-  "name": "flatnest",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "flatnest",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7px2-3c2p-q4v4",
+      "packageName": "flatnest",
       "title": "flatnest Prototype Pollution vulnerability",
       "description": "All versions of the package flatnest are vulnerable to Prototype Pollution via the `nest()` function in `flatnest/nest.js` file.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-26135"
         }
       ],
-      "affectedRange": "<= 1.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

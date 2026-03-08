@@ -1,0 +1,33 @@
+{
+  "packageName": "immutable",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wf6x-7x77-mvgw",
+      "packageName": "immutable",
+      "title": "Immutable is vulnerable to Prototype Pollution",
+      "description": "## Impact\n_What kind of vulnerability is it? Who is impacted?_\n\nA Prototype Pollution is possible in immutable via the mergeDeep(), mergeDeepWith(), merge(), Map.toJS(), and Map.toObject() APIs.\n\n## Affected APIs\n\n| API                                     | Notes                                                       |\n| --------------------------------------- | ----------------------------------------------------------- |\n| `mergeDeep(target, source)`              | Iterates source keys via `Obj",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wf6x-7x77-mvgw",
+      "publishedAt": "2026-03-04T21:28:06Z",
+      "modifiedAt": "2026-03-06T22:51:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wf6x-7x77-mvgw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29063"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.8.3",
+          "fixed": "3.8.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

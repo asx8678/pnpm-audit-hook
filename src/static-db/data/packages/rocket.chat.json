@@ -1,9 +1,10 @@
 {
-  "name": "rocket.chat",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "rocket.chat",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-ffxg-5f8m-h72j",
+      "packageName": "rocket.chat",
       "title": "Rocket.Chat Server-Side Request Forgery (SSRF) vulnerability",
       "description": "A Server-Side Request Forgery (SSRF) affects Rocket.Chat's Twilio webhook endpoint before version 6.10.1.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-39713"
         }
       ],
-      "affectedRange": "< 6.10.1",
-      "fixedVersion": "6.10.1"
+      "affectedVersions": [
+        {
+          "range": "< 6.10.1",
+          "fixed": "6.10.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

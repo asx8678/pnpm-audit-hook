@@ -1,9 +1,10 @@
 {
-  "name": "mdx-mermaid",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mdx-mermaid",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rvgm-35jw-q628",
+      "packageName": "mdx-mermaid",
       "title": "Improper Control of Generation of Code ('Code Injection') in mdx-mermaid",
       "description": "### Impact\n\nArbitary javascript injection\n\nModify any mermaid code blocks with the following code and the code inside will execute when the component is loaded by MDXjs\n\n```\n` + (function () {\n  // Put Javascript code here\n  return ''\n}()) + `\n```\n\nThe block below shows a valid mermaid code block\n\n````md\n```mermaid\ngraph TD;\n    A-->B;\n    A-->C;\n    B-->D;\n    C-->D;\n```\n````\n\nThe same block but with the exploit added\n\n````md\n```mermaid\n` + (function () {\n  alert('vulnerable')\n  return ''\n}()) ",
       "severity": "low",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-36036"
         }
       ],
-      "affectedRange": "= 2.0.0-rc1",
-      "fixedVersion": "2.0.0-rc2"
+      "affectedVersions": [
+        {
+          "range": "= 2.0.0-rc1",
+          "fixed": "2.0.0-rc2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

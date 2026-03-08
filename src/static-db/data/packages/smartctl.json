@@ -1,9 +1,10 @@
 {
-  "name": "smartctl",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "smartctl",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-69f2-4375-qv9h",
+      "packageName": "smartctl",
       "title": "Command injection in smartctl",
       "description": "All versions of the package smartctl are vulnerable to Command Injection via the info method due to improper input sanitization.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2022-21810"
         }
       ],
-      "affectedRange": "<= 1.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

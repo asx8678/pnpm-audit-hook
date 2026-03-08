@@ -1,9 +1,10 @@
 {
-  "name": "jsreport",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "jsreport",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-g7rj-q722-245g",
+      "packageName": "jsreport",
       "title": "jsreport vulnerable to code injection",
       "description": "jsreport prior to 3.11.3 had a version of vm2 vulnerable to CVE-2023-29017 hard coded in the package.json of the jsreport-core component. An attacker can use this vulnerability to obtain the authority of the jsreport playground server, or construct a malicious webpage/html file and send it to the user to attack the installed jsreport client.",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2023-2583"
         }
       ],
-      "affectedRange": "< 3.11.3",
-      "fixedVersion": "3.11.3"
+      "affectedVersions": [
+        {
+          "range": "< 3.11.3",
+          "fixed": "3.11.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5fjj-cfh2-ghc5",
+      "packageName": "jsreport",
       "title": "Server-Side Request Forgery and Inclusion of Functionality from Untrusted Control Sphere in jsreport",
       "description": "An unintended require and server-side request forgery vulnerabilities in jsreport version 2.5.0 and earlier allow attackers to execute arbitrary code.",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2020-8128"
         }
       ],
-      "affectedRange": "<= 2.5.0",
-      "fixedVersion": "2.6.0"
+      "affectedVersions": [
+        {
+          "range": "<= 2.5.0",
+          "fixed": "2.6.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,0 +1,87 @@
+{
+  "packageName": "@feathersjs/authentication-oauth",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9m9c-vpv5-9g85",
+      "packageName": "@feathersjs/authentication-oauth",
+      "title": "Feathers exposes internal headers via unencrypted session cookie",
+      "description": "All HTTP request headers are stored in the session cookie, which is signed but not encrypted, exposing internal proxy/gateway headers to clients.\n\nThe OAuth service stores the complete headers object in the session:\n```javascript\n// https://github.com/feathersjs/feathers/blob/dove/packages/authentication-oauth/src/service.ts#L173\nsession.headers = headers;\n```\n\nThe session is persisted using `cookie-session`, which base64-encodes the data. While the cookie is signed to prevent tampering, the con",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9m9c-vpv5-9g85",
+      "publishedAt": "2026-02-19T20:32:37Z",
+      "modifiedAt": "2026-02-23T22:26:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9m9c-vpv5-9g85"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27193"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.0.39",
+          "fixed": "5.0.40"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mp4x-c34x-wv3x",
+      "packageName": "@feathersjs/authentication-oauth",
+      "title": "Feathers has an origin validation bypass via prefix matching",
+      "description": "The origin validation uses `startsWith()` for comparison, allowing attackers to bypass the check by registering a domain that shares a common prefix with an allowed origin.\n\nThe `getAllowedOrigin()` function checks if the Referer header starts with any allowed origin:\n```javascript\n// https://github.com/feathersjs/feathers/blob/dove/packages/authentication-oauth/src/strategy.ts#L75\nconst allowedOrigin = origins.find((current) => referer.toLowerCase().startsWith(current.toLowerCase()));\n```\n\nThis",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mp4x-c34x-wv3x",
+      "publishedAt": "2026-02-19T20:32:28Z",
+      "modifiedAt": "2026-02-23T22:26:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mp4x-c34x-wv3x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27192"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.0.39",
+          "fixed": "5.0.40"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-ppf9-4ffw-hh4p",
+      "packageName": "@feathersjs/authentication-oauth",
+      "title": "Feathers has an open redirect in OAuth callback enables account takeover",
+      "description": "### Description\n\nThe `redirect` query parameter is appended to the base origin without validation, allowing attackers to steal access tokens via URL authority injection. This leads to full account takeover, as the attacker obtains the victim's access token and can impersonate them.\n\nThe application constructs the final redirect URL by concatenating the base origin with the user-supplied `redirect` parameter:\n```javascript\n// https://github.com/feathersjs/feathers/blob/dove/packages/authenticatio",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-ppf9-4ffw-hh4p",
+      "publishedAt": "2026-02-19T20:32:15Z",
+      "modifiedAt": "2026-02-23T22:26:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ppf9-4ffw-hh4p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27191"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.0.39",
+          "fixed": "5.0.40"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

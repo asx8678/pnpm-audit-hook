@@ -1,9 +1,10 @@
 {
-  "name": "path-parse",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "path-parse",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hj48-42vr-x3v9",
+      "packageName": "path-parse",
       "title": "Regular Expression Denial of Service in path-parse",
       "description": "Affected versions of npm package `path-parse` are vulnerable to Regular Expression Denial of Service (ReDoS) via splitDeviceRe, splitTailRe, and splitPathRe regular expressions. ReDoS exhibits polynomial worst-case time complexity.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23343"
         }
       ],
-      "affectedRange": "< 1.0.7",
-      "fixedVersion": "1.0.7"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.7",
+          "fixed": "1.0.7"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

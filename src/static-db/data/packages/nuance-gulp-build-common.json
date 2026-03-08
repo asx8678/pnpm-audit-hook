@@ -1,9 +1,10 @@
 {
-  "name": "nuance-gulp-build-common",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "nuance-gulp-build-common",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8695-fr6h-9fq8",
+      "packageName": "nuance-gulp-build-common",
       "title": "Command Injection in nuance-gulp-build-common",
       "description": "All versions of package nuance-gulp-build-common are vulnerable to Command Injection via the index.js file.\n\n**PoC:** \n```js\nvar a = require(\"nuance-gulp-build-common\")\na.run(\"touch JHU\")\n```",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-28430"
         }
       ],
-      "affectedRange": "<= 0.0.1"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

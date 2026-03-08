@@ -1,9 +1,10 @@
 {
-  "name": "dotty",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "dotty",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-f5c9-x9j6-87qp",
+      "packageName": "dotty",
       "title": "Prototype pollution in dotty",
       "description": "Prototype pollution vulnerability in 'dotty' before version 0.1.1 allows attackers to cause a denial of service and may lead to remote code execution.",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2021-25912"
         }
       ],
-      "affectedRange": "< 0.1.1",
-      "fixedVersion": "0.1.1"
+      "affectedVersions": [
+        {
+          "range": "< 0.1.1",
+          "fixed": "0.1.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-6g47-63mv-qpgh",
+      "packageName": "dotty",
       "title": "Prototype Pollution in dotty",
       "description": "This affects the package dotty before 0.1.2. A type confusion vulnerability can lead to a bypass of CVE-2021-25912 when the user-provided keys used in the path parameter are arrays.",
       "severity": "medium",
@@ -41,8 +48,13 @@
           "value": "CVE-2021-23624"
         }
       ],
-      "affectedRange": "< 0.1.2",
-      "fixedVersion": "0.1.2"
+      "affectedVersions": [
+        {
+          "range": "< 0.1.2",
+          "fixed": "0.1.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

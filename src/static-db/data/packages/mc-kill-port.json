@@ -1,9 +1,10 @@
 {
-  "name": "mc-kill-port",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mc-kill-port",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-2cg4-7q4x-7rr2",
+      "packageName": "mc-kill-port",
       "title": "mc-kill-port vulnerable to Arbitrary Command Execution via kill function",
       "description": "All versions of package mc-kill-port are vulnerable to Arbitrary Command Execution via the `kill` function, due to missing sanitization of the `port` argument.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2022-25973"
         }
       ],
-      "affectedRange": "<= 1.0.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

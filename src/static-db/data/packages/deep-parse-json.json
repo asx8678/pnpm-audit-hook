@@ -1,9 +1,10 @@
 {
-  "name": "deep-parse-json",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "deep-parse-json",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-ff9j-pwxg-q5p2",
+      "packageName": "deep-parse-json",
       "title": "deep-parse-json vulnerable to Prototype Pollution",
       "description": "deep-parse-json version 1.0.2 allows an external attacker to edit or add new properties to an object. This is possible because the application does not correctly validate the incoming JSON keys, thus allowing the `__proto__` property to be edited.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2022-42743"
         }
       ],
-      "affectedRange": "<= 1.0.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

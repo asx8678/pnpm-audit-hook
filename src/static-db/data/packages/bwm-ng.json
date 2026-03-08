@@ -1,9 +1,10 @@
 {
-  "name": "bwm-ng",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "bwm-ng",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8vw3-vxmj-h43w",
+      "packageName": "bwm-ng",
       "title": "bwm-ng vulnerable to command injection",
       "description": "All versions of the package bwm-ng are vulnerable to Command Injection due to improper input sanitization in the 'check' function in the bwm-ng.js file. \n\n**Note:**\n\nTo execute the code snippet and potentially exploit the vulnerability, the attacker needs to have the ability to run Node.js code within the target environment. This typically requires some level of access to the system or application hosting the Node.js environment.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-26129"
         }
       ],
-      "affectedRange": "<= 0.1.1"
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

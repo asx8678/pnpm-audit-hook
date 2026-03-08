@@ -1,9 +1,10 @@
 {
-  "name": "@fastify/oauth2",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@fastify/oauth2",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hgxv-3497-3hhj",
+      "packageName": "@fastify/oauth2",
       "title": "Duplicate Advisory: @fastify/oauth2 Oauth2 state parameter reuse",
       "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-g8x5-p9qc-cf95. This link is maintained to preserve external references.\n\n## Original Description\nAll versions of @fastify/oauth2 used a statically generated state parameter at startup time and were used across all requests for all users. The purpose of the Oauth2 state parameter is to prevent Cross-Site-Request-Forgery attacks. As such, it should be unique per user and should be connected to the user's sess",
       "severity": "medium",
@@ -16,11 +17,17 @@
           "value": "GHSA-hgxv-3497-3hhj"
         }
       ],
-      "affectedRange": "< 7.2.0",
-      "fixedVersion": "7.2.0"
+      "affectedVersions": [
+        {
+          "range": "< 7.2.0",
+          "fixed": "7.2.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-g8x5-p9qc-cf95",
+      "packageName": "@fastify/oauth2",
       "title": "@fastify/oauth2 vulnerable to Cross Site Request Forgery due to reused Oauth2 state",
       "description": "### Impact\n\nAll versions of @fastify/oauth2 used a statically generated `state` parameter at startup time and were used across all requests for all users.\nThe purpose of the Oauth2 `state` parameter is to prevent Cross-Site-Request-Forgery attacks. As such, it should be unique per user and should be connected to the user's session in some way that will allow the server to validate it.\n\n### Patches\n\nv7.2.0 changes the default behavior to store the `state` in a cookie with the `http-only` and `sam",
       "severity": "high",
@@ -37,8 +44,13 @@
           "value": "CVE-2023-31999"
         }
       ],
-      "affectedRange": "< 7.2.0",
-      "fixedVersion": "7.2.0"
+      "affectedVersions": [
+        {
+          "range": "< 7.2.0",
+          "fixed": "7.2.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

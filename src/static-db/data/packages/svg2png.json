@@ -1,9 +1,10 @@
 {
-  "name": "svg2png",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "svg2png",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mpp5-2x55-49xw",
+      "packageName": "svg2png",
       "title": "XSS in svg2png (NPM package)",
       "description": "svg2png 4.1.1 allows XSS with resultant SSRF via JavaScript inside an SVG document.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-11887"
         }
       ],
-      "affectedRange": "<= 4.1.1"
+      "affectedVersions": [
+        {
+          "range": "<= 4.1.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

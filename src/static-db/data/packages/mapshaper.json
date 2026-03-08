@@ -1,9 +1,10 @@
 {
-  "name": "mapshaper",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mapshaper",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8m36-62rw-9mxw",
+      "packageName": "mapshaper",
       "title": "mapshaper Path Traversal vulnerability",
       "description": "Path Traversal in GitHub repository mbloch/mapshaper prior to 0.6.44.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-1163"
         }
       ],
-      "affectedRange": "< 0.6.44",
-      "fixedVersion": "0.6.44"
+      "affectedVersions": [
+        {
+          "range": "< 0.6.44",
+          "fixed": "0.6.44"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "Blink1Control2",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "Blink1Control2",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jqhq-pfg3-fg5p",
+      "packageName": "Blink1Control2",
       "title": "Blink1Control2 uses weak password encryption",
       "description": "The Blink1Control2 application <= 2.2.7 uses weak password encryption and an insecure method of storage. Version 2.2.9 fixes the issue.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-35513"
         }
       ],
-      "affectedRange": "< 2.2.9",
-      "fixedVersion": "2.2.9"
+      "affectedVersions": [
+        {
+          "range": "< 2.2.9",
+          "fixed": "2.2.9"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

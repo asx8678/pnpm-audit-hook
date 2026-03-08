@@ -1,9 +1,10 @@
 {
-  "name": "simple-swizzle",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "simple-swizzle",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9g9j-rggx-7fmg",
+      "packageName": "simple-swizzle",
       "title": "simple-swizzle@0.2.3 contains malware after npm account takeover",
       "description": "### Impact\nOn 8 September 2025, the npm publishing account for `simple-swizzle` was taken over after a phishing attack. Version `0.2.3` was published, functionally identical to the previous patch version, but with a malware payload added attempting to redirect cryptocurrency transactions to the attacker's own addresses from within browser environments.\n\nLocal environments, server environments, command line applications, etc. are not affected. If the package was used in a browser context (e.g. a ",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-59141"
         }
       ],
-      "affectedRange": "= 0.2.3",
-      "fixedVersion": "0.2.4"
+      "affectedVersions": [
+        {
+          "range": "= 0.2.3",
+          "fixed": "0.2.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

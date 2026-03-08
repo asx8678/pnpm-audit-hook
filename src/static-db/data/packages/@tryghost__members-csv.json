@@ -1,9 +1,10 @@
 {
-  "name": "@tryghost/members-csv",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@tryghost/members-csv",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xgwh-cgv9-783v",
+      "packageName": "@tryghost/members-csv",
       "title": "Ghost allows CSV Injection during member CSV export",
       "description": "Ghost before 5.82.0 allows CSV Injection during a member CSV export.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-34448"
         }
       ],
-      "affectedRange": "< 5.82.0",
-      "fixedVersion": "5.82.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.82.0",
+          "fixed": "5.82.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

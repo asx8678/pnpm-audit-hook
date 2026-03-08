@@ -1,9 +1,10 @@
 {
-  "name": "sey",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "sey",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wjpc-cgvw-xx23",
+      "packageName": "sey",
       "title": "Prototype Pollution in sey",
       "description": "All versions of package `sey` are vulnerable to Prototype Pollution via the `deepmerge()` function.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23663"
         }
       ],
-      "affectedRange": "<= 0.3.0"
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

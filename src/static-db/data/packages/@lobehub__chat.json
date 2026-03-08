@@ -1,9 +1,10 @@
 {
-  "name": "@lobehub/chat",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@lobehub/chat",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4gpc-rhpj-9443",
+      "packageName": "@lobehub/chat",
       "title": "Lobe Chat affected by Cross-Site Scripting(XSS) that can escalate to Remote Code Execution(RCE)",
       "description": "### Summary\nA stored Cross-Site Scripting (XSS) vulnerability in the Mermaid artifact renderer allows attackers to execute arbitrary JavaScript within the application context. This XSS can be escalated to Remote Code Execution (RCE) by leveraging the exposed `electronAPI` IPC bridge, allowing attackers to run arbitrary system commands on the victim's machine.\n\n### Details\nThe vulnerability exists in the `Renderer` component responsible for rendering Mermaid diagrams within chat artifacts.\n```Typ",
       "severity": "medium",
@@ -20,10 +21,16 @@
           "value": "CVE-2026-23733"
         }
       ],
-      "affectedRange": "<= 1.143.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.143.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-j7xp-4mg9-x28r",
+      "packageName": "@lobehub/chat",
       "title": "Lobe Chat has IDOR in Knowledge Base File Removal that Allows Cross User File Deletion",
       "description": "### Summary\n\n`knowledgeBase.removeFilesFromKnowledgeBase` tRPC ep allows authenticated users to delete files from any knowledge base without verifying ownership.\n\n### Details\n\n`userId` filter in the database query is commented out, so it's enabling attackers to delete other users' KB files if they know the knowledge base ID and file ID.\n\n### PoC\n\n```\nATTACKER_TOKEN=\"xx\"\n\nVICTIM_KB=\"kb_tuLBfskdDN1r\"\nVICTIM_FILE=\"file_v5wCNLqSaoPp\"\n\ncurl -X POST \"https://localhost/trpc/lambda/knowledgeBase.removeF",
       "severity": "low",
@@ -40,10 +47,16 @@
           "value": "CVE-2026-23522"
         }
       ],
-      "affectedRange": "<= 1.143.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.143.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-fgx4-p8xf-qhp9",
+      "packageName": "@lobehub/chat",
       "title": "Lobe Chat vulnerable to Server-Side Request Forgery with native web fetch module",
       "description": "### Vulnerability Description\n---\n\nVulnerability Overview\n \n- When the client sends an arbitrary URL array and impl: [\"naive\"] to the tRPC endpoint tools.search.crawlPages, the server issues outbound HTTP requests directly to those URLs. There is no defensive logic that restricts or validates requests to internal networks (127.0.0.1, localhost, private ranges) or metadata endpoints (169.254.169.254).\n\n- Flow: client input (urls, impls) → service invocation in the tRPC router → the service passes",
       "severity": "low",
@@ -60,11 +73,17 @@
           "value": "CVE-2025-62505"
         }
       ],
-      "affectedRange": "<= 1.136.1",
-      "fixedVersion": "1.136.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.136.1",
+          "fixed": "1.136.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-m79r-r765-5f9j",
+      "packageName": "@lobehub/chat",
       "title": "Lobe Chat Desktop vulnerable to Remote Code Execution via XSS in Chat Messages",
       "description": "### Summary\n\nWe identified a cross-site scripting (XSS) vulnerability when handling chat message in lobe-chat that can be escalated to remote code execution on the user’s machine. Any party capable of injecting content into chat messages, such as hosting a malicious page for prompt injection, operating a compromised MCP server, or leveraging tool integrations, can exploit this vulnerability.\n\n### Vulnerability Details\n\n**XSS via SVG Rendering**\n\nIn lobe-chat, when the response from the server is",
       "severity": "medium",
@@ -81,11 +100,17 @@
           "value": "CVE-2025-59417"
         }
       ],
-      "affectedRange": "<= 1.129.3",
-      "fixedVersion": "1.129.4"
+      "affectedVersions": [
+        {
+          "range": "<= 1.129.3",
+          "fixed": "1.129.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-xph5-278p-26qx",
+      "packageName": "@lobehub/chat",
       "title": "lobe-chat has an Open Redirect",
       "description": "### **Description**\n\n---\n\n> Vulnerability Overview\n> \n\nThe project's OIDC redirect handling logic constructs the host and protocol of the final redirect URL based on the X-Forwarded-Host or Host headers and the X-Forwarded-Proto value. In deployments where a reverse proxy forwards client-supplied X-Forwarded-* headers to the origin as-is, or where the origin trusts them without validation, an attacker can inject an arbitrary host and trigger an open redirect that sends users to a malicious domai",
       "severity": "medium",
@@ -102,11 +127,17 @@
           "value": "CVE-2025-59426"
         }
       ],
-      "affectedRange": "< 1.130.1",
-      "fixedVersion": "1.130.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.130.1",
+          "fixed": "1.130.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-2xcc-vm3f-m8rw",
+      "packageName": "@lobehub/chat",
       "title": "@lobehub/chat Server Side Request Forgery vulnerability",
       "description": "### Summary\nlobe-chat before 1.19.13 has an unauthorized ssrf vulnerability. An attacker can construct malicious requests to cause SSRF without logging in, attack intranet services, and leak sensitive information.\n\n### Details\n* visit https://chat-preview.lobehub.com/\n* click settings -> llm -> openai\n* fill the OpenAI API Key you like\n* fill the proxy address that you want to attack (e.g. a domain that resolved to a local ip addr like 127.0.0.1.xip.io) (the address will concat the path \"/chat/c",
       "severity": "high",
@@ -123,11 +154,17 @@
           "value": "CVE-2024-32965"
         }
       ],
-      "affectedRange": "< 1.19.13",
-      "fixedVersion": "1.19.13"
+      "affectedVersions": [
+        {
+          "range": "< 1.19.13",
+          "fixed": "1.19.13"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-3fc8-2r3f-8wrg",
+      "packageName": "@lobehub/chat",
       "title": "lobe-chat implemented an insufficient fix for GHSA-mxhq-xw3g-rphc (CVE-2024-32964)",
       "description": "### Summary\nSSRF protection implemented in https://github.com/lobehub/lobe-chat/blob/main/src/app/api/proxy/route.ts does not consider redirect and could be bypassed when attacker provides external malicious url which redirects to internal resources like private network or loopback address.\n\n### PoC\n1. Run lobe-chat in docker container. In my setup lobe-chat runs on 0.0.0.0:3210;\n\n2. Create file dummy-server.js with the following content:\n```\nvar http = require('http');\nconsole.log(\"running serv",
       "severity": "medium",
@@ -144,11 +181,17 @@
           "value": "CVE-2024-47066"
         }
       ],
-      "affectedRange": "<= 1.19.12",
-      "fixedVersion": "1.19.13"
+      "affectedVersions": [
+        {
+          "range": "<= 1.19.12",
+          "fixed": "1.19.13"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-p36r-qxgx-jq2v",
+      "packageName": "@lobehub/chat",
       "title": "Lobe Chat API Key Leak",
       "description": "### Summary\n\nIf an attacker can successfully authenticate through SSO/Access Code, they can obtain the real backend API Key by modifying the base URL to their own attack URL on the frontend and setting up a server-side request.\n\n### Details\n\nThe attack process is described above.\n\n![image](https://github.com/lobehub/lobe-chat/assets/36695271/df5e0c3c-af28-45c3-959f-182cc9d06680)\n\n### PoC\n\nFrontend:\n1. Pass basic authentication (SSO/Access Code).\n2. Set the Base URL to a private attack address.\n3",
       "severity": "medium",
@@ -165,11 +208,17 @@
           "value": "CVE-2024-37895"
         }
       ],
-      "affectedRange": "< 0.162.25",
-      "fixedVersion": "0.162.25"
+      "affectedVersions": [
+        {
+          "range": "< 0.162.25",
+          "fixed": "0.162.25"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-mxhq-xw3g-rphc",
+      "packageName": "@lobehub/chat",
       "title": "lobe-chat `/api/proxy` endpoint Server-Side Request Forgery vulnerability",
       "description": "### Summary\nThe latest version of lobe-chat(by now v0.141.2) has an unauthorized ssrf vulnerability. An attacker can construct malicious requests to cause SSRF without logging in, attack intranet services, and leak sensitive information.\n\n### Details\n* visit https://chat-preview.lobehub.com/settings/agent  \n* you can attack all internal services by /api/proxy and get the echo in http response :) \n\n![image](https://github.com/lobehub/lobe-chat/assets/55245002/c2894c34-7333-4ae1-864c-3b212b95eb21)",
       "severity": "critical",
@@ -186,11 +235,17 @@
           "value": "CVE-2024-32964"
         }
       ],
-      "affectedRange": "<= 0.150.5",
-      "fixedVersion": "0.150.6"
+      "affectedVersions": [
+        {
+          "range": "<= 0.150.5",
+          "fixed": "0.150.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-pf55-fj96-xf37",
+      "packageName": "@lobehub/chat",
       "title": "@lobehub/chat vulnerable to unauthorized access to plugins",
       "description": "###\tDescription:\nWhen the application is password-protected (deployed with the `ACCESS_CODE` option), it is possible to access plugins without proper authorization (without password).\n###\tProof-of-Concept:\nLet’s suppose that application has been deployed with following command:\n```sudo docker run -d -p 3210:3210   -e OPENAI_API_KEY=sk-[REDACTED] -e ACCESS_CODE=TEST123   --name lobe-chat   lobehub/lobe-chat```\nDue to the utilization of the `ACCESS_CODE`,  access to the chat is possible only after",
       "severity": "medium",
@@ -207,8 +262,40 @@
           "value": "CVE-2024-24566"
         }
       ],
-      "affectedRange": "<= 0.122.3",
-      "fixedVersion": "0.122.4"
+      "affectedVersions": [
+        {
+          "range": "<= 0.122.3",
+          "fixed": "0.122.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wrrr-8jcv-wjf5",
+      "packageName": "@lobehub/chat",
+      "title": "LobeHub Vulnerable to Improper Authorization in Presigned Upload",
+      "description": "### Summary\nThe file upload feature in `Knowledge Base > File Upload` does not validate the integrity of the upload request, allowing users to intercept and modify the request parameters. As a result, it is possible to create arbitrary files in abnormal or unintended paths. In addition, since `lobechat.com` relies on the size parameter from the request to calculate file usage, an attacker can manipulate this value to misrepresent the actual file size, such as uploading a `1 GB` file while report",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wrrr-8jcv-wjf5",
+      "publishedAt": "2026-02-01T17:39:40Z",
+      "modifiedAt": "2026-02-01T17:39:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wrrr-8jcv-wjf5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23835"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.143.3",
+          "fixed": "1.143.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

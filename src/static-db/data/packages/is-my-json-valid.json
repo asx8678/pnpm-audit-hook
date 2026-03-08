@@ -1,9 +1,10 @@
 {
-  "name": "is-my-json-valid",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "is-my-json-valid",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4hpf-3wq7-5rpr",
+      "packageName": "is-my-json-valid",
       "title": "Regular expression deinal of service (ReDoS) in is-my-json-valid",
       "description": "It was discovered that the is-my-json-valid JavaScript library used an inefficient regular expression to validate JSON fields defined to have email format. A specially crafted JSON file could cause it to consume an excessive amount of CPU time when validated.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2018-1107"
         }
       ],
-      "affectedRange": "< 1.4.1",
-      "fixedVersion": "1.4.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.4.1",
+          "fixed": "1.4.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

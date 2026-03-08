@@ -1,9 +1,10 @@
 {
-  "name": "files.photo.gallery",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "files.photo.gallery",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-5wjw-qjhm-v43h",
+      "packageName": "files.photo.gallery",
       "title": "files.photo.gallery command injection",
       "description": "A command injection vulnerability in the video thumbnail rendering component of files.photo.gallery v0.3.0 through 0.11.0 allows remote attackers to execute arbitrary code via a crafted video file.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-53615"
         }
       ],
-      "affectedRange": ">= 0.3.0, <= 0.11.0"
+      "affectedVersions": [
+        {
+          "range": ">= 0.3.0, <= 0.11.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "valibot",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "valibot",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vqpr-j7v3-hqw9",
+      "packageName": "valibot",
       "title": "Valibot has a ReDoS vulnerability in `EMOJI_REGEX`",
       "description": "### Summary\n\nThe `EMOJI_REGEX` used in the `emoji` action is vulnerable to a Regular Expression Denial of Service (ReDoS) attack. A short, maliciously crafted string (e.g., <100 characters) can cause the regex engine to consume excessive CPU time (minutes), leading to a Denial of Service (DoS) for the application.\n\n### Details\n\nThe ReDoS vulnerability stems from \"catastrophic backtracking\" in the `EMOJI_REGEX`. This is caused by ambiguity in the regex pattern due to overlapping character classes",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-66020"
         }
       ],
-      "affectedRange": ">= 0.31.0, < 1.2.0",
-      "fixedVersion": "1.2.0"
+      "affectedVersions": [
+        {
+          "range": ">= 0.31.0, < 1.2.0",
+          "fixed": "1.2.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

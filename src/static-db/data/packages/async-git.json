@@ -1,9 +1,10 @@
 {
-  "name": "async-git",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "async-git",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6qpr-9mc5-7gch",
+      "packageName": "async-git",
       "title": "Command Injection in async-git",
       "description": "The package async-git before 1.13.2 are vulnerable to Command Injection via shell meta-characters (back-ticks). For example: `git.reset('atouch HACKEDb')`",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2020-28490"
         }
       ],
-      "affectedRange": "< 1.13.2",
-      "fixedVersion": "1.13.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.13.2",
+          "fixed": "1.13.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-6c3f-p5wp-34mh",
+      "packageName": "async-git",
       "title": "OS Command Injection in async-git",
       "description": "The async-git package before 1.13.2 for Node.js allows OS Command Injection via shell metacharacters, as demonstrated by git.reset and git.tag. This issue may lead to remote code execution if a client of the library calls the vulnerable method with untrusted input. Ensure to sanitize untrusted user input before passing it to one of the vulnerable functions as a workaround or update async-git to version 1.13.1.",
       "severity": "critical",
@@ -41,8 +48,13 @@
           "value": "CVE-2021-3190"
         }
       ],
-      "affectedRange": "< 1.13.2",
-      "fixedVersion": "1.13.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.13.2",
+          "fixed": "1.13.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

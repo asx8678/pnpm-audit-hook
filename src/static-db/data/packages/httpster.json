@@ -1,9 +1,10 @@
 {
-  "name": "httpster",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "httpster",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-p8j8-wxvp-h695",
+      "packageName": "httpster",
       "title": "SimbCo httpster vulnerable to Path Traversal",
       "description": "A vulnerability classified as critical was found in SimbCo httpster. This vulnerability affects the function fs.realpathSync of the file src/server.coffee. The manipulation leads to path traversal. The exploit has been disclosed to the public and may be used. The name of the patch is d3055b3e30b40b65d30c5a06d6e053dffa7f35d0. It is recommended to apply a patch to fix this issue. The identifier of this vulnerability is VDB-216748.\n\n",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-36629"
         }
       ],
-      "affectedRange": "< 1.1.0",
-      "fixedVersion": "1.1.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

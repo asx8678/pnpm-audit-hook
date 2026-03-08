@@ -1,9 +1,10 @@
 {
-  "name": "@progfay/scrapbox-parser",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@progfay/scrapbox-parser",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9fhw-r42p-5c7r",
+      "packageName": "@progfay/scrapbox-parser",
       "title": "Regular expression Denial of Service in @progfay/scrapbox-parser",
       "description": "### Impact\n\nA [Regular expression Denial of Service](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS) flaw was found in the @progfay/scrapbox-parser package before 6.0.3, 7.0.2 for Node.js.\nThe attacker that is able to be parsed a specially crafted text may cause the application to consume an excessive amount of CPU.\n\n### Patches\n\nUpgrade to version 6.0.3, 7.0.2 or later.\n\n### Workarounds\n\nAvoid to parse text with a lot of `[` chars.\n\n### References\n\n* https:",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-27405"
         }
       ],
-      "affectedRange": ">= 7.0.0, < 7.0.2",
-      "fixedVersion": "7.0.2"
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0, < 7.0.2",
+          "fixed": "7.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "tmp",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "tmp",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-52f5-9888-hmc6",
+      "packageName": "tmp",
       "title": "tmp allows arbitrary temporary file / directory write via symbolic link `dir` parameter",
       "description": "### Summary\n\n`tmp@0.2.3` is vulnerable to an Arbitrary temporary file / directory write via symbolic link `dir` parameter.\n\n\n### Details\n\nAccording to the documentation there are some conditions that must be held:\n\n```\n// https://github.com/raszi/node-tmp/blob/v0.2.3/README.md?plain=1#L41-L50\n\nOther breaking changes, i.e.\n\n- template must be relative to tmpdir\n- name must be relative to tmpdir\n- dir option must be relative to tmpdir //<-- this assumption can be bypassed using symlinks\n\nare still",
       "severity": "low",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-54798"
         }
       ],
-      "affectedRange": "<= 0.2.3",
-      "fixedVersion": "0.2.4"
+      "affectedVersions": [
+        {
+          "range": "<= 0.2.3",
+          "fixed": "0.2.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

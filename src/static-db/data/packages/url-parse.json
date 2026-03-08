@@ -1,9 +1,10 @@
 {
-  "name": "url-parse",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "url-parse",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8v38-pw62-9cw2",
+      "packageName": "url-parse",
       "title": "url-parse Incorrectly parses URLs that include an '@'",
       "description": "A specially crafted URL with an '@' sign but empty user info and no hostname, when parsed with url-parse, url-parse will return the incorrect href. In particular,\n\n```js\nparse(\\\"http://@/127.0.0.1\\\")\n```\nWill return:\n```yaml\n{\n slashes: true,\n protocol: 'http:',\n hash: '',\n query: '',\n pathname: '/127.0.0.1',\n auth: '',\n host: '',\n port: '',\n hostname: '',\n password: '',\n username: '',\n origin: 'null',\n href: 'http:///127.0.0.1'\n }\n```\nIf the 'hostname' or 'origin' attributes of the output from ",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2022-0639"
         }
       ],
-      "affectedRange": "< 1.5.7",
-      "fixedVersion": "1.5.7"
+      "affectedVersions": [
+        {
+          "range": "< 1.5.7",
+          "fixed": "1.5.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-hgjh-723h-mx2j",
+      "packageName": "url-parse",
       "title": "Authorization Bypass Through User-Controlled Key in url-parse",
       "description": "url-parse prior to version 1.5.8 is vulnerable to Authorization Bypass Through User-Controlled Key.",
       "severity": "critical",
@@ -41,11 +48,17 @@
           "value": "CVE-2022-0686"
         }
       ],
-      "affectedRange": "< 1.5.8",
-      "fixedVersion": "1.5.8"
+      "affectedVersions": [
+        {
+          "range": "< 1.5.8",
+          "fixed": "1.5.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-jf5r-8hm2-f872",
+      "packageName": "url-parse",
       "title": "url-parse incorrectly parses hostname / protocol due to unstripped leading control characters.",
       "description": "Leading control characters in a URL are not stripped when passed into url-parse. This can cause input URLs to be mistakenly be interpreted as a relative URL without a hostname and protocol, while the WHATWG URL parser will trim control characters and treat it as an absolute URL.\n\nIf url-parse is used in security decisions involving the hostname / protocol, and the input URL is used in a client which uses the WHATWG URL parser, the decision may be incorrect.\n\nThis can also lead to a cross-site sc",
       "severity": "medium",
@@ -62,11 +75,17 @@
           "value": "CVE-2022-0691"
         }
       ],
-      "affectedRange": "< 1.5.9",
-      "fixedVersion": "1.5.9"
+      "affectedVersions": [
+        {
+          "range": "< 1.5.9",
+          "fixed": "1.5.9"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-hh27-ffr2-f2jc",
+      "packageName": "url-parse",
       "title": "Open redirect in url-parse",
       "description": "# Overview\n\nAffected versions of npm `url-parse` are vulnerable to URL Redirection to Untrusted Site.\n\n# Impact\n\nDepending on library usage and attacker intent, impacts may include allow/block list bypasses, SSRF attacks, open redirects, or other undesired behavior.",
       "severity": "medium",
@@ -83,11 +102,17 @@
           "value": "CVE-2021-3664"
         }
       ],
-      "affectedRange": "< 1.5.2",
-      "fixedVersion": "1.5.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.5.2",
+          "fixed": "1.5.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9m6j-fcg5-2442",
+      "packageName": "url-parse",
       "title": "Path traversal in url-parse",
       "description": "url-parse before 1.5.0 mishandles certain uses of backslash such as http:\\/ and interprets the URI as a relative path.",
       "severity": "medium",
@@ -104,11 +129,17 @@
           "value": "CVE-2021-27515"
         }
       ],
-      "affectedRange": "< 1.5.0",
-      "fixedVersion": "1.5.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.5.0",
+          "fixed": "1.5.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-rqff-837h-mm52",
+      "packageName": "url-parse",
       "title": "Authorization bypass in url-parse",
       "description": "Authorization Bypass Through User-Controlled Key in NPM url-parse prior to 1.5.6.",
       "severity": "medium",
@@ -125,11 +156,17 @@
           "value": "CVE-2022-0512"
         }
       ],
-      "affectedRange": "< 1.5.6",
-      "fixedVersion": "1.5.6"
+      "affectedVersions": [
+        {
+          "range": "< 1.5.6",
+          "fixed": "1.5.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-46c4-8wrp-j99v",
+      "packageName": "url-parse",
       "title": "Improper Validation and Sanitization in url-parse",
       "description": "Insufficient validation and sanitization of user input exists in url-parse npm package version 1.4.4 and earlier may allow attacker to bypass security checks.",
       "severity": "medium",
@@ -146,8 +183,13 @@
           "value": "CVE-2020-8124"
         }
       ],
-      "affectedRange": "< 1.4.5",
-      "fixedVersion": "1.4.5"
+      "affectedVersions": [
+        {
+          "range": "< 1.4.5",
+          "fixed": "1.4.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

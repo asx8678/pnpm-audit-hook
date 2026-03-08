@@ -1,9 +1,10 @@
 {
-  "name": "@angular/platform-server",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@angular/platform-server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-68x2-mx4q-78m7",
+      "packageName": "@angular/platform-server",
       "title": "Angular SSR: Global Platform Injector Race Condition Leads to Cross-Request Data Leakage",
       "description": "### Impact\n\nAngular uses a DI container (the \"platform injector\") to hold request-specific state during server-side rendering. For historical reasons, the container was stored as a JavaScript module-scoped global variable. When multiple requests are processed concurrently, they could inadvertently share or overwrite the global injector state.\n\nIn practical terms, this can lead to one request responding with data meant for a completely different request, leaking data or tokens included on the ren",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-59052"
         }
       ],
-      "affectedRange": ">= 21.0.0-next.0, < 21.0.0-next.3",
-      "fixedVersion": "21.0.0-next.3"
+      "affectedVersions": [
+        {
+          "range": ">= 21.0.0-next.0, < 21.0.0-next.3",
+          "fixed": "21.0.0-next.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

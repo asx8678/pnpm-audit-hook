@@ -1,9 +1,10 @@
 {
-  "name": "@bit/loader",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@bit/loader",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8vr4-h4rr-8ph6",
+      "packageName": "@bit/loader",
       "title": "MiguelCastillo @bit/loader Prototype Pollution issue",
       "description": "A Prototype Pollution issue in MiguelCastillo @bit/loader v.10.0.3 allows an attacker to execute arbitrary code via the M function e argument in index.js.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-24293"
         }
       ],
-      "affectedRange": "<= 10.0.3"
+      "affectedVersions": [
+        {
+          "range": "<= 10.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "parse-server-push-adapter",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "parse-server-push-adapter",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mxhg-rvwx-x993",
+      "packageName": "parse-server-push-adapter",
       "title": "Invalid push request payload crashes Parse Server",
       "description": "### Impact\n\nThe Parse Server Push Adapter can crash Parse Server due to an invalid push notification payload.\n\n### Patches\n\nInvalid push notification payload is caught and an logged.\n\n### Workarounds\nn/a\n\n### References\n- https://github.com/parse-community/parse-server-push-adapter/security/advisories/GHSA-mxhg-rvwx-x993\n- https://github.com/parse-community/parse-server-push-adapter/pull/217",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-32688"
         }
       ],
-      "affectedRange": "< 4.1.3",
-      "fixedVersion": "4.1.3"
+      "affectedVersions": [
+        {
+          "range": "< 4.1.3",
+          "fixed": "4.1.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

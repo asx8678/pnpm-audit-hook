@@ -1,9 +1,10 @@
 {
-  "name": "browserify-sign",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "browserify-sign",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-x9w5-v3q2-3rhw",
+      "packageName": "browserify-sign",
       "title": "browserify-sign upper bound check issue in `dsaVerify` leads to a signature forgery attack",
       "description": "### Summary\nAn upper bound check issue in `dsaVerify` function allows an attacker to construct signatures that can be successfully verified by any public key, thus leading to a signature forgery attack.\n\n### Details\nIn `dsaVerify` function, it checks whether the value of the signature is legal by calling function `checkValue`, namely, whether `r` and `s` are both in the interval `[1, q - 1]`. However, the second line of the `checkValue` function wrongly checks the upper bound of the passed param",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-46234"
         }
       ],
-      "affectedRange": ">= 2.6.0, <= 4.2.1",
-      "fixedVersion": "4.2.2"
+      "affectedVersions": [
+        {
+          "range": ">= 2.6.0, <= 4.2.1",
+          "fixed": "4.2.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

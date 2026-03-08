@@ -1,9 +1,10 @@
 {
-  "name": "react-draft-wysiwyg",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "react-draft-wysiwyg",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-fq5x-7292-2p5r",
+      "packageName": "react-draft-wysiwyg",
       "title": "React Draft Wysiwyg Cross-Site Scripting (XSS) via the Embedded Button",
       "description": "All versions of the package react-draft-wysiwyg are vulnerable to Cross-site Scripting (XSS) via the Embedded button which will then result in saving the payload in the <iframe> tag.",
       "severity": "low",
@@ -20,10 +21,16 @@
           "value": "CVE-2025-3191"
         }
       ],
-      "affectedRange": "<= 1.15.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.15.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-qcg2-h349-vwm3",
+      "packageName": "react-draft-wysiwyg",
       "title": "Cross-site Scripting in React Draft Wysiwyg",
       "description": "react-draft-wysiwyg (aka React Draft Wysiwyg) before 1.14.6 allows a `javascript:` URi in a Link Target of the link decorator in `decorators/Link/index.js` when a draft is shared across users, leading to XSS.",
       "severity": "medium",
@@ -40,8 +47,13 @@
           "value": "CVE-2021-31712"
         }
       ],
-      "affectedRange": "< 1.14.6",
-      "fixedVersion": "1.14.6"
+      "affectedVersions": [
+        {
+          "range": "< 1.14.6",
+          "fixed": "1.14.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "rsshub",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "rsshub",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3p3p-cgj7-vgw3",
+      "packageName": "rsshub",
       "title": "RSSHub vulnerable to Server-Side Request Forgery",
       "description": "### Summary\n\nServeral Server-Side Request Forgery (SSRF) vulnerabilities in RSSHub allow remote attackers to use the server as a proxy to send HTTP GET requests to arbitrary targets and retrieve information in the internal network or conduct Denial-of-Service (DoS) attacks.\n\n### Details\n\n#### `/mastodon/acct/:acct/statuses/:only_media?`\n\nhttps://github.com/DIYgod/RSSHub/blob/5928c5db2472e101c2f5c3bafed77a2f72edd40a/lib/routes/mastodon/acct.js#L4-L7\n\nhttps://github.com/DIYgod/RSSHub/blob/5928c5db",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2024-27927"
         }
       ],
-      "affectedRange": "< 1.0.0-master.a429472",
-      "fixedVersion": "1.0.0-master.a429472"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0-master.a429472",
+          "fixed": "1.0.0-master.a429472"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-2wqw-hr4f-xrhh",
+      "packageName": "rsshub",
       "title": "RSSHub Cross-site Scripting vulnerability caused by internal media proxy",
       "description": "## Impact\nWhen the specially crafted image is supplied to the internal media proxy, it proxies the image without handling XSS vulnerabilities, allowing for the execution of arbitrary JavaScript code.\n\nUsers who access the deliberately constructed URL are affected.\n\n## Patches\n\nThis vulnerability was fixed in version https://github.com/DIYgod/RSSHub/commit/4d3e5d79c1c17837e931b4cd253d2013b487aa87. Please upgrade to this or a later version.\n\n## Workarounds\n\nNo.",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2024-27926"
         }
       ],
-      "affectedRange": ">= 1.0.0-master.cbbd829, < 1.0.0-master.d8ca915",
-      "fixedVersion": "1.0.0-master.d8ca915"
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0-master.cbbd829, < 1.0.0-master.d8ca915",
+          "fixed": "1.0.0-master.d8ca915"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-jvxx-v45p-v5vf",
+      "packageName": "rsshub",
       "title": "Denial of Service (DoS) vulnerability in RSSHub",
       "description": "### Impact\n\nPassing some special values to the `filter` and `filterout` parameters can cause an abnormally high CPU. Impact on the performance of the servers and RSSHub services.\n\n### Patches\n\nIt is fixed in 5c4177441417b44a6e45c3c63e9eac2504abeb5b , please update to this or the later versions as soon as possible.\n\n### References\n\nFull report: https://github.com/DIYgod/RSSHub/issues/10045\n\n### For more information\n\nIf you have any questions or comments about this advisory:\n* Open an issue in <ht",
       "severity": "medium",
@@ -62,10 +75,16 @@
           "value": "CVE-2022-31110"
         }
       ],
-      "affectedRange": "<= 1.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-32gr-4cq6-5w5q",
+      "packageName": "rsshub",
       "title": "rsshub vulnerable to Cross-site Scripting via unvalidated URL parameters",
       "description": "### Impact\n\nWhen the URL parameters contain certain special characters, it returns an error page that does not properly handle XSS vulnerabilities, allowing for the execution of arbitrary JavaScript code.\n\nUsers who access the deliberately constructed URL are affected.\n\n### Patches\n\nThis vulnerability was fixed in version c910c4d28717fb860fbe064736641f379fab2c91. Please upgrade to this or a later version.\n\n### Workarounds\n\nNo.\n",
       "severity": "medium",
@@ -82,11 +101,17 @@
           "value": "CVE-2023-26491"
         }
       ],
-      "affectedRange": "< 1.0.0-master.c910c4d",
-      "fixedVersion": "1.0.0-master.c910c4d"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0-master.c910c4d",
+          "fixed": "1.0.0-master.c910c4d"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-pgjj-866w-fc5c",
+      "packageName": "rsshub",
       "title": "Risk of code injection",
       "description": "### Impact\nSome routes use `eval` or `Function constructor`, which may be injected by the target site with unsafe code, causing server-side security issues\n\n### Patches\nTemporarily removed the problematic route and added a `no-new-func` rule to eslint\nSelf-built users should upgrade to 7f1c430 and later as soon as possible\n\n### Credits\nTencent Woodpecker Security Team\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Open an issue in [https://github.com/DIYgo",
       "severity": "high",
@@ -103,10 +128,16 @@
           "value": "CVE-2021-21278"
         }
       ],
-      "affectedRange": "<= 1.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-64wp-jh9p-5cg2",
+      "packageName": "rsshub",
       "title": "RSSHub SSRF vulnerability",
       "description": "## Summary\n\nRSSHub is vulnerable to Server-Side Request Forgery (SSRF) attacks. This vulnerability allows an attacker to send arbitrary HTTP requests from the server to other servers or resources on the network.\n\n## Description\n\nAn attacker can exploit this vulnerability by sending a request to the affected routes with a malicious URL. For example, if an attacker controls the `ATTACKER.HOST` domain, they can send a request to affected routes with the value set to `ATTACKER.HOST%2F%23`.\nThe `%2F`",
       "severity": "high",
@@ -123,8 +154,13 @@
           "value": "CVE-2023-22493"
         }
       ],
-      "affectedRange": "< 1.0.0-master.a66cbcf",
-      "fixedVersion": "1.0.0-master.a66cbcf"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0-master.a66cbcf",
+          "fixed": "1.0.0-master.a66cbcf"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

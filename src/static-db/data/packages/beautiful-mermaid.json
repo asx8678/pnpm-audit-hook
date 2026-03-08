@@ -1,0 +1,33 @@
+{
+  "packageName": "beautiful-mermaid",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cgmm-x5ww-q5cr",
+      "packageName": "beautiful-mermaid",
+      "title": "beautiful-mermaid contains an SVG attribute injection issue that can lead to cross-site scripting (XSS)",
+      "description": "beautiful-mermaid versions prior to 0.1.3 contain an SVG attribute injection issue that can lead to cross-site scripting (XSS) when rendering attacker-controlled Mermaid diagrams. User-controlled values from Mermaid style and classDef directives are interpolated into SVG attribute values without proper escaping, allowing crafted input to break out of an attribute context and inject arbitrary SVG elements/attributes into the rendered output. When the generated SVG is embedded in a web page, this ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cgmm-x5ww-q5cr",
+      "publishedAt": "2026-02-13T18:31:25Z",
+      "modifiedAt": "2026-02-13T21:04:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cgmm-x5ww-q5cr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26226"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.1.3",
+          "fixed": "0.1.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

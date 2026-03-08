@@ -1,9 +1,10 @@
 {
-  "name": "phin",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "phin",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-x565-32qp-m3vf",
+      "packageName": "phin",
       "title": "phin may include sensitive headers in subsequent requests after redirect",
       "description": "### Impact\n\nUsers may be impacted if sending requests including sensitive data in specific headers with `followRedirects` enabled.\n\n### Patches\n\nThe [follow-redirects](https://github.com/follow-redirects/follow-redirects) library is now being used for redirects and removes some headers that may contain sensitive information in some situations.\n\n### Workarounds\n\nN/A. Please update to resolve the issue.",
       "severity": "medium",
@@ -16,8 +17,13 @@
           "value": "GHSA-x565-32qp-m3vf"
         }
       ],
-      "affectedRange": "< 3.7.1",
-      "fixedVersion": "3.7.1"
+      "affectedVersions": [
+        {
+          "range": "< 3.7.1",
+          "fixed": "3.7.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

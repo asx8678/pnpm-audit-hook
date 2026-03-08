@@ -1,0 +1,60 @@
+{
+  "packageName": "@enclave-vm/core",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f229-3862-4942",
+      "packageName": "@enclave-vm/core",
+      "title": "@enclave-vm/core is vulnerable to Sandbox Escape",
+      "description": "## Summary\n\nIt is possible to escape the security boundraries set by `@enclave-vm/core`, which can be used to achieve remote code execution (RCE).\n\nThe issue has been fixed in version **2.11.1**.\n\n---\n\n## Details\n\nIt is possible to obtain the native `Object` constructor (instead of the `SafeObject` wrapper). This can be used to get retrieve property descriptors via `Object.getOwnPropertyDescriptors`, allowing access to properties otherwise restricted by the sandbox.\n\nWhen a memory limit is set (",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-f229-3862-4942",
+      "publishedAt": "2026-02-25T17:26:23Z",
+      "modifiedAt": "2026-02-25T17:26:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f229-3862-4942"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27597"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.10.1",
+          "fixed": "2.11.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x39w-8vm5-5m3p",
+      "packageName": "@enclave-vm/core",
+      "title": "Sandbox escape via infinite recursion and error objects",
+      "description": "**Note:** The npm package has moved to `@enclave-vm/core` (formerly `enclave-vm`).  \nAll fixed versions and guidance refer to `@enclave-vm/core`.\n\n### Summary\nThe existing layers of security in enclave-vm are insufficient: The AST sanitization can be bypassed with dynamic property accesses, the hardening of the error objects does not cover the peculiar behavior or the vm module and the function constructor access prevention can be side-stepped by leveraging host object references.\n\n### Details\nT",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x39w-8vm5-5m3p",
+      "publishedAt": "2026-02-05T17:49:35Z",
+      "modifiedAt": "2026-02-07T00:31:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x39w-8vm5-5m3p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25533"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.10.1",
+          "fixed": "2.10.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

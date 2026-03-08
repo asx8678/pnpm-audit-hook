@@ -1,9 +1,10 @@
 {
-  "name": "@rpldy/uploader",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@rpldy/uploader",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-pc47-g7gv-4gpw",
+      "packageName": "@rpldy/uploader",
       "title": "@rpldy/uploader prototype pollution",
       "description": "A prototype pollution in the lib.createUploader function of @rpldy/uploader v1.8.1 allows attackers to cause a Denial of Service (DoS) via supplying a crafted payload.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-57082"
         }
       ],
-      "affectedRange": "< 1.9.1",
-      "fixedVersion": "1.9.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.9.1",
+          "fixed": "1.9.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

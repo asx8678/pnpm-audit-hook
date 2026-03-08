@@ -1,9 +1,10 @@
 {
-  "name": "external-svg-loader",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "external-svg-loader",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xc2r-jf2x-gjr8",
+      "packageName": "external-svg-loader",
       "title": "external-svg-loader Cross-site Scripting vulnerability",
       "description": "### Summary\nAccording to the [docs](https://github.com/shubhamjain/svg-loader/tree/main#2-enable-javascript), svg-loader will strip all JS code before injecting the SVG file for security reasons but the input sanitization logic is not sufficient and can be trivially bypassed. This allows an attacker to craft a malicious SVG which can result in XSS. \n\n### Details\nWhen trying to sanitize the svg the lib [removes event attributes](https://github.com/shubhamjain/svg-loader/blob/main/svg-loader.js#L1",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-40013"
         }
       ],
-      "affectedRange": "< 1.6.9",
-      "fixedVersion": "1.6.9"
+      "affectedVersions": [
+        {
+          "range": "< 1.6.9",
+          "fixed": "1.6.9"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

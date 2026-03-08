@@ -1,9 +1,10 @@
 {
-  "name": "libnested",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "libnested",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3r9x-mjrm-2725",
+      "packageName": "libnested",
       "title": "Prototype pollution vulnerability in 'libnested'",
       "description": "Prototype pollution vulnerability in 'libnested' versions 0.0.0 through 1.5.0 allows an attacker to cause a denial of service and may lead to remote code execution.",
       "severity": "critical",
@@ -20,10 +21,16 @@
           "value": "CVE-2020-28283"
         }
       ],
-      "affectedRange": ">= 0.0.0, <= 1.5.0"
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0, <= 1.5.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-x5m8-2r8v-8f97",
+      "packageName": "libnested",
       "title": "Prototype Pollution in libnested",
       "description": "The package libnested before 1.5.2 are vulnerable to Prototype Pollution via the set function in index.js. **Note:** This vulnerability derives from an incomplete fix for [CVE-2020-28283](https://security.snyk.io/vuln/SNYK-JS-LIBNESTED-1054930)",
       "severity": "critical",
@@ -40,8 +47,13 @@
           "value": "CVE-2022-25352"
         }
       ],
-      "affectedRange": "< 1.5.2",
-      "fixedVersion": "1.5.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.5.2",
+          "fixed": "1.5.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "minimatch",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "minimatch",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-f8q6-p94x-37v3",
+      "packageName": "minimatch",
       "title": "minimatch ReDoS vulnerability",
       "description": "A vulnerability was found in the minimatch package. This flaw allows a Regular Expression Denial of Service (ReDoS) when calling the braceExpand function with specific arguments, resulting in a Denial of Service.",
       "severity": "high",
@@ -20,8 +21,94 @@
           "value": "CVE-2022-3517"
         }
       ],
-      "affectedRange": "< 3.0.5",
-      "fixedVersion": "3.0.5"
+      "affectedVersions": [
+        {
+          "range": "< 3.0.5",
+          "fixed": "3.0.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7r86-cg39-jmmj",
+      "packageName": "minimatch",
+      "title": "minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments",
+      "description": "### Summary\n\n`matchOne()` performs unbounded recursive backtracking when a glob pattern contains multiple non-adjacent `**` (GLOBSTAR) segments and the input path does not match. The time complexity is O(C(n, k)) -- binomial -- where `n` is the number of path segments and `k` is the number of globstars. With k=11 and n=30, a call to the default `minimatch()` API stalls for roughly 5 seconds. With k=13, it exceeds 15 seconds. No memoization or call budget exists to bound this behavior.\n\n---\n\n### ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7r86-cg39-jmmj",
+      "publishedAt": "2026-02-26T22:10:18Z",
+      "modifiedAt": "2026-02-26T22:10:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7r86-cg39-jmmj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27903"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.1.3",
+          "fixed": "3.1.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-23c5-xmqv-rm74",
+      "packageName": "minimatch",
+      "title": "minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions",
+      "description": "### Summary\n\nNested `*()` extglobs produce regexps with nested unbounded quantifiers (e.g. `(?:(?:a|b)*)*`), which exhibit catastrophic backtracking in V8. With a 12-byte pattern `*(*(*(a|b)))` and an 18-byte non-matching input, `minimatch()` stalls for over 7 seconds. Adding a single nesting level or a few input characters pushes this to minutes. This is the most severe finding: it is triggered by the default `minimatch()` API with no special options, and the minimum viable pattern is only 12 b",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-23c5-xmqv-rm74",
+      "publishedAt": "2026-02-26T22:07:15Z",
+      "modifiedAt": "2026-02-26T22:07:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-23c5-xmqv-rm74"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27904"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.1.4",
+          "fixed": "3.1.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3ppc-4f35-3m26",
+      "packageName": "minimatch",
+      "title": "minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern",
+      "description": "### Summary\n`minimatch` is vulnerable to Regular Expression Denial of Service (ReDoS) when a glob pattern contains many consecutive `*` wildcards followed by a literal character that doesn't appear in the test string. Each `*` compiles to a separate `[^/]*?` regex group, and when the match fails, V8's regex engine backtracks exponentially across all possible splits.\n\nThe time complexity is O(4^N) where N is the number of `*` characters. With N=15, a single `minimatch()` call takes ~2 seconds. Wi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3ppc-4f35-3m26",
+      "publishedAt": "2026-02-18T22:38:11Z",
+      "modifiedAt": "2026-02-24T20:59:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3ppc-4f35-3m26"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26996"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.1.3",
+          "fixed": "3.1.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

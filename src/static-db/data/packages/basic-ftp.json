@@ -1,0 +1,33 @@
+{
+  "packageName": "basic-ftp",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5rq4-664w-9x2c",
+      "packageName": "basic-ftp",
+      "title": "Basic FTP has Path Traversal Vulnerability in its downloadToDir() method",
+      "description": "The `basic-ftp` library contains a path traversal vulnerability in the `downloadToDir()` method. A malicious FTP server can send directory listings with filenames containing path traversal sequences (`../`) that cause files to be written outside the intended download directory.\n\n\n## Source-to-Sink Flow\n\n```\n1. SOURCE: FTP server sends LIST response\n└─> \"-rw-r--r-- 1 user group 1024 Jan 20 12:00 ../../../etc/passwd\"\n\n2. PARSER: parseListUnix.ts:100 extracts filename\n└─> file.name = \"../../../etc/",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5rq4-664w-9x2c",
+      "publishedAt": "2026-02-25T22:34:26Z",
+      "modifiedAt": "2026-02-25T22:34:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5rq4-664w-9x2c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27699"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.2.0",
+          "fixed": "5.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

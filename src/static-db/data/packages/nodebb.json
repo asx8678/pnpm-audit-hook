@@ -1,9 +1,10 @@
 {
-  "name": "nodebb",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "nodebb",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rfh2-8vxq-jqr8",
+      "packageName": "nodebb",
       "title": "NodeBB SQL Injection vulnerability",
       "description": "NodeBB v4.3.0 is vulnerable to SQL injection in its search-categories API endpoint (/api/v3/search/categories). The search query parameter is not properly sanitized, allowing unauthenticated, remote attackers to inject boolean-based blind and PostgreSQL error-based payloads.",
       "severity": "high",
@@ -20,10 +21,16 @@
           "value": "CVE-2025-50979"
         }
       ],
-      "affectedRange": "<= 4.3.0"
+      "affectedVersions": [
+        {
+          "range": "<= 4.3.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-vqr3-vrrg-f3jh",
+      "packageName": "nodebb",
       "title": "NodeBB Cross-site scripting (XSS) vulnerability",
       "description": "A persistent cross-site scripting (XSS) vulnerability in NodeBB v3.11.0 allows remote attackers to store arbitrary code in the 'about me' section of their profile.",
       "severity": "medium",
@@ -40,11 +47,17 @@
           "value": "CVE-2024-57041"
         }
       ],
-      "affectedRange": "< 3.11.1",
-      "fixedVersion": "3.11.1"
+      "affectedVersions": [
+        {
+          "range": "< 3.11.1",
+          "fixed": "3.11.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-qc99-r4wh-c8h6",
+      "packageName": "nodebb",
       "title": "Incorrect Access Control in NodeBB",
       "description": "In NodeBB prior to 3.6.7 an attacker was able to access the restricted tabs for the Admin group which are only allowed the the administrators.",
       "severity": "medium",
@@ -61,11 +74,17 @@
           "value": "CVE-2024-29316"
         }
       ],
-      "affectedRange": "< 3.6.7",
-      "fixedVersion": "3.6.7"
+      "affectedVersions": [
+        {
+          "range": "< 3.6.7",
+          "fixed": "3.6.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4qcv-qf38-5j3j",
+      "packageName": "nodebb",
       "title": "Unintentional leakage of private information via cross-origin websocket session hijacking",
       "description": "### Impact\n\nPrivate messages or posts might be leaked to third parties if victim opens the attackers site while browsing nodebb.\n\n### Patches\n\n* Patched in v3.1.3\n* Backported to v2.x line via v2.8.13\n\n### Workarounds\n\nUsers can cherry-pick https://github.com/NodeBB/NodeBB/commit/51096ad2345fb1d1380bec0a447113489ef6c359 if they are on v3.x\n\nIf you are running v2.x of NodeBB, you can cherry-pick a5d92da9ddac5607ab7f737520a66eaed6d3ddee followed by 62e162cf1e735e42462be1db9b4954b5a69accdf\n",
       "severity": "medium",
@@ -82,11 +101,17 @@
           "value": "CVE-2023-2850"
         }
       ],
-      "affectedRange": "< 2.8.13",
-      "fixedVersion": "2.8.13"
+      "affectedVersions": [
+        {
+          "range": "< 2.8.13",
+          "fixed": "2.8.13"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-vh2g-6c4x-5hmp",
+      "packageName": "nodebb",
       "title": "Path traversal and code execution via prototype vulnerability",
       "description": "### Impact\nDue to the use of the [object destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) syntax in the user export code path, combined with a path traversal vulnerability, a specially crafted payload could invoke the user export logic to arbitrarily execute javascript files on the local disk.\n\n### Patches\nPatched in v2.8.7\n\n### Workarounds\nSite maintainers can cherry pick ec58700f6dff8e5b4af1544f6205ec362b593092 into",
       "severity": "critical",
@@ -103,11 +128,17 @@
           "value": "CVE-2023-26045"
         }
       ],
-      "affectedRange": ">= 2.5.0, < 2.8.7",
-      "fixedVersion": "2.8.7"
+      "affectedVersions": [
+        {
+          "range": ">= 2.5.0, < 2.8.7",
+          "fixed": "2.8.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9g4f-5rpg-4948",
+      "packageName": "nodebb",
       "title": "NodeBB Cross-site Scripting Vulnerability in Markdown Processing",
       "description": "Multiple cross-site scripting (XSS) vulnerabilities in NodeBB before 0.7 allow remote attackers to inject arbitrary web script or HTML via vectors related to (1) javascript: or (2) data: URLs.",
       "severity": "medium",
@@ -124,11 +155,17 @@
           "value": "CVE-2015-3296"
         }
       ],
-      "affectedRange": "< 0.70",
-      "fixedVersion": "0.70"
+      "affectedVersions": [
+        {
+          "range": "< 0.70",
+          "fixed": "0.70"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-pfj7-2qfw-vwgm",
+      "packageName": "nodebb",
       "title": "NodeBB vulnerable to path traversal in translator module",
       "description": "### Impact\nPrior to v1.18.5, a path traversal vulnerability was present that allowed users to access JSON files outside of the expected `languages/` directory.\n\n### Patches\nThe vulnerability has been patched as of v1.18.5.\n\n### Workarounds\nCherry-pick commit hash `c8b2fc46dc698db687379106b3f01c71b80f495f` to receive this patch in lieu of a full upgrade.\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Email us at [security@nodebb.org](mailto:security@nodebb.",
       "severity": "medium",
@@ -145,11 +182,17 @@
           "value": "CVE-2021-43788"
         }
       ],
-      "affectedRange": ">= 1.0.4, < 1.18.5",
-      "fixedVersion": "1.18.5"
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.4, < 1.18.5",
+          "fixed": "1.18.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-wx69-rvg3-x7fc",
+      "packageName": "nodebb",
       "title": "XSS via prototype pollution in NodeBB ",
       "description": "### Impact\nA prototype pollution vulnerability in the uploader module allowed a malicious user to inject arbitrary data (i.e. javascript) into the DOM, theoretically allowing for an account takeover when used in conjunction with a path traversal vulnerability disclosed at the same time as this report.\n\n### Patches\nThe vulnerability has been patched as of v1.18.5.\n\n### Workarounds\nCherry-pick commit hash 1783f918bc19568f421473824461ff2ed7755e4c to receive this patch in lieu of a full upgrade.\n\n##",
       "severity": "critical",
@@ -166,11 +209,17 @@
           "value": "CVE-2021-43787"
         }
       ],
-      "affectedRange": ">= 1.15.0, < 1.18.5",
-      "fixedVersion": "1.18.5"
+      "affectedVersions": [
+        {
+          "range": ">= 1.15.0, < 1.18.5",
+          "fixed": "1.18.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-hf2m-j98r-4fqw",
+      "packageName": "nodebb",
       "title": "API token verification can be bypassed in NodeBB ",
       "description": "### Impact\nIncorrect logic present in the token verification step unintentionally allowed master token access to the API.\n\n### Patches\nThe vulnerability has been patch as of v1.18.5.\n\n### Workarounds\nCherry-pick commit hash 04dab1d550cdebf4c1567bca9a51f8b9ca48a500 to receive this patch in lieu of a full upgrade.\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Email us at [security@nodebb.org](mailto:security@nodebb.org)\n",
       "severity": "critical",
@@ -187,11 +236,17 @@
           "value": "CVE-2021-43786"
         }
       ],
-      "affectedRange": ">= 1.15.0, < 1.18.5",
-      "fixedVersion": "1.18.5"
+      "affectedVersions": [
+        {
+          "range": ">= 1.15.0, < 1.18.5",
+          "fixed": "1.18.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-rf3g-v8p5-p675",
+      "packageName": "nodebb",
       "title": "NodeBB vulnerable to account takeover via prototype vulnerability",
       "description": "### Impact\nDue to a plain object with a prototype being used in socket.io message handling a specially crafted payload can be used to impersonate other users and takeover accounts.\n\n### Patches\nPatched in 2.6.1\n\n### Workarounds\nSite maintainers can cherry-pick https://github.com/NodeBB/NodeBB/commit/48d143921753914da45926cca6370a92ed0c46b8 into their codebase to patch the exploit.\n\n### For more information\nIf you have any questions or comments about this advisory:\n\nDiscuss it on [our community f",
       "severity": "critical",
@@ -208,11 +263,17 @@
           "value": "CVE-2022-46164"
         }
       ],
-      "affectedRange": "< 2.6.1",
-      "fixedVersion": "2.6.1"
+      "affectedVersions": [
+        {
+          "range": "< 2.6.1",
+          "fixed": "2.6.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-p4cc-w597-6cpm",
+      "packageName": "nodebb",
       "title": "Cryptographically weak PRNG in `utils.generateUUID`",
       "description": "### In Brief\n`utils.generateUUID`, a helper function available in essentially all versions of NodeBB (as far back as v1.0.1 and potentially earlier) used a cryptographically insecure Pseudo-random number generator (`Math.random()`), which meant that a specially crafted script combined with multiple invocations of the password reset functionality could enable an attacker to correctly calculate the reset code for an account they do not have access to.\n\n### Impact\nThis vulnerability impacts all ins",
       "severity": "critical",
@@ -229,11 +290,17 @@
           "value": "CVE-2022-36045"
         }
       ],
-      "affectedRange": "= 2.0.0",
-      "fixedVersion": "2.0.1"
+      "affectedVersions": [
+        {
+          "range": "= 2.0.0",
+          "fixed": "2.0.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5gwx-wf9g-r5mx",
+      "packageName": "nodebb",
       "title": "NodeBB vulnerable to Cross-Site Request Forgery",
       "description": "A vulnerability was found in NodeBB up to 2.5.7. This affects an unknown part of the file /register/abort. The manipulation leads to cross-site request forgery. It is possible to initiate the attack remotely. Upgrading to version 2.5.8 is able to address this issue. The name of the patch is 2f9d8c350e54543f608d3d4c8e1a49bbb6cdea38. It is recommended to upgrade the affected component.",
       "severity": "medium",
@@ -250,11 +317,17 @@
           "value": "CVE-2022-3978"
         }
       ],
-      "affectedRange": "< 2.5.8",
-      "fixedVersion": "2.5.8"
+      "affectedVersions": [
+        {
+          "range": "< 2.5.8",
+          "fixed": "2.5.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-xmgg-fx9p-prq6",
+      "packageName": "nodebb",
       "title": "NodeBB account takeover via SSO plugins",
       "description": "_This is a historical security advisory, pertaining to a vulnerability that was reported, patched, and published in 2021. It is listed here for completeness and for CVE tracking purposes._\n\n### Impact\nDue to an unnecessarily strict conditional in the code handling the first step of the SSO process, the pre-existing logic that added (and later checked) a nonce was inadvertently rendered opt-in instead of opt-out.\n\nThis re-exposed a vulnerability in that a specially crafted MITM attack could theor",
       "severity": "high",
@@ -271,8 +344,13 @@
           "value": "CVE-2022-36076"
         }
       ],
-      "affectedRange": "<= 1.17.1",
-      "fixedVersion": "1.17.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.17.1",
+          "fixed": "1.17.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

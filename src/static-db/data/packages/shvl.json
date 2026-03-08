@@ -1,9 +1,10 @@
 {
-  "name": "shvl",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "shvl",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-pqwc-3vhw-qcvq",
+      "packageName": "shvl",
       "title": "shvl vulnerable to prototype pollution",
       "description": "### Overview\nPrototype pollution vulnerability in 'shvl' versions 1.0.0 through 2.0.1 allows an attacker to cause a denial of service and may lead to remote code execution.\n\n### Details\nThe NPM module 'shvl' can be abused by Prototype Pollution vulnerability since the function 'set()' did not check for the type of object before assigning value to the property. Due to this flaw an attacker could create a non-existent property or able to manipulate the property which leads to Denial of Service or ",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-28278"
         }
       ],
-      "affectedRange": ">= 1.0.0, <= 2.0.1",
-      "fixedVersion": "2.0.2"
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0, <= 2.0.1",
+          "fixed": "2.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

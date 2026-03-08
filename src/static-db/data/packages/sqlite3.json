@@ -1,9 +1,10 @@
 {
-  "name": "sqlite3",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "sqlite3",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jqv5-7xpx-qj74",
+      "packageName": "sqlite3",
       "title": "sqlite vulnerable to code execution due to Object coercion",
       "description": "### Impact\n\nDue to the underlying implementation of `.ToString()`, it's possible to execute arbitrary JavaScript, or to achieve a denial-of-service, if a binding parameter is a crafted Object.\n\nUsers of `sqlite3` v5.0.0 - v5.1.4 are affected by this.\n\n### Patches\n\nFixed in v5.1.5. All users are recommended to upgrade to v5.1.5 or later.\n\n### Workarounds\n\n* Ensure there is sufficient sanitization in the parent application to protect against invalid values being supplied to binding parameters.\n\n##",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2022-43441"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.1.5",
-      "fixedVersion": "5.1.5"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.1.5",
+          "fixed": "5.1.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9qrh-qjmc-5w2p",
+      "packageName": "sqlite3",
       "title": "Denial-of-Service when binding invalid parameters in sqlite3",
       "description": "Affected versions of sqlite3 will experience a fatal error when supplying a specific object in the parameter array. This error causes the application to crash and could not be caught. Users of `sqlite3` v5.0.0, v5.0.1 and v5.0.2 are affected by this. This issue is fixed in v5.0.3. All users are recommended to upgrade to v5.0.3 or later. Ensure there is sufficient sanitization in the parent application to protect against invalid values being supplied to binding parameters as a workaround.\n",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2022-21227"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.0.3",
-      "fixedVersion": "5.0.3"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.0.3",
+          "fixed": "5.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

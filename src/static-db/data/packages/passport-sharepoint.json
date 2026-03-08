@@ -1,9 +1,10 @@
 {
-  "name": "passport-sharepoint",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "passport-sharepoint",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-45fh-g845-pj9w",
+      "packageName": "passport-sharepoint",
       "title": "Auth0 Passport-SharePoint does not validate JWT signature",
       "description": "Auth0 Passport-SharePoint before 0.4.0 does not validate the JWT signature of an Access Token before processing. This allows attackers to forge tokens and bypass authentication and authorization mechanisms.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2019-13483"
         }
       ],
-      "affectedRange": "< 0.4.0",
-      "fixedVersion": "0.4.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.4.0",
+          "fixed": "0.4.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

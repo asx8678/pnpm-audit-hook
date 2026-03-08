@@ -1,9 +1,10 @@
 {
-  "name": "rdf-graph-array",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "rdf-graph-array",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-prv2-xwr7-hr57",
+      "packageName": "rdf-graph-array",
       "title": "Uncontrolled Resource Consumption in rdf-graph-array",
       "description": "rdf-graph-array through 0.3.0-rc6 manipulation of JavaScript objects resutling in Prototype Pollution. The rdf.Graph.prototype.add method could be tricked into adding or modifying properties of Object.prototype.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2019-10798"
         }
       ],
-      "affectedRange": "<= 0.3.0-rc6"
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.0-rc6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "@langchain/community",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@langchain/community",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6m59-8fmv-m5f9",
+      "packageName": "@langchain/community",
       "title": "@langchain/community SQL Injection vulnerability",
       "description": "A vulnerability in the GraphCypherQAChain class of langchain-ai/langchainjs versions 0.2.5 and all versions with this class allows for prompt injection, leading to SQL injection. This vulnerability permits unauthorized data manipulation, data exfiltration, denial of service (DoS) by deleting all data, breaches in multi-tenant security environments, and data integrity issues. Attackers can create, update, or delete nodes and relationships without proper authorization, extract sensitive data, disr",
       "severity": "low",
@@ -20,8 +21,67 @@
           "value": "CVE-2024-7042"
         }
       ],
-      "affectedRange": "< 0.3.3",
-      "fixedVersion": "0.3.3"
+      "affectedVersions": [
+        {
+          "range": "< 0.3.3",
+          "fixed": "0.3.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mphv-75cg-56wg",
+      "packageName": "@langchain/community",
+      "title": "LangChain Community: redirect chaining can lead to SSRF bypass via RecursiveUrlLoader",
+      "description": "## Summary\nA redirect-based Server-Side Request Forgery (SSRF) bypass exists in `RecursiveUrlLoader` in `@langchain/community`. The loader validates the initial URL but allows the underlying fetch to follow redirects automatically, which permits a transition from a safe public URL to an internal or metadata endpoint without revalidation. This is a bypass of the SSRF protections introduced in 1.1.14 (CVE-2026-26019).\n\n## Affected Component\n- Package: `@langchain/community`\n- Component: `Recursive",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mphv-75cg-56wg",
+      "publishedAt": "2026-02-25T22:59:48Z",
+      "modifiedAt": "2026-02-25T22:59:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mphv-75cg-56wg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27795"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.17",
+          "fixed": "1.1.18"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gf3v-fwqg-4vh7",
+      "packageName": "@langchain/community",
+      "title": "@langchain/community affected by SSRF Bypass in RecursiveUrlLoader via insufficient URL origin validation",
+      "description": "## Description\n\nThe `RecursiveUrlLoader` class in `@langchain/community` is a web crawler that recursively follows links from a starting URL. Its `preventOutside` option (enabled by default) is intended to restrict crawling to the same site as the base URL.\n\nThe implementation used `String.startsWith()` to compare URLs, which does not perform semantic URL validation. An attacker who controls content on a crawled page could include links to domains that share a string prefix with the target (e.g.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gf3v-fwqg-4vh7",
+      "publishedAt": "2026-02-11T15:13:20Z",
+      "modifiedAt": "2026-02-12T14:19:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gf3v-fwqg-4vh7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26019"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.13",
+          "fixed": "1.1.14"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

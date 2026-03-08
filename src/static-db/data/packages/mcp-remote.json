@@ -1,9 +1,10 @@
 {
-  "name": "mcp-remote",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mcp-remote",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6xpm-ggf7-wc3p",
+      "packageName": "mcp-remote",
       "title": "mcp-remote exposed to OS command injection via untrusted MCP server connections",
       "description": "mcp-remote is exposed to OS command injection when connecting to untrusted MCP servers due to crafted input from the authorization_endpoint response URL",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-6514"
         }
       ],
-      "affectedRange": ">= 0.0.5, < 0.1.16",
-      "fixedVersion": "0.1.16"
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.5, < 0.1.16",
+          "fixed": "0.1.16"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

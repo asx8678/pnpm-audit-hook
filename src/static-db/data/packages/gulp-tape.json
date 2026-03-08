@@ -1,9 +1,10 @@
 {
-  "name": "gulp-tape",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "gulp-tape",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-x67x-98x7-wv26",
+      "packageName": "gulp-tape",
       "title": "OS Command Injection in gulp-tape",
       "description": "gulp-tape through 1.0.0 allows execution of arbitrary commands. It is possible to inject arbitrary commands as part of `gulp-tape` options.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7605"
         }
       ],
-      "affectedRange": "<= 1.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "@zenuml/core",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@zenuml/core",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-q6xv-jm4v-349h",
+      "packageName": "@zenuml/core",
       "title": "Cross-site Scripting in ZenUML",
       "description": "### Summary\n\nMarkdown-based comments in the ZenUML diagram syntax are susceptible to Cross-site Scripting (XSS).\n\n### Details\n\nThe comment feature allows the user to attach small notes for reference. This feature allows the user to enter in their comment in markdown comment, allowing them to use common markdown features, such as `**` for bolded text. However, the markdown text is currently not sanitized before rendering, allowing an attacker to enter a malicious payload for the comment which lea",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-38527"
         }
       ],
-      "affectedRange": "< 3.23.25",
-      "fixedVersion": "3.23.25"
+      "affectedVersions": [
+        {
+          "range": "< 3.23.25",
+          "fixed": "3.23.25"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

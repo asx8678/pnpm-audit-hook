@@ -1,9 +1,10 @@
 {
-  "name": "node-json2html",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "node-json2html",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-79mp-cxp4-9p6r",
+      "packageName": "node-json2html",
       "title": "Json2html vulnerable to cross-site scripting",
       "description": "Json2html is a client side javascript HTML templating library with wrappers for both jQuery and Node.js. A vulnerability was found in moappi Json2html up to 1.1.x and classified as problematic. This issue affects some unknown processing of the file json2html.js. The manipulation leads to cross site scripting. The attack may be initiated remotely. Upgrading to version 1.2.0 can address this issue. The name of the patch is 2d3d24d971b19a8ed1fb823596300b9835d55801. The associated identifier of this",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2018-25053"
         }
       ],
-      "affectedRange": "< 1.2.0",
-      "fixedVersion": "1.2.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.2.0",
+          "fixed": "1.2.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

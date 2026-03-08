@@ -1,9 +1,10 @@
 {
-  "name": "pm2",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "pm2",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-x5gf-qvw8-r2rm",
+      "packageName": "pm2",
       "title": "pm2 Regular Expression Denial of Service vulnerability",
       "description": "A vulnerability classified as problematic was found in Unitech pm2 up to 6.0.8. This vulnerability affects unknown code of the file /lib/tools/Config.js. The manipulation leads to inefficient regular expression complexity. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.",
       "severity": "low",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-5891"
         }
       ],
-      "affectedRange": "<= 6.0.14"
+      "affectedVersions": [
+        {
+          "range": "<= 6.0.14"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "hono",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "hono",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6wqw-2p9w-4vw4",
+      "packageName": "hono",
       "title": "Hono cache middleware ignores \"Cache-Control: private\" leading to Web Cache Deception",
       "description": "## Summary\n\nCache Middleware contains an information disclosure vulnerability caused by improper handling of HTTP cache control directives. The middleware does not respect standard cache control headers such as `Cache-Control: private` or `Cache-Control: no-store`, which may result in private or authenticated responses being cached and subsequently exposed to unauthorized users.\n\n## Details\n\nThe vulnerability exists in the cache decision logic of Cache Middleware. When determining whether a resp",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2026-24472"
         }
       ],
-      "affectedRange": "< 4.11.7",
-      "fixedVersion": "4.11.7"
+      "affectedVersions": [
+        {
+          "range": "< 4.11.7",
+          "fixed": "4.11.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-w332-q679-j88p",
+      "packageName": "hono",
       "title": "Hono has an Arbitrary Key Read in Serve static Middleware (Cloudflare Workers Adapter)",
       "description": "## Summary\n\nServe static Middleware for the Cloudflare Workers adapter contains an information disclosure vulnerability that may allow attackers to read arbitrary keys from the Workers environment. Improper validation of user-controlled paths can result in unintended access to internal asset keys.\n\n## Details\n\nThe vulnerability exists in the serve-static middleware used with the Cloudflare Workers adapter. When serving static assets, the middleware does not sufficiently validate or restrict user",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2026-24473"
         }
       ],
-      "affectedRange": "< 4.11.7",
-      "fixedVersion": "4.11.7"
+      "affectedVersions": [
+        {
+          "range": "< 4.11.7",
+          "fixed": "4.11.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-r354-f388-2fhh",
+      "packageName": "hono",
       "title": "Hono IPv4 address validation bypass in IP Restriction Middleware allows IP spoofing",
       "description": "## Summary\n\nIP Restriction Middleware in Hono is vulnerable to an IP address validation bypass. The `IPV4_REGEX` pattern and `convertIPv4ToBinary` function in `src/utils/ipaddr.ts` do not properly validate that IPv4 octet values are within the valid range of 0-255, allowing attackers to craft malformed IP addresses that bypass IP-based access controls.\n\n## Details\n\nThe vulnerability exists in two components:\n\n1. **Permissive regex pattern:** The `IPV4_REGEX (/^[0-9]{0,3}\\.[0-9]{0,3}\\.[0-9]{0,3}\\",
       "severity": "medium",
@@ -62,11 +75,17 @@
           "value": "CVE-2026-24398"
         }
       ],
-      "affectedRange": "< 4.11.7",
-      "fixedVersion": "4.11.7"
+      "affectedVersions": [
+        {
+          "range": "< 4.11.7",
+          "fixed": "4.11.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9r54-q6cx-xmh5",
+      "packageName": "hono",
       "title": "Hono vulnerable to XSS through ErrorBoundary component ",
       "description": "## Summary\n\nA Cross-Site Scripting (XSS) vulnerability exists in the `ErrorBoundary` component of the hono/jsx library. Under certain usage patterns, untrusted user-controlled strings may be rendered as raw HTML, allowing arbitrary script execution in the victim's browser.\n\n## Details\n\nThe issue is in the `ErrorBoundary` component (`src/jsx/components.ts`). `ErrorBoundary` previously forced certain rendered output paths to be treated as raw HTML, bypassing the library's default escaping behavior",
       "severity": "medium",
@@ -83,11 +102,17 @@
           "value": "CVE-2026-24771"
         }
       ],
-      "affectedRange": "< 4.11.7",
-      "fixedVersion": "4.11.7"
+      "affectedVersions": [
+        {
+          "range": "< 4.11.7",
+          "fixed": "4.11.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-3vhc-576x-3qv4",
+      "packageName": "hono",
       "title": "Hono JWK Auth Middleware has JWT algorithm confusion when JWK lacks \"alg\" (untrusted header.alg fallback)",
       "description": "## Summary\n\nA flaw in Hono’s JWK/JWKS JWT verification middleware allowed the algorithm specified in the JWT header to influence signature verification when the selected JWK did not explicitly define an algorithm. This could enable JWT algorithm confusion and, in certain configurations, allow forged tokens to be accepted.\n\n## Details\n\nWhen verifying JWTs using JWKs or a JWKS endpoint, the middleware selected the verification algorithm based on the JWK’s `alg` field if present. If the JWK did not",
       "severity": "high",
@@ -104,11 +129,17 @@
           "value": "CVE-2026-22818"
         }
       ],
-      "affectedRange": "< 4.11.4",
-      "fixedVersion": "4.11.4"
+      "affectedVersions": [
+        {
+          "range": "< 4.11.4",
+          "fixed": "4.11.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-f67f-6cw9-8mq4",
+      "packageName": "hono",
       "title": "Hono JWT Middleware's JWT Algorithm Confusion via Unsafe Default (HS256) Allows Token Forgery and Auth Bypass",
       "description": "## Summary\n\nA flaw in Hono’s JWK/JWKS JWT verification middleware allowed the JWT header’s `alg` value to influence signature verification when the selected JWK did not explicitly specify an algorithm. This could enable **JWT algorithm confusion** and, in certain configurations, allow forged tokens to be accepted.\n\n## Details\n\nWhen verifying JWTs using JWKs or a JWKS endpoint, the middleware selected the verification algorithm based on the JWK’s `alg` field if present, but otherwise fell back to",
       "severity": "high",
@@ -125,11 +156,17 @@
           "value": "CVE-2026-22817"
         }
       ],
-      "affectedRange": "< 4.11.4",
-      "fixedVersion": "4.11.4"
+      "affectedVersions": [
+        {
+          "range": "< 4.11.4",
+          "fixed": "4.11.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-q7jf-gf43-6x6p",
+      "packageName": "hono",
       "title": "Hono vulnerable to Vary Header Injection leading to potential CORS Bypass",
       "description": "### Summary  \nA flaw in the CORS middleware allowed request `Vary` headers to be reflected into the response, enabling attacker-controlled `Vary` values and potentially affecting cache behavior.\n\n### Details  \nThe middleware previously copied the `Vary` header from the request when `origin` was not set to `\"*\"`.  Since `Vary` is a response header that should only be managed by the server, this could allow an attacker to influence caching behavior or cause inconsistent CORS handling.\n\nMost enviro",
       "severity": "medium",
@@ -142,11 +179,17 @@
           "value": "GHSA-q7jf-gf43-6x6p"
         }
       ],
-      "affectedRange": "< 4.10.3",
-      "fixedVersion": "4.10.3"
+      "affectedVersions": [
+        {
+          "range": "< 4.10.3",
+          "fixed": "4.10.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-m732-5p4w-x69g",
+      "packageName": "hono",
       "title": "Hono Improper Authorization vulnerability",
       "description": "### Improper Authorization in Hono (JWT Audience Validation)\n\nHono’s JWT authentication middleware did not validate the `aud` (Audience) claim by default. As a result, applications using the middleware without an explicit audience check could accept tokens intended for other audiences, leading to potential cross-service access (token mix-up).\n\nThe issue is addressed by adding a new `verification.aud` configuration option to allow RFC 7519–compliant audience validation. This change is classified ",
       "severity": "high",
@@ -163,11 +206,17 @@
           "value": "CVE-2025-62610"
         }
       ],
-      "affectedRange": ">= 1.1.0, < 4.10.2",
-      "fixedVersion": "4.10.2"
+      "affectedVersions": [
+        {
+          "range": ">= 1.1.0, < 4.10.2",
+          "fixed": "4.10.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-92vj-g62v-jqhh",
+      "packageName": "hono",
       "title": "Hono has Body Limit Middleware Bypass",
       "description": "### Summary\nA flaw in the `bodyLimit` middleware could allow bypassing the configured request body size limit when conflicting HTTP headers were present.\n\n### Details\nThe middleware previously prioritized the `Content-Length` header even when a `Transfer-Encoding: chunked` header was also included. According to the HTTP specification, `Content-Length` must be ignored in such cases. This discrepancy could allow oversized request bodies to bypass the configured limit.\n\nMost standards-compliant run",
       "severity": "medium",
@@ -184,11 +233,17 @@
           "value": "CVE-2025-59139"
         }
       ],
-      "affectedRange": "< 4.9.7",
-      "fixedVersion": "4.9.7"
+      "affectedVersions": [
+        {
+          "range": "< 4.9.7",
+          "fixed": "4.9.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9hp6-4448-45g2",
+      "packageName": "hono",
       "title": "Hono's flaw in URL path parsing could cause path confusion",
       "description": "### Summary\n\nA flaw in the `getPath` utility function could allow path confusion and potential bypass of proxy-level ACLs (e.g. Nginx location blocks).\n\n### Details\n\nThe original implementation relied on fixed character offsets when parsing request URLs. Under certain malformed absolute-form Request-URIs, this could lead to incorrect path extraction.\n\nMost standards-compliant runtimes and reverse proxies reject such malformed requests with a 400 Bad Request, so the impact depends on the applicat",
       "severity": "high",
@@ -205,11 +260,17 @@
           "value": "CVE-2025-58362"
         }
       ],
-      "affectedRange": ">= 4.8.0, < 4.9.6",
-      "fixedVersion": "4.9.6"
+      "affectedVersions": [
+        {
+          "range": ">= 4.8.0, < 4.9.6",
+          "fixed": "4.9.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-rpfr-3m35-5vx5",
+      "packageName": "hono",
       "title": "Hono CSRF middleware can be bypassed using crafted Content-Type header",
       "description": "### Summary\n\nHono CSRF middleware can be bypassed using crafted Content-Type header.\n\n### Details\n\nMIME types are case insensitive, but `isRequestedByFormElementRe` only matches lower-case.\n\nhttps://github.com/honojs/hono/blob/b0af71fbcc6dbe44140ea76f16d68dfdb32a99a0/src/middleware/csrf/index.ts#L16-L17\n\nAs a result, attacker can bypass csrf middleware using upper-case form-like MIME type, such as \"Application/x-www-form-urlencoded\".\n\n### PoC\n\n```html\n<html>\n  <head>\n    <title>CSRF Test</title>",
       "severity": "low",
@@ -226,11 +287,17 @@
           "value": "CVE-2024-43787"
         }
       ],
-      "affectedRange": "< 4.5.8",
-      "fixedVersion": "4.5.8"
+      "affectedVersions": [
+        {
+          "range": "< 4.5.8",
+          "fixed": "4.5.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-2234-fmw7-43wr",
+      "packageName": "hono",
       "title": "Hono allows bypass of CSRF Middleware by a request without Content-Type header.",
       "description": "### Summary\nBypass CSRF Middleware by a request without Content-Type herader.\n\n### Details\nAlthough the csrf middleware verifies the Content-Type Header, Hono always considers a request without a Content-Type header to be safe.\n\nhttps://github.com/honojs/hono/blob/cebf4e87f3984a6a034e60a43f542b4c5225b668/src/middleware/csrf/index.ts#L76-L89\n\n### PoC\n```server.js\n// server.js\nimport { Hono } from 'hono'\nimport { csrf }from 'hono/csrf'\nconst app = new Hono()\napp.use(csrf())\napp.get('/', (c) => {\n ",
       "severity": "medium",
@@ -247,11 +314,17 @@
           "value": "CVE-2024-48913"
         }
       ],
-      "affectedRange": "< 4.6.5",
-      "fixedVersion": "4.6.5"
+      "affectedVersions": [
+        {
+          "range": "< 4.6.5",
+          "fixed": "4.6.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-3mpf-rcc7-5347",
+      "packageName": "hono",
       "title": "Hono vulnerable to Restricted Directory Traversal in serveStatic with deno",
       "description": "### Summary\n\nWhen using serveStatic with deno, it is possible to directory traverse where main.ts is located.\n\nMy environment is configured as per this tutorial\nhttps://hono.dev/getting-started/deno\n\n### PoC\n\n```bash\n$ tree\n.\n├── deno.json\n├── deno.lock\n├── main.ts\n├── README.md\n└── static\n    └── a.txt\n```\n\nsource\n\n```jsx\nimport { Hono } from 'https://deno.land/x/hono@v4.2.6/mod.ts'\nimport { serveStatic } from 'https://deno.land/x/hono@v4.2.6/middleware.ts'\n\nconst app = new Hono()\napp.use('/sta",
       "severity": "medium",
@@ -268,11 +341,17 @@
           "value": "CVE-2024-32869"
         }
       ],
-      "affectedRange": "< 4.2.7",
-      "fixedVersion": "4.2.7"
+      "affectedVersions": [
+        {
+          "range": "< 4.2.7",
+          "fixed": "4.2.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-f6gv-hh8j-q8vq",
+      "packageName": "hono",
       "title": "Named path parameters can be overridden in TrieRouter",
       "description": "### Impact\n\nThe clients may override named path parameter values from previous requests if the application is using TrieRouter. So, there is a risk that a privileged user may use unintended parameters when deleting REST API resources.\n\nTrieRouter is used either explicitly or when the application matches a pattern that is not supported by the default RegExpRouter.\n\nThe code to reproduce it. The server side application:\n\n```ts\nimport { Hono } from 'hono'\nimport { TrieRouter } from 'hono/router/tri",
       "severity": "medium",
@@ -289,8 +368,144 @@
           "value": "CVE-2023-50710"
         }
       ],
-      "affectedRange": "< 3.11.7",
-      "fixedVersion": "3.11.7"
+      "affectedVersions": [
+        {
+          "range": "< 3.11.7",
+          "fixed": "3.11.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5pq2-9x2x-5p6w",
+      "packageName": "hono",
+      "title": "Hono Vulnerable to Cookie Attribute Injection via Unsanitized domain and path in setCookie()",
+      "description": "## Summary\n\nThe `setCookie()` utility did not validate semicolons (`;`), carriage returns (`\\r`), or newline characters (`\\n`) in the `domain` and `path` options when constructing the `Set-Cookie` header.\n\nBecause cookie attributes are delimited by semicolons, this could allow injection of additional cookie attributes if untrusted input was passed into these fields.\n\n## Details\n\n`setCookie()` builds the `Set-Cookie` header by concatenating option values. While the cookie value itself is URL-enco",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5pq2-9x2x-5p6w",
+      "publishedAt": "2026-03-04T19:49:14Z",
+      "modifiedAt": "2026-03-05T15:26:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5pq2-9x2x-5p6w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29086"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.12.4",
+          "fixed": "4.12.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p6xx-57qc-3wxr",
+      "packageName": "hono",
+      "title": "Hono Vulnerable to SSE Control Field Injection via CR/LF in writeSSE()",
+      "description": "## Summary\n\nWhen using `streamSSE()` in Streaming Helper, the `event`, `id`, and `retry` fields were not validated for carriage return (`\\r`) or newline (`\\n`) characters.\n\nBecause the SSE protocol uses line breaks as field delimiters, this could allow injection of additional SSE fields within the same event frame if untrusted input was passed into these fields.\n\n## Details\n\nThe SSE helper builds event frames by joining lines with `\\n`. While multi-line `data:` fields are handled according to th",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p6xx-57qc-3wxr",
+      "publishedAt": "2026-03-04T19:48:41Z",
+      "modifiedAt": "2026-03-05T15:26:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p6xx-57qc-3wxr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29085"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.12.4",
+          "fixed": "4.12.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q5qw-h33p-qvwr",
+      "packageName": "hono",
+      "title": "Hono vulnerable to arbitrary file access via serveStatic vulnerability ",
+      "description": "## Summary\n\nWhen using `serveStatic` together with route-based middleware protections (e.g. `app.use('/admin/*', ...)`), inconsistent URL decoding allowed protected static resources to be accessed without authorization.\n\nThe router used `decodeURI`, while `serveStatic` used `decodeURIComponent`. This mismatch allowed paths containing encoded slashes (`%2F`) to bypass middleware protections while still resolving to the intended filesystem path.\n\n\n## Details\n\nThe routing layer preserved `%2F` as a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q5qw-h33p-qvwr",
+      "publishedAt": "2026-03-04T19:48:00Z",
+      "modifiedAt": "2026-03-05T15:26:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q5qw-h33p-qvwr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29045"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.12.4",
+          "fixed": "4.12.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xh87-mx6m-69f3",
+      "packageName": "hono",
+      "title": "Hono is Vulnerable to Authentication Bypass by IP Spoofing in AWS Lambda ALB conninfo",
+      "description": "## Summary\n\nWhen using the AWS Lambda adapter (`hono/aws-lambda`) behind an Application Load Balancer (ALB), the `getConnInfo()` function incorrectly selected the first value from the `X-Forwarded-For` header.\n\nBecause AWS ALB appends the real client IP address to the end of the `X-Forwarded-For` header, the first value can be attacker-controlled.\n\nThis could allow IP-based access control mechanisms (such as the `ipRestriction` middleware) to be bypassed.\n\n## Details\n\nIn ALB environments, AWS ap",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xh87-mx6m-69f3",
+      "publishedAt": "2026-02-25T18:02:19Z",
+      "modifiedAt": "2026-02-27T20:55:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xh87-mx6m-69f3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27700"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.12.0, < 4.12.2",
+          "fixed": "4.12.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gq3j-xvxp-8hrf",
+      "packageName": "hono",
+      "title": "Hono added timing comparison hardening in basicAuth and bearerAuth",
+      "description": "## Summary\n\nThe `basicAuth` and `bearerAuth` middlewares previously used a comparison that was not fully timing-safe.\n\nThe `timingSafeEqual` function used normal string equality (`===`) when comparing hash values. This comparison may stop early if values differ, which can theoretically cause small timing differences.\n\nThe implementation has been updated to use a safer comparison method.\n\n\n## Details\n\nThe issue was caused by the use of normal string equality (`===`) when comparing hash values ins",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-gq3j-xvxp-8hrf",
+      "publishedAt": "2026-02-19T20:15:59Z",
+      "modifiedAt": "2026-02-19T20:16:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gq3j-xvxp-8hrf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.11.10",
+          "fixed": "4.11.10"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

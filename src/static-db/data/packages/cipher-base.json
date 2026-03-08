@@ -1,9 +1,10 @@
 {
-  "name": "cipher-base",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "cipher-base",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-cpq7-6gpm-g9rc",
+      "packageName": "cipher-base",
       "title": "cipher-base is missing type checks, leading to hash rewind and passing on crafted data",
       "description": "### Summary\n\nThis affects e.g. `create-hash` (and `crypto-browserify`), so I'll describe the issue against that package\nAlso affects `create-hmac` and other packages\n\nNode.js `createHash` works only on strings or instances of Buffer, TypedArray, or DataView.\n\nMissing input type checks (in npm `create-hash` polyfill of Node.js `createHash`) can allow types other than a well-formed `Buffer` or `string`, resulting in invalid values, hanging and rewinding the hash state (including turning a tagged h",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-9287"
         }
       ],
-      "affectedRange": "<= 1.0.4",
-      "fixedVersion": "1.0.5"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.4",
+          "fixed": "1.0.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "cd-messenger",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "cd-messenger",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-v756-4whv-48vc",
+      "packageName": "cd-messenger",
       "title": "Code Injection in cd-messenger",
       "description": "cd-messenger through 2.7.26 is vulnerable to Arbitrary Code Execution. User input provided to the `color` argument executed by the `eval` function resulting in code execution.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7675"
         }
       ],
-      "affectedRange": "<= 2.7.26"
+      "affectedVersions": [
+        {
+          "range": "<= 2.7.26"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "@chainsafe/libp2p-noise",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@chainsafe/libp2p-noise",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j3ff-xp6c-6gcc",
+      "packageName": "@chainsafe/libp2p-noise",
       "title": "Failure to validate signature during handshake",
       "description": "### Impact\n`@chainsafe/libp2p-noise` before 4.1.2 and 5.0.3 was not correctly validating signatures during the handshake process.\nThis may allow a man-in-the-middle to pose as other peers and get those peers banned.\n\n### Patches\nUsers should upgrade to 4.1.2 or 5.0.3\n\n### Workarounds\nNo workarounds, just patch upgrade\n\n### References\nhttps://github.com/ChainSafe/js-libp2p-noise/pull/130\n",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-24759"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.0.3",
-      "fixedVersion": "5.0.3"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.0.3",
+          "fixed": "5.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

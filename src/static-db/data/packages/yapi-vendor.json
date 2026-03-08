@@ -1,9 +1,10 @@
 {
-  "name": "yapi-vendor",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "yapi-vendor",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4jqw-vfmj-9rmh",
+      "packageName": "yapi-vendor",
       "title": "Cross-site Scripting in yapi-vendor",
       "description": "Cross Site Scripting (XSS) vulnerability in yapi 1.9.1 allows attackers to execute arbitrary code via the /interface/api edit page.",
       "severity": "medium",
@@ -20,10 +21,16 @@
           "value": "CVE-2021-36686"
         }
       ],
-      "affectedRange": "<= 1.9.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.9.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-2h3h-vw8r-82rp",
+      "packageName": "yapi-vendor",
       "title": "Weak JSON Web Token in yapi-vendor",
       "description": "Weak JSON Web Token (JWT) signing secret generation in YMFE YApi through 1.9.2 allows recreation of other users' JWT tokens. This occurs because Math.random in Node.js is used as a source of randomness in jwt signing. Math.random does not provide cryptographically secure random numbers. This has been patched in version 1.9.3.",
       "severity": "medium",
@@ -40,8 +47,39 @@
           "value": "CVE-2021-27884"
         }
       ],
-      "affectedRange": "<= 1.9.2",
-      "fixedVersion": "1.9.3"
+      "affectedVersions": [
+        {
+          "range": "<= 1.9.2",
+          "fixed": "1.9.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-663h-2vr3-ghrj",
+      "packageName": "yapi-vendor",
+      "title": "yapi disables TLS/SSL certificate validation via rejectUnauthorized: false in Axios HTTPS agent",
+      "description": "An issue pertaining to CWE-295: Improper Certificate Validation was discovered in YMFE yapi v1.12.0. The application disables TLS/SSL certificate validation by setting 'rejectUnauthorized': false in the HTTPS agent configuration for Axios requests",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-663h-2vr3-ghrj",
+      "publishedAt": "2026-02-23T18:32:02Z",
+      "modifiedAt": "2026-02-25T22:46:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-663h-2vr3-ghrj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-70058"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.12.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

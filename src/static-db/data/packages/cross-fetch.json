@@ -1,9 +1,10 @@
 {
-  "name": "cross-fetch",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "cross-fetch",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7gc6-qh9x-w6h8",
+      "packageName": "cross-fetch",
       "title": "Withdrawn Advisory: Incorrect Authorization in cross-fetch",
       "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because the vulnerability originates from a dependency. For more information, see the `Maintainer` comments in https://huntr.com/bounties/ab55dfdd-2a60-437a-a832-e3efe3d264ac.\n\n## Original Description\nWhen fetching a remote url with Cookie if it get Location response header then it will follow that url and try to fetch that url with provided cookie . So cookie is leaked here to thirdparty.\nEx: you try to fetch example.com with cookie and if ",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-1365"
         }
       ],
-      "affectedRange": "< 2.2.6",
-      "fixedVersion": "2.2.6"
+      "affectedVersions": [
+        {
+          "range": "< 2.2.6",
+          "fixed": "2.2.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

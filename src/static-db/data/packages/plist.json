@@ -1,9 +1,10 @@
 {
-  "name": "plist",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "plist",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4cpg-3vgw-4877",
+      "packageName": "plist",
       "title": "Prototype pollution in Plist before 3.0.5 can cause denial of service",
       "description": "Prototype pollution vulnerability via `.parse()` in Plist allows attackers to cause a Denial of Service (DoS) and may lead to remote code execution.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-22912"
         }
       ],
-      "affectedRange": "< 3.0.5",
-      "fixedVersion": "3.0.5"
+      "affectedVersions": [
+        {
+          "range": "< 3.0.5",
+          "fixed": "3.0.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

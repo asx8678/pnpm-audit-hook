@@ -1,9 +1,10 @@
 {
-  "name": "git-parse",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "git-parse",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-m744-2jj8-vpfv",
+      "packageName": "git-parse",
       "title": "Command injection in git-parse",
       "description": "The \"gitDiff\" function in Wayfair git-parse <=1.0.4 has a command injection vulnerability. Clients of the git-parse library are unlikely to be aware of this, so they might unwittingly write code that contains a vulnerability.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-26543"
         }
       ],
-      "affectedRange": "< 1.0.5",
-      "fixedVersion": "1.0.5"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.5",
+          "fixed": "1.0.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "dot-object",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "dot-object",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j9cf-pr2x-5273",
+      "packageName": "dot-object",
       "title": "Prototype Pollution in dot-object",
       "description": "dot-object before 2.1.3 is vulnerable to Prototype Pollution. The set function could be tricked into adding or modifying properties of Object.prototype using a __proto__ payload.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2019-10793"
         }
       ],
-      "affectedRange": "< 2.1.3",
-      "fixedVersion": "2.1.3"
+      "affectedVersions": [
+        {
+          "range": "< 2.1.3",
+          "fixed": "2.1.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

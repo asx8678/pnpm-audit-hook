@@ -1,9 +1,10 @@
 {
-  "name": "fuxa-server",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "fuxa-server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wwfj-h843-3hrq",
+      "packageName": "fuxa-server",
       "title": "FUXA local file inclusion vulnerability",
       "description": "FUXA <= 1.1.12 is vulnerable to Local File Inclusion via `/api/download`.",
       "severity": "high",
@@ -20,10 +21,16 @@
           "value": "CVE-2023-31718"
         }
       ],
-      "affectedRange": "<= 1.1.12"
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.12"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-p46g-8c3q-89p2",
+      "packageName": "fuxa-server",
       "title": "FUXA SQL Injection vulnerability",
       "description": "FUXA <= 1.1.12 is vulnerable to SQL Injection via `/api/signin`.",
       "severity": "critical",
@@ -40,10 +47,16 @@
           "value": "CVE-2023-31719"
         }
       ],
-      "affectedRange": "<= 1.1.12"
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.12"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-v9q5-9crp-92f9",
+      "packageName": "fuxa-server",
       "title": "FUXA SQL Injection vulnerability",
       "description": "A SQL Injection attack in FUXA <= 1.1.12 allows exfiltration of confidential information from the database.",
       "severity": "high",
@@ -60,7 +73,332 @@
           "value": "CVE-2023-31717"
         }
       ],
-      "affectedRange": "<= 1.1.12"
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.12"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5r63-q8hg-p8qx",
+      "packageName": "fuxa-server",
+      "title": "FUXA allows Remote Code Execution (RCE) via the project import functionality.",
+      "description": "FUXA v1.2.7 allows Remote Code Execution (RCE) via the project import functionality. The application does not properly sanitize or sandbox user-supplied scripts within imported project files. An attacker can upload a malicious project containing system commands, leading to full system compromise.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5r63-q8hg-p8qx",
+      "publishedAt": "2026-02-03T18:30:47Z",
+      "modifiedAt": "2026-02-11T18:40:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5r63-q8hg-p8qx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-69983"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7g56-fwxj-cm23",
+      "packageName": "fuxa-server",
+      "title": "FUXA contains an Unrestricted File Upload vulnerability",
+      "description": "FUXA v1.2.7 contains an Unrestricted File Upload vulnerability in the `/api/upload` API endpoint. The endpoint lacks authentication mechanisms, allowing unauthenticated remote attackers to upload arbitrary files. This can be exploited to overwrite critical system files (such as the SQLite user database) to gain administrative access, or to upload malicious scripts to execute arbitrary code.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7g56-fwxj-cm23",
+      "publishedAt": "2026-02-03T18:30:47Z",
+      "modifiedAt": "2026-02-10T16:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7g56-fwxj-cm23"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-69981"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-68m5-5w2h-h837",
+      "packageName": "fuxa-server",
+      "title": "FUXA Affected by a Path Traversal Sanitization Bypass",
+      "description": "### Summary\nA flaw in the path sanitization logic allows an authenticated attacker with administrative privileges to bypass directory traversal protections. By using nested traversal sequences (e.g., ....//), an attacker can write arbitrary files to the server filesystem, including sensitive directories like runtime/scripts. This leads to Remote Code Execution (RCE) when the server reloads the malicious scripts. It is a new vulnerability a patch bypass for the sanitization in the last release .\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-68m5-5w2h-h837",
+      "publishedAt": "2026-02-10T00:29:00Z",
+      "modifiedAt": "2026-02-10T14:18:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-68m5-5w2h-h837"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25951"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.10",
+          "fixed": "1.2.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v4p5-w6r3-2x4f",
+      "packageName": "fuxa-server",
+      "title": "FUXA Unauthenticated Remote Code Execution in Node-RED Integration",
+      "description": "### Summary\n\n**Description**\nAn authentication bypass vulnerability in FUXA allows an unauthenticated, remote attacker to execute arbitrary code on the server when the Node-RED plugin is enabled. This affects FUXA version 1.2.8 through version 1.2.10. This has been patched in FUXA version 1.2.11.\n\n### Impact\nThis affects all deployments with the Node-RED plugin enabled, including those with `runtime.settings.secureEnabled` set to true.\n\nExploitation allows an unauthenticated, remote attacker to ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-v4p5-w6r3-2x4f",
+      "publishedAt": "2026-02-10T00:27:31Z",
+      "modifiedAt": "2026-02-10T02:57:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v4p5-w6r3-2x4f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25938"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.2.8, < 1.2.11",
+          "fixed": "1.2.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-88qh-cphv-996c",
+      "packageName": "fuxa-server",
+      "title": "FUXA Unauthenticated Remote Code Execution via Arbitrary File Write in Upload API",
+      "description": "### Summary\n**Description**\nA path traversal vulnerability in FUXA allows an unauthenticated, remote attacker to write arbitrary files to arbitrary locations on the server filesystem. This affects FUXA through version 1.2.9. This issue has been patched in FUXA version 1.2.10.\n\n### Impact\nThis affects all deployments, including those with `runtime.settings.secureEnabled` set to `true`.\n\nExploitation allows an unauthenticated, remote attacker to overwrite application and system files. If the attac",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-88qh-cphv-996c",
+      "publishedAt": "2026-02-05T00:37:30Z",
+      "modifiedAt": "2026-02-10T02:57:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-88qh-cphv-996c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25895"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.9",
+          "fixed": "1.2.10"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-c869-jx4c-q5fc",
+      "packageName": "fuxa-server",
+      "title": "FUXA Unauthenticated Remote Arbitrary Scheduler Write",
+      "description": "### Summary\nAn authorization bypass vulnerability in the FUXA allows an unauthenticated, remote attacker to create and modify arbitrary schedulers, exposing connected ICS/SCADA environments to follow-on actions. This vulnerability affects FUXA version 1.2.8 through version 1.2.10. This has been patched in FUXA version 1.2.11.\n\n### Impact\nThis affects all deployments, including those with `runtime.settings.secureEnabled` set to `true`.\n\nExploitation allows an unauthenticated, remote attacker to a",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-c869-jx4c-q5fc",
+      "publishedAt": "2026-02-10T00:28:28Z",
+      "modifiedAt": "2026-02-10T02:56:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c869-jx4c-q5fc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25939"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.2.8, < 1.2.11",
+          "fixed": "1.2.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-32cc-x95p-fxcg",
+      "packageName": "fuxa-server",
+      "title": "FUXA Unauthenticated Remote Code Execution via Hardcoded JWT Secret in Default Configuration",
+      "description": "### Description\nAn insecure default configuration in FUXA allows an unauthenticated, remote attacker to gain administrative access and execute arbitrary code on the server. This affects FUXA through version 1.2.9 when authentication is enabled, but the administrator JWT secret is not configured. This issue has been patched in FUXA version 1.2.10.\n\n### Impact\nThe FUXA documentation allows administrators to manually update a hardcoded JWT secret when enabling authentication. This feature was not a",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-32cc-x95p-fxcg",
+      "publishedAt": "2026-02-05T00:36:30Z",
+      "modifiedAt": "2026-02-10T02:56:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-32cc-x95p-fxcg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25894"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.9",
+          "fixed": "1.2.10"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vwcg-c828-9822",
+      "packageName": "fuxa-server",
+      "title": "FUXA Unauthenticated Remote Code Execution via Admin JWT Minting",
+      "description": "### Note\nGitHub incorrectly stated this vulnerability is identical to CVE-2025-69970, which describes the fact that authentication is disabled by default. This advisory describes an exploit chain that enables authentication bypass via the heartbeat refresh endpoint when authentication is enabled. This misleads users into thinking that enabling authentication would mitigate this vulnerability. Please see the patch for more information: https://github.com/frangoteam/FUXA/commit/fe82348d160904d0013",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vwcg-c828-9822",
+      "publishedAt": "2026-02-05T00:27:53Z",
+      "modifiedAt": "2026-02-10T02:56:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vwcg-c828-9822"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25893"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.9",
+          "fixed": "1.2.10"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r5m2-fqcf-qrf7",
+      "packageName": "fuxa-server",
+      "title": "FUXA contains an insecure default configuration vulnerability",
+      "description": "FUXA v1.2.7 contains an insecure default configuration vulnerability in server/settings.default.js. The 'secureEnabled' flag is commented out by default, causing the application to initialize with authentication disabled. This allows unauthenticated remote attackers to access sensitive API endpoints, modify projects, and control industrial equipment immediately after installation.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r5m2-fqcf-qrf7",
+      "publishedAt": "2026-02-03T18:30:47Z",
+      "modifiedAt": "2026-02-10T01:16:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r5m2-fqcf-qrf7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-69970"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-ggxw-g3cp-mgf8",
+      "packageName": "fuxa-server",
+      "title": "FUXA Unauthenticated Remote Arbitrary Device Tag Write",
+      "description": "### Summary\n**Description**\nAn authorization bypass vulnerability in FUXA allows an unauthenticated, remote attacker to modify device tags via WebSockets. This affects FUXA through version 1.2.9. This issue has been patched in FUXA version 1.2.10.\n\n### Impact\nThis affects all deployments, including those with `runtime.settings.secureEnabled` set to `true`.\n\nExploitation allows an unauthenticated, remote attacker to bypass role-based access controls and overwrite arbitrary device tags or disable ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-ggxw-g3cp-mgf8",
+      "publishedAt": "2026-02-05T00:38:25Z",
+      "modifiedAt": "2026-02-06T21:42:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ggxw-g3cp-mgf8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25752"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.9",
+          "fixed": "1.2.10"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-c5gq-4h56-4mmx",
+      "packageName": "fuxa-server",
+      "title": "FUXA Unauthenticated Exposure of Plaintext Database Credentials",
+      "description": "### Description\nAn information disclosure vulnerability in FUXA allows an unauthenticated, remote attacker to retrieve sensitive administrative database credentials. This affects FUXA through version 1.2.9. This issue has been patched in FUXA version 1.2.10.\n\n### Impact\nThis affects all deployments, including those with `runtime.settings.secureEnabled` set to `true`.\n\nExploitation allows an unauthenticated, remote attacker to obtain the full system configuration, including administrative credent",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-c5gq-4h56-4mmx",
+      "publishedAt": "2026-02-05T00:33:44Z",
+      "modifiedAt": "2026-02-06T21:42:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c5gq-4h56-4mmx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25751"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.9",
+          "fixed": "1.2.10"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2r8f-cf6w-x5vq",
+      "packageName": "fuxa-server",
+      "title": "FUXA contains a hard-coded credential vulnerability",
+      "description": "FUXA v1.2.7 contains a hard-coded credential vulnerability in server/api/jwt-helper.js. The application uses a hard-coded secret key to sign and verify JWT Tokens. This allows remote attackers to forge valid admin tokens and bypass authentication to gain full administrative access.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2r8f-cf6w-x5vq",
+      "publishedAt": "2026-02-03T18:30:47Z",
+      "modifiedAt": "2026-02-04T19:22:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2r8f-cf6w-x5vq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-69971"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.7"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

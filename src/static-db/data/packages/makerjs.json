@@ -1,9 +1,10 @@
 {
-  "name": "makerjs",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "makerjs",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-2cp6-34r9-54xx",
+      "packageName": "makerjs",
       "title": "Maker.js has Unsafe Property Copying in makerjs.extendObject",
       "description": "### Summary\nThe `makerjs.extendObject` function copies properties from source objects without proper validation, potentially exposing applications to security risks. The function lacks `hasOwnProperty()` checks and does not filter dangerous keys, allowing inherited properties and potentially malicious properties to be copied to target objects.\n\n### Details\nThe `extendObject` function iterates over source object properties using a `for...in` loop without:\n1. Checking `hasOwnProperty()` to exclude",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2026-24888"
         }
       ],
-      "affectedRange": "<= 0.19.1",
-      "fixedVersion": "0.19.2"
+      "affectedVersions": [
+        {
+          "range": "<= 0.19.1",
+          "fixed": "0.19.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

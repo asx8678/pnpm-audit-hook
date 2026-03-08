@@ -1,9 +1,10 @@
 {
-  "name": "ios-simulator-mcp",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "ios-simulator-mcp",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6f6r-m9pv-67jw",
+      "packageName": "ios-simulator-mcp",
       "title": "iOS Simulator MCP Command Injection allowed via exec API",
       "description": "# Command Injection in MCP Server\n\nThe MCP Server at https://github.com/joshuayoes/ios-simulator-mcp/ is written in a way that is vulnerable to command injection vulnerability attacks as part of some of its MCP Server tool definition and implementation.\n\n## Vulnerable tool\n\nThe MCP Server exposes the tool `ui_tap` which relies on Node.js child process API `exec` which is an unsafe and vulnerable API if concatenated with untrusted user input.\n\nLLM exposed user input for `duration`, `udid`, and `x",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-52573"
         }
       ],
-      "affectedRange": "< 1.3.3",
-      "fixedVersion": "1.3.3"
+      "affectedVersions": [
+        {
+          "range": "< 1.3.3",
+          "fixed": "1.3.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

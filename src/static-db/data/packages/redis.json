@@ -1,9 +1,10 @@
 {
-  "name": "redis",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "redis",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-35q2-47q7-3pc3",
+      "packageName": "redis",
       "title": "Node-Redis potential exponential regex in monitor mode",
       "description": "### Impact\nWhen a client is in monitoring mode, the regex begin used to detected monitor messages could cause exponential backtracking on some strings. This issue could lead to a denial of service.\n\n### Patches\nThe problem was fixed in commit [`2d11b6d`](https://github.com/NodeRedis/node-redis/commit/2d11b6dc9b9774464a91fb4b448bad8bf699629e) and was released in version `3.1.1`.\n\n### References\n#1569 (GHSL-2021-026)",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-29469"
         }
       ],
-      "affectedRange": ">= 2.6.0, < 3.1.1",
-      "fixedVersion": "3.1.1"
+      "affectedVersions": [
+        {
+          "range": ">= 2.6.0, < 3.1.1",
+          "fixed": "3.1.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "keycloak-connect",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "keycloak-connect",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-59fq-727j-hm3f",
+      "packageName": "keycloak-connect",
       "title": "keycloak-connect contains Open redirect vulnerability in the Node.js adapter",
       "description": "There is an Open Redirect vulnerability in the Node.js adapter when forwarding requests to Keycloak using `checkSSO` with query param `prompt=none`.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-2237"
         }
       ],
-      "affectedRange": "< 21.0.1",
-      "fixedVersion": "21.0.1"
+      "affectedVersions": [
+        {
+          "range": "< 21.0.1",
+          "fixed": "21.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

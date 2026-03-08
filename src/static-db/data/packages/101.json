@@ -1,9 +1,10 @@
 {
-  "name": "101",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "101",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-cwcx-rxgc-cmw3",
+      "packageName": "101",
       "title": "Prototype pollution in 101",
       "description": "Prototype pollution vulnerability in '101' versions 1.0.0 through 1.6.3 allows an attacker to cause a denial of service and may lead to remote code execution.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-25943"
         }
       ],
-      "affectedRange": ">= 1.0.0, <= 1.6.3"
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0, <= 1.6.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

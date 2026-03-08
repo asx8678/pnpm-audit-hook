@@ -1,9 +1,10 @@
 {
-  "name": "@evershop/evershop",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@evershop/evershop",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vp8w-wj4m-3r7j",
+      "packageName": "@evershop/evershop",
       "title": "evershop allows unauthenticated attackers to force server to initiate HTTP request via \"GET /images\" API",
       "description": "A Blind Server-Side Request Forgery (SSRF) vulnerability in evershop 2.1.0 and prior allows unauthenticated attackers to force the server to initiate an HTTP request via the \"GET /images\" API. The vulnerability occurs due to insufficient validation of the \"src\" query parameter, which permits arbitrary HTTP or HTTPS URIs, resulting in unexpected requests against internal and external networks.",
       "severity": "medium",
@@ -20,10 +21,16 @@
           "value": "CVE-2025-67427"
         }
       ],
-      "affectedRange": "<= 2.1.0"
+      "affectedVersions": [
+        {
+          "range": "<= 2.1.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-m2q5-xhqg-92r2",
+      "packageName": "@evershop/evershop",
       "title": "evershop allows unauthenticated attackers to exhaust application server's resources via \"GET /images\" API",
       "description": "A Denial of Service (DoS) vulnerability in evershop 2.1.0 and prior allows unauthenticated attackers to exhaust the application server's resources via the \"GET /images\" API. The application fails to limit the height of the use-element shadow tree or the dimensions of pattern tiles during the processing of SVG files, resulting in unbounded resource consumption and system-wide denial of service.",
       "severity": "high",
@@ -40,10 +47,16 @@
           "value": "CVE-2025-67419"
         }
       ],
-      "affectedRange": "<= 2.1.0"
+      "affectedVersions": [
+        {
+          "range": "<= 2.1.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-c73g-mx2w-cc93",
+      "packageName": "@evershop/evershop",
       "title": "EverShop is vulnerable to Unauthorized Order Information Access (IDOR)",
       "description": "A vulnerability was detected in EverShop up to 2.0.1. Affected is an unknown function of the file /src/modules/oms/graphql/types/Order/Order.resolvers.js of the component Order Handler. The manipulation of the argument uuid results in improper control of resource identifiers. The attack may be performed from remote. This attack is characterized by high complexity. The exploitability is told to be difficult. The exploit is now public and may be used. The vendor was contacted early about this disc",
       "severity": "low",
@@ -60,10 +73,16 @@
           "value": "CVE-2025-12919"
         }
       ],
-      "affectedRange": "<= 2.1.0"
+      "affectedVersions": [
+        {
+          "range": "<= 2.1.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-32r3-57hp-cgfw",
+      "packageName": "@evershop/evershop",
       "title": "EverShop at risk to unauthorized access via weak HMAC secret",
       "description": "An issue was discovered in NPM's package @evershop/evershop before version 1.0.0-rc.9. The HMAC secret used for generating tokens is hardcoded as \"secret\". A weak HMAC secret poses a risk because attackers can use the predictable secret to create valid JSON Web Tokens (JWTs), allowing them access to important information and actions within the application.",
       "severity": "critical",
@@ -80,11 +99,17 @@
           "value": "CVE-2023-46943"
         }
       ],
-      "affectedRange": "< 1.0.0-rc.9",
-      "fixedVersion": "1.0.0-rc.9"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0-rc.9",
+          "fixed": "1.0.0-rc.9"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-ggpm-9qfx-mhwg",
+      "packageName": "@evershop/evershop",
       "title": "EverShop vulnerable to improper authorization in GraphQL endpoints",
       "description": "Lack of authentication in NPM's package @evershop/evershop before version 1.0.0-rc.9, allows remote attackers to obtain sensitive information via improper authorization in GraphQL endpoints.",
       "severity": "high",
@@ -101,11 +126,17 @@
           "value": "CVE-2023-46942"
         }
       ],
-      "affectedRange": "< 1.0.0-rc.9",
-      "fixedVersion": "1.0.0-rc.9"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0-rc.9",
+          "fixed": "1.0.0-rc.9"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5mmr-9qx3-3pf9",
+      "packageName": "@evershop/evershop",
       "title": "Code execution in evershop",
       "description": "An issue in EverShop NPM versions before v.1.0.0-rc.8 allows a remote attacker to obtain sensitive information and execute arbitrary code via the /deleteCustomer/route.json file.",
       "severity": "critical",
@@ -122,11 +153,17 @@
           "value": "CVE-2023-46498"
         }
       ],
-      "affectedRange": "< 1.0.0-rc.8",
-      "fixedVersion": "1.0.0-rc.8"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0-rc.8",
+          "fixed": "1.0.0-rc.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-gjj8-m83c-qv9h",
+      "packageName": "@evershop/evershop",
       "title": "Cross-site Scripting in evershop",
       "description": "Cross Site Scripting vulnerability in EverShop NPM versions before v.1.0.0-rc.5 allows a remote attacker to obtain sensitive information via a crafted scripts to the Admin Panel.",
       "severity": "medium",
@@ -143,11 +180,17 @@
           "value": "CVE-2023-46499"
         }
       ],
-      "affectedRange": "< 1.0.0-rc.5",
-      "fixedVersion": "1.0.0-rc.5"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0-rc.5",
+          "fixed": "1.0.0-rc.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-7443-5962-wp4r",
+      "packageName": "@evershop/evershop",
       "title": "Directory Traversal in evershop",
       "description": "Directory Traversal vulnerability in EverShop NPM versions before v.1.0.0-rc.8 allows a remote attacker to obtain sensitive information via a crafted request to the mkdirSync function in the folderCreate/createFolder.js endpoint.",
       "severity": "medium",
@@ -164,11 +207,17 @@
           "value": "CVE-2023-46497"
         }
       ],
-      "affectedRange": "< 1.0.0-rc.8",
-      "fixedVersion": "1.0.0-rc.8"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0-rc.8",
+          "fixed": "1.0.0-rc.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-rwf3-w4jq-f4cm",
+      "packageName": "@evershop/evershop",
       "title": "Directory Traversal in evershop",
       "description": "Directory Traversal vulnerability in EverShop NPM versions before v.1.0.0-rc.8 allows a remote attacker to obtain sensitive information via a crafted request to the DELETE function in api/files endpoint.",
       "severity": "high",
@@ -185,11 +234,17 @@
           "value": "CVE-2023-46496"
         }
       ],
-      "affectedRange": "< 1.0.0-rc.8",
-      "fixedVersion": "1.0.0-rc.8"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0-rc.8",
+          "fixed": "1.0.0-rc.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-m6vm-ff9v-jp3r",
+      "packageName": "@evershop/evershop",
       "title": "Cross Site Scripting in evershop",
       "description": "Cross Site Scripting vulnerability in EverShop NPM versions before v.1.0.0-rc.5 allows a remote attacker to obtain sensitive information via a crafted request to the ProductGrid function in admin/productGrid/Grid.jsx.",
       "severity": "medium",
@@ -206,11 +261,17 @@
           "value": "CVE-2023-46494"
         }
       ],
-      "affectedRange": "< 1.0.0-rc.5",
-      "fixedVersion": "1.0.0-rc.5"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0-rc.5",
+          "fixed": "1.0.0-rc.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-2xcj-557c-hf8r",
+      "packageName": "@evershop/evershop",
       "title": "Cross-site Scripting in evershop",
       "description": "Cross Site Scripting vulnerability in EverShop NPM versions before v.1.0.0-rc.8 allows a remote attacker to obtain sensitive information via a crafted request to the sortBy parameter.",
       "severity": "medium",
@@ -227,11 +288,17 @@
           "value": "CVE-2023-46495"
         }
       ],
-      "affectedRange": "< 1.0.0-rc.8",
-      "fixedVersion": "1.0.0-rc.8"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0-rc.8",
+          "fixed": "1.0.0-rc.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4wrm-qmq2-5fjx",
+      "packageName": "@evershop/evershop",
       "title": "Directory Traversal in evershop",
       "description": "Directory Traversal vulnerability in EverShop NPM versions before v.1.0.0-rc.8 allows a remote attacker to obtain sensitive information via a crafted request to the readDirSync function in fileBrowser/browser.js.",
       "severity": "medium",
@@ -248,8 +315,13 @@
           "value": "CVE-2023-46493"
         }
       ],
-      "affectedRange": "< 1.0.0-rc.8",
-      "fixedVersion": "1.0.0-rc.8"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0-rc.8",
+          "fixed": "1.0.0-rc.8"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

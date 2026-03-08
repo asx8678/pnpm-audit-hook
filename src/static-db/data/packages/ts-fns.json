@@ -1,9 +1,10 @@
 {
-  "name": "ts-fns",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "ts-fns",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-g7wq-wggw-vmhg",
+      "packageName": "ts-fns",
       "title": "ts-fns has prototype pollution vulnerability",
       "description": "A prototype pollution vulnerability exists in the ts-fns package versions prior to 13.0.7, where insufficient validation of user-provided keys in the assign function allows attackers to manipulate the Object.prototype chain. By leveraging this flaw, adversaries may inject arbitrary properties into the global object's prototype, potentially leading to application crashes, unexpected code execution behaviors, or bypasses of security-critical validation logic dependent on prototype integrity. The v",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-57351"
         }
       ],
-      "affectedRange": "<= 13.1.3"
+      "affectedVersions": [
+        {
+          "range": "<= 13.1.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

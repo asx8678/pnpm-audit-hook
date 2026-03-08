@@ -1,0 +1,32 @@
+{
+  "packageName": "yargs-parser",
+  "lastUpdated": "2026-03-08T16:04:22.152Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p9pc-299p-vxgp",
+      "packageName": "yargs-parser",
+      "title": "Prototype Pollution in yargs-parser",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p9pc-299p-vxgp",
+      "publishedAt": "2020-05-27T16:36:00Z",
+      "modifiedAt": "2023-09-11T22:00:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p9pc-299p-vxgp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7608"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<13.1.2",
+          "fixed": "13.1.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

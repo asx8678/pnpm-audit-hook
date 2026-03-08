@@ -1,9 +1,10 @@
 {
-  "name": "wc-cmd",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "wc-cmd",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mx3r-w3pj-7wv7",
+      "packageName": "wc-cmd",
       "title": "Command injection in wc-cmd",
       "description": "** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: This candidate was withdrawn by its CNA. Further investigation showed that it was not a security issue. Notes: none.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-28431"
         }
       ],
-      "affectedRange": "<= 1.0.9"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.9"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

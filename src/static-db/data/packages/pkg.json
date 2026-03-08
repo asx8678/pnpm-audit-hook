@@ -1,9 +1,10 @@
 {
-  "name": "pkg",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "pkg",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-22r3-9w55-cj54",
+      "packageName": "pkg",
       "title": "Pkg Local Privilege Escalation",
       "description": "### Impact\nAny native code packages built by `pkg` are written to a hardcoded directory. On unix systems, this is `/tmp/pkg/*` which is a shared directory for all users on the same local system. There is no uniqueness to the package names within this directory, they are predictable.\n\nAn attacker who has access to the same local system has the ability to replace the genuine executables in the shared directory with malicious executables of the same name. A user may then run the malicious executabl",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-24828"
         }
       ],
-      "affectedRange": "<= 5.8.1"
+      "affectedVersions": [
+        {
+          "range": "<= 5.8.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

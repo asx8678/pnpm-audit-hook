@@ -1,9 +1,10 @@
 {
-  "name": "smoothie",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "smoothie",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-g662-qq45-ppwm",
+      "packageName": "smoothie",
       "title": "Smoothie vulnerable to Cross-site Scripting when tooltipLabel or strokeStyle are controlled by users",
       "description": "The package smoothie from 1.31.0 and before 1.36.1 are vulnerable to Cross-site Scripting (XSS) due to improper user input sanitization in strokeStyle and tooltipLabel properties. Exploiting this vulnerability is possible when the user can control these properties.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-25929"
         }
       ],
-      "affectedRange": ">= 1.31.0, < 1.36.1",
-      "fixedVersion": "1.36.1"
+      "affectedVersions": [
+        {
+          "range": ">= 1.31.0, < 1.36.1",
+          "fixed": "1.36.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

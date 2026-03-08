@@ -1,9 +1,10 @@
 {
-  "name": "carbone",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "carbone",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6rcw-ww3x-xqwm",
+      "packageName": "carbone",
       "title": "carbone Code Injection vulnerability",
       "description": "A weakness has been identified in carboneio carbone up to fbcd349077ad0e8748be73eab2a82ea92b6f8a7e. This impacts an unknown function of the file lib/input.js of the component Formatter Handler. Executing a manipulation can lead to improperly controlled modification of object prototype attributes. The attack can be launched remotely. This attack is characterized by high complexity. The exploitability is said to be difficult. Upgrading to version 3.5.6 will fix this issue. This patch is called 04f",
       "severity": "low",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-14020"
         }
       ],
-      "affectedRange": "< 3.5.6",
-      "fixedVersion": "3.5.6"
+      "affectedVersions": [
+        {
+          "range": "< 3.5.6",
+          "fixed": "3.5.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

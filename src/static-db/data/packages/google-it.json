@@ -1,9 +1,10 @@
 {
-  "name": "google-it",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "google-it",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7xhv-mpjw-422f",
+      "packageName": "google-it",
       "title": "Command injection in google-it",
       "description": "Google-it is a Node.js package which allows its users to send search queries to Google and receive the results in a JSON format. When using the 'Open in browser' option in versions up to 1.6.2, google-it will unsafely concat the result's link retrieved from google to a shell command, potentially exposing the server to RCE.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-34083"
         }
       ],
-      "affectedRange": "<= 1.6.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.6.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

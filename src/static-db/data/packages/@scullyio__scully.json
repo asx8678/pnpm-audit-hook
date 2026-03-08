@@ -1,9 +1,10 @@
 {
-  "name": "@scullyio/scully",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@scullyio/scully",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-r96p-v3cr-gfv8",
+      "packageName": "@scullyio/scully",
       "title": "Cross-site Scripting (XSS) in @scullyio/scully",
       "description": "This affects the package @scullyio/scully before 1.0.9. The transfer state is serialised with the JSON.stringify() function and then written into the HTML page.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-28470"
         }
       ],
-      "affectedRange": "< 1.0.9",
-      "fixedVersion": "1.0.9"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.9",
+          "fixed": "1.0.9"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

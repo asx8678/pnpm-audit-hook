@@ -1,9 +1,10 @@
 {
-  "name": "shiba",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "shiba",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jr64-pggr-j8xj",
+      "packageName": "shiba",
       "title": "Shiba vulnerable to XSS leading to code execution",
       "description": "Shiba markdown live preview app version 1.1.0 is vulnerable to XSS which leads to code execution due to enabled node integration.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2017-1000491"
         }
       ],
-      "affectedRange": "< 1.1.1",
-      "fixedVersion": "1.1.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.1",
+          "fixed": "1.1.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-jvf4-g24p-2qgw",
+      "packageName": "shiba",
       "title": "Arbitrary Code Execution in shiba",
       "description": "All versions of package shiba are vulnerable to Arbitrary Code Execution due to the default usage of the function `load()` of the package js-yaml instead of its secure replacement , `safeLoad()`.",
       "severity": "high",
@@ -41,7 +48,12 @@
           "value": "CVE-2020-7738"
         }
       ],
-      "affectedRange": "<= 1.2.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

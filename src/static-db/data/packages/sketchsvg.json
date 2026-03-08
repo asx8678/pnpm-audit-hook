@@ -1,9 +1,10 @@
 {
-  "name": "sketchsvg",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "sketchsvg",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6722-xvq8-3254",
+      "packageName": "sketchsvg",
       "title": "SketchSVG Arbitrary Code Injection vulnerability",
       "description": "All versions of the package sketchsvg are vulnerable to Arbitrary Code Injection when invoking `shell.exec` without sanitization nor parametrization while concatenating the current directory as part of the command string.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-26107"
         }
       ],
-      "affectedRange": "<= 0.0.1"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

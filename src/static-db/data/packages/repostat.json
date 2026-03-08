@@ -1,0 +1,33 @@
+{
+  "packageName": "repostat",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fm8c-6m29-rp6j",
+      "packageName": "repostat",
+      "title": "repostat: Reflected Cross-Site Scripting (XSS) via repo prop in RepoCard",
+      "description": "### Impact\nThe `RepoCard` component is vulnerable to Reflected Cross-Site Scripting (XSS). The vulnerability occurs because the component uses React's `dangerouslySetInnerHTML` to render the repository name (`repo` prop) during the loading state without any sanitization. \n\nIf a developer using this package passes unvalidated user input directly into the `repo` prop (for example, reading it from a URL query parameter), an attacker can execute arbitrary JavaScript in the context of the user's brow",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fm8c-6m29-rp6j",
+      "publishedAt": "2026-02-25T16:04:41Z",
+      "modifiedAt": "2026-02-25T16:04:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fm8c-6m29-rp6j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27612"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.1",
+          "fixed": "1.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

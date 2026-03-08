@@ -1,9 +1,10 @@
 {
-  "name": "browserify-shim",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "browserify-shim",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-866w-wm4h-95c6",
+      "packageName": "browserify-shim",
       "title": "thlorenz browserify-shim vulnerable to prototype pollution",
       "description": "Prototype pollution vulnerability in function `resolveShims` in resolve-shims.js in thlorenz browserify-shim 3.8.15 via the `k` variable in resolve-shims.js.",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2022-37617"
         }
       ],
-      "affectedRange": "<= 3.8.15",
-      "fixedVersion": "3.8.16"
+      "affectedVersions": [
+        {
+          "range": "<= 3.8.15",
+          "fixed": "3.8.16"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-r737-347m-wqc7",
+      "packageName": "browserify-shim",
       "title": "thlorenz browserify-shim vulnerable to prototype pollution",
       "description": "Prototype pollution vulnerability in function resolveShims in resolve-shims.js in thlorenz browserify-shim 3.8.15 via the fullPath variable in resolve-shims.js.",
       "severity": "critical",
@@ -41,11 +48,17 @@
           "value": "CVE-2022-37621"
         }
       ],
-      "affectedRange": "<= 3.8.15",
-      "fixedVersion": "3.8.16"
+      "affectedVersions": [
+        {
+          "range": "<= 3.8.15",
+          "fixed": "3.8.16"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-cfgr-75jx-h88g",
+      "packageName": "browserify-shim",
       "title": "thlorenz browserify-shim vulnerable to prototype pollution",
       "description": "Prototype pollution vulnerability in function resolveShims in resolve-shims.js in thlorenz browserify-shim 3.8.15 via the shimPath variable in resolve-shims.js.",
       "severity": "critical",
@@ -62,8 +75,13 @@
           "value": "CVE-2022-37623"
         }
       ],
-      "affectedRange": "<= 3.8.15",
-      "fixedVersion": "3.8.16"
+      "affectedVersions": [
+        {
+          "range": "<= 3.8.15",
+          "fixed": "3.8.16"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

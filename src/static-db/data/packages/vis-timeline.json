@@ -1,9 +1,10 @@
 {
-  "name": "vis-timeline",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "vis-timeline",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9mrv-456v-pf22",
+      "packageName": "vis-timeline",
       "title": "Cross-site Scripting in vis-timeline",
       "description": "This affects the package vis-timeline before 7.4.4.\n An attacker with the ability to control the items of a Timeline element can inject additional script code into the generated application.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-28487"
         }
       ],
-      "affectedRange": "< 7.4.4",
-      "fixedVersion": "7.4.4"
+      "affectedVersions": [
+        {
+          "range": "< 7.4.4",
+          "fixed": "7.4.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

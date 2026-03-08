@@ -1,9 +1,10 @@
 {
-  "name": "node-opcua",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "node-opcua",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vh4f-fgpp-x8x2",
+      "packageName": "node-opcua",
       "title": "node-opcua DoS when bypassing limitations for excessive memory consumption",
       "description": "The package node-opcua before 2.74.0 are vulnerable to Denial of Service (DoS) when bypassing the limitations for excessive memory consumption by sending multiple `CloseSession` requests with the `deleteSubscription` parameter equal to `False`.",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2022-24375"
         }
       ],
-      "affectedRange": "< 2.74.0",
-      "fixedVersion": "2.74.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.74.0",
+          "fixed": "2.74.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-qpgc-xh7j-52q8",
+      "packageName": "node-opcua",
       "title": "node-opcua DoS vulnerability via message with memory allocation that exceeds v8's memory limit",
       "description": "The package node-opcua before 2.74.0 are vulnerable to Denial of Service (DoS) by sending a specifically crafted OPC UA message with a special OPC UA NodeID, when the requested memory allocation exceeds the v8’s memory limit.",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2022-25231"
         }
       ],
-      "affectedRange": "< 2.74.0",
-      "fixedVersion": "2.74.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.74.0",
+          "fixed": "2.74.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4hr4-pjjh-2q2w",
+      "packageName": "node-opcua",
       "title": "Uncontrolled Resource Consumption in node-opcua",
       "description": "The package node-opcua before 2.74.0 are vulnerable to Denial of Service (DoS) due to a missing limitation on the number of received chunks - per single session or in total for all concurrent sessions. An attacker can exploit this vulnerability by sending an unlimited number of huge chunks (e.g. 2GB each) without sending the Final closing chunk.",
       "severity": "high",
@@ -62,8 +75,13 @@
           "value": "CVE-2022-21208"
         }
       ],
-      "affectedRange": "< 2.74.0",
-      "fixedVersion": "2.74.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.74.0",
+          "fixed": "2.74.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

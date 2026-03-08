@@ -1,9 +1,10 @@
 {
-  "name": "passbolt-browser-extension",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "passbolt-browser-extension",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xfq4-78j7-v594",
+      "packageName": "passbolt-browser-extension",
       "title": "Passbolt Browser Extension leaks password information",
       "description": "An issue was discovered in Passbolt Browser Extension before 4.6.2. It can send multiple requests to HaveIBeenPwned while a password is being typed, which results in an information leak. This allows an attacker capable of observing Passbolt's HTTPS queries to the Pwned Password API to more easily brute force passwords that are manually typed by the user.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-33669"
         }
       ],
-      "affectedRange": "< 4.6.2",
-      "fixedVersion": "4.6.2"
+      "affectedVersions": [
+        {
+          "range": "< 4.6.2",
+          "fixed": "4.6.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "@finastra/nestjs-proxy",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@finastra/nestjs-proxy",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j562-c3cw-3p5g",
+      "packageName": "@finastra/nestjs-proxy",
       "title": "Potential Authorization Header Exposure in NPM Packages @finastra/nestjs-proxy, @ffdc/nestjs-proxy",
       "description": "The nestjs-proxy library did not have a way to control when Authorization headers should should be forwarded for specific backend services configured by the application developer. This could have resulted in sensitive information such as OAuth bearer access tokens being inadvertently exposed to such services that should not see them.\n\nA new feature has been introduced in the patched version of nestjs-proxy that allows application developers to opt out of forwarding the Authorization headers on a",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2022-31069"
         }
       ],
-      "affectedRange": "< 0.7.0",
-      "fixedVersion": "0.7.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.7.0",
+          "fixed": "0.7.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-77mv-4rg7-r8qv",
+      "packageName": "@finastra/nestjs-proxy",
       "title": "Potential Sensitive Cookie Exposure in NPM Packages @finastra/nestjs-proxy, @ffdc/nestjs-proxy",
       "description": "The nestjs-proxy library did not have a way to block sensitive cookies (e.g. session cookies) from being forwarded to backend services configured by the application developer. This could have led to sensitive cookies being inadvertently exposed to such services that should not see them.\n\nThe patched version now blocks cookies from being forwarded by default. However developers can configure an allow-list of cookie names by using the `allowedCookies` config setting. Further details of this featur",
       "severity": "medium",
@@ -41,8 +48,13 @@
           "value": "CVE-2022-31070"
         }
       ],
-      "affectedRange": "< 0.7.0",
-      "fixedVersion": "0.7.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.7.0",
+          "fixed": "0.7.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,0 +1,33 @@
+{
+  "packageName": "mailparser",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7gmj-h9xc-mcxc",
+      "packageName": "mailparser",
+      "title": "mailparser vulnerable to Cross-site Scripting",
+      "description": "Versions of the package mailparser before 3.9.3 are vulnerable to Cross-site Scripting (XSS) via the textToHtml() function due to the improper sanitisation of URLs in the email content. An attacker can execute arbitrary scripts in victim browsers by adding extra quote  \" to the URL with embedded malicious JavaScript code.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-7gmj-h9xc-mcxc",
+      "publishedAt": "2026-03-03T06:31:14Z",
+      "modifiedAt": "2026-03-04T20:15:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7gmj-h9xc-mcxc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-3455"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.9.3",
+          "fixed": "3.9.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

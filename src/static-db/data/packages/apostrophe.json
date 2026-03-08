@@ -1,9 +1,10 @@
 {
-  "name": "apostrophe",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "apostrophe",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9j9m-8wjc-ff96",
+      "packageName": "apostrophe",
       "title": " Apostrophe CMS Insufficient Session Expiration vulnerability",
       "description": "Apostrophe CMS versions between 2.63.0 to 3.3.1 affected by an insufficient session expiration vulnerability, which allows unauthenticated remote attackers to hijack recently logged-in users' sessions. As a mitigation for older releases the user account in question can be archived (3.x) or moved to the trash (2.x and earlier) which does disable the existing session.",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2021-25979"
         }
       ],
-      "affectedRange": ">= 2.63.0, < 3.4.0",
-      "fixedVersion": "3.4.0"
+      "affectedVersions": [
+        {
+          "range": ">= 2.63.0, < 3.4.0",
+          "fixed": "3.4.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4r9c-jghc-cx5m",
+      "packageName": "apostrophe",
       "title": "Cross-site Scripting in apostrophe",
       "description": "Apostrophe CMS versions between 2.63.0 to 3.3.1 are vulnerable to Stored XSS where an editor uploads an SVG file that contains malicious JavaScript onto the Images module, which triggers XSS once viewed.",
       "severity": "medium",
@@ -41,8 +48,13 @@
           "value": "CVE-2021-25978"
         }
       ],
-      "affectedRange": ">= 2.63.0, < 3.4.0",
-      "fixedVersion": "3.4.0"
+      "affectedVersions": [
+        {
+          "range": ">= 2.63.0, < 3.4.0",
+          "fixed": "3.4.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

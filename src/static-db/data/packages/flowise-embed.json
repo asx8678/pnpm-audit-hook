@@ -1,9 +1,10 @@
 {
-  "name": "flowise-embed",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "flowise-embed",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-m5p9-xvxj-64c8",
+      "packageName": "flowise-embed",
       "title": "Flowise and Flowise Chat Embed vulnerable to Stored Cross-site Scripting",
       "description": "Flowise < 2.1.1 suffers from a Stored Cross-Site vulnerability due to a lack of input sanitization in Flowise Chat Embed < 2.0.0.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-9148"
         }
       ],
-      "affectedRange": "< 2.0.0",
-      "fixedVersion": "2.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

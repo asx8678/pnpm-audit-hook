@@ -1,9 +1,10 @@
 {
-  "name": "putil-merge",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "putil-merge",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4g77-cvgw-grvw",
+      "packageName": "putil-merge",
       "title": "Prototype Pollution in putil-merge",
       "description": "This affects the package putil-merge before 3.8.0. The merge() function does not check the values passed into the argument. An attacker can supply a malicious value by adjusting the value to include the constructor property. Note: This vulnerability derives from an incomplete fix in https://security.snyk.io/vuln/SNYK-JS-PUTILMERGE-1317077",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2021-23470"
         }
       ],
-      "affectedRange": "< 3.8.0",
-      "fixedVersion": "3.8.0"
+      "affectedVersions": [
+        {
+          "range": "< 3.8.0",
+          "fixed": "3.8.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9x7m-9hpg-xxmw",
+      "packageName": "putil-merge",
       "title": "Prototype Pollution in putil-merge",
       "description": "Prototype pollution vulnerability in 'putil-merge' versions1.0.0 through 3.6.6 allows attacker to cause a denial of service and may lead to remote code execution.",
       "severity": "critical",
@@ -41,8 +48,13 @@
           "value": "CVE-2021-25953"
         }
       ],
-      "affectedRange": ">= 1.0.0, <= 3.6.6",
-      "fixedVersion": "3.7.0"
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0, <= 3.6.6",
+          "fixed": "3.7.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

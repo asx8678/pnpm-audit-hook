@@ -1,9 +1,10 @@
 {
-  "name": "simditor",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "simditor",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-p9wj-wrrm-84m5",
+      "packageName": "simditor",
       "title": "Simditor XSS Vulnerability",
       "description": "Simditor v2.3.11 allows XSS via crafted use of `svg/onload=alert` in a TEXTAREA element, as demonstrated by Firefox 54.0.1.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2018-6464"
         }
       ],
-      "affectedRange": "<= 2.3.11"
+      "affectedVersions": [
+        {
+          "range": "<= 2.3.11"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

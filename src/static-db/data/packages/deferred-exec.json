@@ -1,9 +1,10 @@
 {
-  "name": "deferred-exec",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "deferred-exec",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-54w4-2f2p-f48h",
+      "packageName": "deferred-exec",
       "title": "deferred-exec Command Injection vulnerability",
       "description": "A command injection vulnerability affects all versions of package deferred-exec. The injection point is located in line 42 in lib/deferred-exec.js",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-28438"
         }
       ],
-      "affectedRange": "<= 0.3.1"
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

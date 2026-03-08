@@ -1,0 +1,33 @@
+{
+  "packageName": "@orpc/client",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m272-9rp6-32mc",
+      "packageName": "@orpc/client",
+      "title": "`@orpc/client` has Prototype Pollution via `StandardRPCJsonSerializer` Deserialization",
+      "description": "### Summary\nA critical Prototype Pollution vulnerability exists in the RPC JSON deserializer of the `@orpc/client` package. The vulnerability allows unauthenticated, remote attackers to inject arbitrary properties into the global `Object.prototype`. Because this pollution persists for the lifetime of the Node.js process and affects all objects, it can lead to severe security breaches, including authentication bypass, denial of service, and potentially Remote Code Execution.\n\n### Vulnerability De",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m272-9rp6-32mc",
+      "publishedAt": "2026-03-02T21:43:00Z",
+      "modifiedAt": "2026-03-06T15:16:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m272-9rp6-32mc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28794"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.13.5",
+          "fixed": "1.13.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

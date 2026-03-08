@@ -1,9 +1,10 @@
 {
-  "name": "fast-loops",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "fast-loops",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3q56-9cc2-46j4",
+      "packageName": "fast-loops",
       "title": "robinweser fast-loops vulnerable to prototype pollution",
       "description": "robinweser fast-loops v1.1.3 was discovered to contain a prototype pollution via the function `objectMergeDeep`. This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-39008"
         }
       ],
-      "affectedRange": "< 1.1.4",
-      "fixedVersion": "1.1.4"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.4",
+          "fixed": "1.1.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

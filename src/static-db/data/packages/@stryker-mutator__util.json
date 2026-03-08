@@ -1,9 +1,10 @@
 {
-  "name": "@stryker-mutator/util",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@stryker-mutator/util",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9j5q-479x-43g2",
+      "packageName": "@stryker-mutator/util",
       "title": "@stryker-mutator/util vulnerable to Prototype Pollution",
       "description": "A prototype pollution in the function deepMerge of @stryker-mutator/util v8.6.0 allows attackers to cause a Denial of Service (DoS) via supplying a crafted payload.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-57085"
         }
       ],
-      "affectedRange": "< 8.7.1",
-      "fixedVersion": "8.7.1"
+      "affectedVersions": [
+        {
+          "range": "< 8.7.1",
+          "fixed": "8.7.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "mammoth",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mammoth",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rmjr-87wv-gf87",
+      "packageName": "mammoth",
       "title": "Mammoth is vulnerable to Directory Traversal",
       "description": "Versions of the package mammoth from 0.3.25 and before 1.11.0; versions of the package mammoth from 0.3.25 and before 1.11.0; versions of the package mammoth before 1.11.0; versions of the package org.zwobble.mammoth:mammoth before 1.11.0 are vulnerable to Directory Traversal due to the lack of path or file type validation when processing a docx file containing an image with an external link (r:link attribute instead of embedded r:embed). The library resolves the URI to a file path and after rea",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-11849"
         }
       ],
-      "affectedRange": ">= 0.3.25, < 1.11.0",
-      "fixedVersion": "1.11.0"
+      "affectedVersions": [
+        {
+          "range": ">= 0.3.25, < 1.11.0",
+          "fixed": "1.11.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "@directus/app",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@directus/app",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-r6wx-627v-gh2f",
+      "packageName": "@directus/app",
       "title": "Directus has an HTML Injection in Comment",
       "description": "### Summary\nThe Comment feature has implemented a filter to prevent users from adding restricted characters, such as HTML tags. However, this filter operates on the client-side, which can be bypassed, making the application vulnerable to HTML Injection.\n\n### Details\nThe Comment feature implements a character filter on the client-side, this can be bypassed by directly sending a request to the endpoint.\n\nExample Request:\n\n```\nPATCH /activity/comment/3 HTTP/2\nHost: directus.local\n\n{\n  \"comment\": \"<",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2024-54128"
         }
       ],
-      "affectedRange": ">= 11.0.0, < 13.3.1",
-      "fixedVersion": "13.3.1"
+      "affectedVersions": [
+        {
+          "range": ">= 11.0.0, < 13.3.1",
+          "fixed": "13.3.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-pmf4-v838-29hg",
+      "packageName": "@directus/app",
       "title": "Directus allows privilege escalation using Share feature",
       "description": "### Summary\nWhen sharing an item, user can specify an arbitrary role. It allows user to use a higher-privileged role to see fields that otherwise the user should not be able to see.\n\n### Details\nSpecifying `role` on share should be available only for admins. The current flow has a security flaw.\n\nEach other role should allow to share only in the context of the same role. As there is no role hierarchy in Directus, it is impossible to tell which role is _higher_ or _lower_, so only admins should b",
       "severity": "medium",
@@ -41,8 +48,13 @@
           "value": "CVE-2025-24353"
         }
       ],
-      "affectedRange": "< 13.3.1",
-      "fixedVersion": "13.3.1"
+      "affectedVersions": [
+        {
+          "range": "< 13.3.1",
+          "fixed": "13.3.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

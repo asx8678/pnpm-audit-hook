@@ -1,0 +1,33 @@
+{
+  "packageName": "client-certificate-auth",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m4w9-gch5-c2g4",
+      "packageName": "client-certificate-auth",
+      "title": "client-certificate-auth Vulnerable to Open Redirect via Host Header Injection in HTTP-to-HTTPS redirect",
+      "description": "### Summary\n\nVersions 0.2.1 and 0.3.0 of `client-certificate-auth` contain an open redirect vulnerability. The middleware unconditionally redirects HTTP requests to HTTPS using the unvalidated `Host` header, allowing an attacker to redirect users to arbitrary domains.\n\n### Vulnerable Code\n\n```javascript\n// lib/clientCertificateAuth.js (versions 0.2.1, 0.3.0)\nif (!req.secure && req.header('x-forwarded-proto') != 'https') {\n  return res.redirect('https://' + req.header('host') + req.url);\n}\n```\n\n#",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m4w9-gch5-c2g4",
+      "publishedAt": "2026-02-06T18:54:33Z",
+      "modifiedAt": "2026-02-06T21:43:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m4w9-gch5-c2g4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25651"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.2.1, < 1.0.0",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

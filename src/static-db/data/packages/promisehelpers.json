@@ -1,9 +1,10 @@
 {
-  "name": "promisehelpers",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "promisehelpers",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rj5f-7c8x-gjg4",
+      "packageName": "promisehelpers",
       "title": "Prototype Pollution in promisehelpers",
       "description": "All versions of package promisehelpers up to and including version 0.0.5 are vulnerable to Prototype Pollution via the insert function.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7723"
         }
       ],
-      "affectedRange": "<= 0.0.5"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "convict",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "convict",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4jrm-c32x-w4jf",
+      "packageName": "convict",
       "title": "convict vulnerable to Prototype Pollution",
       "description": "### Impact\n\n* An attacker can inject attributes that are used in other components\n* An attacker can override existing attributes with ones that have incompatible type, which may lead to a crash.\n\nThe main use case of Convict is for handling server-side configurations written by the admins owning the servers, and not random users. So it's unlikely that an admin would deliberately sabotage their own server. Still a situation can happen where an admin not knowledgeable about JavaScript could be tri",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2023-0163"
         }
       ],
-      "affectedRange": "< 6.2.4",
-      "fixedVersion": "6.2.4"
+      "affectedVersions": [
+        {
+          "range": "< 6.2.4",
+          "fixed": "6.2.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-jjf5-wx3j-3fv7",
+      "packageName": "convict",
       "title": "Prototype Pollution in convict",
       "description": "This affects the package convict before 6.2.3. This is a bypass of [CVE-2022-22143](https://security.snyk.io/vuln/SNYK-JS-CONVICT-2340604). The [fix](https://github.com/mozilla/node-convict/commit/3b86be087d8f14681a9c889d45da7fe3ad9cd880) introduced, relies on the startsWith method and does not prevent the vulnerability: before splitting the path, it checks if it starts with __proto__ or this.constructor.prototype. To bypass this check it's possible to prepend the dangerous paths with any string",
       "severity": "critical",
@@ -41,11 +48,17 @@
           "value": "CVE-2022-21190"
         }
       ],
-      "affectedRange": "< 6.2.3",
-      "fixedVersion": "6.2.3"
+      "affectedVersions": [
+        {
+          "range": "< 6.2.3",
+          "fixed": "6.2.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-x2w5-725j-gf2g",
+      "packageName": "convict",
       "title": "Prototype Pollution in convict",
       "description": "### Impact\n\n* An attacker can inject attributes that are used in other components\n* An attacker can override existing attributes with ones that have incompatible type, which may lead to a crash.\n\nThe main use case of Convict is for handling server-side configurations written by the admins owning the servers, and not random users. So it's unlikely that an admin would deliberately sabotage their own server. Still a situation can happen where an admin not knowledgeable about JavaScript could be tri",
       "severity": "high",
@@ -62,8 +75,13 @@
           "value": "CVE-2022-22143"
         }
       ],
-      "affectedRange": "< 6.2.3",
-      "fixedVersion": "6.2.3"
+      "affectedVersions": [
+        {
+          "range": "< 6.2.3",
+          "fixed": "6.2.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

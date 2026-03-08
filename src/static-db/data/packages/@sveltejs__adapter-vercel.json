@@ -1,0 +1,33 @@
+{
+  "packageName": "@sveltejs/adapter-vercel",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9pq4-5hcf-288c",
+      "packageName": "@sveltejs/adapter-vercel",
+      "title": "Cache poisoning in @sveltejs/adapter-vercel",
+      "description": "Versions of `@sveltejs/adapter-vercel` prior to 6.3.2 are vulnerable to cache poisoning. An internal query parameter intended for Incremental Static Regeneration (ISR) is accessible on all routes, allowing an attacker to cause sensitive user-specific responses to be cached and served to other users.\n\nSuccessful exploitation requires a victim to visit an attacker-controlled link while authenticated.\n\nExisting deployments are protected by Vercel's WAF, but users should upgrade as soon as possible.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9pq4-5hcf-288c",
+      "publishedAt": "2026-02-19T15:18:02Z",
+      "modifiedAt": "2026-02-23T22:21:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9pq4-5hcf-288c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27118"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.3.2",
+          "fixed": "6.3.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

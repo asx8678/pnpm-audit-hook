@@ -1,9 +1,10 @@
 {
-  "name": "node-forge",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "node-forge",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-65ch-62r8-g69g",
+      "packageName": "node-forge",
       "title": "node-forge is vulnerable to ASN.1 OID Integer Truncation",
       "description": "### Summary\n\n**MITRE-Formatted CVE Description**\nAn Integer Overflow (CWE-190) vulnerability in node-forge versions 1.3.1 and below enables remote, unauthenticated attackers to craft ASN.1 structures containing OIDs with oversized arcs. These arcs may be decoded as smaller, trusted OIDs due to 32-bit bitwise truncation, enabling the bypass of downstream OID-based security decisions.\n\n### Description\n\nAn ASN.1 OID Integer Truncation vulnerability exists in the node-forge `asn1.derToOid` function ",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-66030"
         }
       ],
-      "affectedRange": "< 1.3.2",
-      "fixedVersion": "1.3.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.3.2",
+          "fixed": "1.3.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-554w-wpv2-vw27",
+      "packageName": "node-forge",
       "title": "node-forge has ASN.1 Unbounded Recursion",
       "description": "### Summary\n\nAn Uncontrolled Recursion (CWE-674) vulnerability in node-forge versions 1.3.1 and below enables remote, unauthenticated attackers to craft deep ASN.1 structures that trigger unbounded recursive parsing. This leads to a Denial-of-Service (DoS) via stack exhaustion when parsing untrusted DER inputs.\n\n### Details\n\nAn ASN.1 Denial of Service (Dos) vulnerability exists in the node-forge `asn1.fromDer` function within `forge/lib/asn1.js`. The ASN.1 DER parser implementation (`_fromDer`) ",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2025-66031"
         }
       ],
-      "affectedRange": "< 1.3.2",
-      "fixedVersion": "1.3.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.3.2",
+          "fixed": "1.3.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5gfm-wpxj-wjgq",
+      "packageName": "node-forge",
       "title": "node-forge has an Interpretation Conflict vulnerability via its ASN.1 Validator Desynchronization",
       "description": "### Summary\n\nCVE-2025-12816 has been reserved by CERT/CC\n\n**Description**\nAn Interpretation Conflict (CWE-436) vulnerability in node-forge versions 1.3.1 and below enables remote, unauthenticated attackers to craft ASN.1 structures to desynchronize schema validations, yielding a semantic divergence that may bypass downstream cryptographic verifications and security decisions.\n\n\n### Details\n\nA critical ASN.1 validation bypass vulnerability exists in the node-forge asn1.validate function within `f",
       "severity": "high",
@@ -62,11 +75,17 @@
           "value": "CVE-2025-12816"
         }
       ],
-      "affectedRange": "< 1.3.2",
-      "fixedVersion": "1.3.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.3.2",
+          "fixed": "1.3.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-x4jg-mjrx-434g",
+      "packageName": "node-forge",
       "title": "Improper Verification of Cryptographic Signature in node-forge",
       "description": "### Impact\n\nRSA PKCS#1 v1.5 signature verification code does not check for tailing garbage bytes after decoding a `DigestInfo` ASN.1 structure. This can allow padding bytes to be removed and garbage data added to forge a signature when a low public exponent is being used.\n\n### Patches\n\nThe issue has been addressed in `node-forge` `1.3.0`.\n\n### References\n\nFor more information, please see\n[\"Bleichenbacher's RSA signature forgery based on implementation error\"](https://mailarchive.ietf.org/arch/ms",
       "severity": "high",
@@ -83,11 +102,17 @@
           "value": "CVE-2022-24772"
         }
       ],
-      "affectedRange": "< 1.3.0",
-      "fixedVersion": "1.3.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.3.0",
+          "fixed": "1.3.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-cfm4-qjh2-4765",
+      "packageName": "node-forge",
       "title": "Improper Verification of Cryptographic Signature in node-forge",
       "description": "### Impact\n\nRSA PKCS#1 v1.5 signature verification code is lenient in checking the digest algorithm structure. This can allow a crafted structure that steals padding bytes and uses unchecked portion of the PKCS#1 encoded message to forge a signature when a low public exponent is being used.\n\n### Patches\n\nThe issue has been addressed in `node-forge` `1.3.0`.\n\n### References\n\nFor more information, please see\n[\"Bleichenbacher's RSA signature forgery based on implementation error\"](https://mailarchi",
       "severity": "high",
@@ -104,11 +129,17 @@
           "value": "CVE-2022-24771"
         }
       ],
-      "affectedRange": "< 1.3.0",
-      "fixedVersion": "1.3.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.3.0",
+          "fixed": "1.3.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-8fr3-hfg3-gpgp",
+      "packageName": "node-forge",
       "title": "Open Redirect in node-forge",
       "description": "parseUrl functionality in node-forge mishandles certain uses of backslash such as `https:/\\/\\/\\` and interprets the URI as a relative path. ",
       "severity": "medium",
@@ -125,11 +156,17 @@
           "value": "CVE-2022-0122"
         }
       ],
-      "affectedRange": "< 1.0.0",
-      "fixedVersion": "1.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-2r2c-g63r-vccr",
+      "packageName": "node-forge",
       "title": "Improper Verification of Cryptographic Signature in `node-forge`",
       "description": "### Impact\n\nRSA PKCS#1 v1.5 signature verification code is not properly checking `DigestInfo` for a proper ASN.1 structure. This can lead to successful verification with signatures that contain invalid structures but a valid digest.\n\n### Patches\n\nThe issue has been addressed in `node-forge` `1.3.0`.\n\n### For more information\n\nIf you have any questions or comments about this advisory:\n* Open an issue in [forge](https://github.com/digitalbazaar/forge)\n* Email us at [example email address](mailto:s",
       "severity": "medium",
@@ -146,11 +183,17 @@
           "value": "CVE-2022-24773"
         }
       ],
-      "affectedRange": "< 1.3.0",
-      "fixedVersion": "1.3.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.3.0",
+          "fixed": "1.3.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-gf8q-jrpm-jvxq",
+      "packageName": "node-forge",
       "title": "URL parsing in node-forge could lead to undesired behavior.",
       "description": "### Impact\nThe regex used for the `forge.util.parseUrl` API would not properly parse certain inputs resulting in a parsed data structure that could lead to undesired behavior.\n\n### Patches\n`forge.util.parseUrl` and other very old related URL APIs were removed in 1.0.0 in favor of letting applications use the more modern WHATWG URL Standard API.\n\n### Workarounds\nEnsure code does not directly or indirectly call `forge.util.parseUrl` with untrusted input.\n\n### References\n- https://www.huntr.dev/bou",
       "severity": "low",
@@ -163,11 +206,17 @@
           "value": "GHSA-gf8q-jrpm-jvxq"
         }
       ],
-      "affectedRange": "< 1.0.0",
-      "fixedVersion": "1.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-wxgw-qj99-44c2",
+      "packageName": "node-forge",
       "title": "Prototype Pollution in node-forge util.setPath API",
       "description": "### Impact\n`forge.util.setPath` had a potential prototype pollution issue if called with untrusted keys. This API was not used by forge itself.\n\n### Patches\nThe `forge.util.setPath` API and related functions were removed in 0.10.0.\n\n### Workarounds\nDon't call `forge.util.setPath` directly or indirectly with untrusted keys.\n\n### References\n- https://security.snyk.io/vuln/SNYK-JS-NODEFORGE-598677\n- https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-7720\n\n### For more information\nIf you have a",
       "severity": "low",
@@ -180,11 +229,17 @@
           "value": "GHSA-wxgw-qj99-44c2"
         }
       ],
-      "affectedRange": "< 0.10.0",
-      "fixedVersion": "0.10.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.10.0",
+          "fixed": "0.10.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5rrq-pxf6-6jx5",
+      "packageName": "node-forge",
       "title": "Prototype Pollution in node-forge debug API.",
       "description": "### Impact\nThe `forge.debug` API had a potential prototype pollution issue if called with untrusted input. The API was only used for internal debug purposes in a safe way and never documented or advertised.  It is suspected that uses of this API, if any exist, would likely not have used untrusted inputs in a vulnerable way.\n\n### Patches\nThe `forge.debug` API and related functions were removed in 1.0.0.\n\n### Workarounds\nDon't use the `forge.debug` API directly or indirectly with untrusted input.\n",
       "severity": "low",
@@ -197,8 +252,13 @@
           "value": "GHSA-5rrq-pxf6-6jx5"
         }
       ],
-      "affectedRange": "< 1.0.0",
-      "fixedVersion": "1.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

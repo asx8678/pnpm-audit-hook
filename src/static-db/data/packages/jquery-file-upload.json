@@ -1,9 +1,10 @@
 {
-  "name": "jquery-file-upload",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "jquery-file-upload",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-43x9-7hfv-mxrf",
+      "packageName": "jquery-file-upload",
       "title": "jQuery-Upload-File XSS in fileNameStr",
       "description": "A cross-site scripting (XSS) vulnerability in the fileNameStr parameter of jQuery-Upload-File v4.0.11 allows attackers to execute arbitrary web scripts or HTML via a crafted file with a Javascript payload in the file name.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-37504"
         }
       ],
-      "affectedRange": "<= 4.0.11"
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.11"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

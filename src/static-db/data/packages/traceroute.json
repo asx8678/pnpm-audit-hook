@@ -1,9 +1,10 @@
 {
-  "name": "traceroute",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "traceroute",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8j9v-qhp4-wv55",
+      "packageName": "traceroute",
       "title": "Node-Traceroute RCE Vulnerability",
       "description": "The traceroute (aka node-traceroute) package through 1.0.0 for Node.js allows remote command injection via the host parameter. This occurs because the `Child.exec()` method, which is considered to be not entirely safe, is used. In particular, an OS command can be placed after a newline character.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2018-21268"
         }
       ],
-      "affectedRange": "<= 1.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

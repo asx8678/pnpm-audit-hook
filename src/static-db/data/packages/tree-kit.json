@@ -1,9 +1,10 @@
 {
-  "name": "tree-kit",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "tree-kit",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-5p42-m6f3-hpmj",
+      "packageName": "tree-kit",
       "title": "tree-kit Prototype Pollution vulnerability",
       "description": "A Prototype Pollution issue in Cronvel Tree-kit v.0.7.4 and before allows a remote attacker to execute arbitrary code via the extend function.",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2023-38894"
         }
       ],
-      "affectedRange": "< 0.7.5",
-      "fixedVersion": "0.7.5"
+      "affectedVersions": [
+        {
+          "range": "< 0.7.5",
+          "fixed": "0.7.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-mw4x-g2x8-qcvf",
+      "packageName": "tree-kit",
       "title": "tree-kit vulnerable to Prototype Pollution",
       "description": "A vulnerability classified as problematic has been found in cronvel tree-kit up to 0.6.x. This affects an unknown part. The manipulation leads to improperly controlled modification of object prototype attributes ('prototype pollution'). Upgrading to version 0.7.0 is able to address this issue. The name of the patch is a63f559c50d70e8cb2eaae670dec25d1dbc4afcd. It is recommended to upgrade the affected component. The identifier VDB-216765 was assigned to this vulnerability.",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2021-4278"
         }
       ],
-      "affectedRange": "< 0.7.0",
-      "fixedVersion": "0.7.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.7.0",
+          "fixed": "0.7.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

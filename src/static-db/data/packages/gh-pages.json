@@ -1,9 +1,10 @@
 {
-  "name": "gh-pages",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "gh-pages",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8mmm-9v2q-x3f9",
+      "packageName": "gh-pages",
       "title": "tschaub gh-pages vulnerable to prototype pollution",
       "description": "Prototype pollution vulnerability in tschaub gh-pages via the partial variable in util.js.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-37611"
         }
       ],
-      "affectedRange": "< 5.0.0",
-      "fixedVersion": "5.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.0.0",
+          "fixed": "5.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

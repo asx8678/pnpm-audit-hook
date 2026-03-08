@@ -1,9 +1,10 @@
 {
-  "name": "qooxdoo",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "qooxdoo",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-pchf-755w-jj6v",
+      "packageName": "qooxdoo",
       "title": "QooxDoo XSS in Callback Parameter",
       "description": "Cross-site scripting (XSS) vulnerability in `framework/source/resource/qx/test/jsonp_primitive.php` in QooxDoo 1.3 and possibly other versions, as used in eyeOS 2.2 and 2.3, and possibly other products allows remote attackers to inject arbitrary web script or HTML via the callback parameter.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2011-1714"
         }
       ],
-      "affectedRange": "<= 1.3"
+      "affectedVersions": [
+        {
+          "range": "<= 1.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

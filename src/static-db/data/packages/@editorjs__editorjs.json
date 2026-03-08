@@ -1,9 +1,10 @@
 {
-  "name": "@editorjs/editorjs",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@editorjs/editorjs",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6mvj-2569-3mcm",
+      "packageName": "@editorjs/editorjs",
       "title": "Editor.js vulnerable to Code Injection",
       "description": "Editor.js is a block-style editor with clean JSON output. Versions prior to 2.26.0 are vulnerable to Code Injection via pasted input. The processHTML method passes pasted input into wrapper’s innerHTML. This issue is patched in version 2.26.0.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-23474"
         }
       ],
-      "affectedRange": "< 2.26.0",
-      "fixedVersion": "2.26.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.26.0",
+          "fixed": "2.26.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

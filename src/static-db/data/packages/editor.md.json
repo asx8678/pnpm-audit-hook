@@ -1,9 +1,10 @@
 {
-  "name": "editor.md",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "editor.md",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-847g-34c5-vvm8",
+      "packageName": "editor.md",
       "title": "editor.md vulnerable to Cross-site Scripting",
       "description": "Cross Site Scripting (XSS) vulnerability in pandao editor.md thru 1.5.0 allows attackers to inject arbitrary web script or HTML via crafted markdown text.",
       "severity": "medium",
@@ -20,10 +21,16 @@
           "value": "CVE-2023-29641"
         }
       ],
-      "affectedRange": "<= 1.5.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.5.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-w974-rq9x-mh3v",
+      "packageName": "editor.md",
       "title": "Pandao Editor.md vulnerable to cross-site scripting (XSS) in iframe src parameter",
       "description": "Cross-site Scripting vulnerability found in Pandao Editor.md v.1.5.0 allows a remote attacker to execute arbitrary code via a crafted script in the `<iframe> src` parameter.",
       "severity": "medium",
@@ -40,10 +47,16 @@
           "value": "CVE-2020-19697"
         }
       ],
-      "affectedRange": "<= 1.5.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.5.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5p84-mmh9-pxgr",
+      "packageName": "editor.md",
       "title": "Pandao Editor.md vulnerable to cross-site scripting (XSS) in editor parameter",
       "description": "Cross-site Scripting vulnerability found in Pandao Editor.md v.1.5.0 allows a remote attacker to execute arbitrary code via a crafted script to the `editor` parameter.",
       "severity": "medium",
@@ -60,7 +73,12 @@
           "value": "CVE-2020-19698"
         }
       ],
-      "affectedRange": "<= 1.5.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.5.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

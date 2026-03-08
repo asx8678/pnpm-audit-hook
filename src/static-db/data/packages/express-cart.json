@@ -1,9 +1,10 @@
 {
-  "name": "express-cart",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "express-cart",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hr89-w7p6-pjmq",
+      "packageName": "express-cart",
       "title": "express-cart allows any user to create an admin user",
       "description": "Express-Cart before 1.1.6 allows remote attackers to create an admin user via an `/admin/setup` Referer header.",
       "severity": "high",
@@ -20,10 +21,16 @@
           "value": "CVE-2018-12457"
         }
       ],
-      "affectedRange": "< 1.1.6"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4w62-cq5r-5mmq",
+      "packageName": "express-cart",
       "title": "express-cart unrestricted file upload vulnerability",
       "description": "Unrestricted file upload (RCE) in express-cart module before 1.1.7 allows a privileged user to gain access in the hosting machine.",
       "severity": "high",
@@ -40,11 +47,17 @@
           "value": "CVE-2018-3758"
         }
       ],
-      "affectedRange": "< 1.1.7",
-      "fixedVersion": "1.1.7"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.7",
+          "fixed": "1.1.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-h5q8-5697-9p9h",
+      "packageName": "express-cart",
       "title": "Cross-Site Request Forgery in express-cart",
       "description": "The express-cart package through 1.1.10 for Node.js allows CSRF.",
       "severity": "high",
@@ -61,8 +74,36 @@
           "value": "CVE-2020-22403"
         }
       ],
-      "affectedRange": "< 1.1.17",
-      "fixedVersion": "1.1.17"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.17",
+          "fixed": "1.1.17"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3fc5-9x9m-vqc4",
+      "packageName": "express-cart",
+      "title": "Duplicate Advisory: Privilege Escalation in express-cart",
+      "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-hr89-w7p6-pjmq. This link is maintained to preserve external references.\n\n## Original Description\nVersions of `express-cart` before 1.1.6 are vulnerable to privilege escalation. This vulnerability can be exploited so that normal users can escalate their privilege and add new administrator users.\n\n\n## Recommendation\n\nUpdate to version 1.1.6 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3fc5-9x9m-vqc4",
+      "publishedAt": "2019-06-03T17:31:32Z",
+      "modifiedAt": "2026-02-03T19:36:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3fc5-9x9m-vqc4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.6",
+          "fixed": "1.1.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

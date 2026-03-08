@@ -1,9 +1,10 @@
 {
-  "name": "servey",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "servey",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-v3px-6cc8-f8j3",
+      "packageName": "servey",
       "title": "Path traversal in servey",
       "description": "A path traversal vulnerability in servey versions prior to 3.3.2 allows an attacker to read content of any arbitrary file.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-8214"
         }
       ],
-      "affectedRange": "< 3.3.2",
-      "fixedVersion": "3.3.2"
+      "affectedVersions": [
+        {
+          "range": "< 3.3.2",
+          "fixed": "3.3.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

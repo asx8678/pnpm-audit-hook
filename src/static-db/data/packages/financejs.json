@@ -1,9 +1,10 @@
 {
-  "name": "financejs",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "financejs",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-f8r4-mf27-rf7m",
+      "packageName": "financejs",
       "title": "Finance.js vulnerable to DoS via the IRR function’s depth parameter",
       "description": "Finance.js v4.1.0 contains a Denial of Service (DoS) vulnerability via the IRR function’s depth parameter. Improper handling of the recursion/iteration limit can lead to excessive CPU usage, causing application stalls or crashes.",
       "severity": "high",
@@ -20,10 +21,16 @@
           "value": "CVE-2025-56571"
         }
       ],
-      "affectedRange": "<= 4.1.0"
+      "affectedVersions": [
+        {
+          "range": "<= 4.1.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5q7q-p8pc-782h",
+      "packageName": "financejs",
       "title": "Finance.js vulnerable to DoS via the seekZero() parameter",
       "description": "An issue in finance.js v.4.1.0 allows a remote attacker to cause a denial of service via the seekZero() parameter.",
       "severity": "high",
@@ -40,7 +47,12 @@
           "value": "CVE-2025-56572"
         }
       ],
-      "affectedRange": "<= 4.1.0"
+      "affectedVersions": [
+        {
+          "range": "<= 4.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

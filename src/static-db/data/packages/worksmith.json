@@ -1,9 +1,10 @@
 {
-  "name": "worksmith",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "worksmith",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9829-jj5p-j6hf",
+      "packageName": "worksmith",
       "title": "Prototype Pollution in worksmith",
       "description": "All versions up to and including 1.0.0 of the package worksmith are vulnerable to Prototype Pollution via the setValue function.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7725"
         }
       ],
-      "affectedRange": "<= 1.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

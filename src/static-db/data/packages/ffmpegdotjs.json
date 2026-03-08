@@ -1,9 +1,10 @@
 {
-  "name": "ffmpegdotjs",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "ffmpegdotjs",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-f39r-cpmj-whcg",
+      "packageName": "ffmpegdotjs",
       "title": "Command Injection in ffmpegdotjs",
       "description": "This affects all versions of package ffmpegdotjs. If attacker-controlled user input is given to the trimvideo function, it is possible for an attacker to execute arbitrary commands. This is due to use of the child_process exec function without input sanitization.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23376"
         }
       ],
-      "affectedRange": "<= 0.0.4"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

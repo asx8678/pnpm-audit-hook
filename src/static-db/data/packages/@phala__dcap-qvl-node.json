@@ -1,9 +1,10 @@
 {
-  "name": "@phala/dcap-qvl-node",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@phala/dcap-qvl-node",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-796p-j2gh-9m2q",
+      "packageName": "@phala/dcap-qvl-node",
       "title": "dcap-qvl has Missing Verification for QE Identity",
       "description": "## Impact\nThis vulnerability involves a critical gap in the cryptographic verification process within the dcap-qvl.\n\nThe library fetches QE Identity collateral (including qe_identity, qe_identity_signature, and qe_identity_issuer_chain) from the PCCS. However, it skips to verify the QE Identity signature against its certificate chain and does not enforce policy constraints on the QE Report.\n\n## Consequences\nAn attacker can forge the QE Identity data to whitelist a malicious or non-Intel Quoting ",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2026-22696"
         }
       ],
-      "affectedRange": "<= 0.3.3"
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

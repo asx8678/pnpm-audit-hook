@@ -1,9 +1,10 @@
 {
-  "name": "jplayer",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "jplayer",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3jcq-cwr7-6332",
+      "packageName": "jplayer",
       "title": "jplayer Cross Site Scripting vulnerability",
       "description": "Multiple cross-site scripting (XSS) vulnerabilities in actionscript/Jplayer.as in the Flash SWF component (jplayer.swf) in jPlayer before 2.3.0 allow remote attackers to inject arbitrary web script or HTML via the (1) jQuery or (2) id parameters, a different vulnerability than CVE-2013-1942 and CVE-2013-2023, as demonstrated by using the alert function in the jQuery parameter.  NOTE: these are the same parameters as CVE-2013-1942, but the fix for CVE-2013-1942 uses a blacklist for the jQuery par",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2013-2022"
         }
       ],
-      "affectedRange": "< 2.3.0",
-      "fixedVersion": "2.3.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.3.0",
+          "fixed": "2.3.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

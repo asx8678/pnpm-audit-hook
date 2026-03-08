@@ -1,9 +1,10 @@
 {
-  "name": "@vitest/browser",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@vitest/browser",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8gvc-j273-4wm5",
+      "packageName": "@vitest/browser",
       "title": "Vitest browser mode serves arbitrary files",
       "description": "### Summary\n`__screenshot-error` handler on the browser mode HTTP server that responds any file on the file system. Especially if the server is exposed on the network by [`browser.api.host: true`](https://vitest.dev/guide/browser/config.html#browser-api), an attacker can send a request to that handler from remote to get the content of arbitrary files.\n\n### Details\nThis `__screenshot-error` handler on the browser mode HTTP server responds any file on the file system.\nhttps://github.com/vitest-dev",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-24963"
         }
       ],
-      "affectedRange": ">= 3.0.0, < 3.0.4",
-      "fixedVersion": "3.0.4"
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 3.0.4",
+          "fixed": "3.0.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

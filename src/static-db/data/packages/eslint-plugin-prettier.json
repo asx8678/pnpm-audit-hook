@@ -1,9 +1,10 @@
 {
-  "name": "eslint-plugin-prettier",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "eslint-plugin-prettier",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-f29h-pxvx-f335",
+      "packageName": "eslint-plugin-prettier",
       "title": "eslint-config-prettier, eslint-plugin-prettier, synckit, @pkgr/core, napi-postinstall have embedded malicious code",
       "description": "eslint-config-prettier 8.10.1, 9.1.1, 10.1.6, and 10.1.7 has embedded malicious code for a supply chain compromise. Installing an affected package executes an install.js file that launches the node-gyp.dll malware on Windows.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-54313"
         }
       ],
-      "affectedRange": ">= 4.2.2, <= 4.2.3",
-      "fixedVersion": "4.2.4"
+      "affectedVersions": [
+        {
+          "range": ">= 4.2.2, <= 4.2.3",
+          "fixed": "4.2.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

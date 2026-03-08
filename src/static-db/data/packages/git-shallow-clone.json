@@ -1,9 +1,10 @@
 {
-  "name": "git-shallow-clone",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "git-shallow-clone",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-qwrq-vxvw-537r",
+      "packageName": "git-shallow-clone",
       "title": "git-shallow-clone Argument Injection vulnerability",
       "description": "All versions of the package git-shallow-clone are vulnerable to Argument injection due to missing sanitization or mitigation flags in the process variable of the gitShallowClone function.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-21531"
         }
       ],
-      "affectedRange": "<= 0.0.2"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

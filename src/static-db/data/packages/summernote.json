@@ -1,9 +1,10 @@
 {
-  "name": "summernote",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "summernote",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-cc55-mvqc-g9mg",
+      "packageName": "summernote",
       "title": "SummerNote Cross Site Scripting Vulnerability",
       "description": "SummerNote 0.8.18 is vulnerable to Cross Site Scripting (XSS) via the Code View Function.",
       "severity": "medium",
@@ -20,10 +21,16 @@
           "value": "CVE-2024-37629"
         }
       ],
-      "affectedRange": "<= 0.8.20"
+      "affectedVersions": [
+        {
+          "range": "<= 0.8.20"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4wh3-3wf2-39m9",
+      "packageName": "summernote",
       "title": "Summernote vulnerable to cross-site scripting",
       "description": "Cross Site Scripting vulnerability in Summernote v.0.8.18 and before allows a remote attacker to execute arbtirary code via a crafted payload to the `codeview` parameter.",
       "severity": "medium",
@@ -40,7 +47,12 @@
           "value": "CVE-2024-29504"
         }
       ],
-      "affectedRange": "<= 0.8.18"
+      "affectedVersions": [
+        {
+          "range": "<= 0.8.18"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

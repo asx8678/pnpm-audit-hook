@@ -1,9 +1,10 @@
 {
-  "name": "canvas",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "canvas",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-73rg-x683-m3qw",
+      "packageName": "canvas",
       "title": "Buffer overflow  in canvas",
       "description": "A buffer overflow is present in canvas versions before 1.6.11, which could lead to a Denial of Service or execution of arbitrary code when it processes a user-provided image.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-8215"
         }
       ],
-      "affectedRange": "< 1.6.11",
-      "fixedVersion": "1.6.11"
+      "affectedVersions": [
+        {
+          "range": "< 1.6.11",
+          "fixed": "1.6.11"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

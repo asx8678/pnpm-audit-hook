@@ -1,9 +1,10 @@
 {
-  "name": "fun-map",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "fun-map",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-p33m-7w7f-gmj8",
+      "packageName": "fun-map",
       "title": "Uncontrolled Resource Consumption in fun-map",
       "description": "fun-map through 3.3.1 is vulnerable to Prototype Pollution. The function assocInM could be tricked into adding or modifying properties of 'Object.prototype' using a '__proto__' payload.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7644"
         }
       ],
-      "affectedRange": "<= 3.3.1"
+      "affectedVersions": [
+        {
+          "range": "<= 3.3.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

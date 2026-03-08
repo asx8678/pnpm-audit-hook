@@ -1,9 +1,10 @@
 {
-  "name": "@remix-run/router",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@remix-run/router",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-2w69-qvjg-hvjx",
+      "packageName": "@remix-run/router",
       "title": "React Router vulnerable to XSS via Open Redirects",
       "description": "React Router (and Remix v1/v2) SPA open navigation redirects originating from loaders or actions in [Framework Mode](https://reactrouter.com/start/modes#framework), [Data Mode](https://reactrouter.com/start/modes#data), or the unstable RSC modes can result in unsafe URLs causing unintended javascript execution on the client. This is only an issue if developers are creating redirect paths from untrusted content or via an open redirect.\n\n> [!NOTE]\n> This does not impact applications that use [Decl",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2026-22029"
         }
       ],
-      "affectedRange": "<= 1.23.1",
-      "fixedVersion": "1.23.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.23.1",
+          "fixed": "1.23.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

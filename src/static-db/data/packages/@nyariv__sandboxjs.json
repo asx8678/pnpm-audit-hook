@@ -1,9 +1,10 @@
 {
-  "name": "@nyariv/sandboxjs",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@nyariv/sandboxjs",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wxhw-j4hc-fmq6",
+      "packageName": "@nyariv/sandboxjs",
       "title": "SandboxJS has Sandbox Escape via Unprotected AsyncFunction Constructor",
       "description": "### Summary\nA sandbox escape vulnerability due to `AsyncFunction` not being isolated in `SandboxFunction`\n\n### Details\n\nThe library attempts to sandbox code execution by replacing the global `Function` constructor with a safe, sandboxed version (`SandboxFunction`). This is handled in `utils.ts` by mapping `Function` to `sandboxFunction` within a map used for lookups.\n\nHowever, the library did not include mappings for `AsyncFunction`, `GeneratorFunction`, and `AsyncGeneratorFunction`. These const",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2026-23830"
         }
       ],
-      "affectedRange": "< 0.8.26",
-      "fixedVersion": "0.8.26"
+      "affectedVersions": [
+        {
+          "range": "< 0.8.26",
+          "fixed": "0.8.26"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9qm3-6qrr-c76m",
+      "packageName": "@nyariv/sandboxjs",
       "title": "@nyariv/sandboxjs has Prototype Pollution vulnerability that may lead to RCE",
       "description": "A prototype pollution vulnerability exists in @nyariv/sandboxjs versions <= 0.8.23, allowing attackers to inject arbitrary properties into Object.prototype via crafted JavaScript code. This can result in a denial-of-service (DoS) condition or, under certain conditions, escape the sandboxed environment intended to restrict code execution. The vulnerability stems from insufficient prototype access checks in the sandbox’s executor logic, particularly in the handling of JavaScript function objects r",
       "severity": "high",
@@ -41,8 +48,175 @@
           "value": "CVE-2025-34146"
         }
       ],
-      "affectedRange": "< 0.8.24",
-      "fixedVersion": "0.8.24"
+      "affectedVersions": [
+        {
+          "range": "< 0.8.24",
+          "fixed": "0.8.24"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9p4w-fq8m-2hp7",
+      "packageName": "@nyariv/sandboxjs",
+      "title": "SandboxJS Vulnerable to Prototype Pollution -> Sandbox Escape -> RCE",
+      "description": "### Summary\n\nSandboxJS does not properly restrict `__lookupGetter__` which can be used to obtain prototypes, which can be used for escaping the sandbox / remote code execution.\n\n### Details\n\nhttps://github.com/nyariv/SandboxJS/blob/f212a38fb5a6d4bc2bc2e2466c0c011ce8d41072/src/executor.ts#L368-L398\n\nThe Object prototype which contains `__lookupGetter__` is properly protected, but the special case for accessing function properties bypasses the prototype chain checks including the root Object proto",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9p4w-fq8m-2hp7",
+      "publishedAt": "2026-02-02T20:17:39Z",
+      "modifiedAt": "2026-02-18T23:42:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9p4w-fq8m-2hp7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25142"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.8.26",
+          "fixed": "0.8.27"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-ww7g-4gwx-m7wj",
+      "packageName": "@nyariv/sandboxjs",
+      "title": "@nyariv/sandboxjs has host prototype pollution from sandbox via array intermediary (sandbox escape)",
+      "description": "### Summary\nA sandbox escape vulnerability allows sandboxed code to mutate host built-in prototypes by laundering the `isGlobal` protection flag through array literal intermediaries. When a global prototype reference (e.g., `Map.prototype`, `Set.prototype`) is placed into an array and retrieved, the `isGlobal` taint is stripped, permitting direct prototype mutation from within the sandbox. This results in persistent host-side prototype pollution and may enable RCE in applications that use pollut",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-ww7g-4gwx-m7wj",
+      "publishedAt": "2026-02-10T00:24:53Z",
+      "modifiedAt": "2026-02-10T02:56:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ww7g-4gwx-m7wj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25881"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.8.30",
+          "fixed": "0.8.31"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7x3h-rm86-3342",
+      "packageName": "@nyariv/sandboxjs",
+      "title": "@nyariv/sandboxjs vulnerable to sandbox escape via TOCTOU bug on keys in property accesses",
+      "description": "### Summary\nA sandbox escape vulnerabilities due to a mismatch between the key on which the validation is performed and the key used for accessing properties.\n\n### Details\nEven though the key used in property accesses (```b``` in the code below) is annotated as ```string```, this is never enforced:\nhttps://github.com/nyariv/SandboxJS/blob/6103d7147c4666fe48cfda58a4d5f37005b43754/src/executor.ts#L304-L304\nSo, attackers can pass malicious objects that coerce to different string values when used, e",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7x3h-rm86-3342",
+      "publishedAt": "2026-02-05T21:33:04Z",
+      "modifiedAt": "2026-02-06T21:42:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7x3h-rm86-3342"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25641"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.8.28",
+          "fixed": "0.8.29"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-66h4-qj4x-38xp",
+      "packageName": "@nyariv/sandboxjs",
+      "title": "@nyariv/sandboxjs has a Sandbox Escape vulnerability",
+      "description": "### Summary\n\nAs `Map` is in `SAFE_PROTOYPES`, it's prototype can be obtained via `Map.prototype`. By overwriting `Map.prototype.has` the sandbox can be escaped.\n\n### Details\n\nThis is effectively equivalent to CVE-2026-25142, but without `__lookupGetter__`  (`let` was used during testing), it turns out the `let` implementation is bugged:\n\n```js\nlet a = Map.prototype;\nconsole.log(a) // undefined\n```\n\n```js\nconst a = Map.prototype;\nconsole.log(a) // Object [Map] {}\n```\n\n```js\nlet a = 123;\nconsole.l",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-66h4-qj4x-38xp",
+      "publishedAt": "2026-02-05T21:05:59Z",
+      "modifiedAt": "2026-02-06T21:42:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-66h4-qj4x-38xp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25587"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.8.28",
+          "fixed": "0.8.29"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jjpw-65fv-8g48",
+      "packageName": "@nyariv/sandboxjs",
+      "title": "@nyariv/sandboxjs has Sandbox Escape via Prototype Whitelist Bypass and Host Prototype Pollution",
+      "description": "## Summary\nA sandbox escape is possible by shadowing `hasOwnProperty` on a sandbox object, which disables prototype whitelist enforcement in the property-access path. This permits direct access to `__proto__` and other blocked prototype properties, enabling **host `Object.prototype` pollution** and persistent cross-sandbox impact.\n\nThe issue was reproducible on Node `v23.9.0` using the project’s current build output. The bypass works with default `Sandbox` configuration and does not require cust",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-jjpw-65fv-8g48",
+      "publishedAt": "2026-02-05T21:04:58Z",
+      "modifiedAt": "2026-02-06T21:42:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jjpw-65fv-8g48"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25586"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.8.28",
+          "fixed": "0.8.29"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-58jh-xv4v-pcx4",
+      "packageName": "@nyariv/sandboxjs",
+      "title": "@nyariv/sandboxjs has a Sandbox Escape issue",
+      "description": "### Summary\n\nThe return values of functions aren't wrapped. `Object.values`/`Object.entries` can be used to get an Array containing the host's `Function` constructor, by using `Array.prototype.at` you can obtain the hosts `Function` constructor, which can be used to execute arbitrary code outside of the sandbox.\n\n### Details\n\nThe return values of functions aren't wrapped, chaining function calls allows bypassing most validation/sanitization. \n\n### PoC\n\n```js\nconst s = require('@nyariv/sandboxjs'",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-58jh-xv4v-pcx4",
+      "publishedAt": "2026-02-05T20:41:28Z",
+      "modifiedAt": "2026-02-06T21:42:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-58jh-xv4v-pcx4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25520"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.8.28",
+          "fixed": "0.8.29"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

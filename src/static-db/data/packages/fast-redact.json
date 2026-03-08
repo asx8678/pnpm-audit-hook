@@ -1,9 +1,10 @@
 {
-  "name": "fast-redact",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "fast-redact",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-ffrw-9mx8-89p8",
+      "packageName": "fast-redact",
       "title": "Withdrawn Advisory: fast-redact vulnerable to prototype pollution",
       "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because the issue uses an internal undocumented utility function. This link is maintained to preserve external references.\n\n## Original Description\n\nfast-redact is a package that provides do very fast object redaction. A Prototype Pollution vulnerability in the nestedRestore function of fast-redact version 3.5.0 and before allows attackers to inject properties on Object.prototype via supplying a crafted payload, causing denial of service (Do",
       "severity": "low",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-57319"
         }
       ],
-      "affectedRange": "<= 3.5.0"
+      "affectedVersions": [
+        {
+          "range": "<= 3.5.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

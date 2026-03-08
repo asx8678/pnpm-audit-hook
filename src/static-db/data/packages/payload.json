@@ -1,9 +1,10 @@
 {
-  "name": "payload",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "payload",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-26rv-h2hf-3fw4",
+      "packageName": "payload",
       "title": "Payload's SQLite adapter Session Fixation vulnerability",
       "description": "A Session Fixation vulnerability existed in Payload's SQLite adapter due to identifier reuse during account creation. A malicious attacker could create a new account, save its JSON Web Token (JWT), and then delete the account, which did not invalidate the JWT. As a result, the next newly created user would receive the same identifier, allowing the attacker to reuse the JWT to authenticate and perform actions as that user.\n\nThis issue has been fixed in version 3.44.0 of Payload.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-4644"
         }
       ],
-      "affectedRange": "< 3.44.0",
-      "fixedVersion": "3.44.0"
+      "affectedVersions": [
+        {
+          "range": "< 3.44.0",
+          "fixed": "3.44.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5v66-m237-hwf7",
+      "packageName": "payload",
       "title": "Payload does not invalidate JWTs after log out",
       "description": "Payload uses JSON Web Tokens (JWT) for authentication. After log out JWT is not invalidated, which allows an attacker who has stolen or intercepted token to freely reuse it until expiration date (which is by default set to 2 hours, but can be changed). \n\nThis issue has been fixed in version 3.44.0 of Payload.",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2025-4643"
         }
       ],
-      "affectedRange": "< 3.44.0",
-      "fixedVersion": "3.44.0"
+      "affectedVersions": [
+        {
+          "range": "< 3.44.0",
+          "fixed": "3.44.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-35jj-vqcf-f2jf",
+      "packageName": "payload",
       "title": "Hidden fields can be leaked on readable collections in Payload",
       "description": "### Details\n\nIf a user has access to documents that contain hidden fields or fields they do not have access to, the user could reverse-engineer those values via brute force.\n\nAffected versions:  < 1.7.0\n\n### Workarounds\n\nIf you are unable to update, you can write a `beforeOperation` hook to remove `where` queries that attempt to access hidden field data.\n\n### Detecting Compromise\n\nMonitor your instance for brute-force style requests against your instance using `where` queries.\n",
       "severity": "high",
@@ -62,11 +75,17 @@
           "value": "CVE-2023-30843"
         }
       ],
-      "affectedRange": "< 1.7.0",
-      "fixedVersion": "1.7.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.7.0",
+          "fixed": "1.7.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-w8xh-93qh-35vw",
+      "packageName": "payload",
       "title": "Unrestricted Upload of File with Dangerous Type in Payload",
       "description": "An arbitrary file upload vulnerability in the file upload module of PayloadCMS v0.15.0 allows attackers to execute arbitrary code via a crafted SVG file.",
       "severity": "critical",
@@ -83,8 +102,67 @@
           "value": "CVE-2022-27952"
         }
       ],
-      "affectedRange": "<= 0.15.0",
-      "fixedVersion": "0.15.1"
+      "affectedVersions": [
+        {
+          "range": "<= 0.15.0",
+          "fixed": "0.15.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hhfx-5x8j-f5f6",
+      "packageName": "payload",
+      "title": "Payload: Server-Side Request Forgery (SSRF) in External File URL Uploads",
+      "description": "### Impact\n\nA Server-Side Request Forgery (SSRF) vulnerability exists in Payload's external file upload functionality. When processing external URLs for file uploads, insufficient validation of HTTP redirects could allow an authenticated attacker to access internal network resources.\n\n**Users are affected if ALL of these are true**:\n\n- Payload version < v3.75.0\n- At least one collection with `upload` enabled\n- A user has `create` access to that upload-enabled collection\n\nAn authenticated user wi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hhfx-5x8j-f5f6",
+      "publishedAt": "2026-02-24T20:10:32Z",
+      "modifiedAt": "2026-02-24T20:10:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hhfx-5x8j-f5f6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27567"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.75.0",
+          "fixed": "3.75.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jq29-r496-r955",
+      "packageName": "payload",
+      "title": "payload-preferences has Cross-Collection IDOR in Access Control (Multi-Auth Environments)",
+      "description": "### Impact\n\nA cross-collection Insecure Direct Object Reference (IDOR) vulnerability exists in the `payload-preferences` internal collection. In multi-auth collection environments using Postgres or SQLite with default serial/auto-increment IDs, authenticated users from one auth collection can read and delete preferences belonging to users in different auth collections when their numeric IDs collide.\n\n**Users are affected if ALL of these are true:**\n\n- Multiple auth collections configured (e.g., ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jq29-r496-r955",
+      "publishedAt": "2026-02-05T21:02:20Z",
+      "modifiedAt": "2026-02-07T00:31:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jq29-r496-r955"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25574"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.74.0",
+          "fixed": "3.74.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

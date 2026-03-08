@@ -1,9 +1,10 @@
 {
-  "name": "locutus",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "locutus",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-h86x-mv66-gr5q",
+      "packageName": "locutus",
       "title": "OS Command Injection in Locutus",
       "description": "php/exec/escapeshellarg in Locutus PHP through 2.0.11 allows an attacker to achieve code execution.",
       "severity": "critical",
@@ -20,10 +21,16 @@
           "value": "CVE-2020-13619"
         }
       ],
-      "affectedRange": "<= 2.0.11"
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.11"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-39q4-p535-c852",
+      "packageName": "locutus",
       "title": "Uncontrolled Resource Consumption in locutus",
       "description": "The package locutus before 2.0.15 is vulnerable to Regular Expression Denial of Service (ReDoS) via the gopher_parsedir function.",
       "severity": "high",
@@ -40,11 +47,17 @@
           "value": "CVE-2021-23392"
         }
       ],
-      "affectedRange": "< 2.0.15",
-      "fixedVersion": "2.0.15"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.15",
+          "fixed": "2.0.15"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-f98m-q3hr-p5wq",
+      "packageName": "locutus",
       "title": "Prototype Pollution in locutus",
       "description": "All versions of package locutus prior to version 2.0.12 are vulnerable to Prototype Pollution via the php.strings.parse_str function.",
       "severity": "critical",
@@ -61,8 +74,67 @@
           "value": "CVE-2020-7719"
         }
       ],
-      "affectedRange": "< 2.0.12",
-      "fixedVersion": "2.0.12"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.12",
+          "fixed": "2.0.12"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fp25-p6mj-qqg6",
+      "packageName": "locutus",
+      "title": "locutus call_user_func_array vulnerable to Remote Code Execution (RCE) due to Code Injection",
+      "description": "### Details\n\nA Remote Code Execution (RCE) flaw was discovered in the `locutus` project (v2.0.39), specifically within the `call_user_func_array` function implementation. The vulnerability allows an attacker to inject arbitrary JavaScript code into the application's runtime environment. This issue stems from an insecure implementation of the `call_user_func_array` function (and its wrapper `call_user_func`), which fails to properly validate all components of a callback array before passing them ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fp25-p6mj-qqg6",
+      "publishedAt": "2026-03-04T20:19:55Z",
+      "modifiedAt": "2026-03-06T22:44:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fp25-p6mj-qqg6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29091"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.39",
+          "fixed": "3.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rxrv-835q-v5mh",
+      "packageName": "locutus",
+      "title": "locutus is vulnerable to Prototype Pollution",
+      "description": "### Summary\nA Prototype Pollution vulnerability exists in the the npm package locutus (>2.0.12). Despite a previous fix that attempted to mitigate Prototype Pollution by checking whether user input contained a forbidden key, it is still possible to pollute Object.prototype via a crafted input using String.prototype. This issue was fixed in version 2.0.39.\n\n### Details\nThe vulnerability resides in line 77 to 79 of https://github.com/locutusjs/locutus/blob/main/src/php/strings/parse_str.js where i",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-rxrv-835q-v5mh",
+      "publishedAt": "2026-02-02T22:21:54Z",
+      "modifiedAt": "2026-02-05T00:35:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rxrv-835q-v5mh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25521"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.12, < 2.0.39",
+          "fixed": "2.0.39"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

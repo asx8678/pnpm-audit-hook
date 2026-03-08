@@ -1,9 +1,10 @@
 {
-  "name": "handsontable",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "handsontable",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hf66-r44g-p7j9",
+      "packageName": "handsontable",
       "title": "Inefficient Regular Expression Complexity in handsontable",
       "description": "The package handsontable from 0 and before 10.0.0 are vulnerable to Regular Expression Denial of Service (ReDoS) in `Handsontable.helper.isNumeric` function.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23446"
         }
       ],
-      "affectedRange": "< 10.0.0",
-      "fixedVersion": "10.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 10.0.0",
+          "fixed": "10.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

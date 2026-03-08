@@ -1,9 +1,10 @@
 {
-  "name": "miniflare",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "miniflare",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-fwvg-2739-22v7",
+      "packageName": "miniflare",
       "title": "Miniflare vulnerable to Server-Side Request Forgery (SSRF)",
       "description": "### Impact\nSending specially crafted HTTP requests to Miniflare's server could result in arbitrary HTTP and WebSocket requests being sent from the server. If Miniflare was configured to listen on external network interfaces (as was the default in `wrangler` until `3.19.0`), an attacker on the local network could access other local servers.\n\n### Patches\nThe issue was fixed in `miniflare@3.20231030.2`.\n\n### Workarounds\nEnsure Miniflare is configured to listen on just local interfaces. This is the ",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-7078"
         }
       ],
-      "affectedRange": ">= 3.20230821.0, < 3.20231030.2",
-      "fixedVersion": "3.20231030.2"
+      "affectedVersions": [
+        {
+          "range": ">= 3.20230821.0, < 3.20231030.2",
+          "fixed": "3.20231030.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

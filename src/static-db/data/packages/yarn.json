@@ -1,9 +1,10 @@
 {
-  "name": "yarn",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "yarn",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mpwj-fcr6-x34c",
+      "packageName": "yarn",
       "title": "Yarn untrusted search path vulnerability",
       "description": "An untrusted search path vulnerability was found in Yarn. When a victim runs certain Yarn commands in a directory with attacker-controlled content, malicious commands could be executed in unexpected ways.",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2021-4435"
         }
       ],
-      "affectedRange": "< 1.22.13",
-      "fixedVersion": "1.22.13"
+      "affectedVersions": [
+        {
+          "range": "< 1.22.13",
+          "fixed": "1.22.13"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-hjxc-462x-x77j",
+      "packageName": "yarn",
       "title": "TOCTOU Race Condition in Yarn",
       "description": "The package integrity validation in yarn < 1.19.0 contains a TOCTOU vulnerability where the hash is computed before writing a package to cache. It's not computed again when reading from the cache. This may lead to a cache pollution attack. This issue is fixed in 1.19.0.",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2019-15608"
         }
       ],
-      "affectedRange": "< 1.19.0",
-      "fixedVersion": "1.19.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.19.0",
+          "fixed": "1.19.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-8mfc-v7wv-p62g",
+      "packageName": "yarn",
       "title": "Path Traversal in Yarn",
       "description": "Arbitrary filesystem write vulnerability in Yarn 1.21.1 and earlier allows attackers to write to any path on the filesystem and potentially lead to arbitrary code execution by forcing the user to install a malicious package.",
       "severity": "high",
@@ -62,8 +75,13 @@
           "value": "CVE-2020-8131"
         }
       ],
-      "affectedRange": "<= 1.21.1",
-      "fixedVersion": "1.22.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.21.1",
+          "fixed": "1.22.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

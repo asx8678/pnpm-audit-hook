@@ -1,9 +1,10 @@
 {
-  "name": "@asyncapi/modelina",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@asyncapi/modelina",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4jg2-84c2-pj95",
+      "packageName": "@asyncapi/modelina",
       "title": "Improper Control of Generation of Code ('Code Injection') in @asyncapi/modelina",
       "description": "### Impact\nAnyone who is using the default presets and/or does not handle the functionality themself.\n\n### Patches\nIt is impossible to fully guard against this, because users have access to the original raw information. However, as of version 1, if you only access the constrained models, you will not encounter this issue.\n\nFurther similar situations are NOT seen as a security issue, but intended behavior.\n\n### Workarounds\nFully custom presets that change the entire rendering process which can th",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-23619"
         }
       ],
-      "affectedRange": "< 1.0.0",
-      "fixedVersion": "1.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

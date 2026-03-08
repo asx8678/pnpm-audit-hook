@@ -1,9 +1,10 @@
 {
-  "name": "private-ip",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "private-ip",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9h3q-32c7-r533",
+      "packageName": "private-ip",
       "title": "private-ip vulnerable to Server-Side Request Forgery",
       "description": "All versions of the package private-ip are vulnerable to Server-Side Request Forgery (SSRF), where an attacker can provide an IP or hostname that resolves to a multicast IP address (224.0.0.0/4) which is not included as part of the private IP ranges in the package's source code.",
       "severity": "high",
@@ -20,10 +21,16 @@
           "value": "CVE-2025-8020"
         }
       ],
-      "affectedRange": "<= 3.0.2"
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-43ch-2h55-2vj7",
+      "packageName": "private-ip",
       "title": "Server-Side Request Forgery in private-ip",
       "description": "Insufficient RegEx in private-ip npm package v1.0.5 and below insufficiently filters reserved IP ranges resulting in indeterminate SSRF. An attacker can perform a large range of requests to ARIN reserved IP ranges, resulting in an indeterminable number of critical attack vectors, allowing remote attackers to request server-side resources or potentially execute arbitrary code through various SSRF techniques.",
       "severity": "critical",
@@ -40,8 +47,13 @@
           "value": "CVE-2020-28360"
         }
       ],
-      "affectedRange": "< 2.0.0",
-      "fixedVersion": "2.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

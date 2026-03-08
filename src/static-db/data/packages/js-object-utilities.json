@@ -1,9 +1,10 @@
 {
-  "name": "js-object-utilities",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "js-object-utilities",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hpqf-m68j-2pfx",
+      "packageName": "js-object-utilities",
       "title": "js-object-utilities Vulnerable to Prototype Pollution",
       "description": "**Vulnerability type:**\nPrototype Pollution\n\n**Affected Package:**\n* Product: js-object-utilities\n* Version: 2.2.0\n\n**Remedy:**\n\nUpdate package to version 2.2.1.\n\n**Vulnerability Location(s):**\n```js\nat module.exports (/node_modules/js-object-utilities/dist/set.js:16:29)\n```\n\n**Description:**\n\nThe latest version of `js-object-utilities (2.2.0)`, (previous versions are also affected), is vulnerable to Prototype Pollution through the entry function(s) `lib.set`. An attacker can supply a payload wi",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-28269"
         }
       ],
-      "affectedRange": "< 2.2.1",
-      "fixedVersion": "2.2.1"
+      "affectedVersions": [
+        {
+          "range": "< 2.2.1",
+          "fixed": "2.2.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

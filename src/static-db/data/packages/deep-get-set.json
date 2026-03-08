@@ -1,9 +1,10 @@
 {
-  "name": "deep-get-set",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "deep-get-set",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-85cp-p426-42f5",
+      "packageName": "deep-get-set",
       "title": "Prototype Pollution in deep-get-set",
       "description": "All versions of package deep-get-set prior to version 1.1.1 are vulnerable to Prototype Pollution via the main function.",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2020-7715"
         }
       ],
-      "affectedRange": "< 1.1.1",
-      "fixedVersion": "1.1.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.1",
+          "fixed": "1.1.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-mjjj-6p43-vhhv",
+      "packageName": "deep-get-set",
       "title": "Prototype Pollution in deep-get-set",
       "description": "All versions of package deep-get-set are vulnerable to Prototype Pollution via the 'deep' function. **Note:** This vulnerability derives from an incomplete fix of [CVE-2020-7715](https://security.snyk.io/vuln/SNYK-JS-DEEPGETSET-598666)",
       "severity": "high",
@@ -41,7 +48,12 @@
           "value": "CVE-2022-21231"
         }
       ],
-      "affectedRange": "<= 1.1.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

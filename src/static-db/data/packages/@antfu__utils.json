@@ -1,9 +1,10 @@
 {
-  "name": "@antfu/utils",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@antfu/utils",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-p2fh-2h23-6grg",
+      "packageName": "@antfu/utils",
       "title": "antfu/utils vulnerable to prototype pollution",
       "description": "Prototype Pollution in GitHub repository antfu/utils prior to 0.7.3.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-2972"
         }
       ],
-      "affectedRange": "< 0.7.3",
-      "fixedVersion": "0.7.3"
+      "affectedVersions": [
+        {
+          "range": "< 0.7.3",
+          "fixed": "0.7.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

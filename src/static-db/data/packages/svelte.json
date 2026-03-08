@@ -1,9 +1,10 @@
 {
-  "name": "svelte",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "svelte",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6738-r8g5-qwp3",
+      "packageName": "svelte",
       "title": "svelte vulnerable to Cross-site Scripting",
       "description": "## Summary\n\nAn XSS vulnerability exists in Svelte 5.46.0-2 resulting from improper escaping of `hydratable` keys. If these keys incorporate untrusted user input, arbitrary JavaScript can be injected into server-rendered HTML.\n\n## Details\n\nWhen using the [`hydratable`](https://svelte.dev/docs/svelte/hydratable) function, the first argument is used as a key to uniquely identify the data, such that the value is not regenerated in the browser.\n\nThis key is embedded into a `<script>` block in the ser",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-15265"
         }
       ],
-      "affectedRange": ">= 5.46.0, <= 5.46.3",
-      "fixedVersion": "5.46.4"
+      "affectedVersions": [
+        {
+          "range": ">= 5.46.0, <= 5.46.3",
+          "fixed": "5.46.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-gw32-9rmw-qwww",
+      "packageName": "svelte",
       "title": "svelte is vulnerable to XSS with textarea bind:value",
       "description": "### Summary\n\nA server-side rendered `<textarea>` with two-way bound value does not have its value correctly escaped in the rendered HTML.\n\n### Details\n\nIn SSR, `<textarea bind:value={...}>` does not have its value escaped when it is rendered into the HTML as `<textarea>...</textarea>`.\n\n### PoC\n\nPut this in a server-side-rendered Svelte component:\n\n```\n<script>\n  let value = `test'\"></textarea><script` + `>alert('BIM');</sc` + `ript>`;\n</script>\n\n<textarea bind:value />\n```\n\n### Impact\n\n- Only a",
       "severity": "high",
@@ -37,11 +44,17 @@
           "value": "GHSA-gw32-9rmw-qwww"
         }
       ],
-      "affectedRange": ">= 3.0.0, < 3.59.2",
-      "fixedVersion": "3.59.2"
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 3.59.2",
+          "fixed": "3.59.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-8266-84wp-wv5c",
+      "packageName": "svelte",
       "title": "Svelte has a potential mXSS vulnerability due to improper HTML escaping",
       "description": "### Summary\n\nA potential XSS vulnerability exists in Svelte for versions prior to 4.2.19.\n\n### Details\n\nSvelte improperly escapes HTML on server-side rendering. It converts strings according to the following rules:\n\n- If the string is an attribute value:\n    - `\"` -> `&quot;`\n    - `&` -> `&amp;`\n    - Other characters -> No conversion\n- Otherwise:\n    - `<` -> `&lt;`\n    - `&` -> `&amp;`\n    - Other characters -> No conversion\n\nThe assumption is that attributes will always stay as such, but in ",
       "severity": "medium",
@@ -58,11 +71,17 @@
           "value": "CVE-2024-45047"
         }
       ],
-      "affectedRange": "< 4.2.19",
-      "fixedVersion": "4.2.19"
+      "affectedVersions": [
+        {
+          "range": "< 4.2.19",
+          "fixed": "4.2.19"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-wv8q-r932-8hc7",
+      "packageName": "svelte",
       "title": "Svelte vulnerable to XSS when using objects during server-side rendering",
       "description": "The package svelte before 3.49.0 is vulnerable to Cross-site Scripting (XSS) due to improper input sanitization and to improper escape of attributes when using objects during SSR (Server-Side Rendering). Exploiting this vulnerability is possible via objects with a custom toString() function.",
       "severity": "medium",
@@ -79,8 +98,175 @@
           "value": "CVE-2022-25875"
         }
       ],
-      "affectedRange": "< 3.49.0",
-      "fixedVersion": "3.49.0"
+      "affectedVersions": [
+        {
+          "range": "< 3.49.0",
+          "fixed": "3.49.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qgvg-pr8v-6rr3",
+      "packageName": "svelte",
+      "title": "Svelte: XSS via HTML Comment Injection in SSR Error Boundary Hydration Markers",
+      "description": "Errors from `transformError` were not correctly escaped prior to being embedded in the HTML output, causing potential HTML injection and XSS if attacker-controlled content is returned from `transformError`.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qgvg-pr8v-6rr3",
+      "publishedAt": "2026-02-26T22:25:45Z",
+      "modifiedAt": "2026-02-26T22:25:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qgvg-pr8v-6rr3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27902"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.53.0, < 5.53.5",
+          "fixed": "5.53.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-phwv-c562-gvmh",
+      "packageName": "svelte",
+      "title": "Svelte vulnerable to XSS during SSR with contenteditable `bind:innerText` and `bind:textContent`",
+      "description": "The contents of `bind:innerText` and `bind:textContent` on `contenteditable` elements were not properly escaped. This could enable HTML injection and Cross-site Scripting (XSS) if rendering untrusted data as the binding's initial value on the server.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-phwv-c562-gvmh",
+      "publishedAt": "2026-02-26T22:24:54Z",
+      "modifiedAt": "2026-02-26T22:24:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-phwv-c562-gvmh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27901"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.53.4",
+          "fixed": "5.53.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-crpf-4hrx-3jrp",
+      "packageName": "svelte",
+      "title": "Svelte SSR attribute spreading includes inherited properties from prototype chain",
+      "description": "In server-side rendering, attribute spreading on elements (e.g. `<div {...attrs}>`) enumerates inherited properties from the object's prototype chain rather than only own properties. In environments where `Object.prototype` has already been polluted — a precondition outside of Svelte's control — this can cause unexpected attributes to appear in SSR output or cause SSR to throw errors. Client-side rendering is not affected.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-crpf-4hrx-3jrp",
+      "publishedAt": "2026-02-19T20:28:49Z",
+      "modifiedAt": "2026-02-23T22:23:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-crpf-4hrx-3jrp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27125"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.51.4",
+          "fixed": "5.51.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m56q-vw4c-c2cp",
+      "packageName": "svelte",
+      "title": "Svelte SSR does not validate dynamic element tag names in `<svelte:element>`",
+      "description": "When using `<svelte:element this={tag}>` in server-side rendering, the provided tag name is not validated or sanitized before being emitted into the HTML output. If the tag string contains unexpected characters, it can result in HTML injection in the SSR output. Client-side rendering is not affected.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m56q-vw4c-c2cp",
+      "publishedAt": "2026-02-19T15:18:42Z",
+      "modifiedAt": "2026-02-23T22:23:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m56q-vw4c-c2cp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27122"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.51.4",
+          "fixed": "5.51.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f7gr-6p89-r883",
+      "packageName": "svelte",
+      "title": "Svelte affected by cross-site scripting via spread attributes in Svelte SSR",
+      "description": "Versions of svelte prior to 5.51.5 are vulnerable to cross-site scripting (XSS) during server-side rendering. When using spread syntax to render attributes from untrusted data, event handler properties are included in the rendered HTML output. If an application spreads user-controlled or external data as element attributes, an attacker can inject malicious event handlers that execute in victims' browsers.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f7gr-6p89-r883",
+      "publishedAt": "2026-02-19T15:18:33Z",
+      "modifiedAt": "2026-02-23T22:23:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f7gr-6p89-r883"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27121"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.51.4",
+          "fixed": "5.51.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-h7h7-mm68-gmrc",
+      "packageName": "svelte",
+      "title": "Svelte affected by XSS in SSR `<option>` element",
+      "description": "In certain circumstances, the server-side rendering output of an `<option>` element does not properly escape its content, potentially allowing HTML injection in the SSR output. Client-side rendering is not affected.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h7h7-mm68-gmrc",
+      "publishedAt": "2026-02-19T15:18:19Z",
+      "modifiedAt": "2026-02-23T22:22:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h7h7-mm68-gmrc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27119"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.39.3, < 5.51.5",
+          "fixed": "5.51.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

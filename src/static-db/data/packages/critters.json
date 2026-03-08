@@ -1,9 +1,10 @@
 {
-  "name": "critters",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "critters",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-cx3j-qqxj-9597",
+      "packageName": "critters",
       "title": "Critters Cross-site Scripting Vulnerability",
       "description": "### Impact\nCritters version 0.0.17-0.0.19 have an issue when parsing the HTML which leads to a potential [cross-site scripting (XSS)](https://owasp.org/www-community/attacks/xss/) bug.\n\n### Patches\nThe bug has been fixed in `v0.0.20`.\n\n### Workarounds\nUpgrading Critters version to `>0.0.20` is the easiest fix. This is a non breaking version upgrade so we recommend all users to use `v0.0.20`.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-3481"
         }
       ],
-      "affectedRange": ">= 0.0.17, <= 0.0.19",
-      "fixedVersion": "0.0.20"
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.17, <= 0.0.19",
+          "fixed": "0.0.20"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "parse-path",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "parse-path",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3j8f-xvm3-ffx4",
+      "packageName": "parse-path",
       "title": "Authorization Bypass in parse-path",
       "description": "Authorization Bypass Through User-Controlled Key in GitHub repository ionicabizau/parse-path prior to 5.0.0.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-0624"
         }
       ],
-      "affectedRange": "< 5.0.0",
-      "fixedVersion": "5.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.0.0",
+          "fixed": "5.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

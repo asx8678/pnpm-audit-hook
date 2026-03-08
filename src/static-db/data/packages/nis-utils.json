@@ -1,9 +1,10 @@
 {
-  "name": "nis-utils",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "nis-utils",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gr58-j5wh-m333",
+      "packageName": "nis-utils",
       "title": "Prototype Pollution in nis-utils",
       "description": "All versions of package nis-utils up to and including 0.6.10 are vulnerable to Prototype Pollution via the setValue function.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7703"
         }
       ],
-      "affectedRange": "<= 0.6.10"
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.10"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "@lionello/secp256k1-js",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@lionello/secp256k1-js",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-q3f4-9h4p-vgr3",
+      "packageName": "@lionello/secp256k1-js",
       "title": "secp256k1-js implements ECDSA without required r and s validation, leading to signature forgery",
       "description": "The secp256k1-js package before 1.1.0 for Node.js implements ECDSA without required r and s validation, leading to signature forgery.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-41340"
         }
       ],
-      "affectedRange": "< 1.1.0",
-      "fixedVersion": "1.1.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

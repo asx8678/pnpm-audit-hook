@@ -1,9 +1,10 @@
 {
-  "name": "serverless",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "serverless",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rwc2-f344-q6w6",
+      "packageName": "serverless",
       "title": "serverless MCP Server vulnerable to Command Injection in list-projects tool",
       "description": "### Summary\n\nA command injection vulnerability exists in the Serverless Framework's built-in MCP server package (@serverless/mcp). This vulnerability only affects users of the experimental MCP server feature (serverless mcp), which represents less than 0.1% of Serverless Framework users. The core Serverless Framework CLI and deployment functionality are not affected.\n\nThe vulnerability is caused by the unsanitized use of input parameters within a call to `child_process.exec`, enabling an attacke",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-69256"
         }
       ],
-      "affectedRange": ">= 4.29.0, < 4.29.3",
-      "fixedVersion": "4.29.3"
+      "affectedVersions": [
+        {
+          "range": ">= 4.29.0, < 4.29.3",
+          "fixed": "4.29.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

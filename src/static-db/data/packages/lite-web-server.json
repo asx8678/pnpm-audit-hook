@@ -1,9 +1,10 @@
 {
-  "name": "lite-web-server",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "lite-web-server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8237-3q5g-99fv",
+      "packageName": "lite-web-server",
       "title": "Denial of Service vulnerability in lite-web-server",
       "description": "All versions of the package lite-web-server are vulnerable to Denial of Service (DoS) when an attacker sends an HTTP request and includes control characters that the decodeURI() function is unable to parse.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-26104"
         }
       ],
-      "affectedRange": "<= 1.2.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "http-proxy-agent",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "http-proxy-agent",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-86wf-436m-h424",
+      "packageName": "http-proxy-agent",
       "title": "Resource Exhaustion Denial of Service in http-proxy-agent ",
       "description": "A flaw was found in http-proxy-agent, prior to version 2.1.0. It was discovered http-proxy-agent passes an auth option to the Buffer constructor without proper sanitization. This could result in a Denial of Service through the usage of all available CPU resources and data exposure through an uninitialized memory leak in setups where an attacker could submit typed input to the auth parameter.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2019-10196"
         }
       ],
-      "affectedRange": "< 2.1.0",
-      "fixedVersion": "2.1.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.1.0",
+          "fixed": "2.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

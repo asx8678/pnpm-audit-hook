@@ -1,9 +1,10 @@
 {
-  "name": "@backstage/plugin-permission-backend",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@backstage/plugin-permission-backend",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-f8j4-p5cr-p777",
+      "packageName": "@backstage/plugin-permission-backend",
       "title": "Permission policy information leakage in Backstage permission system",
       "description": "### Impact\n\nA vulnerability in the Backstage permission plugin backend allows callers to extract some information about the conditional decisions returned by the permission policy installed in the permission backend. If the permission system is not in use or if the installed permission policy does not use conditional decisions, there is no impact.\n\n### Patches\n\nThis issue has been resolved in version `0.6.0` of the permissions backend.\n\n### Workarounds\n\nAdministrators of the permission policies ",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-32791"
         }
       ],
-      "affectedRange": "< 0.6.0",
-      "fixedVersion": "0.6.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.6.0",
+          "fixed": "0.6.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

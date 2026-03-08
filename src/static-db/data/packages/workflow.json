@@ -1,0 +1,29 @@
+{
+  "packageName": "workflow",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9r75-g2cr-3h76",
+      "packageName": "workflow",
+      "title": "Vercel Workflow Allows Webhook Creation with Predictable User-Specified Tokens",
+      "description": "`createWebhook()` in Vercel Workflow DevKit accepts a user-specified `token` parameter that serves as the credential for the public webhook endpoint `/.well-known/workflow/v1/webhook/{token}`. Official documentation recommended predictable token patterns, making it possible for an unauthenticated remote attacker to guess the token and inject arbitrary payloads into the workflow execution context.\n\n#### Impact\n\nAn attacker who guesses a webhook token can resume the associated workflow with an att",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9r75-g2cr-3h76",
+      "publishedAt": "2026-03-06T18:45:02Z",
+      "modifiedAt": "2026-03-06T18:45:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9r75-g2cr-3h76"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.1.0-beta.63",
+          "fixed": "4.2.0-beta.64"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

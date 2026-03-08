@@ -1,9 +1,10 @@
 {
-  "name": "@apphp/object-resolver",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@apphp/object-resolver",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-qj86-v6m7-4qv2",
+      "packageName": "@apphp/object-resolver",
       "title": "Object Resolver Prototype Pollution",
       "description": "apphp js-object-resolver < 3.1.1 is vulnerable to Prototype Pollution via Module.setNestedProperty.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-36577"
         }
       ],
-      "affectedRange": "< 3.1.1",
-      "fixedVersion": "3.1.1"
+      "affectedVersions": [
+        {
+          "range": "< 3.1.1",
+          "fixed": "3.1.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

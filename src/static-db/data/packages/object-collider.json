@@ -1,9 +1,10 @@
 {
-  "name": "object-collider",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "object-collider",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-85g2-29m8-qf2p",
+      "packageName": "object-collider",
       "title": "Prototype Pollution Vulnerability in object-collider",
       "description": "Prototype pollution vulnerability in 'object-collider' versions 1.0.0 through 1.0.3 allows attacker to cause a denial of service and may lead to remote code execution.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-25914"
         }
       ],
-      "affectedRange": ">= 1.0.0, < 1.0.4",
-      "fixedVersion": "1.0.4"
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0, < 1.0.4",
+          "fixed": "1.0.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

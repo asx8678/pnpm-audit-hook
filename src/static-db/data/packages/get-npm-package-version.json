@@ -1,9 +1,10 @@
 {
-  "name": "get-npm-package-version",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "get-npm-package-version",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4h66-vghf-xg5x",
+      "packageName": "get-npm-package-version",
       "title": "get-npm-package-version Command Injection vulnerability",
       "description": "The package get-npm-package-version before 1.0.7 is vulnerable to Command Injection via the `main` function in index.js.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-7795"
         }
       ],
-      "affectedRange": "< 1.0.7",
-      "fixedVersion": "1.0.7"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.7",
+          "fixed": "1.0.7"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

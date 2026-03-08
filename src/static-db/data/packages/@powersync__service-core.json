@@ -1,0 +1,29 @@
+{
+  "packageName": "@powersync/service-core",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q6wc-xx4m-92fj",
+      "packageName": "@powersync/service-core",
+      "title": "PowerSync: Some sync filters ignored on 1.20.0 using `config.edition: 3`",
+      "description": "### Impact\n\nIn version **1.20.0**, when using new sync streams with `config.edition: 3`, certain subquery filters were ignored when determining which data to sync to users.\n\nDepending on the sync stream configuration, this could result in authenticated users syncing data that should have been restricted.\n\nOnly queries that gate synchronization using subqueries without partitioning the result set are affected.\n\nNot affected:\n * Sync rules (bucket_definitions)\n * Sync streams using `config.edition",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q6wc-xx4m-92fj",
+      "publishedAt": "2026-03-07T02:23:24Z",
+      "modifiedAt": "2026-03-07T02:23:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q6wc-xx4m-92fj"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.20.0",
+          "fixed": "1.20.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

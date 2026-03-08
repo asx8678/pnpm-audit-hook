@@ -1,9 +1,10 @@
 {
-  "name": "chrono-node",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "chrono-node",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hpmr-g4pq-jhgp",
+      "packageName": "chrono-node",
       "title": "Denial of service in chrono-node",
       "description": "This affects the package chrono-node before 2.2.4. It hangs on a date-like string with lots of embedded spaces.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23371"
         }
       ],
-      "affectedRange": "< 2.2.4",
-      "fixedVersion": "2.2.4"
+      "affectedVersions": [
+        {
+          "range": "< 2.2.4",
+          "fixed": "2.2.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

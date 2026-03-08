@@ -1,9 +1,10 @@
 {
-  "name": "@modelcontextprotocol/sdk",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@modelcontextprotocol/sdk",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8r9q-7v3j-jr4g",
+      "packageName": "@modelcontextprotocol/sdk",
       "title": "Anthropic's MCP TypeScript SDK has a ReDoS vulnerability",
       "description": "### Impact\n\nA ReDoS vulnerability in the `UriTemplate` class allows attackers to cause denial of service. The `partToRegExp()` function generates a regex pattern with nested quantifiers (`([^/]+(?:,[^/]+)*)`) for exploded template variables (e.g., `{/id*}`, `{?tags*}`), causing catastrophic backtracking on malicious input.\n\n**Who is affected:** MCP servers that register resource templates with exploded array patterns and accept requests from untrusted clients.\n\n**Attack result:** An attacker sen",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2026-0621"
         }
       ],
-      "affectedRange": "< 1.25.2",
-      "fixedVersion": "1.25.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.25.2",
+          "fixed": "1.25.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-w48q-cv73-mx4w",
+      "packageName": "@modelcontextprotocol/sdk",
       "title": "Model Context Protocol (MCP) TypeScript SDK does not enable DNS rebinding protection by default",
       "description": "The Model Context Protocol (MCP) TypeScript SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication with `StreamableHTTPServerTransport` or `SSEServerTransport` and has not enabled `enableDnsRebindingProtection`, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access re",
       "severity": "high",
@@ -41,8 +48,40 @@
           "value": "CVE-2025-66414"
         }
       ],
-      "affectedRange": "< 1.24.0",
-      "fixedVersion": "1.24.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.24.0",
+          "fixed": "1.24.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-345p-7cg4-v4c7",
+      "packageName": "@modelcontextprotocol/sdk",
+      "title": "@modelcontextprotocol/sdk has cross-client data leak via shared server/transport instance reuse",
+      "description": "### Summary\n\nCross-client data leak via two distinct issues: (1) reusing a single `StreamableHTTPServerTransport` across multiple client requests, and (2) reusing a single `McpServer`/`Server` instance across multiple transports. Both are most common in stateless deployments.\n\n### Impact\n\nThis advisory covers two related but distinct vulnerabilities. A deployment may be affected by one or both.\n\n#### Issue 1: Transport re-use\n\n**What happens:** When a single `StreamableHTTPServerTransport` insta",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-345p-7cg4-v4c7",
+      "publishedAt": "2026-02-04T20:04:16Z",
+      "modifiedAt": "2026-02-09T14:52:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-345p-7cg4-v4c7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25536"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.10.0, <= 1.25.3",
+          "fixed": "1.26.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

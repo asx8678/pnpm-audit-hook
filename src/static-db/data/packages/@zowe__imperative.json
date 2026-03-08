@@ -1,9 +1,10 @@
 {
-  "name": "@zowe/imperative",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@zowe/imperative",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6q8m-42qq-64r7",
+      "packageName": "@zowe/imperative",
       "title": "Imperative CLI vulnerable to Command Injection",
       "description": "A vulnerability in Imperative framework which allows already-privileged local actors to execute arbitrary shell commands via plugin install/update commands, or maliciously formed environment variables. Impacts Zowe CLI.",
       "severity": "low",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-4326"
         }
       ],
-      "affectedRange": "< 4.18.10",
-      "fixedVersion": "4.18.10"
+      "affectedVersions": [
+        {
+          "range": "< 4.18.10",
+          "fixed": "4.18.10"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "@almela/obx",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@almela/obx",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jj58-488v-4rgf",
+      "packageName": "@almela/obx",
       "title": "obx Prototype Pollution",
       "description": "almela obx before v.0.0.4 has a Prototype Pollution issue which allows arbitrary code execution via the obx/build/index.js:656), reduce (@almela/obx/build/index.js:470), Object.set (obx/build/index.js:269) component.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-36573"
         }
       ],
-      "affectedRange": "< 0.0.4",
-      "fixedVersion": "0.0.4"
+      "affectedVersions": [
+        {
+          "range": "< 0.0.4",
+          "fixed": "0.0.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

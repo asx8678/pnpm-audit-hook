@@ -1,9 +1,10 @@
 {
-  "name": "pdfjs-dist",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "pdfjs-dist",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wgrm-67xf-hhpq",
+      "packageName": "pdfjs-dist",
       "title": "PDF.js vulnerable to arbitrary JavaScript execution upon opening a malicious PDF",
       "description": "### Impact\nIf pdf.js is used to load a malicious PDF, and PDF.js is configured with `isEvalSupported` set to `true` (which is the default value), unrestricted attacker-controlled JavaScript will be executed in the context of the hosting domain.\n\n### Patches\nThe patch removes the use of `eval`:\nhttps://github.com/mozilla/pdf.js/pull/18015\n\n### Workarounds\nSet the option `isEvalSupported` to `false`. \n\n### References\nhttps://bugzilla.mozilla.org/show_bug.cgi?id=1893645",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2024-4367"
         }
       ],
-      "affectedRange": "<= 4.1.392",
-      "fixedVersion": "4.2.67"
+      "affectedVersions": [
+        {
+          "range": "<= 4.1.392",
+          "fixed": "4.2.67"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-7jg2-jgv3-fmr4",
+      "packageName": "pdfjs-dist",
       "title": "Malicious PDF can inject JavaScript into PDF Viewer",
       "description": "The PDF viewer does not sufficiently sanitize PostScript calculator functions, allowing malicious JavaScript to be injected through a crafted PDF file. This JavaScript can then be run with the permissions of the PDF viewer by its worker. This vulnerability affects Firefox ESR < 52.8, Firefox < 60 and PDF.js < 2.0.550.",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2018-5158"
         }
       ],
-      "affectedRange": "< 1.10.100",
-      "fixedVersion": "1.10.100"
+      "affectedVersions": [
+        {
+          "range": "< 1.10.100",
+          "fixed": "1.10.100"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

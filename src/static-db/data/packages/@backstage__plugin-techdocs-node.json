@@ -1,9 +1,10 @@
 {
-  "name": "@backstage/plugin-techdocs-node",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@backstage/plugin-techdocs-node",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4jqc-jvh2-pxg9",
+      "packageName": "@backstage/plugin-techdocs-node",
       "title": "Path traversal for local publishers in TechDocs backend",
       "description": "### Impact\nA malicious actor with the ability to register entities in the Software Catalog is able to write files to arbitrary paths on the techdocs backend host instance when `techdocs.publisher.type` is set to `local`.\n\nThis vulnerability is mitigated by the fact that the Software Catalog must be configured with non-standard field format validators and/or non-standard entity policies.\n\n### Patches\nThose affected are advised to upgrade to `@backstage/plugin-techdocs-node` version `1.1.2` or hig",
       "severity": "medium",
@@ -16,8 +17,94 @@
           "value": "GHSA-4jqc-jvh2-pxg9"
         }
       ],
-      "affectedRange": "< 1.1.2",
-      "fixedVersion": "1.1.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.2",
+          "fixed": "1.1.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-928r-fm4v-mvrw",
+      "packageName": "@backstage/plugin-techdocs-node",
+      "title": "TechDocs Mkdocs Configuration Key Enables Arbitrary Code Execution",
+      "description": "### Impact\nThis is a configuration bypass vulnerability that enables arbitrary code execution. The `@backstage/plugin-techdocs-node` package uses an allowlist to filter dangerous MkDocs configuration keys during the documentation build process. \n\nA gap in this allowlist allows attackers to craft an `mkdocs.yml` that causes arbitrary Python code execution, completely bypassing TechDocs' security controls.     \n\n### Patches\n\nPatched in `@backstage/plugin-techdocs-node` version 1.14.3\n\n### Workarou",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-928r-fm4v-mvrw",
+      "publishedAt": "2026-03-05T00:12:07Z",
+      "modifiedAt": "2026-03-05T00:12:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-928r-fm4v-mvrw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29186"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.14.2",
+          "fixed": "1.14.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6jr7-99pf-8vgf",
+      "packageName": "@backstage/plugin-techdocs-node",
+      "title": "@backstage/plugin-techdocs-node vulnerable to arbitrary code execution via MkDocs hooks",
+      "description": "### Impact\n\nWhen TechDocs is configured with `runIn: local`, a malicious actor who can submit or modify a repository's `mkdocs.yml` file can execute arbitrary Python code on the TechDocs build server via MkDocs hooks configuration.\n\n### Patches\n\nUpgrade to `@backstage/plugin-techdocs-node` version 1.13.11, 1.14.1 or later.\nThe fix introduces an allowlist of supported MkDocs configuration keys. Unsupported configuration keys (including `hooks`) are now removed from `mkdocs.yml` before running the",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6jr7-99pf-8vgf",
+      "publishedAt": "2026-02-02T20:19:58Z",
+      "modifiedAt": "2026-02-02T20:19:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6jr7-99pf-8vgf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25153"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.13.11",
+          "fixed": "1.13.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w669-jj7h-88m9",
+      "packageName": "@backstage/plugin-techdocs-node",
+      "title": "@backstage/plugin-techdocs-node vulnerable to possible Path Traversal in TechDocs Local Generator",
+      "description": "### Impact\nA path traversal vulnerability in the TechDocs local generator allows attackers to read arbitrary files from the host filesystem when Backstage is configured with `techdocs.generator.runIn: local`.\n\nWhen processing documentation from untrusted sources, symlinks within the docs directory are followed by MkDocs during the build process. File contents are embedded into generated HTML and exposed to users who can view the documentation.\n\n### Patches\nThis vulnerability is fixed in` @backst",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w669-jj7h-88m9",
+      "publishedAt": "2026-02-02T14:36:39Z",
+      "modifiedAt": "2026-02-02T14:36:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w669-jj7h-88m9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25152"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.13.11",
+          "fixed": "1.13.11"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

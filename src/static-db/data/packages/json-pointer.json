@@ -1,9 +1,10 @@
 {
-  "name": "json-pointer",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "json-pointer",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7mg4-w3w5-x5pc",
+      "packageName": "json-pointer",
       "title": "Prototype pollution in json-pointer",
       "description": "This affects the package json-pointer before 0.6.1. Multiple reference of object using slash is supported.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2020-7709"
         }
       ],
-      "affectedRange": "< 0.6.1",
-      "fixedVersion": "0.6.1"
+      "affectedVersions": [
+        {
+          "range": "< 0.6.1",
+          "fixed": "0.6.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-6xrf-q977-5vgc",
+      "packageName": "json-pointer",
       "title": "json-pointer vulnerable to Prototype Pollution",
       "description": "A vulnerability, which was classified as critical, has been found in json-pointer up to 0.6.1. Affected by this issue is the function set of the file index.js. The manipulation leads to improperly controlled modification of object prototype attributes ('prototype pollution'). The attack may be launched remotely. Upgrading to version 0.6.2 is able to address this issue. The patch is identified as 859c9984b6c407fc2d5a0a7e47c7274daa681941. It is recommended to upgrade the affected component. VDB-21",
       "severity": "critical",
@@ -41,11 +48,17 @@
           "value": "CVE-2022-4742"
         }
       ],
-      "affectedRange": "< 0.6.2",
-      "fixedVersion": "0.6.2"
+      "affectedVersions": [
+        {
+          "range": "< 0.6.2",
+          "fixed": "0.6.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-v5vg-g7rq-363w",
+      "packageName": "json-pointer",
       "title": "Prototype Pollution in json-pointer",
       "description": "This affects versions of package `json-pointer` up to and including `0.6.1`. A type confusion vulnerability can lead to a bypass of CVE-2020-7709 when the pointer components are arrays.",
       "severity": "medium",
@@ -62,8 +75,13 @@
           "value": "CVE-2021-23820"
         }
       ],
-      "affectedRange": "<= 0.6.1",
-      "fixedVersion": "0.6.2"
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.1",
+          "fixed": "0.6.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

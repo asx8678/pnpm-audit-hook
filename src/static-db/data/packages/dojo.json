@@ -1,9 +1,10 @@
 {
-  "name": "dojo",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "dojo",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-m8gw-hjpr-rjv7",
+      "packageName": "dojo",
       "title": "Prototype Pollution in dojo",
       "description": "All versions of package dojo are vulnerable to Prototype Pollution via the setObject function.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23450"
         }
       ],
-      "affectedRange": "<= 1.16.4"
+      "affectedVersions": [
+        {
+          "range": "<= 1.16.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

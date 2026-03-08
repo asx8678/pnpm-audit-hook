@@ -1,9 +1,10 @@
 {
-  "name": "estree-util-value-to-estree",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "estree-util-value-to-estree",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-f7f6-9jq7-3rqj",
+      "packageName": "estree-util-value-to-estree",
       "title": "estree-util-value-to-estree allows prototype pollution in generated ESTree",
       "description": "### Impact\nWhen generating an ESTree from a value with a property named `__proto__`, `valueToEstree` would generate an object that specifies a prototype instead.\n\nExample:\n\n```js\nimport { generate } from 'astring'\nimport { valueToEstree } from 'estree-util-value-to-estree'\n\nconst estree = valueToEstree({\n  ['__proto__']: {}\n})\nconst code = generate(estree)\nconsole.log(code)\n```\n\nOutput:\n\n```js\n{\n  \"__proto__\": {}\n}\n```\n\n### Patches\nThis was fixed in version [3.3.3](https://github.com/remcohaszin",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-32014"
         }
       ],
-      "affectedRange": "< 3.3.3",
-      "fixedVersion": "3.3.3"
+      "affectedVersions": [
+        {
+          "range": "< 3.3.3",
+          "fixed": "3.3.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

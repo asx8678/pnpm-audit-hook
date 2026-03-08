@@ -1,9 +1,10 @@
 {
-  "name": "cli",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "cli",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3mrp-qhcj-mwv5",
+      "packageName": "cli",
       "title": "Duplicate Advisory: Node CLI Allows Arbitrary File Overwrite",
       "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-6cpc-mj5c-m9rq. This link is maintained to preserve external references.\n\n## Original Description\nAn issue exists in node-cli 0.1.0 through 0.11.3 due to predictable temporary file names in lock_file and log_file, which allows an attacker to overwrite files.",
       "severity": "low",
@@ -20,8 +21,13 @@
           "value": "CVE-2016-1000021"
         }
       ],
-      "affectedRange": ">= 0.1.0, <= 0.11.3",
-      "fixedVersion": "1.0.0"
+      "affectedVersions": [
+        {
+          "range": ">= 0.1.0, <= 0.11.3",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

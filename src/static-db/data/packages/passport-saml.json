@@ -1,9 +1,10 @@
 {
-  "name": "passport-saml",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "passport-saml",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4mxg-3p6v-xgq3",
+      "packageName": "passport-saml",
       "title": "Node-SAML SAML Signature Verification Vulnerability",
       "description": "Node-SAML loads the assertion from the (unsigned) original response document. This is different than the parts that are verified when checking signature.\n\nThis allows an attacker to modify authentication details within a valid SAML assertion. For example, in one attack it is possible to remove any character from the SAML assertion username.\n\nTo conduct the attack an attacker would need a validly signed document from the identity provider (IdP).\n\nIn fixing this we made sure to process the SAML as",
       "severity": "critical",
@@ -20,10 +21,16 @@
           "value": "CVE-2025-54419"
         }
       ],
-      "affectedRange": "<= 3.2.4"
+      "affectedVersions": [
+        {
+          "range": "<= 3.2.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5379-r78w-42h2",
+      "packageName": "passport-saml",
       "title": "Unlimited transforms allowed for signed nodes",
       "description": "### Impact\nA malicious SAML payload can require transforms that consume significant system resources to process, thereby resulting in reduced or denied service. This would be an effective way to perform a denial-of-service attack.\n\n### Patches\nThis has been resolved in version 3.1.0. The resolution is to limit the number of allowable transforms to 2.\n\n### References\nhttps://github.com/node-saml/passport-saml/pull/595\n",
       "severity": "medium",
@@ -40,11 +47,17 @@
           "value": "CVE-2021-39171"
         }
       ],
-      "affectedRange": "< 3.1.0",
-      "fixedVersion": "3.1.0"
+      "affectedVersions": [
+        {
+          "range": "< 3.1.0",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-m974-647v-whv7",
+      "packageName": "passport-saml",
       "title": "Signature bypass via multiple root elements",
       "description": "### Impact\n\nA remote attacker may be able to bypass SAML authentication on a website using passport-saml. A successful attack requires that the attacker is in possession of an arbitrary IDP signed XML element. Depending on the IDP used, fully unauthenticated attacks (e.g without access to a valid user) might also be feasible if generation of a signed message can be triggered.\n\n### Patches\n\nUsers should upgrade to passport-saml 3.2.2 or newer. The issue was also present in the beta releases of `n",
       "severity": "high",
@@ -61,8 +74,13 @@
           "value": "CVE-2022-39299"
         }
       ],
-      "affectedRange": "< 3.2.2",
-      "fixedVersion": "3.2.2"
+      "affectedVersions": [
+        {
+          "range": "< 3.2.2",
+          "fixed": "3.2.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

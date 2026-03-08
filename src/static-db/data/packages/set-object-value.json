@@ -1,9 +1,10 @@
 {
-  "name": "set-object-value",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "set-object-value",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4jj4-m52p-8rx3",
+      "packageName": "set-object-value",
       "title": "Prototype pollution in set-object-value",
       "description": "Prototype pollution vulnerability in 'set-object-value' versions 0.0.0 through 0.0.5 allows an attacker to cause a denial of service and may lead to remote code execution.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-28281"
         }
       ],
-      "affectedRange": "< 0.0.6",
-      "fixedVersion": "0.0.6"
+      "affectedVersions": [
+        {
+          "range": "< 0.0.6",
+          "fixed": "0.0.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

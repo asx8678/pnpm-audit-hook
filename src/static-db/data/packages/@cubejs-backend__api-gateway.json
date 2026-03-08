@@ -1,9 +1,10 @@
 {
-  "name": "@cubejs-backend/api-gateway",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@cubejs-backend/api-gateway",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9759-3276-g2pm",
+      "packageName": "@cubejs-backend/api-gateway",
       "title": "Cube API denial of service attack",
       "description": "### Impact\nIt is possible to make the entire Cube API unavailable by submitting a specially crafted request to a Cube API endpoint.\n\n### Patches\nThe issue has been patched in the `v0.34.34` and it's recommended that all users exposing Cube APIs to the public internet upgrade to the latest version to prevent service disruption.\n\n### Workarounds\nThere are currently no workaround for older versions, and the recommendation is to upgrade.\n\n### References\nThe issue was reported by [y0d3n](https://gith",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2023-50709"
         }
       ],
-      "affectedRange": "< 0.34.34",
-      "fixedVersion": "0.34.34"
+      "affectedVersions": [
+        {
+          "range": "< 0.34.34",
+          "fixed": "0.34.34"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-6jqm-3c9g-pch7",
+      "packageName": "@cubejs-backend/api-gateway",
       "title": "@cubejs-backend/api-gateway row level security bypass",
       "description": "### Impact\nAll authenticated Cube clients could bypass row-level security and run arbitrary SQL via the newly introduced /v1/sql-runner endpoint.\n\n### Patches\nThe change has been reverted in 0.31.24\n\n### Workarounds\nUpgrade to >=0.31.24 or downgrade to <=0.31.22\n\n### Post mortem\nAs part of implementing the Cube Cloud SQL runner functionality, we’ve added a new endpoint to the Cube Core so that we could add arbitrary queries directly to the queue, bypassing the modeling layer.\n\nThe endpoint was a",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2022-23510"
         }
       ],
-      "affectedRange": "= 0.31.23",
-      "fixedVersion": "0.31.24"
+      "affectedVersions": [
+        {
+          "range": "= 0.31.23",
+          "fixed": "0.31.24"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

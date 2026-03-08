@@ -1,9 +1,10 @@
 {
-  "name": "gladys",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "gladys",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-c79f-pqgf-fhp3",
+      "packageName": "gladys",
       "title": "Directory Traversal in Gladys Assistant",
       "description": "Gladys Assistant v4.27.0 and prior is vulnerable to Directory Traversal. The patch of CVE-2023-43256 was found to be incomplete, allowing authenticated attackers to extract sensitive files in the host machine.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-47440"
         }
       ],
-      "affectedRange": "<= 4.27.0"
+      "affectedVersions": [
+        {
+          "range": "<= 4.27.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

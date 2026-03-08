@@ -1,9 +1,10 @@
 {
-  "name": "gulp-styledocco",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "gulp-styledocco",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-h33p-5j96-w8qh",
+      "packageName": "gulp-styledocco",
       "title": "OS Command Injection in gulkp-styledocco",
       "description": "gulp-styledocco through 0.0.3 allows execution of arbitrary commands. The argument `options` of the exports function in `index.js` can be controlled by users without any sanitization.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7607"
         }
       ],
-      "affectedRange": "<= 0.0.3"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

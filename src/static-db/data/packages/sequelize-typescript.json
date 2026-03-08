@@ -1,9 +1,10 @@
 {
-  "name": "sequelize-typescript",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "sequelize-typescript",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7pvx-4585-hqww",
+      "packageName": "sequelize-typescript",
       "title": "sequelize-typescript Prototype Pollution vulnerability",
       "description": "Prototype Pollution in GitHub repository robinbuschmann/sequelize-typescript prior to 2.1.6.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-6293"
         }
       ],
-      "affectedRange": "< 2.1.6",
-      "fixedVersion": "2.1.6"
+      "affectedVersions": [
+        {
+          "range": "< 2.1.6",
+          "fixed": "2.1.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

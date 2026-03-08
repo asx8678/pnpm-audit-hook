@@ -1,9 +1,10 @@
 {
-  "name": "safe-flat",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "safe-flat",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-33rv-m2gp-mm2r",
+      "packageName": "safe-flat",
       "title": "Prototype pollution in safe-flat",
       "description": "Prototype pollution vulnerability in 'safe-flat' versions 2.0.0 through 2.0.1 allows an attacker to cause a denial of service and may lead to remote code execution.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-25927"
         }
       ],
-      "affectedRange": ">= 2.0.0, < 2.0.2",
-      "fixedVersion": "2.0.2"
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.0.2",
+          "fixed": "2.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

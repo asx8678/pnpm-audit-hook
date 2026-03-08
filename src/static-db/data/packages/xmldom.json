@@ -1,9 +1,10 @@
 {
-  "name": "xmldom",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "xmldom",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-5fg8-2547-mr8q",
+      "packageName": "xmldom",
       "title": "Misinterpretation of malicious XML input",
       "description": "### Impact\nxmldom versions 0.6.0 and older do not correctly escape special characters when serializing elements removed from their ancestor. This may lead to unexpected syntactic changes during XML processing in some downstream applications.\n\n### Patches\nUpdate to one of the fixed versions of `@xmldom/xmldom` (`>=0.7.0`)\n\nSee issue #271 for the status of publishing `xmldom` to npm or join #270 for Q&A/discussion until it's resolved.\n\n### Workarounds\n\nDownstream applications can validate the inpu",
       "severity": "medium",
@@ -20,10 +21,16 @@
           "value": "CVE-2021-32796"
         }
       ],
-      "affectedRange": "<= 0.6.0"
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-crh6-fp67-6883",
+      "packageName": "xmldom",
       "title": "xmldom allows multiple root nodes in a DOM",
       "description": "### Impact\nxmldom parses XML that is not well-formed because it contains multiple top level elements, and adds all root nodes to the `childNodes` collection of the `Document`, without reporting any error or throwing.\nThis breaks the assumption that there is only a single root node in the tree, which led to https://nvd.nist.gov/vuln/detail/CVE-2022-39299 and is a potential issue for dependents.\n\n### Patches\nUpdate to `@xmldom/xmldom@~0.7.7`, `@xmldom/xmldom@~0.8.4` (dist-tag `latest`) or `@xmldom",
       "severity": "critical",
@@ -40,10 +47,16 @@
           "value": "CVE-2022-39353"
         }
       ],
-      "affectedRange": "<= 0.6.0"
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9pgh-qqpf-7wqj",
+      "packageName": "xmldom",
       "title": "Withdrawn: Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution') in @xmldom/xmldom and xmldom",
       "description": "## Withdrawn\n\nThis advisory has been withdrawn because the maintainers of `@xmldom/xmldom` and multiple third parties disputed the validity of the issue. Attempts to create or replicate a proof of concept have been unsuccessful.\n\n## Original Description\n\n### Impact\nA prototype pollution vulnerability exists in the function copy in dom.js in the xmldom (published as @xmldom/xmldom) package.\n\n### Patches\nUpdate to `@xmldom/xmldom@~0.7.6`, `@xmldom/xmldom@~0.8.3` (dist-tag `latest`) or `@xmldom/xml",
       "severity": "critical",
@@ -60,10 +73,16 @@
           "value": "CVE-2022-37616"
         }
       ],
-      "affectedRange": "<= 0.6.0"
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-h6q6-9hqw-rwfv",
+      "packageName": "xmldom",
       "title": "Misinterpretation of malicious XML input",
       "description": "### Impact\n\nxmldom versions 0.4.0 and older do not correctly preserve [system identifiers](https://www.w3.org/TR/2008/REC-xml-20081126/#d0e4313), [FPIs](https://en.wikipedia.org/wiki/Formal_Public_Identifier) or [namespaces](https://www.w3.org/TR/xml-names11/) when repeatedly parsing and serializing maliciously crafted documents.\n\nThis may lead to unexpected syntactic changes during XML processing in some downstream applications.\n\n### Patches\n\nUpdate to 0.5.0 (once it is released)\n\n### Workaroun",
       "severity": "medium",
@@ -80,8 +99,13 @@
           "value": "CVE-2021-21366"
         }
       ],
-      "affectedRange": "< 0.5.0",
-      "fixedVersion": "0.5.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.5.0",
+          "fixed": "0.5.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

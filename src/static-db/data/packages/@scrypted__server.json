@@ -1,9 +1,10 @@
 {
-  "name": "@scrypted/server",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@scrypted/server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xmhh-xrcc-mx36",
+      "packageName": "@scrypted/server",
       "title": "Scrypted Cross-site Scripting vulnerability",
       "description": "Scrypted is a home video integration and automation platform. In versions 0.55.0 and prior, a reflected cross-site scripting vulnerability exists in the plugin-http.ts file via the `owner' and 'pkg` parameters. An attacker can run arbitrary JavaScript code. As of time of publication, no known patches are available.",
       "severity": "medium",
@@ -20,10 +21,16 @@
           "value": "CVE-2023-47620"
         }
       ],
-      "affectedRange": "<= 0.55.0"
+      "affectedVersions": [
+        {
+          "range": "<= 0.55.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-w4hv-vmv9-hgcr",
+      "packageName": "@scrypted/server",
       "title": "GitHub Security Lab (GHSL) Vulnerability Report, scrypted: `GHSL-2023-218`, `GHSL-2023-219`",
       "description": "# GitHub Security Lab (GHSL) Vulnerability Report, scrypted: `GHSL-2023-218`, `GHSL-2023-219`\n\nThe [GitHub Security Lab](https://securitylab.github.com) team has identified potential security vulnerabilities in [scrypted](https://github.com/koush/scrypted).\n\nWe are committed to working with you to help resolve these issues. In this report you will find everything you need to effectively coordinate a resolution of these issues with the GHSL team.\n\nIf at any point you have concerns or questions ab",
       "severity": "high",
@@ -36,7 +43,12 @@
           "value": "GHSA-w4hv-vmv9-hgcr"
         }
       ],
-      "affectedRange": "<= 0.56.0"
+      "affectedVersions": [
+        {
+          "range": "<= 0.56.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

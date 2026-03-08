@@ -1,9 +1,10 @@
 {
-  "name": "@theia/messages",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@theia/messages",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-c94v-8fff-73ph",
+      "packageName": "@theia/messages",
       "title": "Command Injection in @theia/messages",
       "description": "In Eclipse Theia versions up to and including 0.16.0, in the notification messages there is no HTML escaping, so Javascript code can run.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-28162"
         }
       ],
-      "affectedRange": "< 1.0.0",
-      "fixedVersion": "1.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

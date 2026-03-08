@@ -1,9 +1,10 @@
 {
-  "name": "tinymce",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "tinymce",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9hcv-j9pv-qmph",
+      "packageName": "tinymce",
       "title": "TinyMCE Cross-Site Scripting (XSS) vulnerability using noneditable_regexp option",
       "description": "### Impact\nA [cross-site scripting (XSS)](https://owasp.org/www-community/attacks/xss/) vulnerability was discovered in TinyMCE’s content extraction code. When using the `noneditable_regexp` option, specially crafted HTML attributes containing malicious code were able to be executed when content was extracted from the editor.\n\n### Patches\nThis vulnerability has been patched in TinyMCE 7.2.0, TinyMCE 6.8.4 and TinyMCE 5.11.0 LTS by ensuring that, when using the `noneditable_regexp` option, any co",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2024-38356"
         }
       ],
-      "affectedRange": ">= 7.0.0, < 7.2.0",
-      "fixedVersion": "7.2.0"
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0, < 7.2.0",
+          "fixed": "7.2.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-w9jx-4g6g-rp7x",
+      "packageName": "tinymce",
       "title": "TinyMCE Cross-Site Scripting (XSS) vulnerability using noscript elements",
       "description": "### Impact\nA [cross-site scripting (XSS)](https://owasp.org/www-community/attacks/xss/) vulnerability was discovered in TinyMCE’s content parsing code. This allowed specially crafted noscript elements containing malicious code to be executed when that content was loaded into the editor.\n\n### Patches\nThis vulnerability has been patched in TinyMCE 7.2.0, TinyMCE 6.8.4 and TinyMCE 5.11.0 LTS by ensuring that content within noscript elements are properly parsed.\n\n### Fix\nTo avoid this vulnerability:",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2024-38357"
         }
       ],
-      "affectedRange": ">= 7.0.0, < 7.2.0",
-      "fixedVersion": "7.2.0"
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0, < 7.2.0",
+          "fixed": "7.2.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-438c-3975-5x3f",
+      "packageName": "tinymce",
       "title": "TinyMCE Cross-Site Scripting (XSS) vulnerability in handling iframes",
       "description": "### Impact\nA [cross-site scripting (XSS)](https://owasp.org/www-community/attacks/xss/) vulnerability was discovered in TinyMCE’s content insertion code.  This allowed `iframe` elements containing malicious code to execute when inserted into the editor.  These `iframe` elements are restricted in their permissions by same-origin browser protections, but could still trigger operations such as downloading of malicious assets.\n\n### Fix\nTinyMCE 6.8.1 introduced a new `sandbox_iframes` boolean option ",
       "severity": "medium",
@@ -62,11 +75,17 @@
           "value": "CVE-2024-29203"
         }
       ],
-      "affectedRange": "< 6.8.1",
-      "fixedVersion": "6.8.1"
+      "affectedVersions": [
+        {
+          "range": "< 6.8.1",
+          "fixed": "6.8.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5359-pvf2-pw78",
+      "packageName": "tinymce",
       "title": "TinyMCE Cross-Site Scripting (XSS) vulnerability in handling external SVG files through Object or Embed elements",
       "description": "### Impact\nA [cross-site scripting (XSS)](https://owasp.org/www-community/attacks/xss/) vulnerability was discovered in TinyMCE’s content loading and content inserting code. A SVG image could be loaded though an `object` or `embed` element and that image could potentially contain a XSS payload.\n\n### Fix\nTinyMCE 6.8.1 introduced a new `convert_unsafe_embeds` option to automatically convert `object` and `embed` elements respective of their `type` attribute.  From TinyMCE 7.0.0 onwards, the `conver",
       "severity": "medium",
@@ -83,11 +102,17 @@
           "value": "CVE-2024-29881"
         }
       ],
-      "affectedRange": "< 7.0.0",
-      "fixedVersion": "7.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 7.0.0",
+          "fixed": "7.0.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5h9g-x5rv-25wg",
+      "packageName": "tinymce",
       "title": "Cross-site scripting vulnerability in TinyMCE",
       "description": "### Impact\nA cross-site scripting (XSS) vulnerability was discovered in the schema validation logic of the core parser. The vulnerability allowed arbitrary JavaScript execution when inserting a specially crafted piece of content into the editor using the clipboard or editor APIs. This malicious content could then end up in content published outside the editor, if no server-side sanitization was performed. This impacts all users who are using TinyMCE 5.8.2 or lower.\n\n### Patches\nThis vulnerabilit",
       "severity": "medium",
@@ -104,11 +129,17 @@
           "value": "CVE-2024-21908"
         }
       ],
-      "affectedRange": "< 5.9.0",
-      "fixedVersion": "5.9.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.9.0",
+          "fixed": "5.9.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-r8hm-w5f7-wj39",
+      "packageName": "tinymce",
       "title": "Cross-site scripting vulnerability in TinyMCE plugins",
       "description": "### Impact\nA cross-site scripting (XSS) vulnerability was discovered in the URL processing logic of the `image` and `link` plugins. The vulnerability allowed arbitrary JavaScript execution when updating an image or link using a specially crafted URL. This issue only impacted users while editing and the dangerous URLs were stripped in any content extracted from the editor. This impacts all users who are using TinyMCE 5.9.2 or lower.\n\n### Patches\nThis vulnerability has been patched in TinyMCE 5.10",
       "severity": "medium",
@@ -125,11 +156,17 @@
           "value": "CVE-2024-21910"
         }
       ],
-      "affectedRange": "< 5.10.0",
-      "fixedVersion": "5.10.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.10.0",
+          "fixed": "5.10.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-w7jx-j77m-wp65",
+      "packageName": "tinymce",
       "title": "Cross-site scripting vulnerability in TinyMCE",
       "description": "### Impact\nA cross-site scripting (XSS) vulnerability was discovered in the URL sanitization logic of the core parser. The vulnerability allowed arbitrary JavaScript execution when inserting a specially crafted piece of content into the editor using the clipboard or APIs. This impacts all users who are using TinyMCE 5.5.1 or lower.\n\n### Patches\nThis vulnerability has been patched in TinyMCE 5.6.0 by improved URL sanitization logic.\n\n### Workarounds\nTo work around this vulnerability, either:\n- Up",
       "severity": "medium",
@@ -146,11 +183,17 @@
           "value": "CVE-2024-21911"
         }
       ],
-      "affectedRange": "< 5.6.0",
-      "fixedVersion": "5.6.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.6.0",
+          "fixed": "5.6.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-q5pp-5q2h-g8rv",
+      "packageName": "tinymce",
       "title": "Duplicate Advisory: Cross-site scripting vulnerability in TinyMCE",
       "description": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-5h9g-x5rv-25wg. This link is maintained to preserve external references.\n\n### Original Description\nTinyMCE versions before 5.6.0 are affected by a stored cross-site scripting vulnerability. An unauthenticated and remote attacker could insert crafted HTML into the editor resulting in arbitrary JavaScript execution in another user's browser.",
       "severity": "medium",
@@ -163,10 +206,16 @@
           "value": "GHSA-q5pp-5q2h-g8rv"
         }
       ],
-      "affectedRange": "< 5.6.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.6.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-gjhc-6xm7-mc8q",
+      "packageName": "tinymce",
       "title": "Duplicate Advisory: Cross-site scripting vulnerability in TinyMCE",
       "description": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-5h9g-x5rv-25wg. This link is maintained to preserve external references.\n\n### Original Description\nTinyMCE versions before 5.9.0 are affected by a stored cross-site scripting vulnerability. An unauthenticated and remote attacker could insert crafted HTML into the editor resulting in arbitrary JavaScript execution in another user's browser.\n\n\n\n",
       "severity": "medium",
@@ -179,11 +228,17 @@
           "value": "GHSA-gjhc-6xm7-mc8q"
         }
       ],
-      "affectedRange": "< 5.9.0",
-      "fixedVersion": "5.9.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.9.0",
+          "fixed": "5.9.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-wxj2-777f-vxmf",
+      "packageName": "tinymce",
       "title": "Duplicate Advisory: Cross-site scripting vulnerability in TinyMCE plugins",
       "description": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-5h9g-x5rv-25wg. This link is maintained to preserve external references.\n\n### Original Description\nTinyMCE versions before 5.10.0 are affected by a cross-site scripting vulnerability. A remote and unauthenticated attacker could introduce crafted image or link URLs that would result in the execution of arbitrary JavaScript in an editing user's browser.\n",
       "severity": "medium",
@@ -196,10 +251,16 @@
           "value": "GHSA-wxj2-777f-vxmf"
         }
       ],
-      "affectedRange": "< 5.10.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.10.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-v626-r774-j7f8",
+      "packageName": "tinymce",
       "title": "TinyMCE vulnerable to mutation Cross-site Scripting via special characters in unescaped text nodes",
       "description": "### Impact\nA [mutation cross-site scripting](https://researchgate.net/publication/266654651_mXSS_attacks_Attacking_well-secured_web-applications_by_using_innerHTML_mutations) (mXSS) vulnerability was discovered in TinyMCE’s core undo/redo functionality and other APIs and plugins. Text nodes within specific parents are not escaped upon serialization according to the [HTML standard](https://html.spec.whatwg.org/multipage/parsing.html#serialising-html-fragments). If such text nodes contain a specia",
       "severity": "medium",
@@ -216,11 +277,17 @@
           "value": "CVE-2023-48219"
         }
       ],
-      "affectedRange": ">= 6.0.0, < 6.7.3",
-      "fixedVersion": "6.7.3"
+      "affectedVersions": [
+        {
+          "range": ">= 6.0.0, < 6.7.3",
+          "fixed": "6.7.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-v65r-p3vv-jjfv",
+      "packageName": "tinymce",
       "title": "TinyMCE mXSS vulnerability in undo/redo, getContent API, resetContent API, and Autosave plugin",
       "description": "### Impact\nA [mutation cross-site scripting](https://researchgate.net/publication/266654651_mXSS_attacks_Attacking_well-secured_web-applications_by_using_innerHTML_mutations) (mXSS) vulnerability was discovered in TinyMCE’s core undo and redo functionality. When a carefully-crafted HTML snippet passes the XSS sanitisation layer, it is manipulated as a string by internal trimming functions before being stored in the undo stack. If the HTML snippet is restored from the undo stack, the combination ",
       "severity": "medium",
@@ -237,11 +304,17 @@
           "value": "CVE-2023-45818"
         }
       ],
-      "affectedRange": "< 5.10.8",
-      "fixedVersion": "5.10.8"
+      "affectedVersions": [
+        {
+          "range": "< 5.10.8",
+          "fixed": "5.10.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-hgqx-r2hp-jr38",
+      "packageName": "tinymce",
       "title": "TinyMCE XSS vulnerability in notificationManager.open API",
       "description": "### Impact\nA [cross-site scripting (XSS)](https://owasp.org/www-community/attacks/xss/) vulnerability was discovered in TinyMCE’s Notification Manager API. The vulnerability exploits TinyMCE's unfiltered notification system, which is used in error handling.  The conditions for this exploit requires carefully crafted malicious content to have been inserted into the editor and a notification to have been triggered.  \n\nWhen a notification was opened, the HTML within the text argument was displayed ",
       "severity": "medium",
@@ -258,11 +331,17 @@
           "value": "CVE-2023-45819"
         }
       ],
-      "affectedRange": "< 5.10.8",
-      "fixedVersion": "5.10.8"
+      "affectedVersions": [
+        {
+          "range": "< 5.10.8",
+          "fixed": "5.10.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-p7j5-4mwm-hv86",
+      "packageName": "tinymce",
       "title": "Duplicate Advisory: Cross-site scripting in TinyMCE",
       "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-27gm-ghr9-4v95. This link is maintained to preserve external references.\n\n## Original Description\nTinyMCE before 4.9.7 and 5.x before 5.1.4 allows XSS in the core parser, the paste plugin, and the visualchars plugin by using the clipboard or APIs to insert content into the editor.",
       "severity": "medium",
@@ -275,11 +354,17 @@
           "value": "GHSA-p7j5-4mwm-hv86"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.1.4",
-      "fixedVersion": "5.1.4"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.1.4",
+          "fixed": "5.1.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-gg8r-xjwq-4w92",
+      "packageName": "tinymce",
       "title": "Cross-site scripting vulnerability in TinyMCE alerts",
       "description": "### Impact\nA cross-site scripting (XSS) vulnerability was discovered in the alert and confirm dialogs when these dialogs were provided with malicious HTML content. This can occur in plugins that use the alert or confirm dialogs, such as in the `image` plugin, which presents these dialogs when certain errors occur. The vulnerability allowed arbitrary JavaScript execution when an alert presented in the TinyMCE UI for the current user.\n\n### Patches\nThis vulnerability has been patched in TinyMCE 5.1",
       "severity": "medium",
@@ -296,11 +381,17 @@
           "value": "CVE-2022-23494"
         }
       ],
-      "affectedRange": "< 5.10.7",
-      "fixedVersion": "5.10.7"
+      "affectedVersions": [
+        {
+          "range": "< 5.10.7",
+          "fixed": "5.10.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5vm8-hhgr-jcjp",
+      "packageName": "tinymce",
       "title": "Cross-site scripting vulnerability in TinyMCE",
       "description": "### Impact\nA cross-site scripting (XSS) vulnerability was discovered in the URL sanitization logic of the core parser for `form` elements. The vulnerability allowed arbitrary JavaScript execution when inserting a specially crafted piece of content into the editor using the clipboard or APIs, and then submitting the form. However, as TinyMCE does not allow forms to be submitted while editing, the vulnerability could only be triggered when the content was previewed or rendered outside of the edito",
       "severity": "medium",
@@ -313,11 +404,17 @@
           "value": "GHSA-5vm8-hhgr-jcjp"
         }
       ],
-      "affectedRange": "< 5.7.1",
-      "fixedVersion": "5.7.1"
+      "affectedVersions": [
+        {
+          "range": "< 5.7.1",
+          "fixed": "5.7.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-h96f-fc7c-9r55",
+      "packageName": "tinymce",
       "title": "Regex denial of service vulnerability in codesample plugin",
       "description": "### Impact\nA regex denial of service (ReDoS) vulnerability was discovered in a dependency of the `codesample` plugin. The vulnerability allowed poorly formed ruby code samples to lock up the browser while performing syntax highlighting. This impacts users of the `codesample` plugin using TinyMCE 5.5.1 or lower.\n\n### Patches\nThis vulnerability has been patched in TinyMCE 5.6.0 by upgrading to a version of the dependency without the vulnerability.\n\n### Workarounds\nTo work around this vulnerability",
       "severity": "low",
@@ -330,8 +427,13 @@
           "value": "GHSA-h96f-fc7c-9r55"
         }
       ],
-      "affectedRange": "< 5.6.0",
-      "fixedVersion": "5.6.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.6.0",
+          "fixed": "5.6.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,0 +1,33 @@
+{
+  "packageName": "fabric",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hfvx-25r5-qc3w",
+      "packageName": "fabric",
+      "title": "Fabric.js Affected by Stored XSS via SVG Export",
+      "description": "fabric.js applies `escapeXml()` to text content during SVG export (`src/shapes/Text/TextSVGExportMixin.ts:186`) but fails to apply it to other user-controlled string values that are interpolated into SVG attribute markup. When attacker-controlled JSON is loaded via `loadFromJSON()` and later exported via `toSVG()`, the unescaped values break out of XML attributes and inject arbitrary SVG elements including event handlers.\n\n### Deserialization Path (no sanitization)\n\n`loadFromJSON()` (`src/canvas",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hfvx-25r5-qc3w",
+      "publishedAt": "2026-02-18T22:44:58Z",
+      "modifiedAt": "2026-02-19T21:57:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hfvx-25r5-qc3w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27013"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 7.2.0",
+          "fixed": "7.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

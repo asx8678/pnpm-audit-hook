@@ -1,9 +1,10 @@
 {
-  "name": "video.js",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "video.js",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-pp7m-6j83-m7r6",
+      "packageName": "video.js",
       "title": "Cross-site Scripting in video.js",
       "description": "This affects the package video.js before 7.14.3.\n The src attribute of track tag allows to bypass HTML escaping and execute arbitrary code.\n\n",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23414"
         }
       ],
-      "affectedRange": "< 7.14.3",
-      "fixedVersion": "7.14.3"
+      "affectedVersions": [
+        {
+          "range": "< 7.14.3",
+          "fixed": "7.14.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

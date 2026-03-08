@@ -1,0 +1,60 @@
+{
+  "packageName": "clevertap-web-sdk",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jfrq-hj9f-c8qx",
+      "packageName": "clevertap-web-sdk",
+      "title": "CleverTap Web SDK is vulnerable to DOM-based Cross-Site Scripting (XSS) via window.postMessage",
+      "description": "CleverTap Web SDK version 1.15.2 and earlier is vulnerable to DOM-based Cross-Site Scripting (XSS) via window.postMessage in the Visual Builder module. The origin validation in src/modules/visualBuilder/pageBuilder.js (lines 56-60) uses the includes() method to verify the originUrl contains \"dashboard.clevertap.com\", which can be bypassed by an attacker using a crafted subdomain.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jfrq-hj9f-c8qx",
+      "publishedAt": "2026-02-27T18:31:06Z",
+      "modifiedAt": "2026-03-01T01:26:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jfrq-hj9f-c8qx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26862"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.15.3",
+          "fixed": "1.15.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-j5mf-6rh3-rhgg",
+      "packageName": "clevertap-web-sdk",
+      "title": "CleverTap Web SDK  is vulnerable to DOM-based XSS via handleCustomHtmlPreviewPostMessageEvent function",
+      "description": "CleverTap Web SDK version 1.15.2 and earlier is vulnerable to Cross-site Scripting (XSS) via window.postMessage. The handleCustomHtmlPreviewPostMessageEvent function in src/util/campaignRender/nativeDisplay.js performs insufficient origin validation using the includes() method, which can be bypassed by an attacker using a subdomain.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j5mf-6rh3-rhgg",
+      "publishedAt": "2026-02-27T18:31:06Z",
+      "modifiedAt": "2026-03-01T01:26:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j5mf-6rh3-rhgg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26861"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.15.3",
+          "fixed": "1.15.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

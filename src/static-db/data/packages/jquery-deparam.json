@@ -1,9 +1,10 @@
 {
-  "name": "jquery-deparam",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "jquery-deparam",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xg68-chx2-253g",
+      "packageName": "jquery-deparam",
       "title": "Prototype Pollution in jquery-deparam",
       "description": "Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution') in jquery-deparam allows a malicious user to inject properties into Object.prototype.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-20087"
         }
       ],
-      "affectedRange": "<= 0.5.3"
+      "affectedVersions": [
+        {
+          "range": "<= 0.5.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

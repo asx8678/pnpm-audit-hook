@@ -1,9 +1,10 @@
 {
-  "name": "parse-server",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "parse-server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3f5f-xgrj-97pf",
+      "packageName": "parse-server",
       "title": "Parse Server is vulnerable to Server-Side Request Forgery (SSRF) via Instagram OAuth Adapter",
       "description": "## Impact\n\nThe Instagram authentication adapter allows clients to specify a custom API URL via the `apiURL` parameter in `authData`. This enables SSRF attacks and possibly authentication bypass if malicious endpoints return fake responses to validate unauthorized users.\n\n## Patches\n\nFixed by hardcoding the Instagram Graph API URL `https://graph.instagram.com` and ignoring client-provided `apiURL` values.\n\n## Workarounds\n\nNone.",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-68150"
         }
       ],
-      "affectedRange": ">= 9.0.0, < 9.1.1-alpha.1",
-      "fixedVersion": "9.1.1-alpha.1"
+      "affectedVersions": [
+        {
+          "range": ">= 9.0.0, < 9.1.1-alpha.1",
+          "fixed": "9.1.1-alpha.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-jhgf-2h8h-ggxv",
+      "packageName": "parse-server",
       "title": "Parse Server has a Cross-Site Scripting (XSS) vulnerability via Unescaped Mustache Template Variables",
       "description": "## Impact\n\nA Reflected Cross-Site Scripting (XSS) vulnerability exists in Parse Server's password reset and email verification HTML pages.\n\n## Patches\n\nThe patch escapes user controlled values that are inserted into the HTML pages.\n\n## Workarounds\n\nNone.\n\n## Resources\n\n- https://github.com/parse-community/parse-server/security/advisories/GHSA-jhgf-2h8h-ggxv\n- https://github.com/parse-community/parse-server/pull/9985\n- https://github.com/parse-community/parse-server/pull/9986",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2025-68115"
         }
       ],
-      "affectedRange": ">= 9.0.0, < 9.1.0-alpha.3",
-      "fixedVersion": "9.1.0-alpha.3"
+      "affectedVersions": [
+        {
+          "range": ">= 9.0.0, < 9.1.0-alpha.3",
+          "fixed": "9.1.0-alpha.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-7cx5-254x-cgrq",
+      "packageName": "parse-server",
       "title": "Parse Server allows public `explain` queries which may expose sensitive database performance information and schema details",
       "description": "### Impact\n\nThe MongoDB `explain()` method provides detailed information about query execution plans, including index usage, collection scanning behavior, and performance metrics. Parse Server permits any client to execute explain queries without requiring the master key. This exposes:\n\n- Database schema structure and field names\n- Index configurations and query optimization details\n- Query execution statistics and performance metrics\n- Potential attack vectors for database performance exploitat",
       "severity": "medium",
@@ -62,11 +75,17 @@
           "value": "CVE-2025-64502"
         }
       ],
-      "affectedRange": "< 8.5.0-alpha.5",
-      "fixedVersion": "8.5.0-alpha.5"
+      "affectedVersions": [
+        {
+          "range": "< 8.5.0-alpha.5",
+          "fixed": "8.5.0-alpha.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-x4qj-2f4q-r4rx",
+      "packageName": "parse-server",
       "title": "Parse Server Vulnerable to Server-Side Request Forgery (SSRF) in File Upload via URI Format",
       "description": "### Impact\n\nA Server-Side Request Forgery (SSRF) vulnerability in the file upload functionality when trying to upload a `Parse.File` with `uri` parameter allows to execute an arbitrary URI. The vulnerability stems from a file upload feature in which Parse Server retrieves the file data from a URI that is provided in the request. A request to the provided URI is executed, but the response is not stored in Parse Server's file storage as the server crashes upon receiving the response.\n\n### Patches\n",
       "severity": "high",
@@ -83,11 +102,17 @@
           "value": "CVE-2025-64430"
         }
       ],
-      "affectedRange": ">= 8.0.0, <= 8.4.0-alpha.1",
-      "fixedVersion": "8.4.0-alpha.2"
+      "affectedVersions": [
+        {
+          "range": ">= 8.0.0, <= 8.4.0-alpha.1",
+          "fixed": "8.4.0-alpha.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-48q3-prgv-gm4w",
+      "packageName": "parse-server",
       "title": "Parse Server exposes the data schema via GraphQL API",
       "description": "### Impact\n\nThe Parse Server GraphQL API previously allowed public access to the GraphQL schema without requiring a session token or the master key. While schema introspection reveals only metadata and not actual data, this metadata can still expand the potential attack surface.\n\n### Patches\n\nThe issue has been addressed by requiring the master key for schema introspection. Additionally, a new Parse Server configuration option, `graphQLPublicIntrospection`, has been introduced. This option allow",
       "severity": "medium",
@@ -104,11 +129,17 @@
           "value": "CVE-2025-53364"
         }
       ],
-      "affectedRange": ">= 5.3.0, < 7.5.3",
-      "fixedVersion": "7.5.3"
+      "affectedVersions": [
+        {
+          "range": ">= 5.3.0, < 7.5.3",
+          "fixed": "7.5.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-837q-jhwx-cmpv",
+      "packageName": "parse-server",
       "title": "Parse Server has an OAuth login vulnerability",
       "description": "### Impact\n\nThe 3rd party authentication handling of Parse Server allows the authentication credentials of some specific authentication providers to be used across multiple Parse Server apps. For example, if a user signed up using the same authentication provider in two unrelated Parse Server apps, the credentials stored by one app can be used to authenticate the same user in the other app. Note that this only affects Parse Server apps that specifically use an affected 3rd party authentication p",
       "severity": "medium",
@@ -125,11 +156,17 @@
           "value": "CVE-2025-30168"
         }
       ],
-      "affectedRange": ">= 8.0.0, < 8.0.2",
-      "fixedVersion": "8.0.2"
+      "affectedVersions": [
+        {
+          "range": ">= 8.0.0, < 8.0.2",
+          "fixed": "8.0.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-8xq9-g7ch-35hg",
+      "packageName": "parse-server",
       "title": "Parse Server's custom object ID allows to acquire role privileges",
       "description": "### Impact\n\nIf the Parse Server option `allowCustomObjectId: true` is set, an attacker that is allowed to create a new user can set a custom object ID for that new user that exploits the vulnerability and acquires privileges of a specific role.\n\n### Patches\n\nImproved validation for custom user object IDs. Session tokens for existing users with an object ID that exploits the vulnerability are now rejected.\n\n### Workarounds\n\n- Disable custom object IDs by setting `allowCustomObjectId: false` or no",
       "severity": "high",
@@ -146,11 +183,17 @@
           "value": "CVE-2024-47183"
         }
       ],
-      "affectedRange": ">= 7.0.0, < 7.3.0",
-      "fixedVersion": "7.3.0"
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0, < 7.3.0",
+          "fixed": "7.3.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-c2hr-cqg6-8j6r",
+      "packageName": "parse-server",
       "title": "ZDI-CAN-23894: Parse Server literalizeRegexPart SQL Injection Authentication Bypass Vulnerability",
       "description": "### Impact\n\nThis vulnerability allows SQL injection when Parse Server is configured to use the PostgreSQL database.\n\n### Patches\n\nThe algorithm to detect SQL injection has been improved.\n\n### Workarounds\n\nNone.\n\n### References\n\n- https://github.com/parse-community/parse-server/security/advisories/GHSA-c2hr-cqg6-8j6r\n- https://github.com/parse-community/parse-server/pull/9167 (fix for Parse Server 7)\n- https://github.com/parse-community/parse-server/pull/9168 (fix for Parse Server 6)\n\n### Credits",
       "severity": "critical",
@@ -167,11 +210,17 @@
           "value": "CVE-2024-39309"
         }
       ],
-      "affectedRange": ">= 7.0.0, < 7.1.0",
-      "fixedVersion": "7.1.0"
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0, < 7.1.0",
+          "fixed": "7.1.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-6hh7-46r2-vf29",
+      "packageName": "parse-server",
       "title": "Server crashes on invalid Cloud Function or Cloud Job name",
       "description": "### Impact\n\nCalling an invalid Parse Server Cloud Function name or Cloud Job name crashes server and may allow for code injection.\n\n### Patches\n\nAdded string sanitation for Cloud Function name and Cloud Job name.\n\n### Workarounds\n\nSanitize the Cloud Function name and Cloud Job name before it reaches Parse Server.\n\n### References\n\n- https://github.com/parse-community/parse-server/security/advisories/GHSA-6hh7-46r2-vf29\n- https://github.com/parse-community/parse-server/releases/tag/7.0.0-alpha.29 ",
       "severity": "critical",
@@ -188,11 +237,17 @@
           "value": "CVE-2024-29027"
         }
       ],
-      "affectedRange": ">= 7.0.0-alpha.1, < 7.0.0-alpha.29",
-      "fixedVersion": "7.0.0-alpha.29"
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0-alpha.1, < 7.0.0-alpha.29",
+          "fixed": "7.0.0-alpha.29"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-6927-3vr9-fxf2",
+      "packageName": "parse-server",
       "title": "ZDI-CAN-19105: Parse Server literalizeRegexPart SQL Injection",
       "description": "### Impact\n\nThis vulnerability allows SQL injection when Parse Server is configured to use the PostgreSQL database.\n\n### Patches\n\nThe algorithm to detect SQL injection has been improved.\n\n### Workarounds\n\nNone.\n\n### References\n\n- https://github.com/parse-community/parse-server/security/advisories/GHSA-6927-3vr9-fxf2\n- https://github.com/parse-community/parse-server/releases/tag/6.5.0 (fixed in Parse Server 6)\n- https://github.com/parse-community/parse-server/releases/tag/7.0.0-alpha.20 (fixed in",
       "severity": "critical",
@@ -209,11 +264,17 @@
           "value": "CVE-2024-27298"
         }
       ],
-      "affectedRange": ">= 7.0.0-alpha.1, < 7.0.0-alpha.20",
-      "fixedVersion": "7.0.0-alpha.20"
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0-alpha.1, < 7.0.0-alpha.20",
+          "fixed": "7.0.0-alpha.20"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-792q-q67h-w579",
+      "packageName": "parse-server",
       "title": "Parse Server may crash when uploading file without extension",
       "description": "### Impact\n\nParse Server crashes when uploading a file without extension.\n\n### Patches\n\nA permanent fix has been implemented to prevent the server from crashing.\n\n### Workarounds\n\nThere are no known workarounds.\n\n### References\n\n- GitHub security advisory: https://github.com/parse-community/parse-server/security/advisories/GHSA-792q-q67h-w579\n- Patched in Parse Server 6: https://github.com/parse-community/parse-server/releases/tag/6.3.1\n- Patched in Parse Server 5 (LTS): https://github.com/parse",
       "severity": "high",
@@ -230,11 +291,17 @@
           "value": "CVE-2023-46119"
         }
       ],
-      "affectedRange": ">= 6.0.0, < 6.3.1",
-      "fixedVersion": "6.3.1"
+      "affectedVersions": [
+        {
+          "range": ">= 6.0.0, < 6.3.1",
+          "fixed": "6.3.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-462x-c3jw-7vr6",
+      "packageName": "parse-server",
       "title": "Parse Server vulnerable to remote code execution via MongoDB BSON parser through prototype pollution",
       "description": "### Impact\n\nAn attacker can use this prototype pollution sink to trigger a remote code execution through the MongoDB BSON parser.\n\n### Patches\n\nPrevent prototype pollution in MongoDB database adapter.\n\n### Workarounds\n\nDisable remote code execution through the MongoDB BSON parser.\n\n### Credits\n\n- Discovered by hir0ot working with Trend Micro Zero Day Initiative\n- Fixed by dbythy\n- Reviewed by mtrezza\n\n### References\n\n- https://github.com/parse-community/parse-server/security/advisories/GHSA-462x",
       "severity": "critical",
@@ -251,11 +318,17 @@
           "value": "CVE-2023-36475"
         }
       ],
-      "affectedRange": ">= 6.0.0, < 6.2.1",
-      "fixedVersion": "6.2.1"
+      "affectedVersions": [
+        {
+          "range": ">= 6.0.0, < 6.2.1",
+          "fixed": "6.2.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9prm-jqwx-45x9",
+      "packageName": "parse-server",
       "title": "Phishing attack vulnerability by uploading malicious HTML file",
       "description": "### Impact\n\nPhishing attack vulnerability by uploading malicious files. A malicious user could upload a HTML file to Parse Server via its public API. That HTML file would then be accessible at the internet domain at which Parse Server is hosted. The URL of the the uploaded HTML could be shared for phishing attacks. The HTML page may seem legitimate because it is served under the internet domain where Parse Server is hosted, which may be the same as a company's official website domain.\n\nAn additi",
       "severity": "medium",
@@ -272,11 +345,17 @@
           "value": "CVE-2023-32689"
         }
       ],
-      "affectedRange": ">= 6.0.0, < 6.1.1",
-      "fixedVersion": "6.1.1"
+      "affectedVersions": [
+        {
+          "range": ">= 6.0.0, < 6.1.1",
+          "fixed": "6.1.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-fcv6-fg5r-jm9q",
+      "packageName": "parse-server",
       "title": "Trigger `beforeFind` not invoked in internal query pipeline when fetching pointer",
       "description": "### Impact\n\nA Parse Pointer can be used to access internal Parse Server classes. It can also be used to circumvent the `beforeFind` query trigger which can be an additional vulnerability for deployments where the `beforeFind` trigger is used as a security layer to modify an incoming query.\n\n### Patches\n\nThe vulnerability was fixed by implementing a patch in the internal query pipeline to prevent a Parse Pointer to be used to access internal Parse Server classes or circumvent the `beforeFind` tri",
       "severity": "high",
@@ -293,11 +372,17 @@
           "value": "CVE-2023-41058"
         }
       ],
-      "affectedRange": ">= 6.0.0, < 6.2.2",
-      "fixedVersion": "6.2.2"
+      "affectedVersions": [
+        {
+          "range": ">= 6.0.0, < 6.2.2",
+          "fixed": "6.2.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-h423-w6qv-2wj3",
+      "packageName": "parse-server",
       "title": "parse-server crashes when receiving file download request with invalid byte range",
       "description": "### Impact\n\nParse Server crashes when a file download request is received with an invalid byte range.\n\n### Patches\n\nImproved parsing of the range parameter to properly handle invalid range requests.\n\n### Workarounds\n\nNone\n\n### References\n\n- [GHSA-h423-w6qv-2wj3](https://github.com/parse-community/parse-server/security/advisories/GHSA-h423-w6qv-2wj3)",
       "severity": "high",
@@ -314,11 +399,17 @@
           "value": "CVE-2022-39313"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.2.8",
-      "fixedVersion": "5.2.8"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.2.8",
+          "fixed": "5.2.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-prm5-8g2m-24gg",
+      "packageName": "parse-server",
       "title": "Remote code execution via MongoDB BSON parser through prototype pollution",
       "description": "### Impact\n\nAn attacker can use this prototype pollution sink to trigger a remote code execution through the MongoDB BSON parser. \n\n### Patches\n\nPrevent prototype pollution in MongoDB database adapter.\n\n### Workarounds\n\nDisable remote code execution through the MongoDB BSON parser.\n\n### Collaborators\n\nMikhail Shcherbakov (KTH), Cristian-Alexandru Staicu (CISPA) and Musard Balliu (KTH) working with Trend Micro Zero Day Initiative\n\n### References\n\n- https://github.com/parse-community/parse-server/",
       "severity": "critical",
@@ -335,11 +426,17 @@
           "value": "CVE-2022-39396"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.3.1",
-      "fixedVersion": "5.3.1"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.3.1",
+          "fixed": "5.3.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-93vw-8fm5-p2jf",
+      "packageName": "parse-server",
       "title": "Parse Server is vulnerable to Prototype Pollution via Cloud Code Webhooks",
       "description": "### Impact\n\nA compromised Parse Server Cloud Code Webhook target endpoint allows an attacker to use prototype pollution to bypass the Parse Server `requestKeywordDenylist` option.\n\n### Patches\n\nImproved keyword detection.\n\n### Workarounds\n\nNone.\n\n### Collaborators\n\nMikhail Shcherbakov, Cristian-Alexandru Staicu and Musard Balliu working with Trend Micro Zero Day Initiative\n\n### References\n\n- https://github.com/parse-community/parse-server/security/advisories/GHSA-93vw-8fm5-p2jf",
       "severity": "high",
@@ -356,11 +453,17 @@
           "value": "CVE-2022-41879"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.3.3",
-      "fixedVersion": "5.3.3"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.3.3",
+          "fixed": "5.3.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-xprv-wvh7-qqqx",
+      "packageName": "parse-server",
       "title": "Parse Server vulnerable to Prototype Pollution via Cloud Code Webhooks or Cloud Code Triggers",
       "description": "### Impact\n\nKeywords that are specified in the Parse Server option `requestKeywordDenylist` can be injected via Cloud Code Webhooks or Triggers. This will result in the keyword being saved to the database, bypassing the `requestKeywordDenylist` option.\n\n### Patches\n\nImproved keyword detection.\n\n### Workarounds\n\nConfigure your firewall to only allow trusted servers to make request to the Parse Server Cloud Code Webhooks API, or block the API completely if you are not using the feature.\n\n### Colla",
       "severity": "high",
@@ -377,11 +480,17 @@
           "value": "CVE-2022-41878"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.3.2",
-      "fixedVersion": "5.3.2"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.3.2",
+          "fixed": "5.3.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-crrq-vr9j-fxxh",
+      "packageName": "parse-server",
       "title": "Protected fields exposed via LiveQuery",
       "description": "### Impact\n\nParse Server LiveQuery does not remove protected fields in classes, passing them to the client.\n\n### Patches\nThe LiveQueryController now removes protected fields from the client response.\n\n### Workarounds\nUse `Parse.Cloud.afterLiveQueryEvent` to manually remove protected fields.\n\n### References\n- https://github.com/parse-community/parse-server/security/advisories/GHSA-crrq-vr9j-fxxh\n- https://github.com/parse-community/parse-server\n\n### For more information\nIf you have any questions ",
       "severity": "high",
@@ -398,11 +507,17 @@
           "value": "CVE-2022-31112"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.2.4",
-      "fixedVersion": "5.2.4"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.2.4",
+          "fixed": "5.2.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-vm5r-c87r-pf6x",
+      "packageName": "parse-server",
       "title": "Parse Server option `masterKeyIps` vulnerability to IP spoofing",
       "description": "### Impact\n\nParse Server uses the request header `x-forwarded-for` to determine the client IP address. If Parse Server doesn't run behind a proxy server, then a client can set this header and Parse Server will trust the value of the header. The incorrect client IP address will be used by various features in Parse Server. This allows to circumvent the security mechanism of the Parse Server option `masterKeyIps` by setting an allowed IP address as the `x-forwarded-for` header value.\n\n### Patches\n\n",
       "severity": "high",
@@ -419,11 +534,17 @@
           "value": "CVE-2023-22474"
         }
       ],
-      "affectedRange": "< 5.4.1",
-      "fixedVersion": "5.4.1"
+      "affectedVersions": [
+        {
+          "range": "< 5.4.1",
+          "fixed": "5.4.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-7pr3-p5fm-8r9x",
+      "packageName": "parse-server",
       "title": "LiveQuery publishes user session tokens in parse-server",
       "description": "### Impact\nFor regular (non-LiveQuery) queries, the session token is removed from the response, but for LiveQuery payloads it is currently not. If a user has a LiveQuery subscription on the `Parse.User` class, all session tokens created during user sign-ups will be broadcast as part of the LiveQuery payload.\n\n### Patches\nRemove session token from LiveQuery payload.\n\n### Workaround\nSet `user.acl(new Parse.ACL())` in a beforeSave trigger to make the user private already on sign-up.",
       "severity": "high",
@@ -440,11 +561,17 @@
           "value": "CVE-2021-41109"
         }
       ],
-      "affectedRange": "< 4.10.4",
-      "fixedVersion": "4.10.4"
+      "affectedVersions": [
+        {
+          "range": "< 4.10.4",
+          "fixed": "4.10.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-qf8x-vqjv-92gr",
+      "packageName": "parse-server",
       "title": "Authentication bypass and denial of service (DoS) vulnerabilities in Apple Game Center auth adapter ",
       "description": "### Impact\nWeak validation of the Apple certificate URL in the Apple Game Center authentication adapter allows to bypass authentication and makes the server vulnerable to DoS attacks.\n\n### Patches\nThe vulnerability has been fixed by improving the URL validation and adding additional checks of the resource the URL points to before downloading it.",
       "severity": "high",
@@ -461,11 +588,17 @@
           "value": "CVE-2022-24901"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.2.1",
-      "fixedVersion": "5.2.1"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.2.1",
+          "fixed": "5.2.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-xqp8-w826-hh6x",
+      "packageName": "parse-server",
       "title": "Parse Server crashes with query parameter",
       "description": "### Impact\nParse Server crashes when if a query request contains an invalid value for the `explain` option. This is due to a bug in the MongoDB Node.js driver which throws an exception that Parse Server cannot catch.\n\n### Patches\nUpgrade to Parse Server 4.10.3",
       "severity": "high",
@@ -482,11 +615,17 @@
           "value": "CVE-2021-39187"
         }
       ],
-      "affectedRange": "< 4.10.3",
-      "fixedVersion": "4.10.3"
+      "affectedVersions": [
+        {
+          "range": "< 4.10.3",
+          "fixed": "4.10.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-2m6g-crv8-p3c6",
+      "packageName": "parse-server",
       "title": "Parse Server vulnerable to brute force guessing of user sensitive data via search patterns",
       "description": "### Impact\n\nInternal fields (keys used internally by Parse Server, prefixed by `_`) and protected fields (user defined) can be used as query constraints. Internal and protected fields are removed by Parse Server from query results and are only returned to the client using a valid master key. However, using query constraints, these fields can be guessed by enumerating until Parse Server returns a response object.\n\n### Patches\n\nThe patch requires the master key to use internal and protected fields",
       "severity": "high",
@@ -503,11 +642,17 @@
           "value": "CVE-2022-36079"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.2.5",
-      "fixedVersion": "5.2.5"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.2.5",
+          "fixed": "5.2.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-6w4q-23cf-j9jp",
+      "packageName": "parse-server",
       "title": "parse-server's session object properties can be updated by foreign user if object ID is known",
       "description": "### Impact\n\nA foreign user can write to the session object of another user if the session object ID is known. For example, a foreign user can assign the session object to their own user by writing to the `user` field and then read any custom fields of that session object.\n\nNote that assigning a session to a foreign user does not usually change the privileges of neither of the two users, according to how Parse Server uses session objects internally. However, if custom logic is used to relate spec",
       "severity": "medium",
@@ -524,11 +669,17 @@
           "value": "CVE-2022-39225"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.2.6",
-      "fixedVersion": "5.2.6"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.2.6",
+          "fixed": "5.2.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-r657-33vp-gp22",
+      "packageName": "parse-server",
       "title": "parse-server auth adapter app ID validation can be circumvented",
       "description": "### Impact\n\nValidation of the authentication adapter app ID for _Facebook_ and _Spotify_ may be circumvented.\n\nThis fixes a vulnerability that affects configurations which allow users to authenticate using the Parse Server authentication adapter for _Facebook_ or _Spotify_ and where the server-side authentication adapter configuration `appIds` is set as a string (e.g. `abc`) instead of an array of strings (e.g. `[\"abc\"]`). The vulnerability makes it possible to authenticate requests which are co",
       "severity": "low",
@@ -545,11 +696,17 @@
           "value": "CVE-2022-39231"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.2.7",
-      "fixedVersion": "5.2.7"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.2.7",
+          "fixed": "5.2.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-xw6g-jjvf-wwf9",
+      "packageName": "parse-server",
       "title": "Invalid file request can crash server",
       "description": "### Impact\nCertain types of invalid files requests are not handled properly and can crash the server. If you are running multiple Parse Server instances in a cluster, the availability impact may be low; if you are running Parse Server as a single instance without redundancy, the availability impact may be high.\n\n### Patches\nTo prevent this, invalid requests are now properly handled.\n\n### Workarounds\nNone\n\n### References\n- https://github.com/parse-community/parse-server/security/advisories/GHSA-x",
       "severity": "high",
@@ -566,11 +723,17 @@
           "value": "CVE-2022-31089"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.2.3",
-      "fixedVersion": "5.2.3"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.2.3",
+          "fixed": "5.2.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-rh9j-f5f8-rvgc",
+      "packageName": "parse-server",
       "title": "Authentication bypass vulnerability in Apple Game Center auth adapter ",
       "description": "### Impact\nThe certificate in Apple Game Center auth adapter not validated. As a result, authentication could potentially be bypassed by making a fake certificate accessible via certain Apple domains and providing the URL to that certificate in an authData object.\n\n### Patches\nTo prevent this, a new `rootCertificateUrl` property is introduced to the Parse Server Apple Game Center auth adapter which takes the URL to the root certificate of Apple's Game Center authentication certificate. If no val",
       "severity": "high",
@@ -587,11 +750,17 @@
           "value": "CVE-2022-31083"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.2.2",
-      "fixedVersion": "5.2.2"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.2.2",
+          "fixed": "5.2.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-23r4-5mxp-c7g5",
+      "packageName": "parse-server",
       "title": "parse-server new anonymous user session acts as if it's created with password",
       "description": "### Impact\n\nDevelopers that use the REST API to signup users and also allow users to login anonymously. When an anonymous user is first signed up using REST, the server creates session incorrectly, particularly the `authProvider` field in `_Session` class under `createdWith` shows the user logged in creating a password. If a developer later depends on the `createdWith` field to provide a different level of access between a password user and anonymous user, the server incorrectly classified the s",
       "severity": "medium",
@@ -608,11 +777,17 @@
           "value": "CVE-2021-39138"
         }
       ],
-      "affectedRange": "< 4.5.2",
-      "fixedVersion": "4.5.2"
+      "affectedVersions": [
+        {
+          "range": "< 4.5.2",
+          "fixed": "4.5.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-p6h4-93qp-jhcm",
+      "packageName": "parse-server",
       "title": "Command injection in Parse Server through prototype pollution",
       "description": "### Impact\nThis is a Remote Code Execution (RCE) vulnerability in Parse Server. This vulnerability affects Parse Server in the default configuration with MongoDB. The main weakness that leads to RCE is the Prototype Pollution vulnerable code in the file `DatabaseController.js`, so it is likely to affect Postgres and any other database backend as well. This vulnerability has been confirmed on Linux (Ubuntu) and Windows.\n\n### Patches\nUpgrade to Parse Server >=4.10.7. If you are using a prerelease ",
       "severity": "critical",
@@ -629,11 +804,17 @@
           "value": "CVE-2022-24760"
         }
       ],
-      "affectedRange": "< 4.10.7",
-      "fixedVersion": "4.10.7"
+      "affectedVersions": [
+        {
+          "range": "< 4.10.7",
+          "fixed": "4.10.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-593v-wcqx-hq2w",
+      "packageName": "parse-server",
       "title": "Incorrect version tags linked to external repository",
       "description": "### Impact\nA security incident caused a number of incorrect version tags to be pushed to the Parse Server repository. These version tags linked to a personal fork of a contributor who had write access to the repository. The code to which these tags linked has not been reviewed or approved by Parse Platform. Even though no releases were published with these incorrect versions, it was possible to define a Parse Server dependency that pointed to these version tags, for example if you defined this d",
       "severity": "critical",
@@ -646,8 +827,148 @@
           "value": "GHSA-593v-wcqx-hq2w"
         }
       ],
-      "affectedRange": ">= 4.6.0, < 4.10.0",
-      "fixedVersion": "4.10.0"
+      "affectedVersions": [
+        {
+          "range": ">= 4.6.0, < 4.10.0",
+          "fixed": "4.10.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9cp7-3q5w-j92g",
+      "packageName": "parse-server",
+      "title": "parse-server: Malformed `$regex` query leaks database error details in API response",
+      "description": "### Impact\n\nA malformed $regex query parameter (e.g. `[abc)` causes the database to return a structured error object that is passed unsanitized through the API response. This leaks database internals such as error messages, error codes, code names, cluster timestamps, and topology details. The vulnerability is exploitable by any client that can send query requests, depending on the deployment's permission configuration.\n\n### Patches\n\nThe fix sanitizes database error objects so that only a generi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9cp7-3q5w-j92g",
+      "publishedAt": "2026-03-06T23:25:13Z",
+      "modifiedAt": "2026-03-06T23:25:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9cp7-3q5w-j92g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30835"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.7",
+          "fixed": "8.6.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-79wj-8rqv-jvp5",
+      "packageName": "parse-server",
+      "title": "parse-server's endpoint `/loginAs` allows `readOnlyMasterKey` to gain full read and write access as any user",
+      "description": "### Impact\n\nThe `readOnlyMasterKey` can call `POST /loginAs` to obtain a valid session token for any user. This allows a read-only credential to impersonate arbitrary users with full read and write access to their data. Any Parse Server deployment that uses `readOnlyMasterKey` is affected.\n\n### Patches\n\nThe fix adds a check to the `/logInAs` handler.\n\n### Workarounds\n\nThere is no workaround other than not using `readOnlyMasterKey`.\n\n### References\n\n- GitHub security advisory: https://github.com/",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-79wj-8rqv-jvp5",
+      "publishedAt": "2026-03-06T18:46:27Z",
+      "modifiedAt": "2026-03-06T22:53:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-79wj-8rqv-jvp5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30229"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 9.0.0, < 9.5.0-alpha.4",
+          "fixed": "9.5.0-alpha.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xfh7-phr7-gr2x",
+      "packageName": "parse-server",
+      "title": "parse-server's file creation and deletion bypasses `readOnlyMasterKey` write restriction",
+      "description": "### Impact\n\nThe `readOnlyMasterKey` can be used to create and delete files via the Files API (`POST /files/:filename`, `DELETE /files/:filename`). This bypasses the read-only restriction which violates the access scope of the `readOnlyMasterKey`.\n\nAny Parse Server deployment that uses `readOnlyMasterKey` and exposes the Files API is affected. An attacker with access to the `readOnlyMasterKey` can upload arbitrary files or delete existing files.\n\n### Patches\n\nThe fix adds permission checks to bot",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xfh7-phr7-gr2x",
+      "publishedAt": "2026-03-06T18:45:36Z",
+      "modifiedAt": "2026-03-06T22:52:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xfh7-phr7-gr2x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30228"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.5",
+          "fixed": "8.6.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vc89-5g3r-cmhh",
+      "packageName": "parse-server",
+      "title": "Parse Server's Cloud Hooks and Cloud Jobs bypass `readOnlyMasterKey` write restriction",
+      "description": "### Impact\n\nParse Server's `readOnlyMasterKey` option allows access with master-level read privileges but is documented to deny all write operations. However, some endpoints incorrectly accept the `readOnlyMasterKey` for mutating operations. This allows a caller who only holds the `readOnlyMasterKey` to create, modify, and delete Cloud Hooks and to start Cloud Jobs, which can be used for data exfiltration.\n\nAny Parse Server deployment that uses the `readOnlyMasterKey` option is affected. Note th",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vc89-5g3r-cmhh",
+      "publishedAt": "2026-03-05T00:33:18Z",
+      "modifiedAt": "2026-03-06T22:51:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vc89-5g3r-cmhh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29182"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 8.6.3",
+          "fixed": "8.6.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4q3h-vp4r-prv2",
+      "packageName": "parse-server",
+      "title": "Parse Server: Account takeover via JWT algorithm confusion in Google auth adapter",
+      "description": "### Impact\n\nAn unauthenticated attacker can forge a Google authentication token with `alg: \"none\"` to log in as any user linked to a Google account, without knowing their credentials. All deployments with Google authentication enabled are affected.\n\n### Patches\n\nThe fix hardcodes the expected `RS256` algorithm instead of trusting the JWT header, and replaces the Google adapter's custom key fetcher with `jwks-rsa` which rejects unknown key IDs.\n\n### Workarounds\n\nDisable Google authentication unti",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4q3h-vp4r-prv2",
+      "publishedAt": "2026-02-25T23:00:49Z",
+      "modifiedAt": "2026-02-27T21:52:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4q3h-vp4r-prv2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27804"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 8.6.2",
+          "fixed": "8.6.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

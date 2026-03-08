@@ -1,9 +1,10 @@
 {
-  "name": "json-bigint",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "json-bigint",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wgfq-7857-4jcc",
+      "packageName": "json-bigint",
       "title": "Uncontrolled Resource Consumption in json-bigint",
       "description": "Prototype pollution in json-bigint npm package < 1.0.0 may lead to a denial-of-service (DoS) attack.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-8237"
         }
       ],
-      "affectedRange": "< 1.0.0",
-      "fixedVersion": "1.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

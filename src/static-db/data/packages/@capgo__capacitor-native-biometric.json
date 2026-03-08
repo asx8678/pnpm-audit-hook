@@ -1,0 +1,29 @@
+{
+  "packageName": "@capgo/capacitor-native-biometric",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vx5f-vmr6-32wf",
+      "packageName": "@capgo/capacitor-native-biometric",
+      "title": "cap-go/capacitor-native-biometric Authentication Bypass",
+      "description": "There is a potential issue with the [cap-go/capacitor-native-biometric](https://github.com/Cap-go/capacitor-native-biometric) library. \n\n---\n\n## Summary\n\nThe [cap-go/capacitor-native-biometric](https://github.com/Cap-go/capacitor-native-biometric) library was found to be subject to an authentication bypass as the current implementation of the `onAuthenticationSucceeded()` does not appear to handle a `CryptoObject`[^HackTricks1] [^SecuringBiometricAuthentication] as seen in the following code blo",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vx5f-vmr6-32wf",
+      "publishedAt": "2026-02-10T14:33:50Z",
+      "modifiedAt": "2026-02-12T20:25:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vx5f-vmr6-32wf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.3.6",
+          "fixed": "8.3.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

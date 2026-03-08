@@ -1,9 +1,10 @@
 {
-  "name": "aedes",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "aedes",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gh78-48h3-frjq",
+      "packageName": "aedes",
       "title": "Improper exception handling in Aedes",
       "description": "An issue was discovered in MoscaJS Aedes 0.42.0 and fixed in 0.42.1. lib/write.js does not properly consider exceptions during the writing of an invalid packet to a stream. ",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2020-13410"
         }
       ],
-      "affectedRange": "< 0.42.1",
-      "fixedVersion": "0.42.1"
+      "affectedVersions": [
+        {
+          "range": "< 0.42.1",
+          "fixed": "0.42.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5hx7-77g4-wqx3",
+      "packageName": "aedes",
       "title": "Incorrect Authorization",
       "description": "Versions of aedes before 0.35.1 does not respect its own authorization rules when a client sets a Last Will.",
       "severity": "medium",
@@ -37,8 +44,13 @@
           "value": "GHSA-5hx7-77g4-wqx3"
         }
       ],
-      "affectedRange": ">= 0.1.0, < 0.35.1",
-      "fixedVersion": "0.35.1"
+      "affectedVersions": [
+        {
+          "range": ">= 0.1.0, < 0.35.1",
+          "fixed": "0.35.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

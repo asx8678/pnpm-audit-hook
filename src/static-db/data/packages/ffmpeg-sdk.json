@@ -1,9 +1,10 @@
 {
-  "name": "ffmpeg-sdk",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "ffmpeg-sdk",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rwvf-c3wm-qm6w",
+      "packageName": "ffmpeg-sdk",
       "title": "ffmpeg-sdk vulnerable to OS Command Injection",
       "description": "A command injection vulnerability affects all versions of package ffmpeg-sdk. The injection point is located in line 9 in index.js.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-28435"
         }
       ],
-      "affectedRange": "<= 0.0.5"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "buns",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "buns",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-487w-pqcm-63hq",
+      "packageName": "buns",
       "title": "Command injection in buns",
       "description": "There is a command injection vulnerability in all versions of package buns. The injection point is located in line 678 in index file lib/index.js in the exported function install(requestedModule).",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7794"
         }
       ],
-      "affectedRange": "<= 1.1.6"
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

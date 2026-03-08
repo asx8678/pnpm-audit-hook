@@ -1,9 +1,10 @@
 {
-  "name": "openmct",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "openmct",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4g88-4hgm-m99x",
+      "packageName": "openmct",
       "title": "NASA Open MCT Cross Site Request Forgery (CSRF) vulnerability",
       "description": "Cross Site Request Forgery (CSRF) vulnerability in NASA Open MCT (aka openmct) through 3.1.0 allows attackers to view sensitive information via the flexibleLayout plugin.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2023-45884"
         }
       ],
-      "affectedRange": "<= 3.1.0",
-      "fixedVersion": "3.1.1"
+      "affectedVersions": [
+        {
+          "range": "<= 3.1.0",
+          "fixed": "3.1.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-v8fc-qxvj-f3mg",
+      "packageName": "openmct",
       "title": "NASA Open MCT Cross Site Scripting vulnerability",
       "description": "Cross Site Scripting (XSS) vulnerability in NASA Open MCT (aka openmct) through 3.1.0 allows attackers to run arbitrary code via the new component feature in the `flexibleLayout` plugin.",
       "severity": "medium",
@@ -41,10 +48,16 @@
           "value": "CVE-2023-45885"
         }
       ],
-      "affectedRange": "<= 3.1.0"
+      "affectedVersions": [
+        {
+          "range": "<= 3.1.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4xcx-cwrq-w792",
+      "packageName": "openmct",
       "title": "Prototype Pollution in NASA Open MCT",
       "description": "In NASA Open MCT (aka openmct) before commit 545a177 is subject to a prototype pollution which can occur via an import action.",
       "severity": "high",
@@ -61,7 +74,12 @@
           "value": "CVE-2023-45282"
         }
       ],
-      "affectedRange": "<= 3.0.2"
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

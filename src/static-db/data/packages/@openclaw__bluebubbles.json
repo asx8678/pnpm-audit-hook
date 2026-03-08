@@ -1,0 +1,33 @@
+{
+  "packageName": "@openclaw/bluebubbles",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pchc-86f6-8758",
+      "packageName": "@openclaw/bluebubbles",
+      "title": "OpenClaw BlueBubbles webhook auth bypass via loopback proxy trust",
+      "description": "### Summary\n\nIn affected versions, the optional BlueBubbles iMessage channel plugin could accept webhook requests as authenticated based only on the TCP peer address being loopback (`127.0.0.1`, `::1`, `::ffff:127.0.0.1`) even when the configured webhook secret was missing or incorrect. This does not affect the default iMessage integration unless BlueBubbles is installed and enabled.\n\n### Affected Packages / Versions\n\n- npm: `openclaw` `< 2026.2.13`\n- npm: `@openclaw/bluebubbles` `< 2026.2.13`\n\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pchc-86f6-8758",
+      "publishedAt": "2026-02-17T21:33:51Z",
+      "modifiedAt": "2026-02-20T16:44:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pchc-86f6-8758"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26316"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2026.2.13",
+          "fixed": "2026.2.13"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

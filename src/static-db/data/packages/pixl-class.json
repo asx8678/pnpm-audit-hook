@@ -1,9 +1,10 @@
 {
-  "name": "pixl-class",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "pixl-class",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vm5j-vqr6-v7v8",
+      "packageName": "pixl-class",
       "title": "OS Command Injection in pixl-class",
       "description": "pixl-class prior to 1.0.3 allows execution of arbitrary commands. The members argument of the create function can be controlled by users without any sanitization.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-7640"
         }
       ],
-      "affectedRange": "< 1.0.3",
-      "fixedVersion": "1.0.3"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.3",
+          "fixed": "1.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

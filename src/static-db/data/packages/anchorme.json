@@ -1,9 +1,10 @@
 {
-  "name": "anchorme",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "anchorme",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-w4wq-rvmq-77x7",
+      "packageName": "anchorme",
       "title": "Cross-site scripting in anchorme",
       "description": "All versions of package anchorme are vulnerable to Cross-site Scripting (XSS) via the main functionality.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23411"
         }
       ],
-      "affectedRange": "<= 2.1.2"
+      "affectedVersions": [
+        {
+          "range": "<= 2.1.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

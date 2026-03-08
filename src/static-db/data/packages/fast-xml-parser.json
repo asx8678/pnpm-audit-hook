@@ -1,9 +1,10 @@
 {
-  "name": "fast-xml-parser",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "fast-xml-parser",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-37qj-frw5-hhjh",
+      "packageName": "fast-xml-parser",
       "title": "fast-xml-parser has RangeError DoS Numeric Entities Bug",
       "description": "### Summary\nA RangeError vulnerability exists in the numeric entity processing of fast-xml-parser when parsing XML with out-of-range entity code points (e.g., `&#9999999;` or `&#xFFFFFF;`). This causes the parser to throw an uncaught exception, crashing any application that processes untrusted XML input.\n\n### Details\nThe vulnerability exists in `/src/xmlparser/OrderedObjParser.js` at lines 44-45:\n\n```javascript\n\"num_dec\": { regex: /&#([0-9]{1,7});/g, val : (_, str) => String.fromCodePoint(Number",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2026-25128"
         }
       ],
-      "affectedRange": ">= 4.3.6, <= 5.3.3",
-      "fixedVersion": "5.3.4"
+      "affectedVersions": [
+        {
+          "range": ">= 4.3.6, <= 5.3.3",
+          "fixed": "5.3.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-mpg4-rc92-vx8v",
+      "packageName": "fast-xml-parser",
       "title": "fast-xml-parser vulnerable to ReDOS at currency parsing",
       "description": "### Summary\nA ReDOS that exists on currency.js was discovered by Gauss Security Labs R&D team.\n\n### Details\nhttps://github.com/NaturalIntelligence/fast-xml-parser/blob/v4.4.0/src/v5/valueParsers/currency.js#L10 contains a vulnerable regex \n\n### PoC\npass the following string '\\t'.repeat(13337)  + '.'\n\n### Impact\nDenial of service during currency parsing in experimental version 5 of fast-xml-parser-library\n\nhttps://gauss-security.com",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2024-41818"
         }
       ],
-      "affectedRange": ">= 4.3.5, < 4.4.1",
-      "fixedVersion": "4.4.1"
+      "affectedVersions": [
+        {
+          "range": ">= 4.3.5, < 4.4.1",
+          "fixed": "4.4.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-6w63-h3fj-q4vw",
+      "packageName": "fast-xml-parser",
       "title": "fast-xml-parser vulnerable to Regex Injection via Doctype Entities",
       "description": "### Impact\n\"fast-xml-parser\" allows special characters in entity names, which are not escaped or sanitized. Since the entity name is used for creating a regex for searching and replacing entities in the XML body, an attacker can abuse it for DoS attacks. By crafting an entity name that results in an intentionally bad performing regex and utilizing it in the entity replacement step of the parser, this can cause the parser to stall for an indefinite amount of time.\n\n### Patches\nThe problem has bee",
       "severity": "high",
@@ -62,11 +75,17 @@
           "value": "CVE-2023-34104"
         }
       ],
-      "affectedRange": ">= 4.1.3, < 4.2.4",
-      "fixedVersion": "4.2.4"
+      "affectedVersions": [
+        {
+          "range": ">= 4.1.3, < 4.2.4",
+          "fixed": "4.2.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-x3cc-x39p-42qx",
+      "packageName": "fast-xml-parser",
       "title": "fast-xml-parser vulnerable to Prototype Pollution through tag or attribute name",
       "description": "### Impact\nAs a part of this vulnerability, user was able to se code using `__proto__` as a tag or attribute name.\n\n```js\nconst { XMLParser, XMLBuilder, XMLValidator} = require(\"fast-xml-parser\");\n\nlet XMLdata = \"<__proto__><polluted>hacked</polluted></__proto__>\"\n\nconst parser = new XMLParser();\nlet jObj = parser.parse(XMLdata);\n\nconsole.log(jObj.polluted) // should return hacked\n``` \n\n### Patches\nThe problem has been patched in v4.1.2\n\n### Workarounds\nUser can check for \"__proto__\" in the XML ",
       "severity": "medium",
@@ -83,11 +102,17 @@
           "value": "CVE-2023-26920"
         }
       ],
-      "affectedRange": "< 4.1.2",
-      "fixedVersion": "4.1.2"
+      "affectedVersions": [
+        {
+          "range": "< 4.1.2",
+          "fixed": "4.1.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-gpv5-7x3g-ghjv",
+      "packageName": "fast-xml-parser",
       "title": "fast-xml-parser regex vulnerability patch could be improved from a safety perspective",
       "description": "### Summary\nThis is a comment on https://github.com/NaturalIntelligence/fast-xml-parser/security/advisories/GHSA-6w63-h3fj-q4vw and the patches fixing it.\n\n### Details\nThe code which validates a name calls the validator:\nhttps://github.com/NaturalIntelligence/fast-xml-parser/blob/ecf6016f9b48aec1a921e673158be0773d07283e/src/xmlparser/DocTypeReader.js#L145-L153\nThis checks for the presence of an invalid character.  Such an approach is always risky, as it is so easy to forget to include an invalid",
       "severity": "low",
@@ -100,8 +125,94 @@
           "value": "GHSA-gpv5-7x3g-ghjv"
         }
       ],
-      "affectedRange": "= 4.2.4",
-      "fixedVersion": "4.2.5"
+      "affectedVersions": [
+        {
+          "range": "= 4.2.4",
+          "fixed": "4.2.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fj3w-jwp8-x2g3",
+      "packageName": "fast-xml-parser",
+      "title": "fast-xml-parser has stack overflow in XMLBuilder with preserveOrder",
+      "description": "### Impact\nApplication crashes with stack overflow when user use XML builder with `prserveOrder:true` for following or similar input \n\n```\n[{\n    'foo': [\n        { 'bar': [{ '@_V': 'baz' }] }\n    ]\n}]\n```\n\nCause: `arrToStr` was not validating if the input is an array or a string and treating all non-array values as text content.\n_What kind of vulnerability is it? Who is impacted?_\n\n### Patches\nYes in 5.3.8\n\n### Workarounds\nUse XML builder with `preserveOrder:false` or check the input data befor",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-fj3w-jwp8-x2g3",
+      "publishedAt": "2026-02-26T22:33:10Z",
+      "modifiedAt": "2026-03-06T22:00:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fj3w-jwp8-x2g3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27942"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0-beta.0, < 4.5.4",
+          "fixed": "4.5.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m7jm-9gc2-mpf2",
+      "packageName": "fast-xml-parser",
+      "title": "fast-xml-parser has an entity encoding bypass via regex injection in DOCTYPE entity names",
+      "description": "# Entity encoding bypass via regex injection in DOCTYPE entity names\n\n## Summary\n\nA dot (`.`) in a DOCTYPE entity name is treated as a regex wildcard during entity replacement, allowing an attacker to shadow built-in XML entities (`&lt;`, `&gt;`, `&amp;`, `&quot;`, `&apos;`) with arbitrary values. This bypasses entity encoding and leads to XSS when parsed output is rendered.\n\n## Details\n\nThe fix for CVE-2023-34104 addressed some regex metacharacters in entity names but missed `.` (period), which",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m7jm-9gc2-mpf2",
+      "publishedAt": "2026-02-20T18:23:54Z",
+      "modifiedAt": "2026-02-27T16:51:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m7jm-9gc2-mpf2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25896"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.1.3, < 4.5.4",
+          "fixed": "4.5.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jmr7-xgp7-cmfj",
+      "packageName": "fast-xml-parser",
+      "title": "fast-xml-parser affected by DoS through entity expansion in DOCTYPE (no expansion limit)",
+      "description": "### Summary\nThe XML parser can be forced to do an unlimited amount of entity expansion. With a very small XML input, it’s possible to make the parser spend seconds or even minutes processing a single request, effectively freezing the application.\n\n### Details\nThere is a check in `DocTypeReader.js` that tries to prevent entity expansion attacks by rejecting entities that reference other entities (it looks for & inside entity values). This does stop classic “Billion Laughs” payloads.\n\nHowever, it ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jmr7-xgp7-cmfj",
+      "publishedAt": "2026-02-17T21:30:10Z",
+      "modifiedAt": "2026-02-27T16:50:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jmr7-xgp7-cmfj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26278"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.3.6",
+          "fixed": "5.3.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

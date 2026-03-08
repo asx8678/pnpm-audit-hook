@@ -1,9 +1,10 @@
 {
-  "name": "safe-obj",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "safe-obj",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wpgh-hmv4-r3v5",
+      "packageName": "safe-obj",
       "title": "Prototype pollution in safe-obj",
       "description": "Prototype pollution vulnerability in 'safe-obj' versions 1.0.0 through 1.0.2 allows an attacker to cause a denial of service and may lead to remote code execution.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-25928"
         }
       ],
-      "affectedRange": ">= 1.0.0, <= 1.0.2"
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0, <= 1.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

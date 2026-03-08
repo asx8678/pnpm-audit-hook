@@ -1,9 +1,10 @@
 {
-  "name": "@zag-js/core",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@zag-js/core",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-fg4m-w35q-vfg2",
+      "packageName": "@zag-js/core",
       "title": "@zag-js/core prototype pollution",
       "description": "A prototype pollution in the lib.deepMerge function of @zag-js/core v0.50.0 allows attackers to cause a Denial of Service (DoS) via supplying a crafted payload.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-57079"
         }
       ],
-      "affectedRange": "< 0.82.2",
-      "fixedVersion": "0.82.2"
+      "affectedVersions": [
+        {
+          "range": "< 0.82.2",
+          "fixed": "0.82.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

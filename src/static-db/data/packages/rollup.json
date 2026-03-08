@@ -1,9 +1,10 @@
 {
-  "name": "rollup",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "rollup",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gcx4-mw62-g8wm",
+      "packageName": "rollup",
       "title": "DOM Clobbering Gadget found in rollup bundled scripts that leads to XSS",
       "description": "### Summary\n\nWe discovered a DOM Clobbering vulnerability in rollup when bundling scripts that use `import.meta.url` or with plugins that emit and reference asset files from code  in `cjs`/`umd`/`iife` format. The DOM Clobbering gadget can lead to cross-site scripting (XSS) in web pages where scriptless attacker-controlled HTML elements (e.g., an `img` tag with an unsanitized `name` attribute) are present.\n\nIt's worth noting that we’ve identifed similar issues in other popular bundlers like Webp",
       "severity": "high",
@@ -20,8 +21,40 @@
           "value": "CVE-2024-47068"
         }
       ],
-      "affectedRange": "< 2.79.2",
-      "fixedVersion": "2.79.2"
+      "affectedVersions": [
+        {
+          "range": "< 2.79.2",
+          "fixed": "2.79.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mw96-cpmx-2vgc",
+      "packageName": "rollup",
+      "title": "Rollup 4 has Arbitrary File Write via Path Traversal",
+      "description": "### Summary\nThe Rollup module bundler (specifically v4.x and present in current source) is vulnerable to an Arbitrary File Write via Path Traversal. Insecure file name sanitization in the core engine allows an attacker to control output filenames (e.g., via CLI named inputs, manual chunk aliases, or malicious plugins) and use traversal sequences (`../`) to overwrite files anywhere on the host filesystem that the build process has permissions for. This can lead to persistent Remote Code Execution",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mw96-cpmx-2vgc",
+      "publishedAt": "2026-02-25T22:37:26Z",
+      "modifiedAt": "2026-02-25T22:37:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mw96-cpmx-2vgc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27606"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.59.0",
+          "fixed": "4.59.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

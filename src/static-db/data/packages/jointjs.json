@@ -1,9 +1,10 @@
 {
-  "name": "jointjs",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "jointjs",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-f3pp-32qc-36w4",
+      "packageName": "jointjs",
       "title": "Prototype Pollution in jointjs",
       "description": "This affects the package jointjs before 3.4.2. A type confusion vulnerability can lead to a bypass of CVE-2020-28480 when the user-provided keys used in the path parameter are arrays in the setByPath function.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2021-23444"
         }
       ],
-      "affectedRange": "< 3.4.2",
-      "fixedVersion": "3.4.2"
+      "affectedVersions": [
+        {
+          "range": "< 3.4.2",
+          "fixed": "3.4.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-cq8r-fc3q-6hg2",
+      "packageName": "jointjs",
       "title": "Denial of Service (DoS) via the unsetByPath function in jsjoints",
       "description": "The package jointjs before 3.3.0 are vulnerable to Denial of Service (DoS) via the unsetByPath function.",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2020-28479"
         }
       ],
-      "affectedRange": "< 3.3.0",
-      "fixedVersion": "3.3.0"
+      "affectedVersions": [
+        {
+          "range": "< 3.3.0",
+          "fixed": "3.3.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-qwp9-52h8-xgg8",
+      "packageName": "jointjs",
       "title": "Prototype pollution in JointJS",
       "description": "The package jointjs before 3.3.0 are vulnerable to Prototype Pollution via util.setByPath (https://resources.jointjs.com/docs/jointjs/v3.2/joint.htmlutil.setByPath). The path used the access the object's key and set the value is not properly sanitized, leading to a Prototype Pollution.",
       "severity": "high",
@@ -62,8 +75,13 @@
           "value": "CVE-2020-28480"
         }
       ],
-      "affectedRange": "< 3.3.0",
-      "fixedVersion": "3.3.0"
+      "affectedVersions": [
+        {
+          "range": "< 3.3.0",
+          "fixed": "3.3.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

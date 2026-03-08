@@ -1,9 +1,10 @@
 {
-  "name": "mobiledoc-kit",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mobiledoc-kit",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hw2p-xqhq-3mjf",
+      "packageName": "mobiledoc-kit",
       "title": "Cross site scripting in mobiledoc-kit",
       "description": "Cross-site Scripting (XSS) - Reflected in GitHub repository bustle/mobiledoc-kit prior to 0.14.2.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-2932"
         }
       ],
-      "affectedRange": "< 0.14.2",
-      "fixedVersion": "0.14.2"
+      "affectedVersions": [
+        {
+          "range": "< 0.14.2",
+          "fixed": "0.14.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,0 +1,32 @@
+{
+  "packageName": "clean-css",
+  "lastUpdated": "2026-03-08T16:04:22.152Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wxhq-pm8v-cw75",
+      "packageName": "clean-css",
+      "title": "Regular expression denial of service in clean-css",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wxhq-pm8v-cw75",
+      "publishedAt": "2024-01-02T06:30:00Z",
+      "modifiedAt": "2024-01-11T14:54:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wxhq-pm8v-cw75"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21534"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<4.1.11",
+          "fixed": "4.1.11"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

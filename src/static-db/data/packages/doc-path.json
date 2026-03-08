@@ -1,9 +1,10 @@
 {
-  "name": "doc-path",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "doc-path",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gm8g-xhh8-rmwr",
+      "packageName": "doc-path",
       "title": "Prototype Pollution in doc-path",
       "description": "This affects the package doc-path before 2.1.2.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-7772"
         }
       ],
-      "affectedRange": "< 2.1.2",
-      "fixedVersion": "2.1.2"
+      "affectedVersions": [
+        {
+          "range": "< 2.1.2",
+          "fixed": "2.1.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

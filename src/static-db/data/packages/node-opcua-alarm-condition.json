@@ -1,9 +1,10 @@
 {
-  "name": "node-opcua-alarm-condition",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "node-opcua-alarm-condition",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gvwq-6fmx-28xm",
+      "packageName": "node-opcua-alarm-condition",
       "title": "node-opcua-alarm-condition prototype pollution vulnerability",
       "description": "A prototype pollution in the function fieldsToJson of node-opcua-alarm-condition v2.134.0 allows attackers to cause a Denial of Service (DoS) via supplying a crafted payload.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-57086"
         }
       ],
-      "affectedRange": "< 2.137.0",
-      "fixedVersion": "2.137.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.137.0",
+          "fixed": "2.137.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

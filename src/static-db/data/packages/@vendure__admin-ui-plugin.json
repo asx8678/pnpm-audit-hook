@@ -1,9 +1,10 @@
 {
-  "name": "@vendure/admin-ui-plugin",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@vendure/admin-ui-plugin",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gm68-572p-q28r",
+      "packageName": "@vendure/admin-ui-plugin",
       "title": "@vendure/admin-ui-plugin authenticated Cross-site Scripting vulnerability",
       "description": "### Impact\nVendure provides an authorization system with different levels of privileges. For example, an administrator cannot create another administrator.\n\nIn the admin UI, there are a couple of places with description inputs, such as inventory/collection catalog, shipping methods, promotions, and more.\n\nWhile the WYSIWYG editor allows limited customization, altering the request data (not in the ui) saves and returns arbitrary HTML with no sanitization. Causing an XSS when viewing the page.\n\nTh",
       "severity": "medium",
@@ -16,8 +17,13 @@
           "value": "GHSA-gm68-572p-q28r"
         }
       ],
-      "affectedRange": "< 2.0.3",
-      "fixedVersion": "2.0.3"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.3",
+          "fixed": "2.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

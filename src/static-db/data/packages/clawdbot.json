@@ -1,0 +1,315 @@
+{
+  "packageName": "clawdbot",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mj5r-hh7j-4gxf",
+      "packageName": "clawdbot",
+      "title": "OpenClaw Telegram allowlist authorization accepted mutable usernames",
+      "description": "## Summary\nTelegram allowlist authorization could match on `@username` (mutable/recyclable) instead of immutable numeric sender IDs.\n\n## Impact\nOperators who treat Telegram allowlists as strict identity controls could unintentionally grant access if a username changes hands (identity rebinding/spoof risk). This can allow an unauthorized sender to interact with the bot in allowlist mode.\n\n## Affected Packages / Versions\n- npm `openclaw`: <= 2026.2.13\n- npm `clawdbot`: <= 2026.1.24-3\n\n## Fix\nTeleg",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mj5r-hh7j-4gxf",
+      "publishedAt": "2026-02-18T00:54:32Z",
+      "modifiedAt": "2026-03-06T01:03:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mj5r-hh7j-4gxf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28480"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2026.1.24-3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rq6g-px6m-c248",
+      "packageName": "clawdbot",
+      "title": "OpenClaw Google Chat shared-path webhook target ambiguity allowed cross-account policy-context misrouting",
+      "description": "## Summary\nWhen multiple Google Chat webhook targets are registered on the same HTTP path, and request verification succeeds for more than one target, inbound webhook events could be routed by first-match semantics. This can cause cross-account policy/context misrouting.\n\n## Affected Packages / Versions\n- npm: `openclaw` <= 2026.2.13\n- npm: `clawdbot` <= 2026.1.24-3\n\n## Details\nAffected component: `extensions/googlechat/src/monitor.ts`.\n\nBaseline behavior allowed multiple webhook targets per pat",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rq6g-px6m-c248",
+      "publishedAt": "2026-02-18T00:54:14Z",
+      "modifiedAt": "2026-03-06T01:03:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rq6g-px6m-c248"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28469"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2026.1.24-3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w2cg-vxx6-5xjg",
+      "packageName": "clawdbot",
+      "title": "OpenClaw: denial of service through large base64 media files allocating large buffers before limit checks",
+      "description": "## Summary\n\nBase64-backed media inputs could be decoded into Buffers before enforcing decoded-size budgets. An attacker supplying oversized base64 payloads can force large allocations, causing memory pressure and denial of service.\n\n## Attack Scenario Notes\n\n- Recommended deployments bind the gateway to loopback by default and require gateway auth for HTTP endpoints. In that configuration, this is best modeled as a local/authorized DoS.\n- If an operator exposes the gateway to untrusted networks ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w2cg-vxx6-5xjg",
+      "publishedAt": "2026-02-18T00:52:36Z",
+      "modifiedAt": "2026-03-06T01:03:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w2cg-vxx6-5xjg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29612"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2026.1.24-3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-h89v-j3x9-8wqj",
+      "packageName": "clawdbot",
+      "title": "OpenClaw affected by denial of service through unguarded archive extraction allowing high expansion/resource abuse (ZIP/TAR)",
+      "description": "## Summary\nArchive extraction lacked strict resource budgets, allowing high-expansion ZIP/TAR archives to consume excessive CPU/memory/disk during install/update flows.\n\n## Affected Packages / Versions\n- openclaw (npm): <= 2026.2.13\n- clawdbot (npm): <= 2026.1.24-3\n\n## Details\nAffected component: `src/infra/archive.ts` (`extractArchive`).\n\nThe extractor now enforces resource budgets (entry count and extracted byte limits; ZIP also enforces a compressed archive size limit) and rejects over-budget",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h89v-j3x9-8wqj",
+      "publishedAt": "2026-02-18T00:52:54Z",
+      "modifiedAt": "2026-03-06T00:58:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h89v-j3x9-8wqj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28452"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2026.1.24-3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q447-rj3r-2cgh",
+      "packageName": "clawdbot",
+      "title": "OpenClaw affected by denial of service via unbounded webhook request body buffering",
+      "description": "### Summary\nMultiple webhook handlers accepted and buffered request bodies without a strict unified byte/time limit. A remote unauthenticated attacker could send oversized payloads and cause memory pressure, degrading availability.\n\n### Details\nAffected packages:\n- `openclaw` (npm): `<2026.2.12`\n- `clawdbot` (npm): `<=2026.1.24-3`\n\nRoot cause:\n- Webhook code paths buffered request payloads without consistent `maxBytes` + `timeoutMs` enforcement.\n- Some SDK-backed handlers parse request bodies in",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q447-rj3r-2cgh",
+      "publishedAt": "2026-02-18T00:53:07Z",
+      "modifiedAt": "2026-03-05T21:53:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q447-rj3r-2cgh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28478"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2026.1.24-3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3fqr-4cg8-h96q",
+      "packageName": "clawdbot",
+      "title": "OpenClaw affected by cross-site request forgery (CSRF) through loopback browser mutation endpoints",
+      "description": "## Summary\nBrowser-facing localhost mutation routes accepted cross-origin browser requests without explicit Origin/Referer validation. Loopback binding reduces remote exposure but does not prevent browser-initiated requests from malicious origins.\n\n## Impact\nA malicious website can trigger unauthorized state changes against a victim's local OpenClaw browser control plane (for example opening tabs, starting/stopping the browser, mutating storage/cookies) if the browser control service is reachabl",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3fqr-4cg8-h96q",
+      "publishedAt": "2026-02-18T00:53:59Z",
+      "modifiedAt": "2026-02-20T16:46:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3fqr-4cg8-h96q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26317"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2026.1.24-3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-g34w-4xqq-h79m",
+      "packageName": "clawdbot",
+      "title": "OpenClaw iMessage group allowlist authorization inherited DM pairing-store identities",
+      "description": "## Summary\nUnder iMessage `groupPolicy=allowlist`, group authorization could be satisfied by sender identities coming from the DM pairing store, broadening DM trust into group contexts.\n\n## Details\nAffected component: `src/imessage/monitor/monitor-provider.ts`.\n\nVulnerable logic derived `effectiveGroupAllowFrom` using both the static group allowlist and DM pairing-store identities (`storeAllowFrom`). This allowed a sender approved via DM pairing to satisfy group authorization in groups even if t",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g34w-4xqq-h79m",
+      "publishedAt": "2026-02-18T00:43:54Z",
+      "modifiedAt": "2026-02-20T16:45:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g34w-4xqq-h79m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26328"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2026.2.14",
+          "fixed": "2026.2.14"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-chm2-m3w2-wcxm",
+      "packageName": "clawdbot",
+      "title": "OpenClaw Google Chat spoofing access with allowlist authorized mutable email principal despite sender-ID mismatch",
+      "description": "### Summary\nGoogle Chat allowlisting supports matching by sender email in addition to immutable sender resource name (`users/<id>`). This weakens identity binding if a deployment assumes allowlists are strictly keyed by immutable principals.\n\n### Affected Packages / Versions\n(As of 2026-02-14; based on latest published npm versions)\n- `openclaw` (npm): `<= 2026.2.13`\n- `clawdbot` (npm): `<= 2026.1.24-3`\n\n### Details\nAffected component:\n- `extensions/googlechat/src/monitor.ts`\n\nThe `allowFrom` ch",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-chm2-m3w2-wcxm",
+      "publishedAt": "2026-02-17T22:56:39Z",
+      "modifiedAt": "2026-02-17T22:56:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-chm2-m3w2-wcxm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2026.1.24-3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q284-4pvr-m585",
+      "packageName": "clawdbot",
+      "title": "OpenClaw/Clawdbot has OS Command Injection via Project Root Path in sshNodeCommand",
+      "description": "Two related vulnerabilities existed in the macOS application's SSH remote connection handling (`CommandResolver.swift`):\n\n## Details\n\nThe `sshNodeCommand` function constructed a shell script without properly escaping the user-supplied project path in an error message. When the `cd` command failed, the unescaped path was interpolated directly into an `echo` statement, allowing arbitrary command execution **on the remote SSH host**.\n\nThe `parseSSHTarget` function did not validate that SSH target s",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q284-4pvr-m585",
+      "publishedAt": "2026-02-02T23:41:35Z",
+      "modifiedAt": "2026-02-04T21:56:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q284-4pvr-m585"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25157"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2026.1.29",
+          "fixed": "2026.1.29"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mc68-q9jw-2h3v",
+      "packageName": "clawdbot",
+      "title": "OpenClaw/Clawdbot Docker Execution has Authenticated Command Injection via PATH Environment Variable",
+      "description": "### Summary\nA Command Injection vulnerability existed in Clawdbot’s Docker sandbox execution mechanism due to unsafe handling of the PATH environment variable when constructing shell commands.\n\nAn authenticated user able to control environment variables could influence command execution within the container context.\nThis issue has been fixed and regression tests have been added to prevent reintroduction.\n\n### Impact\nIn environments where Docker sandbox mode was enabled, authenticated users capab",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mc68-q9jw-2h3v",
+      "publishedAt": "2026-02-02T23:39:47Z",
+      "modifiedAt": "2026-02-03T16:13:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mc68-q9jw-2h3v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24763"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2026.1.24",
+          "fixed": "2026.1.29"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-g8p2-7wf7-98mq",
+      "packageName": "clawdbot",
+      "title": "OpenClaw/Clawdbot has 1-Click RCE via Authentication Token Exfiltration From gatewayUrl",
+      "description": "## Summary\n\nThe Control UI trusts `gatewayUrl` from the query string without validation and auto-connects on load, sending the stored gateway token in the WebSocket connect payload.\n\nClicking a crafted link or visiting a malicious site can send the token to an attacker-controlled server. The attacker can then connect to the victim's local gateway, modify config (sandbox, tool policies), and invoke privileged actions, achieving 1-click RCE. This vulnerability is exploitable even on instances conf",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g8p2-7wf7-98mq",
+      "publishedAt": "2026-02-02T23:41:05Z",
+      "modifiedAt": "2026-02-02T23:41:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g8p2-7wf7-98mq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25253"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2026.1.28",
+          "fixed": "2026.1.29"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r2c6-8jc8-g32w",
+      "packageName": "clawdbot",
+      "title": "Duplicate Advisory: 1-Click RCE via Authentication Token Exfiltration From gatewayUrl",
+      "description": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-g8p2-7wf7-98mq. This link is maintained to preserve external references.\n\n### Original Description\nOpenClaw (aka clawdbot or Moltbot) before 2026.1.29 obtains a gatewayUrl value from a query string and automatically makes a WebSocket connection without prompting, sending a token value.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r2c6-8jc8-g32w",
+      "publishedAt": "2026-02-02T00:30:23Z",
+      "modifiedAt": "2026-02-02T20:42:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r2c6-8jc8-g32w"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2026.1.29",
+          "fixed": "2026.1.29"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

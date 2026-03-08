@@ -1,9 +1,10 @@
 {
-  "name": "xml-crypto",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "xml-crypto",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-x3m8-899r-f7c3",
+      "packageName": "xml-crypto",
       "title": "xml-crypto Vulnerable to XML Signature Verification Bypass via DigestValue Comment",
       "description": "# Impact\nAn attacker may be able to exploit this vulnerability to bypass authentication or authorization mechanisms in systems that rely on xml-crypto for verifying signed XML documents. The vulnerability allows an attacker to modify a valid signed XML message in a way that still passes signature verification checks. For example, it could be used to alter critical identity or access control attributes, enabling an attacker to escalate privileges or impersonate another user.\n\n# Patches\nAll versio",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-29775"
         }
       ],
-      "affectedRange": "< 2.1.6",
-      "fixedVersion": "2.1.6"
+      "affectedVersions": [
+        {
+          "range": "< 2.1.6",
+          "fixed": "2.1.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9p8x-f768-wp2g",
+      "packageName": "xml-crypto",
       "title": "xml-crypto Vulnerable to XML Signature Verification Bypass via Multiple SignedInfo References",
       "description": "# Impact\nAn attacker may be able to exploit this vulnerability to bypass authentication or authorization mechanisms in systems that rely on xml-crypto for verifying signed XML documents. The vulnerability allows an attacker to modify a valid signed XML message in a way that still passes signature verification checks. For example, it could be used to alter critical identity or access control attributes, enabling an attacker with a valid account to escalate privileges or impersonate another user.\n",
       "severity": "critical",
@@ -41,11 +48,17 @@
           "value": "CVE-2025-29774"
         }
       ],
-      "affectedRange": "< 2.1.6",
-      "fixedVersion": "2.1.6"
+      "affectedVersions": [
+        {
+          "range": "< 2.1.6",
+          "fixed": "2.1.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-2xp3-57p7-qf4v",
+      "packageName": "xml-crypto",
       "title": "xml-crypto vulnerable to XML signature verification bypass due improper verification of signature/signature spoofing",
       "description": "### Summary\n\nDefault configuration does not check authorization of the signer, it only checks the validity of the signature per section 3.2.2 of https://www.w3.org/TR/2008/REC-xmldsig-core-20080610/#sec-CoreValidation. As such, without additional validation steps, the default configuration allows a malicious actor to re-sign an XML document, place the certificate in a `<KeyInfo />` element, and pass `xml-crypto` default validation checks.\n\n### Details\n\nAffected `xml-crypto` versions between vers",
       "severity": "critical",
@@ -62,8 +75,13 @@
           "value": "CVE-2024-32962"
         }
       ],
-      "affectedRange": ">= 4.0.0, < 6.0.0",
-      "fixedVersion": "6.0.0"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 6.0.0",
+          "fixed": "6.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "@feathersjs/transport-commons",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@feathersjs/transport-commons",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hhr9-rh25-hvf9",
+      "packageName": "@feathersjs/transport-commons",
       "title": "Feathers socket handler allows abusing implicit toString",
       "description": "### Impact\n\nFeathers socket handler did not catch invalid string conversion errors like:\n\n```ts\nconst message = `${{ toString: '' }}`\n```\n\nCausing the NodeJS process to crash when sending an unexpected Socket.io message like\n\n```ts\nsocket.emit('find', { toString: '' })\n```\n\n### Patches\n\nA fix has been released in\n\n- `v5.0.8` via #3241\n- `v4.5.18` via #3242\n\n### Workarounds\n\nSince it is in the core Socket handling code upgrading to the latest version is necessary.\n### References\n\n- [v5.0.8 Change",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-37899"
         }
       ],
-      "affectedRange": ">= 5.0.0, <= 5.0.7",
-      "fixedVersion": "5.0.8"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, <= 5.0.7",
+          "fixed": "5.0.8"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

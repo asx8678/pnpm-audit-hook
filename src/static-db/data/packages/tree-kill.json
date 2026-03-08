@@ -1,9 +1,10 @@
 {
-  "name": "tree-kill",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "tree-kill",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j7fq-p9q7-5wfv",
+      "packageName": "tree-kill",
       "title": "Treekill Enables OS Command Injection",
       "description": "A Code Injection exists in treekill and tree-kill on Windows which allows a remote code execution when an attacker is able to control the input into the command.\n\n### Steps To Reproduce:\nCreate the following PoC file:\n\n```js\nvar kill = require('treekill');\nkill('3333332 & echo \"HACKED\" > HACKED.txt & ');\n```\n\nExecute the following commands in terminal:\n\n```shell\nnpm i treekill # Install affected module\ndir # Check *HACKED.txt* doesn't exist\nnode poc.js #  Run the PoC\ndir # Now *HACKED.txt* exist",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2019-15598"
         }
       ],
-      "affectedRange": "< 1.2.2",
-      "fixedVersion": "1.2.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.2.2",
+          "fixed": "1.2.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-mxq6-vrrr-ppmg",
+      "packageName": "tree-kill",
       "title": "Duplicate Advisory: tree-kill vulnerable to remote code execution",
       "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-884p-74jh-xrg2. Ths link is maintained to preserve external references.\n\n## Original Description\nA Code Injection exists in tree-kill on Windows which allows a remote code execution when an attacker is able to control the input into the command, which is executed without any check. The issue arises here: `https://github.com/pkrumins/node-tree-kill/blob/master/index.js#L20` . While the Linux part is sanitized",
       "severity": "critical",
@@ -37,7 +44,12 @@
           "value": "GHSA-mxq6-vrrr-ppmg"
         }
       ],
-      "affectedRange": "<= 1.2.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

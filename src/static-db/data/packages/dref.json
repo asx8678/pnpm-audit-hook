@@ -1,9 +1,10 @@
 {
-  "name": "dref",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "dref",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-76g8-235f-gj6p",
+      "packageName": "dref",
       "title": "dref is vulnerable to prototype pollution",
       "description": "A prototype pollution in the lib.set function of dref v0.1.2 allows attackers to cause a Denial of Service (DoS) via supplying a crafted payload.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-26278"
         }
       ],
-      "affectedRange": "<= 0.1.2"
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

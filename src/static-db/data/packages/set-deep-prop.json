@@ -1,9 +1,10 @@
 {
-  "name": "set-deep-prop",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "set-deep-prop",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-v42q-78w8-8fcc",
+      "packageName": "set-deep-prop",
       "title": "set-deep-prop Prototype Pollution",
       "description": "All versions of package set-deep-prop are vulnerable to Prototype Pollution via the main functionality.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23373"
         }
       ],
-      "affectedRange": "<= 1.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

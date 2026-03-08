@@ -1,9 +1,10 @@
 {
-  "name": "json-schema",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "json-schema",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-896r-f27r-55mw",
+      "packageName": "json-schema",
       "title": "json-schema is vulnerable to Prototype Pollution",
       "description": "json-schema before version 0.4.0 is vulnerable to Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution').",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-3918"
         }
       ],
-      "affectedRange": "< 0.4.0",
-      "fixedVersion": "0.4.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.4.0",
+          "fixed": "0.4.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

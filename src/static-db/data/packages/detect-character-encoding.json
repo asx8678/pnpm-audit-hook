@@ -1,9 +1,10 @@
 {
-  "name": "detect-character-encoding",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "detect-character-encoding",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jqfh-8hw5-fqjr",
+      "packageName": "detect-character-encoding",
       "title": "Improper Handling of Exceptional Conditions in detect-character-encoding",
       "description": "### Impact\n\nIn detect-character-encoding v0.6.0 and earlier, data matching no charset causes the Node.js process to crash.\n\n### Patches\n\nThe problem has been patched in [detect-character-encoding v0.7.0](https://github.com/sonicdoe/detect-character-encoding/releases/tag/v0.7.0).\n\n### CVSS score\n\n[CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/RL:O/RC:C](https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/RL:O/RC:C)\n\nBase Score: 7.5 (High)\nTemporal Score: 7.2 (Hig",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2021-39157"
         }
       ],
-      "affectedRange": "< 0.7.0",
-      "fixedVersion": "0.7.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.7.0",
+          "fixed": "0.7.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5rwj-j5m3-3chj",
+      "packageName": "detect-character-encoding",
       "title": "Missing Release of Memory after Effective Lifetime in detect-character-encoding",
       "description": "### Impact\n\nIn detect-character-encoding v0.3.0 and earlier, allocated memory is not released.\n\n### Patches\n\nThe problem has been patched in [detect-character-encoding v0.3.1](https://github.com/sonicdoe/detect-character-encoding/releases/tag/v0.3.1).\n\n### CVSS score\n\n[CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/RL:O/RC:C](https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/RL:O/RC:C)\n\nBase Score: 7.5 (High)\nTemporal Score: 7.2 (High)\n\nSince detect-character-e",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2021-39176"
         }
       ],
-      "affectedRange": "< 0.3.1",
-      "fixedVersion": "0.3.1"
+      "affectedVersions": [
+        {
+          "range": "< 0.3.1",
+          "fixed": "0.3.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "pidusage",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "pidusage",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-h2p3-h48h-9jj7",
+      "packageName": "pidusage",
       "title": "PIDUsage Enables OS Command Injection",
       "description": "### Overview\nAffected versions of pidusage pass unsanitized input to `child_process.exec()`, resulting in arbitrary code execution in the `ps` method.\n\nThis package is vulnerable to this PoC on Darwin, SunOS, FreeBSD, and AIX.\n\nWindows and Linux are not vulnerable.\n\n### Proof of Concept\n```js\nvar pid = require('pidusage');\npid.stat('1 && /usr/local/bin/python');\n```\n\n### Remediation\nUpdate to version 1.1.5 or later.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2017-1000220"
         }
       ],
-      "affectedRange": "<= 1.1.4",
-      "fixedVersion": "1.1.5"
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.4",
+          "fixed": "1.1.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

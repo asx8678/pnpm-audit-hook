@@ -1,9 +1,10 @@
 {
-  "name": "merge-deep",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "merge-deep",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-r6rj-9ch6-g264",
+      "packageName": "merge-deep",
       "title": "Prototype pollution in Merge-deep",
       "description": "The merge-deep library before 3.0.3 for Node.js can be tricked into overwriting properties of Object.prototype or adding new properties to it. These properties are then inherited by every object in the program, thus facilitating prototype-pollution attacks against applications using this library.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-26707"
         }
       ],
-      "affectedRange": "< 3.0.3",
-      "fixedVersion": "3.0.3"
+      "affectedVersions": [
+        {
+          "range": "< 3.0.3",
+          "fixed": "3.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

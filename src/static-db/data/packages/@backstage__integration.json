@@ -1,0 +1,33 @@
+{
+  "packageName": "@backstage/integration",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-95v5-prp4-5gv5",
+      "packageName": "@backstage/integration",
+      "title": "Backstage vulnerable to potential reading of SCM URLs using built in token",
+      "description": "### Impact\n\nA vulnerability in the SCM URL parsing used by Backstage integrations allowed path traversal sequences in encoded form to be included in file paths. When these URLs were processed by integration functions that construct API URLs, the traversal segments could redirect requests to unintended SCM provider API endpoints using the configured server-side integration credentials.\n\nThis affects instances that use any of the SCM integrations (GitHub, Bitbucket Server, Bitbucket Cloud) with th",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-95v5-prp4-5gv5",
+      "publishedAt": "2026-03-05T00:20:45Z",
+      "modifiedAt": "2026-03-05T00:20:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-95v5-prp4-5gv5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29185"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.20.0",
+          "fixed": "1.20.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,9 +1,10 @@
 {
-  "name": "adb-mcp",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "adb-mcp",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-54j7-grvr-9xwg",
+      "packageName": "adb-mcp",
       "title": "Command Injection in adb-mcp MCP Server",
       "description": "# Command Injection in adb-mcp MCP Server\n\nThe MCP Server at https://github.com/srmorete/adb-mcp is written in a way that is vulnerable to command injection vulnerability attacks as part of some of its MCP Server tool definition and implementation.\n\nThe MCP Server is also published publicly to npm at www.npmjs.com/package/adb-mcp and allows users to install it.\n\n## Vulnerable tool\n\nThe MCP Server defines the function `executeAdbCommand()` which executes commands via string as a parameter and wra",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-59834"
         }
       ],
-      "affectedRange": "<= 0.1.0"
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

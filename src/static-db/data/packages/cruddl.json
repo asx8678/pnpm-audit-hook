@@ -1,9 +1,10 @@
 {
-  "name": "cruddl",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "cruddl",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-qm4w-4995-vg7f",
+      "packageName": "cruddl",
       "title": "cruddl vulnerable to ArangoDB Query Language (AQL) injection through flexSearch",
       "description": "### Impact\n\nIf a vunerable version of cruddl is used to generate a schema that uses `@flexSearchFulltext`, users of that schema may be able to inject arbitrary AQL queries that will be forwarded to and executed by ArangoDB.\n\nSchemas that do not use `@flexSearchFulltext` are not affected.\n\nThe attacker needs to have `READ` permission to at least one root entity type that has `@flexSearchFulltext` enabled.\n\n### Patches\n\nThe issue has been fixed in version 3.0.2 and in version 2.7.0 of cruddl.\n\n###",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-36084"
         }
       ],
-      "affectedRange": ">= 1.1.0, < 2.7.0",
-      "fixedVersion": "2.7.0"
+      "affectedVersions": [
+        {
+          "range": ">= 1.1.0, < 2.7.0",
+          "fixed": "2.7.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "node-latex-pdf",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "node-latex-pdf",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-32fw-9wq8-9x9c",
+      "packageName": "node-latex-pdf",
       "title": "node-latex-pdf is susceptible to command injection",
       "description": "A command injection vulnerability affects all versions of the package node-latex-pdf.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-28433"
         }
       ],
-      "affectedRange": "<= 0.0.2"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

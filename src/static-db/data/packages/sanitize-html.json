@@ -1,9 +1,10 @@
 {
-  "name": "sanitize-html",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "sanitize-html",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-qhxp-v273-g94h",
+      "packageName": "sanitize-html",
       "title": "sanitize-html is vulnerable to XSS through incomprehensive sanitization",
       "description": "`sanitize-html` prior to version 2.0.0-beta is vulnerable to Cross-site Scripting (XSS). The `sanitizeHtml()` function in `index.js` does not sanitize content when using the custom `transformTags` option, which is intended to convert attribute values into text. As a result, malicious input can be transformed into executable code.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2019-25225"
         }
       ],
-      "affectedRange": "< 2.0.0-beta",
-      "fixedVersion": "2.0.0-beta"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0-beta",
+          "fixed": "2.0.0-beta"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-rm97-x556-q36h",
+      "packageName": "sanitize-html",
       "title": "sanitize-html Information Exposure vulnerability",
       "description": "Versions of the package sanitize-html before 2.12.1 are vulnerable to Information Exposure when used on the backend and with the style attribute allowed, allowing enumeration of files in the system (including project dependencies). An attacker could exploit this vulnerability to gather details about the file system structure and dependencies of the targeted server.",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2024-21501"
         }
       ],
-      "affectedRange": "< 2.12.1",
-      "fixedVersion": "2.12.1"
+      "affectedVersions": [
+        {
+          "range": "< 2.12.1",
+          "fixed": "2.12.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-cgfm-xwp7-2cvr",
+      "packageName": "sanitize-html",
       "title": "Sanitize-html Vulnerable To REDoS Attacks",
       "description": "The package sanitize-html before 2.7.1 are vulnerable to Regular Expression Denial of Service (ReDoS) due to insecure global regular expression replacement logic of HTML comment removal.",
       "severity": "high",
@@ -62,11 +75,17 @@
           "value": "CVE-2022-25887"
         }
       ],
-      "affectedRange": "< 2.7.1",
-      "fixedVersion": "2.7.1"
+      "affectedVersions": [
+        {
+          "range": "< 2.7.1",
+          "fixed": "2.7.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-rjqq-98f6-6j3r",
+      "packageName": "sanitize-html",
       "title": "Improper Input Validation in sanitize-html",
       "description": "Apostrophe Technologies sanitize-html before 2.3.1 does not properly handle internationalized domain name (IDN) which could allow an attacker to bypass hostname whitelist validation set by the \"allowedIframeHostnames\" option.",
       "severity": "medium",
@@ -83,11 +102,17 @@
           "value": "CVE-2021-26539"
         }
       ],
-      "affectedRange": "< 2.3.1",
-      "fixedVersion": "2.3.1"
+      "affectedVersions": [
+        {
+          "range": "< 2.3.1",
+          "fixed": "2.3.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-mjxr-4v3x-q3m4",
+      "packageName": "sanitize-html",
       "title": "Improper Input Validation in sanitize-html",
       "description": "Apostrophe Technologies sanitize-html before 2.3.2 does not properly validate the hostnames set by the \"allowedIframeHostnames\" option when the \"allowIframeRelativeUrls\" is set to true, which allows attackers to bypass hostname whitelist for iframe element, related using an src value that starts with \"/\\\\example.com\".",
       "severity": "medium",
@@ -104,8 +129,13 @@
           "value": "CVE-2021-26540"
         }
       ],
-      "affectedRange": "< 2.3.2",
-      "fixedVersion": "2.3.2"
+      "affectedVersions": [
+        {
+          "range": "< 2.3.2",
+          "fixed": "2.3.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

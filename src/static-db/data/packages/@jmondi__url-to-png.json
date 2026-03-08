@@ -1,9 +1,10 @@
 {
-  "name": "@jmondi/url-to-png",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@jmondi/url-to-png",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-342q-2mc2-5gmp",
+      "packageName": "@jmondi/url-to-png",
       "title": "@jmondi/url-to-png enables capture screenshot of localhost web services (unauthenticated pages)",
       "description": "### Summary\n\nThe maintainer been contemplating whether FTP or other protocols could serve as useful functionalities, but there may not be a practical reason for it since we are utilizing headless Chrome to capture screenshots. The argument is based on the assumption that this package can function as a service.\n\nThe package includes an `ALLOW_LIST` where the host can specify which services the user is permitted to capture screenshots of. By default, capturing screenshots of web services running o",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2024-39919"
         }
       ],
-      "affectedRange": "< 2.1.2",
-      "fixedVersion": "2.1.2"
+      "affectedVersions": [
+        {
+          "range": "< 2.1.2",
+          "fixed": "2.1.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-vvmv-wrvp-9gjr",
+      "packageName": "@jmondi/url-to-png",
       "title": "@jmondi/url-to-png contains a Path Traversal vulnerability",
       "description": "### Summary\nWhen trying to add a `BLOCK_LIST` feature when the maintainer noticed they didn't sanitize the `ImageId` in the code, which leads to path traversal vulnerability. Now, this is different from a traditional path traversal issue, because as of NOW you can store the image in any place arbitrarily, and given enough time they might be able to come up with a working exploit BUT for the time being they am reporting this.  \n\n### Details\n\n@jmondi/url-to-png does not sanitizing the `ImageID` as",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2024-39918"
         }
       ],
-      "affectedRange": "< 2.1.2",
-      "fixedVersion": "2.1.2"
+      "affectedVersions": [
+        {
+          "range": "< 2.1.2",
+          "fixed": "2.1.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-665w-mwrr-77q3",
+      "packageName": "@jmondi/url-to-png",
       "title": "Arbitrary file read via Playwright's screenshot feature exploiting file wrapper",
       "description": "### Impact\n\nAll users of url-to-png. Please see https://github.com/jasonraimondi/url-to-png/issues/47\n\n### Patches\n\n[v2.0.3](https://github.com/jasonraimondi/url-to-png/releases/tag/v2.0.3) requires input url to be of protocol `http` or `https` \n\n### Workarounds\n\nRequires upgrade.\n\n### References\n\n- https://github.com/jasonraimondi/url-to-png/issues/47\n- https://github.com/user-attachments/files/15536336/Arbitrary.File.Read.via.Playwright.s.Screenshot.Feature.Exploiting.File.Wrapper.pdf\n",
       "severity": "medium",
@@ -62,8 +75,13 @@
           "value": "CVE-2024-37169"
         }
       ],
-      "affectedRange": "< 2.0.3",
-      "fixedVersion": "2.0.3"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.3",
+          "fixed": "2.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

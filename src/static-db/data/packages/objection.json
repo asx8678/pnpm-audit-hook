@@ -1,9 +1,10 @@
 {
-  "name": "objection",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "objection",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-r659-8xfp-j327",
+      "packageName": "objection",
       "title": "objection.js Prototype Pollution vulnerability",
       "description": "objection.js prior to version 2.2.16 is vulnerable to Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution'). This issue is patched in version 2.2.16.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-3766"
         }
       ],
-      "affectedRange": "< 2.2.16",
-      "fixedVersion": "2.2.16"
+      "affectedVersions": [
+        {
+          "range": "< 2.2.16",
+          "fixed": "2.2.16"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

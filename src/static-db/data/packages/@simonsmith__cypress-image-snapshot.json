@@ -1,9 +1,10 @@
 {
-  "name": "@simonsmith/cypress-image-snapshot",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@simonsmith/cypress-image-snapshot",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vxjg-hchx-cc4g",
+      "packageName": "@simonsmith/cypress-image-snapshot",
       "title": "@simonsmith/cypress-image-snapshothas fix for insecure snapshot file names",
       "description": "### Impact\nIt's possible for a user to pass a relative file path for the snapshot name and reach outside of the project directory into the machine running the test. Example:\n\n```js\n  cy.get('h1').matchImageSnapshot('../../../ignore-relative-dirs')\n```\nThe above will create an `ignore-relative-dirs.png` three levels up\n\n### Patches\nFixed in `8.0.2`\n\n### Workarounds\nValidate all the existing uses of `matchImageSnapshot` to ensure correct use of the filename argument. Example:\n\n```js\n    // snapsho",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-38695"
         }
       ],
-      "affectedRange": "<= 8.0.1",
-      "fixedVersion": "8.0.2"
+      "affectedVersions": [
+        {
+          "range": "<= 8.0.1",
+          "fixed": "8.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

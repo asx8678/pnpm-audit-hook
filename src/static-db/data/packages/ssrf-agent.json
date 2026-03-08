@@ -1,9 +1,10 @@
 {
-  "name": "ssrf-agent",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "ssrf-agent",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6gww-qpm6-mc2g",
+      "packageName": "ssrf-agent",
       "title": "Server-Side Request Forgery in ssrf-agent",
       "description": "The package ssrf-agent before 1.0.5 are vulnerable to Server-side Request Forgery (SSRF) via the defaultIpChecker function. It fails to properly validate if the IP requested is private.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23718"
         }
       ],
-      "affectedRange": "< 1.0.5",
-      "fixedVersion": "1.0.5"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.5",
+          "fixed": "1.0.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

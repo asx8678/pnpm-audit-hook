@@ -1,9 +1,10 @@
 {
-  "name": "lunary",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "lunary",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-v6x6-4v4x-2fx9",
+      "packageName": "lunary",
       "title": "Withdrawn Advisory: Lunary Cross-Site Request Forgery (CSRF) vulnerability",
       "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because the [lunary npm package](https://www.npmjs.com/package/lunary) is connected to https://github.com/lunary-ai/lunary-js, not the https://github.com/lunary-ai/lunary repo that is discussed in this advisory.\n\n**The underlying vulnerability report is still valid**, but it doesn't affect a product in a [GitHub Advisory Database supported ecosystem](https://docs.github.com/en/code-security/security-advisories/working-with-global-security-ad",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2024-6862"
         }
       ],
-      "affectedRange": "< 1.4.10",
-      "fixedVersion": "1.4.10"
+      "affectedVersions": [
+        {
+          "range": "< 1.4.10",
+          "fixed": "1.4.10"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-rpx8-fg6w-rm6x",
+      "packageName": "lunary",
       "title": "Withdrawn Advisory: lunary-ai/lunary XSS in SAML metadata endpoint",
       "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because the [lunary npm package](https://www.npmjs.com/package/lunary) is connected to https://github.com/lunary-ai/lunary-js, not the https://github.com/lunary-ai/lunary repo that is discussed in this advisory.\n\n**The underlying vulnerability report is still valid**, but it doesn't affect a product in a [GitHub Advisory Database supported ecosystem](https://docs.github.com/en/code-security/security-advisories/working-with-global-security-ad",
       "severity": "high",
@@ -41,10 +48,16 @@
           "value": "CVE-2024-5478"
         }
       ],
-      "affectedRange": "<= 1.2.7"
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9jmp-j63g-8x6m",
+      "packageName": "lunary",
       "title": "Withdrawn Advisory: Lunary information disclosure vulnerability",
       "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because the [lunary npm package](https://www.npmjs.com/package/lunary) is connected to https://github.com/lunary-ai/lunary-js, not the https://github.com/lunary-ai/lunary repo that is discussed in this advisory.\n\n**The underlying vulnerability report is still valid**, but it doesn't affect a product in a [GitHub Advisory Database supported ecosystem](https://docs.github.com/en/code-security/security-advisories/working-with-global-security-ad",
       "severity": "medium",
@@ -61,11 +74,17 @@
           "value": "CVE-2024-6867"
         }
       ],
-      "affectedRange": "< 1.4.10",
-      "fixedVersion": "1.4.10"
+      "affectedVersions": [
+        {
+          "range": "< 1.4.10",
+          "fixed": "1.4.10"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-6p2q-8qfq-wq7x",
+      "packageName": "lunary",
       "title": "Withdrawn Advisory: Lunary improper access control vulnerability",
       "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because the [lunary npm package](https://www.npmjs.com/package/lunary) is connected to https://github.com/lunary-ai/lunary-js, not the https://github.com/lunary-ai/lunary repo that is discussed in this advisory.\n\n**The underlying vulnerability report is still valid**, but it doesn't affect a product in a [GitHub Advisory Database supported ecosystem](https://docs.github.com/en/code-security/security-advisories/working-with-global-security-ad",
       "severity": "high",
@@ -82,11 +101,17 @@
           "value": "CVE-2024-6087"
         }
       ],
-      "affectedRange": "< 1.4.9",
-      "fixedVersion": "1.4.9"
+      "affectedVersions": [
+        {
+          "range": "< 1.4.9",
+          "fixed": "1.4.9"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-w73r-8mm4-cfvf",
+      "packageName": "lunary",
       "title": "Withdrawn Advisory: Lunary Improper Authentication vulnerability",
       "description": "# Withdrawn Advisory\n\nThis advisory was incorrectly linked the the npm package `lunary`. The advisory is valid, but not for that package.\n\n# Original Advisory\n\nA broken access control vulnerability exists prior to commit 1f043d8798ad87346dfe378eea723bff78ad7433 of lunary-ai/lunary. The `saml.ts` file allows a user from one organization to update the Identity Provider (IDP) settings and view the SSO metadata of another organization. This vulnerability can lead to unauthorized access and potential",
       "severity": "high",
@@ -103,11 +128,17 @@
           "value": "CVE-2024-6582"
         }
       ],
-      "affectedRange": "< 1.4.9",
-      "fixedVersion": "1.4.9"
+      "affectedVersions": [
+        {
+          "range": "< 1.4.9",
+          "fixed": "1.4.9"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-3mwc-2cj7-gx8c",
+      "packageName": "lunary",
       "title": "lunary-ai/lunary Access Control Vulnerability in Prompt Variation Management",
       "description": "Withdrawn: This advisory was incorrectly linked the the npm package `lunary`. The advisory is valid, but not for that package.\n\nIn lunary-ai/lunary version 1.2.13, an insufficient granularity of access control vulnerability allows users to create, update, get, and delete prompt variations for datasets not owned by their organization. This issue arises due to the application not properly validating the ownership of dataset prompts and their variations against the organization or project of the re",
       "severity": "medium",
@@ -124,11 +155,17 @@
           "value": "CVE-2024-5389"
         }
       ],
-      "affectedRange": "< 1.4.9",
-      "fixedVersion": "1.4.9"
+      "affectedVersions": [
+        {
+          "range": "< 1.4.9",
+          "fixed": "1.4.9"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-w5xm-mx47-v7c8",
+      "packageName": "lunary",
       "title": "lunary-ai/lunary allows users unauthorized access to projects",
       "description": "Withdrawn: This advisory was incorrectly linked the the npm package `lunary`. The advisory is valid, but not for that packlage.\n\nIn lunary-ai/lunary version v1.2.13, an incorrect authorization vulnerability exists that allows unauthorized users to access and manipulate projects within an organization they should not have access to. Specifically, the vulnerability is located in the `checkProjectAccess` method within the authorization middleware, which fails to adequately verify if a user has the ",
       "severity": "critical",
@@ -145,8 +182,13 @@
           "value": "CVE-2024-4146"
         }
       ],
-      "affectedRange": "< 1.2.26",
-      "fixedVersion": "1.2.26"
+      "affectedVersions": [
+        {
+          "range": "< 1.2.26",
+          "fixed": "1.2.26"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

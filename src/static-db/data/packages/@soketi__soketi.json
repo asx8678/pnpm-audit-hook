@@ -1,9 +1,10 @@
 {
-  "name": "@soketi/soketi",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@soketi/soketi",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-g6w6-h933-4rc5",
+      "packageName": "@soketi/soketi",
       "title": "Soketi was exposed to Sandbox Escape vulnerability via vm2",
       "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\nAnyone who might have used Soketi with the `cluster` driver (or through PM2).\n\n### Patches\n_Has the problem been patched? What versions should users upgrade to?_\nGet the latest version of Soketi.\n\n### Workarounds\n_Is there a way for users to fix or remediate the vulnerability without upgrading?_\nNone. It's advised to upgrade to the latest version.\n\n### References\n_Are there any links users can visit to find out more?_\n- https://gith",
       "severity": "critical",
@@ -16,11 +17,17 @@
           "value": "GHSA-g6w6-h933-4rc5"
         }
       ],
-      "affectedRange": "< 1.6.0",
-      "fixedVersion": "1.6.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.6.0",
+          "fixed": "1.6.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-86ch-6w7v-v6xf",
+      "packageName": "@soketi/soketi",
       "title": "Denial of Service in soketi",
       "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\n\nThere was a wrong behavior when reading POST requests, making the server crash if it couldn't read the body. In case a POST request was sent to any endpoint of the server with an empty body, **even unauthenticated with the Pusher Protocol**, it would simply just crash the server for trying to send a response after the request closed.\n\nAll users that run the server are affected by it and it's highly recommended to upgrade to the lat",
       "severity": "high",
@@ -37,11 +44,17 @@
           "value": "CVE-2022-21667"
         }
       ],
-      "affectedRange": "< 0.24.1",
-      "fixedVersion": "0.24.1"
+      "affectedVersions": [
+        {
+          "range": "< 0.24.1",
+          "fixed": "0.24.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-2w8g-m5j8-7m87",
+      "packageName": "@soketi/soketi",
       "title": "Zalgo-like output that crashes the server",
       "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\n\n[`colors`](https://npmjs.com/package/colors) package caused zalgo-like output (see https://github.com/soketi/soketi/issues/276, https://github.com/Marak/colors.js/issues/289), breaking the servers.\n\n**Only NPM users that recently upgraded or installed the NPM package are affected.**\n\nDocker users seem to not be affected as the dependencies were bundled at the time of the build, which were tested.\n\n### Patches\n_Has the problem been ",
       "severity": "critical",
@@ -54,8 +67,13 @@
           "value": "GHSA-2w8g-m5j8-7m87"
         }
       ],
-      "affectedRange": "< 0.26.1",
-      "fixedVersion": "0.26.1"
+      "affectedVersions": [
+        {
+          "range": "< 0.26.1",
+          "fixed": "0.26.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

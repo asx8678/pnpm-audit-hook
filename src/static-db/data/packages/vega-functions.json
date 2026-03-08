@@ -1,9 +1,10 @@
 {
-  "name": "vega-functions",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "vega-functions",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-m9rg-mr6g-75gm",
+      "packageName": "vega-functions",
       "title": "`vega-functions` vulnerable to Cross-site Scripting via `setdata` function",
       "description": "### Impact\n\nFor sites that allow users to supply untrusted user input, malicious use of an internal function (not part of the [public API](https://vega.github.io/vega/docs/expressions/)) could be used to run unintentional javascript (XSS).\n\n### Patches\n\nFixed in vega-functions `6.1.1`\n\n### Workarounds\n\nThere is no workaround besides upgrading. Using `vega.expressionInterpreter` as described in [CSP safe mode](https://vega.github.io/vega/usage/interpreter/) does not prevent this issue.  \n\n\n### Ex",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-66648"
         }
       ],
-      "affectedRange": "<= 6.1.0",
-      "fixedVersion": "6.1.1"
+      "affectedVersions": [
+        {
+          "range": "<= 6.1.0",
+          "fixed": "6.1.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-rcw3-wmx7-cphr",
+      "packageName": "vega-functions",
       "title": "Vega Cross-Site Scripting (XSS) via event filter when not using CSP mode expressionInterpeter",
       "description": "### Impact\n\nIn `vega` 5.30.0 and lower,  `vega-functions` 5.15.0 and lower , it was possible to call JavaScript functions from the Vega expression language that were not meant to be supported.\n\n### Patches\n\nPatched in `vega` `5.31.0`  / `vega-functions` `5.16.0`\n\n### Workarounds\n\n_Is there a way for users to fix or remediate the vulnerability without upgrading?_\n\n- Run `vega` without `vega.expressionInterpreter`. This mode is not the default as it is slower. \n- Using the interpreter [described i",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2025-26619"
         }
       ],
-      "affectedRange": "< 5.16.0",
-      "fixedVersion": "5.16.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.16.0",
+          "fixed": "5.16.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-963h-3v39-3pqf",
+      "packageName": "vega-functions",
       "title": "Vega vulnerable to Cross-site Scripting via RegExp.prototype[@@replace]",
       "description": "## Impact\n\nUsers running Vega/Vega-lite JSON definitions could run unexpected JavaScript code when drawing graphs, unless the library is used with the `vega-interpreter`.\n\n## Workarounds\n\n- Use `vega` with [expression interpreter](https://vega.github.io/vega/usage/interpreter/)\n- Upgrade to a [newer Vega version](https://github.com/vega/vega/releases/tag/v5.32.0) (`5.32.0`)\n\n### POC Summary\n\nCalling `replace` with a `RegExp`-like pattern calls `RegExp.prototype[@@replace]`, which can then call a",
       "severity": "medium",
@@ -62,11 +75,17 @@
           "value": "CVE-2025-27793"
         }
       ],
-      "affectedRange": "< 5.17.0",
-      "fixedVersion": "5.17.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.17.0",
+          "fixed": "5.17.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-w5m3-xh75-mp55",
+      "packageName": "vega-functions",
       "title": "Vega has Cross-site Scripting vulnerability in `lassoAppend` function",
       "description": "### Summary\n\nVega's `lassoAppend` function: `lassoAppend` accepts 3 arguments and internally invokes `push` function on the 1st argument specifying array consisting of 2nd and 3rd arguments as `push` call argument. The type of the 1st argument is supposed to be an array, but it's not enforced.\n\nThis makes it possible to specify any object with a `push` function as the 1st argument, `push` function can be set to any function that can be access via `event.view` (no all such functions can be exploi",
       "severity": "medium",
@@ -83,11 +102,17 @@
           "value": "CVE-2023-26487"
         }
       ],
-      "affectedRange": "< 5.13.1",
-      "fixedVersion": "5.13.1"
+      "affectedVersions": [
+        {
+          "range": "< 5.13.1",
+          "fixed": "5.13.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4vq7-882g-wcg4",
+      "packageName": "vega-functions",
       "title": "Vega Expression Language `scale` expression function Cross Site Scripting",
       "description": "### Summary\nThe Vega `scale` expression function has the ability to call arbitrary functions with a single controlled argument. This can be exploited to escape the Vega expression sandbox in order to execute arbitrary JavaScript.\n\n### Details\n\nThe [scale](https://github.dev/vega/vega/blob/72b9b3bbf912212e7879b6acaccc84aff969ef1c/packages/vega-functions/src/functions/scale.js#L36-L37) expression function passes a user supplied argument `group` to [getScale](https://github.dev/vega/vega/blob/72b9b",
       "severity": "medium",
@@ -104,8 +129,13 @@
           "value": "CVE-2023-26486"
         }
       ],
-      "affectedRange": "< 5.13.1",
-      "fixedVersion": "5.13.1"
+      "affectedVersions": [
+        {
+          "range": "< 5.13.1",
+          "fixed": "5.13.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "agnai",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "agnai",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-g54f-66mw-hv66",
+      "packageName": "agnai",
       "title": "Agnai vulnerable to Relative Path Traversal in Image Upload",
       "description": "### Summary\n\nA vulnerability has been discovered in **Agnai** that permits attackers to upload image files at attacker-chosen location on the server. This issue can lead to image file uploads to unauthorized or unintended directories, including overwriting of existing images which may be used for defacement.\n\nThis does not affect:\n\n- agnai.chat\n- installations using S3-compatible storage\n- self-hosting that is not publicly exposed\n\n### CWE-35: Path Traversal\n\nhttps://cwe.mitre.org/data/definitio",
       "severity": "low",
@@ -20,11 +21,17 @@
           "value": "CVE-2024-47171"
         }
       ],
-      "affectedRange": "< 1.0.330",
-      "fixedVersion": "1.0.330"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.330",
+          "fixed": "1.0.330"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-h355-hm5h-cm8h",
+      "packageName": "agnai",
       "title": "Agnai File Disclosure Vulnerability: JSON via Path Traversal ",
       "description": "### CWE-35: Path Traversal\n\nhttps://cwe.mitre.org/data/definitions/35.html\n\n### CVSSv3.1 4.3 - Medium\nCVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N\nCVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N\n\n### Summary\n\nA vulnerability has been discovered in **Agnai** that permits attackers to read arbitrary JSON files at attacker-chosen locations on the server. This issue can lead to unauthorized access to sensitive information and exposure of confidential configuration files.\n**This only ",
       "severity": "low",
@@ -41,11 +48,17 @@
           "value": "CVE-2024-47170"
         }
       ],
-      "affectedRange": "< 1.0.330",
-      "fixedVersion": "1.0.330"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.330",
+          "fixed": "1.0.330"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-mpch-89gm-hm83",
+      "packageName": "agnai",
       "title": "Agnai vulnerable to Remote Code Execution via JS Upload using Directory Traversal",
       "description": "## Summary\n\nA vulnerability has been discovered in **Agnai** that permits attackers to upload arbitrary files to attacker-chosen locations on the server, including JavaScript, enabling the execution of commands within those files. This issue could result in unauthorized access, full server compromise, data leakage, and other critical security threats.\n\nThis **does not** affect:\n- `agnai.chat`\n- installations using S3-compatible storage\n- self-hosting that is not publicly exposed\n\nThis **DOES** a",
       "severity": "critical",
@@ -62,8 +75,13 @@
           "value": "CVE-2024-47169"
         }
       ],
-      "affectedRange": "< 1.0.330",
-      "fixedVersion": "1.0.330"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.330",
+          "fixed": "1.0.330"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

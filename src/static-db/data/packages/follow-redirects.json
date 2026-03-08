@@ -1,9 +1,10 @@
 {
-  "name": "follow-redirects",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "follow-redirects",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jchw-25xp-jwwc",
+      "packageName": "follow-redirects",
       "title": "Follow Redirects improperly handles URLs in the url.parse() function",
       "description": "Versions of the package follow-redirects before 1.15.4 are vulnerable to Improper Input Validation due to the improper handling of URLs by the url.parse() function. When new URL() throws an error, it can be manipulated to misinterpret the hostname. An attacker could exploit this weakness to redirect traffic to a malicious site, potentially leading to information disclosure, phishing attacks, or other security breaches.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2023-26159"
         }
       ],
-      "affectedRange": "< 1.15.4",
-      "fixedVersion": "1.15.4"
+      "affectedVersions": [
+        {
+          "range": "< 1.15.4",
+          "fixed": "1.15.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-74fj-2j2h-c42q",
+      "packageName": "follow-redirects",
       "title": "Exposure of sensitive information in follow-redirects",
       "description": "follow-redirects is vulnerable to Exposure of Private Personal Information to an Unauthorized Actor",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2022-0155"
         }
       ],
-      "affectedRange": "< 1.14.7",
-      "fixedVersion": "1.14.7"
+      "affectedVersions": [
+        {
+          "range": "< 1.14.7",
+          "fixed": "1.14.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-cxjh-pqwp-8mfp",
+      "packageName": "follow-redirects",
       "title": "follow-redirects' Proxy-Authorization header kept across hosts",
       "description": "When using [axios](https://github.com/axios/axios), its dependency follow-redirects only clears authorization header during cross-domain redirect, but allows the proxy-authentication header which contains credentials too.\n\n## Steps To Reproduce & PoC\n\nTest code:\n\n```js\nconst axios = require('axios');\n\naxios.get('http://127.0.0.1:10081/', {\n headers: {\n 'AuThorization': 'Rear Test',\n 'ProXy-AuthoriZation': 'Rear Test',\n 'coOkie': 't=1'\n }\n})\n .then((response) => {\n console.log(response);\n })\n```\n",
       "severity": "medium",
@@ -62,11 +75,17 @@
           "value": "CVE-2024-28849"
         }
       ],
-      "affectedRange": "<= 1.15.5",
-      "fixedVersion": "1.15.6"
+      "affectedVersions": [
+        {
+          "range": "<= 1.15.5",
+          "fixed": "1.15.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-pw2r-vq6v-hr8c",
+      "packageName": "follow-redirects",
       "title": "Exposure of Sensitive Information to an Unauthorized Actor in follow-redirects",
       "description": "Exposure of Sensitive Information to an Unauthorized Actor in NPM follow-redirects prior to 1.14.8.",
       "severity": "medium",
@@ -83,8 +102,13 @@
           "value": "CVE-2022-0536"
         }
       ],
-      "affectedRange": "< 1.14.8",
-      "fixedVersion": "1.14.8"
+      "affectedVersions": [
+        {
+          "range": "< 1.14.8",
+          "fixed": "1.14.8"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

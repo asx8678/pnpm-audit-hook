@@ -1,9 +1,10 @@
 {
-  "name": "nuxt-api-party",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "nuxt-api-party",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-q6hx-3m4p-749h",
+      "packageName": "nuxt-api-party",
       "title": "DOS by abusing `fetchOptions.retry`. ",
       "description": "### Summary\n`nuxt-api-party` allows developers to proxy requests to an API without exposing credentials to the client. [`ofetch`](https://github.com/unjs/ofetch) is used to send the requests. \n\nThe library allows the user to send many options directly to `ofetch`. There is no filter on which options are available. We can abuse the retry logic to cause the server to crash from a stack overflow.\n\n### Details\n`fetchOptions` [are obtained directly from the request body](https://github.com/johannscho",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2023-49800"
         }
       ],
-      "affectedRange": "< 0.22.1",
-      "fixedVersion": "0.22.1"
+      "affectedVersions": [
+        {
+          "range": "< 0.22.1",
+          "fixed": "0.22.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-3wfp-253j-5jxv",
+      "packageName": "nuxt-api-party",
       "title": "SSRF & Credentials Leak ",
       "description": "### Summary\n`nuxt-api-party` allows developers to proxy requests to an API without exposing credentials to the client. [A previous vulnerability](https://huntr.dev/bounties/4c57a3f6-0d0e-4431-9494-4a1e7b062fbf/) allowed an attacker to change the baseURL of the request, potentially leading to credentials being leaked or SSRF. \n\nThis vulnerability is similar, and was caused by a recent change to the detection of absolute URLs, which is no longer sufficient to prevent SSRF. \n\n### Details\n`nuxt-api-",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2023-49799"
         }
       ],
-      "affectedRange": "< 0.22.0",
-      "fixedVersion": "0.22.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.22.0",
+          "fixed": "0.22.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

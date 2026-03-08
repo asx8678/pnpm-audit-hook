@@ -1,0 +1,33 @@
+{
+  "packageName": "@langchain/langgraph-checkpoint-redis",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5mx2-w598-339m",
+      "packageName": "@langchain/langgraph-checkpoint-redis",
+      "title": "RediSearch Query Injection in @langchain/langgraph-checkpoint-redis",
+      "description": "## Summary\n\nA query injection vulnerability exists in the `@langchain/langgraph-checkpoint-redis` package's filter handling. The `RedisSaver` and `ShallowRedisSaver` classes construct RediSearch queries by directly interpolating user-provided filter keys and values without proper escaping. RediSearch has special syntax characters that can modify query behavior, and when user-controlled data contains these characters, the query logic can be manipulated to bypass intended access controls.\n\n## Atta",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5mx2-w598-339m",
+      "publishedAt": "2026-02-18T22:40:09Z",
+      "modifiedAt": "2026-02-23T22:20:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5mx2-w598-339m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27022"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.2",
+          "fixed": "1.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

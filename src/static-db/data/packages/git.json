@@ -1,9 +1,10 @@
 {
-  "name": "git",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "git",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9gqr-xp86-f87h",
+      "packageName": "git",
       "title": "Code injection in npm git",
       "description": "All versions of package git are vulnerable to Remote Code Execution (RCE) due to missing sanitization in the Git.git method, which allows execution of OS commands rather than just git commands. At this time, there is no known workaround. There has been no patch released.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23632"
         }
       ],
-      "affectedRange": "<= 0.1.5"
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

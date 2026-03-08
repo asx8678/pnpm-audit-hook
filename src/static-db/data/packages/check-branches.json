@@ -1,9 +1,10 @@
 {
-  "name": "check-branches",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "check-branches",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9c4g-fp4r-prrv",
+      "packageName": "check-branches",
       "title": "check-branches is vulnerable to command Injection",
       "description": "All versions of the package check-branches are vulnerable to Command Injection.\n\ncheck-branches is a command-line tool that is interacted with locally, or via CI, to confirm no conflicts exist in git branches.\n\nHowever, the library follows these conventions which can be abused:\n1. It trusts branch names as they are (plain text)\n2. It spawns git commands by concatenating user input\n\nSince a branch name is potentially a user input - as users can create branches remotely via pull requests, or simpl",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-11148"
         }
       ],
-      "affectedRange": "<= 0.0.19"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.19"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

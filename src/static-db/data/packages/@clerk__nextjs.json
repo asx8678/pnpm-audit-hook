@@ -1,9 +1,10 @@
 {
-  "name": "@clerk/nextjs",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@clerk/nextjs",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9mp4-77wg-rwx9",
+      "packageName": "@clerk/nextjs",
       "title": "@clerk/backend Performs Insufficient Verification of Data Authenticity",
       "description": "### Impact\n\nApplications that use the `verifyWebhook()` helper to verify incoming Clerk webhooks are susceptible to accepting improperly signed webhook events.\n\n### Patches\n\n* `@clerk/backend`: the helper has been patched as of `2.4.0`\n* `@clerk/astro`: the helper has been patched as of `2.10.2`\n* `@clerk/express`: the helper has been patched as of `1.7.4`\n* `@clerk/fastify`: the helper has been patched as of `2.4.4`\n* `@clerk/nextjs`: the helper has been patched as of `6.23.3`\n* `@clerk/nuxt`: ",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-53548"
         }
       ],
-      "affectedRange": ">= 6.2.10, < 6.23.3",
-      "fixedVersion": "6.23.3"
+      "affectedVersions": [
+        {
+          "range": ">= 6.2.10, < 6.23.3",
+          "fixed": "6.23.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-q6w5-jg5q-47vg",
+      "packageName": "@clerk/nextjs",
       "title": "@clerk/nextjs auth() and getAuth() methods vulnerable to insecure direct object reference (IDOR) ",
       "description": "### Impact\nUnauthorized access or privilege escalation due to a logic flaw in `auth()` in the App Router or `getAuth()` in the Pages Router.\n\n### Affected Versions\nAll applications that that use `@clerk/nextjs` versions in the range of `>= 4.7.0`,`< 4.29.3` in a Next.js backend to authenticate API Routes, App Router, or Route handlers. Specifically, those that call `auth()` in the App Router or `getAuth()` in the Pages Router. Only the `@clerk/nextjs` SDK is impacted. Other SDKs, including other",
       "severity": "critical",
@@ -41,8 +48,13 @@
           "value": "CVE-2024-22206"
         }
       ],
-      "affectedRange": ">= 4.7.0, < 4.29.3",
-      "fixedVersion": "4.29.3"
+      "affectedVersions": [
+        {
+          "range": ">= 4.7.0, < 4.29.3",
+          "fixed": "4.29.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

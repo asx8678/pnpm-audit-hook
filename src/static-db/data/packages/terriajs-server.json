@@ -1,0 +1,33 @@
+{
+  "packageName": "terriajs-server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w789-49fc-v8hr",
+      "packageName": "terriajs-server",
+      "title": "TerriaJS-Server has a domain validation bypass vulnerability in its proxy allowlist",
+      "description": "### Impact\nA validation bug allows an attacker to proxy domains not explicitly allowed in the `proxyableDomains` configuration.\n\nThe validation only checks if a hostname _ended_ with an allowed domain. This meant:\n\nIf `example.com` is allowed in `proxyableDomains`:\n\n- ✅ example.com is allowed (correct)\n- ✅ api.example.com is allowed (correct)\n- ⚠️ maliciousexample.com is allowed (incorrect)\n\nAn attacker could register maliciousexample.com and proxy content through `terriajs-server`, bypassing pr",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w789-49fc-v8hr",
+      "publishedAt": "2026-02-26T15:22:11Z",
+      "modifiedAt": "2026-02-26T15:22:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w789-49fc-v8hr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27818"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.0.3",
+          "fixed": "4.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,9 +1,10 @@
 {
-  "name": "mout",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mout",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vvv8-xw5f-3f88",
+      "packageName": "mout",
       "title": "Prototype Pollution in mout",
       "description": "This affects all versions of package mout. The deepFillIn function can be used to 'fill missing properties recursively', while the deepMixIn mixes objects into the target object, recursively mixing existing child objects as well. In both cases, the key used to access the target object recursively is not checked, leading to exploiting this vulnerability. **Note:** This vulnerability derives from an incomplete fix of [CVE-2020-7792](https://security.snyk.io/vuln/SNYK-JS-MOUT-1014544).",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2022-21213"
         }
       ],
-      "affectedRange": "<= 1.2.3",
-      "fixedVersion": "1.2.4"
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.3",
+          "fixed": "1.2.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-pc58-wgmc-hfjr",
+      "packageName": "mout",
       "title": "Prototype Pollution in mout",
       "description": "This affects all versions of package mout. The deepFillIn function can be used to 'fill missing properties recursively', while the deepMixIn 'mixes objects into the target object, recursively mixing existing child objects as well'. In both cases, the key used to access the target object recursively is not checked, leading to a Prototype Pollution.",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2020-7792"
         }
       ],
-      "affectedRange": "< 1.2.3",
-      "fixedVersion": "1.2.3"
+      "affectedVersions": [
+        {
+          "range": "< 1.2.3",
+          "fixed": "1.2.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

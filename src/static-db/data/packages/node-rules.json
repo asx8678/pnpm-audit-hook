@@ -1,9 +1,10 @@
 {
-  "name": "node-rules",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "node-rules",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-f78f-353m-cf4j",
+      "packageName": "node-rules",
       "title": "Code Injection in node-rules",
       "description": "node-rules including 3.0.0 and prior to 5.0.0 allows injection of arbitrary commands. The argument rules of function \"fromJSON()\" can be controlled by users without any sanitization.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-7609"
         }
       ],
-      "affectedRange": ">= 3.0.0, < 5.0.0",
-      "fixedVersion": "5.0.0"
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 5.0.0",
+          "fixed": "5.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

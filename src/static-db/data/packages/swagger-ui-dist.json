@@ -1,9 +1,10 @@
 {
-  "name": "swagger-ui-dist",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "swagger-ui-dist",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-qrmm-w75w-3wpx",
+      "packageName": "swagger-ui-dist",
       "title": "Server side request forgery in SwaggerUI",
       "description": "SwaggerUI supports displaying remote OpenAPI definitions through the `?url` parameter. This enables robust demonstration capabilities on sites like `petstore.swagger.io`, `editor.swagger.io`, and similar sites, where users often want to see what their OpenAPI definitions would look like rendered.\n\nHowever, this functionality may pose a risk for users who host their own SwaggerUI instances. In particular, including remote OpenAPI definitions opens a vector for phishing attacks by abusing the trus",
       "severity": "medium",
@@ -16,11 +17,17 @@
           "value": "GHSA-qrmm-w75w-3wpx"
         }
       ],
-      "affectedRange": "< 4.1.3",
-      "fixedVersion": "4.1.3"
+      "affectedVersions": [
+        {
+          "range": "< 4.1.3",
+          "fixed": "4.1.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-6c9x-mj3g-h47x",
+      "packageName": "swagger-ui-dist",
       "title": "Spoofing attack in swagger-ui-dist",
       "description": "The swagger-ui-dist package before 4.1.3 for Node.js could allow a remote attacker to hijack the clicking action of the victim. By persuading a victim to visit a malicious Web site, a remote attacker could exploit this vulnerability to hijack the victim's click actions and possibly launch further attacks against the victim.",
       "severity": "medium",
@@ -37,8 +44,13 @@
           "value": "CVE-2021-46708"
         }
       ],
-      "affectedRange": "< 4.1.3",
-      "fixedVersion": "4.1.3"
+      "affectedVersions": [
+        {
+          "range": "< 4.1.3",
+          "fixed": "4.1.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "@apidevtools/json-schema-ref-parser",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@apidevtools/json-schema-ref-parser",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-5f97-h2c2-826q",
+      "packageName": "@apidevtools/json-schema-ref-parser",
       "title": "json-schema-ref-parser Prototype Pollution issue",
       "description": "A Prototype Pollution issue in API Dev Tools json-schema-ref-parser v.11.0.0 and v.11.1.0 allows a remote attacker to execute arbitrary code via the `bundle()`, `parse()`, `resolve()`, `dereference()` functions.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-29651"
         }
       ],
-      "affectedRange": ">= 11.0.0, <= 11.1.0",
-      "fixedVersion": "11.2.0"
+      "affectedVersions": [
+        {
+          "range": ">= 11.0.0, <= 11.1.0",
+          "fixed": "11.2.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

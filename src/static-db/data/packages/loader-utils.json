@@ -1,9 +1,10 @@
 {
-  "name": "loader-utils",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "loader-utils",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hhq3-ff78-jv3g",
+      "packageName": "loader-utils",
       "title": "loader-utils is vulnerable to Regular Expression Denial of Service (ReDoS)",
       "description": "A regular expression denial of service (ReDoS) flaw was found in Function interpolateName in interpolateName.js in webpack loader-utils via the resourcePath variable in interpolateName.js. A badly or maliciously formed string could be used to send crafted requests that cause a system to crash or take a disproportional amount of time to process. This issue has been patched in versions 1.4.2, 2.0.4 and 3.2.1.",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2022-37599"
         }
       ],
-      "affectedRange": ">= 3.0.0, < 3.2.1",
-      "fixedVersion": "3.2.1"
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 3.2.1",
+          "fixed": "3.2.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-3rfm-jhwj-7488",
+      "packageName": "loader-utils",
       "title": "loader-utils is vulnerable to Regular Expression Denial of Service (ReDoS) via url variable",
       "description": "A Regular expression denial of service (ReDoS) flaw was found in Function interpolateName in interpolateName.js in webpack loader-utils 2.0.0 via the url variable in interpolateName.js. A badly or maliciously formed string could be used to send crafted requests that cause a system to crash or take a disproportional amount of time to process. This issue has been patched in versions 1.4.2, 2.0.4 and 3.2.1.",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2022-37603"
         }
       ],
-      "affectedRange": ">= 3.0.0, < 3.2.1",
-      "fixedVersion": "3.2.1"
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 3.2.1",
+          "fixed": "3.2.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-76p3-8jx3-jpfq",
+      "packageName": "loader-utils",
       "title": "Prototype pollution in webpack loader-utils",
       "description": "Prototype pollution vulnerability in function parseQuery in parseQuery.js in webpack loader-utils prior to version 2.0.3 via the name variable in parseQuery.js.",
       "severity": "critical",
@@ -62,8 +75,13 @@
           "value": "CVE-2022-37601"
         }
       ],
-      "affectedRange": "< 1.4.1",
-      "fixedVersion": "1.4.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.4.1",
+          "fixed": "1.4.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

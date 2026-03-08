@@ -1,0 +1,32 @@
+{
+  "packageName": "@nguniversal/express-engine",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x288-3778-4hhx",
+      "packageName": "@nguniversal/express-engine",
+      "title": "Angular SSR is vulnerable to SSRF and Header Injection via request handling pipeline",
+      "description": "A [Server-Side Request Forgery (SSRF)](https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/SSRF) vulnerability has been identified in the Angular SSR request handling pipeline. The vulnerability exists because Angular’s internal URL reconstruction logic directly trusts and consumes user-controlled HTTP headers specifically the Host and `X-Forwarded-*` family to determine the application's base origin without any validation of the destination domain.\n\nSpecifically, the framework didn't ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-x288-3778-4hhx",
+      "publishedAt": "2026-02-25T22:42:36Z",
+      "modifiedAt": "2026-02-25T22:42:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x288-3778-4hhx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27739"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 16.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

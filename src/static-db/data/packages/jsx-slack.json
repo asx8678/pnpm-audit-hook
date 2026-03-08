@@ -1,9 +1,10 @@
 {
-  "name": "jsx-slack",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "jsx-slack",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-55xv-f85c-248q",
+      "packageName": "jsx-slack",
       "title": "Regular Expression Denial of Service (ReDoS) in jsx-slack",
       "description": "jsx-slack v4.5.1 and earlier versions are vulnerable to a regular expression denial-of-service (ReDoS) attack. \n\n### Impact\n\nIf attacker can put a lot of JSX elements into `<blockquote>` tag, an internal regular expression for escaping characters may consume an excessive amount of computing resources.\n\n```javascript\n/** @jsxImportSource jsx-slack */\nimport { Section } from 'jsx-slack'\n\nconsole.log(\n  <Section>\n    <blockquote>\n      {[...Array(40)].map((_, i) => (\n        <p>{i + 1}</p>\n      ))",
       "severity": "low",
@@ -20,11 +21,17 @@
           "value": "CVE-2021-43838"
         }
       ],
-      "affectedRange": "< 4.5.1",
-      "fixedVersion": "4.5.1"
+      "affectedVersions": [
+        {
+          "range": "< 4.5.1",
+          "fixed": "4.5.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-hp68-xhvj-x6j6",
+      "packageName": "jsx-slack",
       "title": "jsx-slack insufficient patch for CVE-2021-43838 ReDoS",
       "description": "We found the patch for CVE-2021-43838 in jsx-slack v4.5.1 is insufficient to save from Regular Expression Denial of Service (ReDoS) attack.\n\nThis vulnerability affects to jsx-slack v4.5.1 and earlier versions.\n\n### Impact\n\nIf attacker can put a lot of JSX elements into `<blockquote>` tag _with including multibyte characters_, an internal regular expression for escaping characters may consume an excessive amount of computing resources.\n\n```javascript\n/** @jsxImportSource jsx-slack */\nimport { Sec",
       "severity": "medium",
@@ -41,8 +48,13 @@
           "value": "CVE-2021-43843"
         }
       ],
-      "affectedRange": "< 4.5.2",
-      "fixedVersion": "4.5.2"
+      "affectedVersions": [
+        {
+          "range": "< 4.5.2",
+          "fixed": "4.5.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

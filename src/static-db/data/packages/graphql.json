@@ -1,9 +1,10 @@
 {
-  "name": "graphql",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "graphql",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9pv7-vfvm-6vr7",
+      "packageName": "graphql",
       "title": "graphql Uncontrolled Resource Consumption vulnerability",
       "description": "Versions of the package graphql from 16.3.0 and before 16.8.1 are vulnerable to Denial of Service (DoS) due to insufficient checks in the OverlappingFieldsCanBeMergedRule.ts file when parsing large queries. This vulnerability allows an attacker to degrade system performance.\n\n**Note:** It was not proven that this vulnerability can crash the process.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-26144"
         }
       ],
-      "affectedRange": ">= 16.3.0, < 16.8.1",
-      "fixedVersion": "16.8.1"
+      "affectedVersions": [
+        {
+          "range": ">= 16.3.0, < 16.8.1",
+          "fixed": "16.8.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

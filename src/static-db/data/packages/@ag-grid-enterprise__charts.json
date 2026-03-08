@@ -1,9 +1,10 @@
 {
-  "name": "@ag-grid-enterprise/charts",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@ag-grid-enterprise/charts",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-328p-362g-r48j",
+      "packageName": "@ag-grid-enterprise/charts",
       "title": "ag-grid packages vulnerable to Prototype Pollution",
       "description": "ag-grid-enterprise v31.3.2 was discovered to contain a prototype pollution via the component _ModuleSupport.jsonApply. This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-39001"
         }
       ],
-      "affectedRange": "< 31.3.4",
-      "fixedVersion": "31.3.4"
+      "affectedVersions": [
+        {
+          "range": "< 31.3.4",
+          "fixed": "31.3.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

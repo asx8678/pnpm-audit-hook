@@ -1,9 +1,10 @@
 {
-  "name": "gsap",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "gsap",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6g8v-hpgw-h2v7",
+      "packageName": "gsap",
       "title": "Prototype pollution in gsap",
       "description": "There is a prototype pollution vulnerability in gsap which affects all versions before 3.6.0.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-28478"
         }
       ],
-      "affectedRange": "< 3.6.0",
-      "fixedVersion": "3.6.0"
+      "affectedVersions": [
+        {
+          "range": "< 3.6.0",
+          "fixed": "3.6.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

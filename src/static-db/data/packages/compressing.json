@@ -1,0 +1,33 @@
+{
+  "packageName": "compressing",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cc8f-xg8v-72m3",
+      "packageName": "compressing",
+      "title": "Compressing Vulnerable to Arbitrary File Write via Symlink Extraction",
+      "description": "# Arbitrary File Write via Symlink Extraction in `github.com/node-modules/compressing`\n\n## Brief Introduction\n\nThe `compressing` npm package extracts TAR archives while restoring symbolic links without validating their targets. \nBy embedding symlinks that resolve outside the intended extraction directory, an attacker can cause subsequent file entries to be written to arbitrary locations on the host file system.\n\nDepending on the extractor’s handling of existing files, this behavior may allow ove",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cc8f-xg8v-72m3",
+      "publishedAt": "2026-02-03T17:42:18Z",
+      "modifiedAt": "2026-02-04T21:55:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cc8f-xg8v-72m3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24884"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.10.3",
+          "fixed": "1.10.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

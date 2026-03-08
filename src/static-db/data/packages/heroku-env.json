@@ -1,9 +1,10 @@
 {
-  "name": "heroku-env",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "heroku-env",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jp45-65jw-94mj",
+      "packageName": "heroku-env",
       "title": "heroku-env susceptible to command injection",
       "description": "A command injection vulnerability affects all versions of package heroku-env. The injection point is located in lib/get.js which is required by index.js.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-28437"
         }
       ],
-      "affectedRange": "<= 0.2.0"
+      "affectedVersions": [
+        {
+          "range": "<= 0.2.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

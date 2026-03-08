@@ -1,9 +1,10 @@
 {
-  "name": "devcert",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "devcert",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-fp36-299x-pwmw",
+      "packageName": "devcert",
       "title": "Regular expression denial of service in devcert",
       "description": "An exponential ReDoS (Regular Expression Denial of Service) can be triggered in the devcert npm package, when an attacker is able to supply arbitrary input to the certificateFor method",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2022-1929"
         }
       ],
-      "affectedRange": "< 1.2.1",
-      "fixedVersion": "1.2.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.2.1",
+          "fixed": "1.2.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4228-7qvx-f4rq",
+      "packageName": "devcert",
       "title": "Injection and Command Injection in devcert",
       "description": "A command injection vulnerability in the `devcert` module may lead to remote code execution when users of the module pass untrusted input to the `certificateFor` function.",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2020-8186"
         }
       ],
-      "affectedRange": "<= 1.1.1",
-      "fixedVersion": "1.1.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.1",
+          "fixed": "1.1.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

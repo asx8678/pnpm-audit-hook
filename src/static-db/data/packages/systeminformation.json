@@ -1,9 +1,10 @@
 {
-  "name": "systeminformation",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "systeminformation",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wphj-fx3q-84ch",
+      "packageName": "systeminformation",
       "title": "systeminformation has a Command Injection vulnerability in fsSize() function on Windows",
       "description": "## Summary\n\nThe `fsSize()` function in `systeminformation` is vulnerable to **OS Command Injection (CWE-78)** on Windows systems. The optional `drive` parameter is directly concatenated into a PowerShell command without sanitization, allowing arbitrary command execution when user-controlled input reaches this function.\n\n**Affected Platforms:** Windows only  \n\n**CVSS Breakdown:**\n- **Attack Vector (AV:N):** Network - if used in a web application/API\n- **Attack Complexity (AC:H):** High - requires",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-68154"
         }
       ],
-      "affectedRange": "< 5.27.14",
-      "fixedVersion": "5.27.14"
+      "affectedVersions": [
+        {
+          "range": "< 5.27.14",
+          "fixed": "5.27.14"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-2m8v-572m-ff2v",
+      "packageName": "systeminformation",
       "title": "Command Injection Vulnerability",
       "description": "### Impact\ncommand injection vulnerability\n\n### Patches\nProblem was fixed with a parameter check. Please upgrade to version >= 5.3.1\n\n### Workarounds\nIf you cannot upgrade, be sure to check or sanitize service parameters that are passed to si.inetLatency(), si.inetChecksite(), si.services(), si.processLoad() ... do only allow strings, reject any arrays. String sanitation works as expected.",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2021-21315"
         }
       ],
-      "affectedRange": "< 5.3.1",
-      "fixedVersion": "5.3.1"
+      "affectedVersions": [
+        {
+          "range": "< 5.3.1",
+          "fixed": "5.3.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-cvv5-9h9w-qp2m",
+      "packageName": "systeminformation",
       "title": "Systeminformation has command injection vulnerability in getWindowsIEEE8021x (SSID)",
       "description": "### Summary\nThe SSID is not sanitized when before it is passed as a parameter to cmd.exe in the `getWindowsIEEE8021x` function. This means that malicious content in the SSID can be executed as OS commands. \n\n### Details\nI have exploited this vulnerability in a Windows service using version 5.22.11 of the module, to escalate privileges (in an environment where I am authorized to do so). However, as far as I can see from the code, it is still present in master branch at time of writing, on line [4",
       "severity": "high",
@@ -62,11 +75,17 @@
           "value": "CVE-2024-56334"
         }
       ],
-      "affectedRange": "<= 5.23.6",
-      "fixedVersion": "5.23.7"
+      "affectedVersions": [
+        {
+          "range": "<= 5.23.6",
+          "fixed": "5.23.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-gx6r-qc2v-3p3v",
+      "packageName": "systeminformation",
       "title": "systeminformation SSID Command Injection Vulnerability",
       "description": "### Impact\nSSID Command Injection Vulnerability\n\n### Patches\nProblem was fixed with a parameter check. Please upgrade to version >= 5.21.7, Version 4 was not affected\n\n### Workarounds\nIf you cannot upgrade, be sure to check or sanitize parameter strings that are passed to wifiConnections(), wifiNetworks() (string only)\n\n### References\nSee also https://systeminformation.io/security.html\n",
       "severity": "critical",
@@ -83,11 +102,17 @@
           "value": "CVE-2023-42810"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.21.7",
-      "fixedVersion": "5.21.7"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.21.7",
+          "fixed": "5.21.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-8j36-q8x7-pm6q",
+      "packageName": "systeminformation",
       "title": "OS Command Injection in systeminformation",
       "description": "This affects the package systeminformation before 4.30.2. The attacker can overwrite the properties and functions of an object, which can lead to executing OS commands.",
       "severity": "high",
@@ -104,11 +129,17 @@
           "value": "CVE-2020-7778"
         }
       ],
-      "affectedRange": "< 4.30.2",
-      "fixedVersion": "4.30.2"
+      "affectedVersions": [
+        {
+          "range": "< 4.30.2",
+          "fixed": "4.30.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-jff2-qjw8-5476",
+      "packageName": "systeminformation",
       "title": "Command Injection Vulnerability in systeminformation",
       "description": "### Impact\ncommand injection vulnerability\n\n### Patches\nProblem was fixed with a parameter check. Please upgrade to version >= 5.6.4\n\n### Workarounds\nIf you cannot upgrade, be sure to check or sanitize service parameters that are passed to si.inetLatency(), si.inetChecksite(), si.services(), si.processLoad() ... do only allow strings, reject any arrays. String sanitation works as expected.",
       "severity": "high",
@@ -125,8 +156,67 @@
           "value": "CVE-2021-21388"
         }
       ],
-      "affectedRange": "< 5.6.4",
-      "fixedVersion": "5.6.4"
+      "affectedVersions": [
+        {
+          "range": "< 5.6.4",
+          "fixed": "5.6.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5vv4-hvf7-2h46",
+      "packageName": "systeminformation",
+      "title": "Command Injection via Unsanitized `locate` Output in `versions()` — systeminformation",
+      "description": "# Command Injection via Unsanitized `locate` Output in `versions()` — systeminformation\n\n**Package:** systeminformation (npm)  \n**Tested Version:** 5.30.7  \n**Affected Platform:** Linux  \n**Author:** Sebastian Hildebrandt  \n**Weekly Downloads:** ~5,000,000+  \n**Repository:** https://github.com/sebhildebrandt/systeminformation  \n**Severity:** Medium  \n**CWE:** CWE-78 (OS Command Injection)  \n\n---\n\n### The Vulnerable Code Path\n\nInside the `versions()` function, when detecting the PostgreSQL versio",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5vv4-hvf7-2h46",
+      "publishedAt": "2026-02-18T22:36:50Z",
+      "modifiedAt": "2026-02-19T21:57:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5vv4-hvf7-2h46"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26318"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.30.7",
+          "fixed": "5.31.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9c88-49p5-5ggf",
+      "packageName": "systeminformation",
+      "title": "Systeminformation has a Command Injection via unsanitized interface parameter in wifi.js retry path",
+      "description": "### Summary\nA command injection vulnerability in the `wifiNetworks()` function allows an attacker to execute arbitrary OS commands via an unsanitized network interface parameter in the retry code path.\n\n### Details\nIn `lib/wifi.js`, the `wifiNetworks()` function sanitizes the `iface` parameter on the initial call (line 437). However, when the initial scan returns empty results, a `setTimeout` retry (lines 440-441) calls `getWifiNetworkListIw(iface)` with the **original unsanitized** `iface` valu",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9c88-49p5-5ggf",
+      "publishedAt": "2026-02-18T21:51:26Z",
+      "modifiedAt": "2026-02-19T21:57:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9c88-49p5-5ggf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26280"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.30.8",
+          "fixed": "5.30.8"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

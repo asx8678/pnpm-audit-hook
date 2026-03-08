@@ -1,9 +1,10 @@
 {
-  "name": "set-in",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "set-in",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-qr4p-c9wr-phr6",
+      "packageName": "set-in",
       "title": "Prototype pollution in set-in",
       "description": "Prototype pollution vulnerability in 'set-in' versions 1.0.0 through 2.0.0 allows attacker to cause a denial of service and may lead to remote code execution.",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2020-28273"
         }
       ],
-      "affectedRange": "< 2.0.1",
-      "fixedVersion": "2.0.1"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.1",
+          "fixed": "2.0.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-6956-83fg-5wc5",
+      "packageName": "set-in",
       "title": "Prototype Pollution in set-in",
       "description": "The package set-in before 2.0.3 is vulnerable to Prototype Pollution via the `setIn` method, as it allows an attacker to merge object prototypes into it. **Note:** This vulnerability derives from an incomplete fix of [CVE-2020-28273](https://security.snyk.io/vuln/SNYK-JS-SETIN-1048049)",
       "severity": "critical",
@@ -41,8 +48,40 @@
           "value": "CVE-2022-25354"
         }
       ],
-      "affectedRange": "< 2.0.3",
-      "fixedVersion": "2.0.3"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.3",
+          "fixed": "2.0.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2c4m-g7rx-63q7",
+      "packageName": "set-in",
+      "title": "set-in Affected by Prototype Pollution",
+      "description": "### Summary\nA prototype pollution vulnerability exists in the the npm package set-in (>=2.0.1). Despite a previous fix that attempted to mitigate prototype pollution by checking whether user input contained a forbidden key, it is still possible to pollute Object.prototype via a crafted input using Array.prototype. This has been fixed in version 2.0.5.\n\n### Details\nThe vulnerability resides in line 28 of https://github.com/ahdinosaur/set-in/blob/master/index.js where includes() function is used t",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-2c4m-g7rx-63q7",
+      "publishedAt": "2026-02-11T15:13:28Z",
+      "modifiedAt": "2026-02-12T14:19:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2c4m-g7rx-63q7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26021"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.1, < 2.0.5",
+          "fixed": "2.0.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

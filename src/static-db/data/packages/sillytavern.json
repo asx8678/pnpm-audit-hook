@@ -1,9 +1,10 @@
 {
-  "name": "sillytavern",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "sillytavern",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7cxj-w27x-x78q",
+      "packageName": "sillytavern",
       "title": "SillyTavern Web Interface Vulnerable DNS Rebinding",
       "description": "### Summary\nThe web UI for SillyTavern is susceptible to DNS rebinding, allowing attackers to perform actions like install malicious extensions, read chats, inject arbitrary HTML for phishing, etc.\n\n### Details\nDNS rebinding is a method to bypass the CORS policies by tricking the browser into resolving something like `127.0.0.1` for a site's DNS address. This allows anybody to get remote access to anyone's SillyTavern instance **without** it being exposed, just by visiting a website. \n\n### PoC\n1",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-59159"
         }
       ],
-      "affectedRange": "< 1.13.4",
-      "fixedVersion": "1.13.4"
+      "affectedVersions": [
+        {
+          "range": "< 1.13.4",
+          "fixed": "1.13.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

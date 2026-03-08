@@ -1,9 +1,10 @@
 {
-  "name": "atlassian-connect-express",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "atlassian-connect-express",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4v96-m8xv-x83v",
+      "packageName": "atlassian-connect-express",
       "title": "Broken Authentication in Atlassian Connect Express",
       "description": "Broken Authentication in Atlassian Connect Express (ACE) from version 3.0.2 before version 6.6.0: Atlassian Connect Express is a Node.js package for building Atlassian Connect apps. Authentication between Atlassian products and the Atlassian Connect Express app occurs with a server-to-server JWT or a context JWT. Atlassian Connect Express versions between 3.0.2 - 6.5.0 erroneously accept context JWTs in lifecycle endpoints (such as installation) where only server-to-server JWTs should be accepte",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-26073"
         }
       ],
-      "affectedRange": ">= 3.0.2, < 6.6.0",
-      "fixedVersion": "6.6.0"
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.2, < 6.6.0",
+          "fixed": "6.6.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

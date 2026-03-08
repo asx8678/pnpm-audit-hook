@@ -1,0 +1,33 @@
+{
+  "packageName": "survey-pdf",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h3q6-jfrg-3x6q",
+      "packageName": "survey-pdf",
+      "title": "survey-pdf Upgraded jsPDF Version Due to Security Vulnerability",
+      "description": "The following security vulnerability was identified in jsPDF versions <=3.0.4: [Local File Inclusion/Path Traversal](https://github.com/parallax/jsPDF/security/advisories/GHSA-f8cm-6447-x5h2).\n\n### Impact\n\nSince SurveyJS PDF Generator depends on jsPDF, any project using `survey-pdf` v1.12.58 and lower or v2.5.4 and lower could be exposed to this vulnerability.\n\n### Solution\n\nSurveyJS PDF Generator has upgraded jsPDF to version >= 4.0.0 and included the fix in the following `survey-pdf` releases:",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-h3q6-jfrg-3x6q",
+      "publishedAt": "2026-02-04T20:07:34Z",
+      "modifiedAt": "2026-02-05T21:47:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h3q6-jfrg-3x6q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25630"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, <= 2.5.4",
+          "fixed": "2.5.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

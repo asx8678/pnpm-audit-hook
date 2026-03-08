@@ -1,9 +1,10 @@
 {
-  "name": "metro4",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "metro4",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-633r-r4p8-pw3w",
+      "packageName": "metro4",
       "title": "Cross site scripting in Metro UI",
       "description": "Metro UI v4.4.0 to v4.5.1 was discovered to contain a reflected cross-site scripting (XSS) vulnerability via the Javascript function. User input is not properly sanitized before rendering in the `textarea` component.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2022-41376"
         }
       ],
-      "affectedRange": ">= 4.4.0, <= 4.5.1"
+      "affectedVersions": [
+        {
+          "range": ">= 4.4.0, <= 4.5.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

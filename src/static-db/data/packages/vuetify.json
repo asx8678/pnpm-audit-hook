@@ -1,9 +1,10 @@
 {
-  "name": "vuetify",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "vuetify",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3jp5-5f8r-q2wg",
+      "packageName": "vuetify",
       "title": "Vuetify has a Prototype Pollution vulnerability",
       "description": "The Preset configuration feature of Vuetify is vulnerable to Prototype Pollution due to the internal 'mergeDeep' utility function used to merge options with defaults. Using a specially-crafted, malicious preset can result in polluting all JavaScript objects with arbitrary properties, which can further negatively affect all aspects of the application's behavior. This can lead to a wide range of security issues, including resource exhaustion/denial of service or unauthorized access to data.\n\nIf th",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-8083"
         }
       ],
-      "affectedRange": ">= 2.2.0-beta.2, < 3.0.0-alpha.10",
-      "fixedVersion": "3.0.0-alpha.10"
+      "affectedVersions": [
+        {
+          "range": ">= 2.2.0-beta.2, < 3.0.0-alpha.10",
+          "fixed": "3.0.0-alpha.10"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9w3x-85mw-4fwm",
+      "packageName": "vuetify",
       "title": "Vuetify has a Cross-site Scripting (XSS) vulnerability in the VDatePicker component",
       "description": "Improper neutralization of the title date in the 'VDatePicker' component in Vuetify, allows unsanitized HTML to be inserted into the page. This can lead to a  Cross-Site Scripting (XSS) https://owasp.org/www-community/attacks/xss  attack. The vulnerability occurs because the 'title-date-format' property of the 'VDatePicker' can accept a user created function and assign its output to the 'innerHTML' property of the title element without sanitization.\n\nThis issue affects Vuetify versions greater t",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2025-8082"
         }
       ],
-      "affectedRange": ">= 2.0.0, < 3.0.0",
-      "fixedVersion": "3.0.0"
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 3.0.0",
+          "fixed": "3.0.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-q4q5-c5cv-2p68",
+      "packageName": "vuetify",
       "title": "Vuetify Cross-site Scripting vulnerability",
       "description": "The package vuetify from 2.0.0-beta.4 and before 2.6.10 are vulnerable to Cross-site Scripting (XSS) due to improper input sanitization in the 'eventName' function within the VCalendar component.",
       "severity": "medium",
@@ -62,8 +75,13 @@
           "value": "CVE-2022-25873"
         }
       ],
-      "affectedRange": ">= 2.0.0-beta.4, < 2.6.10",
-      "fixedVersion": "2.6.10"
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0-beta.4, < 2.6.10",
+          "fixed": "2.6.10"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

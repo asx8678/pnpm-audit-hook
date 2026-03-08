@@ -1,9 +1,10 @@
 {
-  "name": "@parcel/reporter-dev-server",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@parcel/reporter-dev-server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-qm9p-f9j5-w83w",
+      "packageName": "@parcel/reporter-dev-server",
       "title": "Parcel has an Origin Validation Error vulnerability",
       "description": "parcel versions 1.6.1 and above have an Origin Validation Error vulnerability. Malicious websites can send XMLHTTPRequests to the application's development server and read the response to steal source code when developers visit them.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-56648"
         }
       ],
-      "affectedRange": ">= 1.6.1, <= 2.16.3"
+      "affectedVersions": [
+        {
+          "range": ">= 1.6.1, <= 2.16.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

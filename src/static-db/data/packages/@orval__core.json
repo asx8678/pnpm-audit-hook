@@ -1,9 +1,10 @@
 {
-  "name": "@orval/core",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@orval/core",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gch2-phqh-fg9q",
+      "packageName": "@orval/core",
       "title": "Orval has Code Injection via unsanitized x-enum-descriptions using JS comments",
       "description": "[CVE-2026-23947](https://github.com/advisories/GHSA-h526-wf6g-67jv) had an incomplete fix\n\nWhile the current [jsStringEscape](https://github.com/orval-labs/orval/blob/02211fc413524be340ba9ace866a2ef68845ca7c/packages/core/src/utils/string.ts#L227) function properly handles single quotes ('), double quotes (\") and other characters, it fails to sanitize * and / characters. This allows attackers to break out of JavaScript comment blocks using */ sequences and inject arbitrary code into generated fi",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2026-25141"
         }
       ],
-      "affectedRange": ">= 8.0.0, < 8.2.0",
-      "fixedVersion": "8.2.0"
+      "affectedVersions": [
+        {
+          "range": ">= 8.0.0, < 8.2.0",
+          "fixed": "8.2.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-h526-wf6g-67jv",
+      "packageName": "@orval/core",
       "title": "Orval has a code injection via unsanitized x-enum-descriptions in enum generation",
       "description": "### Impact\nArbitrary code execution in environments consuming generated clients\n\nThis issue is similar in nature to the recently-patched MCP vulnerability (CVE-2026-22785), but affects a different code path in @orval/core that was not addressed by that fix.\n\nThe vulnerability allows untrusted OpenAPI specifications to inject arbitrary TypeScript/JavaScript code into generated clients via the x-enumDescriptions field, which is embedded without proper escaping in getEnumImplementation(). I have co",
       "severity": "critical",
@@ -41,8 +48,13 @@
           "value": "CVE-2026-23947"
         }
       ],
-      "affectedRange": "< 7.19.0",
-      "fixedVersion": "7.19.0"
+      "affectedVersions": [
+        {
+          "range": "< 7.19.0",
+          "fixed": "7.19.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

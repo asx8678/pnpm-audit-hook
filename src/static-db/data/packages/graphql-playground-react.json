@@ -1,9 +1,10 @@
 {
-  "name": "graphql-playground-react",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "graphql-playground-react",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-59r9-6jp6-jcm7",
+      "packageName": "graphql-playground-react",
       "title": "XSS vulnerability in GraphQL Playground from untrusted schemas",
       "description": "## GraphQL Playground introspection schema template injection attack: Advisory Statement\n\nThis is a security advisory for an XSS vulnerability in `graphql-playground`.\n\nA similar vulnerability affects `graphiql`, the package from which `graphql-playground` was forked. There is a corresponding `graphiql` [advisory](https://github.com/graphql/graphiql/security/advisories/GHSA-x4r7-m2q9-69c8).\n\n- [1. Impact](#1-impact)\n- [2. Scope](#2-scope)\n- [3. Patches](#3-patches)\n- [4. Reproducing the exploit]",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-41249"
         }
       ],
-      "affectedRange": "< 1.7.28",
-      "fixedVersion": "1.7.28"
+      "affectedVersions": [
+        {
+          "range": "< 1.7.28",
+          "fixed": "1.7.28"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

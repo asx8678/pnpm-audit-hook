@@ -1,0 +1,33 @@
+{
+  "packageName": "@payloadcms/drizzle",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xx6w-jxg9-2wh8",
+      "packageName": "@payloadcms/drizzle",
+      "title": "@payloadcms/drizzle has SQL Injection in JSON/RichText Queries on PostgreSQL/SQLite Adapters",
+      "description": "### Impact\n\nWhen querying JSON or richText fields, user input was directly embedded into SQL without escaping, enabling blind SQL Injection attacks. An unauthenticated attacker could extract sensitive data (emails, password reset tokens) and achieve full account takeover without password cracking.\n\n**Users are affected if ALL of these are true:**\n\n1. Payload version < v3.73.0\n2. Using a Drizzle-based database adapter (`@payloadcms/drizzle` as dependency):\n   - `@payloadcms/db-postgres`\n   - `@pa",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-xx6w-jxg9-2wh8",
+      "publishedAt": "2026-02-05T20:51:38Z",
+      "modifiedAt": "2026-02-07T00:31:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xx6w-jxg9-2wh8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25544"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.73.0",
+          "fixed": "3.73.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

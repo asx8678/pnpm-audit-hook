@@ -1,9 +1,10 @@
 {
-  "name": "got",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "got",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-pfrx-2q88-qq97",
+      "packageName": "got",
       "title": "Got allows a redirect to a UNIX socket",
       "description": "The got package before 11.8.5 and 12.1.0 for Node.js allows a redirect to a UNIX socket.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-33987"
         }
       ],
-      "affectedRange": "< 11.8.5",
-      "fixedVersion": "11.8.5"
+      "affectedVersions": [
+        {
+          "range": "< 11.8.5",
+          "fixed": "11.8.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

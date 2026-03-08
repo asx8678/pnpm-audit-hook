@@ -1,9 +1,10 @@
 {
-  "name": "proctree",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "proctree",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-cv76-rv4h-4mqc",
+      "packageName": "proctree",
       "title": "OS Command Injection in proctree",
       "description": "OS Command Injection vulnerability in allenhwkim proctree through 0.1.1 and commit 0ac10ae575459457838f14e21d5996f2fa5c7593 for Node.js, allows attackers to execute arbitrary commands via the fix function.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-34082"
         }
       ],
-      "affectedRange": "<= 0.1.1"
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

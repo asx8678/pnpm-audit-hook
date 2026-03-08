@@ -1,9 +1,10 @@
 {
-  "name": "undefsafe",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "undefsafe",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-332q-7ff2-57h2",
+      "packageName": "undefsafe",
       "title": "Prototype Pollution in undefsafe",
       "description": "undefsafe before 2.0.3 is vulnerable to Prototype Pollution. The 'a' function could be tricked into adding or modifying properties of Object.prototype using a `__proto__` payload.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2019-10795"
         }
       ],
-      "affectedRange": "< 2.0.3",
-      "fixedVersion": "2.0.3"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.3",
+          "fixed": "2.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

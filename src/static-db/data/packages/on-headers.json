@@ -1,9 +1,10 @@
 {
-  "name": "on-headers",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "on-headers",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-76c9-3jph-rj3q",
+      "packageName": "on-headers",
       "title": "on-headers is vulnerable to http response header manipulation",
       "description": "### Impact\n\nA bug in on-headers versions `< 1.1.0` may result in response headers being inadvertently modified when an array is passed to `response.writeHead()`\n\n### Patches\n\nUsers should upgrade to `1.1.0`\n\n### Workarounds\n\nUses are encouraged to upgrade to `1.1.0`, but this issue can be worked around by passing an object to `response.writeHead()` rather than an array.",
       "severity": "low",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-7339"
         }
       ],
-      "affectedRange": "< 1.1.0",
-      "fixedVersion": "1.1.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

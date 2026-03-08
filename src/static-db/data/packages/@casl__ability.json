@@ -1,0 +1,33 @@
+{
+  "packageName": "@casl/ability",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x9vf-53q3-cvx6",
+      "packageName": "@casl/ability",
+      "title": "CASL Ability is Vulnerable to Prototype Pollution",
+      "description": "CASL Ability, versions 2.4.0 through 6.7.4, contains a prototype pollution vulnerability.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-x9vf-53q3-cvx6",
+      "publishedAt": "2026-02-10T18:30:38Z",
+      "modifiedAt": "2026-02-11T19:09:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x9vf-53q3-cvx6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-1774"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.4.0, <= 6.7.4",
+          "fixed": "6.7.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

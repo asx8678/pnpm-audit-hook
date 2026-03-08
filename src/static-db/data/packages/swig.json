@@ -1,9 +1,10 @@
 {
-  "name": "swig",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "swig",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-2rq5-699j-x7p6",
+      "packageName": "swig",
       "title": "Arbitrary local file read vulnerability during template rendering ",
       "description": "Directory traversal vulnerability in swig-templates thru 2.0.4 and swig thru 1.4.2, allows attackers to read arbitrary files via the include or extends tags.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-25345"
         }
       ],
-      "affectedRange": "<= 1.4.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

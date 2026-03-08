@@ -1,9 +1,10 @@
 {
-  "name": "node-inspector",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "node-inspector",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wq4c-wm6x-jw44",
+      "packageName": "node-inspector",
       "title": "Withdrawn Advisory: Node.js Inspector RCE via DNS Rebinding",
       "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because this vulnerability affects inspector code in https://github.com/nodejs/node, not the [legacy debugger](https://nodejs.org/en/docs/inspector#legacy-debugger) at https://github.com/node-inspector/node-inspector. https://github.com/nodejs/node is not in a [supported ecosystem](https://github.com/github/advisory-database/blob/main/README.md#supported-ecosystems).\n\n## Original Description\nThe Node.js inspector, in 6.x and later is vulnera",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2018-7160"
         }
       ],
-      "affectedRange": ">= 6.0"
+      "affectedVersions": [
+        {
+          "range": ">= 6.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

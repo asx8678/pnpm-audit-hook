@@ -1,9 +1,10 @@
 {
-  "name": "@uniswap/universal-router",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@uniswap/universal-router",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7m37-cx35-qgmr",
+      "packageName": "@uniswap/universal-router",
       "title": "Uniswap Universal Router Incorrect Authorization vulnerability",
       "description": "Uniswap Universal Router before 1.1.0 mishandles reentrancy. This would have allowed theft of funds.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-48216"
         }
       ],
-      "affectedRange": "< 1.1.0",
-      "fixedVersion": "1.1.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

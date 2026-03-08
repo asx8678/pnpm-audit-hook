@@ -1,9 +1,10 @@
 {
-  "name": "ckeditor5-premium-features",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "ckeditor5-premium-features",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j3mm-wmfm-mwvh",
+      "packageName": "ckeditor5-premium-features",
       "title": "Cross-site scripting (XSS) in the CKEditor 5 real-time collaboration package",
       "description": "### Impact\nDuring a recent internal audit, we identified a Cross-Site Scripting (XSS) vulnerability in the CKEditor 5 real-time collaboration package. This vulnerability can lead to unauthorized JavaScript code execution and affects user markers, which represent users' positions within the document.\n\nThis vulnerability affects only installations with [Real-time collaborative editing](https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/real-time-collaboration/real-time-collaboration",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-25299"
         }
       ],
-      "affectedRange": ">= 42.0.0, < 44.2.0",
-      "fixedVersion": "44.2.1"
+      "affectedVersions": [
+        {
+          "range": ">= 42.0.0, < 44.2.0",
+          "fixed": "44.2.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

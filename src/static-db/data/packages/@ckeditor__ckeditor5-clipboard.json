@@ -1,9 +1,10 @@
 {
-  "name": "@ckeditor/ckeditor5-clipboard",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@ckeditor/ckeditor5-clipboard",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-x9gp-vjh6-3wv6",
+      "packageName": "@ckeditor/ckeditor5-clipboard",
       "title": "CKEditor 5 cross-site scripting (XSS) vulnerability in the clipboard package",
       "description": "### Impact\nA Cross-Site Scripting (XSS) vulnerability has been discovered in the CKEditor 5 clipboard package. This vulnerability could be triggered by a specific user action, leading to unauthorized JavaScript code execution, if the attacker managed to insert a malicious content into the editor, which might happen with a very specific editor configuration.\n\nThis vulnerability affects **only** installations where the editor configuration meets one of the following criteria:\n- [HTML embed plugin]",
       "severity": "low",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-58064"
         }
       ],
-      "affectedRange": ">= 46.0.0, < 46.0.3",
-      "fixedVersion": "46.0.3"
+      "affectedVersions": [
+        {
+          "range": ">= 46.0.0, < 46.0.3",
+          "fixed": "46.0.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-rgg8-g5x8-wr9v",
+      "packageName": "@ckeditor/ckeditor5-clipboard",
       "title": "Cross-site scripting (XSS) in the clipboard package",
       "description": "### Impact\nDuring a recent internal audit, we identified a Cross-Site Scripting (XSS) vulnerability in the CKEditor 5 clipboard package. This vulnerability could be triggered by a specific user action, leading to unauthorized JavaScript code execution, if the attacker managed to insert a malicious content into the editor, which might happen with a very specific editor configuration.\n\nThis vulnerability affects **only** installations where the editor configuration meets the following criteria:\n\n1",
       "severity": "medium",
@@ -41,8 +48,13 @@
           "value": "CVE-2024-45613"
         }
       ],
-      "affectedRange": ">= 40.0.0, < 43.1.1",
-      "fixedVersion": "43.1.1"
+      "affectedVersions": [
+        {
+          "range": ">= 40.0.0, < 43.1.1",
+          "fixed": "43.1.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

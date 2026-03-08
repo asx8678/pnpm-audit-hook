@@ -1,9 +1,10 @@
 {
-  "name": "msgpack",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "msgpack",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mx67-wv8x-hvv9",
+      "packageName": "msgpack",
       "title": "Deserialization of Untrusted Data in msgpack",
       "description": "# Withdrawn\n\nThis advisory was withdrawn by its CNA (Snyk).\n\n## Original advisory\n\nAll versions of package `msgpack` are vulnerable to Deserialization of Untrusted Data via the unpack function. This does not affect the similarly named package `@msgpack/msgpack`.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23410"
         }
       ],
-      "affectedRange": "<= 1.0.3"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

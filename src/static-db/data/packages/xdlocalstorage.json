@@ -1,9 +1,10 @@
 {
-  "name": "xdLocalStorage",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "xdLocalStorage",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-c6c4-jmqx-3r33",
+      "packageName": "xdLocalStorage",
       "title": "Open Redirect in xdLocalStorage",
       "description": "An issue was discovered in xdLocalStorage through 2.0.5. The buildMessage() function in xdLocalStorage.js specifies the wildcard (*) as the targetOrigin when calling the postMessage() function on the iframe object. Therefore any domain that is currently loaded within the iframe can receive the messages that the client sends.",
       "severity": "medium",
@@ -20,10 +21,16 @@
           "value": "CVE-2020-11611"
         }
       ],
-      "affectedRange": "<= 2.0.5"
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-vrc7-6g8w-jh56",
+      "packageName": "xdLocalStorage",
       "title": "Improper Input Validation in xdLocalStorage",
       "description": "An issue was discovered in xdLocalStorage through 2.0.5. The receiveMessage() function in xdLocalStoragePostMessageApi.js does not implement any validation of the origin of web messages. Remote attackers who can entice a user to load a malicious site can exploit this issue to impact the confidentiality and integrity of data in the local storage of the vulnerable site via malicious web messages.",
       "severity": "high",
@@ -40,10 +47,16 @@
           "value": "CVE-2015-9544"
         }
       ],
-      "affectedRange": "<= 2.0.5"
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-76qm-4f93-fg6f",
+      "packageName": "xdLocalStorage",
       "title": "Improper Input Validation in xdLocalStorage",
       "description": "An issue was discovered in xdLocalStorage through 2.0.5. The receiveMessage() function in xdLocalStorage.js does not implement any validation of the origin of web messages. Remote attackers who can entice a user to load a malicious site can exploit this issue to impact the confidentiality and integrity of data in the local storage of the vulnerable site via malicious web messages.",
       "severity": "high",
@@ -60,7 +73,12 @@
           "value": "CVE-2015-9545"
         }
       ],
-      "affectedRange": "<= 2.0.5"
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

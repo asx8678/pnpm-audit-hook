@@ -1,9 +1,10 @@
 {
-  "name": "dynamoose",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "dynamoose",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rrqm-p222-8ph2",
+      "packageName": "dynamoose",
       "title": "Prototype Pollution in Dynamoose",
       "description": "### Impact\n\nIn Dynamoose versions 2.0.0-2.6.0 there was a prototype pollution vulnerability in the internal utility method [`lib/utils/object/set.ts`](https://github.com/dynamoose/dynamoose/blob/master/lib/utils/object/set.ts). This method is used throughout the codebase for various operations throughout Dynamoose.\n\nWe have not seen any evidence of this vulnerability being exploited.\n\nWe do not believe this issue impacts v1.x.x since this method was added as part of the v2 rewrite. This vulnerab",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-21304"
         }
       ],
-      "affectedRange": ">= 2.0.0, < 2.7.0",
-      "fixedVersion": "2.7.0"
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.7.0",
+          "fixed": "2.7.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

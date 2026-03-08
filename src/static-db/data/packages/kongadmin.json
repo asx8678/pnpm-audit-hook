@@ -1,9 +1,10 @@
 {
-  "name": "kongadmin",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "kongadmin",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-93pf-mrc8-4g3h",
+      "packageName": "kongadmin",
       "title": "Konga is vulnerable to Cross Site Scripting (XSS) attacks",
       "description": "Konga v0.14.9 is vulnerable to Cross Site Scripting (XSS) via the username parameter.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-34243"
         }
       ],
-      "affectedRange": "<= 0.14.9"
+      "affectedVersions": [
+        {
+          "range": "<= 0.14.9"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

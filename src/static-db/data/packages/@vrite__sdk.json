@@ -1,9 +1,10 @@
 {
-  "name": "@vrite/sdk",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@vrite/sdk",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-5ghm-h2wq-g3mh",
+      "packageName": "@vrite/sdk",
       "title": "Allocation of Resources Without Limits or Throttling in vriteio/vrite",
       "description": "Allocation of Resources Without Limits or Throttling in GitHub repository vriteio/vrite prior to 0.3.0.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2023-5573"
         }
       ],
-      "affectedRange": "< 0.3.0",
-      "fixedVersion": "0.3.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.3.0",
+          "fixed": "0.3.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-w35p-wxwj-rcm9",
+      "packageName": "@vrite/sdk",
       "title": "Server-Side Request Forgery (SSRF) in vriteio/vrite",
       "description": "Server-Side Request Forgery (SSRF) in GitHub repository vriteio/vrite prior to 0.3.0.",
       "severity": "critical",
@@ -41,11 +48,17 @@
           "value": "CVE-2023-5572"
         }
       ],
-      "affectedRange": "< 0.3.0",
-      "fixedVersion": "0.3.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.3.0",
+          "fixed": "0.3.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-44ff-9w4f-99w6",
+      "packageName": "@vrite/sdk",
       "title": "Improper Input Validation in vriteio/vrite",
       "description": "Improper Input Validation in GitHub repository vriteio/vrite prior to 0.3.0.",
       "severity": "medium",
@@ -62,8 +75,13 @@
           "value": "CVE-2023-5571"
         }
       ],
-      "affectedRange": "< 0.3.0",
-      "fixedVersion": "0.3.0"
+      "affectedVersions": [
+        {
+          "range": "< 0.3.0",
+          "fixed": "0.3.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

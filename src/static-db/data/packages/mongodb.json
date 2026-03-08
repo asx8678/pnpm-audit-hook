@@ -1,9 +1,10 @@
 {
-  "name": "mongodb",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mongodb",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vxvm-qww3-2fh7",
+      "packageName": "mongodb",
       "title": "MongoDB Driver may publish events containing authentication-related data",
       "description": "Some MongoDB Drivers may erroneously publish events containing authentication-related data to a command listener configured by an application. The published events may contain security-sensitive data when specific authentication-related commands are executed.\n\nWithout due care, an application may inadvertently expose this sensitive information, e.g., by writing it to a log file. This issue only arises if an application enables the command listener feature (this is not enabled by default).\n\nThis ",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-32050"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.8.0",
-      "fixedVersion": "5.8.0"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.8.0",
+          "fixed": "5.8.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "mathjax",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mathjax",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-v638-q856-grg8",
+      "packageName": "mathjax",
       "title": "MathJax Regular expression Denial of Service (ReDoS)",
       "description": "Mathjax up to v2.7.9 was discovered to contain two Regular expression Denial of Service (ReDoS) vulnerabilities in MathJax.js via the components pattern and markdownPattern. NOTE: the vendor disputes this because the regular expressions are not applied to user input; thus, there is no risk.\n\n",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-39663"
         }
       ],
-      "affectedRange": "<= 2.7.9"
+      "affectedVersions": [
+        {
+          "range": "<= 2.7.9"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

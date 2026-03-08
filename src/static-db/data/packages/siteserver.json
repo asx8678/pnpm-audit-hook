@@ -1,9 +1,10 @@
 {
-  "name": "siteserver",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "siteserver",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-q469-j32f-h7vm",
+      "packageName": "siteserver",
       "title": "RCE in SiteServer CMS",
       "description": "SiteServer CMS  v7.x, which SiteServer UI relies on, allows attackers to execute arbitrary code via a crafted plug-in.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2022-28118"
         }
       ],
-      "affectedRange": ">= 7.0.0"
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

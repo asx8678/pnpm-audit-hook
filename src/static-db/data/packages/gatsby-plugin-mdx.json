@@ -1,9 +1,10 @@
 {
-  "name": "gatsby-plugin-mdx",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "gatsby-plugin-mdx",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mj46-r4gr-5x83",
+      "packageName": "gatsby-plugin-mdx",
       "title": "Unsanitized JavaScript code injection possible in gatsby-plugin-mdx",
       "description": "### Impact\nThe gatsby-plugin-mdx plugin prior to versions 3.15.2 and 2.14.1 passes input through to the `gray-matter` npm package, which is vulnerable to JavaScript injection in its default configuration, unless input is sanitized.  The vulnerability is present when passing input in both webpack (MDX files in `src/pages` or MDX file imported as component in frontend / React code) and data mode (querying MDX nodes via GraphQL).  Injected JavaScript executes in the context of the build server.\n\nTo",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-25863"
         }
       ],
-      "affectedRange": ">= 3.0.0, < 3.15.2",
-      "fixedVersion": "3.15.2"
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 3.15.2",
+          "fixed": "3.15.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

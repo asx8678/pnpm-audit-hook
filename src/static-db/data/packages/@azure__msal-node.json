@@ -1,9 +1,10 @@
 {
-  "name": "@azure/msal-node",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@azure/msal-node",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-m5vv-6r4h-3vj9",
+      "packageName": "@azure/msal-node",
       "title": "Azure Identity Libraries and Microsoft Authentication Library Elevation of Privilege Vulnerability",
       "description": "Azure Identity Libraries and Microsoft Authentication Library Elevation of Privilege Vulnerability.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-35255"
         }
       ],
-      "affectedRange": ">= 2.7.0, < 2.9.2",
-      "fixedVersion": "2.9.2"
+      "affectedVersions": [
+        {
+          "range": ">= 2.7.0, < 2.9.2",
+          "fixed": "2.9.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

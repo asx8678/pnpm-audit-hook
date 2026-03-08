@@ -1,9 +1,10 @@
 {
-  "name": "raneto",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "raneto",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vc68-6x72-w22f",
+      "packageName": "raneto",
       "title": "Raneto vulnerable to Cross-site Scripting",
       "description": "Renato v0.17.0 was discovered to contain a cross-site scripting (XSS) vulnerability. This issue is fixed in version 0.17.1.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2022-35144"
         }
       ],
-      "affectedRange": "<= 0.17.0",
-      "fixedVersion": "0.17.1"
+      "affectedVersions": [
+        {
+          "range": "<= 0.17.0",
+          "fixed": "0.17.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-xxc2-j7jj-6g5m",
+      "packageName": "raneto",
       "title": "Raneto Denial of Service via crafted payload injected into `Search` parameter",
       "description": "An issue in Renato v0.17.0 allows attackers to cause a Denial of Service (DoS) via a crafted payload injected into the `Search` parameter.",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2022-35142"
         }
       ],
-      "affectedRange": "<= 0.17.0",
-      "fixedVersion": "0.17.1"
+      "affectedVersions": [
+        {
+          "range": "<= 0.17.0",
+          "fixed": "0.17.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-7942-2fx8-qhpf",
+      "packageName": "raneto",
       "title": "Raneto v0.17.0 employs weak password complexity requirements",
       "description": "Raneto v0.17.0 employs weak password complexity requirements, allowing attackers to crack user passwords via brute-force attacks. Version 0.17.1 contains security mitigations for this and other vulnerabilities.",
       "severity": "critical",
@@ -62,8 +75,13 @@
           "value": "CVE-2022-35143"
         }
       ],
-      "affectedRange": "<= 0.17.0",
-      "fixedVersion": "0.17.1"
+      "affectedVersions": [
+        {
+          "range": "<= 0.17.0",
+          "fixed": "0.17.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

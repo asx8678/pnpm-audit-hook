@@ -1,9 +1,10 @@
 {
-  "name": "startserver",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "startserver",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hqv3-qq72-78cv",
+      "packageName": "startserver",
       "title": "Directory Traversal in startserver",
       "description": "All versions of package startserver are vulnerable to Directory Traversal due to missing sanitization.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23430"
         }
       ],
-      "affectedRange": "<= 1.4.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

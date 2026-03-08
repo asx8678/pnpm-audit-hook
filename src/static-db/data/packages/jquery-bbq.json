@@ -1,9 +1,10 @@
 {
-  "name": "jquery-bbq",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "jquery-bbq",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7w8j-85wm-6xfq",
+      "packageName": "jquery-bbq",
       "title": "Prototype Pollution in jquery-bbq",
       "description": "Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution') in jquery-bbq 1.2.1 allows a malicious user to inject properties into Object.prototype.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-20086"
         }
       ],
-      "affectedRange": "<= 1.2.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

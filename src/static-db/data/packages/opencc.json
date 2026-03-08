@@ -1,9 +1,10 @@
 {
-  "name": "opencc",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "opencc",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9qh2-6fxg-9m4g",
+      "packageName": "opencc",
       "title": "Open Chinese Convert subject to Denial of Service via Out-of-bounds Read",
       "description": "Open Chinese Convert (OpenCC) 1.0.5 allows attackers to cause a denial of service (segmentation fault) because BinaryDict::NewFromFile in BinaryDict.cpp may have out-of-bounds keyOffset and valueOffset values via a crafted .ocd file.",
       "severity": "medium",
@@ -20,8 +21,40 @@
           "value": "CVE-2018-16982"
         }
       ],
-      "affectedRange": "< 1.1.2",
-      "fixedVersion": "1.1.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.2",
+          "fixed": "1.1.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5pr6-crvp-2j9f",
+      "packageName": "opencc",
+      "title": "Open Chinese Convert has Out-of-bounds Write",
+      "description": "A weakness has been identified in BYVoid OpenCC up to 1.1.9. This vulnerability affects the function opencc::MaxMatchSegmentation of the file src/MaxMatchSegmentation.cpp. This manipulation causes heap-based buffer overflow. The attack is restricted to local execution. The exploit has been made available to the public and could be used for attacks. Patch name: 345c9a50ab07018f1b4439776bad78a0d40778ec. To fix this issue, it is recommended to deploy a patch.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-5pr6-crvp-2j9f",
+      "publishedAt": "2026-01-18T09:30:27Z",
+      "modifiedAt": "2026-02-06T22:32:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5pr6-crvp-2j9f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-15536"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.9",
+          "fixed": "1.2.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

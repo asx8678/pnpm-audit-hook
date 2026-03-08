@@ -1,9 +1,10 @@
 {
-  "name": "ep_etherpad-lite",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "ep_etherpad-lite",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mvmv-rq2j-97p2",
+      "packageName": "ep_etherpad-lite",
       "title": "Etherpad Lite Access Restriction Bypass",
       "description": "`node/hooks/express/apicalls.js` in Etherpad Lite before v1.6.3 mishandles JSONP, which allows remote attackers to bypass intended access restrictions.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2018-6835"
         }
       ],
-      "affectedRange": "< 1.6.3",
-      "fixedVersion": "1.6.3"
+      "affectedVersions": [
+        {
+          "range": "< 1.6.3",
+          "fixed": "1.6.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

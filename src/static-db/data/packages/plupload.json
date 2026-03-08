@@ -1,9 +1,10 @@
 {
-  "name": "plupload",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "plupload",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rp2c-jrgp-cvr8",
+      "packageName": "plupload",
       "title": "Code injection in plupload",
       "description": "This affects the package plupload before 2.3.9. A file name containing JavaScript code could be uploaded and run. An attacker would need to trick a user to upload this kind of file.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23562"
         }
       ],
-      "affectedRange": "< 2.3.9",
-      "fixedVersion": "2.3.9"
+      "affectedVersions": [
+        {
+          "range": "< 2.3.9",
+          "fixed": "2.3.9"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "obsidian",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "obsidian",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-45mx-g85m-wwm3",
+      "packageName": "obsidian",
       "title": "Obsidian does not require user confirmation for non-http/https URLs.",
       "description": "Obsidian before 0.12.12 does not require user confirmation for non-http/https URLs.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-38148"
         }
       ],
-      "affectedRange": "< 0.12.12",
-      "fixedVersion": "0.12.12"
+      "affectedVersions": [
+        {
+          "range": "< 0.12.12",
+          "fixed": "0.12.12"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

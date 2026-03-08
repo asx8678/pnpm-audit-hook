@@ -1,9 +1,10 @@
 {
-  "name": "@executeautomation/database-server",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@executeautomation/database-server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-65hm-pwj5-73pw",
+      "packageName": "@executeautomation/database-server",
       "title": "@executeautomation/database-server does not properly restrict access, bypassing a \"read-only\" mode",
       "description": "The MCP Server provided by ExecuteAutomation at https://github.com/executeautomation/mcp-database-server provides an MCP interface for agentic workflows to interact with different kinds of database servers such as PostgreSQL database. However, the `mcp-database-server` MCP Server distributed via the npm package `@executeautomation/database-server` fails to implement proper security control that properly enforce a \"read-only\" mode and as such it is vulnerable to abuse and attacks on the affected ",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-59333"
         }
       ],
-      "affectedRange": "<= 1.1.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

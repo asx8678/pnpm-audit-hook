@@ -1,9 +1,10 @@
 {
-  "name": "@strapi/plugin-email",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@strapi/plugin-email",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-2h87-4q2w-v4hf",
+      "packageName": "@strapi/plugin-email",
       "title": "Strapi plugins vulnerable to Server-Side Template Injection and Remote Code Execution in the Users-Permissions Plugin",
       "description": "### Summary\n\nStrapi through 4.5.5 allows authenticated Server-Side Template Injection (SSTI) that can be exploited to execute arbitrary code on the server.\n\n### Details\n\nStrapi through 4.5.5 allows authenticated Server-Side Template Injection (SSTI) that can be exploited to execute arbitrary code on the server. A remote attacker with access to the Strapi admin panel can inject a crafted payload that executes code on the server into an email template that bypasses the validation checks that shoul",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-22621"
         }
       ],
-      "affectedRange": "< 4.5.6",
-      "fixedVersion": "4.5.6"
+      "affectedVersions": [
+        {
+          "range": "< 4.5.6",
+          "fixed": "4.5.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

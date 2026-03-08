@@ -1,9 +1,10 @@
 {
-  "name": "pathval",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "pathval",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-g6ww-v8xp-vmwg",
+      "packageName": "pathval",
       "title": "Prototype pollution in pathval",
       "description": "A prototype pollution vulnerability affects all versions of package pathval under 1.1.1.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-7751"
         }
       ],
-      "affectedRange": "< 1.1.1",
-      "fixedVersion": "1.1.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.1",
+          "fixed": "1.1.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

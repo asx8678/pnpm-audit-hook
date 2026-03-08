@@ -1,9 +1,10 @@
 {
-  "name": "@shopify/koa-shopify-auth",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@shopify/koa-shopify-auth",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jqh7-w5pr-cr56",
+      "packageName": "@shopify/koa-shopify-auth",
       "title": "Cross-site scripting in @shopify/koa-shopify-auth",
       "description": "A cross-site scripting vulnerability exists in koa-shopify-auth v3.1.61-v3.1.62 that allows an attacker to inject JS payloads into the `shop` parameter on the `/shopify/auth/enable_cookies` endpoint.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-8176"
         }
       ],
-      "affectedRange": ">= 3.1.61, <= 3.1.62",
-      "fixedVersion": "3.1.63"
+      "affectedVersions": [
+        {
+          "range": ">= 3.1.61, <= 3.1.62",
+          "fixed": "3.1.63"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

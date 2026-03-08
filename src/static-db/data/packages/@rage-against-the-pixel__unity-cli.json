@@ -1,0 +1,33 @@
+{
+  "packageName": "@rage-against-the-pixel/unity-cli",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4255-c27h-62m5",
+      "packageName": "@rage-against-the-pixel/unity-cli",
+      "title": "unity-cli Exposes Plaintext Credentials in Debug Logs (sign-package command)",
+      "description": "The sign-package command in @rage-against-the-pixel/unity-cli logs sensitive credentials in plaintext when the `--verbose` flag is used. Command-line arguments including `--email` and `--password` are output via JSON.stringify without sanitization, exposing secrets to shell history, CI/CD logs, and log aggregation systems.\n\nUsers who run sign-package with `--verbose` and credential arguments expose their Unity account passwords. This affects all versions prior to 1.8.2. The vulnerability require",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4255-c27h-62m5",
+      "publishedAt": "2026-02-10T00:25:32Z",
+      "modifiedAt": "2026-02-10T02:56:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4255-c27h-62m5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25918"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.8.2",
+          "fixed": "1.8.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,9 +1,10 @@
 {
-  "name": "mermaid",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mermaid",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7rqq-prvp-x9jh",
+      "packageName": "mermaid",
       "title": "Mermaid improperly sanitizes sequence diagram labels leading to XSS",
       "description": "### Summary\nIn the default configuration of mermaid 11.9.0, user supplied input for sequence diagram labels is passed to `innerHTML` during calculation of element size, causing XSS.\n\n### Details\nSequence diagram node labels with KaTeX delimiters are passed through `calculateMathMLDimensions`. This method passes the full label to `innerHTML` which allows allows malicious users to inject arbitrary HTML and cause XSS when mermaid-js is used in it's default configuration (with KaTeX support enabled)",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-54881"
         }
       ],
-      "affectedRange": ">= 10.9.0-rc.1, < 10.9.4",
-      "fixedVersion": "10.9.4"
+      "affectedVersions": [
+        {
+          "range": ">= 10.9.0-rc.1, < 10.9.4",
+          "fixed": "10.9.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-8gwm-58g9-j8pw",
+      "packageName": "mermaid",
       "title": "Mermaid does not properly sanitize architecture diagram iconText leading to XSS",
       "description": "### Summary\nIn the default configuration of mermaid 11.9.0, user supplied input for architecture diagram icons is passed to the d3 `html()` method, creating a sink for cross site scripting.\n\n### Details\nArchitecture diagram service `iconText` values are passed to the d3 `html()` method, allowing malicious users to inject arbitrary HTML and cause XSS when mermaid-js is used in it's default configuration. \n\nThe vulnerability lies here:\n\n```ts\nexport const drawServices = async function (\n  db: Arch",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2025-54880"
         }
       ],
-      "affectedRange": ">= 11.1.0, < 11.10.0",
-      "fixedVersion": "11.10.0"
+      "affectedVersions": [
+        {
+          "range": ">= 11.1.0, < 11.10.0",
+          "fixed": "11.10.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-m4gq-x24j-jpmf",
+      "packageName": "mermaid",
       "title": "Prototype pollution vulnerability found in Mermaid's bundled version of DOMPurify",
       "description": "The following bundled files within the Mermaid NPM package contain a bundled version of DOMPurify that is vulnerable to https://github.com/cure53/DOMPurify/security/advisories/GHSA-mmhx-hmjr-r674, potentially resulting in an XSS attack.\n\nThis affects the built:\n\n- `dist/mermaid.min.js`\n- `dist/mermaid.js`\n- `dist/mermaid.esm.mjs`\n- `dist/mermaid.esm.min.mjs`\n\nThis will also affect users that use the above files via a CDN link, e.g. `https://cdn.jsdelivr.net/npm/mermaid@10.9.2/dist/mermaid.min.js",
       "severity": "high",
@@ -58,11 +71,17 @@
           "value": "GHSA-m4gq-x24j-jpmf"
         }
       ],
-      "affectedRange": "<= 10.9.2",
-      "fixedVersion": "10.9.3"
+      "affectedVersions": [
+        {
+          "range": "<= 10.9.2",
+          "fixed": "10.9.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-x3vm-38hw-55wf",
+      "packageName": "mermaid",
       "title": "Possible inject arbitrary `CSS` into the generated graph affecting the container HTML",
       "description": "An attacker is able to inject arbitrary `CSS` into the generated graph allowing them to change the styling of elements outside of the generated graph, and potentially exfiltrate sensitive information by using specially crafted `CSS` selectors.\n\nThe following example shows how an attacker can exfiltrate the contents of an input field by bruteforcing the `value` attribute one character at a time. Whenever there is an actual match, an `http` request will be made by the browser in order to \"load\" a ",
       "severity": "medium",
@@ -79,11 +98,17 @@
           "value": "CVE-2022-31108"
         }
       ],
-      "affectedRange": ">= 8.0.0, < 9.1.2",
-      "fixedVersion": "9.1.2"
+      "affectedVersions": [
+        {
+          "range": ">= 8.0.0, < 9.1.2",
+          "fixed": "9.1.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-p3rp-vmj9-gv6v",
+      "packageName": "mermaid",
       "title": "Incorrect sanitisation function leads to `XSS` in mermaid",
       "description": "### Impact\nMalicious diagrams can contain javascript code that can be run at diagram readers machines.\n\n### Patches\nThe users should upgrade to version 8.13.8\n\n### Workarounds\nYou need to upgrade in order to avoid this issue.\n",
       "severity": "high",
@@ -100,11 +125,17 @@
           "value": "CVE-2021-43861"
         }
       ],
-      "affectedRange": "< 8.13.8",
-      "fixedVersion": "8.13.8"
+      "affectedVersions": [
+        {
+          "range": "< 8.13.8",
+          "fixed": "8.13.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4f6x-49g2-99fm",
+      "packageName": "mermaid",
       "title": "Cross-site Scripting in Mermaid",
       "description": "Mermaid before 8.11.0 allows XSS when the antiscript feature is used.",
       "severity": "medium",
@@ -121,8 +152,13 @@
           "value": "CVE-2021-35513"
         }
       ],
-      "affectedRange": "< 8.11.0",
-      "fixedVersion": "8.11.0"
+      "affectedVersions": [
+        {
+          "range": "< 8.11.0",
+          "fixed": "8.11.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

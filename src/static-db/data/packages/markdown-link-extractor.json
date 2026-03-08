@@ -1,9 +1,10 @@
 {
-  "name": "markdown-link-extractor",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "markdown-link-extractor",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mmh6-m7v9-5956",
+      "packageName": "markdown-link-extractor",
       "title": "Regular expression denial of service in markdown-link-extractor",
       "description": "An exponential ReDoS (Regular Expression Denial of Service) can be triggered in the markdown-link-extractor npm package, when an attacker is able to supply arbitrary input to the module's exported function",
       "severity": "low",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-43308"
         }
       ],
-      "affectedRange": ">= 4.0.0, < 4.0.1",
-      "fixedVersion": "4.0.1"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.0.1",
+          "fixed": "4.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

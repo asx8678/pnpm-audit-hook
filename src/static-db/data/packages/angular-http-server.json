@@ -1,0 +1,29 @@
+{
+  "packageName": "angular-http-server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vmhw-fhj6-m3g5",
+      "packageName": "angular-http-server",
+      "title": "Path Traversal in angular-http-server",
+      "description": "Versions of `angular-http-server` before 1.4.4 are vulnerable to path traversal.\n\n\n## Recommendation\n\nUpdate to version 1.4.4 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vmhw-fhj6-m3g5",
+      "publishedAt": "2019-05-31T23:46:33Z",
+      "modifiedAt": "2026-02-11T22:27:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vmhw-fhj6-m3g5"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.4",
+          "fixed": "1.4.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

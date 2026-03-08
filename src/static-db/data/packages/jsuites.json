@@ -1,9 +1,10 @@
 {
-  "name": "jsuites",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "jsuites",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-r4hg-4cpq-q57c",
+      "packageName": "jsuites",
       "title": "jSuites subect to Cross-site Scripting",
       "description": "Versions of the package jsuites before 5.0.1 are vulnerable to Cross-site Scripting (XSS) due to improper user-input sanitization in the Editor() function.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2022-25979"
         }
       ],
-      "affectedRange": "< 5.0.1",
-      "fixedVersion": "5.0.1"
+      "affectedVersions": [
+        {
+          "range": "< 5.0.1",
+          "fixed": "5.0.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-qh7x-j4v8-qw5w",
+      "packageName": "jsuites",
       "title": "Clipboard-based XSS",
       "description": "### Impact\nXSS against the user.\n\n### Details\njsuites is vulnerable to DOM based XSS if the user can be tricked into copying _anything_ from a malicious and pasting it into the html editor. This is because a part of the clipboard content is directly written to `innerHTML` causing XSS.\n\n### References\nThe Curious Case of Copy & Paste – on risks of pasting arbitrary content in browsers: https://research.securitum.com/the-curious-case-of-copy-paste/\n",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2021-41086"
         }
       ],
-      "affectedRange": "< 4.9.11",
-      "fixedVersion": "4.9.11"
+      "affectedVersions": [
+        {
+          "range": "< 4.9.11",
+          "fixed": "4.9.11"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

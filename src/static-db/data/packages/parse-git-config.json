@@ -1,9 +1,10 @@
 {
-  "name": "parse-git-config",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "parse-git-config",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8g77-54rh-46hx",
+      "packageName": "parse-git-config",
       "title": "Prototype Pollution Vulnerability in parse-git-config",
       "description": "An issue in parse-git-config v.3.0.0 allows an attacker to obtain sensitive information via the expandKeys function.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-25975"
         }
       ],
-      "affectedRange": "<= 3.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "jailed",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "jailed",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-77m7-9wvw-87fx",
+      "packageName": "jailed",
       "title": "Privilege Issues in jailed",
       "description": "All versions of package jailed are vulnerable to Sandbox Bypass via an exported alert() method which can access the main application. Exported methods are stored in the application.remote object.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2022-23923"
         }
       ],
-      "affectedRange": "<= 0.3.1"
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "gitlog",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "gitlog",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-67mm-m3wx-j7fr",
+      "packageName": "gitlog",
       "title": "Command injection in gitlog",
       "description": "The gitlog function in src/index.ts in gitlog before 4.0.4 has a command injection vulnerability.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-26541"
         }
       ],
-      "affectedRange": "< 4.0.4",
-      "fixedVersion": "4.0.4"
+      "affectedVersions": [
+        {
+          "range": "< 4.0.4",
+          "fixed": "4.0.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

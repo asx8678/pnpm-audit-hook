@@ -1,9 +1,10 @@
 {
-  "name": "set-getter",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "set-getter",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jv35-xqg7-f92r",
+      "packageName": "set-getter",
       "title": "set-getter Prototype Pollution Vulnerability",
       "description": "Prototype pollution vulnerability in ‘set-getter’ version 0.1.0 allows an attacker to cause a denial of service and may lead to remote code execution.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-25949"
         }
       ],
-      "affectedRange": "< 0.1.1",
-      "fixedVersion": "0.1.1"
+      "affectedVersions": [
+        {
+          "range": "< 0.1.1",
+          "fixed": "0.1.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

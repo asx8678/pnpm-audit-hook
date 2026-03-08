@@ -1,9 +1,10 @@
 {
-  "name": "portkiller",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "portkiller",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-r6fw-8m27-43c9",
+      "packageName": "portkiller",
       "title": "Command injection in portkiller",
       "description": "This affects all versions of package portkiller. If (attacker-controlled) user input is given, it is possible for an attacker to execute arbitrary commands. This is due to use of the child_process exec function without input sanitization.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23379"
         }
       ],
-      "affectedRange": "<= 1.0.3"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

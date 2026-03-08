@@ -1,9 +1,10 @@
 {
-  "name": "storybook",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "storybook",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8452-54wp-rmv6",
+      "packageName": "storybook",
       "title": "Storybook manager bundle may expose environment variables during build",
       "description": "On December 11th, the Storybook team received a responsible disclosure alerting them to a potential vulnerability in certain built and published Storybooks. \n\nThe vulnerability is a bug in how Storybook handles environment variables defined in a `.env` file, which could, in specific circumstances, lead to those variables being unexpectedly bundled into the artifacts created by the `storybook build` command. When a built Storybook is published to the web, the bundle’s source is viewable, thus pot",
       "severity": "high",
@@ -20,8 +21,40 @@
           "value": "CVE-2025-68429"
         }
       ],
-      "affectedRange": ">= 10.0.0, < 10.1.10",
-      "fixedVersion": "10.1.10"
+      "affectedVersions": [
+        {
+          "range": ">= 10.0.0, < 10.1.10",
+          "fixed": "10.1.10"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mjf5-7g4m-gx5w",
+      "packageName": "storybook",
+      "title": "Storybook Dev Server is Vulnerable to WebSocket Hijacking",
+      "description": "### Summary\n\nThe WebSocket functionality in Storybook's dev server, used to create and update stories, is vulnerable to WebSocket hijacking. This vulnerability **only affects the Storybook dev server; production builds are not impacted**.\n\n### Details\n\nExploitation requires a developer to visit a malicious website while their local Storybook dev server is running. Because the WebSocket connection does not validate the origin of incoming connections, a malicious site can silently send WebSocket m",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mjf5-7g4m-gx5w",
+      "publishedAt": "2026-02-26T15:16:10Z",
+      "modifiedAt": "2026-02-26T15:16:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mjf5-7g4m-gx5w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27148"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 10.0.0-beta.0, < 10.2.10",
+          "fixed": "10.2.10"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

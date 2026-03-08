@@ -1,9 +1,10 @@
 {
-  "name": "underscore-keypath",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "underscore-keypath",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gpvc-mx6g-cchv",
+      "packageName": "underscore-keypath",
       "title": "underscore-keypath vulnerable to Prototype Pollution",
       "description": "Versions of the package underscore-keypath from 0.0.11 are vulnerable to Prototype Pollution via the name argument of the `setProperty()` function. Exploiting this vulnerability is possible due to improper input sanitization which allows the usage of arguments like `__proto__`.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-26139"
         }
       ],
-      "affectedRange": ">= 0.0.11, <= 0.9.3"
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.11, <= 0.9.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

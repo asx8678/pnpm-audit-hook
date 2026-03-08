@@ -1,9 +1,10 @@
 {
-  "name": "angular",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "angular",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mqm9-c95h-x2p6",
+      "packageName": "angular",
       "title": "AngularJS allows attackers to bypass common image source restrictions",
       "description": "Improper sanitization of the value of the `[srcset]` attribute in `<source>` HTML elements in AngularJS allows attackers to bypass common image source restrictions, which can also lead to a form of  Content Spoofing https://owasp.org/www-community/attacks/Content_Spoofing .\n\nThis issue affects all versions of AngularJS.\n\nNote:\nThe AngularJS project is End-of-Life and will not receive any updates to address this issue. For more information see  here https://docs.angularjs.org/misc/version-support",
       "severity": "low",
@@ -20,10 +21,16 @@
           "value": "CVE-2024-8373"
         }
       ],
-      "affectedRange": "<= 1.8.3"
+      "affectedVersions": [
+        {
+          "range": "<= 1.8.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-m9gf-397r-hwpg",
+      "packageName": "angular",
       "title": "AngularJS allows attackers to bypass common image source restrictions",
       "description": "Improper sanitization of the value of the `[srcset]` attribute in AngularJS allows attackers to bypass common image source restrictions, which can also lead to a form of  Content Spoofing https://owasp.org/www-community/attacks/Content_Spoofing .\n\nThis issue affects AngularJS versions 1.3.0-rc.4 and greater.\n\nNote:\nThe AngularJS project is End-of-Life and will not receive any updates to address this issue. For more information see  here https://docs.angularjs.org/misc/version-support-status .",
       "severity": "low",
@@ -40,10 +47,16 @@
           "value": "CVE-2024-8372"
         }
       ],
-      "affectedRange": ">= 1.3.0-rc.4, <= 1.8.3"
+      "affectedVersions": [
+        {
+          "range": ">= 1.3.0-rc.4, <= 1.8.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4w4v-5hc9-xrr2",
+      "packageName": "angular",
       "title": "angular vulnerable to super-linear runtime due to backtracking",
       "description": "This affects versions of the package angular from 1.3.0. A regular expression used to split the value of the ng-srcset directive is vulnerable to super-linear runtime due to backtracking. With a large carefully-crafted input, this can result in catastrophic backtracking and cause a denial of service. \n\n\n**Note:**\n\nThis package is EOL and will not receive any updates to address this issue. Users should migrate to [@angular/core](https://www.npmjs.com/package/@angular/core).",
       "severity": "high",
@@ -60,10 +73,16 @@
           "value": "CVE-2024-21490"
         }
       ],
-      "affectedRange": ">= 1.3.0, <= 1.8.3"
+      "affectedVersions": [
+        {
+          "range": ">= 1.3.0, <= 1.8.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-2vrf-hf26-jrp5",
+      "packageName": "angular",
       "title": "angular vulnerable to regular expression denial of service via the angular.copy() utility",
       "description": "All versions of the package angular are vulnerable to Regular Expression Denial of Service (ReDoS) via the angular.copy() utility function due to the usage of an insecure regular expression. Exploiting this vulnerability is possible by a large carefully-crafted input, which can result in catastrophic backtracking.",
       "severity": "medium",
@@ -80,10 +99,16 @@
           "value": "CVE-2023-26116"
         }
       ],
-      "affectedRange": "<= 1.8.3"
+      "affectedVersions": [
+        {
+          "range": "<= 1.8.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-2qqx-w9hr-q5gx",
+      "packageName": "angular",
       "title": "angular vulnerable to regular expression denial of service via the $resource service",
       "description": "All versions of the package angular are vulnerable to Regular Expression Denial of Service (ReDoS) via the $resource service due to the usage of an insecure regular expression. Exploiting this vulnerability is possible by a large carefully-crafted input, which can result in catastrophic backtracking.",
       "severity": "medium",
@@ -100,10 +125,16 @@
           "value": "CVE-2023-26117"
         }
       ],
-      "affectedRange": "<= 1.8.3"
+      "affectedVersions": [
+        {
+          "range": "<= 1.8.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-qwqh-hm9m-p5hr",
+      "packageName": "angular",
       "title": "angular vulnerable to regular expression denial of service via the <input type=\"url\"> element",
       "description": "All versions of the package angular are vulnerable to Regular Expression Denial of Service (ReDoS) via the <input type=\"url\"> element due to the usage of an insecure regular expression in the input[url] functionality. Exploiting this vulnerability is possible by a large carefully-crafted input, which can result in catastrophic backtracking.",
       "severity": "medium",
@@ -120,10 +151,16 @@
           "value": "CVE-2023-26118"
         }
       ],
-      "affectedRange": "<= 1.8.3"
+      "affectedVersions": [
+        {
+          "range": "<= 1.8.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-m2h2-264f-f486",
+      "packageName": "angular",
       "title": "angular vulnerable to regular expression denial of service (ReDoS)",
       "description": "AngularJS lets users write client-side web applications. The package angular after 1.7.0 is vulnerable to Regular Expression Denial of Service (ReDoS) by providing a custom locale rule that makes it possible to assign the parameter in posPre: ' '.repeat() of NUMBER_FORMATS.PATTERNS[1].posPre with a very high value.\n\n**Note:**\n1. This package has been deprecated and is no longer maintained.\n2. The vulnerable versions are 1.7.0 and higher.",
       "severity": "medium",
@@ -140,10 +177,16 @@
           "value": "CVE-2022-25844"
         }
       ],
-      "affectedRange": ">= 1.7.0"
+      "affectedVersions": [
+        {
+          "range": ">= 1.7.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-j58c-ww9w-pwp5",
+      "packageName": "angular",
       "title": "AngularJS improperly sanitizes SVG elements",
       "description": "Improper sanitization of the value of the 'href' and 'xlink:href' attributes in '<image>' SVG elements in AngularJS allows attackers to bypass common image source restrictions. This can lead to a form of  Content Spoofing https://owasp.org/www-community/attacks/Content_Spoofing  and also negatively affect the application's performance and behavior by using too large or slow-to-load images.\n\nThis issue affects all versions of AngularJS.\n\nNote:\nThe AngularJS project is End-of-Life and will not rec",
       "severity": "low",
@@ -160,10 +203,16 @@
           "value": "CVE-2025-0716"
         }
       ],
-      "affectedRange": "<= 1.8.3"
+      "affectedVersions": [
+        {
+          "range": "<= 1.8.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-prc3-vjfx-vhm9",
+      "packageName": "angular",
       "title": "Angular (deprecated package) Cross-site Scripting",
       "description": "All versions of package angular are vulnerable to Cross-site Scripting (XSS) due to insecure page caching in the Internet Explorer browser, which allows interpolation of `<textarea>` elements.\n\nNPM package [angular](https://www.npmjs.com/package/angular) is deprecated. Those who want to receive security updates should use the actively maintained package [@angular/core](https://www.npmjs.com/package/@angular/core).",
       "severity": "medium",
@@ -180,7 +229,12 @@
           "value": "CVE-2022-25869"
         }
       ],
-      "affectedRange": "<= 1.8.3"
+      "affectedVersions": [
+        {
+          "range": "<= 1.8.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

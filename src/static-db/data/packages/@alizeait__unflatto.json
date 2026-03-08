@@ -1,9 +1,10 @@
 {
-  "name": "@alizeait/unflatto",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@alizeait/unflatto",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-q8jq-4rm5-4hm5",
+      "packageName": "@alizeait/unflatto",
       "title": "@alizeait/unflatto Prototype Pollution",
       "description": "### Impact\nalizeait unflatto <= 1.0.2 was discovered to contain a prototype pollution via the method exports.unflatto at /dist/index.js. This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.\n\n### Patches\nThe problem has been patched in 1.0.3\n\n\n### References\nhttps://github.com/advisories/GHSA-799q-f2px-wx8c",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2024-38988"
         }
       ],
-      "affectedRange": "< 1.0.3",
-      "fixedVersion": "1.0.3"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.3",
+          "fixed": "1.0.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-799q-f2px-wx8c",
+      "packageName": "@alizeait/unflatto",
       "title": "Duplicate Advisory: @alizeait/unflatto Prototype Pollution via `exports.unflatto` Method",
       "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-q8jq-4rm5-4hm5. This link is maintained to preserve external references.\n\n## Original Description\nalizeait unflatto <= 1.0.2 was discovered to contain a prototype pollution via the method exports.unflatto at /dist/index.js. This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.",
       "severity": "high",
@@ -37,7 +44,12 @@
           "value": "GHSA-799q-f2px-wx8c"
         }
       ],
-      "affectedRange": "<= 1.0.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "Flowise",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "Flowise",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jv9m-vf54-chjj",
+      "packageName": "Flowise",
       "title": "Flowise is vulnerable to arbitrary file write through its WriteFileTool ",
       "description": "### Summary\n\nThe WriteFileTool in Flowise does not restrict the file path for reading, allowing authenticated attackers to exploit this vulnerability to write arbitrary files to any path in the file system, potentially leading to remote command execution.\n\n### Details\n\nFlowise supports providing WriteFileTool for large models, which is used to write files to the server's file system. The implementation of this tool is located at packages/components/nodes/tools/WriteFile/WriteFile.ts.\n\n```\n/**\n *",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-61913"
         }
       ],
-      "affectedRange": "<= 3.0.5",
-      "fixedVersion": "3.0.8"
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.5",
+          "fixed": "3.0.8"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "droppy",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "droppy",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-grv5-w5vr-8h98",
+      "packageName": "droppy",
       "title": "Path Traversal in droppy",
       "description": "This affects all versions of package droppy. It is possible to traverse directories to fetch configuration files from a droopy server.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7757"
         }
       ],
-      "affectedRange": "<= 12.2.0"
+      "affectedVersions": [
+        {
+          "range": "<= 12.2.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

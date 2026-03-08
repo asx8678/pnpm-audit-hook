@@ -1,9 +1,10 @@
 {
-  "name": "hfs",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "hfs",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xcxh-6cv4-q8p8",
+      "packageName": "hfs",
       "title": "HFS user adding a \"web link\" in HFS is vulnerable to \"target=_blank\" exploit",
       "description": "### Summary\nWhen adding a \"web link\" to the HFS virtual filesystem, the frontend opens it with `target=\"_blank\"` but without the `rel=\"noopener noreferrer\"` attribute. This allows the opened page to use the `window.opener` property to change the location of the original HFS tab.\n\n### Details\nWhile most modern browsers have fixes already implemented for this `target=\"_blank\"` exploit at the browser level, users on outdated browsers remain vulnerable. This means that if an admin of the HFS instanc",
       "severity": "low",
@@ -16,11 +17,17 @@
           "value": "GHSA-xcxh-6cv4-q8p8"
         }
       ],
-      "affectedRange": "<= 0.57.9",
-      "fixedVersion": "0.57.10"
+      "affectedVersions": [
+        {
+          "range": "<= 0.57.9",
+          "fixed": "0.57.10"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5f4x-hwv2-w9w2",
+      "packageName": "hfs",
       "title": "rejetto HFS vulnerable to OS Command Execution by remote authenticated users",
       "description": "rejetto HFS (aka HTTP File Server) 3 before 0.52.10 on Linux, UNIX, and macOS allows OS command execution by remote authenticated users (if they have Upload permissions). This occurs because a shell is used to execute df (i.e., with execSync instead of spawnSync in child_process in Node.js).",
       "severity": "high",
@@ -37,8 +44,13 @@
           "value": "CVE-2024-39943"
         }
       ],
-      "affectedRange": "< 0.52.10",
-      "fixedVersion": "0.52.10"
+      "affectedVersions": [
+        {
+          "range": "< 0.52.10",
+          "fixed": "0.52.10"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

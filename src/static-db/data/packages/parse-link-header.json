@@ -1,9 +1,10 @@
 {
-  "name": "parse-link-header",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "parse-link-header",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-q674-xm3x-2926",
+      "packageName": "parse-link-header",
       "title": "Uncontrolled Resource Consumption in parse-link-header",
       "description": "The package parse-link-header before 2.0.0 are vulnerable to Regular Expression Denial of Service (ReDoS) via the checkHeader function.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23490"
         }
       ],
-      "affectedRange": "< 2.0.0",
-      "fixedVersion": "2.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

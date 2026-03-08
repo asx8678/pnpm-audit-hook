@@ -1,9 +1,10 @@
 {
-  "name": "set-value",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "set-value",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4jqc-8m5r-9rpr",
+      "packageName": "set-value",
       "title": "Prototype Pollution in set-value",
       "description": "This affects the package `set-value`. A type confusion vulnerability can lead to a bypass of CVE-2019-10747 when the user-provided keys used in the path parameter are arrays.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23440"
         }
       ],
-      "affectedRange": ">= 3.0.0, < 3.0.3",
-      "fixedVersion": "3.0.3"
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 3.0.3",
+          "fixed": "3.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

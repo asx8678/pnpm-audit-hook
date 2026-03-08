@@ -1,9 +1,10 @@
 {
-  "name": "dottie",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "dottie",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4gxf-g5gf-22h4",
+      "packageName": "dottie",
       "title": "dottie vulnerable to Prototype Pollution",
       "description": "Versions of the package dottie before 2.0.4 are vulnerable to Prototype Pollution due to insufficient checks, via the `set()` function and the current variable in the `/dottie.js` file.",
       "severity": "high",
@@ -20,8 +21,40 @@
           "value": "CVE-2023-26132"
         }
       ],
-      "affectedRange": "< 2.0.4",
-      "fixedVersion": "2.0.4"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.4",
+          "fixed": "2.0.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r5mx-6wc6-7h9w",
+      "packageName": "dottie",
+      "title": "dottie is vulnerable to Prototype Pollution bypass via non-first path segments in set() and transform()",
+      "description": "### Summary\n\ndottie versions 2.0.4 through 2.0.6 contain an incomplete fix for CVE-2023-26132. The prototype pollution guard introduced in commit `7d3aee1` only validates the first segment of a dot-separated path, allowing an attacker to bypass the protection by placing `__proto__` at any position other than the first.\n\nBoth `dottie.set()` and `dottie.transform()` are affected.\n\n### Details\n\nThe existing guard checks only `pieces[0] === '__proto__'`. When a path like `'a.__proto__.polluted'` is ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-r5mx-6wc6-7h9w",
+      "publishedAt": "2026-02-26T19:54:34Z",
+      "modifiedAt": "2026-02-26T19:54:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r5mx-6wc6-7h9w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27837"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.4, <= 2.0.6",
+          "fixed": "2.0.7"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

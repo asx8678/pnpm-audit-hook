@@ -1,9 +1,10 @@
 {
-  "name": "snowflake-sdk",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "snowflake-sdk",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wmjq-jrm2-9wfr",
+      "packageName": "snowflake-sdk",
       "title": "NodeJS Driver for Snowflake has race condition when checking access to Easy Logging configuration file",
       "description": "# Issue\nSnowflake discovered and remediated a vulnerability in the NodeJS Driver for Snowflake (“Driver”). When using the Easy Logging feature on Linux and macOS the Driver didn’t correctly verify the permissions of the logging configuration file, potentially allowing an attacker with local access to overwrite the configuration and gain control over logging level and output location.\n\nThis vulnerability affects Driver versions 1.10.0 through 2.0.3. Snowflake fixed the issue in version 2.0.4.\n\n# ",
       "severity": "low",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-46328"
         }
       ],
-      "affectedRange": ">= 1.10.0, <= 2.0.3",
-      "fixedVersion": "2.0.4"
+      "affectedVersions": [
+        {
+          "range": ">= 1.10.0, <= 2.0.3",
+          "fixed": "2.0.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-xfhv-wqj6-rx99",
+      "packageName": "snowflake-sdk",
       "title": "snowflake-sdk may incorrectly validate temporary credential cache file permissions",
       "description": "### Issue\nSnowflake discovered and remediated a vulnerability in the Snowflake NodeJS Driver. File permissions checks of the temporary credential cache could be bypassed by an attacker with write access to the local cache directory.\n\nThis vulnerability affects versions 1.12.0 through 2.0.1 on Linux. Snowflake fixed the issue in version 2.0.2.\n\n### Vulnerability Details\nOn Linux, when either EXTERNALBROWSER or USERNAME_PASSWORD_MFA authentication methods are used with temporary credential caching",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2025-24791"
         }
       ],
-      "affectedRange": ">= 1.12.0, <= 2.0.1",
-      "fixedVersion": "2.0.2"
+      "affectedVersions": [
+        {
+          "range": ">= 1.12.0, <= 2.0.1",
+          "fixed": "2.0.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-h53w-7qw7-vh5c",
+      "packageName": "snowflake-sdk",
       "title": "Snowflake NodeJS Driver vulnerable to Command Injection",
       "description": "### Issue\nSnowflake was informed via our bug bounty program of a command injection vulnerability in the Snowflake NodeJS driver via SSO browser URL authentication.\n\n### Impacted driver package: \nsnowflake-connector-nodejs\n\n### Impacted version range: \nbefore [Version 1.6.21](https://community.snowflake.com/s/article/Node-js-Driver-Release-Notes) \n\n### Attack Scenario\nIn order to exploit the potential for command injection, an attacker would need to be successful in (1) establishing a malicious r",
       "severity": "high",
@@ -62,8 +75,13 @@
           "value": "CVE-2023-34232"
         }
       ],
-      "affectedRange": "< 1.6.21",
-      "fixedVersion": "1.6.21"
+      "affectedVersions": [
+        {
+          "range": "< 1.6.21",
+          "fixed": "1.6.21"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "merge-change",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "merge-change",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-f9cv-665r-275h",
+      "packageName": "merge-change",
       "title": "Prototype Pollution in merge-change",
       "description": "All current versions of package merge-change are vulnerable to Prototype Pollution via the utils.set function.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23421"
         }
       ],
-      "affectedRange": "<= 1.8.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.8.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

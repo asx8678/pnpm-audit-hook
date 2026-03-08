@@ -1,9 +1,10 @@
 {
-  "name": "bootstrap-sass",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "bootstrap-sass",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9mvj-f7w8-pvh2",
+      "packageName": "bootstrap-sass",
       "title": "Withdrawn Advisory: Bootstrap Cross-Site Scripting (XSS) vulnerability",
       "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because it was determined to not be a vulnerability in Bootstrap. From the CVE:\n\n> This was not a security issue in Bootstrap. Bootstrap’s JavaScript is not intended to sanitize unsafe or intentionally dangerous HTML. As such, the reported behavior fell outside the scope of Bootstrap’s security model, and the associated CVE has been rescinded.\n\n## Original Description\nA vulnerability has been identified in Bootstrap that exposes users to Cro",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-6484"
         }
       ],
-      "affectedRange": ">= 2.0.0, <= 3.4.3"
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, <= 3.4.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

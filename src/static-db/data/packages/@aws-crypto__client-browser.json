@@ -1,9 +1,10 @@
 {
-  "name": "@aws-crypto/client-browser",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@aws-crypto/client-browser",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-h45p-w933-jxh3",
+      "packageName": "@aws-crypto/client-browser",
       "title": "Improper Verification of Cryptographic Signature in aws-encryption-sdk-javascript ",
       "description": "### Impact\n\nThis advisory addresses several LOW severity issues with streaming signed messages and restricting processing of certain types of invalid messages. \n\nThis ESDK supports a streaming mode where callers may stream the plaintext of signed messages before the ECDSA signature is validated. In addition to these signatures, the ESDK uses AES-GCM encryption and all plaintext is verified before being released to a caller. There is no impact on the integrity of the ciphertext or decrypted plain",
       "severity": "medium",
@@ -16,8 +17,13 @@
           "value": "GHSA-h45p-w933-jxh3"
         }
       ],
-      "affectedRange": ">= 2.0.0, < 2.2.0",
-      "fixedVersion": "2.2.0"
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.2.0",
+          "fixed": "2.2.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

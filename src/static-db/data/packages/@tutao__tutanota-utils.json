@@ -1,9 +1,10 @@
 {
-  "name": "@tutao/tutanota-utils",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@tutao/tutanota-utils",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-24v3-254g-jv85",
+      "packageName": "@tutao/tutanota-utils",
       "title": "Tuta Mail has DOM attribute and CSS injection in its Contact Viewer feature",
       "description": "### Impact\nUsers importing contacts from untrusted sources.\n\nSpecifically crafted contact data can lead to some of DOM modifications for the link button next to the field e.g. the link address can be overriden. CSS can be manipulated to give the button arbitrary look and change it's size so that any click on the screen would lead to the specified URL. Modifying event listeners does *not* seem to be possible so no JS can be executed (which would also be prevented by CSP).\n\n## Technical details\nTh",
       "severity": "low",
@@ -16,8 +17,13 @@
           "value": "GHSA-24v3-254g-jv85"
         }
       ],
-      "affectedRange": "< 314.251111.0",
-      "fixedVersion": "314.251111.0"
+      "affectedVersions": [
+        {
+          "range": "< 314.251111.0",
+          "fixed": "314.251111.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

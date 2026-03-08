@@ -1,9 +1,10 @@
 {
-  "name": "@pagefind/modular-ui",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@pagefind/modular-ui",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gprj-6m2f-j9hx",
+      "packageName": "@pagefind/modular-ui",
       "title": "DOM clobbering could escalate to Cross-site Scripting (XSS)",
       "description": "Pagefind initializes its dynamic JavaScript and WebAssembly files relative to the location of the first script you load. This information is gathered by looking up the value of `document.currentScript.src`.\n\nIt is possible to \"clobber\" this lookup with otherwise benign HTML on the page, for example:\n```html\n<img name=\"currentScript\" src=\"blob:https://xxx.xxx.xxx/ui.js\"></img>\n```\n\nThis will cause `document.currentScript.src` to resolve as an external domain, which will then be used by Pagefind t",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-45389"
         }
       ],
-      "affectedRange": "< 1.1.1",
-      "fixedVersion": "1.1.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.1",
+          "fixed": "1.1.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "mercurius",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mercurius",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-cm8h-q92v-xcfc",
+      "packageName": "mercurius",
       "title": "mercurius has Uncaught Exception when using subscriptions",
       "description": "### Impact\n\nAny users of Mercurius until version v11.5.0 are subjected to a denial of service attack by sending a malformed packet over WebSocket to `/graphql`.\n\n### Patches\n\nThis was patched in https://github.com/mercurius-js/mercurius/pull/940.\nThe patch was released as v11.5.0 and v8.13.2.\n\n### Workarounds\n\nDisable subscriptions.\n\n### References\n\nReported publicly as https://github.com/mercurius-js/mercurius/issues/939.\nThe same problem was solved in https://github.com/fastify/fastify-websock",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2023-22477"
         }
       ],
-      "affectedRange": "< 8.13.2",
-      "fixedVersion": "8.13.2"
+      "affectedVersions": [
+        {
+          "range": "< 8.13.2",
+          "fixed": "8.13.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-273r-rm8g-7f3x",
+      "packageName": "mercurius",
       "title": "Uncaught Exception in mercurius",
       "description": "### Impact\n\nAny users from Mercurius@8.10.0 to 8.11.1 are subjected to a denial of service attack by sending a malformed JSON to `/graphql` unless they are using a custom error handler.\n\n### Patches\n\nThe vulnerability has been fixed in https://github.com/mercurius-js/mercurius/pull/678 and shipped as v8.11.2.\n\n### Workarounds\n\nUse a custom error handler.\n\n### References\n\nSee https://github.com/mercurius-js/mercurius/issues/677\n\n### For more information\nIf you have any questions or comments about",
       "severity": "high",
@@ -41,8 +48,67 @@
           "value": "CVE-2021-43801"
         }
       ],
-      "affectedRange": ">= 8.10.0, < 8.11.2",
-      "fixedVersion": "8.11.2"
+      "affectedVersions": [
+        {
+          "range": ">= 8.10.0, < 8.11.2",
+          "fixed": "8.11.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m4h2-mjfm-mp55",
+      "packageName": "mercurius",
+      "title": "Mercurius's queryDepth limit bypassed for WebSocket subscriptions",
+      "description": "## Description\n\nMercurius fails to enforce the configured queryDepth limit on GraphQL subscription queries received over WebSocket connections. The depth check is correctly applied to HTTP queries and mutations, but subscription queries are parsed and executed without invoking the depth validation. This allows a remote client to submit arbitrarily deeply nested subscription queries over WebSocket, bypassing the intended depth restriction. On schemas with recursive types, this can lead to denial ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-m4h2-mjfm-mp55",
+      "publishedAt": "2026-03-06T18:47:52Z",
+      "modifiedAt": "2026-03-06T18:47:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m4h2-mjfm-mp55"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30241"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 16.8.0",
+          "fixed": "16.8.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v66j-6wwf-jc57",
+      "packageName": "mercurius",
+      "title": "Mercurius: Incorrect Content-Type parsing can lead to CSRF attack",
+      "description": "### Summary\n\nA Cross-Site Request Forgery (CSRF) vulnerability was identified in Mercurius versions 16. The issue arises from incorrect parsing of the `Content-Type` header in requests. Specifically, requests with `Content-Type` values such as `application/x-www-form-urlencoded`, `multipart/form-data`, or `text/plain` could be misinterpreted as `application/json`. This misinterpretation bypasses the preflight checks performed by the `fetch()` API, potentially allowing unauthorized actions to be ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v66j-6wwf-jc57",
+      "publishedAt": "2026-03-05T18:18:01Z",
+      "modifiedAt": "2026-03-05T20:42:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v66j-6wwf-jc57"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-64166"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 16.3.0",
+          "fixed": "16.4.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

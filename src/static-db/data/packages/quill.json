@@ -1,9 +1,10 @@
 {
-  "name": "quill",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "quill",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-v3m3-f69x-jf25",
+      "packageName": "quill",
       "title": "Quill is vulnerable to XSS via HTML export feature",
       "description": "A lack of data validation vulnerability in the HTML export feature in Quill in allows Cross-Site Scripting (XSS).\n\nThis issue affects Quill: 2.0.3.",
       "severity": "low",
@@ -20,10 +21,16 @@
           "value": "CVE-2025-15056"
         }
       ],
-      "affectedRange": "= 2.0.3"
+      "affectedVersions": [
+        {
+          "range": "= 2.0.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4943-9vgg-gr5r",
+      "packageName": "quill",
       "title": "Cross-site Scripting in quill",
       "description": "A vulnerability in the HTML editor of Slab Quill allows an attacker to execute arbitrary JavaScript by storing an XSS payload (a crafted `onloadstart` attribute of an IMG element) in a text field. No patch exists and no further releases are planned.\n\nThis CVE is disputed. Researchers have claimed that this issue is not within the product itself, but is intended behavior in a web browser. More information can be found [here](https://github.com/quilljs/quill/issues/3364).",
       "severity": "medium",
@@ -40,7 +47,12 @@
           "value": "CVE-2021-3163"
         }
       ],
-      "affectedRange": "<= 1.3.7"
+      "affectedVersions": [
+        {
+          "range": "<= 1.3.7"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

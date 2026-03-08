@@ -1,9 +1,10 @@
 {
-  "name": "@sideway/formula",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@sideway/formula",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-c2jc-4fpr-4vhg",
+      "packageName": "@sideway/formula",
       "title": "@sideway/formula contains Regular Expression Denial of Service (ReDoS) Vulnerability",
       "description": "### Impact\n\nUser-provided strings to formula's parser might lead to polynomial execution time.\n\n### Patches\n\nUsers should upgrade to 3.0.1+.\n\n### Workarounds\n\nNone.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-25166"
         }
       ],
-      "affectedRange": "< 3.0.1",
-      "fixedVersion": "3.0.1"
+      "affectedVersions": [
+        {
+          "range": "< 3.0.1",
+          "fixed": "3.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

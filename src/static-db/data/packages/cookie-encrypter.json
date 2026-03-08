@@ -1,9 +1,10 @@
 {
-  "name": "cookie-encrypter",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "cookie-encrypter",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-h63v-hw6g-x8hp",
+      "packageName": "cookie-encrypter",
       "title": "Bit flip attack vulnerability in cookie-encrypter",
       "description": "due to a weakness in the encryption method used in cookie-encrypter an attack can use the world visible IV to edit encrypted cookies without decrypting the cookie itself. This is known as an AES CBC bit flipping attack.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-53441"
         }
       ],
-      "affectedRange": "<= 1.0.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

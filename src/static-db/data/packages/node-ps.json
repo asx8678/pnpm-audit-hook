@@ -1,9 +1,10 @@
 {
-  "name": "node-ps",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "node-ps",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4rv9-5vc4-88cg",
+      "packageName": "node-ps",
       "title": "Command injection in node-ps",
       "description": "This affects all versions of package node-ps. The injection point is located in line 72 in lib/index.js.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7785"
         }
       ],
-      "affectedRange": "<= 0.0.2"
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

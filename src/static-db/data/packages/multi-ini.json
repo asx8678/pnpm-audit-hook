@@ -1,9 +1,10 @@
 {
-  "name": "multi-ini",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "multi-ini",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-g78f-549w-c354",
+      "packageName": "multi-ini",
       "title": "Prototype Pollution in multi-ini",
       "description": "This affects the package multi-ini before 2.1.1. It is possible to pollute an object's prototype by specifying the proto object as part of an array.",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2020-28448"
         }
       ],
-      "affectedRange": "< 2.1.1",
-      "fixedVersion": "2.1.1"
+      "affectedVersions": [
+        {
+          "range": "< 2.1.1",
+          "fixed": "2.1.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-67mq-h2r9-rh2m",
+      "packageName": "multi-ini",
       "title": "Prototype pollution in multi-ini",
       "description": "This affects the package multi-ini before 2.1.2. It is possible to pollute an object's prototype by specifying the constructor.proto object as part of an array. This is a bypass of CVE-2020-28448.",
       "severity": "medium",
@@ -41,8 +48,13 @@
           "value": "CVE-2020-28460"
         }
       ],
-      "affectedRange": "< 2.1.2",
-      "fixedVersion": "2.1.2"
+      "affectedVersions": [
+        {
+          "range": "< 2.1.2",
+          "fixed": "2.1.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

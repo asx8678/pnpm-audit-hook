@@ -1,9 +1,10 @@
 {
-  "name": "@sap/xssec",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@sap/xssec",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-p2vx-qj66-88q3",
+      "packageName": "@sap/xssec",
       "title": "Escalation of privileges in @sap/xssec",
       "description": "SAP BTP Security Services Integration Library ([Node.js] @sap/xssec - versions < 3.6.0, allow under certain conditions an escalation of privileges. On successful exploitation, an unauthenticated attacker can obtain arbitrary permissions within the application.\n\n",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-49583"
         }
       ],
-      "affectedRange": "< 3.6.0",
-      "fixedVersion": "3.6.0"
+      "affectedVersions": [
+        {
+          "range": "< 3.6.0",
+          "fixed": "3.6.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "@angular/ssr",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@angular/ssr",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-q63q-pgmf-mxhr",
+      "packageName": "@angular/ssr",
       "title": "Angular SSR has a Server-Side Request Forgery (SSRF) flaw",
       "description": "### Impact\nThe vulnerability is a **Server-Side Request Forgery (SSRF)** flaw within the URL resolution mechanism of Angular's Server-Side Rendering package (`@angular/ssr`).\n\nThe function `createRequestUrl` uses the native `URL` constructor. When an incoming request path (e.g., `originalUrl` or `url`) begins with a **double forward slash (`//`) or backslash (`\\\\`)**, the `URL` constructor treats it as a **schema-relative URL**. This behavior overrides the security-intended base URL (protocol, h",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-62427"
         }
       ],
-      "affectedRange": ">= 21.0.0-next.0, < 21.0.0-next.8",
-      "fixedVersion": "21.0.0-next.8"
+      "affectedVersions": [
+        {
+          "range": ">= 21.0.0-next.0, < 21.0.0-next.8",
+          "fixed": "21.0.0-next.8"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-68x2-mx4q-78m7",
+      "packageName": "@angular/ssr",
       "title": "Angular SSR: Global Platform Injector Race Condition Leads to Cross-Request Data Leakage",
       "description": "### Impact\n\nAngular uses a DI container (the \"platform injector\") to hold request-specific state during server-side rendering. For historical reasons, the container was stored as a JavaScript module-scoped global variable. When multiple requests are processed concurrently, they could inadvertently share or overwrite the global injector state.\n\nIn practical terms, this can lead to one request responding with data meant for a completely different request, leaking data or tokens included on the ren",
       "severity": "high",
@@ -41,8 +48,67 @@
           "value": "CVE-2025-59052"
         }
       ],
-      "affectedRange": ">= 21.0.0-next.0, < 21.0.0-next.3",
-      "fixedVersion": "21.0.0-next.3"
+      "affectedVersions": [
+        {
+          "range": ">= 21.0.0-next.0, < 21.0.0-next.3",
+          "fixed": "21.0.0-next.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x288-3778-4hhx",
+      "packageName": "@angular/ssr",
+      "title": "Angular SSR is vulnerable to SSRF and Header Injection via request handling pipeline",
+      "description": "A [Server-Side Request Forgery (SSRF)](https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/SSRF) vulnerability has been identified in the Angular SSR request handling pipeline. The vulnerability exists because Angular’s internal URL reconstruction logic directly trusts and consumes user-controlled HTTP headers specifically the Host and `X-Forwarded-*` family to determine the application's base origin without any validation of the destination domain.\n\nSpecifically, the framework didn't ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-x288-3778-4hhx",
+      "publishedAt": "2026-02-25T22:42:36Z",
+      "modifiedAt": "2026-02-25T22:42:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x288-3778-4hhx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27739"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 19.2.21",
+          "fixed": "19.2.21"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xh43-g2fq-wjrj",
+      "packageName": "@angular/ssr",
+      "title": "Angular SSR has an Open Redirect via X-Forwarded-Prefix",
+      "description": "An Open Redirect vulnerability exists in the internal URL processing logic in Angular SSR. The logic normalizes URL segments by stripping leading slashes; however, it only removes a single leading slash.\n\nWhen an Angular SSR application is deployed behind a proxy that passes the `X-Forwarded-Prefix` header, an attacker can provide a value starting with three slashes (e.g., `///evil.com`).\n\n1. The application processes a redirect (e.g., from a router `redirectTo` or i18n locale switch).\n2. Angula",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xh43-g2fq-wjrj",
+      "publishedAt": "2026-02-25T22:41:57Z",
+      "modifiedAt": "2026-02-25T22:41:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xh43-g2fq-wjrj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27738"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 19.0.0-next.0, < 19.2.21",
+          "fixed": "19.2.21"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

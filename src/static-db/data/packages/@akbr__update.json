@@ -1,9 +1,10 @@
 {
-  "name": "@akbr/update",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@akbr/update",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mj4p-gmhr-92g3",
+      "packageName": "@akbr/update",
       "title": "@akbr/update Prototype Pollution",
       "description": "akbr update 1.0.0 is vulnerable to Prototype Pollution via update/index.js.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-36578"
         }
       ],
-      "affectedRange": "<= 1.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

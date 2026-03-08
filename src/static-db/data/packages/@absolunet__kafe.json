@@ -1,9 +1,10 @@
 {
-  "name": "@absolunet/kafe",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@absolunet/kafe",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hgpf-97c5-74fc",
+      "packageName": "@absolunet/kafe",
       "title": "Regular expression denial of service in @absolunet/kafe",
       "description": "This affects the package @absolunet/kafe before 3.2.10. It allows cause a denial of service when validating crafted invalid emails.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-7761"
         }
       ],
-      "affectedRange": "< 3.2.10",
-      "fixedVersion": "3.2.10"
+      "affectedVersions": [
+        {
+          "range": "< 3.2.10",
+          "fixed": "3.2.10"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

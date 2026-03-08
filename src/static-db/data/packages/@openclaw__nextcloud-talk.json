@@ -1,0 +1,33 @@
+{
+  "packageName": "@openclaw/nextcloud-talk",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r5h9-vjqc-hq3r",
+      "packageName": "@openclaw/nextcloud-talk",
+      "title": "Nextcloud Talk allowlist bypass via actor.name display name spoofing",
+      "description": "## Summary\n\nIn affected versions of the optional Nextcloud Talk plugin (installed separately; not bundled with the core OpenClaw install), an untrusted webhook field (`actor.name`, display name) could be treated as an allowlist identifier. An attacker could change their Nextcloud display name to match an allowlisted user ID and bypass DM or room allowlists.\n\n## Details\n\nNextcloud Talk webhook payloads provide a stable sender identifier (`actor.id`) and a mutable display name (`actor.name`). In a",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-r5h9-vjqc-hq3r",
+      "publishedAt": "2026-02-17T21:36:15Z",
+      "modifiedAt": "2026-03-05T21:52:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r5h9-vjqc-hq3r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28474"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2026.2.2",
+          "fixed": "2026.2.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

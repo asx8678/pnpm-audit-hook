@@ -1,9 +1,10 @@
 {
-  "name": "datatables.net",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "datatables.net",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-h73q-5wmj-q8pj",
+      "packageName": "datatables.net",
       "title": "Cross site scripting in datatables.net ",
       "description": "This affects the package datatables.net before 1.11.3. If an array is passed to the HTML escape entities function it would not have its contents escaped.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23445"
         }
       ],
-      "affectedRange": "< 1.11.3",
-      "fixedVersion": "1.11.3"
+      "affectedVersions": [
+        {
+          "range": "< 1.11.3",
+          "fixed": "1.11.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

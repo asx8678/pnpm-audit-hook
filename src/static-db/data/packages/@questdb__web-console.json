@@ -1,9 +1,10 @@
 {
-  "name": "@questdb/web-console",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@questdb/web-console",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xf94-h87h-g9wr",
+      "packageName": "@questdb/web-console",
       "title": "QuestDB UI's Web Console is Vulnerable to Cross-Site Scripting",
       "description": "A security flaw has been discovered in questdb ui up to 1.11.9. Impacted is an unknown function of the component Web Console. The manipulation results in cross site scripting. The attack can be executed remotely. The exploit has been released to the public and may be used for attacks. Upgrading to version 1.1.10 is recommended to address this issue. The patch is identified as b42fd9f18476d844ae181a10a249e003dafb823d. You should upgrade the affected component. The vendor confirmed early that the ",
       "severity": "low",
@@ -20,8 +21,13 @@
           "value": "CVE-2026-0824"
         }
       ],
-      "affectedRange": "< 1.1.10",
-      "fixedVersion": "1.1.10"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.10",
+          "fixed": "1.1.10"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

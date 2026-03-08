@@ -1,9 +1,10 @@
 {
-  "name": "flowise-ui",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "flowise-ui",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-fjh6-8679-9pch",
+      "packageName": "flowise-ui",
       "title": "Flowise does not Prevent Bypass of Password Confirmation - Unverified Password Change",
       "description": "### Summary\nBypass of Password Confirmation - Unverified Password Change (authenticated change without current password)\n\nAn authenticated user is allowed to change their account password without supplying the current password or any additional verification. The application does not verify the actor’s authority to perform that credential change (no current-password check, no authorization enforcement). An attacker who is merely authenticated (or who can trick or coerce an authenticated session) ",
       "severity": "high",
@@ -16,11 +17,17 @@
           "value": "GHSA-fjh6-8679-9pch"
         }
       ],
-      "affectedRange": "< 3.0.10",
-      "fixedVersion": "3.0.10"
+      "affectedVersions": [
+        {
+          "range": "< 3.0.10",
+          "fixed": "3.0.10"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-x39m-3393-3qp4",
+      "packageName": "flowise-ui",
       "title": "Flowise doesn't Prevent Bypass of Password Confirmation through Unverified Email Change (credentials)",
       "description": "### Summary\nUnverified Email Change - Email as part of Credential / Unverified Account Recovery Channel Change\n\nThe application allows changing the account email address (used as a login identifier and/or password recovery address) without verifying the requester’s authority to make that change (no confirmation to the old email, no authentication step). Because email often functions as a credential or recovery channel, unverified email changes enable attackers to take over accounts by switching ",
       "severity": "high",
@@ -33,8 +40,13 @@
           "value": "GHSA-x39m-3393-3qp4"
         }
       ],
-      "affectedRange": "< 3.0.10",
-      "fixedVersion": "3.0.10"
+      "affectedVersions": [
+        {
+          "range": "< 3.0.10",
+          "fixed": "3.0.10"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

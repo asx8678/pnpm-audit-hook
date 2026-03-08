@@ -1,9 +1,10 @@
 {
-  "name": "is-svg",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "is-svg",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7r28-3m3f-r2pr",
+      "packageName": "is-svg",
       "title": "Regular Expression Denial of Service (ReDoS)",
       "description": "The is-svg package 2.1.0 through 4.2.1 for Node.js uses a regular expression that is vulnerable to Regular Expression Denial of Service (ReDoS). If an attacker provides a malicious string, is-svg will get stuck processing the input.",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2021-28092"
         }
       ],
-      "affectedRange": ">= 2.1.0, < 4.2.2",
-      "fixedVersion": "4.2.2"
+      "affectedVersions": [
+        {
+          "range": ">= 2.1.0, < 4.2.2",
+          "fixed": "4.2.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-r8j5-h5cx-65gg",
+      "packageName": "is-svg",
       "title": "ReDOS in IS-SVG",
       "description": "A vulnerability was discovered in IS-SVG version 4.3.1 and below where a Regular Expression Denial of Service (ReDOS) occurs if the application is provided and checks a crafted invalid SVG string.",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2021-29059"
         }
       ],
-      "affectedRange": ">= 2.1.0, < 4.3.0",
-      "fixedVersion": "4.3.0"
+      "affectedVersions": [
+        {
+          "range": ">= 2.1.0, < 4.3.0",
+          "fixed": "4.3.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "Rambox",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "Rambox",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-2gc6-2h2g-ph48",
+      "packageName": "Rambox",
       "title": "Rambox RCE Vulnerability",
       "description": "There is a stored XSS in Rambox 0.6.9 that can lead to code execution. The XSS is in the name field while adding/editing a service. The problem occurs due to incorrect sanitization of the name field when being processed and stored. This allows a user to craft a payload for Node.js and Electron, such as an exec of OS commands within the onerror attribute of an IMG element.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2019-17625"
         }
       ],
-      "affectedRange": "<= 0.6.9"
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.9"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

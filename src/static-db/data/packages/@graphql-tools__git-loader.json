@@ -1,9 +1,10 @@
 {
-  "name": "@graphql-tools/git-loader",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@graphql-tools/git-loader",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vhhw-xjvf-wprr",
+      "packageName": "@graphql-tools/git-loader",
       "title": "Command Injection in @graphql-tools/git-loader",
       "description": "This affects the package @graphql-tools/git-loader before 6.2.6. The use of exec and execSync in packages/loaders/git/src/load-git.ts allows arbitrary command injection.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23326"
         }
       ],
-      "affectedRange": "< 6.2.6",
-      "fixedVersion": "6.2.6"
+      "affectedVersions": [
+        {
+          "range": "< 6.2.6",
+          "fixed": "6.2.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "mongodb-query-parser",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mongodb-query-parser",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hxmg-hm46-cf62",
+      "packageName": "mongodb-query-parser",
       "title": "Remote code execution in mongo-express",
       "description": "mongo-express before 1.0.0 offers support for certain advanced syntax but implements this in an unsafe way. NOTE: this may overlap CVE-2019-10769.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-24391"
         }
       ],
-      "affectedRange": "< 2.0.0",
-      "fixedVersion": "2.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

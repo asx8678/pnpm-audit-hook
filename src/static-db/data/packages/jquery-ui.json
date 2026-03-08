@@ -1,9 +1,10 @@
 {
-  "name": "jquery-ui",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "jquery-ui",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gpqq-952q-5327",
+      "packageName": "jquery-ui",
       "title": "XSS in the `of` option of the `.position()` util in jquery-ui",
       "description": "### Impact\nAccepting the value of the `of` option of the [`.position()`](https://api.jqueryui.com/position/) util from untrusted sources may execute untrusted code. For example, invoking the following code:\n```js\n$( \"#element\" ).position( {\n\tmy: \"left top\",\n\tat: \"right bottom\",\n\tof: \"<img onerror='doEvilThing()' src='/404' />\",\n\tcollision: \"none\"\n} );\n```\nwill call the `doEvilThing()` function.\n\n### Patches\nThe issue is fixed in jQuery UI 1.13.0. Any string value passed to the `of` option is now",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2021-41184"
         }
       ],
-      "affectedRange": "< 1.13.0",
-      "fixedVersion": "1.13.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.13.0",
+          "fixed": "1.13.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-h6gj-6jjq-h8g9",
+      "packageName": "jquery-ui",
       "title": "jQuery UI vulnerable to XSS when refreshing a checkboxradio with an HTML-like initial text label",
       "description": "### Impact\nInitializing a checkboxradio widget on an input enclosed within a label makes that parent label contents considered as the input label. If you call `.checkboxradio( \"refresh\" )` on such a widget and the initial HTML contained encoded HTML entities, they will erroneously get decoded. This can lead to potentially executing JavaScript code.\n\nFor example, starting with the following initial secure HTML:\n```html\n<label>\n\t<input id=\"test-input\">\n\t&lt;img src=x onerror=\"alert(1)\"&gt;\n</label",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2022-31160"
         }
       ],
-      "affectedRange": "< 1.13.2",
-      "fixedVersion": "1.13.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.13.2",
+          "fixed": "1.13.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9gj3-hwp5-pmwc",
+      "packageName": "jquery-ui",
       "title": "XSS in the `altField` option of the Datepicker widget in jquery-ui",
       "description": "### Impact\nAccepting the value of the `altField` option of the Datepicker widget from untrusted sources may execute untrusted code. For example, initializing the datepicker in the following way:\n```js\n$( \"#datepicker\" ).datepicker( {\n\taltField: \"<img onerror='doEvilThing()' src='/404' />\",\n} );\n```\nwill call the `doEvilThing` function.\n\n### Patches\nThe issue is fixed in jQuery UI 1.13.0. Any string value passed to the `altField` option is now treated as a CSS selector.\n\n### Workarounds\nA workaro",
       "severity": "medium",
@@ -62,11 +75,17 @@
           "value": "CVE-2021-41182"
         }
       ],
-      "affectedRange": "< 1.13.0",
-      "fixedVersion": "1.13.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.13.0",
+          "fixed": "1.13.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-j7qv-pgf6-hvh4",
+      "packageName": "jquery-ui",
       "title": "XSS in `*Text` options of the Datepicker widget in jquery-ui",
       "description": "### Impact\nAccepting the value of various `*Text` options of the Datepicker widget from untrusted sources may execute untrusted code. For example, initializing the datepicker in the following way:\n```js\n$( \"#datepicker\" ).datepicker( {\n\tshowButtonPanel: true,\n\tshowOn: \"both\",\n\tcloseText: \"<script>doEvilThing( 'closeText XSS' )</script>\",\n\tcurrentText: \"<script>doEvilThing( 'currentText XSS' )</script>\",\n\tprevText: \"<script>doEvilThing( 'prevText XSS' )</script>\",\n\tnextText: \"<script>doEvilThing(",
       "severity": "medium",
@@ -83,8 +102,13 @@
           "value": "CVE-2021-41183"
         }
       ],
-      "affectedRange": "< 1.13.0",
-      "fixedVersion": "1.13.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.13.0",
+          "fixed": "1.13.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

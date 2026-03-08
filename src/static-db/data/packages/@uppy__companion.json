@@ -1,9 +1,10 @@
 {
-  "name": "@uppy/companion",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@uppy/companion",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-x8rq-rc7x-5fg5",
+      "packageName": "@uppy/companion",
       "title": "uppy's companion module is vulnerable to Server-Side Request Forgery (SSRF)",
       "description": "uppy's companion module is vulnerable to Server-Side Request Forgery (SSRF) via IPv4-mapped IPv6 addresses.",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2022-0086"
         }
       ],
-      "affectedRange": "< 3.1.5",
-      "fixedVersion": "3.1.5"
+      "affectedVersions": [
+        {
+          "range": "< 3.1.5",
+          "fixed": "3.1.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-q24h-5rq3-63j9",
+      "packageName": "@uppy/companion",
       "title": "Incorrect Authorization in @uppy/companion",
       "description": "@uppy/companion prior to version 3.3.1 is vulnerable to incorrect authorization. A user with URL upload access could enumerate internal companion server networks, send local webservers files to the destination server, and finally download them If each of these files had a guessable and regular name.",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2022-0528"
         }
       ],
-      "affectedRange": "< 3.3.1",
-      "fixedVersion": "3.3.1"
+      "affectedVersions": [
+        {
+          "range": "< 3.3.1",
+          "fixed": "3.3.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "@akbr/patch-into",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@akbr/patch-into",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gh4x-qv3p-m9pm",
+      "packageName": "@akbr/patch-into",
       "title": "akbr patch-into was discovered to contain a prototype pollution via the function patchInto",
       "description": "akbr patch-into version 1.0.1 was discovered to contain a prototype pollution via the function patchInto. This vulnerability allows attackers to execute arbitrary code or cause a Denial of Service (DoS) via injecting arbitrary properties.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-38991"
         }
       ],
-      "affectedRange": "= 1.0.1"
+      "affectedVersions": [
+        {
+          "range": "= 1.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

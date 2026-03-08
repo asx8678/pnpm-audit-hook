@@ -1,9 +1,10 @@
 {
-  "name": "is-user-valid",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "is-user-valid",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-22cm-3qf2-2wc7",
+      "packageName": "is-user-valid",
       "title": "LDAP Injection in is-user-valid",
       "description": "All versions of package is-user-valid are vulnerable to LDAP Injection which can lead to either authentication bypass or information exposure.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23335"
         }
       ],
-      "affectedRange": "<= 1.1.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

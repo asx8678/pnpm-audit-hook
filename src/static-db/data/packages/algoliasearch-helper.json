@@ -1,9 +1,10 @@
 {
-  "name": "algoliasearch-helper",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "algoliasearch-helper",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-529q-4j3p-7c5r",
+      "packageName": "algoliasearch-helper",
       "title": "algoliasearch-helper is vulnerable to Prototype Pollution in _merge()",
       "description": "Versions of the package algoliasearch-helper from 2.0.0-rc1 and before 3.11.2 are vulnerable to Prototype Pollution in the _merge() function in merge.js, which allows constructor.prototype to be written even though doing so throws an error. In the \"extreme edge-case\" that the resulting error is caught, code injected into the user-supplied search parameter may be exeucted.\n\nThis is related to but distinct from the issue reported in [CVE-2021-23433](https://security.snyk.io/vuln/SNYK-JS-ALGOLIASEA",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-3193"
         }
       ],
-      "affectedRange": ">= 2.0.0-rc1, < 3.11.2",
-      "fixedVersion": "3.11.2"
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0-rc1, < 3.11.2",
+          "fixed": "3.11.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-vpf5-82c8-9v36",
+      "packageName": "algoliasearch-helper",
       "title": "Prototype Pollution in algoliasearch-helper",
       "description": "The package algoliasearch-helper before 3.6.2 are vulnerable to Prototype Pollution due to use of the merge function in src/SearchParameters/index.jsSearchParameters._parseNumbers without any protection against prototype properties. Note that this vulnerability is only exploitable if the implementation allows users to define arbitrary search patterns.",
       "severity": "critical",
@@ -41,8 +48,13 @@
           "value": "CVE-2021-23433"
         }
       ],
-      "affectedRange": "< 3.6.2",
-      "fixedVersion": "3.6.2"
+      "affectedVersions": [
+        {
+          "range": "< 3.6.2",
+          "fixed": "3.6.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

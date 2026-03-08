@@ -1,9 +1,10 @@
 {
-  "name": "@keep-network/tbtc-v2",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@keep-network/tbtc-v2",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wg2x-rv86-mmpx",
+      "packageName": "@keep-network/tbtc-v2",
       "title": "SPV Merkle proof malleability allows the maintainer to prove invalid transactions",
       "description": "## Summary\nBy publishing specially crafted transactions on the Bitcoin blockchain, the SPV maintainer can produce seemingly valid SPV proofs for fraudulent transactions.\n\nThe issue was originally identified by Least Authority in the tBTC Bridge V2 Security Audit Report as _Issue B: Bitcoin SPV Merkle Proofs Can Be Faked_. A mitigation was believed to have been in place, but this turned out to contain an error, and the issue had not been effectively mitigated.\n\n### Details\nThis is achieved by cre",
       "severity": "high",
@@ -16,8 +17,36 @@
           "value": "GHSA-wg2x-rv86-mmpx"
         }
       ],
-      "affectedRange": "<= 1.5.1",
-      "fixedVersion": "1.5.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.5.1",
+          "fixed": "1.5.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8986-v76q-8vr2",
+      "packageName": "@keep-network/tbtc-v2",
+      "title": "@keep-network/tbtc-v2 revealing P2PKH deposit with a wrapped P2SH script",
+      "description": "# Overview\n\nP2PKH has 20 bytes just like P2SH. We protect against revealing P2PKH deposits by manually assembling the expected P2SH script in the smart contract and comparing hashes. However, we missed the case when the attacker embeds a valid P2SH inside of P2PKH as an output script. bitcoin-spv library [extracts the P2SH from P2PKH](https://github.com/keep-network/bitcoin-spv/blob/856849612ef49114af18c0f407eaa74afc2ee4be/solidity/contracts/BTCUtils.sol#L610-L612) and we treat it as a valid P2S",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8986-v76q-8vr2",
+      "publishedAt": "2026-03-02T22:09:19Z",
+      "modifiedAt": "2026-03-02T22:09:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8986-v76q-8vr2"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.8.1",
+          "fixed": "1.8.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

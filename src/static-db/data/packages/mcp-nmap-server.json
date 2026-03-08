@@ -1,0 +1,32 @@
+{
+  "packageName": "mcp-nmap-server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xc68-rrqc-qgq3",
+      "packageName": "mcp-nmap-server",
+      "title": "MCP NMAP Server has an Injection vulnerability",
+      "description": "A vulnerability was detected in PhialsBasement nmap-mcp-server up to bee6d23547d57ae02460022f7c78ac0893092e38. Affected by this issue is the function child_process.exec of the file src/index.ts of the component Nmap CLI Command Handler. The manipulation results in command injection. The attack may be performed from remote. This product utilizes a rolling release system for continuous delivery, and as such, version information for affected or updated releases is not disclosed. The patch is identi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xc68-rrqc-qgq3",
+      "publishedAt": "2026-03-03T21:31:16Z",
+      "modifiedAt": "2026-03-06T00:57:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xc68-rrqc-qgq3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-3484"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

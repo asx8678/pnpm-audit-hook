@@ -1,9 +1,10 @@
 {
-  "name": "@prisma/sdk",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@prisma/sdk",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-pxcc-hj8w-fmm7",
+      "packageName": "@prisma/sdk",
       "title": "Command injection vulnerability in @prisma/sdk in getPackedPackage function",
       "description": "### Impact\n\nAs of today, we are not aware of any Prisma users or external consumers of the `@prisma/sdk` package who are affected by this security vulnerability.\n\nThis issue may lead to remote code execution if a client of the library calls the vulnerable method with untrusted input.\n\nIt only affects the `getPackedPackage` function and this function is not advertised and only used for tests & building our CLI, no malicious code was found after checking our codebase.\n\n### Patches\n\nFixed in \n- @pr",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-21414"
         }
       ],
-      "affectedRange": "< 2.20.0",
-      "fixedVersion": "2.20.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.20.0",
+          "fixed": "2.20.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

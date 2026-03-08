@@ -1,9 +1,10 @@
 {
-  "name": "@rspack/core",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@rspack/core",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-84jw-g43v-8gjm",
+      "packageName": "@rspack/core",
       "title": "DOM Clobbering Gadget found in Rspack's AutoPublicPathRuntimeModule that leads to XSS",
       "description": "Hi, Rspack|Webpack developer team!\n\n## Summary\nWe discovered a DOM Clobbering vulnerability in Webpack’s AutoPublicPathRuntimeModule. The DOM Clobbering gadget in the module can lead to cross-site scripting (XSS) in web pages where scriptless attacker-controlled HTML elements (e.g., an img tag with an unsanitized name attribute) are present.\n\nWe found the real-world exploitation of this gadget in the Canvas LMS which allows XSS attack happens through an javascript code compiled by Webpack (the v",
       "severity": "medium",
@@ -16,8 +17,13 @@
           "value": "GHSA-84jw-g43v-8gjm"
         }
       ],
-      "affectedRange": "< 1.0.0-rc.1",
-      "fixedVersion": "1.0.0-rc.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0-rc.1",
+          "fixed": "1.0.0-rc.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

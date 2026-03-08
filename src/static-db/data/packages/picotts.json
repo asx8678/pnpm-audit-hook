@@ -1,9 +1,10 @@
 {
-  "name": "picotts",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "picotts",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wq7q-5v6j-xfv6",
+      "packageName": "picotts",
       "title": "Command Injection in picotts",
       "description": "This affects all versions up to and including version 0.1.1 of package picotts. If attacker-controlled user input is given to the say function, it is possible for an attacker to execute arbitrary commands. This is due to use of the child_process exec function without input sanitization.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23378"
         }
       ],
-      "affectedRange": "<= 0.1.1"
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

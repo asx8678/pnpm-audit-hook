@@ -1,9 +1,10 @@
 {
-  "name": "workspace-tools",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "workspace-tools",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-5875-m6jq-vf78",
+      "packageName": "workspace-tools",
       "title": "Command injection in workspace-tools",
       "description": "The package workspace-tools before 0.18.4 is vulnerable to Command Injection via git argument injection. When calling the fetchRemoteBranch(remote: string, remoteBranch: string, cwd: string) function, both the remote and remoteBranch parameters are passed to the git fetch subcommand in a way that additional flags can be set. The additional flags can be used to perform a command injection.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-25865"
         }
       ],
-      "affectedRange": "< 0.18.4",
-      "fixedVersion": "0.18.4"
+      "affectedVersions": [
+        {
+          "range": "< 0.18.4",
+          "fixed": "0.18.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

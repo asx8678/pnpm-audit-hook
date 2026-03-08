@@ -1,9 +1,10 @@
 {
-  "name": "grunt-karma",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "grunt-karma",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hcj4-xf6x-63wj",
+      "packageName": "grunt-karma",
       "title": "Grunt-karma vulnerable to prototype pollution",
       "description": "Prototype pollution vulnerability in karma-runner grunt-karma 4.0.1 via the `key` variable in `grunt-karma.js`.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2022-37602"
         }
       ],
-      "affectedRange": "<= 4.0.1"
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

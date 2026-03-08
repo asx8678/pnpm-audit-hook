@@ -1,9 +1,10 @@
 {
-  "name": "stringstream",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "stringstream",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-qpw2-xchm-655q",
+      "packageName": "stringstream",
       "title": "Out-of-Bounds read in stringstream",
       "description": "Versions less than 0.0.6 of the Node.js stringstream module are vulnerable to an out-of-bounds read because of allocation of uninitialized buffers when a number is passed in the input stream (when using Node.js 4.x).\n\n# WITHDRAWN\n\nThis is a duplicate of GHSA-mf6x-7mm4-x2g7",
       "severity": "medium",
@@ -16,8 +17,13 @@
           "value": "GHSA-qpw2-xchm-655q"
         }
       ],
-      "affectedRange": "< 0.0.6",
-      "fixedVersion": "0.0.6"
+      "affectedVersions": [
+        {
+          "range": "< 0.0.6",
+          "fixed": "0.0.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

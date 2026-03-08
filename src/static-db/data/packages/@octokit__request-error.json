@@ -1,9 +1,10 @@
 {
-  "name": "@octokit/request-error",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@octokit/request-error",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xx4v-prfh-6cgc",
+      "packageName": "@octokit/request-error",
       "title": "@octokit/request-error has a Regular Expression in index that Leads to ReDoS Vulnerability Due to Catastrophic Backtracking",
       "description": "### Summary\nA Regular Expression Denial of Service (ReDoS) vulnerability exists in the processing of HTTP request headers. By sending an authorization header containing an excessively long sequence of spaces followed by a newline and \"@\", an attacker can exploit inefficient regular expression processing, leading to excessive resource consumption. This can significantly degrade server performance or cause a denial-of-service (DoS) condition, impacting availability.\n### Details\nThe issue occurs at",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-25289"
         }
       ],
-      "affectedRange": ">= 6.0.0, < 6.1.7",
-      "fixedVersion": "6.1.7"
+      "affectedVersions": [
+        {
+          "range": ">= 6.0.0, < 6.1.7",
+          "fixed": "6.1.7"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

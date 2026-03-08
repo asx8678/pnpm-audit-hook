@@ -1,9 +1,10 @@
 {
-  "name": "tmpl",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "tmpl",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jgrx-mgxx-jf9v",
+      "packageName": "tmpl",
       "title": "tmpl vulnerable to Inefficient Regular Expression Complexity which may lead to resource exhaustion",
       "description": "nodejs-tmpl is simple string formatting. tmpl is vulnerable to Inefficient Regular Expression Complexity which may lead to resource exhaustion.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-3777"
         }
       ],
-      "affectedRange": "< 1.0.5",
-      "fixedVersion": "1.0.5"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.5",
+          "fixed": "1.0.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

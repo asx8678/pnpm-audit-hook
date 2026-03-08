@@ -1,9 +1,10 @@
 {
-  "name": "ghtml",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "ghtml",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vvhj-v88f-5gxr",
+      "packageName": "ghtml",
       "title": "ghtml Cross-Site Scripting (XSS) vulnerability",
       "description": "## Summary\n\nIt is possible to introduce user-controlled JavaScript code and trigger a Cross-Site Scripting (XSS) vulnerability in some cases.\n\n## Actions Taken\n\n- Updated the documentation to clarify that while `ghtml` escapes characters with special meaning in HTML, it does not provide comprehensive protection against all types of XSS attacks in every scenario. **_This aligns with the approach taken by other template engines. Developers should be cautious and take additional measures to sanitiz",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-37166"
         }
       ],
-      "affectedRange": "< 2.0.0",
-      "fixedVersion": "2.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

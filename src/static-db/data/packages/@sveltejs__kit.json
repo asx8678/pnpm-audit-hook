@@ -1,9 +1,10 @@
 {
-  "name": "@sveltejs/kit",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@sveltejs/kit",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j2f3-wq62-6q46",
+      "packageName": "@sveltejs/kit",
       "title": "@sveltejs/kit has memory amplification DoS vulnerability in Remote Functions binary form deserializer (application/x-sveltekit-formdata)",
       "description": "## Summary\n\nThe experimental `form` remote function uses a binary data format containing a representation of submitted form data. A specially-crafted payload can cause the server to allocate a large amount of memory, causing DoS via memory exhaustion.\n\n## Details\n\nWhen a form is submitted to a remote function endpoint, the SvelteKit client encodes the data using a custom format, and POSTs it to the endpoint as a request with an `application/x-sveltekit-formdata` content type.\n\nThe first few byte",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2026-22803"
         }
       ],
-      "affectedRange": ">= 2.49.0, <= 2.49.4",
-      "fixedVersion": "2.49.5"
+      "affectedVersions": [
+        {
+          "range": ">= 2.49.0, <= 2.49.4",
+          "fixed": "2.49.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-j62c-4x62-9r35",
+      "packageName": "@sveltejs/kit",
       "title": "SvelteKit is vulnerable to denial of service and possible SSRF when using prerendering",
       "description": "### Summary\n\nVersions of SvelteKit are vulnerable to a server side request forgery (SSRF) and denial of service (DoS) under certain conditions.\n\n### Details\n\nAffected versions from 2.44.0 onwards are vulnerable to DoS if:\n\n- your app has at least one prerendered route (`export const prerender = true`)\n\nAffected versions from 2.19.0 onwards are vulnerable to DoS and SSRF if:\n\n- your app has at least one prerendered route (`export const prerender = true`)\n- AND you are using `adapter-node` without",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2025-67647"
         }
       ],
-      "affectedRange": ">= 2.19.0, <= 2.49.4",
-      "fixedVersion": "2.49.5"
+      "affectedVersions": [
+        {
+          "range": ">= 2.19.0, <= 2.49.4",
+          "fixed": "2.49.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-6q87-84jw-cjhp",
+      "packageName": "@sveltejs/kit",
       "title": "@sveltejs/kit vulnerable to Cross-site Scripting via tracked search_params",
       "description": "### Summary\n\nUnsanitized search param names cause XSS vulnerability. You are affected if you iterate over all entries of `event.url.searchParams` inside a server `load` function. Attackers can exploit it by crafting a malicious URL and getting a user to click a link with said URL.\n\n### Details\n\nSvelteKit tracks which parameters in `event.url.searchParams` are read inside server `load` functions. If the application iterates over the these parameters, the `uses.search_params` array included in the",
       "severity": "medium",
@@ -62,11 +75,17 @@
           "value": "CVE-2025-32388"
         }
       ],
-      "affectedRange": ">= 2.0.0, < 2.20.6",
-      "fixedVersion": "2.20.6"
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.20.6",
+          "fixed": "2.20.6"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-rjjv-87mx-6x3h",
+      "packageName": "@sveltejs/kit",
       "title": "@sveltejs/kit vulnerable to XSS on dev mode 404 page",
       "description": "### Summary\n\n\"Unsanitized input from *the request URL* flows into `end`, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).\"\n\n### Details\n\nSource of potentially tainted data is in `packages/kit/src/exports/vite/dev/index.js`, line 437. This potentially tainted data is passed through a number of steps (which I could detail if you'd like) all the way down to line 91 in `packages/kit/src/exports/vite/utils.js`, which performs an ope",
       "severity": "low",
@@ -83,11 +102,17 @@
           "value": "CVE-2024-53261"
         }
       ],
-      "affectedRange": "< 2.8.3",
-      "fixedVersion": "2.8.3"
+      "affectedVersions": [
+        {
+          "range": "< 2.8.3",
+          "fixed": "2.8.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-mh2x-fcqh-fmqv",
+      "packageName": "@sveltejs/kit",
       "title": "@sveltejs/kit has unescaped error message included on error page",
       "description": "### Summary\n\nThe static error.html template for errors contains placeholders that are replaced without escaping the content first.\n\n### Details\n\nFrom https://kit.svelte.dev/docs/errors:\n\n> error.html is the page that is rendered when everything else fails. It can contain the following placeholders:\n%sveltekit.status% — the HTTP status\n%sveltekit.error.message% — the error message\n\nThis leads to possible injection if an app explicitly creates an error with a message that contains user controlled ",
       "severity": "low",
@@ -104,11 +129,17 @@
           "value": "CVE-2024-53262"
         }
       ],
-      "affectedRange": "< 2.8.3",
-      "fixedVersion": "2.8.3"
+      "affectedVersions": [
+        {
+          "range": "< 2.8.3",
+          "fixed": "2.8.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-g5m6-hxpp-fc49",
+      "packageName": "@sveltejs/kit",
       "title": "Sending a GET or HEAD request with a body crashes SvelteKit",
       "description": "### Summary\nIn SvelteKit 2 sending a GET request with a body eg `{}` to a SvelteKit app in preview or with `adapter-node` throws `Request with GET/HEAD method cannot have body.` and crashes the app.\n\n```\nnode:internal/deps/undici/undici:6066\n          throw new TypeError(\"Request with GET/HEAD method cannot have body.\");\n                ^\n\nTypeError: Request with GET/HEAD method cannot have body.\n    at new Request (node:internal/deps/undici/undici:6066:17)\n    at getRequest (file:///C:/Users/ad",
       "severity": "high",
@@ -125,11 +156,17 @@
           "value": "CVE-2024-23641"
         }
       ],
-      "affectedRange": ">= 2.0.0, < 2.4.3",
-      "fixedVersion": "2.4.3"
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.4.3",
+          "fixed": "2.4.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-gv7g-x59x-wf8f",
+      "packageName": "@sveltejs/kit",
       "title": "SvelteKit framework has Insufficient CSRF protection for CORS requests",
       "description": "### Summary\nThe SvelteKit framework offers developers an option to create simple REST APIs. This is done by defining a `+server.js` file, containing endpoint handlers for different HTTP methods.\n\nSvelteKit provides out-of-the-box cross-site request forgery (CSRF) protection to its users. The protection is implemented at `kit/src/runtime/server/respond.js`. While the implementation does a sufficient job of mitigating common CSRF attacks, the protection can be bypassed by simply specifying an uppe",
       "severity": "high",
@@ -146,11 +183,17 @@
           "value": "CVE-2023-29008"
         }
       ],
-      "affectedRange": "< 1.15.2",
-      "fixedVersion": "1.15.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.15.2",
+          "fixed": "1.15.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5p75-vc5g-8rv2",
+      "packageName": "@sveltejs/kit",
       "title": "SvelteKit vulnerable to Cross-Site Request Forgery",
       "description": "### Summary\nThe SvelteKit framework offers developers an option to create simple REST APIs. This is done by defining a `+server.js` file, containing endpoint handlers for different HTTP methods.\n\nSvelteKit provides out-of-the-box cross-site request forgery (CSRF) protection to it’s users. The protection is implemented at `kit/src/runtime/server/respond.js#L52`. While the implementation does a sufficient job in mitigating common CSRF attacks, the protection can be bypassed by simply specifying a ",
       "severity": "high",
@@ -167,8 +210,82 @@
           "value": "CVE-2023-29003"
         }
       ],
-      "affectedRange": "< 1.15.1",
-      "fixedVersion": "1.15.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.15.1",
+          "fixed": "1.15.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fpg4-jhqr-589c",
+      "packageName": "@sveltejs/kit",
+      "title": "SvelteKit  has deserialization expansion in unvalidated `form` remote function leading to Denial of Service (experimental only)",
+      "description": "Some relatively small inputs can cause very large files arrays in `form` handlers. If the SvelteKit application code doesn't check `files.length` or individual files' sizes and performs expensive processing with them, it can result in Denial of Service.\n\nOnly users with `experimental.remoteFunctions: true` who are using the `form` function and are processing the `files` array without validation are vulnerable.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-fpg4-jhqr-589c",
+      "publishedAt": "2026-02-28T02:04:39Z",
+      "modifiedAt": "2026-02-28T02:04:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fpg4-jhqr-589c"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.49.0, <= 2.53.2",
+          "fixed": "2.53.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-88qp-p4qg-rqm6",
+      "packageName": "@sveltejs/kit",
+      "title": "CPU exhaustion in SvelteKit remote form deserialization (experimental only)",
+      "description": "Versions of `@sveltejs/kit` prior to 2.52.2 with remote functions enabled are vulnerable to CPU exhaustion. Malformed form data can cause the server to become unresponsive while processing a request, resulting in denial of service.\n\nOnly applications using both `experimental.remoteFunctions` and `form` are vulnerable.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-88qp-p4qg-rqm6",
+      "publishedAt": "2026-02-19T20:30:25Z",
+      "modifiedAt": "2026-02-19T20:30:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-88qp-p4qg-rqm6"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.49.0, <= 2.52.1",
+          "fixed": "2.52.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vrhm-gvg7-fpcf",
+      "packageName": "@sveltejs/kit",
+      "title": " Memory exhaustion in SvelteKit remote form deserialization (experimental only)",
+      "description": "Versions of `@sveltejs/kit` prior to 2.52.2 with remote functions enabled can be vulnerable to memory exhaustion. Malformed form data can cause the server process to crash due to excessive memory allocation, resulting in denial of service.\n\nOnly applications using both `experimental.remoteFunctions` and `form` are vulnerable.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vrhm-gvg7-fpcf",
+      "publishedAt": "2026-02-19T20:29:42Z",
+      "modifiedAt": "2026-02-19T20:29:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vrhm-gvg7-fpcf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.49.0, <= 2.52.1",
+          "fixed": "2.52.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

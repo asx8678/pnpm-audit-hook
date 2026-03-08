@@ -1,9 +1,10 @@
 {
-  "name": "codemirror",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "codemirror",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4gw3-8f77-f72c",
+      "packageName": "codemirror",
       "title": "Regular expression denial of service in codemirror",
       "description": "This affects the package codemirror before 5.58.2; the package org.apache.marmotta.webjars:codemirror before 5.58.2.\n The vulnerable regular expression is located in https://github.com/codemirror/CodeMirror/blob/cdb228ac736369c685865b122b736cd0d397836c/mode/javascript/javascript.jsL129. The ReDOS vulnerability of the regex is mainly due to the sub-pattern (s|/*.*?*/)*",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-7760"
         }
       ],
-      "affectedRange": "< 5.58.2",
-      "fixedVersion": "5.58.2"
+      "affectedVersions": [
+        {
+          "range": "< 5.58.2",
+          "fixed": "5.58.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

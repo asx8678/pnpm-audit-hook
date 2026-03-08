@@ -1,9 +1,10 @@
 {
-  "name": "npm",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "npm",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hj9c-8jmm-8c52",
+      "packageName": "npm",
       "title": "Packing does not respect root-level ignore files in workspaces",
       "description": "### Impact\n`npm pack` ignores root-level `.gitignore` & `.npmignore` file exclusion directives when run in a workspace or with a workspace flag (ie. `--workspaces`, `--workspace=<name>`). Anyone who has run `npm pack` or `npm publish` with workspaces, as of [v7.9.0](https://github.com/npm/cli/releases/tag/v7.9.0) & [v7.13.0](https://github.com/npm/cli/releases/tag/v7.13.0) respectively, may be affected and have published files into the npm registry they did not intend to include.\n\n### Patch\n- Up",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2022-29244"
         }
       ],
-      "affectedRange": ">= 7.9.0, < 8.11.0",
-      "fixedVersion": "8.11.0"
+      "affectedVersions": [
+        {
+          "range": ">= 7.9.0, < 8.11.0",
+          "fixed": "8.11.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-ph34-pc88-72gc",
+      "packageName": "npm",
       "title": "Incorrect Permission Assignment for Critical Resource in NPM",
       "description": "An issue was discovered in an npm 5.7.0 2018-02-21 pre-release (marked as \"next: 5.7.0\" and therefore automatically installed by an \"npm upgrade -g npm\" command, and also announced in the vendor's blog without mention of pre-release status). It might allow local users to bypass intended filesystem access restrictions because ownerships of /etc and /usr directories are being changed unexpectedly, related to a \"correctMkdir\" issue.",
       "severity": "high",
@@ -41,8 +48,39 @@
           "value": "CVE-2018-7408"
         }
       ],
-      "affectedRange": "< 5.7.1",
-      "fixedVersion": "5.7.1"
+      "affectedVersions": [
+        {
+          "range": "< 5.7.1",
+          "fixed": "5.7.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3966-f6p6-2qr9",
+      "packageName": "npm",
+      "title": "Duplicate Advisory: npm cli Uncontrolled Search Path Element Local Privilege Escalation Vulnerability",
+      "description": "### Duplicate Advisory\nThis advisory has been withdrawn because describes a dependency bump and therefore, per [CVE CNA rule 4.1.12](https://www.cve.org/ResourcesSupport/AllResources/CNARules/#section_4-1_Vulnerability_Determination), is a duplicate of GHSA-34x7-hfp2-rc4v/CVE-2026-24842. Additionally, per https://github.com/npm/cli/issues/8939#issuecomment-3862719883, npm cli should not be listed as an affected product. This link is maintained to preserve external references.\n\n### Original Descr",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3966-f6p6-2qr9",
+      "publishedAt": "2026-01-23T06:31:24Z",
+      "modifiedAt": "2026-02-06T22:28:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3966-f6p6-2qr9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-0775"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 11.8.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

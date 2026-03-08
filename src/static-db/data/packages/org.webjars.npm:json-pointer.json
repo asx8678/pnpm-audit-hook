@@ -1,9 +1,10 @@
 {
-  "name": "org.webjars.npm:json-pointer",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "org.webjars.npm:json-pointer",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-282f-qqgm-c34q",
+      "packageName": "org.webjars.npm:json-pointer",
       "title": "Prototype Pollution in node-jsonpointer",
       "description": "This affects the package `jsonpointer` before `5.0.0`. A type confusion vulnerability can lead to a bypass of a previous Prototype Pollution fix when the pointer components are arrays.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23807"
         }
       ],
-      "affectedRange": "< 5.0.0",
-      "fixedVersion": "5.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.0.0",
+          "fixed": "5.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "angular-ui-notification",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "angular-ui-notification",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mrcj-5qxr-vhp2",
+      "packageName": "angular-ui-notification",
       "title": "angular-ui-notification Cross-site Scripting vulnerability",
       "description": "angular-ui-notification v0.1.0, v0.2.0, and v0.3.6 was discovered to contain a cross-site scripting (XSS) vulnerability.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-34840"
         }
       ],
-      "affectedRange": ">= 0.1.0, <= 0.3.6"
+      "affectedVersions": [
+        {
+          "range": ">= 0.1.0, <= 0.3.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "irisnet-crypto",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "irisnet-crypto",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-5fh8-x9xc-hxmc",
+      "packageName": "irisnet-crypto",
       "title": "irisnet-crypto RCE Vulnerability",
       "description": "In irisnet-crypto before 1.1.7 for IRISnet, the util/utils.js file allows code execution because of unsafe eval usage.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2019-9115"
         }
       ],
-      "affectedRange": "< 1.1.7",
-      "fixedVersion": "1.1.7"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.7",
+          "fixed": "1.1.7"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

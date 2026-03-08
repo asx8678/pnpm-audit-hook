@@ -1,9 +1,10 @@
 {
-  "name": "copy-props",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "copy-props",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-897m-rjf5-jp39",
+      "packageName": "copy-props",
       "title": "Prototype Pollution in copy-props",
       "description": "The package copy-props before 2.0.5 are vulnerable to Prototype Pollution via the main functionality.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-28503"
         }
       ],
-      "affectedRange": "< 2.0.5",
-      "fixedVersion": "2.0.5"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.5",
+          "fixed": "2.0.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

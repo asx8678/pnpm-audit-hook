@@ -1,9 +1,10 @@
 {
-  "name": "uplot",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "uplot",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-34q8-jcq6-mc37",
+      "packageName": "uplot",
       "title": "uPlot Prototype Pollution vulnerability",
       "description": "Versions of the package uplot before 1.6.31 are vulnerable to Prototype Pollution via the uplot.assign function due to missing check if the attribute resolves to the object prototype.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-21489"
         }
       ],
-      "affectedRange": "< 1.6.31",
-      "fixedVersion": "1.6.31"
+      "affectedVersions": [
+        {
+          "range": "< 1.6.31",
+          "fixed": "1.6.31"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

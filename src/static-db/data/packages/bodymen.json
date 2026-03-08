@@ -1,9 +1,10 @@
 {
-  "name": "bodymen",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "bodymen",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8h84-8j4f-p97q",
+      "packageName": "bodymen",
       "title": "Injection in bodymen",
       "description": "bodymen before 1.1.1 is vulnerable to Prototype Pollution. The handler function could be tricked into adding or modifying properties of Object.prototype using a __proto__ payload.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2019-10792"
         }
       ],
-      "affectedRange": "< 1.1.1",
-      "fixedVersion": "1.1.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.1",
+          "fixed": "1.1.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-vhxc-fhm5-qcp9",
+      "packageName": "bodymen",
       "title": "Prototype Pollution in bodymen",
       "description": "The package bodymen from 0.0.0 are vulnerable to Prototype Pollution via the handler function which could be tricked into adding or modifying properties of Object.prototype using a __proto__ payload. **Note:** This vulnerability derives from an incomplete fix to [CVE-2019-10792](https://security.snyk.io/vuln/SNYK-JS-BODYMEN-548897)",
       "severity": "medium",
@@ -41,7 +48,12 @@
           "value": "CVE-2022-25296"
         }
       ],
-      "affectedRange": ">= 0.0.0"
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

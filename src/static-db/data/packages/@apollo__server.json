@@ -1,9 +1,10 @@
 {
-  "name": "@apollo/server",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@apollo/server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j5g3-5c8r-7qfx",
+      "packageName": "@apollo/server",
       "title": "Prevent logging invalid header values",
       "description": "## Impact\n### What kind of vulnerability is it?\nApollo Server can log sensitive information (Studio API keys) if they are passed incorrectly (with leading/trailing whitespace) or if they have any characters that are invalid as part of a header value.\n\n### Who is impacted?\nUsers who (all of the below):\n* use either the schema reporting or usage reporting feature\n* use an Apollo Studio API key which has invalid header values\n* use the default fetcher (`node-fetch`) or configured their own `node-fe",
       "severity": "low",
@@ -16,11 +17,17 @@
           "value": "GHSA-j5g3-5c8r-7qfx"
         }
       ],
-      "affectedRange": "< 4.9.3",
-      "fixedVersion": "4.9.3"
+      "affectedVersions": [
+        {
+          "range": "< 4.9.3",
+          "fixed": "4.9.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-68jh-rf6x-836f",
+      "packageName": "@apollo/server",
       "title": "@apollo/server vulnerable to unsafe application of Content Security Policy via reused nonces",
       "description": "### Context\nContent Security Policies (CSP) are a defense-in-depth strategy against XSS attacks. Improper application of CSP isn't itself a vulnerability, but it does fail to prevent XSS in the event that there is a viable attack vector for an XSS attack.\n\n### Impact\nThere aren't any XSS attack vectors via the Apollo Server landing pages _known to Apollo_, so to our knowledge there is no impact. However, if there are existing XSS vectors that haven't been reported and patched, then all users of ",
       "severity": "low",
@@ -33,11 +40,17 @@
           "value": "GHSA-68jh-rf6x-836f"
         }
       ],
-      "affectedRange": ">= 4.7.1, < 4.7.4",
-      "fixedVersion": "4.7.4"
+      "affectedVersions": [
+        {
+          "range": ">= 4.7.1, < 4.7.4",
+          "fixed": "4.7.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-8r69-3cvp-wxc3",
+      "packageName": "@apollo/server",
       "title": "Batched HTTP requests may set incorrect `cache-control` response header",
       "description": "### Impact\nIn Apollo Server 3 and 4, the `cache-control` HTTP response header may not reflect the cache policy that should apply to an HTTP request when that HTTP request contains multiple operations using HTTP batching. This could lead to data being inappropriately cached and shared.\n\nApollo Server allows clients to send multiple operations in a single HTTP request.  The results of these operations are returned in a single HTTP response, with a single set of headers.  Apollo Client Web and Apol",
       "severity": "medium",
@@ -50,8 +63,40 @@
           "value": "GHSA-8r69-3cvp-wxc3"
         }
       ],
-      "affectedRange": "< 4.1.0",
-      "fixedVersion": "4.1.0"
+      "affectedVersions": [
+        {
+          "range": "< 4.1.0",
+          "fixed": "4.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mp6q-xf9x-fwf7",
+      "packageName": "@apollo/server",
+      "title": "Apollo Serve vulnerable to Denial of Service with `startStandaloneServer`",
+      "description": "### Impact\n\nThe default configuration of `startStandaloneServer` from `@apollo/server/standalone` is vulnerable to Denial of Service (DoS) attacks through specially crafted request bodies with exotic character set encodings.\n\nThis issue does not affect users that use `@apollo/server` as a dependency for integration packages, like `@as integrations/express5` or `@as-integrations/next`, only direct usage of `startStandaloneServer`.\n\n### Who is impacted\n\nUsers directly using `startStandaloneServer`",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mp6q-xf9x-fwf7",
+      "publishedAt": "2026-02-04T18:02:26Z",
+      "modifiedAt": "2026-02-04T21:55:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mp6q-xf9x-fwf7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23897"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.4.0",
+          "fixed": "5.4.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

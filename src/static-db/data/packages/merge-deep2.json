@@ -1,9 +1,10 @@
 {
-  "name": "merge-deep2",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "merge-deep2",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j28q-p8ww-cp87",
+      "packageName": "merge-deep2",
       "title": "Prototype Pollution in merge-deep2.",
       "description": "All versions of package merge-deep2 are vulnerable to Prototype Pollution via the mergeDeep() function.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23700"
         }
       ],
-      "affectedRange": "<= 3.0.6"
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

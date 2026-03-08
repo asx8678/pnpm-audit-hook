@@ -1,9 +1,10 @@
 {
-  "name": "@aws-amplify/cli",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@aws-amplify/cli",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-846g-p7hm-f54r",
+      "packageName": "@aws-amplify/cli",
       "title": "AWS Amplify CLI has incorrect trust policy management",
       "description": "Amazon AWS Amplify CLI before 12.10.1 incorrectly configures the role trust policy of IAM roles associated with Amplify projects. When the Authentication component is removed from an Amplify project, a Condition property is removed but \"Effect\":\"Allow\" remains present, and consequently sts:AssumeRoleWithWebIdentity would be available to threat actors with no conditions. Thus, if Amplify CLI had been used to remove the Authentication component from a project built between August 2019 and January ",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-28056"
         }
       ],
-      "affectedRange": "< 12.10.1",
-      "fixedVersion": "12.10.1"
+      "affectedVersions": [
+        {
+          "range": "< 12.10.1",
+          "fixed": "12.10.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

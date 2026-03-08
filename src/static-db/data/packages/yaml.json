@@ -1,9 +1,10 @@
 {
-  "name": "yaml",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "yaml",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-f9xv-q969-pqx4",
+      "packageName": "yaml",
       "title": "Uncaught Exception in yaml",
       "description": "Uncaught Exception in GitHub repository eemeli/yaml starting at version 2.0.0-5 and prior to 2.2.2.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-2251"
         }
       ],
-      "affectedRange": ">= 2.0.0-5, < 2.2.2",
-      "fixedVersion": "2.2.2"
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0-5, < 2.2.2",
+          "fixed": "2.2.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

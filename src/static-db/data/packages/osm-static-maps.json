@@ -1,9 +1,10 @@
 {
-  "name": "osm-static-maps",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "osm-static-maps",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-pxcf-v868-m492",
+      "packageName": "osm-static-maps",
       "title": "Injection and Cross-site Scripting in osm-static-maps",
       "description": "This affects all versions of package osm-static-maps under 3.9.0. User input given to the package is passed directly to a template without escaping `({{{ ... }}})`. As such, it is possible for an attacker to inject arbitrary HTML/JS code and depending on the context. It will be outputted as an HTML on the page which gives opportunity for XSS or rendered on the server (puppeteer) which also gives opportunity for SSRF and Local File Read.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2020-7749"
         }
       ],
-      "affectedRange": "< 3.9.0",
-      "fixedVersion": "3.9.0"
+      "affectedVersions": [
+        {
+          "range": "< 3.9.0",
+          "fixed": "3.9.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "express",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "express",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rv95-896h-c2vc",
+      "packageName": "express",
       "title": "Express.js Open Redirect in malformed URLs",
       "description": "### Impact\n\nVersions of Express.js prior to 4.19.2 and pre-release alpha and beta versions before 5.0.0-beta.3 are affected by an open redirect vulnerability using malformed URLs.\n\nWhen a user of Express performs a redirect using a user-provided URL Express performs an encode [using `encodeurl`](https://github.com/pillarjs/encodeurl) on the contents before passing it to the `location` header. This can cause malformed URLs to be evaluated in unexpected ways by common redirect allow list implement",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2024-29041"
         }
       ],
-      "affectedRange": ">= 5.0.0-alpha.1, < 5.0.0-beta.3",
-      "fixedVersion": "5.0.0-beta.3"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0-alpha.1, < 5.0.0-beta.3",
+          "fixed": "5.0.0-beta.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-pj86-cfqh-vqx6",
+      "packageName": "express",
       "title": "Withdrawn Advisory: express improperly controls modification of query properties",
       "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because it describes a correctness bug, not a vulnerability with real security impact. This link is maintained to preserve external references.\n\n## Original Description\n### Impact\n\nwhen using the extended query parser in express (`'query parser': 'extended'`), the `request.query` object inherits all object prototype properties, but these properties can be overwritten by query string parameter keys that match the property names\n\n> [!IMPORTANT",
       "severity": "low",
@@ -41,11 +48,17 @@
           "value": "CVE-2024-51999"
         }
       ],
-      "affectedRange": ">= 5.0.0, < 5.2.0",
-      "fixedVersion": "5.2.0"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.2.0",
+          "fixed": "5.2.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-cm5g-3pgc-8rg4",
+      "packageName": "express",
       "title": "Express ressource injection",
       "description": "A vulnerability has been identified in the Express response.links function, allowing for arbitrary resource injection in the Link header when unsanitized data is used.\n\nThe issue arises from improper sanitization in `Link` header values, which can allow a combination of characters like `,`, `;`, and `<>` to preload malicious resources.\n\nThis vulnerability is especially relevant for dynamic parameters.",
       "severity": "medium",
@@ -62,11 +75,17 @@
           "value": "CVE-2024-10491"
         }
       ],
-      "affectedRange": "<= 3.21.4",
-      "fixedVersion": "4.0.0-rc1"
+      "affectedVersions": [
+        {
+          "range": "<= 3.21.4",
+          "fixed": "4.0.0-rc1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-qw6h-vgh9-j6wx",
+      "packageName": "express",
       "title": "express vulnerable to XSS via response.redirect()",
       "description": "### Impact\n\nIn express <4.20.0, passing untrusted user input - even after sanitizing it - to `response.redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in express 4.20.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:",
       "severity": "low",
@@ -83,11 +102,17 @@
           "value": "CVE-2024-43796"
         }
       ],
-      "affectedRange": ">= 5.0.0-alpha.1, < 5.0.0",
-      "fixedVersion": "5.0.0"
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0-alpha.1, < 5.0.0",
+          "fixed": "5.0.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-jj78-5fmv-mv28",
+      "packageName": "express",
       "title": "Express Open Redirect vulnerability",
       "description": "URL Redirection to Untrusted Site ('Open Redirect') vulnerability in Express. This vulnerability affects the use of the Express Response object. This issue impacts Express: from 3.4.5 before 4.0.0-rc1.",
       "severity": "low",
@@ -104,8 +129,13 @@
           "value": "CVE-2024-9266"
         }
       ],
-      "affectedRange": ">= 3.4.5, < 4.0.0-rc1",
-      "fixedVersion": "4.0.0-rc1"
+      "affectedVersions": [
+        {
+          "range": ">= 3.4.5, < 4.0.0-rc1",
+          "fixed": "4.0.0-rc1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

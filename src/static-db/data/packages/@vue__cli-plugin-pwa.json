@@ -1,9 +1,10 @@
 {
-  "name": "@vue/cli-plugin-pwa",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@vue/cli-plugin-pwa",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-79vf-hf9f-j9q8",
+      "packageName": "@vue/cli-plugin-pwa",
       "title": "@vue/cli-plugin-pwa Regular Expression Denial of Service vulnerability",
       "description": "A vulnerability was found in vuejs vue-cli up to 5.0.8. It has been rated as problematic. This issue affects the function HtmlPwaPlugin of the file packages/@vue/cli-plugin-pwa/lib/HtmlPwaPlugin.js of the component Markdown Code Handler. The manipulation leads to inefficient regular expression complexity. The attack may be initiated remotely.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-5897"
         }
       ],
-      "affectedRange": "<= 5.0.8"
+      "affectedVersions": [
+        {
+          "range": "<= 5.0.8"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

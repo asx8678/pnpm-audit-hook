@@ -1,9 +1,10 @@
 {
-  "name": "static-server",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "static-server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-v834-rhv4-65m3",
+      "packageName": "static-server",
       "title": "static-server Path Traversal vulnerability",
       "description": "All versions of the package static-server are vulnerable to Directory Traversal due to improper input sanitization passed via the `validPath` function of server.js.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2023-26152"
         }
       ],
-      "affectedRange": "<= 2.2.1"
+      "affectedVersions": [
+        {
+          "range": "<= 2.2.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

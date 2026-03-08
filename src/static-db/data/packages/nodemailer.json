@@ -1,9 +1,10 @@
 {
-  "name": "nodemailer",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "nodemailer",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-46j5-6fg5-4gv3",
+      "packageName": "nodemailer",
       "title": "Nodemailer is vulnerable to DoS through Uncontrolled Recursion",
       "description": "A flaw was found in Nodemailer. This vulnerability allows a denial of service (DoS) via a crafted email address header that triggers infinite recursion in the address parser.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-14874"
         }
       ],
-      "affectedRange": "< 7.0.11",
-      "fixedVersion": "7.0.11"
+      "affectedVersions": [
+        {
+          "range": "< 7.0.11",
+          "fixed": "7.0.11"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-rcmh-qjqh-p98v",
+      "packageName": "nodemailer",
       "title": "Nodemailer’s addressparser is vulnerable to DoS caused by recursive calls",
       "description": "### Summary\nA DoS can occur that immediately halts the system due to the use of an unsafe function.\n\n### Details\nAccording to **RFC 5322**, nested group structures (a group inside another group) are not allowed. Therefore, in lib/addressparser/index.js, the email address parser performs flattening when nested groups appear, since such input is likely to be abnormal. (If the address is valid, it is added as-is.) In other words, the parser flattens all nested groups and inserts them into the final",
       "severity": "low",
@@ -37,11 +44,17 @@
           "value": "GHSA-rcmh-qjqh-p98v"
         }
       ],
-      "affectedRange": "<= 7.0.10",
-      "fixedVersion": "7.0.11"
+      "affectedVersions": [
+        {
+          "range": "<= 7.0.10",
+          "fixed": "7.0.11"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-mm7p-fcc7-pg87",
+      "packageName": "nodemailer",
       "title": "Nodemailer: Email to an unintended domain can occur due to Interpretation Conflict",
       "description": "The email parsing library incorrectly handles quoted local-parts containing @. This leads to misrouting of email recipients, where the parser extracts and routes to an unintended domain instead of the RFC-compliant target.\n\nPayload: `\"xclow3n@gmail.com x\"@internal.domain`\nUsing the following code to send mail\n```\nconst nodemailer = require(\"nodemailer\");\n\nlet transporter = nodemailer.createTransport({\n  service: \"gmail\",\n  auth: {\n    user: \"\",\n    pass: \"\",\n  },\n});\n\nlet mailOptions = {\n  from:",
       "severity": "medium",
@@ -58,11 +71,17 @@
           "value": "CVE-2025-13033"
         }
       ],
-      "affectedRange": "< 7.0.7",
-      "fixedVersion": "7.0.7"
+      "affectedVersions": [
+        {
+          "range": "< 7.0.7",
+          "fixed": "7.0.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-jj37-3377-m6vv",
+      "packageName": "nodemailer",
       "title": "Duplicate Advisory: Nodemailer: Email to an unintended domain can occur due to Interpretation Conflict",
       "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-mm7p-fcc7-pg87. This link is maintained to preserve external references.\n\n## Original Description\nA vulnerability was identified in the email parsing library due to improper handling of specially formatted recipient email addresses. An attacker can exploit this flaw by crafting a recipient address that embeds an external address within quotes. This causes the application to misdirect the email to the attacke",
       "severity": "high",
@@ -75,11 +94,17 @@
           "value": "GHSA-jj37-3377-m6vv"
         }
       ],
-      "affectedRange": "< 7.0.7",
-      "fixedVersion": "7.0.7"
+      "affectedVersions": [
+        {
+          "range": "< 7.0.7",
+          "fixed": "7.0.7"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9h6g-pr28-7cqp",
+      "packageName": "nodemailer",
       "title": "nodemailer ReDoS when trying to send a specially crafted email",
       "description": "### Summary\nA ReDoS vulnerability occurs when nodemailer tries to parse img files with the parameter `attachDataUrls` set, causing the stuck of event loop. \nAnother flaw was found when nodemailer tries to parse an attachments with a embedded file, causing the stuck of event loop. \n\n### Details\n\nRegex: /^data:((?:[^;]*;)*(?:[^,]*)),(.*)$/\n\nPath: compile -> getAttachments -> _processDataUrl\n\nRegex: /(<img\\b[^>]* src\\s*=[\\s\"']*)(data:([^;]+);[^\"'>\\s]+)/\n\nPath: _convertDataImages\n\n### PoC\n\nhttps://g",
       "severity": "medium",
@@ -92,11 +117,17 @@
           "value": "GHSA-9h6g-pr28-7cqp"
         }
       ],
-      "affectedRange": "<= 6.9.8",
-      "fixedVersion": "6.9.9"
+      "affectedVersions": [
+        {
+          "range": "<= 6.9.8",
+          "fixed": "6.9.9"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-hwqf-gcqm-7353",
+      "packageName": "nodemailer",
       "title": "Header injection in nodemailer",
       "description": "The package nodemailer before 6.6.1 are vulnerable to HTTP Header Injection if unsanitized user input that may contain newlines and carriage returns is passed into an address object.",
       "severity": "medium",
@@ -113,11 +144,17 @@
           "value": "CVE-2021-23400"
         }
       ],
-      "affectedRange": "< 6.6.1",
-      "fixedVersion": "6.6.1"
+      "affectedVersions": [
+        {
+          "range": "< 6.6.1",
+          "fixed": "6.6.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-48ww-j4fc-435p",
+      "packageName": "nodemailer",
       "title": "Command injection in nodemailer",
       "description": "This affects the package nodemailer before 6.4.16. Use of crafted recipient email addresses may result in arbitrary command flag injection in sendmail transport for sending mails.",
       "severity": "critical",
@@ -134,8 +171,13 @@
           "value": "CVE-2020-7769"
         }
       ],
-      "affectedRange": "< 6.4.16",
-      "fixedVersion": "6.4.16"
+      "affectedVersions": [
+        {
+          "range": "< 6.4.16",
+          "fixed": "6.4.16"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

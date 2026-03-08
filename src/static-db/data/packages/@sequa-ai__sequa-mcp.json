@@ -1,9 +1,10 @@
 {
-  "name": "@sequa-ai/sequa-mcp",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@sequa-ai/sequa-mcp",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9pw5-wx67-q964",
+      "packageName": "@sequa-ai/sequa-mcp",
       "title": "@sequa-ai/sequa-mcp has Command Injection vulnerability",
       "description": "A vulnerability was detected in sequa-ai sequa-mcp up to 1.0.13. This affects the function redirectToAuthorization of the file src/helpers/node-oauth-client-provider.ts of the component OAuth Server Discovery. Performing manipulation results in os command injection. Remote exploitation of the attack is possible. The exploit is now public and may be used. Upgrading to version 1.0.14 is able to mitigate this issue. The patch is named e569815854166db5f71c2e722408f8957fb9e804. It is recommended to u",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-10619"
         }
       ],
-      "affectedRange": "< 1.0.14",
-      "fixedVersion": "1.0.14"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.14",
+          "fixed": "1.0.14"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

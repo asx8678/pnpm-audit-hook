@@ -1,9 +1,10 @@
 {
-  "name": "Electron",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "Electron",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6h98-cf9g-vmg2",
+      "packageName": "Electron",
       "title": "Electron vulnerable to URL spoofing via PDFium",
       "description": "Electron version 1.7.0 - 1.7.5 is vulnerable to a URL Spoofing problem when opening PDFs in PDFium resulting loading arbitrary PDFs that a hacker can control.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2017-1000424"
         }
       ],
-      "affectedRange": ">= 1.7.0, < 1.7.6",
-      "fixedVersion": "1.7.6"
+      "affectedVersions": [
+        {
+          "range": ">= 1.7.0, < 1.7.6",
+          "fixed": "1.7.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

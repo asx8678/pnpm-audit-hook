@@ -1,9 +1,10 @@
 {
-  "name": "trim-off-newlines",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "trim-off-newlines",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-38fc-wpqx-33j7",
+      "packageName": "trim-off-newlines",
       "title": "Uncontrolled Resource Consumption in trim-off-newlines",
       "description": "All versions of package trim-off-newlines are vulnerable to Regular Expression Denial of Service (ReDoS) via string processing.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23425"
         }
       ],
-      "affectedRange": "< 1.0.3",
-      "fixedVersion": "1.0.3"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.3",
+          "fixed": "1.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

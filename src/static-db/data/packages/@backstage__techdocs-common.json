@@ -1,9 +1,10 @@
 {
-  "name": "@backstage/techdocs-common",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@backstage/techdocs-common",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-pwhf-39xg-4rxw",
+      "packageName": "@backstage/techdocs-common",
       "title": "Script injection",
       "description": "### Impact\n\nA malicious internal actor is able to upload documentation content with malicious scripts. These scripts would normally be sanitized by the TechDocs frontend, but by tricking a user to visit the content via the TechDocs API, the content sanitazion will be bypassed. If the TechDocs API is hosted on the same origin as the Backstage app or other backend plugins, this may give access to sensitive data.\n\nThe ability to upload malicious content may be limited by internal code review proces",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2021-32660"
         }
       ],
-      "affectedRange": "< 0.6.4",
-      "fixedVersion": "0.6.4"
+      "affectedVersions": [
+        {
+          "range": "< 0.6.4",
+          "fixed": "0.6.4"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-pgf8-28gg-vpr6",
+      "packageName": "@backstage/techdocs-common",
       "title": "Path traversal",
       "description": "### Impact\n\nA malicious actor could read sensitive files from the environment where TechDocs documentation is built and published by setting a particular path for `docs_dir` in `mkdocs.yml`. These files would then be available over the TechDocs backend API.\n\nThis vulnerability is mitigated by the fact that an attacker would need access to modify the `mkdocs.yml` in the documentation source code, and would also need access to the TechDocs backend API.\n\n### Patches\n\nThe vulnerability is patched in",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2021-32662"
         }
       ],
-      "affectedRange": "< 0.6.3",
-      "fixedVersion": "0.6.3"
+      "affectedVersions": [
+        {
+          "range": "< 0.6.3",
+          "fixed": "0.6.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-4jqc-jvh2-pxg9",
+      "packageName": "@backstage/techdocs-common",
       "title": "Path traversal for local publishers in TechDocs backend",
       "description": "### Impact\nA malicious actor with the ability to register entities in the Software Catalog is able to write files to arbitrary paths on the techdocs backend host instance when `techdocs.publisher.type` is set to `local`.\n\nThis vulnerability is mitigated by the fact that the Software Catalog must be configured with non-standard field format validators and/or non-standard entity policies.\n\n### Patches\nThose affected are advised to upgrade to `@backstage/plugin-techdocs-node` version `1.1.2` or hig",
       "severity": "medium",
@@ -58,8 +71,13 @@
           "value": "GHSA-4jqc-jvh2-pxg9"
         }
       ],
-      "affectedRange": "< 0.11.16",
-      "fixedVersion": "0.11.16"
+      "affectedVersions": [
+        {
+          "range": "< 0.11.16",
+          "fixed": "0.11.16"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

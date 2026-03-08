@@ -1,9 +1,10 @@
 {
-  "name": "sonar-wrapper",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "sonar-wrapper",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wr4v-3f2h-6hhh",
+      "packageName": "sonar-wrapper",
       "title": "sonar-wrapper Command Injection vulnerability",
       "description": "A command injection vulnerability affects all versions of package sonar-wrapper. The injection point is located in lib/sonarRunner.js.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-28443"
         }
       ],
-      "affectedRange": "<= 0.1.3"
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "npm-dependency-versions",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "npm-dependency-versions",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-m7xq-8jp8-rj2c",
+      "packageName": "npm-dependency-versions",
       "title": "Command injection in npm-dependency-versions",
       "description": "The npm-dependency-versions package through 0.3.0 for Node.js allows command injection if an attacker is able to call dependencyVersions with a JSON object in which pkgs is a key, and there are shell metacharacters in a value.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2022-29080"
         }
       ],
-      "affectedRange": "<= 0.3.0"
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

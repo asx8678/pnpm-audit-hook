@@ -1,9 +1,10 @@
 {
-  "name": "interactive-git-checkout",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "interactive-git-checkout",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4wcm-7hjf-6xw5",
+      "packageName": "interactive-git-checkout",
       "title": "interactive-git-checkout has a Command Injection vulnerability",
       "description": "The npm package `interactive-git-checkout` is an interactive command-line tool that allows users to checkout a git branch while it prompts for the branch name on the command-line. It is available as an npm package and can be installed via `npm install -g interactive-git-checkout`.\n\nResources: \n * Project's npm package: https://www.npmjs.com/package/interactive-git-checkout\n \n## Command Injection Vulnerability\n\nThe `interactive-git-checkout` tool is vulnerable to a command injection vulnerability",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-59046"
         }
       ],
-      "affectedRange": "<= 1.1.4"
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

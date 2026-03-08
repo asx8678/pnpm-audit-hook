@@ -1,9 +1,10 @@
 {
-  "name": "@auth0/nextjs-auth0",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@auth0/nextjs-auth0",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mr6f-h57v-rpj5",
+      "packageName": "@auth0/nextjs-auth0",
       "title": "Improper Validation of Query Parameters in Auth0 Next.js SDK",
       "description": "### Description\nAn input-validation flaw in the returnTo parameter in the Auth0 Next.js SDK could allow attackers to inject unintended OAuth query parameters into the Auth0 authorization request. Successful exploitation may result in tokens being issued with unintended parameters\n\n### Am I Affected?\nYou are affected if you meet the following preconditions:\n- Applications using the auth0/nextjs-auth0 SDK version prior to 4.13.0\n\n### Affected product and versions\nAuth0/nextjs-auth0 versions >= 4.9",
       "severity": "low",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-67716"
         }
       ],
-      "affectedRange": ">= 4.9.0, < 4.13.0",
-      "fixedVersion": "4.13.0"
+      "affectedVersions": [
+        {
+          "range": ">= 4.9.0, < 4.13.0",
+          "fixed": "4.13.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-wcgj-f865-c7j7",
+      "packageName": "@auth0/nextjs-auth0",
       "title": "Improper Request Caching Lookup in the Auth0 Next.js SDK",
       "description": "### Description\nWhen using affected versions of the Next.js SDK, simultaneous requests on the same client may result in improper lookups in the TokenRequestCache for the request results.\n\n### Am I Affected?\nYou are affected if you meet the following preconditions:\n- Applications using the auth0/nextjs-auth0 SDK with a singleton client instance, versions 4.11.0, 4.11.1, and 4.12.0.\n\n### Affected product and versions\nAuth0/nextjs-auth0 v4.11.0, v4.11.1, and v4.12.0.\n\n### Resolution\nUpgrade Auth0/n",
       "severity": "medium",
@@ -41,11 +48,17 @@
           "value": "CVE-2025-67490"
         }
       ],
-      "affectedRange": ">= 4.12.0, < 4.12.1",
-      "fixedVersion": "4.12.1"
+      "affectedVersions": [
+        {
+          "range": ">= 4.12.0, < 4.12.1",
+          "fixed": "4.12.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-f3fg-mf2q-fj3f",
+      "packageName": "@auth0/nextjs-auth0",
       "title": "NextJS-Auth0 SDK Vulnerable to CDN Caching of Session Cookies",
       "description": "**Overview**\nIn Auth0 Next.js SDK versions 4.0.1 to 4.6.0, __session cookies set by auth0.middleware may be cached by CDNs due to missing Cache-Control headers.\n\n**Am I Affected?**\nYou are affected by this vulnerability if you meet the following preconditions:\n\n1. Applications using the NextJS-Auth0 SDK, versions between 4.0.1 to 4.6.0,\n2. Applications using CDN or edge caching that caches responses with the Set-Cookie header.\n3. If the Cache-Control header is not properly set for sensitive resp",
       "severity": "high",
@@ -62,11 +75,17 @@
           "value": "CVE-2025-48947"
         }
       ],
-      "affectedRange": ">= 4.0.1, <= 4.6.0",
-      "fixedVersion": "4.6.1"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.1, <= 4.6.0",
+          "fixed": "4.6.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-pjr6-jx7r-j4r6",
+      "packageName": "@auth0/nextjs-auth0",
       "title": "Auth0 NextJS SDK v4 Missing Session Invalidation",
       "description": "### Overview\nAuth0 NextJS `v4.0.1` to `v4.5.0` does not invoke `.setExpirationTime` when generating a JWE token for the session. As a result, the JWE does not contain an internal expiration claim. While the session cookie may expire or be cleared, the JWE remains valid.\n\n### Am I Affected?\nYou are affected if you are using Auth0 NextJS SDK v4.\n\n### Fix\nUpgrade to `v4.5.1`.",
       "severity": "medium",
@@ -83,11 +102,17 @@
           "value": "CVE-2025-46344"
         }
       ],
-      "affectedRange": ">= 4.0.1, < 4.5.1",
-      "fixedVersion": "4.5.1"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.1, < 4.5.1",
+          "fixed": "4.5.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-2mqv-4j3r-vjvp",
+      "packageName": "@auth0/nextjs-auth0",
       "title": "Open redirect in @auth0/nextjs-auth0",
       "description": "### Overview\n\nVersions `<=1.6.1` do not filter out certain `returnTo` parameter values from the login url, which expose the application to an open redirect vulnerability.\n\n### Am I affected?\nYou are affected by this vulnerability if you are using `@auth0/nextjs-auth0` version `<=1.6.1`.\n\n### How to fix that?\nUpgrade to version `>=1.6.2`\n\n### Will this update impact my users?\nThe fix provided in the patch will not affect your users.\n\n",
       "severity": "medium",
@@ -104,11 +129,17 @@
           "value": "CVE-2021-43812"
         }
       ],
-      "affectedRange": "< 1.6.2",
-      "fixedVersion": "1.6.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.6.2",
+          "fixed": "1.6.2"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-954c-jjx6-cxv7",
+      "packageName": "@auth0/nextjs-auth0",
       "title": "Reflected XSS from the callback handler's error query parameter",
       "description": "### Overview\n\nVersions before and including `1.4.1` are vulnerable to reflected XSS.  An attacker can execute arbitrary code by providing an XSS payload in the `error` query parameter which is then processed by the callback handler as an error message.\n\n### Am I affected?\nYou are affected by this vulnerability if you are using `@auth0/nextjs-auth0` version `1.4.1` or lower **unless** you are using custom error handling that does not return the error message in an HTML response.\n\n### How to fix t",
       "severity": "high",
@@ -125,8 +156,13 @@
           "value": "CVE-2021-32702"
         }
       ],
-      "affectedRange": "< 1.4.2",
-      "fixedVersion": "1.4.2"
+      "affectedVersions": [
+        {
+          "range": "< 1.4.2",
+          "fixed": "1.4.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

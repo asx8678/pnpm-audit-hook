@@ -1,9 +1,10 @@
 {
-  "name": "tabby-ssh",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "tabby-ssh",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8vq4-8hfp-29xh",
+      "packageName": "tabby-ssh",
       "title": "Eugeny Tabby Sends Password Despite Host Key Verification Failure",
       "description": "An issue in Eugeny Tabby 1.0.213 allows a remote attacker to obtain sensitive information via the server and sends the SSH username and password even when the host key verification fails.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-48460"
         }
       ],
-      "affectedRange": "< 1.0.214",
-      "fixedVersion": "1.0.214"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.214",
+          "fixed": "1.0.214"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

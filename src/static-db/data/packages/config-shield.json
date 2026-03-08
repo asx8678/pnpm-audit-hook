@@ -1,9 +1,10 @@
 {
-  "name": "config-shield",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "config-shield",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-w8h4-vw8f-rvvj",
+      "packageName": "config-shield",
       "title": "Improper Control of Dynamically-Managed Code Resources in config-shield",
       "description": "scripts/cli.js in the GoDaddy node-config-shield (aka Config Shield) package before 0.2.2 for Node.js calls eval when processing a set command. **NOTE:** the vendor reportedly states that this is not a vulnerability. The set command was not intended for use with untrusted data.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-26276"
         }
       ],
-      "affectedRange": "< 0.2.3",
-      "fixedVersion": "0.2.3"
+      "affectedVersions": [
+        {
+          "range": "< 0.2.3",
+          "fixed": "0.2.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

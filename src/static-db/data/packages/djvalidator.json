@@ -1,9 +1,10 @@
 {
-  "name": "djvalidator",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "djvalidator",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-v6wh-2wvh-c8x5",
+      "packageName": "djvalidator",
       "title": "Regular Expression Denial of Service in djvalidator",
       "description": "All versions of package djvalidator are vulnerable to Regular Expression Denial of Service (ReDoS) by sending crafted invalid emails - for example, \n`--@------------------------------------------------------------------------------------------------------------------------!`.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7779"
         }
       ],
-      "affectedRange": "<= 1.1.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

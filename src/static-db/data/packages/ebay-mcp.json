@@ -1,0 +1,32 @@
+{
+  "packageName": "ebay-mcp",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-97rm-xj73-33jh",
+      "packageName": "ebay-mcp",
+      "title": "eBay API MCP Server Affected by Environment Variable Injection ",
+      "description": "The `ebay_set_user_tokens` tool allows updating the `.env` file with new tokens. The `updateEnvFile` function in `src/auth/oauth.ts` blindly appends or replaces values without validating them for newlines or quotes. This allows an attacker to inject arbitrary environment variables into the configuration file.\n\n### Impact\nAn attacker can inject arbitrary environment variables into the `.env` file. This could lead to:\n- **Configuration Overwrites**: Attackers can overwrite critical settings like `",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-97rm-xj73-33jh",
+      "publishedAt": "2026-02-19T20:27:11Z",
+      "modifiedAt": "2026-02-23T22:23:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-97rm-xj73-33jh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27203"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.7.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

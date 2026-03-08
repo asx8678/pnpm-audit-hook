@@ -1,9 +1,10 @@
 {
-  "name": "mpath",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "mpath",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-p92x-r36w-9395",
+      "packageName": "mpath",
       "title": "Type confusion in mpath",
       "description": "This affects the package mpath before 0.8.4. A type confusion vulnerability can lead to a bypass of CVE-2018-16490. In particular, the condition `ignoreProperties.indexOf(parts[i]) !== -1` returns `-1` if `parts[i]` is `['__proto__']`. This is because the method that has been called if the input is an array is `Array.prototype.indexOf()` and not `String.prototype.indexOf()`. They behave differently depending on the type of the input.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23438"
         }
       ],
-      "affectedRange": "< 0.8.4",
-      "fixedVersion": "0.8.4"
+      "affectedVersions": [
+        {
+          "range": "< 0.8.4",
+          "fixed": "0.8.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

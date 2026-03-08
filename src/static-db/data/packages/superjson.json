@@ -1,9 +1,10 @@
 {
-  "name": "superjson",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "superjson",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-5888-ffcr-r425",
+      "packageName": "superjson",
       "title": "Prototype Pollution leading to Remote Code Execution in superjson",
       "description": "### Impact\n\nThis is critical vulnerability, as it allows to run arbitrary code on any server using superjson input, including a Blitz.js server, without prior authentication or knowledge. Attackers gain full control over the server so they could steal and manipulate data or attack further systems. The only requirement is that the server implements at least one endpoint which uses superjson during request processing. In the case of Blitz.js, it would be at least one RPC call. \n\n### Patches\nThis h",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-23631"
         }
       ],
-      "affectedRange": "< 1.8.1",
-      "fixedVersion": "1.8.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.8.1",
+          "fixed": "1.8.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "swiper",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "swiper",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-p3hc-fv2j-rp68",
+      "packageName": "swiper",
       "title": "Prototype Pollution in swiper",
       "description": "Versions of the package swiper before 6.5.1 are susceptible to prototype pollution.",
       "severity": "critical",
@@ -20,8 +21,40 @@
           "value": "CVE-2021-23370"
         }
       ],
-      "affectedRange": "< 6.5.1",
-      "fixedVersion": "6.5.1"
+      "affectedVersions": [
+        {
+          "range": "< 6.5.1",
+          "fixed": "6.5.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hmx5-qpq5-p643",
+      "packageName": "swiper",
+      "title": "Prototype pollution in swiper",
+      "description": "### Summary\nA prototype pollution vulnerability exists in the the npm package swiper (>=6.5.1, < 12.1.2). Despite a previous fix that attempted to mitigate prototype pollution by checking whether user input contained a forbidden key, it is still possible to pollute `Object.prototype` via a crafted input using Array.prototype. The exploit works across Windows and Linux and on Node and Bun runtimes. This issue is fixed in version 12.1.2\n\n### Details\nThe vulnerability resides in line 94 of shared/u",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-hmx5-qpq5-p643",
+      "publishedAt": "2026-02-19T20:28:35Z",
+      "modifiedAt": "2026-02-23T22:27:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hmx5-qpq5-p643"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27212"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 6.5.1, < 12.1.2",
+          "fixed": "12.1.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

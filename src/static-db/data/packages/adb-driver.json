@@ -1,9 +1,10 @@
 {
-  "name": "adb-driver",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "adb-driver",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4m6q-rxhm-675w",
+      "packageName": "adb-driver",
       "title": " OS Command Injection in adb-driver",
       "description": "adb-driver through 0.1.8 is vulnerable to Command Injection.It allows execution of arbitrary commands via the command function.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7636"
         }
       ],
-      "affectedRange": "<= 0.1.8"
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.8"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

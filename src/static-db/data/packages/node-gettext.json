@@ -1,9 +1,10 @@
 {
-  "name": "node-gettext",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "node-gettext",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-g974-hxvm-x689",
+      "packageName": "node-gettext",
       "title": "node-gettext vulnerable to Prototype Pollution",
       "description": "All versions of the package node-gettext are vulnerable to Prototype Pollution via the addTranslations() function in gettext.js due to improper user input sanitization.",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-21528"
         }
       ],
-      "affectedRange": "<= 3.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

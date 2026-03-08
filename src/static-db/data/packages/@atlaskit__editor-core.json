@@ -1,9 +1,10 @@
 {
-  "name": "@atlaskit/editor-core",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@atlaskit/editor-core",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-p5ch-w78f-xh44",
+      "packageName": "@atlaskit/editor-core",
       "title": "Cross-site scripting in @atlaskit/editor-core",
       "description": "The hyperlinks functionality in atlaskit/editor-core in before version 113.1.5 allows remote attackers to inject arbitrary HTML or JavaScript via a Cross-Site Scripting (XSS) vulnerability in link targets.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2019-20903"
         }
       ],
-      "affectedRange": "< 113.1.5"
+      "affectedVersions": [
+        {
+          "range": "< 113.1.5"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

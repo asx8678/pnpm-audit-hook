@@ -1,9 +1,10 @@
 {
-  "name": "yui",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "yui",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9ww8-j8j2-3788",
+      "packageName": "yui",
       "title": "YUI Cross-site Scripting (XSS) vulnerability",
       "description": "Cross-site scripting (XSS) vulnerability in flashuploader.swf in the Uploader component in Yahoo! YUI 3.5.0 through 3.9.1, as used in Moodle through 2.1.10, 2.2.x before 2.2.11, 2.3.x before 2.3.8, 2.4.x before 2.4.5, 2.5.x before 2.5.1, and other products, allows remote attackers to inject arbitrary web script or HTML via a crafted string in a URL.",
       "severity": "medium",
@@ -20,10 +21,16 @@
           "value": "CVE-2013-4942"
         }
       ],
-      "affectedRange": ">= 3.2.0, <= 3.9.1"
+      "affectedVersions": [
+        {
+          "range": ">= 3.2.0, <= 3.9.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-64r3-582j-frqm",
+      "packageName": "yui",
       "title": "YUI Cross-site Scripting (XSS) vulnerability",
       "description": "Cross-site scripting (XSS) vulnerability in uploader.swf in the Uploader component in Yahoo! YUI 3.2.0 through 3.9.1, as used in Moodle through 2.1.10, 2.2.x before 2.2.11, 2.3.x before 2.3.8, 2.4.x before 2.4.5, 2.5.x before 2.5.1, and other products, allows remote attackers to inject arbitrary web script or HTML via a crafted string in a URL.",
       "severity": "medium",
@@ -40,10 +47,16 @@
           "value": "CVE-2013-4941"
         }
       ],
-      "affectedRange": ">= 3.2.0, <= 3.9.1"
+      "affectedVersions": [
+        {
+          "range": ">= 3.2.0, <= 3.9.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-x5hj-47vv-53p8",
+      "packageName": "yui",
       "title": "YUI Cross-site Scripting (XSS) vulnerability",
       "description": "Cross-site scripting (XSS) vulnerability in io.swf in the IO Utility component in Yahoo! YUI 3.10.2, as used in Moodle through 2.1.10, 2.2.x before 2.2.11, 2.3.x before 2.3.8, 2.4.x before 2.4.5, 2.5.x before 2.5.1, and other products, allows remote attackers to inject arbitrary web script or HTML via a crafted string in a URL.  NOTE: this vulnerability exists because of a CVE-2013-4939 regression.",
       "severity": "medium",
@@ -60,8 +73,13 @@
           "value": "CVE-2013-4940"
         }
       ],
-      "affectedRange": "= 3.10.12",
-      "fixedVersion": "3.10.13"
+      "affectedVersions": [
+        {
+          "range": "= 3.10.12",
+          "fixed": "3.10.13"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

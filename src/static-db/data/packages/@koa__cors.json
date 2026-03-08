@@ -1,9 +1,10 @@
 {
-  "name": "@koa/cors",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@koa/cors",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-qxrj-hx23-xp82",
+      "packageName": "@koa/cors",
       "title": "Overly permissive origin policy",
       "description": "Currently, the middleware operates in a way that if an allowed origin is not provided, it will return an `Access-Control-Allow-Origin` header with the value of the origin from the request. This behavior completely disables one of the most crucial elements of browsers - the Same Origin Policy (SOP), this could cause a very serious security threat to the users of this middleware.\n\nIf such behavior is expected, for instance, when middleware is used exclusively for prototypes and not for production ",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-49803"
         }
       ],
-      "affectedRange": "< 5.0.0",
-      "fixedVersion": "5.0.0"
+      "affectedVersions": [
+        {
+          "range": "< 5.0.0",
+          "fixed": "5.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

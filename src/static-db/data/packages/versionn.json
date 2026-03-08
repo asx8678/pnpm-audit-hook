@@ -1,9 +1,10 @@
 {
-  "name": "versionn",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "versionn",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-fj78-2vc5-f6cm",
+      "packageName": "versionn",
       "title": "Versionn Command Injection Vulnerability",
       "description": "### Impact\n\nCommand Injection Vulnerability. All versions <1.1.0 are affected.\n \n### Patches\n\nPlease upgrade to versionn@1.1.0",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2023-25805"
         }
       ],
-      "affectedRange": "< 1.1.0",
-      "fixedVersion": "1.1.0"
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

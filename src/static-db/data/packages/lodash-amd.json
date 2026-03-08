@@ -1,9 +1,10 @@
 {
-  "name": "lodash-amd",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "lodash-amd",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xxjr-mmjv-4gpg",
+      "packageName": "lodash-amd",
       "title": "Lodash has Prototype Pollution Vulnerability in `_.unset` and `_.omit` functions",
       "description": "### Impact\n\nLodash versions 4.0.0 through 4.17.22 are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. An attacker can pass crafted paths which cause Lodash to delete methods from global prototypes. \n\nThe issue permits deletion of properties but does not allow overwriting their original behavior.  \n\n### Patches\n\nThis issue is patched on 4.17.23.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-13465"
         }
       ],
-      "affectedRange": ">= 4.0.0, <= 4.17.22",
-      "fixedVersion": "4.17.23"
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, <= 4.17.22",
+          "fixed": "4.17.23"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

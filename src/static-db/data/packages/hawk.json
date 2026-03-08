@@ -1,9 +1,10 @@
 {
-  "name": "hawk",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "hawk",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-44pw-h2cw-w3vq",
+      "packageName": "hawk",
       "title": "Uncontrolled Resource Consumption in Hawk",
       "description": "Hawk is an HTTP authentication scheme providing mechanisms for making authenticated HTTP requests with partial cryptographic verification of the request and response, covering the HTTP method, request URI, host, and optionally the request payload. Hawk used a regular expression to parse `Host` HTTP header (`Hawk.utils.parseHost()`), which was subject to regular expression DoS attack - meaning each added character in the attacker's input increases the computation time exponentially. `parseHost()`",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2022-29167"
         }
       ],
-      "affectedRange": "< 9.0.1",
-      "fixedVersion": "9.0.1"
+      "affectedVersions": [
+        {
+          "range": "< 9.0.1",
+          "fixed": "9.0.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

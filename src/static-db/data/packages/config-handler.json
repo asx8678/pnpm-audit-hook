@@ -1,9 +1,10 @@
 {
-  "name": "config-handler",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "config-handler",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-2w3f-9w3q-qw77",
+      "packageName": "config-handler",
       "title": "Prototype Pollution in config-handler",
       "description": "All versions of package config-handler are vulnerable to Prototype Pollution when loading config files.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23448"
         }
       ],
-      "affectedRange": "<= 2.0.3"
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "fullpage.js",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "fullpage.js",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-h3cq-j957-vhxg",
+      "packageName": "fullpage.js",
       "title": "Cross-site Scripting in fullpage.js",
       "description": "using fullpage.js you can create a anchor tag . But when put href in anchor then it does not sanitize the url which allow for a break in the context of anchor element and can add our new element.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2022-1330"
         }
       ],
-      "affectedRange": "< 4.0.5",
-      "fixedVersion": "4.0.5"
+      "affectedVersions": [
+        {
+          "range": "< 4.0.5",
+          "fixed": "4.0.5"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-vpgw-ffh3-648h",
+      "packageName": "fullpage.js",
       "title": "Prototype Pollution in fullpage.js",
       "description": "fullPage utils are available to developers using window.fp_utils. They can use these utils for their own use-case (other than fullPage) as well. However, one of the utils deepExtend is vulnerable to Prototype Pollution vulnerability.\n\nJavascript is \"prototype\" language which means when a new \"object\" is created, it carries the predefined properties and methods of an \"object\" with itself like toString, constructor etc. By using prototype-pollution vulnerability, an attacker can overwrite/create t",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2022-1295"
         }
       ],
-      "affectedRange": "< 4.0.2",
-      "fixedVersion": "4.0.2"
+      "affectedVersions": [
+        {
+          "range": "< 4.0.2",
+          "fixed": "4.0.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

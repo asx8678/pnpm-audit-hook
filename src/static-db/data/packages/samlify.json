@@ -1,9 +1,10 @@
 {
-  "name": "samlify",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "samlify",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-r683-v43c-6xqv",
+      "packageName": "samlify",
       "title": "samlify SAML Signature Wrapping attack",
       "description": "A Signature Wrapping attack has been found in samlify <v2.10.0, allowing an attacker to forge a SAML Response to authenticate as any user. \nAn attacker would need a signed XML document by the identity provider.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-47949"
         }
       ],
-      "affectedRange": "< 2.10.0",
-      "fixedVersion": "2.10.0"
+      "affectedVersions": [
+        {
+          "range": "< 2.10.0",
+          "fixed": "2.10.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "lutils",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "lutils",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3r8w-mphv-2f3f",
+      "packageName": "lutils",
       "title": "Prototype Pollution in lutils",
       "description": "All versions of package lutils are vulnerable to Prototype Pollution via the main (merge) function.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23396"
         }
       ],
-      "affectedRange": "<= 2.4.0"
+      "affectedVersions": [
+        {
+          "range": "<= 2.4.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

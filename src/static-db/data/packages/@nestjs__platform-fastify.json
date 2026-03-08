@@ -1,9 +1,10 @@
 {
-  "name": "@nestjs/platform-fastify",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@nestjs/platform-fastify",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8wpr-639p-ccrj",
+      "packageName": "@nestjs/platform-fastify",
       "title": "Nest has a Fastify URL Encoding Middleware Bypass (TOCTOU)",
       "description": "A NestJS application is vulnerable if it meets all of the following criteria:\n\n1. Platform: Uses `@nestjs/platform-fastify`.\n2. Security Mechanism: Relies on `NestMiddleware` (via `MiddlewareConsumer`) for security checks (authentication, authorization, etc.), or through `app.use()`\n3. Routing: Applies middleware to specific routes using string paths or controllers (e.g., `.forRoutes('admin')`).\nExample Vulnerable Config:\n\n```ts\n// app.module.ts\nexport class AppModule implements NestModule {\n  c",
       "severity": "medium",
@@ -20,8 +21,63 @@
           "value": "CVE-2025-69211"
         }
       ],
-      "affectedRange": "< 11.1.10",
-      "fixedVersion": "11.1.11"
+      "affectedVersions": [
+        {
+          "range": "< 11.1.10",
+          "fixed": "11.1.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r4wm-x892-vjmx",
+      "packageName": "@nestjs/platform-fastify",
+      "title": "Nest has a Fastify URL Encoding Middleware Bypass ",
+      "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\n\nA NestJS application using `@nestjs/platform-fastify` can allow bypass of any middleware when Fastify path-normalization options (e.g., `ignoreTrailingSlash`, `ignoreDuplicateSlashes`, `useSemicolonDelimiter`) are enabled. In affected route-scoped middleware setups, variant paths may skip middleware checks while still reaching the protected handler.\n\nThe bug is a path canonicalization mismatch between middleware matching and route ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r4wm-x892-vjmx",
+      "publishedAt": "2026-03-02T14:34:12Z",
+      "modifiedAt": "2026-03-02T14:34:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r4wm-x892-vjmx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-2293"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 11.1.13",
+          "fixed": "11.1.14"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7q64-3rg2-h9pf",
+      "packageName": "@nestjs/platform-fastify",
+      "title": "Duplicate Advisory: Nest has a Fastify URL Encoding Middleware Bypass",
+      "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-r4wm-x892-vjmx. This link is maintained to preserve external references.\n\n## Original Description\n\nA NestJS application using @nestjs/platform-fastify can allow bypass of authentication/authorization middleware when Fastify path-normalization options are enabled.\n\n\n\nThis issue affects nest.Js: 11.1.13.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7q64-3rg2-h9pf",
+      "publishedAt": "2026-02-27T18:31:06Z",
+      "modifiedAt": "2026-03-02T14:34:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7q64-3rg2-h9pf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.1.14",
+          "fixed": "11.1.14"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

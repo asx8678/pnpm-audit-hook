@@ -1,9 +1,10 @@
 {
-  "name": "min-document",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "min-document",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rx8g-88g5-qh64",
+      "packageName": "min-document",
       "title": "min-document vulnerable to prototype pollution",
       "description": "A vulnerability exists in the 'min-document' package prior to version 2.19.1, stemming from improper handling of namespace operations in the removeAttributeNS method. By processing malicious input involving the __proto__ property, an attacker can manipulate the prototype chain of JavaScript objects, leading to denial of service or arbitrary code execution. This issue arises from insufficient validation of attribute namespace removal operations, allowing unintended modification of critical object",
       "severity": "low",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-57352"
         }
       ],
-      "affectedRange": "<= 2.19.0",
-      "fixedVersion": "2.19.1"
+      "affectedVersions": [
+        {
+          "range": "<= 2.19.0",
+          "fixed": "2.19.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

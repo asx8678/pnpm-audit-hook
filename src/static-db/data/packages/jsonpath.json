@@ -1,0 +1,59 @@
+{
+  "packageName": "jsonpath",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-87r5-mp6g-5w5j",
+      "packageName": "jsonpath",
+      "title": "jsonpath has Arbitrary Code Injection via Unsafe Evaluation of JSON Path Expressions",
+      "description": "### Impact\n\n**Arbitrary Code Injection (Remote Code Execution & XSS):**\n\nA critical security vulnerability affects **all versions** of the `jsonpath` package. The library relies on the `static-eval` module to evaluate JSON Path expressions but fails to properly sanitize or sandbox the input.\n\nThis allows an attacker to inject arbitrary JavaScript code into the JSON Path expression. When the library evaluates this expression, the malicious code is executed.\n\n* **Node.js Environments:** This leads",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-87r5-mp6g-5w5j",
+      "publishedAt": "2026-02-09T06:30:28Z",
+      "modifiedAt": "2026-02-17T21:47:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-87r5-mp6g-5w5j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-1615"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6c59-mwgh-r2x6",
+      "packageName": "jsonpath",
+      "title": "JSONPath vulnerable to Prototype Pollution due to insufficient input validation of object keys in lib/index.js",
+      "description": "The value function in jsonpath 1.1.1 lib/index.js is vulnerable to Prototype Pollution.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6c59-mwgh-r2x6",
+      "publishedAt": "2026-01-28T18:30:47Z",
+      "modifiedAt": "2026-02-05T16:14:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6c59-mwgh-r2x6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-61140"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.2.0",
+          "fixed": "1.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

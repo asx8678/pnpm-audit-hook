@@ -1,9 +1,10 @@
 {
-  "name": "@nguniversal/common",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@nguniversal/common",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-68x2-mx4q-78m7",
+      "packageName": "@nguniversal/common",
       "title": "Angular SSR: Global Platform Injector Race Condition Leads to Cross-Request Data Leakage",
       "description": "### Impact\n\nAngular uses a DI container (the \"platform injector\") to hold request-specific state during server-side rendering. For historical reasons, the container was stored as a JavaScript module-scoped global variable. When multiple requests are processed concurrently, they could inadvertently share or overwrite the global injector state.\n\nIn practical terms, this can lead to one request responding with data meant for a completely different request, leaking data or tokens included on the ren",
       "severity": "high",
@@ -20,10 +21,16 @@
           "value": "CVE-2025-59052"
         }
       ],
-      "affectedRange": ">= 16.0.0-next.0, <= 16.2.0"
+      "affectedVersions": [
+        {
+          "range": ">= 16.0.0-next.0, <= 16.2.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-r3hf-q8q7-fv2p",
+      "packageName": "@nguniversal/common",
       "title": "Angular critical CSS inlining Cross-site Scripting Vulnerability Advisory",
       "description": "### Impact\nAngular Universal applications on 16.1.0 and 16.1.1 using critical CSS inlining are vulnerable to a [cross-site scripting (XSS)](https://owasp.org/www-community/attacks/xss/) attack where an attacker can trick another user into visiting a page which injects malicious JavaScript.\n\nAngular CLI applications without Universal do perform critical CSS inlining as well, however exploiting this requires a malicious actor to already have access to modify source code directly.\n\n### Patches\n`@ng",
       "severity": "high",
@@ -36,8 +43,39 @@
           "value": "GHSA-r3hf-q8q7-fv2p"
         }
       ],
-      "affectedRange": ">= 16.1.0, < 16.1.2",
-      "fixedVersion": "16.1.2"
+      "affectedVersions": [
+        {
+          "range": ">= 16.1.0, < 16.1.2",
+          "fixed": "16.1.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x288-3778-4hhx",
+      "packageName": "@nguniversal/common",
+      "title": "Angular SSR is vulnerable to SSRF and Header Injection via request handling pipeline",
+      "description": "A [Server-Side Request Forgery (SSRF)](https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/SSRF) vulnerability has been identified in the Angular SSR request handling pipeline. The vulnerability exists because Angular’s internal URL reconstruction logic directly trusts and consumes user-controlled HTTP headers specifically the Host and `X-Forwarded-*` family to determine the application's base origin without any validation of the destination domain.\n\nSpecifically, the framework didn't ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-x288-3778-4hhx",
+      "publishedAt": "2026-02-25T22:42:36Z",
+      "modifiedAt": "2026-02-25T22:42:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x288-3778-4hhx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27739"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 16.2.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

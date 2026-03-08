@@ -1,9 +1,10 @@
 {
-  "name": "set-or-get",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "set-or-get",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6rv4-4qv6-88g2",
+      "packageName": "set-or-get",
       "title": "Prototype Pollution in set-or-get",
       "description": "Prototype pollution vulnerability in ‘set-or-get’ version 1.0.0 through 1.2.10 allows an attacker to cause a denial of service and may lead to remote code execution.",
       "severity": "critical",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-25913"
         }
       ],
-      "affectedRange": ">= 1.0.0, < 1.2.11",
-      "fixedVersion": "1.2.11"
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0, < 1.2.11",
+          "fixed": "1.2.11"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

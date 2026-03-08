@@ -1,9 +1,10 @@
 {
-  "name": "body-parser",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "body-parser",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wqch-xfxh-vrr4",
+      "packageName": "body-parser",
       "title": "body-parser is vulnerable to denial of service when url encoding is used",
       "description": "### Impact\n\nbody-parser 2.2.0 is vulnerable to denial of service due to inefficient handling of URL-encoded bodies with very large numbers of parameters. An attacker can send payloads containing thousands of parameters within the default 100KB request size limit, causing elevated CPU and memory usage. This can lead to service slowdown or partial outages under sustained malicious traffic.\n\n### Patches\n\nThis issue is addressed in version 2.2.1.",
       "severity": "medium",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-13466"
         }
       ],
-      "affectedRange": ">= 2.2.0, < 2.2.1",
-      "fixedVersion": "2.2.1"
+      "affectedVersions": [
+        {
+          "range": ">= 2.2.0, < 2.2.1",
+          "fixed": "2.2.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-qwcr-r2fm-qrc7",
+      "packageName": "body-parser",
       "title": "body-parser vulnerable to denial of service when url encoding is enabled",
       "description": "### Impact\n\nbody-parser <1.20.3 is vulnerable to denial of service when url encoding is enabled. A malicious actor using a specially crafted payload could flood the server with a large number of requests, resulting in denial of service.\n\n### Patches\n\nthis issue is patched in 1.20.3\n\n### References\n",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2024-45590"
         }
       ],
-      "affectedRange": "< 1.20.3",
-      "fixedVersion": "1.20.3"
+      "affectedVersions": [
+        {
+          "range": "< 1.20.3",
+          "fixed": "1.20.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

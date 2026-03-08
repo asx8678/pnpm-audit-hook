@@ -1,9 +1,10 @@
 {
-  "name": "@ckeditor/ckeditor5-html-support",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@ckeditor/ckeditor5-html-support",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-42wq-rch8-6f6j",
+      "packageName": "@ckeditor/ckeditor5-html-support",
       "title": "CKEditor5 cross-site scripting vulnerability caused by the editor instance destroying process",
       "description": "### Affected packages\n@ckeditor/ckeditor5-markdown-gfm\n@ckeditor/ckeditor5-html-support\n@ckeditor/ckeditor5-html-embed\n\n### Impact\nA cross-site scripting vulnerability has been discovered affecting three optional CKEditor 5's packages. The vulnerability allowed to trigger a JavaScript code after fulfilling special conditions:\n\na) Using one of the affected packages. In case of `ckeditor5-html-support` and `ckeditor5-html-embed`, additionally, it was required to use a configuration that allows uns",
       "severity": "medium",
@@ -20,8 +21,40 @@
           "value": "CVE-2022-31175"
         }
       ],
-      "affectedRange": "< 35.0.1",
-      "fixedVersion": "35.0.1"
+      "affectedVersions": [
+        {
+          "range": "< 35.0.1",
+          "fixed": "35.0.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jrqm-vmqc-gm93",
+      "packageName": "@ckeditor/ckeditor5-html-support",
+      "title": "CKEditor 5 has Cross-site Scripting (XSS) in the HTML Support package",
+      "description": "### Impact\nA Cross-Site Scripting (XSS) vulnerability has been discovered in the General HTML Support feature. This vulnerability could be triggered by inserting specially crafted markup, leading to unauthorized JavaScript code execution, if the editor instance used an unsafe General HTML Support configuration.\n\nThis vulnerability affects only installations where the editor configuration meets the following criteria:\n\n* [General HTML Support](https://ckeditor.com/docs/ckeditor5/latest/features/h",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jrqm-vmqc-gm93",
+      "publishedAt": "2026-03-04T18:49:32Z",
+      "modifiedAt": "2026-03-05T22:49:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jrqm-vmqc-gm93"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28343"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 47.6.0",
+          "fixed": "47.6.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

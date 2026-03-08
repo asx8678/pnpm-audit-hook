@@ -1,9 +1,10 @@
 {
-  "name": "@angular/common",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@angular/common",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-58c5-g7wp-6w37",
+      "packageName": "@angular/common",
       "title": "Angular is Vulnerable to XSRF Token Leakage via Protocol-Relative URLs in Angular HTTP Client",
       "description": "The vulnerability is a **Credential Leak by App Logic** that leads to the **unauthorized disclosure of the Cross-Site Request Forgery (XSRF) token** to an attacker-controlled domain.\n\nAngular's HttpClient has a built-in XSRF protection mechanism that works by checking if a request URL starts with a protocol (`http://` or `https://`) to determine if it is cross-origin. If the URL starts with protocol-relative URL (`//`), it is incorrectly treated as a same-origin request, and the XSRF token is au",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-66035"
         }
       ],
-      "affectedRange": "< 19.2.16",
-      "fixedVersion": "19.2.16"
+      "affectedVersions": [
+        {
+          "range": "< 19.2.16",
+          "fixed": "19.2.16"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

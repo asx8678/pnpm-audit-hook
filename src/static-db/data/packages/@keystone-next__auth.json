@@ -1,9 +1,10 @@
 {
-  "name": "@keystone-next/auth",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@keystone-next/auth",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hrgx-7j6v-xj82",
+      "packageName": "@keystone-next/auth",
       "title": "Reflected cross-site scripting (XSS) vulnerability",
       "description": "This security advisory relates to a capability for an attacker to exploit a reflected cross-site scripting vulnerability when using the `@keystone-6/auth` package.\n\n#### Impact\nThe vulnerability can impact users of the administration user interface when following an untrusted link to the `signin` or `init` page.\nThis is a targeted attack and may present itself in the form of phishing and or chained in conjunction with some other vulnerability.\n\n## Vulnerability mitigation\nPlease upgrade to `@key",
       "severity": "high",
@@ -20,7 +21,12 @@
           "value": "CVE-2022-0087"
         }
       ],
-      "affectedRange": "<= 37.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 37.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

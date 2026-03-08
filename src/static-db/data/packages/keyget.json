@@ -1,9 +1,10 @@
 {
-  "name": "keyget",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "keyget",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8mp8-28xh-r486",
+      "packageName": "keyget",
       "title": "keyget vulnerable to prototype pollution",
       "description": "### Overview\nPrototype pollution vulnerability in 'keyget' versions 1.0.0 through 2.2.0 allows attacker to cause a denial of service and may lead to remote code execution.\n\n### Details\nThe npm module 'keyget' can be abused by Prototype Pollution vulnerability since the function 'setByPath()' did not check for the type of object before assigning value to the property. Due to this flaw an attacker could create a non-existent property or able to manipulate the property which leads to Denial of Serv",
       "severity": "critical",
@@ -20,11 +21,17 @@
           "value": "CVE-2020-28272"
         }
       ],
-      "affectedRange": ">= 1.0.0, <= 2.2.0",
-      "fixedVersion": "2.3.0"
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0, <= 2.2.0",
+          "fixed": "2.3.0"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9fp7-4fjm-q3mf",
+      "packageName": "keyget",
       "title": "Prototype Pollution in keyget",
       "description": "The package keyget from 0.0.0 are vulnerable to Prototype Pollution via the methods set, push, and at which could allow an attacker to cause a denial of service and may lead to remote code execution. **Note:** This vulnerability derives from an incomplete fix to [CVE-2020-28272](https://security.snyk.io/vuln/SNYK-JS-KEYGET-1048048)",
       "severity": "medium",
@@ -41,7 +48,12 @@
           "value": "CVE-2021-23760"
         }
       ],
-      "affectedRange": "<= 2.4.0"
+      "affectedVersions": [
+        {
+          "range": "<= 2.4.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

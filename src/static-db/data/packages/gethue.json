@@ -1,9 +1,10 @@
 {
-  "name": "gethue",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "gethue",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rxfp-8jmr-xc95",
+      "packageName": "gethue",
       "title": "Cloudera HUE Account Enumeration",
       "description": "Cloudera HUE 3.9.0 and earlier allows remote attackers to enumerate user accounts via a request to `desktop/api/users/autocomplete`.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2016-4947"
         }
       ],
-      "affectedRange": "<= 3.9.0"
+      "affectedVersions": [
+        {
+          "range": "<= 3.9.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

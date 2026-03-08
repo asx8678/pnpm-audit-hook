@@ -1,9 +1,10 @@
 {
-  "name": "node-static",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "node-static",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8r4g-cg4m-x23c",
+      "packageName": "node-static",
       "title": "Denial of Service in node-static",
       "description": "All versions of node-static are vulnerable to a Denial of Service. The package fails to catch an exception when user input includes null bytes. This allows attackers to access `http://host/%00` and crash the server.",
       "severity": "medium",
@@ -16,10 +17,16 @@
           "value": "GHSA-8r4g-cg4m-x23c"
         }
       ],
-      "affectedRange": "<= 0.7.11"
+      "affectedVersions": [
+        {
+          "range": "<= 0.7.11"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-5g97-whc9-8g7j",
+      "packageName": "node-static",
       "title": "node-static and @nubosoftware/node-static vulnerable to Directory Traversal",
       "description": "node-static and its fork, @nubosoftware/node-static, are vulnerable to Directory Traversal due to improper file path sanitization in the startsWith() method in the servePath function.",
       "severity": "high",
@@ -36,7 +43,12 @@
           "value": "CVE-2023-26111"
         }
       ],
-      "affectedRange": "<= 0.7.11"
+      "affectedVersions": [
+        {
+          "range": "<= 0.7.11"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

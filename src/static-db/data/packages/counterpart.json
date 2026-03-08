@@ -1,9 +1,10 @@
 {
-  "name": "counterpart",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "counterpart",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-2488-w585-72ch",
+      "packageName": "counterpart",
       "title": "counterpart vulnerable to prototype pollution",
       "description": "A vulnerability exists in the `counterpart` library for Node.js and the browser due to insufficient sanitization of user-controlled input in translation key processing. The affected versions prior to 0.18.6 allow attackers to manipulate the library's translation functionality by supplying maliciously crafted keys containing prototype chain elements (e.g., __proto__ ), leading to prototype pollution. This weakness enables adversaries to inject arbitrary properties into the JavaScript Object proto",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-57354"
         }
       ],
-      "affectedRange": "<= 0.18.6"
+      "affectedVersions": [
+        {
+          "range": "<= 0.18.6"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

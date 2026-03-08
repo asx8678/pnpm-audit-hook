@@ -1,9 +1,10 @@
 {
-  "name": "seroval",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "seroval",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3j22-8qj3-26mx",
+      "packageName": "seroval",
       "title": "Seroval affected by Denial of Service via Deeply Nested Objects",
       "description": "Serialization of objects with extreme depth can **exceed the maximum call stack limit**.  \n\n**Mitigation**:  \n`Seroval` introduces a `depthLimit` parameter in serialization/deserialization methods. **An error will be thrown if the depth limit is reached.**",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2026-24006"
         }
       ],
-      "affectedRange": "<= 1.4.0",
-      "fixedVersion": "1.4.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.0",
+          "fixed": "1.4.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-66fc-rw6m-c2q6",
+      "packageName": "seroval",
       "title": "Seroval affected by Denial of Service via Array serialization",
       "description": "Overriding encoded array lengths by replacing them with an excessively large value causes the deserialization process to **significantly increase processing time**.  \n\n**Mitigation**:  \n`Seroval` no longer encodes array lengths.\nInstead, it computes length using `Array.prototype.length` during deserialization.",
       "severity": "high",
@@ -41,11 +48,17 @@
           "value": "CVE-2026-23957"
         }
       ],
-      "affectedRange": "<= 1.4.0",
-      "fixedVersion": "1.4.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.0",
+          "fixed": "1.4.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-hx9m-jf43-8ffr",
+      "packageName": "seroval",
       "title": "seroval affected by Denial of Service via RegExp serialization",
       "description": "Overriding RegExp serialization with extremely large patterns can **exhaust JavaScript runtime memory** during deserialization. Additionally, overriding RegExp serialization with patterns that trigger **catastrophic backtracking** can lead to ReDoS (Regular Expression Denial of Service).  \n\n**Mitigation**:  \n`Seroval` introduces `disabledFeatures` (a bitmask) in serialization/deserialization methods, with `Feature.RegExp` as a dedicated flag. **Users are recommended to configure `disabledFeature",
       "severity": "high",
@@ -62,11 +75,17 @@
           "value": "CVE-2026-23956"
         }
       ],
-      "affectedRange": "<= 1.4.0",
-      "fixedVersion": "1.4.1"
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.0",
+          "fixed": "1.4.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-3rxj-6cgf-8cfw",
+      "packageName": "seroval",
       "title": "seroval Affected by Remote Code Execution via JSON Deserialization",
       "description": "Improper input handling in the JSON deserialization component can lead to arbitrary JavaScript code execution.\n\nThe vulnerability can be exploited via overriding constant value and error deserialization, which allows indirect access to unsafe JS evaluation. This requires at least the ability to perform 4 separate requests on the same function and partial knowledge of how the serialized data is used during later runtime processing. \n\nThis vulnerability affects the `fromJSON` and `fromCrossJSON` f",
       "severity": "high",
@@ -83,11 +102,17 @@
           "value": "CVE-2026-23737"
         }
       ],
-      "affectedRange": "< 1.4.1",
-      "fixedVersion": "1.4.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.4.1",
+          "fixed": "1.4.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-hj76-42vx-jwp4",
+      "packageName": "seroval",
       "title": "seroval Affected by Prototype Pollution via JSON Deserialization",
       "description": "Due to improper input validation, a malicious object key can lead to prototype pollution during JSON deserialization.\nThis affects only JSON deserialization functionality.\n\nAs there is no known workaround, please upgrade to the latest version.",
       "severity": "high",
@@ -104,8 +129,13 @@
           "value": "CVE-2026-23736"
         }
       ],
-      "affectedRange": "< 1.4.1",
-      "fixedVersion": "1.4.1"
+      "affectedVersions": [
+        {
+          "range": "< 1.4.1",
+          "fixed": "1.4.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

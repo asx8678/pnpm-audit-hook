@@ -1,0 +1,32 @@
+{
+  "packageName": "nanotar",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-92fh-27vv-894w",
+      "packageName": "nanotar",
+      "title": "nanotar is vulnerable to path traversal in parseTar() and parseTarGzip()",
+      "description": "nanotar through 0.2.0 has a path traversal vulnerability in parseTar() and parseTarGzip() that allows remote attackers to write arbitrary files outside the intended extraction directory via a crafted tar archive containing path traversal sequence.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-92fh-27vv-894w",
+      "publishedAt": "2026-02-11T18:31:30Z",
+      "modifiedAt": "2026-02-11T18:56:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-92fh-27vv-894w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-69874"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

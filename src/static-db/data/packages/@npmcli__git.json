@@ -1,9 +1,10 @@
 {
-  "name": "@npmcli/git",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@npmcli/git",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hxwm-x553-x359",
+      "packageName": "@npmcli/git",
       "title": "Arbitrary Command Injection due to Improper Command Sanitization",
       "description": "### Summary\nThere exists a command injection vulnerability in `npmcli/git` versions <2.0.8 which may result in arbitrary shell command execution due to improper argument sanitization when `npmcli/git` is used to execute Git commands based on user controlled input. \n\nThe impact of this issue is possible Arbitrary Command Injection when `npmcli/git` is run with untrusted (user controlled) Git command arguments. \n\n### Impact\n\nArbitrary Command Injection\n\n### Details\n\n`npmcli/git` prior to release `",
       "severity": "medium",
@@ -16,8 +17,13 @@
           "value": "GHSA-hxwm-x553-x359"
         }
       ],
-      "affectedRange": "< 2.0.8",
-      "fixedVersion": "2.0.8"
+      "affectedVersions": [
+        {
+          "range": "< 2.0.8",
+          "fixed": "2.0.8"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

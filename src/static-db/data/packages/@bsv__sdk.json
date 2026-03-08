@@ -1,0 +1,33 @@
+{
+  "packageName": "@bsv/sdk",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vjpq-xx5g-qvmm",
+      "packageName": "@bsv/sdk",
+      "title": "BSV Blockchain SDK has an Authentication Signature Data Preparation Vulnerability",
+      "description": "# BRC-104 Authentication Signature Data Preparation Vulnerability\n\n### Summary\nA critical cryptographic vulnerability in the TypeScript SDK's BRC-104 authentication implementation caused incorrect signature data preparation, resulting in signature incompatibility [between SDK implementations](https://github.com/F1r3Hydr4nt/brc104-cross-language-tests) and potential authentication bypass scenarios.\n\n### Details\nThe vulnerability was located in the `Peer.ts` file of the TypeScript SDK, specificall",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vjpq-xx5g-qvmm",
+      "publishedAt": "2026-02-17T16:13:48Z",
+      "modifiedAt": "2026-02-18T23:48:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vjpq-xx5g-qvmm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-69287"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

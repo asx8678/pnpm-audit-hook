@@ -1,9 +1,10 @@
 {
-  "name": "debug",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "debug",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4x49-vf9v-38px",
+      "packageName": "debug",
       "title": "debug@4.4.2 contains malware after npm account takeover",
       "description": "### Impact\nOn 8 September 2025, the npm publishing account for `debug` was taken over after a phishing attack. Version `4.4.2` was published, functionally identical to the previous patch version, but with a malware payload added attempting to redirect cryptocurrency transactions to the attacker's own addresses from within browser environments.\n\nLocal environments, server environments, command line applications, etc. are not affected. If the package was used in a browser context (e.g. a direct `<",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2025-59144"
         }
       ],
-      "affectedRange": "= 4.4.2",
-      "fixedVersion": "4.4.3"
+      "affectedVersions": [
+        {
+          "range": "= 4.4.2",
+          "fixed": "4.4.3"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-9vvw-cc9w-f27h",
+      "packageName": "debug",
       "title": "debug Inefficient Regular Expression Complexity vulnerability",
       "description": "A vulnerability classified as problematic has been found in debug-js debug up to 3.0.x. This affects the function useColors of the file src/node.js. The manipulation of the argument str leads to inefficient regular expression complexity. Upgrading to version 3.1.0 is able to address this issue. The name of the patch is c38a0166c266a679c8de012d4eaccec3f944e685. It is recommended to upgrade the affected component. The identifier VDB-217665 was assigned to this vulnerability. The patch has been bac",
       "severity": "high",
@@ -41,8 +48,13 @@
           "value": "CVE-2017-20165"
         }
       ],
-      "affectedRange": ">= 3.0.0, < 3.1.0",
-      "fixedVersion": "3.1.0"
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 3.1.0",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

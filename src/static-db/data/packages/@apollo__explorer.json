@@ -1,9 +1,10 @@
 {
-  "name": "@apollo/explorer",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@apollo/explorer",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-w87v-7w53-wwxv",
+      "packageName": "@apollo/explorer",
       "title": "Apollo Embedded Sandbox and Explorer vulnerable to CSRF via window.postMessage origin-validation bypass",
       "description": "### Impact\n\nA **Cross-Site Request Forgery (CSRF)** vulnerability was identified in Apollo’s **Embedded Sandbox** and **Embedded Explorer**.\n\nThe vulnerability arises from missing origin validation in the client-side code that handles `window.postMessage` events. A malicious website can send forged messages to the embedding page, causing the victim’s browser to execute arbitrary GraphQL queries or mutations against their GraphQL server while authenticated with the victim’s cookies.\n\n#### Who is ",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-59845"
         }
       ],
-      "affectedRange": "< 3.7.3",
-      "fixedVersion": "3.7.3"
+      "affectedVersions": [
+        {
+          "range": "< 3.7.3",
+          "fixed": "3.7.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

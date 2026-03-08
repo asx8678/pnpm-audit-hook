@@ -1,9 +1,10 @@
 {
-  "name": "comb",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "comb",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vxr4-rxw7-g7v6",
+      "packageName": "comb",
       "title": "Prototype Pollution in comb",
       "description": "All versions of package comb are vulnerable to Prototype Pollution via the `deepMerge()` function.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-23561"
         }
       ],
-      "affectedRange": "<= 2.0.0"
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

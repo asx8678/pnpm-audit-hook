@@ -1,9 +1,10 @@
 {
-  "name": "braft-editor",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "braft-editor",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jfrf-vv54-j2jg",
+      "packageName": "braft-editor",
       "title": "Margox Braft-Editor Cross-site Scripting Vulnerability",
       "description": "Cross Site Scripting (XSS) vulnerability in margox braft-editor version 2.3.8, allows remote attackers to execute arbitrary code via the embed media feature.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-27524"
         }
       ],
-      "affectedRange": "<= 2.3.8"
+      "affectedVersions": [
+        {
+          "range": "<= 2.3.8"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

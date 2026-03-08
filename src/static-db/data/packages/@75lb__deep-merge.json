@@ -1,9 +1,10 @@
 {
-  "name": "@75lb/deep-merge",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@75lb/deep-merge",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-28mc-g557-92m7",
+      "packageName": "@75lb/deep-merge",
       "title": "@75lb/deep-merge Prototype Pollution vulnerability",
       "description": "Prototype Pollution in 75lb deep-merge 1.1.1 allows attackers to execute arbitrary code or cause a Denial of Service (DoS) and cause other impacts via merge methods of lodash to merge objects.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-38986"
         }
       ],
-      "affectedRange": "<= 1.1.1",
-      "fixedVersion": "1.1.2"
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.1",
+          "fixed": "1.1.2"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

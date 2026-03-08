@@ -1,9 +1,10 @@
 {
-  "name": "nodebb-plugin-markdown",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "nodebb-plugin-markdown",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9g4f-5rpg-4948",
+      "packageName": "nodebb-plugin-markdown",
       "title": "NodeBB Cross-site Scripting Vulnerability in Markdown Processing",
       "description": "Multiple cross-site scripting (XSS) vulnerabilities in NodeBB before 0.7 allow remote attackers to inject arbitrary web script or HTML via vectors related to (1) javascript: or (2) data: URLs.",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2015-3296"
         }
       ],
-      "affectedRange": "< 5.1.1",
-      "fixedVersion": "5.1.1"
+      "affectedVersions": [
+        {
+          "range": "< 5.1.1",
+          "fixed": "5.1.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

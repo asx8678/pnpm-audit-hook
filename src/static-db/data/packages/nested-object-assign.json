@@ -1,9 +1,10 @@
 {
-  "name": "nested-object-assign",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "nested-object-assign",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-c497-v8pv-ch6x",
+      "packageName": "nested-object-assign",
       "title": "Prototype pollution in nested-object-assign",
       "description": "The package nested-object-assign before 1.0.4 is vulnerable to Prototype Pollution via the default function.",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2021-23329"
         }
       ],
-      "affectedRange": "< 1.0.4",
-      "fixedVersion": "1.0.4"
+      "affectedVersions": [
+        {
+          "range": "< 1.0.4",
+          "fixed": "1.0.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

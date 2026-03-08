@@ -1,9 +1,10 @@
 {
-  "name": "sveltekit-superforms",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "sveltekit-superforms",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hwmc-4c8j-xxj7",
+      "packageName": "sveltekit-superforms",
       "title": "`sveltekit-superforms` has Prototype Pollution in `parseFormData` function of `formData.js`",
       "description": "### Summary\n`sveltekit-superforms` v2.27.3 and prior are susceptible to a prototype pollution vulnerability within the `parseFormData` function of `formData.js`. An attacker can inject string and array properties into `Object.prototype`, leading to denial of service, type confusion, and potential remote code execution in downstream applications that rely on polluted objects.\n\n### Details\nSuperforms is a SvelteKit form library for server and client form validation. Under normal operation, form va",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-62381"
         }
       ],
-      "affectedRange": "<= 2.27.3",
-      "fixedVersion": "2.27.4"
+      "affectedVersions": [
+        {
+          "range": "<= 2.27.3",
+          "fixed": "2.27.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

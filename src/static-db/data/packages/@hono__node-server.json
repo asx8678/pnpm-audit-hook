@@ -1,9 +1,10 @@
 {
-  "name": "@hono/node-server",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@hono/node-server",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hgxw-5xg3-69jx",
+      "packageName": "@hono/node-server",
       "title": "@hono/node-server has Denial of Service risk when receiving Host header that cannot be parsed",
       "description": "### Impact\n\nThe application hangs when receiving a Host header with a value that `@hono/node-server` can't handle well. Invalid values are those that cannot be parsed by the `URL` as a hostname such as an empty string, slashes `/`, and other strings.\n\nFor example, if you have a simple application:\n\n```ts\nimport { serve } from '@hono/node-server'\nimport { Hono } from 'hono'\n\nconst app = new Hono()\n\napp.get('/', (c) => c.text('Hello'))\n\nserve(app)\n```\n\nSending a request with a Host header with an ",
       "severity": "high",
@@ -20,11 +21,17 @@
           "value": "CVE-2024-32652"
         }
       ],
-      "affectedRange": ">= 1.3.0, < 1.10.1",
-      "fixedVersion": "1.10.1"
+      "affectedVersions": [
+        {
+          "range": ">= 1.3.0, < 1.10.1",
+          "fixed": "1.10.1"
+        }
+      ],
+      "source": "github"
     },
     {
       "id": "GHSA-rjq5-w47x-x359",
+      "packageName": "@hono/node-server",
       "title": "@hono/node-server cannot handle \"double dots\" in URL",
       "description": "### Impact\n\nSince v1.3.0, we use our own Request object. This is great, but the `url` behavior is unexpected.\n\nIn the standard API, if the URL contains `..`, here called \"double dots\", the URL string returned by Request will be in the resolved path.\n\n```ts\nconst req = new Request('http://localhost/static/../foo.txt') // Web-standards\nconsole.log(req.url) // http://localhost/foo.txt\n```\n\nHowever, the `url` in our Request does not resolve double dots, so `http://localhost/static/.. /foo.txt` is re",
       "severity": "medium",
@@ -41,8 +48,40 @@
           "value": "CVE-2024-23340"
         }
       ],
-      "affectedRange": ">= 1.3.0, < 1.4.1",
-      "fixedVersion": "1.4.1"
+      "affectedVersions": [
+        {
+          "range": ">= 1.3.0, < 1.4.1",
+          "fixed": "1.4.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wc8c-qw6v-h7f6",
+      "packageName": "@hono/node-server",
+      "title": "@hono/node-server has authorization bypass for protected static paths via encoded slashes in Serve Static Middleware",
+      "description": "## Summary\n\nWhen using @hono/node-server's static file serving together with route-based middleware protections (e.g. protecting `/admin/*`), inconsistent URL decoding can allow protected static resources to be accessed without authorization.\n\nIn particular, paths containing encoded slashes (`%2F`) may be evaluated differently by routing/middleware matching versus static file path resolution, enabling a bypass where middleware does not run but the static file is still served.\n\n## Details\n\nThe ro",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wc8c-qw6v-h7f6",
+      "publishedAt": "2026-03-04T20:05:49Z",
+      "modifiedAt": "2026-03-06T22:43:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wc8c-qw6v-h7f6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29087"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.19.10",
+          "fixed": "1.19.10"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

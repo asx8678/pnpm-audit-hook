@@ -1,9 +1,10 @@
 {
-  "name": "gedi",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "gedi",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jh2m-j8pp-55rc",
+      "packageName": "gedi",
       "title": "Prototype Pollution in gedi",
       "description": "All versions of package gedi up to and including version 1.6.3 are vulnerable to Prototype Pollution via the set function.",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2020-7727"
         }
       ],
-      "affectedRange": "<= 1.6.3"
+      "affectedVersions": [
+        {
+          "range": "<= 1.6.3"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

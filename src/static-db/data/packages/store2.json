@@ -1,9 +1,10 @@
 {
-  "name": "store2",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "store2",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-w5hq-hm5m-4548",
+      "packageName": "store2",
       "title": "Cross Site Scripting vulnerability in store2",
       "description": "Cross Site Scripting vulnerability in nbubna store v.2.14.2 and before allows a remote attacker to execute arbitrary code via the store.deep.js component",
       "severity": "medium",
@@ -20,8 +21,13 @@
           "value": "CVE-2024-57556"
         }
       ],
-      "affectedRange": "< 2.14.4",
-      "fixedVersion": "2.14.4"
+      "affectedVersions": [
+        {
+          "range": "< 2.14.4",
+          "fixed": "2.14.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

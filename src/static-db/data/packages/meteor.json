@@ -1,9 +1,10 @@
 {
-  "name": "meteor",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "meteor",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j3v9-6gc7-vf5f",
+      "packageName": "meteor",
       "title": "Meteor Affected By Inefficient Regular Expression Complexity",
       "description": "A vulnerability was found in Meteor up to 3.2.1 and classified as problematic. This issue affects the function Object.assign of the file packages/ddp-server/livedata_server.js. The manipulation of the argument forwardedFor leads to inefficient regular expression complexity. The attack may be initiated remotely. The complexity of an attack is rather high. The exploitation is known to be difficult. The exploit has been disclosed to the public and may be used. Upgrading to version 3.2.2 is able to ",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2025-4727"
         }
       ],
-      "affectedRange": "<= 3.2.1"
+      "affectedVersions": [
+        {
+          "range": "<= 3.2.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

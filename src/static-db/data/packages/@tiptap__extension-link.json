@@ -1,9 +1,10 @@
 {
-  "name": "@tiptap/extension-link",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@tiptap/extension-link",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vhrc-hgrq-x75r",
+      "packageName": "@tiptap/extension-link",
       "title": "@tiptap/extension-link vulnerable to Cross-site Scripting (XSS)",
       "description": "Versions of the package @tiptap/extension-link before 2.10.4 are vulnerable to Cross-site Scripting (XSS) due to unsanitized user input allowed in setting or toggling links. An attacker can execute arbitrary JavaScript code in the context of the application by injecting a javascript: URL payload into these attributes, which is then triggered either by user interaction.",
       "severity": "low",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-14284"
         }
       ],
-      "affectedRange": "< 2.10.4",
-      "fixedVersion": "2.10.4"
+      "affectedVersions": [
+        {
+          "range": "< 2.10.4",
+          "fixed": "2.10.4"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "@adonisjs/bodyparser",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@adonisjs/bodyparser",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gvq6-hvvp-h34h",
+      "packageName": "@adonisjs/bodyparser",
       "title": "AdonisJS Path Traversal in Multipart File Handling",
       "description": "### Summary\n\n**Description**\nA Path Traversal (CWE-22) vulnerability in AdonisJS multipart file handling may allow a remote attacker to write arbitrary files to arbitrary locations on the server filesystem. This impacts @adonisjs/bodyparser through version 10.1.1 and 11.x prerelease versions prior to 11.0.0-next.6. This issue has been patched in @adonisjs/bodyparser versions 10.1.2 and 11.0.0-next.6.\n\n### Details\nAdonisJS parses `multipart/form-data` via `BodyParser` and exposes uploads as `Mult",
       "severity": "critical",
@@ -20,8 +21,67 @@
           "value": "CVE-2026-21440"
         }
       ],
-      "affectedRange": ">= 11.0.0-next.0, < 11.0.0-next.6",
-      "fixedVersion": "11.0.0-next.6"
+      "affectedVersions": [
+        {
+          "range": ">= 11.0.0-next.0, < 11.0.0-next.6",
+          "fixed": "11.0.0-next.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xx9g-fh25-4q64",
+      "packageName": "@adonisjs/bodyparser",
+      "title": "AdonisJS vulnerable to Denial of Service (DoS) via Unrestricted Memory Buffering in PartHandler during File Type Detection",
+      "description": "### Summary\n\nA Denial of Service (DoS) vulnerability (CWE-400) exists in the multipart file handling logic of `@adonisjs/bodyparser`. When processing file uploads, the multipart parser may accumulate an unbounded amount of data in memory while attempting to detect file types, potentially leading to excessive memory consumption and process termination.\n\nThis issue affects applications that accept `multipart/form-data` uploads using affected versions of `@adonisjs/bodyparser`.\n\n### Details\n\nAdonis",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xx9g-fh25-4q64",
+      "publishedAt": "2026-02-06T19:53:55Z",
+      "modifiedAt": "2026-02-07T00:33:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xx9g-fh25-4q64"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25762"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 11.0.0-next.0, <= 11.0.0-next.8",
+          "fixed": "11.0.0-next.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f5x2-vj4h-vg4c",
+      "packageName": "@adonisjs/bodyparser",
+      "title": "AdonisJS multipart body parsing has Prototype Pollution issue",
+      "description": "### Description\n\nA Prototype Pollution vulnerability (CWE-1321) in AdonisJS multipart form-data parsing may allow a remote attacker to manipulate object prototypes at runtime. This impacts `@adonisjs/bodyparser` through version `10.1.2` and `11.x` prerelease versions prior to `11.0.0-next.8`. This issue has been patched in `@adonisjs/bodyparser` versions `10.1.3` and `11.0.0-next.9`\n\n### Details\n\nAdonisJS parses `multipart/form-data` requests via the BodyParser package. During multipart parsing,",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f5x2-vj4h-vg4c",
+      "publishedAt": "2026-02-06T19:27:30Z",
+      "modifiedAt": "2026-02-07T00:33:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f5x2-vj4h-vg4c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25754"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 11.0.0-next.0, <= 11.0.0-next.8",
+          "fixed": "11.0.0-next.9"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

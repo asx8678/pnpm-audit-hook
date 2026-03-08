@@ -1,9 +1,10 @@
 {
-  "name": "vega-expression",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "vega-expression",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7f2v-3qq3-vvjf",
+      "packageName": "vega-expression",
       "title": "Vega Cross-Site Scripting (XSS) via expressions abusing toString calls in environments using the VEGA_DEBUG global variable",
       "description": "## Impact\n\nApplications meeting 2 conditions are at risk of arbitrary JavaScript code execution, even if \"safe mode\" [expressionInterpreter](https://vega.github.io/vega/usage/interpreter/) is used. \n\n1. Use `vega` in an application that attaches `vega` library and a `vega.View` instance similar to the Vega [Editor](https://github.com/vega/editor) to the global `window`\n2. Allow user-defined Vega `JSON` definitions (vs JSON that was is only provided through source code)\n\n## Patches\n\n- If using la",
       "severity": "high",
@@ -20,8 +21,13 @@
           "value": "CVE-2025-59840"
         }
       ],
-      "affectedRange": "< 5.2.1",
-      "fixedVersion": "5.2.1"
+      "affectedVersions": [
+        {
+          "range": "< 5.2.1",
+          "fixed": "5.2.1"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

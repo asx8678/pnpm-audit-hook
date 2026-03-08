@@ -1,9 +1,10 @@
 {
-  "name": "vscode-npm-script",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "vscode-npm-script",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-r84v-qff8-jv5g",
+      "packageName": "vscode-npm-script",
       "title": "Remote code execution in vscode-npm-script",
       "description": "Visual Studio Code npm-script Extension Remote Code Execution Vulnerability",
       "severity": "critical",
@@ -20,7 +21,12 @@
           "value": "CVE-2021-26700"
         }
       ],
-      "affectedRange": ">= 0.0.0"
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
     }
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "name": "@cdr0/sg",
-  "lastUpdated": "2026-01-31T15:05:26.294Z",
+  "packageName": "@cdr0/sg",
+  "lastUpdated": "2026-03-08T16:40:25.784Z",
   "vulnerabilities": [
     {
       "id": "GHSA-fg52-5jjj-28h7",
+      "packageName": "@cdr0/sg",
       "title": "@cdr0/sg Prototype Pollution",
       "description": "A Prototype Pollution issue in cdr0 sg 1.0.10 allows an attacker to execute arbitrary code.",
       "severity": "medium",
@@ -20,7 +21,12 @@
           "value": "CVE-2024-36580"
         }
       ],
-      "affectedRange": "<= 1.0.10"
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.10"
+        }
+      ],
+      "source": "github"
     }
   ]
 }
