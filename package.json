@@ -28,6 +28,12 @@
   "type": "commonjs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "bin": {
     "pnpm-audit-setup": "bin/setup.js"
   },
@@ -49,13 +55,15 @@
     "update-vuln-db:incremental": "tsx scripts/update-vuln-db.ts --incremental",
     "update-vuln-db:full": "tsx scripts/update-vuln-db.ts"
   },
+  "dependencies": {
+    "semver": "^7.7.3",
+    "yaml": "^2.8.2"
+  },
   "devDependencies": {
     "@types/node": "^24.10.9",
     "@types/semver": "^7.7.1",
     "esbuild": "^0.27.2",
-    "semver": "^7.7.3",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3",
-    "yaml": "^2.8.2"
+    "typescript": "^5.9.3"
   }
 }

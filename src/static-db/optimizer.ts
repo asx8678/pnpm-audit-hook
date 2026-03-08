@@ -489,6 +489,7 @@ async function decompressBuffer(buffer: Buffer): Promise<Buffer> {
     gunzip.on("data", (chunk: Buffer) => chunks.push(chunk));
     gunzip.on("end", () => resolve(Buffer.concat(chunks)));
     gunzip.on("error", (err) => {
+      gunzip.destroy();
       const message = err instanceof Error ? err.message : String(err);
       reject(new Error(`Gzip decompression failed: ${message}`));
     });
@@ -554,7 +555,10 @@ async function compressBuffer(buffer: Buffer): Promise<Buffer> {
 
     gzip.on("data", (chunk: Buffer) => chunks.push(chunk));
     gzip.on("end", () => resolve(Buffer.concat(chunks)));
-    gzip.on("error", reject);
+    gzip.on("error", (err) => {
+      gzip.destroy();
+      reject(err);
+    });
 
     gzip.write(buffer);
     gzip.end();

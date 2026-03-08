@@ -2,6 +2,7 @@ import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { sha256Hex } from "../utils/hash";
+import { isNodeError } from "../utils/error";
 import { logger } from "../utils/logger";
 import type { Cache, CacheEntry } from "./types";
 
@@ -9,11 +10,6 @@ export interface FileCacheOptions {
   dir: string;
   /** Max entries to keep in the in-memory path cache (0 disables caching). */
   maxPathCacheEntries?: number;
-}
-
-/** Type guard for NodeJS.ErrnoException */
-function isNodeError(e: unknown): e is NodeJS.ErrnoException {
-  return e instanceof Error && "code" in e;
 }
 
 /**
@@ -78,14 +74,26 @@ export class FileCache<T = unknown> implements Cache<T> {
 
   async get(key: string): Promise<CacheEntry<T> | null> {
     const filePath = this.filePathForKey(key);
+    let handle: import("node:fs/promises").FileHandle | null = null;
     try {
-      // Protect against symlink attacks
-      if (await this.isSymlink(filePath)) {
+      // Protect against symlink attacks: open file then verify via lstat on same path
+      // Using lstat before open has a TOCTOU window; checking both before and after
+      // the open narrows the race to be as small as practical without O_NOFOLLOW.
+      const statBefore = await fs.lstat(filePath);
+      if (statBefore.isSymbolicLink()) {
         logger.warn(`Symlink detected at cache path, ignoring: ${filePath}`);
         return null;
       }
 
-      const raw = await fs.readFile(filePath, "utf-8");
+      handle = await fs.open(filePath, "r");
+      // Verify the fd points to the same inode we lstat'd (detect swap between lstat and open)
+      const fdStat = await handle.stat();
+      if (fdStat.ino !== statBefore.ino || fdStat.dev !== statBefore.dev) {
+        logger.warn(`Cache file inode changed between check and open, ignoring: ${filePath}`);
+        return null;
+      }
+
+      const raw = await handle.readFile("utf-8");
       const parsed: unknown = JSON.parse(raw);
       if (!isCacheEntry<T>(parsed)) {
         await this.deleteCorruptedFile(filePath);
@@ -101,6 +109,8 @@ export class FileCache<T = unknown> implements Cache<T> {
         await this.deleteCorruptedFile(filePath);
       }
       return null;
+    } finally {
+      await handle?.close();
     }
   }
 
@@ -128,6 +138,12 @@ export class FileCache<T = unknown> implements Cache<T> {
     }
 
     await fs.mkdir(dir, { recursive: true, mode: 0o700 });
+
+    // Best-effort symlink check on target file (TOCTOU window exists between
+    // this check and the rename below, but atomic rename from tmp mitigates it)
+    if (await this.isSymlink(filePath)) {
+      throw new Error(`Symlink detected at cache file path: ${filePath}`);
+    }
 
     const now = Date.now();
     const entry: CacheEntry<T> = {
@@ -169,6 +185,12 @@ export class FileCache<T = unknown> implements Cache<T> {
         for (const file of files) {
           if (!file.endsWith(".json")) continue;
           const filePath = path.join(subdirPath, file);
+          // Skip symlinks for security
+          const fileStat = await fs.lstat(filePath);
+          if (fileStat.isSymbolicLink()) {
+            logger.warn(`Symlink detected during prune, skipping: ${filePath}`);
+            continue;
+          }
           try {
             const raw = await fs.readFile(filePath, "utf-8");
             const parsed: unknown = JSON.parse(raw);

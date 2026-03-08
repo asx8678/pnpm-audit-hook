@@ -71,6 +71,7 @@ export async function aggregateVulnerabilities(
       // Path is relative to dist/ directory where index.js lives
       // Static DB data is at dist/static-db/data/
       const defaultDataPath = path.resolve(__dirname, "static-db", "data");
+      logger.debug(`Static DB data path: ${staticBaselineCfg.dataPath ?? defaultDataPath}`);
       staticDb = await createStaticDbReader({
         dataPath: staticBaselineCfg.dataPath ?? defaultDataPath,
         cutoffDate: staticBaselineCfg.cutoffDate,
@@ -118,7 +119,9 @@ export async function aggregateVulnerabilities(
   } catch (e) {
     const errMsg = errorMessage(e);
     logger.error(`GitHub Advisory source failed: ${errMsg}`);
-    sourceStatus[githubSource.id] = { ok: false, error: errMsg, durationMs: 0 };
+    if (!sourceStatus[githubSource.id]) {
+      sourceStatus[githubSource.id] = { ok: false, error: errMsg, durationMs: 0 };
+    }
 
     // Fail-closed on exception (default: true for security)
     if (ctx.cfg.failOnSourceError !== false) {

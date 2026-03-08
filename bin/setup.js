@@ -5,6 +5,13 @@ const path = require("path");
 const sourceDir = path.resolve(__dirname, "..");
 const targetDir = process.cwd();
 
+// Validate target directory has a package.json
+if (!fs.existsSync(path.join(targetDir, "package.json"))) {
+  console.error("Error: No package.json found in current directory.");
+  console.error("Run this command from your project root.");
+  process.exit(1);
+}
+
 const filesToCopy = [
   { src: ".pnpmfile.cjs", required: true },
   { src: ".pnpm-audit.yaml", required: false },

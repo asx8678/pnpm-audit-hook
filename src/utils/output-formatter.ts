@@ -216,7 +216,7 @@ export function formatHumanReadable(data: AuditOutputData): string {
     lines.push(`${BOLD}${GREEN}AUDIT PASSED - No issues found${RESET}`);
   }
   lines.push(`${BOLD}===============================================${RESET}`);
-  lines.push(`Total time: ${summary.totalDurationMs}ms`);
+  lines.push(`Source query time: ${summary.totalDurationMs}ms`);
   lines.push("");
 
   return lines.join("\n");
@@ -313,7 +313,7 @@ export function formatAzureDevOps(data: AuditOutputData): string {
     lines.push("AUDIT PASSED - No issues found");
   }
 
-  lines.push(`Total time: ${summary.totalDurationMs}ms`);
+  lines.push(`Source query time: ${summary.totalDurationMs}ms`);
 
   return lines.join("\n");
 }

@@ -27,7 +27,7 @@ const getCleanBaseEnv = (): NodeJS.ProcessEnv => {
 
 const testScript = (code: string, env: Record<string, string> = {}) => {
   // Construct inline code to avoid newline escaping issues
-  const fullCode = `import { logger, isJsonMode, isVerbose, getOutputFormat } from "./src/utils/logger"; ${code}`;
+  const fullCode = `import { logger, isJsonMode, isVerbose } from "./src/utils/logger"; ${code}`;
 
   // Start with clean base env, then apply test-specific vars
   // Empty string values are filtered out (treated as "unset")
@@ -239,40 +239,4 @@ describe("logger", () => {
     });
   });
 
-  describe("getOutputFormat", () => {
-    it("returns 'json' when PNPM_AUDIT_JSON=true", () => {
-      const { stdout } = testScript("console.log(getOutputFormat());", {
-        PNPM_AUDIT_JSON: "true",
-      });
-      assert.equal(stdout.trim(), "json");
-    });
-
-    it("returns 'azure' when PNPM_AUDIT_FORMAT=azure", () => {
-      const { stdout } = testScript("console.log(getOutputFormat());", {
-        PNPM_AUDIT_FORMAT: "azure",
-      });
-      assert.equal(stdout.trim(), "azure");
-    });
-
-    it("returns 'azure' when TF_BUILD=True", () => {
-      const { stdout } = testScript("console.log(getOutputFormat());", {
-        TF_BUILD: "True",
-      });
-      assert.equal(stdout.trim(), "azure");
-    });
-
-    it("returns 'human' by default", () => {
-      const { stdout } = testScript("console.log(getOutputFormat());", {});
-      assert.equal(stdout.trim(), "human");
-    });
-
-    it("returns 'json' over 'azure' when both are set", () => {
-      const { stdout } = testScript("console.log(getOutputFormat());", {
-        PNPM_AUDIT_JSON: "true",
-        PNPM_AUDIT_FORMAT: "azure",
-        TF_BUILD: "True",
-      });
-      assert.equal(stdout.trim(), "json");
-    });
-  });
 });

@@ -55,7 +55,8 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
   }
 
   private cacheKey(ctx: SourceContext, pkg: PackageRef): string {
-    return `github:${ctx.registryUrl}:${pkg.name}@${pkg.version}`;
+    const base = `github:${ctx.registryUrl}:${pkg.name}@${pkg.version}`;
+    return this.cutoffDate ? `${base}:after=${this.cutoffDate}` : base;
   }
 
   /**
@@ -105,12 +106,14 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
 
     const errors: string[] = [];
     const seen = new Set<string>();
+    let staticDbFindingCount = 0;
 
     // Step 1: Query static DB for historical vulnerabilities (if available)
     const staticDbAvailable = this.staticDb?.isReady() ?? false;
     if (staticDbAvailable) {
       try {
         const staticFindings = await this.queryStaticDb(targets, seen, perPkg);
+        staticDbFindingCount = staticFindings.length;
         logger.debug(`Static DB returned ${staticFindings.length} findings for ${targets.length} packages`);
       } catch (e) {
         logger.warn(`Static DB query failed, falling back to full API: ${errorMessage(e)}`);
@@ -177,7 +180,7 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
       // When static DB is available and was queried successfully, API failures are less critical
       // because the static DB covers historical vulnerabilities. The API is primarily needed
       // for very recent vulnerabilities published after the cutoff date.
-      const hasStaticDbFindings = findings.length > 0 && staticDbAvailable;
+      const hasStaticDbFindings = staticDbFindingCount > 0;
 
       if (errors.length === targets.length) {
         // All API queries failed
@@ -266,7 +269,7 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
     perPkg: Record<string, VulnerabilityFinding[]>,
     options?: VulnerabilitySourceOptions,
   ): Promise<string[]> {
-    const token = ctx.env.GITHUB_TOKEN || ctx.env.GH_TOKEN;
+    const token = ctx.env.GITHUB_TOKEN ?? ctx.env.GH_TOKEN;
     const headers: Record<string, string> = {
       Accept: "application/vnd.github+json",
       "X-GitHub-Api-Version": "2022-11-28",
@@ -412,9 +415,7 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
     };
 
     // Run queries with limited concurrency
-    for (let i = 0; i < targets.length; i += MAX_CONCURRENT) {
-      await Promise.all(targets.slice(i, i + MAX_CONCURRENT).map(queryPackage));
-    }
+    await mapWithConcurrency(targets, MAX_CONCURRENT, queryPackage);
 
     return errors;
   }

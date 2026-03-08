@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import YAML from "yaml";
 import type { AllowlistEntry, AuditConfig, Severity, StaticBaselineConfig } from "./types";
-import { errorMessage } from "./utils/error";
+import { errorMessage, isNodeError } from "./utils/error";
 import { logger } from "./utils/logger";
 
 /** Maximum allowed timeout in milliseconds (5 minutes) */
@@ -10,14 +10,10 @@ const MAX_TIMEOUT_MS = 300000;
 /** Maximum allowed cache TTL in seconds (24 hours) */
 const MAX_CACHE_TTL_SECONDS = 86400;
 
-/** Type guard for NodeJS.ErrnoException */
-function isNodeError(e: unknown): e is NodeJS.ErrnoException {
-  return e instanceof Error && "code" in e;
-}
-
 /** Type guard for unknown object access */
 function hasStringProp(obj: object, key: string): boolean {
-  return key in obj && typeof (obj as Record<string, unknown>)[key] === "string";
+  const value = (obj as Record<string, unknown>)[key];
+  return typeof value === "string" && value.length > 0;
 }
 
 /** Get optional string property from object, returns undefined if not a string */
@@ -189,11 +185,13 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
     return normalized.filter((s): s is Severity => validSeverities.has(s));
   };
 
-  const policy = raw.policy as Record<string, unknown> | undefined;
-  const sources = raw.sources as Record<string, unknown> | undefined;
-  const cache = raw.cache as Record<string, unknown> | undefined;
-  const performance = raw.performance as Record<string, unknown> | undefined;
-  const staticBaselineRaw = raw.staticBaseline as Record<string, unknown> | undefined;
+  const asRecord = (v: unknown): Record<string, unknown> | undefined =>
+    v && typeof v === "object" && !Array.isArray(v) ? v as Record<string, unknown> : undefined;
+  const policy = asRecord(raw.policy);
+  const sources = asRecord(raw.sources);
+  const cache = asRecord(raw.cache);
+  const performance = asRecord(raw.performance);
+  const staticBaselineRaw = asRecord(raw.staticBaseline);
 
   const parseStaticBaseline = (v: Record<string, unknown> | undefined): StaticBaselineConfig => {
     if (!v) return DEFAULT_STATIC_BASELINE;
@@ -246,11 +244,18 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
     return true; // default enabled
   };
 
+  const blockSeverities = asSeverities(policy?.block, DEFAULT_CONFIG.policy.block);
+  const warnSeverities = asSeverities(policy?.warn, DEFAULT_CONFIG.policy.warn);
+  const overlap = blockSeverities.filter(s => warnSeverities.includes(s));
+  if (overlap.length > 0) {
+    logger.warn(`Severity overlap in policy: ${overlap.join(", ")} appears in both block and warn (block takes precedence)`);
+  }
+
   return {
     ...DEFAULT_CONFIG,
     policy: {
-      block: asSeverities(policy?.block, DEFAULT_CONFIG.policy.block),
-      warn: asSeverities(policy?.warn, DEFAULT_CONFIG.policy.warn),
+      block: blockSeverities,
+      warn: warnSeverities,
       allowlist: asAllowlist(policy?.allowlist),
     },
     sources: {

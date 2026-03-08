@@ -1,16 +1,18 @@
 const PREFIX = "[pnpm-audit]";
+
+// Cached at module load for hot-path performance (thousands of log calls per audit).
+// isJsonMode and isVerbose remain functions because they are exported and
+// callers may need consistent dynamic behavior in test harnesses.
 const QUIET = process.env.PNPM_AUDIT_QUIET === "true";
 const DEBUG = process.env.PNPM_AUDIT_DEBUG === "true";
-const JSON_MODE = process.env.PNPM_AUDIT_JSON === "true";
-const VERBOSE = process.env.PNPM_AUDIT_VERBOSE === "true";
 
 export function isJsonMode(): boolean {
-  return JSON_MODE;
+  return process.env.PNPM_AUDIT_JSON === "true";
 }
 
 export function isVerbose(): boolean {
   return (
-    VERBOSE ||
+    process.env.PNPM_AUDIT_VERBOSE === "true" ||
     process.env.CI === "true" ||
     process.env.TF_BUILD === "True" ||
     process.env.GITHUB_ACTIONS === "true" ||
@@ -19,46 +21,34 @@ export function isVerbose(): boolean {
   );
 }
 
-export type OutputFormat = "human" | "azure" | "json";
-
-export function getOutputFormat(): OutputFormat {
-  if (JSON_MODE) {
-    return "json";
-  }
-  if (process.env.PNPM_AUDIT_FORMAT === "azure" || process.env.TF_BUILD === "True") {
-    return "azure";
-  }
-  return "human";
-}
-
 export const logger = {
   debug: (msg: string) => {
-    if (JSON_MODE) return;
+    if (isJsonMode()) return;
     DEBUG && console.log(`${PREFIX}[debug] ${msg}`);
   },
   info: (msg: string) => {
-    if (JSON_MODE) return;
+    if (isJsonMode()) return;
     !QUIET && console.log(`${PREFIX} ${msg}`);
   },
   warn: (msg: string) => {
-    if (JSON_MODE) return;
+    if (isJsonMode()) return;
     !QUIET && console.warn(`${PREFIX}[warn] ${msg}`);
   },
   error: (msg: string) => {
-    if (JSON_MODE) return;
+    if (isJsonMode()) return;
     console.error(`${PREFIX}[error] ${msg}`);
   },
   json: (data: unknown) => {
-    if (JSON_MODE) console.log(JSON.stringify(data));
+    if (isJsonMode()) console.log(JSON.stringify(data));
   },
   verbose: (msg: string) => {
-    if (JSON_MODE) return;
+    if (isJsonMode()) return;
     if (isVerbose() && !QUIET) {
       console.log(`${PREFIX}[verbose] ${msg}`);
     }
   },
   progress: (current: number, total: number, label: string) => {
-    if (JSON_MODE || QUIET) return;
+    if (isJsonMode() || QUIET) return;
     if (!isVerbose()) return;
     const percent = total > 0 ? Math.round((current / total) * 100) : 0;
     const bar = "=".repeat(Math.floor(percent / 5)).padEnd(20, " ");

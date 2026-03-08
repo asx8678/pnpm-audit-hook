@@ -6,8 +6,8 @@ import { mapSeverity } from "../utils/severity";
 import { sleep } from "../utils/http";
 import { errorMessage } from "../utils/error";
 
-/** NVD rate limit delay with API key (ms) - 50 req/30s */
-const NVD_DELAY_WITH_KEY_MS = 700;
+/** NVD rate limit delay with API key (ms) - 2 workers x 1req/1200ms = ~50 req/30s */
+const NVD_DELAY_WITH_KEY_MS = 1200;
 /** NVD rate limit delay without API key (ms) - 5 req/30s */
 const NVD_DELAY_NO_KEY_MS = 6500;
 
@@ -73,7 +73,7 @@ async function fetchNvdCve(cveId: string, ctx: SourceContext): Promise<NvdCveDet
   const cached = await ctx.cache.get(key);
   if (cached?.value) return cached.value as NvdCveDetail;
 
-  const apiKey = ctx.env.NVD_API_KEY || ctx.env.NIST_NVD_API_KEY;
+  const apiKey = ctx.env.NVD_API_KEY ?? ctx.env.NIST_NVD_API_KEY;
   const url = new URL("https://services.nvd.nist.gov/rest/json/cves/2.0");
   url.searchParams.set("cveId", cveId);
 
@@ -134,7 +134,7 @@ export async function enrichFindingsWithNvd(
     const failedCveIds: string[] = [];
 
     // NVD rate limits: 5 req/30s (no key), 50 req/30s (with key)
-    const hasApiKey = !!(ctx.env.NVD_API_KEY || ctx.env.NIST_NVD_API_KEY);
+    const hasApiKey = !!(ctx.env.NVD_API_KEY ?? ctx.env.NIST_NVD_API_KEY);
     const delayMs = hasApiKey ? NVD_DELAY_WITH_KEY_MS : NVD_DELAY_NO_KEY_MS;
     const concurrency = hasApiKey ? 2 : 1;
 

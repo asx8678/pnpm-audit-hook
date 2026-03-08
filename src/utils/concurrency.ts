@@ -16,7 +16,7 @@ export async function mapWithConcurrency<T, R>(
     while (true) {
       const i = nextIndex++;
       if (i >= items.length) break;
-      results[i] = await fn(items[i]!, i);
+      results[i] = await fn(items[i] as T, i);
     }
   });
 
