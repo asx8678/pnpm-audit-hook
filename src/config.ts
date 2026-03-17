@@ -9,17 +9,12 @@ import { logger } from "./utils/logger";
 const MAX_TIMEOUT_MS = 300000;
 /** Maximum allowed cache TTL in seconds (24 hours) */
 const MAX_CACHE_TTL_SECONDS = 86400;
+const VALID_SEVERITIES = new Set(["critical", "high", "medium", "low", "unknown"]);
 
-/** Type guard for unknown object access */
-function hasStringProp(obj: object, key: string): boolean {
+/** Get a non-empty string property from an object, or null */
+function getString(obj: object, key: string): string | null {
   const value = (obj as Record<string, unknown>)[key];
-  return typeof value === "string" && value.length > 0;
-}
-
-/** Get optional string property from object, returns undefined if not a string */
-function getOptionalString(obj: object, key: string): string | undefined {
-  const value = (obj as Record<string, unknown>)[key];
-  return typeof value === "string" ? value : undefined;
+  return typeof value === "string" && value.length > 0 ? value : null;
 }
 
 /** Validate an allowlist entry from user config, logging warnings for invalid entries */
@@ -31,10 +26,10 @@ function validateAllowlistEntry(e: unknown): AllowlistEntry | null {
 
   const obj = e as Record<string, unknown>;
 
-  // Must have either id or package as a string
-  const hasId = hasStringProp(e, "id");
-  const hasPackage = hasStringProp(e, "package");
-  if (!hasId && !hasPackage) {
+  // Must have either id or package as a non-empty string
+  const id = getString(e, "id");
+  const pkg = getString(e, "package");
+  if (!id && !pkg) {
     logger.warn(`Allowlist entry filtered: missing required 'id' or 'package' field`);
     return null;
   }
@@ -62,9 +57,9 @@ function validateAllowlistEntry(e: unknown): AllowlistEntry | null {
   }
 
   // Build the validated entry explicitly to avoid type assertions
-  const version = getOptionalString(e, "version");
-  const reason = getOptionalString(e, "reason");
-  const expires = getOptionalString(e, "expires");
+  const version = getString(e, "version");
+  const reason = getString(e, "reason");
+  const expires = getString(e, "expires");
 
   // Construct base entry with validated required fields
   const baseEntry: { version?: string; reason?: string; expires?: string } = {};
@@ -72,17 +67,17 @@ function validateAllowlistEntry(e: unknown): AllowlistEntry | null {
   if (reason) baseEntry.reason = reason;
   if (expires) baseEntry.expires = expires;
 
-  if (hasId) {
+  if (id) {
     return {
-      id: obj.id as string,
-      ...(hasPackage ? { package: obj.package as string } : {}),
+      id,
+      ...(pkg ? { package: pkg } : {}),
       ...baseEntry,
     };
   }
 
-  // hasPackage must be true at this point
+  // pkg must be non-null at this point
   return {
-    package: obj.package as string,
+    package: pkg!,
     ...baseEntry,
   };
 }
@@ -90,31 +85,9 @@ function validateAllowlistEntry(e: unknown): AllowlistEntry | null {
 /** Default cutoff date for static baseline */
 export const DEFAULT_CUTOFF_DATE = "2025-12-31";
 
-/**
- * Check if a published date is before the cutoff date.
- * Both dates should be ISO date strings (YYYY-MM-DD or full ISO timestamp).
- * Returns true if publishedDate is before cutoffDate.
- */
-export function isBeforeCutoff(publishedDate: string, cutoffDate: string): boolean {
-  const published = new Date(publishedDate);
-  const cutoff = new Date(cutoffDate);
-
-  // Invalid dates return false (fail-closed)
-  if (isNaN(published.getTime()) || isNaN(cutoff.getTime())) {
-    logger.debug(
-      `Invalid date in isBeforeCutoff: publishedDate="${publishedDate}" (valid=${!isNaN(published.getTime())}), ` +
-      `cutoffDate="${cutoffDate}" (valid=${!isNaN(cutoff.getTime())})`
-    );
-    return false;
-  }
-
-  return published.getTime() < cutoff.getTime();
-}
-
-export const DEFAULT_STATIC_BASELINE: StaticBaselineConfig = {
+const DEFAULT_STATIC_BASELINE: StaticBaselineConfig = {
   enabled: true,
   cutoffDate: DEFAULT_CUTOFF_DATE,
-  dataPath: undefined,
 };
 
 export const DEFAULT_CONFIG: AuditConfig = {
@@ -174,7 +147,7 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
     }
   }
 
-  const validSeverities = new Set(["critical", "high", "medium", "low", "unknown"]);
+  const validSeverities = VALID_SEVERITIES;
   const asSeverities = (v: unknown, fallback: Severity[]): Severity[] => {
     if (!Array.isArray(v)) return fallback;
     const normalized = v.map((s) => String(s).toLowerCase());
@@ -268,7 +241,7 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
         performance.timeoutMs > 0 &&
         performance.timeoutMs <= MAX_TIMEOUT_MS
           ? performance.timeoutMs
-          : 15000,
+          : DEFAULT_CONFIG.performance.timeoutMs,
     },
     cache: {
       ttlSeconds:
@@ -276,7 +249,7 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
         cache.ttlSeconds > 0 &&
         cache.ttlSeconds <= MAX_CACHE_TTL_SECONDS
           ? cache.ttlSeconds
-          : 3600,
+          : DEFAULT_CONFIG.cache.ttlSeconds,
     },
     failOnNoSources: raw.failOnNoSources !== false,
     failOnSourceError: raw.failOnSourceError !== false,

@@ -87,9 +87,9 @@ function findAllowlistMatch(
   return undefined;
 }
 
-export function evaluatePackagePolicies(pkgResult: PackageAuditResult, cfg: AuditConfig): PackageAuditResult {
+export function evaluatePackagePolicies(pkgResult: PackageAuditResult, cfg: AuditConfig): PolicyDecision[] {
   const { pkg, findings } = pkgResult;
-  const decisions: PolicyDecision[] = [...pkgResult.decisions];
+  const decisions: PolicyDecision[] = [];
   const now = new Date().toISOString();
   const allowlist = cfg.policy.allowlist ?? [];
 
@@ -122,5 +122,5 @@ export function evaluatePackagePolicies(pkgResult: PackageAuditResult, cfg: Audi
     });
   }
 
-  return { ...pkgResult, decisions };
+  return decisions;
 }

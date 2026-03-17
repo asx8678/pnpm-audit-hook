@@ -65,7 +65,6 @@ export type AllowlistEntry = AllowlistEntryById | AllowlistEntryByPackage;
 export interface PackageRef {
   name: string;
   version: string;
-  direct?: boolean;
 }
 
 export interface VulnerabilityIdentifier {
@@ -102,13 +101,12 @@ export interface PolicyDecision {
 export interface PackageAuditResult {
   pkg: PackageRef;
   findings: VulnerabilityFinding[];
-  decisions: PolicyDecision[];
 }
 
 export interface SourceStatus {
   ok: boolean;
   error?: string;
-  durationMs?: number;
+  durationMs: number;
 }
 
 /** User-provided config (all fields optional, merged with defaults) */

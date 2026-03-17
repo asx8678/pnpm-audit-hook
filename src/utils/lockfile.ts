@@ -1,5 +1,4 @@
 import type {
-  LockfileImporter,
   LockfilePackageEntry,
   PackageRef,
   PnpmLockfile,
@@ -14,15 +13,6 @@ const stripPeerSuffix = (v: string) => {
   return idx === -1 ? v : v.slice(0, idx);
 };
 
-function normalizeDepVersion(dep: unknown): string | null {
-  if (typeof dep === "string") return dep;
-  if (dep && typeof dep === "object") {
-    const version = (dep as { version?: unknown }).version;
-    return typeof version === "string" ? version : null;
-  }
-  return null;
-}
-
 /** Parse a pnpm lockfile package key into name + version.
  * Supports both old format (/react/18.2.0, react/18.2.0, /@types/node/20.10.0) and
  * new v9 format (react@18.2.0, @types/node@20.10.0)
@@ -35,8 +25,9 @@ export function parsePnpmPackageKey(key: string): { name: string; version: strin
   // Check if this is v9 format by looking for @ after a potential scope
   // v9 format: lodash@4.17.21 or @types/node@20.10.0
   // old format: lodash/4.17.21 or @types/node/20.10.0
-  const atIndex = raw.startsWith("@") ? raw.indexOf("@", 1) : raw.indexOf("@");
-  const slashIndex = raw.startsWith("@") ? raw.indexOf("/", raw.indexOf("/") + 1) : raw.indexOf("/");
+  const isScoped = raw.startsWith("@");
+  const atIndex = isScoped ? raw.indexOf("@", 1) : raw.indexOf("@");
+  const slashIndex = isScoped ? raw.indexOf("/", raw.indexOf("/") + 1) : raw.indexOf("/");
 
   // If @ comes before / (or there's no /), it's v9 format
   if (atIndex !== -1 && (slashIndex === -1 || atIndex < slashIndex)) {
@@ -78,39 +69,18 @@ function isRegistryPackage(entry: LockfilePackageEntry): boolean {
 
 /** Extract registry packages from a pnpm lockfile object. */
 export function extractPackagesFromLockfile(
-  lockfile: PnpmLockfile,
+  lockfile: PnpmLockfile | null | undefined,
 ): LockfileParseResult {
   const packages: PackageRef[] = [];
 
   const packageEntries: Record<string, LockfilePackageEntry> = lockfile?.packages ?? {};
-  const keyToRef: Record<string, PackageRef> = {};
 
   for (const [k, entry] of Object.entries(packageEntries)) {
     const parsed = parsePnpmPackageKey(k);
     if (!parsed) continue;
     if (!isRegistryPackage(entry)) continue;
 
-    const pkg: PackageRef = {
-      name: parsed.name,
-      version: parsed.version,
-    };
-
-    const key = `${pkg.name}@${pkg.version}`;
-    packages.push(pkg);
-    keyToRef[key] = pkg;
-  }
-
-  // Direct deps via importers
-  const importers: Record<string, LockfileImporter> = lockfile?.importers ?? {};
-  for (const [_, imp] of Object.entries(importers)) {
-    const deps = { ...imp.dependencies, ...imp.devDependencies, ...imp.optionalDependencies };
-    for (const [depName, depVersion] of Object.entries(deps)) {
-      const rawVersion = normalizeDepVersion(depVersion);
-      if (!rawVersion) continue;
-      const v = stripPeerSuffix(rawVersion);
-      const ref = keyToRef[`${depName}@${v}`];
-      if (ref) ref.direct = true;
-    }
+    packages.push({ name: parsed.name, version: parsed.version });
   }
 
   return { packages };

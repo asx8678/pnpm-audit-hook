@@ -145,101 +145,6 @@ describe("extractPackagesFromLockfile", () => {
     });
   });
 
-  describe("direct dependency detection", () => {
-    it("marks direct dependencies", () => {
-      const lockfile = {
-        importers: {
-          ".": {
-            dependencies: {
-              lodash: "4.17.21",
-            },
-            devDependencies: {
-              typescript: "5.3.0",
-            },
-          },
-        },
-        packages: {
-          "/lodash/4.17.21": {
-            resolution: { integrity: "sha512-abc" },
-          },
-          "/typescript/5.3.0": {
-            resolution: { integrity: "sha512-def" },
-          },
-          "/semver/7.5.0": {
-            resolution: { integrity: "sha512-ghi" },
-          },
-        },
-      };
-
-      const result = extractPackagesFromLockfile(lockfile);
-      assert.equal(result.packages.length, 3);
-
-      const lodash = result.packages.find(p => p.name === "lodash");
-      const typescript = result.packages.find(p => p.name === "typescript");
-      const semver = result.packages.find(p => p.name === "semver");
-
-      assert.equal(lodash?.direct, true);
-      assert.equal(typescript?.direct, true);
-      assert.equal(semver?.direct, undefined);
-    });
-
-    it("handles v9 importer dependency objects", () => {
-      const lockfile = {
-        importers: {
-          ".": {
-            dependencies: {
-              lodash: { specifier: "^4.17.0", version: "4.17.21" },
-            },
-            devDependencies: {
-              typescript: { specifier: "^5.0.0", version: "5.3.0" },
-            },
-          },
-        },
-        packages: {
-          "lodash@4.17.21": {
-            resolution: { integrity: "sha512-abc" },
-          },
-          "typescript@5.3.0": {
-            resolution: { integrity: "sha512-def" },
-          },
-          "semver@7.5.0": {
-            resolution: { integrity: "sha512-ghi" },
-          },
-        },
-      };
-
-      const result = extractPackagesFromLockfile(lockfile);
-      const lodash = result.packages.find(p => p.name === "lodash");
-      const typescript = result.packages.find(p => p.name === "typescript");
-      const semver = result.packages.find(p => p.name === "semver");
-
-      assert.equal(lodash?.direct, true);
-      assert.equal(typescript?.direct, true);
-      assert.equal(semver?.direct, undefined);
-    });
-
-    it("handles optionalDependencies", () => {
-      const lockfile = {
-        importers: {
-          ".": {
-            optionalDependencies: {
-              fsevents: "2.3.3",
-            },
-          },
-        },
-        packages: {
-          "/fsevents/2.3.3": {
-            resolution: { integrity: "sha512-abc" },
-          },
-        },
-      };
-
-      const result = extractPackagesFromLockfile(lockfile);
-      const fsevents = result.packages.find(p => p.name === "fsevents");
-      assert.equal(fsevents?.direct, true);
-    });
-  });
-
   describe("filtering non-registry packages", () => {
     it("excludes directory packages", () => {
       const lockfile = {
@@ -336,8 +241,6 @@ describe("extractPackagesFromLockfile", () => {
       const result = extractPackagesFromLockfile(lockfile);
       assert.equal(result.packages.length, 1);
       assert.equal(result.packages[0]!.name, "lodash");
-      // Without importers, package should not be marked as direct
-      assert.equal(result.packages[0]!.direct, undefined);
     });
 
     it("handles null/undefined lockfile", () => {
@@ -367,7 +270,6 @@ describe("extractPackagesFromLockfile", () => {
       const result = extractPackagesFromLockfile(lockfile);
       const reactDom = result.packages.find(p => p.name === "react-dom");
       assert.equal(reactDom?.version, "18.2.0");
-      assert.equal(reactDom?.direct, true);
     });
   });
 
@@ -467,7 +369,6 @@ describe("extractPackagesFromLockfile", () => {
 
       const reactDom = result.packages.find(p => p.name === "react-dom");
       assert.equal(reactDom?.version, "18.2.0");
-      assert.equal(reactDom?.direct, true);
     });
   });
 });

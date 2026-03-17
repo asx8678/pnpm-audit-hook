@@ -107,14 +107,15 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
 
     const errors: string[] = [];
     const seen = new Set<string>();
-    let staticDbFindingCount = 0;
+    const packagesWithStaticDbCoverage = new Set<string>();
 
     // Step 1: Query static DB for historical vulnerabilities (if available)
     const staticDbAvailable = this.staticDb?.isReady() ?? false;
     if (staticDbAvailable) {
       try {
         const staticFindings = await this.queryStaticDb(targets, seen, perPkg);
-        staticDbFindingCount = staticFindings.length;
+        // Track which packages were successfully queried from static DB
+        for (const t of targets) packagesWithStaticDbCoverage.add(`${t.name}@${t.version}`);
         logger.debug(`Static DB returned ${staticFindings.length} findings for ${targets.length} packages`);
       } catch (e) {
         logger.warn(`Static DB query failed, falling back to full API: ${errorMessage(e)}`);
@@ -178,30 +179,31 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
     }
 
     if (errors.length > 0) {
-      // When static DB is available and was queried successfully, API failures are less critical
-      // because the static DB covers historical vulnerabilities. The API is primarily needed
-      // for very recent vulnerabilities published after the cutoff date.
-      const hasStaticDbFindings = staticDbFindingCount > 0;
+      // Check if the packages that failed API queries have static DB coverage.
+      // Only treat API failures as non-fatal if the specific failed packages were
+      // covered by the static DB (not just any package globally).
+      const failedPkgKeys = new Set(
+        errors.map(e => e.split(":")[0]!.trim()),
+      );
+      const allFailedHaveStaticCoverage = failedPkgKeys.size > 0 &&
+        [...failedPkgKeys].every(key => packagesWithStaticDbCoverage.has(key));
 
       if (errors.length === targets.length) {
         // All API queries failed
-        if (hasStaticDbFindings) {
-          // Static DB returned findings, so we have coverage for historical vulnerabilities
-          // Log warning but return success with static DB findings
-          logger.warn(`GitHub API failed for all packages, but static DB returned ${findings.length} findings`);
+        if (allFailedHaveStaticCoverage) {
+          logger.warn(`GitHub API failed for all packages, but static DB covers them (${findings.length} findings)`);
           return { source: this.id, ok: true, durationMs: Date.now() - start, findings };
         }
         return { source: this.id, ok: false, error: errors[0], durationMs: Date.now() - start, findings };
       }
 
       // Partial failure - some queries succeeded
-      if (hasStaticDbFindings) {
-        // Static DB has findings, treat API partial failure as non-fatal
-        logger.warn(`GitHub API partial failure: ${errors.length}/${targets.length} packages failed, but static DB has findings`);
+      if (allFailedHaveStaticCoverage) {
+        logger.warn(`GitHub API partial failure: ${errors.length}/${targets.length} packages failed, but static DB covers them`);
         return { source: this.id, ok: true, durationMs: Date.now() - start, findings };
       }
 
-      // No static DB findings - fail-closed for security
+      // Failed packages lack static DB coverage - fail-closed for security
       return {
         source: this.id,
         ok: false,
@@ -320,10 +322,7 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
             throw new Error(errorMsg ? String(errorMsg) : "GitHub API returned invalid response format");
           }
 
-          if (data.length === 0) {
-            hasNextPage = false;
-            break;
-          }
+          if (data.length === 0) break;
 
           for (const adv of data) {
             const severity = mapSeverity(adv.severity);
@@ -378,7 +377,7 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
                 if (existingIdx >= 0) {
                   pkgFindings[existingIdx] = finding;
                 }
-                continue;
+                continue; // dedupKey already in seen
               }
 
               seen.add(dedupKey);

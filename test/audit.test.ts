@@ -626,8 +626,6 @@ describe("source status recording", () => {
     // by testing the policy engine directly with a simulated source failure scenario.
 
     const { evaluatePackagePolicies } = await import("../src/policies/policy-engine");
-    const { VulnerabilityFinding, AuditConfig, PackageAuditResult, PolicyDecision } = await import("../src/types");
-
     // Create a config that would block on source errors
     const cfg = {
       policy: { block: ["critical"], warn: [], allowlist: [] },
@@ -693,7 +691,6 @@ describe("source status recording", () => {
         { id: "CVE-2021-23337", source: "github" as const, packageName: "lodash", packageVersion: "4.17.0", severity: "critical" as const },
         { id: "CVE-2020-28500", source: "github" as const, packageName: "lodash", packageVersion: "4.17.0", severity: "medium" as const },
       ],
-      decisions: [],
     };
 
     const pkg2Result = {
@@ -701,13 +698,11 @@ describe("source status recording", () => {
       findings: [
         { id: "CVE-2022-24999", source: "github" as const, packageName: "express", packageVersion: "4.17.0", severity: "high" as const },
       ],
-      decisions: [],
     };
 
     const pkg3Result = {
       pkg: { name: "safe-pkg", version: "1.0.0" },
       findings: [],
-      decisions: [],
     };
 
     // Evaluate each package
@@ -716,7 +711,7 @@ describe("source status recording", () => {
     const eval3 = evaluatePackagePolicies(pkg3Result, cfg);
 
     // Accumulate all decisions (mimicking audit.ts behavior)
-    const allDecisions = [...eval1.decisions, ...eval2.decisions, ...eval3.decisions];
+    const allDecisions = [...eval1, ...eval2, ...eval3];
 
     // Verify decisions are accumulated correctly
     assert.equal(allDecisions.length, 3); // 2 from lodash + 1 from express + 0 from safe-pkg
@@ -755,7 +750,6 @@ describe("source status recording", () => {
       findings: [
         { id: "CVE-A", source: "github" as const, packageName: "pkg-a", packageVersion: "1.0.0", severity: "medium" as const },
       ],
-      decisions: [],
     };
 
     // Package with block-level findings
@@ -764,12 +758,11 @@ describe("source status recording", () => {
       findings: [
         { id: "CVE-B", source: "github" as const, packageName: "pkg-b", packageVersion: "1.0.0", severity: "critical" as const },
       ],
-      decisions: [],
     };
 
     const evalWarn = evaluatePackagePolicies(warnOnlyPkg, cfg);
     const evalBlock = evaluatePackagePolicies(blockPkg, cfg);
-    const allDecisions = [...evalWarn.decisions, ...evalBlock.decisions];
+    const allDecisions = [...evalWarn, ...evalBlock];
 
     // Compute blocked/warnings flags like audit.ts does
     const blocked = allDecisions.some((d) => d.action === "block");
@@ -1012,7 +1005,6 @@ describe("multiple package decision accumulation", () => {
         findings: [
           { id: "CVE-2021-23337", source: "github" as const, packageName: "lodash", packageVersion: "4.17.0", severity: "critical" as const },
         ],
-        decisions: [],
       },
       {
         pkg: { name: "express", version: "4.17.0" },
@@ -1020,19 +1012,16 @@ describe("multiple package decision accumulation", () => {
           { id: "CVE-2022-24999", source: "github" as const, packageName: "express", packageVersion: "4.17.0", severity: "high" as const },
           { id: "CVE-2022-24998", source: "github" as const, packageName: "express", packageVersion: "4.17.0", severity: "medium" as const },
         ],
-        decisions: [],
       },
       {
         pkg: { name: "react", version: "18.2.0" },
         findings: [], // No vulnerabilities
-        decisions: [],
       },
       {
         pkg: { name: "axios", version: "0.21.0" },
         findings: [
           { id: "CVE-2021-3749", source: "github" as const, packageName: "axios", packageVersion: "0.21.0", severity: "medium" as const },
         ],
-        decisions: [],
       },
     ];
 
@@ -1048,8 +1037,7 @@ describe("multiple package decision accumulation", () => {
     }> = [];
 
     for (const pkgResult of packages) {
-      const evaluated = evaluatePackagePolicies(pkgResult, cfg);
-      allDecisions.push(...evaluated.decisions);
+      allDecisions.push(...evaluatePackagePolicies(pkgResult, cfg));
     }
 
     // Verify total decisions (1 from lodash + 2 from express + 0 from react + 1 from axios)
@@ -1101,12 +1089,10 @@ describe("multiple package decision accumulation", () => {
         findings: [
           { id: "GHSA-test-1", source: "github" as const, packageName: "@babel/core", packageVersion: "7.20.0", severity: "high" as const },
         ],
-        decisions: [],
       },
       {
         pkg: { name: "@types/node", version: "18.0.0" },
         findings: [],
-        decisions: [],
       },
     ];
 
@@ -1116,8 +1102,7 @@ describe("multiple package decision accumulation", () => {
     }> = [];
 
     for (const pkgResult of packages) {
-      const evaluated = evaluatePackagePolicies(pkgResult, cfg);
-      allDecisions.push(...evaluated.decisions);
+      allDecisions.push(...evaluatePackagePolicies(pkgResult, cfg));
     }
 
     // Verify scoped package decision is recorded correctly
@@ -1144,7 +1129,6 @@ describe("multiple package decision accumulation", () => {
       findings: [
         { id: "CVE-2021-23337", source: "github" as const, packageName: "lodash", packageVersion: "4.17.0", severity: "high" as const },
       ],
-      decisions: [],
     };
 
     // Simulate aggregator result with partial source failure
@@ -1166,8 +1150,7 @@ describe("multiple package decision accumulation", () => {
     const decisions: PolicyDecision[] = [];
 
     // Add vulnerability decisions
-    const evaluated = evaluatePackagePolicies(pkgResult, cfg);
-    decisions.push(...evaluated.decisions);
+    decisions.push(...evaluatePackagePolicies(pkgResult, cfg));
 
     // Add source failure decisions
     const failOnSourceError = true;

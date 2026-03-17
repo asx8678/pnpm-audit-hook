@@ -3,7 +3,7 @@ import type { SourceContext } from "./connector";
 import { ttlForFindings } from "../cache/ttl";
 import { logger } from "../utils/logger";
 import { mapSeverity } from "../utils/severity";
-import { sleep } from "../utils/http";
+import { sleep } from "../utils/concurrency";
 import { errorMessage } from "../utils/error";
 
 /** NVD rate limit delay with API key (ms) - 2 workers x 1req/1200ms = ~50 req/30s */

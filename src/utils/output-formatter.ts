@@ -7,7 +7,6 @@ import type {
 
 export interface AuditSummary {
   totalPackages: number;
-  scannedPackages: number;
   safePackages: number;
   packagesWithVulnerabilities: number;
   vulnerabilitiesBySeverity: Record<Severity, number>;
@@ -74,13 +73,12 @@ export function buildSummary(
   }
 
   const totalDurationMs = Object.values(sourceStatus).reduce(
-    (sum, s) => sum + (s.durationMs ?? 0),
+    (sum, s) => sum + (s.durationMs),
     0,
   );
 
   return {
     totalPackages,
-    scannedPackages: totalPackages,
     safePackages: totalPackages - packagesWithFindings.size,
     packagesWithVulnerabilities: packagesWithFindings.size,
     vulnerabilitiesBySeverity,
@@ -117,7 +115,7 @@ const RED = "\x1b[31m";
 const YELLOW = "\x1b[33m";
 
 export function formatHumanReadable(data: AuditOutputData): string {
-  const { summary, findings, decisions, blocked } = data;
+  const { summary, findings, decisions, blocked, warnings } = data;
   const lines: string[] = [];
 
   // Header banner
@@ -131,7 +129,7 @@ export function formatHumanReadable(data: AuditOutputData): string {
   lines.push(`${BOLD}Source Status:${RESET}`);
   for (const [name, status] of Object.entries(summary.sourceStatus)) {
     const icon = status.ok ? `${GREEN}OK${RESET}` : `${RED}FAILED${RESET}`;
-    const duration = status.durationMs ? ` (${status.durationMs}ms)` : "";
+    const duration = ` (${status.durationMs}ms)`;
     const error = status.error ? ` - ${status.error}` : "";
     lines.push(`  ${name}: ${icon}${duration}${error}`);
   }
@@ -139,7 +137,7 @@ export function formatHumanReadable(data: AuditOutputData): string {
 
   // Package summary
   lines.push(`${BOLD}Package Summary:${RESET}`);
-  lines.push(`  Total packages scanned: ${summary.scannedPackages}`);
+  lines.push(`  Total packages scanned: ${summary.totalPackages}`);
   lines.push(`  Safe packages: ${GREEN}${summary.safePackages}${RESET}`);
   lines.push(
     `  Packages with vulnerabilities: ${summary.packagesWithVulnerabilities > 0 ? RED : GREEN}${summary.packagesWithVulnerabilities}${RESET}`,
@@ -154,11 +152,7 @@ export function formatHumanReadable(data: AuditOutputData): string {
       lines.push(`  ${severityColor(severity)}${severity.toUpperCase()}${RESET}: ${count}`);
     }
   }
-  const totalVulns = Object.values(summary.vulnerabilitiesBySeverity).reduce(
-    (a, b) => a + b,
-    0,
-  );
-  if (totalVulns === 0) {
+  if (findings.length === 0) {
     lines.push(`  ${GREEN}No vulnerabilities found${RESET}`);
   }
   lines.push("");
@@ -210,7 +204,7 @@ export function formatHumanReadable(data: AuditOutputData): string {
   lines.push(`${BOLD}===============================================${RESET}`);
   if (blocked) {
     lines.push(`${BOLD}${RED}AUDIT FAILED - Installation blocked${RESET}`);
-  } else if (data.warnings) {
+  } else if (warnings) {
     lines.push(`${BOLD}${YELLOW}AUDIT PASSED WITH WARNINGS${RESET}`);
   } else {
     lines.push(`${BOLD}${GREEN}AUDIT PASSED - No issues found${RESET}`);
@@ -223,14 +217,14 @@ export function formatHumanReadable(data: AuditOutputData): string {
 }
 
 export function formatAzureDevOps(data: AuditOutputData): string {
-  const { summary, findings, decisions, blocked } = data;
+  const { summary, findings, decisions, blocked, warnings } = data;
   const lines: string[] = [];
 
   // Source status group
   lines.push("##[group]Source Status");
   for (const [name, status] of Object.entries(summary.sourceStatus)) {
     const icon = status.ok ? "OK" : "FAILED";
-    const duration = status.durationMs ? ` (${status.durationMs}ms)` : "";
+    const duration = ` (${status.durationMs}ms)`;
     const error = status.error ? ` - ${status.error}` : "";
     if (!status.ok) {
       lines.push(`##[warning]${name}: ${icon}${duration}${error}`);
@@ -242,7 +236,7 @@ export function formatAzureDevOps(data: AuditOutputData): string {
 
   // Package summary group
   lines.push("##[group]Package Summary");
-  lines.push(`Total packages scanned: ${summary.scannedPackages}`);
+  lines.push(`Total packages scanned: ${summary.totalPackages}`);
   lines.push(`Safe packages: ${summary.safePackages}`);
   lines.push(`Packages with vulnerabilities: ${summary.packagesWithVulnerabilities}`);
   lines.push("##[endgroup]");
@@ -307,7 +301,7 @@ export function formatAzureDevOps(data: AuditOutputData): string {
   // Final status
   if (blocked) {
     lines.push("##[error]AUDIT FAILED - Installation blocked");
-  } else if (data.warnings) {
+  } else if (warnings) {
     lines.push("##[warning]AUDIT PASSED WITH WARNINGS");
   } else {
     lines.push("AUDIT PASSED - No issues found");
@@ -319,18 +313,7 @@ export function formatAzureDevOps(data: AuditOutputData): string {
 }
 
 export function formatJson(data: AuditOutputData): string {
-  return JSON.stringify(
-    {
-      summary: data.summary,
-      findings: data.findings,
-      decisions: data.decisions,
-      blocked: data.blocked,
-      warnings: data.warnings,
-      exitCode: data.exitCode,
-    },
-    null,
-    2,
-  );
+  return JSON.stringify(data, null, 2);
 }
 
 export type OutputFormat = "human" | "azure" | "json";
@@ -347,10 +330,8 @@ export function getOutputFormat(env: Record<string, string | undefined>): Output
 
 export function outputResults(
   data: AuditOutputData,
-  env: Record<string, string | undefined>,
+  format: OutputFormat,
 ): void {
-  const format = getOutputFormat(env);
-
   let output: string;
   switch (format) {
     case "json":

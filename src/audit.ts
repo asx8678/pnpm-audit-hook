@@ -1,12 +1,12 @@
 import path from "node:path";
-import type { PackageAuditResult, PnpmLockfile, PolicyDecision, RuntimeOptions, SourceStatus, VulnerabilityFinding } from "./types";
+import type { PnpmLockfile, PolicyDecision, RuntimeOptions, SourceStatus, VulnerabilityFinding } from "./types";
 import { loadConfig } from "./config";
-import { isVerbose, logger } from "./utils/logger";
+import { logger } from "./utils/logger";
 import { FileCache } from "./cache/file-cache";
 import { aggregateVulnerabilities } from "./databases/aggregator";
 import { extractPackagesFromLockfile } from "./utils/lockfile";
 import { evaluatePackagePolicies } from "./policies/policy-engine";
-import { buildSummary, outputResults } from "./utils/output-formatter";
+import { buildSummary, getOutputFormat, outputResults } from "./utils/output-formatter";
 
 const CACHE_DIR = ".pnpm-audit-cache";
 
@@ -37,9 +37,7 @@ export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions):
 
   const { packages } = extractPackagesFromLockfile(lockfile);
 
-  if (isVerbose()) {
-    logger.verbose(`Starting audit of ${packages.length} packages`);
-  }
+  logger.verbose(`Starting audit of ${packages.length} packages`);
 
   const agg = await aggregateVulnerabilities(packages, { cfg, env, cache, registryUrl });
 
@@ -53,19 +51,14 @@ export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions):
     findingsByPkg.get(key)!.push(finding);
   }
 
-  // Build package results and evaluate policies
+  // Evaluate policies per package
   const decisions: PolicyDecision[] = [];
   for (const p of packages) {
-    const pkgResult: PackageAuditResult = {
-      pkg: p,
-      findings: findingsByPkg.get(`${p.name}@${p.version}`) ?? [],
-      decisions: [],
-    };
-    const evaluated = evaluatePackagePolicies(pkgResult, cfg);
-    decisions.push(...evaluated.decisions);
+    const findings = findingsByPkg.get(`${p.name}@${p.version}`) ?? [];
+    decisions.push(...evaluatePackagePolicies({ pkg: p, findings }, cfg));
   }
 
-  // Block on source failures if configured to fail-closed
+  // Add decision for source failures (block when failOnSourceError, warn otherwise)
   const failedSources = Object.entries(agg.sources).filter(([, v]) => !v.ok);
   const hasSourceError = failedSources.length > 0;
   if (hasSourceError) {
@@ -84,11 +77,14 @@ export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions):
   const durationMs = Date.now() - startTime;
 
   // Determine exit code
+  // Note: SOURCE_ERROR is only reachable when failOnSourceError is false (source failure
+  // becomes a warn decision, not block). When failOnSourceError is true (default),
+  // source failures push a block decision, so exitCode will be BLOCKED instead.
   let exitCode: number;
-  if (hasSourceError && cfg.failOnSourceError !== false) {
-    exitCode = EXIT_CODES.SOURCE_ERROR;
-  } else if (blocked) {
+  if (blocked) {
     exitCode = EXIT_CODES.BLOCKED;
+  } else if (hasSourceError) {
+    exitCode = EXIT_CODES.SOURCE_ERROR;
   } else if (warnings) {
     exitCode = EXIT_CODES.WARNINGS;
   } else {
@@ -106,7 +102,7 @@ export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions):
       warnings,
       exitCode,
     },
-    env,
+    getOutputFormat(env),
   );
 
   return {

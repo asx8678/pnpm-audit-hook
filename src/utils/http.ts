@@ -1,4 +1,4 @@
-export const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+import { sleep } from "./concurrency";
 
 export async function retry<T>(
   fn: () => Promise<T>,

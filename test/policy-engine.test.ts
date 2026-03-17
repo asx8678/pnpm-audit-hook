@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { evaluatePackagePolicies } from "../src/policies/policy-engine";
-import type { AuditConfig, PackageAuditResult, VulnerabilityFinding } from "../src/types";
+import type { AuditConfig, VulnerabilityFinding } from "../src/types";
 
 function baseConfig(): AuditConfig {
   return {
@@ -21,16 +21,8 @@ function baseConfig(): AuditConfig {
   };
 }
 
-function pkgResult(
-  name = "a",
-  version = "1.0.0",
-  findings: VulnerabilityFinding[] = [],
-): PackageAuditResult {
-  return {
-    pkg: { name, version },
-    findings,
-    decisions: [],
-  };
+function pkg(name = "a", version = "1.0.0", findings: VulnerabilityFinding[] = []) {
+  return { pkg: { name, version }, findings };
 }
 
 test("high severity blocks", () => {
@@ -43,8 +35,8 @@ test("high severity blocks", () => {
     severity: "high",
   };
 
-  const res = evaluatePackagePolicies(pkgResult("a", "1.0.0", [f]), cfg);
-  assert.ok(res.decisions.some((d) => d.action === "block" && d.findingId === "CVE-2025-0001"));
+  const res = evaluatePackagePolicies(pkg("a", "1.0.0", [f]), cfg);
+  assert.ok(res.some((d) => d.action === "block" && d.findingId === "CVE-2025-0001"));
 });
 
 test("low severity warns", () => {
@@ -57,20 +49,15 @@ test("low severity warns", () => {
     severity: "low",
   };
 
-  const res = evaluatePackagePolicies(pkgResult("a", "1.0.0", [f]), cfg);
-  assert.ok(res.decisions.some((d) => d.action === "warn" && d.findingId === "CVE-2025-0002"));
+  const res = evaluatePackagePolicies(pkg("a", "1.0.0", [f]), cfg);
+  assert.ok(res.some((d) => d.action === "warn" && d.findingId === "CVE-2025-0002"));
 });
 
 test("no findings means no decisions added", () => {
   const cfg = baseConfig();
-  const p: PackageAuditResult = {
-    pkg: { name: "a", version: "1.0.0" },
-    findings: [],
-    decisions: [],
-  };
 
-  const res = evaluatePackagePolicies(p, cfg);
-  assert.strictEqual(res.decisions.length, 0);
+  const res = evaluatePackagePolicies(pkg(), cfg);
+  assert.strictEqual(res.length, 0);
 });
 
 test("allowlist by CVE ID suppresses finding", () => {
@@ -91,9 +78,9 @@ test("allowlist by CVE ID suppresses finding", () => {
     title: "Test vuln",
   };
 
-  const res = evaluatePackagePolicies(pkgResult("some-package", "1.0.0", [f]), cfg);
-  assert.equal(res.decisions.length, 1);
-  assert.equal(res.decisions[0].action, "allow");
+  const res = evaluatePackagePolicies(pkg("some-package", "1.0.0", [f]), cfg);
+  assert.equal(res.length, 1);
+  assert.equal(res[0].action, "allow");
 });
 
 test("allowlist by package name suppresses all findings for that package", () => {
@@ -114,8 +101,8 @@ test("allowlist by package name suppresses all findings for that package", () =>
     title: "Prototype pollution",
   };
 
-  const res = evaluatePackagePolicies(pkgResult("lodash", "4.17.0", [f]), cfg);
-  assert.equal(res.decisions[0].action, "allow");
+  const res = evaluatePackagePolicies(pkg("lodash", "4.17.0", [f]), cfg);
+  assert.equal(res[0].action, "allow");
 });
 
 test("allowlist entry with both id and package requires both to match", () => {
@@ -136,8 +123,8 @@ test("allowlist entry with both id and package requires both to match", () => {
     title: "Test",
   };
 
-  const res = evaluatePackagePolicies(pkgResult("other", "1.0.0", [f]), cfg);
-  assert.equal(res.decisions[0].action, "block");
+  const res = evaluatePackagePolicies(pkg("other", "1.0.0", [f]), cfg);
+  assert.equal(res[0].action, "block");
 });
 
 test("allowlist entry with both id and package matches when both align", () => {
@@ -158,8 +145,8 @@ test("allowlist entry with both id and package matches when both align", () => {
     title: "Test",
   };
 
-  const res = evaluatePackagePolicies(pkgResult("lodash", "4.17.0", [f]), cfg);
-  assert.equal(res.decisions[0].action, "allow");
+  const res = evaluatePackagePolicies(pkg("lodash", "4.17.0", [f]), cfg);
+  assert.equal(res[0].action, "allow");
 });
 
 test("expired allowlist entries are ignored", () => {
@@ -180,8 +167,8 @@ test("expired allowlist entries are ignored", () => {
     title: "Test",
   };
 
-  const res = evaluatePackagePolicies(pkgResult("test", "1.0.0", [f]), cfg);
-  assert.equal(res.decisions[0].action, "block");
+  const res = evaluatePackagePolicies(pkg("test", "1.0.0", [f]), cfg);
+  assert.equal(res[0].action, "block");
 });
 
 test("invalid expires date is treated as expired (fail-closed)", () => {
@@ -202,8 +189,8 @@ test("invalid expires date is treated as expired (fail-closed)", () => {
     title: "Test",
   };
 
-  const res = evaluatePackagePolicies(pkgResult("test", "1.0.0", [f]), cfg);
-  assert.equal(res.decisions[0].action, "block");
+  const res = evaluatePackagePolicies(pkg("test", "1.0.0", [f]), cfg);
+  assert.equal(res[0].action, "block");
 });
 
 test("case-insensitive ID matching", () => {
@@ -224,8 +211,8 @@ test("case-insensitive ID matching", () => {
     title: "Test",
   };
 
-  const res = evaluatePackagePolicies(pkgResult("test", "1.0.0", [f]), cfg);
-  assert.equal(res.decisions[0].action, "allow");
+  const res = evaluatePackagePolicies(pkg("test", "1.0.0", [f]), cfg);
+  assert.equal(res[0].action, "allow");
 });
 
 test("allowlist entry with version constraint only matches specified versions", () => {
@@ -246,9 +233,9 @@ test("allowlist entry with version constraint only matches specified versions", 
     title: "Test vuln",
   };
 
-  const res = evaluatePackagePolicies(pkgResult("test", "2.5.0", [f]), cfg);
-  assert.equal(res.decisions[0].action, "allow");
-  assert.ok(res.decisions[0].reason.includes("fixed in v2+"));
+  const res = evaluatePackagePolicies(pkg("test", "2.5.0", [f]), cfg);
+  assert.equal(res[0].action, "allow");
+  assert.ok(res[0].reason.includes("fixed in v2+"));
 });
 
 test("allowlist entry with version >=2.0.0 does not match version 1.5.0", () => {
@@ -269,9 +256,9 @@ test("allowlist entry with version >=2.0.0 does not match version 1.5.0", () => 
     title: "Test vuln",
   };
 
-  const res = evaluatePackagePolicies(pkgResult("test", "1.5.0", [f]), cfg);
+  const res = evaluatePackagePolicies(pkg("test", "1.5.0", [f]), cfg);
   // Should block because version 1.5.0 doesn't satisfy >=2.0.0, so allowlist doesn't apply
-  assert.equal(res.decisions[0].action, "block");
+  assert.equal(res[0].action, "block");
 });
 
 test("allowlist entry with version <1.0.0 matches version 0.9.0 but not 1.0.0", () => {
@@ -301,12 +288,12 @@ test("allowlist entry with version <1.0.0 matches version 0.9.0 but not 1.0.0", 
   };
 
   // Version 0.9.0 should be allowed (matches <1.0.0)
-  const resV09 = evaluatePackagePolicies(pkgResult("test", "0.9.0", [findingV09]), cfg);
-  assert.equal(resV09.decisions[0].action, "allow");
+  const resV09 = evaluatePackagePolicies(pkg("test", "0.9.0", [findingV09]), cfg);
+  assert.equal(resV09[0].action, "allow");
 
   // Version 1.0.0 should be blocked (doesn't match <1.0.0)
-  const resV10 = evaluatePackagePolicies(pkgResult("test", "1.0.0", [findingV10]), cfg);
-  assert.equal(resV10.decisions[0].action, "block");
+  const resV10 = evaluatePackagePolicies(pkg("test", "1.0.0", [findingV10]), cfg);
+  assert.equal(resV10[0].action, "block");
 });
 
 test("invalid version constraint in allowlist is handled gracefully (fails closed)", () => {
@@ -328,8 +315,8 @@ test("invalid version constraint in allowlist is handled gracefully (fails close
   };
 
   // Should block because invalid version range returns false from satisfiesStrict()
-  const res = evaluatePackagePolicies(pkgResult("test", "1.0.0", [f]), cfg);
-  assert.equal(res.decisions[0].action, "block");
+  const res = evaluatePackagePolicies(pkg("test", "1.0.0", [f]), cfg);
+  assert.equal(res[0].action, "block");
 });
 
 test("critical severity blocks", () => {
@@ -342,8 +329,8 @@ test("critical severity blocks", () => {
     severity: "critical",
   };
 
-  const res = evaluatePackagePolicies(pkgResult("a", "1.0.0", [f]), cfg);
-  assert.ok(res.decisions.some((d) => d.action === "block" && d.findingId === "CVE-2025-0003"));
+  const res = evaluatePackagePolicies(pkg("a", "1.0.0", [f]), cfg);
+  assert.ok(res.some((d) => d.action === "block" && d.findingId === "CVE-2025-0003"));
 });
 
 test("medium severity warns", () => {
@@ -356,8 +343,8 @@ test("medium severity warns", () => {
     severity: "medium",
   };
 
-  const res = evaluatePackagePolicies(pkgResult("a", "1.0.0", [f]), cfg);
-  assert.ok(res.decisions.some((d) => d.action === "warn" && d.findingId === "CVE-2025-0004"));
+  const res = evaluatePackagePolicies(pkg("a", "1.0.0", [f]), cfg);
+  assert.ok(res.some((d) => d.action === "warn" && d.findingId === "CVE-2025-0004"));
 });
 
 test("unknown severity warns per baseConfig", () => {
@@ -370,8 +357,8 @@ test("unknown severity warns per baseConfig", () => {
     severity: "unknown",
   };
 
-  const res = evaluatePackagePolicies(pkgResult("a", "1.0.0", [f]), cfg);
-  assert.ok(res.decisions.some((d) => d.action === "warn" && d.findingId === "CVE-2025-0005"));
+  const res = evaluatePackagePolicies(pkg("a", "1.0.0", [f]), cfg);
+  assert.ok(res.some((d) => d.action === "warn" && d.findingId === "CVE-2025-0005"));
 });
 
 test("multiple findings on same package get individual decisions", () => {
@@ -382,9 +369,9 @@ test("multiple findings on same package get individual decisions", () => {
     { id: "CVE-2025-0012", source: "github", packageName: "a", packageVersion: "1.0.0", severity: "low" },
   ];
 
-  const res = evaluatePackagePolicies(pkgResult("a", "1.0.0", findings), cfg);
-  assert.equal(res.decisions.length, 3);
-  assert.ok(res.decisions.some((d) => d.findingId === "CVE-2025-0010" && d.action === "block"));
-  assert.ok(res.decisions.some((d) => d.findingId === "CVE-2025-0011" && d.action === "block"));
-  assert.ok(res.decisions.some((d) => d.findingId === "CVE-2025-0012" && d.action === "warn"));
+  const res = evaluatePackagePolicies(pkg("a", "1.0.0", findings), cfg);
+  assert.equal(res.length, 3);
+  assert.ok(res.some((d) => d.findingId === "CVE-2025-0010" && d.action === "block"));
+  assert.ok(res.some((d) => d.findingId === "CVE-2025-0011" && d.action === "block"));
+  assert.ok(res.some((d) => d.findingId === "CVE-2025-0012" && d.action === "warn"));
 });
