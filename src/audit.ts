@@ -10,6 +10,10 @@ import { buildSummary, getOutputFormat, outputResults } from "./utils/output-for
 
 const CACHE_DIR = ".pnpm-audit-cache";
 
+/** Minimum interval between auto-prune runs (1 hour) */
+const PRUNE_INTERVAL_MS = 3600_000;
+let lastPruneTime = 0;
+
 /** Exit codes for audit results */
 export const EXIT_CODES = {
   SUCCESS: 0,
@@ -34,6 +38,15 @@ export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions):
   const { cwd, env, registryUrl } = runtime;
   const cfg = await loadConfig({ cwd, env });
   const cache = new FileCache({ dir: path.resolve(cwd, CACHE_DIR) });
+
+  // Auto-prune expired cache entries (at most once per hour, non-blocking)
+  const now = Date.now();
+  if (now - lastPruneTime > PRUNE_INTERVAL_MS) {
+    lastPruneTime = now;
+    cache.prune().then(({ pruned }) => {
+      if (pruned > 0) logger.debug(`Cache auto-prune: removed ${pruned} expired entries`);
+    }).catch(() => { /* ignore prune errors */ });
+  }
 
   const { packages } = extractPackagesFromLockfile(lockfile);
 

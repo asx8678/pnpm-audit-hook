@@ -51,8 +51,14 @@ function findAllowlistMatch(
   for (const entry of allowlist) {
     if (isExpired(entry)) continue;
 
-    const idMatches =
-      entry.id !== undefined && entry.id.toUpperCase() === finding.id.toUpperCase();
+    // Match entry.id against finding.id AND finding.identifiers[]
+    const idMatches = entry.id !== undefined && (
+      entry.id.toUpperCase() === finding.id.toUpperCase() ||
+      (finding.identifiers ?? []).some(
+        ident => ident.value.toUpperCase() === entry.id!.toUpperCase()
+      )
+    );
+
     const packageMatches =
       entry.package !== undefined &&
       entry.package.toLowerCase() === finding.packageName.toLowerCase();
@@ -66,7 +72,7 @@ function findAllowlistMatch(
       return entry;
     }
 
-    // Match by vulnerability ID (case-insensitive)
+    // Match by vulnerability ID (case-insensitive, checks identifiers too)
     if (entry.id && idMatches) {
       // If entry has version constraint, check it
       if (entry.version && !satisfiesStrict(finding.packageVersion, entry.version)) {
@@ -105,6 +111,7 @@ export function evaluatePackagePolicies(pkgResult: PackageAuditResult, cfg: Audi
         packageName: pkg.name,
         packageVersion: pkg.version,
         findingId: f.id,
+        findingSeverity: f.severity,
       });
       continue;
     }
@@ -119,6 +126,7 @@ export function evaluatePackagePolicies(pkgResult: PackageAuditResult, cfg: Audi
       packageName: pkg.name,
       packageVersion: pkg.version,
       findingId: f.id,
+      findingSeverity: f.severity,
     });
   }
 

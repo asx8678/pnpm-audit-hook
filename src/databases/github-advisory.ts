@@ -41,6 +41,31 @@ export interface GitHubAdvisoryOptions {
   cutoffDate?: string;
 }
 
+/** Structured error for failed package queries (avoids fragile string parsing) */
+interface PackageQueryError {
+  pkg: PackageRef;
+  message: string;
+}
+
+/**
+ * Validate that a cached value has the expected shape for VulnerabilityFinding[].
+ */
+function isValidCachedFindings(value: unknown): value is VulnerabilityFinding[] {
+  if (!Array.isArray(value)) return false;
+  // Spot-check the first element for required fields
+  if (value.length > 0) {
+    const first = value[0];
+    return (
+      first &&
+      typeof first === "object" &&
+      typeof first.id === "string" &&
+      typeof first.packageName === "string" &&
+      typeof first.severity === "string"
+    );
+  }
+  return true; // empty array is valid
+}
+
 export class GitHubAdvisorySource implements VulnerabilitySource {
   id: FindingSource = "github";
   private staticDb: StaticDbReader | null;
@@ -69,17 +94,11 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
    * 3. Merge and deduplicate results (API data preferred over static DB)
    *
    * Falls back to full API query if static DB is not available.
-   *
-   * @param pkgs - Packages to check for vulnerabilities
-   * @param ctx - Source context with configuration, HTTP client, and cache
-   * @param options - Optional query filters
-   * @param options.publishedAfter - Only return advisories published after this ISO 8601 date (YYYY-MM-DD)
-   *                                  Uses GitHub API's `published=>YYYY-MM-DD` parameter
-   * @returns Source result with findings and status
    */
   async query(pkgs: PackageRef[], ctx: SourceContext, options?: VulnerabilitySourceOptions): Promise<SourceResult> {
     const start = Date.now();
     const findings: VulnerabilityFinding[] = [];
+    const isOffline = options?.offline ?? false;
 
     // Check cache first (parallel reads)
     const targets: PackageRef[] = [];
@@ -90,8 +109,8 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
     );
     pkgs.forEach((p, i) => {
       const cached = cacheResults[i];
-      if (cached?.value) {
-        findings.push(...(cached.value as VulnerabilityFinding[]));
+      if (cached?.value && isValidCachedFindings(cached.value)) {
+        findings.push(...cached.value);
       } else {
         targets.push(p);
       }
@@ -105,7 +124,7 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
     const perPkg: Record<string, VulnerabilityFinding[]> = {};
     for (const p of targets) perPkg[`${p.name}@${p.version}`] = [];
 
-    const errors: string[] = [];
+    const errors: PackageQueryError[] = [];
     const seen = new Set<string>();
     const packagesWithStaticDbCoverage = new Set<string>();
 
@@ -125,21 +144,22 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
       logger.warn("Static DB was expected but is not available, falling back to full API query");
     }
 
-    // Step 2: Query GitHub API for vulnerabilities
-    // If static DB is available, only query for recent vulnerabilities (after cutoff)
-    // Otherwise, query for all vulnerabilities
-    const apiQueryStart = Date.now();
+    // Step 2: Query GitHub API for vulnerabilities (skip in offline mode)
+    if (!isOffline) {
+      const apiQueryStart = Date.now();
 
-    // Determine API query options
-    // Use publishedAfter from options, or from cutoff date if static DB is available
-    const apiOptions: VulnerabilitySourceOptions = { ...options };
-    if (staticDbAvailable && this.cutoffDate && !apiOptions.publishedAfter) {
-      apiOptions.publishedAfter = this.cutoffDate;
+      // Determine API query options
+      const apiOptions: VulnerabilitySourceOptions = { ...options };
+      if (staticDbAvailable && this.cutoffDate && !apiOptions.publishedAfter) {
+        apiOptions.publishedAfter = this.cutoffDate;
+      }
+
+      const apiErrors = await this.queryGitHubApi(targets, ctx, seen, perPkg, apiOptions);
+      errors.push(...apiErrors);
+      logger.debug(`GitHub API query took ${Date.now() - apiQueryStart}ms`);
+    } else if (!staticDbAvailable) {
+      logger.warn("Offline mode with no static DB — no vulnerability data available");
     }
-
-    const apiErrors = await this.queryGitHubApi(targets, ctx, seen, perPkg, apiOptions);
-    errors.push(...apiErrors);
-    logger.debug(`GitHub API query took ${Date.now() - apiQueryStart}ms`);
 
     // Cache and collect results (parallel writes with dynamic TTL)
     const baseTtl = ctx.cfg.cache?.ttlSeconds ?? 3600;
@@ -179,11 +199,9 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
     }
 
     if (errors.length > 0) {
-      // Check if the packages that failed API queries have static DB coverage.
-      // Only treat API failures as non-fatal if the specific failed packages were
-      // covered by the static DB (not just any package globally).
+      // Check if the packages that failed API queries have static DB coverage
       const failedPkgKeys = new Set(
-        errors.map(e => e.split(":")[0]!.trim()),
+        errors.map(e => `${e.pkg.name}@${e.pkg.version}`),
       );
       const allFailedHaveStaticCoverage = failedPkgKeys.size > 0 &&
         [...failedPkgKeys].every(key => packagesWithStaticDbCoverage.has(key));
@@ -194,7 +212,7 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
           logger.warn(`GitHub API failed for all packages, but static DB covers them (${findings.length} findings)`);
           return { source: this.id, ok: true, durationMs: Date.now() - start, findings };
         }
-        return { source: this.id, ok: false, error: errors[0], durationMs: Date.now() - start, findings };
+        return { source: this.id, ok: false, error: errors[0]!.message, durationMs: Date.now() - start, findings };
       }
 
       // Partial failure - some queries succeeded
@@ -263,7 +281,7 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
 
   /**
    * Query GitHub API for vulnerabilities.
-   * Returns array of error messages for failed packages.
+   * Returns array of structured errors for failed packages.
    */
   private async queryGitHubApi(
     targets: PackageRef[],
@@ -271,7 +289,7 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
     seen: Set<string>,
     perPkg: Record<string, VulnerabilityFinding[]>,
     options?: VulnerabilitySourceOptions,
-  ): Promise<string[]> {
+  ): Promise<PackageQueryError[]> {
     const token = ctx.env.GITHUB_TOKEN ?? ctx.env.GH_TOKEN;
     const headers: Record<string, string> = {
       Accept: "application/vnd.github+json",
@@ -279,7 +297,9 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
       ...(token && { Authorization: `Bearer ${token}` }),
     };
 
-    const errors: string[] = [];
+    const errors: PackageQueryError[] = [];
+    let completed = 0;
+    const total = targets.length;
 
     // Query each package individually - GitHub API returns incomplete results
     // when multiple `affects` parameters are used in a single request
@@ -361,6 +381,7 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
                 title: adv.summary,
                 url: adv.html_url,
                 severity,
+                identifiers: identifiers.length > 0 ? identifiers : undefined,
                 affectedRange: range,
                 fixedVersion:
                   typeof v.first_patched_version === "string"
@@ -392,7 +413,12 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
           }
         }
       } catch (e: unknown) {
-        errors.push(`${p.name}@${p.version}: ${errorMessage(e)}`);
+        errors.push({ pkg: p, message: errorMessage(e) });
+      } finally {
+        completed++;
+        if (total > 10) {
+          logger.progress(completed, total, `Querying GitHub Advisory (${completed}/${total})`);
+        }
       }
     };
 

@@ -162,7 +162,8 @@ export function formatHumanReadable(data: AuditOutputData): string {
     lines.push(`${BOLD}Vulnerability Details:${RESET}`);
     for (const finding of findings) {
       const color = severityColor(finding.severity);
-      lines.push(`  ${color}[${finding.severity.toUpperCase()}]${RESET} ${finding.id}`);
+      const cvss = typeof finding.cvssScore === "number" ? ` (CVSS ${finding.cvssScore})` : "";
+      lines.push(`  ${color}[${finding.severity.toUpperCase()}]${RESET} ${finding.id}${cvss}`);
       lines.push(`    Package: ${finding.packageName}@${finding.packageVersion}`);
       if (finding.title) {
         lines.push(`    Title: ${finding.title}`);
@@ -312,18 +313,88 @@ export function formatAzureDevOps(data: AuditOutputData): string {
   return lines.join("\n");
 }
 
+/**
+ * GitHub Actions output format.
+ * Emits ::error:: and ::warning:: workflow commands for PR annotations.
+ */
+export function formatGitHubActions(data: AuditOutputData): string {
+  const { summary, findings, decisions, blocked, warnings } = data;
+  const lines: string[] = [];
+
+  // Group header
+  lines.push("::group::pnpm-audit Security Report");
+
+  // Source status
+  for (const [name, status] of Object.entries(summary.sourceStatus)) {
+    if (!status.ok) {
+      lines.push(`::warning::Source ${name} failed: ${status.error ?? "unknown"}`);
+    }
+  }
+
+  // Package summary
+  lines.push(`Scanned ${summary.totalPackages} packages: ${summary.safePackages} safe, ${summary.packagesWithVulnerabilities} with vulnerabilities`);
+
+  // Severity breakdown
+  const sevParts: string[] = [];
+  for (const severity of SEVERITY_ORDER) {
+    const count = summary.vulnerabilitiesBySeverity[severity];
+    if (count > 0) sevParts.push(`${count} ${severity}`);
+  }
+  if (sevParts.length > 0) lines.push(`Vulnerabilities: ${sevParts.join(", ")}`);
+
+  lines.push("::endgroup::");
+
+  // Emit annotations for findings
+  for (const finding of findings) {
+    const cvss = typeof finding.cvssScore === "number" ? ` (CVSS ${finding.cvssScore})` : "";
+    const fix = finding.fixedVersion ? ` — fix: upgrade to ${finding.fixedVersion}` : "";
+    const msg = `${finding.id} [${finding.severity.toUpperCase()}]${cvss} in ${finding.packageName}@${finding.packageVersion}${fix}`;
+
+    if (finding.severity === "critical" || finding.severity === "high") {
+      lines.push(`::error file=package.json,title=Vulnerability ${finding.id}::${msg}`);
+    } else {
+      lines.push(`::warning file=package.json,title=Vulnerability ${finding.id}::${msg}`);
+    }
+  }
+
+  // Blocked items as errors
+  const blockedDecisions = decisions.filter((d) => d.action === "block" && d.source === "source");
+  for (const d of blockedDecisions) {
+    lines.push(`::error::${d.reason}`);
+  }
+
+  // Final status
+  if (blocked) {
+    lines.push(`::error::AUDIT FAILED — ${summary.blockedCount} issue(s) blocked installation`);
+  } else if (warnings) {
+    lines.push(`::warning::AUDIT PASSED WITH WARNINGS — ${summary.warnCount} warning(s)`);
+  }
+
+  // Set outputs for downstream steps
+  lines.push(`::set-output name=audit-blocked::${blocked}`);
+  lines.push(`::set-output name=vulnerability-count::${findings.length}`);
+  lines.push(`::set-output name=critical-count::${summary.vulnerabilitiesBySeverity.critical}`);
+  lines.push(`::set-output name=high-count::${summary.vulnerabilitiesBySeverity.high}`);
+
+  return lines.join("\n");
+}
+
 export function formatJson(data: AuditOutputData): string {
   return JSON.stringify(data, null, 2);
 }
 
-export type OutputFormat = "human" | "azure" | "json";
+export type OutputFormat = "human" | "azure" | "github" | "json";
 
 export function getOutputFormat(env: Record<string, string | undefined>): OutputFormat {
   if (env.PNPM_AUDIT_JSON === "true") {
     return "json";
   }
-  if (env.PNPM_AUDIT_FORMAT === "azure" || env.TF_BUILD === "True") {
+  const format = env.PNPM_AUDIT_FORMAT;
+  if (format === "azure" || env.TF_BUILD === "True") {
     return "azure";
+  }
+  if (format === "github" || (env.GITHUB_ACTIONS === "true" && format !== "human")) {
+    return "github";
   }
   return "human";
 }
@@ -339,6 +410,9 @@ export function outputResults(
       break;
     case "azure":
       output = formatAzureDevOps(data);
+      break;
+    case "github":
+      output = formatGitHubActions(data);
       break;
     default:
       output = formatHumanReadable(data);

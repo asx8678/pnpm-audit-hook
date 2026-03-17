@@ -81,6 +81,8 @@ export interface VulnerabilityFinding {
   url?: string;
   description?: string;
   severity: Severity;
+  cvssScore?: number;
+  cvssVector?: string;
   publishedAt?: string;
   modifiedAt?: string;
   identifiers?: VulnerabilityIdentifier[];
@@ -94,6 +96,7 @@ export interface PolicyDecision {
   source: DecisionSource;
   at: string;
   findingId?: string;
+  findingSeverity?: Severity;
   packageName?: string;
   packageVersion?: string;
 }
@@ -130,6 +133,8 @@ export interface AuditConfigInput {
   failOnNoSources?: boolean;
   /** Block installation when a source fails (default: true for security) */
   failOnSourceError?: boolean;
+  /** Skip all API calls, use only static DB + cache (default: false) */
+  offline?: boolean;
   /** Static baseline configuration for historical vulnerabilities */
   staticBaseline?: StaticBaselineConfigInput;
 }
@@ -155,6 +160,8 @@ export interface AuditConfig {
   failOnNoSources: boolean;
   /** Block installation when a source fails (default: true for security) */
   failOnSourceError: boolean;
+  /** Skip all API calls, use only static DB + cache (default: false) */
+  offline: boolean;
   /** Static baseline configuration for historical vulnerabilities */
   staticBaseline: StaticBaselineConfig;
 }

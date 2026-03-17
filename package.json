@@ -35,7 +35,8 @@
     }
   },
   "bin": {
-    "pnpm-audit-setup": "bin/setup.js"
+    "pnpm-audit-setup": "bin/setup.js",
+    "pnpm-audit-scan": "bin/cli.js"
   },
   "files": [
     "dist",

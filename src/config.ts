@@ -11,6 +11,12 @@ const MAX_TIMEOUT_MS = 300000;
 const MAX_CACHE_TTL_SECONDS = 86400;
 const VALID_SEVERITIES = new Set(["critical", "high", "medium", "low", "unknown"]);
 
+/** Known top-level config keys — used to warn on typos */
+const KNOWN_TOP_LEVEL_KEYS = new Set([
+  "policy", "sources", "performance", "cache",
+  "failOnNoSources", "failOnSourceError", "offline", "staticBaseline",
+]);
+
 /** Get a non-empty string property from an object, or null */
 function getString(obj: object, key: string): string | null {
   const value = (obj as Record<string, unknown>)[key];
@@ -56,6 +62,19 @@ function validateAllowlistEntry(e: unknown): AllowlistEntry | null {
     }
   }
 
+  // Pre-validate version range if provided
+  if (typeof obj.version === "string" && obj.version.length > 0) {
+    try {
+      // Import semver dynamically to validate range
+      const semver = require("semver");
+      if (!semver.validRange(obj.version)) {
+        logger.warn(`Allowlist entry: invalid semver range "${obj.version}" — will never match (fail-closed)`);
+      }
+    } catch {
+      // semver not available, skip validation
+    }
+  }
+
   // Build the validated entry explicitly to avoid type assertions
   const version = getString(e, "version");
   const reason = getString(e, "reason");
@@ -82,8 +101,26 @@ function validateAllowlistEntry(e: unknown): AllowlistEntry | null {
   };
 }
 
-/** Default cutoff date for static baseline */
-export const DEFAULT_CUTOFF_DATE = "2025-12-31";
+/**
+ * Read the cutoff date from the bundled static DB index.json.
+ * Returns null if the index cannot be read.
+ */
+function readStaticDbCutoffDate(): string | null {
+  try {
+    const fs = require("node:fs");
+    const indexPath = path.resolve(__dirname, "static-db", "data", "index.json");
+    const raw = fs.readFileSync(indexPath, "utf-8");
+    const parsed = JSON.parse(raw);
+    // Support both optimized ('cut') and standard ('cutoffDate') formats
+    const cutoff = parsed.cutoffDate ?? parsed.cut;
+    return typeof cutoff === "string" ? cutoff : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Default cutoff date for static baseline — derived from bundled DB at load time */
+export const DEFAULT_CUTOFF_DATE: string = readStaticDbCutoffDate() ?? "2025-12-31";
 
 const DEFAULT_STATIC_BASELINE: StaticBaselineConfig = {
   enabled: true,
@@ -104,6 +141,7 @@ export const DEFAULT_CONFIG: AuditConfig = {
   cache: { ttlSeconds: 3600 },
   failOnNoSources: true,
   failOnSourceError: true,
+  offline: false,
   staticBaseline: DEFAULT_STATIC_BASELINE,
 };
 
@@ -143,7 +181,18 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
     if (isNodeError(e) && e.code === "ENOENT") {
       logger.debug(`No config file found at ${configPath}, using defaults`);
     } else {
-      throw new Error(`Failed to read config: ${errorMessage(e)}`);
+      // Preserve YAML parse error details (line/column) for user debugging
+      const detail = e instanceof YAML.YAMLParseError
+        ? `${e.message} (line ${e.linePos?.[0]?.line ?? "?"})`
+        : errorMessage(e);
+      throw new Error(`Failed to read config at ${configPath}: ${detail}`);
+    }
+  }
+
+  // Warn on unrecognized top-level keys (catches typos like "polciy")
+  for (const key of Object.keys(raw)) {
+    if (!KNOWN_TOP_LEVEL_KEYS.has(key)) {
+      logger.warn(`Unrecognized config key "${key}" — did you mean one of: ${[...KNOWN_TOP_LEVEL_KEYS].join(", ")}?`);
     }
   }
 
@@ -224,6 +273,18 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
     logger.warn(`Severity overlap in policy: ${overlap.join(", ")} appears in both block and warn (block takes precedence)`);
   }
 
+  // Env var overrides for fail-on flags
+  const failOnNoSources = opts.env.PNPM_AUDIT_FAIL_ON_NO_SOURCES !== undefined
+    ? opts.env.PNPM_AUDIT_FAIL_ON_NO_SOURCES !== "false"
+    : raw.failOnNoSources !== false;
+
+  const failOnSourceError = opts.env.PNPM_AUDIT_FAIL_ON_SOURCE_ERROR !== undefined
+    ? opts.env.PNPM_AUDIT_FAIL_ON_SOURCE_ERROR !== "false"
+    : raw.failOnSourceError !== false;
+
+  // Offline mode: env var or config
+  const offline = opts.env.PNPM_AUDIT_OFFLINE === "true" || raw.offline === true;
+
   return {
     ...DEFAULT_CONFIG,
     policy: {
@@ -251,8 +312,9 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
           ? cache.ttlSeconds
           : DEFAULT_CONFIG.cache.ttlSeconds,
     },
-    failOnNoSources: raw.failOnNoSources !== false,
-    failOnSourceError: raw.failOnSourceError !== false,
+    failOnNoSources,
+    failOnSourceError,
+    offline,
     staticBaseline: parseStaticBaseline(staticBaselineRaw),
   };
 }

@@ -14,6 +14,7 @@ const NVD_DELAY_NO_KEY_MS = 6500;
 interface NvdCvssData {
   baseScore?: number;
   baseSeverity?: string;
+  vectorString?: string;
 }
 
 interface NvdCvssMetric {
@@ -63,15 +64,28 @@ export interface NvdCveDetail {
   id: string;
   baseScore?: number;
   baseSeverity?: Severity;
+  vectorString?: string;
   published?: string;
   lastModified?: string;
   url?: string;
 }
 
+/**
+ * Validate that a cached value has the expected shape for NvdCveDetail.
+ */
+function isValidCachedNvdDetail(value: unknown): value is NvdCveDetail {
+  if (!value || typeof value !== "object") return false;
+  const obj = value as Record<string, unknown>;
+  return typeof obj.id === "string";
+}
+
 async function fetchNvdCve(cveId: string, ctx: SourceContext): Promise<NvdCveDetail | null> {
   const key = `nvd:cve:${cveId}`;
   const cached = await ctx.cache.get(key);
-  if (cached?.value) return cached.value as NvdCveDetail;
+  if (cached?.value) {
+    if (isValidCachedNvdDetail(cached.value)) return cached.value;
+    logger.debug(`Invalid cache entry for ${key}, refetching`);
+  }
 
   const apiKey = ctx.env.NVD_API_KEY ?? ctx.env.NIST_NVD_API_KEY;
   const url = new URL("https://services.nvd.nist.gov/rest/json/cves/2.0");
@@ -86,16 +100,18 @@ async function fetchNvdCve(cveId: string, ctx: SourceContext): Promise<NvdCveDet
     const cve = json?.vulnerabilities?.[0]?.cve;
     const metrics = cve?.metrics;
     // Prefer "Primary" type metrics over "Secondary"
-    const cvssData = (
+    const metric = (
       findPrimaryMetric(metrics?.cvssMetricV31) ??
       findPrimaryMetric(metrics?.cvssMetricV30) ??
       findPrimaryMetric(metrics?.cvssMetricV2)
-    )?.cvssData;
+    );
+    const cvssData = metric?.cvssData;
 
     const detail: NvdCveDetail = {
       id: cveId,
       baseScore: typeof cvssData?.baseScore === "number" ? cvssData.baseScore : undefined,
       baseSeverity: mapSeverity(cvssData?.baseSeverity),
+      vectorString: typeof cvssData?.vectorString === "string" ? cvssData.vectorString : undefined,
       published: cve?.published,
       lastModified: cve?.lastModified,
       url: `https://nvd.nist.gov/vuln/detail/${encodeURIComponent(cveId)}`,
@@ -138,8 +154,11 @@ export async function enrichFindingsWithNvd(
     const delayMs = hasApiKey ? NVD_DELAY_WITH_KEY_MS : NVD_DELAY_NO_KEY_MS;
     const concurrency = hasApiKey ? 2 : 1;
 
+    logger.info(`Enriching ${needs.length} CVE(s) from NVD${hasApiKey ? "" : " (no API key, slower rate limit)"}...`);
+
     // Use queue.shift() pattern to avoid race conditions with shared index
     const queue = [...needs];
+    let completed = 0;
 
     await Promise.all(
       Array.from({ length: Math.min(concurrency, queue.length) }, async () => {
@@ -153,6 +172,9 @@ export async function enrichFindingsWithNvd(
           } else {
             failedCveIds.push(cveId);
           }
+
+          completed++;
+          logger.progress(completed, needs.length, `NVD enrichment (${completed}/${needs.length})`);
 
           // Only sleep if there are more items in the queue
           if (queue.length > 0) {
@@ -182,6 +204,12 @@ export async function enrichFindingsWithNvd(
         if (!d) continue;
         if (d.baseSeverity && d.baseSeverity !== "unknown") {
           f.severity = d.baseSeverity;
+        }
+        if (typeof d.baseScore === "number") {
+          f.cvssScore = d.baseScore;
+        }
+        if (d.vectorString) {
+          f.cvssVector = d.vectorString;
         }
         f.publishedAt ??= d.published;
         f.modifiedAt ??= d.lastModified;

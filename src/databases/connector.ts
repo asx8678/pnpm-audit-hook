@@ -22,6 +22,8 @@ export interface VulnerabilitySourceOptions {
    * For GitHub Advisory API, this translates to: published=>YYYY-MM-DD
    */
   publishedAfter?: string;
+  /** Skip live API calls, use only static DB + cache */
+  offline?: boolean;
 }
 
 export interface SourceResult {

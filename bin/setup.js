@@ -12,6 +12,13 @@ if (!fs.existsSync(path.join(targetDir, "package.json"))) {
   process.exit(1);
 }
 
+// Check if this is a pnpm project
+if (!fs.existsSync(path.join(targetDir, "pnpm-lock.yaml"))) {
+  console.warn("Warning: No pnpm-lock.yaml found. This hook only works with pnpm.");
+  console.warn("If you use npm or yarn, consider 'npm audit' or 'yarn audit' instead.");
+  console.warn("");
+}
+
 const filesToCopy = [
   { src: ".pnpmfile.cjs", required: true },
   { src: ".pnpm-audit.yaml", required: false },
@@ -24,13 +31,13 @@ for (const file of filesToCopy) {
   const destPath = path.join(targetDir, file.src);
 
   if (fs.existsSync(destPath)) {
-    console.log(`  ⏭  ${file.src} already exists, skipping`);
+    console.log(`  [skip] ${file.src} already exists`);
     continue;
   }
 
   if (!fs.existsSync(srcPath)) {
     if (file.required) {
-      console.error(`  ❌ ${file.src} not found in package!`);
+      console.error(`  [error] ${file.src} not found in package!`);
       process.exit(1);
     }
     continue;
@@ -44,12 +51,18 @@ for (const file of filesToCopy) {
       "path.join(__dirname, 'node_modules', 'pnpm-audit-hook', 'dist', 'index.js')"
     );
     fs.writeFileSync(destPath, content);
-    console.log(`  ✅ ${file.src} created`);
+    console.log(`  [ok] ${file.src} created`);
   } else {
     fs.copyFileSync(srcPath, destPath);
-    console.log(`  ✅ ${file.src} copied`);
+    console.log(`  [ok] ${file.src} copied`);
   }
 }
 
-console.log("\n✨ Done! The audit hook will run on every pnpm install.\n");
-console.log("Test it with: pnpm add lodash");
+console.log("\nDone! The audit hook will run on every pnpm install.\n");
+console.log("Next steps:");
+console.log("  1. git add .pnpmfile.cjs .pnpm-audit.yaml");
+console.log("  2. Customize .pnpm-audit.yaml for your project");
+console.log("  3. Test it with: pnpm add lodash");
+console.log("");
+console.log("You can also run audits manually: pnpm-audit-scan");
+console.log("Add .pnpm-audit-cache/ to .gitignore");

@@ -86,13 +86,23 @@ export async function aggregateVulnerabilities(
     }
   }
 
+  // Use the static DB's actual cutoff date (from index.json) rather than config default.
+  // This ensures API queries align with the DB's actual coverage.
+  const effectiveCutoffDate = staticDb?.getCutoffDate() ?? staticBaselineCfg?.cutoffDate;
+
   // GitHub Advisory is the primary (and only) vulnerability source
   // Pass static DB for hybrid lookup if available
   const githubSource = new GitHubAdvisorySource({
     staticDb,
-    cutoffDate: staticBaselineCfg?.cutoffDate,
+    cutoffDate: effectiveCutoffDate,
   });
   const githubEnabled = githubSource.isEnabled(ctx.cfg, ctx.env);
+
+  // Offline mode: skip API calls entirely, rely on static DB + cache
+  const isOffline = ctx.cfg.offline;
+  if (isOffline) {
+    logger.info("Offline mode: skipping live API queries, using static DB and cache only");
+  }
 
   if (!githubEnabled) {
     logger.warn("GitHub Advisory source is disabled - no vulnerability checks will be performed");
@@ -108,7 +118,7 @@ export async function aggregateVulnerabilities(
 
   let findings: VulnerabilityFinding[] = [];
   try {
-    const result = await githubSource.query(pkgs, queryCtx);
+    const result = await githubSource.query(pkgs, queryCtx, { offline: isOffline });
     findings = result.findings;
     sourceStatus[githubSource.id] = { ok: result.ok, error: result.error, durationMs: result.durationMs };
 
@@ -133,8 +143,9 @@ export async function aggregateVulnerabilities(
   const dedupedFindings = dedupeFindings(findings);
 
   // NVD enrichment - adds CVSS data and fills in missing severity for CVE IDs
-  // Skip if disabled, no findings, or no findings with unknown severity needing enrichment
+  // Skip if disabled, offline, no findings, or no findings with unknown severity needing enrichment
   const needsNvdEnrichment =
+    !isOffline &&
     ctx.cfg.sources?.nvd?.enabled !== false &&
     dedupedFindings.some((f) => f.severity === "unknown");
 
