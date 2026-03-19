@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import semver from "semver";
 import YAML from "yaml";
 import type { AllowlistEntry, AuditConfig, Severity, StaticBaselineConfig } from "./types";
 import { errorMessage, isNodeError } from "./utils/error";
@@ -64,14 +65,8 @@ function validateAllowlistEntry(e: unknown): AllowlistEntry | null {
 
   // Pre-validate version range if provided
   if (typeof obj.version === "string" && obj.version.length > 0) {
-    try {
-      // Import semver dynamically to validate range
-      const semver = require("semver");
-      if (!semver.validRange(obj.version)) {
-        logger.warn(`Allowlist entry: invalid semver range "${obj.version}" — will never match (fail-closed)`);
-      }
-    } catch {
-      // semver not available, skip validation
+    if (!semver.validRange(obj.version)) {
+      logger.warn(`Allowlist entry: invalid semver range "${obj.version}" — will never match (fail-closed)`);
     }
   }
 

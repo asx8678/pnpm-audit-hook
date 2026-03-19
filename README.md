@@ -369,7 +369,13 @@ policy:
 | `PNPM_AUDIT_DISABLE_GITHUB` | Disable GitHub Advisory source |
 | `PNPM_AUDIT_QUIET` | Suppress info/warn output |
 | `PNPM_AUDIT_DEBUG` | Enable debug logging |
+| `PNPM_AUDIT_VERBOSE` | Enable verbose logging |
 | `PNPM_AUDIT_JSON` | JSON output format |
+| `PNPM_AUDIT_FORMAT` | Output format (`text`, `json`, `github-actions`) |
+| `PNPM_AUDIT_OFFLINE` | Use only static baseline DB (no network) |
+| `PNPM_AUDIT_FAIL_ON_NO_SOURCES` | Fail if no advisory sources available (default: `true`) |
+| `PNPM_AUDIT_FAIL_ON_SOURCE_ERROR` | Fail if an advisory source errors (default: `true`) |
+| `PNPM_AUDIT_GITHUB_CONCURRENCY` | Max concurrent GitHub API requests (default: `10` with token, `3` without) |
 
 ## Caching
 
