@@ -459,7 +459,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-  - task: UseNode@1
+  - task: NodeTool@0
     inputs:
       version: 20
   - script: |
