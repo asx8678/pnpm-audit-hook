@@ -1,0 +1,483 @@
+// GitHub Advisory Query Tests — isEnabled, pagination, version range filtering, per-package, errors, response parsing.
+import { describe, it, beforeEach } from "node:test";
+import assert from "node:assert/strict";
+import { GitHubAdvisorySource } from "../../src/databases/github-advisory";
+import type { SourceContext } from "../../src/databases/connector";
+import type { AuditConfig, VulnerabilityFinding } from "../../src/types";
+
+import { describe, it, beforeEach } from "node:test";
+import assert from "node:assert/strict";
+import { GitHubAdvisorySource } from "../../src/databases/github-advisory";
+import type { SourceContext } from "../../src/databases/connector";
+import type { AuditConfig, VulnerabilityFinding } from "../../src/types";
+import type { Cache, CacheEntry } from "../../src/cache/types";
+import type { HttpClient } from "../../src/utils/http";
+
+const REGISTRY_URL = "https://registry.npmjs.org";
+const githubCacheKey = (name: string, version: string) =>
+  `github:${REGISTRY_URL}:${name}@${version}`;
+
+function baseConfig(): AuditConfig {
+  return {
+    policy: {
+      block: ["critical", "high"],
+      warn: ["medium", "low", "unknown"],
+      allowlist: [],
+    },
+    sources: {
+      github: { enabled: true },
+      nvd: { enabled: true },
+      osv: { enabled: true },
+    },
+    performance: { timeoutMs: 15000 },
+    cache: { ttlSeconds: 3600 },
+    failOnNoSources: true,
+    failOnSourceError: true,
+  };
+}
+
+function createMockCache(): Cache & { store: Map<string, CacheEntry<unknown>> } {
+  const store = new Map<string, CacheEntry<unknown>>();
+  return {
+    store,
+    async get(key: string): Promise<CacheEntry<unknown> | null> {
+      const entry = store.get(key);
+      if (!entry) return null;
+      if (entry.expiresAt < Date.now()) {
+        store.delete(key);
+        return null;
+      }
+      return entry;
+    },
+    async set(key: string, value: unknown, ttlSeconds: number, options?: { version?: string; dependencies?: string[] }): Promise<void> {
+      const now = Date.now();
+      store.set(key, {
+        value,
+        storedAt: now,
+        expiresAt: now + ttlSeconds * 1000,
+        version: options?.version,
+        dependencies: options?.dependencies,
+      });
+    },
+    async delete(key: string): Promise<boolean> {
+      return store.delete(key);
+    },
+    async has(key: string): Promise<boolean> {
+      return store.has(key);
+    },
+    async clear(): Promise<void> {
+      store.clear();
+    },
+    getStatistics() {
+      return {
+        hits: 0,
+        misses: 0,
+        sets: 0,
+        deletes: 0,
+        evictions: 0,
+        totalEntries: store.size,
+        totalSizeBytes: 0,
+        averageReadTimeMs: 0,
+        averageWriteTimeMs: 0,
+        prunedEntries: 0,
+      };
+    },
+    async prune() {
+      return { pruned: 0, failed: 0 };
+    },
+    getHealth() {
+      return {
+        status: 'healthy',
+        hitRate: 0,
+        sizeBytes: 0,
+        entryCount: store.size,
+        recommendations: [],
+      };
+    },
+  };
+}
+
+function createMockHttpClient(responses: Array<{ data: unknown; status?: number }>): HttpClient & { calls: string[] } {
+  let callIndex = 0;
+  const calls: string[] = [];
+  return {
+    calls,
+    getJson: async () => { throw new Error("Not implemented"); },
+    postJson: async () => { throw new Error("Not implemented"); },
+    getRaw: async (url: string) => {
+      calls.push(url);
+      const response = responses[callIndex++];
+      if (!response) {
+        throw new Error(`No mock response for call ${callIndex}`);
+      }
+      if (response.status && response.status >= 400) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+      return {
+        json: async () => response.data,
+        ok: true,
+        status: response.status ?? 200,
+      } as Response;
+    },
+  } as HttpClient & { calls: string[] };
+}
+
+function finding(overrides: Partial<VulnerabilityFinding> = {}): VulnerabilityFinding {
+  return {
+    id: "CVE-2025-0001",
+    source: "github",
+    packageName: "test-pkg",
+    packageVersion: "1.0.0",
+    severity: "high",
+    ...overrides,
+  };
+}
+
+function createContext(
+  cache: Cache,
+  http: HttpClient,
+  cfgOverrides: Partial<AuditConfig> = {},
+  env: Record<string, string | undefined> = {},
+): SourceContext {
+  return {
+    cfg: { ...baseConfig(), ...cfgOverrides },
+    env,
+    cache,
+    http,
+    registryUrl: REGISTRY_URL,
+  };
+}
+
+
+describe("GitHubAdvisorySource", () => {
+  let source: GitHubAdvisorySource;
+
+  beforeEach(() => {
+    source = new GitHubAdvisorySource();
+  });
+
+  describe("isEnabled", () => {
+    it("returns true when enabled in config", () => {
+      const cfg = baseConfig();
+      assert.equal(source.isEnabled(cfg, {}), true);
+    });
+
+    it("returns false when disabled in config", () => {
+      const cfg = baseConfig();
+      cfg.sources.github.enabled = false;
+      assert.equal(source.isEnabled(cfg, {}), false);
+    });
+
+    it("returns false when PNPM_AUDIT_DISABLE_GITHUB env is true", () => {
+      const cfg = baseConfig();
+      assert.equal(source.isEnabled(cfg, { PNPM_AUDIT_DISABLE_GITHUB: "true" }), false);
+    });
+  });
+
+  describe("pagination", () => {
+    it("stops pagination when data.length < 100", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([
+        { data: Array(50).fill(createGitHubAdvisory("pkg", "1.0.0")) },
+      ]);
+      const ctx = createContext(cache, http);
+
+      await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(http.calls.length, 1, "Should only make one API call when results < 100");
+    });
+
+    it("continues pagination when data.length === 100", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([
+        { data: Array(100).fill(createGitHubAdvisory("pkg", "1.0.0")) },
+        { data: Array(50).fill(createGitHubAdvisory("pkg", "1.0.0")) },
+      ]);
+      const ctx = createContext(cache, http);
+
+      await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(http.calls.length, 2, "Should make two API calls when first response has 100 items");
+      assert.ok(http.calls[0]!.includes("page=1"));
+      assert.ok(http.calls[1]!.includes("page=2"));
+    });
+
+    it("stops pagination when data is empty", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([
+        { data: [] },
+      ]);
+      const ctx = createContext(cache, http);
+
+      await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(http.calls.length, 1);
+    });
+  });
+
+  describe("version range filtering", () => {
+    it("includes packages within vulnerable range", async () => {
+      const cache = createMockCache();
+      const advisory = createGitHubAdvisory("lodash", "4.17.0", {
+        vulnerable_version_range: "<4.17.21",
+      });
+      const http = createMockHttpClient([{ data: [advisory] }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "lodash", version: "4.17.0" }], ctx);
+
+      assert.equal(result.findings.length, 1);
+      assert.equal(result.findings[0]!.packageName, "lodash");
+    });
+
+    it("excludes packages outside vulnerable range", async () => {
+      const cache = createMockCache();
+      const advisory = createGitHubAdvisory("lodash", "4.17.0", {
+        vulnerable_version_range: "<4.17.0",
+      });
+      const http = createMockHttpClient([{ data: [advisory] }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "lodash", version: "4.17.21" }], ctx);
+
+      assert.equal(result.findings.length, 0);
+    });
+
+    it("includes packages when no range specified", async () => {
+      const cache = createMockCache();
+      const advisory = createGitHubAdvisory("lodash", "4.17.0", {
+        vulnerable_version_range: undefined,
+      });
+      const http = createMockHttpClient([{ data: [advisory] }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "lodash", version: "4.17.0" }], ctx);
+
+      assert.equal(result.findings.length, 1);
+    });
+  });
+
+  describe("per-package querying", () => {
+    it("queries each package individually", async () => {
+      const cache = createMockCache();
+      const packages = Array.from({ length: 15 }, (_, i) => ({
+        name: `pkg-${i}`,
+        version: "1.0.0",
+      }));
+
+      const http = createMockHttpClient(
+        packages.map(() => ({ data: [] }))
+      );
+      const ctx = createContext(cache, http);
+
+      await source.query(packages, ctx);
+
+      assert.equal(http.calls.length, 15, "Should query each package individually");
+    });
+
+    it("each request has single affects param", async () => {
+      const cache = createMockCache();
+      const packages = [
+        { name: "pkg-a", version: "1.0.0" },
+        { name: "pkg-b", version: "2.0.0" },
+        { name: "pkg-c", version: "3.0.0" },
+      ];
+
+      const http = createMockHttpClient([{ data: [] }, { data: [] }, { data: [] }]);
+      const ctx = createContext(cache, http);
+
+      await source.query(packages, ctx);
+
+      // Each call should have exactly one affects param
+      assert.ok(http.calls[0]!.includes("affects=pkg-a%401.0.0"));
+      assert.ok(http.calls[1]!.includes("affects=pkg-b%402.0.0"));
+      assert.ok(http.calls[2]!.includes("affects=pkg-c%403.0.0"));
+    });
+  });
+
+  describe("error handling", () => {
+    it("captures fetch errors and reports failure", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([{ data: null, status: 500 }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.ok, false);
+      assert.ok(result.error);
+    });
+
+    it("reports partial failure when some queries fail", async () => {
+      const cache = createMockCache();
+      const packages = [
+        { name: "pkg-a", version: "1.0.0" },
+        { name: "pkg-b", version: "2.0.0" },
+      ];
+
+      let callCount = 0;
+      const http = {
+        calls: [] as string[],
+        getJson: async () => { throw new Error("Not implemented"); },
+        postJson: async () => { throw new Error("Not implemented"); },
+        getRaw: async (url: string) => {
+          http.calls.push(url);
+          callCount++;
+          if (callCount === 1) {
+            return { json: async () => [], ok: true, status: 200 } as Response;
+          }
+          throw new Error("Network error");
+        },
+      } as HttpClient & { calls: string[] };
+
+      const ctx = createContext(cache, http);
+
+      const result = await source.query(packages, ctx);
+
+      assert.equal(result.ok, false);
+      assert.ok(result.error?.includes("Partial failure"));
+    });
+
+    it("handles invalid JSON response", async () => {
+      const cache = createMockCache();
+      const http = {
+        calls: [] as string[],
+        getJson: async () => { throw new Error("Not implemented"); },
+        postJson: async () => { throw new Error("Not implemented"); },
+        getRaw: async (url: string) => {
+          http.calls.push(url);
+          return {
+            json: async () => { throw new SyntaxError("Unexpected token"); },
+            ok: true,
+            status: 200,
+          } as unknown as Response;
+        },
+      } as HttpClient & { calls: string[] };
+
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.ok, false);
+      assert.ok(result.error?.includes("invalid JSON"));
+    });
+
+    it("handles non-array response", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([{ data: { message: "API rate limit exceeded" } }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.ok, false);
+      assert.ok(result.error?.includes("rate limit"));
+    });
+  });
+
+  describe("response parsing", () => {
+    it("extracts CVE id from advisory", async () => {
+      const cache = createMockCache();
+      const advisory = createGitHubAdvisory("pkg", "1.0.0", {
+        cve_id: "CVE-2025-12345",
+        ghsa_id: "GHSA-xxxx-xxxx-xxxx",
+      });
+      const http = createMockHttpClient([{ data: [advisory] }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.findings[0]!.id, "CVE-2025-12345");
+    });
+
+    it("falls back to GHSA id when no CVE", async () => {
+      const cache = createMockCache();
+      const advisory = createGitHubAdvisory("pkg", "1.0.0", {
+        cve_id: null,
+        ghsa_id: "GHSA-abcd-efgh-ijkl",
+      });
+      const http = createMockHttpClient([{ data: [advisory] }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.findings[0]!.id, "GHSA-ABCD-EFGH-IJKL");
+    });
+
+    it("extracts fixed version from first_patched_version object", async () => {
+      const cache = createMockCache();
+      const advisory = createGitHubAdvisory("pkg", "1.0.0", {
+        first_patched_version: { identifier: "2.0.0" },
+      });
+      const http = createMockHttpClient([{ data: [advisory] }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.findings[0]!.fixedVersion, "2.0.0");
+    });
+
+    it("extracts fixed version from first_patched_version string", async () => {
+      const cache = createMockCache();
+      const advisory = createGitHubAdvisory("pkg", "1.0.0", {
+        first_patched_version: "3.0.0",
+      });
+      const http = createMockHttpClient([{ data: [advisory] }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.findings[0]!.fixedVersion, "3.0.0");
+    });
+
+    it("deduplicates findings within same batch", async () => {
+      const cache = createMockCache();
+      const advisory1 = createGitHubAdvisory("pkg", "1.0.0", { cve_id: "CVE-2025-0001" });
+      const advisory2 = createGitHubAdvisory("pkg", "1.0.0", { cve_id: "CVE-2025-0001" });
+      const http = createMockHttpClient([{ data: [advisory1, advisory2] }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.findings.length, 1);
+    });
+  });
+
+});
+
+function createGitHubAdvisory(
+  packageName: string,
+  packageVersion: string,
+  overrides: {
+    cve_id?: string | null;
+    ghsa_id?: string;
+    vulnerable_version_range?: string;
+    first_patched_version?: { identifier: string } | string;
+  } = {},
+) {
+  const hasCveOverride = "cve_id" in overrides;
+  const cveId = hasCveOverride ? overrides.cve_id : "CVE-2025-0001";
+  const ghsaId = overrides.ghsa_id ?? "GHSA-xxxx-xxxx-xxxx";
+
+  const identifiers: Array<{ type: string; value: string }> = [];
+  if (cveId) identifiers.push({ type: "CVE", value: cveId });
+  identifiers.push({ type: "GHSA", value: ghsaId });
+
+  return {
+    id: "ADV-001",
+    ghsa_id: ghsaId,
+    cve_id: cveId ?? undefined,
+    html_url: "https://github.com/advisories/GHSA-xxxx-xxxx-xxxx",
+    summary: "Test vulnerability",
+    description: "A test vulnerability for unit testing",
+    severity: "high",
+    identifiers,
+    vulnerabilities: [
+      {
+        package: { name: packageName, ecosystem: "npm" },
+        vulnerable_version_range: overrides.vulnerable_version_range ?? `<=${packageVersion}`,
+        first_patched_version: overrides.first_patched_version ?? { identifier: "999.0.0" },
+      },
+    ],
+    published_at: "2025-01-01T00:00:00Z",
+    updated_at: "2025-01-01T00:00:00Z",
+  };
+}
