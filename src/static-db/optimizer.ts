@@ -19,7 +19,6 @@ import type {
   StaticDbIndex,
   PackageIndexEntry,
 } from "./types";
-import { severityLevel } from "./types";
 import { errorMessage, isNodeError } from "../utils/error";
 
 // ============================================================================

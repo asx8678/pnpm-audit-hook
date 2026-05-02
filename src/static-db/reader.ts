@@ -1,4 +1,4 @@
-import { join, relative } from "path";
+import { join, relative, sep } from "path";
 import type {
   VulnerabilityFinding,
   Severity,
@@ -80,7 +80,7 @@ function isValidNameSegment(segment: string): boolean {
 }
 
 function normalizeFindingSource(value: unknown): FindingSource {
-  return value === "nvd" || value === "github" ? value : "github";
+  return value === "nvd" || value === "github" || value === "osv" ? value : "github";
 }
 
 function normalizeIdentifiers(value: unknown): VulnerabilityIdentifier[] | undefined {
@@ -466,7 +466,7 @@ class StaticDbReaderImpl implements StaticDbReader {
 
         // Integrity check: verify SHA-256 hash against index's integrity map
         if (this.index?.integrity) {
-          const relPath = relative(this.dataPath, actualPath);
+          const relPath = relative(this.dataPath, actualPath).split(sep).join('/');
           const expectedHash = this.index.integrity[relPath];
           if (expectedHash) {
             const actualHash = computeShardHash(rawBytes);

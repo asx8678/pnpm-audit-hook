@@ -1,8 +1,7 @@
 import type { VulnerabilitySource, SourceContext, SourceResult, VulnerabilitySourceOptions } from "./connector";
-import type { AuditConfig, FindingSource, PackageRef, VulnerabilityFinding, VulnerabilityIdentifier } from "../types";
+import type { AuditConfig, FindingSource, PackageRef, VulnerabilityFinding, VulnerabilityIdentifier, Severity } from "../types";
 import { ttlForFindings } from "../cache/ttl";
 import { isVersionAffectedByOsvSemverRange } from "../utils/semver";
-import { mapSeverity } from "../utils/severity";
 import { logger } from "../utils/logger";
 import { errorMessage } from "../utils/error";
 import { mapWithConcurrency } from "../utils/concurrency";
@@ -10,7 +9,6 @@ import { mapWithConcurrency } from "../utils/concurrency";
 const CACHE_READ_CONCURRENCY = 50;
 const CACHE_WRITE_CONCURRENCY = 25;
 const API_CONCURRENCY = 5;
-const VALID_ID_TYPES = new Set(["CVE", "GHSA", "OSV", "OTHER"]);
 
 const OSV_API_URL = "https://api.osv.dev/v1/query";
 
@@ -62,7 +60,7 @@ function isValidCachedFindings(value: unknown): value is VulnerabilityFinding[] 
 }
 
 /** Derive a human-readable severity from OSV CVSS / severity vector. */
-function severityFromOsv(vuln: OsvVuln): string {
+function severityFromOsv(vuln: OsvVuln): Severity {
   for (const s of vuln.severity ?? []) {
     if (s.type === "CVSS_V3") {
       try {
