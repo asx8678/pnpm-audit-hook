@@ -59,22 +59,28 @@ function isValidCachedFindings(value: unknown): value is VulnerabilityFinding[] 
   return true;
 }
 
-/** Derive a human-readable severity from OSV CVSS / severity vector. */
-function severityFromOsv(vuln: OsvVuln): Severity {
+/** Derive a human-readable severity and cvss score from OSV CVSS / severity vector. */
+function severityFromOsv(vuln: OsvVuln): { severity: Severity; cvssScore?: number } {
   for (const s of vuln.severity ?? []) {
     if (s.type === "CVSS_V3") {
       try {
-        const score = parseFloat(s.score.split("/")[0] ?? "0");
-        if (score >= 9.0) return "critical";
-        if (score >= 7.0) return "high";
-        if (score >= 4.0) return "medium";
-        if (score > 0) return "low";
+        const scoreStr = s.score.split("/")[0] ?? "0";
+        const score = parseFloat(scoreStr);
+        if (!isNaN(score)) {
+          let severity: Severity;
+          if (score >= 9.0) severity = "critical";
+          else if (score >= 7.0) severity = "high";
+          else if (score >= 4.0) severity = "medium";
+          else if (score > 0) severity = "low";
+          else severity = "unknown";
+          return { severity, cvssScore: score };
+        }
       } catch {
         // fall through
       }
     }
   }
-  return "unknown";
+  return { severity: "unknown" };
 }
 
 /** Extract the best URL from OSV references (prefer "ADVISORY" type). */
@@ -256,7 +262,7 @@ export class OsvSource implements VulnerabilitySource {
           if (!vuln.id) continue;
 
           const osvId = vuln.id.toUpperCase();
-          const severity = severityFromOsv(vuln);
+          const { severity, cvssScore } = severityFromOsv(vuln);
           const identifiers = identifiersFromOsv(vuln);
 
           // Use CVE/GHSA id as canonical if available, otherwise OSV id
@@ -320,6 +326,7 @@ export class OsvSource implements VulnerabilitySource {
               url: urlFromOsv(vuln),
               description: vuln.details,
               severity: severity as VulnerabilityFinding["severity"],
+              cvssScore,
               identifiers: identifiers.length > 0 ? identifiers : undefined,
               affectedRange,
               fixedVersion,
