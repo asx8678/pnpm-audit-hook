@@ -114,6 +114,88 @@ const GREEN = "\x1b[32m";
 const RED = "\x1b[31m";
 const YELLOW = "\x1b[33m";
 
+/**
+ * Compact status banner — always shown during pnpm install.
+ *
+ * Clean:    🛡️  pnpm-audit ── 142 packages ── github ✓  osv ✓  static-db ✓ ── ✅ clean ── 312ms
+ * Warnings: 🛡️  pnpm-audit ── 142 packages ── github ✓  osv ✓ ── ⚠️  3 warnings ── 428ms
+ *             ⚠  CVE-2024-39338 [MEDIUM] axios@1.5.0 — Server-Side Request Forgery
+ * Blocked:  🛡️  pnpm-audit ── 142 packages ── github ✓  osv ✓ ── 🚫 2 BLOCKED ── 428ms
+ *             🚫 CVE-2021-23337 [CRITICAL] lodash@4.17.15 — Command Injection (fix: 4.17.21)
+ */
+export function formatCompactBanner(data: AuditOutputData): string {
+  const { summary, findings, decisions, blocked, warnings } = data;
+  const lines: string[] = [];
+
+  // Source status chips
+  const sourceChips: string[] = [];
+  for (const [name, status] of Object.entries(summary.sourceStatus)) {
+    if (status.error === "disabled by configuration") continue;
+    const icon = status.ok ? `${GREEN}✓${RESET}` : `${RED}✗${RESET}`;
+    sourceChips.push(`${name} ${icon}`);
+  }
+  const sourceLine = sourceChips.length > 0 ? sourceChips.join("  ") : `${YELLOW}no sources${RESET}`;
+
+  // Status chip
+  let statusChip: string;
+  if (blocked) {
+    const count = decisions.filter(d => d.action === "block").length;
+    statusChip = `${BOLD}${RED}🚫 ${count} BLOCKED${RESET}`;
+  } else if (warnings) {
+    const count = decisions.filter(d => d.action === "warn").length;
+    // Build severity breakdown for warnings
+    const sevCounts: Partial<Record<Severity, number>> = {};
+    for (const d of decisions) {
+      if (d.action === "warn" && d.findingSeverity) {
+        sevCounts[d.findingSeverity] = (sevCounts[d.findingSeverity] ?? 0) + 1;
+      }
+    }
+    const sevParts = SEVERITY_ORDER
+      .filter(s => (sevCounts[s] ?? 0) > 0)
+      .map(s => `${sevCounts[s]} ${s}`);
+    const sevDetail = sevParts.length > 0 ? ` (${sevParts.join(", ")})` : "";
+    statusChip = `${BOLD}${YELLOW}⚠️  ${count} warning${count !== 1 ? "s" : ""}${sevDetail}${RESET}`;
+  } else {
+    statusChip = `${GREEN}✅ clean${RESET}`;
+  }
+
+  // Main banner line
+  const durationStr = `${summary.totalDurationMs}ms`;
+  lines.push(
+    `${BOLD}🛡️  pnpm-audit${RESET} ── ${summary.totalPackages} packages ── ${sourceLine} ── ${statusChip} ── ${durationStr}`
+  );
+
+  // Detail lines for blocked items (show CVE, severity, package, title, fix)
+  const blockedDecisions = decisions.filter(d => d.action === "block" && d.findingId);
+  for (const d of blockedDecisions) {
+    const sev = d.findingSeverity ? `${severityColor(d.findingSeverity)}[${d.findingSeverity.toUpperCase()}]${RESET}` : "";
+    const pkg = d.packageName ? `${d.packageName}@${d.packageVersion}` : "";
+    const finding = findings.find(f => f.id === d.findingId && f.packageName === d.packageName);
+    const title = finding?.title ? ` — ${finding.title}` : "";
+    const fix = finding?.fixedVersion ? ` ${GREEN}(fix: ${finding.fixedVersion})${RESET}` : "";
+    lines.push(`  ${RED}🚫${RESET} ${d.findingId} ${sev} ${pkg}${title}${fix}`);
+  }
+
+  // Detail lines for warnings (show CVE, severity, package, title)
+  if (!blocked) {
+    const warnDecisions = decisions.filter(d => d.action === "warn" && d.findingId);
+    // Show up to 5 warnings to keep it compact
+    const shownWarnings = warnDecisions.slice(0, 5);
+    for (const d of shownWarnings) {
+      const sev = d.findingSeverity ? `${severityColor(d.findingSeverity)}[${d.findingSeverity.toUpperCase()}]${RESET}` : "";
+      const pkg = d.packageName ? `${d.packageName}@${d.packageVersion}` : "";
+      const finding = findings.find(f => f.id === d.findingId && f.packageName === d.packageName);
+      const title = finding?.title ? ` — ${finding.title}` : "";
+      lines.push(`  ${YELLOW}⚠${RESET}  ${d.findingId} ${sev} ${pkg}${title}`);
+    }
+    if (warnDecisions.length > 5) {
+      lines.push(`  ${YELLOW}...and ${warnDecisions.length - 5} more warning${warnDecisions.length - 5 !== 1 ? "s" : ""}${RESET}`);
+    }
+  }
+
+  return lines.join("\n");
+}
+
 export function formatHumanReadable(data: AuditOutputData): string {
   const { summary, findings, decisions, blocked, warnings } = data;
   const lines: string[] = [];
@@ -421,26 +503,32 @@ export function outputResults(
   data: AuditOutputData,
   format: OutputFormat,
 ): void {
-  let output: string;
-  switch (format) {
-    case "json":
-      output = formatJson(data);
-      break;
-    case "azure":
-      output = formatAzureDevOps(data);
-      break;
-    case "github":
-      output = formatGitHubActions(data);
-      emitGitHubOutputs(
-        data.blocked,
-        data.findings.length,
-        data.summary.vulnerabilitiesBySeverity.critical,
-        data.summary.vulnerabilitiesBySeverity.high,
-      );
-      break;
-    default:
-      output = formatHumanReadable(data);
+  // JSON and CI formats: no compact banner, just the structured output
+  if (format === "json") {
+    console.log(formatJson(data));
+    return;
+  }
+  if (format === "azure") {
+    console.log(formatAzureDevOps(data));
+    return;
+  }
+  if (format === "github") {
+    console.log(formatGitHubActions(data));
+    emitGitHubOutputs(
+      data.blocked,
+      data.findings.length,
+      data.summary.vulnerabilitiesBySeverity.critical,
+      data.summary.vulnerabilitiesBySeverity.high,
+    );
+    return;
   }
 
-  console.log(output);
+  // Human format: always show compact banner
+  console.log(formatCompactBanner(data));
+
+  // Show full detailed report ONLY when there are blocked items
+  // (warnings get enough detail from the compact banner)
+  if (data.blocked) {
+    console.log(formatHumanReadable(data));
+  }
 }

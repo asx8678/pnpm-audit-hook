@@ -58,6 +58,13 @@ Unlike `pnpm audit` which runs *after* install, this hook acts as a **gatekeeper
 - **`--offline` mode** — disables all API calls, relies on static DB + cache only
 - **Cache survives across installs** — once fetched, results are reused until TTL expires
 
+### 📊 Compact Status Banner
+- **Always visible** — every `pnpm install` shows a one-line banner confirming the hook is active
+- **Clean installs** — single line: package count, source status, "✅ clean", duration
+- **Warnings** — banner expands with up to 5 CVE IDs, severity, package name, and title
+- **Blocked installs** — banner shows all blocked CVEs with fix versions, followed by the full detailed report
+- **Non-intrusive** — clean installs produce just one line of output; no visual noise
+
 ### 🛠️ Developer Experience
 - **Zero config** — install, setup, done. Sensible defaults block critical + high.
 - **CLI scanner** — `pnpm-audit-scan` for manual audits without installing
@@ -426,15 +433,18 @@ pnpm add lodash
 pnpm add event-stream@3.3.6
 ```
 
-When a vulnerability is blocked, you'll see output like this:
+When a vulnerability is blocked, you'll see the compact banner followed by the full report:
 
 ```
+🛡️  pnpm-audit ── 1 packages ── github ✓  osv ✓  static-db ✓ ── 🚫 1 BLOCKED ── 245ms
+  🚫 GHSA-xxxx-xxxx-xxxx [CRITICAL] event-stream@3.3.6 — Malicious Package (fix: 4.0.0)
+
 ===============================================
            PNPM AUDIT SECURITY REPORT
 ===============================================
 
 Source Status:
-  github: OK (245ms)
+  github: OK (152ms)
   osv: OK (180ms)
 
 Package Summary:
@@ -457,11 +467,18 @@ AUDIT FAILED - Installation blocked
 ===============================================
 ```
 
-When everything is clean:
+When there are warnings (medium/low severity), you see the banner with CVE details but install continues:
 
 ```
-[pnpm-audit] Starting audit of 42 packages
-[pnpm-audit] ✓ No vulnerabilities found (312ms)
+🛡️  pnpm-audit ── 87 packages ── github ✓  osv ✓  static-db ✓ ── ⚠️  2 warnings (1 medium, 1 low) ── 312ms
+  ⚠  CVE-2024-4067 [MEDIUM] micromatch@4.0.5 — ReDoS vulnerability
+  ⚠  CVE-2024-4068 [MEDIUM] braces@3.0.2 — Uncontrolled resource consumption
+```
+
+When everything is clean — just a single line:
+
+```
+🛡️  pnpm-audit ── 142 packages ── github ✓  osv ✓  static-db ✓ ── ✅ clean ── 203ms
 ```
 
 ## Usage
