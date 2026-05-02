@@ -5,3 +5,8 @@ dist/
 .pnpm-audit-cache/
 package-lock.json
 coverage/
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key

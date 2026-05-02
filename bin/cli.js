@@ -70,6 +70,7 @@ async function main() {
     }
   }
   if (args.config) process.env.PNPM_AUDIT_CONFIG_PATH = args.config;
+  if (args.updateDb) process.env.PNPM_AUDIT_UPDATE_DB = args.updateDb;
 
   // Find pnpm-lock.yaml
   const cwd = process.cwd();

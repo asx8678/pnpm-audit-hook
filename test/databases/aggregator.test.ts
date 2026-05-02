@@ -24,7 +24,7 @@ function baseConfig(): AuditConfig {
     sources: {
       github: { enabled: true },
       nvd: { enabled: true },
-      osv: { enabled: false },
+      osv: { enabled: true },
     },
     performance: { timeoutMs: 15000 },
     cache: { ttlSeconds: 3600 },
@@ -149,18 +149,17 @@ describe("aggregateVulnerabilities", () => {
     it("respects PNPM_AUDIT_DISABLE_OSV env var", async () => {
       const ctx = createMockContext({
         failOnNoSources: false,
-        sources: {
-          github: { enabled: true },
-          nvd: { enabled: true },
-          osv: { enabled: true },
-        },
       });
       ctx.env.PNPM_AUDIT_DISABLE_OSV = "true";
+
+      // Pre-populate GitHub cache to avoid live API calls
+      await ctx.cache.set(githubCacheKey("test-pkg", "1.0.0"), [], 3600);
 
       const { aggregateVulnerabilities } = await import("../../src/databases/aggregator");
 
       const result = await aggregateVulnerabilities([{ name: "test-pkg", version: "1.0.0" }], ctx);
 
+      // GitHub should be fine (from cache), OSV should report disabled
       assert.ok(result.sources.osv);
       assert.equal(result.sources.osv.error, "disabled by configuration");
     });
@@ -168,13 +167,7 @@ describe("aggregateVulnerabilities", () => {
 
   describe("deduplication", () => {
     it("deduplicates findings with same package and id", async () => {
-      // Test the deduplication function by importing and testing the aggregator
-      // with mock data that includes duplicates
       const { aggregateVulnerabilities } = await import("../../src/databases/aggregator");
-
-      // We need to mock the GitHub source to return duplicates
-      // Since we can't easily mock ES modules, we'll test the deduplication indirectly
-      // by verifying the behavior through the aggregator's output
 
       const ctx = createMockContext();
 
@@ -185,8 +178,9 @@ describe("aggregateVulnerabilities", () => {
         finding({ id: "CVE-2025-0002", packageName: "lodash", packageVersion: "4.17.0" }), // different CVE
       ];
 
-      // Set up cache to return the duplicate findings
+      // Set up cache to return the duplicate findings for both GitHub and OSV
       await ctx.cache.set(githubCacheKey("lodash", "4.17.0"), duplicateFindings, 3600);
+      await ctx.cache.set(osvCacheKey("lodash", "4.17.0"), [], 3600);
 
       const result = await aggregateVulnerabilities([{ name: "lodash", version: "4.17.0" }], ctx);
 
@@ -218,6 +212,7 @@ describe("aggregateVulnerabilities", () => {
       ];
 
       await ctx.cache.set(githubCacheKey("pkg", "1.0.0"), findingsWithDupes, 3600);
+      await ctx.cache.set(osvCacheKey("pkg", "1.0.0"), [], 3600);
 
       const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
 
@@ -236,11 +231,13 @@ describe("aggregateVulnerabilities", () => {
         [finding({ id: "CVE-2025-0001", packageName: "pkg", packageVersion: "1.0.0" })],
         3600
       );
+      await ctx.cache.set(osvCacheKey("pkg", "1.0.0"), [], 3600);
       await ctx.cache.set(
         githubCacheKey("pkg", "2.0.0"),
         [finding({ id: "CVE-2025-0001", packageName: "pkg", packageVersion: "2.0.0" })],
         3600
       );
+      await ctx.cache.set(osvCacheKey("pkg", "2.0.0"), [], 3600);
 
       const result = await aggregateVulnerabilities(
         [
@@ -399,7 +396,6 @@ describe("aggregateVulnerabilities", () => {
         sources: {
           github: { enabled: true },
           nvd: { enabled: false },
-          osv: { enabled: false },
         },
       });
 
@@ -613,6 +609,7 @@ describe("dedupeFindings (unit)", () => {
 
     const ctx = createMockContext();
     await ctx.cache.set(githubCacheKey("pkg", "1.0.0"), [], 3600);
+    await ctx.cache.set(osvCacheKey("pkg", "1.0.0"), [], 3600);
 
     const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
 
@@ -624,6 +621,7 @@ describe("dedupeFindings (unit)", () => {
 
     const ctx = createMockContext();
     await ctx.cache.set(githubCacheKey("pkg", "1.0.0"), [finding()], 3600);
+    await ctx.cache.set(osvCacheKey("pkg", "1.0.0"), [], 3600);
 
     const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
 
@@ -642,6 +640,7 @@ describe("dedupeFindings (unit)", () => {
     ];
 
     await ctx.cache.set(githubCacheKey("pkg", "1.0.0"), findings, 3600);
+    await ctx.cache.set(osvCacheKey("pkg", "1.0.0"), [], 3600);
 
     const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
 
@@ -660,6 +659,7 @@ describe("dedupeFindings (unit)", () => {
     ];
 
     await ctx.cache.set(githubCacheKey("pkg", "1.0.0"), findings, 3600);
+    await ctx.cache.set(osvCacheKey("pkg", "1.0.0"), [], 3600);
 
     const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
 
@@ -676,11 +676,13 @@ describe("dedupeFindings (unit)", () => {
       [finding({ id: "CVE-2025-0001", packageName: "pkg", packageVersion: "1.0.0" })],
       3600
     );
+    await ctx.cache.set(osvCacheKey("pkg", "1.0.0"), [], 3600);
     await ctx.cache.set(
       githubCacheKey("pkg", "2.0.0"),
       [finding({ id: "CVE-2025-0001", packageName: "pkg", packageVersion: "2.0.0" })],
       3600
     );
+    await ctx.cache.set(osvCacheKey("pkg", "2.0.0"), [], 3600);
 
     const result = await aggregateVulnerabilities(
       [
