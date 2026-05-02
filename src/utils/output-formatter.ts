@@ -370,11 +370,11 @@ export function formatGitHubActions(data: AuditOutputData): string {
     lines.push(`::warning::AUDIT PASSED WITH WARNINGS — ${summary.warnCount} warning(s)`);
   }
 
-  // Set outputs for downstream steps
-  lines.push(`::set-output name=audit-blocked::${blocked}`);
-  lines.push(`::set-output name=vulnerability-count::${findings.length}`);
-  lines.push(`::set-output name=critical-count::${summary.vulnerabilitiesBySeverity.critical}`);
-  lines.push(`::set-output name=high-count::${summary.vulnerabilitiesBySeverity.high}`);
+  // Set outputs for downstream steps via GITHUB_OUTPUT environment file
+  lines.push(`echo "audit-blocked=${blocked}" >> $GITHUB_OUTPUT`);
+  lines.push(`echo "vulnerability-count=${findings.length}" >> $GITHUB_OUTPUT`);
+  lines.push(`echo "critical-count=${summary.vulnerabilitiesBySeverity.critical}" >> $GITHUB_OUTPUT`);
+  lines.push(`echo "high-count=${summary.vulnerabilitiesBySeverity.high}" >> $GITHUB_OUTPUT`);
 
   return lines.join("\n");
 }
