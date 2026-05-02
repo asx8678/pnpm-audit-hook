@@ -23,6 +23,8 @@ export interface AggregateContext {
 export interface AggregateResult {
   findings: VulnerabilityFinding[];
   sources: Record<string, { ok: boolean; error?: string; durationMs: number }>;
+  /** Wall-clock time for parallel source queries (ms). Undefined when no sources ran. */
+  wallClockMs?: number;
 }
 
 /**
@@ -131,13 +133,22 @@ export async function aggregateVulnerabilities(
     return { findings: [], sources: sourceStatus };
   }
 
-  // Query each enabled source and merge findings
+  // Query all enabled sources in parallel and merge findings
   let findings: VulnerabilityFinding[] = [];
   const sourceErrors: string[] = [];
 
-  for (const source of enabledSources) {
-    try {
-      const result = await source.query(pkgs, queryCtx, { offline: isOffline });
+  const wallClockStart = Date.now();
+
+  const settled = await Promise.allSettled(
+    enabledSources.map((source) => source.query(pkgs, queryCtx, { offline: isOffline })),
+  );
+
+  for (let i = 0; i < settled.length; i++) {
+    const source = enabledSources[i]!;
+    const outcome = settled[i]!;
+
+    if (outcome.status === "fulfilled") {
+      const result = outcome.value;
       findings.push(...result.findings);
       sourceStatus[source.id] = { ok: result.ok, error: result.error, durationMs: result.durationMs };
 
@@ -148,20 +159,21 @@ export async function aggregateVulnerabilities(
           throw new Error(`${source.id} source failed: ${result.error}`);
         }
       }
-    } catch (e) {
-      const errMsg = errorMessage(e);
+    } else {
+      // Promise rejected (unexpected exception)
+      const errMsg = errorMessage(outcome.reason);
       logger.error(`${source.id} source failed: ${errMsg}`);
-      if (!sourceStatus[source.id]) {
-        sourceStatus[source.id] = { ok: false, error: errMsg, durationMs: 0 };
-      }
+      sourceStatus[source.id] = { ok: false, error: errMsg, durationMs: 0 };
       sourceErrors.push(`${source.id}: ${errMsg}`);
 
       // Fail-closed on exception (default: true for security)
       if (ctx.cfg.failOnSourceError !== false) {
-        throw e;
+        throw outcome.reason;
       }
     }
   }
+
+  const wallClockMs = Date.now() - wallClockStart;
 
   if (sourceErrors.length > 0) {
     logger.warn(`Vulnerability source errors: ${sourceErrors.join(", ")}`);
@@ -185,5 +197,6 @@ export async function aggregateVulnerabilities(
   return {
     findings: dedupedFindings,
     sources: sourceStatus,
+    wallClockMs,
   };
 }

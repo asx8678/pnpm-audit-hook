@@ -600,6 +600,141 @@ describe("aggregateVulnerabilities", () => {
   });
 });
 
+  describe("parallel source execution", () => {
+    afterEach(() => {
+      mock.reset();
+    });
+
+    it("queries both GitHub and OSV sources when enabled", async () => {
+      const { aggregateVulnerabilities } = await import("../../src/databases/aggregator");
+
+      const ctx = createMockContext({
+        sources: {
+          github: { enabled: true },
+          nvd: { enabled: false },
+          osv: { enabled: true },
+        },
+      });
+
+      // Pre-populate cache for both sources so no live API calls are needed
+      await ctx.cache.set(
+        githubCacheKey("pkg", "1.0.0"),
+        [{ id: "GHSA-001", source: "github", packageName: "pkg", packageVersion: "1.0.0", severity: "high" }],
+        3600,
+      );
+      await ctx.cache.set(
+        osvCacheKey("pkg", "1.0.0"),
+        [{ id: "OSV-001", source: "osv", packageName: "pkg", packageVersion: "1.0.0", severity: "medium" }],
+        3600,
+      );
+
+      const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      // Both sources should be queried and present in results
+      assert.ok(result.sources.github, "GitHub source should be recorded");
+      assert.ok(result.sources.osv, "OSV source should be recorded");
+    });
+
+    it("runs sources concurrently, not sequentially", async () => {
+      const { GitHubAdvisorySource } = await import("../../src/databases/github-advisory");
+      const { OsvSource } = await import("../../src/databases/osv");
+      const { aggregateVulnerabilities } = await import("../../src/databases/aggregator");
+
+      const DELAY_MS = 50;
+
+      // Mock query methods to introduce deliberate delay, proving concurrency
+      mock.method(GitHubAdvisorySource.prototype, "query", async () => {
+        await new Promise((r) => setTimeout(r, DELAY_MS));
+        return { source: "github" as const, ok: true, durationMs: DELAY_MS, findings: [] };
+      });
+      mock.method(OsvSource.prototype, "query", async () => {
+        await new Promise((r) => setTimeout(r, DELAY_MS));
+        return { source: "osv" as const, ok: true, durationMs: DELAY_MS, findings: [] };
+      });
+
+      const ctx = createMockContext({
+        sources: {
+          github: { enabled: true },
+          nvd: { enabled: false },
+          osv: { enabled: true },
+        },
+      });
+
+      const start = Date.now();
+      const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
+      const elapsed = Date.now() - start;
+
+      // If sequential, elapsed would be ~100ms+ (2 × DELAY_MS).
+      // If parallel, elapsed should be ~50ms+ (max of the two).
+      // Use 150ms threshold to account for scheduling overhead.
+      assert.ok(elapsed < 150, `Expected parallel execution < 150ms, got ${elapsed}ms`);
+      assert.equal(result.sources.github.ok, true);
+      assert.equal(result.sources.osv.ok, true);
+    });
+
+    it("returns wallClockMs reflecting parallel wall-clock time", async () => {
+      const { GitHubAdvisorySource } = await import("../../src/databases/github-advisory");
+      const { OsvSource } = await import("../../src/databases/osv");
+      const { aggregateVulnerabilities } = await import("../../src/databases/aggregator");
+
+      const DELAY_MS = 50;
+
+      mock.method(GitHubAdvisorySource.prototype, "query", async () => {
+        await new Promise((r) => setTimeout(r, DELAY_MS));
+        return { source: "github" as const, ok: true, durationMs: DELAY_MS, findings: [] };
+      });
+      mock.method(OsvSource.prototype, "query", async () => {
+        await new Promise((r) => setTimeout(r, DELAY_MS));
+        return { source: "osv" as const, ok: true, durationMs: DELAY_MS, findings: [] };
+      });
+
+      const ctx = createMockContext({
+        sources: {
+          github: { enabled: true },
+          nvd: { enabled: false },
+          osv: { enabled: true },
+        },
+      });
+
+      const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.ok(typeof result.wallClockMs === "number", "wallClockMs should be a number");
+      // wallClockMs should be close to DELAY_MS (parallel), not 2×DELAY_MS (sequential)
+      assert.ok(
+        result.wallClockMs < 150,
+        `wallClockMs should reflect parallel time, got ${result.wallClockMs}ms`,
+      );
+    });
+
+    it("handles one source failing without aborting the other", async () => {
+      const { GitHubAdvisorySource } = await import("../../src/databases/github-advisory");
+      const { OsvSource } = await import("../../src/databases/osv");
+      const { aggregateVulnerabilities } = await import("../../src/databases/aggregator");
+
+      mock.method(GitHubAdvisorySource.prototype, "query", async () => {
+        return { source: "github" as const, ok: true, durationMs: 10, findings: [] };
+      });
+      mock.method(OsvSource.prototype, "query", async () => {
+        return { source: "osv" as const, ok: false, error: "OSV down", durationMs: 5, findings: [] };
+      });
+
+      const ctx = createMockContext({
+        sources: {
+          github: { enabled: true },
+          nvd: { enabled: false },
+          osv: { enabled: true },
+        },
+        failOnSourceError: false, // Don't throw, just record the error
+      });
+
+      const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.sources.github.ok, true);
+      assert.equal(result.sources.osv.ok, false);
+      assert.equal(result.sources.osv.error, "OSV down");
+    });
+  });
+
 describe("dedupeFindings (unit)", () => {
   // Test the deduplication logic directly by importing and using it
   // Since dedupeFindings is not exported, we test through aggregateVulnerabilities

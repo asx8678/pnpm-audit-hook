@@ -105,7 +105,7 @@ export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions):
   }
 
   // Build summary and output results
-  const summary = buildSummary(packages.length, agg.findings, decisions, agg.sources);
+  const summary = buildSummary(packages.length, agg.findings, decisions, agg.sources, agg.wallClockMs);
   outputResults(
     {
       summary,

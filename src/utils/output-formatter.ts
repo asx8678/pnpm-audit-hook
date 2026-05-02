@@ -33,6 +33,7 @@ export function buildSummary(
   findings: VulnerabilityFinding[],
   decisions: PolicyDecision[],
   sourceStatus: Record<string, SourceStatus>,
+  wallClockMs?: number,
 ): AuditSummary {
   const packagesWithFindings = new Set(
     findings.map((f) => `${f.packageName}@${f.packageVersion}`),
@@ -73,10 +74,8 @@ export function buildSummary(
     }
   }
 
-  const totalDurationMs = Object.values(sourceStatus).reduce(
-    (sum, s) => sum + (s.durationMs),
-    0,
-  );
+  const totalDurationMs = wallClockMs ??
+    Object.values(sourceStatus).reduce((sum, s) => sum + s.durationMs, 0);
 
   return {
     totalPackages,
