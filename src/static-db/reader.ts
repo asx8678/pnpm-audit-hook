@@ -250,6 +250,13 @@ export interface StaticDbReader {
   getCutoffDate(): string;
 
   /**
+   * Get the database version identifier (lastUpdated timestamp from the index).
+   * Used in cache keys to automatically invalidate caches when the DB is updated.
+   * Returns empty string if the index is not loaded.
+   */
+  getDbVersion(): string;
+
+  /**
    * Get the full database index.
    */
   getIndex(): StaticDbIndex | null;
@@ -353,6 +360,10 @@ class StaticDbReaderImpl implements StaticDbReader {
 
   getCutoffDate(): string {
     return this.index?.cutoffDate ?? this.cutoffDate;
+  }
+
+  getDbVersion(): string {
+    return this.index?.lastUpdated ?? "";
   }
 
   getIndex(): StaticDbIndex | null {
