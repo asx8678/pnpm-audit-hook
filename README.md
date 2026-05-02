@@ -1,6 +1,70 @@
 # pnpm-audit-hook
 
-A pnpm hook that audits dependencies for vulnerabilities **before packages are downloaded**. It queries the GitHub Advisory Database, OSV.dev, and uses a bundled static vulnerability database, blocking installs when critical or high severity issues are found.
+[![npm version](https://img.shields.io/npm/v/pnpm-audit-hook.svg)](https://www.npmjs.com/package/pnpm-audit-hook)
+[![license](https://img.shields.io/npm/l/pnpm-audit-hook.svg)](https://github.com/asx8678/pnpm-audit-hook/blob/main/LICENSE)
+[![node](https://img.shields.io/node/v/pnpm-audit-hook.svg)](https://nodejs.org)
+
+**Stop vulnerable packages before they reach your machine.** pnpm-audit-hook is a security hook for pnpm that intercepts `pnpm install` after dependency resolution but **before any packages are downloaded**. It checks every resolved package against multiple vulnerability databases and blocks the install if critical or high severity issues are found — so vulnerable code never touches your `node_modules`.
+
+### Why pnpm-audit-hook?
+
+Unlike `pnpm audit` which runs *after* install, this hook acts as a **gatekeeper** — vulnerable packages are rejected before download. It works transparently on every `pnpm install`, `pnpm add`, and `pnpm update` with zero workflow changes.
+
+## Features
+
+### 🛡️ Pre-Download Blocking
+- Intercepts pnpm's `afterAllResolved` hook — **blocks before download**, not after
+- Vulnerable code never reaches your machine or `node_modules`
+- Works on `pnpm install`, `pnpm add`, and `pnpm update` automatically
+
+### 🔍 Multiple Vulnerability Sources (Queried in Parallel)
+- **GitHub Advisory Database** — real-time GHSA data (60 req/hr free, 5,000/hr with token)
+- **OSV.dev** — aggregates GHSA + npm + NVD + more, free, no auth needed
+- **Bundled Static Database** — 1,900+ packages with historical vulns (2020-2025), works offline
+- **NVD Enrichment** — fills in missing CVSS scores and severity levels
+- Sources run in parallel for speed; results are merged and deduplicated
+
+### ⚡ Performance
+- **Smart caching** — file-based cache with severity-aware TTL (critical: 15 min, high: 30 min, medium: 1 hr)
+- **Bloom filter** — O(1) package existence check before loading any shard from static DB
+- **Gzip compression** — static DB is compressed at build time, reducing npm tarball by ~3-5x
+- **Optimized index** — compact field names reduce index size by ~80%
+- **Concurrent API queries** — configurable concurrency for GitHub (up to 50) and OSV (5)
+
+### 🔒 Fail-Closed Security Model
+- **API failure = block** — if a source is unreachable, install is blocked by default (configurable)
+- **Invalid semver = affected** — ambiguous version ranges are treated as vulnerable
+- **Expired allowlist = enforced** — once an allowlist entry expires, the vulnerability blocks again
+- **DB integrity verification** — SHA-256 hashes detect tampered vulnerability data in `node_modules`
+- **Symlink attack prevention** — cache reads/writes check for symlinks
+- **Atomic cache writes** — temp file + rename prevents corrupted cache entries
+- **Path traversal protection** — validates all file paths and package names
+
+### 📋 Flexible Policy Engine
+- **Block / warn / allow** per severity level — configurable in `.pnpm-audit.yaml`
+- **Allowlist** by CVE ID, GHSA ID, package name, version range — with optional expiration dates
+- **Scoped allowlist entries** — match specific CVE + package + version combinations
+- **Severity override** via `PNPM_AUDIT_BLOCK_SEVERITY` env var for CI flexibility
+
+### 🔌 CI/CD Native
+- **GitHub Actions** — `::error::` / `::warning::` annotations, outputs via `$GITHUB_OUTPUT`, auto-detected
+- **Azure DevOps** — `##[group]`, `##[error]`, `##vso[task.setvariable]` commands, auto-detected
+- **JSON output** — structured output for custom CI parsing
+- **Human-readable** — colored terminal output with progress bars for local development
+- **Auto-verbose in CI** — detects `CI`, `GITHUB_ACTIONS`, `TF_BUILD`, `GITLAB_CI`, `JENKINS_URL`
+
+### 📦 Offline & Air-Gap Support
+- **Bundled static DB** works without internet — historical vulns checked locally
+- **`--offline` mode** — disables all API calls, relies on static DB + cache only
+- **Cache survives across installs** — once fetched, results are reused until TTL expires
+
+### 🛠️ Developer Experience
+- **Zero config** — install, setup, done. Sensible defaults block critical + high.
+- **CLI scanner** — `pnpm-audit-scan` for manual audits without installing
+- **`--update-db`** — update the bundled vulnerability database from CLI
+- **Custom config** — `.pnpm-audit.yaml` for per-project security policies
+- **Private registry support** — works with custom npm registries via `PNPM_REGISTRY`
+- **Temporary disable** — `pnpm install --ignore-pnpmfile` or rename `.pnpmfile.cjs`
 
 ## Quick Start
 
@@ -350,6 +414,7 @@ If upgrading from v1.1.0, note these changes:
 - **OSV.dev is now enabled by default** — adds a new vulnerability source alongside GitHub Advisory. To disable: set `sources.osv: false` in `.pnpm-audit.yaml` or `PNPM_AUDIT_DISABLE_OSV=true`
 - **Cache keys changed** — a one-time cache rebuild will happen automatically (no action needed)
 - **More vulnerabilities may be found** — OSV.dev aggregates GHSA + npm + other databases, so previously-clean installs may now report new findings
+- **`--update-db` requires source checkout** — the CLI `--update-db` flag runs `scripts/update-vuln-db.ts` which is only available when developing from source, not from an `npm install`'d copy. Use `pnpm run update-vuln-db:incremental` from the cloned repo instead.
 
 ## Verify Installation
 
@@ -401,19 +466,121 @@ When everything is clean:
 
 ## Usage
 
+### Automatic Mode (Default)
+
+Once installed, auditing happens automatically on every `pnpm install`:
+
+```bash
+pnpm install                    # Audit runs automatically
+pnpm add express                # Single package is audited too
+pnpm add lodash@4.17.21        # Safe version — installs normally
+pnpm add event-stream@3.3.6    # Vulnerable — blocked before download
+```
+
+No extra commands needed. The hook intercepts pnpm's dependency resolution and blocks vulnerable packages **before they're downloaded**.
+
+### Manual Scan
+
+Run an audit against your current lockfile without installing anything:
+
+```bash
+pnpm-audit-scan                       # Human-readable output
+pnpm-audit-scan --format json         # JSON output (for CI parsing)
+pnpm-audit-scan --severity critical   # Only block critical vulns
+pnpm-audit-scan --offline             # Static DB only, no network
+```
+
+### Output Formats
+
+| Format | Use Case | Flag |
+|--------|----------|------|
+| `human` | Terminal, local development | `--format human` (default) |
+| `json` | CI parsing, scripting | `--format json` |
+| `github` | GitHub Actions annotations | `--format github` (auto-detected) |
+| `azure` | Azure DevOps pipeline | `--format azure` (auto-detected) |
+
+### What Happens When Vulnerabilities Are Found
+
+| Severity | Default Action | What You See |
+|----------|---------------|--------------|
+| **critical** / **high** | **Block** | Install fails with error details, exit code 1 |
+| **medium** / **low** | **Warn** | Warning logged, install continues, exit code 2 |
+| **unknown** | **Warn** | Warning logged, NVD enrichment attempted |
+
+### Common Workflows
+
+**Accept a specific vulnerability temporarily:**
+```yaml
+# .pnpm-audit.yaml
+policy:
+  allowlist:
+    - id: CVE-2024-12345
+      reason: "Accepted risk — patching next sprint"
+      expires: "2025-06-01"
+```
+
+**Block only critical vulnerabilities in CI:**
+```bash
+pnpm-audit-scan --severity critical
+```
+
+**Run in offline/air-gapped environments:**
+```bash
+PNPM_AUDIT_OFFLINE=true pnpm install
+```
+
+**Update the bundled vulnerability database:**
+```bash
+pnpm-audit-scan --update-db          # Incremental (fast)
+pnpm-audit-scan --update-db=full     # Full rebuild (slower, needs GITHUB_TOKEN)
+```
+
+## Uninstall
+
 ### Per-Project
 
 ```bash
+# 1. Remove the hook file (required — this is what activates the hook)
 rm .pnpmfile.cjs
+
+# 2. Remove the package
 pnpm remove pnpm-audit-hook
+
+# 3. Clean up config and cache (optional)
+rm -f .pnpm-audit.yaml
+rm -rf .pnpm-audit-cache/
 ```
+
+> **Tip**: Removing just `.pnpmfile.cjs` is enough to fully disable the hook. The package can stay installed without any effect.
 
 ### Global
 
 ```bash
+# 1. Remove the global hook config
 pnpm config delete global-pnpmfile
+
+# 2. Remove the hook files
 rm -rf ~/.pnpm-hooks
+
+# 3. Remove the global package
 pnpm remove -g pnpm-audit-hook
+```
+
+### Temporarily Disable (Without Uninstalling)
+
+```bash
+# Rename the hook file to disable it temporarily
+mv .pnpmfile.cjs .pnpmfile.cjs.disabled
+
+# Re-enable later
+mv .pnpmfile.cjs.disabled .pnpmfile.cjs
+```
+
+Or skip the audit for a single install:
+
+```bash
+# Use --ignore-pnpmfile to bypass the hook for one command
+pnpm install --ignore-pnpmfile
 ```
 
 ## Configuration
@@ -449,6 +616,11 @@ cache:
 staticBaseline:
   enabled: true
   cutoffDate: "2025-12-31"
+
+# Fail-closed security options (defaults are secure)
+failOnNoSources: true       # Block if all sources disabled
+failOnSourceError: true      # Block if a source fails
+offline: false               # Set true for air-gapped environments
 ```
 
 All fields are optional. Defaults are applied for missing values.
@@ -467,6 +639,10 @@ All fields are optional. Defaults are applied for missing values.
 | `cache.ttlSeconds` | Cache duration (1-86,400) | `3600` |
 | `staticBaseline.enabled` | Use bundled vuln database | `true` |
 | `staticBaseline.cutoffDate` | Static DB coverage date | `2025-12-31` |
+| `staticBaseline.dataPath` | Custom path to static DB data directory | Auto-detected |
+| `failOnNoSources` | Block install when all sources disabled | `true` |
+| `failOnSourceError` | Block install when a source fails | `true` |
+| `offline` | Skip all API calls, use only static DB + cache | `false` |
 
 ## Allowlist
 
@@ -508,15 +684,18 @@ policy:
 | `PNPM_AUDIT_CONFIG_PATH` | Custom config file location |
 | `PNPM_AUDIT_DISABLE_GITHUB` | Disable GitHub Advisory source |
 | `PNPM_AUDIT_DISABLE_OSV` | Disable OSV.dev source |
+| `PNPM_AUDIT_BLOCK_SEVERITY` | Override block severities (comma-separated, e.g. `critical,high,medium`) |
 | `PNPM_AUDIT_QUIET` | Suppress info/warn output |
 | `PNPM_AUDIT_DEBUG` | Enable debug logging |
 | `PNPM_AUDIT_VERBOSE` | Enable verbose logging |
+| _(auto-detected)_ | Verbose mode auto-enables in CI: `CI`, `GITHUB_ACTIONS`, `TF_BUILD`, `GITLAB_CI`, `JENKINS_URL` |
 | `PNPM_AUDIT_JSON` | JSON output format |
 | `PNPM_AUDIT_FORMAT` | Output format (`human`, `azure`, `github`, `json`) |
 | `PNPM_AUDIT_OFFLINE` | Use only static baseline DB (no network) |
 | `PNPM_AUDIT_FAIL_ON_NO_SOURCES` | Fail if no advisory sources available (default: `true`) |
 | `PNPM_AUDIT_FAIL_ON_SOURCE_ERROR` | Fail if an advisory source errors (default: `true`) |
 | `PNPM_AUDIT_GITHUB_CONCURRENCY` | Max concurrent GitHub API requests (default: `10` with token, `3` without) |
+| `PNPM_REGISTRY` / `npm_config_registry` | Custom npm registry URL (default: `https://registry.npmjs.org/`) |
 
 ## CLI Reference
 
@@ -671,21 +850,134 @@ The static database is automatically optimized during the build process:
 
 The optimization runs automatically during `pnpm run build` via `scripts/optimize-static-db.js`.
 
+For a detailed evaluation of database packaging alternatives (separate npm package, CDN fetch, etc.), see [docs/db-packaging-evaluation.md](docs/db-packaging-evaluation.md).
+
 ### Updating the Database
 
+The bundled static database is built from the [GitHub Advisory Database](https://github.com/advisories) using a GraphQL API query. The update script (`scripts/update-vuln-db.ts`) fetches all npm security advisories, filters for the NPM ecosystem, and writes one JSON shard file per affected package.
+
+#### How `update-vuln-db.ts` Works
+
+```mermaid
+flowchart TD
+    A[Start] --> B{Mode?}
+    B -->|--incremental| C[Load existing index.json]
+    B -->|full rebuild| D[Start fresh]
+    B -->|--sample| E[Load fixtures/sample-vulns.json]
+
+    C --> F[Set updatedSince = index.lastUpdated]
+    F --> G[Fetch advisories from GitHub GraphQL API]
+    D --> G
+
+    G --> H[Filter for NPM ecosystem]
+    H --> I[Group vulnerabilities by package name]
+    I --> J[Deduplicate by advisory ID]
+    J --> K[Write shard files]
+
+    E --> K
+
+    K --> L["Save data/{name}.json per package"]
+    L --> M[Build index.json with package metadata]
+    M --> N[Done — run pnpm build to optimize + compress]
+
+    style G fill:#87CEEB
+    style E fill:#90EE90
+```
+
+**Step by step:**
+
+1. **Fetch** — Queries GitHub's GraphQL API (`api.github.com/graphql`) in batches of 100 advisories, paginating through all results. Uses `updatedSince` for incremental mode.
+2. **Filter** — Only keeps advisories with `ecosystem: NPM` vulnerabilities. Skips advisories published before the `--since` date if specified.
+3. **Normalize** — Converts each advisory into the `StaticVulnerability` format: ID, severity, affected version range, fixed version, identifiers (CVE/GHSA), title, URL.
+4. **Deduplicate** — Skips vulnerabilities already present (by ID) when doing incremental updates.
+5. **Write shards** — Saves one JSON file per package (`data/lodash.json`, `data/@angular/core.json`, etc.)
+6. **Build index** — Creates `index.json` with package counts, max severity, latest vulnerability date, and build metadata.
+
+#### GitHub Token (Recommended but Optional)
+
+| Scenario | Rate Limit | Speed |
+|----------|-----------|-------|
+| **Without `GITHUB_TOKEN`** | 60 requests/hr | ~6,000 advisories/hr — full rebuild takes hours |
+| **With `GITHUB_TOKEN`** | 5,000 requests/hr | Full rebuild in minutes |
+
+The token needs **no special scopes** — it only reads public advisory data. Any GitHub Personal Access Token works:
+
 ```bash
-# Using the CLI (recommended — more discoverable)
-pnpm-audit-scan --update-db           # Incremental update
+# Create a token at: https://github.com/settings/tokens
+# No scopes needed — just click "Generate token"
+export GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+If no token is set and the API rate-limits the script, it **automatically falls back to sample data** (50 popular packages with known vulns).
+
+#### Update Commands
+
+```bash
+# Incremental update — only fetches advisories modified since last build (fast)
+pnpm run update-vuln-db:incremental
+
+# Full rebuild — fetches ALL npm advisories since 2021 (slow without token)
+pnpm run update-vuln-db
+
+# Full rebuild with no date filter (everything)
+pnpm run update-vuln-db:full
+
+# Sample data only — no API calls, uses bundled test fixtures
+pnpm run update-vuln-db -- --sample
+
+# Custom cutoff date
+pnpm run update-vuln-db -- --cutoff=2024-06-30T23:59:59Z
+```
+
+Or via the CLI (runs the same script under the hood):
+```bash
+pnpm-audit-scan --update-db           # Incremental
 pnpm-audit-scan --update-db=full      # Full rebuild
+```
 
-# Or via npm scripts
-pnpm run update-vuln-db:incremental   # Incremental update
-pnpm run update-vuln-db               # Full rebuild
+> **Note**: `--update-db` via CLI requires a source checkout with `tsx` installed. It won't work from an `npm install`'d copy of the package.
 
-# Rebuild and commit
+#### After Updating: Build & Commit
+
+After the database is updated, you must **rebuild** to apply optimization and compression:
+
+```bash
+# 1. Rebuild (compiles TypeScript, copies DB, optimizes + compresses, bundles)
 pnpm run build
+
+# 2. Commit the updated data
 git add src/static-db/data/ dist/static-db/data/
 git commit -m "chore: update vulnerability database"
+```
+
+The build pipeline runs these steps automatically:
+1. `tsc` — compile TypeScript
+2. `copy-static-db.js` — copy `src/static-db/data/` → `dist/static-db/data/`
+3. **`optimize-static-db.js`** — optimize index (compact keys), gzip-compress large shards, compute SHA-256 integrity hashes
+4. `bundle.js` — bundle `dist/index.js` with esbuild (minified)
+
+#### What Gets Written
+
+```
+src/static-db/data/
+├── index.json              # Package index with counts, severity, build metadata
+├── lodash.json             # Shard: 4 vulnerabilities for lodash
+├── axios.json              # Shard: 2 vulnerabilities for axios
+├── @angular/
+│   └── core.json           # Scoped package shard
+├── express.json
+└── ... (one file per vulnerable package)
+```
+
+After `pnpm run build`, the `dist/` copy is optimized:
+```
+dist/static-db/data/
+├── index.json.gz           # Optimized + compressed index (with integrity hashes)
+├── lodash.json             # Small shards stay uncompressed
+├── @angular/
+│   └── core.json
+├── directus.json.gz        # Large shards are gzip-compressed
+└── ...
 ```
 
 ## Architecture
@@ -775,6 +1067,65 @@ The hook uses a **fail-closed** security model:
 - **Atomic cache writes**: Prevents partial/corrupted cache files
 - **Database integrity verification**: SHA-256 hashes detect tampered vulnerability data
 - **Cache key versioning**: DB updates automatically invalidate stale cached results
+
+## Troubleshooting
+
+### "AUDIT FAILED" — How do I unblock my install?
+
+**Quick escape** (one-time bypass):
+```bash
+pnpm install --ignore-pnpmfile
+```
+
+**Investigate the issue:**
+```bash
+pnpm-audit-scan --format json | jq '.findings'
+```
+
+**Then choose one:**
+1. **Upgrade** the vulnerable package to a patched version
+2. **Allowlist** the CVE if it's a false positive (see [Allowlist](#allowlist))
+3. **Lower severity threshold** — change `policy.block` in `.pnpm-audit.yaml`
+
+### OSV.dev or GitHub API is unreachable (corporate proxy / air-gap)
+
+```bash
+# Option 1: Run in offline mode (uses bundled static DB only)
+PNPM_AUDIT_OFFLINE=true pnpm install
+
+# Option 2: Disable the failing source
+PNPM_AUDIT_DISABLE_OSV=true pnpm install
+PNPM_AUDIT_DISABLE_GITHUB=true pnpm install
+
+# Option 3: Don't block on source errors
+# In .pnpm-audit.yaml:
+failOnSourceError: false
+```
+
+### Audit is slow
+
+- **Set `GITHUB_TOKEN`** — without it, GitHub API is limited to 60 req/hr. With a token: 5,000 req/hr.
+- **Check cache** — the `.pnpm-audit-cache/` directory caches results. If deleted, the next run re-fetches everything.
+- **Use offline mode** for fastest audits: `pnpm-audit-scan --offline`
+
+### Verbose logging is automatically enabled in CI — why?
+
+The hook auto-detects CI environments and enables verbose output when any of these are set:
+- `CI=true`
+- `GITHUB_ACTIONS=true`
+- `TF_BUILD=True` (Azure DevOps)
+- `GITLAB_CI=true`
+- `JENKINS_URL` is defined
+
+To suppress this, set `PNPM_AUDIT_QUIET=true`.
+
+### I updated the static DB but old results still show
+
+Cache keys include the DB version, so caches are automatically invalidated when the DB changes. If you still see stale results:
+```bash
+rm -rf .pnpm-audit-cache/
+pnpm install
+```
 
 ## Local Development
 
