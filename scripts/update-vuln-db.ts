@@ -17,43 +17,15 @@
 import * as fs from "fs";
 import * as path from "path";
 
-// Types matching src/static-db/types.ts
-interface StaticVulnerabilityEntry {
-  id: string;
-  packageName: string;
-  title?: string;
-  description?: string;
-  severity: "critical" | "high" | "medium" | "low" | "unknown";
-  url?: string;
-  publishedAt?: string;
-  modifiedAt?: string;
-  identifiers?: { type: string; value: string }[];
-  affectedVersions: { range: string; fixed?: string }[];
-  source: "github";
-}
-
-interface StaticPackageData {
-  packageName: string;
-  lastUpdated: string;
-  vulnerabilities: StaticVulnerabilityEntry[];
-}
-
-interface StaticDbIndex {
-  schemaVersion: number;
-  lastUpdated: string;
-  cutoffDate: string;
-  totalVulnerabilities: number;
-  totalPackages: number;
-  packages: Record<
-    string,
-    { count: number; latestVuln?: string; maxSeverity: "critical" | "high" | "medium" | "low" | "unknown" }
-  >;
-  buildInfo: {
-    generator: string;
-    sources: string[];
-    durationMs: number;
-  };
-}
+// Import canonical types from src/
+import type {
+  StaticVulnerability,
+  StaticPackageData,
+  StaticDbIndex,
+  PackageIndexEntry,
+  AffectedVersionRange,
+} from "../src/static-db/types";
+import type { Severity, VulnerabilityIdentifier } from "../src/types";
 
 // GitHub Advisory GraphQL types
 interface GitHubAdvisory {
@@ -250,7 +222,7 @@ function mapSeverity(
   return "unknown";
 }
 
-const SEVERITY_RANK: Record<StaticVulnerabilityEntry["severity"], number> = {
+const SEVERITY_RANK: Record<StaticVulnerability["severity"], number> = {
   critical: 4,
   high: 3,
   medium: 2,
@@ -264,7 +236,7 @@ const SEVERITY_RANK: Record<StaticVulnerabilityEntry["severity"], number> = {
 function convertAdvisory(
   advisory: GitHubAdvisory,
   vuln: GitHubAdvisory["vulnerabilities"]["nodes"][0],
-): { packageName: string; entry: StaticVulnerabilityEntry } {
+): { packageName: string; entry: StaticVulnerability } {
   return {
     packageName: vuln.package.name,
     entry: {
@@ -277,14 +249,14 @@ function convertAdvisory(
       publishedAt: advisory.publishedAt,
       modifiedAt: advisory.updatedAt,
       identifiers: advisory.identifiers.map((id) => ({
-        type: id.type,
+        type: id.type as VulnerabilityIdentifier["type"],
         value: id.value,
       })),
       affectedVersions: [
         {
           range: vuln.vulnerableVersionRange,
           fixed: vuln.firstPatchedVersion?.identifier,
-        },
+        } as AffectedVersionRange,
       ],
       source: "github",
     },
@@ -360,7 +332,7 @@ function normalizePackageData(raw: unknown, packageName: string): StaticPackageD
   if (!name) return null;
 
   const vulnerabilitiesRaw = Array.isArray(obj.vulnerabilities) ? obj.vulnerabilities : [];
-  const vulnerabilities: StaticVulnerabilityEntry[] = [];
+  const vulnerabilities: StaticVulnerability[] = [];
 
   for (const vuln of vulnerabilitiesRaw) {
     if (!vuln || typeof vuln !== "object") continue;
@@ -373,17 +345,17 @@ function normalizePackageData(raw: unknown, packageName: string): StaticPackageD
             const range = typeof av?.range === "string" ? av.range : "";
             if (!range) return null;
             const fixed = typeof av.fixed === "string" ? av.fixed : undefined;
-            return { range, fixed };
+            return { range, fixed } as AffectedVersionRange;
           })
-          .filter((av): av is { range: string; fixed?: string } => av !== null)
+          .filter((av): av is AffectedVersionRange => av !== null)
       : typeof v.affectedRange === "string"
         ? [
             {
               range: v.affectedRange,
-              fixed: typeof v.fixedVersion === "string" ? v.fixedVersion : undefined,
-            },
+              ...(typeof v.fixedVersion === "string" ? { fixed: v.fixedVersion } : {}),
+            } as AffectedVersionRange,
           ]
-        : [];
+        : [] as AffectedVersionRange[];
 
     vulnerabilities.push({
       id,
@@ -402,9 +374,9 @@ function normalizePackageData(raw: unknown, packageName: string): StaticPackageD
               const type = typeof idObj.type === "string" ? idObj.type : "";
               const value = typeof idObj.value === "string" ? idObj.value : "";
               if (!type || !value) return null;
-              return { type, value };
+              return { type, value } as VulnerabilityIdentifier;
             })
-            .filter((i): i is { type: string; value: string } => i !== null)
+            .filter((i): i is VulnerabilityIdentifier => i !== null)
         : undefined,
       affectedVersions,
       source: "github",
@@ -434,8 +406,8 @@ function savePackageData(data: StaticPackageData): void {
 /**
  * Generate sample data for popular packages (for testing without API calls)
  */
-function generateSampleData(): Map<string, StaticVulnerabilityEntry[]> {
-  const vulns = new Map<string, StaticVulnerabilityEntry[]>();
+function generateSampleData(): Map<string, StaticVulnerability[]> {
+  const vulns = new Map<string, StaticVulnerability[]>();
 
   // Real vulnerability data for popular packages
   type SampleVulnerability = {
@@ -446,7 +418,7 @@ function generateSampleData(): Map<string, StaticVulnerabilityEntry[]> {
     url?: string;
     publishedAt?: string;
     modifiedAt?: string;
-    identifiers?: { type: string; value: string }[];
+    identifiers?: VulnerabilityIdentifier[];
     affectedRange: string;
     fixedVersion?: string;
   };
@@ -1449,8 +1421,8 @@ function generateSampleData(): Map<string, StaticVulnerabilityEntry[]> {
       affectedVersions: [
         {
           range: v.affectedRange,
-          fixed: v.fixedVersion,
-        },
+          ...(v.fixedVersion !== undefined ? { fixed: v.fixedVersion } : {}),
+        } as AffectedVersionRange,
       ],
       source: "github" as const,
     }));
@@ -1491,7 +1463,7 @@ async function main(): Promise<void> {
   }
 
   // Map to accumulate vulnerabilities by package
-  const packageVulns = new Map<string, StaticVulnerabilityEntry[]>();
+  const packageVulns = new Map<string, StaticVulnerability[]>();
 
   // If incremental, load existing package data
   if (isIncremental && existingIndex) {
@@ -1606,10 +1578,7 @@ async function main(): Promise<void> {
 
   // Save package files
   const now = new Date().toISOString();
-  const packagesIndex: Record<
-    string,
-    { count: number; latestVuln?: string; maxSeverity: StaticVulnerabilityEntry["severity"] }
-  > = {};
+  const packagesIndex: Record<string, PackageIndexEntry> = {};
 
   for (const [pkgName, vulns] of packageVulns) {
     const pkgData: StaticPackageData = {
@@ -1618,7 +1587,7 @@ async function main(): Promise<void> {
       vulnerabilities: vulns,
     };
     savePackageData(pkgData);
-    const maxSeverity = vulns.reduce<StaticVulnerabilityEntry["severity"]>(
+    const maxSeverity = vulns.reduce<Severity>(
       (max, v) => (SEVERITY_RANK[v.severity] > SEVERITY_RANK[max] ? v.severity : max),
       "unknown",
     );
