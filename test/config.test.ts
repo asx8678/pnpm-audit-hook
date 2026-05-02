@@ -165,6 +165,58 @@ sources:
     assert.equal(cfg.sources.osv.enabled, true); // defaults to enabled
   });
 
+  it("env var PNPM_AUDIT_BLOCK_SEVERITY overrides policy.block", async () => {
+    const cfg = await loadConfig({
+      cwd: tempDir,
+      env: { PNPM_AUDIT_BLOCK_SEVERITY: "critical" },
+    });
+
+    assert.deepEqual(cfg.policy.block, ["critical"]);
+  });
+
+  it("env var PNPM_AUDIT_BLOCK_SEVERITY accepts comma-separated values", async () => {
+    const cfg = await loadConfig({
+      cwd: tempDir,
+      env: { PNPM_AUDIT_BLOCK_SEVERITY: "critical,high" },
+    });
+
+    assert.deepEqual(cfg.policy.block, ["critical", "high"]);
+  });
+
+  it("env var PNPM_AUDIT_BLOCK_SEVERITY ignores invalid values with a warn", async () => {
+    const cfg = await loadConfig({
+      cwd: tempDir,
+      env: { PNPM_AUDIT_BLOCK_SEVERITY: "critical,bananas,high" },
+    });
+
+    assert.deepEqual(cfg.policy.block, ["critical", "high"]);
+  });
+
+  it("env var PNPM_AUDIT_BLOCK_SEVERITY falls back to config file when empty", async () => {
+    const configContent = `
+policy:
+  block:
+    - critical
+`;
+    await fs.writeFile(path.join(tempDir, ".pnpm-audit.yaml"), configContent);
+
+    const cfg = await loadConfig({
+      cwd: tempDir,
+      env: { PNPM_AUDIT_BLOCK_SEVERITY: "" },
+    });
+
+    assert.deepEqual(cfg.policy.block, ["critical"]);
+  });
+
+  it("env var PNPM_AUDIT_BLOCK_SEVERITY falls back to defaults when missing and no config", async () => {
+    const cfg = await loadConfig({
+      cwd: tempDir,
+      env: {},
+    });
+
+    assert.deepEqual(cfg.policy.block, DEFAULT_CONFIG.policy.block);
+  });
+
   it("filters out invalid allowlist entries", async () => {
     const configContent = `
 policy:
