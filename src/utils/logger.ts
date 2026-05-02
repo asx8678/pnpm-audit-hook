@@ -2,12 +2,14 @@ import { getEnvironmentVariables, isVerboseMode } from "./env-manager";
 import { StructuredLogger, structuredLogger, createLogger, getChildLogger } from "./structured-logger";
 import { ProgressReporter, formatProgressBar, renderProgressBar } from "./progress-reporter";
 import { detectCIPlatform, emitWarning, emitError, emitNotice, setCIOutput, isCI, getCIPlatformName, getCIIntegration } from "./ci-integration";
+import { supportsColor, BOLD, RED, GREEN, YELLOW, RESET, DIM } from "./color-utils";
 
 // Re-export structured logging utilities
 export { StructuredLogger, structuredLogger, createLogger, getChildLogger } from "./structured-logger";
 export { ProgressReporter, SubProgressReporter, formatProgressBar, renderProgressBar } from "./progress-reporter";
 export type { LogMetadata, LogEntry, LogLevel, ProgressStep, ProgressReport, ProgressReporterOptions } from "./logger-types";
 export { detectCIPlatform, emitWarning, emitError, emitNotice, setCIOutput, isCI, getCIPlatformName, getCIIntegration } from "./ci-integration";
+export { supportsColor } from "./color-utils";
 
 const PREFIX = "[pnpm-audit]";
 
@@ -34,7 +36,7 @@ export function isVerbose(): boolean {
 export const logger = {
   debug: (msg: string) => {
     if (isJsonMode()) return;
-    DEBUG && console.log(`${PREFIX}[debug] ${msg}`);
+    DEBUG && console.log(`${DIM}${PREFIX}[debug] ${msg}${RESET}`);
   },
   info: (msg: string) => {
     if (isJsonMode()) return;
@@ -42,11 +44,11 @@ export const logger = {
   },
   warn: (msg: string) => {
     if (isJsonMode()) return;
-    !QUIET && console.warn(`${PREFIX}[warn] ${msg}`);
+    !QUIET && console.warn(`${YELLOW}${PREFIX}[warn] ${msg}${RESET}`);
   },
   error: (msg: string) => {
     if (isJsonMode()) return;
-    console.error(`${PREFIX}[error] ${msg}`);
+    console.error(`${RED}${PREFIX}[error] ${msg}${RESET}`);
   },
   json: (data: unknown) => {
     if (isJsonMode()) console.log(JSON.stringify(data));
@@ -54,15 +56,17 @@ export const logger = {
   verbose: (msg: string) => {
     if (isJsonMode()) return;
     if (isVerbose() && !QUIET) {
-      console.log(`${PREFIX}[verbose] ${msg}`);
+      console.log(`${DIM}${PREFIX}[verbose] ${msg}${RESET}`);
     }
   },
   progress: (current: number, total: number, label: string) => {
     if (isJsonMode() || QUIET) return;
     if (!isVerbose()) return;
     const percent = total > 0 ? Math.round((current / total) * 100) : 0;
-    const bar = "=".repeat(Math.floor(percent / 5)).padEnd(20, " ");
-    process.stdout.write(`\r${PREFIX} [${bar}] ${percent}% ${label}`);
+    const barLength = 20;
+    const filled = Math.round((current / total) * barLength);
+    const bar = '█'.repeat(filled) + '░'.repeat(barLength - filled);
+    process.stdout.write(`\r${BOLD}${PREFIX}${RESET} [${GREEN}${bar}${RESET}] ${percent}% ${label}`);
     if (current >= total) {
       process.stdout.write("\n");
     }

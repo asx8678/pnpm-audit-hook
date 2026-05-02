@@ -18,6 +18,7 @@ Options:
   --verbose           Enable verbose output
   --debug             Enable debug output
   --config <path>     Path to .pnpm-audit.yaml config file
+  --troubleshoot      Show troubleshooting information
   --help              Show this help
   --version           Show version
 
@@ -31,6 +32,11 @@ Examples:
   pnpm-audit-scan --offline
   pnpm-audit-scan --update-db
   pnpm-audit-scan --update-db=full
+  pnpm-audit-scan --troubleshoot
+
+Troubleshooting:
+  Run 'pnpm-audit-scan --troubleshoot' for diagnostic information
+  or see docs/troubleshooting.md for comprehensive help.
 `;
 
 function parseArgs(argv) {
@@ -41,6 +47,8 @@ function parseArgs(argv) {
       args.help = true;
     } else if (arg === "--version" || arg === "-v") {
       args.version = true;
+    } else if (arg === "--troubleshoot") {
+      args.troubleshoot = true;
     } else if (arg === "--offline") {
       args.offline = true;
     } else if (arg === "--db-status") {

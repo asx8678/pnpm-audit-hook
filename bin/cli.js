@@ -27,6 +27,84 @@ async function main() {
     process.exit(0);
   }
 
+  if (args.troubleshoot) {
+    console.log("pnpm-audit-hook Troubleshooting Information");
+    console.log("==========================================");
+    console.log("");
+
+    // Version info
+    console.log("1. Version Information:");
+    try {
+      const pkg = JSON.parse(
+        fs.readFileSync(path.join(__dirname, "..", "package.json"), "utf-8")
+      );
+      console.log(`   pnpm-audit-hook: ${pkg.version}`);
+    } catch {
+      console.log("   pnpm-audit-hook: unknown");
+    }
+    console.log(`   Node.js: ${process.version}`);
+    console.log("");
+
+    // System info
+    console.log("2. System Information:");
+    console.log(`   Platform: ${process.platform}`);
+    console.log(`   Architecture: ${process.arch}`);
+    console.log(`   Current directory: ${process.cwd()}`);
+    console.log("");
+
+    // Check for lockfile
+    const lockfilePath = path.resolve(process.cwd(), "pnpm-lock.yaml");
+    console.log("3. Project Checks:");
+    console.log(`   pnpm-lock.yaml: ${fs.existsSync(lockfilePath) ? "✅ Found" : "❌ Not found"}`);
+    
+    const configPath = path.resolve(process.cwd(), ".pnpm-audit.yaml");
+    console.log(`   .pnpm-audit.yaml: ${fs.existsSync(configPath) ? "✅ Found" : "❌ Not found"}`);
+    
+    const pnpmfilePath = path.resolve(process.cwd(), ".pnpmfile.cjs");
+    console.log(`   .pnpmfile.cjs: ${fs.existsSync(pnpmfilePath) ? "✅ Found" : "❌ Not found"}`);
+    console.log("");
+
+    // Environment variables
+    console.log("4. Environment Variables:");
+    const envVars = [
+      "PNPM_AUDIT_OFFLINE",
+      "PNPM_AUDIT_QUIET",
+      "PNPM_AUDIT_VERBOSE",
+      "PNPM_AUDIT_DEBUG",
+      "PNPM_AUDIT_BLOCK_SEVERITY",
+      "PNPM_AUDIT_DISABLE_GITHUB",
+      "PNPM_AUDIT_DISABLE_OSV",
+      "PNPM_AUDIT_DISABLE_NVD",
+      "PNPM_AUDIT_DISABLE_STATIC_DB",
+      "GITHUB_TOKEN",
+      "NVD_API_KEY",
+    ];
+    for (const envVar of envVars) {
+      const value = process.env[envVar];
+      if (value !== undefined) {
+        console.log(`   ${envVar}: ${envVar.includes("TOKEN") || envVar.includes("KEY") ? "***" : value}`);
+      }
+    }
+    console.log("");
+
+    // Network checks
+    console.log("5. Network Checks:");
+    console.log("   To test network connectivity, run:");
+    console.log("     curl -I https://api.osv.dev/v1/query");
+    console.log("     curl -I https://api.github.com/rate_limit");
+    console.log("");
+
+    // Common solutions
+    console.log("6. Common Solutions:");
+    console.log("   - If 'AUDIT FAILED': Review findings with 'pnpm-audit-scan --format json'");
+    console.log("   - If slow: Set GITHUB_TOKEN or use --offline");
+    console.log("   - If not found: Run 'pnpm add -g pnpm-audit-hook'");
+    console.log("   - For detailed help: See docs/troubleshooting.md");
+    console.log("");
+
+    process.exit(0);
+  }
+
   if (args.updateDb) {
     const { spawnSync } = require("child_process");
     const pkgRoot = path.join(__dirname, "..");

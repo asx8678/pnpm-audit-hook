@@ -26,6 +26,7 @@ This directory contains comprehensive documentation for the pnpm-audit-hook proj
 - [Main README](../README.md) - Project overview and usage
 - [Configuration Guide](../README.md#configuration) - Configuration options
 - [CI/CD Integration](../README.md#cicd-integration) - CI/CD setup guides
+- [Troubleshooting Guide](troubleshooting.md) - Comprehensive troubleshooting documentation
 - [Troubleshooting](../README.md#troubleshooting) - Common issues and solutions
 
 ### For Contributors

@@ -8,6 +8,7 @@
 
 import { getEnvironmentVariables, isVerboseMode } from './env-manager';
 import type { ProgressStep, ProgressReport, ProgressReporterOptions } from './logger-types';
+import { BOLD, GREEN, YELLOW, RESET, DIM, supportsColor } from './color-utils';
 
 // =============================================================================
 // Configuration
@@ -183,23 +184,23 @@ export class ProgressReporter {
   private defaultFormatFn(report: ProgressReport): string {
     const parts: string[] = [];
     
-    // Progress bar
+    // Progress bar with colors
     if (this.options.showProgressBar) {
       const barLength = 20;
       const filled = Math.floor((report.percentage / 100) * barLength);
-      const bar = '='.repeat(filled).padEnd(barLength, ' ');
-      parts.push(`[${bar}] ${report.percentage}%`);
+      const bar = '█'.repeat(filled) + '░'.repeat(barLength - filled);
+      parts.push(`${GREEN}[${bar}]${RESET} ${report.percentage}%`);
     }
     
     // Current step info
     if (report.currentStep >= 0 && report.currentStep < report.steps.length) {
       const step = report.steps[report.currentStep]!;
-      parts.push(`${step.label} (${step.current}/${step.total})`);
+      parts.push(`${BOLD}${step.label}${RESET} (${step.current}/${step.total})`);
     }
     
     // ETA
     if (this.options.showEta && report.estimatedTimeRemainingMs !== undefined) {
-      parts.push(`ETA: ${this.formatETA(report.estimatedTimeRemainingMs)}`);
+      parts.push(`${DIM}ETA: ${this.formatETA(report.estimatedTimeRemainingMs)}${RESET}`);
     }
     
     return parts.join(' ');
@@ -313,8 +314,10 @@ export function formatProgressBar(current: number, total: number, label: string)
   if (JSON_MODE || QUIET || !VERBOSE) return '';
   
   const percent = total > 0 ? Math.round((current / total) * 100) : 0;
-  const bar = '='.repeat(Math.floor(percent / 5)).padEnd(20, ' ');
-  return `${PREFIX} [${bar}] ${percent}% ${label}`;
+  const barLength = 20;
+  const filled = Math.round((current / total) * barLength);
+  const bar = '█'.repeat(filled) + '░'.repeat(barLength - filled);
+  return `${BOLD}${PREFIX}${RESET} ${GREEN}[${bar}]${RESET} ${percent}% ${label}`;
 }
 
 /**

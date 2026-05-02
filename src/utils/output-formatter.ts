@@ -6,7 +6,26 @@ import type {
   VulnerabilityFinding,
 } from "../types";
 import type { AuditSummary, AuditOutputData, OutputFormat } from "./formatters";
-import { SEVERITY_ORDER, severityColor, BOLD, GREEN, RED, YELLOW, RESET } from "./formatters/base-formatter";
+import {
+  SEVERITY_ORDER,
+  severityColor,
+  BOLD,
+  GREEN,
+  RED,
+  YELLOW,
+  CYAN,
+  DIM,
+  RESET,
+  horizontalLine,
+  sectionHeader,
+  subsectionHeader,
+  indent,
+  listItem,
+  statusText,
+  severityLabel,
+  truncate,
+  pad,
+} from "./formatters/base-formatter";
 import { formatAzureDevOps } from "./formatters/azure-devops";
 import { formatGitHubActions } from "./formatters/github-actions";
 import { formatCodeBuild } from "./formatters/aws-codebuild";
@@ -118,7 +137,7 @@ export function formatCompactBanner(data: AuditOutputData): string {
     }
     const sevParts = SEVERITY_ORDER
       .filter(s => (sevCounts[s] ?? 0) > 0)
-      .map(s => `${sevCounts[s]} ${s}`);
+      .map(s => `${severityColor(s)}${sevCounts[s]} ${s}${RESET}`);
     const sevDetail = sevParts.length > 0 ? ` (${sevParts.join(", ")})` : "";
     statusChip = `${BOLD}${YELLOW}⚠️  ${count} warning${count !== 1 ? "s" : ""}${sevDetail}${RESET}`;
   } else {
@@ -128,14 +147,14 @@ export function formatCompactBanner(data: AuditOutputData): string {
   // Main banner line
   const durationStr = `${summary.totalDurationMs}ms`;
   lines.push(
-    `${BOLD}🛡️  pnpm-audit${RESET} ── ${summary.totalPackages} packages ── ${sourceLine} ── ${statusChip} ── ${durationStr}`
+    `${BOLD}🛡️  pnpm-audit${RESET} ── ${summary.totalPackages} packages ── ${sourceLine} ── ${statusChip} ── ${DIM}${durationStr}${RESET}`
   );
 
   // Detail lines for blocked items (show CVE, severity, package, title, fix)
   const blockedDecisions = decisions.filter(d => d.action === "block" && d.findingId);
   for (const d of blockedDecisions) {
-    const sev = d.findingSeverity ? `${severityColor(d.findingSeverity)}[${d.findingSeverity.toUpperCase()}]${RESET}` : "";
-    const pkg = d.packageName ? `${d.packageName}@${d.packageVersion}` : "";
+    const sev = d.findingSeverity ? severityLabel(d.findingSeverity) : "";
+    const pkg = d.packageName ? `${BOLD}${d.packageName}@${d.packageVersion}${RESET}` : "";
     const finding = findings.find(f => f.id === d.findingId && f.packageName === d.packageName);
     const title = finding?.title ? ` — ${finding.title}` : "";
     const fix = finding?.fixedVersion ? ` ${GREEN}(fix: ${finding.fixedVersion})${RESET}` : "";
@@ -148,8 +167,8 @@ export function formatCompactBanner(data: AuditOutputData): string {
     // Show up to 5 warnings to keep it compact
     const shownWarnings = warnDecisions.slice(0, 5);
     for (const d of shownWarnings) {
-      const sev = d.findingSeverity ? `${severityColor(d.findingSeverity)}[${d.findingSeverity.toUpperCase()}]${RESET}` : "";
-      const pkg = d.packageName ? `${d.packageName}@${d.packageVersion}` : "";
+      const sev = d.findingSeverity ? severityLabel(d.findingSeverity) : "";
+      const pkg = d.packageName ? `${BOLD}${d.packageName}@${d.packageVersion}${RESET}` : "";
       const finding = findings.find(f => f.id === d.findingId && f.packageName === d.packageName);
       const title = finding?.title ? ` — ${finding.title}` : "";
       lines.push(`  ${YELLOW}⚠${RESET}  ${d.findingId} ${sev} ${pkg}${title}`);
@@ -168,24 +187,22 @@ export function formatHumanReadable(data: AuditOutputData): string {
 
   // Header banner
   lines.push("");
-  lines.push(`${BOLD}===============================================${RESET}`);
-  lines.push(`${BOLD}           PNPM AUDIT SECURITY REPORT          ${RESET}`);
-  lines.push(`${BOLD}===============================================${RESET}`);
+  lines.push(sectionHeader("PNPM AUDIT SECURITY REPORT"));
   lines.push("");
 
   // Source status group
-  lines.push(`${BOLD}Source Status:${RESET}`);
+  lines.push(subsectionHeader("Source Status"));
   for (const [name, status] of Object.entries(summary.sourceStatus)) {
-    const icon = status.ok ? `${GREEN}OK${RESET}` : `${RED}FAILED${RESET}`;
-    const duration = ` (${status.durationMs}ms)`;
-    const error = status.error ? ` - ${status.error}` : "";
-    lines.push(`  ${name}: ${icon}${duration}${error}`);
+    const statusStr = statusText(status.ok, `${name}: ${status.ok ? 'OK' : 'FAILED'}`);
+    const duration = `${DIM} (${status.durationMs}ms)${RESET}`;
+    const error = status.error ? ` ${RED}- ${status.error}${RESET}` : "";
+    lines.push(`  ${statusStr}${duration}${error}`);
   }
   lines.push("");
 
   // Package summary
-  lines.push(`${BOLD}Package Summary:${RESET}`);
-  lines.push(`  Total packages scanned: ${summary.totalPackages}`);
+  lines.push(subsectionHeader("Package Summary"));
+  lines.push(`  Total packages scanned: ${BOLD}${summary.totalPackages}${RESET}`);
   lines.push(`  Safe packages: ${GREEN}${summary.safePackages}${RESET}`);
   lines.push(
     `  Packages with vulnerabilities: ${summary.packagesWithVulnerabilities > 0 ? RED : GREEN}${summary.packagesWithVulnerabilities}${RESET}`,
@@ -193,44 +210,43 @@ export function formatHumanReadable(data: AuditOutputData): string {
   lines.push("");
 
   // Vulnerability breakdown by severity
-  lines.push(`${BOLD}Vulnerabilities by Severity:${RESET}`);
+  lines.push(subsectionHeader("Vulnerabilities by Severity"));
   for (const severity of SEVERITY_ORDER) {
     const count = summary.vulnerabilitiesBySeverity[severity];
     if (count > 0) {
-      lines.push(`  ${severityColor(severity)}${severity.toUpperCase()}${RESET}: ${count}`);
+      lines.push(`  ${severityLabel(severity)}: ${count}`);
     }
   }
   if (findings.length === 0) {
-    lines.push(`  ${GREEN}No vulnerabilities found${RESET}`);
+    lines.push(`  ${GREEN}✓ No vulnerabilities found${RESET}`);
   }
   lines.push("");
 
   // Detailed vulnerability list
   if (findings.length > 0) {
-    lines.push(`${BOLD}Vulnerability Details:${RESET}`);
+    lines.push(subsectionHeader("Vulnerability Details"));
     for (const finding of findings) {
-      const color = severityColor(finding.severity);
       const cvss = typeof finding.cvssScore === "number" ? ` (CVSS ${finding.cvssScore})` : "";
-      lines.push(`  ${color}[${finding.severity.toUpperCase()}]${RESET} ${finding.id}${cvss}`);
-      lines.push(`    Package: ${finding.packageName}@${finding.packageVersion}`);
+      lines.push(`  ${severityLabel(finding.severity)} ${finding.id}${cvss}`);
+      lines.push(`    Package: ${BOLD}${finding.packageName}@${finding.packageVersion}${RESET}`);
       if (finding.title) {
         lines.push(`    Title: ${finding.title}`);
       }
       if (finding.url) {
-        lines.push(`    URL: ${finding.url}`);
+        lines.push(`    URL: ${CYAN}${finding.url}${RESET}`);
       }
       if (finding.affectedRange) {
         lines.push(`    Affected: ${finding.affectedRange}`);
       }
       if (finding.fixedVersion) {
-        lines.push(`    Fixed in: ${finding.fixedVersion}`);
+        lines.push(`    Fixed in: ${GREEN}${finding.fixedVersion}${RESET}`);
       }
       lines.push("");
     }
   }
 
   // Policy decision summary
-  lines.push(`${BOLD}Policy Decisions:${RESET}`);
+  lines.push(subsectionHeader("Policy Decisions"));
   lines.push(`  ${RED}Blocked${RESET}: ${summary.blockedCount}`);
   lines.push(`  ${YELLOW}Warnings${RESET}: ${summary.warnCount}`);
   lines.push(`  ${GREEN}Allowed${RESET}: ${summary.allowedCount}`);
@@ -240,17 +256,17 @@ export function formatHumanReadable(data: AuditOutputData): string {
   // Show blocked decisions
   const blockedDecisions = decisions.filter((d) => d.action === "block");
   if (blockedDecisions.length > 0) {
-    lines.push(`${BOLD}${RED}Blocked Items:${RESET}`);
+    lines.push(subsectionHeader("Blocked Items"));
     for (const d of blockedDecisions) {
-      const pkg = d.packageName ? `${d.packageName}@${d.packageVersion}` : "";
+      const pkg = d.packageName ? `${BOLD}${d.packageName}@${d.packageVersion}${RESET}` : "";
       const finding = d.findingId ? ` (${d.findingId})` : "";
-      lines.push(`  - ${pkg}${finding}: ${d.reason}`);
+      lines.push(`  ${RED}🚫${RESET} ${pkg}${finding}: ${d.reason}`);
     }
     lines.push("");
   }
 
   // Final status line
-  lines.push(`${BOLD}===============================================${RESET}`);
+  lines.push(sectionHeader("STATUS"));
   if (blocked) {
     lines.push(`${BOLD}${RED}AUDIT FAILED - Installation blocked${RESET}`);
   } else if (warnings) {
@@ -258,8 +274,8 @@ export function formatHumanReadable(data: AuditOutputData): string {
   } else {
     lines.push(`${BOLD}${GREEN}AUDIT PASSED - No issues found${RESET}`);
   }
-  lines.push(`${BOLD}===============================================${RESET}`);
-  lines.push(`Source query time: ${summary.totalDurationMs}ms`);
+  lines.push(`
+${DIM}Source query time: ${summary.totalDurationMs}ms${RESET}`);
   lines.push("");
 
   return lines.join("\n");
@@ -267,6 +283,109 @@ export function formatHumanReadable(data: AuditOutputData): string {
 
 export function formatJson(data: AuditOutputData): string {
   return JSON.stringify(data, null, 2);
+}
+
+/**
+ * Format a progress indicator for long operations.
+ */
+export function formatProgress(
+  current: number,
+  total: number,
+  label: string,
+  startTime?: number
+): string {
+  const percent = total > 0 ? Math.round((current / total) * 100) : 0;
+  const barLength = 20;
+  const filled = Math.round((current / total) * barLength);
+  const bar = '█'.repeat(filled) + '░'.repeat(barLength - filled);
+  
+  let etaStr = '';
+  if (startTime && current > 0) {
+    const elapsed = Date.now() - startTime;
+    const estimatedTotal = (elapsed / current) * total;
+    const remaining = Math.max(0, estimatedTotal - elapsed);
+    
+    if (remaining < 1000) {
+      etaStr = ' <1s';
+    } else if (remaining < 60000) {
+      etaStr = ` ${Math.round(remaining / 1000)}s`;
+    } else {
+      const minutes = Math.floor(remaining / 60000);
+      const seconds = Math.round((remaining % 60000) / 1000);
+      etaStr = ` ${minutes}m ${seconds}s`;
+    }
+  }
+  
+  return `${BOLD}${label}${RESET} [${bar}] ${percent}%${etaStr}`;
+}
+
+/**
+ * Format an error message with clear boundaries and actionable suggestions.
+ */
+export function formatError(
+  title: string,
+  details: string[],
+  suggestions: string[] = []
+): string {
+  const lines: string[] = [];
+  
+  lines.push("");
+  lines.push(`${BOLD}${RED}╔══════════════════════════════════════════════════════════╗${RESET}`);
+  lines.push(`${BOLD}${RED}║  ERROR: ${title.padEnd(50)}║${RESET}`);
+  lines.push(`${BOLD}${RED}╚══════════════════════════════════════════════════════════╝${RESET}`);
+  
+  for (const detail of details) {
+    lines.push(`${RED}  • ${detail}${RESET}`);
+  }
+  
+  if (suggestions.length > 0) {
+    lines.push("");
+    lines.push(`${BOLD}${YELLOW}Suggestions:${RESET}`);
+    for (const suggestion of suggestions) {
+      lines.push(`${YELLOW}  → ${suggestion}${RESET}`);
+    }
+  }
+  
+  lines.push("");
+  return lines.join("\n");
+}
+
+/**
+ * Format a warning message.
+ */
+export function formatWarning(title: string, details: string[]): string {
+  const lines: string[] = [];
+  
+  lines.push("");
+  lines.push(`${BOLD}${YELLOW}╔══════════════════════════════════════════════════════════╗${RESET}`);
+  lines.push(`${BOLD}${YELLOW}║  WARNING: ${title.padEnd(49)}║${RESET}`);
+  lines.push(`${BOLD}${YELLOW}╚══════════════════════════════════════════════════════════╝${RESET}`);
+  
+  for (const detail of details) {
+    lines.push(`${YELLOW}  • ${detail}${RESET}`);
+  }
+  
+  lines.push("");
+  return lines.join("\n");
+}
+
+/**
+ * Format a success message.
+ */
+export function formatSuccess(title: string, details: string[] = []): string {
+  const lines: string[] = [];
+  
+  lines.push("");
+  lines.push(`${BOLD}${GREEN}╔══════════════════════════════════════════════════════════╗${RESET}`);
+  lines.push(`${BOLD}${GREEN}║  ✓ ${title.padEnd(53)}║${RESET}`);
+  lines.push(`${BOLD}${GREEN}╚══════════════════════════════════════════════════════════╝${RESET}`);
+  
+  for (const detail of details) {
+    lines.push(`${GREEN}  • ${detail}${RESET}`);
+  }
+  
+  lines.push("");
+  return lines.join("\n");
 }
 
 export function getOutputFormat(env: Record<string, string | undefined>): OutputFormat {

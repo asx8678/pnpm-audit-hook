@@ -50,6 +50,7 @@ Unlike `pnpm audit`, which runs after dependencies are already installed, `pnpm-
 - [Architecture](#architecture)
 - [Security Model](#security-model)
 - [Troubleshooting](#troubleshooting)
+  - [Comprehensive Troubleshooting Guide](docs/troubleshooting.md)
 - [Uninstall](#uninstall)
 - [Local Development](#local-development)
 - [Exit Codes](#exit-codes)
@@ -977,6 +978,8 @@ policy:
 
 ### Troubleshooting Configuration
 
+For comprehensive configuration troubleshooting, see the [Troubleshooting Guide](docs/troubleshooting.md#configuration-troubleshooting).
+
 #### Common Configuration Errors
 
 **Invalid YAML syntax:**
@@ -1650,6 +1653,10 @@ classDiagram
 ---
 
 ## Troubleshooting
+
+**📖 For comprehensive troubleshooting, see the [Troubleshooting Guide](docs/troubleshooting.md).**
+
+This section covers the most common issues. For detailed diagnostics, FAQ, and community resources, check the full guide.
 
 ### `AUDIT FAILED` — How do I unblock installation?
 
