@@ -60,6 +60,31 @@ describe("CLI error handling", () => {
 });
 
 describe("parseArgs", () => {
+  describe("--db-status flag", () => {
+    it('sets dbStatus to true when --db-status flag is passed', () => {
+      const args = parseArgs(["--db-status"]);
+      assert.equal(args.dbStatus, true);
+    });
+
+    it("does not interfere with --offline flag", () => {
+      const args = parseArgs(["--db-status", "--offline"]);
+      assert.equal(args.dbStatus, true);
+      assert.equal(args.offline, true);
+    });
+
+    it("does not interfere with --quiet flag", () => {
+      const args = parseArgs(["--db-status", "--quiet"]);
+      assert.equal(args.dbStatus, true);
+      assert.equal(args.quiet, true);
+    });
+
+    it("does not interfere with --help flag", () => {
+      const args = parseArgs(["--db-status", "--help"]);
+      assert.equal(args.dbStatus, true);
+      assert.equal(args.help, true);
+    });
+  });
+
   describe("--update-db flag", () => {
     it('sets updateDb to "incremental" when flag is passed without a value', () => {
       const args = parseArgs(["--update-db"]);
@@ -156,6 +181,29 @@ describe("--severity flag", () => {
       "HELP text should mention 'incremental' mode"
     );
     assert.ok(HELP.includes("full"), "HELP text should mention 'full' mode");
+  });
+});
+
+describe("CLI --db-status integration", () => {
+  it("exits with code 0 and shows database status", () => {
+    const result = spawnSync("node", [CLI, "--db-status"], {
+      encoding: "utf8",
+    });
+    assert.equal(result.status, 0);
+    assert.match(result.stdout, /Database Status/);
+    assert.match(result.stdout, /Loaded & ready/);
+  });
+
+  it("displays expected status fields", () => {
+    const result = spawnSync("node", [CLI, "--db-status"], {
+      encoding: "utf8",
+    });
+    assert.equal(result.status, 0);
+    assert.match(result.stdout, /DB version/);
+    assert.match(result.stdout, /Cutoff date/);
+    assert.match(result.stdout, /Total vulns/);
+    assert.match(result.stdout, /Total packages/);
+    assert.match(result.stdout, /Schema version/);
   });
 });
 

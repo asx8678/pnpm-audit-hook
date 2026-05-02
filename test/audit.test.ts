@@ -547,6 +547,80 @@ describe("AuditResult type", () => {
   });
 });
 
+describe("dependencyChain wiring", () => {
+  let tempDir: string;
+
+  beforeEach(async () => {
+    tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "pnpm-audit-chain-"));
+  });
+
+  afterEach(async () => {
+    await fs.rm(tempDir, { recursive: true, force: true });
+  });
+
+  it("populates dependencyChain on findings for transitive deps", async () => {
+    const yaml = await import("yaml");
+    await fs.writeFile(
+      path.join(tempDir, ".pnpm-audit.yaml"),
+      yaml.stringify({
+        sources: { github: true, nvd: false, osv: true },
+        failOnNoSources: false,
+      }),
+    );
+
+    const { runAudit } = await import("../src/audit");
+
+    // express@4.17.1 -> qs@6.7.0 (qs has known CVEs)
+    const lockfile = {
+      lockfileVersion: "9.0",
+      importers: {
+        ".": {
+          dependencies: { express: "4.17.1" },
+        },
+      },
+      packages: {
+        "express@4.17.1": {
+          resolution: { integrity: "sha512-test" },
+          dependencies: { qs: "6.7.0" },
+        },
+        "qs@6.7.0": {
+          resolution: { integrity: "sha512-test" },
+        },
+      },
+    };
+
+    const result = await runAudit(lockfile, {
+      cwd: tempDir,
+      env: {},
+      registryUrl: "https://registry.npmjs.org",
+    });
+
+    // If findings exist, they should all have dependencyChain populated
+    for (const finding of result.findings) {
+      assert.ok(
+        Array.isArray(finding.dependencyChain),
+        `Expected dependencyChain array on finding for ${finding.packageName}@${finding.packageVersion}`,
+      );
+      assert.ok(
+        finding.dependencyChain!.length > 0,
+        "dependencyChain should not be empty",
+      );
+      // First element should be a direct dependency
+      assert.ok(
+        finding.dependencyChain!.length >= 1,
+        "dependencyChain should have at least one element",
+      );
+      // Last element should be the vulnerable package itself
+      const last = finding.dependencyChain![finding.dependencyChain!.length - 1];
+      assert.equal(
+        last,
+        `${finding.packageName}@${finding.packageVersion}`,
+        "dependencyChain should end with the vulnerable package",
+      );
+    }
+  });
+});
+
 describe("source status recording", () => {
   let tempDir: string;
 

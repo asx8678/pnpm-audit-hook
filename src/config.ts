@@ -5,18 +5,57 @@ import YAML from "yaml";
 import type { AllowlistEntry, AuditConfig, Severity, StaticBaselineConfig } from "./types";
 import { errorMessage, isNodeError } from "./utils/error";
 import { logger } from "./utils/logger";
+import { getEnvironmentVariables } from "./utils/env-manager";
 
 /** Maximum allowed timeout in milliseconds (5 minutes) */
 const MAX_TIMEOUT_MS = 300000;
 /** Maximum allowed cache TTL in seconds (24 hours) */
 const MAX_CACHE_TTL_SECONDS = 86400;
 const VALID_SEVERITIES = new Set(["critical", "high", "medium", "low", "unknown"]);
+const VALID_SEVERITIES_ARRAY = [...VALID_SEVERITIES];
+
+/** Documentation link shown in config error messages */
+const DOCS_URL = "https://github.com/asx8678/pnpm-audit-hook#configuration";
 
 /** Known top-level config keys — used to warn on typos */
 const KNOWN_TOP_LEVEL_KEYS = new Set([
   "policy", "sources", "performance", "cache",
   "failOnNoSources", "failOnSourceError", "offline", "staticBaseline",
 ]);
+
+/** Compute Levenshtein distance between two strings (for typo suggestions) */
+function levenshtein(a: string, b: string): number {
+  const la = a.length;
+  const lb = b.length;
+  const d: number[][] = Array.from({ length: la + 1 }, () => Array(lb + 1).fill(Infinity));
+  for (let i = 0; i <= la; i++) d[i]![0] = i;
+  for (let j = 0; j <= lb; j++) d[0]![j] = j;
+  for (let i = 1; i <= la; i++) {
+    for (let j = 1; j <= lb; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      d[i]![j] = Math.min(d[i - 1]![j]! + 1, d[i]![j - 1]! + 1, d[i - 1]![j - 1]! + cost);
+    }
+  }
+  return d[la]![lb]!;
+}
+
+/**
+ * Suggest similar values from a valid set.
+ * Returns up to `limit` suggestions sorted by distance, only including
+ * values within `maxDist` edit distance of the input.
+ */
+export function suggestSimilar(
+  value: string,
+  validValues: readonly string[],
+  { limit = 3, maxDist = 3 } = {},
+): string[] {
+  return validValues
+    .map((v) => ({ v, dist: levenshtein(value.toLowerCase(), v.toLowerCase()) }))
+    .filter(({ dist }) => dist <= maxDist && dist > 0)
+    .sort((a, b) => a.dist - b.dist)
+    .slice(0, limit)
+    .map(({ v }) => v);
+}
 
 /** Get a non-empty string property from an object, or null */
 function getString(obj: object, key: string): string | null {
@@ -74,12 +113,14 @@ function validateAllowlistEntry(e: unknown): AllowlistEntry | null {
   const version = getString(e, "version");
   const reason = getString(e, "reason");
   const expires = getString(e, "expires");
+  const directOnly = obj.directOnly === true ? true : undefined;
 
   // Construct base entry with validated required fields
-  const baseEntry: { version?: string; reason?: string; expires?: string } = {};
+  const baseEntry: { version?: string; reason?: string; expires?: string; directOnly?: boolean } = {};
   if (version) baseEntry.version = version;
   if (reason) baseEntry.reason = reason;
   if (expires) baseEntry.expires = expires;
+  if (directOnly) baseEntry.directOnly = directOnly;
 
   if (id) {
     return {
@@ -188,7 +229,15 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
   // Warn on unrecognized top-level keys (catches typos like "polciy")
   for (const key of Object.keys(raw)) {
     if (!KNOWN_TOP_LEVEL_KEYS.has(key)) {
-      logger.warn(`Unrecognized config key "${key}" — did you mean one of: ${[...KNOWN_TOP_LEVEL_KEYS].join(", ")}?`);
+      const knownArray = [...KNOWN_TOP_LEVEL_KEYS];
+      const suggestions = suggestSimilar(key, knownArray);
+      const hint = suggestions.length > 0
+        ? `did you mean "${suggestions[0]}"?`
+        : `valid keys: ${knownArray.join(", ")}`;
+      logger.warn(
+        `Unrecognized config key "${key}" — ${hint}` +
+        `\n  See ${DOCS_URL} for valid configuration options.`
+      );
     }
   }
 
@@ -198,7 +247,16 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
     const normalized = v.map((s) => String(s).toLowerCase());
     const invalid = normalized.filter((s) => !validSeverities.has(s));
     if (invalid.length > 0) {
-      logger.warn(`Invalid severity values ignored: ${invalid.join(", ")}`);
+      const allSuggestions = invalid
+        .map((v) => ({ v, suggestions: suggestSimilar(v, VALID_SEVERITIES_ARRAY) }))
+        .map(({ v, suggestions }) =>
+          suggestions.length > 0 ? `"${v}" -> did you mean "${suggestions[0]}"?` : `"${v}"`
+        );
+      logger.warn(
+        `Invalid severity values ignored: ${invalid.join(", ")}` +
+        `\n  Suggestions: ${allSuggestions.join(", ")}` +
+        `\n  Valid severities: ${VALID_SEVERITIES_ARRAY.join(", ")}`
+      );
     }
     return normalized.filter((s): s is Severity => validSeverities.has(s));
   };
@@ -222,9 +280,18 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
       const parsed = Date.parse(v.cutoffDate);
       const now = Date.now();
       if (isNaN(parsed)) {
-        logger.warn(`Invalid staticBaseline.cutoffDate format: "${v.cutoffDate}", using default: ${DEFAULT_CUTOFF_DATE}`);
+        logger.warn(
+          `Invalid staticBaseline.cutoffDate format: "${v.cutoffDate}"` +
+          `\n  Expected an ISO 8601 date string (e.g. "2025-01-15" or "2025-01-15T00:00:00Z")` +
+          `\n  Falling back to default cutoff date: ${DEFAULT_CUTOFF_DATE}`
+        );
       } else if (parsed > now) {
-        logger.warn(`staticBaseline.cutoffDate "${v.cutoffDate}" is in the future, using default: ${DEFAULT_CUTOFF_DATE}`);
+        const formattedNow = new Date(now).toISOString().slice(0, 10);
+        logger.warn(
+          `staticBaseline.cutoffDate "${v.cutoffDate}" is in the future (today is ${formattedNow})` +
+          `\n  The cutoff date must be in the past to match against known vulnerabilities` +
+          `\n  Falling back to default cutoff date: ${DEFAULT_CUTOFF_DATE}`
+        );
       } else {
         cutoffDate = v.cutoffDate;
       }
@@ -286,12 +353,17 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
     logger.warn(`Severity overlap in policy: ${overlap.join(", ")} appears in both block and warn (block takes precedence)`);
   }
 
+  const transitiveSeverityOverride = policy?.transitiveSeverityOverride === 'downgrade-by-one'
+    ? 'downgrade-by-one' as const
+    : undefined;
+
   return {
     ...DEFAULT_CONFIG,
     policy: {
       block: finalBlockSeverities,
       warn: warnSeverities,
       allowlist: asAllowlist(policy?.allowlist),
+      transitiveSeverityOverride,
     },
     sources: {
       github: { enabled: isSourceEnabled(sources?.github) },

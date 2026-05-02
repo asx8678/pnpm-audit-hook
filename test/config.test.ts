@@ -234,4 +234,49 @@ policy:
     assert.equal(cfg.policy.allowlist.length, 1);
     assert.equal(cfg.policy.allowlist[0]!.id, "CVE-2025-0001");
   });
+
+  it("transitiveSeverityOverride is undefined by default", async () => {
+    const cfg = await loadConfig({ cwd: tempDir, env: {} });
+    assert.equal(cfg.policy.transitiveSeverityOverride, undefined);
+  });
+
+  it("transitiveSeverityOverride passes through when set to downgrade-by-one", async () => {
+    const configContent = `
+policy:
+  transitiveSeverityOverride: downgrade-by-one
+`;
+    await fs.writeFile(path.join(tempDir, ".pnpm-audit.yaml"), configContent);
+
+    const cfg = await loadConfig({ cwd: tempDir, env: {} });
+    assert.equal(cfg.policy.transitiveSeverityOverride, "downgrade-by-one");
+  });
+
+  it("transitiveSeverityOverride ignores invalid values", async () => {
+    const configContent = `
+policy:
+  transitiveSeverityOverride: some-invalid-value
+`;
+    await fs.writeFile(path.join(tempDir, ".pnpm-audit.yaml"), configContent);
+
+    const cfg = await loadConfig({ cwd: tempDir, env: {} });
+    assert.equal(cfg.policy.transitiveSeverityOverride, undefined);
+  });
+
+  it("directOnly on allowlist entries passes through", async () => {
+    const configContent = `
+policy:
+  allowlist:
+    - id: CVE-2025-0001
+      directOnly: true
+      reason: "Direct only"
+    - id: CVE-2025-0002
+      reason: "Applies to all"
+`;
+    await fs.writeFile(path.join(tempDir, ".pnpm-audit.yaml"), configContent);
+
+    const cfg = await loadConfig({ cwd: tempDir, env: {} });
+    assert.equal(cfg.policy.allowlist.length, 2);
+    assert.equal(cfg.policy.allowlist[0]!.directOnly, true);
+    assert.equal(cfg.policy.allowlist[1]!.directOnly, undefined);
+  });
 });

@@ -1,6 +1,7 @@
 import type {
   AllowlistEntry,
   AuditConfig,
+  DependencyGraph,
   PackageAuditResult,
   PolicyAction,
   PolicyDecision,
@@ -46,10 +47,19 @@ function isExpired(entry: AllowlistEntry): boolean {
 
 function findAllowlistMatch(
   finding: VulnerabilityFinding,
-  allowlist: AllowlistEntry[]
+  allowlist: AllowlistEntry[],
+  graph?: DependencyGraph,
 ): AllowlistEntry | undefined {
   for (const entry of allowlist) {
     if (isExpired(entry)) continue;
+
+    // directOnly entries only match when the graph confirms the package is direct
+    if (entry.directOnly) {
+      if (!graph) continue; // conservative: no graph means no match
+      const keys = graph.byName.get(finding.packageName) ?? [];
+      const isDirect = keys.some(k => graph.directKeys.has(k));
+      if (!isDirect) continue;
+    }
 
     // Match entry.id against finding.id AND finding.identifiers[]
     const idMatches = entry.id !== undefined && (
@@ -93,14 +103,36 @@ function findAllowlistMatch(
   return undefined;
 }
 
-export function evaluatePackagePolicies(pkgResult: PackageAuditResult, cfg: AuditConfig): PolicyDecision[] {
+/**
+ * Downgrade a severity by one level for transitive dependency policy evaluation.
+ * critical → high, high → medium, medium → low, low → low, unknown → unknown
+ */
+function downgradeSeverity(sev: Severity): Severity {
+  switch (sev) {
+    case "critical": return "high";
+    case "high": return "medium";
+    case "medium": return "low";
+    case "low": return "low";
+    case "unknown": return "unknown";
+  }
+}
+
+export function evaluatePackagePolicies(
+  pkgResult: PackageAuditResult,
+  cfg: AuditConfig,
+  graph?: DependencyGraph,
+): PolicyDecision[] {
   const { pkg, findings } = pkgResult;
   const decisions: PolicyDecision[] = [];
   const now = new Date().toISOString();
   const allowlist = cfg.policy.allowlist ?? [];
 
+  // Determine if this package is transitive (when graph is available)
+  const pkgKeys = graph?.byName.get(pkg.name) ?? [];
+  const isTransitive = graph ? !pkgKeys.some(k => graph.directKeys.has(k)) : false;
+
   for (const f of findings) {
-    const allowMatch = findAllowlistMatch(f, allowlist);
+    const allowMatch = findAllowlistMatch(f, allowlist, graph);
     if (allowMatch) {
       const reason = allowMatch.reason ?? "Allowlisted";
       decisions.push({
@@ -116,11 +148,19 @@ export function evaluatePackagePolicies(pkgResult: PackageAuditResult, cfg: Audi
       continue;
     }
 
-    const action = actionForSeverity(f.severity, cfg.policy);
+    // Apply transitive severity downgrade when configured
+    const effectiveSeverity =
+      isTransitive && cfg.policy.transitiveSeverityOverride === 'downgrade-by-one'
+        ? downgradeSeverity(f.severity)
+        : f.severity;
+
+    const action = actionForSeverity(effectiveSeverity, cfg.policy);
     // Record all decisions including "allow" for complete audit trail
     decisions.push({
       action,
-      reason: `Severity policy: ${f.severity}`,
+      reason: effectiveSeverity !== f.severity
+        ? `Severity policy: ${f.severity} (downgraded to ${effectiveSeverity} for transitive dep)`
+        : `Severity policy: ${f.severity}`,
       source: "severity",
       at: now,
       packageName: pkg.name,

@@ -8,9 +8,10 @@ Usage:
   pnpm-audit-scan [options]
 
 Options:
-  --format <format>   Output format: human, json, azure, github (default: human)
+  --format <format>   Output format: human, json, azure, github, aws (default: human)
   --severity <list>   Comma-severity severity levels to block (default: critical,high)
   --offline           Skip live API calls, use only static DB + cache
+  --db-status         Show database status
   --update-db         Update the vulnerability database (incremental)
   --update-db=full    Update the vulnerability database (full rebuild)
   --quiet             Suppress non-error output
@@ -23,6 +24,9 @@ Options:
 Examples:
   pnpm-audit-scan
   pnpm-audit-scan --format json
+  pnpm-audit-scan --format azure
+  pnpm-audit-scan --format github
+  pnpm-audit-scan --format aws
   pnpm-audit-scan --severity critical
   pnpm-audit-scan --offline
   pnpm-audit-scan --update-db
@@ -39,6 +43,8 @@ function parseArgs(argv) {
       args.version = true;
     } else if (arg === "--offline") {
       args.offline = true;
+    } else if (arg === "--db-status") {
+      args.dbStatus = true;
     } else if (arg === "--quiet" || arg === "-q") {
       args.quiet = true;
     } else if (arg === "--verbose") {

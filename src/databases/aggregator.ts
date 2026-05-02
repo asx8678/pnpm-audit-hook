@@ -9,7 +9,7 @@ import { OsvSource } from "./osv";
 import { enrichFindingsWithNvd } from "./nvd";
 import { logger } from "../utils/logger";
 import { errorMessage } from "../utils/error";
-import { createStaticDbReader } from "../static-db/reader";
+import { LazyStaticDbReader } from "../static-db/lazy-reader";
 
 export interface AggregateContext {
   cfg: AuditConfig;
@@ -65,7 +65,7 @@ export async function aggregateVulnerabilities(
 
   const sourceStatus: Record<string, { ok: boolean; error?: string; durationMs: number }> = {};
 
-  // Initialize static DB if enabled and not provided
+  // Initialize static DB with lazy loading if enabled and not provided
   let staticDb: StaticDbReader | null = ctx.staticDb ?? null;
   const staticBaselineCfg = ctx.cfg.staticBaseline;
 
@@ -75,30 +75,31 @@ export async function aggregateVulnerabilities(
       // Static DB data is at dist/static-db/data/
       const defaultDataPath = path.resolve(__dirname, "static-db", "data");
       logger.debug(`Static DB data path: ${staticBaselineCfg.dataPath ?? defaultDataPath}`);
-      staticDb = await createStaticDbReader({
+      
+      // Use lazy loading — database initializes only when first accessed
+      staticDb = new LazyStaticDbReader({
         dataPath: staticBaselineCfg.dataPath ?? defaultDataPath,
         cutoffDate: staticBaselineCfg.cutoffDate,
       });
-      if (staticDb) {
-        logger.debug(`Static DB loaded, cutoff date: ${staticDb.getCutoffDate()}`);
-      } else {
-        logger.warn("Static baseline enabled but database could not be loaded");
-      }
+      logger.debug("Static DB configured with lazy loading");
     } catch (e) {
-      logger.warn(`Failed to load static DB: ${errorMessage(e)}`);
+      logger.warn(`Failed to configure static DB: ${errorMessage(e)}`);
     }
   }
 
   // Use the static DB's actual cutoff date (from index.json) rather than config default.
   // This ensures API queries align with the DB's actual coverage.
+  // For lazy-loaded reader, getCutoffDate() returns the config value until initialized.
   const effectiveCutoffDate = staticDb?.getCutoffDate() ?? staticBaselineCfg?.cutoffDate;
 
   // Read DB version once at startup and share across all cache key construction.
   // This ensures cache keys change when the static database is updated, causing
   // automatic cache invalidation.
+  // For lazy-loaded reader, getDbVersion() returns empty string until initialized.
   const dbVersion = staticDb?.getDbVersion() ?? "";
 
   // Register vulnerability sources
+  // The staticDb may be a LazyStaticDbReader — it will initialize on first query
   const githubSource = new GitHubAdvisorySource({
     staticDb,
     cutoffDate: effectiveCutoffDate,

@@ -8,6 +8,7 @@ import path from "node:path";
 // with different environment variables.
 
 const projectRoot = path.resolve(__dirname, "../..");
+const tsxBin = path.join(projectRoot, "node_modules", ".bin", "tsx");
 
 // Build a clean base environment that excludes CI/audit-related vars
 const getCleanBaseEnv = (): NodeJS.ProcessEnv => {
@@ -41,7 +42,7 @@ const testScript = (code: string, env: Record<string, string> = {}) => {
     }
   }
 
-  const result = spawnSync("npx", ["tsx", "-e", fullCode], {
+  const result = spawnSync(tsxBin, ["-e", fullCode], {
     cwd: projectRoot,
     env: finalEnv,
     encoding: "utf-8",

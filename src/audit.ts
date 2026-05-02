@@ -4,7 +4,7 @@ import { loadConfig } from "./config";
 import { logger } from "./utils/logger";
 import { FileCache } from "./cache/file-cache";
 import { aggregateVulnerabilities } from "./databases/aggregator";
-import { extractPackagesFromLockfile } from "./utils/lockfile";
+import { extractPackagesFromLockfile, buildDependencyGraph, traceDependencyChain } from "./utils/lockfile";
 import { evaluatePackagePolicies } from "./policies/policy-engine";
 import { buildSummary, getOutputFormat, outputResults } from "./utils/output-formatter";
 
@@ -54,6 +54,16 @@ export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions):
 
   const agg = await aggregateVulnerabilities(packages, { cfg, env, cache, registryUrl });
 
+  // Trace dependency chains for each finding
+  const graph = buildDependencyGraph(lockfile);
+  for (const finding of agg.findings) {
+    const findingKey = `${finding.packageName}@${finding.packageVersion}`;
+    const chain = traceDependencyChain(graph, findingKey);
+    if (chain) {
+      finding.dependencyChain = chain;
+    }
+  }
+
   // Group findings by package
   const findingsByPkg = new Map<string, VulnerabilityFinding[]>();
   for (const finding of agg.findings) {
@@ -68,7 +78,7 @@ export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions):
   const decisions: PolicyDecision[] = [];
   for (const p of packages) {
     const findings = findingsByPkg.get(`${p.name}@${p.version}`) ?? [];
-    decisions.push(...evaluatePackagePolicies({ pkg: p, findings }, cfg));
+    decisions.push(...evaluatePackagePolicies({ pkg: p, findings }, cfg, graph));
   }
 
   // Add decision for source failures (block when failOnSourceError, warn otherwise)

@@ -1,3 +1,5 @@
+import { getRegistryUrlFromEnv } from "./env-manager";
+
 const DEFAULT_REGISTRY = "https://registry.npmjs.org/";
 
 /**
@@ -6,7 +8,8 @@ const DEFAULT_REGISTRY = "https://registry.npmjs.org/";
  * Only falls back to default when no registry is explicitly configured.
  */
 export function getRegistryUrl(env: Record<string, string | undefined>): string {
-  const explicitReg = env.PNPM_REGISTRY || env.npm_config_registry || env.NPM_CONFIG_REGISTRY;
+  // Use env-manager for consistent environment variable handling
+  const explicitReg = getRegistryUrlFromEnv(env);
 
   // No explicit config - use default
   if (!explicitReg) {

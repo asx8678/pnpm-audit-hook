@@ -5,28 +5,17 @@ import type {
   SourceStatus,
   VulnerabilityFinding,
 } from "../types";
+import type { AuditSummary, AuditOutputData, OutputFormat } from "./formatters";
+import { SEVERITY_ORDER, severityColor, BOLD, GREEN, RED, YELLOW, RESET } from "./formatters/base-formatter";
+import { formatAzureDevOps } from "./formatters/azure-devops";
+import { formatGitHubActions } from "./formatters/github-actions";
+import { formatCodeBuild } from "./formatters/aws-codebuild";
+import { getOutputFormatFromEnv } from "./env-manager";
 
-export interface AuditSummary {
-  totalPackages: number;
-  safePackages: number;
-  packagesWithVulnerabilities: number;
-  vulnerabilitiesBySeverity: Record<Severity, number>;
-  blockedCount: number;
-  warnCount: number;
-  allowedCount: number;
-  allowlistedCount: number;
-  sourceStatus: Record<string, SourceStatus>;
-  totalDurationMs: number;
-}
-
-export interface AuditOutputData {
-  summary: AuditSummary;
-  findings: VulnerabilityFinding[];
-  decisions: PolicyDecision[];
-  blocked: boolean;
-  warnings: boolean;
-  exitCode: number;
-}
+// Re-export for backward compatibility
+export type { AuditSummary, AuditOutputData, OutputFormat } from "./formatters";
+export { formatGitHubActions } from "./formatters/github-actions";
+export { formatAzureDevOps } from "./formatters/azure-devops";
 
 export function buildSummary(
   totalPackages: number,
@@ -90,29 +79,6 @@ export function buildSummary(
     totalDurationMs,
   };
 }
-
-const SEVERITY_ORDER: Severity[] = ["critical", "high", "medium", "low", "unknown"];
-
-function severityColor(severity: Severity): string {
-  switch (severity) {
-    case "critical":
-      return "\x1b[31m"; // red
-    case "high":
-      return "\x1b[91m"; // bright red
-    case "medium":
-      return "\x1b[33m"; // yellow
-    case "low":
-      return "\x1b[36m"; // cyan
-    default:
-      return "\x1b[90m"; // gray
-  }
-}
-
-const RESET = "\x1b[0m";
-const BOLD = "\x1b[1m";
-const GREEN = "\x1b[32m";
-const RED = "\x1b[31m";
-const YELLOW = "\x1b[33m";
 
 /**
  * Compact status banner — always shown during pnpm install.
@@ -299,160 +265,21 @@ export function formatHumanReadable(data: AuditOutputData): string {
   return lines.join("\n");
 }
 
-export function formatAzureDevOps(data: AuditOutputData): string {
-  const { summary, findings, decisions, blocked, warnings } = data;
-  const lines: string[] = [];
-
-  // Source status group
-  lines.push("##[group]Source Status");
-  for (const [name, status] of Object.entries(summary.sourceStatus)) {
-    const icon = status.ok ? "OK" : "FAILED";
-    const duration = ` (${status.durationMs}ms)`;
-    const error = status.error ? ` - ${status.error}` : "";
-    if (!status.ok) {
-      lines.push(`##[warning]${name}: ${icon}${duration}${error}`);
-    } else {
-      lines.push(`${name}: ${icon}${duration}${error}`);
-    }
-  }
-  lines.push("##[endgroup]");
-
-  // Package summary group
-  lines.push("##[group]Package Summary");
-  lines.push(`Total packages scanned: ${summary.totalPackages}`);
-  lines.push(`Safe packages: ${summary.safePackages}`);
-  lines.push(`Packages with vulnerabilities: ${summary.packagesWithVulnerabilities}`);
-  lines.push("##[endgroup]");
-
-  // Vulnerability breakdown group
-  lines.push("##[group]Vulnerabilities by Severity");
-  for (const severity of SEVERITY_ORDER) {
-    const count = summary.vulnerabilitiesBySeverity[severity];
-    lines.push(`${severity.toUpperCase()}: ${count}`);
-  }
-  lines.push("##[endgroup]");
-
-  // Vulnerability details group
-  if (findings.length > 0) {
-    lines.push("##[group]Vulnerability Details");
-    for (const finding of findings) {
-      const msg = `[${finding.severity.toUpperCase()}] ${finding.id} in ${finding.packageName}@${finding.packageVersion}`;
-      if (finding.severity === "critical" || finding.severity === "high") {
-        lines.push(`##[error]${msg}`);
-      } else {
-        lines.push(`##[warning]${msg}`);
-      }
-      if (finding.title) {
-        lines.push(`  Title: ${finding.title}`);
-      }
-      if (finding.url) {
-        lines.push(`  URL: ${finding.url}`);
-      }
-    }
-    lines.push("##[endgroup]");
-  }
-
-  // Policy decisions group
-  lines.push("##[group]Policy Decisions");
-  lines.push(`Blocked: ${summary.blockedCount}`);
-  lines.push(`Warnings: ${summary.warnCount}`);
-  lines.push(`Allowed: ${summary.allowedCount}`);
-  lines.push(`Allowlisted: ${summary.allowlistedCount}`);
-
-  const blockedDecisions = decisions.filter((d) => d.action === "block");
-  for (const d of blockedDecisions) {
-    const pkg = d.packageName ? `${d.packageName}@${d.packageVersion}` : "";
-    const finding = d.findingId ? ` (${d.findingId})` : "";
-    lines.push(`##[error]BLOCKED: ${pkg}${finding} - ${d.reason}`);
-  }
-  lines.push("##[endgroup]");
-
-  // Set pipeline variables
-  lines.push(
-    `##vso[task.setvariable variable=AUDIT_BLOCKED]${blocked ? "true" : "false"}`,
-  );
-  lines.push(
-    `##vso[task.setvariable variable=AUDIT_VULNERABILITY_COUNT]${findings.length}`,
-  );
-  lines.push(
-    `##vso[task.setvariable variable=AUDIT_CRITICAL_COUNT]${summary.vulnerabilitiesBySeverity.critical}`,
-  );
-  lines.push(
-    `##vso[task.setvariable variable=AUDIT_HIGH_COUNT]${summary.vulnerabilitiesBySeverity.high}`,
-  );
-
-  // Final status
-  if (blocked) {
-    lines.push("##[error]AUDIT FAILED - Installation blocked");
-  } else if (warnings) {
-    lines.push("##[warning]AUDIT PASSED WITH WARNINGS");
-  } else {
-    lines.push("AUDIT PASSED - No issues found");
-  }
-
-  lines.push(`Source query time: ${summary.totalDurationMs}ms`);
-
-  return lines.join("\n");
+export function formatJson(data: AuditOutputData): string {
+  return JSON.stringify(data, null, 2);
 }
 
-/**
- * GitHub Actions output format.
- * Emits ::error:: and ::warning:: workflow commands for PR annotations.
- */
-export function formatGitHubActions(data: AuditOutputData): string {
-  const { summary, findings, decisions, blocked, warnings } = data;
-  const lines: string[] = [];
-
-  // Group header
-  lines.push("::group::pnpm-audit Security Report");
-
-  // Source status
-  for (const [name, status] of Object.entries(summary.sourceStatus)) {
-    if (!status.ok) {
-      lines.push(`::warning::Source ${name} failed: ${status.error ?? "unknown"}`);
-    }
+export function getOutputFormat(env: Record<string, string | undefined>): OutputFormat {
+  // Delegate to env-manager for consistent environment variable handling
+  const format = getOutputFormatFromEnv(env);
+  
+  // Ensure backward compatibility by validating the returned format
+  const validFormats: OutputFormat[] = ["human", "json", "azure", "github", "aws"];
+  if (validFormats.includes(format as OutputFormat)) {
+    return format as OutputFormat;
   }
-
-  // Package summary
-  lines.push(`Scanned ${summary.totalPackages} packages: ${summary.safePackages} safe, ${summary.packagesWithVulnerabilities} with vulnerabilities`);
-
-  // Severity breakdown
-  const sevParts: string[] = [];
-  for (const severity of SEVERITY_ORDER) {
-    const count = summary.vulnerabilitiesBySeverity[severity];
-    if (count > 0) sevParts.push(`${count} ${severity}`);
-  }
-  if (sevParts.length > 0) lines.push(`Vulnerabilities: ${sevParts.join(", ")}`);
-
-  lines.push("::endgroup::");
-
-  // Emit annotations for findings
-  for (const finding of findings) {
-    const cvss = typeof finding.cvssScore === "number" ? ` (CVSS ${finding.cvssScore})` : "";
-    const fix = finding.fixedVersion ? ` — fix: upgrade to ${finding.fixedVersion}` : "";
-    const msg = `${finding.id} [${finding.severity.toUpperCase()}]${cvss} in ${finding.packageName}@${finding.packageVersion}${fix}`;
-
-    if (finding.severity === "critical" || finding.severity === "high") {
-      lines.push(`::error file=package.json,title=Vulnerability ${finding.id}::${msg}`);
-    } else {
-      lines.push(`::warning file=package.json,title=Vulnerability ${finding.id}::${msg}`);
-    }
-  }
-
-  // Blocked items as errors
-  const blockedDecisions = decisions.filter((d) => d.action === "block" && d.source === "source");
-  for (const d of blockedDecisions) {
-    lines.push(`::error::${d.reason}`);
-  }
-
-  // Final status
-  if (blocked) {
-    lines.push(`::error::AUDIT FAILED — ${summary.blockedCount} issue(s) blocked installation`);
-  } else if (warnings) {
-    lines.push(`::warning::AUDIT PASSED WITH WARNINGS — ${summary.warnCount} warning(s)`);
-  }
-
-  return lines.join("\n");
+  
+  return "human";
 }
 
 /**
@@ -479,26 +306,6 @@ export function emitGitHubOutputs(
   fs.appendFileSync(githubOutput, lines.join("\n") + "\n");
 }
 
-export function formatJson(data: AuditOutputData): string {
-  return JSON.stringify(data, null, 2);
-}
-
-export type OutputFormat = "human" | "azure" | "github" | "json";
-
-export function getOutputFormat(env: Record<string, string | undefined>): OutputFormat {
-  if (env.PNPM_AUDIT_JSON === "true") {
-    return "json";
-  }
-  const format = env.PNPM_AUDIT_FORMAT;
-  if (format === "azure" || env.TF_BUILD === "True") {
-    return "azure";
-  }
-  if (format === "github" || (env.GITHUB_ACTIONS === "true" && format !== "human")) {
-    return "github";
-  }
-  return "human";
-}
-
 export function outputResults(
   data: AuditOutputData,
   format: OutputFormat,
@@ -520,6 +327,10 @@ export function outputResults(
       data.summary.vulnerabilitiesBySeverity.critical,
       data.summary.vulnerabilitiesBySeverity.high,
     );
+    return;
+  }
+  if (format === "aws") {
+    console.log(formatCodeBuild(data));
     return;
   }
 

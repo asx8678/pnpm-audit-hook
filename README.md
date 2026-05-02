@@ -36,6 +36,10 @@ Unlike `pnpm audit`, which runs after dependencies are already installed, `pnpm-
 - [Verify Installation](#verify-installation)
 - [Usage](#usage)
 - [Configuration](#configuration)
+  - [Common Use Cases](#common-use-cases)
+  - [Environment Variables](#environment-variables-1)
+  - [Advanced Configuration](#advanced-configuration)
+  - [Troubleshooting Configuration](#troubleshooting-configuration)
 - [Allowlist](#allowlist)
 - [Environment Variables](#environment-variables)
 - [CLI Reference](#cli-reference)
@@ -523,6 +527,607 @@ pnpm-audit-scan --update-db=full
 GITHUB_TOKEN=your_token pnpm run update-vuln-db:incremental
 ```
 
+### Common Use Cases
+
+Here are practical configuration examples for common scenarios:
+
+#### Basic Security Setup
+
+Minimal configuration that blocks critical and high-severity vulnerabilities:
+
+```yaml
+# .pnpm-audit.yaml
+policy:
+  block:
+    - critical
+    - high
+  warn:
+    - medium
+    - low
+    - unknown
+
+sources:
+  github: true
+  osv: true
+  nvd: true
+```
+
+#### CI/CD Integration
+
+Optimized for automated pipelines with faster timeouts and structured output:
+
+```yaml
+# .pnpm-audit.yaml
+policy:
+  block:
+    - critical
+    - high
+  warn:
+    - medium
+    - low
+    - unknown
+
+performance:
+  timeoutMs: 10000  # Shorter timeout for CI
+
+cache:
+  ttlSeconds: 1800  # 30-minute cache for CI runs
+
+# CI-specific settings
+failOnSourceError: true
+failOnNoSources: true
+```
+
+With GitHub Actions:
+
+```yaml
+# .github/workflows/install.yml
+- run: pnpm install
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    PNPM_AUDIT_FORMAT: github  # Enables annotations
+    PNPM_AUDIT_VERBOSE: true   # Verbose logs in CI
+```
+
+#### Monorepo Configuration
+
+Shared audit configuration for monorepo workspaces:
+
+```yaml
+# packages/shared/.pnpm-audit.yaml (or root .pnpm-audit.yaml)
+policy:
+  block:
+    - critical
+    - high
+  warn:
+    - medium
+    - low
+    - unknown
+  allowlist:
+    - id: CVE-2024-12345
+      reason: "Monorepo-wide exception after security review"
+      expires: "2025-12-31"
+
+sources:
+  github: true
+  osv: true
+
+performance:
+  timeoutMs: 20000  # Longer timeout for large dependency trees
+
+cache:
+  ttlSeconds: 3600
+```
+
+#### Strict Security Policy
+
+Maximum security with blocking on all severity levels:
+
+```yaml
+# .pnpm-audit.yaml - For security-critical applications
+policy:
+  block:
+    - critical
+    - high
+    - medium
+    - low
+    - unknown
+  warn: []
+  allowlist: []  # No exceptions
+
+sources:
+  github: true
+  osv: true
+  nvd: true
+
+failOnNoSources: true   # Fail if no sources available
+failOnSourceError: true  # Fail on any source error
+
+performance:
+  timeoutMs: 30000  # Allow longer timeouts for thorough checks
+```
+
+#### Development vs Production Policies
+
+**Development environment** (permissive, fast):
+
+```yaml
+# dev/.pnpm-audit.yaml
+policy:
+  block:
+    - critical
+  warn:
+    - high
+    - medium
+    - low
+    - unknown
+
+performance:
+  timeoutMs: 5000  # Fast timeout for dev
+
+cache:
+  ttlSeconds: 7200  # 2-hour cache
+```
+
+**Production environment** (strict, thorough):
+
+```yaml
+# prod/.pnpm-audit.yaml
+policy:
+  block:
+    - critical
+    - high
+    - medium
+  warn:
+    - low
+    - unknown
+
+performance:
+  timeoutMs: 30000  # Allow full timeout
+
+cache:
+  ttlSeconds: 1800  # 30-minute cache
+
+failOnSourceError: true
+```
+
+Use environment-specific configs:
+
+```bash
+# Development
+PNPM_AUDIT_CONFIG_PATH=dev/.pnpm-audit.yaml pnpm install
+
+# Production
+PNPM_AUDIT_CONFIG_PATH=prod/.pnpm-audit.yaml pnpm install
+```
+
+### Environment Variables
+
+All supported environment variables with examples. See the [full Environment Variables reference](#environment-variables) for the complete table.
+
+#### Authentication Variables
+
+```bash
+# GitHub API token (increases rate limits from 60 to 5,000 requests/hour)
+export GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+# NVD API key (increases rate limits from 5 to 50 requests/30 seconds)
+export NVD_API_KEY=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+
+# Or use the alternative variable names
+export GH_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+export NIST_NVD_API_KEY=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+#### Configuration Variables
+
+```bash
+# Custom config file path (relative to project root)
+export PNPM_AUDIT_CONFIG_PATH=config/custom-audit.yaml
+
+# Override blocking severities (comma-separated)
+export PNPM_AUDIT_BLOCK_SEVERITY=critical,high,medium
+
+# Custom npm registry
+export PNPM_REGISTRY=https://registry.npmjs.org/
+# Or use npm config format
+export npm_config_registry=https://registry.npmjs.org/
+```
+
+#### Source Control Variables
+
+```bash
+# Disable specific sources
+export PNPM_AUDIT_DISABLE_GITHUB=true
+export PNPM_AUDIT_DISABLE_OSV=true
+
+# Offline mode (static DB + cache only)
+export PNPM_AUDIT_OFFLINE=true
+
+# Fail behavior
+export PNPM_AUDIT_FAIL_ON_NO_SOURCES=true
+export PNPM_AUDIT_FAIL_ON_SOURCE_ERROR=true
+
+# GitHub API concurrency (default: 5)
+export PNPM_AUDIT_GITHUB_CONCURRENCY=10
+```
+
+#### CI/CD Variables
+
+```bash
+# Auto-detected in these CI environments:
+export CI=true           # Generic CI
+export GITHUB_ACTIONS=true  # GitHub Actions
+export TF_BUILD=true     # Azure DevOps
+export GITLAB_CI=true    # GitLab CI
+export JENKINS_URL=http://jenkins.example.com  # Jenkins
+export CODEBUILD_BUILD_ID=xxxxx  # AWS CodeBuild
+
+# GitHub Actions outputs (auto-configured)
+export GITHUB_OUTPUT=/path/to/outputs.txt
+```
+
+#### Debug and Verbose Modes
+
+```bash
+# Debug mode (detailed logging)
+export PNPM_AUDIT_DEBUG=true
+
+# Verbose mode (step-by-step progress)
+export PNPM_AUDIT_VERBOSE=true
+
+# Quiet mode (suppress non-error output)
+export PNPM_AUDIT_QUIET=true
+
+# JSON output (for parsing)
+export PNPM_AUDIT_JSON=true
+
+# Output format
+export PNPM_AUDIT_FORMAT=json  # human, json, github, azure, aws
+```
+
+#### Performance Variables
+
+```bash
+# Combine multiple variables for CI optimization
+export PNPM_AUDIT_OFFLINE=true
+export PNPM_AUDIT_DISABLE_OSV=true
+export PNPM_AUDIT_GITHUB_CONCURRENCY=10
+export GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+### Advanced Configuration
+
+#### Custom Static Database Paths
+
+Point to a custom static vulnerability database:
+
+```yaml
+# .pnpm-audit.yaml
+staticBaseline:
+  enabled: true
+  dataPath: "/shared/vulnerability-db/pnpm-audit-data"
+  cutoffDate: "2024-12-31"
+```
+
+For monorepos with shared databases:
+
+```yaml
+# .pnpm-audit.yaml
+staticBaseline:
+  enabled: true
+  dataPath: "../shared/security/static-db/data"
+```
+
+For custom-built databases:
+
+```yaml
+# .pnpm-audit.yaml
+staticBaseline:
+  enabled: true
+  dataPath: "/opt/security/vuln-data/pnpm-audit"
+  cutoffDate: "2024-06-30"
+```
+
+#### Performance Tuning
+
+```yaml
+# .pnpm-audit.yaml - Performance-optimized configuration
+performance:
+  timeoutMs: 10000  # 10-second timeout (default: 15000)
+
+cache:
+  ttlSeconds: 1800  # 30-minute cache (default: 3600)
+
+# Reduce API calls by disabling less critical sources
+sources:
+  github: true
+  osv: false  # Disable if not needed
+  nvd: true
+```
+
+Environment variable overrides:
+
+```bash
+# Increase concurrency for large projects
+PNPM_AUDIT_GITHUB_CONCURRENCY=10 pnpm install
+
+# Use longer timeout for complex dependency trees (set in config file, not via env var)
+# performance.timeoutMs: 30000 in .pnpm-audit.yaml
+```
+
+#### Cache Configuration
+
+The cache reduces repeated API calls and improves install performance:
+
+```yaml
+# .pnpm-audit.yaml
+cache:
+  ttlSeconds: 3600  # 1 hour (default)
+  # Other options:
+  # ttlSeconds: 1800   # 30 minutes
+  # ttlSeconds: 7200   # 2 hours
+  # ttlSeconds: 86400  # 24 hours (max)
+```
+
+Clear cache manually:
+
+```bash
+# Clear all cached results
+rm -rf .pnpm-audit-cache/
+
+# Clear and reinstall
+rm -rf .pnpm-audit-cache/ && pnpm install
+```
+
+Cache location:
+
+```text
+.pnpm-audit-cache/
+├── ab/
+│   └── ab1234...def.json
+├── cd/
+│   └── cd5678...ghi.json
+└── ...
+```
+
+#### Source-Specific Settings
+
+**GitHub Advisory Database only:**
+
+```yaml
+# .pnpm-audit.yaml
+sources:
+  github: true
+  osv: false
+  nvd: true
+
+# Environment variable equivalent:
+# PNPM_AUDIT_DISABLE_OSV=true pnpm install
+```
+
+**OSV.dev only:**
+
+```yaml
+# .pnpm-audit.yaml
+sources:
+  github: false
+  osv: true
+  nvd: false
+
+# Environment variable equivalents:
+# PNPM_AUDIT_DISABLE_GITHUB=true pnpm install
+```
+
+**Static database only (offline):**
+
+```yaml
+# .pnpm-audit.yaml
+sources:
+  github: false
+  osv: false
+  nvd: false
+
+staticBaseline:
+  enabled: true
+
+offline: true
+
+# Or use environment variable:
+# PNPM_AUDIT_OFFLINE=true pnpm install
+```
+
+**Custom source configuration:**
+
+```yaml
+# .pnpm-audit.yaml - Fine-grained source control
+sources:
+  github:
+    enabled: true
+  osv:
+    enabled: false
+  nvd:
+    enabled: true
+
+failOnSourceError: false  # Continue if GitHub fails
+failOnNoSources: false   # Continue if no sources available
+```
+
+#### Transitive Dependency Handling
+
+Downgrade severity for transitive dependencies:
+
+```yaml
+# .pnpm-audit.yaml
+policy:
+  block:
+    - critical
+    - high
+  warn:
+    - medium
+    - low
+    - unknown
+  transitiveSeverityOverride: downgrade-by-one
+
+# This means:
+# - Critical findings in transitive deps → block as high
+# - High findings in transitive deps → warn as medium
+# - Medium findings in transitive deps → warn as low
+```
+
+### Troubleshooting Configuration
+
+#### Common Configuration Errors
+
+**Invalid YAML syntax:**
+
+```yaml
+# ❌ Invalid YAML - missing colon
+sources
+  github: true
+
+# ✅ Valid YAML
+sources:
+  github: true
+```
+
+**Invalid severity values:**
+
+```yaml
+# ❌ Invalid severity
+policy:
+  block:
+    - critical
+    - sever
+
+# ✅ Valid severities
+policy:
+  block:
+    - critical
+    - high
+    - medium
+    - low
+    - unknown
+```
+
+**Missing required fields:**
+
+```yaml
+# ❌ Allowlist entry missing id or package
+policy:
+  allowlist:
+    - reason: "Missing identifier"
+
+# ✅ Valid allowlist entry
+policy:
+  allowlist:
+    - id: CVE-2024-12345
+      reason: "False positive"
+```
+
+**Invalid date format:**
+
+```yaml
+# ❌ Invalid date
+policy:
+  allowlist:
+    - id: CVE-2024-12345
+      expires: "12/31/2025"
+
+# ✅ Valid ISO date
+policy:
+  allowlist:
+    - id: CVE-2024-12345
+      expires: "2025-12-31"
+```
+
+#### Debugging Configuration Issues
+
+Enable debug logging to see configuration loading details:
+
+```bash
+# Debug configuration loading
+PNPM_AUDIT_DEBUG=true pnpm install
+
+# Or use CLI flag
+pnpm-audit-scan --debug
+```
+
+Debug output example:
+
+```text
+[debug] Loading config from .pnpm-audit.yaml
+[debug] Config loaded: {
+  policy: { block: ['critical', 'high'], warn: ['medium', 'low', 'unknown'] },
+  sources: { github: { enabled: true }, osv: { enabled: true }, nvd: { enabled: true } },
+  ...
+}
+[debug] Environment variables override: PNPM_AUDIT_BLOCK_SEVERITY=medium
+[debug] Final config: { policy: { block: ['critical', 'high', 'medium'] }, ... }
+```
+
+Check for configuration warnings:
+
+```bash
+# Verbose mode shows config warnings
+PNPM_AUDIT_VERBOSE=true pnpm install
+
+# Example output:
+# ⚠ Config warning: Unknown key 'polcy' (did you mean 'policy'?)
+# ⚠ Config warning: Invalid allowlist entry filtered: missing required 'id' or 'package' field
+```
+
+#### Validating Configuration
+
+Test configuration with manual scan:
+
+```bash
+# Dry-run to test config without installing
+pnpm-audit-scan --format json | jq '.config'
+
+# Test specific severity level
+pnpm-audit-scan --severity critical
+
+# Test offline mode
+pnpm-audit-scan --offline
+```
+
+Validate configuration file exists:
+
+```bash
+# Check if config file exists
+ls -la .pnpm-audit.yaml
+
+# Validate YAML syntax
+node -e "const yaml = require('yaml'); console.log(yaml.parse(require('fs').readFileSync('.pnpm-audit.yaml', 'utf8')))"
+```
+
+Test environment variable overrides:
+
+```bash
+# Test with overridden config
+PNPM_AUDIT_CONFIG_PATH=config/test.yaml pnpm-audit-scan
+
+# Test with environment variables
+PNPM_AUDIT_BLOCK_SEVERITY=critical pnpm-audit-scan --format json
+```
+
+#### Configuration Best Practices
+
+1. **Start with defaults**: Let the secure defaults work for you before customizing.
+
+2. **Use version control**: Commit `.pnpm-audit.yaml` to track policy changes.
+
+3. **Document exceptions**: Always add a `reason` to allowlist entries.
+
+4. **Set expiration dates**: Use `expires` on temporary allowlist entries.
+
+5. **Environment-specific configs**: Use `PNPM_AUDIT_CONFIG_PATH` for different environments.
+
+6. **Monitor cache**: Clear `.pnpm-audit-cache/` after database updates.
+
+7. **Test in CI**: Run `pnpm-audit-scan` in CI before merging.
+
 ---
 
 ## Allowlist
@@ -793,6 +1398,33 @@ steps:
 ```
 
 Azure DevOps output uses pipeline logging commands for grouped output, errors, warnings, and task variables. Azure Pipelines are auto-detected when `TF_BUILD=True`.
+
+| Variable | Description |
+|----------|-------------|
+| `AUDIT_BLOCKED` | `true` when installation is blocked |
+| `AUDIT_VULNERABILITY_COUNT` | Total vulnerability count |
+| `AUDIT_CRITICAL_COUNT` | Number of critical vulnerabilities |
+| `AUDIT_HIGH_COUNT` | Number of high vulnerabilities |
+
+### AWS CodeBuild
+
+```yaml
+# buildspec.yml
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - npm install -g pnpm
+      - pnpm install
+  build:
+    commands:
+      - pnpm run build
+```
+
+AWS CodeBuild output uses grouped logging commands for structured output. CodeBuild environments are auto-detected when `CODEBUILD_BUILD_ID` is set.
 
 | Variable | Description |
 |----------|-------------|

@@ -22,11 +22,14 @@ export interface LockfilePackageEntry {
   peerDependencies?: Record<string, string>;
 }
 
+/** Version value from pnpm lockfile: can be a plain string or an object with specifier/version (v9 format) */
+export type LockfileDepVersion = string | { specifier?: string; version: string };
+
 /** An importer entry (workspace root or workspace package) */
 export interface LockfileImporter {
-  dependencies?: Record<string, string>;
-  devDependencies?: Record<string, string>;
-  optionalDependencies?: Record<string, string>;
+  dependencies?: Record<string, LockfileDepVersion>;
+  devDependencies?: Record<string, LockfileDepVersion>;
+  optionalDependencies?: Record<string, LockfileDepVersion>;
   specifiers?: Record<string, string>;
 }
 
@@ -48,6 +51,8 @@ interface AllowlistEntryBase {
   version?: string; // Semver range to match (e.g., "<1.0.0", ">=2.0.0 <3.0.0")
   reason?: string; // Why it's allowed
   expires?: string; // ISO date string, optional expiration
+  /** When true, this allowlist entry only applies to direct dependencies */
+  directOnly?: boolean;
 }
 
 interface AllowlistEntryById extends AllowlistEntryBase {
@@ -65,6 +70,32 @@ export type AllowlistEntry = AllowlistEntryById | AllowlistEntryByPackage;
 export interface PackageRef {
   name: string;
   version: string;
+  /** Registry URL this package was fetched from (e.g., "https://registry.npmjs.org") */
+  registry?: string;
+}
+
+/** A node in the dependency graph */
+export interface DependencyNode {
+  name: string;
+  version: string;
+  /** Whether this is a direct dependency (listed in importers) */
+  isDirect: boolean;
+  /** Whether this is a dev-only dependency */
+  isDev: boolean;
+  /** Packages this node depends on (forward edges, as "name@version" keys) */
+  dependencies: string[];
+}
+
+/** Full dependency graph built from lockfile */
+export interface DependencyGraph {
+  /** Map from "name@version" key to node */
+  nodes: Map<string, DependencyNode>;
+  /** Map from package name to all "name@version" keys (a package can have multiple versions) */
+  byName: Map<string, string[]>;
+  /** Reverse edges: map from "name@version" to set of "name@version" keys that depend on it */
+  dependents: Map<string, Set<string>>;
+  /** Set of "name@version" keys that are direct dependencies */
+  directKeys: Set<string>;
 }
 
 export interface VulnerabilityIdentifier {
@@ -88,6 +119,8 @@ export interface VulnerabilityFinding {
   identifiers?: VulnerabilityIdentifier[];
   affectedRange?: string;
   fixedVersion?: string;
+  /** Dependency chain from direct dependency to this vulnerable package */
+  dependencyChain?: string[];
 }
 
 export interface PolicyDecision {
@@ -118,6 +151,8 @@ export interface AuditConfigInput {
     block?: Severity[];
     warn?: Severity[];
     allowlist?: AllowlistEntry[];
+    /** When set, transitive dependency findings have severity downgraded for policy evaluation */
+    transitiveSeverityOverride?: 'downgrade-by-one';
   };
   sources?: {
     github?: boolean | { enabled?: boolean };
@@ -146,6 +181,8 @@ export interface AuditConfig {
     block: Severity[];
     warn: Severity[];
     allowlist: AllowlistEntry[];
+    /** When set, transitive dependency findings have severity downgraded for policy evaluation */
+    transitiveSeverityOverride?: 'downgrade-by-one';
   };
   sources: {
     github: { enabled: boolean };

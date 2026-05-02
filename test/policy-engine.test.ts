@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { evaluatePackagePolicies } from "../src/policies/policy-engine";
-import type { AuditConfig, VulnerabilityFinding } from "../src/types";
+import type { AuditConfig, DependencyGraph, DependencyNode, VulnerabilityFinding } from "../src/types";
 
 function baseConfig(): AuditConfig {
   return {
@@ -375,4 +375,340 @@ test("multiple findings on same package get individual decisions", () => {
   assert.ok(res.some((d) => d.findingId === "CVE-2025-0010" && d.action === "block"));
   assert.ok(res.some((d) => d.findingId === "CVE-2025-0011" && d.action === "block"));
   assert.ok(res.some((d) => d.findingId === "CVE-2025-0012" && d.action === "warn"));
+});
+
+// ── Helper: build a minimal DependencyGraph for testing ──
+
+function makeGraph(directPkgs: Array<{ name: string; version: string }>, transitivePkgs: Array<{ name: string; version: string }> = []): DependencyGraph {
+  const nodes = new Map<string, DependencyNode>();
+  const byName = new Map<string, string[]>();
+  const dependents = new Map<string, Set<string>>();
+  const directKeys = new Set<string>();
+
+  const addNode = (name: string, version: string, isDirect: boolean) => {
+    const key = `${name}@${version}`;
+    nodes.set(key, { name, version, isDirect, isDev: false, dependencies: [] });
+    const existing = byName.get(name);
+    if (existing) {
+      existing.push(key);
+    } else {
+      byName.set(name, [key]);
+    }
+    dependents.set(key, new Set());
+    if (isDirect) directKeys.add(key);
+  };
+
+  for (const p of directPkgs) addNode(p.name, p.version, true);
+  for (const p of transitivePkgs) addNode(p.name, p.version, false);
+
+  return { nodes, byName, dependents, directKeys };
+}
+
+// ── Transitive severity downgrade tests ──
+
+test("transitive downgrade: critical becomes high for transitive dep", () => {
+  const cfg: AuditConfig = {
+    ...baseConfig(),
+    policy: {
+      ...baseConfig().policy,
+      transitiveSeverityOverride: "downgrade-by-one",
+    },
+  };
+  const graph = makeGraph(
+    [{ name: "direct-pkg", version: "1.0.0" }],
+    [{ name: "transitive-pkg", version: "2.0.0" }],
+  );
+
+  const f: VulnerabilityFinding = {
+    id: "CVE-2025-9999",
+    source: "github",
+    packageName: "transitive-pkg",
+    packageVersion: "2.0.0",
+    severity: "critical",
+  };
+
+  const res = evaluatePackagePolicies(pkg("transitive-pkg", "2.0.0", [f]), cfg, graph);
+  // critical → high, which is still in block list → block action
+  assert.equal(res[0].action, "block");
+  assert.ok(res[0].reason.includes("downgraded to high"));
+});
+
+test("transitive downgrade: high becomes medium for transitive dep", () => {
+  const cfg: AuditConfig = {
+    ...baseConfig(),
+    policy: {
+      block: ["critical", "high"],
+      warn: ["medium", "low", "unknown"],
+      allowlist: [],
+      transitiveSeverityOverride: "downgrade-by-one",
+    },
+  };
+  const graph = makeGraph(
+    [{ name: "direct-pkg", version: "1.0.0" }],
+    [{ name: "transitive-pkg", version: "2.0.0" }],
+  );
+
+  const f: VulnerabilityFinding = {
+    id: "CVE-2025-9998",
+    source: "github",
+    packageName: "transitive-pkg",
+    packageVersion: "2.0.0",
+    severity: "high",
+  };
+
+  const res = evaluatePackagePolicies(pkg("transitive-pkg", "2.0.0", [f]), cfg, graph);
+  // high → medium, which is in warn list
+  assert.equal(res[0].action, "warn");
+  assert.ok(res[0].reason.includes("downgraded to medium"));
+});
+
+test("transitive downgrade: direct dep is NOT downgraded", () => {
+  const cfg: AuditConfig = {
+    ...baseConfig(),
+    policy: {
+      ...baseConfig().policy,
+      transitiveSeverityOverride: "downgrade-by-one",
+    },
+  };
+  const graph = makeGraph(
+    [{ name: "direct-pkg", version: "1.0.0" }],
+    [{ name: "transitive-pkg", version: "2.0.0" }],
+  );
+
+  const f: VulnerabilityFinding = {
+    id: "CVE-2025-9997",
+    source: "github",
+    packageName: "direct-pkg",
+    packageVersion: "1.0.0",
+    severity: "critical",
+  };
+
+  const res = evaluatePackagePolicies(pkg("direct-pkg", "1.0.0", [f]), cfg, graph);
+  // Should remain critical (block) — no downgrade for direct deps
+  assert.equal(res[0].action, "block");
+  assert.ok(!res[0].reason.includes("downgraded"));
+});
+
+test("no override: transitive deps are evaluated normally without downgrade", () => {
+  const cfg = baseConfig(); // no transitiveSeverityOverride
+  const graph = makeGraph(
+    [{ name: "direct-pkg", version: "1.0.0" }],
+    [{ name: "transitive-pkg", version: "2.0.0" }],
+  );
+
+  const f: VulnerabilityFinding = {
+    id: "CVE-2025-9996",
+    source: "github",
+    packageName: "transitive-pkg",
+    packageVersion: "2.0.0",
+    severity: "critical",
+  };
+
+  const res = evaluatePackagePolicies(pkg("transitive-pkg", "2.0.0", [f]), cfg, graph);
+  // Should still be block — no downgrade without config
+  assert.equal(res[0].action, "block");
+  assert.ok(!res[0].reason.includes("downgraded"));
+});
+
+// ── directOnly allowlist tests ──
+
+test("directOnly allowlist matches direct dependency", () => {
+  const cfg: AuditConfig = {
+    ...baseConfig(),
+    policy: {
+      block: ["critical"],
+      warn: [],
+      allowlist: [{ id: "CVE-2025-5555", directOnly: true, reason: "direct allowlist" }],
+    },
+  };
+  const graph = makeGraph(
+    [{ name: "direct-pkg", version: "1.0.0" }],
+    [{ name: "transitive-pkg", version: "2.0.0" }],
+  );
+
+  const f: VulnerabilityFinding = {
+    id: "CVE-2025-5555",
+    source: "github",
+    packageName: "direct-pkg",
+    packageVersion: "1.0.0",
+    severity: "critical",
+  };
+
+  const res = evaluatePackagePolicies(pkg("direct-pkg", "1.0.0", [f]), cfg, graph);
+  assert.equal(res[0].action, "allow");
+  assert.ok(res[0].reason.includes("direct allowlist"));
+});
+
+test("directOnly allowlist does NOT match transitive dependency", () => {
+  const cfg: AuditConfig = {
+    ...baseConfig(),
+    policy: {
+      block: ["critical"],
+      warn: [],
+      allowlist: [{ id: "CVE-2025-5555", directOnly: true, reason: "direct allowlist" }],
+    },
+  };
+  const graph = makeGraph(
+    [{ name: "direct-pkg", version: "1.0.0" }],
+    [{ name: "transitive-pkg", version: "2.0.0" }],
+  );
+
+  const f: VulnerabilityFinding = {
+    id: "CVE-2025-5555",
+    source: "github",
+    packageName: "transitive-pkg",
+    packageVersion: "2.0.0",
+    severity: "critical",
+  };
+
+  const res = evaluatePackagePolicies(pkg("transitive-pkg", "2.0.0", [f]), cfg, graph);
+  // Should NOT be allowlisted — it's transitive
+  assert.equal(res[0].action, "block");
+});
+
+test("directOnly allowlist without graph: conservative no-match", () => {
+  const cfg: AuditConfig = {
+    ...baseConfig(),
+    policy: {
+      block: ["critical"],
+      warn: [],
+      allowlist: [{ id: "CVE-2025-5555", directOnly: true, reason: "direct allowlist" }],
+    },
+  };
+  // No graph provided
+  const f: VulnerabilityFinding = {
+    id: "CVE-2025-5555",
+    source: "github",
+    packageName: "some-pkg",
+    packageVersion: "1.0.0",
+    severity: "critical",
+  };
+
+  const res = evaluatePackagePolicies(pkg("some-pkg", "1.0.0", [f]), cfg);
+  // Without graph, directOnly entries should not match (conservative)
+  assert.equal(res[0].action, "block");
+});
+
+test("non-directOnly allowlist matches both direct and transitive", () => {
+  const cfg: AuditConfig = {
+    ...baseConfig(),
+    policy: {
+      block: ["critical"],
+      warn: [],
+      allowlist: [{ id: "CVE-2025-6666", reason: "applies to all" }],
+    },
+  };
+  const graph = makeGraph(
+    [{ name: "direct-pkg", version: "1.0.0" }],
+    [{ name: "transitive-pkg", version: "2.0.0" }],
+  );
+
+  const fDirect: VulnerabilityFinding = {
+    id: "CVE-2025-6666",
+    source: "github",
+    packageName: "direct-pkg",
+    packageVersion: "1.0.0",
+    severity: "critical",
+  };
+  const fTransitive: VulnerabilityFinding = {
+    id: "CVE-2025-6666",
+    source: "github",
+    packageName: "transitive-pkg",
+    packageVersion: "2.0.0",
+    severity: "critical",
+  };
+
+  const resDirect = evaluatePackagePolicies(pkg("direct-pkg", "1.0.0", [fDirect]), cfg, graph);
+  assert.equal(resDirect[0].action, "allow");
+
+  const resTransitive = evaluatePackagePolicies(pkg("transitive-pkg", "2.0.0", [fTransitive]), cfg, graph);
+  assert.equal(resTransitive[0].action, "allow");
+});
+
+test("combined: downgrade + directOnly allowlist — transitive gets downgraded, directOnly allowlist doesn't apply", () => {
+  const cfg: AuditConfig = {
+    ...baseConfig(),
+    policy: {
+      block: ["critical", "high"],
+      warn: ["medium", "low", "unknown"],
+      allowlist: [{ id: "CVE-2025-7777", directOnly: true, reason: "direct only" }],
+      transitiveSeverityOverride: "downgrade-by-one",
+    },
+  };
+  const graph = makeGraph(
+    [{ name: "direct-pkg", version: "1.0.0" }],
+    [{ name: "transitive-pkg", version: "2.0.0" }],
+  );
+
+  const f: VulnerabilityFinding = {
+    id: "CVE-2025-7777",
+    source: "github",
+    packageName: "transitive-pkg",
+    packageVersion: "2.0.0",
+    severity: "critical",
+  };
+
+  const res = evaluatePackagePolicies(pkg("transitive-pkg", "2.0.0", [f]), cfg, graph);
+  // directOnly allowlist should NOT match (it's transitive)
+  // critical → high (downgrade), high is in block list → block
+  assert.equal(res[0].action, "block");
+  assert.ok(res[0].reason.includes("downgraded to high"));
+});
+
+test("transitive downgrade: medium becomes low", () => {
+  const cfg: AuditConfig = {
+    ...baseConfig(),
+    policy: {
+      block: ["critical", "high"],
+      warn: ["medium", "low", "unknown"],
+      allowlist: [],
+      transitiveSeverityOverride: "downgrade-by-one",
+    },
+  };
+  const graph = makeGraph(
+    [{ name: "direct-pkg", version: "1.0.0" }],
+    [{ name: "transitive-pkg", version: "2.0.0" }],
+  );
+
+  const f: VulnerabilityFinding = {
+    id: "CVE-2025-8888",
+    source: "github",
+    packageName: "transitive-pkg",
+    packageVersion: "2.0.0",
+    severity: "medium",
+  };
+
+  const res = evaluatePackagePolicies(pkg("transitive-pkg", "2.0.0", [f]), cfg, graph);
+  // medium → low, which is in warn list
+  assert.equal(res[0].action, "warn");
+  assert.ok(res[0].reason.includes("downgraded to low"));
+});
+
+test("transitive downgrade: low stays low", () => {
+  const cfg: AuditConfig = {
+    ...baseConfig(),
+    policy: {
+      block: ["critical", "high"],
+      warn: ["medium", "low", "unknown"],
+      allowlist: [],
+      transitiveSeverityOverride: "downgrade-by-one",
+    },
+  };
+  const graph = makeGraph(
+    [{ name: "direct-pkg", version: "1.0.0" }],
+    [{ name: "transitive-pkg", version: "2.0.0" }],
+  );
+
+  const f: VulnerabilityFinding = {
+    id: "CVE-2025-8889",
+    source: "github",
+    packageName: "transitive-pkg",
+    packageVersion: "2.0.0",
+    severity: "low",
+  };
+
+  const res = evaluatePackagePolicies(pkg("transitive-pkg", "2.0.0", [f]), cfg, graph);
+  // low → low (no further downgrade)
+  assert.equal(res[0].action, "warn");
+  assert.ok(!res[0].reason.includes("downgraded")); // stays low, no downgrade message
 });

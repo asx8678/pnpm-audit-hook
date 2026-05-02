@@ -57,6 +57,60 @@ async function main() {
     process.exit(result.status ?? 1);
   }
 
+  if (args.dbStatus) {
+    const { createStaticDbReader } = require("../dist/static-db/reader.js");
+    const pkgRoot = path.join(__dirname, "..");
+    const dataPath = path.join(pkgRoot, "dist", "static-db", "data");
+    const defaultCutoffDate = "2025-12-31";
+
+    try {
+      const reader = await createStaticDbReader({
+        dataPath,
+        cutoffDate: defaultCutoffDate,
+      });
+
+      if (!reader) {
+        console.error("Database not loaded or not ready.");
+        process.exit(1);
+      }
+
+      const index = reader.getIndex();
+
+      console.log("Database Status");
+      console.log("───────────────");
+      console.log(
+        `  Loaded & ready:    ${reader.isReady() ? "\u2713 Yes" : "\u2717 No"}`
+      );
+      console.log(
+        `  DB version:        ${index?.lastUpdated || "unknown"}`
+      );
+      console.log(`  Cutoff date:       ${reader.getCutoffDate()}`);
+      console.log(`  Total vulns:       ${index?.totalVulnerabilities ?? "unknown"}`);
+      console.log(
+        `  Total packages:    ${index?.totalPackages ?? "unknown"}`
+      );
+      console.log(`  Schema version:    ${index?.schemaVersion ?? "unknown"}`);
+
+      if (index?.buildInfo) {
+        const bi = index.buildInfo;
+        if (bi.generator) {
+          console.log(`  Generator:         ${bi.generator}`);
+        }
+        if (bi.sources) {
+          console.log(`  Sources:           ${bi.sources.join(", ")}`);
+        }
+        if (bi.durationMs != null) {
+          console.log(`  Build duration:    ${bi.durationMs}ms`);
+        }
+      }
+
+      process.exit(0);
+    } catch (e) {
+      console.error(`Error reading database status: ${e.message}`);
+      process.exit(1);
+    }
+  }
+
   // Set env vars from CLI flags (before importing the module so logger picks them up)
   if (args.quiet) process.env.PNPM_AUDIT_QUIET = "true";
   if (args.verbose) process.env.PNPM_AUDIT_VERBOSE = "true";
