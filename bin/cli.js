@@ -5,58 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const YAML = require("yaml");
 
-const HELP = `
-pnpm-audit-hook — scan your pnpm lockfile for known vulnerabilities
-
-Usage:
-  pnpm-audit-scan [options]
-
-Options:
-  --format <format>   Output format: human, json, azure, github (default: human)
-  --severity <list>   Comma-separated severity levels to block (default: critical,high)
-  --offline           Skip live API calls, use only static DB + cache
-  --quiet             Suppress non-error output
-  --verbose           Enable verbose output
-  --debug             Enable debug output
-  --config <path>     Path to .pnpm-audit.yaml config file
-  --help              Show this help
-  --version           Show version
-
-Examples:
-  pnpm-audit-scan
-  pnpm-audit-scan --format json
-  pnpm-audit-scan --severity critical
-  pnpm-audit-scan --offline
-`;
-
-function parseArgs(argv) {
-  const args = { _: [] };
-  for (let i = 0; i < argv.length; i++) {
-    const arg = argv[i];
-    if (arg === "--help" || arg === "-h") {
-      args.help = true;
-    } else if (arg === "--version" || arg === "-v") {
-      args.version = true;
-    } else if (arg === "--offline") {
-      args.offline = true;
-    } else if (arg === "--quiet" || arg === "-q") {
-      args.quiet = true;
-    } else if (arg === "--verbose") {
-      args.verbose = true;
-    } else if (arg === "--debug") {
-      args.debug = true;
-    } else if ((arg === "--format" || arg === "-f") && argv[i + 1]) {
-      args.format = argv[++i];
-    } else if ((arg === "--severity" || arg === "-s") && argv[i + 1]) {
-      args.severity = argv[++i];
-    } else if ((arg === "--config" || arg === "-c") && argv[i + 1]) {
-      args.config = argv[++i];
-    } else {
-      args._.push(arg);
-    }
-  }
-  return args;
-}
+const { parseArgs, HELP } = require("./parse-args.js");
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
@@ -76,6 +25,36 @@ async function main() {
       console.log("unknown");
     }
     process.exit(0);
+  }
+
+  if (args.updateDb) {
+    const { spawnSync } = require("child_process");
+    const pkgRoot = path.join(__dirname, "..");
+    const scriptPath = path.join(pkgRoot, "scripts", "update-vuln-db.ts");
+    const tsxPath = path.join(pkgRoot, "node_modules", ".bin", "tsx");
+    const updateArgs =
+      args.updateDb === "full" ? [scriptPath] : [scriptPath, "--incremental"];
+
+    console.log(
+      `Updating vulnerability database (${args.updateDb})...\n`
+    );
+
+    const result = spawnSync(tsxPath, updateArgs, {
+      stdio: "inherit",
+      cwd: pkgRoot,
+    });
+
+    if (result.error) {
+      console.error(
+        `Error: Failed to run DB update: ${result.error.message}`
+      );
+      console.error(
+        "Make sure tsx is installed (pnpm install) and scripts/update-vuln-db.ts exists."
+      );
+      process.exit(1);
+    }
+
+    process.exit(result.status ?? 1);
   }
 
   // Set env vars from CLI flags (before importing the module so logger picks them up)
