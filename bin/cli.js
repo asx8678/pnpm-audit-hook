@@ -120,7 +120,29 @@ async function main() {
   }
 
   // Import the audit module (after env vars are set)
-  const { runAudit } = require("../dist/index.js");
+  const distEntry = path.join(__dirname, "..", "dist", "index.js");
+
+  if (!fs.existsSync(distEntry)) {
+    console.error("");
+    console.error("pnpm-audit-hook: not built.");
+    console.error("");
+    console.error("Fix:");
+    console.error("  1) Run: pnpm build");
+    console.error("  2) Ensure dist/ is present");
+    console.error("");
+    console.error("See README for installation instructions.");
+    console.error("");
+    process.exit(1);
+  }
+
+  let runAudit;
+  try {
+    runAudit = require(distEntry).runAudit;
+  } catch (e) {
+    console.error(`Error loading pnpm-audit-hook module: ${e.message}`);
+    console.error(`Expected: ${distEntry}`);
+    process.exit(1);
+  }
 
   // Determine registry URL
   const registryUrl =
