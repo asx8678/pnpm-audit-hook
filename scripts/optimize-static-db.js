@@ -10,6 +10,7 @@
 
 const path = require("node:path");
 const fs = require("node:fs/promises");
+const crypto = require("node:crypto");
 
 const DATA_DIR = path.join(__dirname, "..", "dist", "static-db", "data");
 
@@ -58,6 +59,53 @@ async function optimizeStaticDb() {
       `${result.bytesOriginal} → ${result.bytesCompressed} bytes ` +
       `(${ratio}% of original)`,
   );
+
+  // ------------------------------------------------------------------
+  // 3. Compute SHA-256 integrity hashes for all shard files
+  // ------------------------------------------------------------------
+  const { readMaybeCompressed: readDb, writeMaybeCompressed: writeDb, computeShardHash } = require(
+    path.join(__dirname, "..", "dist", "static-db", "optimizer"),
+  );
+
+  const integrity = {};
+
+  /**
+   * Recursively walk the data directory and hash every shard file.
+   * Skips index.json / index.json.gz — only package shards are hashed.
+   */
+  async function hashShardFiles(dir, prefix = "") {
+    const entries = await fs.readdir(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      const relPath = prefix ? `${prefix}/${entry.name}` : entry.name;
+
+      if (entry.isDirectory()) {
+        await hashShardFiles(fullPath, relPath);
+      } else if (
+        entry.isFile() &&
+        (entry.name.endsWith(".json.gz") || entry.name.endsWith(".json")) &&
+        !entry.name.startsWith("index.")
+      ) {
+        const raw = await fs.readFile(fullPath);
+        integrity[relPath] = computeShardHash(raw);
+      }
+    }
+  }
+
+  await hashShardFiles(DATA_DIR);
+  console.log(`Computed integrity hashes for ${Object.keys(integrity).length} shard files`);
+
+  // ------------------------------------------------------------------
+  // 4. Inject integrity map into the index and write back
+  // ------------------------------------------------------------------
+  // The index is in optimized format (short keys like `ver`, `p`, etc.),
+  // so we use the short key `int` for the integrity map.
+  const optimizedIndex = await readDb(indexPath);
+  if (optimizedIndex) {
+    optimizedIndex.int = integrity;
+    await writeDb(indexPath, optimizedIndex, { compress: true });
+    console.log("Injected integrity map into index");
+  }
 }
 
 optimizeStaticDb().catch((err) => {

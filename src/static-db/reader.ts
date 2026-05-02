@@ -1,4 +1,4 @@
-import { join } from "path";
+import { join, relative } from "path";
 import type {
   VulnerabilityFinding,
   Severity,
@@ -20,10 +20,12 @@ import type {
 import { severityLevel } from "./types";
 import {
   readMaybeCompressed,
+  readMaybeCompressedWithRaw,
   binarySearchPackage,
   PackageBloomFilter,
   expandPackageData,
   expandIndex,
+  computeShardHash,
   type OptimizedPackageData,
   type OptimizedIndex,
 } from "./optimizer";
@@ -446,8 +448,25 @@ class StaticDbReaderImpl implements StaticDbReader {
 
     for (const filePath of filePaths) {
       try {
-        const data = await readMaybeCompressed<PackageShard | OptimizedPackageData>(filePath);
-        if (!data) continue;
+        const result = await readMaybeCompressedWithRaw<PackageShard | OptimizedPackageData>(filePath);
+        if (!result) continue;
+
+        const { data, rawBytes, actualPath } = result;
+
+        // Integrity check: verify SHA-256 hash against index's integrity map
+        if (this.index?.integrity) {
+          const relPath = relative(this.dataPath, actualPath);
+          const expectedHash = this.index.integrity[relPath];
+          if (expectedHash) {
+            const actualHash = computeShardHash(rawBytes);
+            if (actualHash !== expectedHash) {
+              logger.warn(
+                `[pnpm-audit-hook] Shard integrity check failed for ${packageName}. DB may be tampered.`,
+              );
+              continue; // Skip this shard — conservative approach
+            }
+          }
+        }
 
         let shard: PackageShard | null = null;
         if (typeof data === "object" && data !== null && "pkg" in data && "v" in data) {

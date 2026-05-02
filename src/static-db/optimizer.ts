@@ -10,6 +10,7 @@ import { readFile, writeFile, readdir, stat, unlink, access } from "fs/promises"
 import { createGzip, createGunzip, constants as zlibConstants } from "zlib";
 import { pipeline } from "stream/promises";
 import { join, dirname, basename } from "path";
+import crypto from "node:crypto";
 import type { Severity, FindingSource } from "../types";
 import type {
   StaticVulnerability,
@@ -89,6 +90,12 @@ export interface OptimizedIndex {
   p: Record<string, OptimizedIndexEntry>;
   /** Sorted list of package names for fast existence checks */
   pkgList?: string[];
+  /**
+   * SHA-256 integrity hashes for shard files.
+   * Maps relative shard paths to "sha256-<hex>" digests.
+   * Short key follows the compact convention of other OptimizedIndex fields.
+   */
+  int?: Record<string, string>;
 }
 
 /**
@@ -136,6 +143,19 @@ const SOURCE_TO_INDEX: Record<FindingSource, number> = {
 };
 
 const INDEX_TO_SOURCE: FindingSource[] = ["github", "nvd", "osv"];
+
+// ============================================================================
+// Shard Integrity Hashing
+// ============================================================================
+
+/**
+ * Compute a SHA-256 integrity hash from raw file bytes.
+ * Returns the hash in "sha256-<hex>" format, matching SRI conventions.
+ */
+export function computeShardHash(rawBytes: Buffer): string {
+  const hex = crypto.createHash("sha256").update(rawBytes).digest("hex");
+  return `sha256-${hex}`;
+}
 
 // ============================================================================
 // Date Compression
@@ -357,7 +377,7 @@ export function optimizeIndex(index: StaticDbIndex): OptimizedIndex {
   // Sort package list for binary search
   pkgList.sort();
 
-  return {
+  const optimized: OptimizedIndex = {
     ver: index.schemaVersion,
     upd: compressDate(index.lastUpdated) ?? "",
     cut: compressDate(index.cutoffDate) ?? "",
@@ -366,6 +386,12 @@ export function optimizeIndex(index: StaticDbIndex): OptimizedIndex {
     p: packages,
     pkgList,
   };
+
+  if (index.integrity) {
+    optimized.int = index.integrity;
+  }
+
+  return optimized;
 }
 
 /**
@@ -378,7 +404,7 @@ export function expandIndex(opt: OptimizedIndex): StaticDbIndex {
     packages[name] = expandIndexEntry(entry);
   }
 
-  return {
+  const index: StaticDbIndex = {
     schemaVersion: opt.ver,
     lastUpdated: expandDate(opt.upd) ?? "",
     cutoffDate: expandDate(opt.cut) ?? "",
@@ -386,6 +412,12 @@ export function expandIndex(opt: OptimizedIndex): StaticDbIndex {
     totalPackages: opt.tp,
     packages,
   };
+
+  if (opt.int) {
+    index.integrity = opt.int;
+  }
+
+  return index;
 }
 
 // ============================================================================
@@ -444,6 +476,58 @@ export async function decompressFile(inputPath: string): Promise<string> {
   await pipeline(source, gunzip, destination);
 
   return outputPath;
+}
+
+/**
+ * Result of reading a shard file with raw bytes preserved for integrity checks.
+ */
+export interface ReadWithRawResult<T> {
+  /** Parsed JSON data */
+  data: T;
+  /** Raw file bytes as stored on disk (compressed .gz bytes or plain .json bytes) */
+  rawBytes: Buffer;
+  /** Absolute path to the file that was actually read */
+  actualPath: string;
+}
+
+/**
+ * Read a file, handling both compressed and uncompressed formats.
+ * Also returns the raw file bytes and actual path for integrity verification.
+ */
+export async function readMaybeCompressedWithRaw<T>(
+  basePath: string,
+): Promise<ReadWithRawResult<T> | null> {
+  // Try compressed version first (more efficient)
+  const gzPath = `${basePath}.gz`;
+  try {
+    const rawBytes = await readFile(gzPath);
+    const decompressed = await decompressBuffer(rawBytes);
+    return {
+      data: JSON.parse(decompressed.toString("utf-8")) as T,
+      rawBytes,
+      actualPath: gzPath,
+    };
+  } catch (err) {
+    if (!isNodeError(err) || err.code !== "ENOENT") {
+      throw err;
+    }
+  }
+
+  // Fall back to uncompressed
+  try {
+    const rawBytes = await readFile(basePath);
+    return {
+      data: JSON.parse(rawBytes.toString("utf-8")) as T,
+      rawBytes,
+      actualPath: basePath,
+    };
+  } catch (err) {
+    if (!isNodeError(err) || err.code !== "ENOENT") {
+      throw err;
+    }
+  }
+
+  return null;
 }
 
 /**
