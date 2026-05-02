@@ -29,6 +29,12 @@ import {
 } from "./optimizer";
 
 /**
+ * Maximum schema version this reader knows how to interpret.
+ * Bump this when the on-disk format changes in a backwards-compatible way.
+ */
+const SUPPORTED_SCHEMA_VERSION = 1;
+
+/**
  * Validate that a package name matches npm naming conventions.
  * Valid names: lowercase, may contain hyphens, underscores, dots.
  * Scoped packages: @scope/name where scope and name follow same rules.
@@ -321,6 +327,15 @@ class StaticDbReaderImpl implements StaticDbReader {
             this.bloomFilter.add(pkg);
           }
         }
+      }
+
+      // Guard: reject schemas newer than what we understand
+      if (this.index && this.index.schemaVersion > SUPPORTED_SCHEMA_VERSION) {
+        logger.warn(
+          `[pnpm-audit-hook] DB schema version ${this.index.schemaVersion} is newer than supported version ${SUPPORTED_SCHEMA_VERSION}. Results may be incomplete.`,
+        );
+        this.ready = false;
+        return;
       }
 
       this.ready = true;

@@ -68,4 +68,52 @@ describe("StaticDbReader compatibility", () => {
     });
     assert.equal(none.length, 0);
   });
+
+  it("returns null when schema version is newer than supported", async () => {
+    const index = {
+      schemaVersion: 999,
+      lastUpdated: "2025-01-01T00:00:00Z",
+      cutoffDate: "2025-12-31",
+      totalVulnerabilities: 1,
+      totalPackages: 1,
+      packages: {
+        lodash: { count: 1, latestVuln: "2025-01-01T00:00:00Z", maxSeverity: "high" },
+      },
+    };
+    await fs.writeFile(
+      path.join(tempDir, "index.json"),
+      JSON.stringify(index),
+    );
+
+    const reader = await createStaticDbReader({
+      dataPath: tempDir,
+      cutoffDate: "2025-12-31",
+    });
+
+    // Reader should gracefully refuse to load an unsupported schema
+    assert.equal(reader, null);
+  });
+
+  it("loads successfully when schema version equals supported version", async () => {
+    const index = {
+      schemaVersion: 1,
+      lastUpdated: "2025-01-01T00:00:00Z",
+      cutoffDate: "2025-12-31",
+      totalVulnerabilities: 0,
+      totalPackages: 0,
+      packages: {},
+    };
+    await fs.writeFile(
+      path.join(tempDir, "index.json"),
+      JSON.stringify(index),
+    );
+
+    const reader = await createStaticDbReader({
+      dataPath: tempDir,
+      cutoffDate: "2025-12-31",
+    });
+
+    assert.ok(reader);
+    assert.equal(reader!.isReady(), true);
+  });
 });
