@@ -4,6 +4,18 @@
 [![license](https://img.shields.io/npm/l/pnpm-audit-hook.svg)](https://github.com/asx8678/pnpm-audit-hook/blob/main/LICENSE)
 [![node](https://img.shields.io/node/v/pnpm-audit-hook.svg)](https://nodejs.org)
 
+```text
++==============================================================================+
+|                            PNPM-AUDIT-HOOK                                    |
+|                  PRE-DOWNLOAD DEPENDENCY FIREWALL                             |
++------------------------------------------------------------------------------+
+| pnpm install/add/update                                                       |
+|        |                                                                     |
+|        v                                                                     |
+| resolve lockfile -> audit advisories -> enforce policy -> PASS / WARN / BLOCK |
++==============================================================================+
+```
+
 **Block vulnerable npm packages before they are downloaded.**
 
 `pnpm-audit-hook` is a pre-download security gate for pnpm. It runs after dependency resolution and before package downloads, checks every resolved package against multiple vulnerability sources, and blocks installation when critical or high-severity issues are found.
@@ -14,6 +26,7 @@ Unlike `pnpm audit`, which runs after dependencies are already installed, `pnpm-
 
 ## Table of Contents
 
+- [At a Glance](#at-a-glance)
 - [Why Use pnpm-audit-hook?](#why-use-pnpm-audit-hook)
 - [Key Features](#key-features)
 - [Quick Start](#quick-start)
@@ -37,6 +50,33 @@ Unlike `pnpm audit`, which runs after dependencies are already installed, `pnpm-
 - [Local Development](#local-development)
 - [Exit Codes](#exit-codes)
 - [License](#license)
+
+---
+
+## At a Glance
+
+```text
+                         +-----------------------------+
+                         |     DEPENDENCY FIREWALL     |
+                         +-----------------------------+
+
+pnpm install/add/update
+          |
+          v
++-------------------+     +---------------------+     +----------------------+
+| Resolve lockfile  | --> | Audit package list  | --> | Apply project policy |
++-------------------+     +----------+----------+     +----------+-----------+
+                                     |                           |
+                   +-----------------+-----------------+         |
+                   |                                   |         |
+                   v                                   v         v
+          +----------------+                 +----------------+  +------------+
+          | GHSA / OSV    |                 | Static DB      |  | allow/warn |
+          | live sources  |                 | offline checks |  | or block   |
+          +----------------+                 +----------------+  +------------+
+```
+
+`pnpm-audit-hook` acts like a dependency firewall: it inspects the resolved package graph, checks live and bundled vulnerability intelligence, applies your policy, and stops risky packages before download.
 
 ---
 
@@ -154,6 +194,25 @@ git add .gitignore
 ---
 
 ## How It Works
+
+### Install Gate Overview
+
+```text
+pnpm command
+    |
+    v
++--------------------+    +----------------------+    +--------------------+
+| resolve lockfile   | -> | audit every package  | -> | policy decision    |
++--------------------+    +----------------------+    +---------+----------+
+                                                               |
+                                  +----------------------------+------------------+
+                                  |                                               |
+                                  v                                               v
+                            [PASS / WARN]                                    [BLOCK]
+                                  |                                               |
+                                  v                                               v
+                         download + install                                abort install
+```
 
 ```mermaid
 flowchart LR
@@ -280,9 +339,9 @@ Critical and high-severity findings block by default.
 🛡️  pnpm-audit ── 1 packages ── github ✓  osv ✓  static-db ✓ ── 🚫 1 BLOCKED ── 245ms
   🚫 GHSA-xxxx-xxxx-xxxx [CRITICAL] event-stream@3.3.6 — Malicious Package (fix: 4.0.0)
 
-===============================================
-           PNPM AUDIT SECURITY REPORT
-===============================================
++=============================================+
+|           PNPM AUDIT SECURITY REPORT         |
++=============================================+
 
 Source Status:
   github: OK (152ms)
@@ -303,9 +362,9 @@ Vulnerability Details:
     Affected: =3.3.6
     Fixed in: 4.0.0
 
-===============================================
-AUDIT FAILED - Installation blocked
-===============================================
++=============================================+
+| AUDIT FAILED - installation blocked          |
++=============================================+
 ```
 
 ---
@@ -352,6 +411,24 @@ pnpm-audit-scan --offline             # Use static DB and cache only
 | `medium` | Warn | Installation continues with exit code `2` for manual scans |
 | `low` | Warn | Installation continues with exit code `2` for manual scans |
 | `unknown` | Warn | Installation continues after enrichment is attempted |
+
+### Policy Decision Map
+
+```text
+resolved finding
+      |
+      v
++--------------+        +----------------+        +---------------------+
+| severity     | -----> | project policy | -----> | install decision    |
++--------------+        +----------------+        +----------+----------+
+                                                       |        |
+                                           +-----------+        +-----------+
+                                           v                    v
+                                      [allow/warn]          [block]
+                                           |                    |
+                                           v                    v
+                                    continue install       abort before download
+```
 
 ---
 
@@ -533,6 +610,21 @@ When `--update-db` is used, the database update runs and the CLI exits without p
 
 ## Vulnerability Sources
 
+### Source Fan-In
+
+```text
+[ Static DB ]     [ GitHub Advisory ]     [ OSV.dev ]
+      \                  |                  /
+       \                 |                 /
+        +--------- merge + deduplicate ----+
+                          |
+                          v
+                [ NVD severity enrichment ]
+                          |
+                          v
+                 normalized findings
+```
+
 ```mermaid
 flowchart TD
     subgraph PRIMARY["Primary Sources"]
@@ -591,6 +683,23 @@ sequenceDiagram
 ## Caching
 
 The cache reduces repeated API calls and improves install performance.
+
+### Cache Lifecycle Snapshot
+
+```text
+package@version
+      |
+      v
++--------------+       hit + fresh       +----------------+
+| cache lookup | ---------------------> | return findings |
++------+-------+                         +----------------+
+       |
+       | miss or expired
+       v
++----------------+     +----------------+     +---------------------+
+| query sources  | --> | merge results  | --> | atomic cache write  |
++----------------+     +----------------+     +---------------------+
+```
 
 ```mermaid
 flowchart LR
@@ -778,6 +887,33 @@ For packaging alternatives and tradeoffs, see [`docs/db-packaging-evaluation.md`
 
 ## Architecture
 
+### Component Map
+
+```text
++-------------------+
+| .pnpmfile.cjs     |
+| afterAllResolved  |
++---------+---------+
+          |
+          v
++-------------------+        +-------------------+
+| Audit Engine      | <----> | File Cache        |
+| extract + scan    |        | TTL + integrity   |
++----+---------+----+        +-------------------+
+     |         |
+     |         v
+     |   +-------------------+
+     |   | Policy Engine     |
+     |   | block / warn / ok |
+     |   +-------------------+
+     |
+     v
++-------------------+
+| Advisory Sources  |
+| static/GHSA/OSV   |
++-------------------+
+```
+
 ```mermaid
 classDiagram
     class PnpmHook {
@@ -843,6 +979,20 @@ classDiagram
 ---
 
 ## Security Model
+
+### Defense Boundary
+
+```text
++------------------------------------------------------------------+
+| FAIL-CLOSED BOUNDARY                                             |
++------------------------------------------------------------------+
+| source unavailable      -> block by default                      |
+| no enabled sources      -> block by default                      |
+| invalid semver range    -> treat as affected                     |
+| expired allowlist item  -> ignore exception                      |
+| tampered static shard   -> reject data                           |
++------------------------------------------------------------------+
+```
 
 ### Fail-Closed Defaults
 
@@ -1006,6 +1156,14 @@ pnpm test
 | `1` | Critical or high-severity vulnerability blocked |
 | `2` | Warning-level vulnerabilities found |
 | `3` | Source error under fail-closed policy |
+
+---
+
+```text
++--------------------------------------------------------------+
+| Ship faster. Install safer. Block vulnerable packages early. |
++--------------------------------------------------------------+
+```
 
 ---
 
