@@ -10,6 +10,7 @@ import { enrichFindingsWithNvd } from "./nvd";
 import { logger } from "../utils/logger";
 import { errorMessage } from "../utils/error";
 import { LazyStaticDbReader } from "../static-db/lazy-reader";
+import { captureMemorySnapshot } from "../utils/performance";
 
 export interface AggregateContext {
   cfg: AuditConfig;
@@ -25,6 +26,8 @@ export interface AggregateResult {
   sources: Record<string, { ok: boolean; error?: string; durationMs: number }>;
   /** Wall-clock time for parallel source queries (ms). Undefined when no sources ran. */
   wallClockMs?: number;
+  /** Memory snapshot at the end of aggregation (for monitoring). */
+  memorySnapshot?: ReturnType<typeof captureMemorySnapshot>;
 }
 
 /**
@@ -195,9 +198,13 @@ export async function aggregateVulnerabilities(
     sourceStatus["nvd"] = { ok: nvdResult.ok, error: nvdResult.error, durationMs: nvdResult.durationMs };
   }
 
+  // Capture memory snapshot for performance monitoring
+  const memorySnapshot = captureMemorySnapshot();
+
   return {
     findings: dedupedFindings,
     sources: sourceStatus,
     wallClockMs,
+    memorySnapshot,
   };
 }

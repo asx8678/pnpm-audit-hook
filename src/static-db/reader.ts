@@ -10,6 +10,7 @@ import { errorMessage } from "../utils/error";
 import { mapSeverity } from "../utils/severity";
 import { satisfies } from "../utils/semver";
 import { isString, isArray, isObject } from "../utils/helpers/validation-helpers";
+import { QueryPerformanceTracker } from "../utils/performance";
 import type {
   StaticDbIndex,
   AffectedVersionRange,
@@ -36,6 +37,75 @@ import {
  * Bump this when the on-disk format changes in a backwards-compatible way.
  */
 const SUPPORTED_SCHEMA_VERSION = 1;
+
+/**
+ * Performance tracking instance for the static DB reader.
+ * Shared across all reader instances for aggregate statistics.
+ */
+const globalPerformanceTracker = new QueryPerformanceTracker();
+
+/**
+ * LRU Cache implementation optimized for the static DB reader.
+ * Uses a Map (which preserves insertion order in modern JS engines) for O(1) eviction.
+ */
+export class LruCache<K, V> {
+  private cache = new Map<K, V>();
+  private readonly maxSize: number;
+
+  constructor(maxSize: number) {
+    this.maxSize = Math.max(0, maxSize);
+  }
+
+  get(key: K): V | undefined {
+    const value = this.cache.get(key);
+    if (value !== undefined) {
+      // Move to end (most recently used) by re-inserting
+      this.cache.delete(key);
+      this.cache.set(key, value);
+    }
+    return value;
+  }
+
+  set(key: K, value: V): void {
+    if (this.cache.has(key)) {
+      this.cache.delete(key);
+    } else if (this.maxSize > 0 && this.cache.size >= this.maxSize) {
+      // Evict oldest (first) entry
+      const firstKey = this.cache.keys().next().value;
+      if (firstKey !== undefined) {
+        this.cache.delete(firstKey);
+      }
+    }
+    this.cache.set(key, value);
+  }
+
+  has(key: K): boolean {
+    return this.cache.has(key);
+  }
+
+  delete(key: K): boolean {
+    return this.cache.delete(key);
+  }
+
+  get size(): number {
+    return this.cache.size;
+  }
+
+  clear(): void {
+    this.cache.clear();
+  }
+
+  /**
+   * Get cache statistics for monitoring.
+   */
+  getStats(): { size: number; maxSize: number; utilization: number } {
+    return {
+      size: this.cache.size,
+      maxSize: this.maxSize,
+      utilization: this.maxSize > 0 ? this.cache.size / this.maxSize : 0,
+    };
+  }
+}
 
 /**
  * Validate that a package name matches npm naming conventions.
@@ -231,6 +301,15 @@ export interface StaticDbReader {
   ): Promise<VulnerabilityFinding[]>;
 
   /**
+   * Batch query vulnerabilities for multiple packages.
+   * Optimized for reduced I/O by sharing cache lookups and shard reads.
+   */
+  queryPackagesBatch(
+    packageNames: string[],
+    options?: StaticDbQueryOptions
+  ): Promise<Map<string, VulnerabilityFinding[]>>;
+
+  /**
    * Check if a package has any known vulnerabilities.
    * Uses bloom filter or index for O(1) lookup.
    */
@@ -258,6 +337,11 @@ export interface StaticDbReader {
    * Get the full database index.
    */
   getIndex(): StaticDbIndex | null;
+
+  /**
+   * Get performance metrics for the reader.
+   */
+  getPerformanceMetrics(): QueryPerformanceMetrics;
 }
 
 /**
@@ -272,6 +356,17 @@ export interface StaticDbReaderConfig {
   useOptimized?: boolean;
   /** Max package shards to keep in memory (0 disables caching). */
   packageCacheMaxEntries?: number;
+  /** Max query results to cache (0 disables query caching). */
+  queryCacheMaxEntries?: number;
+}
+
+/**
+ * Performance metrics for the reader.
+ */
+export interface QueryPerformanceMetrics {
+  shardCache: { size: number; maxSize: number; utilization: number };
+  queryCache: { size: number; maxSize: number; utilization: number };
+  queryPerformance: ReturnType<QueryPerformanceTracker["getMetrics"]>;
 }
 
 /**
@@ -283,16 +378,22 @@ class StaticDbReaderImpl implements StaticDbReader {
   private useOptimized: boolean;
   private index: StaticDbIndex | null = null;
   private optimizedIndex: OptimizedIndex | null = null;
-  private packageCache: Map<string, PackageShard> = new Map();
-  private packageCacheMaxEntries: number;
+  private packageCache: LruCache<string, PackageShard>;
+  private queryCache: LruCache<string, VulnerabilityFinding[]>;
+  private queryCacheMaxEntries: number;
   private bloomFilter: PackageBloomFilter | null = null;
   private ready = false;
+  private performanceTracker: QueryPerformanceTracker;
 
   constructor(config: StaticDbReaderConfig) {
     this.dataPath = config.dataPath;
     this.cutoffDate = config.cutoffDate;
     this.useOptimized = config.useOptimized ?? true;
-    this.packageCacheMaxEntries = Math.max(0, config.packageCacheMaxEntries ?? 2000);
+    const packageCacheMaxEntries = Math.max(0, config.packageCacheMaxEntries ?? 2000);
+    this.packageCache = new LruCache<string, PackageShard>(packageCacheMaxEntries);
+    this.queryCacheMaxEntries = Math.max(0, config.queryCacheMaxEntries ?? 1000);
+    this.queryCache = new LruCache<string, VulnerabilityFinding[]>(this.queryCacheMaxEntries);
+    this.performanceTracker = globalPerformanceTracker;
   }
 
   /**
@@ -400,18 +501,39 @@ class StaticDbReaderImpl implements StaticDbReader {
       return [];
     }
 
+    // Check query cache (key = packageName + serialized options)
+    const cacheKey = this.buildQueryCacheKey(packageName, options);
+    if (this.queryCacheMaxEntries > 0) {
+      const cached = this.queryCache.get(cacheKey);
+      if (cached) {
+        this.performanceTracker.recordQuery(0, true);
+        return cached;
+      }
+    }
+
+    const startTime = performance.now();
+
     // Load package shard
     const shard = await this.loadPackageShard(packageName);
-    if (!shard) return [];
+    if (!shard) {
+      this.performanceTracker.recordQuery(performance.now() - startTime, false);
+      return [];
+    }
 
     let vulnerabilities = shard.vulnerabilities;
 
+    // Apply filters - order filters by selectivity (most selective first)
     if (options?.version) {
       const version = options.version;
       vulnerabilities = vulnerabilities.filter((v) => {
         if (!v.affectedVersions || v.affectedVersions.length === 0) return true;
         return v.affectedVersions.some((av) => satisfies(version, av.range));
       });
+    }
+
+    if (options?.minSeverity) {
+      const minLevel = severityLevel(options.minSeverity);
+      vulnerabilities = vulnerabilities.filter((v) => severityLevel(v.severity) >= minLevel);
     }
 
     if (options?.publishedAfter) {
@@ -428,26 +550,86 @@ class StaticDbReaderImpl implements StaticDbReader {
       );
     }
 
-    if (options?.minSeverity) {
-      const minLevel = severityLevel(options.minSeverity);
-      vulnerabilities = vulnerabilities.filter((v) => severityLevel(v.severity) >= minLevel);
+    const findings = vulnerabilities.map((v) => this.vulnToFinding(v, options?.version));
+
+    const durationMs = performance.now() - startTime;
+    this.performanceTracker.recordQuery(durationMs, false);
+
+    // Cache the result
+    if (this.queryCacheMaxEntries > 0) {
+      this.queryCache.set(cacheKey, findings);
     }
 
-    return vulnerabilities.map((v) => this.vulnToFinding(v, options?.version));
+    return findings;
+  }
+
+  /**
+   * Build a cache key for query results.
+   */
+  private buildQueryCacheKey(packageName: string, options?: StaticDbQueryOptions): string {
+    if (!options) return packageName;
+    // Use a compact serialization for the cache key
+    const parts = [packageName];
+    if (options.version) parts.push(`v:${options.version}`);
+    if (options.publishedAfter) parts.push(`pa:${options.publishedAfter}`);
+    if (options.publishedBefore) parts.push(`pb:${options.publishedBefore}`);
+    if (options.minSeverity) parts.push(`s:${options.minSeverity}`);
+    return parts.join("|");
+  }
+
+  /**
+   * Batch query vulnerabilities for multiple packages.
+   * Optimized for reduced I/O by deduplicating and sharing shard reads.
+   */
+  async queryPackagesBatch(
+    packageNames: string[],
+    options?: StaticDbQueryOptions
+  ): Promise<Map<string, VulnerabilityFinding[]>> {
+    const results = new Map<string, VulnerabilityFinding[]>();
+    if (!this.ready || packageNames.length === 0) return results;
+
+    // Filter to packages that exist using bloom filter + index
+    const existingPackages: string[] = [];
+    for (const name of packageNames) {
+      if (await this.hasVulnerabilities(name)) {
+        existingPackages.push(name);
+      } else {
+        results.set(name, []);
+      }
+    }
+
+    // Check query cache for each package
+    const toQuery: string[] = [];
+    for (const name of existingPackages) {
+      const cacheKey = this.buildQueryCacheKey(name, options);
+      if (this.queryCacheMaxEntries > 0) {
+        const cached = this.queryCache.get(cacheKey);
+        if (cached) {
+          results.set(name, cached);
+          this.performanceTracker.recordQuery(0, true);
+          continue;
+        }
+      }
+      toQuery.push(name);
+    }
+
+    // Load and query remaining packages
+    for (const name of toQuery) {
+      const findings = await this.queryPackageWithOptions(name, options);
+      results.set(name, findings);
+    }
+
+    return results;
   }
 
   /**
    * Load a package shard from disk, with caching.
    */
   private async loadPackageShard(packageName: string): Promise<PackageShard | null> {
-    // Check cache first
-    if (this.packageCacheMaxEntries > 0) {
-      const cached = this.packageCache.get(packageName);
-      if (cached) {
-        this.packageCache.delete(packageName);
-        this.packageCache.set(packageName, cached);
-        return cached;
-      }
+    // Check LRU cache first
+    const cached = this.packageCache.get(packageName);
+    if (cached) {
+      return cached;
     }
 
     const filePath = this.getShardPath(packageName);
@@ -486,20 +668,8 @@ class StaticDbReaderImpl implements StaticDbReader {
 
       if (!shard) return null;
 
-      // Cache for future lookups (LRU eviction)
-      if (this.packageCacheMaxEntries > 0) {
-        if (this.packageCache.has(packageName)) {
-          this.packageCache.delete(packageName);
-        }
-        this.packageCache.set(packageName, shard);
-        if (this.packageCache.size > this.packageCacheMaxEntries) {
-          let toEvict = this.packageCache.size - this.packageCacheMaxEntries;
-          for (const staleKey of this.packageCache.keys()) {
-            this.packageCache.delete(staleKey);
-            if (--toEvict <= 0) break;
-          }
-        }
-      }
+      // Cache for future lookups (LRU eviction handled by LruCache)
+      this.packageCache.set(packageName, shard);
 
       return shard;
     } catch (e) {
@@ -562,6 +732,17 @@ class StaticDbReaderImpl implements StaticDbReader {
       identifiers: vuln.identifiers,
       affectedRange,
       fixedVersion,
+    };
+  }
+
+  /**
+   * Get performance metrics for the reader.
+   */
+  getPerformanceMetrics(): QueryPerformanceMetrics {
+    return {
+      shardCache: this.packageCache.getStats(),
+      queryCache: this.queryCache.getStats(),
+      queryPerformance: this.performanceTracker.getMetrics(),
     };
   }
 }

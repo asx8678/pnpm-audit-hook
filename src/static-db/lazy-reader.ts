@@ -1,6 +1,7 @@
 import type {
   StaticDbReader,
   StaticDbReaderConfig,
+  QueryPerformanceMetrics,
 } from "./reader";
 import type { StaticDbIndex, StaticDbQueryOptions } from "./types";
 
@@ -90,6 +91,19 @@ export class LazyStaticDbReader implements StaticDbReader {
   }
 
   /**
+   * Batch query vulnerabilities for multiple packages.
+   * Triggers initialization if not yet done.
+   */
+  async queryPackagesBatch(
+    packageNames: string[],
+    options?: StaticDbQueryOptions,
+  ): Promise<Map<string, VulnerabilityFinding[]>> {
+    const instance = await this.getInstance();
+    if (!instance) return new Map();
+    return instance.queryPackagesBatch(packageNames, options);
+  }
+
+  /**
    * Check if a package has any known vulnerabilities.
    * Triggers initialization if not yet done.
    * Returns false if initialization failed.
@@ -130,6 +144,33 @@ export class LazyStaticDbReader implements StaticDbReader {
    */
   getIndex(): StaticDbIndex | null {
     return this.instance?.getIndex() ?? null;
+  }
+
+  /**
+   * Get performance metrics for the reader.
+   * Returns default metrics if not yet initialized.
+   */
+  getPerformanceMetrics(): QueryPerformanceMetrics {
+    if (this.instance) {
+      return this.instance.getPerformanceMetrics();
+    }
+    return {
+      shardCache: { size: 0, maxSize: 0, utilization: 0 },
+      queryCache: { size: 0, maxSize: 0, utilization: 0 },
+      queryPerformance: {
+        queryCount: 0,
+        totalDurationMs: 0,
+        minDurationMs: 0,
+        maxDurationMs: 0,
+        avgDurationMs: 0,
+        p50DurationMs: 0,
+        p95DurationMs: 0,
+        p99DurationMs: 0,
+        cacheHits: 0,
+        cacheMisses: 0,
+        cacheHitRate: 0,
+      },
+    };
   }
 
   /**
