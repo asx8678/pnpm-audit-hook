@@ -1,0 +1,16 @@
+[
+  {
+    "id": "GHSA-1234-5678-9012",
+    "source": "github",
+    "packageName": "lodash",
+    "packageVersion": "4.17.20",
+    "severity": "critical",
+    "title": "Critical Prototype Pollution",
+    "description": "Allows attackers to pollute the prototype of Object",
+    "fixedVersion": "4.17.21",
+    "references": [
+      "https://github.com/advisories/GHSA-1234-5678-9012"
+    ],
+    "cvssScore": 9.8
+  }
+]

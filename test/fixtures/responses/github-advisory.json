@@ -1,0 +1,36 @@
+{
+  "data": {
+    "securityVulnerabilities": {
+      "nodes": [
+        {
+          "advisory": {
+            "ghsaId": "GHSA-1234-5678-9012",
+            "cveId": "CVE-2021-12345",
+            "summary": "Prototype Pollution in lodash",
+            "description": "Versions of lodash prior to 4.17.21 are vulnerable to Prototype Pollution.",
+            "severity": "CRITICAL",
+            "publishedAt": "2021-02-15T00:00:00Z",
+            "updatedAt": "2021-02-15T00:00:00Z",
+            "references": [
+              {
+                "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-12345"
+              }
+            ]
+          },
+          "package": {
+            "name": "lodash",
+            "ecosystem": "NPM"
+          },
+          "vulnerableVersionRange": "< 4.17.21",
+          "firstPatchedVersion": {
+            "identifier": "4.17.21"
+          }
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "Y3Vyc29yOjA="
+      }
+    }
+  }
+}

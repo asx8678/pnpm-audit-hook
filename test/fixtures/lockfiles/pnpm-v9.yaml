@@ -1,0 +1,86 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+  .:
+    dependencies:
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
+      axios:
+        specifier: ^1.6.0
+        version: 1.6.0
+    devDependencies:
+      typescript:
+        specifier: ^5.0.0
+        version: 5.3.3
+
+packages:
+  /lodash@4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1k0XDi77M75Wl10gRnT9tW9G6p4N25A79JL3bQ1zC0R5n6Q==}
+    engines: {node: '>=0.8.0'}
+    dev: false
+
+  /axios@1.6.0:
+    resolution: {integrity: sha512-XX2WjT07aBvE0+JGkRg0PjCQbH5Rw5k8XK4XW2V+L6cL4K0PqjR5CjyPq1f2mJbM0G7G8i+1j2j2zX9C9g==}
+    engines: {node: '>=14'}
+    dependencies:
+      follow-redirects: 1.15.4
+      form-data: 4.0.0
+    dev: false
+
+  /follow-redirects@1.15.4:
+    resolution: {integrity: sha512-vpiMg1GjRCxF2qSbC6LkY7N1g4bJd8qGJ2sK3K1g==}
+    engines: {node: '>=4.2'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dev: false
+
+  /form-data@4.0.0:
+    resolution: {integrity: sha512-ndEZvBjv0rH8Lw8jvGzN0C3TqOa9b7v+G2g8rGj+3d3d5bH3jMz2f8aT3i6Lk8bF8T8q4rRqL0bL2Hq==}
+    engines: {node: '>= 6'}
+    dependencies:
+      asynckit: 0.4.0
+      combined-stream: 1.0.8
+      mime-types: 2.1.35
+    dev: false
+
+  /asynckit@0.4.0:
+    resolution: {integrity: sha512-JXl+0k389r42KzBx/0x9zBfQK3k3dN1dK7qM1wJ9N2Lk+g1o7Z4J9T+g2s0g2t1q4j3j4c0r3d3d5j==}
+    dev: false
+
+  /combined-stream@1.0.8:
+    resolution: {integrity: sha512-8qHn8vCuNyVAnRJ/Q3RJ0rlzbWzHjM2adQ+z0Kq9nN0gecRrCAzh13Y0U8JdslLSVqbRnQRqHbfD0xx==}
+    engines: {node: '>= 0.8'}
+    dependencies:
+      delayed-stream: 1.0.0
+    dev: false
+
+  /delayed-stream@1.0.0:
+    resolution: {integrity: sha512-yxZ5mDjHX3p3ZJtLh9yRHBZh9mM1wA2Kx3a0eVJ9q3j8bJ0G9H8i+q7a8M7kq9l0V+0P5bY2mE==}
+    engines: {node: '>=0.6.0'}
+    dev: false
+
+  /mime-types@2.1.35:
+    resolution: {integrity: sha512-ode1LZ0xZ9cZ9q0A0m3t6C2uB0A1L4G9K+2g9s8a7d6B0a5z3g7n6a3k2L3Y7cC7k4s6e==}
+    engines: {node: '>= 0.6'}
+    dependencies:
+      mime-db: 1.52.0
+    dev: false
+
+  /mime-db@1.52.0:
+    resolution: {integrity: sha512-sPU4UVv7YCAc7p8o/RYg5a8RnK2R7dC4v7k9w8g8d0rOcJ+5BkLg3g5g+1Ck3dL+9Q==}
+    engines: {node: '>= 0.6'}
+    dev: false
+
+  /typescript@5.3.3:
+    resolution: {integrity: sha512-pXGcrqEWc979Cp06AkEVCbE9C3+XgpXeRSoeQJT76wkQkWceHhkM/eMCRn/26IWT//1ulK3f+SO==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: true

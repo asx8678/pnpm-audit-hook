@@ -1,0 +1,23 @@
+policy:
+  block:
+    - critical
+    - high
+  warn:
+    - medium
+    - low
+    - unknown
+  allowlist: []
+
+sources:
+  github:
+    enabled: true
+  nvd:
+    enabled: true
+  osv:
+    enabled: true
+
+cache:
+  ttlSeconds: 3600
+
+performance:
+  timeoutMs: 15000
