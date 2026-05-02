@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import type {
   PolicyDecision,
   Severity,
@@ -370,13 +371,31 @@ export function formatGitHubActions(data: AuditOutputData): string {
     lines.push(`::warning::AUDIT PASSED WITH WARNINGS — ${summary.warnCount} warning(s)`);
   }
 
-  // Set outputs for downstream steps
-  lines.push(`::set-output name=audit-blocked::${blocked}`);
-  lines.push(`::set-output name=vulnerability-count::${findings.length}`);
-  lines.push(`::set-output name=critical-count::${summary.vulnerabilitiesBySeverity.critical}`);
-  lines.push(`::set-output name=high-count::${summary.vulnerabilitiesBySeverity.high}`);
-
   return lines.join("\n");
+}
+
+/**
+ * Write GitHub Actions outputs directly to the GITHUB_OUTPUT environment file.
+ * This is the proper way to set outputs in GitHub Actions — shell echo commands
+ * in console.log text don't work.
+ */
+export function emitGitHubOutputs(
+  blocked: boolean,
+  total: number,
+  critical: number,
+  high: number,
+): void {
+  const githubOutput = process.env.GITHUB_OUTPUT;
+  if (!githubOutput) return; // Not in GitHub Actions environment
+
+  const lines = [
+    `audit-blocked=${blocked}`,
+    `vulnerability-count=${total}`,
+    `critical-count=${critical}`,
+    `high-count=${high}`,
+  ];
+
+  fs.appendFileSync(githubOutput, lines.join("\n") + "\n");
 }
 
 export function formatJson(data: AuditOutputData): string {
@@ -413,6 +432,12 @@ export function outputResults(
       break;
     case "github":
       output = formatGitHubActions(data);
+      emitGitHubOutputs(
+        data.blocked,
+        data.findings.length,
+        data.summary.vulnerabilitiesBySeverity.critical,
+        data.summary.vulnerabilitiesBySeverity.high,
+      );
       break;
     default:
       output = formatHumanReadable(data);

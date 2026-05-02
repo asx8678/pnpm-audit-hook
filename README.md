@@ -371,7 +371,7 @@ policy:
 | `PNPM_AUDIT_DEBUG` | Enable debug logging |
 | `PNPM_AUDIT_VERBOSE` | Enable verbose logging |
 | `PNPM_AUDIT_JSON` | JSON output format |
-| `PNPM_AUDIT_FORMAT` | Output format (`text`, `json`, `github-actions`) |
+| `PNPM_AUDIT_FORMAT` | Output format (`human`, `azure`, `github`, `json`) |
 | `PNPM_AUDIT_OFFLINE` | Use only static baseline DB (no network) |
 | `PNPM_AUDIT_FAIL_ON_NO_SOURCES` | Fail if no advisory sources available (default: `true`) |
 | `PNPM_AUDIT_FAIL_ON_SOURCE_ERROR` | Fail if an advisory source errors (default: `true`) |
@@ -439,6 +439,47 @@ jobs:
 ```
 
 The hook runs automatically during `pnpm install` and will fail the job if blocking vulnerabilities are found.
+
+The GitHub Actions format emits `::error::` / `::warning::` annotations for findings and sets outputs via `$GITHUB_OUTPUT` for downstream steps:
+
+| Output | Description |
+|--------|-------------|
+| `audit-blocked` | `true` if install is blocked |
+| `vulnerability-count` | Total number of vulnerabilities |
+| `critical-count` | Number of critical vulnerabilities |
+| `high-count` | Number of high vulnerabilities |
+
+### Azure DevOps
+
+```yaml
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      version: 20
+  - script: |
+      npm install -g pnpm
+      pnpm install
+    displayName: 'Install with Audit'
+    env:
+      GITHUB_TOKEN: $(GITHUB_TOKEN)
+      NVD_API_KEY: $(NVD_API_KEY)
+      PNPM_AUDIT_FORMAT: azure
+```
+
+The Azure DevOps format uses `##[group]`, `##[error]`, `##[warning]`, and `##vso[task.setvariable]` logging commands for pipeline annotations and variables. It is also auto-detected when running in Azure Pipelines (`TF_BUILD=True`).
+
+| Variable | Description |
+|----------|-------------|
+| `AUDIT_BLOCKED` | `true` if install is blocked |
+| `AUDIT_VULNERABILITY_COUNT` | Total number of vulnerabilities |
+| `AUDIT_CRITICAL_COUNT` | Number of critical vulnerabilities |
+| `AUDIT_HIGH_COUNT` | Number of high vulnerabilities |
 
 ## Static Vulnerability Database
 
