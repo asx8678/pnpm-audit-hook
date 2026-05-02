@@ -377,6 +377,26 @@ policy:
 | `PNPM_AUDIT_FAIL_ON_SOURCE_ERROR` | Fail if an advisory source errors (default: `true`) |
 | `PNPM_AUDIT_GITHUB_CONCURRENCY` | Max concurrent GitHub API requests (default: `10` with token, `3` without) |
 
+## CLI Reference
+
+The `pnpm-audit-scan` CLI supports these flags:
+
+| Flag | Description |
+|------|-------------|
+| `--format <format>` | Output format: `human`, `json`, `azure`, `github` (default: `human`) |
+| `--severity <list>` | Comma-separated severity levels to block (default: `critical,high`) |
+| `--offline` | Skip live API calls, use only static DB + cache |
+| `--update-db` | Update vulnerability database (incremental) |
+| `--update-db=full` | Update vulnerability database (full rebuild) |
+| `--quiet` | Suppress non-error output |
+| `--verbose` | Enable verbose output |
+| `--debug` | Enable debug output |
+| `--config <path>` | Path to `.pnpm-audit.yaml` config file |
+| `--help` | Show help text |
+| `--version` | Show version |
+
+When `--update-db` is passed, the DB update runs and the CLI exits (no audit is performed).
+
 ## Caching
 
 ```mermaid
@@ -454,11 +474,13 @@ The hook includes a bundled database of historical vulnerabilities (2020-2025) t
 ### Updating the Database
 
 ```bash
-# Incremental update (recommended)
-pnpm run update-vuln-db:incremental
+# Using the CLI (recommended — more discoverable)
+pnpm-audit-scan --update-db           # Incremental update
+pnpm-audit-scan --update-db=full      # Full rebuild
 
-# Full rebuild
-pnpm run update-vuln-db
+# Or via npm scripts
+pnpm run update-vuln-db:incremental   # Incremental update
+pnpm run update-vuln-db               # Full rebuild
 
 # Rebuild and commit
 pnpm run build

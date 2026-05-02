@@ -15,6 +15,8 @@ Options:
   --format <format>   Output format: human, json, azure, github (default: human)
   --severity <list>   Comma-separated severity levels to block (default: critical,high)
   --offline           Skip live API calls, use only static DB + cache
+  --update-db         Update the vulnerability database (incremental)
+  --update-db=full    Update the vulnerability database (full rebuild)
   --quiet             Suppress non-error output
   --verbose           Enable verbose output
   --debug             Enable debug output
@@ -27,6 +29,8 @@ Examples:
   pnpm-audit-scan --format json
   pnpm-audit-scan --severity critical
   pnpm-audit-scan --offline
+  pnpm-audit-scan --update-db
+  pnpm-audit-scan --update-db=full
 `;
 
 function parseArgs(argv) {
@@ -49,6 +53,11 @@ function parseArgs(argv) {
       args.format = argv[++i];
     } else if ((arg === "--severity" || arg === "-s") && argv[i + 1]) {
       args.severity = argv[++i];
+    } else if (arg === "--update-db") {
+      args.updateDb = "incremental";
+    } else if (arg.startsWith("--update-db=")) {
+      const value = arg.slice("--update-db=".length);
+      args.updateDb = value === "full" ? "full" : "incremental";
     } else if ((arg === "--config" || arg === "-c") && argv[i + 1]) {
       args.config = argv[++i];
     } else {
@@ -76,6 +85,36 @@ async function main() {
       console.log("unknown");
     }
     process.exit(0);
+  }
+
+  if (args.updateDb) {
+    const { spawnSync } = require("child_process");
+    const pkgRoot = path.join(__dirname, "..");
+    const scriptPath = path.join(pkgRoot, "scripts", "update-vuln-db.ts");
+    const tsxPath = path.join(pkgRoot, "node_modules", ".bin", "tsx");
+    const updateArgs =
+      args.updateDb === "full" ? [scriptPath] : [scriptPath, "--incremental"];
+
+    console.log(
+      `Updating vulnerability database (${args.updateDb})...\n`
+    );
+
+    const result = spawnSync(tsxPath, updateArgs, {
+      stdio: "inherit",
+      cwd: pkgRoot,
+    });
+
+    if (result.error) {
+      console.error(
+        `Error: Failed to run DB update: ${result.error.message}`
+      );
+      console.error(
+        "Make sure tsx is installed (pnpm install) and scripts/update-vuln-db.ts exists."
+      );
+      process.exit(1);
+    }
+
+    process.exit(result.status ?? 1);
   }
 
   // Set env vars from CLI flags (before importing the module so logger picks them up)
