@@ -4,402 +4,222 @@
 [![license](https://img.shields.io/npm/l/pnpm-audit-hook.svg)](https://github.com/asx8678/pnpm-audit-hook/blob/main/LICENSE)
 [![node](https://img.shields.io/node/v/pnpm-audit-hook.svg)](https://nodejs.org)
 
-**Stop vulnerable packages before they reach your machine.** pnpm-audit-hook is a security hook for pnpm that intercepts `pnpm install` after dependency resolution but **before any packages are downloaded**. It checks every resolved package against multiple vulnerability databases and blocks the install if critical or high severity issues are found — so vulnerable code never touches your `node_modules`.
+**Block vulnerable npm packages before they are downloaded.**
 
-### Why pnpm-audit-hook?
+`pnpm-audit-hook` is a pre-download security gate for pnpm. It runs after dependency resolution and before package downloads, checks every resolved package against multiple vulnerability sources, and blocks installation when critical or high-severity issues are found.
 
-Unlike `pnpm audit` which runs *after* install, this hook acts as a **gatekeeper** — vulnerable packages are rejected before download. It works transparently on every `pnpm install`, `pnpm add`, and `pnpm update` with zero workflow changes.
+Unlike `pnpm audit`, which runs after dependencies are already installed, `pnpm-audit-hook` prevents vulnerable code from reaching `node_modules` in the first place. Once configured, it works automatically with `pnpm install`, `pnpm add`, and `pnpm update`.
 
-## Features
+---
 
-### 🛡️ Pre-Download Blocking
-- Intercepts pnpm's `afterAllResolved` hook — **blocks before download**, not after
-- Vulnerable code never reaches your machine or `node_modules`
-- Works on `pnpm install`, `pnpm add`, and `pnpm update` automatically
+## Table of Contents
 
-### 🔍 Multiple Vulnerability Sources (Queried in Parallel)
-- **GitHub Advisory Database** — real-time GHSA data (60 req/hr free, 5,000/hr with token)
-- **OSV.dev** — aggregates GHSA + npm + NVD + more, free, no auth needed
-- **Bundled Static Database** — 1,900+ packages with historical vulns (2020-2025), works offline
-- **NVD Enrichment** — fills in missing CVSS scores and severity levels
-- Sources run in parallel for speed; results are merged and deduplicated
+- [Why Use pnpm-audit-hook?](#why-use-pnpm-audit-hook)
+- [Key Features](#key-features)
+- [Quick Start](#quick-start)
+- [How It Works](#how-it-works)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Verify Installation](#verify-installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Allowlist](#allowlist)
+- [Environment Variables](#environment-variables)
+- [CLI Reference](#cli-reference)
+- [Vulnerability Sources](#vulnerability-sources)
+- [Caching](#caching)
+- [CI/CD Integration](#cicd-integration)
+- [Static Vulnerability Database](#static-vulnerability-database)
+- [Architecture](#architecture)
+- [Security Model](#security-model)
+- [Troubleshooting](#troubleshooting)
+- [Uninstall](#uninstall)
+- [Local Development](#local-development)
+- [Exit Codes](#exit-codes)
+- [License](#license)
 
-### ⚡ Performance
-- **Smart caching** — file-based cache with severity-aware TTL (critical: 15 min, high: 30 min, medium: 1 hr)
-- **Bloom filter** — O(1) package existence check before loading any shard from static DB
-- **Gzip compression** — static DB is compressed at build time, reducing npm tarball by ~3-5x
-- **Optimized index** — compact field names reduce index size by ~80%
-- **Concurrent API queries** — configurable concurrency for GitHub (up to 50) and OSV (5)
+---
 
-### 🔒 Fail-Closed Security Model
-- **API failure = block** — if a source is unreachable, install is blocked by default (configurable)
-- **Invalid semver = affected** — ambiguous version ranges are treated as vulnerable
-- **Expired allowlist = enforced** — once an allowlist entry expires, the vulnerability blocks again
-- **DB integrity verification** — SHA-256 hashes detect tampered vulnerability data in `node_modules`
-- **Symlink attack prevention** — cache reads/writes check for symlinks
-- **Atomic cache writes** — temp file + rename prevents corrupted cache entries
-- **Path traversal protection** — validates all file paths and package names
+## Why Use pnpm-audit-hook?
 
-### 📋 Flexible Policy Engine
-- **Block / warn / allow** per severity level — configurable in `.pnpm-audit.yaml`
-- **Allowlist** by CVE ID, GHSA ID, package name, version range — with optional expiration dates
-- **Scoped allowlist entries** — match specific CVE + package + version combinations
-- **Severity override** via `PNPM_AUDIT_BLOCK_SEVERITY` env var for CI flexibility
+Most dependency audit tools detect vulnerable packages after installation. `pnpm-audit-hook` moves that control earlier in the lifecycle by turning dependency installation into a policy-enforced security checkpoint.
 
-### 🔌 CI/CD Native
-- **GitHub Actions** — `::error::` / `::warning::` annotations, outputs via `$GITHUB_OUTPUT`, auto-detected
-- **Azure DevOps** — `##[group]`, `##[error]`, `##vso[task.setvariable]` commands, auto-detected
-- **JSON output** — structured output for custom CI parsing
-- **Human-readable** — colored terminal output with progress bars for local development
-- **Auto-verbose in CI** — detects `CI`, `GITHUB_ACTIONS`, `TF_BUILD`, `GITLAB_CI`, `JENKINS_URL`
+It is designed for teams that need:
 
-### 📦 Offline & Air-Gap Support
-- **Bundled static DB** works without internet — historical vulns checked locally
-- **`--offline` mode** — disables all API calls, relies on static DB + cache only
-- **Cache survives across installs** — once fetched, results are reused until TTL expires
+- **Pre-download protection** — vulnerable packages are blocked before they reach your machine.
+- **Zero workflow disruption** — audits run automatically during normal pnpm commands.
+- **Multiple vulnerability sources** — GitHub Advisory Database, OSV.dev, a bundled static database, and NVD enrichment.
+- **Secure defaults** — critical and high-severity vulnerabilities are blocked by default.
+- **CI/CD compatibility** — structured output, annotations, and pipeline-friendly exit codes.
+- **Offline support** — the bundled static database can be used in air-gapped environments.
 
-### 📊 Compact Status Banner
-- **Always visible** — every `pnpm install` shows a one-line banner confirming the hook is active
-- **Clean installs** — single line: package count, source status, "✅ clean", duration
-- **Warnings** — banner expands with up to 5 CVE IDs, severity, package name, and title
-- **Blocked installs** — banner shows all blocked CVEs with fix versions, followed by the full detailed report
-- **Non-intrusive** — clean installs produce just one line of output; no visual noise
+---
 
-### 🛠️ Developer Experience
-- **Zero config** — install, setup, done. Sensible defaults block critical + high.
-- **CLI scanner** — `pnpm-audit-scan` for manual audits without installing
-- **`--update-db`** — update the bundled vulnerability database from CLI
-- **Custom config** — `.pnpm-audit.yaml` for per-project security policies
-- **Private registry support** — works with custom npm registries via `PNPM_REGISTRY`
-- **Temporary disable** — `pnpm install --ignore-pnpmfile` or rename `.pnpmfile.cjs`
+## Key Features
+
+### Pre-Download Blocking
+
+- Hooks into pnpm through `afterAllResolved`.
+- Runs after dependency resolution but before package downloads.
+- Blocks vulnerable packages before they enter `node_modules`.
+- Works automatically with `pnpm install`, `pnpm add`, and `pnpm update`.
+
+### Multiple Vulnerability Sources
+
+- **GitHub Advisory Database** — real-time GHSA data.
+- **OSV.dev** — aggregated vulnerability data from GHSA, npm, NVD, and other sources.
+- **Bundled static database** — historical vulnerability data for offline and low-latency checks.
+- **NVD enrichment** — CVSS and severity enrichment for findings with incomplete severity data.
+- Sources are queried in parallel, then merged and deduplicated.
+
+### Performance-Oriented Design
+
+- Severity-aware file cache.
+- Bloom filter for fast package-existence checks.
+- Gzip-compressed static database shards.
+- Compact static database indexes.
+- Configurable API concurrency.
+
+### Fail-Closed Security Model
+
+- Source failures block installation by default.
+- Invalid semver ranges are treated as potentially affected.
+- Expired allowlist entries are ignored.
+- Static database files are verified with SHA-256 integrity hashes.
+- Cache reads and writes protect against symlink and path traversal attacks.
+- Cache writes are atomic to reduce corruption risk.
+
+### Flexible Policy Engine
+
+- Configure `block`, `warn`, and `allow` behavior by severity.
+- Allowlist vulnerabilities by CVE, GHSA, package, and version range.
+- Add optional expiration dates to allowlist entries.
+- Override blocking severity with environment variables for CI workflows.
+
+### CI/CD Native
+
+- GitHub Actions annotations using `::error::` and `::warning::`.
+- Azure DevOps logging commands and task variables.
+- JSON output for custom automation.
+- Human-readable output for local development.
+- Automatic CI detection for verbose pipeline logs.
+
+### Offline and Air-Gapped Support
+
+- Bundled static vulnerability database works without network access.
+- `--offline` mode disables live API calls.
+- Cached results can be reused until their TTL expires.
+
+### Compact Status Banner
+
+- Clean installs produce a single-line confirmation.
+- Warning and blocked installs show concise CVE/GHSA details before the full report.
+- Output remains readable for local development and CI logs.
+
+### Developer Experience
+
+- Sensible defaults require minimal setup.
+- `pnpm-audit-scan` supports manual audits without installation.
+- `.pnpm-audit.yaml` supports project-specific policy customization.
+- Private registries are supported through `PNPM_REGISTRY` or `npm_config_registry`.
+- Temporary bypass is available with `pnpm install --ignore-pnpmfile`.
+
+---
 
 ## Quick Start
 
 ```bash
-pnpm add -D pnpm-audit-hook && pnpm exec pnpm-audit-setup
-```
-
-Done! Every `pnpm install` will now audit packages before downloading.
-
-## Quick How-To
-
-### Enable/Disable Vulnerability Sources
-
-```yaml
-# .pnpm-audit.yaml
-sources:
-  github: true    # GitHub Advisory Database (default: true)
-  osv: true       # OSV.dev — aggregates GHSA + npm + more (default: true)
-  nvd: true       # NVD severity enrichment only (default: true)
-```
-
-Or via environment variables:
-```bash
-PNPM_AUDIT_DISABLE_GITHUB=true pnpm install   # Skip GitHub Advisory
-PNPM_AUDIT_DISABLE_OSV=true pnpm install       # Skip OSV.dev
-```
-
-### Run an Offline Audit (No Network)
-
-```bash
-# Use only the bundled static database
-pnpm-audit-scan --offline
-
-# Or set the environment variable
-PNPM_AUDIT_OFFLINE=true pnpm install
-```
-
-### Update the Vulnerability Database
-
-```bash
-# Quick incremental update (recommended)
-pnpm-audit-scan --update-db
-
-# Full rebuild from scratch
-pnpm-audit-scan --update-db=full
-
-# Or via npm scripts (equivalent)
-GITHUB_TOKEN=your_token pnpm run update-vuln-db:incremental
-```
-
-### Scan Without Installing
-
-```bash
-# Run audit manually on current lockfile
-pnpm-audit-scan
-
-# Output as JSON for CI parsing
-pnpm-audit-scan --format json
-
-# Only block on critical vulnerabilities
-pnpm-audit-scan --severity critical
-```
-
-### Allowlist a Known Vulnerability
-
-```yaml
-# .pnpm-audit.yaml
-policy:
-  allowlist:
-    - id: CVE-2024-12345
-      reason: "False positive — we don't use the affected API"
-      expires: "2025-12-31"
-```
-
-## How It Works
-
-### Overview
-
-```mermaid
-flowchart LR
-    A[pnpm install] --> B[Resolve Dependencies]
-    B --> C[.pnpmfile.cjs Hook]
-    C --> D{Audit Packages}
-    D -->|Safe| E[Download & Install]
-    D -->|Vulnerable| F[Block Install]
-```
-
-When you run `pnpm install`, the hook intercepts the process **after dependency resolution but before downloading**. This means vulnerable packages are blocked without ever being downloaded to your machine.
-
-### Detailed Flow
-
-```mermaid
-flowchart TD
-    subgraph PNPM["pnpm install"]
-        A[Start] --> B[Resolve dependency graph]
-        B --> C[Generate lockfile]
-    end
-
-    subgraph HOOK["pnpm-audit-hook"]
-        C --> D[".pnpmfile.cjs<br/>afterAllResolved()"]
-        D --> E[Extract packages from lockfile]
-        E --> F[Load config from .pnpm-audit.yaml]
-        F --> G{Check cache}
-        G -->|Cache hit| H[Use cached results]
-        G -->|Cache miss| I[Query vulnerability sources]
-
-        subgraph SOURCES["Vulnerability Sources"]
-            I --> J[Static DB<br/>Historical vulns]
-            I --> K[GitHub Advisory API<br/>Recent vulns]
-            I --> K2[OSV.dev API<br/>Aggregated vulns]
-            J --> L[Merge & deduplicate]
-            K --> L
-            K2 --> L
-            L --> M{Unknown severity?}
-            M -->|Yes| N[Enrich from NVD]
-            M -->|No| O[Continue]
-            N --> O
-        end
-
-        H --> P[Apply policy rules]
-        O --> P
-        P --> Q{Check allowlist}
-        Q -->|Allowed| R[Skip]
-        Q -->|Not allowed| S{Severity check}
-        S -->|critical/high| T[BLOCK]
-        S -->|medium/low| U[WARN]
-        S -->|unknown| U
-    end
-
-    subgraph RESULT["Result"]
-        T --> V[Throw error<br/>Abort install]
-        U --> W[Log warnings]
-        R --> W
-        W --> X[Continue install]
-        X --> Y[Download packages]
-    end
-```
-
-### Installation Changes
-
-When you run `pnpm exec pnpm-audit-setup`, these files are created in your project:
-
-| File | Purpose |
-|------|---------|
-| `.pnpmfile.cjs` | pnpm hook entry point - intercepts `pnpm install` |
-| `.pnpm-audit.yaml` | Optional configuration file (created if missing) |
-| `.pnpm-audit-cache/` | Cache directory (created automatically at runtime) |
-
-### File Structure After Installation
-
-```
-your-project/
-├── .pnpmfile.cjs          # Hook that pnpm loads automatically
-├── .pnpm-audit.yaml       # Your security policy config (optional)
-├── .pnpm-audit-cache/     # Cached vulnerability data (auto-created)
-├── node_modules/
-│   └── pnpm-audit-hook/   # The installed package
-│       ├── dist/          # Compiled audit logic
-│       └── .pnpmfile.cjs  # Template hook file
-├── package.json
-└── pnpm-lock.yaml
-```
-
-## Vulnerability Sources
-
-```mermaid
-flowchart TD
-    subgraph PRIMARY["Primary Sources (queried in parallel)"]
-        A[Static Database] --> D[Merged Results]
-        B[GitHub Advisory API] --> D
-        C[OSV.dev API] --> D
-    end
-
-    subgraph ENRICHMENT["Severity Enrichment"]
-        D --> E{Severity = unknown?}
-        E -->|Yes| F[Query NVD API]
-        E -->|No| G[Final Results]
-        F --> G
-    end
-
-    style A fill:#90EE90
-    style B fill:#87CEEB
-    style C fill:#DDA0DD
-    style F fill:#FFE4B5
-```
-
-| Source | Type | Description | Rate Limits |
-|--------|------|-------------|-------------|
-| **Static DB** | Bundled | Historical vulnerabilities (2020-2025), works offline, gzip-compressed with integrity hashes | None |
-| **GitHub Advisory** | API | Real-time vulnerability data from GHSA | 60/hr (no token), 5000/hr (with token) |
-| **OSV.dev** | API | Aggregated vulnerabilities from multiple databases (GHSA, npm, etc.). Free, no auth required | Generous (no key needed) |
-| **NVD** | API | Severity enrichment only (CVSS scores) | 5/30s (no key), 50/30s (with key) |
-
-### Query Strategy
-
-```mermaid
-sequenceDiagram
-    participant H as Hook
-    participant C as Cache
-    participant S as Static DB
-    participant G as GitHub API
-    participant O as OSV.dev API
-    participant N as NVD API
-
-    H->>C: Check cache for package@version
-    alt Cache hit (not expired)
-        C-->>H: Return cached vulnerabilities
-    else Cache miss
-        H->>S: Query historical vulns (before cutoff)
-        S-->>H: Historical findings
-        par Query live sources in parallel
-            H->>G: Query recent vulns (after cutoff)
-            G-->>H: GitHub findings
-        and
-            H->>O: Query all known vulns
-            O-->>H: OSV findings
-        end
-        H->>H: Merge & deduplicate
-
-        opt Has unknown severity
-            H->>N: Enrich severity data
-            N-->>H: CVSS scores
-        end
-
-        H->>C: Cache results (TTL based on severity)
-    end
-```
-
-## Blocking Policy
-
-### Default Policy
-
-```yaml
-policy:
-  block:    # Abort install if found
-    - critical
-    - high
-  warn:     # Log warning but continue
-    - medium
-    - low
-    - unknown
-```
-
-### Policy Decision Flow
-
-```mermaid
-flowchart TD
-    A[Vulnerability Found] --> B{In allowlist?}
-    B -->|Yes, not expired| C[ALLOW - Skip]
-    B -->|No or expired| D{Severity level?}
-
-    D -->|critical| E[BLOCK]
-    D -->|high| E
-    D -->|medium| F[WARN]
-    D -->|low| F
-    D -->|unknown| F
-
-    E --> G[Collect all blocks]
-    F --> H[Collect all warnings]
-    C --> I[Continue]
-
-    G --> J{Any blocks?}
-    J -->|Yes| K[Throw Error<br/>Abort pnpm install]
-    J -->|No| L[Log warnings]
-    H --> L
-    L --> M[Continue install]
-
-    style E fill:#FF6B6B
-    style F fill:#FFE66D
-    style C fill:#90EE90
-    style K fill:#FF6B6B
-```
-
-### Severity Levels
-
-| Severity | CVSS Score | Default Action | Example |
-|----------|------------|----------------|---------|
-| **critical** | 9.0 - 10.0 | Block | Remote code execution |
-| **high** | 7.0 - 8.9 | Block | Authentication bypass |
-| **medium** | 4.0 - 6.9 | Warn | Information disclosure |
-| **low** | 0.1 - 3.9 | Warn | Minor information leak |
-| **unknown** | N/A | Warn | Severity not determined |
-
-## Prerequisites
-
-- **Node.js** ≥ 18
-- **pnpm** (any version that supports `.pnpmfile.cjs` — pnpm 6+)
-
-> **Note**: This tool is designed for pnpm only. For npm projects, use `npm audit`. For yarn, use `yarn audit`.
-
-## Installation
-
-### Per-Project (Recommended)
-
-```bash
-# Step 1: Install as a dev dependency
 pnpm add -D pnpm-audit-hook
-
-# Step 2: Run the setup script to create the hook file
 pnpm exec pnpm-audit-setup
 ```
 
-**What this does:**
-1. Installs the package into `node_modules/`
-2. Creates `.pnpmfile.cjs` in your project root — this is the hook that pnpm loads automatically
-3. Creates `.pnpm-audit.yaml` — your security policy config (optional, sensible defaults applied)
+After setup, every `pnpm install` runs a pre-download vulnerability audit automatically.
 
-**Files to commit:**
+### Files Created During Setup
+
+| File | Purpose |
+|------|---------|
+| `.pnpmfile.cjs` | pnpm hook entry point loaded automatically by pnpm |
+| `.pnpm-audit.yaml` | Optional project security policy configuration |
+| `.pnpm-audit-cache/` | Runtime cache directory created automatically |
+
+Recommended commit commands:
+
 ```bash
 git add .pnpmfile.cjs .pnpm-audit.yaml
 echo ".pnpm-audit-cache/" >> .gitignore
 git add .gitignore
 ```
 
-### Global (All Projects)
+---
 
-Enable vulnerability auditing for every pnpm project on your machine:
+## How It Works
+
+```mermaid
+flowchart LR
+    A[pnpm install] --> B[Resolve Dependencies]
+    B --> C[afterAllResolved Hook]
+    C --> D{Audit Resolved Packages}
+    D -->|Safe| E[Download and Install]
+    D -->|Blocked Finding| F[Abort Install]
+```
+
+When pnpm resolves the dependency graph, `pnpm-audit-hook` receives the resolved lockfile through `.pnpmfile.cjs`. It extracts every package and version, checks the configured vulnerability sources, applies policy rules, and either allows pnpm to continue or aborts installation.
+
+### Detailed Flow
+
+```mermaid
+flowchart TD
+    A[pnpm command] --> B[Resolve dependency graph]
+    B --> C[afterAllResolved hook]
+    C --> D[Extract package list]
+    D --> E[Load configuration]
+    E --> F{Cache hit?}
+    F -->|Yes| G[Use cached result]
+    F -->|No| H[Query vulnerability sources]
+    H --> I[Merge and deduplicate findings]
+    I --> J{Missing severity?}
+    J -->|Yes| K[Enrich with NVD]
+    J -->|No| L[Apply policy]
+    K --> L
+    G --> L
+    L --> M{Blocked findings?}
+    M -->|Yes| N[Abort install]
+    M -->|No| O[Warn if needed]
+    O --> P[Continue install]
+```
+
+---
+
+## Prerequisites
+
+- **Node.js** 18 or later
+- **pnpm** with `.pnpmfile.cjs` support, typically pnpm 6 or later
+
+> This package is designed for pnpm projects. For npm, use `npm audit`; for Yarn, use `yarn audit`.
+
+---
+
+## Installation
+
+### Per Project Recommended
 
 ```bash
-# 1. Install globally
-pnpm add -g pnpm-audit-hook
+pnpm add -D pnpm-audit-hook
+pnpm exec pnpm-audit-setup
+```
 
-# 2. Create global hooks directory and copy files
+This installs the package, creates `.pnpmfile.cjs`, and creates `.pnpm-audit.yaml` if it does not already exist.
+
+### Global Installation
+
+Use global installation when you want to audit every pnpm project on your machine.
+
+```bash
+pnpm add -g pnpm-audit-hook
 mkdir -p ~/.pnpm-hooks
 cp $(pnpm root -g)/pnpm-audit-hook/dist ~/.pnpm-hooks/ -r
 cp $(pnpm root -g)/pnpm-audit-hook/.pnpmfile.cjs ~/.pnpm-hooks/
-
-# 3. Tell pnpm to use the global hook
 pnpm config set global-pnpmfile ~/.pnpm-hooks/.pnpmfile.cjs
 ```
 
@@ -408,34 +228,55 @@ pnpm config set global-pnpmfile ~/.pnpm-hooks/.pnpmfile.cjs
 ```bash
 git clone https://github.com/asx8678/pnpm-audit-hook.git
 cd pnpm-audit-hook
-pnpm install && pnpm run build
+pnpm install
+pnpm run build
 
-# Copy to your project
 cp -r dist /path/to/your/project/
 cp .pnpmfile.cjs /path/to/your/project/
 ```
 
 ### Upgrading from v1.1.0
 
-If upgrading from v1.1.0, note these changes:
-- **OSV.dev is now enabled by default** — adds a new vulnerability source alongside GitHub Advisory. To disable: set `sources.osv: false` in `.pnpm-audit.yaml` or `PNPM_AUDIT_DISABLE_OSV=true`
-- **Cache keys changed** — a one-time cache rebuild will happen automatically (no action needed)
-- **More vulnerabilities may be found** — OSV.dev aggregates GHSA + npm + other databases, so previously-clean installs may now report new findings
-- **`--update-db` requires source checkout** — the CLI `--update-db` flag runs `scripts/update-vuln-db.ts` which is only available when developing from source, not from an `npm install`'d copy. Use `pnpm run update-vuln-db:incremental` from the cloned repo instead.
+When upgrading from v1.1.0, note the following changes:
+
+- OSV.dev is enabled by default. Disable it with `sources.osv: false` or `PNPM_AUDIT_DISABLE_OSV=true`.
+- Cache keys changed, so a one-time cache rebuild will occur automatically.
+- Additional vulnerabilities may be reported because OSV.dev aggregates data from multiple databases.
+- `--update-db` requires a source checkout because the update script is not included in a package installed from npm.
+
+---
 
 ## Verify Installation
 
 ```bash
-# ✅ This should succeed (safe package)
+# Expected to succeed
 pnpm add lodash
 
-# 🚫 This should be BLOCKED (known vulnerable version)
+# Expected to be blocked because this version is known to be vulnerable
 pnpm add event-stream@3.3.6
 ```
 
-When a vulnerability is blocked, you'll see the compact banner followed by the full report:
+### Clean Install Output
 
+```text
+🛡️  pnpm-audit ── 142 packages ── github ✓  osv ✓  static-db ✓ ── ✅ clean ── 203ms
 ```
+
+### Warning Output
+
+Medium, low, and unknown-severity findings warn by default and allow installation to continue.
+
+```text
+🛡️  pnpm-audit ── 87 packages ── github ✓  osv ✓  static-db ✓ ── ⚠️  2 warnings (1 medium, 1 low) ── 312ms
+  ⚠  CVE-2024-4067 [MEDIUM] micromatch@4.0.5 — ReDoS vulnerability
+  ⚠  CVE-2024-4068 [MEDIUM] braces@3.0.2 — Uncontrolled resource consumption
+```
+
+### Blocked Install Output
+
+Critical and high-severity findings block by default.
+
+```text
 🛡️  pnpm-audit ── 1 packages ── github ✓  osv ✓  static-db ✓ ── 🚫 1 BLOCKED ── 245ms
   🚫 GHSA-xxxx-xxxx-xxxx [CRITICAL] event-stream@3.3.6 — Malicious Package (fix: 4.0.0)
 
@@ -467,142 +308,56 @@ AUDIT FAILED - Installation blocked
 ===============================================
 ```
 
-When there are warnings (medium/low severity), you see the banner with CVE details but install continues:
-
-```
-🛡️  pnpm-audit ── 87 packages ── github ✓  osv ✓  static-db ✓ ── ⚠️  2 warnings (1 medium, 1 low) ── 312ms
-  ⚠  CVE-2024-4067 [MEDIUM] micromatch@4.0.5 — ReDoS vulnerability
-  ⚠  CVE-2024-4068 [MEDIUM] braces@3.0.2 — Uncontrolled resource consumption
-```
-
-When everything is clean — just a single line:
-
-```
-🛡️  pnpm-audit ── 142 packages ── github ✓  osv ✓  static-db ✓ ── ✅ clean ── 203ms
-```
+---
 
 ## Usage
 
-### Automatic Mode (Default)
+### Automatic Mode
 
-Once installed, auditing happens automatically on every `pnpm install`:
+After setup, audits run automatically.
 
 ```bash
-pnpm install                    # Audit runs automatically
-pnpm add express                # Single package is audited too
-pnpm add lodash@4.17.21        # Safe version — installs normally
-pnpm add event-stream@3.3.6    # Vulnerable — blocked before download
+pnpm install                  # Audit runs automatically
+pnpm add express              # New dependency is audited
+pnpm add lodash@4.17.21       # Safe package installs normally
+pnpm add event-stream@3.3.6   # Vulnerable package is blocked
 ```
-
-No extra commands needed. The hook intercepts pnpm's dependency resolution and blocks vulnerable packages **before they're downloaded**.
 
 ### Manual Scan
 
-Run an audit against your current lockfile without installing anything:
+Use the CLI to audit the current lockfile without installing packages.
 
 ```bash
 pnpm-audit-scan                       # Human-readable output
-pnpm-audit-scan --format json         # JSON output (for CI parsing)
-pnpm-audit-scan --severity critical   # Only block critical vulns
-pnpm-audit-scan --offline             # Static DB only, no network
+pnpm-audit-scan --format json         # JSON output for CI or scripts
+pnpm-audit-scan --severity critical   # Only block critical vulnerabilities
+pnpm-audit-scan --offline             # Use static DB and cache only
 ```
 
 ### Output Formats
 
 | Format | Use Case | Flag |
 |--------|----------|------|
-| `human` | Terminal, local development | `--format human` (default) |
-| `json` | CI parsing, scripting | `--format json` |
-| `github` | GitHub Actions annotations | `--format github` (auto-detected) |
-| `azure` | Azure DevOps pipeline | `--format azure` (auto-detected) |
+| `human` | Local terminal output | `--format human` |
+| `json` | CI parsing and automation | `--format json` |
+| `github` | GitHub Actions annotations | `--format github` |
+| `azure` | Azure DevOps logging commands | `--format azure` |
 
-### What Happens When Vulnerabilities Are Found
+### Default Finding Behavior
 
-| Severity | Default Action | What You See |
-|----------|---------------|--------------|
-| **critical** / **high** | **Block** | Install fails with error details, exit code 1 |
-| **medium** / **low** | **Warn** | Warning logged, install continues, exit code 2 |
-| **unknown** | **Warn** | Warning logged, NVD enrichment attempted |
+| Severity | Default Action | Result |
+|----------|----------------|--------|
+| `critical` | Block | Installation fails with exit code `1` |
+| `high` | Block | Installation fails with exit code `1` |
+| `medium` | Warn | Installation continues with exit code `2` for manual scans |
+| `low` | Warn | Installation continues with exit code `2` for manual scans |
+| `unknown` | Warn | Installation continues after enrichment is attempted |
 
-### Common Workflows
-
-**Accept a specific vulnerability temporarily:**
-```yaml
-# .pnpm-audit.yaml
-policy:
-  allowlist:
-    - id: CVE-2024-12345
-      reason: "Accepted risk — patching next sprint"
-      expires: "2025-06-01"
-```
-
-**Block only critical vulnerabilities in CI:**
-```bash
-pnpm-audit-scan --severity critical
-```
-
-**Run in offline/air-gapped environments:**
-```bash
-PNPM_AUDIT_OFFLINE=true pnpm install
-```
-
-**Update the bundled vulnerability database:**
-```bash
-pnpm-audit-scan --update-db          # Incremental (fast)
-pnpm-audit-scan --update-db=full     # Full rebuild (slower, needs GITHUB_TOKEN)
-```
-
-## Uninstall
-
-### Per-Project
-
-```bash
-# 1. Remove the hook file (required — this is what activates the hook)
-rm .pnpmfile.cjs
-
-# 2. Remove the package
-pnpm remove pnpm-audit-hook
-
-# 3. Clean up config and cache (optional)
-rm -f .pnpm-audit.yaml
-rm -rf .pnpm-audit-cache/
-```
-
-> **Tip**: Removing just `.pnpmfile.cjs` is enough to fully disable the hook. The package can stay installed without any effect.
-
-### Global
-
-```bash
-# 1. Remove the global hook config
-pnpm config delete global-pnpmfile
-
-# 2. Remove the hook files
-rm -rf ~/.pnpm-hooks
-
-# 3. Remove the global package
-pnpm remove -g pnpm-audit-hook
-```
-
-### Temporarily Disable (Without Uninstalling)
-
-```bash
-# Rename the hook file to disable it temporarily
-mv .pnpmfile.cjs .pnpmfile.cjs.disabled
-
-# Re-enable later
-mv .pnpmfile.cjs.disabled .pnpmfile.cjs
-```
-
-Or skip the audit for a single install:
-
-```bash
-# Use --ignore-pnpmfile to bypass the hook for one command
-pnpm install --ignore-pnpmfile
-```
+---
 
 ## Configuration
 
-Create `.pnpm-audit.yaml` in your project root:
+Create `.pnpm-audit.yaml` in the project root.
 
 ```yaml
 policy:
@@ -634,127 +389,226 @@ staticBaseline:
   enabled: true
   cutoffDate: "2025-12-31"
 
-# Fail-closed security options (defaults are secure)
-failOnNoSources: true       # Block if all sources disabled
-failOnSourceError: true      # Block if a source fails
-offline: false               # Set true for air-gapped environments
+failOnNoSources: true
+failOnSourceError: true
+offline: false
 ```
 
-All fields are optional. Defaults are applied for missing values.
+All fields are optional. Secure defaults are applied when fields are omitted.
 
 ### Configuration Options
 
 | Option | Description | Default |
 |--------|-------------|---------|
-| `policy.block` | Severities that abort install | `["critical", "high"]` |
+| `policy.block` | Severities that abort installation | `["critical", "high"]` |
 | `policy.warn` | Severities that log warnings | `["medium", "low", "unknown"]` |
 | `policy.allowlist` | Exceptions to skip | `[]` |
-| `sources.github` | Enable GitHub Advisory | `true` |
-| `sources.osv` | Enable OSV.dev source | `true` |
-| `sources.nvd` | Enable NVD enrichment | `true` |
-| `performance.timeoutMs` | API timeout (1-300,000) | `15000` |
-| `cache.ttlSeconds` | Cache duration (1-86,400) | `3600` |
-| `staticBaseline.enabled` | Use bundled vuln database | `true` |
-| `staticBaseline.cutoffDate` | Static DB coverage date | `2025-12-31` |
-| `staticBaseline.dataPath` | Custom path to static DB data directory | Auto-detected |
-| `failOnNoSources` | Block install when all sources disabled | `true` |
-| `failOnSourceError` | Block install when a source fails | `true` |
-| `offline` | Skip all API calls, use only static DB + cache | `false` |
+| `sources.github` | Enable GitHub Advisory Database | `true` |
+| `sources.osv` | Enable OSV.dev | `true` |
+| `sources.nvd` | Enable NVD severity enrichment | `true` |
+| `performance.timeoutMs` | API timeout in milliseconds | `15000` |
+| `cache.ttlSeconds` | Default cache duration | `3600` |
+| `staticBaseline.enabled` | Use the bundled static database | `true` |
+| `staticBaseline.cutoffDate` | Static database coverage cutoff | `2025-12-31` |
+| `staticBaseline.dataPath` | Custom static database path | Auto-detected |
+| `failOnNoSources` | Block when no advisory sources are available | `true` |
+| `failOnSourceError` | Block when an advisory source fails | `true` |
+| `offline` | Skip live API calls | `false` |
+
+### Source Toggles
+
+```yaml
+sources:
+  github: true
+  osv: true
+  nvd: true
+```
+
+Equivalent environment variables:
+
+```bash
+PNPM_AUDIT_DISABLE_GITHUB=true pnpm install
+PNPM_AUDIT_DISABLE_OSV=true pnpm install
+```
+
+### Offline Audit
+
+```bash
+pnpm-audit-scan --offline
+PNPM_AUDIT_OFFLINE=true pnpm install
+```
+
+### Update the Vulnerability Database
+
+```bash
+pnpm-audit-scan --update-db
+pnpm-audit-scan --update-db=full
+GITHUB_TOKEN=your_token pnpm run update-vuln-db:incremental
+```
+
+---
 
 ## Allowlist
 
-Suppress specific vulnerabilities or packages:
+Allowlist entries suppress specific vulnerabilities or package findings. Use allowlists for documented exceptions, false positives, or temporary accepted risk.
 
 ```yaml
 policy:
   allowlist:
-    # By CVE/GHSA ID
+    # By CVE or GHSA ID
     - id: CVE-2024-12345
       reason: "False positive for our use case"
 
     # By package name
     - package: legacy-lib
-      reason: "Accepted risk"
+      reason: "Accepted risk while migration is in progress"
       expires: "2025-06-01"
 
-    # Scoped: specific CVE in specific package
+    # Scoped to a specific vulnerability, package, and version range
     - id: CVE-2024-12345
       package: affected-pkg
-      version: ">=1.0.0 <2.0.0"  # Optional version constraint
-      reason: "Only affects unused feature"
+      version: ">=1.0.0 <2.0.0"
+      reason: "Only affects an unused feature"
+      expires: "2025-12-31"
 ```
 
 | Field | Required | Description |
 |-------|----------|-------------|
-| `id` | One of id/package | CVE or GHSA identifier (case-insensitive) |
-| `package` | One of id/package | Package name to ignore (case-insensitive) |
-| `version` | No | Semver range constraint |
-| `reason` | No | Audit trail documentation |
-| `expires` | No | ISO date when entry expires |
+| `id` | One of `id` or `package` | CVE or GHSA identifier, case-insensitive |
+| `package` | One of `id` or `package` | Package name, case-insensitive |
+| `version` | No | Optional semver range constraint |
+| `reason` | No | Audit-trail documentation |
+| `expires` | No | ISO date when the entry expires |
+
+Expired entries are ignored automatically.
+
+---
 
 ## Environment Variables
 
 | Variable | Description |
 |----------|-------------|
-| `GITHUB_TOKEN` / `GH_TOKEN` | GitHub API token (higher rate limits) |
-| `NVD_API_KEY` / `NIST_NVD_API_KEY` | NVD API key (higher rate limits) |
-| `PNPM_AUDIT_CONFIG_PATH` | Custom config file location |
-| `PNPM_AUDIT_DISABLE_GITHUB` | Disable GitHub Advisory source |
-| `PNPM_AUDIT_DISABLE_OSV` | Disable OSV.dev source |
-| `PNPM_AUDIT_BLOCK_SEVERITY` | Override block severities (comma-separated, e.g. `critical,high,medium`) |
-| `PNPM_AUDIT_QUIET` | Suppress info/warn output |
+| `GITHUB_TOKEN` / `GH_TOKEN` | GitHub API token for higher rate limits |
+| `NVD_API_KEY` / `NIST_NVD_API_KEY` | NVD API key for higher rate limits |
+| `PNPM_AUDIT_CONFIG_PATH` | Custom configuration file path |
+| `PNPM_AUDIT_DISABLE_GITHUB` | Disable GitHub Advisory Database |
+| `PNPM_AUDIT_DISABLE_OSV` | Disable OSV.dev |
+| `PNPM_AUDIT_BLOCK_SEVERITY` | Override block severities, for example `critical,high,medium` |
+| `PNPM_AUDIT_QUIET` | Suppress non-error output |
 | `PNPM_AUDIT_DEBUG` | Enable debug logging |
 | `PNPM_AUDIT_VERBOSE` | Enable verbose logging |
-| _(auto-detected)_ | Verbose mode auto-enables in CI: `CI`, `GITHUB_ACTIONS`, `TF_BUILD`, `GITLAB_CI`, `JENKINS_URL` |
-| `PNPM_AUDIT_JSON` | JSON output format |
-| `PNPM_AUDIT_FORMAT` | Output format (`human`, `azure`, `github`, `json`) |
-| `PNPM_AUDIT_OFFLINE` | Use only static baseline DB (no network) |
-| `PNPM_AUDIT_FAIL_ON_NO_SOURCES` | Fail if no advisory sources available (default: `true`) |
-| `PNPM_AUDIT_FAIL_ON_SOURCE_ERROR` | Fail if an advisory source errors (default: `true`) |
-| `PNPM_AUDIT_GITHUB_CONCURRENCY` | Max concurrent GitHub API requests (default: `10` with token, `3` without) |
-| `PNPM_REGISTRY` / `npm_config_registry` | Custom npm registry URL (default: `https://registry.npmjs.org/`) |
+| `PNPM_AUDIT_JSON` | Emit JSON output |
+| `PNPM_AUDIT_FORMAT` | Output format: `human`, `azure`, `github`, or `json` |
+| `PNPM_AUDIT_OFFLINE` | Use only the static database and cache |
+| `PNPM_AUDIT_FAIL_ON_NO_SOURCES` | Fail when no advisory sources are available |
+| `PNPM_AUDIT_FAIL_ON_SOURCE_ERROR` | Fail when an advisory source errors |
+| `PNPM_AUDIT_GITHUB_CONCURRENCY` | Maximum concurrent GitHub API requests |
+| `PNPM_REGISTRY` / `npm_config_registry` | Custom npm registry URL |
+
+Verbose mode is enabled automatically in common CI environments, including `CI`, `GITHUB_ACTIONS`, `TF_BUILD`, `GITLAB_CI`, and `JENKINS_URL`.
+
+---
 
 ## CLI Reference
 
-The `pnpm-audit-scan` CLI supports these flags:
+`pnpm-audit-scan` supports the following flags.
 
 | Flag | Description |
 |------|-------------|
-| `--format <format>` | Output format: `human`, `json`, `azure`, `github` (default: `human`) |
-| `--severity <list>` | Comma-separated severity levels to block (default: `critical,high`) |
-| `--offline` | Skip live API calls, use only static DB + cache |
-| `--update-db` | Update vulnerability database (incremental) |
-| `--update-db=full` | Update vulnerability database (full rebuild) |
+| `--format <format>` | Output format: `human`, `json`, `azure`, or `github` |
+| `--severity <list>` | Comma-separated severities to block |
+| `--offline` | Skip live API calls and use only the static database and cache |
+| `--update-db` | Run an incremental vulnerability database update |
+| `--update-db=full` | Run a full vulnerability database rebuild |
 | `--quiet` | Suppress non-error output |
 | `--verbose` | Enable verbose output |
 | `--debug` | Enable debug output |
-| `--config <path>` | Path to `.pnpm-audit.yaml` config file |
+| `--config <path>` | Use a custom configuration file |
 | `--help` | Show help text |
 | `--version` | Show version |
 
-When `--update-db` is passed, the DB update runs and the CLI exits (no audit is performed).
+When `--update-db` is used, the database update runs and the CLI exits without performing an audit.
+
+---
+
+## Vulnerability Sources
+
+```mermaid
+flowchart TD
+    subgraph PRIMARY["Primary Sources"]
+        A[Static Database]
+        B[GitHub Advisory API]
+        C[OSV.dev API]
+    end
+
+    A --> D[Merge and Deduplicate]
+    B --> D
+    C --> D
+    D --> E{Unknown Severity?}
+    E -->|Yes| F[NVD Enrichment]
+    E -->|No| G[Final Findings]
+    F --> G
+```
+
+| Source | Type | Purpose | Rate Limits / Notes |
+|--------|------|---------|---------------------|
+| Static DB | Bundled | Historical vulnerability checks and offline support | No API required |
+| GitHub Advisory | API | Current GHSA vulnerability data | 60 requests/hour without token; 5,000 requests/hour with token |
+| OSV.dev | API | Aggregated vulnerability data from GHSA, npm, NVD, and other databases | Free; no key required |
+| NVD | API | CVSS and severity enrichment | 5 requests/30 seconds without key; 50 requests/30 seconds with key |
+
+### Query Strategy
+
+```mermaid
+sequenceDiagram
+    participant H as Hook
+    participant C as Cache
+    participant S as Static DB
+    participant G as GitHub API
+    participant O as OSV.dev API
+    participant N as NVD API
+
+    H->>C: Check package@version
+    alt Cache hit
+        C-->>H: Return cached findings
+    else Cache miss
+        H->>S: Query bundled database
+        par Live sources
+            H->>G: Query GitHub Advisory API
+        and
+            H->>O: Query OSV.dev API
+        end
+        H->>H: Merge and deduplicate
+        opt Unknown severity
+            H->>N: Enrich severity
+        end
+        H->>C: Cache result
+    end
+```
+
+---
 
 ## Caching
 
+The cache reduces repeated API calls and improves install performance.
+
 ```mermaid
 flowchart LR
-    A[Package Query] --> B{Cache exists?}
+    A[Package Query] --> B{Cache Exists?}
     B -->|Yes| C{Expired?}
-    C -->|No| D[Return cached]
-    C -->|Yes| E[Query APIs]
+    C -->|No| D[Return Cached Result]
+    C -->|Yes| E[Query Sources]
     B -->|No| E
-    E --> F[Cache with TTL]
-    F --> G[Return results]
-
-    style D fill:#90EE90
+    E --> F[Write Cache Entry]
+    F --> G[Return Result]
 ```
 
 ### Cache Location
 
-```
+```text
 .pnpm-audit-cache/
 ├── ab/
-│   └── ab1234...def.json    # Cached by SHA256 hash
+│   └── ab1234...def.json
 ├── cd/
 │   └── cd5678...ghi.json
 └── ...
@@ -762,14 +616,14 @@ flowchart LR
 
 ### Dynamic TTL
 
-Cache duration varies by severity to balance freshness and performance:
+| Severity | TTL | Rationale |
+|----------|-----|-----------|
+| Critical | 15 minutes | Refresh quickly for high-risk findings |
+| High | 30 minutes | Keep significant findings current |
+| Medium | 1 hour | Standard refresh interval |
+| Low / Unknown | Configured TTL | Use project default |
 
-| Severity | TTL | Reason |
-|----------|-----|--------|
-| Critical | 15 min | Need fast response for active threats |
-| High | 30 min | Important but less urgent |
-| Medium | 1 hour | Standard caching |
-| Low/Unknown | Config TTL | Use configured default |
+---
 
 ## CI/CD Integration
 
@@ -795,14 +649,14 @@ jobs:
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
 ```
 
-The hook runs automatically during `pnpm install` and will fail the job if blocking vulnerabilities are found.
+The hook runs during `pnpm install` and fails the job when blocking vulnerabilities are found.
 
-The GitHub Actions format emits `::error::` / `::warning::` annotations for findings and sets outputs via `$GITHUB_OUTPUT` for downstream steps:
+GitHub Actions output includes annotations and optional outputs for downstream steps.
 
 | Output | Description |
 |--------|-------------|
-| `audit-blocked` | `true` if install is blocked |
-| `vulnerability-count` | Total number of vulnerabilities |
+| `audit-blocked` | `true` when installation is blocked |
+| `vulnerability-count` | Total vulnerability count |
 | `critical-count` | Number of critical vulnerabilities |
 | `high-count` | Number of high vulnerabilities |
 
@@ -822,180 +676,105 @@ steps:
   - script: |
       npm install -g pnpm
       pnpm install
-    displayName: 'Install with Audit'
+    displayName: Install with Audit
     env:
       GITHUB_TOKEN: $(GITHUB_TOKEN)
       NVD_API_KEY: $(NVD_API_KEY)
       PNPM_AUDIT_FORMAT: azure
 ```
 
-The Azure DevOps format uses `##[group]`, `##[error]`, `##[warning]`, and `##vso[task.setvariable]` logging commands for pipeline annotations and variables. It is also auto-detected when running in Azure Pipelines (`TF_BUILD=True`).
+Azure DevOps output uses pipeline logging commands for grouped output, errors, warnings, and task variables. Azure Pipelines are auto-detected when `TF_BUILD=True`.
 
 | Variable | Description |
 |----------|-------------|
-| `AUDIT_BLOCKED` | `true` if install is blocked |
-| `AUDIT_VULNERABILITY_COUNT` | Total number of vulnerabilities |
+| `AUDIT_BLOCKED` | `true` when installation is blocked |
+| `AUDIT_VULNERABILITY_COUNT` | Total vulnerability count |
 | `AUDIT_CRITICAL_COUNT` | Number of critical vulnerabilities |
 | `AUDIT_HIGH_COUNT` | Number of high vulnerabilities |
 
+---
+
 ## Static Vulnerability Database
 
-The hook includes a bundled database of historical vulnerabilities (2020-2025) that enables faster audits and reduced API calls.
+`pnpm-audit-hook` includes a bundled vulnerability database for historical findings. This reduces API usage, improves performance, and supports offline audits.
 
 ### Benefits
 
-- **Faster audits**: No API calls needed for known historical vulnerabilities
-- **Offline capability**: Historical vulnerability checks work without internet
-- **Rate limit friendly**: Minimizes API usage
-- **Reliable**: Not affected by API outages for historical data
+- Faster checks for known historical vulnerabilities.
+- Offline and air-gapped operation.
+- Reduced dependency on external API availability.
+- Fewer rate-limit issues in CI.
 
-### Database Integrity
+### Integrity Verification
 
-The static database includes SHA-256 integrity hashes for all vulnerability shard files, computed at build time and embedded in the index. This protects against tampering — if a shard file in `node_modules` is modified to suppress known vulnerabilities, the integrity check will detect it.
+Static database shard files include SHA-256 hashes generated during the build. At runtime, the reader verifies these hashes before using the data. If a shard is modified or corrupted, the integrity check detects it.
 
-- Hashes are computed during `pnpm run build` by the optimizer
-- Stored in the compressed index alongside package metadata
-- Verified transparently at load time by the reader
+### Compression and Optimization
 
-### Database Compression
+The build process optimizes the static database automatically:
 
-The static database is automatically optimized during the build process:
+- Compact index keys reduce index size.
+- Large shard files are gzip-compressed.
+- Small shards remain uncompressed for fast reads.
+- The runtime reader handles both `.json` and `.json.gz` files transparently.
 
-- **Index optimization**: Field names are compacted (e.g., `schemaVersion` → `ver`, `packages` → `p`) reducing index size by ~80%
-- **Gzip compression**: Shard files larger than 10 KB are gzip-compressed (`.json.gz`), reducing the npm tarball by ~3-5x
-- **Transparent reading**: The reader handles both `.json.gz` and `.json` formats automatically — no configuration needed
-
-The optimization runs automatically during `pnpm run build` via `scripts/optimize-static-db.js`.
-
-For a detailed evaluation of database packaging alternatives (separate npm package, CDN fetch, etc.), see [docs/db-packaging-evaluation.md](docs/db-packaging-evaluation.md).
+Optimization runs through `scripts/optimize-static-db.js` during `pnpm run build`.
 
 ### Updating the Database
 
-The bundled static database is built from the [GitHub Advisory Database](https://github.com/advisories) using a GraphQL API query. The update script (`scripts/update-vuln-db.ts`) fetches all npm security advisories, filters for the NPM ecosystem, and writes one JSON shard file per affected package.
-
-#### How `update-vuln-db.ts` Works
-
-```mermaid
-flowchart TD
-    A[Start] --> B{Mode?}
-    B -->|--incremental| C[Load existing index.json]
-    B -->|full rebuild| D[Start fresh]
-    B -->|--sample| E[Load fixtures/sample-vulns.json]
-
-    C --> F[Set updatedSince = index.lastUpdated]
-    F --> G[Fetch advisories from GitHub GraphQL API]
-    D --> G
-
-    G --> H[Filter for NPM ecosystem]
-    H --> I[Group vulnerabilities by package name]
-    I --> J[Deduplicate by advisory ID]
-    J --> K[Write shard files]
-
-    E --> K
-
-    K --> L["Save data/{name}.json per package"]
-    L --> M[Build index.json with package metadata]
-    M --> N[Done — run pnpm build to optimize + compress]
-
-    style G fill:#87CEEB
-    style E fill:#90EE90
-```
-
-**Step by step:**
-
-1. **Fetch** — Queries GitHub's GraphQL API (`api.github.com/graphql`) in batches of 100 advisories, paginating through all results. Uses `updatedSince` for incremental mode.
-2. **Filter** — Only keeps advisories with `ecosystem: NPM` vulnerabilities. Skips advisories published before the `--since` date if specified.
-3. **Normalize** — Converts each advisory into the `StaticVulnerability` format: ID, severity, affected version range, fixed version, identifiers (CVE/GHSA), title, URL.
-4. **Deduplicate** — Skips vulnerabilities already present (by ID) when doing incremental updates.
-5. **Write shards** — Saves one JSON file per package (`data/lodash.json`, `data/@angular/core.json`, etc.)
-6. **Build index** — Creates `index.json` with package counts, max severity, latest vulnerability date, and build metadata.
-
-#### GitHub Token (Recommended but Optional)
-
-| Scenario | Rate Limit | Speed |
-|----------|-----------|-------|
-| **Without `GITHUB_TOKEN`** | 60 requests/hr | ~6,000 advisories/hr — full rebuild takes hours |
-| **With `GITHUB_TOKEN`** | 5,000 requests/hr | Full rebuild in minutes |
-
-The token needs **no special scopes** — it only reads public advisory data. Any GitHub Personal Access Token works:
+The database is built from the GitHub Advisory Database through a GraphQL query. The update script fetches npm ecosystem advisories, normalizes them, groups them by package, deduplicates by advisory ID, and writes one shard per affected package.
 
 ```bash
-# Create a token at: https://github.com/settings/tokens
-# No scopes needed — just click "Generate token"
-export GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
-
-If no token is set and the API rate-limits the script, it **automatically falls back to sample data** (50 popular packages with known vulns).
-
-#### Update Commands
-
-```bash
-# Incremental update — only fetches advisories modified since last build (fast)
 pnpm run update-vuln-db:incremental
-
-# Full rebuild — fetches ALL npm advisories since 2021 (slow without token)
 pnpm run update-vuln-db
-
-# Full rebuild with no date filter (everything)
 pnpm run update-vuln-db:full
-
-# Sample data only — no API calls, uses bundled test fixtures
 pnpm run update-vuln-db -- --sample
-
-# Custom cutoff date
 pnpm run update-vuln-db -- --cutoff=2024-06-30T23:59:59Z
 ```
 
-Or via the CLI (runs the same script under the hood):
+A GitHub token is recommended for faster updates:
+
 ```bash
-pnpm-audit-scan --update-db           # Incremental
-pnpm-audit-scan --update-db=full      # Full rebuild
+export GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-> **Note**: `--update-db` via CLI requires a source checkout with `tsx` installed. It won't work from an `npm install`'d copy of the package.
-
-#### After Updating: Build & Commit
-
-After the database is updated, you must **rebuild** to apply optimization and compression:
+After updating, rebuild and commit the generated data.
 
 ```bash
-# 1. Rebuild (compiles TypeScript, copies DB, optimizes + compresses, bundles)
 pnpm run build
-
-# 2. Commit the updated data
 git add src/static-db/data/ dist/static-db/data/
 git commit -m "chore: update vulnerability database"
 ```
 
-The build pipeline runs these steps automatically:
-1. `tsc` — compile TypeScript
-2. `copy-static-db.js` — copy `src/static-db/data/` → `dist/static-db/data/`
-3. **`optimize-static-db.js`** — optimize index (compact keys), gzip-compress large shards, compute SHA-256 integrity hashes
-4. `bundle.js` — bundle `dist/index.js` with esbuild (minified)
+### Generated File Structure
 
-#### What Gets Written
+Source data:
 
-```
+```text
 src/static-db/data/
-├── index.json              # Package index with counts, severity, build metadata
-├── lodash.json             # Shard: 4 vulnerabilities for lodash
-├── axios.json              # Shard: 2 vulnerabilities for axios
-├── @angular/
-│   └── core.json           # Scoped package shard
-├── express.json
-└── ... (one file per vulnerable package)
-```
-
-After `pnpm run build`, the `dist/` copy is optimized:
-```
-dist/static-db/data/
-├── index.json.gz           # Optimized + compressed index (with integrity hashes)
-├── lodash.json             # Small shards stay uncompressed
+├── index.json
+├── lodash.json
+├── axios.json
 ├── @angular/
 │   └── core.json
-├── directus.json.gz        # Large shards are gzip-compressed
 └── ...
 ```
+
+Optimized build output:
+
+```text
+dist/static-db/data/
+├── index.json.gz
+├── lodash.json
+├── @angular/
+│   └── core.json
+├── directus.json.gz
+└── ...
+```
+
+For packaging alternatives and tradeoffs, see [`docs/db-packaging-evaluation.md`](docs/db-packaging-evaluation.md).
+
+---
 
 ## Architecture
 
@@ -1061,88 +840,136 @@ classDiagram
     GitHubAdvisory --> NVDEnricher
 ```
 
+---
+
 ## Security Model
 
-### Fail-Closed Design
+### Fail-Closed Defaults
 
-The hook uses a **fail-closed** security model:
+| Condition | Default Behavior |
+|-----------|------------------|
+| Advisory source fails | Block installation |
+| All sources are disabled | Block installation |
+| Invalid allowlist entry | Ignore the entry |
+| Expired allowlist entry | Ignore the entry |
+| Unknown severity | Warn and attempt enrichment |
+| Invalid vulnerability semver | Treat as potentially affected |
 
-| Condition | Behavior |
-|-----------|----------|
-| API failure | Block install (configurable) |
-| Invalid allowlist entry | Entry ignored (treated as not allowed) |
-| Expired allowlist | Entry ignored |
-| Unknown severity | Treated as "warn" (configurable) |
-| Invalid semver in vuln data | Treated as potentially affected |
+### Security Controls
 
-### Security Features
+- Pre-download blocking prevents vulnerable packages from reaching `node_modules`.
+- API credentials are read only from environment variables.
+- File paths and package names are validated to reduce path traversal risk.
+- Cache reads and writes detect symlinks.
+- Cache writes use a temporary file and atomic rename.
+- Static database files are protected with SHA-256 integrity checks.
+- Cache key versioning invalidates stale cached data after database updates.
 
-- **Pre-download blocking**: Vulnerable code never reaches your machine
-- **No credential storage**: API keys only from environment variables
-- **Path traversal protection**: Validates all file paths
-- **Symlink attack prevention**: Detects symlinks in cache
-- **Atomic cache writes**: Prevents partial/corrupted cache files
-- **Database integrity verification**: SHA-256 hashes detect tampered vulnerability data
-- **Cache key versioning**: DB updates automatically invalidate stale cached results
+---
 
 ## Troubleshooting
 
-### "AUDIT FAILED" — How do I unblock my install?
+### `AUDIT FAILED` — How do I unblock installation?
 
-**Quick escape** (one-time bypass):
+One-time bypass:
+
 ```bash
 pnpm install --ignore-pnpmfile
 ```
 
-**Investigate the issue:**
+Investigate findings:
+
 ```bash
 pnpm-audit-scan --format json | jq '.findings'
 ```
 
-**Then choose one:**
-1. **Upgrade** the vulnerable package to a patched version
-2. **Allowlist** the CVE if it's a false positive (see [Allowlist](#allowlist))
-3. **Lower severity threshold** — change `policy.block` in `.pnpm-audit.yaml`
+Recommended fixes:
 
-### OSV.dev or GitHub API is unreachable (corporate proxy / air-gap)
+1. Upgrade the vulnerable package to a patched version.
+2. Allowlist the vulnerability if it is a verified false positive.
+3. Adjust `policy.block` in `.pnpm-audit.yaml` if your policy requires a different threshold.
+
+### OSV.dev or GitHub API is unreachable
+
+Use offline mode:
 
 ```bash
-# Option 1: Run in offline mode (uses bundled static DB only)
 PNPM_AUDIT_OFFLINE=true pnpm install
+```
 
-# Option 2: Disable the failing source
+Disable a specific source:
+
+```bash
 PNPM_AUDIT_DISABLE_OSV=true pnpm install
 PNPM_AUDIT_DISABLE_GITHUB=true pnpm install
+```
 
-# Option 3: Don't block on source errors
-# In .pnpm-audit.yaml:
+Disable fail-closed behavior for source errors:
+
+```yaml
 failOnSourceError: false
 ```
 
-### Audit is slow
+### Audits are slow
 
-- **Set `GITHUB_TOKEN`** — without it, GitHub API is limited to 60 req/hr. With a token: 5,000 req/hr.
-- **Check cache** — the `.pnpm-audit-cache/` directory caches results. If deleted, the next run re-fetches everything.
-- **Use offline mode** for fastest audits: `pnpm-audit-scan --offline`
+- Set `GITHUB_TOKEN` to increase GitHub API rate limits.
+- Reuse `.pnpm-audit-cache/` between CI runs where appropriate.
+- Use offline mode for the fastest audits when live source checks are not required.
 
-### Verbose logging is automatically enabled in CI — why?
+### Verbose logging appears in CI
 
-The hook auto-detects CI environments and enables verbose output when any of these are set:
-- `CI=true`
-- `GITHUB_ACTIONS=true`
-- `TF_BUILD=True` (Azure DevOps)
-- `GITLAB_CI=true`
-- `JENKINS_URL` is defined
+Verbose mode is auto-enabled in common CI environments. To suppress it:
 
-To suppress this, set `PNPM_AUDIT_QUIET=true`.
+```bash
+PNPM_AUDIT_QUIET=true pnpm install
+```
 
-### I updated the static DB but old results still show
+### Static database was updated but old results still appear
 
-Cache keys include the DB version, so caches are automatically invalidated when the DB changes. If you still see stale results:
+Cache keys include database version information, so stale entries should invalidate automatically. To force a refresh:
+
 ```bash
 rm -rf .pnpm-audit-cache/
 pnpm install
 ```
+
+---
+
+## Uninstall
+
+### Per Project
+
+```bash
+rm .pnpmfile.cjs
+pnpm remove pnpm-audit-hook
+rm -f .pnpm-audit.yaml
+rm -rf .pnpm-audit-cache/
+```
+
+Removing `.pnpmfile.cjs` is enough to disable the hook. The package can remain installed without affecting pnpm commands.
+
+### Global Installation
+
+```bash
+pnpm config delete global-pnpmfile
+rm -rf ~/.pnpm-hooks
+pnpm remove -g pnpm-audit-hook
+```
+
+### Temporarily Disable
+
+```bash
+mv .pnpmfile.cjs .pnpmfile.cjs.disabled
+mv .pnpmfile.cjs.disabled .pnpmfile.cjs
+```
+
+Bypass once:
+
+```bash
+pnpm install --ignore-pnpmfile
+```
+
+---
 
 ## Local Development
 
@@ -1159,8 +986,8 @@ pnpm run build
 
 ```bash
 pnpm run build
-pnpm add lodash              # Safe package
-pnpm add event-stream@3.3.6  # Vulnerable - should be blocked
+pnpm add lodash
+pnpm add event-stream@3.3.6
 ```
 
 ### Run Tests
@@ -1169,14 +996,18 @@ pnpm add event-stream@3.3.6  # Vulnerable - should be blocked
 pnpm test
 ```
 
+---
+
 ## Exit Codes
 
 | Code | Meaning |
 |------|---------|
-| 0 | Success - no blocking vulnerabilities |
-| 1 | Blocked - critical/high vulnerabilities found |
-| 2 | Warnings - medium/low vulnerabilities found |
-| 3 | Source error - API failure (fail-closed) |
+| `0` | Success; no blocking vulnerabilities |
+| `1` | Critical or high-severity vulnerability blocked |
+| `2` | Warning-level vulnerabilities found |
+| `3` | Source error under fail-closed policy |
+
+---
 
 ## License
 
