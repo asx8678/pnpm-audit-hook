@@ -98,6 +98,66 @@ export interface DependencyGraph {
   directKeys: Set<string>;
 }
 
+/** Impact analysis for a vulnerable package */
+export interface ImpactAnalysis {
+  /** Package key being analyzed */
+  targetKey: string;
+  /** Number of direct dependents (packages that directly depend on this) */
+  directDependents: number;
+  /** Total number of dependents (including transitive) */
+  totalDependents: number;
+  /** Maximum depth of dependency chain from this package */
+  depth: number;
+  /** Maximum breadth (number of dependents at any level) */
+  breadth: number;
+  /** Calculated risk score (0-10) based on impact factors */
+  riskScore: number;
+}
+
+/** Comprehensive dependency chain analysis */
+export interface DependencyChainAnalysis {
+  /** Package key being analyzed */
+  targetKey: string;
+  /** Shortest chain from direct dependency to this package */
+  shortestChain: string[] | null;
+  /** All chains from direct dependencies to this package */
+  allChains: string[][];
+  /** Impact analysis results */
+  impact: ImpactAnalysis;
+  /** Complete dependency tree (all transitive dependencies) */
+  dependencyTree: string[];
+  /** Whether this is a direct dependency */
+  isDirect: boolean;
+}
+
+/** Risk assessment with CVSS integration */
+export interface RiskAssessment {
+  /** Base CVSS score */
+  cvssScore: number;
+  /** Environmental risk score (adjusted for context) */
+  environmentalScore: number;
+  /** Temporal score (adjusted for exploitability and fix availability) */
+  temporalScore: number;
+  /** Final composite risk score */
+  compositeScore: number;
+  /** Risk level based on composite score */
+  riskLevel: 'critical' | 'high' | 'medium' | 'low' | 'none';
+  /** Factors contributing to the risk score */
+  factors: RiskFactor[];
+}
+
+/** Individual risk factor */
+export interface RiskFactor {
+  /** Name of the factor */
+  name: string;
+  /** Description of the factor */
+  description: string;
+  /** Weight of this factor (0-1) */
+  weight: number;
+  /** Score contribution (0-10) */
+  score: number;
+}
+
 export interface VulnerabilityIdentifier {
   type: VulnerabilityIdType;
   value: string;
@@ -121,6 +181,50 @@ export interface VulnerabilityFinding {
   fixedVersion?: string;
   /** Dependency chain from direct dependency to this vulnerable package */
   dependencyChain?: string[];
+  /** Enriched context from dependency chain analysis */
+  chainContext?: VulnerabilityChainContext;
+  /** CVSS parsed details when vector is available */
+  cvssDetails?: CvssFindingDetails;
+}
+
+/** Enriched context attached to a vulnerability finding after chain analysis */
+export interface VulnerabilityChainContext {
+  /** Whether this is a direct or transitive dependency */
+  isDirect: boolean;
+  /** Chain depth from the nearest direct dependency (0 = direct) */
+  chainDepth: number;
+  /** Number of distinct paths from direct deps to this package */
+  numberOfPaths: number;
+  /** Total number of packages transitively affected by this vulnerability */
+  totalAffected: number;
+  /** Propagated severity after chain-aware adjustment */
+  propagatedSeverity: Severity;
+  /** Whether a fix is available for this vulnerability */
+  fixAvailable: boolean;
+  /** Whether the vulnerable package is a dev-only dependency */
+  isDevOnly: boolean;
+  /** List of direct dependencies that chain to this package ("name@version" keys) */
+  directAncestors: string[];
+  /** Risk factors contributing to the assessment */
+  riskFactors: RiskFactor[];
+  /** Composite risk score (0-10) incorporating CVSS + chain factors */
+  compositeRiskScore: number;
+}
+
+/** CVSS details parsed from the finding's vector for rich context display */
+export interface CvssFindingDetails {
+  score: number;
+  severity: Severity;
+  attackVector: string;
+  attackComplexity: string;
+  privilegesRequired: string;
+  userInteraction: string;
+  scope: string;
+  confidentiality: string;
+  integrity: string;
+  availability: string;
+  /** Human-readable exploitability summary */
+  exploitabilityLabel: string;
 }
 
 export interface PolicyDecision {

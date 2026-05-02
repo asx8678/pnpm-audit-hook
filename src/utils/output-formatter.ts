@@ -226,8 +226,8 @@ export function formatHumanReadable(data: AuditOutputData): string {
   if (findings.length > 0) {
     lines.push(subsectionHeader("Vulnerability Details"));
     for (const finding of findings) {
-      const cvss = typeof finding.cvssScore === "number" ? ` (CVSS ${finding.cvssScore})` : "";
-      lines.push(`  ${severityLabel(finding.severity)} ${finding.id}${cvss}`);
+      const cvssStr = typeof finding.cvssScore === "number" ? ` (CVSS ${finding.cvssScore})` : "";
+      lines.push(`  ${severityLabel(finding.severity)} ${finding.id}${cvssStr}`);
       lines.push(`    Package: ${BOLD}${finding.packageName}@${finding.packageVersion}${RESET}`);
       if (finding.title) {
         lines.push(`    Title: ${finding.title}`);
@@ -241,6 +241,32 @@ export function formatHumanReadable(data: AuditOutputData): string {
       if (finding.fixedVersion) {
         lines.push(`    Fixed in: ${GREEN}${finding.fixedVersion}${RESET}`);
       }
+
+      // Enhanced chain context
+      const ctx = finding.chainContext;
+      if (ctx) {
+        const depType = ctx.isDirect ? `${GREEN}direct dependency${RESET}` : `${YELLOW}transitive dependency${RESET}`;
+        lines.push(`    Dependency type: ${depType}`);
+        if (!ctx.isDirect && ctx.chainDepth > 0) {
+          lines.push(`    Chain depth: ${ctx.chainDepth} level${ctx.chainDepth !== 1 ? "s" : ""} from nearest direct dependency`);
+        }
+        if (ctx.totalAffected > 0) {
+          lines.push(`    Blast radius: ${ctx.totalAffected} package${ctx.totalAffected !== 1 ? "s" : ""} affected transitively`);
+        }
+        if (ctx.propagatedSeverity !== finding.severity) {
+          lines.push(`    Propagated severity: ${severityLabel(ctx.propagatedSeverity)} (adjusted for chain context)`);
+        }
+        if (ctx.directAncestors.length > 0) {
+          lines.push(`    Introduced by: ${ctx.directAncestors.join(", ")}`);
+        }
+        lines.push(`    Risk score: ${BOLD}${ctx.compositeRiskScore}/10${RESET}`);
+      }
+
+      // CVSS exploitability details
+      if (finding.cvssDetails && finding.cvssDetails.attackVector !== "unknown") {
+        lines.push(`    Exploitability: ${finding.cvssDetails.exploitabilityLabel}`);
+      }
+
       lines.push("");
     }
   }

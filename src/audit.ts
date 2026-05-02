@@ -5,6 +5,7 @@ import { logger } from "./utils/logger";
 import { FileCache } from "./cache/file-cache";
 import { aggregateVulnerabilities } from "./databases/aggregator";
 import { extractPackagesFromLockfile, buildDependencyGraph, traceDependencyChain } from "./utils/lockfile";
+import { analyzeAllVulnerabilities, sortByRisk } from "./utils/lockfile/dependency-chain-analyzer";
 import { evaluatePackagePolicies } from "./policies/policy-engine";
 import { buildSummary, getOutputFormat, outputResults } from "./utils/output-formatter";
 import { validateLockfileStructure } from "./utils/security";
@@ -73,8 +74,10 @@ export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions):
 
   const agg = await aggregateVulnerabilities(packages, { cfg, env, cache, registryUrl });
 
-  // Trace dependency chains for each finding
+  // Build dependency graph and perform enhanced chain analysis
   const graph = buildDependencyGraph(lockfile);
+
+  // Trace basic dependency chains for each finding
   for (const finding of agg.findings) {
     const findingKey = `${finding.packageName}@${finding.packageVersion}`;
     const chain = traceDependencyChain(graph, findingKey);
@@ -82,6 +85,15 @@ export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions):
       finding.dependencyChain = chain;
     }
   }
+
+  // Enhanced analysis: CVSS integration, severity propagation, risk scoring
+  const enrichedFindings = analyzeAllVulnerabilities(agg.findings, graph);
+
+  // Sort findings by composite risk score for prioritized reporting
+  const sortedFindings = sortByRisk(enrichedFindings);
+
+  // Replace findings with enriched and sorted version
+  agg.findings = sortedFindings;
 
   // Group findings by package
   const findingsByPkg = new Map<string, VulnerabilityFinding[]>();

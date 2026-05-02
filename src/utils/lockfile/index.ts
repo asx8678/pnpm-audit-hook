@@ -18,5 +18,20 @@ export { getRegistryDisplayName, extractRegistryInfo } from "./registry-detector
 export { extractPackagesFromLockfile } from "./package-extractor.js";
 export type { LockfileParseResult } from "./package-extractor.js";
 
-// Dependency graph building and chain tracing
-export { buildDependencyGraph, traceDependencyChain } from "./graph-builder.js";
+// Dependency graph building, chain tracing, and impact analysis
+export {
+  buildDependencyGraph,
+  traceDependencyChain,
+  traceAllDependencyChains,
+  analyzeImpact,
+  getDependencyTree,
+  analyzeDependencyChain,
+} from "./graph-builder.js";
+
+// Enhanced dependency chain analysis with CVSS integration
+export {
+  propagateSeverity,
+  analyzeVulnerability,
+  analyzeAllVulnerabilities,
+  sortByRisk,
+} from "./dependency-chain-analyzer.js";

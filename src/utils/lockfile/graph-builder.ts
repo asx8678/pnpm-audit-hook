@@ -1,16 +1,21 @@
 /**
- * Dependency graph construction and chain tracing.
+ * Dependency graph construction, chain tracing, and impact analysis.
  *
- * Builds a complete dependency graph from pnpm lockfiles and provides
- * BFS-based chain tracing from direct dependencies to vulnerable transitive packages.
+ * Builds a complete dependency graph from pnpm lockfiles and provides:
+ * - BFS-based chain tracing (shortest path)
+ * - All path enumeration for complete analysis
+ * - Impact analysis (count of dependent packages)
+ * - Risk assessment based on dependency depth and breadth
  */
 
 import type {
   DependencyGraph,
   DependencyNode,
+  DependencyChainAnalysis,
+  ImpactAnalysis,
   PnpmLockfile,
 } from "../../types.js";
-import { makeGraphKey, parsePnpmPackageKey } from "./package-key-parser.js";
+import { parsePnpmPackageKey, makeGraphKey } from "./package-key-parser.js";
 
 /**
  * Collect direct dependency keys from an importer's dep record.
@@ -213,4 +218,198 @@ export function traceDependencyChain(
   }
 
   return null;
+}
+
+/**
+ * Trace ALL dependency chains from direct dependencies to a target package.
+ * Returns an array of paths (each path is an array of "name@version" keys).
+ * For direct dependencies, returns [[targetKey]].
+ * Returns empty array if no path is found.
+ *
+ * Uses DFS with backtracking to enumerate all simple paths.
+ */
+export function traceAllDependencyChains(
+  graph: DependencyGraph,
+  targetKey: string,
+): string[][] {
+  // Direct dependency — trivial single-element path
+  if (graph.directKeys.has(targetKey)) {
+    return [[targetKey]];
+  }
+
+  const allPaths: string[][] = [];
+  const visited = new Set<string>();
+
+  // DFS from each direct dependency forward through edges (dependencies)
+  // to find all paths to targetKey
+  function dfs(current: string, path: string[]): void {
+    if (current === targetKey) {
+      allPaths.push([...path]);
+      return;
+    }
+
+    const deps = graph.nodes.get(current)?.dependencies;
+    if (!deps) return;
+
+    for (const dep of deps) {
+      if (!visited.has(dep)) {
+        visited.add(dep);
+        path.push(dep);
+        dfs(dep, path);
+        path.pop();
+        visited.delete(dep);
+      }
+    }
+  }
+
+  // Start DFS from each direct dependency
+  const directKeyArr = Array.from(graph.directKeys);
+  for (const directKey of directKeyArr) {
+    if (!graph.nodes.has(directKey)) continue;
+    visited.clear();
+    visited.add(directKey);
+    dfs(directKey, [directKey]);
+  }
+
+  return allPaths;
+}
+
+/**
+ * Analyze the impact of a vulnerable package.
+ * Returns how many packages depend on it (directly and transitively).
+ */
+export function analyzeImpact(
+  graph: DependencyGraph,
+  targetKey: string,
+): ImpactAnalysis {
+  const node = graph.nodes.get(targetKey);
+  if (!node) {
+    return {
+      targetKey,
+      directDependents: 0,
+      totalDependents: 0,
+      depth: 0,
+      breadth: 0,
+      riskScore: 0,
+    };
+  }
+
+  // BFS to count all dependents
+  const visited = new Set<string>([targetKey]);
+  const queue: string[] = [targetKey];
+  let head = 0;
+  let directDependents = 0;
+  let totalDependents = 0;
+  let maxDepth = 0;
+  const depthMap = new Map<string, number>();
+  depthMap.set(targetKey, 0);
+
+  while (head < queue.length) {
+    const current = queue[head++]!;
+    const currentDepth = depthMap.get(current) ?? 0;
+    const deps = graph.dependents.get(current);
+    if (!deps) continue;
+
+    const depsArr = Array.from(deps);
+    for (const dep of depsArr) {
+      if (!visited.has(dep)) {
+        visited.add(dep);
+        queue.push(dep);
+        depthMap.set(dep, currentDepth + 1);
+        totalDependents++;
+        if (graph.directKeys.has(dep)) {
+          directDependents++;
+        }
+        maxDepth = Math.max(maxDepth, currentDepth + 1);
+      }
+    }
+  }
+
+  // Calculate breadth (max number of dependents at any level)
+  const depthCounts = new Map<number, number>();
+  for (const depth of depthMap.values()) {
+    depthCounts.set(depth, (depthCounts.get(depth) ?? 0) + 1);
+  }
+  let breadth = 0;
+  for (const count of depthCounts.values()) {
+    breadth = Math.max(breadth, count);
+  }
+
+  // Calculate risk score based on impact factors
+  // Formula: weighted sum of direct dependents, total dependents, and depth
+  const riskScore = Math.min(10,
+    (directDependents * 2) + // Direct dependents are more critical
+    (Math.log2(totalDependents + 1) * 3) + // Logarithmic scale for total
+    (maxDepth * 1.5) // Deeper chains are riskier
+  );
+
+  return {
+    targetKey,
+    directDependents,
+    totalDependents,
+    depth: maxDepth,
+    breadth,
+    riskScore: Math.round(riskScore * 10) / 10, // Round to 1 decimal
+  };
+}
+
+/**
+ * Get the complete dependency tree for a package (all transitive dependencies).
+ * Returns an array of dependency keys in BFS order.
+ */
+export function getDependencyTree(
+  graph: DependencyGraph,
+  targetKey: string,
+  maxDepth: number = 10,
+): string[] {
+  const node = graph.nodes.get(targetKey);
+  if (!node) return [];
+
+  const result: string[] = [];
+  const visited = new Set<string>([targetKey]);
+  const queue: Array<{ key: string; depth: number }> = [{ key: targetKey, depth: 0 }];
+  let head = 0;
+
+  while (head < queue.length) {
+    const { key, depth } = queue[head++]!;
+    if (depth > 0) { // Skip the target itself
+      result.push(key);
+    }
+    if (depth >= maxDepth) continue;
+
+    const deps = graph.nodes.get(key)?.dependencies;
+    if (!deps) continue;
+
+    for (const dep of deps) {
+      if (!visited.has(dep)) {
+        visited.add(dep);
+        queue.push({ key: dep, depth: depth + 1 });
+      }
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Comprehensive dependency chain analysis for a vulnerable package.
+ * Combines chain tracing, impact analysis, and risk assessment.
+ */
+export function analyzeDependencyChain(
+  graph: DependencyGraph,
+  targetKey: string,
+): DependencyChainAnalysis {
+  const shortestChain = traceDependencyChain(graph, targetKey);
+  const allChains = traceAllDependencyChains(graph, targetKey);
+  const impact = analyzeImpact(graph, targetKey);
+  const dependencyTree = getDependencyTree(graph, targetKey);
+
+  return {
+    targetKey,
+    shortestChain,
+    allChains,
+    impact,
+    dependencyTree,
+    isDirect: graph.directKeys.has(targetKey),
+  };
 }
