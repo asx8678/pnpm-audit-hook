@@ -54,7 +54,7 @@ describe("afterAllResolved hook", () => {
 
   it("returns lockfile unchanged when audit passes", async () => {
     await writeConfig({
-      sources: { github: false, nvd: false },
+      sources: { github: false, nvd: false, osv: false },
       failOnNoSources: false,
     });
 
@@ -79,7 +79,7 @@ describe("afterAllResolved hook", () => {
     // When all sources are disabled and failOnNoSources is true (default),
     // the aggregator throws, which the hook catches, logs, and re-throws.
     await writeConfig({
-      sources: { github: false, nvd: false },
+      sources: { github: false, nvd: false, osv: false },
       failOnNoSources: true,
     });
 
@@ -102,7 +102,7 @@ describe("afterAllResolved hook", () => {
 
   it("throws Error when all sources disabled and failOnNoSources is true", async () => {
     await writeConfig({
-      sources: { github: false, nvd: false },
+      sources: { github: false, nvd: false, osv: false },
       failOnNoSources: true,
     });
 
@@ -181,7 +181,7 @@ describe("context.lockfileDir handling", () => {
     try {
       process.chdir(tempDir);
       await writeConfig(tempDir, {
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         failOnNoSources: false,
       });
 
@@ -204,7 +204,7 @@ describe("context.lockfileDir handling", () => {
     try {
       process.chdir(tempDir);
       await writeConfig(tempDir, {
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         failOnNoSources: false,
       });
 
@@ -227,7 +227,7 @@ describe("context.lockfileDir handling", () => {
     try {
       process.chdir(tempDir);
       await writeConfig(tempDir, {
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         failOnNoSources: false,
       });
 
@@ -249,7 +249,7 @@ describe("context.lockfileDir handling", () => {
     try {
       process.chdir(tempDir);
       await writeConfig(tempDir, {
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         failOnNoSources: false,
       });
 
@@ -270,7 +270,7 @@ describe("context.lockfileDir handling", () => {
     await fs.mkdir(customDir, { recursive: true });
 
     await writeConfig(customDir, {
-      sources: { github: false, nvd: false },
+      sources: { github: false, nvd: false, osv: false },
       failOnNoSources: false,
     });
 
@@ -301,7 +301,7 @@ describe("error handling", () => {
     await fs.writeFile(
       path.join(tempDir, ".pnpm-audit.yaml"),
       yaml.stringify({
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         failOnNoSources: true,
       })
     );

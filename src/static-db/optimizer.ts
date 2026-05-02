@@ -132,9 +132,10 @@ const INDEX_TO_SEVERITY: Severity[] = ["unknown", "low", "medium", "high", "crit
 const SOURCE_TO_INDEX: Record<FindingSource, number> = {
   github: 0,
   nvd: 1,
+  osv: 2,
 };
 
-const INDEX_TO_SOURCE: FindingSource[] = ["github", "nvd"];
+const INDEX_TO_SOURCE: FindingSource[] = ["github", "nvd", "osv"];
 
 // ============================================================================
 // Date Compression

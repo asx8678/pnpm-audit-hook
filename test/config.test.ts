@@ -49,6 +49,7 @@ cache:
     assert.deepEqual(cfg.policy.warn, ["high", "medium"]);
     assert.equal(cfg.sources.github.enabled, true);
     assert.equal(cfg.sources.nvd.enabled, false);
+    assert.equal(cfg.sources.osv.enabled, true); // defaults to enabled
     assert.equal(cfg.cache.ttlSeconds, 7200);
   });
 
@@ -161,6 +162,7 @@ sources:
 
     assert.equal(cfg.sources.github.enabled, false);
     assert.equal(cfg.sources.nvd.enabled, false);
+    assert.equal(cfg.sources.osv.enabled, true); // defaults to enabled
   });
 
   it("filters out invalid allowlist entries", async () => {

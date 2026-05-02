@@ -131,6 +131,7 @@ export const DEFAULT_CONFIG: AuditConfig = {
   sources: {
     github: { enabled: true },
     nvd: { enabled: true },
+    osv: { enabled: true },
   },
   performance: { timeoutMs: 15000 },
   cache: { ttlSeconds: 3600 },
@@ -290,6 +291,7 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
     sources: {
       github: { enabled: isSourceEnabled(sources?.github) },
       nvd: { enabled: isSourceEnabled(sources?.nvd) },
+      osv: { enabled: isSourceEnabled(sources?.osv) },
     },
     performance: {
       timeoutMs:
