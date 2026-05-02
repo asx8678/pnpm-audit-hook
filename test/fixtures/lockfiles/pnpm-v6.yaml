@@ -1,0 +1,59 @@
+lockfileVersion: '6.0'
+
+importers:
+  .:
+    specifiers:
+      lodash: ^4.17.20
+      express: ^4.18.0
+    dependencies:
+      lodash: 4.17.20
+      express: 4.18.2
+
+packages:
+  /lodash@4.17.20:
+    resolution: {integrity: sha512-AnOaeUVYSTtBdvx+IK2EbdGL2KWr/lUXiXx4BsFcm2qTusssGZMTJpFAbevWPJW+SfiL6XhCP}
+    dev: false
+
+  /express@4.18.2:
+    resolution: {integrity: sha512-pqS7AFpSjrQLSMw4lHZFJDqAH3ZL+/qV+oaunAwa5ery6tF8yM+hXz+y1fYYn4Los3BhaQ9Krut+W5Q}
+    dependencies:
+      accepts: ~1.3.8
+      body-parser: 1.20.1
+    engines: {node: '>= 0.8.0'}
+    dev: false
+
+  /accepts@1.3.8:
+    resolution: {integrity: sha512-PYGrC6lOxNzrmjjONca8aqSFRdsoiUZ3h26h8hAiXWYrF+0W8YX9dGqHR7Rt0PleZT2G8gY9J0sWdRzQ==}
+    dependencies:
+      mime-types: ~2.3.4
+      negotiator: 0.6.3
+    dev: false
+
+  /body-parser@1.20.1:
+    resolution: {integrity: sha512-ffWBJWWN/rJFO61j16QKvVnYB3aQBSjstOfZxEo0F6FS5+gWCT7Y2+pR+jvbr8MPGvyJhVhSDpD7CDw==}
+    dependencies:
+      bytes: 3.1.2
+      content-type: ~1.0.4
+    dev: false
+
+  /bytes@3.1.2:
+    resolution: {integrity: sha512-eF2rlOetBKQs+enGPPxo9hl0cCGxK6zwUzFgMnKxf5iURnaqMxQZ/DDAhqDYJEzFtSbThjB0o+EBYg==}
+    dev: false
+
+  /content-type@1.0.5:
+    resolution: {integrity: sha512-bVQ1sb0thcgIE6wfHsmfILtCEKnlQ0J1URTqIjdFqbF9MNDK7eBc9jdCRsCnguTxKM9sbsiKtyZKEw==}
+    dev: false
+
+  /mime-types@2.3.4:
+    resolution: {integrity: sha512-1CRFsx51yIoeCmdU7HL8GO0lkEKBQ1hdM+z8M/K8mM87p1o6hlUd3B60f96MnDBSisHgRm8FfEBbV==}
+    dependencies:
+      mime-db: 1.52.0
+    dev: false
+
+  /mime-db@1.52.0:
+    resolution: {integrity: sha512-sPU4UVv7YCAc7p8o/RYg5a8RnK2R7dC4v7k9w8g8d0rOcJ+5BkLg3g5g+1Ck3dL+9Q==}
+    dev: false
+
+  /negotiator@0.6.3:
+    resolution: {integrity: sha512-+EUsqPLsFmm274SD8BkiKxqt8mZYRLvKnzkE9R1Fhr0H3bIguh1RilQRCNHQf3gqDqkkKy3x5i++HdA==}
+    dev: false

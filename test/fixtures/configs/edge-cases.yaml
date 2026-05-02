@@ -1,0 +1,27 @@
+# Edge cases configuration for testing
+# Tests: empty policies, extreme values, malformed data
+
+policy:
+  block: []
+  warn: []
+  allowlist: []
+
+sources:
+  github:
+    enabled: false
+  nvd:
+    enabled: false
+  osv:
+    enabled: false
+
+performance:
+  timeoutMs: 1
+  concurrency: 0
+  retries: -1
+
+cache:
+  ttlSeconds: 0
+  maxSizeMb: -1
+
+failOnNoSources: true
+failOnSourceError: true

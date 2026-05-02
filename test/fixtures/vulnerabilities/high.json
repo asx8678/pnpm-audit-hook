@@ -1,0 +1,49 @@
+[
+  {
+    "id": "GHSA-jf85-cpcp-j695",
+    "source": "github",
+    "packageName": "lodash",
+    "packageVersion": "4.17.15",
+    "severity": "high",
+    "title": "Prototype Pollution in lodash",
+    "description": "Versions of lodash before 4.17.19 are vulnerable to Prototype Pollution.",
+    "fixedVersion": "4.17.19",
+    "references": [
+      "https://github.com/advisories/GHSA-jf85-cpcp-j695",
+      "https://nvd.nist.gov/vuln/detail/CVE-2020-8203"
+    ],
+    "cvssScore": 7.4,
+    "publishedAt": "2020-08-25T00:00:00Z"
+  },
+  {
+    "id": "GHSA-29mw-wpgm-hmr9",
+    "source": "github",
+    "packageName": "lodash",
+    "packageVersion": "4.17.19",
+    "severity": "high",
+    "title": "Command Injection in lodash",
+    "description": "Lodash versions prior to 4.17.20 are vulnerable to Command Injection.",
+    "fixedVersion": "4.17.20",
+    "references": [
+      "https://github.com/advisories/GHSA-29mw-wpgm-hmr9"
+    ],
+    "cvssScore": 7.2,
+    "publishedAt": "2020-04-27T00:00:00Z"
+  },
+  {
+    "id": "GHSA-35jh-r3h4-6jhm",
+    "source": "github",
+    "packageName": "axios",
+    "packageVersion": "0.21.1",
+    "severity": "high",
+    "title": "Server-Side Request Forgery in axios",
+    "description": "axios before 0.21.1 is vulnerable to Server-Side Request Forgery.",
+    "fixedVersion": "0.21.1",
+    "references": [
+      "https://github.com/advisories/GHSA-35jh-r3h4-6jhm",
+      "https://nvd.nist.gov/vuln/detail/CVE-2021-3749"
+    ],
+    "cvssScore": 6.5,
+    "publishedAt": "2021-07-26T00:00:00Z"
+  }
+]

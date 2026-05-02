@@ -1,0 +1,39 @@
+policy:
+  block:
+    - critical
+    - high
+  warn:
+    - medium
+  allowlist:
+    - package: lodash
+      reason: "Accepted risk - prototype pollution not exploitable in our use case"
+    - package: minimist
+      cve: "CVE-2021-44906"
+      reason: "Mitigated via input validation"
+
+sources:
+  github:
+    enabled: true
+    token: "${GITHUB_TOKEN}"
+  nvd:
+    enabled: true
+    apiKey: "${NVD_API_KEY}"
+  osv:
+    enabled: true
+
+performance:
+  timeoutMs: 30000
+  concurrency: 5
+  retries: 3
+
+cache:
+  ttlSeconds: 7200
+  maxSizeMb: 100
+
+failOnNoSources: false
+failOnSourceError: false
+
+severityOverrides:
+  - cve: "CVE-2023-12345"
+    severity: "low"
+    reason: "False positive - not exploitable in our environment"

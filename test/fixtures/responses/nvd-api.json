@@ -1,0 +1,118 @@
+{
+  "resultsPerPage": 1,
+  "startIndex": 0,
+  "totalResults": 1,
+  "format": "NVD_CVE",
+  "version": "2.0",
+  "timestamp": "2025-01-15T00:00:00.000",
+  "vulnerabilities": [
+    {
+      "cve": {
+        "id": "CVE-2020-8203",
+        "sourceIdentifier": "security@adobe.com",
+        "published": "2020-07-17T18:15:00.000",
+        "lastModified": "2024-11-21T03:43:35.490",
+        "vulnStatus": "Analyzed",
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "Prototype Pollution in lodash"
+          },
+          {
+            "lang": "es",
+            "value": "Contaminación de prototipos en lodash"
+          }
+        ],
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "availabilityImpact": "HIGH",
+                "baseScore": 7.4,
+                "baseSeverity": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 4.7
+            }
+          ],
+          "cvssMetricV2": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "2.0",
+                "vectorString": "AV:N/AC:M/Au:N/C:P/I:P/A:P",
+                "accessVector": "NETWORK",
+                "accessComplexity": "MEDIUM",
+                "authentication": "NONE",
+                "confidentialityImpact": "PARTIAL",
+                "integrityImpact": "PARTIAL",
+                "availabilityImpact": "PARTIAL",
+                "baseScore": 6.8
+              },
+              "baseSeverity": "MEDIUM",
+              "exploitabilityScore": 8.6,
+              "impactScore": 6.4
+            }
+          ]
+        },
+        "weaknesses": [
+          {
+            "source": "nvd@nist.gov",
+            "type": "Primary",
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-1321"
+              }
+            ]
+          }
+        ],
+        "references": [
+          {
+            "source": "nvd@nist.gov",
+            "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-8203",
+            "tags": [
+              "Vendor Advisory"
+            ]
+          },
+          {
+            "source": "https://github.com/advisories/GHSA-jf85-cpcp-j695",
+            "url": "https://github.com/lodash/lodash/issues/4737",
+            "tags": [
+              "Patch",
+              "Third Party Advisory"
+            ]
+          }
+        ],
+        "configurations": [
+          {
+            "nodes": [
+              {
+                "cpeMatch": [
+                  {
+                    "criteria": "cpe:2.3:a:lodash:lodash:*:*:*:*:*:node.js:*:*",
+                    "versionEndExcluding": "4.17.19",
+                    "vulnerable": true
+                  }
+                ],
+                "operator": "OR"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
