@@ -119,7 +119,36 @@ describe("parseArgs", () => {
   });
 });
 
-describe("HELP text", () => {
+describe("--severity flag", () => {
+    it('--severity critical sets args.severity to "critical"', () => {
+      const args = parseArgs(["--severity", "critical"]);
+      assert.equal(args.severity, "critical");
+    });
+
+    it('--severity critical,high sets args.severity to "critical,high"', () => {
+      const args = parseArgs(["--severity", "critical,high"]);
+      assert.equal(args.severity, "critical,high");
+    });
+
+    it('-s medium sets args.severity to "medium"', () => {
+      const args = parseArgs(["-s", "medium"]);
+      assert.equal(args.severity, "medium");
+    });
+
+    it("--severity with --quiet does not interfere", () => {
+      const args = parseArgs(["--severity", "low", "--quiet"]);
+      assert.equal(args.severity, "low");
+      assert.equal(args.quiet, true);
+    });
+
+    it("--severity does not interfere with --update-db", () => {
+      const args = parseArgs(["--severity", "critical", "--update-db"]);
+      assert.equal(args.severity, "critical");
+      assert.equal(args.updateDb, "incremental");
+    });
+  });
+
+  describe("HELP text", () => {
   it("includes documentation for --update-db", () => {
     assert.ok(HELP.includes("--update-db"), "HELP text should mention --update-db");
     assert.ok(

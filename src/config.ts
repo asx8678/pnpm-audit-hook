@@ -264,11 +264,6 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
 
   const blockSeverities = asSeverities(policy?.block, DEFAULT_CONFIG.policy.block);
   const warnSeverities = asSeverities(policy?.warn, DEFAULT_CONFIG.policy.warn);
-  const overlap = blockSeverities.filter(s => warnSeverities.includes(s));
-  if (overlap.length > 0) {
-    logger.warn(`Severity overlap in policy: ${overlap.join(", ")} appears in both block and warn (block takes precedence)`);
-  }
-
   // Env var overrides for fail-on flags
   const failOnNoSources = opts.env.PNPM_AUDIT_FAIL_ON_NO_SOURCES !== undefined
     ? opts.env.PNPM_AUDIT_FAIL_ON_NO_SOURCES !== "false"
@@ -281,10 +276,20 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
   // Offline mode: env var or config
   const offline = opts.env.PNPM_AUDIT_OFFLINE === "true" || raw.offline === true;
 
+  // Env var override for block severities (comma-separated, e.g. "critical,high")
+  const blockSeverityEnv = opts.env.PNPM_AUDIT_BLOCK_SEVERITY;
+  const finalBlockSeverities = blockSeverityEnv
+    ? asSeverities(blockSeverityEnv.split(",").map(s => s.trim()), DEFAULT_CONFIG.policy.block)
+    : blockSeverities;
+  const overlap = finalBlockSeverities.filter(s => warnSeverities.includes(s));
+  if (overlap.length > 0) {
+    logger.warn(`Severity overlap in policy: ${overlap.join(", ")} appears in both block and warn (block takes precedence)`);
+  }
+
   return {
     ...DEFAULT_CONFIG,
     policy: {
-      block: blockSeverities,
+      block: finalBlockSeverities,
       warn: warnSeverities,
       allowlist: asAllowlist(policy?.allowlist),
     },
