@@ -7,6 +7,8 @@ import type { AggregateContext, AggregateResult } from "../../src/databases/aggr
 const REGISTRY_URL = "https://registry.npmjs.org";
 const githubCacheKey = (name: string, version: string) =>
   `github:${REGISTRY_URL}:${name}@${version}`;
+const osvCacheKey = (name: string, version: string) =>
+  `osv:${REGISTRY_URL}:${name}@${version}`;
 
 /**
  * Mock implementations for testing aggregator.ts
@@ -250,6 +252,113 @@ describe("aggregateVulnerabilities", () => {
 
       // Both should be present (different versions)
       assert.equal(result.findings.length, 2);
+    });
+  });
+
+  describe("cross-source deduplication (OSV + GitHub)", () => {
+    it("deduplicates same vulnerability id reported by both GitHub and OSV", async () => {
+      const { aggregateVulnerabilities } = await import("../../src/databases/aggregator");
+
+      // Enable both GitHub and OSV sources
+      const ctx = createMockContext({
+        sources: {
+          github: { enabled: true },
+          nvd: { enabled: false }, // disable NVD to avoid network calls
+          osv: { enabled: true },
+        },
+      });
+
+      // Both sources report the same GHSA vulnerability for the same package/version
+      const sharedId = "GHSA-XXXX-YYYY-ZZZZ";
+      const githubFinding: VulnerabilityFinding = {
+        id: sharedId,
+        source: "github",
+        packageName: "lodash",
+        packageVersion: "4.17.0",
+        severity: "high",
+        title: "GitHub Advisory Title",
+      };
+      const osvFinding: VulnerabilityFinding = {
+        id: sharedId,
+        source: "osv",
+        packageName: "lodash",
+        packageVersion: "4.17.0",
+        severity: "high",
+        title: "OSV Title",
+      };
+
+      // Pre-populate caches for both sources
+      await ctx.cache.set(githubCacheKey("lodash", "4.17.0"), [githubFinding], 3600);
+      await ctx.cache.set(osvCacheKey("lodash", "4.17.0"), [osvFinding], 3600);
+
+      const result = await aggregateVulnerabilities([{ name: "lodash", version: "4.17.0" }], ctx);
+
+      // Should be deduplicated to 1 finding (same id, same package, same version)
+      assert.equal(result.findings.length, 1);
+      // The first source (GitHub) should win
+      assert.equal(result.findings[0]!.source, "github");
+      assert.equal(result.findings[0]!.title, "GitHub Advisory Title");
+    });
+
+    it("deduplicates same CVE reported by both sources", async () => {
+      const { aggregateVulnerabilities } = await import("../../src/databases/aggregator");
+
+      const ctx = createMockContext({
+        sources: {
+          github: { enabled: true },
+          nvd: { enabled: false },
+          osv: { enabled: true },
+        },
+      });
+
+      const sharedId = "CVE-2025-12345";
+      await ctx.cache.set(
+        githubCacheKey("pkg", "1.0.0"),
+        [{ id: sharedId, source: "github", packageName: "pkg", packageVersion: "1.0.0", severity: "critical" }],
+        3600,
+      );
+      await ctx.cache.set(
+        osvCacheKey("pkg", "1.0.0"),
+        [{ id: sharedId, source: "osv", packageName: "pkg", packageVersion: "1.0.0", severity: "critical" }],
+        3600,
+      );
+
+      const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.findings.length, 1);
+      // GitHub source is queried first in the aggregator
+      assert.equal(result.findings[0]!.source, "github");
+    });
+
+    it("keeps both findings when different vulnerability ids from different sources", async () => {
+      const { aggregateVulnerabilities } = await import("../../src/databases/aggregator");
+
+      const ctx = createMockContext({
+        sources: {
+          github: { enabled: true },
+          nvd: { enabled: false },
+          osv: { enabled: true },
+        },
+      });
+
+      // GitHub reports one CVE, OSV reports a different OSV-specific id
+      await ctx.cache.set(
+        githubCacheKey("pkg", "1.0.0"),
+        [{ id: "CVE-2025-0001", source: "github", packageName: "pkg", packageVersion: "1.0.0", severity: "high" }],
+        3600,
+      );
+      await ctx.cache.set(
+        osvCacheKey("pkg", "1.0.0"),
+        [{ id: "OSV-2025-54321", source: "osv", packageName: "pkg", packageVersion: "1.0.0", severity: "medium" }],
+        3600,
+      );
+
+      const result = await aggregateVulnerabilities([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      // Different ids = both should be kept
+      assert.equal(result.findings.length, 2);
+      assert.ok(result.findings.some((f) => f.id === "CVE-2025-0001"));
+      assert.ok(result.findings.some((f) => f.id === "OSV-2025-54321"));
     });
   });
 

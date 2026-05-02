@@ -1,3 +1,28 @@
+/**
+ * OSV Source Connector Test Suite (ckw.7 verified)
+ *
+ * Coverage summary:
+ * - isEnabled / id — config and env-based toggling
+ * - Basic query — empty and populated OSV API responses
+ * - POST body — correct API request format
+ * - Version range filtering — SEMVER introduced/fixed, last_affected,
+ *   explicit version lists, fail-closed (no ranges), out-of-range exclusion
+ * - Identifier extraction — CVE, GHSA, generic OSV canonical ID selection
+ * - Severity mapping — CVSS score → critical/high/medium/unknown
+ * - Cache behavior — cache reads, cache writes, all-cached early return
+ * - Error handling — fetch errors, partial failure, malformed responses, offline mode
+ * - Response parsing — advisory URL extraction, fallback URL, fixed version,
+ *   within-batch dedup, non-npm ecosystem filtering, missing id skip
+ * - Multiple packages — individual POST per package
+ * - Finding normalization — title/description/publishedAt/modifiedAt field mapping,
+ *   complete identifiers array structure
+ * - Edge cases — empty vulns array, multiple SEMVER ranges in single affected
+ *   entry, package name case-insensitivity
+ *
+ * Cross-source deduplication (OSV + GitHub) is tested in aggregator.test.ts.
+ * isVersionAffectedByOsvSemverRange() is tested in semver.test.ts.
+ * Rate limiting / retry behavior lives in HttpClient (http.test.ts).
+ */
 import { describe, it, beforeEach } from "node:test";
 import assert from "node:assert/strict";
 import { OsvSource } from "../../src/databases/osv";
@@ -838,6 +863,310 @@ describe("OsvSource", () => {
         package: { name: "pkg-c", ecosystem: "npm" },
         version: "3.0.0",
       });
+    });
+  });
+
+  describe("finding normalization", () => {
+    it("maps vuln.summary to finding.title", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([{
+        data: {
+          vulns: [createOsvVuln({
+            id: "OSV-2025-001",
+            summary: "Prototype pollution in deep merge",
+            affected: [{
+              package: { name: "pkg", ecosystem: "npm" },
+              ranges: [{ type: "SEMVER", events: [{ introduced: "0" }, { fixed: "2.0.0" }] }],
+            }],
+          })],
+        },
+      }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.findings[0]!.title, "Prototype pollution in deep merge");
+    });
+
+    it("maps vuln.details to finding.description", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([{
+        data: {
+          vulns: [{
+            ...createOsvVuln({
+              id: "OSV-2025-002",
+              affected: [{
+                package: { name: "pkg", ecosystem: "npm" },
+                ranges: [{ type: "SEMVER", events: [{ introduced: "0" }, { fixed: "2.0.0" }] }],
+              }],
+            }),
+            details: "A detailed description of the vulnerability.",
+          }],
+        },
+      }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.findings[0]!.description, "A detailed description of the vulnerability.");
+    });
+
+    it("maps vuln.published to finding.publishedAt", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([{
+        data: {
+          vulns: [createOsvVuln({
+            id: "OSV-2025-003",
+            published: "2024-06-15T10:30:00Z",
+            affected: [{
+              package: { name: "pkg", ecosystem: "npm" },
+              ranges: [{ type: "SEMVER", events: [{ introduced: "0" }, { fixed: "2.0.0" }] }],
+            }],
+          })],
+        },
+      }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.findings[0]!.publishedAt, "2024-06-15T10:30:00Z");
+    });
+
+    it("maps vuln.modified to finding.modifiedAt", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([{
+        data: {
+          vulns: [createOsvVuln({
+            id: "OSV-2025-004",
+            modified: "2024-08-20T14:00:00Z",
+            affected: [{
+              package: { name: "pkg", ecosystem: "npm" },
+              ranges: [{ type: "SEMVER", events: [{ introduced: "0" }, { fixed: "2.0.0" }] }],
+            }],
+          })],
+        },
+      }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.findings[0]!.modifiedAt, "2024-08-20T14:00:00Z");
+    });
+
+    it("builds complete identifiers array for CVE-prefixed OSV id", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([{
+        data: {
+          vulns: [createOsvVuln({
+            id: "CVE-2025-99999",
+            affected: [{
+              package: { name: "pkg", ecosystem: "npm" },
+              ranges: [{ type: "SEMVER", events: [{ introduced: "0" }, { fixed: "2.0.0" }] }],
+            }],
+          })],
+        },
+      }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      const ids = result.findings[0]!.identifiers!;
+      // CVE entry should come first (canonical), then OSV entry
+      assert.equal(ids.length, 2);
+      assert.equal(ids[0]!.type, "CVE");
+      assert.equal(ids[0]!.value, "CVE-2025-99999");
+      assert.equal(ids[1]!.type, "OSV");
+      assert.equal(ids[1]!.value, "CVE-2025-99999");
+      // Canonical id should be the CVE
+      assert.equal(result.findings[0]!.id, "CVE-2025-99999");
+    });
+
+    it("builds complete identifiers array for GHSA-prefixed OSV id", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([{
+        data: {
+          vulns: [createOsvVuln({
+            id: "GHSA-aa11-bb22-cc33",
+            affected: [{
+              package: { name: "pkg", ecosystem: "npm" },
+              ranges: [{ type: "SEMVER", events: [{ introduced: "0" }, { fixed: "2.0.0" }] }],
+            }],
+          })],
+        },
+      }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      const ids = result.findings[0]!.identifiers!;
+      // GHSA entry should come first (canonical), then OSV entry
+      assert.equal(ids.length, 2);
+      assert.equal(ids[0]!.type, "GHSA");
+      assert.equal(ids[0]!.value, "GHSA-AA11-BB22-CC33");
+      assert.equal(ids[1]!.type, "OSV");
+      assert.equal(ids[1]!.value, "GHSA-AA11-BB22-CC33");
+      // Canonical id should be the GHSA (uppercased)
+      assert.equal(result.findings[0]!.id, "GHSA-AA11-BB22-CC33");
+    });
+
+    it("normalizes OSV id to uppercase for canonical and identifiers", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([{
+        data: {
+          vulns: [createOsvVuln({
+            id: "ghsa-xx11-yy22-zz33",
+            affected: [{
+              package: { name: "pkg", ecosystem: "npm" },
+              ranges: [{ type: "SEMVER", events: [{ introduced: "0" }, { fixed: "2.0.0" }] }],
+            }],
+          })],
+        },
+      }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      // Canonical id should be uppercased
+      assert.equal(result.findings[0]!.id, "GHSA-XX11-YY22-ZZ33");
+      // Identifier values should also be uppercased
+      assert.ok(result.findings[0]!.identifiers!.every(i => i.value === i.value.toUpperCase()));
+    });
+  });
+
+  describe("edge cases", () => {
+    it("returns empty findings when OSV returns empty vulns array", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([{ data: { vulns: [] } }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "safe-pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.ok, true);
+      assert.equal(result.findings.length, 0);
+    });
+
+    it("matches version across multiple SEMVER ranges in one affected entry", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([{
+        data: {
+          vulns: [createOsvVuln({
+            id: "OSV-2025-MULTI",
+            affected: [{
+              package: { name: "pkg", ecosystem: "npm" },
+              ranges: [
+                {
+                  type: "SEMVER",
+                  events: [
+                    { introduced: "1.0.0" },
+                    { fixed: "1.5.0" },
+                  ],
+                },
+                {
+                  type: "SEMVER",
+                  events: [
+                    { introduced: "2.0.0" },
+                    { fixed: "2.3.0" },
+                  ],
+                },
+              ],
+            }],
+          })],
+        },
+      }]);
+      const ctx = createContext(cache, http);
+
+      // Version in first range
+      const r1 = await source.query([{ name: "pkg", version: "1.2.0" }], ctx);
+      assert.equal(r1.findings.length, 1);
+
+      // Version between ranges (not affected)
+      // Need fresh cache/http for each query since dedup set is per-query
+      const cache2 = createMockCache();
+      const http2 = createMockHttpClient([{
+        data: {
+          vulns: [createOsvVuln({
+            id: "OSV-2025-MULTI",
+            affected: [{
+              package: { name: "pkg", ecosystem: "npm" },
+              ranges: [
+                {
+                  type: "SEMVER",
+                  events: [
+                    { introduced: "1.0.0" },
+                    { fixed: "1.5.0" },
+                  ],
+                },
+                {
+                  type: "SEMVER",
+                  events: [
+                    { introduced: "2.0.0" },
+                    { fixed: "2.3.0" },
+                  ],
+                },
+              ],
+            }],
+          })],
+        },
+      }]);
+      const ctx2 = createContext(cache2, http2);
+      const r2 = await source.query([{ name: "pkg", version: "1.7.0" }], ctx2);
+      assert.equal(r2.findings.length, 0);
+
+      // Version in second range
+      const cache3 = createMockCache();
+      const http3 = createMockHttpClient([{
+        data: {
+          vulns: [createOsvVuln({
+            id: "OSV-2025-MULTI",
+            affected: [{
+              package: { name: "pkg", ecosystem: "npm" },
+              ranges: [
+                {
+                  type: "SEMVER",
+                  events: [
+                    { introduced: "1.0.0" },
+                    { fixed: "1.5.0" },
+                  ],
+                },
+                {
+                  type: "SEMVER",
+                  events: [
+                    { introduced: "2.0.0" },
+                    { fixed: "2.3.0" },
+                  ],
+                },
+              ],
+            }],
+          })],
+        },
+      }]);
+      const ctx3 = createContext(cache3, http3);
+      const r3 = await source.query([{ name: "pkg", version: "2.1.0" }], ctx3);
+      assert.equal(r3.findings.length, 1);
+    });
+
+    it("matches package names case-insensitively", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([{
+        data: {
+          vulns: [createOsvVuln({
+            id: "OSV-2025-CASE",
+            affected: [{
+              // OSV response uses different casing than queried package
+              package: { name: "MyAwesomePackage", ecosystem: "npm" },
+              ranges: [{ type: "SEMVER", events: [{ introduced: "0" }, { fixed: "2.0.0" }] }],
+            }],
+          })],
+        },
+      }]);
+      const ctx = createContext(cache, http);
+
+      // Query with lowercase name, OSV responds with PascalCase
+      const result = await source.query([{ name: "myawesomepackage", version: "1.0.0" }], ctx);
+
+      assert.equal(result.findings.length, 1);
+      // The finding should use the queried package name
+      assert.equal(result.findings[0]!.packageName, "myawesomepackage");
     });
   });
 });
