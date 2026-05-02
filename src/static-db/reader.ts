@@ -9,6 +9,7 @@ import { logger } from "../utils/logger";
 import { errorMessage } from "../utils/error";
 import { mapSeverity } from "../utils/severity";
 import { satisfies } from "../utils/semver";
+import { isString, isArray, isObject } from "../utils/helpers/validation-helpers";
 import type {
   StaticDbIndex,
   AffectedVersionRange,
@@ -84,13 +85,12 @@ function normalizeFindingSource(value: unknown): FindingSource {
 }
 
 function normalizeIdentifiers(value: unknown): VulnerabilityIdentifier[] | undefined {
-  if (!Array.isArray(value)) return undefined;
+  if (!isArray(value)) return undefined;
   const identifiers: VulnerabilityIdentifier[] = [];
   for (const entry of value) {
-    if (!entry || typeof entry !== "object") continue;
-    const obj = entry as Record<string, unknown>;
-    const type = typeof obj.type === "string" ? obj.type : "";
-    const val = typeof obj.value === "string" ? obj.value : "";
+    if (!entry || !isObject(entry)) continue;
+    const type = isString(entry.type) ? entry.type : "";
+    const val = isString(entry.value) ? entry.value : "";
     if (!type || !val) continue;
     identifiers.push({ type: type as VulnerabilityIdentifier["type"], value: val });
   }
@@ -102,21 +102,20 @@ function normalizeAffectedVersions(
   affectedRange?: unknown,
   fixedVersion?: unknown,
 ): AffectedVersionRange[] {
-  if (Array.isArray(value)) {
+  if (isArray(value)) {
     const ranges: AffectedVersionRange[] = [];
     for (const entry of value) {
-      if (!entry || typeof entry !== "object") continue;
-      const obj = entry as Record<string, unknown>;
-      const range = typeof obj.range === "string" ? obj.range : "";
+      if (!entry || !isObject(entry)) continue;
+      const range = isString(entry.range) ? entry.range : "";
       if (!range) continue;
-      const fixed = typeof obj.fixed === "string" ? obj.fixed : undefined;
+      const fixed = isString(entry.fixed) ? entry.fixed : undefined;
       ranges.push({ range, fixed });
     }
     return ranges;
   }
 
-  if (typeof affectedRange === "string" && affectedRange.length > 0) {
-    const fixed = typeof fixedVersion === "string" ? fixedVersion : undefined;
+  if (isString(affectedRange) && affectedRange.length > 0) {
+    const fixed = isString(fixedVersion) ? fixedVersion : undefined;
     return [{ range: affectedRange, fixed }];
   }
 
@@ -127,32 +126,31 @@ function normalizeVulnerability(
   value: unknown,
   packageName: string,
 ): StaticVulnerability | null {
-  if (!value || typeof value !== "object") return null;
-  const obj = value as Record<string, unknown>;
-  const id = typeof obj.id === "string" ? obj.id : "";
+  if (!value || !isObject(value)) return null;
+  const id = isString(value.id) ? value.id : "";
   if (!id) return null;
 
   const pkgName =
-    typeof obj.packageName === "string" && obj.packageName.length > 0
-      ? obj.packageName
+    isString(value.packageName) && value.packageName.length > 0
+      ? value.packageName
       : packageName;
 
   return {
     id,
     packageName: pkgName,
-    severity: mapSeverity(typeof obj.severity === "string" ? obj.severity : undefined),
-    publishedAt: typeof obj.publishedAt === "string" ? obj.publishedAt : undefined,
-    modifiedAt: typeof obj.modifiedAt === "string" ? obj.modifiedAt : undefined,
+    severity: mapSeverity(isString(value.severity) ? value.severity : undefined),
+    publishedAt: isString(value.publishedAt) ? value.publishedAt : undefined,
+    modifiedAt: isString(value.modifiedAt) ? value.modifiedAt : undefined,
     affectedVersions: normalizeAffectedVersions(
-      obj.affectedVersions,
-      obj.affectedRange,
-      obj.fixedVersion,
+      value.affectedVersions,
+      value.affectedRange,
+      value.fixedVersion,
     ),
-    source: normalizeFindingSource(obj.source),
-    title: typeof obj.title === "string" ? obj.title : undefined,
-    url: typeof obj.url === "string" ? obj.url : undefined,
-    description: typeof obj.description === "string" ? obj.description : undefined,
-    identifiers: normalizeIdentifiers(obj.identifiers),
+    source: normalizeFindingSource(value.source),
+    title: isString(value.title) ? value.title : undefined,
+    url: isString(value.url) ? value.url : undefined,
+    description: isString(value.description) ? value.description : undefined,
+    identifiers: normalizeIdentifiers(value.identifiers),
   };
 }
 

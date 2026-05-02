@@ -5,6 +5,7 @@ import { isVersionAffectedByOsvSemverRange } from "../utils/semver";
 import { logger } from "../utils/logger";
 import { errorMessage } from "../utils/error";
 import { mapWithConcurrency } from "../utils/concurrency";
+import { isString, isObject, isArray } from "../utils/helpers/validation-helpers";
 
 const CACHE_READ_CONCURRENCY = 50;
 const CACHE_WRITE_CONCURRENCY = 25;
@@ -45,15 +46,15 @@ interface PackageQueryError {
  * Validate that a cached value has the expected shape for VulnerabilityFinding[].
  */
 function isValidCachedFindings(value: unknown): value is VulnerabilityFinding[] {
-  if (!Array.isArray(value)) return false;
+  if (!isArray(value)) return false;
   if (value.length > 0) {
     const first = value[0];
     return (
-      first &&
-      typeof first === "object" &&
-      typeof first.id === "string" &&
-      typeof first.packageName === "string" &&
-      typeof first.severity === "string"
+      !!first &&
+      isObject(first) &&
+      isString(first.id) &&
+      isString(first.packageName) &&
+      isString(first.severity)
     );
   }
   return true;

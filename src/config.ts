@@ -6,6 +6,7 @@ import type { AllowlistEntry, AuditConfig, Severity, StaticBaselineConfig } from
 import { errorMessage, isNodeError } from "./utils/error";
 import { logger } from "./utils/logger";
 import { getEnvironmentVariables } from "./utils/env-manager";
+import { isNonEmptyString, isObject, isArray, isDefined } from "./utils/helpers/validation-helpers";
 
 /** Maximum allowed timeout in milliseconds (5 minutes) */
 const MAX_TIMEOUT_MS = 300000;
@@ -60,15 +61,15 @@ export function suggestSimilar(
 /** Get a non-empty string property from an object, or null */
 function getString(obj: object, key: string): string | null {
   const value = (obj as Record<string, unknown>)[key];
-  return typeof value === "string" && value.length > 0 ? value : null;
+  return isNonEmptyString(value) ? value : null;
 }
 
 /** Validate an allowlist entry from user config, logging warnings for invalid entries */
 function validateAllowlistEntry(e: unknown): AllowlistEntry | null {
-  if (!e || typeof e !== "object") {
+  if (!e || !isObject(e)) {
     logger.warn(`Allowlist entry filtered: not an object`);
     return null;
-  }
+}
 
   const obj = e as Record<string, unknown>;
 
@@ -81,11 +82,11 @@ function validateAllowlistEntry(e: unknown): AllowlistEntry | null {
   }
 
   // Optional fields must be strings if present
-  if (obj.version !== undefined && typeof obj.version !== "string") {
+  if (obj.version !== undefined && !isNonEmptyString(obj.version) && obj.version !== "") {
     logger.warn(`Allowlist entry filtered: 'version' must be a string (got ${typeof obj.version})`);
     return null;
   }
-  if (obj.reason !== undefined && typeof obj.reason !== "string") {
+  if (obj.reason !== undefined && !isNonEmptyString(obj.reason) && obj.reason !== "") {
     logger.warn(`Allowlist entry filtered: 'reason' must be a string (got ${typeof obj.reason})`);
     return null;
   }
@@ -103,7 +104,7 @@ function validateAllowlistEntry(e: unknown): AllowlistEntry | null {
   }
 
   // Pre-validate version range if provided
-  if (typeof obj.version === "string" && obj.version.length > 0) {
+  if (isNonEmptyString(obj.version)) {
     if (!semver.validRange(obj.version)) {
       logger.warn(`Allowlist entry: invalid semver range "${obj.version}" — will never match (fail-closed)`);
     }
@@ -298,7 +299,7 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
     }
 
     let dataPath: string | undefined = undefined;
-    if (typeof v.dataPath === "string" && v.dataPath.length > 0) {
+    if (isNonEmptyString(v.dataPath)) {
       if (!isValidRelativePath(v.dataPath)) {
         logger.warn(
           `Invalid staticBaseline.dataPath: path traversal or absolute paths not allowed, ignoring`

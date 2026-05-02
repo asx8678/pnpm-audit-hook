@@ -941,7 +941,7 @@ describe("ConnectionPool", () => {
     await destroyAllPools();
   });
 
-  it("creates pool with default options", () => {
+  it("creates pool with default options", async () => {
     const pool = new ConnectionPool();
     const metrics = pool.getMetrics();
     assert.equal(metrics.totalRequests, 0);
@@ -949,9 +949,10 @@ describe("ConnectionPool", () => {
     assert.equal(metrics.failedRequests, 0);
     assert.equal(metrics.connectionErrors, 0);
     assert.equal(metrics.averageLatencyMs, 0);
+    await pool.destroy();
   });
 
-  it("creates pool with custom options", () => {
+  it("creates pool with custom options", async () => {
     const pool = new ConnectionPool({
       maxSockets: 5,
       maxFreeSockets: 2,
@@ -960,6 +961,7 @@ describe("ConnectionPool", () => {
     });
     const metrics = pool.getMetrics();
     assert.equal(metrics.totalRequests, 0);
+    await pool.destroy();
   });
 
   it("tracks request metrics", async () => {
@@ -1032,13 +1034,14 @@ describe("ConnectionPool", () => {
     }
   });
 
-  it("getAgent returns correct agent for protocol", () => {
+  it("getAgent returns correct agent for protocol", async () => {
     const pool = new ConnectionPool();
     const httpsAgent = pool.getAgent("https://api.example.com/test");
     const httpAgent = pool.getAgent("http://api.example.com/test");
     assert.ok(httpsAgent);
     assert.ok(httpAgent);
     assert.notEqual(httpsAgent, httpAgent);
+    await pool.destroy();
   });
 
   it("destroy is idempotent", async () => {

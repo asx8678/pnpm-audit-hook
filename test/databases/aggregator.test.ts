@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import type { AuditConfig, VulnerabilityFinding } from "../../src/types";
 import type { Cache, CacheEntry } from "../../src/cache/types";
 import type { AggregateContext, AggregateResult } from "../../src/databases/aggregator";
+import { destroyAllPools } from "../../src/utils/http";
 
 const REGISTRY_URL = "https://registry.npmjs.org";
 const githubCacheKey = (name: string, version: string) =>
@@ -87,8 +88,9 @@ describe("aggregateVulnerabilities", () => {
     originalNvdModule = await import("../../src/databases/nvd");
   });
 
-  afterEach(() => {
+  afterEach(async () => {
     mock.reset();
+    await destroyAllPools();
   });
 
   describe("source disabled behavior", () => {
@@ -601,8 +603,9 @@ describe("aggregateVulnerabilities", () => {
 });
 
   describe("parallel source execution", () => {
-    afterEach(() => {
+    afterEach(async () => {
       mock.reset();
+      await destroyAllPools();
     });
 
     it("queries both GitHub and OSV sources when enabled", async () => {
