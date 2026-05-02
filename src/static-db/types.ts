@@ -117,6 +117,12 @@ export interface StaticDbIndex {
    * Enables O(1) lookup to check if a package has known vulnerabilities.
    */
   packages: Record<string, PackageIndexEntry>;
+  /**
+   * SHA-256 integrity hashes for shard files.
+   * Maps relative shard paths (e.g. "lodash.json.gz", "@angular/core.json")
+   * to their SHA-256 digests in "sha256-<hex>" format.
+   */
+  integrity?: Record<string, string>;
   /** Build metadata (optional) */
   buildInfo?: {
     /** Tool/script that generated this database */
