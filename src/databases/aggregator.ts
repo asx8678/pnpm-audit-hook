@@ -91,10 +91,16 @@ export async function aggregateVulnerabilities(
   // This ensures API queries align with the DB's actual coverage.
   const effectiveCutoffDate = staticDb?.getCutoffDate() ?? staticBaselineCfg?.cutoffDate;
 
+  // Read DB version once at startup and share across all cache key construction.
+  // This ensures cache keys change when the static database is updated, causing
+  // automatic cache invalidation.
+  const dbVersion = staticDb?.getDbVersion() ?? "";
+
   // Register vulnerability sources
   const githubSource = new GitHubAdvisorySource({
     staticDb,
     cutoffDate: effectiveCutoffDate,
+    dbVersion,
   });
   const osvSource = new OsvSource();
 

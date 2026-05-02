@@ -39,6 +39,12 @@ export interface GitHubAdvisoryOptions {
   staticDb?: StaticDbReader | null;
   /** Cutoff date for static DB (ISO date string, e.g., "2025-12-31") */
   cutoffDate?: string;
+  /**
+   * Static database version identifier (lastUpdated timestamp from index).
+   * When provided, included in cache keys so that caches are automatically
+   * invalidated when the static database is updated.
+   */
+  dbVersion?: string;
 }
 
 /** Structured error for failed package queries (avoids fragile string parsing) */
@@ -70,10 +76,13 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
   id: FindingSource = "github";
   private staticDb: StaticDbReader | null;
   private cutoffDate: string | null;
+  private dbVersion: string;
 
   constructor(options: GitHubAdvisoryOptions = {}) {
     this.staticDb = options.staticDb ?? null;
     this.cutoffDate = options.cutoffDate ?? null;
+    // Use explicit dbVersion if provided, otherwise derive from staticDb
+    this.dbVersion = options.dbVersion ?? this.staticDb?.getDbVersion() ?? "";
   }
 
   isEnabled(cfg: AuditConfig, env: Record<string, string | undefined>): boolean {
@@ -82,7 +91,11 @@ export class GitHubAdvisorySource implements VulnerabilitySource {
 
   private cacheKey(ctx: SourceContext, pkg: PackageRef): string {
     const base = `github:${ctx.registryUrl}:${pkg.name}@${pkg.version}`;
-    return this.cutoffDate ? `${base}:after=${this.cutoffDate}` : base;
+    let key = this.cutoffDate ? `${base}:after=${this.cutoffDate}` : base;
+    if (this.dbVersion) {
+      key = `${key}:dbVersion=${this.dbVersion}`;
+    }
+    return key;
   }
 
   /**

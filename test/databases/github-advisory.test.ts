@@ -467,6 +467,102 @@ describe("GitHubAdvisorySource", () => {
     });
   });
 
+  describe("cache key with DB version", () => {
+    it("includes dbVersion in cache key when provided", async () => {
+      const sourceWithDb = new GitHubAdvisorySource({
+        dbVersion: "2025-01-15T00:00:00Z",
+      });
+
+      const cache = createMockCache();
+      const http = createMockHttpClient([{ data: [] }]);
+      const ctx = createContext(cache, http);
+
+      await sourceWithDb.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      // Check the cache was stored with dbVersion in the key
+      const keys = [...cache.store.keys()];
+      assert.equal(keys.length, 1);
+      assert.ok(keys[0]!.includes("dbVersion=2025-01-15T00:00:00Z"),
+        `Expected cache key to include dbVersion, got: ${keys[0]}`);
+      assert.ok(keys[0]!.startsWith(`github:${REGISTRY_URL}:pkg@1.0.0`));
+    });
+
+    it("includes dbVersion before API call to bust stale cache on read", async () => {
+      // Set cache with an OLD dbVersion (simulating stale cache from previous DB)
+      const cache = createMockCache();
+      const oldDbVersion = "2024-06-01T00:00:00Z";
+      const newDbVersion = "2025-01-15T00:00:00Z";
+
+      // Pre-populate cache with the OLD dbVersion in the key
+      const oldKey = `github:${REGISTRY_URL}:pkg@1.0.0:dbVersion=${oldDbVersion}`;
+      await cache.set(oldKey, [finding({ id: "STALE-FROM-OLD-DB" })], 3600);
+
+      const sourceWithNewDb = new GitHubAdvisorySource({
+        dbVersion: newDbVersion,
+      });
+
+      const http = createMockHttpClient([{ data: [] }]);
+      const ctx = createContext(cache, http);
+
+      const result = await sourceWithNewDb.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      // The old cache entry with old dbVersion should NOT be found;
+      // the source should query the API instead
+      assert.equal(http.calls.length, 1,
+        "Should make API call because old cache has different dbVersion");
+
+      // The new cache entry should have the new dbVersion
+      const newKey = `github:${REGISTRY_URL}:pkg@1.0.0:dbVersion=${newDbVersion}`;
+      const newCached = await cache.get(newKey);
+      assert.ok(newCached, "New cache entry should exist with updated dbVersion");
+    });
+
+    it("derives dbVersion from staticDb when not explicitly provided", async () => {
+      const mockStaticDb = {
+        isReady: () => true,
+        getCutoffDate: () => "2025-01-01T00:00:00Z",
+        getDbVersion: () => "2025-01-15T00:00:00Z",
+        getIndex: () => null,
+        hasVulnerabilities: async () => false,
+        queryPackage: async () => [],
+        queryPackageWithOptions: async () => [],
+      };
+
+      const source = new GitHubAdvisorySource({
+        staticDb: mockStaticDb,
+        cutoffDate: "2025-01-01T00:00:00Z",
+      });
+
+      const cache = createMockCache();
+      const http = createMockHttpClient([{ data: [] }]);
+      const ctx = createContext(cache, http);
+
+      // Trigger a query — the cache key should include the dbVersion derived from staticDb
+      await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      const keys = [...cache.store.keys()];
+      assert.equal(keys.length, 1);
+      assert.ok(keys[0]!.includes("dbVersion=2025-01-15T00:00:00Z"),
+        `Expected cache key to include dbVersion derived from staticDb, got: ${keys[0]}`);
+    });
+
+    it("does not include dbVersion when not available", async () => {
+      const sourceNoDb = new GitHubAdvisorySource();
+
+      const cache = createMockCache();
+      const http = createMockHttpClient([{ data: [] }]);
+      const ctx = createContext(cache, http);
+
+      // Trigger query — the cache key should NOT include dbVersion
+      await sourceNoDb.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      const keys = [...cache.store.keys()];
+      assert.equal(keys.length, 1);
+      assert.ok(!keys[0]!.includes("dbVersion="),
+        `Expected cache key to NOT include dbVersion, got: ${keys[0]}`);
+    });
+  });
+
   describe("authorization", () => {
     it("includes GITHUB_TOKEN in authorization header", async () => {
       const cache = createMockCache();
