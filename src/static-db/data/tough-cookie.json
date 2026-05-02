@@ -1,0 +1,32 @@
+{
+  "packageName": "tough-cookie",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-72xf-g2v4-qvf3",
+      "packageName": "tough-cookie",
+      "title": "Prototype Pollution in tough-cookie",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-72xf-g2v4-qvf3",
+      "publishedAt": "2023-07-06T21:14:00Z",
+      "modifiedAt": "2024-03-07T17:33:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-72xf-g2v4-qvf3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26136"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<4.1.3",
+          "fixed": "4.1.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

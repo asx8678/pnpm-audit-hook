@@ -1,0 +1,32 @@
+{
+  "packageName": "ajv",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v88g-cgmw-v5xw",
+      "packageName": "ajv",
+      "title": "Prototype Pollution in Ajv",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v88g-cgmw-v5xw",
+      "publishedAt": "2020-07-16T22:36:00Z",
+      "modifiedAt": "2023-09-13T19:45:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v88g-cgmw-v5xw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15366"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<6.12.3",
+          "fixed": "6.12.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

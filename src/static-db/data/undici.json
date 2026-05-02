@@ -1,0 +1,32 @@
+{
+  "packageName": "undici",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3787-6prv-h9w3",
+      "packageName": "undici",
+      "title": "Undici's Proxy-Authorization header is not cleared in cross-origin redirects",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3787-6prv-h9w3",
+      "publishedAt": "2024-03-13T17:25:00Z",
+      "modifiedAt": "2024-03-14T20:55:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3787-6prv-h9w3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-30260"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<5.28.4",
+          "fixed": "5.28.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

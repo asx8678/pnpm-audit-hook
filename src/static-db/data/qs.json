@@ -1,0 +1,32 @@
+{
+  "packageName": "qs",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hrpp-h998-j3pp",
+      "packageName": "qs",
+      "title": "qs vulnerable to Prototype Pollution",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hrpp-h998-j3pp",
+      "publishedAt": "2022-11-28T00:00:00Z",
+      "modifiedAt": "2023-09-07T21:31:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hrpp-h998-j3pp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-24999"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">=6.0.0 <6.5.3",
+          "fixed": "6.5.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

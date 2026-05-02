@@ -1,0 +1,32 @@
+{
+  "packageName": "postcss",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-566m-qj78-rww5",
+      "packageName": "postcss",
+      "title": "PostCSS line return parsing error",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-566m-qj78-rww5",
+      "publishedAt": "2021-09-23T23:09:00Z",
+      "modifiedAt": "2023-09-11T22:17:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-566m-qj78-rww5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23382"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<7.0.36",
+          "fixed": "7.0.36"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

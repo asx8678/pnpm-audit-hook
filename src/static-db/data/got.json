@@ -1,0 +1,32 @@
+{
+  "packageName": "got",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pfrx-2q88-qq97",
+      "packageName": "got",
+      "title": "Got allows a redirect to a UNIX socket",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pfrx-2q88-qq97",
+      "publishedAt": "2022-05-24T19:01:00Z",
+      "modifiedAt": "2023-09-08T19:54:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pfrx-2q88-qq97"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-33987"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<11.8.5",
+          "fixed": "11.8.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "packageName": "lodash",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-35jh-r3h4-6jhm",
+      "packageName": "lodash",
+      "title": "Prototype Pollution in lodash",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-35jh-r3h4-6jhm",
+      "publishedAt": "2020-07-15T19:15:00Z",
+      "modifiedAt": "2023-09-13T19:54:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-35jh-r3h4-6jhm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8203"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<4.17.19",
+          "fixed": "4.17.19"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p6mc-m468-83gw",
+      "packageName": "lodash",
+      "title": "Prototype Pollution in lodash",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p6mc-m468-83gw",
+      "publishedAt": "2021-05-06T16:05:00Z",
+      "modifiedAt": "2023-09-08T19:55:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p6mc-m468-83gw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23337"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<4.17.21",
+          "fixed": "4.17.21"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-29mw-wpgm-hmr9",
+      "packageName": "lodash",
+      "title": "Regular Expression Denial of Service (ReDoS) in lodash",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-29mw-wpgm-hmr9",
+      "publishedAt": "2021-05-06T16:05:00Z",
+      "modifiedAt": "2023-09-11T22:03:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-29mw-wpgm-hmr9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28500"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<4.17.21",
+          "fixed": "4.17.21"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jf85-cpcp-j695",
+      "packageName": "lodash",
+      "title": "Prototype Pollution in lodash",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-jf85-cpcp-j695",
+      "publishedAt": "2019-07-10T19:45:00Z",
+      "modifiedAt": "2023-09-08T19:55:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jf85-cpcp-j695"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10744"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<4.17.12",
+          "fixed": "4.17.12"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

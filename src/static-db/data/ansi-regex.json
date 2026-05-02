@@ -1,0 +1,32 @@
+{
+  "packageName": "ansi-regex",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-93q8-gq69-wqmw",
+      "packageName": "ansi-regex",
+      "title": "Inefficient Regular Expression Complexity in ansi-regex",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-93q8-gq69-wqmw",
+      "publishedAt": "2021-09-20T23:09:00Z",
+      "modifiedAt": "2023-09-11T22:16:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-93q8-gq69-wqmw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3807"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">=3.0.0 <5.0.1",
+          "fixed": "5.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

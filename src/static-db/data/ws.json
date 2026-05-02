@@ -1,0 +1,32 @@
+{
+  "packageName": "ws",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6fc8-4gx4-v693",
+      "packageName": "ws",
+      "title": "ws affected by a DoS when handling a request with many HTTP headers",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6fc8-4gx4-v693",
+      "publishedAt": "2024-06-17T15:09:00Z",
+      "modifiedAt": "2024-06-20T16:07:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6fc8-4gx4-v693"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-37890"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<5.2.4",
+          "fixed": "5.2.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

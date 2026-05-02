@@ -1,0 +1,32 @@
+{
+  "packageName": "node-fetch",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r683-j2x4-v87g",
+      "packageName": "node-fetch",
+      "title": "node-fetch is vulnerable to Exposure of Sensitive Information",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r683-j2x4-v87g",
+      "publishedAt": "2022-01-14T21:04:00Z",
+      "modifiedAt": "2023-09-11T22:17:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r683-j2x4-v87g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0235"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<2.6.7",
+          "fixed": "2.6.7"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

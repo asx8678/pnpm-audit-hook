@@ -1,0 +1,32 @@
+{
+  "packageName": "kind-of",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6c8f-qphg-qjgp",
+      "packageName": "kind-of",
+      "title": "Validation Bypass in kind-of",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6c8f-qphg-qjgp",
+      "publishedAt": "2020-03-06T18:49:00Z",
+      "modifiedAt": "2023-09-11T22:00:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6c8f-qphg-qjgp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-20149"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">=6.0.0 <6.0.3",
+          "fixed": "6.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}
