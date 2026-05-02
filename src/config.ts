@@ -7,6 +7,7 @@ import { errorMessage, isNodeError } from "./utils/error";
 import { logger } from "./utils/logger";
 import { getEnvironmentVariables } from "./utils/env-manager";
 import { isNonEmptyString, isObject, isArray, isDefined } from "./utils/helpers/validation-helpers";
+import { isSafeRelativePath as isSafePath, detectMaliciousContent } from "./utils/security";
 
 /** Maximum allowed timeout in milliseconds (5 minutes) */
 const MAX_TIMEOUT_MS = 300000;
@@ -190,13 +191,10 @@ export interface LoadConfigOptions {
 
 /**
  * Validate a path to prevent path traversal attacks.
- * Rejects absolute paths or any path containing ".." segments.
+ * Delegates to the centralized security module.
  */
 function isValidRelativePath(p: string): boolean {
-  if (path.isAbsolute(p)) return false;
-  const normalized = path.posix.normalize(p.replace(/\\/g, "/"));
-  const segments = normalized.split("/");
-  return !segments.includes("..");
+  return isSafePath(p);
 }
 
 export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> {
@@ -205,6 +203,13 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
     if (!isValidRelativePath(opts.env.PNPM_AUDIT_CONFIG_PATH)) {
       throw new Error(
         `Invalid PNPM_AUDIT_CONFIG_PATH: path traversal or absolute paths not allowed`
+      );
+    }
+    // Additional malicious content check on config path
+    const threats = detectMaliciousContent(opts.env.PNPM_AUDIT_CONFIG_PATH, "config-value");
+    if (threats.length > 0) {
+      throw new Error(
+        `Invalid PNPM_AUDIT_CONFIG_PATH: security check failed — ${threats.join(", ")}`
       );
     }
     configPath = path.resolve(opts.cwd, opts.env.PNPM_AUDIT_CONFIG_PATH);

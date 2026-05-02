@@ -10,6 +10,7 @@ import { errorMessage } from "../utils/error";
 import { mapSeverity } from "../utils/severity";
 import { satisfies } from "../utils/semver";
 import { isString, isArray, isObject } from "../utils/helpers/validation-helpers";
+import { isSecurePackageName } from "../utils/security";
 import { QueryPerformanceTracker } from "../utils/performance";
 import type {
   StaticDbIndex,
@@ -109,45 +110,10 @@ export class LruCache<K, V> {
 
 /**
  * Validate that a package name matches npm naming conventions.
- * Valid names: lowercase, may contain hyphens, underscores, dots.
- * Scoped packages: @scope/name where scope and name follow same rules.
- * This prevents path traversal via malicious package names.
+ * Delegates to the centralized security module for consistent validation.
  */
 function isValidPackageName(name: string): boolean {
-  // npm package name rules (simplified but secure):
-  // - Must not be empty
-  // - Max 214 characters
-  // - Scoped packages start with @
-  // - No path separators except in scoped packages (single /)
-  // - No '..' sequences
-  // - Must match allowed characters
-
-  if (!name || name.length > 214) return false;
-  if (name.includes("..")) return false;
-
-  // Scoped package: @scope/name
-  if (name.startsWith("@")) {
-    const parts = name.split("/");
-    if (parts.length !== 2) return false;
-    const scope = parts[0]!.slice(1); // remove @
-    const pkg = parts[1]!;
-    return isValidNameSegment(scope) && isValidNameSegment(pkg);
-  }
-
-  // Unscoped package
-  if (name.includes("/")) return false;
-  return isValidNameSegment(name);
-}
-
-/**
- * Validate a single package name segment (scope or name).
- */
-function isValidNameSegment(segment: string): boolean {
-  if (!segment || segment.length === 0) return false;
-  // Only allow lowercase alphanumeric, hyphens, underscores, dots
-  // Must not start with dot or underscore
-  if (segment.startsWith(".") || segment.startsWith("_")) return false;
-  return /^[a-z0-9][a-z0-9._-]*$/.test(segment);
+  return isSecurePackageName(name);
 }
 
 function normalizeFindingSource(value: unknown): FindingSource {

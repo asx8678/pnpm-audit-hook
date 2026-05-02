@@ -7,6 +7,7 @@ import { aggregateVulnerabilities } from "./databases/aggregator";
 import { extractPackagesFromLockfile, buildDependencyGraph, traceDependencyChain } from "./utils/lockfile";
 import { evaluatePackagePolicies } from "./policies/policy-engine";
 import { buildSummary, getOutputFormat, outputResults } from "./utils/output-formatter";
+import { validateLockfileStructure } from "./utils/security";
 
 const CACHE_DIR = ".pnpm-audit-cache";
 
@@ -45,6 +46,17 @@ export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions):
   const { cwd, env, registryUrl } = runtime;
   const cfg = await loadConfig({ cwd, env });
   const cache = new FileCache({ dir: path.resolve(cwd, CACHE_DIR) });
+
+  // Validate lockfile structure for security
+  const lockfileValidation = validateLockfileStructure(lockfile);
+  if (lockfileValidation.warnings.length > 0) {
+    for (const warning of lockfileValidation.warnings) {
+      logger.warn(`Lockfile integrity: ${warning}`);
+    }
+  }
+  if (!lockfileValidation.valid) {
+    logger.warn(`Lockfile validation failed — proceeding with caution (may produce incomplete results)`);
+  }
 
   // Auto-prune expired cache entries (at most once per hour, non-blocking)
   const now = Date.now();

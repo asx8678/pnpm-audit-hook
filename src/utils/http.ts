@@ -1,6 +1,7 @@
 import http from "node:http";
 import https from "node:https";
 import { sleep } from "./concurrency";
+import { isSafeUrl } from "./security";
 
 /**
  * Pool metrics for monitoring connection pool health.
@@ -356,6 +357,15 @@ export class HttpClient {
     if (!["http:", "https:"].includes(parsedUrl.protocol)) {
       throw new HttpError(
         `Invalid URL protocol "${parsedUrl.protocol}" when fetching ${url} — only http: and https: are allowed. Use https: for secure connections.`,
+        { url }
+      );
+    }
+
+    // SSRF protection: block requests to private/internal networks
+    const urlSafety = isSafeUrl(url);
+    if (!urlSafety.safe) {
+      throw new HttpError(
+        `SSRF protection blocked request to ${url}: ${urlSafety.reason}`,
         { url }
       );
     }
