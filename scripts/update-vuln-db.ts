@@ -86,7 +86,13 @@ interface GraphQLResponse {
 
 // Configuration
 const DATA_DIR = path.join(__dirname, "..", "src", "static-db", "data");
-const PACKAGES_DIR = path.join(DATA_DIR, "packages");
+/**
+ * Shard path encoding scheme (must match src/static-db/reader.ts getShardPath):
+ *   - Unscoped packages:  DATA_DIR/{name}.json          e.g. data/lodash.json
+ *   - Scoped packages:    DATA_DIR/@scope/{name}.json    e.g. data/@angular/core.json
+ * This avoids the legacy "packages/" flat directory with double-underscore encoding.
+ */
+const LEGACY_PACKAGES_DIR = path.join(DATA_DIR, "packages");
 const INDEX_FILE = path.join(DATA_DIR, "index.json");
 const GITHUB_API = "https://api.github.com/graphql";
 const DEFAULT_CUTOFF = "2025-12-31T23:59:59Z";
@@ -302,12 +308,37 @@ function loadExistingIndex(): StaticDbIndex | null {
 /**
  * Load existing package data if available
  */
+function getPackageShardPath(packageName: string): string {
+  // Scoped packages use a subdirectory: @scope/name -> DATA_DIR/@scope/name.json
+  if (packageName.startsWith("@")) {
+    const slashIdx = packageName.indexOf("/");
+    if (slashIdx !== -1) {
+      const scope = packageName.slice(0, slashIdx);
+      const name = packageName.slice(slashIdx + 1);
+      return path.join(DATA_DIR, scope, `${name}.json`);
+    }
+  }
+  // Unscoped packages live directly in DATA_DIR: name -> DATA_DIR/name.json
+  return path.join(DATA_DIR, `${packageName}.json`);
+}
+
 function loadExistingPackageData(packageName: string): StaticPackageData | null {
-  const safeName = packageName.replace(/\//g, "__");
-  const filePath = path.join(PACKAGES_DIR, `${safeName}.json`);
+  const filePath = getPackageShardPath(packageName);
   try {
     if (fs.existsSync(filePath)) {
       const raw = JSON.parse(fs.readFileSync(filePath, "utf-8")) as unknown;
+      return normalizePackageData(raw, packageName);
+    }
+  } catch {
+    // Ignore errors — fall through to try legacy path
+  }
+
+  // Try legacy flat-directory path for backward compatibility
+  const safeName = packageName.replace(/\//g, "__");
+  const legacyPath = path.join(LEGACY_PACKAGES_DIR, `${safeName}.json`);
+  try {
+    if (fs.existsSync(legacyPath)) {
+      const raw = JSON.parse(fs.readFileSync(legacyPath, "utf-8")) as unknown;
       return normalizePackageData(raw, packageName);
     }
   } catch {
@@ -391,8 +422,12 @@ function normalizePackageData(raw: unknown, packageName: string): StaticPackageD
  * Save package data to file
  */
 function savePackageData(data: StaticPackageData): void {
-  const safeName = data.packageName.replace(/\//g, "__");
-  const filePath = path.join(PACKAGES_DIR, `${safeName}.json`);
+  const filePath = getPackageShardPath(data.packageName);
+  // Ensure parent directory exists (needed for scoped packages like @scope/)
+  const dir = path.dirname(filePath);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
 
@@ -1444,9 +1479,7 @@ async function main(): Promise<void> {
   if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });
   }
-  if (!fs.existsSync(PACKAGES_DIR)) {
-    fs.mkdirSync(PACKAGES_DIR, { recursive: true });
-  }
+  // DATA_DIR is created above; scope subdirectories are created on demand by savePackageData
 
   // Load existing index for incremental updates
   const existingIndex = loadExistingIndex();
