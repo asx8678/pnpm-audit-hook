@@ -64,5 +64,7 @@ console.log("  1. git add .pnpmfile.cjs .pnpm-audit.yaml");
 console.log("  2. Customize .pnpm-audit.yaml for your project");
 console.log("  3. Test it with: pnpm add lodash");
 console.log("");
-console.log("You can also run audits manually: pnpm-audit-scan");
+console.log("Run audits manually:");
+console.log("  pnpm exec pnpm-audit-scan          # from this project");
+console.log("  pnpm-audit-scan                     # if installed globally");
 console.log("Add .pnpm-audit-cache/ to .gitignore");

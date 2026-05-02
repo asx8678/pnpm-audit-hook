@@ -49,9 +49,9 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json && node scripts/copy-static-db.js && node scripts/optimize-static-db.js && node scripts/bundle.js",
+    "build": "tsc -p tsconfig.json && node scripts/copy-static-db.js && node scripts/optimize-static-db.js && node scripts/bundle.js && node scripts/postbuild-link.js",
     "test": "node --import tsx --test test/**/*.test.ts",
-    "prepare": "tsc -p tsconfig.json && node scripts/copy-static-db.js && node scripts/optimize-static-db.js && node scripts/bundle.js",
+    "prepare": "tsc -p tsconfig.json && node scripts/copy-static-db.js && node scripts/optimize-static-db.js && node scripts/bundle.js && node scripts/postbuild-link.js",
     "update-vuln-db": "tsx scripts/update-vuln-db.ts --since=2021-01-01",
     "update-vuln-db:incremental": "tsx scripts/update-vuln-db.ts --incremental",
     "update-vuln-db:full": "tsx scripts/update-vuln-db.ts"
