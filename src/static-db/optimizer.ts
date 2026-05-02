@@ -423,7 +423,7 @@ export function expandIndex(opt: OptimizedIndex): StaticDbIndex {
 // File Compression
 // ============================================================================
 
-const COMPRESSION_THRESHOLD = 10 * 1024; // 10KB
+const COMPRESSION_THRESHOLD = 1024; // 1KB
 
 /**
  * Check if a file exists.
