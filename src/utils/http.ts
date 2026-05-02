@@ -2,6 +2,7 @@ import http from "node:http";
 import https from "node:https";
 import { sleep } from "./concurrency";
 import { isSafeUrl } from "./security";
+import { AdaptiveRateLimiter } from "./rate-limiter";
 
 /**
  * Pool metrics for monitoring connection pool health.
@@ -134,6 +135,11 @@ export interface HttpClientOptions {
   retries?: number;
   /** Connection pool configuration. Set to false to disable pooling. */
   pool?: PoolOptions | false;
+  /** Rate limiting configuration */
+  rateLimit?: {
+    maxRequests: number;
+    intervalMs: number;
+  };
 }
 
 /**
@@ -319,6 +325,7 @@ export class HttpClient {
   private readonly headers: Record<string, string>;
   private readonly retries: number;
   private readonly poolOptions: PoolOptions | false;
+  private readonly rateLimiter: AdaptiveRateLimiter | null;
 
   constructor(opts: HttpClientOptions) {
     this.timeoutMs = opts.timeoutMs;
@@ -326,6 +333,16 @@ export class HttpClient {
     this.headers = opts.headers ?? {};
     this.retries = opts.retries ?? 3;
     this.poolOptions = opts.pool ?? {};
+    
+    if (opts.rateLimit) {
+      this.rateLimiter = new AdaptiveRateLimiter({
+        maxRequests: opts.rateLimit.maxRequests,
+        intervalMs: opts.rateLimit.intervalMs,
+        name: "HttpClient",
+      });
+    } else {
+      this.rateLimiter = null;
+    }
   }
 
   getJson = <T>(url: string, extraHeaders?: Record<string, string>) =>
@@ -379,6 +396,14 @@ export class HttpClient {
     if (method === "POST") headers["content-type"] = "application/json";
 
     const fn = async (): Promise<Response> => {
+      // Wait if rate limited
+      if (this.rateLimiter) {
+        const waitTime = await this.rateLimiter.waitIfNeeded();
+        if (waitTime > 0) {
+          await sleep(waitTime);
+        }
+      }
+
       let res: Response;
 
       // Use connection pool if enabled, otherwise fall back to global fetch
@@ -410,6 +435,15 @@ export class HttpClient {
 
       // Check response status inside the retry function so retry logic can kick in
       if (!res.ok) {
+        // Handle rate limiting specifically
+        if (res.status === 429) {
+          if (this.rateLimiter) {
+            this.rateLimiter.onRateLimit();
+          }
+        } else if (this.rateLimiter) {
+          this.rateLimiter.onFailure();
+        }
+        
         const retryAfter = res.headers.get("retry-after") ?? undefined;
         const text = await res.text().catch(() => "");
         const suggestion = getStatusSuggestion(res.status);
@@ -422,6 +456,12 @@ export class HttpClient {
           responseText: text,
           suggestion,
         });
+      }
+      
+      // Update rate limiter state from headers
+      if (this.rateLimiter) {
+        this.rateLimiter.updateFromHeaders(res.headers);
+        this.rateLimiter.onSuccess();
       }
 
       return res;

@@ -56,6 +56,10 @@ export async function aggregateVulnerabilities(
     timeoutMs: ctx.cfg.performance?.timeoutMs ?? 15000,
     userAgent: "pnpm-audit-hook",
     retries: 2,
+    rateLimit: {
+      maxRequests: ctx.env.GITHUB_TOKEN || ctx.env.GH_TOKEN ? 100 : 10,
+      intervalMs: 60000, // 1 minute window
+    },
   });
 
   const queryCtx: SourceContext = {
