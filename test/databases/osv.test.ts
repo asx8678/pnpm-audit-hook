@@ -468,7 +468,7 @@ describe("OsvSource", () => {
   });
 
   describe("severity mapping", () => {
-    it("maps CVSS 9.0+ to critical", async () => {
+    it("maps CVSS 9.0+ to critical with correct score", async () => {
       const cache = createMockCache();
       const http = createMockHttpClient([{
         data: {
@@ -486,9 +486,10 @@ describe("OsvSource", () => {
       const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
 
       assert.equal(result.findings[0]!.severity, "critical");
+      assert.equal(result.findings[0]!.cvssScore, 9.8);
     });
 
-    it("maps CVSS 7.0-8.9 to high", async () => {
+    it("maps CVSS 7.0-8.9 to high with correct score", async () => {
       const cache = createMockCache();
       const http = createMockHttpClient([{
         data: {
@@ -506,9 +507,10 @@ describe("OsvSource", () => {
       const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
 
       assert.equal(result.findings[0]!.severity, "high");
+      assert.equal(result.findings[0]!.cvssScore, 7.5);
     });
 
-    it("maps CVSS 4.0-6.9 to medium", async () => {
+    it("maps CVSS 4.0-6.9 to medium with correct score", async () => {
       const cache = createMockCache();
       const http = createMockHttpClient([{
         data: {
@@ -526,9 +528,52 @@ describe("OsvSource", () => {
       const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
 
       assert.equal(result.findings[0]!.severity, "medium");
+      assert.equal(result.findings[0]!.cvssScore, 5.0);
     });
 
-    it("defaults to unknown when no severity info", async () => {
+    it("maps CVSS 0.1-3.9 to low with correct score", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([{
+        data: {
+          vulns: [createOsvVuln({
+            severity: [{ type: "CVSS_V3", score: "2.5/AV:L/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N" }],
+            affected: [{
+              package: { name: "pkg", ecosystem: "npm" },
+              ranges: [{ type: "SEMVER", events: [{ introduced: "0" }, { fixed: "2.0.0" }] }],
+            }],
+          })],
+        },
+      }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.findings[0]!.severity, "low");
+      assert.equal(result.findings[0]!.cvssScore, 2.5);
+    });
+
+    it("maps CVSS 0.0 to unknown severity with score 0", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([{
+        data: {
+          vulns: [createOsvVuln({
+            severity: [{ type: "CVSS_V3", score: "0.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N" }],
+            affected: [{
+              package: { name: "pkg", ecosystem: "npm" },
+              ranges: [{ type: "SEMVER", events: [{ introduced: "0" }, { fixed: "2.0.0" }] }],
+            }],
+          })],
+        },
+      }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.findings[0]!.severity, "unknown");
+      assert.equal(result.findings[0]!.cvssScore, 0);
+    });
+
+    it("defaults to unknown severity and undefined cvssScore when no severity info", async () => {
       const cache = createMockCache();
       const http = createMockHttpClient([{
         data: {
@@ -546,6 +591,28 @@ describe("OsvSource", () => {
       const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
 
       assert.equal(result.findings[0]!.severity, "unknown");
+      assert.equal(result.findings[0]!.cvssScore, undefined);
+    });
+
+    it("defaults to unknown severity and undefined cvssScore when severity has non-CVSS_V3 types", async () => {
+      const cache = createMockCache();
+      const http = createMockHttpClient([{
+        data: {
+          vulns: [createOsvVuln({
+            severity: [{ type: "OTHER", score: "HIGH" }],
+            affected: [{
+              package: { name: "pkg", ecosystem: "npm" },
+              ranges: [{ type: "SEMVER", events: [{ introduced: "0" }, { fixed: "2.0.0" }] }],
+            }],
+          })],
+        },
+      }]);
+      const ctx = createContext(cache, http);
+
+      const result = await source.query([{ name: "pkg", version: "1.0.0" }], ctx);
+
+      assert.equal(result.findings[0]!.severity, "unknown");
+      assert.equal(result.findings[0]!.cvssScore, undefined);
     });
   });
 
