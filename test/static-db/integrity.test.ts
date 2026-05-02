@@ -165,6 +165,70 @@ describe("Shard integrity verification", () => {
     );
   });
 
+  it("loads a scoped package shard and verifies integrity", async () => {
+    // Create a scoped package shard with proper @scope/name directory structure
+    const scopeDir = path.join(tempDir, "@angular");
+    await fs.mkdir(scopeDir, { recursive: true });
+
+    const shardPath = path.join(scopeDir, "core.json");
+    const shardData = {
+      packageName: "@angular/core",
+      lastUpdated: "2025-01-01T00:00:00Z",
+      vulnerabilities: [
+        {
+          id: "GHSA-2024-0001",
+          packageName: "@angular/core",
+          severity: "medium",
+          publishedAt: "2024-06-01T00:00:00Z",
+          affectedVersions: [{ range: "<17.0.0", fixed: "17.0.0" }],
+          source: "osv",
+          title: "XSS in @angular/core",
+        },
+      ],
+    };
+
+    const shardBuf = Buffer.from(JSON.stringify(shardData), "utf-8");
+    await fs.writeFile(shardPath, shardBuf);
+
+    const originalHash = sha256Hex(shardBuf);
+
+    // Integrity key uses forward-slash path: "@angular/core.json"
+    const integrity: Record<string, string> = {
+      "@angular/core.json": originalHash,
+    };
+
+    const index = {
+      schemaVersion: 1,
+      lastUpdated: "2025-01-01T00:00:00Z",
+      cutoffDate: "2025-12-31",
+      totalVulnerabilities: 1,
+      totalPackages: 1,
+      packages: {
+        "@angular/core": { count: 1, latestVuln: "2025-01-01T00:00:00Z", maxSeverity: "medium" },
+      },
+      integrity,
+    };
+
+    await fs.writeFile(path.join(tempDir, "index.json"), JSON.stringify(index));
+
+    const reader = await createStaticDbReader({
+      dataPath: tempDir,
+      cutoffDate: "2025-12-31",
+    });
+    assert.ok(reader, "Reader should initialize with scoped package");
+
+    const findings = await reader!.queryPackage("@angular/core");
+    assert.equal(findings.length, 1, "Should return the vulnerability from the scoped shard");
+    assert.equal(findings[0]?.id, "GHSA-2024-0001");
+    assert.equal(findings[0]?.source, "osv", "Source should be preserved as osv");
+
+    // No integrity warning should have been emitted
+    const integrityWarnings = warnMessages.filter((m) =>
+      m.includes("Shard integrity check failed"),
+    );
+    assert.equal(integrityWarnings.length, 0, "No integrity warnings for valid scoped shard");
+  });
+
   it("computeShardHash returns sha256- prefixed hex string", () => {
     const buf = Buffer.from("test content", "utf-8");
     const hash = computeShardHash(buf);
