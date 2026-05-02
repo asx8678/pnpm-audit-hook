@@ -10,14 +10,13 @@ describe("StaticDbReader compatibility", () => {
 
   beforeEach(async () => {
     tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "pnpm-audit-static-db-"));
-    await fs.mkdir(path.join(tempDir, "packages"), { recursive: true });
   });
 
   afterEach(async () => {
     await fs.rm(tempDir, { recursive: true, force: true });
   });
 
-  it("loads legacy packages/ shards and filters by version", async () => {
+  it("loads shards and filters by version", async () => {
     const index = {
       schemaVersion: 1,
       lastUpdated: "2025-01-01T00:00:00Z",
@@ -47,7 +46,7 @@ describe("StaticDbReader compatibility", () => {
       ],
     };
     await fs.writeFile(
-      path.join(tempDir, "packages", "lodash.json"),
+      path.join(tempDir, "lodash.json"),
       JSON.stringify(shard),
     );
 

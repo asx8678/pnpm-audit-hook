@@ -9,7 +9,8 @@ The static database provides fast, offline lookup of npm package vulnerabilities
 ## Contents
 
 - `index.json` - Database metadata and package index
-- `packages/` - Individual JSON files for each vulnerable package
+- `{name}.json` - Individual JSON shard for each vulnerable package (e.g. `lodash.json`)
+- `@scope/` - Subdirectories for scoped packages (e.g. `@angular/core.json`)
 
 ## Current Status
 
@@ -47,7 +48,7 @@ The static database provides fast, offline lookup of npm package vulnerabilities
 Legacy index files may use `vulnCount` and `lastModified` instead of
 `count`/`latestVuln`. The reader normalizes both formats at runtime.
 
-### packages/{name}.json
+### Shard files: `{name}.json` / `@scope/{name}.json`
 
 ```json
 {
@@ -140,7 +141,7 @@ The sample dataset includes well-known vulnerable packages:
 
 ## Notes
 
-- Scoped packages use `__` instead of `/` in filenames (e.g., `@babel/core` becomes `@babel__core.json`)
+- Scoped packages use subdirectories (e.g., `@angular/core.json` → `@angular/core.json`)
 - Descriptions are truncated to 500 characters to keep file sizes reasonable
 - The database includes vulnerabilities from 2019-2025
 - For the most current vulnerability data, the live GitHub Advisory API is used in parallel

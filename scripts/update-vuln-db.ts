@@ -52,9 +52,7 @@ const DATA_DIR = path.join(__dirname, "..", "src", "static-db", "data");
  * Shard path encoding scheme (must match src/static-db/reader.ts getShardPath):
  *   - Unscoped packages:  DATA_DIR/{name}.json          e.g. data/lodash.json
  *   - Scoped packages:    DATA_DIR/@scope/{name}.json    e.g. data/@angular/core.json
- * This avoids the legacy "packages/" flat directory with double-underscore encoding.
  */
-const LEGACY_PACKAGES_DIR = path.join(DATA_DIR, "packages");
 const INDEX_FILE = path.join(DATA_DIR, "index.json");
 const GITHUB_API = "https://api.github.com/graphql";
 const DEFAULT_CUTOFF = "2025-12-31T23:59:59Z";
@@ -236,18 +234,6 @@ function loadExistingPackageData(packageName: string): StaticPackageData | null 
   try {
     if (fs.existsSync(filePath)) {
       const raw = JSON.parse(fs.readFileSync(filePath, "utf-8")) as unknown;
-      return normalizePackageData(raw, packageName);
-    }
-  } catch {
-    // Ignore errors — fall through to try legacy path
-  }
-
-  // Try legacy flat-directory path for backward compatibility
-  const safeName = packageName.replace(/\//g, "__");
-  const legacyPath = path.join(LEGACY_PACKAGES_DIR, `${safeName}.json`);
-  try {
-    if (fs.existsSync(legacyPath)) {
-      const raw = JSON.parse(fs.readFileSync(legacyPath, "utf-8")) as unknown;
       return normalizePackageData(raw, packageName);
     }
   } catch {
