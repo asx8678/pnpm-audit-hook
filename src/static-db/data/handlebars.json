@@ -1,0 +1,58 @@
+{
+  "packageName": "handlebars",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f2jv-r9rf-7988",
+      "packageName": "handlebars",
+      "title": "Prototype Pollution in handlebars",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-f2jv-r9rf-7988",
+      "publishedAt": "2021-05-10T15:19:00Z",
+      "modifiedAt": "2023-09-08T19:54:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f2jv-r9rf-7988"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23369"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<4.7.7",
+          "fixed": "4.7.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-765h-qjxv-5f44",
+      "packageName": "handlebars",
+      "title": "Remote code execution in handlebars",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-765h-qjxv-5f44",
+      "publishedAt": "2020-09-04T17:52:00Z",
+      "modifiedAt": "2023-09-13T19:53:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-765h-qjxv-5f44"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-20920"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">=4.0.0 <4.5.3",
+          "fixed": "4.5.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

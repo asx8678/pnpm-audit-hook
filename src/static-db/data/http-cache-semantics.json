@@ -1,0 +1,32 @@
+{
+  "packageName": "http-cache-semantics",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rc47-6667-2j5j",
+      "packageName": "http-cache-semantics",
+      "title": "http-cache-semantics vulnerable to Regular Expression Denial of Service",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rc47-6667-2j5j",
+      "publishedAt": "2023-01-31T06:30:00Z",
+      "modifiedAt": "2023-09-07T21:34:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rc47-6667-2j5j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25881"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<4.1.1",
+          "fixed": "4.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

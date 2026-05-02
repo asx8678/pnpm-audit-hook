@@ -1,0 +1,58 @@
+{
+  "packageName": "node-forge",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5rrq-pxf6-6jx5",
+      "packageName": "node-forge",
+      "title": "Improper Verification of Cryptographic Signature in node-forge",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5rrq-pxf6-6jx5",
+      "publishedAt": "2022-01-12T22:16:00Z",
+      "modifiedAt": "2023-09-11T22:17:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5rrq-pxf6-6jx5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0122"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<1.0.0",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cfm4-qjh2-4765",
+      "packageName": "node-forge",
+      "title": "Prototype Pollution in node-forge",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cfm4-qjh2-4765",
+      "publishedAt": "2022-03-18T00:01:00Z",
+      "modifiedAt": "2023-09-07T21:28:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cfm4-qjh2-4765"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0144"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<1.0.0",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

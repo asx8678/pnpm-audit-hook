@@ -1,0 +1,31 @@
+{
+  "packageName": "ip",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-78xj-cgh5-2h22",
+      "packageName": "ip",
+      "title": "ip SSRF improper categorization in isPublic",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-78xj-cgh5-2h22",
+      "publishedAt": "2024-02-02T00:31:00Z",
+      "modifiedAt": "2024-02-09T00:36:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-78xj-cgh5-2h22"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-29415"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<=2.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

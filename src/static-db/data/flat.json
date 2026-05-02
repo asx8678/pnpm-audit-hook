@@ -1,0 +1,32 @@
+{
+  "packageName": "flat",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2j2x-2gpw-g8fm",
+      "packageName": "flat",
+      "title": "Prototype Pollution in flat",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-2j2x-2gpw-g8fm",
+      "publishedAt": "2022-12-06T00:30:00Z",
+      "modifiedAt": "2023-09-07T21:33:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2j2x-2gpw-g8fm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-36632"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<5.0.1",
+          "fixed": "5.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "braces",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-grv7-fg5c-xmjg",
+      "packageName": "braces",
+      "title": "Uncontrolled resource consumption in braces",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-grv7-fg5c-xmjg",
+      "publishedAt": "2024-03-05T21:20:00Z",
+      "modifiedAt": "2024-08-26T19:03:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-grv7-fg5c-xmjg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-4068"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<3.0.3",
+          "fixed": "3.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

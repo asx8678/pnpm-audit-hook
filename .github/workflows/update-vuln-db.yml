@@ -41,7 +41,7 @@ jobs:
         run: |
           if [ "${{ github.event_name == 'workflow_dispatch' && inputs.force_full == 'true' }}" = "true" ]; then
             echo "Force full update requested via workflow_dispatch"
-            pnpm run update-vuln-db
+            pnpm run update-vuln-db:full
           else
             echo "Running incremental update"
             pnpm run update-vuln-db:incremental
@@ -57,12 +57,14 @@ jobs:
       - name: Check for changes in tracked data files
         id: check_changes
         run: |
-          if git diff --quiet src/static-db/data/; then
+          # Only check package shard files — index.json always has a new timestamp even with no changes
+          # Use pathspec to exclude index.json from the diff check
+          if git diff --quiet -- 'src/static-db/data/' ':(exclude)src/static-db/data/index.json'; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "✅ No changes detected — skipping PR."
+            echo "No meaningful vulnerability data changes detected"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "📦 Changes detected in vulnerability database."
+            echo "Vulnerability data has changed - will create PR"
           fi
 
       - name: Extract database stats

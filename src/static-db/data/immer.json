@@ -1,0 +1,32 @@
+{
+  "packageName": "immer",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-33f9-j839-rf8h",
+      "packageName": "immer",
+      "title": "Prototype Pollution in immer",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-33f9-j839-rf8h",
+      "publishedAt": "2021-02-01T19:40:00Z",
+      "modifiedAt": "2023-09-08T19:54:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-33f9-j839-rf8h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23436"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<9.0.6",
+          "fixed": "9.0.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

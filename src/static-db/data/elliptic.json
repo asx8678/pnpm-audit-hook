@@ -1,0 +1,32 @@
+{
+  "packageName": "elliptic",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f7q4-pwc6-w24p",
+      "packageName": "elliptic",
+      "title": "Use of a Broken or Risky Cryptographic Algorithm in elliptic",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f7q4-pwc6-w24p",
+      "publishedAt": "2021-04-06T17:09:00Z",
+      "modifiedAt": "2023-09-08T19:54:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f7q4-pwc6-w24p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-13822"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<6.5.3",
+          "fixed": "6.5.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

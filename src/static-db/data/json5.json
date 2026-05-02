@@ -1,0 +1,32 @@
+{
+  "packageName": "json5",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9c47-m6qq-7p4h",
+      "packageName": "json5",
+      "title": "Prototype Pollution in JSON5 via Parse Method",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9c47-m6qq-7p4h",
+      "publishedAt": "2022-12-26T06:30:00Z",
+      "modifiedAt": "2023-09-07T21:33:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9c47-m6qq-7p4h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-46175"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<1.0.2",
+          "fixed": "1.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

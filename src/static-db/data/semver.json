@@ -1,0 +1,32 @@
+{
+  "packageName": "semver",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c2qf-rxjj-qqgw",
+      "packageName": "semver",
+      "title": "semver vulnerable to Regular Expression Denial of Service",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-c2qf-rxjj-qqgw",
+      "publishedAt": "2023-06-21T18:31:00Z",
+      "modifiedAt": "2024-06-21T21:33:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c2qf-rxjj-qqgw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25883"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">=6.0.0 <6.3.1",
+          "fixed": "6.3.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

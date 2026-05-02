@@ -1,0 +1,32 @@
+{
+  "packageName": "underscore",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cf4h-3jhx-xvhq",
+      "packageName": "underscore",
+      "title": "Arbitrary Code Execution in underscore",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cf4h-3jhx-xvhq",
+      "publishedAt": "2021-07-12T21:15:00Z",
+      "modifiedAt": "2023-09-08T19:54:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cf4h-3jhx-xvhq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23358"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<1.13.0-2",
+          "fixed": "1.13.0-2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

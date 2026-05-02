@@ -1,0 +1,32 @@
+{
+  "packageName": "micromatch",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-952p-6rrq-rcjv",
+      "packageName": "micromatch",
+      "title": "micromatch ReDoS vulnerability",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-952p-6rrq-rcjv",
+      "publishedAt": "2024-08-21T06:32:00Z",
+      "modifiedAt": "2024-08-23T03:52:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-952p-6rrq-rcjv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-4067"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<4.0.8",
+          "fixed": "4.0.8"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

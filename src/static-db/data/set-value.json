@@ -1,0 +1,32 @@
+{
+  "packageName": "set-value",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4jqc-8m5r-9rpr",
+      "packageName": "set-value",
+      "title": "Prototype Pollution in set-value",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4jqc-8m5r-9rpr",
+      "publishedAt": "2020-09-11T19:10:00Z",
+      "modifiedAt": "2023-09-11T22:28:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4jqc-8m5r-9rpr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23440"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<2.0.1",
+          "fixed": "2.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

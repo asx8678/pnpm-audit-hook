@@ -1,0 +1,32 @@
+{
+  "packageName": "merge-deep",
+  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r75c-c2vw-p9hx",
+      "packageName": "merge-deep",
+      "title": "Prototype pollution in merge-deep",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-r75c-c2vw-p9hx",
+      "publishedAt": "2022-02-10T20:22:00Z",
+      "modifiedAt": "2023-09-08T19:54:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r75c-c2vw-p9hx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23447"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<3.0.3",
+          "fixed": "3.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}
