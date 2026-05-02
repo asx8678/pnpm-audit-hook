@@ -31,6 +31,13 @@ export interface AuditResult {
   sourceStatus: Record<string, SourceStatus>;
   totalPackages: number;
   durationMs: number;
+  cacheStats?: {
+    hitRate: number;
+    totalEntries: number;
+    totalSizeBytes: number;
+    averageReadTimeMs: number;
+    averageWriteTimeMs: number;
+  };
 }
 
 export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions): Promise<AuditResult> {
@@ -128,6 +135,12 @@ export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions):
     getOutputFormat(env),
   );
 
+  // Get cache statistics
+  const cacheStats = cache.getStatistics();
+  const hitRate = cacheStats.hits + cacheStats.misses > 0
+    ? cacheStats.hits / (cacheStats.hits + cacheStats.misses)
+    : 0;
+
   return {
     blocked,
     warnings,
@@ -137,5 +150,12 @@ export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions):
     sourceStatus: agg.sources,
     totalPackages: packages.length,
     durationMs,
+    cacheStats: {
+      hitRate,
+      totalEntries: cacheStats.totalEntries,
+      totalSizeBytes: cacheStats.totalSizeBytes,
+      averageReadTimeMs: cacheStats.averageReadTimeMs,
+      averageWriteTimeMs: cacheStats.averageWriteTimeMs,
+    },
   };
 }

@@ -42,13 +42,50 @@ function createMockCache(): Cache & { store: Map<string, CacheEntry<unknown>> } 
       }
       return entry;
     },
-    async set(key: string, value: unknown, ttlSeconds: number): Promise<void> {
+    async set(key: string, value: unknown, ttlSeconds: number, options?: { version?: string; dependencies?: string[] }): Promise<void> {
       const now = Date.now();
       store.set(key, {
         value,
         storedAt: now,
         expiresAt: now + ttlSeconds * 1000,
+        version: options?.version,
+        dependencies: options?.dependencies,
       });
+    },
+    async delete(key: string): Promise<boolean> {
+      return store.delete(key);
+    },
+    async has(key: string): Promise<boolean> {
+      return store.has(key);
+    },
+    async clear(): Promise<void> {
+      store.clear();
+    },
+    getStatistics() {
+      return {
+        hits: 0,
+        misses: 0,
+        sets: 0,
+        deletes: 0,
+        evictions: 0,
+        totalEntries: store.size,
+        totalSizeBytes: 0,
+        averageReadTimeMs: 0,
+        averageWriteTimeMs: 0,
+        prunedEntries: 0,
+      };
+    },
+    async prune() {
+      return { pruned: 0, failed: 0 };
+    },
+    getHealth() {
+      return {
+        status: 'healthy',
+        hitRate: 0,
+        sizeBytes: 0,
+        entryCount: store.size,
+        recommendations: [],
+      };
     },
   };
 }

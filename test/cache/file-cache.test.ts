@@ -320,4 +320,232 @@ describe("FileCache", () => {
       assert.equal(result.failed, 0);
     });
   });
+
+  describe("Enhanced Features", () => {
+    describe("LRU eviction in path cache", () => {
+      it("should evict oldest entries when path cache exceeds limit", async () => {
+        const lruCache = new FileCache<string>({ 
+          dir: tempDir, 
+          maxPathCacheEntries: 2 // Very small limit for testing
+        });
+
+        // Add 3 entries
+        await lruCache.set("key1", "value1", 3600);
+        await lruCache.set("key2", "value2", 3600);
+        await lruCache.set("key3", "value3", 3600);
+
+        // Access key1 to make it recently used
+        await lruCache.get("key1");
+
+        // Add another entry to trigger eviction
+        await lruCache.set("key4", "value4", 3600);
+
+        // All values should still be retrievable from disk
+        const val1 = await lruCache.get("key1");
+        const val2 = await lruCache.get("key2");
+        const val3 = await lruCache.get("key3");
+        const val4 = await lruCache.get("key4");
+
+        assert.equal(val1?.value, "value1");
+        assert.equal(val2?.value, "value2");
+        assert.equal(val3?.value, "value3");
+        assert.equal(val4?.value, "value4");
+
+        // Check that evictions happened in memory
+        const stats = lruCache.getStatistics();
+        assert.ok(stats.evictions > 0, "Should have evicted some entries");
+      });
+
+      it("should maintain access order for LRU behavior", async () => {
+        const lruCache = new FileCache<string>({ 
+          dir: tempDir, 
+          maxPathCacheEntries: 2
+        });
+
+        await lruCache.set("key1", "value1", 3600);
+        await lruCache.set("key2", "value2", 3600);
+
+        // Access key1 to make it recently used
+        await lruCache.get("key1");
+
+        // Add key3 - should evict key2 (least recently used)
+        await lruCache.set("key3", "value3", 3600);
+
+        // key1 should be in memory cache (recently accessed)
+        // key2 and key3 might need disk reads
+        const val1 = await lruCache.get("key1");
+        assert.equal(val1?.value, "value1");
+      });
+    });
+
+    describe("Cache statistics", () => {
+      it("should track hit/miss ratios", async () => {
+        const statsCache = new FileCache<string>({ dir: tempDir });
+
+        // Initially all misses
+        await statsCache.get("nonexistent1");
+        await statsCache.get("nonexistent2");
+
+        let stats = statsCache.getStatistics();
+        assert.equal(stats.hits, 0);
+        assert.equal(stats.misses, 2);
+
+        // Add an entry
+        await statsCache.set("existing", "value", 3600);
+
+        // Hit
+        await statsCache.get("existing");
+        stats = statsCache.getStatistics();
+        assert.equal(stats.hits, 1);
+        assert.equal(stats.misses, 2);
+      });
+
+      it("should track cache size", async () => {
+        const statsCache = new FileCache<string>({ dir: tempDir });
+
+        await statsCache.set("key1", "value1", 3600);
+        await statsCache.set("key2", "value2", 3600);
+
+        const stats = statsCache.getStatistics();
+        assert.ok(stats.totalSizeBytes > 0, "Should track total size");
+        assert.ok(stats.sets >= 2, "Should track sets");
+      });
+
+      it("should track performance metrics", async () => {
+        const statsCache = new FileCache<string>({ dir: tempDir });
+
+        await statsCache.set("key1", "value1", 3600);
+        await statsCache.get("key1");
+
+        const stats = statsCache.getStatistics();
+        assert.ok(stats.averageReadTimeMs >= 0, "Should track read performance");
+        assert.ok(stats.averageWriteTimeMs >= 0, "Should track write performance");
+      });
+    });
+
+    describe("Smart invalidation", () => {
+      it("should support version-aware caching", async () => {
+        const versionCache = new FileCache<string>({ dir: tempDir });
+
+        // Store with version
+        await versionCache.set("key1", "value1", 3600, { version: "1.0" });
+
+        // Retrieve
+        const entry = await versionCache.get("key1");
+        assert.equal(entry?.version, "1.0");
+        assert.equal(entry?.value, "value1");
+      });
+
+      it("should support dependency tracking", async () => {
+        const depCache = new FileCache<string>({ dir: tempDir });
+
+        // Store with dependencies
+        await depCache.set("key1", "value1", 3600, { 
+          dependencies: ["dep1", "dep2"] 
+        });
+
+        // Retrieve
+        const entry = await depCache.get("key1");
+        assert.deepEqual(entry?.dependencies, ["dep1", "dep2"]);
+      });
+    });
+
+    describe("Cache operations", () => {
+      it("should delete entries", async () => {
+        const opCache = new FileCache<string>({ dir: tempDir });
+
+        await opCache.set("key1", "value1", 3600);
+        const deleted = await opCache.delete("key1");
+        assert.equal(deleted, true);
+
+        const entry = await opCache.get("key1");
+        assert.equal(entry, null);
+      });
+
+      it("should check if key exists", async () => {
+        const opCache = new FileCache<string>({ dir: tempDir });
+
+        await opCache.set("key1", "value1", 3600);
+
+        assert.equal(await opCache.has("key1"), true);
+        assert.equal(await opCache.has("nonexistent"), false);
+      });
+
+      it("should clear all entries", async () => {
+        const opCache = new FileCache<string>({ dir: tempDir });
+
+        await opCache.set("key1", "value1", 3600);
+        await opCache.set("key2", "value2", 3600);
+
+        await opCache.clear();
+
+        assert.equal(await opCache.has("key1"), false);
+        assert.equal(await opCache.has("key2"), false);
+      });
+    });
+
+    describe("Cache health", () => {
+      it("should report healthy status for good cache", async () => {
+        const healthCache = new FileCache<string>({ dir: tempDir });
+
+        // Add some entries and access them
+        await healthCache.set("key1", "value1", 3600);
+        await healthCache.set("key2", "value2", 3600);
+        await healthCache.get("key1");
+        await healthCache.get("key2");
+
+        const health = healthCache.getHealth();
+        assert.equal(health.status, "healthy");
+        assert.ok(health.hitRate > 0.5, "Should have good hit rate");
+        assert.ok(health.entryCount >= 2, "Should track entry count");
+      });
+
+      it("should provide recommendations", async () => {
+        const healthCache = new FileCache<string>({ dir: tempDir });
+
+        // Create poor cache performance
+        for (let i = 0; i < 10; i++) {
+          await healthCache.get(`nonexistent${i}`);
+        }
+
+        const health = healthCache.getHealth();
+        assert.ok(health.recommendations.length > 0, "Should have recommendations");
+      });
+    });
+
+    describe("Size-based pruning", () => {
+      it("should enforce entry count limits", async () => {
+        const limitCache = new FileCache<string>({ 
+          dir: tempDir, 
+          maxEntries: 2 
+        });
+
+        // Add 3 entries - should trigger pruning
+        await limitCache.set("key1", "value1", 3600);
+        await limitCache.set("key2", "value2", 3600);
+        await limitCache.set("key3", "value3", 3600);
+
+        // At least some entries should have been pruned
+        const stats = limitCache.getStatistics();
+        assert.ok(stats.evictions > 0, "Should have evicted entries");
+      });
+    });
+
+    describe("Pruning updates statistics", () => {
+      it("should update statistics after pruning", async () => {
+        const pruneStatsCache = new FileCache<string>({ dir: tempDir });
+
+        await pruneStatsCache.set("key1", "value1", 0.001); // 1ms TTL
+        await new Promise(resolve => setTimeout(resolve, 10));
+
+        const beforeStats = pruneStatsCache.getStatistics();
+        await pruneStatsCache.prune();
+        const afterStats = pruneStatsCache.getStatistics();
+
+        assert.ok(afterStats.prunedEntries >= beforeStats.prunedEntries + 1, 
+          "Should update prunedEntries count");
+        assert.ok(afterStats.lastPruneTime, "Should update lastPruneTime");
+      });
+    });
+  });
 });
