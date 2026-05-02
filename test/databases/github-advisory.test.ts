@@ -20,6 +20,7 @@ function baseConfig(): AuditConfig {
     sources: {
       github: { enabled: true },
       nvd: { enabled: true },
+      osv: { enabled: true },
     },
     performance: { timeoutMs: 15000 },
     cache: { ttlSeconds: 3600 },

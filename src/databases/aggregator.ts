@@ -1,10 +1,11 @@
 import path from "node:path";
 import type { AuditConfig, PackageRef, VulnerabilityFinding } from "../types";
 import type { Cache } from "../cache/types";
-import type { SourceContext } from "./connector";
+import type { SourceContext, VulnerabilitySource } from "./connector";
 import type { StaticDbReader } from "../static-db/reader";
 import { HttpClient } from "../utils/http";
 import { GitHubAdvisorySource } from "./github-advisory";
+import { OsvSource } from "./osv";
 import { enrichFindingsWithNvd } from "./nvd";
 import { logger } from "../utils/logger";
 import { errorMessage } from "../utils/error";
@@ -90,13 +91,15 @@ export async function aggregateVulnerabilities(
   // This ensures API queries align with the DB's actual coverage.
   const effectiveCutoffDate = staticDb?.getCutoffDate() ?? staticBaselineCfg?.cutoffDate;
 
-  // GitHub Advisory is the primary (and only) vulnerability source
-  // Pass static DB for hybrid lookup if available
+  // Register vulnerability sources
   const githubSource = new GitHubAdvisorySource({
     staticDb,
     cutoffDate: effectiveCutoffDate,
   });
-  const githubEnabled = githubSource.isEnabled(ctx.cfg, ctx.env);
+  const osvSource = new OsvSource();
+
+  const sources: VulnerabilitySource[] = [githubSource, osvSource];
+  const enabledSources = sources.filter((s) => s.isEnabled(ctx.cfg, ctx.env));
 
   // Offline mode: skip API calls entirely, rely on static DB + cache
   const isOffline = ctx.cfg.offline;
@@ -104,9 +107,15 @@ export async function aggregateVulnerabilities(
     logger.info("Offline mode: skipping live API queries, using static DB and cache only");
   }
 
-  if (!githubEnabled) {
-    logger.warn("GitHub Advisory source is disabled - no vulnerability checks will be performed");
-    sourceStatus[githubSource.id] = { ok: true, error: "disabled by configuration", durationMs: 0 };
+  // Track disabled sources in status
+  for (const s of sources) {
+    if (!s.isEnabled(ctx.cfg, ctx.env)) {
+      sourceStatus[s.id] = { ok: true, error: "disabled by configuration", durationMs: 0 };
+    }
+  }
+
+  if (enabledSources.length === 0) {
+    logger.warn("All vulnerability sources are disabled - no vulnerability checks will be performed");
 
     // Fail-closed: block when no sources are enabled (default behavior for security)
     if (ctx.cfg.failOnNoSources !== false) {
@@ -116,27 +125,40 @@ export async function aggregateVulnerabilities(
     return { findings: [], sources: sourceStatus };
   }
 
+  // Query each enabled source and merge findings
   let findings: VulnerabilityFinding[] = [];
-  try {
-    const result = await githubSource.query(pkgs, queryCtx, { offline: isOffline });
-    findings = result.findings;
-    sourceStatus[githubSource.id] = { ok: result.ok, error: result.error, durationMs: result.durationMs };
+  const sourceErrors: string[] = [];
 
-    // Fail-closed on partial failure (default: true for security)
-    if (!result.ok && ctx.cfg.failOnSourceError !== false) {
-      throw new Error(`GitHub Advisory source failed: ${result.error}`);
-    }
-  } catch (e) {
-    const errMsg = errorMessage(e);
-    logger.error(`GitHub Advisory source failed: ${errMsg}`);
-    if (!sourceStatus[githubSource.id]) {
-      sourceStatus[githubSource.id] = { ok: false, error: errMsg, durationMs: 0 };
-    }
+  for (const source of enabledSources) {
+    try {
+      const result = await source.query(pkgs, queryCtx, { offline: isOffline });
+      findings.push(...result.findings);
+      sourceStatus[source.id] = { ok: result.ok, error: result.error, durationMs: result.durationMs };
 
-    // Fail-closed on exception (default: true for security)
-    if (ctx.cfg.failOnSourceError !== false) {
-      throw e;
+      if (!result.ok) {
+        sourceErrors.push(`${source.id}: ${result.error}`);
+        // Fail-closed on source failure (default: true for security)
+        if (ctx.cfg.failOnSourceError !== false) {
+          throw new Error(`${source.id} source failed: ${result.error}`);
+        }
+      }
+    } catch (e) {
+      const errMsg = errorMessage(e);
+      logger.error(`${source.id} source failed: ${errMsg}`);
+      if (!sourceStatus[source.id]) {
+        sourceStatus[source.id] = { ok: false, error: errMsg, durationMs: 0 };
+      }
+      sourceErrors.push(`${source.id}: ${errMsg}`);
+
+      // Fail-closed on exception (default: true for security)
+      if (ctx.cfg.failOnSourceError !== false) {
+        throw e;
+      }
     }
+  }
+
+  if (sourceErrors.length > 0) {
+    logger.warn(`Vulnerability source errors: ${sourceErrors.join(", ")}`);
   }
 
   // Deduplicate findings (in case of duplicates within GitHub response)

@@ -69,7 +69,7 @@ describe("runAudit", () => {
 
     it("decisions array contains PolicyDecision objects", async () => {
       await writeConfig({
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         failOnNoSources: false,
       });
 
@@ -96,7 +96,7 @@ describe("runAudit", () => {
     it("throws when failOnNoSources is true (default) and all sources disabled", async () => {
       await writeConfig({
         policy: { block: ["critical"], warn: [] },
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         failOnNoSources: true,
       });
 
@@ -116,7 +116,7 @@ describe("runAudit", () => {
     it("does not throw when failOnNoSources is false and all sources disabled", async () => {
       await writeConfig({
         policy: { block: ["critical"], warn: [] },
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         failOnNoSources: false,
       });
 
@@ -135,7 +135,7 @@ describe("runAudit", () => {
 
     it("uses default failOnNoSources=true when not specified", async () => {
       await writeConfig({
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         // failOnNoSources not specified - should default to true
       });
 
@@ -180,7 +180,7 @@ describe("runAudit", () => {
           warn: ["medium", "low"],
           allowlist: [],
         },
-        sources: { github: true, nvd: false },
+        sources: { github: true, nvd: false, osv: false },
       });
 
       const { runAudit } = await import("../src/audit");
@@ -242,7 +242,7 @@ describe("runAudit", () => {
         path.join(customDir, "audit-config.yaml"),
         yaml.stringify({
           policy: { block: ["low"], warn: [] },
-          sources: { github: false, nvd: false },
+          sources: { github: false, nvd: false, osv: false },
           failOnNoSources: false,
         })
       );
@@ -285,7 +285,7 @@ describe("runAudit", () => {
   describe("lockfile parsing", () => {
     it("extracts packages from lockfile", async () => {
       await writeConfig({
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         failOnNoSources: false,
       });
 
@@ -307,7 +307,7 @@ describe("runAudit", () => {
 
     it("handles empty lockfile", async () => {
       await writeConfig({
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         failOnNoSources: false,
       });
 
@@ -327,7 +327,7 @@ describe("runAudit", () => {
 
     it("handles scoped packages", async () => {
       await writeConfig({
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         failOnNoSources: false,
       });
 
@@ -351,7 +351,7 @@ describe("runAudit", () => {
     it("blocked is true when any decision has action=block", async () => {
       // Test by triggering fail-closed behavior
       await writeConfig({
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         failOnNoSources: true,
       });
 
@@ -370,7 +370,7 @@ describe("runAudit", () => {
     it("warnings is false when no warn decisions exist", async () => {
       await writeConfig({
         policy: { block: [], warn: [] },
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         failOnNoSources: false,
       });
 
@@ -388,7 +388,7 @@ describe("runAudit", () => {
 
     it("returns empty decisions when no findings and no source errors", async () => {
       await writeConfig({
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         failOnNoSources: false,
       });
 
@@ -408,7 +408,7 @@ describe("runAudit", () => {
   describe("cache initialization", () => {
     it("initializes cache with cwd-relative path", async () => {
       await writeConfig({
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         failOnNoSources: false,
       });
 
@@ -435,7 +435,7 @@ describe("runAudit", () => {
       await fs.writeFile(
         path.join(customCwd, ".pnpm-audit.yaml"),
         yaml.stringify({
-          sources: { github: false, nvd: false },
+          sources: { github: false, nvd: false, osv: false },
           failOnNoSources: false,
         })
       );
@@ -460,7 +460,7 @@ describe("runAudit", () => {
       await fs.writeFile(
         path.join(customConfigDir, "my-audit.yaml"),
         yaml.stringify({
-          sources: { github: false, nvd: false },
+          sources: { github: false, nvd: false, osv: false },
           failOnNoSources: false,
         })
       );
@@ -479,7 +479,7 @@ describe("runAudit", () => {
 
     it("passes registryUrl to aggregator context", async () => {
       await writeConfig({
-        sources: { github: false, nvd: false },
+        sources: { github: false, nvd: false, osv: false },
         failOnNoSources: false,
       });
 
@@ -580,7 +580,7 @@ describe("source status recording", () => {
     // Both have source: "source"
 
     await writeConfig({
-      sources: { github: false, nvd: false },
+      sources: { github: false, nvd: false, osv: false },
       failOnNoSources: false,
     });
 
@@ -599,7 +599,7 @@ describe("source status recording", () => {
 
   it("disabled sources log warning but dont add decision if no error", async () => {
     await writeConfig({
-      sources: { github: false, nvd: false },
+      sources: { github: false, nvd: false, osv: false },
       failOnNoSources: false,
     });
 
@@ -629,7 +629,7 @@ describe("source status recording", () => {
     // Create a config that would block on source errors
     const cfg = {
       policy: { block: ["critical"], warn: [], allowlist: [] },
-      sources: { github: { enabled: true }, nvd: { enabled: true } },
+      sources: { github: { enabled: true }, nvd: { enabled: true }, osv: { enabled: false } },
       performance: { timeoutMs: 15000 },
       cache: { ttlSeconds: 3600 },
       failOnNoSources: true,
@@ -669,7 +669,7 @@ describe("source status recording", () => {
     // Test that when multiple packages have findings, all decisions are recorded
     await writeConfig({
       policy: { block: ["critical", "high"], warn: ["medium", "low"], allowlist: [] },
-      sources: { github: false, nvd: false },
+      sources: { github: false, nvd: false, osv: false },
       failOnNoSources: false,
     });
 
@@ -677,7 +677,7 @@ describe("source status recording", () => {
 
     const cfg = {
       policy: { block: ["critical", "high"], warn: ["medium", "low"], allowlist: [] },
-      sources: { github: { enabled: true }, nvd: { enabled: true } },
+      sources: { github: { enabled: true }, nvd: { enabled: true }, osv: { enabled: false } },
       performance: { timeoutMs: 15000 },
       cache: { ttlSeconds: 3600 },
       failOnNoSources: true,
@@ -737,7 +737,7 @@ describe("source status recording", () => {
 
     const cfg = {
       policy: { block: ["critical"], warn: ["high", "medium", "low"], allowlist: [] },
-      sources: { github: { enabled: true }, nvd: { enabled: true } },
+      sources: { github: { enabled: true }, nvd: { enabled: true }, osv: { enabled: false } },
       performance: { timeoutMs: 15000 },
       cache: { ttlSeconds: 3600 },
       failOnNoSources: true,
@@ -962,7 +962,7 @@ describe("multiple package decision accumulation", () => {
 
   it("processes multiple packages and accumulates all decisions", async () => {
     await writeConfig({
-      sources: { github: false, nvd: false },
+      sources: { github: false, nvd: false, osv: false },
       failOnNoSources: false,
     });
 
@@ -991,7 +991,7 @@ describe("multiple package decision accumulation", () => {
 
     const cfg = {
       policy: { block: ["critical", "high"], warn: ["medium"], allowlist: [] },
-      sources: { github: { enabled: true }, nvd: { enabled: true } },
+      sources: { github: { enabled: true }, nvd: { enabled: true }, osv: { enabled: false } },
       performance: { timeoutMs: 15000 },
       cache: { ttlSeconds: 3600 },
       failOnNoSources: true,
@@ -1076,7 +1076,7 @@ describe("multiple package decision accumulation", () => {
 
     const cfg = {
       policy: { block: ["critical"], warn: ["high", "medium", "low"], allowlist: [] },
-      sources: { github: { enabled: true }, nvd: { enabled: true } },
+      sources: { github: { enabled: true }, nvd: { enabled: true }, osv: { enabled: false } },
       performance: { timeoutMs: 15000 },
       cache: { ttlSeconds: 3600 },
       failOnNoSources: true,
@@ -1116,7 +1116,7 @@ describe("multiple package decision accumulation", () => {
 
     const cfg = {
       policy: { block: ["critical"], warn: ["high"], allowlist: [] },
-      sources: { github: { enabled: true }, nvd: { enabled: true } },
+      sources: { github: { enabled: true }, nvd: { enabled: true }, osv: { enabled: false } },
       performance: { timeoutMs: 15000 },
       cache: { ttlSeconds: 3600 },
       failOnNoSources: true,

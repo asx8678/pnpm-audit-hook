@@ -22,6 +22,7 @@ function baseConfig(): AuditConfig {
     sources: {
       github: { enabled: true },
       nvd: { enabled: true },
+      osv: { enabled: false },
     },
     performance: { timeoutMs: 15000 },
     cache: { ttlSeconds: 3600 },
@@ -89,11 +90,12 @@ describe("aggregateVulnerabilities", () => {
   });
 
   describe("source disabled behavior", () => {
-    it("throws error when GitHub source is disabled and failOnNoSources is true", async () => {
+    it("throws error when all sources are disabled and failOnNoSources is true", async () => {
       const ctx = createMockContext({
         sources: {
           github: { enabled: false },
           nvd: { enabled: true },
+          osv: { enabled: false },
         },
         failOnNoSources: true,
       });
@@ -107,11 +109,12 @@ describe("aggregateVulnerabilities", () => {
       );
     });
 
-    it("returns empty findings when GitHub source is disabled and failOnNoSources is false", async () => {
+    it("returns empty findings when all sources are disabled and failOnNoSources is false", async () => {
       const ctx = createMockContext({
         sources: {
           github: { enabled: false },
           nvd: { enabled: true },
+          osv: { enabled: false },
         },
         failOnNoSources: false,
       });
@@ -136,9 +139,28 @@ describe("aggregateVulnerabilities", () => {
 
       const result = await aggregateVulnerabilities([{ name: "test-pkg", version: "1.0.0" }], ctx);
 
-      assert.deepEqual(result.findings, []);
+      // OSV is still enabled, so findings may be returned
       assert.ok(result.sources.github);
       assert.equal(result.sources.github.error, "disabled by configuration");
+    });
+
+    it("respects PNPM_AUDIT_DISABLE_OSV env var", async () => {
+      const ctx = createMockContext({
+        failOnNoSources: false,
+        sources: {
+          github: { enabled: true },
+          nvd: { enabled: true },
+          osv: { enabled: true },
+        },
+      });
+      ctx.env.PNPM_AUDIT_DISABLE_OSV = "true";
+
+      const { aggregateVulnerabilities } = await import("../../src/databases/aggregator");
+
+      const result = await aggregateVulnerabilities([{ name: "test-pkg", version: "1.0.0" }], ctx);
+
+      assert.ok(result.sources.osv);
+      assert.equal(result.sources.osv.error, "disabled by configuration");
     });
   });
 
@@ -268,6 +290,7 @@ describe("aggregateVulnerabilities", () => {
         sources: {
           github: { enabled: true },
           nvd: { enabled: false },
+          osv: { enabled: false },
         },
       });
 
@@ -347,6 +370,7 @@ describe("aggregateVulnerabilities", () => {
         sources: {
           github: { enabled: false },
           nvd: { enabled: true },
+          osv: { enabled: false },
         },
         failOnNoSources: false,
       });
@@ -456,6 +480,7 @@ describe("aggregateVulnerabilities", () => {
         sources: {
           github: { enabled: false },
           nvd: { enabled: true },
+          osv: { enabled: false },
         },
       });
 

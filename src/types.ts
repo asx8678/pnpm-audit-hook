@@ -1,5 +1,5 @@
 export type Severity = "critical" | "high" | "medium" | "low" | "unknown";
-export type FindingSource = "github" | "nvd";
+export type FindingSource = "github" | "nvd" | "osv";
 export type PolicyAction = "allow" | "warn" | "block";
 export type DecisionSource = "severity" | "source" | "allowlist";
 export type VulnerabilityIdType = "CVE" | "GHSA" | "OSV" | "OTHER";
@@ -122,6 +122,7 @@ export interface AuditConfigInput {
   sources?: {
     github?: boolean | { enabled?: boolean };
     nvd?: boolean | { enabled?: boolean };
+    osv?: boolean | { enabled?: boolean };
   };
   performance?: {
     timeoutMs?: number;
@@ -149,6 +150,7 @@ export interface AuditConfig {
   sources: {
     github: { enabled: boolean };
     nvd: { enabled: boolean };
+    osv: { enabled: boolean };
   };
   performance: {
     timeoutMs: number;
