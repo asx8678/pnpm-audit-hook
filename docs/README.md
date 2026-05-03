@@ -17,6 +17,12 @@ This directory contains comprehensive documentation for the pnpm-audit-hook proj
 - [Phase 8: Documentation](phase-8-documentation.md) - Documentation enhancements
 
 ### Technical Documentation
+- [Architecture Overview](architecture/README.md) - System architecture and design
+- [Components](architecture/components.md) - Detailed component documentation
+- [Data Flow](architecture/data-flow.md) - How data moves through the system
+- [Design Decisions](architecture/decisions.md) - Architecture Decision Records
+- [Design Patterns](architecture/patterns.md) - Patterns used in the codebase
+- [Contributor Guide](architecture/contributor-guide.md) - How to contribute
 - [Static Database](static-db/README.md) - Static vulnerability database documentation
 - [Database Packaging Evaluation](db-packaging-evaluation.md) - Database packaging analysis
 
@@ -30,9 +36,12 @@ This directory contains comprehensive documentation for the pnpm-audit-hook proj
 - [Troubleshooting](../README.md#troubleshooting) - Common issues and solutions
 
 ### For Contributors
-- [Architecture Overview](architecture.md) - System architecture (coming soon)
-- [API Documentation](api.md) - API reference (coming soon)
-- [Contributing Guide](../CONTRIBUTING.md) - How to contribute
+- [Architecture Overview](architecture/README.md) - System architecture
+- [Component Details](architecture/components.md) - Deep dive into components
+- [Data Flow](architecture/data-flow.md) - How data moves through the system
+- [Design Decisions](architecture/decisions.md) - Architecture Decision Records
+- [Design Patterns](architecture/patterns.md) - Patterns used in the codebase
+- [Contributor Guide](architecture/contributor-guide.md) - How to contribute
 - [Development Setup](../README.md#local-development) - Local development guide
 
 ### For Security
@@ -121,10 +130,11 @@ This directory contains comprehensive documentation for the pnpm-audit-hook proj
 
 We welcome contributions to improve pnpm-audit-hook! Here's how you can help:
 
-1. **Report issues**: Use GitHub issues for bugs and feature requests
-2. **Submit pull requests**: Follow the contributing guidelines
-3. **Improve documentation**: Help us improve docs and examples
-4. **Share feedback**: Let us know how we can improve
+1. **Read the [Contributor Guide](architecture/contributor-guide.md)** for detailed instructions
+2. **Report issues**: Use GitHub issues for bugs and feature requests
+3. **Submit pull requests**: Follow the contributing guidelines in [CONTRIBUTING.md](../CONTRIBUTING.md)
+4. **Improve documentation**: Help us improve docs and examples
+5. **Share feedback**: Let us know how we can improve
 
 ## Support
 

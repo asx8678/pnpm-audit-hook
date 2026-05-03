@@ -1522,6 +1522,15 @@ For packaging alternatives and tradeoffs, see [`docs/db-packaging-evaluation.md`
 
 ## Architecture
 
+> 📚 **For detailed architecture documentation, see the [Architecture Documentation](docs/architecture/README.md)**
+>
+> - [Architecture Overview](docs/architecture/README.md) - System design and high-level overview
+> - [Component Details](docs/architecture/components.md) - Deep dive into each component
+> - [Data Flow](docs/architecture/data-flow.md) - How data moves through the system
+> - [Design Decisions](docs/architecture/decisions.md) - Architecture Decision Records (ADRs)
+> - [Design Patterns](docs/architecture/patterns.md) - Patterns used in the codebase
+> - [Contributor Guide](docs/architecture/contributor-guide.md) - How to contribute
+
 ### Component Map
 
 ```text
