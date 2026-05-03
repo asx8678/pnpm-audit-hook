@@ -10,7 +10,7 @@
 import type { Severity, VulnerabilityFinding, PackageRef } from "../types";
 
 /** Supported SBOM output formats */
-export type SbomFormat = "cyclonedx" | "spdx";
+export type SbomFormat = "cyclonedx" | "cyclonedx-xml" | "spdx" | "swid";
 
 /** Hash algorithm for integrity verification */
 export type HashAlgorithm = "SHA-1" | "SHA-256" | "SHA-512" | "MD5";
@@ -27,6 +27,8 @@ export interface PackageHash {
 export interface SbomOptions {
   /** SBOM output format */
   format: SbomFormat;
+  /** Deprecated: use format: 'cyclonedx-xml' instead */
+  xml?: boolean;
   /** Output file path (undefined = stdout) */
   outputPath?: string;
   /** Include vulnerability information in SBOM */
@@ -39,6 +41,32 @@ export interface SbomOptions {
   projectVersion?: string;
   /** Project description for SBOM metadata */
   projectDescription?: string;
+  /** SWID-specific options */
+  swidOptions?: SwidOptions;
+}
+
+/** SWID Tags generation options */
+export interface SwidOptions {
+  /** Registration ID (regid) - domain-based identifier for the tag creator */
+  regid?: string;
+  /** Software identification scheme (default: "swid") */
+  softwareIdentificationScheme?: string;
+  /** Tag version (default: 1.0) */
+  tagVersion?: string;
+  /** Product structure (default: "single") */
+  structure?: "single" | "multivolume";
+  /** Add-on flag (default: false) */
+  addOn?: boolean;
+  /** Software creator entity */
+  softwareCreator?: {
+    name: string;
+    regid?: string;
+  };
+  /** Software licensor entity */
+  softwareLicensor?: {
+    name: string;
+    regid?: string;
+  };
 }
 
 /** Internal component representation before format conversion */
@@ -213,9 +241,49 @@ export interface SPDXDocument {
   annotations?: SPDXAnnotation[];
 }
 
+/** SWID Tag entity */
+export interface SwidEntity {
+  name: string;
+  regid?: string;
+  role: "software" | "tagCreator" | "softwareCreator" | "softwareLicensor";
+}
+
+/** SWID Tag link */
+export interface SwidLink {
+  href: string;
+  rel: "component" | "requires" | "supersedes" | "history" | "installation" | "package" | "parent" | "patch" | "supplement" | "supplementalMedia" | "predecessor" | "seeAlso";
+}
+
+/** SWID Tag */
+export interface SwidTag {
+  tagId: string;
+  regid: string;
+  name: string;
+  tagVersion: string;
+  softwareIdentificationScheme: string;
+  csi?: string;
+  summary?: string;
+  addOn?: boolean;
+  structure?: string;
+  entities: SwidEntity[];
+  meta?: {
+    product: string;
+    vendor?: string;
+    version?: string;
+    versionScheme?: string;
+    date?: string;
+  };
+  links?: SwidLink[];
+}
+
+/** SWID Tag Set containing multiple tags */
+export interface SwidTagSet {
+  tags: SwidTag[];
+}
+
 /** SBOM generation result */
 export interface SbomResult {
-  /** Generated SBOM content (JSON string) */
+  /** Generated SBOM content (JSON string for CycloneDX/SPDX, XML string for SWID) */
   content: string;
   /** SBOM format used */
   format: SbomFormat;

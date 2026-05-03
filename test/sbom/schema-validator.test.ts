@@ -205,4 +205,128 @@ describe('SBOM Schema Validation', () => {
       assert.ok(result.errors.some(e => e.message.includes('Invalid JSON')));
     });
   });
+
+  describe('SWID Validation', () => {
+    it('should validate a valid SWID XML string', () => {
+      const validSwidXml = `<?xml version="1.0" encoding="UTF-8"?>
+<swidTagSet>
+  <swid>
+    <tagId>12345678-1234-4123-8123-123456789012</tagId>
+    <regid>com.example.test</regid>
+    <name>TestPackage</name>
+    <tagVersion>1.0</tagVersion>
+    <softwareIdentificationScheme>swid</softwareIdentificationScheme>
+    <entity>
+      <name>TestPackage</name>
+      <role>software</role>
+    </entity>
+  </swid>
+</swidTagSet>`;
+
+      const result = validateSbom(validSwidXml, 'swid');
+      assert.equal(result.valid, true);
+      assert.equal(result.errors.length, 0);
+    });
+
+    it('should detect missing XML declaration', () => {
+      const swidWithoutDecl = `<swidTagSet>
+  <swid>
+    <tagId>12345678-1234-4123-8123-123456789012</tagId>
+    <regid>com.example.test</regid>
+    <name>TestPackage</name>
+    <tagVersion>1.0</tagVersion>
+    <softwareIdentificationScheme>swid</softwareIdentificationScheme>
+    <entity>
+      <name>TestPackage</name>
+      <role>software</role>
+    </entity>
+  </swid>
+</swidTagSet>`;
+
+      const result = validateSbom(swidWithoutDecl, 'swid');
+      // Should be valid but have a warning
+      assert.equal(result.valid, true);
+      assert.ok(result.warnings.some(w => w.message.includes('Missing XML declaration')));
+    });
+
+    it('should detect missing root element', () => {
+      const swidWithoutRoot = `<?xml version="1.0" encoding="UTF-8"?>
+<swid>
+  <tagId>12345678-1234-4123-8123-123456789012</tagId>
+</swid>`;
+
+      const result = validateSbom(swidWithoutRoot, 'swid');
+      assert.equal(result.valid, false);
+      assert.ok(result.errors.some(e => e.message.includes('Missing <swidTagSet> root element')));
+    });
+
+    it('should detect missing SWID tags', () => {
+      const emptySwid = `<?xml version="1.0" encoding="UTF-8"?>
+<swidTagSet>
+</swidTagSet>`;
+
+      const result = validateSbom(emptySwid, 'swid');
+      assert.equal(result.valid, false);
+      assert.ok(result.errors.some(e => e.message.includes('No SWID tags found')));
+    });
+
+    it('should detect missing required elements', () => {
+      const swidMissingElements = `<?xml version="1.0" encoding="UTF-8"?>
+<swidTagSet>
+  <swid>
+    <tagId>12345678-1234-4123-8123-123456789012</tagId>
+    <regid>com.example.test</regid>
+    <name>TestPackage</name>
+    <!-- Missing tagVersion and softwareIdentificationScheme -->
+    <entity>
+      <name>TestPackage</name>
+      <role>software</role>
+    </entity>
+  </swid>
+</swidTagSet>`;
+
+      const result = validateSbom(swidMissingElements, 'swid');
+      assert.equal(result.valid, false);
+      assert.ok(result.errors.some(e => e.message.includes('Missing required element <tagVersion>')));
+      assert.ok(result.errors.some(e => e.message.includes('Missing required element <softwareIdentificationScheme>')));
+    });
+
+    it('should detect missing entity elements', () => {
+      const swidWithoutEntities = `<?xml version="1.0" encoding="UTF-8"?>
+<swidTagSet>
+  <swid>
+    <tagId>12345678-1234-4123-8123-123456789012</tagId>
+    <regid>com.example.test</regid>
+    <name>TestPackage</name>
+    <tagVersion>1.0</tagVersion>
+    <softwareIdentificationScheme>swid</softwareIdentificationScheme>
+  </swid>
+</swidTagSet>`;
+
+      const result = validateSbom(swidWithoutEntities, 'swid');
+      assert.equal(result.valid, false);
+      assert.ok(result.errors.some(e => e.message.includes('SWID tag must have at least one entity element')));
+    });
+
+    it('should require string content for SWID format', () => {
+      const invalidContent = { notAString: true };
+      const result = validateSbom(invalidContent as any, 'swid');
+      assert.equal(result.valid, false);
+      assert.ok(result.errors.some(e => e.message.includes('SWID format requires string content')));
+    });
+
+    it('should validate generated SWID content', () => {
+      // Import the SWID generator to get actual generated content
+      const { generateSwidSbom } = require('../../src/sbom/swid-generator');
+      const { generateSwidTags, serializeSwidTagSetToXml } = require('../../src/sbom/swid-generator');
+      const components = packagesToSbomComponents(mockPackages);
+
+      const tagSet = generateSwidTags(components);
+      const xmlContent = serializeSwidTagSetToXml(tagSet);
+
+      const result = validateSbom(xmlContent, 'swid');
+      assert.equal(result.valid, true);
+      assert.equal(result.errors.length, 0);
+    });
+  });
 });

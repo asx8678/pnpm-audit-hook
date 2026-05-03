@@ -160,8 +160,10 @@ export type {
 
 // Export SBOM generation utilities
 export { generateSbom } from "./sbom/generator";
+export { generateCycloneDX, generateCycloneDXSbom, serializeCycloneDXToXml } from "./sbom/cyclonedx-generator";
 export { validateSbom, isValidSbom } from "./sbom/schema-validator";
-export type { SbomOptions, SbomResult, ValidationResult, ValidationError } from "./sbom/types";
+export { generateSwidSbom, generateSwidTags, serializeSwidTagToXml } from "./sbom/swid-generator";
+export type { SbomOptions, SbomResult, ValidationResult, ValidationError, SwidTag, SwidTagSet } from "./sbom/types";
 
 // Export color utilities for external use
 export {

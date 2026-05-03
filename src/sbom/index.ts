@@ -2,8 +2,8 @@
  * SBOM (Software Bill of Materials) module.
  *
  * Provides SBOM generation capabilities for pnpm audit results.
- * Supports CycloneDX 1.5 and SPDX 2.3 output formats with optional
- * vulnerability enrichment.
+ * Supports CycloneDX 1.5, SPDX 2.3, and SWID (ISO/IEC 19770-2) output
+ * formats with optional vulnerability enrichment.
  *
  * @module sbom
  *
@@ -30,9 +30,22 @@ export {
 } from "./generator";
 
 export {
+  generateCycloneDX,
+  generateCycloneDXSbom,
+  serializeCycloneDXToXml,
+} from "./cyclonedx-generator";
+
+export {
   validateSbom,
   isValidSbom,
 } from "./schema-validator";
+
+export {
+  generateSwidSbom,
+  generateSwidTags,
+  serializeSwidTagToXml,
+  serializeSwidTagSetToXml,
+} from "./swid-generator";
 
 export type {
   SbomFormat,
@@ -44,4 +57,9 @@ export type {
   ComponentVulnerabilityMap,
   ValidationResult,
   ValidationError,
+  SwidTag,
+  SwidTagSet,
+  SwidEntity,
+  SwidLink,
+  SwidOptions,
 } from "./types";

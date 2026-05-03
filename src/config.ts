@@ -408,10 +408,10 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
   const sbomOutputPath = opts.env.PNPM_AUDIT_SBOM_OUTPUT || sbomRaw?.outputPath as string | undefined;
 
   // Validate SBOM format
-  const validSbomFormats = new Set(["cyclonedx", "spdx"]);
-  const finalSbomFormat = validSbomFormats.has(sbomFormat) ? sbomFormat as "cyclonedx" | "spdx" : "cyclonedx";
+  const validSbomFormats = new Set(["cyclonedx", "cyclonedx-xml", "spdx", "swid"]);
+  const finalSbomFormat = validSbomFormats.has(sbomFormat) ? sbomFormat as "cyclonedx" | "cyclonedx-xml" | "spdx" | "swid" : "cyclonedx";
   if (!validSbomFormats.has(sbomFormat)) {
-    logger.warn(`Invalid SBOM format: "${sbomFormat}", using "cyclonedx" (valid: cyclonedx, spdx)`);
+    logger.warn(`Invalid SBOM format: "${sbomFormat}", using "cyclonedx" (valid: cyclonedx, cyclonedx-xml, spdx, swid)`);
   }
 
   // Env var override for block severities (comma-separated, e.g. "critical,high")

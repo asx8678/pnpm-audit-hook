@@ -260,6 +260,153 @@ describe("SBOM Generation", () => {
   });
 
   // -------------------------------------------------------------------------
+  // CycloneDX XML Generation
+  // -------------------------------------------------------------------------
+  describe("CycloneDX XML Generation", () => {
+    it("should generate valid CycloneDX XML SBOM", () => {
+      const vulnMap = buildVulnerabilityMap(mockFindings);
+      const components = packagesToSbomComponents(mockPackages);
+
+      const bom = generateCycloneDX(components, vulnMap, {
+        format: "cyclonedx-xml",
+        includeVulnerabilities: true,
+      });
+
+      const { serializeCycloneDXToXml } = require("../../src/sbom/cyclonedx-generator");
+      const xmlContent = serializeCycloneDXToXml(bom);
+
+      // Verify it's valid XML
+      assert.ok(xmlContent.includes('<?xml version="1.0" encoding="UTF-8"?>'));
+      assert.ok(xmlContent.includes('<bom '));
+      assert.ok(xmlContent.includes('</bom>'));
+      assert.ok(xmlContent.includes('xmlns="http://cyclonedx.org/schema/bom/1.5"'));
+
+      // Verify format is correct
+      assert.equal(bom.bomFormat, "CycloneDX");
+      assert.equal(bom.specVersion, "1.5");
+      assert.equal(bom.version, 1);
+      assert.ok(bom.serialNumber.startsWith("urn:uuid:"));
+    });
+
+    it("should include metadata in XML output", () => {
+      const components = packagesToSbomComponents(mockPackages);
+      const bom = generateCycloneDX(components, new Map(), {
+        format: "cyclonedx-xml",
+      });
+
+      const { serializeCycloneDXToXml } = require("../../src/sbom/cyclonedx-generator");
+      const xmlContent = serializeCycloneDXToXml(bom);
+
+      assert.ok(xmlContent.includes('<metadata>'));
+      assert.ok(xmlContent.includes('<timestamp>'));
+      assert.ok(xmlContent.includes('<tools>'));
+      assert.ok(xmlContent.includes('<tool>'));
+      assert.ok(xmlContent.includes('<vendor>pnpm-audit-hook</vendor>'));
+      assert.ok(xmlContent.includes('<name>pnpm-audit-hook</name>'));
+    });
+
+    it("should include components in XML output", () => {
+      const components = packagesToSbomComponents(mockPackages);
+      const bom = generateCycloneDX(components, new Map(), {
+        format: "cyclonedx-xml",
+      });
+
+      const { serializeCycloneDXToXml } = require("../../src/sbom/cyclonedx-generator");
+      const xmlContent = serializeCycloneDXToXml(bom);
+
+      assert.ok(xmlContent.includes('<components>'));
+      assert.ok(xmlContent.includes('</components>'));
+      assert.ok(xmlContent.includes('<component type="library"'));
+      assert.ok(xmlContent.includes('<name>express</name>'));
+      assert.ok(xmlContent.includes('<version>4.18.2</version>'));
+      assert.ok(xmlContent.includes('<purl>pkg:npm/express@4.18.2</purl>'));
+    });
+
+    it("should include vulnerabilities in XML output when enabled", () => {
+      const vulnMap = buildVulnerabilityMap(mockFindings);
+      const components = packagesToSbomComponents(mockPackages);
+
+      const bom = generateCycloneDX(components, vulnMap, {
+        format: "cyclonedx-xml",
+        includeVulnerabilities: true,
+      });
+
+      const { serializeCycloneDXToXml } = require("../../src/sbom/cyclonedx-generator");
+      const xmlContent = serializeCycloneDXToXml(bom);
+
+      assert.ok(xmlContent.includes('<vulnerabilities>'));
+      assert.ok(xmlContent.includes('</vulnerabilities>'));
+      assert.ok(xmlContent.includes('<vulnerability>'));
+      assert.ok(xmlContent.includes('<id>CVE-2021-44906</id>'));
+      assert.ok(xmlContent.includes('<severity>medium</severity>'));
+    });
+
+    it("should generate CycloneDX XML SBOM via generateSbom", () => {
+      const result = generateSbom(mockPackages, mockFindings, {
+        format: "cyclonedx-xml",
+        includeVulnerabilities: true,
+        includeDependencies: true,
+      });
+
+      assert.equal(result.format, "cyclonedx-xml");
+      assert.equal(result.componentCount, 4);
+      assert.ok(result.content);
+      assert.ok(result.durationMs >= 0);
+
+      // Verify it's valid XML
+      assert.ok(result.content.includes('<?xml version="1.0" encoding="UTF-8"?>'));
+      assert.ok(result.content.includes('<bom '));
+      assert.ok(result.content.includes('</bom>'));
+      assert.ok(result.content.includes('xmlns="http://cyclonedx.org/schema/bom/1.5"'));
+
+      // Verify format is correct
+      assert.ok(result.content.includes('<specVersion>1.5</specVersion>') || result.content.includes('specVersion="1.5"'));
+    });
+
+    it("should include dependencies in XML output when enabled", () => {
+      const components = packagesToSbomComponents(mockPackages);
+      const bom = generateCycloneDX(components, new Map(), {
+        format: "cyclonedx-xml",
+        includeDependencies: true,
+      });
+
+      const { serializeCycloneDXToXml } = require("../../src/sbom/cyclonedx-generator");
+      const xmlContent = serializeCycloneDXToXml(bom);
+
+      assert.ok(xmlContent.includes('<dependencies>'));
+      assert.ok(xmlContent.includes('</dependencies>'));
+      assert.ok(xmlContent.includes('<dependency ref='));
+      assert.ok(xmlContent.includes('<depends-on ref='));
+    });
+
+    it("should escape XML special characters in component names", () => {
+      const specialPackages: PackageRef[] = [
+        { name: "@scope/pkg&name", version: "1.0.0" },
+        { name: "pkg<test>", version: "2.0.0" },
+        { name: "pkg\"quoted\"", version: "3.0.0" },
+      ];
+
+      const components = packagesToSbomComponents(specialPackages);
+      const bom = generateCycloneDX(components, new Map(), {
+        format: "cyclonedx-xml",
+      });
+
+      const { serializeCycloneDXToXml } = require("../../src/sbom/cyclonedx-generator");
+      const xmlContent = serializeCycloneDXToXml(bom);
+
+      // Verify XML escaping
+      assert.ok(xmlContent.includes('&amp;'));
+      assert.ok(xmlContent.includes('&lt;'));
+      assert.ok(xmlContent.includes('&gt;'));
+      assert.ok(xmlContent.includes('&quot;'));
+
+      // Verify the XML is still well-formed by checking closing tags
+      assert.ok(xmlContent.includes('</components>'));
+      assert.ok(xmlContent.includes('</bom>'));
+    });
+  });
+
+  // -------------------------------------------------------------------------
   // SPDX Generation
   // -------------------------------------------------------------------------
   describe("SPDX Generation", () => {
@@ -478,6 +625,155 @@ describe("SBOM Generation", () => {
       assert.ok(parsed.vulnerabilities);
       assert.equal(parsed.vulnerabilities.length, 1);
       assert.equal(parsed.vulnerabilities[0].id, "TEST-001");
+    });
+
+    it("should generate SWID Tags SBOM", () => {
+      const result = generateSbom(mockPackages, mockFindings, {
+        format: "swid",
+        includeVulnerabilities: true,
+        projectName: "test-project",
+      });
+
+      assert.equal(result.format, "swid");
+      assert.equal(result.componentCount, 4);
+      assert.ok(result.content);
+      assert.ok(result.durationMs >= 0);
+
+      // Verify it's valid XML
+      assert.ok(result.content.includes('<?xml version="1.0" encoding="UTF-8"?>'));
+      assert.ok(result.content.includes('<swidTagSet>'));
+      assert.ok(result.content.includes('</swidTagSet>'));
+
+      // Verify SWID tags are present
+      assert.ok(result.content.includes('<swid>'));
+      assert.ok(result.content.includes('<tagId>'));
+      assert.ok(result.content.includes('<regid>'));
+      assert.ok(result.content.includes('<name>express</name>'));
+    });
+  });
+
+  // -------------------------------------------------------------------------
+  // SWID Tags Generation
+  // -------------------------------------------------------------------------
+  describe("SWID Tags Generation", () => {
+    it("should generate valid SWID tag set", () => {
+      const { generateSwidTags } = require("../../src/sbom/swid-generator");
+      const components = packagesToSbomComponents(mockPackages);
+
+      const tagSet = generateSwidTags(components, {
+        regid: "com.example.project",
+      });
+
+      assert.ok(tagSet.tags);
+      assert.equal(tagSet.tags.length, 4);
+
+      const expressTag = tagSet.tags.find((t) => t.name === "express");
+      assert.ok(expressTag);
+      assert.ok(expressTag.tagId);
+      assert.ok(expressTag.regid);
+      assert.equal(expressTag.name, "express");
+      assert.equal(expressTag.tagVersion, "1.0");
+      assert.equal(expressTag.softwareIdentificationScheme, "swid");
+    });
+
+    it("should include required entities per ISO/IEC 19770-2", () => {
+      const { generateSwidTags } = require("../../src/sbom/swid-generator");
+      const components = packagesToSbomComponents(mockPackages);
+
+      const tagSet = generateSwidTags(components);
+      const tag = tagSet.tags[0];
+
+      // Must have software entity
+      const softwareEntity = tag.entities.find((e) => e.role === "software");
+      assert.ok(softwareEntity);
+      assert.ok(softwareEntity.name);
+
+      // Must have tagCreator entity
+      const tagCreatorEntity = tag.entities.find((e) => e.role === "tagCreator");
+      assert.ok(tagCreatorEntity);
+      assert.ok(tagCreatorEntity.name);
+      assert.ok(tagCreatorEntity.regid);
+    });
+
+    it("should serialize tag to XML", () => {
+      const { generateSwidTags, serializeSwidTagToXml } = require("../../src/sbom/swid-generator");
+      const components = packagesToSbomComponents(mockPackages);
+
+      const tagSet = generateSwidTags(components);
+      const xml = serializeSwidTagToXml(tagSet.tags[0]);
+
+      assert.ok(xml.includes('<?xml version="1.0" encoding="UTF-8"?>'));
+      assert.ok(xml.includes('<swid>'));
+      assert.ok(xml.includes('</swid>'));
+      assert.ok(xml.includes('<tagId>'));
+      assert.ok(xml.includes('<regid>'));
+      assert.ok(xml.includes('<name>'));
+      assert.ok(xml.includes('<meta>'));
+      assert.ok(xml.includes('<entity>'));
+    });
+
+    it("should serialize tag set to XML", () => {
+      const { generateSwidTags, serializeSwidTagSetToXml } = require("../../src/sbom/swid-generator");
+      const components = packagesToSbomComponents(mockPackages);
+
+      const tagSet = generateSwidTags(components);
+      const xml = serializeSwidTagSetToXml(tagSet);
+
+      assert.ok(xml.includes('<?xml version="1.0" encoding="UTF-8"?>'));
+      assert.ok(xml.includes('<swidTagSet>'));
+      assert.ok(xml.includes('</swidTagSet>'));
+
+      // Should contain all 4 tags
+      const swidCount = (xml.match(/<swid>/g) || []).length;
+      assert.equal(swidCount, 4);
+    });
+
+    it("should handle custom SWID options", () => {
+      const { generateSwidTags } = require("../../src/sbom/swid-generator");
+      const components = packagesToSbomComponents(mockPackages);
+
+      const tagSet = generateSwidTags(components, {
+        regid: "com.custom.regid",
+        tagVersion: "2.0",
+        structure: "multivolume",
+        addOn: true,
+        softwareCreator: { name: "Custom Creator", regid: "com.custom.creator" },
+        softwareLicensor: { name: "Custom Licensor", regid: "com.custom.licensor" },
+      });
+
+      const tag = tagSet.tags[0];
+      assert.equal(tag.tagVersion, "2.0");
+      assert.equal(tag.structure, "multivolume");
+      assert.equal(tag.addOn, true);
+      assert.equal(tag.regid, "com.custom.regid.express");
+
+      // Verify custom entities
+      const tagCreator = tag.entities.find((e) => e.role === "tagCreator");
+      assert.equal(tagCreator?.name, "Custom Creator");
+      assert.equal(tagCreator?.regid, "com.custom.creator");
+
+      const licensor = tag.entities.find((e) => e.role === "softwareLicensor");
+      assert.equal(licensor?.name, "Custom Licensor");
+      assert.equal(licensor?.regid, "com.custom.licensor");
+    });
+
+    it("should handle empty components", () => {
+      const { generateSwidTags } = require("../../src/sbom/swid-generator");
+
+      const tagSet = generateSwidTags([]);
+      assert.equal(tagSet.tags.length, 0);
+    });
+
+    it("should generate SWID SBOM via main generator", () => {
+      const result = generateSbom(mockPackages, mockFindings, {
+        format: "swid",
+        projectName: "my-project",
+      });
+
+      assert.equal(result.format, "swid");
+      assert.equal(result.componentCount, 4);
+      assert.ok(result.content.includes("express"));
+      assert.ok(result.content.includes("lodash"));
     });
   });
 });

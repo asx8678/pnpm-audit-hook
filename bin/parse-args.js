@@ -15,7 +15,7 @@ Options:
   --update-db         Update the vulnerability database (incremental)
   --update-db=full    Update the vulnerability database (full rebuild)
   --sbom              Generate SBOM (Software Bill of Materials)
-  --sbom-format <fmt> SBOM format: cyclonedx, spdx (default: cyclonedx)
+  --sbom-format <fmt> SBOM format: cyclonedx, cyclonedx-xml, spdx, swid (default: cyclonedx)
   --sbom-output <path> Write SBOM to file (default: stdout)
   --quiet             Suppress non-error output
   --verbose           Enable verbose output
@@ -37,7 +37,9 @@ Examples:
   pnpm-audit-scan --update-db=full
   pnpm-audit-scan --sbom
   pnpm-audit-scan --sbom --sbom-format cyclonedx --sbom-output sbom.json
+  pnpm-audit-scan --sbom --sbom-format cyclonedx-xml --sbom-output sbom.xml
   pnpm-audit-scan --sbom --sbom-format spdx
+  pnpm-audit-scan --sbom --sbom-format swid
   pnpm-audit-scan --troubleshoot
 
 Troubleshooting:

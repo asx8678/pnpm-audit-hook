@@ -291,12 +291,12 @@ export interface SourceStatus {
 
 /** User-provided config (all fields optional, merged with defaults) */
 /** SBOM configuration options */
-export type SbomFormat = "cyclonedx" | "spdx";
+export type SbomFormat = "cyclonedx" | "cyclonedx-xml" | "spdx" | "swid";
 
 export interface SbomConfig {
   /** Enable/disable SBOM generation (default: false) */
   enabled?: boolean;
-  /** SBOM output format: cyclonedx or spdx (default: cyclonedx) */
+  /** SBOM output format: cyclonedx, cyclonedx-xml, spdx, or swid (default: cyclonedx) */
   format?: SbomFormat;
   /** Output file path (undefined = stdout) */
   outputPath?: string;
@@ -306,6 +306,16 @@ export interface SbomConfig {
   projectName?: string;
   /** Project version for SBOM metadata */
   projectVersion?: string;
+  /** SWID-specific options (only used when format is "swid") */
+  swidOptions?: {
+    regid?: string;
+    softwareIdentificationScheme?: string;
+    tagVersion?: string;
+    structure?: "single" | "multivolume";
+    addOn?: boolean;
+    softwareCreator?: { name: string; regid?: string };
+    softwareLicensor?: { name: string; regid?: string };
+  };
 }
 
 export interface AuditConfigInput {

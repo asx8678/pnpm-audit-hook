@@ -1,7 +1,7 @@
 /**
  * SBOM Schema Validation
  *
- * Provides validation for CycloneDX and SPDX SBOM output formats.
+ * Provides validation for CycloneDX, SPDX, and SWID SBOM output formats.
  * Uses JSON Schema definitions to validate generated SBOMs.
  *
  * @module sbom/schema-validator
@@ -246,9 +246,102 @@ function validateSPDX(doc: Record<string, unknown>): ValidationResult {
 }
 
 /**
+ * Validate a SWID Tag Set.
+ *
+ * Note: SWID is XML-based, so we do basic XML structure validation here.
+ * Full schema validation would require an XML validator.
+ */
+function validateSWID(xmlContent: string): ValidationResult {
+  const errors: ValidationError[] = [];
+  const warnings: ValidationError[] = [];
+
+  // Check for XML declaration
+  if (!xmlContent.includes('<?xml version="1.0" encoding="UTF-8"?>')) {
+    warnings.push({
+      path: '',
+      message: 'Missing XML declaration',
+      severity: 'warning',
+    });
+  }
+
+  // Check for root element
+  if (!xmlContent.includes('<swidTagSet>')) {
+    errors.push({
+      path: '',
+      message: 'Missing <swidTagSet> root element',
+      severity: 'error',
+    });
+  }
+
+  if (!xmlContent.includes('</swidTagSet>')) {
+    errors.push({
+      path: '',
+      message: 'Missing closing </swidTagSet> element',
+      severity: 'error',
+    });
+  }
+
+  // Check for SWID tags
+  const swidMatches = xmlContent.match(/<swid>/g);
+  const closingSwidMatches = xmlContent.match(/<\/swid>/g);
+
+  if (!swidMatches || swidMatches.length === 0) {
+    errors.push({
+      path: '',
+      message: 'No SWID tags found in document',
+      severity: 'error',
+    });
+  } else if (swidMatches.length !== closingSwidMatches?.length) {
+    errors.push({
+      path: '',
+      message: 'Mismatched SWID tags',
+      severity: 'error',
+    });
+  }
+
+  // Check for required elements in each SWID tag
+  const requiredElements = ['tagId', 'regid', 'name', 'tagVersion', 'softwareIdentificationScheme'];
+  const tagRegex = /<swid>([\s\S]*?)<\/swid>/g;
+  let match;
+  let tagIndex = 0;
+
+  while ((match = tagRegex.exec(xmlContent)) !== null) {
+    const tagContent = match[1] ?? '';
+    for (const element of requiredElements) {
+      if (!tagContent.includes(`<${element}>`)) {
+        errors.push({
+          path: `swid[${tagIndex}].${element}`,
+          message: `Missing required element <${element}> in SWID tag`,
+          severity: 'error',
+        });
+      }
+    }
+
+    // Check for entity elements (required by ISO/IEC 19770-2)
+    const entityMatches = tagContent.match(/<entity>/g);
+    if (!entityMatches || entityMatches.length === 0) {
+      errors.push({
+        path: `swid[${tagIndex}].entities`,
+        message: 'SWID tag must have at least one entity element',
+        severity: 'error',
+      });
+    }
+
+    tagIndex++;
+  }
+
+  return {
+    valid: errors.length === 0,
+    errors,
+    warnings,
+    format: 'swid',
+  };
+}
+
+/**
  * Validate an SBOM document against the appropriate schema.
  *
- * @param sbomContent - SBOM content as JSON string or parsed object
+ * @param sbomContent - SBOM content as JSON string, XML string, or parsed object
  * @param format - Expected SBOM format
  * @returns Validation result with errors and warnings
  *
@@ -260,10 +353,143 @@ function validateSPDX(doc: Record<string, unknown>): ValidationResult {
  * }
  * ```
  */
+/**
+ * Validate a CycloneDX XML document.
+ *
+ * Note: CycloneDX XML is validated via basic XML structure checks.
+ * Full schema validation would require an XML DTD/XSD validator.
+ */
+function validateCycloneDXXml(xmlContent: string): ValidationResult {
+  const errors: ValidationError[] = [];
+  const warnings: ValidationError[] = [];
+
+  // Check for XML declaration
+  if (!xmlContent.includes('<?xml version="1.0" encoding="UTF-8"?>')) {
+    warnings.push({
+      path: '',
+      message: 'Missing XML declaration',
+      severity: 'warning',
+    });
+  }
+
+  // Check for CycloneDX namespace and root element
+  if (!xmlContent.includes('<bom') || !xmlContent.includes('http://cyclonedx.org/schema/bom')) {
+    errors.push({
+      path: '',
+      message: 'Missing CycloneDX namespace or <bom> root element',
+      severity: 'error',
+    });
+  }
+
+  if (!xmlContent.includes('</bom>')) {
+    errors.push({
+      path: '',
+      message: 'Missing closing </bom> element',
+      severity: 'error',
+    });
+  }
+
+  // Check for serialNumber attribute
+  if (!xmlContent.includes('serialNumber="urn:uuid:')) {
+    errors.push({
+      path: '',
+      message: 'Missing or invalid serialNumber attribute',
+      severity: 'error',
+    });
+  }
+
+  // Check for version attribute
+  if (!xmlContent.includes('version="')) {
+    warnings.push({
+      path: '',
+      message: 'Missing version attribute on <bom> element',
+      severity: 'warning',
+    });
+  }
+
+  // Check for metadata section
+  if (!xmlContent.includes('<metadata>')) {
+    errors.push({
+      path: 'metadata',
+      message: 'Missing <metadata> element',
+      severity: 'error',
+    });
+  }
+
+  // Check for timestamp in metadata
+  if (!xmlContent.includes('<timestamp>')) {
+    errors.push({
+      path: 'metadata.timestamp',
+      message: 'Missing <timestamp> element in metadata',
+      severity: 'error',
+    });
+  }
+
+  // Check for tools in metadata
+  if (!xmlContent.includes('<tools>')) {
+    warnings.push({
+      path: 'metadata.tools',
+      message: 'Missing <tools> element in metadata',
+      severity: 'warning',
+    });
+  }
+
+  // Check for components section (warn if empty or missing)
+  if (!xmlContent.includes('<components>')) {
+    warnings.push({
+      path: 'components',
+      message: 'Missing <components> element',
+      severity: 'warning',
+    });
+  }
+
+  return {
+    valid: errors.length === 0,
+    errors,
+    warnings,
+    format: 'cyclonedx-xml' as SbomFormat,
+  };
+}
+
 export function validateSbom(
   sbomContent: string | Record<string, unknown>,
   format: SbomFormat,
 ): ValidationResult {
+  // Handle CycloneDX XML (XML format)
+  if (format === 'cyclonedx-xml') {
+    if (typeof sbomContent !== 'string') {
+      return {
+        valid: false,
+        errors: [{
+          path: '',
+          message: 'CycloneDX XML format requires string content (XML)',
+          severity: 'error',
+        }],
+        warnings: [],
+        format,
+      };
+    }
+    return validateCycloneDXXml(sbomContent);
+  }
+
+  // Handle SWID (XML format)
+  if (format === 'swid') {
+    if (typeof sbomContent !== 'string') {
+      return {
+        valid: false,
+        errors: [{
+          path: '',
+          message: 'SWID format requires string content (XML)',
+          severity: 'error',
+        }],
+        warnings: [],
+        format,
+      };
+    }
+    return validateSWID(sbomContent);
+  }
+
+  // Handle JSON-based formats (CycloneDX, SPDX)
   let sbom: Record<string, unknown>;
 
   if (typeof sbomContent === 'string') {

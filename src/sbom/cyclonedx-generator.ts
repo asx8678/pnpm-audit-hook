@@ -312,7 +312,281 @@ export function generateCycloneDX(
 }
 
 /**
- * Generate CycloneDX SBOM and format as JSON string.
+ * Escape XML special characters.
+ *
+ * @param text - Text to escape
+ * @returns Escaped XML text
+ */
+function escapeXml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
+/**
+ * Indent XML content with the given indentation level.
+ */
+function indentXml(lines: string[], level: number): string[] {
+  const pad = "  ".repeat(level);
+  return lines.map((line) => (line.trim() ? `${pad}${line.trim()}` : line));
+}
+
+/**
+ * Build XML lines for a CycloneDX component.
+ */
+function componentToXml(component: CycloneDXComponent, indent: number): string[] {
+  const pad = "  ".repeat(indent);
+  const lines: string[] = [];
+
+  lines.push(`${pad}<component type="${escapeXml(component.type)}" bom-ref="${escapeXml(component["bom-ref"])}">`);
+  lines.push(`${pad}  <name>${escapeXml(component.name)}</name>`);
+  lines.push(`${pad}  <version>${escapeXml(component.version)}</version>`);
+
+  if (component.description) {
+    lines.push(`${pad}  <description>${escapeXml(component.description)}</description>`);
+  }
+
+  lines.push(`${pad}  <purl>${escapeXml(component.purl)}</purl>`);
+
+  // Hashes
+  if (component.hashes && component.hashes.length > 0) {
+    lines.push(`${pad}  <hashes>`);
+    for (const hash of component.hashes) {
+      lines.push(`${pad}    <hash alg="${escapeXml(hash.alg)}">${escapeXml(hash.content)}</hash>`);
+    }
+    lines.push(`${pad}  </hashes>`);
+  }
+
+  // Licenses
+  if (component.licenses && component.licenses.length > 0) {
+    lines.push(`${pad}  <licenses>`);
+    for (const lic of component.licenses) {
+      lines.push(`${pad}    <license>`);
+      if (lic.license.id) {
+        lines.push(`${pad}      <id>${escapeXml(lic.license.id)}</id>`);
+      }
+      if (lic.license.name) {
+        lines.push(`${pad}      <name>${escapeXml(lic.license.name)}</name>`);
+      }
+      if (lic.license.url) {
+        lines.push(`${pad}      <url>${escapeXml(lic.license.url)}</url>`);
+      }
+      lines.push(`${pad}    </license>`);
+    }
+    lines.push(`${pad}  </licenses>`);
+  }
+
+  // External references
+  if (component.externalReferences && component.externalReferences.length > 0) {
+    lines.push(`${pad}  <externalReferences>`);
+    for (const ref of component.externalReferences) {
+      lines.push(`${pad}    <reference type="${escapeXml(ref.type)}">`);
+      lines.push(`${pad}      <url>${escapeXml(ref.url)}</url>`);
+      lines.push(`${pad}    </reference>`);
+    }
+    lines.push(`${pad}  </externalReferences>`);
+  }
+
+  lines.push(`${pad}</component>`);
+  return lines;
+}
+
+/**
+ * Build XML lines for a CycloneDX vulnerability.
+ */
+function vulnerabilityToXml(vuln: CycloneDXVulnerability, indent: number): string[] {
+  const pad = "  ".repeat(indent);
+  const lines: string[] = [];
+
+  lines.push(`${pad}<vulnerability>`);
+  lines.push(`${pad}  <id>${escapeXml(vuln.id)}</id>`);
+
+  // Source
+  if (vuln.source) {
+    lines.push(`${pad}  <source>`);
+    lines.push(`${pad}    <name>${escapeXml(vuln.source.name)}</name>`);
+    if (vuln.source.url) {
+      lines.push(`${pad}    <url>${escapeXml(vuln.source.url)}</url>`);
+    }
+    lines.push(`${pad}  </source>`);
+  }
+
+  // Ratings
+  if (vuln.ratings && vuln.ratings.length > 0) {
+    lines.push(`${pad}  <ratings>`);
+    for (const rating of vuln.ratings) {
+      lines.push(`${pad}    <rating>`);
+      if (rating.source) {
+        lines.push(`${pad}      <source>`);
+        lines.push(`${pad}        <name>${escapeXml(rating.source.name)}</name>`);
+        lines.push(`${pad}      </source>`);
+      }
+      if (typeof rating.score === "number") {
+        lines.push(`${pad}      <score>${rating.score}</score>`);
+      }
+      if (rating.severity) {
+        lines.push(`${pad}      <severity>${escapeXml(rating.severity)}</severity>`);
+      }
+      if (rating.vector) {
+        lines.push(`${pad}      <vector>${escapeXml(rating.vector)}</vector>`);
+      }
+      lines.push(`${pad}    </rating>`);
+    }
+    lines.push(`${pad}  </ratings>`);
+  }
+
+  // Description
+  if (vuln.description) {
+    lines.push(`${pad}  <description>${escapeXml(vuln.description)}</description>`);
+  }
+
+  // Published / Updated
+  if (vuln.published) {
+    lines.push(`${pad}  <published>${escapeXml(vuln.published)}</published>`);
+  }
+  if (vuln.updated) {
+    lines.push(`${pad}  <updated>${escapeXml(vuln.updated)}</updated>`);
+  }
+
+  // Affects
+  if (vuln.affects && vuln.affects.length > 0) {
+    lines.push(`${pad}  <affects>`);
+    for (const affect of vuln.affects) {
+      lines.push(`${pad}    <affect ref="${escapeXml(affect.ref)}" />`);
+    }
+    lines.push(`${pad}  </affects>`);
+  }
+
+  // Problem types
+  if (vuln.problemTypes && vuln.problemTypes.length > 0) {
+    lines.push(`${pad}  <problemTypes>`);
+    for (const pt of vuln.problemTypes) {
+      lines.push(`${pad}    <problemType>`);
+      lines.push(`${pad}      <descriptions>`);
+      for (const desc of pt.descriptions) {
+        lines.push(`${pad}        <description lang="${escapeXml(desc.lang)}">${escapeXml(desc.value)}</description>`);
+      }
+      lines.push(`${pad}      </descriptions>`);
+      lines.push(`${pad}    </problemType>`);
+    }
+    lines.push(`${pad}  </problemTypes>`);
+  }
+
+  // References
+  if (vuln.references && vuln.references.length > 0) {
+    lines.push(`${pad}  <references>`);
+    for (const ref of vuln.references) {
+      lines.push(`${pad}    <reference url="${escapeXml(ref.url)}" />`);
+    }
+    lines.push(`${pad}  </references>`);
+  }
+
+  lines.push(`${pad}</vulnerability>`);
+  return lines;
+}
+
+/**
+ * Build XML lines for a CycloneDX dependency.
+ */
+function dependencyToXml(dep: CycloneDXDependency, indent: number): string[] {
+  const pad = "  ".repeat(indent);
+  const lines: string[] = [];
+
+  lines.push(`${pad}<dependency ref="${escapeXml(dep.ref)}">`);
+  if (dep.dependsOn && dep.dependsOn.length > 0) {
+    for (const d of dep.dependsOn) {
+      lines.push(`${pad}  <depends-on ref="${escapeXml(d)}" />`);
+    }
+  }
+  lines.push(`${pad}</dependency>`);
+  return lines;
+}
+
+/**
+ * Serialize a CycloneDX BOM document to XML (CycloneDX 1.5 XML format).
+ *
+ * @param bom - CycloneDX BOM document
+ * @returns XML string following CycloneDX 1.5 XML specification
+ */
+export function serializeCycloneDXToXml(bom: CycloneDXBom): string {
+  const lines: string[] = [];
+
+  lines.push('<?xml version="1.0" encoding="UTF-8"?>');
+  lines.push(
+    `<bom xmlns="http://cyclonedx.org/schema/bom/1.5" serialNumber="${escapeXml(bom.serialNumber)}" version="${bom.version}" specVersion="${bom.specVersion}">`,
+  );
+
+  // Metadata
+  lines.push("  <metadata>");
+  lines.push(`    <timestamp>${escapeXml(bom.metadata.timestamp)}</timestamp>`);
+
+  lines.push("    <tools>");
+  for (const tool of bom.metadata.tools) {
+    lines.push("      <tool>");
+    lines.push(`        <vendor>${escapeXml(tool.vendor)}</vendor>`);
+    lines.push(`        <name>${escapeXml(tool.name)}</name>`);
+    lines.push(`        <version>${escapeXml(tool.version)}</version>`);
+    lines.push("      </tool>");
+  }
+  lines.push("    </tools>");
+
+  // Root component
+  if (bom.metadata.component) {
+    const cmpLines = componentToXml(bom.metadata.component, 2);
+    // Wrap as <component> inside <metadata>
+    lines.push("    <component>");
+    // Get the inner lines of componentToXml (skip first and last lines which are the tags)
+    for (let i = 1; i < cmpLines.length - 1; i++) {
+      lines.push(`      ${cmpLines[i]?.trim() ?? ""}`);
+    }
+    lines.push("    </component>");
+  }
+
+  lines.push("  </metadata>");
+
+  // Components
+  if (bom.components && bom.components.length > 0) {
+    lines.push("  <components>");
+    for (const component of bom.components) {
+      const cmpLines = componentToXml(component, 2);
+      lines.push(...cmpLines);
+    }
+    lines.push("  </components>");
+  }
+
+  // Dependencies
+  if (bom.dependencies && bom.dependencies.length > 0) {
+    lines.push("  <dependencies>");
+    for (const dep of bom.dependencies) {
+      const depLines = dependencyToXml(dep, 2);
+      lines.push(...depLines);
+    }
+    lines.push("  </dependencies>");
+  }
+
+  // Vulnerabilities
+  if (bom.vulnerabilities && bom.vulnerabilities.length > 0) {
+    lines.push("  <vulnerabilities>");
+    for (const vuln of bom.vulnerabilities) {
+      const vulnLines = vulnerabilityToXml(vuln, 2);
+      lines.push(...vulnLines);
+    }
+    lines.push("  </vulnerabilities>");
+  }
+
+  lines.push("</bom>");
+  return lines.join("\n");
+}
+
+/**
+ * Generate CycloneDX SBOM and format as string.
+ *
+ * Supports both JSON and XML output formats:
+ * - format: "cyclonedx" → JSON output
+ * - format: "cyclonedx-xml" → XML output
  *
  * @param components - Array of SBOM components with package info
  * @param vulnerabilities - Component vulnerability map
@@ -327,13 +601,17 @@ export function generateCycloneDXSbom(
   const startTime = Date.now();
 
   const bom = generateCycloneDX(components, vulnMap, options);
-  const content = JSON.stringify(bom, null, 2);
+
+  const isXml = options.format === "cyclonedx-xml";
+  const content = isXml
+    ? serializeCycloneDXToXml(bom)
+    : JSON.stringify(bom, null, 2);
 
   const vulnerabilityCount = bom.vulnerabilities?.length ?? 0;
 
   return {
     content,
-    format: "cyclonedx",
+    format: options.format as "cyclonedx" | "cyclonedx-xml",
     componentCount: components.length,
     vulnerabilityCount,
     outputPath: options.outputPath,

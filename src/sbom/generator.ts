@@ -39,6 +39,7 @@ import type {
 } from "./types";
 import { generateCycloneDXSbom } from "./cyclonedx-generator";
 import { generateSPDXSbom } from "./spdx-generator";
+import { generateSwidSbom } from "./swid-generator";
 import { logger } from "../utils/logger";
 
 /** Package version for tool metadata */
@@ -175,6 +176,7 @@ export function generateSbom(
   let result: SbomResult;
   switch (options.format) {
     case "cyclonedx":
+    case "cyclonedx-xml":
       result = generateCycloneDXSbom(components, vulnMap, {
         ...options,
         projectVersion: options.projectVersion ?? TOOL_VERSION,
@@ -182,6 +184,12 @@ export function generateSbom(
       break;
     case "spdx":
       result = generateSPDXSbom(components, vulnMap, {
+        ...options,
+        projectVersion: options.projectVersion ?? TOOL_VERSION,
+      });
+      break;
+    case "swid":
+      result = generateSwidSbom(components, vulnMap, {
         ...options,
         projectVersion: options.projectVersion ?? TOOL_VERSION,
       });
@@ -213,3 +221,4 @@ export function generateSbom(
 export type { SbomFormat, SbomOptions, SbomResult } from "./types";
 export { generateCycloneDXSbom } from "./cyclonedx-generator";
 export { generateSPDXSbom } from "./spdx-generator";
+export { generateSwidSbom } from "./swid-generator";
