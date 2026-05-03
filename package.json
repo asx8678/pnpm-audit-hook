@@ -59,7 +59,7 @@
     "test:performance": "node --import tsx --test test/integration/audit/performance.test.ts",
     "test:all": "npm run test && npm run test:integration",
     "prepare": "tsc -p tsconfig.json && node scripts/copy-static-db.js && node scripts/optimize-static-db.js && node scripts/bundle.js && node scripts/postbuild-link.js",
-    "update-vuln-db": "tsx scripts/update-vuln-db.ts --since=2021-01-01",
+    "docs:api": "typedoc",
     "update-vuln-db:incremental": "tsx scripts/update-vuln-db.ts --incremental",
     "update-vuln-db:full": "tsx scripts/update-vuln-db.ts"
   },
@@ -72,6 +72,7 @@
     "@types/semver": "^7.7.1",
     "esbuild": "^0.27.2",
     "tsx": "^4.21.0",
+    "typedoc": "^0.28.19",
     "typescript": "^5.9.3"
   }
 }

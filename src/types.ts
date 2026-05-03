@@ -1,7 +1,43 @@
+/**
+ * @module types
+ * TypeScript type definitions for pnpm-audit-hook.
+ *
+ * This module contains all interfaces and types used throughout the package,
+ * including lockfile structures, vulnerability findings, policy decisions,
+ * and configuration options.
+ *
+ * @example
+ * ```typescript
+ * import type {
+ *   AuditResult,
+ *   VulnerabilityFinding,
+ *   PolicyDecision,
+ *   Severity,
+ * } from 'pnpm-audit-hook';
+ * ```
+ */
+
+/**
+ * Vulnerability severity level.
+ *
+ * - `critical`: Exploitable with severe impact
+ * - `high`: Exploitable with significant impact
+ * - `medium`: Moderate impact or limited exploitability
+ * - `low`: Minimal impact
+ * - `unknown`: Severity could not be determined
+ */
 export type Severity = "critical" | "high" | "medium" | "low" | "unknown";
+
+/** Source of vulnerability information */
 export type FindingSource = "github" | "nvd" | "osv";
+
+/** Action taken for a vulnerability finding */
 export type PolicyAction = "allow" | "warn" | "block";
+
+/** Source of the policy decision */
 export type DecisionSource = "severity" | "source" | "allowlist";
+
+/** Type of vulnerability identifier */
 export type VulnerabilityIdType = "CVE" | "GHSA" | "OSV" | "OTHER";
 
 /** Resolution info for a lockfile package entry */

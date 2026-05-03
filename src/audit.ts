@@ -1,3 +1,25 @@
+/**
+ * @module audit
+ * Core audit functionality for running vulnerability scans.
+ *
+ * This module provides the main entry point for auditing pnpm lockfiles
+ * against multiple vulnerability sources (GitHub Advisory, NVD, OSV) and
+ * the bundled static database.
+ *
+ * @example
+ * ```typescript
+ * import { runAudit } from 'pnpm-audit-hook/audit';
+ *
+ * const result = await runAudit(lockfile, {
+ *   cwd: process.cwd(),
+ *   registryUrl: 'https://registry.npmjs.org',
+ *   env: process.env,
+ * });
+ *
+ * console.log(`Found ${result.findings.length} vulnerabilities`);
+ * ```
+ */
+
 import path from "node:path";
 import type { PnpmLockfile, PolicyDecision, RuntimeOptions, SourceStatus, VulnerabilityFinding } from "./types";
 import { loadConfig } from "./config";
@@ -10,38 +32,107 @@ import { evaluatePackagePolicies } from "./policies/policy-engine";
 import { buildSummary, getOutputFormat, outputResults } from "./utils/output-formatter";
 import { validateLockfileStructure } from "./utils/security";
 
+/** Directory name for the audit cache */
 const CACHE_DIR = ".pnpm-audit-cache";
 
 /** Minimum interval between auto-prune runs (1 hour) */
 const PRUNE_INTERVAL_MS = 3600_000;
 let lastPruneTime = 0;
 
-/** Exit codes for audit results */
+/**
+ * Process exit codes for audit results.
+ *
+ * @example
+ * ```typescript
+ * import { EXIT_CODES } from 'pnpm-audit-hook';
+ *
+ * if (result.exitCode === EXIT_CODES.BLOCKED) {
+ *   console.error('Installation blocked');
+ * }
+ * ```
+ */
 export const EXIT_CODES = {
+  /** Audit passed with no blocking issues */
   SUCCESS: 0,
+  /** Installation blocked due to vulnerabilities */
   BLOCKED: 1,
+  /** Warnings present but not blocking */
   WARNINGS: 2,
+  /** Vulnerability source failed */
   SOURCE_ERROR: 3,
 } as const;
 
+/**
+ * Complete result of an audit run.
+ *
+ * Contains all findings, policy decisions, and metadata about the audit execution.
+ */
 export interface AuditResult {
+  /** Whether installation should be blocked */
   blocked: boolean;
+  /** Whether warnings were generated */
   warnings: boolean;
+  /** Policy decisions for each finding */
   decisions: PolicyDecision[];
+  /** Process exit code (see {@link EXIT_CODES}) */
   exitCode: number;
+  /** All vulnerability findings across all packages */
   findings: VulnerabilityFinding[];
+  /** Status of each vulnerability source */
   sourceStatus: Record<string, SourceStatus>;
+  /** Total number of packages audited */
   totalPackages: number;
+  /** Audit duration in milliseconds */
   durationMs: number;
+  /** Cache performance statistics */
   cacheStats?: {
+    /** Cache hit rate (0-1) */
     hitRate: number;
+    /** Total cached entries */
     totalEntries: number;
+    /** Total cache size in bytes */
     totalSizeBytes: number;
+    /** Average read time in milliseconds */
     averageReadTimeMs: number;
+    /** Average write time in milliseconds */
     averageWriteTimeMs: number;
   };
 }
 
+/**
+ * Runs a complete audit on the provided lockfile.
+ *
+ * Orchestrates multiple vulnerability sources, applies policy rules,
+ * and returns structured results with findings and decisions.
+ *
+ * @param lockfile - The resolved pnpm lockfile structure
+ * @param runtime - Runtime configuration (cwd, env, registry)
+ * @returns Complete audit result with findings, decisions, and metadata
+ *
+ * @example
+ * ```typescript
+ * import { runAudit } from 'pnpm-audit-hook';
+ * import fs from 'node:fs/promises';
+ * import YAML from 'yaml';
+ *
+ * const content = await fs.readFile('pnpm-lock.yaml', 'utf-8');
+ * const lockfile = YAML.parse(content);
+ *
+ * const result = await runAudit(lockfile, {
+ *   cwd: process.cwd(),
+ *   registryUrl: 'https://registry.npmjs.org',
+ *   env: process.env,
+ * });
+ *
+ * if (result.blocked) {
+ *   console.error(`Blocked: ${result.findings.length} vulnerabilities`);
+ *   process.exit(1);
+ * }
+ * ```
+ *
+ * @throws {Error} If config file has YAML syntax errors
+ * @throws {Error} If config contains security violations
+ */
 export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions): Promise<AuditResult> {
   const startTime = Date.now();
   const { cwd, env, registryUrl } = runtime;

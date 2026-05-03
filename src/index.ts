@@ -1,10 +1,50 @@
+/**
+ * @module pnpm-audit-hook
+ * Pre-download security gate for pnpm that blocks vulnerable packages.
+ *
+ * This module provides:
+ * - {@link createPnpmHooks} for automatic pnpm integration
+ * - {@link runAudit} for programmatic audit execution
+ * - Type definitions for configuration and results
+ * - Color utilities for terminal output
+ *
+ * @example
+ * ```typescript
+ * import { createPnpmHooks } from 'pnpm-audit-hook';
+ * // Export from .pnpmfile.cjs
+ * module.exports = createPnpmHooks();
+ * ```
+ *
+ * @example
+ * ```typescript
+ * import { runAudit } from 'pnpm-audit-hook';
+ * const result = await runAudit(lockfile, runtime);
+ * if (result.blocked) process.exit(1);
+ * ```
+ */
+
 import { runAudit } from "./audit";
 import type { PnpmHookContext, PnpmLockfile, VulnerabilityFinding } from "./types";
 import { getRegistryUrl } from "./utils/env";
 
-/** Return type for pnpm hooks export */
+/**
+ * Return type for pnpm hooks export.
+ *
+ * Contains the `hooks` object with lifecycle functions that pnpm calls
+ * during package resolution and installation.
+ *
+ * @see {@link createPnpmHooks} for creating an instance
+ */
 export interface PnpmHooks {
   hooks: {
+    /**
+     * Called after all dependencies have been resolved but before download.
+     *
+     * @param lockfile - The resolved pnpm lockfile structure
+     * @param context - Context provided by pnpm (lockfile dir, store dir, registries)
+     * @returns The lockfile unchanged if audit passes
+     * @throws {Error} If the audit blocks installation
+     */
     afterAllResolved: (
       lockfile: PnpmLockfile,
       context: PnpmHookContext
@@ -14,6 +54,10 @@ export interface PnpmHooks {
 
 /**
  * Build a rich error message with CVE IDs, severities, and fix info.
+ *
+ * @param decisions - Policy decisions that resulted in blocking
+ * @param findings - All vulnerability findings for context
+ * @returns Formatted error message with package details
  */
 function buildBlockedErrorMessage(
   decisions: Array<{ action: string; findingId?: string; findingSeverity?: string; packageName?: string; packageVersion?: string }>,
@@ -52,6 +96,29 @@ function buildBlockedErrorMessage(
   return `${header}:\n${details.join("\n")}`;
 }
 
+/**
+ * Creates pnpm hooks for automatic vulnerability auditing.
+ *
+ * This is the recommended way to integrate pnpm-audit-hook into your project.
+ * Export the result from `.pnpmfile.cjs` and pnpm will automatically audit
+ * all packages before download.
+ *
+ * @returns PnpmHooks object to export from .pnpmfile.cjs
+ *
+ * @example
+ * ```javascript
+ * // .pnpmfile.cjs
+ * const { createPnpmHooks } = require('pnpm-audit-hook');
+ * module.exports = createPnpmHooks();
+ * ```
+ *
+ * @example
+ * ```typescript
+ * // .pnpmfile.ts (with pnpm 9+)
+ * import { createPnpmHooks } from 'pnpm-audit-hook';
+ * export default createPnpmHooks();
+ * ```
+ */
 export function createPnpmHooks(): PnpmHooks {
   return {
     hooks: {

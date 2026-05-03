@@ -1,3 +1,23 @@
+/**
+ * @module config
+ * Configuration loading and validation for pnpm-audit-hook.
+ *
+ * This module handles loading YAML configuration files, applying environment
+ * variable overrides, validating values, and providing sensible defaults.
+ *
+ * @example
+ * ```typescript
+ * import { loadConfig } from 'pnpm-audit-hook/config';
+ *
+ * const config = await loadConfig({
+ *   cwd: process.cwd(),
+ *   env: process.env,
+ * });
+ *
+ * console.log(config.policy.block);  // ['critical', 'high']
+ * ```
+ */
+
 import fs from "node:fs/promises";
 import path from "node:path";
 import semver from "semver";
@@ -184,8 +204,13 @@ export const DEFAULT_CONFIG: AuditConfig = {
   staticBaseline: DEFAULT_STATIC_BASELINE,
 };
 
+/**
+ * Options for the {@link loadConfig} function.
+ */
 export interface LoadConfigOptions {
+  /** Working directory for config file resolution */
   cwd: string;
+  /** Environment variables for overrides (typically process.env) */
   env: Record<string, string | undefined>;
 }
 
@@ -197,6 +222,33 @@ function isValidRelativePath(p: string): boolean {
   return isSafePath(p);
 }
 
+/**
+ * Loads and validates the audit configuration.
+ *
+ * Reads configuration from `.pnpm-audit.yaml` (or custom path via
+ * `PNPM_AUDIT_CONFIG_PATH`), applies environment variable overrides,
+ * validates all values, and returns fully-resolved config.
+ *
+ * @param opts - Options containing cwd and env
+ * @returns Fully-resolved configuration with all defaults applied
+ *
+ * @example
+ * ```typescript
+ * import { loadConfig } from 'pnpm-audit-hook/config';
+ *
+ * const config = await loadConfig({
+ *   cwd: '/path/to/project',
+ *   env: process.env,
+ * });
+ *
+ * if (config.policy.block.includes('critical')) {
+ *   console.log('Critical vulnerabilities will block installation');
+ * }
+ * ```
+ *
+ * @throws {Error} If YAML syntax is invalid
+ * @throws {Error} If config contains security violations
+ */
 export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> {
   let configPath: string;
   if (opts.env.PNPM_AUDIT_CONFIG_PATH) {
