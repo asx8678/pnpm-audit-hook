@@ -10,6 +10,14 @@ const { parseArgs, HELP } = require("./parse-args.js");
 async function main() {
   const args = parseArgs(process.argv.slice(2));
 
+  // Reject unknown flags
+  if (args.unknownFlags && args.unknownFlags.length > 0) {
+    console.error(`Error: Unknown flag(s): ${args.unknownFlags.join(", ")}`);
+    console.error("");
+    console.error("Run with --help to see available options.");
+    process.exit(1);
+  }
+
   if (args.help) {
     console.log(HELP);
     process.exit(0);
@@ -194,7 +202,16 @@ async function main() {
   if (args.verbose) process.env.PNPM_AUDIT_VERBOSE = "true";
   if (args.debug) process.env.PNPM_AUDIT_DEBUG = "true";
   if (args.offline) process.env.PNPM_AUDIT_OFFLINE = "true";
+  if (args.sbom) process.env.PNPM_AUDIT_SBOM = "true";
+  if (args.sbomFormat) process.env.PNPM_AUDIT_SBOM_FORMAT = args.sbomFormat;
+  if (args.sbomOutput) process.env.PNPM_AUDIT_SBOM_OUTPUT = args.sbomOutput;
   if (args.format) {
+    const validFormats = ["human", "json", "azure", "github", "aws"];
+    if (!validFormats.includes(args.format)) {
+      console.error(`Error: Invalid format '${args.format}'.`);
+      console.error(`Valid formats: ${validFormats.join(", ")}`);
+      process.exit(1);
+    }
     if (args.format === "json") {
       process.env.PNPM_AUDIT_JSON = "true";
     } else {
@@ -202,7 +219,18 @@ async function main() {
     }
   }
   if (args.config) process.env.PNPM_AUDIT_CONFIG_PATH = args.config;
-  if (args.severity) process.env.PNPM_AUDIT_BLOCK_SEVERITY = args.severity;
+  if (args.severity) {
+    const validSeverities = ["critical", "high", "medium", "low"];
+    const requestedSeverities = args.severity.split(",").map(s => s.trim());
+    for (const sev of requestedSeverities) {
+      if (!validSeverities.includes(sev)) {
+        console.error(`Error: Invalid severity '${sev}'.`);
+        console.error(`Valid severities: ${validSeverities.join(", ")}`);
+        process.exit(1);
+      }
+    }
+    process.env.PNPM_AUDIT_BLOCK_SEVERITY = args.severity;
+  }
   if (args.updateDb) process.env.PNPM_AUDIT_UPDATE_DB = args.updateDb;
 
   // Find pnpm-lock.yaml
@@ -249,8 +277,11 @@ async function main() {
   }
 
   let runAudit;
+  let generateSbom;
   try {
-    runAudit = require(distEntry).runAudit;
+    const distModule = require(distEntry);
+    runAudit = distModule.runAudit;
+    generateSbom = distModule.generateSbom;
   } catch (e) {
     console.error(`Error loading pnpm-audit-hook module: ${e.message}`);
     console.error(`Expected: ${distEntry}`);
@@ -270,6 +301,36 @@ async function main() {
       env: process.env,
       registryUrl,
     });
+
+    // Generate SBOM if requested
+    if (args.sbom || process.env.PNPM_AUDIT_SBOM === "true") {
+      const sbomFormat = args.sbomFormat || process.env.PNPM_AUDIT_SBOM_FORMAT || "cyclonedx";
+      const sbomOutput = args.sbomOutput || process.env.PNPM_AUDIT_SBOM_OUTPUT;
+
+      try {
+        // Import lockfile extraction utility
+        const { extractPackagesFromLockfile } = require(path.join(__dirname, "..", "dist", "utils", "lockfile.js"));
+        const { packages } = extractPackagesFromLockfile(lockfile);
+
+        const sbomResult = generateSbom(packages, result.findings, {
+          format: sbomFormat,
+          outputPath: sbomOutput,
+          includeVulnerabilities: true,
+          projectName: path.basename(cwd),
+          projectVersion: "1.0.0",
+        });
+
+        if (!sbomOutput) {
+          // Output to stdout
+          console.log(sbomResult.content);
+        } else {
+          console.error(`SBOM written to ${sbomOutput} (${sbomResult.componentCount} components, ${sbomResult.vulnerabilityCount} vulnerabilities)`);
+        }
+      } catch (sbomErr) {
+        console.error(`SBOM generation error: ${sbomErr.message}`);
+        // Don't exit with error - audit succeeded, SBOM is optional
+      }
+    }
 
     process.exit(result.exitCode);
   } catch (e) {

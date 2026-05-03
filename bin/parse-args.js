@@ -14,6 +14,9 @@ Options:
   --db-status         Show database status
   --update-db         Update the vulnerability database (incremental)
   --update-db=full    Update the vulnerability database (full rebuild)
+  --sbom              Generate SBOM (Software Bill of Materials)
+  --sbom-format <fmt> SBOM format: cyclonedx, spdx (default: cyclonedx)
+  --sbom-output <path> Write SBOM to file (default: stdout)
   --quiet             Suppress non-error output
   --verbose           Enable verbose output
   --debug             Enable debug output
@@ -32,6 +35,9 @@ Examples:
   pnpm-audit-scan --offline
   pnpm-audit-scan --update-db
   pnpm-audit-scan --update-db=full
+  pnpm-audit-scan --sbom
+  pnpm-audit-scan --sbom --sbom-format cyclonedx --sbom-output sbom.json
+  pnpm-audit-scan --sbom --sbom-format spdx
   pnpm-audit-scan --troubleshoot
 
 Troubleshooting:
@@ -59,6 +65,12 @@ function parseArgs(argv) {
       args.verbose = true;
     } else if (arg === "--debug") {
       args.debug = true;
+    } else if (arg === "--sbom") {
+      args.sbom = true;
+    } else if (arg === "--sbom-format" && argv[i + 1]) {
+      args.sbomFormat = argv[++i];
+    } else if (arg === "--sbom-output" && argv[i + 1]) {
+      args.sbomOutput = argv[++i];
     } else if ((arg === "--format" || arg === "-f") && argv[i + 1]) {
       args.format = argv[++i];
     } else if ((arg === "--severity" || arg === "-s") && argv[i + 1]) {
@@ -70,6 +82,10 @@ function parseArgs(argv) {
       args.updateDb = value === "full" ? "full" : "incremental";
     } else if ((arg === "--config" || arg === "-c") && argv[i + 1]) {
       args.config = argv[++i];
+    } else if (arg.startsWith("--")) {
+      // Unknown flag — store for error reporting
+      args.unknownFlags = args.unknownFlags || [];
+      args.unknownFlags.push(arg);
     } else {
       args._.push(arg);
     }

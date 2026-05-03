@@ -39,6 +39,7 @@ if (result.blocked) {
 |--------|-------------|
 | [Audit API](./audit.md) | Core audit functionality — run audits, interpret results |
 | [Configuration API](./config.md) | Load and manage audit configuration |
+| [SBOM API](./sbom.md) | Generate Software Bill of Materials (CycloneDX & SPDX) |
 | [Type Definitions](./types.md) | All TypeScript interfaces and types |
 | [Color Utilities](./color-utils.md) | Terminal color and formatting utilities |
 | [Usage Examples](./examples.md) | Real-world integration examples |

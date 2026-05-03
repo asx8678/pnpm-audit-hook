@@ -85,6 +85,63 @@ describe("parseArgs", () => {
     });
   });
 
+  describe("--sbom flag", () => {
+    it('sets sbom to true when --sbom flag is passed', () => {
+      const args = parseArgs(["--sbom"]);
+      assert.equal(args.sbom, true);
+    });
+
+    it("does not interfere with --offline flag", () => {
+      const args = parseArgs(["--sbom", "--offline"]);
+      assert.equal(args.sbom, true);
+      assert.equal(args.offline, true);
+    });
+
+    it("does not interfere with --quiet flag", () => {
+      const args = parseArgs(["--sbom", "--quiet"]);
+      assert.equal(args.sbom, true);
+      assert.equal(args.quiet, true);
+    });
+
+    it("does not interfere with --help flag", () => {
+      const args = parseArgs(["--sbom", "--help"]);
+      assert.equal(args.sbom, true);
+      assert.equal(args.help, true);
+    });
+  });
+
+  describe("--sbom-format flag", () => {
+    it('sets sbomFormat when --sbom-format cyclonedx is passed', () => {
+      const args = parseArgs(["--sbom-format", "cyclonedx"]);
+      assert.equal(args.sbomFormat, "cyclonedx");
+    });
+
+    it('sets sbomFormat when --sbom-format spdx is passed', () => {
+      const args = parseArgs(["--sbom-format", "spdx"]);
+      assert.equal(args.sbomFormat, "spdx");
+    });
+
+    it("does not interfere with --sbom flag", () => {
+      const args = parseArgs(["--sbom", "--sbom-format", "spdx"]);
+      assert.equal(args.sbom, true);
+      assert.equal(args.sbomFormat, "spdx");
+    });
+  });
+
+  describe("--sbom-output flag", () => {
+    it('sets sbomOutput when --sbom-output path is passed', () => {
+      const args = parseArgs(["--sbom-output", "sbom.json"]);
+      assert.equal(args.sbomOutput, "sbom.json");
+    });
+
+    it("does not interfere with other flags", () => {
+      const args = parseArgs(["--sbom", "--sbom-format", "cyclonedx", "--sbom-output", "output.json"]);
+      assert.equal(args.sbom, true);
+      assert.equal(args.sbomFormat, "cyclonedx");
+      assert.equal(args.sbomOutput, "output.json");
+    });
+  });
+
   describe("--update-db flag", () => {
     it('sets updateDb to "incremental" when flag is passed without a value', () => {
       const args = parseArgs(["--update-db"]);

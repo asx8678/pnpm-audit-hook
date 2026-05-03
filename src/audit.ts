@@ -97,6 +97,21 @@ export interface AuditResult {
     /** Average write time in milliseconds */
     averageWriteTimeMs: number;
   };
+  /** SBOM generation result (if enabled in config) */
+  sbom?: {
+    /** SBOM content as JSON string */
+    content: string;
+    /** SBOM format used */
+    format: string;
+    /** Number of components in SBOM */
+    componentCount: number;
+    /** Number of vulnerabilities included */
+    vulnerabilityCount: number;
+    /** Output file path (if written to file) */
+    outputPath?: string;
+    /** Generation duration in milliseconds */
+    durationMs: number;
+  };
 }
 
 /**
@@ -250,6 +265,31 @@ export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions):
     getOutputFormat(env),
   );
 
+  // Generate SBOM if enabled in config
+  let sbomResult: AuditResult['sbom'];
+  if (cfg.sbom?.enabled) {
+    try {
+      const { generateSbom } = await import('./sbom/generator');
+      const result = generateSbom(packages, agg.findings, {
+        format: cfg.sbom.format ?? 'cyclonedx',
+        outputPath: cfg.sbom.outputPath,
+        includeVulnerabilities: cfg.sbom.includeVulnerabilities ?? true,
+        projectName: cfg.sbom.projectName ?? path.basename(cwd),
+        projectVersion: cfg.sbom.projectVersion ?? '1.0.0',
+      });
+      sbomResult = {
+        content: result.content,
+        format: result.format,
+        componentCount: result.componentCount,
+        vulnerabilityCount: result.vulnerabilityCount,
+        outputPath: result.outputPath,
+        durationMs: result.durationMs,
+      };
+    } catch (e) {
+      logger.error(`SBOM generation failed: ${e instanceof Error ? e.message : e}`);
+    }
+  }
+
   // Get cache statistics
   const cacheStats = cache.getStatistics();
   const hitRate = cacheStats.hits + cacheStats.misses > 0
@@ -272,5 +312,6 @@ export async function runAudit(lockfile: PnpmLockfile, runtime: RuntimeOptions):
       averageReadTimeMs: cacheStats.averageReadTimeMs,
       averageWriteTimeMs: cacheStats.averageWriteTimeMs,
     },
+    sbom: sbomResult,
   };
 }

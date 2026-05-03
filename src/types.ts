@@ -108,6 +108,10 @@ export interface PackageRef {
   version: string;
   /** Registry URL this package was fetched from (e.g., "https://registry.npmjs.org") */
   registry?: string;
+  /** Package integrity hash (e.g., "sha512-...") */
+  integrity?: string;
+  /** Package dependencies (other package names this depends on) */
+  dependencies?: string[];
 }
 
 /** A node in the dependency graph */
@@ -286,6 +290,24 @@ export interface SourceStatus {
 }
 
 /** User-provided config (all fields optional, merged with defaults) */
+/** SBOM configuration options */
+export type SbomFormat = "cyclonedx" | "spdx";
+
+export interface SbomConfig {
+  /** Enable/disable SBOM generation (default: false) */
+  enabled?: boolean;
+  /** SBOM output format: cyclonedx or spdx (default: cyclonedx) */
+  format?: SbomFormat;
+  /** Output file path (undefined = stdout) */
+  outputPath?: string;
+  /** Include vulnerability information in SBOM (default: true) */
+  includeVulnerabilities?: boolean;
+  /** Project name for SBOM metadata */
+  projectName?: string;
+  /** Project version for SBOM metadata */
+  projectVersion?: string;
+}
+
 export interface AuditConfigInput {
   policy?: {
     block?: Severity[];
@@ -313,6 +335,8 @@ export interface AuditConfigInput {
   offline?: boolean;
   /** Static baseline configuration for historical vulnerabilities */
   staticBaseline?: StaticBaselineConfigInput;
+  /** SBOM generation configuration */
+  sbom?: SbomConfig;
 }
 
 /** Fully-resolved config returned by loadConfig() */
@@ -343,6 +367,8 @@ export interface AuditConfig {
   offline: boolean;
   /** Static baseline configuration for historical vulnerabilities */
   staticBaseline: StaticBaselineConfig;
+  /** SBOM generation configuration */
+  sbom?: SbomConfig;
 }
 
 export interface RuntimeOptions {

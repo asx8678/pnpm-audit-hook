@@ -401,6 +401,19 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
   // Offline mode: env var or config
   const offline = opts.env.PNPM_AUDIT_OFFLINE === "true" || raw.offline === true;
 
+  // SBOM configuration: env var or config
+  const sbomRaw = asRecord(raw.sbom);
+  const sbomEnabled = opts.env.PNPM_AUDIT_SBOM === "true" || sbomRaw?.enabled === true;
+  const sbomFormat = (opts.env.PNPM_AUDIT_SBOM_FORMAT as string) || (sbomRaw?.format as string) || "cyclonedx";
+  const sbomOutputPath = opts.env.PNPM_AUDIT_SBOM_OUTPUT || sbomRaw?.outputPath as string | undefined;
+
+  // Validate SBOM format
+  const validSbomFormats = new Set(["cyclonedx", "spdx"]);
+  const finalSbomFormat = validSbomFormats.has(sbomFormat) ? sbomFormat as "cyclonedx" | "spdx" : "cyclonedx";
+  if (!validSbomFormats.has(sbomFormat)) {
+    logger.warn(`Invalid SBOM format: "${sbomFormat}", using "cyclonedx" (valid: cyclonedx, spdx)`);
+  }
+
   // Env var override for block severities (comma-separated, e.g. "critical,high")
   const blockSeverityEnv = opts.env.PNPM_AUDIT_BLOCK_SEVERITY;
   const finalBlockSeverities = blockSeverityEnv
@@ -448,5 +461,13 @@ export async function loadConfig(opts: LoadConfigOptions): Promise<AuditConfig> 
     failOnSourceError,
     offline,
     staticBaseline: parseStaticBaseline(staticBaselineRaw),
+    sbom: sbomEnabled ? {
+      enabled: true,
+      format: finalSbomFormat,
+      outputPath: sbomOutputPath,
+      includeVulnerabilities: sbomRaw?.includeVulnerabilities !== false,
+      projectName: sbomRaw?.projectName as string | undefined,
+      projectVersion: sbomRaw?.projectVersion as string | undefined,
+    } : undefined,
   };
 }

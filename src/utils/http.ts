@@ -190,6 +190,10 @@ export class ConnectionPool {
         () => this.healthCheck(),
         this.poolOptions.healthCheckIntervalMs,
       );
+      // Don't keep the process alive just for health checks
+      if (this.healthCheckIntervalId && typeof this.healthCheckIntervalId === 'object' && 'unref' in this.healthCheckIntervalId) {
+        this.healthCheckIntervalId.unref();
+      }
     }
   }
 

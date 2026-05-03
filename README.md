@@ -43,6 +43,7 @@ Unlike `pnpm audit`, which runs after dependencies are already installed, `pnpm-
 - [Allowlist](#allowlist)
 - [Environment Variables](#environment-variables)
 - [CLI Reference](#cli-reference)
+- [SBOM Generation](#sbom-generation)
 - [Vulnerability Sources](#vulnerability-sources)
 - [Caching](#caching)
 - [CI/CD Integration](#cicd-integration)
@@ -63,6 +64,7 @@ Unlike `pnpm audit`, which runs after dependencies are already installed, `pnpm-
 - [Local Development](#local-development)
 - [Exit Codes](#exit-codes)
 - [License](#license)
+- [SBOM Next Steps Plan](docs/SBOM_NEXT_STEPS_PLAN.md)
 
 ---
 
@@ -1213,6 +1215,9 @@ Verbose mode is enabled automatically in common CI environments, including `CI`,
 | `--offline` | Skip live API calls and use only the static database and cache |
 | `--update-db` | Run an incremental vulnerability database update |
 | `--update-db=full` | Run a full vulnerability database rebuild |
+| `--sbom` | Generate SBOM (Software Bill of Materials) |
+| `--sbom-format <fmt>` | SBOM format: `cyclonedx`, `spdx` (default: `cyclonedx`) |
+| `--sbom-output <path>` | Write SBOM to file (default: stdout) |
 | `--quiet` | Suppress non-error output |
 | `--verbose` | Enable verbose output |
 | `--debug` | Enable debug output |
@@ -1221,6 +1226,59 @@ Verbose mode is enabled automatically in common CI environments, including `CI`,
 | `--version` | Show version |
 
 When `--update-db` is used, the database update runs and the CLI exits without performing an audit.
+
+---
+
+## SBOM Generation
+
+Generate Software Bill of Materials (SBOM) documents from your vulnerability audit results. SBOMs provide a standardized way to document all dependencies and their security status.
+
+### Supported Formats
+
+- **CycloneDX 1.5** - OWASP standard, widely used in security tooling
+- **SPDX 2.3** - Linux Foundation standard (ISO/IEC 5962:2021)
+
+### CLI Usage
+
+```bash
+# Generate CycloneDX SBOM (default)
+pnpm-audit-scan --sbom
+
+# Generate SPDX SBOM
+npnpm-audit-scan --sbom --sbom-format spdx
+
+# Write SBOM to file
+npnpm-audit-scan --sbom --sbom-output sbom.json
+
+# Full example with all options
+npnpm-audit-scan --sbom --sbom-format cyclonedx --sbom-output sbom.json
+```
+
+### SBOM Features
+
+- **Package Information**: Package names, versions, and purl identifiers
+- **Integrity Hashes**: SHA-256/512 hashes for package integrity verification
+- **Dependency Relationships**: Complete dependency graphs (when available)
+- **Vulnerability Details**: Security findings with severity and fix information
+- **Metadata**: Project name, version, and generation timestamps
+
+### API Usage
+
+```typescript
+import { generateSbom } from 'pnpm-audit-hook';
+
+const result = generateSbom(packages, findings, {
+  format: 'cyclonedx',
+  includeVulnerabilities: true,
+  includeDependencies: true,
+  projectName: 'my-project',
+  projectVersion: '1.0.0',
+});
+
+fs.writeFileSync('sbom.json', result.content);
+```
+
+For complete SBOM API documentation, see [SBOM API Reference](docs/api/sbom.md).
 
 ---
 
