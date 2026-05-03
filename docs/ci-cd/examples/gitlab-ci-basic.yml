@@ -1,0 +1,46 @@
+# Basic GitLab CI Security Audit Pipeline
+# This pipeline runs security audits on every push
+
+stages:
+  - security
+  - build
+
+variables:
+  NODE_ENV: production
+  AUDIT_SEVERITY: high
+
+security-audit:
+  stage: security
+  image: node:20
+  before_script:
+    - npm install -g pnpm
+    - pnpm install --frozen-lockfile
+  script:
+    - pnpm audit
+  artifacts:
+    paths:
+      - audit-report.json
+    reports:
+      - audit-report.json
+    expire_in: 1 week
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "develop"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+build:
+  stage: build
+  image: node:20
+  needs:
+    - security-audit
+  before_script:
+    - npm install -g pnpm
+    - pnpm install --frozen-lockfile
+  script:
+    - pnpm run build
+  artifacts:
+    paths:
+      - dist/
+  only:
+    - main
+    - develop

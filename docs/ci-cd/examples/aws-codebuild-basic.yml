@@ -1,0 +1,40 @@
+# Basic AWS CodeBuild Security Audit Buildspec
+# This buildspec runs security audits in CodeBuild
+
+version: 0.2
+
+env:
+  variables:
+    NODE_ENV: production
+    AUDIT_SEVERITY: high
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - npm install -g pnpm
+      - pnpm install --frozen-lockfile
+  build:
+    commands:
+      - pnpm audit
+  post_build:
+    commands:
+      - echo "Security audit completed"
+
+artifacts:
+  files:
+    - audit-report.json
+  discard-paths: yes
+  name: audit-report
+
+cache:
+  paths:
+    - 'node_modules/**/*'
+    - '/root/.pnpm-store/**/*'
+
+reports:
+  audit-reports:
+    files:
+      - audit-report.json
+    file-format: JSON

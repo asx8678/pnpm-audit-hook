@@ -1,0 +1,101 @@
+# Advanced GitHub Actions Security Audit Workflow
+# This workflow includes annotations, caching, artifacts, and conditional logic
+
+name: Security Audit Advanced
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run weekly security scan
+    - cron: '0 0 * * 0'
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+    outputs:
+      blocked: ${{ steps.audit.outputs.blocked }}
+      vulnerability-count: ${{ steps.audit.outputs.vulnerability-count }}
+      critical-count: ${{ steps.audit.outputs.critical-count }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Run Security Audit
+        id: audit
+        run: |
+          pnpm audit --output=json > audit-report.json
+          
+          # Extract results
+          BLOCKED=$(jq '.blocked' audit-report.json)
+          VULN_COUNT=$(jq '.findings | length' audit-report.json)
+          CRIT_COUNT=$(jq '.summary.vulnerabilitiesBySeverity.critical' audit-report.json)
+          
+          # Set outputs
+          echo "blocked=$BLOCKED" >> $GITHUB_OUTPUT
+          echo "vulnerability-count=$VULN_COUNT" >> $GITHUB_OUTPUT
+          echo "critical-count=$CRIT_COUNT" >> $GITHUB_OUTPUT
+          
+          # Create annotations
+          if [ "$BLOCKED" == "true" ]; then
+            echo "::error::Security audit failed - critical vulnerabilities found"
+          fi
+          
+      - name: Upload Audit Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-audit-report
+          path: audit-report.json
+          retention-days: 30
+          
+      - name: Security Summary
+        if: always()
+        run: |
+          echo "## Security Audit Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Blocked**: ${{ steps.audit.outputs.blocked }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Vulnerabilities**: ${{ steps.audit.outputs.vulnerability-count }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Critical**: ${{ steps.audit.outputs.critical-count }}" >> $GITHUB_STEP_SUMMARY
+          
+      - name: Fail on Critical Vulnerabilities
+        if: steps.audit.outputs.blocked == 'true'
+        run: |
+          echo "::error::Security audit failed - critical vulnerabilities found"
+          exit 1
+          
+  deployment:
+    needs: security-audit
+    runs-on: ubuntu-latest
+    if: needs.security-audit.outputs.blocked != 'true'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Deploy Application
+        run: |
+          echo "Deploying application..."
+          echo "Security audit passed"
+          echo "Vulnerabilities found: ${{ needs.security-audit.outputs.vulnerability-count }}"

@@ -1,0 +1,84 @@
+# pnpm-audit-hook configuration file
+# This file configures the behavior of pnpm-audit-hook
+
+# Output format: github, azure, aws, human, json
+output: github
+
+# Minimum severity level to report: critical, high, medium, low, unknown
+severity: high
+
+# Ignore specific vulnerabilities
+ignore:
+  # Ignore all npm vulnerabilities
+  - "npm:.*"
+  
+  # Ignore specific CVEs
+  - "CVE-2023-.*"
+  - "CVE-2024-.*"
+  
+  # Ignore specific advisories
+  - "GHSA-xxxx-xxxx-xxxx"
+
+# Allowlist specific packages
+allowlist:
+  - package: "example-package"
+    reason: "Not used in production"
+    expires: "2024-12-31"
+    
+  - package: "another-package"
+    reason: "Already patched in our fork"
+    
+  - package: "test-package"
+    reason: "Only used in development"
+    expires: "2025-06-30"
+
+# Advanced options
+advanced:
+  # Use offline mode for faster audits
+  offline: false
+  
+  # Maximum number of retries for network requests
+  maxRetries: 3
+  
+  # Timeout for network requests (in milliseconds)
+  timeout: 30000
+  
+  # Cache directory for vulnerability database
+  cacheDir: ".pnpm-audit-cache"
+  
+  # Enable debug logging
+  debug: false
+
+# Source configuration
+sources:
+  # Enable/disable specific vulnerability sources
+  github-advisory: true
+  nvd: true
+  osv: true
+  
+  # Custom vulnerability sources
+  custom:
+    - name: "internal-advisory"
+      url: "https://advisories.internal.company.com"
+      type: "json"
+      token: "$ADVISORY_TOKEN"
+
+# Policy configuration
+policy:
+  # Block on critical vulnerabilities
+  blockOnCritical: true
+  
+  # Block on high vulnerabilities
+  blockOnHigh: false
+  
+  # Warn on medium vulnerabilities
+  warnOnMedium: true
+  
+  # Warn on low vulnerabilities
+  warnOnLow: false
+  
+  # Exit code for blocked installations
+  blockedExitCode: 1
+  
+  # Exit code for warnings
+  warningExitCode: 0
