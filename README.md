@@ -46,6 +46,14 @@ Unlike `pnpm audit`, which runs after dependencies are already installed, `pnpm-
 - [Vulnerability Sources](#vulnerability-sources)
 - [Caching](#caching)
 - [CI/CD Integration](#cicd-integration)
+  - [CI/CD Documentation](docs/ci-cd/README.md)
+  - [GitHub Actions Guide](docs/ci-cd/github-actions.md)
+  - [Azure DevOps Guide](docs/ci-cd/azure-devops.md)
+  - [AWS CodeBuild Guide](docs/ci-cd/aws-codebuild.md)
+  - [GitLab CI Guide](docs/ci-cd/gitlab-ci.md)
+  - [Jenkins Guide](docs/ci-cd/jenkins.md)
+  - [Best Practices](docs/ci-cd/best-practices.md)
+  - [Troubleshooting](docs/ci-cd/troubleshooting.md)
 - [Static Vulnerability Database](#static-vulnerability-database)
 - [Architecture](#architecture)
 - [Security Model](#security-model)
@@ -1344,7 +1352,11 @@ flowchart LR
 
 ## CI/CD Integration
 
-### GitHub Actions
+pnpm-audit-hook provides comprehensive CI/CD integration with platform-specific features, annotations, and output variables. For detailed guides and best practices, see our [CI/CD Documentation](docs/ci-cd/).
+
+### Quick Start
+
+#### GitHub Actions
 
 ```yaml
 name: Install with Audit
@@ -1366,18 +1378,19 @@ jobs:
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
 ```
 
-The hook runs during `pnpm install` and fails the job when blocking vulnerabilities are found.
+**Features**: Annotations, log groups, output variables, caching support.
 
-GitHub Actions output includes annotations and optional outputs for downstream steps.
-
-| Output | Description |
-|--------|-------------|
+**Output Variables**:
+| Variable | Description |
+|----------|-------------|
 | `audit-blocked` | `true` when installation is blocked |
 | `vulnerability-count` | Total vulnerability count |
 | `critical-count` | Number of critical vulnerabilities |
 | `high-count` | Number of high vulnerabilities |
 
-### Azure DevOps
+**Documentation**: [GitHub Actions Guide](docs/ci-cd/github-actions.md)
+
+#### Azure DevOps
 
 ```yaml
 trigger:
@@ -1400,8 +1413,9 @@ steps:
       PNPM_AUDIT_FORMAT: azure
 ```
 
-Azure DevOps output uses pipeline logging commands for grouped output, errors, warnings, and task variables. Azure Pipelines are auto-detected when `TF_BUILD=True`.
+**Features**: Pipeline logging commands, grouped output, task variables.
 
+**Output Variables**:
 | Variable | Description |
 |----------|-------------|
 | `AUDIT_BLOCKED` | `true` when installation is blocked |
@@ -1409,7 +1423,9 @@ Azure DevOps output uses pipeline logging commands for grouped output, errors, w
 | `AUDIT_CRITICAL_COUNT` | Number of critical vulnerabilities |
 | `AUDIT_HIGH_COUNT` | Number of high vulnerabilities |
 
-### AWS CodeBuild
+**Documentation**: [Azure DevOps Guide](docs/ci-cd/azure-devops.md)
+
+#### AWS CodeBuild
 
 ```yaml
 # buildspec.yml
@@ -1427,14 +1443,72 @@ phases:
       - pnpm run build
 ```
 
-AWS CodeBuild output uses grouped logging commands for structured output. CodeBuild environments are auto-detected when `CODEBUILD_BUILD_ID` is set.
+**Features**: CloudWatch Logs formatting, grouped output, reports.
 
+**Output Variables**:
 | Variable | Description |
 |----------|-------------|
 | `AUDIT_BLOCKED` | `true` when installation is blocked |
 | `AUDIT_VULNERABILITY_COUNT` | Total vulnerability count |
 | `AUDIT_CRITICAL_COUNT` | Number of critical vulnerabilities |
 | `AUDIT_HIGH_COUNT` | Number of high vulnerabilities |
+
+**Documentation**: [AWS CodeBuild Guide](docs/ci-cd/aws-codebuild.md)
+
+#### GitLab CI
+
+```yaml
+stages:
+  - security
+  - build
+
+security-audit:
+  stage: security
+  image: node:20
+  before_script:
+    - npm install -g pnpm
+    - pnpm install --frozen-lockfile
+  script:
+    - pnpm audit
+  artifacts:
+    paths:
+      - audit-report.json
+    reports:
+      - audit-report.json
+    expire_in: 1 week
+```
+
+**Features**: CI variables, artifacts, merge request integration.
+
+**Documentation**: [GitLab CI Guide](docs/ci-cd/gitlab-ci.md)
+
+#### Jenkins
+
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage('Security Audit') {
+            steps {
+                sh 'npm install -g pnpm'
+                sh 'pnpm install --frozen-lockfile'
+                sh 'pnpm audit'
+            }
+        }
+    }
+}
+```
+
+**Features**: Console output, exit codes, pipeline integration.
+
+**Documentation**: [Jenkins Guide](docs/ci-cd/jenkins.md)
+
+### Further Reading
+
+- **[CI/CD Overview](docs/ci-cd/README.md)** - Complete CI/CD integration guide
+- **[Best Practices](docs/ci-cd/best-practices.md)** - Security, performance, and reliability tips
+- **[Troubleshooting](docs/ci-cd/troubleshooting.md)** - Common issues and solutions
+- **[Example Workflows](docs/ci-cd/examples/)** - Ready-to-use workflow templates
 
 ---
 

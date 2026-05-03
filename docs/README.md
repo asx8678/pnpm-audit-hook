@@ -32,6 +32,14 @@ This directory contains comprehensive documentation for the pnpm-audit-hook proj
 - [Main README](../README.md) - Project overview and usage
 - [Configuration Guide](../README.md#configuration) - Configuration options
 - [CI/CD Integration](../README.md#cicd-integration) - CI/CD setup guides
+- [CI/CD Documentation](ci-cd/README.md) - Comprehensive CI/CD integration guide
+- [GitHub Actions Guide](ci-cd/github-actions.md) - GitHub Actions integration
+- [Azure DevOps Guide](ci-cd/azure-devops.md) - Azure DevOps integration
+- [AWS CodeBuild Guide](ci-cd/aws-codebuild.md) - AWS CodeBuild integration
+- [GitLab CI Guide](ci-cd/gitlab-ci.md) - GitLab CI integration
+- [Jenkins Guide](ci-cd/jenkins.md) - Jenkins integration
+- [CI/CD Best Practices](ci-cd/best-practices.md) - Security, performance, and reliability tips
+- [CI/CD Troubleshooting](ci-cd/troubleshooting.md) - Common CI/CD issues and solutions
 - [Troubleshooting Guide](troubleshooting.md) - Comprehensive troubleshooting documentation
 - [Troubleshooting](../README.md#troubleshooting) - Common issues and solutions
 
