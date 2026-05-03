@@ -165,6 +165,22 @@ export { validateSbom, isValidSbom } from "./sbom/schema-validator";
 export { generateSwidSbom, generateSwidTags, serializeSwidTagToXml } from "./sbom/swid-generator";
 export type { SbomOptions, SbomResult, ValidationResult, ValidationError, SwidTag, SwidTagSet } from "./sbom/types";
 
+// Export SBOM diff utilities
+export { diffSbom, formatDiffResult } from "./sbom/diff";
+export type { SbomDiffResult, SbomDiffEntry, SbomDiffSummary, SbomDiffMetadata, SbomDiffOptions, NormalizedPackage } from "./sbom/types";
+
+// Export SBOM dependency tree utilities
+export { buildTreeFromSbom, buildTreeFromLockfile, renderTree, renderTreeJson } from "./sbom/dependency-tree";
+export type { TreeOptions, TreeNode, TreeJsonOutput, TreeVulnerability } from "./sbom/types";
+
+// Export SBOM Mermaid diagram generator
+export { generateMermaidFromSbom } from "./sbom/mermaid-generator";
+export type { MermaidOptions, MermaidVulnerabilityStyle } from "./sbom/types";
+
+// Export SBOM Graphviz DOT diagram generator
+export { generateDotFromSbom } from "./sbom/dot-generator";
+export type { DotOptions } from "./sbom/types";
+
 // Export color utilities for external use
 export {
   supportsColor,

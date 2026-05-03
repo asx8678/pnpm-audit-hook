@@ -1,0 +1,154 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build project
+        run: pnpm run build
+
+  test:
+    runs-on: ubuntu-latest
+    needs: lint-and-build
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [18, 20, 22]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build project
+        run: pnpm run build
+
+      - name: Run unit tests
+        run: pnpm run test:unit
+
+      - name: Run integration tests
+        run: pnpm run test:integration
+
+  sbom-generation:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build project
+        run: pnpm run build
+
+      - name: Generate CycloneDX SBOM
+        run: node bin/cli.js --sbom --sbom-format cyclonedx --sbom-output sbom-cyclonedx.json --offline
+        continue-on-error: true
+
+      - name: Generate SPDX SBOM
+        run: node bin/cli.js --sbom --sbom-format spdx --sbom-output sbom-spdx.json --offline
+        continue-on-error: true
+
+      - name: Validate CycloneDX SBOM
+        if: hashFiles('sbom-cyclonedx.json') != ''
+        run: |
+          node -e "
+            const fs = require('fs');
+            const bom = JSON.parse(fs.readFileSync('sbom-cyclonedx.json', 'utf-8'));
+            const errors = [];
+            if (bom.bomFormat !== 'CycloneDX') errors.push('Missing or invalid bomFormat');
+            if (!bom.specVersion) errors.push('Missing specVersion');
+            if (!bom.serialNumber) errors.push('Missing serialNumber');
+            if (!bom.version) errors.push('Missing version');
+            if (!bom.metadata) errors.push('Missing metadata');
+            if (!Array.isArray(bom.components)) errors.push('Missing components array');
+            if (errors.length > 0) {
+              console.error('CycloneDX validation failed:', errors);
+              process.exit(1);
+            }
+            console.log('CycloneDX validation passed');
+            console.log('  Format:', bom.bomFormat);
+            console.log('  Spec:', bom.specVersion);
+            console.log('  Components:', bom.components.length);
+          "
+
+      - name: Validate SPDX SBOM
+        if: hashFiles('sbom-spdx.json') != ''
+        run: |
+          node -e "
+            const fs = require('fs');
+            const doc = JSON.parse(fs.readFileSync('sbom-spdx.json', 'utf-8'));
+            const errors = [];
+            if (!doc.spdxVersion) errors.push('Missing spdxVersion');
+            if (!doc.dataLicense) errors.push('Missing dataLicense');
+            if (doc.SPDXID !== 'SPDXRef-DOCUMENT') errors.push('Invalid SPDXID');
+            if (!doc.documentNamespace) errors.push('Missing documentNamespace');
+            if (!doc.creationInfo) errors.push('Missing creationInfo');
+            if (!Array.isArray(doc.packages)) errors.push('Missing packages array');
+            if (!Array.isArray(doc.relationships)) errors.push('Missing relationships array');
+            if (errors.length > 0) {
+              console.error('SPDX validation failed:', errors);
+              process.exit(1);
+            }
+            console.log('SPDX validation passed');
+            console.log('  Version:', doc.spdxVersion);
+            console.log('  Packages:', doc.packages.length);
+          "
+
+      - name: Upload SBOM artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sbom-reports
+          path: |
+            sbom-cyclonedx.json
+            sbom-spdx.json
+          retention-days: 30

@@ -47,6 +47,34 @@ export {
   serializeSwidTagSetToXml,
 } from "./swid-generator";
 
+export {
+  diffSbom,
+  formatDiffResult,
+} from "./diff";
+
+export {
+  buildTreeFromSbom,
+  buildTreeFromLockfile,
+  renderTree,
+  renderTreeJson,
+} from "./dependency-tree";
+
+export { generateMermaidFromSbom } from "./mermaid-generator";
+
+export { generateDotFromSbom } from "./dot-generator";
+
+export {
+  MonorepoSbomGenerator,
+  generateMonorepoSbom,
+} from "./monorepo-generator";
+
+export type {
+  MonorepoSbomOptions,
+  WorkspaceSbomResult,
+  MonorepoSbomResult,
+  WorkspaceSbomError,
+} from "./monorepo-generator";
+
 export type {
   SbomFormat,
   SbomOptions,
@@ -62,4 +90,28 @@ export type {
   SwidEntity,
   SwidLink,
   SwidOptions,
+  SbomDiffResult,
+  SbomDiffEntry,
+  SbomDiffSummary,
+  SbomDiffMetadata,
+  SbomDiffOptions,
+  NormalizedPackage,
+  TreeOptions,
+  TreeNode,
+  TreeJsonOutput,
+  TreeVulnerability,
+  MermaidOptions,
+  MermaidVulnerabilityStyle,
+  DotOptions,
+  ComponentCacheOptions,
 } from "./types";
+
+export {
+  SbomComponentCache,
+  createComponentCache,
+} from "./component-cache";
+
+export type {
+  CacheEntry,
+  CacheStats,
+} from "./component-cache";

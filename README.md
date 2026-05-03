@@ -1,5 +1,7 @@
 # pnpm-audit-hook
 
+[![CI](https://github.com/asx8678/pnpm-audit-hook/actions/workflows/ci.yml/badge.svg)](https://github.com/asx8678/pnpm-audit-hook/actions/workflows/ci.yml)
+[![SBOM Integration](https://github.com/asx8678/pnpm-audit-hook/actions/workflows/sbom-integration.yml/badge.svg)](https://github.com/asx8678/pnpm-audit-hook/actions/workflows/sbom-integration.yml)
 [![npm version](https://img.shields.io/npm/v/pnpm-audit-hook.svg)](https://www.npmjs.com/package/pnpm-audit-hook)
 [![license](https://img.shields.io/npm/l/pnpm-audit-hook.svg)](https://github.com/asx8678/pnpm-audit-hook/blob/main/LICENSE)
 [![node](https://img.shields.io/node/v/pnpm-audit-hook.svg)](https://nodejs.org)
@@ -1411,6 +1413,26 @@ flowchart LR
 ## CI/CD Integration
 
 pnpm-audit-hook provides comprehensive CI/CD integration with platform-specific features, annotations, and output variables. For detailed guides and best practices, see our [CI/CD Documentation](docs/ci-cd/).
+
+### GitHub Workflows
+
+This project includes two GitHub Actions workflows:
+
+#### CI Pipeline (`.github/workflows/ci.yml`)
+
+Runs on every push and PR to `main`:
+- **Lint & Build** — Ensures the project builds cleanly
+- **Test Matrix** — Runs all tests on Node.js 18, 20, and 22
+- **SBOM Generation** — Generates and validates both CycloneDX and SPDX SBOMs
+- **Artifact Upload** — Stores generated SBOMs for 30 days
+
+#### SBOM Integration (`.github/workflows/sbom-integration.yml`)
+
+Triggered by changes to SBOM-related code:
+- **Unit Tests** — Runs SBOM unit and schema validation tests
+- **Integration Tests** — Runs CLI, E2E, and performance SBOM tests
+- **Lockfile Matrix** — Tests SBOM generation against all lockfile versions (empty, v6, v7, v9, large)
+- **Schema Validation** — Validates BOM-Link compliance and SPDX license expressions
 
 ### Quick Start
 

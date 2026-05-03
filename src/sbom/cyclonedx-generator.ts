@@ -21,6 +21,7 @@ import type {
   SbomResult,
   ComponentVulnerabilityMap,
 } from "./types";
+import { CvssValidator, type CvssValidationResult } from "../utils/cvss-validator";
 
 /** Tool metadata for SBOM generation */
 const TOOL_INFO = {
@@ -60,6 +61,84 @@ function generateSerialNumber(): string {
     // Fallback for older Node.js
     return `urn:uuid:${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
   }
+}
+
+/**
+ * Convert an EPSS score (0.0 - 1.0) to a human-readable severity label.
+ *
+ * EPSS severity mapping:
+ * - 0.5+ : Critical (high probability of exploitation)
+ * - 0.3+ : High
+ * - 0.1+ : Medium
+ * - <0.1 : Low
+ *
+ * @param epssScore - EPSS probability score (0.0 - 1.0)
+ * @returns Severity label string
+ */
+function getEpssSeverityLabel(epssScore: number): string {
+  if (epssScore >= 0.5) return "critical";
+  if (epssScore >= 0.3) return "high";
+  if (epssScore >= 0.1) return "medium";
+  return "low";
+}
+
+/**
+ * Generate fix recommendation information for a vulnerability.
+ *
+ * Parses the fixedVersion field and generates human-readable recommendation,
+ * fix availability status, and upgrade path information.
+ *
+ * @param finding - Vulnerability finding with potential fix information
+ * @returns Object with recommendation fields for CycloneDX output
+ */
+function generateFixRecommendation(finding: VulnerabilityFinding): {
+  recommendation?: string;
+  fixAvailable?: boolean;
+  fixVersions?: string[];
+  upgradePath?: string;
+} {
+  const result: {
+    recommendation?: string;
+    fixAvailable?: boolean;
+    fixVersions?: string[];
+    upgradePath?: string;
+  } = {};
+
+  // Check if we have fix version information
+  if (finding.fixedVersion) {
+    // Parse fixedVersion - could be a single version or comma-separated list
+    const fixedVersions = finding.fixedVersion
+.split(/\s*,\s*/)
+      .map(v => v.trim())
+      .filter(v => v.length > 0);
+
+    if (fixedVersions.length > 0) {
+      result.fixAvailable = true;
+      result.fixVersions = fixedVersions;
+
+      // Generate human-readable recommendation
+      if (fixedVersions.length === 1) {
+        result.recommendation = 
+          `Upgrade ${finding.packageName} to version ${fixedVersions[0]} or later to fix this vulnerability.`;
+        result.upgradePath = `${finding.packageName}@${finding.packageVersion} → ${finding.packageName}@${fixedVersions[0]}`;
+      } else {
+        const versionList = fixedVersions.join(', ');
+        result.recommendation = 
+          `Upgrade ${finding.packageName} to one of the following versions to fix this vulnerability: ${versionList}.`;
+        result.upgradePath = `${finding.packageName}@${finding.packageVersion} → ${finding.packageName}@${fixedVersions[0]} (or later)`;
+      }
+    } else {
+      // Fixed version was whitespace only
+      result.fixAvailable = false;
+      result.recommendation = `No fix is currently available for this vulnerability in ${finding.packageName}.`;
+    }
+  } else {
+    // No fix version available
+    result.fixAvailable = false;
+    result.recommendation = `No fix is currently available for this vulnerability in ${finding.packageName}.`;
+  }
+
+  return result;
 }
 
 /**
@@ -123,6 +202,7 @@ function toCycloneDXComponent(
  * Convert vulnerability findings to CycloneDX vulnerability format.
  *
  * Maps our internal VulnerabilityFinding to CycloneDX 1.5 vulnerability schema.
+ * Validates CVSS vectors and includes full CVSS details in ratings.
  */
 function toCycloneDXVulnerability(
   finding: VulnerabilityFinding,
@@ -146,11 +226,53 @@ function toCycloneDXVulnerability(
     vector: finding.cvssVector,
   };
 
-  // Add CVSS score if available, otherwise use severity-based score
-  if (typeof finding.cvssScore === "number") {
+  // Validate and parse CVSS vector if available
+  let cvssValidation: CvssValidationResult | undefined;
+  if (finding.cvssVector) {
+    const validator = new CvssValidator();
+    cvssValidation = validator.validate(finding.cvssVector);
+
+    if (cvssValidation.isValid && cvssValidation.score !== undefined) {
+      // Use validated score and severity
+      rating.score = cvssValidation.score;
+      rating.severity = cvssValidation.severity;
+    } else if (typeof finding.cvssScore === "number") {
+      // Fallback to finding's score if vector validation fails
+      rating.score = finding.cvssScore;
+    } else {
+      // Use severity-based score as last resort
+      if ("score" in ratingInfo && ratingInfo.score !== undefined) {
+        rating.score = ratingInfo.score;
+      }
+    }
+  } else if (typeof finding.cvssScore === "number") {
+    // No vector, but score available
     rating.score = finding.cvssScore;
-  } else if (ratingInfo && "score" in ratingInfo && ratingInfo.score !== undefined) {
+  } else if ("score" in ratingInfo && ratingInfo.score !== undefined) {
+    // Use severity-based score
     rating.score = ratingInfo.score;
+  }
+
+  // Add CVSS version to rating source if we have vector info
+  if (cvssValidation?.isValid && cvssValidation.version) {
+    rating.source = {
+      name: finding.source ?? "unknown",
+      url: undefined,
+    };
+  }
+
+  // Build ratings array with CVSS + EPSS
+  const ratings: CycloneDXVulnerability["ratings"] = [rating];
+
+  // Add EPSS rating if available
+  if (finding.epss) {
+    ratings.push({
+      source: { name: "first.org", url: "https://www.first.org/epss/" },
+      score: finding.epss.epssScore,
+      severity: getEpssSeverityLabel(finding.epss.epssScore),
+      method: "epss",
+      percentile: finding.epss.epssPercentile,
+    });
   }
 
   const vuln: CycloneDXVulnerability = {
@@ -158,7 +280,7 @@ function toCycloneDXVulnerability(
     source: finding.url
       ? { name: finding.source ?? "unknown", url: finding.url }
       : undefined,
-    ratings: [rating],
+    ratings,
     affects: [{ ref: componentBomRef }],
   };
 
@@ -193,6 +315,21 @@ function toCycloneDXVulnerability(
         url: finding.url,
       },
     ];
+  }
+
+  // Add fix recommendation information
+  const fixRecommendation = generateFixRecommendation(finding);
+  if (fixRecommendation.recommendation) {
+    vuln.recommendation = fixRecommendation.recommendation;
+  }
+  if (fixRecommendation.fixAvailable !== undefined) {
+    vuln.fixAvailable = fixRecommendation.fixAvailable;
+  }
+  if (fixRecommendation.fixVersions && fixRecommendation.fixVersions.length > 0) {
+    vuln.fixVersions = fixRecommendation.fixVersions;
+  }
+  if (fixRecommendation.upgradePath) {
+    vuln.upgradePath = fixRecommendation.upgradePath;
   }
 
   return vuln;
@@ -422,6 +559,9 @@ function vulnerabilityToXml(vuln: CycloneDXVulnerability, indent: number): strin
       if (rating.source) {
         lines.push(`${pad}      <source>`);
         lines.push(`${pad}        <name>${escapeXml(rating.source.name)}</name>`);
+        if (rating.source.url) {
+          lines.push(`${pad}        <url>${escapeXml(rating.source.url)}</url>`);
+        }
         lines.push(`${pad}      </source>`);
       }
       if (typeof rating.score === "number") {
@@ -432,6 +572,12 @@ function vulnerabilityToXml(vuln: CycloneDXVulnerability, indent: number): strin
       }
       if (rating.vector) {
         lines.push(`${pad}      <vector>${escapeXml(rating.vector)}</vector>`);
+      }
+      if (rating.method) {
+        lines.push(`${pad}      <method>${escapeXml(rating.method)}</method>`);
+      }
+      if (typeof rating.percentile === "number") {
+        lines.push(`${pad}      <percentile>${rating.percentile}</percentile>`);
       }
       lines.push(`${pad}    </rating>`);
     }
@@ -482,6 +628,24 @@ function vulnerabilityToXml(vuln: CycloneDXVulnerability, indent: number): strin
       lines.push(`${pad}    <reference url="${escapeXml(ref.url)}" />`);
     }
     lines.push(`${pad}  </references>`);
+  }
+
+  // Fix recommendation information
+  if (vuln.recommendation) {
+    lines.push(`${pad}  <recommendation>${escapeXml(vuln.recommendation)}</recommendation>`);
+  }
+  if (vuln.fixAvailable !== undefined) {
+    lines.push(`${pad}  <fixAvailable>${vuln.fixAvailable}</fixAvailable>`);
+  }
+  if (vuln.fixVersions && vuln.fixVersions.length > 0) {
+    lines.push(`${pad}  <fixVersions>`);
+    for (const version of vuln.fixVersions) {
+      lines.push(`${pad}    <fixVersion>${escapeXml(version)}</fixVersion>`);
+    }
+    lines.push(`${pad}  </fixVersions>`);
+  }
+  if (vuln.upgradePath) {
+    lines.push(`${pad}  <upgradePath>${escapeXml(vuln.upgradePath)}</upgradePath>`);
   }
 
   lines.push(`${pad}</vulnerability>`);

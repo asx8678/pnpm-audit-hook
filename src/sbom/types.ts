@@ -43,6 +43,22 @@ export interface SbomOptions {
   projectDescription?: string;
   /** SWID-specific options */
   swidOptions?: SwidOptions;
+  /** Component cache options (undefined = no caching) */
+  cacheOptions?: ComponentCacheOptions;
+}
+
+/**
+ * Options for the SBOM component cache.
+ */
+export interface ComponentCacheOptions {
+  /** Maximum cache entries (default: 1000) */
+  maxEntries?: number;
+  /** Cache file path for persistence */
+  cacheFilePath?: string;
+  /** Cache TTL in milliseconds (default: 24 hours = 86400000ms) */
+  ttlMs?: number;
+  /** Enable debug logging (default: false) */
+  debug?: boolean;
 }
 
 /** SWID Tags generation options */
@@ -133,6 +149,26 @@ export interface CycloneDXComponent {
   }>;
 }
 
+/** CycloneDX vulnerability rating method */
+export type CycloneDXRatingMethod =
+  | "cvssv3"
+  | "cvssv31"
+  | "cvssv4"
+  | "epss"
+  | "other";
+
+/** CycloneDX vulnerability rating */
+export interface CycloneDXVulnerabilityRating {
+  source?: { name: string; url?: string };
+  score?: number;
+  severity?: string;
+  vector?: string;
+  /** Rating method (e.g., "cvssv3", "epss") */
+  method?: CycloneDXRatingMethod;
+  /** For EPSS ratings: the percentile value */
+  percentile?: number;
+}
+
 /** CycloneDX vulnerability */
 export interface CycloneDXVulnerability {
   id: string;
@@ -140,12 +176,7 @@ export interface CycloneDXVulnerability {
     name: string;
     url?: string;
   };
-  ratings: Array<{
-    source?: { name: string; url?: string };
-    score?: number;
-    severity?: string;
-    vector?: string;
-  }>;
+  ratings: CycloneDXVulnerabilityRating[];
   description?: string;
   published?: string;
   updated?: string;
@@ -162,6 +193,14 @@ export interface CycloneDXVulnerability {
     source?: { name: string };
     url: string;
   }>;
+  /** Human-readable recommendation for fixing the vulnerability */
+  recommendation?: string;
+  /** Whether a fix is available for this vulnerability */
+  fixAvailable?: boolean;
+  /** List of versions that fix the vulnerability */
+  fixVersions?: string[];
+  /** Upgrade path information when available */
+  upgradePath?: string;
 }
 
 /** CycloneDX BOM document */
@@ -320,4 +359,257 @@ export interface ValidationResult {
   warnings: ValidationError[];
   /** SBOM format validated */
   format: SbomFormat;
+}
+
+// ===========================================================================
+// SBOM Diff Types
+// ===========================================================================
+
+/** Entry in an SBOM diff (added, removed, updated, or unchanged) */
+export interface SbomDiffEntry {
+  /** Package name */
+  name: string;
+  /** Current version (from new SBOM) */
+  version: string;
+  /** Previous version (only for updated entries) */
+  previousVersion?: string;
+  /** Package URL */
+  purl?: string;
+  /** Package group/namespace (e.g., @scope) */
+  group?: string;
+}
+
+/** Summary counts of the diff */
+export interface SbomDiffSummary {
+  totalAdded: number;
+  totalRemoved: number;
+  totalUpdated: number;
+  totalUnchanged: number;
+}
+
+/** Metadata about the comparison */
+export interface SbomDiffMetadata {
+  oldFormat: string;
+  newFormat: string;
+  comparedAt: string;
+}
+
+/** Complete diff result comparing two SBOM documents */
+export interface SbomDiffResult {
+  added: SbomDiffEntry[];
+  removed: SbomDiffEntry[];
+  updated: SbomDiffEntry[];
+  unchanged: SbomDiffEntry[];
+  summary: SbomDiffSummary;
+  metadata: SbomDiffMetadata;
+}
+
+/** Normalized package representation for format-agnostic comparison */
+export interface NormalizedPackage {
+  name: string;
+  version: string;
+  purl?: string;
+  group?: string;
+}
+
+/** Options for SBOM diffing */
+export interface SbomDiffOptions {
+  /** Custom key function for package identity (default: purl or name) */
+  keyFn?: (pkg: NormalizedPackage) => string;
+  /** Ignore version differences (only report added/removed) */
+  ignoreVersions?: boolean;
+}
+
+// ===========================================================================
+// SBOM Dependency Tree Types
+// ===========================================================================
+
+/** Options for dependency tree visualization */
+export interface TreeOptions {
+  /** Maximum depth to traverse (default: Infinity) */
+  maxDepth?: number;
+  /** Show package versions in output (default: true) */
+  showVersions?: boolean;
+  /** Show vulnerability markers in ASCII output (default: true) */
+  showVulnerabilities?: boolean;
+  /** Highlight vulnerable packages (default: true) */
+  highlightVulnerable?: boolean;
+  /** Output format (default: 'ascii') */
+  format?: "ascii" | "json";
+}
+
+/** Vulnerability info attached to a tree node */
+export interface TreeVulnerability {
+  /** Vulnerability identifier (e.g., CVE-2023-26159) */
+  id: string;
+  /** Severity level (e.g., low, medium, high, critical) */
+  severity: string;
+}
+
+/** A node in the dependency tree */
+export interface TreeNode {
+  /** Package name */
+  name: string;
+  /** Package version */
+  version: string;
+  /** Package group/scope (e.g., @scope) */
+  group?: string;
+  /** Package URL identifier */
+  purl?: string;
+  /** Child dependency nodes */
+  children: TreeNode[];
+  /** Known vulnerabilities */
+  vulnerabilities?: TreeVulnerability[];
+  /** Depth in the tree (root = 0) */
+  depth: number;
+}
+
+/** JSON tree output format */
+export interface TreeJsonOutput {
+  /** Package name */
+  name: string;
+  /** Package version (if showVersions is true) */
+  version?: string;
+  /** Package group */
+  group?: string;
+  /** Package URL */
+  purl?: string;
+  /** Known vulnerabilities */
+  vulnerabilities?: TreeVulnerability[];
+  /** Child nodes */
+  children?: TreeJsonOutput[];
+}
+
+// ===========================================================================
+// SBOM Mermaid Diagram Types
+// ===========================================================================
+
+/** Options for Mermaid dependency graph generation */
+export interface MermaidOptions {
+  /** Graph direction (default: 'TB' = top-bottom) */
+  direction?: 'TB' | 'BT' | 'LR' | 'RL';
+  /** Show package versions in node labels (default: true) */
+  showVersions?: boolean;
+  /** Highlight vulnerable nodes with color coding (default: true) */
+  highlightVulnerable?: boolean;
+  /** Optional diagram title */
+  title?: string;
+  /** Maximum tree depth to render (default: Infinity) */
+  maxDepth?: number;
+}
+
+/** Severity → color mapping for Mermaid style directives */
+export interface MermaidVulnerabilityStyle {
+  /** CSS color for the node fill */
+  fill: string;
+  /** CSS color for the text */
+  color: string;
+}
+
+// ===========================================================================
+// SBOM Graphviz DOT Diagram Types
+// ===========================================================================
+
+/** Options for Graphviz DOT dependency graph generation */
+export interface DotOptions {
+  /** Graph direction/layout (default: 'TB' = top-bottom) */
+  rankdir?: 'TB' | 'BT' | 'LR' | 'RL';
+  /** Show package versions in node labels (default: true) */
+  showVersions?: boolean;
+  /** Highlight vulnerable nodes with color coding (default: true) */
+  highlightVulnerable?: boolean;
+  /** Optional diagram title */
+  title?: string;
+  /** Maximum tree depth to render (default: Infinity) */
+  maxDepth?: number;
+}
+
+// ===========================================================================
+// Monorepo SBOM Types
+// ===========================================================================
+
+/**
+ * Options for monorepo SBOM generation.
+ *
+ * Extends the base {@link SbomOptions} with concurrency and workspace
+ * control knobs.
+ */
+export interface MonorepoSbomOptions extends SbomOptions {
+  /**
+   * Maximum number of workspace SBOMs to generate concurrently.
+   * @default 4
+   */
+  concurrency: number;
+
+  /**
+   * When `true`, the aggregated root SBOM will include packages from
+   * all workspaces (deduplicated by name+version).
+   * @default true
+   */
+  includeWorkspacesInRoot: boolean;
+
+  /**
+   * When `true`, individual SBOM files are generated for each workspace.
+   * @default true
+   */
+  generateWorkspaceSboms: boolean;
+
+  /**
+   * Optional callback invoked after each workspace is processed.
+   * Useful for progress reporting in large monorepos.
+   */
+  onWorkspaceComplete?: (completed: number, total: number, workspacePath: string) => void;
+}
+
+/**
+ * Result of SBOM generation for a single workspace.
+ */
+export interface WorkspaceSbomResult {
+  /** Workspace path as it appears in the lockfile (e.g. `"./packages/pkg1"`) */
+  workspacePath: string;
+  /** Workspace name derived from its `package.json` name field, or the path itself */
+  workspaceName: string;
+  /** The generated SBOM result */
+  result: SbomResult;
+  /** Packages found in this workspace */
+  packageCount: number;
+}
+
+/**
+ * Error information for a failed workspace SBOM generation.
+ */
+export interface WorkspaceSbomError {
+  /** Workspace path that failed */
+  workspacePath: string;
+  /** The error that occurred */
+  error: Error;
+}
+
+/**
+ * Complete result of monorepo SBOM generation.
+ */
+export interface MonorepoSbomResult {
+  /** Root SBOM (aggregating all workspaces or just root workspace) */
+  root: SbomResult;
+  /** Individual workspace SBOM results (empty if `generateWorkspaceSboms` is false) */
+  workspaces: WorkspaceSbomResult[];
+  /** Workspace errors that occurred during generation (non-fatal) */
+  errors: WorkspaceSbomError[];
+  /** Aggregated SBOM combining all workspace results (same as root unless overridden) */
+  aggregated: SbomResult;
+  /** Summary statistics */
+  stats: {
+    /** Total number of workspaces detected */
+    totalWorkspaces: number;
+    /** Number of workspaces that were successfully processed */
+    processedWorkspaces: number;
+    /** Total unique components across all workspaces */
+    totalComponents: number;
+    /** Total vulnerabilities found across all workspaces */
+    totalVulnerabilities: number;
+    /** Total generation time in milliseconds */
+    generationTimeMs: number;
+    /** Per-workspace breakdown of component counts */
+    workspaceComponentCounts: Record<string, number>;
+  };
 }

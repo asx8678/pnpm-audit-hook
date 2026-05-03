@@ -15,8 +15,21 @@ export { parsePnpmPackageKey } from "./package-key-parser.js";
 export { getRegistryDisplayName, extractRegistryInfo } from "./registry-detector.js";
 
 // Package extraction from lockfile
-export { extractPackagesFromLockfile } from "./package-extractor.js";
+export {
+  extractPackagesFromLockfile,
+  extractPackagesFromLockfileStreaming,
+} from "./package-extractor.js";
 export type { LockfileParseResult } from "./package-extractor.js";
+
+// Streaming parser for large lockfiles
+export {
+  StreamingLockfileParser,
+  parseLockfileStreaming,
+} from "./streaming-parser.js";
+export type {
+  StreamingParserOptions,
+  StreamingParseResult,
+} from "./streaming-parser.js";
 
 // Dependency graph building, chain tracing, and impact analysis
 export {

@@ -225,6 +225,8 @@ export interface VulnerabilityFinding {
   chainContext?: VulnerabilityChainContext;
   /** CVSS parsed details when vector is available */
   cvssDetails?: CvssFindingDetails;
+  /** EPSS (Exploit Prediction Scoring System) data for this vulnerability */
+  epss?: EpssData;
 }
 
 /** Enriched context attached to a vulnerability finding after chain analysis */
@@ -265,6 +267,29 @@ export interface CvssFindingDetails {
   availability: string;
   /** Human-readable exploitability summary */
   exploitabilityLabel: string;
+}
+
+/**
+ * EPSS (Exploit Prediction Scoring System) data for a vulnerability.
+ *
+ * EPSS provides a probability score (0.0 - 1.0) representing the likelihood
+ * that a vulnerability will be exploited in the wild within the next 30 days.
+ * The percentile indicates how the score compares to all other CVEs.
+ *
+ * @see {@link https://www.first.org/epss/} - FIRST.org EPSS documentation
+ * @see {@link https://api.first.org/data/v1/epss} - EPSS API endpoint
+ */
+export interface EpssData {
+  /** CVE identifier (e.g., "CVE-2023-26159") */
+  cveId: string;
+  /** EPSS probability score (0.0 - 1.0) */
+  epssScore: number;
+  /** EPSS percentile ranking (0.0 - 1.0) */
+  epssPercentile: number;
+  /** Date the EPSS data was generated (ISO date string) */
+  date: string;
+  /** Model version used to generate the score */
+  modelVersion: string;
 }
 
 export interface PolicyDecision {
@@ -330,6 +355,7 @@ export interface AuditConfigInput {
     github?: boolean | { enabled?: boolean };
     nvd?: boolean | { enabled?: boolean };
     osv?: boolean | { enabled?: boolean };
+    epss?: boolean | { enabled?: boolean };
   };
   performance?: {
     timeoutMs?: number;
@@ -362,6 +388,7 @@ export interface AuditConfig {
     github: { enabled: boolean };
     nvd: { enabled: boolean };
     osv: { enabled: boolean };
+    epss: { enabled: boolean };
   };
   performance: {
     timeoutMs: number;

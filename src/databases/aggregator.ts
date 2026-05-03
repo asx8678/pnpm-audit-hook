@@ -7,6 +7,7 @@ import { HttpClient } from "../utils/http";
 import { GitHubAdvisorySource } from "./github-advisory";
 import { OsvSource } from "./osv";
 import { enrichFindingsWithNvd } from "./nvd";
+import { EpssFetcher, enrichFindingsWithEpss } from "../utils/epss-fetcher";
 import { logger } from "../utils/logger";
 import { errorMessage } from "../utils/error";
 import { LazyStaticDbReader } from "../static-db/lazy-reader";
@@ -200,6 +201,48 @@ export async function aggregateVulnerabilities(
   if (needsNvdEnrichment) {
     const nvdResult = await enrichFindingsWithNvd(dedupedFindings, queryCtx);
     sourceStatus["nvd"] = { ok: nvdResult.ok, error: nvdResult.error, durationMs: nvdResult.durationMs };
+  }
+
+  // EPSS enrichment - adds exploit prediction scores to findings
+  // Skip if disabled, offline, or no findings
+  const needsEpssEnrichment =
+    !isOffline &&
+    dedupedFindings.length > 0 &&
+    ctx.cfg.sources?.epss?.enabled !== false;
+
+  if (needsEpssEnrichment) {
+    const epssStartTime = Date.now();
+    try {
+      const epssFetcher = new EpssFetcher({
+        disabled: ctx.cfg.sources?.epss?.enabled === false,
+      });
+      const enrichedFindings = await enrichFindingsWithEpss(dedupedFindings, epssFetcher);
+      
+      // Update findings with EPSS enrichment
+      for (let i = 0; i < enrichedFindings.length; i++) {
+        if (enrichedFindings[i]!.epss) {
+          dedupedFindings[i] = enrichedFindings[i]!;
+        }
+      }
+      
+      sourceStatus["epss"] = {
+        ok: true,
+        durationMs: Date.now() - epssStartTime,
+      };
+      
+      const epssCount = dedupedFindings.filter((f) => f.epss).length;
+      if (epssCount > 0) {
+        logger.debug(`EPSS: Enriched ${epssCount}/${dedupedFindings.length} findings with exploit prediction scores`);
+      }
+    } catch (error) {
+      // EPSS enrichment is non-critical - log and continue
+      sourceStatus["epss"] = {
+        ok: false,
+        error: errorMessage(error),
+        durationMs: Date.now() - epssStartTime,
+      };
+      logger.debug(`EPSS enrichment failed: ${errorMessage(error)}`);
+    }
   }
 
   // Capture memory snapshot for performance monitoring

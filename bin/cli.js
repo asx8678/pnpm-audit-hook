@@ -23,6 +23,24 @@ async function main() {
     process.exit(0);
   }
 
+  // Handle SBOM diff mode (no lockfile required)
+  if (args.sbomDiff) {
+    handleSbomDiff(args);
+    return;
+  }
+
+  // Handle SBOM validation mode (no lockfile required)
+  if (args.validateSbom) {
+    handleValidateSbom(args);
+    return;
+  }
+
+  // Handle dependency tree mode
+  if (args.depTree) {
+    handleDepTree(args);
+    return;
+  }
+
   if (args.version) {
     try {
       const pkg = JSON.parse(
@@ -337,6 +355,331 @@ async function main() {
     console.error(`Audit error: ${e.message}`);
     process.exit(1);
   }
+}
+
+/**
+ * Handle the --dep-tree command: generate a dependency tree visualization.
+ */
+function handleDepTree(args) {
+  const distEntry = path.join(__dirname, "..", "dist", "index.js");
+  if (!fs.existsSync(distEntry)) {
+    console.error("pnpm-audit-hook: not built. Run 'pnpm build' first.");
+    process.exit(1);
+  }
+
+  let buildTreeFromSbom, buildTreeFromLockfile, renderTree, renderTreeJson;
+  try {
+    const distModule = require(distEntry);
+    buildTreeFromSbom = distModule.buildTreeFromSbom;
+    buildTreeFromLockfile = distModule.buildTreeFromLockfile;
+    renderTree = distModule.renderTree;
+    renderTreeJson = distModule.renderTreeJson;
+  } catch (e) {
+    console.error(`Error loading pnpm-audit-hook module: ${e.message}`);
+    process.exit(1);
+  }
+
+  const treeFormat = args.treeFormat || "ascii";
+  const treeDepth = args.treeDepth;
+  const treeOutput = args.treeOutput;
+  const sbomInput = args.sbomInput;
+
+  const treeOptions = {
+    maxDepth: treeDepth !== undefined && !isNaN(treeDepth) ? treeDepth : undefined,
+    showVersions: true,
+    showVulnerabilities: true,
+  };
+
+  try {
+    let tree;
+
+    if (sbomInput) {
+      // Build tree from existing SBOM file
+      if (!fs.existsSync(sbomInput)) {
+        console.error(`Error: SBOM file not found: ${sbomInput}`);
+        process.exit(1);
+      }
+
+      let sbomDoc;
+      try {
+        const content = fs.readFileSync(sbomInput, "utf-8");
+        sbomDoc = JSON.parse(content);
+      } catch (e) {
+        if (e instanceof SyntaxError) {
+          console.error(`Error: Invalid JSON in SBOM file: ${sbomInput}`);
+        } else {
+          console.error(`Error reading SBOM file: ${e.message}`);
+        }
+        process.exit(1);
+      }
+
+      tree = buildTreeFromSbom(sbomDoc, treeOptions);
+    } else {
+      // Build tree from lockfile
+      const cwd = process.cwd();
+      const lockfilePath = path.resolve(cwd, "pnpm-lock.yaml");
+
+      if (!fs.existsSync(lockfilePath)) {
+        console.error("Error: No pnpm-lock.yaml found in current directory.");
+        console.error("This tool scans pnpm lockfiles. Run it from a pnpm project root.");
+        console.error("");
+        console.error("Tip: Use --sbom-input to generate a tree from an existing SBOM file.");
+        process.exit(1);
+      }
+
+      tree = buildTreeFromLockfile(lockfilePath, treeOptions);
+    }
+
+    let output;
+    if (treeFormat === "json") {
+      output = JSON.stringify(renderTreeJson(tree, treeOptions), null, 2);
+    } else {
+      output = renderTree(tree, treeOptions);
+    }
+
+    if (treeOutput) {
+      const dir = path.dirname(treeOutput);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
+      fs.writeFileSync(treeOutput, output, "utf-8");
+      console.error(`Dependency tree written to ${treeOutput}`);
+    } else {
+      console.log(output);
+    }
+
+    process.exit(0);
+  } catch (e) {
+    console.error(`Dependency tree error: ${e.message}`);
+    process.exit(1);
+  }
+}
+
+/**
+ * Handle the --sbom-diff command: compare two SBOM files and output diff.
+ */
+function handleSbomDiff(args) {
+  const oldPath = args.sbomDiffOld;
+  const newPath = args.sbomDiffNew;
+  const diffOutput = args.diffOutput;
+
+  if (!oldPath || !newPath) {
+    console.error("Error: --sbom-diff requires two file arguments.");
+    console.error("Usage: pnpm-audit-scan --sbom-diff <old-sbom.json> <new-sbom.json>");
+    process.exit(1);
+  }
+
+  // Load the dist module
+  const distEntry = path.join(__dirname, "..", "dist", "index.js");
+  if (!fs.existsSync(distEntry)) {
+    console.error("pnpm-audit-hook: not built. Run 'pnpm build' first.");
+    process.exit(1);
+  }
+
+  let diffSbom, formatDiffResult;
+  try {
+    const distModule = require(distEntry);
+    diffSbom = distModule.diffSbom;
+    formatDiffResult = distModule.formatDiffResult;
+  } catch (e) {
+    console.error(`Error loading pnpm-audit-hook module: ${e.message}`);
+    process.exit(1);
+  }
+
+  // Read old SBOM
+  let oldSbom;
+  try {
+    const oldContent = fs.readFileSync(oldPath, "utf-8");
+    oldSbom = JSON.parse(oldContent);
+  } catch (e) {
+    if (e.code === "ENOENT") {
+      console.error(`Error: Old SBOM file not found: ${oldPath}`);
+    } else if (e instanceof SyntaxError) {
+      console.error(`Error: Invalid JSON in old SBOM file: ${oldPath}`);
+    } else {
+      console.error(`Error reading old SBOM: ${e.message}`);
+    }
+    process.exit(1);
+  }
+
+  // Read new SBOM
+  let newSbom;
+  try {
+    const newContent = fs.readFileSync(newPath, "utf-8");
+    newSbom = JSON.parse(newContent);
+  } catch (e) {
+    if (e.code === "ENOENT") {
+      console.error(`Error: New SBOM file not found: ${newPath}`);
+    } else if (e instanceof SyntaxError) {
+      console.error(`Error: Invalid JSON in new SBOM file: ${newPath}`);
+    } else {
+      console.error(`Error reading new SBOM: ${e.message}`);
+    }
+    process.exit(1);
+  }
+
+  // Perform diff
+  try {
+    const result = diffSbom(oldSbom, newSbom);
+
+    if (diffOutput) {
+      // Write JSON diff to file
+      const dir = path.dirname(diffOutput);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
+      fs.writeFileSync(diffOutput, JSON.stringify(result, null, 2), "utf-8");
+      console.error(`Diff report written to ${diffOutput}`);
+      console.error(`  Added: ${result.summary.totalAdded}, Removed: ${result.summary.totalRemoved}, Updated: ${result.summary.totalUpdated}`);
+    } else {
+      // Output human-readable format to stdout
+      console.log(formatDiffResult(result));
+    }
+
+    // Exit with non-zero if there are any changes
+    const hasChanges = result.summary.totalAdded > 0 || result.summary.totalRemoved > 0 || result.summary.totalUpdated > 0;
+    process.exit(hasChanges ? 1 : 0);
+  } catch (e) {
+    console.error(`Diff error: ${e.message}`);
+    process.exit(1);
+  }
+}
+
+/**
+ * Handle the --validate-sbom command: validate an SBOM file against its schema.
+ */
+function handleValidateSbom(args) {
+  const filePath = args.validateSbom;
+  const formatHint = args.format || "auto"; // reuse --format for SBOM format hint
+  const outputPath = args.validationOutput;
+
+  // Load the dist module for validation
+  const distEntry = path.join(__dirname, "..", "dist", "index.js");
+  if (!fs.existsSync(distEntry)) {
+    console.error("pnpm-audit-hook: not built. Run 'pnpm build' first.");
+    process.exit(1);
+  }
+
+  let validateSbom;
+  try {
+    const distModule = require(distEntry);
+    validateSbom = distModule.validateSbom;
+  } catch (e) {
+    console.error(`Error loading pnpm-audit-hook module: ${e.message}`);
+    process.exit(1);
+  }
+
+  // Read the SBOM file
+  let content;
+  try {
+    content = fs.readFileSync(filePath, "utf-8");
+  } catch (e) {
+    if (e.code === "ENOENT") {
+      console.error(`Error: SBOM file not found: ${filePath}`);
+    } else {
+      console.error(`Error reading SBOM file: ${e.message}`);
+    }
+    process.exit(1);
+  }
+
+  // Auto-detect format from file content
+  function detectFormat(raw) {
+    const trimmed = raw.trimStart();
+    // Check if XML
+    if (trimmed.startsWith("<?xml") || trimmed.startsWith("<")) {
+      if (trimmed.includes("cyclonedx") || trimmed.includes("<bom")) {
+        return "cyclonedx";
+      }
+      if (trimmed.includes("swidTagSet") || trimmed.includes("<swid>")) {
+        return "swid";
+      }
+      return null; // unknown XML format
+    }
+    // JSON-based detection
+    try {
+      const parsed = JSON.parse(trimmed);
+      if (parsed.bomFormat === "CycloneDX") return "cyclonedx";
+      if (parsed.spdxVersion) return "spdx";
+    } catch {
+      // not valid JSON
+    }
+    return null;
+  }
+
+  let resolvedFormat;
+  if (formatHint && formatHint !== "auto") {
+    resolvedFormat = formatHint;
+  } else {
+    resolvedFormat = detectFormat(content);
+    if (!resolvedFormat) {
+      console.error("Error: Could not auto-detect SBOM format.");
+      console.error("Please specify the format with --format <cyclonedx|spdx|swid>.");
+      process.exit(1);
+    }
+  }
+
+  // Validate
+  let result;
+  try {
+    result = validateSbom(content, resolvedFormat);
+  } catch (e) {
+    console.error(`Validation error: ${e.message}`);
+    process.exit(1);
+  }
+
+  // Build the report object
+  const report = {
+    file: filePath,
+    format: result.format || resolvedFormat,
+    valid: result.valid,
+    errors: result.errors.map((err) => ({
+      path: err.path,
+      message: err.message,
+      severity: err.severity,
+    })),
+    warnings: result.warnings.map((warn) => ({
+      path: warn.path,
+      message: warn.message,
+      severity: warn.severity,
+    })),
+  };
+
+  // Output to file if requested
+  if (outputPath) {
+    const dir = path.dirname(outputPath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(outputPath, JSON.stringify(report, null, 2), "utf-8");
+    console.error(`Validation report written to ${outputPath}`);
+  }
+
+  // Pretty-print results to stdout
+  const icon = result.valid ? "\u2713" : "\u2717";
+  const status = result.valid ? "PASS" : "FAIL";
+  console.log("");
+  console.log(`SBOM Validation: ${icon} ${status}`);
+  console.log(`  File:   ${filePath}`);
+  console.log(`  Format: ${report.format}`);
+
+  if (result.errors.length > 0) {
+    console.log("");
+    console.log(`  Errors (${result.errors.length}):`);
+    for (const err of result.errors) {
+      console.log(`    - [${err.path || "root"}] ${err.message}`);
+    }
+  }
+
+  if (result.warnings.length > 0) {
+    console.log("");
+    console.log(`  Warnings (${result.warnings.length}):`);
+    for (const warn of result.warnings) {
+      console.log(`    - [${warn.path || "root"}] ${warn.message}`);
+    }
+  }
+
+  console.log("");
+  process.exit(result.valid ? 0 : 1);
 }
 
 main();

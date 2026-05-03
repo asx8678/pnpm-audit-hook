@@ -22,6 +22,7 @@ import type {
   SbomResult,
   ComponentVulnerabilityMap,
 } from "./types";
+import { CvssValidator } from "../utils/cvss-validator";
 
 /** SPDX document namespace prefix */
 const SPDX_NS_PREFIX = "https://spdx.org/spdxdocs";
@@ -107,6 +108,8 @@ function toSPDXPackage(
  * SPDX doesn't have a native vulnerability field, so we use annotations
  * to document security findings. For better interoperability, we also
  * add external references to vulnerability databases.
+ *
+ * Includes validated CVSS vector details when available.
  */
 function toSPDXAnnotations(
   component: SbomComponent,
@@ -114,22 +117,43 @@ function toSPDXAnnotations(
 ): SPDXAnnotation[] {
   const timestamp = new Date().toISOString();
   const spdxId = `SPDXRef-Package-${sanitizeSpdxId(component.name)}-${sanitizeSpdxId(component.version)}`;
+  const validator = new CvssValidator();
 
-  return findings.map((finding) => ({
-    SPDXDataCreated: timestamp,
-    SPDXID: spdxId,
-    Annotator: "Tool: pnpm-audit-hook",
-    AnnotationType: "OTHER" as const,
-    Comment: [
-      `[${finding.severity.toUpperCase()}] ${finding.id}`,
-      finding.title ? `Title: ${finding.title}` : "",
-      finding.description ? `Description: ${finding.description}` : "",
-      finding.fixedVersion ? `Fixed in: ${finding.fixedVersion}` : "",
-      finding.url ? `Reference: ${finding.url}` : "",
-    ]
-      .filter(Boolean)
-      .join("; "),
-  }));
+  return findings.map((finding) => {
+    // Build CVSS details if vector available
+    const cvssParts: string[] = [];
+    if (finding.cvssVector) {
+      const cvssResult = validator.validate(finding.cvssVector);
+      if (cvssResult.isValid) {
+        cvssParts.push(`CVSS: ${cvssResult.version}`);
+        cvssParts.push(`Score: ${cvssResult.score}`);
+        if (cvssResult.metrics) {
+          cvssParts.push(`Vector: ${finding.cvssVector}`);
+        }
+      } else if (finding.cvssScore !== undefined) {
+        cvssParts.push(`CVSS Score: ${finding.cvssScore}`);
+      }
+    } else if (finding.cvssScore !== undefined) {
+      cvssParts.push(`CVSS Score: ${finding.cvssScore}`);
+    }
+
+    return {
+      SPDXDataCreated: timestamp,
+      SPDXID: spdxId,
+      Annotator: "Tool: pnpm-audit-hook",
+      AnnotationType: "OTHER" as const,
+      Comment: [
+        `[${finding.severity.toUpperCase()}] ${finding.id}`,
+        finding.title ? `Title: ${finding.title}` : "",
+        finding.description ? `Description: ${finding.description}` : "",
+        finding.fixedVersion ? `Fixed in: ${finding.fixedVersion}` : "",
+        finding.url ? `Reference: ${finding.url}` : "",
+        ...cvssParts,
+      ]
+        .filter(Boolean)
+        .join("; "),
+    };
+  });
 }
 
 /**

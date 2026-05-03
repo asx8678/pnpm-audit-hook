@@ -41,6 +41,7 @@ import { generateCycloneDXSbom } from "./cyclonedx-generator";
 import { generateSPDXSbom } from "./spdx-generator";
 import { generateSwidSbom } from "./swid-generator";
 import { logger } from "../utils/logger";
+import { SbomComponentCache } from "./component-cache";
 
 /** Package version for tool metadata */
 const TOOL_VERSION = "1.4.3";
@@ -159,8 +160,56 @@ export function generateSbom(
     logger.warn("No packages found for SBOM generation");
   }
 
-  // Convert packages to SBOM components
-  const components = packagesToSbomComponents(packages);
+  // Initialize cache if options provided
+  let cache: SbomComponentCache | null = null;
+  if (options.cacheOptions) {
+    cache = new SbomComponentCache(options.cacheOptions);
+  }
+
+  // Convert packages to SBOM components with cache support
+  let components: SbomComponent[];
+  if (cache) {
+    // Try to get components from cache
+    const cachedMap = cache.getComponents(packages);
+    
+    if (cachedMap && cachedMap.size === packages.length) {
+      // All components were cached
+      logger.debug(`Using ${cachedMap.size} cached SBOM components`);
+      components = packages.map((pkg) => {
+        const key = `${pkg.name}@${pkg.version}`;
+        return cachedMap.get(key)!;
+      });
+    } else {
+      // Some or all components need to be generated
+      const uncachedPackages: PackageRef[] = [];
+      const uncachedComponents: SbomComponent[] = [];
+      
+      components = packages.map((pkg): SbomComponent => {
+        const key = `${pkg.name}@${pkg.version}`;
+        const cached = cachedMap?.get(key);
+        
+        if (cached) {
+          return cached;
+        }
+        
+        // Component not in cache, generate it
+        const generated = packagesToSbomComponents([pkg]);
+        const component = generated[0]!;
+        uncachedPackages.push(pkg);
+        uncachedComponents.push(component);
+        return component;
+      });
+      
+      // Store newly generated components in cache
+      if (uncachedPackages.length > 0) {
+        cache.setComponents(uncachedPackages, uncachedComponents);
+        logger.debug(`Cached ${uncachedComponents.length} new SBOM components`);
+      }
+    }
+  } else {
+    // No cache, convert all packages
+    components = packagesToSbomComponents(packages);
+  }
 
   // Build vulnerability map
   const vulnMap = buildVulnerabilityMap(findings);
@@ -218,7 +267,8 @@ export function generateSbom(
 }
 
 // Re-export types and generators for direct access
-export type { SbomFormat, SbomOptions, SbomResult } from "./types";
+export type { SbomFormat, SbomOptions, SbomResult, ComponentCacheOptions } from "./types";
 export { generateCycloneDXSbom } from "./cyclonedx-generator";
 export { generateSPDXSbom } from "./spdx-generator";
 export { generateSwidSbom } from "./swid-generator";
+export { SbomComponentCache } from "./component-cache";

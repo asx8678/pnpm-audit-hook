@@ -68,4 +68,25 @@ export class LruCache<K, V> {
       utilization: this.maxSize > 0 ? this.cache.size / this.maxSize : 0,
     };
   }
+
+  /**
+   * Iterate over all entries in the cache (oldest to newest).
+   */
+  *entries(): IterableIterator<[K, V]> {
+    yield* this.cache.entries();
+  }
+
+  /**
+   * Get all keys in the cache (oldest to newest).
+   */
+  *keys(): IterableIterator<K> {
+    yield* this.cache.keys();
+  }
+
+  /**
+   * Get all values in the cache (oldest to newest).
+   */
+  *values(): IterableIterator<V> {
+    yield* this.cache.values();
+  }
 }

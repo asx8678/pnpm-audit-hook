@@ -1,0 +1,79 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "pnpm-audit-hook-test",
+  "documentNamespace": "https://spdx.org/spdxdocs/test-project",
+  "creationInfo": {
+    "created": "2025-05-01T00:00:00Z",
+    "creators": [
+      "Tool: pnpm-audit-hook-1.4.3"
+    ]
+  },
+  "documentDescribes": [
+    "SPDXRef-DOCUMENT"
+  ],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-DOCUMENT",
+      "name": "pnpm-audit-hook-test",
+      "versionInfo": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-lodash",
+      "name": "lodash",
+      "versionInfo": "4.17.21",
+      "downloadLocation": "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:npm/lodash@4.17.21"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-express",
+      "name": "express",
+      "versionInfo": "4.18.2",
+      "downloadLocation": "https://registry.npmjs.org/express/-/express-4.18.2.tgz",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:npm/express@4.18.2"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "SPDXElementID": "SPDXRef-DOCUMENT",
+      "RelationshipType": "DESCRIBES",
+      "RelatedSPDXElement": "SPDXRef-Package-lodash"
+    },
+    {
+      "SPDXElementID": "SPDXRef-DOCUMENT",
+      "RelationshipType": "DESCRIBES",
+      "RelatedSPDXElement": "SPDXRef-Package-express"
+    },
+    {
+      "SPDXElementID": "SPDXRef-Package-express",
+      "RelationshipType": "DEPENDS_ON",
+      "RelatedSPDXElement": "SPDXRef-Package-lodash"
+    }
+  ]
+}

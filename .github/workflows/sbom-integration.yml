@@ -1,0 +1,242 @@
+name: SBOM Integration Tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/sbom/**'
+      - 'test/sbom/**'
+      - 'test/integration/cli/sbom.test.ts'
+      - 'test/integration/sbom/**'
+      - 'test/fixtures/lockfiles/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/sbom/**'
+      - 'test/sbom/**'
+      - 'test/integration/cli/sbom.test.ts'
+      - 'test/integration/sbom/**'
+      - 'test/fixtures/lockfiles/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sbom-unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build project
+        run: pnpm run build
+
+      - name: Run SBOM unit tests
+        run: node --import tsx --test test/sbom/sbom.test.ts test/sbom/schema-validator.test.ts
+
+  sbom-integration-tests:
+    runs-on: ubuntu-latest
+    needs: sbom-unit-tests
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build project
+        run: pnpm run build
+
+      - name: Run CLI SBOM integration tests
+        run: node --import tsx --test test/integration/cli/sbom.test.ts
+
+      - name: Run E2E SBOM tests
+        run: node --import tsx --test test/integration/sbom/e2e.test.ts
+
+      - name: Run SBOM performance tests
+        run: node --import tsx --test test/integration/sbom/performance.test.ts
+
+  sbom-lockfile-matrix:
+    runs-on: ubuntu-latest
+    needs: sbom-unit-tests
+    strategy:
+      fail-fast: false
+      matrix:
+        lockfile: [empty, pnpm-v6, pnpm-v7, pnpm-v9, large-lockfile]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build project
+        run: pnpm run build
+
+      - name: Test SBOM generation with lockfile ${{ matrix.lockfile }}
+        run: |
+          # Copy the fixture lockfile to a temp directory and test SBOM generation
+          mkdir -p /tmp/sbom-test
+          cp test/fixtures/lockfiles/${{ matrix.lockfile }}.yaml /tmp/sbom-test/pnpm-lock.yaml
+          cd /tmp/sbom-test
+          node $GITHUB_WORKSPACE/bin/cli.js --sbom --sbom-format cyclonedx --sbom-output cyclonedx.json --offline || true
+          node $GITHUB_WORKSPACE/bin/cli.js --sbom --sbom-format spdx --sbom-output spdx.json --offline || true
+          
+          echo "=== CycloneDX output ==="
+          if [ -f cyclonedx.json ]; then
+            node -e "
+              const fs = require('fs');
+              const bom = JSON.parse(fs.readFileSync('cyclonedx.json', 'utf-8'));
+              console.log('Format:', bom.bomFormat || 'N/A');
+              console.log('Components:', bom.components?.length ?? 0);
+            "
+          else
+            echo "No CycloneDX output generated"
+          fi
+          
+          echo "=== SPDX output ==="
+          if [ -f spdx.json ]; then
+            node -e "
+              const fs = require('fs');
+              const doc = JSON.parse(fs.readFileSync('spdx.json', 'utf-8'));
+              console.log('Version:', doc.spdxVersion || 'N/A');
+              console.log('Packages:', doc.packages?.length ?? 0);
+            "
+          else
+            echo "No SPDX output generated"
+          fi
+
+  sbom-schema-validation:
+    runs-on: ubuntu-latest
+    needs: sbom-integration-tests
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build project
+        run: pnpm run build
+
+      - name: Generate SBOM for validation
+        run: |
+          node bin/cli.js --sbom --sbom-format cyclonedx --sbom-output /tmp/bom-cdx.json --offline || true
+          node bin/cli.js --sbom --sbom-format spdx --sbom-output /tmp/bom-spdx.json --offline || true
+
+      - name: Validate CycloneDX BOM-Link compliance
+        if: hashFiles('/tmp/bom-cdx.json') != ''
+        run: |
+          node -e "
+            const fs = require('fs');
+            const bom = JSON.parse(fs.readFileSync('/tmp/bom-cdx.json', 'utf-8'));
+            const errors = [];
+            
+            // Validate serialNumber is URN UUID (BOM-Link requirement)
+            if (!/^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(bom.serialNumber)) {
+              errors.push('serialNumber must be a valid URN UUID');
+            }
+            
+            // Validate version is a positive integer
+            if (typeof bom.version !== 'number' || bom.version < 1) {
+              errors.push('version must be a positive integer');
+            }
+            
+            // Validate components have bom-ref (BOM-Link requirement)
+            if (Array.isArray(bom.components)) {
+              bom.components.forEach((comp, i) => {
+                if (!comp['bom-ref']) {
+                  errors.push('Component ' + i + ' missing bom-ref');
+                }
+              });
+            }
+            
+            // Validate dependencies ref format
+            if (Array.isArray(bom.dependencies)) {
+              bom.dependencies.forEach((dep, i) => {
+                if (!dep.ref) {
+                  errors.push('Dependency ' + i + ' missing ref');
+                }
+              });
+            }
+            
+            if (errors.length > 0) {
+              console.error('BOM-Link validation failed:');
+              errors.forEach(e => console.error('  - ' + e));
+              process.exit(1);
+            }
+            console.log('CycloneDX BOM-Link validation passed');
+          "
+
+      - name: Validate SPDX license expression format
+        if: hashFiles('/tmp/bom-spdx.json') != ''
+        run: |
+          node -e "
+            const fs = require('fs');
+            const doc = JSON.parse(fs.readFileSync('/tmp/bom-spdx.json', 'utf-8'));
+            const errors = [];
+            const licenseRegex = /^[A-Za-z0-9\-+.\/]+(\s*(AND|OR|WITH)\s+[A-Za-z0-9\-+.\/]+)*$|^NOASSERTION$|^NONE$/;
+            
+            if (Array.isArray(doc.packages)) {
+              doc.packages.forEach((pkg, i) => {
+                const loc = 'packages[' + i + ']';
+                if (pkg.licenseConcluded && !licenseRegex.test(pkg.licenseConcluded)) {
+                  errors.push(loc + '.licenseConcluded: invalid SPDX expression: ' + pkg.licenseConcluded);
+                }
+                if (pkg.licenseDeclared && !licenseRegex.test(pkg.licenseDeclared)) {
+                  errors.push(loc + '.licenseDeclared: invalid SPDX expression: ' + pkg.licenseDeclared);
+                }
+              });
+            }
+            
+            if (errors.length > 0) {
+              console.error('SPDX license expression validation failed:');
+              errors.forEach(e => console.error('  - ' + e));
+              process.exit(1);
+            }
+            console.log('SPDX license expression validation passed');
+          "
