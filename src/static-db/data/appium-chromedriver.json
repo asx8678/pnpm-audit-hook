@@ -1,0 +1,33 @@
+{
+  "packageName": "appium-chromedriver",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hc94-2wfr-4pwf",
+      "packageName": "appium-chromedriver",
+      "title": "appium-chromedriver downloads Resources over HTTP",
+      "description": "Affected versions of `appium-chromedriver` insecurely download resources over HTTP. \n\nIn scenarios where an attacker has a privileged network position, they can modify or read items send over HTTP at will. In this case, that includes the chromedriver binary, which may result in remote code execution if overwritten with a malicious binary.\n\n\n## Recommendation\n\nUpdate to version 2.9.4 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hc94-2wfr-4pwf",
+      "publishedAt": "2019-02-18T23:40:19Z",
+      "modifiedAt": "2023-09-12T18:47:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hc94-2wfr-4pwf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10557"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.9.4",
+          "fixed": "2.9.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

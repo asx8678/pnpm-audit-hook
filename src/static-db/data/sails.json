@@ -1,6 +1,6 @@
 {
   "packageName": "sails",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gpw9-fwm8-7rx7",
@@ -51,6 +51,33 @@
       "affectedVersions": [
         {
           "range": "<= 1.5.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qmv4-jgp7-mf68",
+      "packageName": "sails",
+      "title": "Sails before 0.12.7 vulnerable to Broken CORS",
+      "description": "Affected versions of `sails` have an issue with the CORS configuration where the value of the origin header is reflected as the value for the `Access-Control-Allow-Origin` header. This may allow an attacker to make AJAX requests to vulnerable hosts through cross-site scripting or a malicious HTML Document, effectively bypassing the Same Origin Policy. \n\n## Mitigating Factors\n\nThis is only an issue when `allRoutes` is set to `true` and `origin` is set to `*` or left commented out in the sails COR",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qmv4-jgp7-mf68",
+      "publishedAt": "2019-02-18T23:40:10Z",
+      "modifiedAt": "2023-01-11T05:08:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qmv4-jgp7-mf68"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10549"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.12.7",
+          "fixed": "0.12.7"
         }
       ],
       "source": "github"

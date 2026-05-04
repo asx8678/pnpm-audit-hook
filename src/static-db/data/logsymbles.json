@@ -1,0 +1,28 @@
+{
+  "packageName": "logsymbles",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vcg5-9xw6-r56c",
+      "packageName": "logsymbles",
+      "title": "Malicious Package in logsymbles",
+      "description": "Version 2.2.0 of `logsymbles` contains malicious code as a preinstall script. The package is malware designed to take advantage of users making a mistake when typing the name of a module to install. When installed, the package downloads a file from a remote server, executes it and opens a backdoor.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a d",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vcg5-9xw6-r56c",
+      "publishedAt": "2020-09-02T21:40:49Z",
+      "modifiedAt": "2023-01-09T05:04:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vcg5-9xw6-r56c"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

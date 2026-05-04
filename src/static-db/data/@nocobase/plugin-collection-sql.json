@@ -1,0 +1,33 @@
+{
+  "packageName": "@nocobase/plugin-collection-sql",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wrwh-c28m-9jjh",
+      "packageName": "@nocobase/plugin-collection-sql",
+      "title": "@nocobase/plugin-collection-sql: SQL Validation Bypass Through Missing `checkSQL` Call",
+      "description": "## Summary\n\nThe `checkSQL()` validation function that blocks dangerous SQL keywords (e.g., `pg_read_file`, `LOAD_FILE`, `dblink`) is applied on the `collections:create` and `sqlCollection:execute` endpoints but is entirely missing on the `sqlCollection:update` endpoint. An attacker with collection management permissions can create a SQL collection with benign SQL, then update it with arbitrary SQL that bypasses all validation, and query the collection to execute the injected SQL and exfiltrate d",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wrwh-c28m-9jjh",
+      "publishedAt": "2026-04-22T20:07:11Z",
+      "modifiedAt": "2026-04-22T20:07:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wrwh-c28m-9jjh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41641"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.39",
+          "fixed": "2.0.39"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

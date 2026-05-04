@@ -1,0 +1,29 @@
+{
+  "packageName": "pitboss-ng",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3gpc-w23c-w59w",
+      "packageName": "pitboss-ng",
+      "title": "Sandbox Breakout / Arbitrary Code Execution in pitboss-ng",
+      "description": "All versions of `pitboss-ng` are vulnerable to Sandbox Escape leading to Remote Code Execution. The package fails to restrict access to the main context through `this.constructor.constructor` . This may allow attackers to execute arbitrary code in the system. Evaluating the payload `this.constructor.constructor('return process.env')()` prints the contents of `process.env`.\n  \n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3gpc-w23c-w59w",
+      "publishedAt": "2020-09-04T15:02:06Z",
+      "modifiedAt": "2023-01-09T05:03:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3gpc-w23c-w59w"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

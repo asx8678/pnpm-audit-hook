@@ -1,0 +1,33 @@
+{
+  "packageName": "node.extend",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r96c-57pf-9jjm",
+      "packageName": "node.extend",
+      "title": "Prototype Pollution in node.extend",
+      "description": "Versions of `node.extend` before 1.1.7 or 2.0.1 are vulnerable to prototype pollution. \n\n\n## Recommendation\n\nUpdate to version 1.1.7, 2.0.1 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-r96c-57pf-9jjm",
+      "publishedAt": "2019-02-07T18:17:34Z",
+      "modifiedAt": "2023-09-12T18:31:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r96c-57pf-9jjm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16491"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 2.0.0",
+          "fixed": "2.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

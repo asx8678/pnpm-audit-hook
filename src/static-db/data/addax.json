@@ -1,0 +1,29 @@
+{
+  "packageName": "addax",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4q8f-5xxj-946r",
+      "packageName": "addax",
+      "title": "Command Injection in addax",
+      "description": "Versions of `addax` prior to 1.1.0 are vulnerable to Command Injection. The package does not validate user input on the `presignPath` function which receives input directly from the API endpoint. Exploiting the vulnerability requires authentication. This may allow attackers to run arbitrary commands in the system.\n\n\n## Recommendation\n\nUpgrade to version 1.1.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4q8f-5xxj-946r",
+      "publishedAt": "2020-09-03T02:40:51Z",
+      "modifiedAt": "2023-01-09T05:03:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4q8f-5xxj-946r"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

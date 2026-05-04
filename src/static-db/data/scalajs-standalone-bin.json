@@ -1,0 +1,32 @@
+{
+  "packageName": "scalajs-standalone-bin",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cvx3-pqmj-x57x",
+      "packageName": "scalajs-standalone-bin",
+      "title": "scalajs-standalone-bin Downloads Resources over HTTP",
+      "description": "Affected versions of `scalajs-standalone-bin` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `scalajs-standalone-bin`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a d",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cvx3-pqmj-x57x",
+      "publishedAt": "2019-02-18T23:47:13Z",
+      "modifiedAt": "2023-09-14T05:03:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cvx3-pqmj-x57x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10634"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.4.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

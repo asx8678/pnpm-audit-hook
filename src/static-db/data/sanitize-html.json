@@ -1,7 +1,61 @@
 {
   "packageName": "sanitize-html",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-9mrh-v2v3-xpfm",
+      "packageName": "sanitize-html",
+      "title": "sanitize-html allowedTags Bypass via Entity-Decoded Text in nonTextTags Elements",
+      "description": "## Summary\n\nCommit 49d0bb7 introduced a regression in sanitize-html that bypasses `allowedTags` enforcement for text inside `nonTextTagsArray` elements (`textarea` and `option`). Entity-encoded HTML inside these elements passes through the sanitizer as decoded, unescaped HTML, allowing injection of arbitrary tags including XSS payloads. This affects any application using sanitize-html that includes `option` or `textarea` in its `allowedTags` configuration.\n\n## Details\n\nThe vulnerable code is at ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9mrh-v2v3-xpfm",
+      "publishedAt": "2026-04-16T21:08:29Z",
+      "modifiedAt": "2026-04-16T21:08:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9mrh-v2v3-xpfm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-40186"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.17.2, < 2.17.3",
+          "fixed": "2.17.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rm97-x556-q36h",
+      "packageName": "sanitize-html",
+      "title": "sanitize-html Information Exposure vulnerability",
+      "description": "Versions of the package sanitize-html before 2.12.1 are vulnerable to Information Exposure when used on the backend and with the style attribute allowed, allowing enumeration of files in the system (including project dependencies). An attacker could exploit this vulnerability to gather details about the file system structure and dependencies of the targeted server.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rm97-x556-q36h",
+      "publishedAt": "2024-02-24T06:30:17Z",
+      "modifiedAt": "2026-03-22T05:07:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rm97-x556-q36h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-21501"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.12.1",
+          "fixed": "2.12.1"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-qhxp-v273-g94h",
       "packageName": "sanitize-html",
@@ -30,33 +84,6 @@
       "source": "github"
     },
     {
-      "id": "GHSA-rm97-x556-q36h",
-      "packageName": "sanitize-html",
-      "title": "sanitize-html Information Exposure vulnerability",
-      "description": "Versions of the package sanitize-html before 2.12.1 are vulnerable to Information Exposure when used on the backend and with the style attribute allowed, allowing enumeration of files in the system (including project dependencies). An attacker could exploit this vulnerability to gather details about the file system structure and dependencies of the targeted server.",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-rm97-x556-q36h",
-      "publishedAt": "2024-02-24T06:30:17Z",
-      "modifiedAt": "2024-08-28T21:58:19Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-rm97-x556-q36h"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2024-21501"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 2.12.1",
-          "fixed": "2.12.1"
-        }
-      ],
-      "source": "github"
-    },
-    {
       "id": "GHSA-cgfm-xwp7-2cvr",
       "packageName": "sanitize-html",
       "title": "Sanitize-html Vulnerable To REDoS Attacks",
@@ -79,6 +106,60 @@
         {
           "range": "< 2.7.1",
           "fixed": "2.7.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wg96-3933-j2w5",
+      "packageName": "sanitize-html",
+      "title": "Cross-Site Scripting in sanitize-html",
+      "description": "Affected versions of `sanitize-html` are vulnerable to cross-site scripting.\n\n## Proof of Concept:\n\n`<IMG SRC= onmouseover=\"alert('XSS');\">`\nproduces the following:\n\n`<img src=\"onmouseover=\"alert('XSS');\"\" />`\nThis is definitely invalid HTML, but would suggest that it's being interpreted incorrectly by the parser.\n\n\n## Recommendation\n\nUpdate to version 1.2.3 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wg96-3933-j2w5",
+      "publishedAt": "2018-11-09T17:45:55Z",
+      "modifiedAt": "2023-09-08T23:10:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wg96-3933-j2w5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16017"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.2.3",
+          "fixed": "1.2.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xc6g-ggrc-qq4r",
+      "packageName": "sanitize-html",
+      "title": "Cross-Site Scripting in sanitize-html",
+      "description": "Affected versions of `sanitize-html` are vulnerable to cross-site scripting when allowedTags includes at least one `nonTextTag`.\n\n## Proof of Concept\n\n```js\nvar sanitizeHtml = require('sanitize-html');\n\nvar dirty = '!<textarea>&lt;/textarea&gt;<svg/onload=prompt`xs`&gt;</textarea>!';\nvar clean = sanitizeHtml(dirty, {\n    allowedTags: [ 'textarea' ]\n});\n\nconsole.log(clean);\n\n// !<textarea></textarea><svg/onload=prompt`xs`></textarea>!\n```\n\n\n## Recommendation\n\nUpdate to version 1.11.4 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xc6g-ggrc-qq4r",
+      "publishedAt": "2018-11-09T17:47:23Z",
+      "modifiedAt": "2023-09-08T23:04:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xc6g-ggrc-qq4r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16016"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.11.1",
+          "fixed": "1.11.4"
         }
       ],
       "source": "github"
@@ -133,6 +214,33 @@
         {
           "range": "< 2.3.2",
           "fixed": "2.3.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3j7m-hmh3-9jmp",
+      "packageName": "sanitize-html",
+      "title": "Cross-Site Scripting in sanitize-html",
+      "description": "Affected versions of `sanitize-html` do not sanitize input recursively, which may allow an attacker to execute arbitrary Javascript.\n\n\n## Recommendation\n\nUpdate to version 1.4.3 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3j7m-hmh3-9jmp",
+      "publishedAt": "2020-04-16T03:14:47Z",
+      "modifiedAt": "2023-01-09T05:02:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3j7m-hmh3-9jmp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-1000237"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.3",
+          "fixed": "1.4.3"
         }
       ],
       "source": "github"

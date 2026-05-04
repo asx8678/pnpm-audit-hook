@@ -1,0 +1,28 @@
+{
+  "packageName": "sailclothjs",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m5pf-5894-jmx7",
+      "packageName": "sailclothjs",
+      "title": "Malicious Package in sailclothjs",
+      "description": "Version 1.2.6 of `sailclothjs` contained malicious code. The code when executed in the browser would enumerate password, cvc, cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nRemove the package from your environment. It's also recommended to evaluate your application to determine whether or not user data was compromised.\n\nUsers may consider a downgrade to 1.2.5",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m5pf-5894-jmx7",
+      "publishedAt": "2020-09-03T19:08:00Z",
+      "modifiedAt": "2023-07-25T20:38:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m5pf-5894-jmx7"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.2.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

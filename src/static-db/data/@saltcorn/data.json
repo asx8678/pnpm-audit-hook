@@ -1,0 +1,52 @@
+{
+  "packageName": "@saltcorn/data",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9237-rg5p-rhfw",
+      "packageName": "@saltcorn/data",
+      "title": "@saltcorn/data: Tenant user role is used for tenant creation role check",
+      "description": "## Summary\n\nWhen a tenant admin is logged out of the root domain (e.g., saltcorn.com) but logged in to their own tenant space as admin, they can simply append `/tenant/create` to their tenant URL. The system reads the role from the tenant context (admin), and a new tenant is created on the **root domain** (in `PUBLIC SCHEMA > _sc_tenants`), rather than in the tenant's own `_sc_tenants` table.\n\nIf the same logic applies to other routes, a tenant admin effectively gains admin rights on the root do",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9237-rg5p-rhfw",
+      "publishedAt": "2026-04-22T14:31:34Z",
+      "modifiedAt": "2026-04-22T14:31:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9237-rg5p-rhfw"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.6.0-alpha.0, < 1.6.0-beta.2",
+          "fixed": "1.6.0-beta.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-59xv-588h-2vmm",
+      "packageName": "@saltcorn/data",
+      "title": "@saltcorn/data vulnerable to SQL Injection via jsexprToSQL Literal Handler",
+      "description": "## Summary\n\nThe `jsexprToSQL()` function in Saltcorn converts JavaScript expressions to SQL for use in database constraints. The `Literal` handler wraps string values in single quotes without escaping embedded single quotes, allowing SQL injection when creating Formula-type table constraints.\n\n\n## Vulnerable Component\n\n**File:** `packages/saltcorn-data/models/expression.ts`, lines 117-118\n\n```typescript\nLiteral({ value }: { value: ExtendedNode }) {\n  if (typeof value == \"string\") return `'${valu",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-59xv-588h-2vmm",
+      "publishedAt": "2026-04-10T19:30:32Z",
+      "modifiedAt": "2026-04-10T19:30:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-59xv-588h-2vmm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.6.0-alpha.0, < 1.6.0-beta.4",
+          "fixed": "1.6.0-beta.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

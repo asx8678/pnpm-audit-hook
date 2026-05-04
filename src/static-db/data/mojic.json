@@ -1,0 +1,33 @@
+{
+  "packageName": "mojic",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wqq3-wfmp-v85g",
+      "packageName": "mojic",
+      "title": "Mojic: Observable Timing Discrepancy in HMAC Verification",
+      "description": "### Summary\nThe `CipherEngine` in Mojic v2.1.3 uses a standard equality operator (`!==`) to verify the HMAC-SHA256 integrity seal during the decryption phase. This creates an Observable Timing Discrepancy (CWE-208), allowing a potential attacker to bypass the file integrity check via a timing attack.\n\n### Details\nIn `lib/CipherEngine.js`, the footer check validates the HMAC signature using a standard string comparison:\n`if (footerHex !== calcDigest) { ... }`\n\nStandard string comparisons in JavaS",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wqq3-wfmp-v85g",
+      "publishedAt": "2026-04-16T21:10:17Z",
+      "modifiedAt": "2026-04-27T16:08:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wqq3-wfmp-v85g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41244"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.1.3",
+          "fixed": "2.1.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "strider-sauce",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8gf4-pcj6-54rp",
+      "packageName": "strider-sauce",
+      "title": "Downloads Resources over HTTP in strider-sauce",
+      "description": "Affected versions of `strider-sauce` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `strider-sauce`.\n\n\n\n## Recommendation\n\nWhile the package author has created a patch for this vulnerability, they have not yet published it to npm or bumped the version number.\n\nIn orde",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8gf4-pcj6-54rp",
+      "publishedAt": "2019-02-18T23:47:53Z",
+      "modifiedAt": "2023-01-09T05:03:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8gf4-pcj6-54rp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10611"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

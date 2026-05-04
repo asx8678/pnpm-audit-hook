@@ -1,0 +1,28 @@
+{
+  "packageName": "destroyer-of-worlds",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w3f3-4j22-2v3p",
+      "packageName": "destroyer-of-worlds",
+      "title": "Malicious Package in destroyer-of-worlds",
+      "description": "The package `destroyer-of-worlds` contained malicious code. The package contained a bash script that was run as a postinstall script. The script deleted system files and attempted to exhaust resources by creating a large file, a fork bomb and an endless loop. The script targeted UNIX systems.\n\n\n## Recommendation\n\nRemove the package from your environment and perform additional incident response on your system's files and processes.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-w3f3-4j22-2v3p",
+      "publishedAt": "2020-09-02T21:27:02Z",
+      "modifiedAt": "2023-01-09T05:03:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w3f3-4j22-2v3p"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

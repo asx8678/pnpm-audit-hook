@@ -1,0 +1,28 @@
+{
+  "packageName": "swagger-injector",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v4x8-gw49-7hv4",
+      "packageName": "swagger-injector",
+      "title": "Path Traversal in swagger-injector",
+      "description": "All versions of `swagger-injector` are vulnerable to Path Traversal. The package fails to sanitize URLs, allowing attackers to access server files outside of the configured `dist` folder using relative paths.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-v4x8-gw49-7hv4",
+      "publishedAt": "2020-09-03T20:37:42Z",
+      "modifiedAt": "2023-01-09T05:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v4x8-gw49-7hv4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

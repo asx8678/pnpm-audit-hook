@@ -1,0 +1,33 @@
+{
+  "packageName": "f2e-server",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g7j3-p357-cw8p",
+      "packageName": "f2e-server",
+      "title": "Directory Traversal in f2e-server",
+      "description": "Affected versions of `f2e-server` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nUpdate to version 1.12.12 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g7j3-p357-cw8p",
+      "publishedAt": "2018-07-24T16:29:12Z",
+      "modifiedAt": "2023-09-13T20:24:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g7j3-p357-cw8p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16038"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.12.11",
+          "fixed": "1.12.12"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

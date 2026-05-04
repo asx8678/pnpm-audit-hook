@@ -1,0 +1,29 @@
+{
+  "packageName": "mcp-handler",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w2fm-25vw-vh7f",
+      "packageName": "mcp-handler",
+      "title": "mcp-handler has a tool response leak across concurrent client sessions ('Race Condition')",
+      "description": "`mcp-handler` versions prior to 1.1.0 accepted `@modelcontextprotocol/sdk` < 1.26.0 as a peer dependency. That SDK version contains a vulnerability [[CVE-2026-25536](https://nvd.nist.gov/vuln/detail/CVE-2026-25536)] that causes concurrent requests from different clients to share server-side state including authentication context and tool execution results when a `StreamableHTTPServerTransport` instance is reused across requests.\n\n**Note:** This is _not_ a vulnerability in `mcp-handler` itself. T",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w2fm-25vw-vh7f",
+      "publishedAt": "2026-04-01T23:58:50Z",
+      "modifiedAt": "2026-04-01T23:58:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w2fm-25vw-vh7f"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

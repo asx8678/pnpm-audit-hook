@@ -1,7 +1,103 @@
 {
   "packageName": "devalue",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-mwv9-gp5h-frr4",
+      "packageName": "devalue",
+      "title": "Sveltejs devalue's `devalue.parse` and `devalue.unflatten` emit objects with `__proto__` own properties",
+      "description": "In some circumstances, `devalue.parse` and `devalue.unflatten` could emit objects with `__proto__` own properties. This in and of itself is not a security vulnerability (and is possible with, for example, `JSON.parse` as well), but it can result in prototype injection if _downstream_ code handles it incorrectly:\n\n```ts\nconst result = devalue.parse(/* input creating an object with a __proto__ property */);\nconst target = {};\nObject.assign(target, result); // target's prototype is now polluted\n```",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-mwv9-gp5h-frr4",
+      "publishedAt": "2026-03-12T16:38:15Z",
+      "modifiedAt": "2026-03-12T19:41:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mwv9-gp5h-frr4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.6.3",
+          "fixed": "5.6.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cfw5-2vxh-hr84",
+      "packageName": "devalue",
+      "title": "devalue has prototype pollution in devalue.parse and devalue.unflatten",
+      "description": "In devalue v5.6.3, `devalue.parse` and `devalue.unflatten` were susceptible to prototype pollution via maliciously crafted payloads. Successful exploitation could lead to Denial of Service (DoS) or type confusion.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cfw5-2vxh-hr84",
+      "publishedAt": "2026-03-12T14:13:03Z",
+      "modifiedAt": "2026-03-12T14:13:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cfw5-2vxh-hr84"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30226"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.6.4",
+          "fixed": "5.6.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-33hq-fvwr-56pm",
+      "packageName": "devalue",
+      "title": "devalue affected by CPU and memory amplification from sparse arrays",
+      "description": "Under certain circumstances, serializing sparse arrays using `uneval` or `stringify` could cause CPU and/or memory exhaustion. When this occurs on the server, it results in a DoS. This is extremely difficult to take advantage of in practice, as an attacker would have to manage to create a sparse array on the server — which is impossible in every mainstream wire format — and then that sparse array would have to be run through `uneval` or `stringify`.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-33hq-fvwr-56pm",
+      "publishedAt": "2026-02-19T20:29:30Z",
+      "modifiedAt": "2026-02-19T20:29:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-33hq-fvwr-56pm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.6.2",
+          "fixed": "5.6.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8qm3-746x-r74r",
+      "packageName": "devalue",
+      "title": "devalue `uneval`ed code can create objects with polluted prototypes when `eval`ed",
+      "description": "Under certain circumstances, `uneval`ing untrusted data can produce output code that will create objects with polluted prototypes when later `eval`ed, meaning the output data can be a different shape from the input data.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-8qm3-746x-r74r",
+      "publishedAt": "2026-02-19T20:29:17Z",
+      "modifiedAt": "2026-02-19T20:29:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8qm3-746x-r74r"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.6.2",
+          "fixed": "5.6.3"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-vw5p-8cq8-m7mv",
       "packageName": "devalue",
@@ -79,52 +175,6 @@
         {
           "range": "< 5.3.2",
           "fixed": "5.3.2"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-33hq-fvwr-56pm",
-      "packageName": "devalue",
-      "title": "devalue affected by CPU and memory amplification from sparse arrays",
-      "description": "Under certain circumstances, serializing sparse arrays using `uneval` or `stringify` could cause CPU and/or memory exhaustion. When this occurs on the server, it results in a DoS. This is extremely difficult to take advantage of in practice, as an attacker would have to manage to create a sparse array on the server — which is impossible in every mainstream wire format — and then that sparse array would have to be run through `uneval` or `stringify`.",
-      "severity": "low",
-      "url": "https://github.com/advisories/GHSA-33hq-fvwr-56pm",
-      "publishedAt": "2026-02-19T20:29:30Z",
-      "modifiedAt": "2026-02-19T20:29:39Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-33hq-fvwr-56pm"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 5.6.2",
-          "fixed": "5.6.3"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-8qm3-746x-r74r",
-      "packageName": "devalue",
-      "title": "devalue `uneval`ed code can create objects with polluted prototypes when `eval`ed",
-      "description": "Under certain circumstances, `uneval`ing untrusted data can produce output code that will create objects with polluted prototypes when later `eval`ed, meaning the output data can be a different shape from the input data.",
-      "severity": "low",
-      "url": "https://github.com/advisories/GHSA-8qm3-746x-r74r",
-      "publishedAt": "2026-02-19T20:29:17Z",
-      "modifiedAt": "2026-02-19T20:29:19Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-8qm3-746x-r74r"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 5.6.2",
-          "fixed": "5.6.3"
         }
       ],
       "source": "github"

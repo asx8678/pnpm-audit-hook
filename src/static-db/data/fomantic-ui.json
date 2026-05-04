@@ -1,0 +1,29 @@
+{
+  "packageName": "fomantic-ui",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-788m-pj96-7w2c",
+      "packageName": "fomantic-ui",
+      "title": "Cross-Site Scripting in fomantic-ui",
+      "description": "Versions of `fomantic-ui` are vulnerable to Cross-Site Scripting. Lack of output encoding on the selection dropdowns can lead to user input being executed instead of printed as text.\n\n\n## Recommendation\n\nUpgrade to version 2.7.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-788m-pj96-7w2c",
+      "publishedAt": "2020-09-02T21:23:51Z",
+      "modifiedAt": "2023-01-09T05:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-788m-pj96-7w2c"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.7.0",
+          "fixed": "2.7.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "packageName": "dot",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-297x-8xj4-vcxv",
@@ -25,6 +25,28 @@
         {
           "range": "<= 1.1.2",
           "fixed": "1.1.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4859-gpc7-4j66",
+      "packageName": "dot",
+      "title": "Command Injection in dot",
+      "description": "All versions of dot are vulnerable to Command Injection. The template compilation may execute arbitrary commands if an attacker can inject code in the template or if a Prototype Pollution-like vulnerability can be exploited to alter an Object's prototype.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4859-gpc7-4j66",
+      "publishedAt": "2019-06-05T21:24:29Z",
+      "modifiedAt": "2023-01-09T05:01:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4859-gpc7-4j66"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.2"
         }
       ],
       "source": "github"

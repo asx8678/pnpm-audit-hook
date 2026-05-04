@@ -1,0 +1,28 @@
+{
+  "packageName": "yjmyjmyjm",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g376-whg7-896m",
+      "packageName": "yjmyjmyjm",
+      "title": "Directory Traversal in yjmyjmyjm",
+      "description": "Affected versions of `yjmyjmyjm` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\nExample request:\n```\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only used for",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g376-whg7-896m",
+      "publishedAt": "2020-09-01T18:45:53Z",
+      "modifiedAt": "2023-01-09T05:03:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g376-whg7-896m"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

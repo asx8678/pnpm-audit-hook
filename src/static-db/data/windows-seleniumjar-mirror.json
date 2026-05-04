@@ -1,0 +1,32 @@
+{
+  "packageName": "windows-seleniumjar-mirror",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-455m-q3h9-34pf",
+      "packageName": "windows-seleniumjar-mirror",
+      "title": "Downloads Resources over HTTP in windows-seleniumjar-mirror",
+      "description": "Affected versions of `windows-seleniumjar-mirror` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `windows-seleniumjar-mirror`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nCurrently, the best mitigation is to download the selenium jar ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-455m-q3h9-34pf",
+      "publishedAt": "2019-02-18T23:44:29Z",
+      "modifiedAt": "2023-01-09T05:02:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-455m-q3h9-34pf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10670"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.52.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

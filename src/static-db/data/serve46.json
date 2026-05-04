@@ -1,0 +1,32 @@
+{
+  "packageName": "serve46",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qw9c-8p76-3q2x",
+      "packageName": "serve46",
+      "title": "Directory Traversal in serve46",
+      "description": "Affected versions of `serve46` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only us",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qw9c-8p76-3q2x",
+      "publishedAt": "2020-09-01T18:49:11Z",
+      "modifiedAt": "2023-09-11T16:38:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qw9c-8p76-3q2x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16148"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "packageName": "urijs",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-p6j9-7xhc-rhwp",
@@ -160,6 +160,33 @@
         {
           "range": "< 1.19.8",
           "fixed": "1.19.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3329-pjwv-fjpg",
+      "packageName": "urijs",
+      "title": "Hostname spoofing via backslashes in URL",
+      "description": "### Impact\nIf using affected versions to determine a URL's hostname, the hostname can be spoofed by using a backslash (`\\`) character followed by an at (`@`) character. If the hostname is used in security decisions, the decision may be incorrect.\n\nDepending on library usage and attacker intent, impacts may include allow/block list bypasses, SSRF attacks, open redirects, or other undesired behavior.\n\nExample URL: `https://expected-example.com\\@observed-example.com`\nEscaped string: `https://expect",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3329-pjwv-fjpg",
+      "publishedAt": "2020-12-30T23:40:48Z",
+      "modifiedAt": "2023-02-01T05:05:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3329-pjwv-fjpg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26291"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.19.4",
+          "fixed": "1.19.4"
         }
       ],
       "source": "github"

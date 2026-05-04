@@ -1,0 +1,33 @@
+{
+  "packageName": "@nocobase/database",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4948-f92q-f432",
+      "packageName": "@nocobase/database",
+      "title": "@nocobase/database has SQL Injection via String Concatenation through Recursive Eager Loading",
+      "description": "## Summary\n\nThe `queryParentSQL()` function in the core database package constructs a recursive CTE query by joining `nodeIds` with string concatenation instead of using parameterized queries. The `nodeIds` array contains primary key values read from database rows. An attacker who can create a record with a malicious string primary key can inject arbitrary SQL when any subsequent request triggers recursive eager loading on that collection.\n\n**Affected component:** `@nocobase/database` (core)\n**A",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4948-f92q-f432",
+      "publishedAt": "2026-04-22T20:09:02Z",
+      "modifiedAt": "2026-04-22T20:09:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4948-f92q-f432"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41640"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.39",
+          "fixed": "2.0.39"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

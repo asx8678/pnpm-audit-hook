@@ -1,0 +1,28 @@
+{
+  "packageName": "graylog-web-interface",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9qgh-7pgp-hp7r",
+      "packageName": "graylog-web-interface",
+      "title": "Cross-Site Scripting in graylog-web-interface",
+      "description": "All versions of  `graylog-web-interface` are vulnerable to Cross-Site Scripting (XSS). The package fails to escape output on the `TypeAhead` and `QueryInput` components, which may allow attackers to execute arbitrary JavaScript on the victim's browser.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9qgh-7pgp-hp7r",
+      "publishedAt": "2020-09-03T17:10:31Z",
+      "modifiedAt": "2023-01-09T05:03:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9qgh-7pgp-hp7r"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

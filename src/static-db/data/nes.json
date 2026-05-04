@@ -1,0 +1,33 @@
+{
+  "packageName": "nes",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3pwh-5mmc-mwrx",
+      "packageName": "nes",
+      "title": "Denial of Service in nes",
+      "description": "Affected versions of `nes` are vulnerable to denial of service when given an invalid `cookie` header, and websocket authentication is set to `cookie`. Submitting an invalid cookie on the websocket upgrade request will cause the node process to throw and exit.\n\n\n## Recommendation\n\nUpdate to version 6.4.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3pwh-5mmc-mwrx",
+      "publishedAt": "2018-07-24T20:06:33Z",
+      "modifiedAt": "2023-01-09T05:02:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3pwh-5mmc-mwrx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16025"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 6.4.0",
+          "fixed": "6.4.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

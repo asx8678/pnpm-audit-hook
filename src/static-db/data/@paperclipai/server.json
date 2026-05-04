@@ -1,0 +1,198 @@
+{
+  "packageName": "@paperclipai/server",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-68qg-g8mg-6pr7",
+      "packageName": "@paperclipai/server",
+      "title": "paperclip Vulnerable to Unauthenticated Remote Code Execution via Import Authorization Bypass",
+      "description": "## Summary\n\nAn unauthenticated attacker can achieve full remote code execution on any network-accessible Paperclip instance running in `authenticated` mode with default configuration. No user interaction, no credentials, just the target's address. The entire chain is six API calls.\n\nI verified every step against the latest version. I have a fully automated PoC script and a video recording available.\n\nDiscord: sagi03581\n\n## Steps to Reproduce\n\nThe attack chains four independent flaws to escalate ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-68qg-g8mg-6pr7",
+      "publishedAt": "2026-04-10T21:08:57Z",
+      "modifiedAt": "2026-04-27T16:19:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-68qg-g8mg-6pr7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41679"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2026.410.0",
+          "fixed": "2026.410.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-265w-rf2w-cjh4",
+      "packageName": "@paperclipai/server",
+      "title": "Paperclip: Privilege Escalation via Agent-Controlled workspaceStrategy.provisionCommand Leading to OS Command Execution",
+      "description": "### Summary\nPaperclip contains a privilege escalation vulnerability that allows an attacker with an Agent API key to execute arbitrary OS commands on the Paperclip server host.\nAn attacker with an agent credential can escalate privileges from the agent runtime to the Paperclip server host.\nThe vulnerability occurs because agents are allowed to update their own adapterConfig via the /agents/:id API endpoint.\nThe configuration field adapterConfig.workspaceStrategy.provisionCommand is later execute",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-265w-rf2w-cjh4",
+      "publishedAt": "2026-04-16T22:45:26Z",
+      "modifiedAt": "2026-04-24T20:53:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-265w-rf2w-cjh4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41208"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2026.416.0",
+          "fixed": "2026.416.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3xx2-mqjm-hg9x",
+      "packageName": "@paperclipai/server",
+      "title": "Paperclip: Cross-tenant agent API key IDOR in `/agents/:id/keys` routes allows full victim-company compromise",
+      "description": "## Summary\n\nThe `GET`, `POST`, and `DELETE` handlers under `/agents/:id/keys` in the Paperclip control-plane API only call `assertBoard(req)`, which verifies that the caller has a board-type session but does not verify that the caller has access to the company owning the target agent. A board user whose membership is limited to Company A can therefore list, create, or revoke agent API keys for any agent in Company B by supplying the victim agent's UUID in the URL path. The `POST` handler returns",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3xx2-mqjm-hg9x",
+      "publishedAt": "2026-04-16T22:49:46Z",
+      "modifiedAt": "2026-04-16T22:49:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3xx2-mqjm-hg9x"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2026.416.0",
+          "fixed": "2026.416.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p7mm-r948-4q3q",
+      "packageName": "@paperclipai/server",
+      "title": "Paperclip: Approval decision attribution spoofing via client-controlled `decidedByUserId` in paperclip server",
+      "description": "## Summary\n\nThe approval-resolution endpoints (`POST /approvals/:id/approve`, `/reject`, `/request-revision`) accept a client-supplied `decidedByUserId` field in the request body and write it verbatim into the authoritative `approvals.decidedByUserId` column — without cross-checking it against the authenticated actor. Any board user who can access an approval's company can record the decision as having been made by another user (e.g. the CEO), forging the governance audit trail. For `hire_agent`",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p7mm-r948-4q3q",
+      "publishedAt": "2026-04-16T22:48:46Z",
+      "modifiedAt": "2026-04-16T22:48:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p7mm-r948-4q3q"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2026.416.0",
+          "fixed": "2026.416.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-47wq-cj9q-wpmp",
+      "packageName": "@paperclipai/server",
+      "title": "Paperclip: Cross-tenant agent API token minting via missing assertCompanyAccess on /api/agents/:id/keys",
+      "description": "<img width=\"7007\" height=\"950\" alt=\"01-setup\" src=\"https://github.com/user-attachments/assets/1596b8d1-8de5-4c21-b1d2-2db41b568d7e\" />\n\n> Isolated paperclip instance running in authenticated mode (default config)\n> on a clean Docker image matching commit b649bd4 (2026.411.0-canary.8, post\n> the 2026.410.0 patch). This advisory was verified on an unmodified build.\n\n### Summary\n\n`POST /api/agents/:id/keys`, `GET /api/agents/:id/keys`, and\n`DELETE /api/agents/:id/keys/:keyId` (`server/src/routes/ag",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-47wq-cj9q-wpmp",
+      "publishedAt": "2026-04-16T22:48:32Z",
+      "modifiedAt": "2026-04-16T22:48:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-47wq-cj9q-wpmp"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2026.416.0",
+          "fixed": "2026.416.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vr7g-88fq-vhq3",
+      "packageName": "@paperclipai/server",
+      "title": "Paperclip: OS Command Injection via Execution Workspace cleanupCommand",
+      "description": "| Field | Value |\n|-------|-------|\n| **Affected Software** | Paperclip AI v2026.403.0 |\n| **Affected Component** | Execution Workspace lifecycle (`workspace-runtime.ts`) |\n| **Affected Endpoint** | `PATCH /api/execution-workspaces/:id` |\n| **Deployment Modes** | All — `local_trusted` (zero auth), `authenticated` (any company user) |\n| **Platforms** | Linux, macOS, Windows (with Git installed) |\n| **Date** | 2026-04-13 |\n\n---\n\n## Executive Summary\n\nA critical OS command injection vulnerability e",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vr7g-88fq-vhq3",
+      "publishedAt": "2026-04-16T22:48:09Z",
+      "modifiedAt": "2026-04-16T22:48:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vr7g-88fq-vhq3"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2026.416.0",
+          "fixed": "2026.416.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xfqj-r5qw-8g4j",
+      "packageName": "@paperclipai/server",
+      "title": "Paperclip: Unauthenticated Access to Multiple API Endpoints in Authenticated Mode",
+      "description": "## Summary\n\nSeveral API endpoints in `authenticated` mode have no authentication at all. They respond to completely unauthenticated requests with sensitive data or allow state-changing operations. No account, no session, no API key needed.\n\nVerified against the latest version.\n\nDiscord: sagi03581\n\n## Steps to Reproduce\n\n### 1. Unauthenticated issue data access\n\n`GET /api/heartbeat-runs/:runId/issues` returns issue data for a heartbeat run with zero authentication. Every other endpoint in `server",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xfqj-r5qw-8g4j",
+      "publishedAt": "2026-04-16T22:47:05Z",
+      "modifiedAt": "2026-04-16T22:47:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xfqj-r5qw-8g4j"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2026.416.0",
+          "fixed": "2026.416.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w8hx-hqjv-vjcq",
+      "packageName": "@paperclipai/server",
+      "title": "Paperclip: Malicious skills able to exfiltrate and destroy all user data",
+      "description": "### Summary\nAn arbitrary code execution vulnerability in the workspace runtime service allows any agent to execute shell commands on the server, exposing all environment variables including API keys, JWT secrets, and database credentials.\n\n### Details\nA malicious skill can instruct the agent to exploit the **workspace runtime service** feature, which allows arbitrary shell command execution on the server.\n\n### Vulnerable Code Path\n\n1. Agent calls `PATCH /api/projects/{projectId}/workspaces/{work",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w8hx-hqjv-vjcq",
+      "publishedAt": "2026-04-16T22:46:52Z",
+      "modifiedAt": "2026-04-16T22:46:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w8hx-hqjv-vjcq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2026.416.0",
+          "fixed": "2026.416.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "badjs-sourcemap-server",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xq98-5rcf-5wqh",
+      "packageName": "badjs-sourcemap-server",
+      "title": "Directory Traversal in badjs-sourcemap-server",
+      "description": "Affected versions of `badjs-sourcemap-server` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the pac",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xq98-5rcf-5wqh",
+      "publishedAt": "2018-07-24T15:43:02Z",
+      "modifiedAt": "2023-09-14T17:59:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xq98-5rcf-5wqh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16036"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.11"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

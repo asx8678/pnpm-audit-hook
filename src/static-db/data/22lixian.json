@@ -1,0 +1,32 @@
+{
+  "packageName": "22lixian",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rrfc-g2gh-xvjm",
+      "packageName": "22lixian",
+      "title": "Directory Traversal in 22lixian",
+      "description": "Affected versions of `22lixian` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only u",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rrfc-g2gh-xvjm",
+      "publishedAt": "2018-07-23T20:46:07Z",
+      "modifiedAt": "2023-09-11T23:12:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rrfc-g2gh-xvjm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16162"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

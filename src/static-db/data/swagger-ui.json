@@ -1,6 +1,6 @@
 {
   "packageName": "swagger-ui",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-cr3q-pqgq-m8c2",
@@ -30,6 +30,83 @@
       "source": "github"
     },
     {
+      "id": "GHSA-c427-hjc3-wrfw",
+      "packageName": "swagger-ui",
+      "title": "Cross-site scripting in Swagger-UI",
+      "description": "A Cascading Style Sheets (CSS) injection vulnerability in Swagger UI before 3.23.11 allows attackers to use the Relative Path Overwrite (RPO) technique to perform CSS-based input field value exfiltration, such as exfiltration of a CSRF token value. In other words, this product intentionally allows the embedding of untrusted JSON data from remote servers, but it was not previously known that <style>@import within the JSON data was a functional attack method.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-c427-hjc3-wrfw",
+      "publishedAt": "2019-10-15T19:27:05Z",
+      "modifiedAt": "2024-08-26T15:52:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c427-hjc3-wrfw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-17495"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.23.11",
+          "fixed": "3.23.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mrx7-8hxf-f853",
+      "packageName": "swagger-ui",
+      "title": "Cross-Site Scripting in swagger-ui",
+      "description": "Affected versions of `swagger-ui` are vulnerable to cross-site scripting. This vulnerability exists because `swagger-ui` automatically executes external Javascript that is loaded in via the `url` query string parameter when a `Content-Type: application/javascript` header is included.\n\nAn attacker can create a server that replies with a malicious script and the proper content-type, and then craft a `swagger-ui` URL that includes the location to their server/script in the `url` query string parame",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mrx7-8hxf-f853",
+      "publishedAt": "2020-09-01T15:36:27Z",
+      "modifiedAt": "2023-10-10T21:02:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mrx7-8hxf-f853"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-1000233"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.1",
+          "fixed": "2.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4f9m-pxwh-68hg",
+      "packageName": "swagger-ui",
+      "title": "Cross-Site Scripting in swagger-ui",
+      "description": "Versions of `swagger-ui` prior to 3.20.9 are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize URLs used in the OAuth auth flow, which may allow attackers to execute arbitrary JavaScript.\n\n\n## Recommendation\n\nUpgrade to version 3.20.9 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4f9m-pxwh-68hg",
+      "publishedAt": "2020-09-11T21:20:14Z",
+      "modifiedAt": "2023-10-02T16:28:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4f9m-pxwh-68hg"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.20.9",
+          "fixed": "3.20.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
       "id": "GHSA-qrmm-w75w-3wpx",
       "packageName": "swagger-ui",
       "title": "Server side request forgery in SwaggerUI",
@@ -48,6 +125,29 @@
         {
           "range": "< 4.1.3",
           "fixed": "4.1.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-g336-c7wv-8hp3",
+      "packageName": "swagger-ui",
+      "title": "Cross-Site Scripting in swagger-ui",
+      "description": "Affected versions of `swagger-ui` are vulnerable to cross-site scripting via the `url` query string parameter.\n\n\n## Recommendation\n\nUpdate to 2.2.1 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-g336-c7wv-8hp3",
+      "publishedAt": "2020-09-01T15:58:06Z",
+      "modifiedAt": "2023-04-03T19:56:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g336-c7wv-8hp3"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.1",
+          "fixed": "2.2.1"
         }
       ],
       "source": "github"
@@ -75,6 +175,175 @@
         {
           "range": "< 2.2.1",
           "fixed": "2.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-22q9-hqm5-mhmc",
+      "packageName": "swagger-ui",
+      "title": "Cross-Site Scripting in swagger-ui",
+      "description": "Versions of `swagger-ui` prior to 2.2.1 are vulnerable to Cross-Site Scripting (XSS). The package fails to encode output in GET requests. The request is meant to respond with Content-Type `application/json` which does not trigger the vulnerability but if the web server changes the header to `text/html` it may allow attackers to execute arbitrary JavaScript.\n\n\n## Recommendation\n\nUpgrade to version 2.2.1 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-22q9-hqm5-mhmc",
+      "publishedAt": "2020-09-11T21:22:24Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-22q9-hqm5-mhmc"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.1",
+          "fixed": "2.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w992-2gmj-9xxj",
+      "packageName": "swagger-ui",
+      "title": "Cross-Site Scripting in swagger-ui",
+      "description": "Versions of `swagger-ui` prior to 2.2.1 are vulnerable to Cross-Site Scripting (XSS). The package allows HTML code in the `swagger.apiInfo.description` value without proper sanitization, which may allow attackers to execute arbitrary JavaScript.\n\n\n## Recommendation\n\nUpgrade to version 2.2.1 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w992-2gmj-9xxj",
+      "publishedAt": "2020-09-11T21:23:29Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w992-2gmj-9xxj"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.1",
+          "fixed": "2.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vp93-gcx5-4w52",
+      "packageName": "swagger-ui",
+      "title": "Cross-Site Scripting in swagger-ui",
+      "description": "Versions of `swagger-ui` prior to 2.2.1 are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize JSON schemas, allowing attackers to execute arbitrary JavaScript using `<script>` tags in the method descriptions.\n\n\n## Recommendation\n\nUpgrade to version 2.2.1 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vp93-gcx5-4w52",
+      "publishedAt": "2020-09-11T21:21:19Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vp93-gcx5-4w52"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.1",
+          "fixed": "2.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-388g-jwpg-x6j4",
+      "packageName": "swagger-ui",
+      "title": "Cross-Site Scripting in swagger-ui",
+      "description": "Versions of `swagger-ui` prior to 3.0.13 are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize YAML files imported from URLs or copied-pasted. This may allow attackers to execute arbitrary JavaScript.\n\n\n## Recommendation\n\nUpgrade to version 3.0.13 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-388g-jwpg-x6j4",
+      "publishedAt": "2020-09-11T21:20:14Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-388g-jwpg-x6j4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.13",
+          "fixed": "3.0.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7f59-x49p-v8mq",
+      "packageName": "swagger-ui",
+      "title": "Cross-Site Scripting in swagger-ui",
+      "description": "Affected versions of `swagger-ui` are vulnerable to cross-site scripting in both the `consumes` and `produces` parameters of the swagger JSON document for a given API.\n\nAdditionally, `swagger-ui` allows users to load arbitrary swagger JSON documents via the query string parameter `url`, allowing an attacker to exploit this attack against any user that the attacker can convince to visit a crafted link.\n\n## Proof of Concept\n\n```\nhttp://<USER_HOSTNAME>/swagger-ui/index.html?url=http://<MALICIOUS_HO",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7f59-x49p-v8mq",
+      "publishedAt": "2020-09-01T15:28:45Z",
+      "modifiedAt": "2023-01-09T05:03:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7f59-x49p-v8mq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-1000226"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.1",
+          "fixed": "2.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p239-93f7-h6xf",
+      "packageName": "swagger-ui",
+      "title": "Cross-Site Scripting in swagger-ui",
+      "description": "Affected versions of `swagger-ui` contain a cross-site scripting vulnerability in the key names of a specific nested object in the JSON document.\n\n\n## Proof of Concept\nThe vulnerable object structure is:\n```\n{\n    \"definitions\": {\n        \"arbitraryVal\": {\n            \"properties\": {\n                \"<INJECTABLE_KEY_NAME>\": \"LoremIpsum\"\n                }\n            }\n        }\n}\n```\nMalicious JSON documents can be loaded in by providing a URL to them in the `url` query string parameter.\n\n\n\n## R",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-p239-93f7-h6xf",
+      "publishedAt": "2020-09-01T15:30:58Z",
+      "modifiedAt": "2023-01-09T05:03:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p239-93f7-h6xf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-5682"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.2.0",
+          "fixed": "2.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x9p2-fxq6-2m5f",
+      "packageName": "swagger-ui",
+      "title": "Reverse Tabnapping in swagger-ui",
+      "description": "Versions of `swagger-ui` prior to 3.18.0 are vulnerable to [Reverse Tabnapping](https://www.owasp.org/index.php/Reverse_Tabnabbing). The package uses `target='_blank'` in anchor tags, allowing attackers to access `window.opener` for the original page. This is commonly used for phishing attacks.\n\n\n## Recommendation\n\nUpgrade to version 3.18.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x9p2-fxq6-2m5f",
+      "publishedAt": "2019-06-20T14:33:07Z",
+      "modifiedAt": "2023-01-09T05:01:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x9p2-fxq6-2m5f"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.18.0",
+          "fixed": "3.18.0"
         }
       ],
       "source": "github"

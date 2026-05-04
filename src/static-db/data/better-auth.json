@@ -1,7 +1,30 @@
 {
   "packageName": "better-auth",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-xg6x-h9c9-2m83",
+      "packageName": "better-auth",
+      "title": "Better Auth Has Two-Factor Authentication Bypass via Premature Session Caching (session.cookieCache)",
+      "description": "### Summary\n\nUnder certain configurations, sessions may be considered valid before two-factor authentication (2FA) is fully completed. This can allow access to authenticated routes without verifying the second factor.\n\n---\n\n### Description\n\nWhen two-factor authentication is enabled, the authentication flow correctly identifies users who require additional verification and defers full authentication until the second factor is completed.\n\nHowever, when `session.cookieCache` is enabled, the session",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-xg6x-h9c9-2m83",
+      "publishedAt": "2026-04-03T03:29:59Z",
+      "modifiedAt": "2026-04-03T03:29:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xg6x-h9c9-2m83"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.9",
+          "fixed": "1.4.9"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-x732-6j76-qmhm",
       "packageName": "better-auth",

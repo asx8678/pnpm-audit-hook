@@ -1,6 +1,6 @@
 {
   "packageName": "markdown-pdf",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-qghr-877h-f9jh",
@@ -24,6 +24,33 @@
       "affectedVersions": [
         {
           "range": "<= 11.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p7c9-jqhq-vr3v",
+      "packageName": "markdown-pdf",
+      "title": "Remote Code Execution in markdown-pdf",
+      "description": "Versions of `markdown-pdf` prior to 9.0.0 are vulnerable to Remote Code Execution. The package fails to sanitize HTML code in markdown files. If markdown files with malicious HTML are converted to PDF, the resulting PDF file will execute any JavaScript code in the original markdown file. This may allow attackers to execute Remote Code.\n\n\n## Recommendation\n\nUpgrade to version 9.0.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p7c9-jqhq-vr3v",
+      "publishedAt": "2018-07-27T17:03:46Z",
+      "modifiedAt": "2023-03-01T01:36:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p7c9-jqhq-vr3v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3770"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 9.0.0",
+          "fixed": "9.0.0"
         }
       ],
       "source": "github"

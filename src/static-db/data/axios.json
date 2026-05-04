@@ -1,15 +1,259 @@
 {
   "packageName": "axios",
-  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-qj83-cq47-w5f8",
+      "packageName": "axios",
+      "title": "Axios HTTP/2 Session Cleanup State Corruption Vulnerability",
+      "description": "### Summary\n\nAxios HTTP/2 session cleanup logic contains a state corruption bug that allows a malicious server to crash the client process through concurrent session closures. This denial-of-service vulnerability affects axios versions prior to 1.13.2 when HTTP/2 is enabled.\n\n### Details\n\nThe vulnerability exists in the `Http2Sessions.getSession()` method in `lib/adapters/http.js`. The session cleanup logic contains a control flow error when removing sessions from the sessions array.\n\n**Vulnerab",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qj83-cq47-w5f8",
+      "publishedAt": "2026-04-08T15:51:48Z",
+      "modifiedAt": "2026-04-27T17:00:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qj83-cq47-w5f8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39865"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.13.0, < 1.13.2",
+          "fixed": "1.13.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fvcv-3m26-pcqx",
+      "packageName": "axios",
+      "title": "Axios has Unrestricted Cloud Metadata Exfiltration via Header Injection Chain",
+      "description": "# Vulnerability Disclosure: Unrestricted Cloud Metadata Exfiltration via Header Injection Chain\n\n## Summary\nThe Axios library is vulnerable to a specific \"Gadget\" attack chain that allows **Prototype Pollution** in any third-party dependency to be escalated into **Remote Code Execution (RCE)** or **Full Cloud Compromise** (via AWS IMDSv2 bypass).\n\nWhile Axios patches exist for *preventing check* pollution, the library remains vulnerable to *being used* as a gadget when pollution occurs elsewhere",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fvcv-3m26-pcqx",
+      "publishedAt": "2026-04-10T19:47:16Z",
+      "modifiedAt": "2026-04-16T18:45:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fvcv-3m26-pcqx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-40175"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.31.0",
+          "fixed": "0.31.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3p68-rc4w-qgx5",
+      "packageName": "axios",
+      "title": "Axios has a NO_PROXY Hostname Normalization Bypass that Leads to SSRF",
+      "description": "Axios does not correctly handle hostname normalization when checking `NO_PROXY` rules.\nRequests to loopback addresses like `localhost.` (with a trailing dot) or `[::1]` (IPv6 literal) skip `NO_PROXY` matching and go through the configured proxy.\n\nThis goes against what developers expect and lets attackers force requests through a proxy, even if `NO_PROXY` is set up to protect loopback or internal services.\n\nAccording to [RFC 1034 §3.1](https://datatracker.ietf.org/doc/html/rfc1034#section-3.1) a",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3p68-rc4w-qgx5",
+      "publishedAt": "2026-04-09T17:32:19Z",
+      "modifiedAt": "2026-04-16T18:44:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3p68-rc4w-qgx5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-62718"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.31.0",
+          "fixed": "0.31.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-43fc-jf86-j433",
+      "packageName": "axios",
+      "title": "Axios is Vulnerable to Denial of Service via __proto__ Key in mergeConfig",
+      "description": "# Denial of Service via **proto** Key in mergeConfig\n\n### Summary\n\nThe `mergeConfig` function in axios crashes with a TypeError when processing configuration objects containing `__proto__` as an own property. An attacker can trigger this by providing a malicious configuration object created via `JSON.parse()`, causing complete denial of service.\n\n### Details\n\nThe vulnerability exists in `lib/core/mergeConfig.js` at lines 98-101:\n\n```javascript\nutils.forEach(Object.keys({ ...config1, ...config2 }",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-43fc-jf86-j433",
+      "publishedAt": "2026-02-09T17:46:14Z",
+      "modifiedAt": "2026-02-18T17:16:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-43fc-jf86-j433"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25639"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.30.2",
+          "fixed": "0.30.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4hjh-wcwx-xvwj",
+      "packageName": "axios",
+      "title": "Axios is vulnerable to DoS attack through lack of data size check",
+      "description": "## Summary\n\nWhen Axios runs on Node.js and is given a URL with the `data:` scheme, it does not perform HTTP. Instead, its Node http adapter decodes the entire payload into memory (`Buffer`/`Blob`) and returns a synthetic 200 response.\nThis path ignores `maxContentLength` / `maxBodyLength` (which only protect HTTP responses), so an attacker can supply a very large `data:` URI and cause the process to allocate unbounded memory and crash (DoS), even if the caller requested `responseType: 'stream'`.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4hjh-wcwx-xvwj",
+      "publishedAt": "2025-09-11T21:07:55Z",
+      "modifiedAt": "2026-01-16T14:49:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4hjh-wcwx-xvwj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-58754"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.28.0, < 0.30.2",
+          "fixed": "0.30.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jr5f-v2jv-69x6",
+      "packageName": "axios",
+      "title": "axios Requests Vulnerable To Possible SSRF and Credential Leakage via Absolute URL",
+      "description": "### Summary\n\nA previously reported issue in axios demonstrated that using protocol-relative URLs could lead to SSRF (Server-Side Request Forgery). Reference: axios/axios#6463\n\nA similar problem that occurs when passing absolute URLs rather than protocol-relative URLs to axios has been identified. Even if ⁠`baseURL` is set, axios sends the request to the specified absolute URL, potentially causing SSRF and credential leakage. This issue impacts both server-side and client-side usage of axios.\n\n##",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jr5f-v2jv-69x6",
+      "publishedAt": "2025-03-07T15:16:00Z",
+      "modifiedAt": "2025-11-27T08:44:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jr5f-v2jv-69x6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-27152"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.30.0",
+          "fixed": "0.30.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rm8p-cx58-hcvx",
+      "packageName": "axios",
+      "title": "Withdrawn Advisory: Axios has Transitive Critical Vulnerability via form-data",
+      "description": "### Withdrawn Advisory\nThis advisory has been withdrawn because users of Axios 1.10.0 have the flexibility to use a patched version of form-data, the software in which the vulnerability originates, without upgrading Axios to address GHSA-fjxv-7rqg-78g4.\n\n### Original Description\nA critical vulnerability exists in the form-data package used by `axios@1.10.0`. The issue allows an attacker to predict multipart boundary values generated using `Math.random()`, opening the door to HTTP parameter pollu",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rm8p-cx58-hcvx",
+      "publishedAt": "2025-07-23T16:49:38Z",
+      "modifiedAt": "2025-07-24T13:35:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rm8p-cx58-hcvx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54371"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.10.0",
+          "fixed": "1.11.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cph5-m8f7-6c5x",
+      "packageName": "axios",
+      "title": "axios Inefficient Regular Expression Complexity vulnerability",
+      "description": "axios before v0.21.2 is vulnerable to Inefficient Regular Expression Complexity.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cph5-m8f7-6c5x",
+      "publishedAt": "2021-09-01T18:23:02Z",
+      "modifiedAt": "2025-02-12T05:10:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cph5-m8f7-6c5x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-3749"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.21.2",
+          "fixed": "0.21.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8hc4-vh64-cxmj",
+      "packageName": "axios",
+      "title": "Server-Side Request Forgery in axios",
+      "description": "axios 1.7.2 allows SSRF via unexpected behavior where requests for path relative URLs get processed as protocol relative URLs.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8hc4-vh64-cxmj",
+      "publishedAt": "2024-08-12T15:30:49Z",
+      "modifiedAt": "2024-08-13T19:53:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8hc4-vh64-cxmj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-39338"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.3.2, <= 1.7.3",
+          "fixed": "1.7.4"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-wf5p-g6vw-rhxx",
       "packageName": "axios",
-      "title": "Server-Side Request Forgery in axios",
-      "severity": "high",
+      "title": "Axios Cross-Site Request Forgery Vulnerability",
+      "description": "An issue discovered in Axios 0.8.1 through 1.5.1 inadvertently reveals the confidential XSRF-TOKEN stored in cookies by including it in the HTTP header X-XSRF-TOKEN for every request made to any host allowing attackers to view sensitive information.",
+      "severity": "medium",
       "url": "https://github.com/advisories/GHSA-wf5p-g6vw-rhxx",
-      "publishedAt": "2023-11-08T14:43:00Z",
-      "modifiedAt": "2024-01-31T20:36:00Z",
+      "publishedAt": "2023-11-08T21:30:37Z",
+      "modifiedAt": "2024-06-21T21:33:58Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -22,8 +266,35 @@
       ],
       "affectedVersions": [
         {
-          "range": ">=0.8.1 <1.6.0",
-          "fixed": "1.6.0"
+          "range": ">= 0.8.1, < 0.28.0",
+          "fixed": "0.28.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-42xw-2xvc-qx8m",
+      "packageName": "axios",
+      "title": "Denial of Service in axios",
+      "description": "Versions of `axios` prior to 0.18.1 are vulnerable to Denial of Service. If a request exceeds the `maxContentLength` property, the package prints an error but does not stop the request. This may cause high CPU usage and lead to Denial of Service.\n\n\n## Recommendation\n\nUpgrade to 0.18.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-42xw-2xvc-qx8m",
+      "publishedAt": "2019-05-29T18:04:45Z",
+      "modifiedAt": "2023-04-14T19:12:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-42xw-2xvc-qx8m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10742"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.18.0",
+          "fixed": "0.18.1"
         }
       ],
       "source": "github"
@@ -31,11 +302,12 @@
     {
       "id": "GHSA-4w2v-q235-vp99",
       "packageName": "axios",
-      "title": "Axios Cross-Site Request Forgery Vulnerability",
+      "title": "Axios vulnerable to Server-Side Request Forgery",
+      "description": "Axios NPM package 0.21.0 contains a Server-Side Request Forgery (SSRF) vulnerability where an attacker is able to bypass a proxy by providing a URL that responds with a redirect to a restricted host or IP address.",
       "severity": "medium",
       "url": "https://github.com/advisories/GHSA-4w2v-q235-vp99",
-      "publishedAt": "2024-08-12T15:30:00Z",
-      "modifiedAt": "2024-09-06T18:25:00Z",
+      "publishedAt": "2021-01-04T20:59:40Z",
+      "modifiedAt": "2023-02-01T05:05:04Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -43,13 +315,13 @@
         },
         {
           "type": "CVE",
-          "value": "CVE-2024-39338"
+          "value": "CVE-2020-28168"
         }
       ],
       "affectedVersions": [
         {
-          "range": ">=1.3.2 <1.7.4",
-          "fixed": "1.7.4"
+          "range": "< 0.21.1",
+          "fixed": "0.21.1"
         }
       ],
       "source": "github"

@@ -1,0 +1,32 @@
+{
+  "packageName": "infraserver",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v464-rcx7-j875",
+      "packageName": "infraserver",
+      "title": "Directory Traversal in infraserver",
+      "description": "Affected versions of `infraserver` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is onl",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v464-rcx7-j875",
+      "publishedAt": "2018-07-23T20:48:29Z",
+      "modifiedAt": "2023-09-13T23:04:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v464-rcx7-j875"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16142"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

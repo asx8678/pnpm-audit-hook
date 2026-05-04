@@ -1,7 +1,304 @@
 {
   "packageName": "@anthropic-ai/claude-code",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-vp62-r36r-9xqp",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code: Sandbox Escape via Symlink Following Allows Arbitrary File Write Outside Workspace",
+      "description": "Claude Code's sandbox did not prevent sandboxed processes from creating symlinks pointing to locations outside the workspace. When Claude Code subsequently wrote to a path within such a symlink, its unsandboxed process followed the symlink and wrote to the target location outside the workspace without prompting the user for confirmation. This allowed a sandbox escape where neither the sandboxed command nor the unsandboxed app could independently write outside the workspace, but their combination",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vp62-r36r-9xqp",
+      "publishedAt": "2026-04-21T18:51:21Z",
+      "modifiedAt": "2026-04-27T16:34:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vp62-r36r-9xqp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39861"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.64",
+          "fixed": "2.1.64"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5cwg-9f6j-9jvx",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code: Insecure System-Wide Configuration Loading Enables Local Privilege Escalation on Windows",
+      "description": "On Windows, Claude Code loaded system-wide default configuration from `C:\\ProgramData\\ClaudeCode\\managed-settings.json` without validating directory ownership or access permissions. Because the `ProgramData` directory is writable by non-administrative users by default and the `ClaudeCode` subdirectory was not pre-created or access-restricted, a low-privileged local user could create this directory and place a malicious configuration file that would be automatically loaded for any user launching ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5cwg-9f6j-9jvx",
+      "publishedAt": "2026-04-17T22:19:38Z",
+      "modifiedAt": "2026-04-27T16:21:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5cwg-9f6j-9jvx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35603"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.75",
+          "fixed": "2.1.75"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q5hj-mxqh-vv77",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code: Trust Dialog Bypass via Git Worktree Spoofing Allows Arbitrary Code Execution",
+      "description": "Claude Code used the git worktree `commondir` file when determining folder trust but did not validate its contents. By crafting a repository with a `commondir` file pointing to a path the victim had previously trusted, an attacker could bypass the trust dialog and immediately execute malicious hooks defined in `.claude/settings.json`. Exploiting this required the victim to clone a malicious repository and run Claude Code within it, and for the attacker to know or guess a path the victim had alre",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q5hj-mxqh-vv77",
+      "publishedAt": "2026-04-24T16:34:03Z",
+      "modifiedAt": "2026-04-24T16:34:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q5hj-mxqh-vv77"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-40068"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.1.63, < 2.1.84",
+          "fixed": "2.1.84"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4q92-rfm6-2cqx",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code has Permission Deny Bypass Through Symbolic Links",
+      "description": "Claude Code failed to strictly enforce deny rules configured in settings.json when accessing files through symbolic links. If a user explicitly denied Claude Code access to a file (such as /etc/passwd) and Claude Code had access to a symbolic link pointing to that file, it was possible for Claude Code to read the restricted file through the symlink without triggering deny rule enforcement. \n\nUsers on standard Claude Code auto-update received this fix automatically. Users performing manual update",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-4q92-rfm6-2cqx",
+      "publishedAt": "2026-02-06T19:08:04Z",
+      "modifiedAt": "2026-03-30T19:59:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4q92-rfm6-2cqx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25724"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.7",
+          "fixed": "2.1.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mmgp-wc2j-qcv7",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code has a Workspace Trust Dialog Bypass via Repo-Controlled Settings File",
+      "description": "Claude Code resolved the permission mode from settings files, including the repo-controlled `.claude/settings.json`, before determining whether to display the workspace trust confirmation dialog. A malicious repository could set `permissions.defaultMode` to `bypassPermissions` in its committed `.claude/settings.json`, causing the trust dialog to be silently skipped on first open. This allowed a user to be placed into a permissive mode without seeing the trust confirmation prompt, making it easie",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mmgp-wc2j-qcv7",
+      "publishedAt": "2026-03-19T12:42:09Z",
+      "modifiedAt": "2026-03-20T21:24:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mmgp-wc2j-qcv7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33068"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.53",
+          "fixed": "2.1.53"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-ff64-7w26-62rf",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code has Sandbox Escape via Persistent Configuration Injection in settings.json",
+      "description": "Claude Code's bubblewrap sandboxing mechanism failed to properly protect the .claude/settings.json configuration file when it did not exist at startup. While the parent directory was mounted as writable and .claude/settings.local.json was explicitly protected with read-only constraints, settings.json was not protected if it was missing. This allowed malicious code running inside the sandbox to create this file and inject persistent hooks (such as SessionStart commands) that would execute with ho",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-ff64-7w26-62rf",
+      "publishedAt": "2026-02-06T19:14:33Z",
+      "modifiedAt": "2026-02-06T19:14:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ff64-7w26-62rf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25725"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.2",
+          "fixed": "2.1.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mhg7-666j-cqg4",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code Vulnerable to Command Injection via Piped sed Command Bypasses File Write Restrictions",
+      "description": "Claude Code failed to properly validate commands using piped sed operations with the echo command, allowing attackers to bypass file write restrictions. This vulnerability enabled writing to sensitive directories like the .claude folder and paths outside the project scope. Exploiting this required the ability to execute commands through Claude Code with the \"accept edits\" feature enabled. \n\nUsers on standard Claude Code auto-update received this fix automatically. Users performing manual updates",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mhg7-666j-cqg4",
+      "publishedAt": "2026-02-06T19:04:51Z",
+      "modifiedAt": "2026-02-06T19:04:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mhg7-666j-cqg4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25723"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.55",
+          "fixed": "2.0.55"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-66q4-vfjg-2qhh",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code Vulnerable to Command Injection via Directory Change Bypasses Write Protection",
+      "description": "Claude Code failed to properly validate directory changes when combined with write operations to protected folders. By using the `cd` command to navigate into sensitive directories like `.claude`, it was possible to bypass write protection and create or modify files without user confirmation. Reliably exploiting this required the ability to add untrusted content into a Claude Code context window. \n\nUsers on standard Claude Code auto-update received this fix automatically. Users performing manual",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-66q4-vfjg-2qhh",
+      "publishedAt": "2026-02-06T19:02:41Z",
+      "modifiedAt": "2026-02-06T19:02:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-66q4-vfjg-2qhh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25722"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.57",
+          "fixed": "2.0.57"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q728-gf8j-w49r",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code has a Path Restriction Bypass via ZSH Clobber which Allows Arbitrary File Writes",
+      "description": "Due to a Bash command validation flaw in parsing ZSH clobber syntax, it was possible to bypass directory restrictions and write files outside the current working directory without user permission prompts. Exploiting this required the user to use ZSH and the ability to add untrusted content into a Claude Code context window. \n\nUsers on standard Claude Code auto-update have received this fix already. Users performing manual updates are advised to update to the latest version.\n\nClaude Code thanks h",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q728-gf8j-w49r",
+      "publishedAt": "2026-02-03T19:32:01Z",
+      "modifiedAt": "2026-02-04T22:15:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q728-gf8j-w49r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24053"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.74",
+          "fixed": "2.0.74"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qgqw-h4xq-7w8w",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code has a Command Injection in find Command Bypasses User Approval Prompt",
+      "description": "Due to an error in command parsing, it was possible to bypass the Claude Code confirmation prompt to trigger execution of untrusted commands through the find command. Reliably exploiting this required the ability to add untrusted content into a Claude Code context window. \n\nUsers on standard Claude Code auto-update have received this fix already. Users performing manual updates are advised to update to the latest version.\n\nClaude Code thanks https://hackerone.com/alexbernier for reporting this i",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qgqw-h4xq-7w8w",
+      "publishedAt": "2026-02-03T19:33:32Z",
+      "modifiedAt": "2026-02-03T22:15:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qgqw-h4xq-7w8w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24887"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.72",
+          "fixed": "2.0.72"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vhw5-3g5m-8ggf",
+      "packageName": "@anthropic-ai/claude-code",
+      "title": "Claude Code has a Domain Validation Bypass which Allows Automatic Requests to Attacker-Controlled Domains",
+      "description": "Claude Code contained insufficient URL validation in its trusted domain verification mechanism for WebFetch requests. The application used a `startsWith()` function to validate trusted domains (e.g., `docs.python.org`, `modelcontextprotocol.io`), this could have enabled attackers to register domains like `modelcontextprotocol.io.example.com` that would pass validation. This could enable automatic requests to attacker-controlled domains without user consent, potentially leading to data exfiltrati",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vhw5-3g5m-8ggf",
+      "publishedAt": "2026-02-03T19:15:59Z",
+      "modifiedAt": "2026-02-03T22:15:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vhw5-3g5m-8ggf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24052"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.111",
+          "fixed": "1.0.111"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-jh7p-qr78-84p7",
       "packageName": "@anthropic-ai/claude-code",
@@ -372,195 +669,6 @@
         {
           "range": ">= 0.2.116, < 1.0.24",
           "fixed": "1.0.24"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-ff64-7w26-62rf",
-      "packageName": "@anthropic-ai/claude-code",
-      "title": "Claude Code has Sandbox Escape via Persistent Configuration Injection in settings.json",
-      "description": "Claude Code's bubblewrap sandboxing mechanism failed to properly protect the .claude/settings.json configuration file when it did not exist at startup. While the parent directory was mounted as writable and .claude/settings.local.json was explicitly protected with read-only constraints, settings.json was not protected if it was missing. This allowed malicious code running inside the sandbox to create this file and inject persistent hooks (such as SessionStart commands) that would execute with ho",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-ff64-7w26-62rf",
-      "publishedAt": "2026-02-06T19:14:33Z",
-      "modifiedAt": "2026-02-06T19:14:34Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-ff64-7w26-62rf"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-25725"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 2.1.2",
-          "fixed": "2.1.2"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-4q92-rfm6-2cqx",
-      "packageName": "@anthropic-ai/claude-code",
-      "title": "Claude Code has Permission Deny Bypass Through Symbolic Links",
-      "description": "Claude Code failed to strictly enforce deny rules configured in settings.json when accessing files through symbolic links. If a user explicitly denied Claude Code access to a file (such as /etc/passwd) and Claude Code had access to a symbolic link pointing to that file, it was possible for Claude Code to read the restricted file through the symlink without triggering deny rule enforcement. \n\nUsers on standard Claude Code auto-update received this fix automatically. Users performing manual update",
-      "severity": "low",
-      "url": "https://github.com/advisories/GHSA-4q92-rfm6-2cqx",
-      "publishedAt": "2026-02-06T19:08:04Z",
-      "modifiedAt": "2026-02-06T19:08:05Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-4q92-rfm6-2cqx"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-25724"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 2.1.7",
-          "fixed": "2.1.7"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-mhg7-666j-cqg4",
-      "packageName": "@anthropic-ai/claude-code",
-      "title": "Claude Code Vulnerable to Command Injection via Piped sed Command Bypasses File Write Restrictions",
-      "description": "Claude Code failed to properly validate commands using piped sed operations with the echo command, allowing attackers to bypass file write restrictions. This vulnerability enabled writing to sensitive directories like the .claude folder and paths outside the project scope. Exploiting this required the ability to execute commands through Claude Code with the \"accept edits\" feature enabled. \n\nUsers on standard Claude Code auto-update received this fix automatically. Users performing manual updates",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-mhg7-666j-cqg4",
-      "publishedAt": "2026-02-06T19:04:51Z",
-      "modifiedAt": "2026-02-06T19:04:51Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-mhg7-666j-cqg4"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-25723"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 2.0.55",
-          "fixed": "2.0.55"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-66q4-vfjg-2qhh",
-      "packageName": "@anthropic-ai/claude-code",
-      "title": "Claude Code Vulnerable to Command Injection via Directory Change Bypasses Write Protection",
-      "description": "Claude Code failed to properly validate directory changes when combined with write operations to protected folders. By using the `cd` command to navigate into sensitive directories like `.claude`, it was possible to bypass write protection and create or modify files without user confirmation. Reliably exploiting this required the ability to add untrusted content into a Claude Code context window. \n\nUsers on standard Claude Code auto-update received this fix automatically. Users performing manual",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-66q4-vfjg-2qhh",
-      "publishedAt": "2026-02-06T19:02:41Z",
-      "modifiedAt": "2026-02-06T19:02:42Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-66q4-vfjg-2qhh"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-25722"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 2.0.57",
-          "fixed": "2.0.57"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-q728-gf8j-w49r",
-      "packageName": "@anthropic-ai/claude-code",
-      "title": "Claude Code has a Path Restriction Bypass via ZSH Clobber which Allows Arbitrary File Writes",
-      "description": "Due to a Bash command validation flaw in parsing ZSH clobber syntax, it was possible to bypass directory restrictions and write files outside the current working directory without user permission prompts. Exploiting this required the user to use ZSH and the ability to add untrusted content into a Claude Code context window. \n\nUsers on standard Claude Code auto-update have received this fix already. Users performing manual updates are advised to update to the latest version.\n\nClaude Code thanks h",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-q728-gf8j-w49r",
-      "publishedAt": "2026-02-03T19:32:01Z",
-      "modifiedAt": "2026-02-04T22:15:48Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-q728-gf8j-w49r"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-24053"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 2.0.74",
-          "fixed": "2.0.74"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-qgqw-h4xq-7w8w",
-      "packageName": "@anthropic-ai/claude-code",
-      "title": "Claude Code has a Command Injection in find Command Bypasses User Approval Prompt",
-      "description": "Due to an error in command parsing, it was possible to bypass the Claude Code confirmation prompt to trigger execution of untrusted commands through the find command. Reliably exploiting this required the ability to add untrusted content into a Claude Code context window. \n\nUsers on standard Claude Code auto-update have received this fix already. Users performing manual updates are advised to update to the latest version.\n\nClaude Code thanks https://hackerone.com/alexbernier for reporting this i",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-qgqw-h4xq-7w8w",
-      "publishedAt": "2026-02-03T19:33:32Z",
-      "modifiedAt": "2026-02-03T22:15:47Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-qgqw-h4xq-7w8w"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-24887"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 2.0.72",
-          "fixed": "2.0.72"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-vhw5-3g5m-8ggf",
-      "packageName": "@anthropic-ai/claude-code",
-      "title": "Claude Code has a Domain Validation Bypass which Allows Automatic Requests to Attacker-Controlled Domains",
-      "description": "Claude Code contained insufficient URL validation in its trusted domain verification mechanism for WebFetch requests. The application used a `startsWith()` function to validate trusted domains (e.g., `docs.python.org`, `modelcontextprotocol.io`), this could have enabled attackers to register domains like `modelcontextprotocol.io.example.com` that would pass validation. This could enable automatic requests to attacker-controlled domains without user consent, potentially leading to data exfiltrati",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-vhw5-3g5m-8ggf",
-      "publishedAt": "2026-02-03T19:15:59Z",
-      "modifiedAt": "2026-02-03T22:15:32Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-vhw5-3g5m-8ggf"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-24052"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 1.0.111",
-          "fixed": "1.0.111"
         }
       ],
       "source": "github"

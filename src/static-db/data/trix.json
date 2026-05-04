@@ -1,7 +1,53 @@
 {
   "packageName": "trix",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-53p3-c7vp-4mcc",
+      "packageName": "trix",
+      "title": "Trix is vulnerable to XSS through JSON deserialization bypass in drag-and-drop (Level0InputController)",
+      "description": "### Impact\n\nThe Trix editor, in versions prior to 2.1.18, is vulnerable to XSS when a crafted `application/x-trix-document` JSON payload is dropped into the editor in environments using the fallback Level0InputController (e.g., embedded WebViews lacking Input Events Level 2 support).\n\nThe `StringPiece.fromJSON` method trusted `href` attributes from the JSON payload without sanitization. An attacker could craft a draggable element containing a `javascript:` URI in the href attribute that, when dr",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-53p3-c7vp-4mcc",
+      "publishedAt": "2026-03-29T15:22:17Z",
+      "modifiedAt": "2026-04-01T17:07:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-53p3-c7vp-4mcc"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.18",
+          "fixed": "2.1.18"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qmpg-8xg6-ph5q",
+      "packageName": "trix",
+      "title": "Trix has a Stored XSS vulnerability through serialized attributes",
+      "description": "### Impact\nThe Trix editor, in versions prior to 2.1.17, is vulnerable to XSS attacks when a `data-trix-serialized-attributes` attribute bypasses the DOMPurify sanitizer.\n\nAn attacker could craft HTML containing a `data-trix-serialized-attributes` attribute with a malicious payload that, when the content is rendered, could execute arbitrary JavaScript code within the context of the user's session, potentially leading to unauthorized actions being performed or sensitive information being disclose",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qmpg-8xg6-ph5q",
+      "publishedAt": "2026-03-12T17:29:30Z",
+      "modifiedAt": "2026-03-18T19:37:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qmpg-8xg6-ph5q"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.17",
+          "fixed": "2.1.17"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-g9jg-w8vm-g96v",
       "packageName": "trix",

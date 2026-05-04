@@ -1,6 +1,6 @@
 {
   "packageName": "mermaid",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7rqq-prvp-x9jh",
@@ -156,6 +156,29 @@
         {
           "range": "< 8.11.0",
           "fixed": "8.11.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w32g-5hqp-gg6q",
+      "packageName": "mermaid",
+      "title": "Cross-Site Scripting in mermaid",
+      "description": "Versions of `mermaid` prior to 8.2.3 are vulnerable to Cross-Site Scripting. If malicious input  such as `A[\"<img src=invalid onerror=alert('XSS')></img>\"] ` is provided to the application, it will execute the code instead of rendering it as text due to improper output encoding.\n\n\n## Recommendation\n\nUpgrade to version 8.2.3 or later",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w32g-5hqp-gg6q",
+      "publishedAt": "2020-09-02T15:41:41Z",
+      "modifiedAt": "2023-01-09T05:03:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w32g-5hqp-gg6q"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.2.3",
+          "fixed": "8.2.3"
         }
       ],
       "source": "github"

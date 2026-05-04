@@ -1,6 +1,6 @@
 {
   "packageName": "ungit",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hf8c-xr89-vfm5",
@@ -25,6 +25,33 @@
         {
           "range": "< 1.5.20",
           "fixed": "1.5.20"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vjfr-p6hp-jqqw",
+      "packageName": "ungit",
+      "title": "Command Injection in ungit",
+      "description": "Versions of `ungit` prior to 0.9.0 are affected by a command injection vulnerability in the `url` parameter.\n\n\n## Recommendation\n\nUpdate version 0.9.0 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vjfr-p6hp-jqqw",
+      "publishedAt": "2020-08-31T23:00:10Z",
+      "modifiedAt": "2023-01-09T05:03:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vjfr-p6hp-jqqw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-4130"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.8.4",
+          "fixed": "0.9.0"
         }
       ],
       "source": "github"

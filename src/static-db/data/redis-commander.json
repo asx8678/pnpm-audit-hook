@@ -1,0 +1,29 @@
+{
+  "packageName": "redis-commander",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8c8c-4vfj-rrpc",
+      "packageName": "redis-commander",
+      "title": "Reflected Cross-Site Scripting in redis-commander",
+      "description": "Affected versions of `redis-commander` contain a cross-site scripting vulnerability in the `highlighterId` paramter of the clipboard.swf component on hosts serving Redis Commander.\n\nMitigating factors:\nFlash must be installed / enabled for this to work. The below proof of concept was verified to work using Firefox 57.0 on Windows 10 by manually installing the [Flash NPAPI Windows plugin](https://get.adobe.com/flashplayer/otherversions/)\n\n## Proof of concept\n\n```\nhttp://instance/jstree/_docs/synt",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-8c8c-4vfj-rrpc",
+      "publishedAt": "2020-09-01T19:05:11Z",
+      "modifiedAt": "2023-01-09T05:03:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8c8c-4vfj-rrpc"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0, < 0.5.0",
+          "fixed": "0.5.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

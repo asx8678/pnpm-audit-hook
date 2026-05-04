@@ -1,0 +1,28 @@
+{
+  "packageName": "log-symboles",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h232-fpqx-mqgr",
+      "packageName": "log-symboles",
+      "title": "Malicious Package in log-symboles",
+      "description": "Version 2.1.0 of `log-symboles` contains malicious code as a preinstall script. The package is malware designed to take advantage of users making a mistake when typing the name of a module to install. When installed, the package downloads a file from a remote server, executes it and opens a backdoor.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-h232-fpqx-mqgr",
+      "publishedAt": "2020-09-03T21:03:15Z",
+      "modifiedAt": "2023-01-09T05:04:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h232-fpqx-mqgr"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

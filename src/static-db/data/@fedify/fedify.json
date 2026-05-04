@@ -1,7 +1,61 @@
 {
   "packageName": "@fedify/fedify",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-gm9m-gwc4-hwgp",
+      "packageName": "@fedify/fedify",
+      "title": "Fedify affected by resource exhaustion caused by unbounded redirect following during remote key/document resolution",
+      "description": "### Summary\n\n`@fedify/fedify` follows HTTP redirects recursively in its remote document loader and authenticated document loader without enforcing a maximum redirect count or visited-URL loop detection. An attacker who controls a remote ActivityPub key or actor URL can force a server using Fedify to make repeated outbound requests from a single inbound request, leading to resource consumption and denial of service.\n\n### Details\n\nFedify verifies ActivityPub HTTP signatures by fetching the remote ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gm9m-gwc4-hwgp",
+      "publishedAt": "2026-04-07T18:04:09Z",
+      "modifiedAt": "2026-04-07T18:04:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gm9m-gwc4-hwgp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34148"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 2.1.0",
+          "fixed": "2.1.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6jcc-xgcr-q3h4",
+      "packageName": "@fedify/fedify",
+      "title": "@fedify/fedify has Improper Authentication and Incorrect Authorization",
+      "description": "### Summary\n An authentication bypass vulnerability allows any unauthenticated attacker to impersonate any ActivityPub actor by sending forged activities signed with their own keys. Activities are processed before verifying the signing key belongs to the claimed actor, enabling complete actor impersonation across all Fedify instances\n\n### Details\nThe vulnerability exists in handleInboxInternal function in fedify/federation/handler.ts. The critical flaw is in the order of operations:\n\n  1. Line 1",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6jcc-xgcr-q3h4",
+      "publishedAt": "2025-08-08T14:29:48Z",
+      "modifiedAt": "2026-02-04T22:13:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6jcc-xgcr-q3h4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-54888"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.8.0-dev.909, < 1.8.5",
+          "fixed": "1.8.5"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-rchf-xwx2-hm93",
       "packageName": "@fedify/fedify",
@@ -25,33 +79,6 @@
         {
           "range": ">= 1.9.0, < 1.9.2",
           "fixed": "1.9.2"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-6jcc-xgcr-q3h4",
-      "packageName": "@fedify/fedify",
-      "title": "@fedify/fedify has Improper Authentication and Incorrect Authorization",
-      "description": "### Summary\n An authentication bypass vulnerability allows any unauthenticated attacker to impersonate any ActivityPub actor by sending forged activities signed with their own keys. Activities are processed before verifying the signing key belongs to the claimed actor, enabling complete actor impersonation across all Fedify instances\n\n### Details\nThe vulnerability exists in handleInboxInternal function in fedify/federation/handler.ts. The critical flaw is in the order of operations:\n\n  1. Line 1",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-6jcc-xgcr-q3h4",
-      "publishedAt": "2025-08-08T14:29:48Z",
-      "modifiedAt": "2025-08-11T13:56:22Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-6jcc-xgcr-q3h4"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-54888"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 1.8.0-dev.909, < 1.8.5",
-          "fixed": "1.8.5"
         }
       ],
       "source": "github"

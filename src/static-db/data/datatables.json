@@ -1,0 +1,33 @@
+{
+  "packageName": "datatables",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4mv4-gmmf-q382",
+      "packageName": "datatables",
+      "title": "DataTable Vulnerable to Cross-Site Scripting",
+      "description": "Cross-site scripting (XSS) vulnerability in the DataTables plugin 1.10.8 and earlier for jQuery allows remote attackers to inject arbitrary web script or HTML via the scripts parameter to media/unit_testing/templates/6776.php.\n\n\n## Recommendation\n\nUpdate to a version greater than 1.10.8. A [fix](https://github.com/DataTables/DataTablesSrc/commit/ccf86dc5982bd8e16d) appears in [version 1.10.10](https://github.com/DataTables/DataTablesSrc/commits/1.10.10?after=9780a3693572757d87bf70e48bd7555faf974",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4mv4-gmmf-q382",
+      "publishedAt": "2020-08-31T22:42:29Z",
+      "modifiedAt": "2023-09-14T12:04:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4mv4-gmmf-q382"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-6584"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.10.10",
+          "fixed": "1.10.10"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

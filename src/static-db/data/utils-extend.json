@@ -1,6 +1,6 @@
 {
   "packageName": "utils-extend",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7qgg-vw88-cc99",
@@ -24,6 +24,32 @@
       "affectedVersions": [
         {
           "range": "<= 1.0.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6pq3-928q-x6w6",
+      "packageName": "utils-extend",
+      "title": "Prototype Pollution",
+      "description": "All versions of `utils-extend` are vulnerable to prototype pollution. The `extend` function does not restrict the modification of an Object's prototype, which may allow an attacker to add or modify an existing property that will exist on all objects.\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6pq3-928q-x6w6",
+      "publishedAt": "2020-09-03T15:51:28Z",
+      "modifiedAt": "2023-01-09T05:04:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6pq3-928q-x6w6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8147"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
         }
       ],
       "source": "github"

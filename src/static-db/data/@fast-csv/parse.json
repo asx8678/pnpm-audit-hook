@@ -1,0 +1,33 @@
+{
+  "packageName": "@fast-csv/parse",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8cv5-p934-3hwp",
+      "packageName": "@fast-csv/parse",
+      "title": "Denial of service in fast-csv",
+      "description": "### Impact\nPossible ReDoS (Regular Expression Denial of Service) when using `ignoreEmpty` option when parsing.\n\n### Patches\nThis has been patched in `v4.3.6`\n\n### Workarounds\nYou will only be affected by this if you use the `ignoreEmpty` parsing option. If you do use this option it is recommended that you upgrade to the latest version `v4.3.6`\n\n### References\n\nThis vulnerability was found using a [CodeQL](https://securitylab.github.com/tools/codeql) query which identified `EMPTY_ROW_REGEXP` regu",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-8cv5-p934-3hwp",
+      "publishedAt": "2020-12-08T21:42:53Z",
+      "modifiedAt": "2023-02-01T05:05:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8cv5-p934-3hwp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26256"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.3.6",
+          "fixed": "4.3.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

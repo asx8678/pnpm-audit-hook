@@ -1,0 +1,33 @@
+{
+  "packageName": "embedza",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mq7g-6rv4-pj95",
+      "packageName": "embedza",
+      "title": "Downloads Resources over HTTP in embedza",
+      "description": "Affected versions of `embedza` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `embedza`.\n\n\n## Recommendation\n\nUpdate to version 1.2.4 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mq7g-6rv4-pj95",
+      "publishedAt": "2019-02-18T23:35:23Z",
+      "modifiedAt": "2023-01-09T05:03:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mq7g-6rv4-pj95"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10569"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.2.4",
+          "fixed": "1.2.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

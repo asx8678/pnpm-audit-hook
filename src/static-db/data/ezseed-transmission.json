@@ -1,0 +1,33 @@
+{
+  "packageName": "ezseed-transmission",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p788-rj37-357w",
+      "packageName": "ezseed-transmission",
+      "title": "Insecure Defaults Leads to Potential MITM in ezseed-transmission",
+      "description": "Affected versions of `ezseed-transmission` download and run a script over an HTTP connection.\n\nAn attacker in a privileged network position could launch a Man-in-the-Middle attack and intercept the script, replacing it with malicious code, completely compromising the system running `ezseed-transmission`.\n\n\n\n## Recommendation\n\nUpdate to version 0.0.15 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p788-rj37-357w",
+      "publishedAt": "2020-09-01T15:26:35Z",
+      "modifiedAt": "2023-01-09T05:03:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p788-rj37-357w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-1000224"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.10, <= 0.0.14",
+          "fixed": "0.0.15"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

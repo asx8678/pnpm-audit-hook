@@ -1,0 +1,33 @@
+{
+  "packageName": "@orpc/openapi",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7f6v-3gx7-27q8",
+      "packageName": "@orpc/openapi",
+      "title": "oRPC has Stored XSS in OpenAPI Reference Plugin via unescaped JSON.stringify",
+      "description": "A Stored Cross-Site Scripting (XSS) vulnerability exists in the OpenAPI documentation generation of orpc. If an attacker can control any field within the OpenAPI specification (such as info.description), they can break out of the JSON context and execute arbitrary JavaScript when a user views the generated API documentation.\nIn the packages/openapi/src/plugins/openapi-reference.ts file, the renderDocsHtml() function takes an OpenAPI spec object and embeds it directly into the HTML response using",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7f6v-3gx7-27q8",
+      "publishedAt": "2026-03-20T17:25:56Z",
+      "modifiedAt": "2026-03-27T21:59:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7f6v-3gx7-27q8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33331"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.13.8",
+          "fixed": "1.13.9"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "fileview",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gvr4-7xgc-gx3w",
+      "packageName": "fileview",
+      "title": "Cross-Site Scripting in fileview",
+      "description": "All versions of `fileview` are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize filenames, allowing attackers to execute arbitrary JavaScript in the victim's browser through files with names containing malicious code.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gvr4-7xgc-gx3w",
+      "publishedAt": "2020-04-01T16:36:15Z",
+      "modifiedAt": "2023-01-09T05:02:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gvr4-7xgc-gx3w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15602"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

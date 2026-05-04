@@ -1,7 +1,250 @@
 {
   "packageName": "signalk-server",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-7rqc-ff8m-7j23",
+      "packageName": "signalk-server",
+      "title": "Signal K Server Vulnerable to Denial of Service via Unrestricted Access Request Flooding",
+      "description": "### Summary\nA Denial of Service (DoS) vulnerability allows an unauthenticated attacker to crash the SignalK Server by flooding the access request endpoint (`/signalk/v1/access/requests`). This causes a \"JavaScript heap out of memory\" error due to unbounded in-memory storage of request objects.\n\n### Details\nThe vulnerability is caused by a lack of rate limiting and improper memory management for incoming access requests.\n\n**Vulnerable Code Analysis:**\n1.  **In-Memory Storage**: In `src/requestRes",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7rqc-ff8m-7j23",
+      "publishedAt": "2026-01-02T15:20:05Z",
+      "modifiedAt": "2026-04-27T11:41:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7rqc-ff8m-7j23"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-68272"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.19.0",
+          "fixed": "2.19.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fpf5-w967-rr2m",
+      "packageName": "signalk-server",
+      "title": "Signal K Server Vulnerable to Unauthenticated Information Disclosure via Exposed Endpoints",
+      "description": "[Note] This is a separate issue from the RCE vulnerability (State Pollution) currently being patched. While related to tokensecurity.js, it involves different endpoints and risks.\n\n### Summary\nAn unauthenticated information disclosure vulnerability allows any user to retrieve sensitive system information, including the full SignalK data schema, connected serial devices, and installed analyzer tools. This exposure facilitates reconnaissance for further attacks.\n\n### Details\nThe vulnerability stem",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fpf5-w967-rr2m",
+      "publishedAt": "2026-01-02T15:22:11Z",
+      "modifiedAt": "2026-04-27T11:40:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fpf5-w967-rr2m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-68273"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.19.0",
+          "fixed": "2.19.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w3x5-7c4c-66p9",
+      "packageName": "signalk-server",
+      "title": "Signal K Server has Unauthenticated State Pollution leading to Remote Code Execution (RCE)",
+      "description": "### Summary\nAn unauthenticated attacker can pollute the internal state (`restoreFilePath`) of the server via the `/skServer/validateBackup` endpoint. This allows the attacker to hijack the administrator's \"Restore\" functionality to overwrite critical server configuration files (e.g., `security.json`, `package.json`), leading to account takeover and Remote Code Execution (RCE).\n\n### Details\nThe vulnerability is caused by the use of a module-level global variable `restoreFilePath` in `src/serverro",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-w3x5-7c4c-66p9",
+      "publishedAt": "2026-01-02T15:11:49Z",
+      "modifiedAt": "2026-04-27T11:36:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w3x5-7c4c-66p9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-66398"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.19.0",
+          "fixed": "2.19.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7gcj-phff-2884",
+      "packageName": "signalk-server",
+      "title": "Signal K Server has an Unauthenticated Regular Expression Denial of Service (ReDoS) via WebSocket Subscription Paths",
+      "description": "## Summary\nThe SignalK server is vulnerable to an unauthenticated Regular Expression Denial of Service (ReDoS) attack within its WebSocket subscription handling logic. By injecting unescaped regex metacharacters into the `context` parameter of a stream subscription, an attacker can force the server's Node.js event loop into a catastrophic backtracking loop when evaluating long string identifiers (like the server's self UUID). This results in a total Denial of Service (DoS) where the server CPU s",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7gcj-phff-2884",
+      "publishedAt": "2026-04-21T17:17:00Z",
+      "modifiedAt": "2026-04-21T17:17:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7gcj-phff-2884"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39320"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.25.0",
+          "fixed": "2.25.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gfmv-vh34-h2x5",
+      "packageName": "signalk-server",
+      "title": "Signal K Server: Unauthenticated Source Priorities Manipulation ",
+      "description": "## Summary\n\nThe SignalK Server exposes an unauthenticated HTTP endpoint that allows remote attackers to modify navigation data source priorities. This endpoint, accessible via `PUT /signalk/v1/api/sourcePriorities`, does not enforce authentication or authorization checks and directly assigns user-controlled input to the server configuration.\n\nAs a result, attackers can influence which GPS, AIS, or other sensor data sources are trusted by the system. The changes are immediately applied and persis",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gfmv-vh34-h2x5",
+      "publishedAt": "2026-04-03T21:42:11Z",
+      "modifiedAt": "2026-04-06T23:13:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gfmv-vh34-h2x5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33951"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.24.0-beta.1",
+          "fixed": "2.24.0-beta.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cxj8-ggf2-p57c",
+      "packageName": "signalk-server",
+      "title": "Signal K Server: OAuth Authorization Code Theft via Unvalidated Host Header in OIDC Flow",
+      "description": "## Summary\n\nSignalK Server contains a code-level vulnerability in its OIDC login and logout handlers where the unvalidated HTTP Host header is used to construct the OAuth2 redirect_uri. Because the redirectUri configuration is silently unset by default, an **attacker spoof the Host header** to steal OAuth authorization codes and hijack user sessions in realistic deployments as The OIDC provider will then send the authorization code to whatever domain was injected.\n\n_The OIDC specification requir",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cxj8-ggf2-p57c",
+      "publishedAt": "2026-04-03T21:43:22Z",
+      "modifiedAt": "2026-04-03T21:43:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cxj8-ggf2-p57c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34083"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.20.0, < 2.24.0",
+          "fixed": "2.24.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x8hc-fqv3-7gwf",
+      "packageName": "signalk-server",
+      "title": "Signal K Server: Privilege Escalation by Admin Role Injection via /enableSecurity ",
+      "description": "## Summary\n\nAccording to SignalK's security documentation, when a server is first initialized without security enabled, the **/skServer/enableSecurity** endpoint is intentionally exposed to allow the owner to set up the initial admin account. This initial open access is by design.\n\nHowever, the critical vulnerability is that this route is never deregistered or disabled after the initial successful setup. Even after the genuine administrator has created their account, restarted the server, and ac",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-x8hc-fqv3-7gwf",
+      "publishedAt": "2026-04-03T21:37:19Z",
+      "modifiedAt": "2026-04-03T21:37:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x8hc-fqv3-7gwf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33950"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.24.0-beta.4",
+          "fixed": "2.24.0-beta.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qh3j-mrg8-f234",
+      "packageName": "signalk-server",
+      "title": "Signal K Server: Arbitrary Prototype Read via `from` Field Bypass",
+      "description": "## Summary \n\nThe /signalk/v1/applicationData/... JSON-patch endpoint allows users to modify stored application data. To prevent Prototype Pollution, the developers implemented an isPrototypePollutionPath guard. However, this guard only checks the path property of incoming JSON-patch objects. It completely fails to check the from property. Because JSON-patch operations like copy and move extract data using the from property path, an attacker can construct a payload where from targets /__proto__/s",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-qh3j-mrg8-f234",
+      "publishedAt": "2026-04-03T04:04:22Z",
+      "modifiedAt": "2026-04-03T04:04:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qh3j-mrg8-f234"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35038"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.24.0",
+          "fixed": "2.24.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vrhw-v2hw-jffx",
+      "packageName": "signalk-server",
+      "title": "SignalK Server has Path Traversal leading to information disclosure",
+      "description": "### Summary\nA Path Traversal vulnerability in SignalK Server's `applicationData` API allows authenticated users on Windows systems to read, write, and list arbitrary files and directories on the filesystem. The `validateAppId()` function blocks forward slashes (`/`) but not backslashes (`\\`), which are treated as directory separators by `path.join()` on Windows. This enables attackers to escape the intended `applicationData` directory.\n\n### Details\n**Platform**: Windows (Linux only allows traver",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vrhw-v2hw-jffx",
+      "publishedAt": "2026-02-02T22:26:31Z",
+      "modifiedAt": "2026-02-03T16:13:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vrhw-v2hw-jffx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25228"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.20.2",
+          "fixed": "2.20.3"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-93jc-vqqc-vvvh",
       "packageName": "signalk-server",
@@ -79,114 +322,6 @@
         {
           "range": "< 2.19.0",
           "fixed": "2.19.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-fpf5-w967-rr2m",
-      "packageName": "signalk-server",
-      "title": "Signal K Server Vulnerable to Unauthenticated Information Disclosure via Exposed Endpoints",
-      "description": "[Note] This is a separate issue from the RCE vulnerability (State Pollution) currently being patched. While related to tokensecurity.js, it involves different endpoints and risks.\n\n### Summary\nAn unauthenticated information disclosure vulnerability allows any user to retrieve sensitive system information, including the full SignalK data schema, connected serial devices, and installed analyzer tools. This exposure facilitates reconnaissance for further attacks.\n\n### Details\nThe vulnerability stem",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-fpf5-w967-rr2m",
-      "publishedAt": "2026-01-02T15:22:11Z",
-      "modifiedAt": "2026-01-02T15:22:13Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-fpf5-w967-rr2m"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-68273"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 2.19.0",
-          "fixed": "2.19.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-7rqc-ff8m-7j23",
-      "packageName": "signalk-server",
-      "title": "Signal K Server Vulnerable to Denial of Service via Unrestricted Access Request Flooding",
-      "description": "### Summary\nA Denial of Service (DoS) vulnerability allows an unauthenticated attacker to crash the SignalK Server by flooding the access request endpoint (`/signalk/v1/access/requests`). This causes a \"JavaScript heap out of memory\" error due to unbounded in-memory storage of request objects.\n\n### Details\nThe vulnerability is caused by a lack of rate limiting and improper memory management for incoming access requests.\n\n**Vulnerable Code Analysis:**\n1.  **In-Memory Storage**: In `src/requestRes",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-7rqc-ff8m-7j23",
-      "publishedAt": "2026-01-02T15:20:05Z",
-      "modifiedAt": "2026-01-02T15:20:06Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-7rqc-ff8m-7j23"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-68272"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 2.19.0",
-          "fixed": "2.19.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-w3x5-7c4c-66p9",
-      "packageName": "signalk-server",
-      "title": "Signal K Server has Unauthenticated State Pollution leading to Remote Code Execution (RCE)",
-      "description": "### Summary\nAn unauthenticated attacker can pollute the internal state (`restoreFilePath`) of the server via the `/skServer/validateBackup` endpoint. This allows the attacker to hijack the administrator's \"Restore\" functionality to overwrite critical server configuration files (e.g., `security.json`, `package.json`), leading to account takeover and Remote Code Execution (RCE).\n\n### Details\nThe vulnerability is caused by the use of a module-level global variable `restoreFilePath` in `src/serverro",
-      "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-w3x5-7c4c-66p9",
-      "publishedAt": "2026-01-02T15:11:49Z",
-      "modifiedAt": "2026-01-02T15:11:52Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-w3x5-7c4c-66p9"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-66398"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 2.19.0",
-          "fixed": "2.19.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-vrhw-v2hw-jffx",
-      "packageName": "signalk-server",
-      "title": "SignalK Server has Path Traversal leading to information disclosure",
-      "description": "### Summary\nA Path Traversal vulnerability in SignalK Server's `applicationData` API allows authenticated users on Windows systems to read, write, and list arbitrary files and directories on the filesystem. The `validateAppId()` function blocks forward slashes (`/`) but not backslashes (`\\`), which are treated as directory separators by `path.join()` on Windows. This enables attackers to escape the intended `applicationData` directory.\n\n### Details\n**Platform**: Windows (Linux only allows traver",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-vrhw-v2hw-jffx",
-      "publishedAt": "2026-02-02T22:26:31Z",
-      "modifiedAt": "2026-02-03T16:13:33Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-vrhw-v2hw-jffx"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-25228"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 2.20.2",
-          "fixed": "2.20.3"
         }
       ],
       "source": "github"

@@ -1,0 +1,32 @@
+{
+  "packageName": "slimerjs-edge",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5rc6-2r3r-fv79",
+      "packageName": "slimerjs-edge",
+      "title": "slimerjs-edge downloads Resources over HTTP",
+      "description": "Affected versions of `slimerjs-edge` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `slimerjs-edge`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package i",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5rc6-2r3r-fv79",
+      "publishedAt": "2018-08-15T19:25:47Z",
+      "modifiedAt": "2023-09-13T19:09:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5rc6-2r3r-fv79"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10644"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "> 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

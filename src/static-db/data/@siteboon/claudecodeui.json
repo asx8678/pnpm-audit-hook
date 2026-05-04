@@ -1,0 +1,33 @@
+{
+  "packageName": "@siteboon/claudecodeui",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f2fc-vc88-6w7q",
+      "packageName": "@siteboon/claudecodeui",
+      "title": "@siteboon/claude-code-ui is Vulnerable to Command Injection via Multiple Parameters",
+      "description": "### Summary\nMultiple Git-related API endpoints use execAsync() with string interpolation of user-controlled parameters (file, branch, message, commit), allowing authenticated attackers to execute arbitrary OS commands.\n\n### Details\nThe claudecodeui application provides Git integration through various API endpoints. These endpoints accept user-controlled parameters such as file paths, branch names, commit messages, and commit hashes, which are directly interpolated into shell command strings pass",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-f2fc-vc88-6w7q",
+      "publishedAt": "2026-03-11T00:25:43Z",
+      "modifiedAt": "2026-03-11T20:45:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f2fc-vc88-6w7q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31862"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.23.0",
+          "fixed": "1.24.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "packageName": "taskflow-ai",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3xp3-pr8x-f755",
+      "packageName": "taskflow-ai",
+      "title": "Agions taskflow-ai vulnerable to os command injection in src/mcp/server/handlers.ts",
+      "description": "A security flaw has been discovered in Agions taskflow-ai up to 2.1.8. This impacts an unknown function of the file src/mcp/server/handlers.ts of the component terminal_execute. Performing a manipulation results in os command injection. The attack is possible to be carried out remotely. Upgrading to version 2.1.9 will fix this issue. The patch is named c1550b445b9f24f38c4414e9a545f5f79f23a0fe. Upgrading the affected component is recommended. The vendor was contacted early, responded in a very pr",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3xp3-pr8x-f755",
+      "publishedAt": "2026-04-09T03:31:14Z",
+      "modifiedAt": "2026-04-10T19:19:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3xp3-pr8x-f755"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-5831"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.9",
+          "fixed": "2.1.9"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

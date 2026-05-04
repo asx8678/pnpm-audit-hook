@@ -1,6 +1,6 @@
 {
   "packageName": "servey",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-v3px-6cc8-f8j3",
@@ -25,6 +25,29 @@
         {
           "range": "< 3.3.2",
           "fixed": "3.3.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rv49-54qp-fw42",
+      "packageName": "servey",
+      "title": "Path Traversal in servey",
+      "description": "Versions of `servey` prior to 3.x are vulnerable to Path Traversal.  Due to insufficient input sanitization, attackers can access server files by using relative paths. \n\n\n## Recommendation\n\nUpgrade to the latest version",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rv49-54qp-fw42",
+      "publishedAt": "2019-06-06T15:30:20Z",
+      "modifiedAt": "2023-01-09T05:01:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rv49-54qp-fw42"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.1.0",
+          "fixed": "3.1.0"
         }
       ],
       "source": "github"

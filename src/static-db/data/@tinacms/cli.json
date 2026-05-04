@@ -1,7 +1,88 @@
 {
   "packageName": "@tinacms/cli",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-m48g-4wr2-j2h6",
+      "packageName": "@tinacms/cli",
+      "title": "TinaCMS CLI has Arbitrary File Read via Disabled Vite Filesystem Restriction",
+      "description": "## Summary\nThe TinaCMS CLI dev server configures Vite with `server.fs.strict: false`, which disables Vite's built-in filesystem access restriction. This allows any unauthenticated attacker who can reach the dev server to read arbitrary files on the host system\n\n## Details\nWhen running `tinacms dev`, the CLI starts a Vite dev server configured in:\n`packages/@tinacms/cli/src/next/vite/index.ts`\n```\nserver: {\n  host: configManager.config?.build?.host ?? false,\n  ...\n  fs: {\n    strict: false, // Di",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m48g-4wr2-j2h6",
+      "publishedAt": "2026-03-12T20:32:43Z",
+      "modifiedAt": "2026-03-12T20:32:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m48g-4wr2-j2h6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29066"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.8",
+          "fixed": "2.1.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2f24-mg4x-534q",
+      "packageName": "@tinacms/cli",
+      "title": "TinaCMS Vulnerable to Path Traversal Leading to Arbitrary File Read, Write and Delete",
+      "description": "## Summary\nThe TinaCMS CLI development server exposes media endpoints that are vulnerable to path traversal, allowing attackers to read and write arbitrary files on the filesystem outside the intended media directory.\n\n## Details\nWhen running tinacms dev, the CLI starts a local HTTP server (default port 4001) exposing endpoints such as:\n\n- /media/list/*\n\n- /media/upload/*\n\n- /media/*\n\nThese endpoints process user-controlled path segments using decodeURI() and path.join() without validating that ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2f24-mg4x-534q",
+      "publishedAt": "2026-03-12T20:32:26Z",
+      "modifiedAt": "2026-03-12T20:32:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2f24-mg4x-534q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28793"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.8",
+          "fixed": "2.1.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8pw3-9m7f-q734",
+      "packageName": "@tinacms/cli",
+      "title": "TinaCMS CLI Dev Server Vulnerable to Cross-Origin File Exfiltration via CORS Misconfiguration + Path Traversal in TinaCMS",
+      "description": "## Summary\nThe TinaCMS CLI dev server combines a permissive CORS configuration (Access-Control-Allow-Origin: *) with the path traversal vulnerability (previously reported) to enable a browser-based drive-by attack. A remote attacker can enumerate the filesystem, write arbitrary files, and delete arbitrary files on developer's machines by simply tricking them into visiting a malicious website while tinacms dev is running.\n\n## Details\nThe TinaCMS dev server sets permissive CORS headers that allow ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8pw3-9m7f-q734",
+      "publishedAt": "2026-03-12T20:32:09Z",
+      "modifiedAt": "2026-03-12T20:32:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8pw3-9m7f-q734"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28792"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.8",
+          "fixed": "2.1.8"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-529f-9qwm-9628",
       "packageName": "@tinacms/cli",

@@ -1,6 +1,6 @@
 {
   "packageName": "prismjs",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-x7hr-w5r2-h6wg",
@@ -133,6 +133,33 @@
         {
           "range": "< 1.25.0",
           "fixed": "1.25.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wvhm-4hhf-97x9",
+      "packageName": "prismjs",
+      "title": "Cross-Site Scripting in Prism",
+      "description": "### Impact\nThe easing preview of the Previewers plugin has an XSS vulnerability that allows attackers to execute arbitrary code in Safari and Internet Explorer.\n\nThis impacts all Safari and Internet Explorer users of Prism >=v1.1.0 that use the _Previewers_ plugin (>=v1.10.0) or the _Previewer: Easing_ plugin (v1.1.0 to v1.9.0).\n\n### Patches\nThis problem is patched in v1.21.0.\n\n### Workarounds\nTo workaround the issue without upgrading, [disable the easing preview](https://prismjs.com/plugins/pre",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wvhm-4hhf-97x9",
+      "publishedAt": "2020-08-07T22:28:30Z",
+      "modifiedAt": "2023-01-09T05:03:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wvhm-4hhf-97x9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15138"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.1.0, < 1.21.0",
+          "fixed": "1.21.0"
         }
       ],
       "source": "github"

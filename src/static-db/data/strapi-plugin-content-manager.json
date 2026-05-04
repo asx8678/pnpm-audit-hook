@@ -1,0 +1,33 @@
+{
+  "packageName": "strapi-plugin-content-manager",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qvp5-mm7v-4f36",
+      "packageName": "strapi-plugin-content-manager",
+      "title": "Cross-site Scripting in Strapi",
+      "description": "Strapi before 3.2.5 has stored XSS in the wysiwyg editor's preview feature.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qvp5-mm7v-4f36",
+      "publishedAt": "2020-10-29T19:40:08Z",
+      "modifiedAt": "2023-09-13T22:53:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qvp5-mm7v-4f36"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-27666"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.2.5",
+          "fixed": "3.2.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

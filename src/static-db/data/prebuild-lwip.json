@@ -1,0 +1,32 @@
+{
+  "packageName": "prebuild-lwip",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r36x-p5pv-9mfx",
+      "packageName": "prebuild-lwip",
+      "title": "prebuild-lwip downloads Resources over HTTP",
+      "description": "Affected versions of `prebuild-lwip` insecurely download resources over HTTP. \n\nIn scenarios where an attacker has a privileged network position, they can modify or read such resources at will. While the exact severity of impact for a vulnerability like this is highly variable and depends on the behavior of the package itself, it ranges from being able to read sensitive information all the way up to and including remote code execution.\n\n\n## Recommendation\n\nNo patch is currently available for thi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r36x-p5pv-9mfx",
+      "publishedAt": "2019-02-18T23:45:25Z",
+      "modifiedAt": "2023-09-12T18:32:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r36x-p5pv-9mfx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10652"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

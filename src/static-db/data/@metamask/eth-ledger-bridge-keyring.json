@@ -1,0 +1,29 @@
+{
+  "packageName": "@metamask/eth-ledger-bridge-keyring",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vg44-fw64-cpjx",
+      "packageName": "@metamask/eth-ledger-bridge-keyring",
+      "title": "Incorrect Account Used for Signing",
+      "description": "### Impact\n\nAnybody using this library to sign with a BIP44 account other than the first account may be affected. If a user is signing with the first account (i.e. the account at index `0`), or with the legacy MEW/MyCrypto HD path, they are not affected.\n\nThe vulnerability impacts cases where the user signs a personal message or transaction without first adding the account. This includes cases where the user has already added the account in a previous session (i.e. they added the account, reset ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vg44-fw64-cpjx",
+      "publishedAt": "2020-03-24T15:08:59Z",
+      "modifiedAt": "2023-01-09T05:02:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vg44-fw64-cpjx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.2.2",
+          "fixed": "0.2.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

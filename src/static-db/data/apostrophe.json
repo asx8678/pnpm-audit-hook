@@ -1,7 +1,169 @@
 {
   "packageName": "apostrophe",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-855c-r2vq-c292",
+      "packageName": "apostrophe",
+      "title": "Stored XSS in SEO Fields Leads to Authenticated API Data Exposure in ApostropheCMS",
+      "description": "## Summary\n\nA stored cross-site scripting (XSS) vulnerability exists in SEO-related fields (SEO Title and Meta Description) in ApostropheCMS.\n\nImproper neutralization of user-controlled input in SEO-related fields allows injection of arbitrary JavaScript into HTML contexts, resulting in stored cross-site scripting (XSS). This can be leveraged to perform authenticated API requests and exfiltrate sensitive data, resulting in a compromise of application confidentiality.\n\n## Affected Version\nApostro",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-855c-r2vq-c292",
+      "publishedAt": "2026-04-16T20:44:18Z",
+      "modifiedAt": "2026-04-30T20:08:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-855c-r2vq-c292"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35569"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.28.0",
+          "fixed": "4.29.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-c276-fj82-f2pq",
+      "packageName": "apostrophe",
+      "title": "ApostropheCMS: Information Disclosure via choices/counts Query Parameters Bypassing publicApiProjection Field Restrictions",
+      "description": "## Summary\n\nThe `choices` and `counts` query parameters in the Apostrophe CMS REST API allow unauthenticated users to extract distinct field values for any schema field that has a registered query builder, completely bypassing `publicApiProjection` restrictions that are intended to limit which fields are exposed publicly. Fields protected by `viewPermission` are similarly exposed.\n\n## Details\n\nWhen a piece type configures `publicApiProjection` to enable public API access while restricting visibl",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c276-fj82-f2pq",
+      "publishedAt": "2026-04-16T20:45:15Z",
+      "modifiedAt": "2026-04-16T20:45:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c276-fj82-f2pq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39857"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.28.0",
+          "fixed": "4.29.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-97v6-998m-fp4g",
+      "packageName": "apostrophe",
+      "title": "ApostropheCMS: Stored XSS via CSS Custom Property Injection in @apostrophecms/color-field Escaping Style Tag Context",
+      "description": "## Summary\n\nThe `@apostrophecms/color-field` module bypasses color validation for values prefixed with `--` (intended for CSS custom properties), but performs no HTML sanitization on these values. When styles containing attacker-controlled color values are rendered into `<style>` tags — both in the global stylesheet (editors only) and in per-widget style elements (all visitors) — the lack of escaping allows an editor to inject `</style>` followed by arbitrary HTML/JavaScript, achieving stored XS",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-97v6-998m-fp4g",
+      "publishedAt": "2026-04-16T20:42:37Z",
+      "modifiedAt": "2026-04-16T20:42:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-97v6-998m-fp4g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33889"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.29.0",
+          "fixed": "4.29.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xhq9-58fw-859p",
+      "packageName": "apostrophe",
+      "title": "ApostropheCMS: publicApiProjection Bypass via project Query Builder in Piece-Type REST API",
+      "description": "## Summary\n\nThe `getRestQuery` method in the `@apostrophecms/piece-type` module checks whether a MongoDB projection has already been set before applying the admin-configured `publicApiProjection`. An unauthenticated attacker can supply a `project` query parameter in the REST API request to pre-populate the projection state, causing the security-enforced `publicApiProjection` to be skipped entirely. This allows disclosure of fields that the site administrator explicitly restricted from public acc",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xhq9-58fw-859p",
+      "publishedAt": "2026-04-16T20:42:21Z",
+      "modifiedAt": "2026-04-16T20:42:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xhq9-58fw-859p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33888"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.29.0",
+          "fixed": "4.29.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mj7r-x3h3-7rmr",
+      "packageName": "apostrophe",
+      "title": "ApostropheCMS: User Enumeration via Timing Side Channel in Password Reset Endpoint",
+      "description": "## Summary\n\nThe password reset endpoint (`/api/v1/@apostrophecms/login/reset-request`) exhibits a measurable timing side channel that allows unauthenticated attackers to enumerate valid usernames and email addresses. When a user is not found, the handler returns after a fixed 2-second artificial delay, but when a valid user is found, it performs database writes and SMTP operations with no equivalent delay normalization, producing a distinguishable timing profile.\n\n## Details\n\nThe `resetRequest` ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-mj7r-x3h3-7rmr",
+      "publishedAt": "2026-04-16T20:42:11Z",
+      "modifiedAt": "2026-04-16T20:42:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mj7r-x3h3-7rmr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33877"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.29.0",
+          "fixed": "4.29.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v9xm-ffx2-7h35",
+      "packageName": "apostrophe",
+      "title": "ApostropheCMS MFA/TOTP Bypass via Incorrect MongoDB Query in Bearer Token Middleware",
+      "description": "# MFA/TOTP Bypass via Incorrect MongoDB Query in Bearer Token Middleware\n\n## Summary\n\nThe bearer token authentication middleware in `@apostrophecms/express/index.js` (lines 386-389) contains an incorrect MongoDB query that allows incomplete login tokens — where the password was verified but TOTP/MFA requirements were NOT — to be used as fully authenticated bearer tokens. This completely bypasses multi-factor authentication for any ApostropheCMS deployment using `@apostrophecms/login-totp` or any",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v9xm-ffx2-7h35",
+      "publishedAt": "2026-03-18T19:48:51Z",
+      "modifiedAt": "2026-03-19T21:14:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v9xm-ffx2-7h35"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32730"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.27.1",
+          "fixed": "4.28.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-9j9m-8wjc-ff96",
       "packageName": "apostrophe",
@@ -52,6 +214,52 @@
         {
           "range": ">= 2.63.0, < 3.4.0",
           "fixed": "3.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-pv6r-vchh-cxg9",
+      "packageName": "apostrophe",
+      "title": "Denial of Service in apostrophe",
+      "description": "Versions of `apostrophe` prior to 2.97.1 are vulnerable to Denial of Service. The `apostrophe-jobs` module sets a callback for incoming jobs and doesn't clear it regardless of its status. This causes the server to accumulate callbacks, allowing an attacker to start a large number of jobs and exhaust system memory.\n\n\n## Recommendation\n\nUpgrade to version 2.97.1 or later.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-pv6r-vchh-cxg9",
+      "publishedAt": "2020-09-03T20:42:09Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pv6r-vchh-cxg9"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.97.1",
+          "fixed": "2.97.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-h97g-4mx7-5p2p",
+      "packageName": "apostrophe",
+      "title": "Open Redirect in apostrophe",
+      "description": "Versions of `apostrophe` prior to 2.92.0 are vulnerable to Open Redirect. The package redirected requests to third-party websites if escaped URLs followed by a trailing `/` were appended at the end.\n\n\n\n## Recommendation\n\nUpdate to version 2.92.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h97g-4mx7-5p2p",
+      "publishedAt": "2020-09-03T17:11:36Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h97g-4mx7-5p2p"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.92.0",
+          "fixed": "2.92.0"
         }
       ],
       "source": "github"

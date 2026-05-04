@@ -1,6 +1,6 @@
 {
   "packageName": "gitbook",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hwgp-c653-6684",
@@ -24,6 +24,33 @@
       "affectedVersions": [
         {
           "range": "<= 2.6.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5h5r-23r4-m87h",
+      "packageName": "gitbook",
+      "title": "Cross-Site Scripting in gitbook",
+      "description": "Affected versions of `gitbook` do not properly sanitize user input outside of backticks, which may result in cross-site scripting in the online reader.\n\n\n## Recommendation\n\nUpdate to version 3.2.2 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5h5r-23r4-m87h",
+      "publishedAt": "2020-09-01T16:04:39Z",
+      "modifiedAt": "2023-09-12T21:10:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5h5r-23r4-m87h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16019"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.2.2",
+          "fixed": "3.2.2"
         }
       ],
       "source": "github"

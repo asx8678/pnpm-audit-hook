@@ -1,57 +1,30 @@
 {
   "packageName": "@angular/ssr",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
-      "id": "GHSA-q63q-pgmf-mxhr",
+      "id": "GHSA-vfx2-hv2g-xj5f",
       "packageName": "@angular/ssr",
-      "title": "Angular SSR has a Server-Side Request Forgery (SSRF) flaw",
-      "description": "### Impact\nThe vulnerability is a **Server-Side Request Forgery (SSRF)** flaw within the URL resolution mechanism of Angular's Server-Side Rendering package (`@angular/ssr`).\n\nThe function `createRequestUrl` uses the native `URL` constructor. When an incoming request path (e.g., `originalUrl` or `url`) begins with a **double forward slash (`//`) or backslash (`\\\\`)**, the `URL` constructor treats it as a **schema-relative URL**. This behavior overrides the security-intended base URL (protocol, h",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-q63q-pgmf-mxhr",
-      "publishedAt": "2025-10-16T21:28:19Z",
-      "modifiedAt": "2026-01-12T10:38:48Z",
+      "title": "Protocol-Relative URL Injection via Single Backslash Bypass in Angular SSR",
+      "description": "An Open Redirect vulnerability exists in `@angular/ssr` due to an incomplete fix for CVE-2026-27738. While the original fix successfully blocked multiple leading slashes (e.g., `///`), the internal validation logic fails to account for a single backslash (`\\`) bypass.\n\nWhen an Angular SSR application is deployed behind a proxy that passes the `X-Forwarded-Prefix` header:\n\n- An attacker provides a value starting with a single backslash (e.g., `\\evil.com`).\n- The internal validation failed to flag",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vfx2-hv2g-xj5f",
+      "publishedAt": "2026-03-19T21:22:52Z",
+      "modifiedAt": "2026-04-30T15:43:05Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-q63q-pgmf-mxhr"
+          "value": "GHSA-vfx2-hv2g-xj5f"
         },
         {
           "type": "CVE",
-          "value": "CVE-2025-62427"
+          "value": "CVE-2026-33397"
         }
       ],
       "affectedVersions": [
         {
-          "range": ">= 21.0.0-next.0, < 21.0.0-next.8",
-          "fixed": "21.0.0-next.8"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-68x2-mx4q-78m7",
-      "packageName": "@angular/ssr",
-      "title": "Angular SSR: Global Platform Injector Race Condition Leads to Cross-Request Data Leakage",
-      "description": "### Impact\n\nAngular uses a DI container (the \"platform injector\") to hold request-specific state during server-side rendering. For historical reasons, the container was stored as a JavaScript module-scoped global variable. When multiple requests are processed concurrently, they could inadvertently share or overwrite the global injector state.\n\nIn practical terms, this can lead to one request responding with data meant for a completely different request, leaking data or tokens included on the ren",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-68x2-mx4q-78m7",
-      "publishedAt": "2025-09-10T21:56:01Z",
-      "modifiedAt": "2025-09-10T21:56:02Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-68x2-mx4q-78m7"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-59052"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 21.0.0-next.0, < 21.0.0-next.3",
-          "fixed": "21.0.0-next.3"
+          "range": ">= 20.0.0-next.0, < 20.3.21",
+          "fixed": "20.3.21"
         }
       ],
       "source": "github"
@@ -106,6 +79,60 @@
         {
           "range": ">= 19.0.0-next.0, < 19.2.21",
           "fixed": "19.2.21"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q63q-pgmf-mxhr",
+      "packageName": "@angular/ssr",
+      "title": "Angular SSR has a Server-Side Request Forgery (SSRF) flaw",
+      "description": "### Impact\nThe vulnerability is a **Server-Side Request Forgery (SSRF)** flaw within the URL resolution mechanism of Angular's Server-Side Rendering package (`@angular/ssr`).\n\nThe function `createRequestUrl` uses the native `URL` constructor. When an incoming request path (e.g., `originalUrl` or `url`) begins with a **double forward slash (`//`) or backslash (`\\\\`)**, the `URL` constructor treats it as a **schema-relative URL**. This behavior overrides the security-intended base URL (protocol, h",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q63q-pgmf-mxhr",
+      "publishedAt": "2025-10-16T21:28:19Z",
+      "modifiedAt": "2026-01-12T10:38:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q63q-pgmf-mxhr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-62427"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 21.0.0-next.0, < 21.0.0-next.8",
+          "fixed": "21.0.0-next.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-68x2-mx4q-78m7",
+      "packageName": "@angular/ssr",
+      "title": "Angular SSR: Global Platform Injector Race Condition Leads to Cross-Request Data Leakage",
+      "description": "### Impact\n\nAngular uses a DI container (the \"platform injector\") to hold request-specific state during server-side rendering. For historical reasons, the container was stored as a JavaScript module-scoped global variable. When multiple requests are processed concurrently, they could inadvertently share or overwrite the global injector state.\n\nIn practical terms, this can lead to one request responding with data meant for a completely different request, leaking data or tokens included on the ren",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-68x2-mx4q-78m7",
+      "publishedAt": "2025-09-10T21:56:01Z",
+      "modifiedAt": "2025-09-10T21:56:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-68x2-mx4q-78m7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59052"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 21.0.0-next.0, < 21.0.0-next.3",
+          "fixed": "21.0.0-next.3"
         }
       ],
       "source": "github"

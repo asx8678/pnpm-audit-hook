@@ -1,19 +1,97 @@
 {
   "packageName": "serialize-javascript",
-  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
-      "id": "GHSA-h9rv-jmmf-4pgx",
+      "id": "GHSA-76p7-773f-r4q5",
       "packageName": "serialize-javascript",
-      "title": "Cross-site Scripting in serialize-javascript",
-      "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-h9rv-jmmf-4pgx",
-      "publishedAt": "2022-05-24T17:11:00Z",
-      "modifiedAt": "2023-09-08T19:54:00Z",
+      "title": "Cross-site Scripting (XSS) in serialize-javascript",
+      "description": "A flaw was found in npm-serialize-javascript. The vulnerability occurs because the serialize-javascript module does not properly sanitize certain inputs, such as regex or other JavaScript object types, allowing an attacker to inject malicious code. This code could be executed when deserialized by a web browser, causing Cross-site scripting (XSS) attacks. This issue is critical in environments where serialized data is sent to web clients, potentially compromising the security of the website or we",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-76p7-773f-r4q5",
+      "publishedAt": "2025-02-10T18:30:47Z",
+      "modifiedAt": "2026-04-17T03:30:52Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-h9rv-jmmf-4pgx"
+          "value": "GHSA-76p7-773f-r4q5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-11831"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 6.0.0, < 6.0.2",
+          "fixed": "6.0.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qj8w-gfj5-8c6v",
+      "packageName": "serialize-javascript",
+      "title": "Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like objects",
+      "description": "### Impact\n\n**What kind of vulnerability is it?**\n\nIt is a **Denial of Service (DoS)** vulnerability caused by CPU exhaustion. When serializing a specially crafted \"array-like\" object (an object that inherits from `Array.prototype` but has a very large `length` property), the process enters an intensive loop that consumes 100% CPU and hangs indefinitely.\n\n**Who is impacted?**\n\nApplications that use `serialize-javascript` to serialize untrusted or user-controlled objects are at risk. While direct",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qj8w-gfj5-8c6v",
+      "publishedAt": "2026-03-27T18:18:54Z",
+      "modifiedAt": "2026-03-31T18:40:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qj8w-gfj5-8c6v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34043"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 7.0.5",
+          "fixed": "7.0.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5c6j-r48x-rmvq",
+      "packageName": "serialize-javascript",
+      "title": "Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString()",
+      "description": "### Impact\n\nThe serialize-javascript npm package (versions <= 7.0.2) contains a code injection vulnerability. It is an incomplete fix for CVE-2020-7660.\n\nWhile `RegExp.source` is sanitized, `RegExp.flags` is interpolated directly into the generated output without escaping. A similar issue exists in `Date.prototype.toISOString()`.\n\nIf an attacker can control the input object passed to `serialize()`, they can inject malicious JavaScript via the flags property of a RegExp object. When the serialize",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5c6j-r48x-rmvq",
+      "publishedAt": "2026-02-28T02:50:45Z",
+      "modifiedAt": "2026-03-02T16:17:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5c6j-r48x-rmvq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 7.0.2",
+          "fixed": "7.0.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hxcc-f52p-wc94",
+      "packageName": "serialize-javascript",
+      "title": "Insecure serialization leading to RCE in serialize-javascript",
+      "description": "serialize-javascript prior to 3.1.0 allows remote attackers to inject arbitrary code via the function \"deleteFunctions\" within \"index.js\". \n\nAn object such as `{\"foo\": /1\"/, \"bar\": \"a\\\"@__R-<UID>-0__@\"}` was serialized as `{\"foo\": /1\"/, \"bar\": \"a\\/1\"/}`, which allows an attacker to escape the `bar` key. This requires the attacker to control the values of both `foo` and `bar` and guess the value of `<UID>`. The UID has a keyspace of approximately 4 billion making it a realistic network attack.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hxcc-f52p-wc94",
+      "publishedAt": "2020-08-11T17:21:13Z",
+      "modifiedAt": "2023-11-29T22:19:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hxcc-f52p-wc94"
         },
         {
           "type": "CVE",
@@ -22,8 +100,35 @@
       ],
       "affectedVersions": [
         {
-          "range": "<3.1.0",
+          "range": "< 3.1.0",
           "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-h9rv-jmmf-4pgx",
+      "packageName": "serialize-javascript",
+      "title": "Cross-Site Scripting in serialize-javascript",
+      "description": "Versions of `serialize-javascript` prior to 2.1.1 are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize serialized regular expressions. This vulnerability does not affect Node.js applications.\n\n\n## Recommendation\n\nUpgrade to version 2.1.1 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h9rv-jmmf-4pgx",
+      "publishedAt": "2019-12-05T18:44:37Z",
+      "modifiedAt": "2023-01-09T05:03:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h9rv-jmmf-4pgx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-16769"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.1",
+          "fixed": "2.1.1"
         }
       ],
       "source": "github"

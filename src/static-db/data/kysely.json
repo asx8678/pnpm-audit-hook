@@ -1,0 +1,87 @@
+{
+  "packageName": "kysely",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fr9j-6mvq-frcv",
+      "packageName": "kysely",
+      "title": "Kysely has a MySQL SQL Injection via Backslash Escape Bypass in non-type-safe usage of JSON path keys.",
+      "description": "## Summary\n\nThe `sanitizeStringLiteral` method in Kysely's query compiler escapes single quotes (`'` → `''`) but does not escape backslashes. On MySQL with the default `BACKSLASH_ESCAPES` SQL mode, an attacker can inject a backslash before a single quote to neutralize the escaping, breaking out of the JSON path string literal and injecting arbitrary SQL.\n\n## Details\n\nWhen a user calls `.key(value)` on a JSON path builder, the value flows through:\n\n1. `JSONPathBuilder.key(key)` at `src/query-buil",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fr9j-6mvq-frcv",
+      "publishedAt": "2026-03-20T20:48:33Z",
+      "modifiedAt": "2026-03-27T20:57:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fr9j-6mvq-frcv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33442"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.28.12, <= 0.28.13",
+          "fixed": "0.28.14"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8cpq-38p9-67gx",
+      "packageName": "kysely",
+      "title": "Kysely has a MySQL SQL Injection via Insufficient Backslash Escaping in `sql.lit(string)` usage or similar methods that append string literal values into the compiled SQL strings",
+      "description": "## Summary\n\nKysely's `DefaultQueryCompiler.sanitizeStringLiteral()` only escapes single quotes by doubling them (`'` → `''`) but does not escape backslashes. When used with the MySQL dialect (where `NO_BACKSLASH_ESCAPES` is OFF by default), an attacker can use a backslash to escape the trailing quote of a string literal, breaking out of the string context and injecting arbitrary SQL. This affects any code path that uses `ImmediateValueTransformer` to inline values — specifically `CreateIndexBuil",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8cpq-38p9-67gx",
+      "publishedAt": "2026-03-20T20:48:55Z",
+      "modifiedAt": "2026-03-27T20:57:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8cpq-38p9-67gx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33468"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.28.13",
+          "fixed": "0.28.14"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wmrf-hv6w-mr66",
+      "packageName": "kysely",
+      "title": "SQL Injection via unsanitized JSON path keys when ignoring/silencing compilation errors or using `Kysely<any>`.",
+      "description": "### Summary\n\nKysely through 0.28.11 has a SQL injection vulnerability in JSON path compilation for MySQL and SQLite dialects. The `visitJSONPathLeg()` function appends user-controlled values from `.key()` and `.at()` directly into single-quoted JSON path string literals (`'$.key'`) without escaping single quotes. An attacker can break out of the JSON path string context and inject arbitrary SQL.\n\nThis is inconsistent with `sanitizeIdentifier()`, which properly doubles delimiter characters for id",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wmrf-hv6w-mr66",
+      "publishedAt": "2026-03-18T12:59:32Z",
+      "modifiedAt": "2026-03-20T21:16:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wmrf-hv6w-mr66"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32763"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.26.0, <= 0.28.11",
+          "fixed": "0.28.12"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "packageName": "git-diff-apply",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-84cm-v6jp-gjmr",
+      "packageName": "git-diff-apply",
+      "title": "OS command injection in git-diff-apply",
+      "description": "In \"index.js\" file line 240, the run command executes the git command with a user controlled variable called remoteUrl. This affects git-diff-apply all versions prior to 0.22.2.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-84cm-v6jp-gjmr",
+      "publishedAt": "2020-02-14T23:09:24Z",
+      "modifiedAt": "2023-01-09T05:02:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-84cm-v6jp-gjmr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10776"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.22.1",
+          "fixed": "0.22.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

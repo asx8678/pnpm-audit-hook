@@ -1,0 +1,33 @@
+{
+  "packageName": "reduce-css-calc",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4662-j96g-mv46",
+      "packageName": "reduce-css-calc",
+      "title": "Arbitrary Code Injection in reduce-css-calc",
+      "description": "Affected versions of `reduce-css-calc` pass input directly to `eval`. If user input is passed into the calc function, this may result in cross-site scripting on the browser, or remote code execution on the server.\n\n## Proof of Concept\n\n```\nconst reduceCSSCalc = require('reduce-css-calc');\nconsole.log(reduceCSSCalc(`calc(                       (Buffer(10000)))`));\nconsole.log(reduceCSSCalc(`calc(                       (global['fs'] = require('fs')))`));\nconsole.log(reduceCSSCalc(`calc(           ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4662-j96g-mv46",
+      "publishedAt": "2018-06-07T19:43:06Z",
+      "modifiedAt": "2023-01-09T05:02:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4662-j96g-mv46"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10548"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.2.5",
+          "fixed": "1.2.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

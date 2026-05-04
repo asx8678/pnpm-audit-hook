@@ -1,6 +1,6 @@
 {
   "packageName": "mongodb",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vxvm-qww3-2fh7",
@@ -25,6 +25,29 @@
         {
           "range": ">= 5.0.0, < 5.8.0",
           "fixed": "5.8.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mh5c-679w-hh4r",
+      "packageName": "mongodb",
+      "title": "Denial of Service in mongodb",
+      "description": "Versions of `mongodb` prior to 3.1.13 are vulnerable to Denial of Service. The package fails to properly catch an exception when a collection name is invalid and the DB does not exist, crashing the application.\n\n\n## Recommendation\n\nUpgrade to version 3.1.13 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mh5c-679w-hh4r",
+      "publishedAt": "2020-09-03T21:12:01Z",
+      "modifiedAt": "2023-01-09T05:04:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mh5c-679w-hh4r"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.1.13",
+          "fixed": "3.1.13"
         }
       ],
       "source": "github"

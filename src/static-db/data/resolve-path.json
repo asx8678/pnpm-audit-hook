@@ -1,0 +1,33 @@
+{
+  "packageName": "resolve-path",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-62g9-6hw5-rwfp",
+      "packageName": "resolve-path",
+      "title": "Path Traversal in resolve-path",
+      "description": "Versions of `resolve-path` before 1.4.0 are vulnerable to path traversal. `resolve-path` relative path resolving suffers from a lack of file path sanitization for windows based paths.\n\n\n## Recommendation\n\nUpdate to version 1.4.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-62g9-6hw5-rwfp",
+      "publishedAt": "2018-07-18T21:20:25Z",
+      "modifiedAt": "2023-03-01T01:46:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-62g9-6hw5-rwfp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3732"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.0",
+          "fixed": "1.4.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

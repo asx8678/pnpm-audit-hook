@@ -1,0 +1,29 @@
+{
+  "packageName": "polaris-website",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-whrh-9j4q-g7ph",
+      "packageName": "polaris-website",
+      "title": "CSRF Vulnerability in polaris-website",
+      "description": "### Impact\nCSRF vulnerability:\nIn some very specific circumstances, an attacker would be able to update your settings.\nBasically you would need to navigate to hackersite.com while logged into our panel. Then they could modify your settings. They couldn't check if it worked, nor could they read your settings.\n\n### Patches\nAs of v1.1.1 this has been patched by implementing the Double submit pattern using a cookie.\n\n### For more information\nIf you have any questions or comments about this advisory:",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-whrh-9j4q-g7ph",
+      "publishedAt": "2020-08-05T21:43:19Z",
+      "modifiedAt": "2023-01-09T05:03:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-whrh-9j4q-g7ph"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.1",
+          "fixed": "1.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

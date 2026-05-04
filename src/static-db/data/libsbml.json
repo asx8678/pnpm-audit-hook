@@ -1,0 +1,32 @@
+{
+  "packageName": "libsbml",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-432j-4fw9-2g6f",
+      "packageName": "libsbml",
+      "title": "libsbml downloads Resources over HTTP",
+      "description": "Affected versions of `libsbml` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `libsbml`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability, and the package has not seen an update since 2013.\n\nThe best mitigation is currently to avoid using th",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-432j-4fw9-2g6f",
+      "publishedAt": "2019-02-18T23:44:33Z",
+      "modifiedAt": "2023-09-07T22:50:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-432j-4fw9-2g6f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10668"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

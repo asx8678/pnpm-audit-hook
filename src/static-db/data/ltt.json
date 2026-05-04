@@ -1,0 +1,32 @@
+{
+  "packageName": "ltt",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5jg5-w395-9684",
+      "packageName": "ltt",
+      "title": "Directory Traversal in ltt",
+      "description": "Affected versions of `ltt` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only used f",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5jg5-w395-9684",
+      "publishedAt": "2018-07-23T20:39:59Z",
+      "modifiedAt": "2023-09-11T19:00:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5jg5-w395-9684"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16212"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

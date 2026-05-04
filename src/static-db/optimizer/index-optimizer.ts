@@ -76,6 +76,10 @@ export function optimizeIndex(index: StaticDbIndex): OptimizedIndex {
     pkgList,
   };
 
+  if (index.coverage) {
+    optimized.cov = index.coverage;
+  }
+
   if (index.integrity) {
     optimized.int = index.integrity;
   }
@@ -101,6 +105,10 @@ export function expandIndex(opt: OptimizedIndex): StaticDbIndex {
     totalPackages: opt.tp,
     packages,
   };
+
+  if (opt.cov) {
+    index.coverage = opt.cov;
+  }
 
   if (opt.int) {
     index.integrity = opt.int;

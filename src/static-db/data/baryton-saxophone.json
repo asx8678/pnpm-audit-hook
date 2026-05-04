@@ -1,0 +1,33 @@
+{
+  "packageName": "baryton-saxophone",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6pwf-whc8-hjf6",
+      "packageName": "baryton-saxophone",
+      "title": "Downloads Resources over HTTP in baryton-saxophone",
+      "description": "Affected versions of `baryton-saxophone` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `baryton-saxophone`.\n\n\n## Recommendation\n\nUpdate to version 3.0.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6pwf-whc8-hjf6",
+      "publishedAt": "2019-02-18T23:35:18Z",
+      "modifiedAt": "2023-01-09T05:02:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6pwf-whc8-hjf6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10573"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.1",
+          "fixed": "3.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

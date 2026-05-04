@@ -1,0 +1,32 @@
+{
+  "packageName": "soci",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p9pm-55vp-2jqw",
+      "packageName": "soci",
+      "title": "Downloads Resources over HTTP in soci",
+      "description": "Affected versions of `soci` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `soci`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if available. \n\nAlt",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p9pm-55vp-2jqw",
+      "publishedAt": "2019-02-18T23:44:32Z",
+      "modifiedAt": "2023-01-09T05:03:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p9pm-55vp-2jqw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10669"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.2.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

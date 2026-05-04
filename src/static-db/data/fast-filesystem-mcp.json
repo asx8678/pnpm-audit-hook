@@ -1,7 +1,33 @@
 {
   "packageName": "fast-filesystem-mcp",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-5226-3rvg-hp4x",
+      "packageName": "fast-filesystem-mcp",
+      "title": "fast-filesystem-mcp is vulnerable to command injection through handleGetDiskUsage function",
+      "description": "A security flaw has been discovered in efforthye fast-filesystem-mcp up to 3.5.1. The affected element is the function handleGetDiskUsage of the file src/index.ts. Performing a manipulation results in command injection. The attack is possible to be carried out remotely. The exploit has been released to the public and may be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-5226-3rvg-hp4x",
+      "publishedAt": "2026-04-02T12:31:05Z",
+      "modifiedAt": "2026-04-04T05:39:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5226-3rvg-hp4x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-5327"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.5.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-j893-m93w-jwjw",
       "packageName": "fast-filesystem-mcp",

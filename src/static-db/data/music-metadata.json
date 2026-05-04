@@ -1,0 +1,33 @@
+{
+  "packageName": "music-metadata",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v6c2-xwv6-8xf7",
+      "packageName": "music-metadata",
+      "title": "music-metadata has an infinite loop vulnerability in ASF parser",
+      "description": "# Summary\n\nmusic-metadata's ASF parser (`parseExtensionObject()` in `lib/asf/AsfParser.ts:112-158`) enters an infinite loop when a sub-object inside the ASF Header Extension Object has `objectSize = 0`.\n\n## Root Cause\n\nWhen objectSize is 0:\n1. `remaining = 0 - 24 = -24`\n2. `tokenizer.ignore(-24)` moves the read position backward by 24 bytes\n3. `extensionSize -= 0` (loop counter never decreases)\n4. `while (extensionSize > 0)` never exits\n5. The same 24-byte header is re-read infinitely\n\nThis is t",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v6c2-xwv6-8xf7",
+      "publishedAt": "2026-03-17T20:04:48Z",
+      "modifiedAt": "2026-03-19T21:00:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v6c2-xwv6-8xf7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32256"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 11.12.1",
+          "fixed": "11.12.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

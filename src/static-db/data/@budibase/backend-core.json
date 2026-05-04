@@ -1,0 +1,82 @@
+{
+  "packageName": "@budibase/backend-core",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8783-3wgf-jggf",
+      "packageName": "@budibase/backend-core",
+      "title": "Budibase: Authentication Bypass via Unanchored Regex in Public Endpoint Matcher — Unauthenticated Access to Protected Endpoints",
+      "description": "### Summary\n\nThe `authenticated` middleware uses unanchored regular expressions to match public (no-auth) endpoint patterns against `ctx.request.url`. Since `ctx.request.url` in Koa includes the query string, an attacker can access any protected endpoint by appending a public endpoint path as a query parameter. For example, `POST /api/global/users/search?x=/api/system/status` bypasses all authentication because the regex `/api/system/status/` matches in the query string portion of the URL.\n\n### ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8783-3wgf-jggf",
+      "publishedAt": "2026-04-16T22:40:59Z",
+      "modifiedAt": "2026-04-27T16:19:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8783-3wgf-jggf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41428"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.35.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4f9j-vr4p-642r",
+      "packageName": "@budibase/backend-core",
+      "title": "Budibase auth session cookies are set with httpOnly:false — any XSS can lead to full account takeover",
+      "description": "### Summary\n\nThe `budibase:auth` cookie containing the JWT session token is set with `httpOnly: false` at `packages/backend-core/src/utils/utils.ts:218`. JavaScript can read this cookie via `document.cookie`. Given that Budibase has had XSS vulnerabilities (GHSA-gp5x-2v54-v2q5 — stored XSS via unsanitized entity names, published April 2, 2026), this means every XSS becomes a full account takeover — the attacker steals the JWT and has persistent access to the victim's account.\n\nThe cookie also la",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4f9j-vr4p-642r",
+      "publishedAt": "2026-04-24T16:18:52Z",
+      "modifiedAt": "2026-04-24T16:18:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4f9j-vr4p-642r"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.35.10",
+          "fixed": "3.35.10"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7r9j-r86q-7g45",
+      "packageName": "@budibase/backend-core",
+      "title": "Budibase: Server-Side Request Forgery via REST Connector with Empty Default Blacklist",
+      "description": "## 1. Summary\n\n| Field | Value |\n|-------|-------|\n| **Title** | SSRF via REST Connector with Empty Default Blacklist Leading to Full Internal Data Exfiltration |\n| **Product** | Budibase |\n| **Version** | 3.30.6 (latest stable as of 2026-02-25) |\n| **Component** | REST Datasource Integration + Backend-Core Blacklist Module |\n| **Severity** | Critical |\n| **Attack Vector** | Network |\n| **Privileges Required** | Low (Builder role, or QUERY WRITE for execution of pre-existing queries) |\n| **User ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7r9j-r86q-7g45",
+      "publishedAt": "2026-04-03T21:34:44Z",
+      "modifiedAt": "2026-04-03T21:34:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7r9j-r86q-7g45"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31818"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.33.4",
+          "fixed": "3.33.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

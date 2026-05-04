@@ -1,0 +1,28 @@
+{
+  "packageName": "squel",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4qhx-g9wp-g9m6",
+      "packageName": "squel",
+      "title": "Failure to sanitize quotes which can lead to sql injection in squel",
+      "description": "All versions of `squel` are vulnerable to sql injection.\n\nThe `squel` package does not properly escape user provided input when provided using the `setFields` method. This could lead to sql injection if the query was then executed.\n\nProof of concept demonstrating the injection of a single quote into a generated sql statement from user provided input.\n```\n> console.log(squel.insert().into('buh').setFields({foo: \"bar'baz\"}).toString());\nINSERT INTO buh (foo) VALUES ('bar'baz')\n```\n\n\n## Recommendat",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4qhx-g9wp-g9m6",
+      "publishedAt": "2019-06-14T16:09:01Z",
+      "modifiedAt": "2023-01-09T05:01:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4qhx-g9wp-g9m6"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.13.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

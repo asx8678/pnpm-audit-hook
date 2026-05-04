@@ -1,0 +1,29 @@
+{
+  "packageName": "base64url",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rvg8-pwq2-xj7q",
+      "packageName": "base64url",
+      "title": "Out-of-bounds Read in base64url",
+      "description": "Versions of `base64url` before 3.0.0 are vulnerable to to out-of-bounds reads as it allocates uninitialized Buffers when number is passed in input on Node.js 4.x and below.\n\n\n## Recommendation\n\nUpdate to version 3.0.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rvg8-pwq2-xj7q",
+      "publishedAt": "2020-09-01T20:42:44Z",
+      "modifiedAt": "2023-04-21T19:31:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rvg8-pwq2-xj7q"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.0",
+          "fixed": "3.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

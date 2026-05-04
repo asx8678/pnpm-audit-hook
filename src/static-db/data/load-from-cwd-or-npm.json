@@ -1,0 +1,29 @@
+{
+  "packageName": "load-from-cwd-or-npm",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jxf5-7x3j-8j9m",
+      "packageName": "load-from-cwd-or-npm",
+      "title": "Malicious Package in load-from-cwd-or-npm",
+      "description": "Version 3.0.2 of `load-from-cwd-or-npm`  contains malicious code. The malware breaks functionality of the `purescript-installer` package by injecting targeted code.\n\n\n## Recommendation\n\nUpgrade to version 3.0.4 or later. There is no indication of further compromise.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-jxf5-7x3j-8j9m",
+      "publishedAt": "2020-09-03T18:19:14Z",
+      "modifiedAt": "2023-01-09T05:03:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jxf5-7x3j-8j9m"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 3.0.2",
+          "fixed": "3.0.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

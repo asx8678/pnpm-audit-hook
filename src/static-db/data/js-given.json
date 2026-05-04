@@ -1,0 +1,33 @@
+{
+  "packageName": "js-given",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rqwh-c535-j9hw",
+      "packageName": "js-given",
+      "title": "Downloads Resources over HTTP in js-given",
+      "description": "Affected versions of `js-given` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `js-given`.\n\n\n## Recommendation\n\nUpdate to version 0.0.18 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rqwh-c535-j9hw",
+      "publishedAt": "2019-02-18T23:47:09Z",
+      "modifiedAt": "2023-01-09T05:03:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rqwh-c535-j9hw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10638"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.0.18",
+          "fixed": "0.0.18"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

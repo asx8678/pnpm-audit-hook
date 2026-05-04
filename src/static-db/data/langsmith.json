@@ -1,7 +1,61 @@
 {
   "packageName": "langsmith",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-rr7j-v2q5-chgv",
+      "packageName": "langsmith",
+      "title": "LangSmith SDK: Streaming token events bypass output redaction",
+      "description": "## Summary\n\nThe LangSmith SDK's output redaction controls (hideOutputs in JS, hide_outputs in Python) do not apply to streaming token events. When an LLM run produces streaming output, each chunk is recorded as a new_token event containing the raw token value. These events bypass the redaction pipeline entirely — prepareRunCreateOrUpdateInputs (JS) and _hide_run_outputs (Python) only process the inputs and outputs fields on a run, never the events array. As a result, applications relying on outp",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rr7j-v2q5-chgv",
+      "publishedAt": "2026-04-16T01:20:37Z",
+      "modifiedAt": "2026-04-24T20:52:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rr7j-v2q5-chgv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41182"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.5.18",
+          "fixed": "0.5.19"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fw9q-39r9-c252",
+      "packageName": "langsmith",
+      "title": "LangSmith Client SDKs has Prototype Pollution in langsmith-sdk via Incomplete `__proto__` Guard in Internal lodash `set()`",
+      "description": "# GHSA-fw9q-39r9-c252: Prototype Pollution via Incomplete Lodash `set()` Guard in `langsmith-sdk`\n\n**Severity:** Medium (CVSS ~5.6)\n**Status:** Fixed in 0.5.18\n\n---\n\n## Summary\n\nThe LangSmith JavaScript/TypeScript SDK (`langsmith`) contains an incomplete prototype pollution fix in its internally vendored lodash `set()` utility. The `baseAssignValue()` function only guards against the `__proto__` key, but fails to prevent traversal via `constructor.prototype`. This allows an attacker who controls",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fw9q-39r9-c252",
+      "publishedAt": "2026-04-10T20:18:02Z",
+      "modifiedAt": "2026-04-10T21:37:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fw9q-39r9-c252"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-40190"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.5.17",
+          "fixed": "0.5.18"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-v34v-rq6j-cj6p",
       "packageName": "langsmith",

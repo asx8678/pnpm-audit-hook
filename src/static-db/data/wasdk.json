@@ -1,0 +1,32 @@
+{
+  "packageName": "wasdk",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rh7p-9c79-gpp8",
+      "packageName": "wasdk",
+      "title": "Downloads Resources over HTTP in wasdk",
+      "description": "Affected versions of `wasdk` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `wasdk`.\n\n\n## Recommendation\n\nNo fix is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if available. \n\nAlt",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rh7p-9c79-gpp8",
+      "publishedAt": "2019-02-18T23:34:44Z",
+      "modifiedAt": "2023-01-09T05:03:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rh7p-9c79-gpp8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10587"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.54"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

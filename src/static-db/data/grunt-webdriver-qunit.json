@@ -1,0 +1,32 @@
+{
+  "packageName": "grunt-webdriver-qunit",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4q79-fch7-g78q",
+      "packageName": "grunt-webdriver-qunit",
+      "title": "Downloads Resources over HTTP in grunt-webdriver-qunit",
+      "description": "Affected versions of `grunt-webdriver-qunit` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `grunt-webdriver-qunit`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability, and the package author has marked the package as deprecated.\n\nThe best mit",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4q79-fch7-g78q",
+      "publishedAt": "2019-02-18T23:48:11Z",
+      "modifiedAt": "2023-01-09T05:02:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4q79-fch7-g78q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10606"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.2.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

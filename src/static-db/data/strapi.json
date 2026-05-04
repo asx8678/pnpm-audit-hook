@@ -1,7 +1,34 @@
 {
   "packageName": "strapi",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-9p2w-rmx4-9mw7",
+      "packageName": "strapi",
+      "title": "Command Injection in strapi",
+      "description": "Versions of `strapi` before 3.0.0-beta.17.8 are vulnerable to Command Injection. The package fails to sanitize plugin names in the `/admin/plugins/install/` route. This may allow an authenticated attacker with admin privileges to run arbitrary commands in the server.\n\n\n## Recommendation\n\nUpgrade to version 3.0.0-beta.17.8 or later",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9p2w-rmx4-9mw7",
+      "publishedAt": "2020-09-04T16:54:02Z",
+      "modifiedAt": "2025-12-29T15:34:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9p2w-rmx4-9mw7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-19609"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.0-beta.17.7",
+          "fixed": "3.0.0-beta.17.8"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-49vv-6q7q-w5cf",
       "packageName": "strapi",
@@ -262,6 +289,33 @@
         {
           "range": ">= 3.0.0, < 3.6.9",
           "fixed": "3.6.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6xc2-mj39-q599",
+      "packageName": "strapi",
+      "title": "Strapi allows unauthenticated attacker to reset admin password without valid reset token",
+      "description": "Versions of `strapi` prior to 3.0.0-beta.17.5 are vulnerable to Privilege Escalation. The password reset routes allows an unauthenticated attacker to reset an admin's password without providing a valid password reset token.\n\n\n## Recommendation\n\nUpgrade to version 3.0.0-beta.17.5 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6xc2-mj39-q599",
+      "publishedAt": "2019-12-02T18:20:41Z",
+      "modifiedAt": "2023-01-27T05:02:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6xc2-mj39-q599"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-18818"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.0-beta.17.4",
+          "fixed": "3.0.0-beta.17.5"
         }
       ],
       "source": "github"

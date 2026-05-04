@@ -1,6 +1,6 @@
 {
   "packageName": "ses",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-h9w6-f932-gq62",
@@ -75,6 +75,29 @@
         {
           "range": "< 0.16.0",
           "fixed": "0.16.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6jg8-7333-554w",
+      "packageName": "ses",
+      "title": "Sandbox Breakout in realms-shim",
+      "description": "Versions of `realms-shim` prior to 1.2.0 are vulnerable to a Sandbox Breakout. `Reflect.construct` can be used on the sandboxed Function constructor to reach the prototypes of the primal Realm, which may allow an attacker to escape the sandbox and execute arbitrary code.\n\n\n## Recommendation\n\nUpgrade to version 1.2.0 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6jg8-7333-554w",
+      "publishedAt": "2019-10-04T17:56:12Z",
+      "modifiedAt": "2023-01-09T05:02:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6jg8-7333-554w"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.6.3",
+          "fixed": "0.6.3"
         }
       ],
       "source": "github"

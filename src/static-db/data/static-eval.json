@@ -1,7 +1,34 @@
 {
   "packageName": "static-eval",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-5mjw-6jrh-hvfq",
+      "packageName": "static-eval",
+      "title": "Sandbox Breakout / Arbitrary Code Execution in static-eval",
+      "description": "Affected versions of `static-eval` pass untrusted user input directly to the global function constructor, resulting in an arbitrary code execution vulnerability when user input is parsed via the package.\n\n## Proof of concept\n```js\nvar evaluate = require('static-eval');\nvar parse = require('esprima').parse;\nvar src = '(function(){console.log(process.pid)})()';\nvar ast = parse(src).body[0].expression;\nvar res = evaluate(ast, {});\n// Will print the process id\n```\n\n\n## Recommendation\n\nUpdate to vers",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5mjw-6jrh-hvfq",
+      "publishedAt": "2018-08-06T21:37:06Z",
+      "modifiedAt": "2023-09-11T16:18:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5mjw-6jrh-hvfq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16226"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-8v27-2fg9-7h62",
       "packageName": "static-eval",
@@ -24,6 +51,29 @@
       "affectedVersions": [
         {
           "range": "<= 2.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x9hc-rw35-f44h",
+      "packageName": "static-eval",
+      "title": "Sandbox Breakout / Arbitrary Code Execution in static-eval",
+      "description": "Versions of `static-eval`prior to 2.0.2 pass untrusted user input directly to the global function constructor, resulting in an arbitrary code execution vulnerability when user input is parsed via the package.\n\n## Proof of concept\n```\nvar evaluate = require('static-eval');\nvar parse = require('esprima').parse;\n\nvar src = process.argv[2];\nvar payload = '(function({x}){return x.constructor})({x:\"\".sub})(\"console.log(process.env)\")()'\nvar ast = parse(payload).body[0].expression;\nconsole.log(evaluate",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x9hc-rw35-f44h",
+      "publishedAt": "2020-09-02T15:46:03Z",
+      "modifiedAt": "2023-01-09T05:03:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x9hc-rw35-f44h"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.1",
+          "fixed": "2.0.2"
         }
       ],
       "source": "github"

@@ -1,0 +1,32 @@
+{
+  "packageName": "mfrs",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jjgw-jf33-7fg9",
+      "packageName": "mfrs",
+      "title": "Directory Traversal in mfrs",
+      "description": "Affected versions of `mfrs` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only used ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jjgw-jf33-7fg9",
+      "publishedAt": "2020-09-01T18:22:48Z",
+      "modifiedAt": "2023-09-12T19:36:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jjgw-jf33-7fg9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16193"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

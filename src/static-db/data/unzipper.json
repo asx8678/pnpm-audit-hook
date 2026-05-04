@@ -1,0 +1,33 @@
+{
+  "packageName": "unzipper",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-884w-698f-927f",
+      "packageName": "unzipper",
+      "title": "Arbitrary File Write via Archive Extraction in unzipper",
+      "description": "Versions of `unzipper` before 0.8.13 are vulnerable to arbitrary file write when used to extract a specifically crafted archive that contains path traversal filenames (`../../file.txt` for example).\n\n\n## Recommendation\n\nUpdate to version 0.3.18 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-884w-698f-927f",
+      "publishedAt": "2018-07-27T17:06:50Z",
+      "modifiedAt": "2023-09-20T05:02:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-884w-698f-927f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-1002203"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.8.13",
+          "fixed": "0.8.13"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

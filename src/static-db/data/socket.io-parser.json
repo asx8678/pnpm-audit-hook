@@ -1,7 +1,34 @@
 {
   "packageName": "socket.io-parser",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-677m-j7p3-52f9",
+      "packageName": "socket.io-parser",
+      "title": "socket.io allows an unbounded number of binary attachments",
+      "description": "### Impact\n\nA specially crafted Socket.IO packet can make the server wait for a large number of binary attachments and buffer them, which can be exploited to make the server run out of memory.\n\n### Patches\n\n| Version range    | Used by                                    | Fixed version |\n|------------------|--------------------------------------------|---------------|\n| `>=4.0.0 <4.2.6` | `socket.io@4.x` and `socket.io-client@4.x` | `4.2.6`       |\n| `>=3.4.0 <3.4.4` | `socket.io@2.x`           ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-677m-j7p3-52f9",
+      "publishedAt": "2026-03-18T17:26:14Z",
+      "modifiedAt": "2026-03-20T21:33:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-677m-j7p3-52f9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33151"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.2.6",
+          "fixed": "4.2.6"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-cqmj-92xf-r6r9",
       "packageName": "socket.io-parser",

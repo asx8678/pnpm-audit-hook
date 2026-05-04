@@ -1,0 +1,33 @@
+{
+  "packageName": "i18next-locize-backend",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mgcp-mfp8-3q45",
+      "packageName": "i18next-locize-backend",
+      "title": "i18next-locize-backend has URL Injection via Unsanitized Path Parameters",
+      "description": "### Summary\n\nVersions of `i18next-locize-backend` prior to 9.0.2 interpolate `lng`, `ns`, `projectId`, and `version` directly into the configured `loadPath` / `privatePath` / `addPath` / `updatePath` / `getLanguagesPath` URL templates with no path-component validation and no encoding. When an application exposes any of these values to user-controlled input (`?lng=` / `?ns=` query parameters via `i18next-browser-languagedetector`, cookies, request headers, or a URL-derived `projectId`), a crafted",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mgcp-mfp8-3q45",
+      "publishedAt": "2026-04-22T20:28:27Z",
+      "modifiedAt": "2026-04-30T20:16:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mgcp-mfp8-3q45"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41885"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 9.0.2",
+          "fixed": "9.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

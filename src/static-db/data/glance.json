@@ -1,6 +1,6 @@
 {
   "packageName": "glance",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3hjh-5hgx-f5wh",
@@ -25,6 +25,83 @@
         {
           "range": "< 3.0.9",
           "fixed": "3.0.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2x4q-6jfv-8h9h",
+      "packageName": "glance",
+      "title": "Path Traversal in glance",
+      "description": "Versions of `glance` before 3.0.4 are vulnerable to a Path Traversal vulnerability due to lack of validation of path passed to it, which allows a malicious user to read content of any file with known path.\n\n\n## Recommendation\n\nUpdate to version 3.0.4 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2x4q-6jfv-8h9h",
+      "publishedAt": "2018-07-26T14:53:14Z",
+      "modifiedAt": "2023-01-31T01:45:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2x4q-6jfv-8h9h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3715"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.4",
+          "fixed": "3.0.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vw7g-jq9m-3q9v",
+      "packageName": "glance",
+      "title": "Unauthorized File Access in glance",
+      "description": "Versions of `glance` prior to 3.0.7 are vulnerable to Unauthorized File Access. The package provides a `--nodot` option meant to hide files and directories with names that begin with a `.`, such as `.git` but fails to hide files inside a folder that begins with `.`. \n\n\n## Recommendation\n\nUpgrade to version 3.0.7 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vw7g-jq9m-3q9v",
+      "publishedAt": "2020-09-02T18:23:35Z",
+      "modifiedAt": "2023-01-09T05:03:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vw7g-jq9m-3q9v"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.7",
+          "fixed": "3.0.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7375-vjr2-3g7w",
+      "packageName": "glance",
+      "title": "Cross-Site Scripting in glance",
+      "description": "Versions of `glance` before 3.0.8 are vulnerable to Stored Cross-Site Scripting (XSS). This is only exploitable if the attacker is able to control the name of a file that is served by the `glance` package.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7375-vjr2-3g7w",
+      "publishedAt": "2018-09-27T11:37:19Z",
+      "modifiedAt": "2023-01-09T05:02:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7375-vjr2-3g7w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3748"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.8",
+          "fixed": "3.0.8"
         }
       ],
       "source": "github"

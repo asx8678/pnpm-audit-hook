@@ -1,0 +1,28 @@
+{
+  "packageName": "sdfjghlkfjdshlkjdhsfg",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gcfc-mgg3-8j2c",
+      "packageName": "sdfjghlkfjdshlkjdhsfg",
+      "title": "Malicious Package in sdfjghlkfjdshlkjdhsfg",
+      "description": "All versions of `sdfjghlkfjdshlkjdhsfg` contain malicious code. The package is essentially a worm that fetches all packages owned by the user, adds a script to self-replicate as a preinstall script and publishes a new version.\n\n\n## Recommendation\n\nRemove the package from your environment and ensure all packages owned were not impacted.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-gcfc-mgg3-8j2c",
+      "publishedAt": "2020-09-03T18:11:29Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gcfc-mgg3-8j2c"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

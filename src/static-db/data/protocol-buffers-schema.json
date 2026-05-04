@@ -1,0 +1,33 @@
+{
+  "packageName": "protocol-buffers-schema",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j452-xhg8-qg39",
+      "packageName": "protocol-buffers-schema",
+      "title": "Mafintosh's protocol-buffers-schema is vulnerable to prototype pollution",
+      "description": "JavaScript is vulnerable to prototype pollution in Mafintosh's protocol-buffers-schema Version 3.6.0, where an attacker may alter the application logic, bypass security checks, cause a DoS or achieve remote code execution.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j452-xhg8-qg39",
+      "publishedAt": "2026-04-15T18:31:58Z",
+      "modifiedAt": "2026-04-16T21:33:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j452-xhg8-qg39"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-5758"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.6.1",
+          "fixed": "3.6.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

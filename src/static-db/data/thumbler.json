@@ -1,0 +1,32 @@
+{
+  "packageName": "thumbler",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mvhf-547c-h55r",
+      "packageName": "thumbler",
+      "title": "thumbler allows OS Command Injection",
+      "description": "thumbler through 1.1.2 allows OS command injection via the input, output, time, or size parameter in the thumbnail() function because user input is concatenated into a shell command string passed to child_process.exec() without proper sanitization or escaping.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mvhf-547c-h55r",
+      "publishedAt": "2026-03-25T18:31:47Z",
+      "modifiedAt": "2026-03-31T23:24:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mvhf-547c-h55r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26833"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,7 +1,34 @@
 {
   "packageName": "@auth0/nextjs-auth0",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-xq8m-7c5p-c2r6",
+      "packageName": "@auth0/nextjs-auth0",
+      "title": "Auth0 Next.js SDK has Improper Proxy Cache Lookup",
+      "description": "### Description\nIn affected versions of the Next.js SDK, simultaneous requests that trigger a nonce retry may cause the proxy cache fetcher to perform improper lookups for the token request results.\n\n### Which Projects are Affected?\nUsers are affected if they meet all of the following preconditions:\n- Applications using the auth0/nextjs-auth0 SDK, versions 4.12.0 to 4.17.0, and\n- Applications using the proxy handler  /me/* and /my-org/* with DPoP enabled.\n\n\n### Affected product and versions\nAuth",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xq8m-7c5p-c2r6",
+      "publishedAt": "2026-04-21T15:21:46Z",
+      "modifiedAt": "2026-04-21T15:21:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xq8m-7c5p-c2r6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-40155"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.12.0, <= 4.17.0",
+          "fixed": "4.18.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-mr6f-h57v-rpj5",
       "packageName": "@auth0/nextjs-auth0",

@@ -1,0 +1,32 @@
+{
+  "packageName": "serc.js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vcph-57hv-89c4",
+      "packageName": "serc.js",
+      "title": "Downloads Resources over HTTP in serc.js",
+      "description": "Affected versions of `serc.js` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `serc.js`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vcph-57hv-89c4",
+      "publishedAt": "2019-02-18T23:42:11Z",
+      "modifiedAt": "2023-01-09T05:03:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vcph-57hv-89c4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10678"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

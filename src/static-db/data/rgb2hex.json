@@ -1,6 +1,6 @@
 {
   "packageName": "rgb2hex",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7599-fqgm-v84p",
@@ -19,6 +19,29 @@
         {
           "type": "CVE",
           "value": "CVE-2018-25061"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.1.6",
+          "fixed": "0.1.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-65p8-3hm4-h9h8",
+      "packageName": "rgb2hex",
+      "title": "Denial of Service in rgb2hex",
+      "description": "All versions of `rgb2hex` are vulnerable to Regular Expression Denial of Service (ReDoS) when an attacker can pass in a specially crafted invalid color value.\n\n\n## Recommendation\n\nUpdate to version 0.1.6 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-65p8-3hm4-h9h8",
+      "publishedAt": "2019-08-23T00:04:48Z",
+      "modifiedAt": "2023-01-09T05:02:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-65p8-3hm4-h9h8"
         }
       ],
       "affectedVersions": [

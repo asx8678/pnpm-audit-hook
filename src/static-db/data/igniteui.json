@@ -1,0 +1,32 @@
+{
+  "packageName": "igniteui",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2r5h-gh4x-8hp9",
+      "packageName": "igniteui",
+      "title": "Resources Downloaded over Insecure Protocol in igniteui",
+      "description": "Affected versions of `igniteui` download Javascript and CSS resources over an unencrypted HTTP connection. An attacker with a privileged network position can intercept and view or modify any content sent or recieved over an unencrypted HTTP connection.\n\n\n\n\n## Recommendation\n\nThe `igniteui` package has been deprecated by the package author and now exists under [`ignite-ui`](https://preview.npmjs.com/package/ignite-ui), which should be used in place of this package.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-2r5h-gh4x-8hp9",
+      "publishedAt": "2019-02-18T23:40:14Z",
+      "modifiedAt": "2023-01-09T05:02:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2r5h-gh4x-8hp9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10552"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

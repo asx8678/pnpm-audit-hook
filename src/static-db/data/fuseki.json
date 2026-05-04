@@ -1,0 +1,33 @@
+{
+  "packageName": "fuseki",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3627-w2qr-5fxr",
+      "packageName": "fuseki",
+      "title": "fuseki downloads Resources over HTTP",
+      "description": "Affected versions of `fuseki` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `fuseki`.\n\n\n## Recommendation\n\nUpdate to version 1.0.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3627-w2qr-5fxr",
+      "publishedAt": "2019-02-18T23:52:07Z",
+      "modifiedAt": "2023-09-13T19:16:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3627-w2qr-5fxr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10576"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.1",
+          "fixed": "1.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

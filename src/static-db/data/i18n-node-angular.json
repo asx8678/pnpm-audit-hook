@@ -1,0 +1,33 @@
+{
+  "packageName": "i18n-node-angular",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-97gv-3p2c-xw7j",
+      "packageName": "i18n-node-angular",
+      "title": "Denial of Service and Content Injection in i18n-node-angular",
+      "description": "Versions of `i18n-node-angular` prior to 1.4.0 are affected by denial of service and cross-site scripting vulnerabilities. The vulnerabilities exist in a REST endpoint that was created for development purposes, but was not disabled in production in affected versions.\n\n\n## Recommendation\n\nUpdate to version 1.4.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-97gv-3p2c-xw7j",
+      "publishedAt": "2019-02-18T23:39:06Z",
+      "modifiedAt": "2023-02-01T05:03:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-97gv-3p2c-xw7j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10524"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.0",
+          "fixed": "1.4.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

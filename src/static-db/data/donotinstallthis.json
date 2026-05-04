@@ -1,0 +1,28 @@
+{
+  "packageName": "donotinstallthis",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-73hr-6785-f5p8",
+      "packageName": "donotinstallthis",
+      "title": "Malicious Package in donotinstallthis",
+      "description": "The package `donotinstallthis` contained malicious code. The package contained a script that was run as part of the install script. The script contacted a remote service tracking how many installations were done. There is no further compromise.\n\n\n## Recommendation\n\nRemove the package from your environment.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-73hr-6785-f5p8",
+      "publishedAt": "2020-09-02T21:24:55Z",
+      "modifiedAt": "2023-01-09T05:03:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-73hr-6785-f5p8"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

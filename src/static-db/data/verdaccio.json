@@ -1,0 +1,33 @@
+{
+  "packageName": "verdaccio",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-78j5-gcmf-vqc8",
+      "packageName": "verdaccio",
+      "title": "Cross-Site Scripting (XSS) in Verdaccio",
+      "description": "### Impact\nWhat kind of vulnerability is it? Who is impacted?\n\nCross-Site Scripting XSS, malicious packages with content Javascript that might be executed in the User Interface stealing user credentials. \n\n### Patches\nHas the problem been patched? What versions should users upgrade to?\n\nUsers that still using `v3` must upgrade to **>3.12.0** or those have no problem to migrate to a major version **>=4.0.0** also fix the issue.\n\n### Workarounds\nIs there a way for users to fix or remediate the vul",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-78j5-gcmf-vqc8",
+      "publishedAt": "2019-05-29T18:02:59Z",
+      "modifiedAt": "2023-01-09T05:02:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-78j5-gcmf-vqc8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-14772"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.12.0",
+          "fixed": "3.12.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,7 +1,221 @@
 {
   "packageName": "liquidjs",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-4rc3-7j7w-m548",
+      "packageName": "liquidjs",
+      "title": "liquidjs has a Denial of Service via circular block reference in layout",
+      "description": "### Summary\n\nA circular block reference in `{% layout %}` / `{% block %}` causes an infinite recursive loop, consuming all available memory (~4GB) and crashing the Node.js process with `FATAL ERROR: JavaScript heap out of memory`. This allows any user who can submit a Liquid template to perform a Denial of Service attack.\n\n### Details\n\nIn `src/tags/block.ts`, during OUTPUT mode, each block looks up its render function from `ctx.getRegister('blocks')[this.block]`. When a block with name `a` is ne",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4rc3-7j7w-m548",
+      "publishedAt": "2026-04-24T15:34:00Z",
+      "modifiedAt": "2026-04-24T15:34:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4rc3-7j7w-m548"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41311"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 10.25.7",
+          "fixed": "10.25.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-56p5-8mhr-2fph",
+      "packageName": "liquidjs",
+      "title": "LiquidJS: Root restriction bypass for partial and layout loading through symlinked templates",
+      "description": "### Summary\n\nLiquidJS enforces partial and layout root restrictions using the resolved pathname string, but it does not resolve the canonical filesystem path before opening the file. A symlink placed inside an allowed partials or layouts directory can therefore point to a file outside that directory and still be loaded.\n\n### Details\n\nFor `{% include %}`, `{% render %}`, and `{% layout %}`, LiquidJS checks whether the candidate path is inside the configured partials or layouts roots before readin",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-56p5-8mhr-2fph",
+      "publishedAt": "2026-04-08T15:03:47Z",
+      "modifiedAt": "2026-04-10T21:34:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-56p5-8mhr-2fph"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35525"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 10.25.2",
+          "fixed": "10.25.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v273-448j-v4qj",
+      "packageName": "liquidjs",
+      "title": "LiquidJS: `renderFile()` / `parseFile()` bypass configured `root` and allow arbitrary file read",
+      "description": "`liquidjs` 10.25.0 documents `root` as constraining filenames passed to `renderFile()` and `parseFile()`, but top-level file loads do not enforce that boundary.\n\nThe published npm package `liquidjs@10.25.0` on Linux 6.17.0 with Node v22.22.1. A `Liquid` instance configured with an empty temporary directory as `root` still returned the contents of `/etc/hosts` when `renderFile('/etc/hosts')` was called. I have not exhaustively checked older releases yet; 10.25.0 is the latest tested version.\n\nRoo",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v273-448j-v4qj",
+      "publishedAt": "2026-04-08T15:04:44Z",
+      "modifiedAt": "2026-04-09T14:29:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v273-448j-v4qj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39859"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 10.25.4",
+          "fixed": "10.25.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rv5g-f82m-qrvv",
+      "packageName": "liquidjs",
+      "title": "LiquidJS: ownPropertyOnly bypass via sort_natural filter — prototype property information disclosure through sorting side-channel",
+      "description": "### Summary\n\nThe `sort_natural` filter bypasses the `ownPropertyOnly` security option, allowing template authors to extract values of prototype-inherited properties through a sorting side-channel attack. Applications relying on `ownPropertyOnly: true` as a security boundary (e.g., multi-tenant template systems) are exposed to information disclosure of sensitive prototype properties such as API keys and tokens.\n\n### Details\n\nIn `src/filters/array.ts`, the `sort_natural` function (lines 40-48) acc",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rv5g-f82m-qrvv",
+      "publishedAt": "2026-04-08T15:04:39Z",
+      "modifiedAt": "2026-04-09T14:29:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rv5g-f82m-qrvv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39412"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 10.25.3",
+          "fixed": "10.25.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mmg9-6m6j-jqqx",
+      "packageName": "liquidjs",
+      "title": "LiquidJS Has Memory Limit Bypass via Quadratic Amplification in `replace` Filter",
+      "description": "## Summary\n\nThe `replace` filter in LiquidJS incorrectly accounts for memory usage when the `memoryLimit` option is enabled. It charges `str.length + pattern.length + replacement.length` bytes to the memory limiter, but the actual output from `str.split(pattern).join(replacement)` can be quadratically larger when the pattern occurs many times in the input string. This allows an attacker who controls template content to bypass the `memoryLimit` DoS protection with approximately 2,500x amplificati",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-mmg9-6m6j-jqqx",
+      "publishedAt": "2026-04-08T15:00:29Z",
+      "modifiedAt": "2026-04-09T14:28:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mmg9-6m6j-jqqx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34166"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 10.25.2",
+          "fixed": "10.25.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9r5m-9576-7f6x",
+      "packageName": "liquidjs",
+      "title": "LiquidJS: memoryLimit Bypass through Negative Range Values Leads to Process Crash",
+      "description": "### Summary\n\nLiquidJS's `memoryLimit` security mechanism can be completely bypassed by using reverse range expressions (e.g., `(100000000..1)`), allowing an attacker to allocate unlimited memory. Combined with a string flattening operation (e.g., `replace` filter), this causes a **V8 Fatal error that crashes the Node.js process**, resulting in complete denial of service from a single HTTP request.\n\n### Details\nWhen LiquidJS evaluates a range token `(low..high)`, it calls `ctx.memoryLimit.use(hig",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9r5m-9576-7f6x",
+      "publishedAt": "2026-03-25T17:40:53Z",
+      "modifiedAt": "2026-03-30T13:53:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9r5m-9576-7f6x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33285"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 10.24.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6q5m-63h6-5x4v",
+      "packageName": "liquidjs",
+      "title": "LiquidJS has Exponential Memory Amplification through its replace_first Filter $& Pattern",
+      "description": "### Summary\nThe `replace_first` filter in LiquidJS uses JavaScript's `String.prototype.replace()` which interprets `$&` as a backreference to the matched substring. The filter only charges `memoryLimit` for the input string length, not the amplified output. An attacker can achieve exponential memory amplification (up to 625,000:1) while staying within the `memoryLimit` budget, leading to denial of service.\n\n### Details\nThe `replace_first` filter in `src/builtin/filters/string.ts:130-133` delegat",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6q5m-63h6-5x4v",
+      "publishedAt": "2026-03-25T17:44:23Z",
+      "modifiedAt": "2026-03-30T13:53:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6q5m-63h6-5x4v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33287"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 10.24.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wmfp-5q7x-987x",
+      "packageName": "liquidjs",
+      "title": "liquidjs has a path traversal fallback vulnerability",
+      "description": "### Impact\nThe `layout`, `render`, and `include` tags allow arbitrary file access via absolute paths (either as string literals or through Liquid variables, the latter require `dynamicPartials: true`, which is the default). This poses a security risk when malicious users are allowed to control the template content or specify the filepath to be included as a Liquid variable.\n\n### Patches\nThe root cause is LiquidJS allows `require.resolve()` as fallback but doesn't limit the directories it can res",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wmfp-5q7x-987x",
+      "publishedAt": "2026-03-10T01:04:34Z",
+      "modifiedAt": "2026-03-12T14:25:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wmfp-5q7x-987x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30952"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 10.25.0",
+          "fixed": "10.25.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-45rm-2893-5f49",
       "packageName": "liquidjs",

@@ -1,0 +1,32 @@
+{
+  "packageName": "general-file-server",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wv2f-3rxv-jqhp",
+      "packageName": "general-file-server",
+      "title": "Path Traversal in general-file-server",
+      "description": "All versions of `general-file-server` are vulnerable to path traversal.\n\n\n## Recommendation\n\nNo fix is currently available for this vulnerability. It is our recommendation to not use this module until a fix has been provided.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wv2f-3rxv-jqhp",
+      "publishedAt": "2018-07-26T15:21:04Z",
+      "modifiedAt": "2023-09-07T22:28:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wv2f-3rxv-jqhp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3724"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.8"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

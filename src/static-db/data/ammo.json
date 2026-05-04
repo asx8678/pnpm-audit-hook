@@ -1,0 +1,28 @@
+{
+  "packageName": "ammo",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mg85-8mv5-ffjr",
+      "packageName": "ammo",
+      "title": "Denial of Service in ammo",
+      "description": "All versions of `ammo` are vulnerable to Denial of Service. The Range HTTP header parser has a vulnerability which will cause the function to throw a system error if the header is set to an invalid value. Because hapi is not expecting the function to ever throw, the error is thrown all the way up the stack. If no unhandled exception handler is available, the application will exist, allowing an attacker to shut down services.\n\n\n## Recommendation\n\nThis package is deprecated and is now maintained a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mg85-8mv5-ffjr",
+      "publishedAt": "2020-09-03T15:45:40Z",
+      "modifiedAt": "2023-01-09T05:04:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mg85-8mv5-ffjr"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

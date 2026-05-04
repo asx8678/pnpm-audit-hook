@@ -1,0 +1,29 @@
+{
+  "packageName": "buefy",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xwqw-rf2q-xmhf",
+      "packageName": "buefy",
+      "title": "Cross-Site Scripting in buefy",
+      "description": "Versions of buefy prior to 0.7.2 are vulnerable to Cross-Site Scripting, allowing attackers to manipulate the DOM and execute remote code. The autocomplete list renders user input as HTML without encoding.\n\n\n## Recommendation\n\nUpgrade to version 0.7.2 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xwqw-rf2q-xmhf",
+      "publishedAt": "2020-09-01T21:23:38Z",
+      "modifiedAt": "2023-01-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xwqw-rf2q-xmhf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.7.2",
+          "fixed": "0.7.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

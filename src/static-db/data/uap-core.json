@@ -1,7 +1,34 @@
 {
   "packageName": "uap-core",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-cmcx-xhr8-3w9p",
+      "packageName": "uap-core",
+      "title": "Denial of Service in uap-core when processing crafted User-Agent strings",
+      "description": "### Impact\n\nSome regexes are vulnerable to regular expression denial of service (REDoS) due to overlapping capture groups. This allows remote attackers to overload a server by setting the User-Agent header in an HTTP(S) request to maliciously crafted long strings.\n\n### Patches\n\nPlease update uap-core to &amp;amp;gt;= v0.7.3\n\nDownstream packages such as uap-python, uap-ruby etc which depend upon uap-core follow different version schemes.\n\n### Details\n\nEach vulnerable regular expression reported h",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cmcx-xhr8-3w9p",
+      "publishedAt": "2020-02-20T23:26:10Z",
+      "modifiedAt": "2024-02-08T22:49:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cmcx-xhr8-3w9p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-5243"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.7.3",
+          "fixed": "0.7.3"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-p4pj-mg4r-x6v4",
       "packageName": "uap-core",
@@ -25,6 +52,33 @@
         {
           "range": "< 0.11.0",
           "fixed": "0.11.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fx7m-j728-mjw3",
+      "packageName": "uap-core",
+      "title": "uap-core Regular Expression Denial of Service issue",
+      "description": "An issue was discovered in regex.yaml (aka regexes.yaml) in UA-Parser UAP-Core before 0.6.0. A Regular Expression Denial of Service (ReDoS) issue allows remote attackers to overload a server by setting the User-Agent header in an HTTP(S) request to a value containing a long digit string. (The UAP-Core project contains the vulnerability, propagating to all implementations.)",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fx7m-j728-mjw3",
+      "publishedAt": "2019-03-06T17:35:47Z",
+      "modifiedAt": "2023-01-23T17:07:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fx7m-j728-mjw3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-20164"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.6.0",
+          "fixed": "0.6.0"
         }
       ],
       "source": "github"

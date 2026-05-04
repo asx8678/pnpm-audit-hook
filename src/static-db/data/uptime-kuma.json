@@ -1,7 +1,34 @@
 {
   "packageName": "uptime-kuma",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-c7hf-c5p5-5g6h",
+      "packageName": "uptime-kuma",
+      "title": "Uptime Kuma is Missing Authorization Checks on Ping Badge Endpoint, Leaks Ping times of monitors without needing to be on a status page",
+      "description": "## Summary\n\nThe `GET /api/badge/:id/ping/:duration?` endpoint in `server/routers/api-router.js` does not verify that the requested monitor belongs to a public group. All other badge endpoints check `AND public = 1` in their SQL query before returning data. The ping endpoint skips this check entirely, allowing unauthenticated users to extract average ping/response time data for private monitors.\n\n## Affected Code\n\nFile: `server/routers/api-router.js`, approximately line 304\n\nThe ping badge endpoi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c7hf-c5p5-5g6h",
+      "publishedAt": "2026-03-12T14:47:39Z",
+      "modifiedAt": "2026-03-13T13:35:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c7hf-c5p5-5g6h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32230"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, <= 2.1.3",
+          "fixed": "2.2.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-vffh-c9pq-4crh",
       "packageName": "uptime-kuma",

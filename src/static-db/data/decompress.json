@@ -1,0 +1,33 @@
+{
+  "packageName": "decompress",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qgfr-5hqp-vrw9",
+      "packageName": "decompress",
+      "title": "Path Traversal in decompress",
+      "description": "Versions of `decompress` prior to 4.2.1 are vulnerable to Arbitrary File Write. The package fails to prevent extraction of files with relative paths, allowing attackers to write to any folder in the system by including filenames containing`../`.\n\n\n## Recommendation\n\nUpgrade to version 4.2.1 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qgfr-5hqp-vrw9",
+      "publishedAt": "2020-09-03T21:16:27Z",
+      "modifiedAt": "2023-04-18T14:49:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qgfr-5hqp-vrw9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-12265"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.2.1",
+          "fixed": "4.2.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

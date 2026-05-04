@@ -1,0 +1,28 @@
+{
+  "packageName": "buffer-yor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g2c4-4m64-vxm3",
+      "packageName": "buffer-yor",
+      "title": "Malicious Package in buffer-yor",
+      "description": "Version 2.0.2 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-g2c4-4m64-vxm3",
+      "publishedAt": "2020-09-03T22:15:25Z",
+      "modifiedAt": "2023-01-09T05:04:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g2c4-4m64-vxm3"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

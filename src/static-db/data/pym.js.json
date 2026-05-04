@@ -1,0 +1,33 @@
+{
+  "packageName": "pym.js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-82gw-pqf7-q3j2",
+      "packageName": "pym.js",
+      "title": "pym.js CSRF Vulnerability",
+      "description": "NPR Visuals Team Pym.js version versions 0.4.2 up to 1.3.1 contains a Cross Site Request Forgery (CSRF) vulnerability in Pym.js `_onNavigateToMessage` function. \n\nhttps://github.com/nprapps/pym.js/blob/master/src/pym.js#L573 can result in Arbitrary javascript code execution. This attack appears to be exploitable if the Attacker gains full javascript access to pages with Pym.js embeds, or when user visits an attacker-crafted page. This vulnerability appears to have been fixed in versions 1.3.2 an",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-82gw-pqf7-q3j2",
+      "publishedAt": "2018-03-13T20:38:51Z",
+      "modifiedAt": "2023-09-11T18:19:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-82gw-pqf7-q3j2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-1000086"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.4.2, <= 1.3.1",
+          "fixed": "1.3.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "packageName": "veval",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-54qm-37qr-w5wq",
+      "packageName": "veval",
+      "title": "Sandbox Breakout / Arbitrary Code Execution in veval",
+      "description": "All versions of `veval` are vulnerable to Sandbox Escape leading to Remote Code Execution. The package fails to restrict access to the main context through `this.constructor.constructor` . This may allow attackers to execute arbitrary code in the system. Evaluating the payload `this.constructor.constructor('return process.env')()` prints the contents of `process.env`.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-54qm-37qr-w5wq",
+      "publishedAt": "2020-09-04T15:04:20Z",
+      "modifiedAt": "2023-01-09T05:04:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-54qm-37qr-w5wq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

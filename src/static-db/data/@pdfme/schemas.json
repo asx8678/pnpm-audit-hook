@@ -1,0 +1,75 @@
+{
+  "packageName": "@pdfme/schemas",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xgx4-2wgv-4jhm",
+      "packageName": "@pdfme/schemas",
+      "title": "PDFME  has XSS via Unsanitized i18n Label Injection into innerHTML in multiVariableText propPanel",
+      "description": "## Summary\n\nThe multiVariableText property panel in `@pdfme/schemas` constructs HTML via string concatenation and assigns it to `innerHTML` using unsanitized i18n label values. An attacker who can control label overrides passed through `options.labels` can inject arbitrary JavaScript that executes in the context of any user who opens the Designer and selects a multiVariableText field with no `{variables}` in its text.\n\n## Details\n\nWhen a user selects a multiVariableText schema field that contain",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xgx4-2wgv-4jhm",
+      "publishedAt": "2026-03-20T20:45:08Z",
+      "modifiedAt": "2026-03-20T20:45:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xgx4-2wgv-4jhm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.5.9",
+          "fixed": "5.5.10"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-87v3-4cfp-cm76",
+      "packageName": "@pdfme/schemas",
+      "title": "Cross-Site Scripting (XSS) via SVG Schema innerHTML Injection in @pdfme/schemas",
+      "description": "## Summary\n\nThe SVG schema plugin in `@pdfme/schemas` renders user-supplied SVG content using `container.innerHTML = value` without any sanitization, enabling arbitrary JavaScript execution in the user's browser.\n\n## Details\n\nIn `packages/schemas/src/graphics/svg.ts`, line 87, the SVG schema's `ui` renderer assigns raw SVG markup directly to `innerHTML` when in viewer mode or form mode with `readOnly: true`:\n\n```typescript\n// svg.ts, line 81-94 (non-editable rendering path)\n} else {\n  if (!value",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-87v3-4cfp-cm76",
+      "publishedAt": "2026-03-18T16:10:26Z",
+      "modifiedAt": "2026-03-18T16:10:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-87v3-4cfp-cm76"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.5.8",
+          "fixed": "5.5.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qq9g-96v4-m3cj",
+      "packageName": "@pdfme/schemas",
+      "title": "Cross-Site Scripting (XSS) via Select Schema Option Value Injection in @pdfme/schemas",
+      "description": "## Summary\n\nThe Select schema plugin in `@pdfme/schemas` constructs HTML from template-defined option values using unsanitized string interpolation and sets it via `innerHTML`, enabling arbitrary JavaScript execution.\n\n## Details\n\nIn `packages/schemas/src/select/index.ts`, lines 159-164, the Select schema's `ui` renderer builds `<option>` elements by directly interpolating option values from the template into an HTML string:\n\n```typescript\nconst options = Array.isArray(schema.options) ? schema.o",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qq9g-96v4-m3cj",
+      "publishedAt": "2026-03-18T16:10:16Z",
+      "modifiedAt": "2026-03-18T16:10:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qq9g-96v4-m3cj"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.5.8",
+          "fixed": "5.5.9"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

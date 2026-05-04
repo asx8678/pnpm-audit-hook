@@ -1,0 +1,29 @@
+{
+  "packageName": "open",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-28xh-wpgr-7fm8",
+      "packageName": "open",
+      "title": "Command Injection in open",
+      "description": "Versions of `open` before 6.0.0 are vulnerable to command injection when unsanitized user input is passed in.\n\nThe package does come with the following warning in the readme:\n\n```\nThe same care should be taken when calling open as if you were calling child_process.exec directly. If it is an executable it will run in a new shell.\n```\n\n\n## Recommendation\n\n`open` is now the deprecated `opn` package. Upgrading to the latest version is likely have unwanted effects since it now has a very different AP",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-28xh-wpgr-7fm8",
+      "publishedAt": "2019-06-20T15:35:49Z",
+      "modifiedAt": "2023-01-09T05:01:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-28xh-wpgr-7fm8"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.0.0",
+          "fixed": "6.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

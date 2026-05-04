@@ -1,0 +1,33 @@
+{
+  "packageName": "operadriver",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2wrq-wmqf-8vcc",
+      "packageName": "operadriver",
+      "title": "Downloads Resources over HTTP in operadriver",
+      "description": "operadriver is a Opera Driver for Selenium.\n\noperadriver versions below 0.2.3 download binary resources over HTTP, which leaves it vulnerable to MITM attacks.  It may be possible to cause remote code execution (RCE) by swapping out the requested binary with an attacker controlled binary if the attacker is on the network or positioned in between the user and the remote server.\n\n\n## Recommendation\n\nUpdate to version 0.2.3 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2wrq-wmqf-8vcc",
+      "publishedAt": "2019-02-18T23:35:48Z",
+      "modifiedAt": "2023-01-09T05:02:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2wrq-wmqf-8vcc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10565"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.2.3",
+          "fixed": "0.2.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

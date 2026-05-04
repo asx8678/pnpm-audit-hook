@@ -1,0 +1,32 @@
+{
+  "packageName": "node-serialize",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q4v7-4rhw-9hqm",
+      "packageName": "node-serialize",
+      "title": "Code Execution through IIFE in node-serialize",
+      "description": "Affected versions of `node-serialize` can be abused to execute arbitrary code via an [immediately invoked function expression](https://en.wikipedia.org/wiki/Immediately-invoked_function_expression) (IIFE) if untrusted user input is passed into `unserialize()`.\n\n\n## Recommendation\n\nThere is no direct patch for this issue. The package author has reviewed this advisory, and provided the following recommendation:\n\n```\nTo avoid the security issues, at least one of the following methods should be take",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-q4v7-4rhw-9hqm",
+      "publishedAt": "2018-07-18T18:27:56Z",
+      "modifiedAt": "2023-02-01T05:04:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q4v7-4rhw-9hqm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-5941"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

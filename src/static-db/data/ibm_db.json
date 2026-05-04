@@ -1,0 +1,56 @@
+{
+  "packageName": "ibm_db",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c4qp-h3m6-785f",
+      "packageName": "ibm_db",
+      "title": "ibm_db downloads Resources over HTTP",
+      "description": "Affected versions of `ibm_db` insecurely download resources over HTTP. \n\nIn scenarios where an attacker has a privileged network position, they can modify or read such resources at will. While the exact severity of impact for a vulnerability like this is highly variable and depends on the behavior of the package itself, it ranges from being able to read sensitive information all the way up to and including remote code execution.\n\n\n## Recommendation\n\nUpdate to version 1.0.2 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-c4qp-h3m6-785f",
+      "publishedAt": "2019-02-18T23:51:59Z",
+      "modifiedAt": "2023-09-16T05:02:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c4qp-h3m6-785f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10577"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.2",
+          "fixed": "1.0.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p77h-hv6g-fmfp",
+      "packageName": "ibm_db",
+      "title": "Sensitive Data Exposure in ibm_db",
+      "description": "Versions of `ibm_db` prior to 2.6.0 are vulnerable to Sensitive Data Exposure. The package printed database credentials in plaintext in logs while in debug mode.\n\n\n## Recommendation\n\nUpgrade to version 2.6.0 or later and ensure sensitive information was not logged.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p77h-hv6g-fmfp",
+      "publishedAt": "2020-09-03T20:43:16Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p77h-hv6g-fmfp"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.6.0",
+          "fixed": "2.6.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

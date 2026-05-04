@@ -1,0 +1,55 @@
+{
+  "packageName": "content",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5854-jvxx-2cg9",
+      "packageName": "content",
+      "title": "Denial of Service in content",
+      "description": "Versions of `content` are vulnerable to Denial of Service. The Content-Encoding HTTP header parser has a vulnerability which will cause the function to throw a system error if the header contains some invalid values. Because hapi rethrows system errors (as opposed to catching expected application errors), the error is thrown all the way up the stack. If no unhandled exception handler is available, the application will exist, allowing an attacker to shut down services.\n\n## Recommendation\n\nThis pa",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5854-jvxx-2cg9",
+      "publishedAt": "2020-09-03T15:46:57Z",
+      "modifiedAt": "2025-09-29T20:50:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5854-jvxx-2cg9"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x6wp-rfwh-hcx7",
+      "packageName": "content",
+      "title": "Regular Expression Denial of Service in content",
+      "description": "Affected versions of `content` are vulnerable to a regular expression denial of service when parsing malicious `Content-Type` and `Content-Disposition` headers.\n\n\n## Recommendation\n\nUpdate to version 3.0.6 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x6wp-rfwh-hcx7",
+      "publishedAt": "2018-07-24T19:55:05Z",
+      "modifiedAt": "2023-09-08T19:20:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x6wp-rfwh-hcx7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16111"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.7",
+          "fixed": "3.0.7"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,34 +1,7 @@
 {
   "packageName": "simple-markdown",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
-    {
-      "id": "GHSA-j533-2g8v-pmpg",
-      "packageName": "simple-markdown",
-      "title": "Regular Expression Denial of Service in simple-markdown",
-      "description": "A vulnerability, which was classified as problematic, was found in simple-markdown 0.6.0. Affected is an unknown function of the file simple-markdown.js. The manipulation with the input <<<<<<<<<<:/:/:/:/:/:/:/:/:/:/ leads to inefficient regular expression complexity. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. Upgrading to version 0.6.1 is able to address this issue. The name of the patch is 015a719bf5cdc561feea05500ecb3274ef609cd2",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-j533-2g8v-pmpg",
-      "publishedAt": "2023-02-12T15:30:25Z",
-      "modifiedAt": "2023-10-20T22:44:34Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-j533-2g8v-pmpg"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2019-25102"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 0.6.1",
-          "fixed": "0.6.1"
-        }
-      ],
-      "source": "github"
-    },
     {
       "id": "GHSA-gpvj-gp8c-c7p2",
       "packageName": "simple-markdown",
@@ -37,7 +10,7 @@
       "severity": "high",
       "url": "https://github.com/advisories/GHSA-gpvj-gp8c-c7p2",
       "publishedAt": "2023-02-12T15:30:24Z",
-      "modifiedAt": "2023-10-20T22:44:19Z",
+      "modifiedAt": "2026-02-03T17:53:02Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -75,6 +48,60 @@
         {
           "range": "< 0.5.2",
           "fixed": "0.5.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-j533-2g8v-pmpg",
+      "packageName": "simple-markdown",
+      "title": "Regular Expression Denial of Service in simple-markdown",
+      "description": "A vulnerability, which was classified as problematic, was found in simple-markdown 0.6.0. Affected is an unknown function of the file simple-markdown.js. The manipulation with the input <<<<<<<<<<:/:/:/:/:/:/:/:/:/:/ leads to inefficient regular expression complexity. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. Upgrading to version 0.6.1 is able to address this issue. The name of the patch is 015a719bf5cdc561feea05500ecb3274ef609cd2",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j533-2g8v-pmpg",
+      "publishedAt": "2023-02-12T15:30:25Z",
+      "modifiedAt": "2023-10-20T22:44:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j533-2g8v-pmpg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-25102"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.6.1",
+          "fixed": "0.6.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qj3f-9gmq-fwv5",
+      "packageName": "simple-markdown",
+      "title": "Cross-Site Scripting in simple-markdown",
+      "description": "Versions of `simple-markdown` prior to 0.4.4 are vulnerable to Cross-Site Scripting. Due to insufficient input sanitization the package may render output containing malicious JavaScript. This vulnerability can be exploited through input of links containing `data` or VBScript URIs and a base64-encoded payload.\n\n\n## Recommendation\n\nUpgrade to version 0.4.4 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qj3f-9gmq-fwv5",
+      "publishedAt": "2019-04-09T19:47:29Z",
+      "modifiedAt": "2023-01-09T05:03:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qj3f-9gmq-fwv5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-9844"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.4.4",
+          "fixed": "0.4.4"
         }
       ],
       "source": "github"

@@ -1,0 +1,32 @@
+{
+  "packageName": "grunt-ccompiler",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cmj2-m9m2-6726",
+      "packageName": "grunt-ccompiler",
+      "title": "Downloads Resources over HTTP in grunt-ccompiler",
+      "description": "Affected versions of `grunt-ccompiler` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `grunt-ccompiler`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability, and the repository has been deleted from the owner's github account.\n\nThe best mitigat",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cmj2-m9m2-6726",
+      "publishedAt": "2019-02-18T23:47:11Z",
+      "modifiedAt": "2023-01-09T05:03:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cmj2-m9m2-6726"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10636"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

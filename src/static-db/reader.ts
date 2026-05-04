@@ -1,7 +1,6 @@
 import { join, relative, sep } from "path";
 import type {
   VulnerabilityFinding,
-  Severity,
   FindingSource,
   VulnerabilityIdentifier,
 } from "../types";
@@ -341,7 +340,6 @@ export interface QueryPerformanceMetrics {
 class StaticDbReaderImpl implements StaticDbReader {
   private dataPath: string;
   private cutoffDate: string;
-  private useOptimized: boolean;
   private index: StaticDbIndex | null = null;
   private optimizedIndex: OptimizedIndex | null = null;
   private packageCache: LruCache<string, PackageShard>;
@@ -354,7 +352,6 @@ class StaticDbReaderImpl implements StaticDbReader {
   constructor(config: StaticDbReaderConfig) {
     this.dataPath = config.dataPath;
     this.cutoffDate = config.cutoffDate;
-    this.useOptimized = config.useOptimized ?? true;
     const packageCacheMaxEntries = Math.max(0, config.packageCacheMaxEntries ?? 2000);
     this.packageCache = new LruCache<string, PackageShard>(packageCacheMaxEntries);
     this.queryCacheMaxEntries = Math.max(0, config.queryCacheMaxEntries ?? 1000);

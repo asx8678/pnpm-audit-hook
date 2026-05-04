@@ -1,7 +1,61 @@
 {
   "packageName": "shescape",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-6f6w-6j58-rq76",
+      "packageName": "shescape",
+      "title": "Withdrawn Advisory: Shescape has possible misidentification of shell due to link chains",
+      "description": "## Withdrawn Advisory\n\nThis advisory has been withdrawn because it falls outside the https://github.com/ericcornelissen/shescape/blob/a2544a1c78cae19d0e81a485b997bf0b0fcc2c12/SECURITY.md#threat-model. This link is maintained to preserve external references.\n\n## Original Description\n### Impact\n\nThis impacts users of Shescape that configure their `shell` to point to a file on disk that is a link to a link. The precise result of being affected depends on the actual shell used and incorrect shell id",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-6f6w-6j58-rq76",
+      "publishedAt": "2026-03-07T02:31:58Z",
+      "modifiedAt": "2026-03-20T19:53:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6f6w-6j58-rq76"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30916"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.1.8",
+          "fixed": "2.1.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9jfh-9xrq-4vwm",
+      "packageName": "shescape",
+      "title": "Shescape escape() leaves bracket glob expansion active on Bash, BusyBox, and Dash",
+      "description": "### Summary\n\n`Shescape#escape()` does not escape square-bracket glob syntax for Bash, BusyBox `sh`, and Dash. Applications that interpolate the return value directly into a shell command string can cause an attacker-controlled value like `secret[12]` to expand into multiple filesystem matches instead of a single literal argument, turning one argument into multiple trusted-pathname matches.\n\n### Details\n\nThe unquoted Unix escape helpers never add `[` or `]` to their “special characters” regexes:\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9jfh-9xrq-4vwm",
+      "publishedAt": "2026-03-11T19:53:53Z",
+      "modifiedAt": "2026-03-11T21:38:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9jfh-9xrq-4vwm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32094"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.10",
+          "fixed": "2.1.10"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-66pp-5p9w-q87j",
       "packageName": "shescape",
@@ -214,29 +268,6 @@
         {
           "range": ">= 1.4.0, < 1.5.8",
           "fixed": "1.5.8"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-6f6w-6j58-rq76",
-      "packageName": "shescape",
-      "title": "Shescape has possible misidentification of shell due to link chains",
-      "description": "### Impact\n\nThis impacts users of Shescape that configure their `shell` to point to a file on disk that is a link to a link. The precise result of being affected depends on the actual shell used and incorrect shell identified by Shescape.\n\nIn particular, an attacker may be able to bypass escaping for the shell being used. This can result, for example, in exposure of sensitive information, consider the following proof of concept (targeting Shescape v2):\n\n```javascript\nimport fs from \"node:fs\";\nim",
-      "severity": "low",
-      "url": "https://github.com/advisories/GHSA-6f6w-6j58-rq76",
-      "publishedAt": "2026-03-07T02:31:58Z",
-      "modifiedAt": "2026-03-07T02:32:00Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-6f6w-6j58-rq76"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 2.1.8",
-          "fixed": "2.1.9"
         }
       ],
       "source": "github"

@@ -1,0 +1,33 @@
+{
+  "packageName": "pdfinfojs",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3pxp-6963-46r9",
+      "packageName": "pdfinfojs",
+      "title": "Command Injection in pdfinfojs",
+      "description": "Versions of `pdfinfojs` before 0.4.1 are vulnerable to command injection. This is exploitable if an attacker can control the filename parameter that is passed into the `pdfinfojs` constructor.\n\n\n## Recommendation\n\nUpdate to version 0.4.1 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3pxp-6963-46r9",
+      "publishedAt": "2018-06-07T19:43:00Z",
+      "modifiedAt": "2023-01-31T01:39:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3pxp-6963-46r9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3746"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.4.1",
+          "fixed": "0.4.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

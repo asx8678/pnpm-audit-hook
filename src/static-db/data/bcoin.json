@@ -1,0 +1,33 @@
+{
+  "packageName": "bcoin",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hx3r-jv9q-85jw",
+      "packageName": "bcoin",
+      "title": "Bitcoin Inventory Out-of-Memory Denial-of-Service Attack (CVE-2018-17145)",
+      "description": "There was an easily exploitable uncontrolled memory resource consumption denial-of-service vulnerability that existed in the peer-to-peer network code of three implementations of Bitcoin and several alternative chains.\n\nFor more details please see:\nhttps://invdos.net/\n\nFor the paper:\nhttps://invdos.net/paper/CVE-2018-17145.pdf",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hx3r-jv9q-85jw",
+      "publishedAt": "2020-09-10T19:44:58Z",
+      "modifiedAt": "2023-01-09T05:04:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hx3r-jv9q-85jw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-17145"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.2",
+          "fixed": "1.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

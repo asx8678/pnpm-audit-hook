@@ -1,0 +1,28 @@
+{
+  "packageName": "leaflet-gpx",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gjc9-932x-c59p",
+      "packageName": "leaflet-gpx",
+      "title": "Malicious Package in leaflet-gpx",
+      "description": "Version 1.0.1 of `leaflet-gpx` contained malicious code. The code when executed in the browser would enumerate password, cvc and cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nRemove the package from your environment and evaluate your application to determine whether or not user data was compromised.\n\nUsers may consider a downgrade to version 1.0.0",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-gjc9-932x-c59p",
+      "publishedAt": "2020-09-03T00:34:33Z",
+      "modifiedAt": "2023-07-25T20:40:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gjc9-932x-c59p"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

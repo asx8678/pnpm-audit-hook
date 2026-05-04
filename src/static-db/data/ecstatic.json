@@ -1,0 +1,133 @@
+{
+  "packageName": "ecstatic",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vwjc-q9px-r9vq",
+      "packageName": "ecstatic",
+      "title": "Denial of Service in ecstatic",
+      "description": "Versions of `ecstatic` prior to 1.4.0 are affected by a denial of service vulnerability when certain input strings are sent via the `Last-Modified` or `If-Modified-Since` headers.\n\nParsing certain inputs with `new Date()` or `Date.parse()` cases v8 to crash. As ecstatic passes the value of the affected headers into one of these functions, sending certain inputs via one of the headers will cause the server to crash.\n\n\n\n## Recommendation\n\nUpdate to version 1.4.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vwjc-q9px-r9vq",
+      "publishedAt": "2018-06-07T19:43:11Z",
+      "modifiedAt": "2023-05-22T15:35:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vwjc-q9px-r9vq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-9242"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.0",
+          "fixed": "1.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-pm9p-9926-w68m",
+      "packageName": "ecstatic",
+      "title": "Denial of Service in ecstatic",
+      "description": "`ecstatic`, a simple static file server middleware, is vulnerable to denial of service. If a payload with a large number of null bytes (`%00`) is provided by an attacker it can crash ecstatic by running it out of memory.\n\n\n[Results from the original advisory](https://www.checkmarx.com/advisories/denial-of-service-dos-vulnerability-in-ecstatic-npm-package/)\n\n```\nA payload of 22kB caused a lag of 1 second,\nA payload of 35kB caused a lag of 3 seconds,\nA payload of 86kB caused the server to crash\n``",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pm9p-9926-w68m",
+      "publishedAt": "2017-12-28T22:52:47Z",
+      "modifiedAt": "2023-04-11T00:21:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pm9p-9926-w68m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10703"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jc84-3g44-wf2q",
+      "packageName": "ecstatic",
+      "title": "Denial of Service in ecstatic",
+      "description": "ecstatic have a denial of service vulnerability. Successful exploitation could lead to crash of an application.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jc84-3g44-wf2q",
+      "publishedAt": "2020-12-15T16:52:17Z",
+      "modifiedAt": "2023-01-09T05:04:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jc84-3g44-wf2q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10775"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.1.3",
+          "fixed": "4.1.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9q64-mpxx-87fg",
+      "packageName": "ecstatic",
+      "title": "Open Redirect in ecstatic",
+      "description": "Versions of `ecstatic` prior to 4.1.2, 3.3.2 or 2.2.2 are vulnerable to Open Redirect. The package fails to validate redirects, allowing attackers to craft requests that result in an `HTTP 301` redirect to any other domains.\n\n\n## Recommendation\n\nIf using `ecstatic` 4.x, upgrade to 4.1.2 or later.\nIf using `ecstatic` 3.x, upgrade to 3.3.2 or later.\nIf using `ecstatic` 2.x, upgrade to 2.2.2 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9q64-mpxx-87fg",
+      "publishedAt": "2020-04-01T16:35:08Z",
+      "modifiedAt": "2023-01-09T05:02:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9q64-mpxx-87fg"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.1.2",
+          "fixed": "4.1.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x4rf-4mqf-cm8w",
+      "packageName": "ecstatic",
+      "title": "Open Redirect in ecstatic",
+      "description": "Withdrawn: Duplicate of GHSA-9q64-mpxx-87fg",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x4rf-4mqf-cm8w",
+      "publishedAt": "2020-08-19T22:44:22Z",
+      "modifiedAt": "2023-01-09T05:01:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x4rf-4mqf-cm8w"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.1.2",
+          "fixed": "4.1.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

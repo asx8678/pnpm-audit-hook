@@ -1,0 +1,54 @@
+{
+  "packageName": "takeapeek",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-23xp-j737-282v",
+      "packageName": "takeapeek",
+      "title": "Path Traversal in takeapeek",
+      "description": "All versions of `takeapeek` are vulnerable to path traversal exposing files and directories.\n\n\n## Recommendation\n\nAs no fix is currently available for this vulnerability is it is our recommendation to use another static file server.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-23xp-j737-282v",
+      "publishedAt": "2018-11-06T23:12:30Z",
+      "modifiedAt": "2023-09-07T22:55:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-23xp-j737-282v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16473"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.2.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4q2f-8g74-qm56",
+      "packageName": "takeapeek",
+      "title": "Cross-Site Scripting in takeapeek",
+      "description": "All versions of `takeapeek` are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize filenames, allowing attackers to execute arbitrary JavaScript in the victim's browser through files with names containing malicious code.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4q2f-8g74-qm56",
+      "publishedAt": "2020-09-03T17:18:05Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4q2f-8g74-qm56"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

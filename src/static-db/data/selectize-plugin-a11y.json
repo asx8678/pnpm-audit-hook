@@ -1,0 +1,33 @@
+{
+  "packageName": "selectize-plugin-a11y",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8cpw-73f2-w58m",
+      "packageName": "selectize-plugin-a11y",
+      "title": "Cross-Site Scripting in selectize-plugin-a11y",
+      "description": "Versions of `selectize-plugin-a11y ` prior to 1.1.0 are vulnerable to Cross-Site Scripting. The `accessibility.liveRegion.speak` function does not sanitize the `msg` variable before rendering it as HTML. If this variable is controlled by user input it allows attackers to execute arbitrary JavaScript in a victim's browser.\n\n\n## Recommendation\n\nUpgrade to version 1.1.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8cpw-73f2-w58m",
+      "publishedAt": "2019-08-27T17:38:33Z",
+      "modifiedAt": "2023-01-09T05:02:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8cpw-73f2-w58m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15482"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

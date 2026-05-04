@@ -1,0 +1,32 @@
+{
+  "packageName": "hcbserver",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mwj7-r5vc-hmc9",
+      "packageName": "hcbserver",
+      "title": "Directory Traversal in hcbserver",
+      "description": "Affected versions of `hcbserver` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mwj7-r5vc-hmc9",
+      "publishedAt": "2020-09-01T17:35:38Z",
+      "modifiedAt": "2023-09-11T20:33:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mwj7-r5vc-hmc9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16171"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

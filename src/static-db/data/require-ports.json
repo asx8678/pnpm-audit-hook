@@ -1,0 +1,28 @@
+{
+  "packageName": "require-ports",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qj3g-wfr7-3cv7",
+      "packageName": "require-ports",
+      "title": "Malicious Package in require-ports",
+      "description": "Version 10.4.0 of `require-ports` contains malicious code as a preinstall script. The package is malware designed to take advantage of users making a mistake when typing the name of a module to install. When installed, the package downloads a file from a remote server, executes it and opens a backdoor.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qj3g-wfr7-3cv7",
+      "publishedAt": "2020-09-02T21:41:53Z",
+      "modifiedAt": "2023-01-09T05:03:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qj3g-wfr7-3cv7"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

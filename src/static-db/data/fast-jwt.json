@@ -1,7 +1,141 @@
 {
   "packageName": "fast-jwt",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-cjw9-ghj4-fwxf",
+      "packageName": "fast-jwt",
+      "title": "fast-jwt has a ReDoS when using RegExp in allowed* leading to CPU exhaustion during token verification",
+      "description": "## ⚠️ IMPORTANT CLARIFICATIONS\n\n  ### Affected Configurations\n  This vulnerability ONLY affects applications that:\n  - Use RegExp objects (not strings) in the allowedAud, allowedIss, allowedSub, allowedJti, or allowedNonce options\n  - Configure patterns susceptible to catastrophic backtracking\n  - Example: `allowedAud: /^(a+)+X$/` ← VULNERABLE\n  - Example: `allowedAud: \"api.company.com\"` ← SAFE\n\n  ### Not Affected\n  - Applications using string patterns for audience validation (most common)\n  - A",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cjw9-ghj4-fwxf",
+      "publishedAt": "2026-04-09T16:41:40Z",
+      "modifiedAt": "2026-04-09T19:05:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cjw9-ghj4-fwxf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35041"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, <= 6.2.0",
+          "fixed": "6.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3j8v-cgw4-2g6q",
+      "packageName": "fast-jwt",
+      "title": "fast-jwt: Stateful RegExp (/g or /y) causes non-deterministic allowed-claim validation (logical DoS)",
+      "description": "## Impact\n\nUsing certain modifiers on RegExp objects in the allowedAud, allowedIss, allowedSub, allowedJti, or allowedNonce options in verify functions can cause certain unintended behaviours. This is because some modifiers are stateful and will cause failures in every second verification attempt regardless of the validity of the token provided.\n\nSuch modifiers are:\n- /g : Global matching\n- /y : Sticky matching\n\nThis does NOT allow invalid tokens to be accepted, only for valid tokens to be impro",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3j8v-cgw4-2g6q",
+      "publishedAt": "2026-04-09T16:41:20Z",
+      "modifiedAt": "2026-04-09T19:05:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3j8v-cgw4-2g6q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35040"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.2.1",
+          "fixed": "6.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rp9m-7r4c-75qg",
+      "packageName": "fast-jwt",
+      "title": "fast-jwt: Cache Confusion via cacheKeyBuilder Collisions Can Return Claims From a Different Token (Identity/Authorization Mixup)",
+      "description": "_NOTE_: While the library exposes a mechanism which could introduce the vulnerability, this issue is created by developer-supplied code and not by the library itself. We will add a warning and some education for users around the possible issues however since the defaults work we will not be updating the library beyond that for this advisory.\n\n## Impact\n\nSetting up a custom cacheKeyBuilder method which does not properly create unique keys for different tokens can lead to cache collisions. This co",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-rp9m-7r4c-75qg",
+      "publishedAt": "2026-04-03T04:07:09Z",
+      "modifiedAt": "2026-04-08T11:54:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rp9m-7r4c-75qg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35039"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.1, < 6.2.0",
+          "fixed": "6.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mvf2-f6gm-w987",
+      "packageName": "fast-jwt",
+      "title": "fast-jwt: Incomplete fix for CVE-2023-48223: JWT Algorithm Confusion via Whitespace-Prefixed RSA Public Key",
+      "description": "### Summary\n The fix for GHSA-c2ff-88x2-x9pg (CVE-2023-48223) is incomplete. The publicKeyPemMatcher regex in fast-jwt/src/crypto.js uses a ^ anchor that is defeated by any leading whitespace in the key string, re-enabling the exact same JWT algorithm confusion attack that the CVE patched.\n\n### Details\n The fix for CVE-2023-48223 (https://github.com/nearform/fast-jwt/commit/15a6e92, v3.3.2) changed the public key matcher from a\n  plain string used with .includes() to a regex used with .match():\n",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mvf2-f6gm-w987",
+      "publishedAt": "2026-04-02T20:37:54Z",
+      "modifiedAt": "2026-04-07T17:06:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mvf2-f6gm-w987"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34950"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 6.1.0",
+          "fixed": "6.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hm7r-c7qw-ghp6",
+      "packageName": "fast-jwt",
+      "title": "fast-jwt accepts unknown `crit` header extensions (RFC 7515 violation)",
+      "description": "## Summary\n\n`fast-jwt` does not validate the `crit` (Critical) Header Parameter defined in RFC 7515 §4.1.11. When a JWS token contains a `crit` array listing extensions that `fast-jwt` does not understand, the library accepts the token instead of rejecting it. This violates the **MUST** requirement in the RFC.\n\n---\n\n## RFC Requirement\n\nRFC 7515 §4.1.11:\n\n> If any of the listed extension Header Parameters are **not understood\n> and supported** by the recipient, then the **JWS is invalid**.\n\n---\n\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hm7r-c7qw-ghp6",
+      "publishedAt": "2026-04-03T22:01:25Z",
+      "modifiedAt": "2026-04-06T23:41:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hm7r-c7qw-ghp6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35042"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 6.1.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-gm45-q3v2-6cf8",
       "packageName": "fast-jwt",

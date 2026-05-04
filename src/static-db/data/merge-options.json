@@ -1,0 +1,33 @@
+{
+  "packageName": "merge-options",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qw93-45r3-p66p",
+      "packageName": "merge-options",
+      "title": "Prototype Pollution in merge-options",
+      "description": "All versions of `merge-options` are vulnerable to Prototype Pollution\n\n\n## Recommendation\n\nUpdate to version 1.0.1 or greater.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qw93-45r3-p66p",
+      "publishedAt": "2018-10-09T00:19:57Z",
+      "modifiedAt": "2023-01-09T05:03:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qw93-45r3-p66p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3752"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.1",
+          "fixed": "1.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

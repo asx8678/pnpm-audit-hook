@@ -1,0 +1,56 @@
+{
+  "packageName": "sshpk",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2m39-62fm-q8r3",
+      "packageName": "sshpk",
+      "title": "Regular Expression Denial of Service in sshpk",
+      "description": "Versions of `sshpk` before 1.13.2 or 1.14.1 are vulnerable to regular expression denial of service when parsing crafted invalid public keys.\n\n\n## Recommendation\n\nUpdate to version 1.13.2, 1.14.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2m39-62fm-q8r3",
+      "publishedAt": "2018-08-15T13:22:23Z",
+      "modifiedAt": "2023-01-31T01:55:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2m39-62fm-q8r3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3737"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.13.2",
+          "fixed": "1.13.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wx84-69jh-jjp2",
+      "packageName": "sshpk",
+      "title": "Withdrawn",
+      "description": "Withdrawn: duplicate of GHSA-2m39-62fm-q8r3",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wx84-69jh-jjp2",
+      "publishedAt": "2020-08-03T18:22:36Z",
+      "modifiedAt": "2023-01-09T05:01:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wx84-69jh-jjp2"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.14.0",
+          "fixed": "1.14.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

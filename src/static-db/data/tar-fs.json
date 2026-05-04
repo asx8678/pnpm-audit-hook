@@ -1,6 +1,6 @@
 {
   "packageName": "tar-fs",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-pq67-2wwv-3xjx",
@@ -79,6 +79,33 @@
         {
           "range": ">= 3.0.0, < 3.0.9",
           "fixed": "3.0.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x2mc-8fgj-3wmr",
+      "packageName": "tar-fs",
+      "title": "Improper Input Validation in tar-fs",
+      "description": "A vulnerability was found in tar-fs before 1.16.2. An Arbitrary File Overwrite issue exists when extracting a tarball containing a hardlink to a file that already exists on the system, in conjunction with a later plain file with the same name as the hardlink. This plain file content replaces the existing file content.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x2mc-8fgj-3wmr",
+      "publishedAt": "2019-05-01T18:37:18Z",
+      "modifiedAt": "2023-02-01T05:01:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x2mc-8fgj-3wmr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-20835"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.16.2",
+          "fixed": "1.16.2"
         }
       ],
       "source": "github"

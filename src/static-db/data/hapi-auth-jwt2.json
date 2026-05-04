@@ -1,0 +1,33 @@
+{
+  "packageName": "hapi-auth-jwt2",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mg8r-9g6j-hwv9",
+      "packageName": "hapi-auth-jwt2",
+      "title": "Authentication Bypass in hapi-auth-jwt2",
+      "description": "Versions of `hapi-auth-jwt2` prior to version 5.1.2 are affected by a complete authentication bypass vulnerability when in the `try` authentication mode. \n\n\n## Recommendation\n\nUpdate to version 5.1.2 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mg8r-9g6j-hwv9",
+      "publishedAt": "2019-02-18T23:39:00Z",
+      "modifiedAt": "2023-01-09T05:03:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mg8r-9g6j-hwv9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10525"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 5.1.1",
+          "fixed": "5.1.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

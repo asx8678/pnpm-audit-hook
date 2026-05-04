@@ -1,0 +1,33 @@
+{
+  "packageName": "math-codegen",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p6x5-p4xf-cc4r",
+      "packageName": "math-codegen",
+      "title": "Remote Code Execution (RCE) via String Literal Injection into math-codegen",
+      "description": "### Impact\n\nString literal content passed to `cg.parse()` is injected verbatim into a `new Function()` body without sanitization. This allows an attacker to execute arbitrary system commands when user-controlled input reaches the parser. Any application exposing a math evaluation endpoint where user input flows into `cg.parse()` is vulnerable to full RCE.\n    \n### Patches\n\nThe vulnerability is addressed by using `JSON.stringify()` on string literal values in `lib/node/ConstantNode.js` to ensure ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-p6x5-p4xf-cc4r",
+      "publishedAt": "2026-04-17T22:31:45Z",
+      "modifiedAt": "2026-04-27T17:43:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p6x5-p4xf-cc4r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41507"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.4.3",
+          "fixed": "0.4.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

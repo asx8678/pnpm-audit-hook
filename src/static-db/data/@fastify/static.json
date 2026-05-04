@@ -1,0 +1,60 @@
+{
+  "packageName": "@fastify/static",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pr96-94w5-mx2h",
+      "packageName": "@fastify/static",
+      "title": "@fastify/static vulnerable to path traversal in directory listing",
+      "description": "### Impact\n\n`@fastify/static` v9.1.0 and earlier serves directory listings outside the configured static root when the `list` option is enabled. A request such as `/public/../outside/` causes `dirList.path()` to resolve a directory outside the root via `path.join()` without a containment check.\n\nA remote unauthenticated attacker can obtain directory listings for arbitrary directories accessible to the Node.js process, disclosing directory names and filenames that should not be exposed. File cont",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pr96-94w5-mx2h",
+      "publishedAt": "2026-04-16T22:34:30Z",
+      "modifiedAt": "2026-04-16T22:34:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pr96-94w5-mx2h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-6410"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 8.0.0, <= 9.1.0",
+          "fixed": "9.1.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x428-ghpx-8j92",
+      "packageName": "@fastify/static",
+      "title": "@fastify/static vulnerable to route guard bypass via encoded path separators",
+      "description": "### Impact\n\n`@fastify/static` v9.1.0 and earlier decodes percent-encoded path separators (`%2F`) before filesystem resolution, but Fastify's router treats them as literal characters. This creates a routing mismatch: route guards on `/admin/*` do not match `/admin%2Fsecret.html`, but @fastify/static decodes it to `/admin/secret.html` and serves the file.\n\nApplications that rely on route-based middleware or guards to protect files served by @fastify/static can be bypassed with encoded path separat",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x428-ghpx-8j92",
+      "publishedAt": "2026-04-16T22:34:03Z",
+      "modifiedAt": "2026-04-16T22:34:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x428-ghpx-8j92"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-6414"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 8.0.0, <= 9.1.0",
+          "fixed": "9.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

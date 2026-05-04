@@ -1,0 +1,28 @@
+{
+  "packageName": "hsf-clients",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g5q2-fcg9-j526",
+      "packageName": "hsf-clients",
+      "title": "Malicious Package in hsf-clients",
+      "description": "All versions of `hsf-clients` contain malicious code. The package uploads system information to a remote server, downloads a file and executes it.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee th",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-g5q2-fcg9-j526",
+      "publishedAt": "2020-09-03T17:40:18Z",
+      "modifiedAt": "2023-01-09T05:03:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g5q2-fcg9-j526"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

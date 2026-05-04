@@ -1,0 +1,28 @@
+{
+  "packageName": "1337qq-js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7wgh-5q4q-6wx5",
+      "packageName": "1337qq-js",
+      "title": "Malicious Package in 1337qq-js",
+      "description": "All versions of `1337qq-js` contain malicious code. The package exfiltrates sensitive information through install scripts. It targets UNIX systems. The information exfiltrated includes:\n- Environment variables\n- Running processes\n- /etc/hosts\n- uname -a\n- npmrc file\n\n\n## Recommendation\n\nRemove the package from your system and rotate any compromised credentials.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7wgh-5q4q-6wx5",
+      "publishedAt": "2020-09-04T17:30:39Z",
+      "modifiedAt": "2023-01-09T05:04:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7wgh-5q4q-6wx5"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

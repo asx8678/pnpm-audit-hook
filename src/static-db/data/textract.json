@@ -1,0 +1,32 @@
+{
+  "packageName": "textract",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9pcj-m5rr-p28g",
+      "packageName": "textract",
+      "title": "textract is vulnerable to OS Command Injection",
+      "description": "textract through 2.5.0 is vulnerable to OS Command Injection via the file path parameter in multiple extractors. When processing files with malicious filenames, the filePath is passed directly to child_process.exec() in lib/extractors/doc.js, rtf.js, dxf.js, images.js, and lib/util.js with inadequate sanitization",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9pcj-m5rr-p28g",
+      "publishedAt": "2026-03-25T18:31:47Z",
+      "modifiedAt": "2026-03-31T23:24:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9pcj-m5rr-p28g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26831"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.5.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

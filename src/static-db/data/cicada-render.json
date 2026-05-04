@@ -1,0 +1,28 @@
+{
+  "packageName": "cicada-render",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6m6m-j2hm-pxrg",
+      "packageName": "cicada-render",
+      "title": "Malicious Package in cicada-render",
+      "description": "All versions of `cicada-render` contain malicious code. The package uploads system information to a remote server, downloads a file and executes it.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6m6m-j2hm-pxrg",
+      "publishedAt": "2020-09-03T17:37:05Z",
+      "modifiedAt": "2023-01-09T05:04:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6m6m-j2hm-pxrg"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "packageName": "node-uuid",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-265q-28rp-chq5",
+      "packageName": "node-uuid",
+      "title": "Insecure Entropy Source - Math.random() in node-uuid",
+      "description": "Affected versions of `node-uuid` consistently fall back to using `Math.random` as an entropy source instead of `crypto`, which may result in guessable UUID's.\n\n\n\n## Recommendation\n\nUpdate to version 1.4.4 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-265q-28rp-chq5",
+      "publishedAt": "2020-04-16T03:14:50Z",
+      "modifiedAt": "2023-01-09T05:02:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-265q-28rp-chq5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-8851"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.4",
+          "fixed": "1.4.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

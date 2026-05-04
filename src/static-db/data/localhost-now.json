@@ -1,0 +1,81 @@
+{
+  "packageName": "localhost-now",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qwj8-p662-3m7x",
+      "packageName": "localhost-now",
+      "title": "Path Traversal in localhost-now",
+      "description": "All versions of `localhost-now` are vulnerable to Path Traversal. The package fails to sanitize URLs, allowing attackers to access server files outside of the served folder using relative paths.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qwj8-p662-3m7x",
+      "publishedAt": "2019-03-25T16:17:05Z",
+      "modifiedAt": "2023-09-11T18:38:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qwj8-p662-3m7x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-5416"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2gjg-5x33-mmp2",
+      "packageName": "localhost-now",
+      "title": "Path Traversal in localhost-now",
+      "description": "Versions of `localhost-now` before 1.0.2 are vulnerable to path traversal. This allows a remote attacker to read the content of an arbitrary file.\n\n\n## Recommendation\n\nUpdate to version 1.0.2 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2gjg-5x33-mmp2",
+      "publishedAt": "2018-07-25T22:44:05Z",
+      "modifiedAt": "2023-03-01T01:47:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2gjg-5x33-mmp2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3729"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.2",
+          "fixed": "1.0.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-73cw-jxmm-qpgh",
+      "packageName": "localhost-now",
+      "title": "Path Traversal in localhost-now",
+      "description": "All versions of `localhost-now` are vulnerable to path traversal. This vulnerability is a bypass to the path traversal fix introduced in version 1.0.2\n\nProof of concept:\n\n```\n$ curl -v --path-as-is \"http://IP:5432/..././..././..././..././..././..././..././..././..././..././etc/passwd\" \n```\n\n\n## Recommendation\n\nNo fix is currently available for this vulnerability. It is our recommendation to not install or use this module until a fix is available.\n ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-73cw-jxmm-qpgh",
+      "publishedAt": "2019-06-11T16:40:48Z",
+      "modifiedAt": "2023-01-09T05:01:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-73cw-jxmm-qpgh"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "packageName": "showdown",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rmmh-p597-ppvv",
+      "packageName": "showdown",
+      "title": "Showdown vulnerable to Regular Expression Denial of Service (ReDoS) in link/anchor parsing",
+      "description": "Showdownjs, versions <= 2.1.0, `anchors` subparser used to parse links has a nested regular expression which can lead to denial of service conditions given malicious input.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rmmh-p597-ppvv",
+      "publishedAt": "2024-02-26T21:31:36Z",
+      "modifiedAt": "2026-04-24T20:36:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rmmh-p597-ppvv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-1899"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-h6mq-3cj6-h738",
+      "packageName": "showdown",
+      "title": "Reverse Tabnabbing in showdown",
+      "description": "Versions of `showdown` prior to 1.9.1 are vulnerable to [Reverse Tabnabbing](https://www.owasp.org/index.php/Reverse_Tabnabbing). The package uses `target='_blank'` in anchor tags, allowing attackers to access `window.opener` for the original page when opening links. This is commonly used for phishing attacks.\n\n\n## Recommendation\n\nUpgrade to version 1.9.1 or later.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-h6mq-3cj6-h738",
+      "publishedAt": "2020-09-03T23:21:16Z",
+      "modifiedAt": "2023-04-05T19:39:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h6mq-3cj6-h738"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.9.1",
+          "fixed": "1.9.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

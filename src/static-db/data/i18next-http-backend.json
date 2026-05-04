@@ -1,0 +1,33 @@
+{
+  "packageName": "i18next-http-backend",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q89c-q3h5-w34g",
+      "packageName": "i18next-http-backend",
+      "title": " i18next-http-backend has Path Traversal & URL Injection via Unsanitised lng/ns",
+      "description": "### Summary\n\nVersions of `i18next-http-backend` prior to 3.0.5 interpolate the `lng` and `ns` values directly into the configured `loadPath` / `addPath` URL template without any encoding, validation, or path sanitisation. When an application exposes the language-code selection to user-controlled input (the default — `i18next-browser-languagedetector` reads `?lng=` query params, cookies, `localStorage`, and request headers), an attacker can inject characters that change the structure of the outgo",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q89c-q3h5-w34g",
+      "publishedAt": "2026-04-22T17:41:24Z",
+      "modifiedAt": "2026-04-30T20:16:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q89c-q3h5-w34g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41691"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.5",
+          "fixed": "3.0.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

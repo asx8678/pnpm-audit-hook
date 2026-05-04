@@ -1,0 +1,33 @@
+{
+  "packageName": "geoip-lite-country",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-ff29-f57w-2mm3",
+      "packageName": "geoip-lite-country",
+      "title": "Downloads Resources over HTTP in geoip-lite-country",
+      "description": "Affected versions of `geoip-lite-country` insecurely downloads resources over HTTP. \n\nIn scenarios where an attacker has a privileged network position, they can modify or read such resources at will. While the exact severity of impact for a vulnerability like this is highly variable and depends on the behavior of the package itself, it ranges from being able to read sensitive information all the way up to and including remote code execution.\n\n\n## Recommendation\n\nUpdate to version 1.1.4 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-ff29-f57w-2mm3",
+      "publishedAt": "2019-02-18T23:54:03Z",
+      "modifiedAt": "2023-01-09T05:03:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ff29-f57w-2mm3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10568"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.4",
+          "fixed": "1.1.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

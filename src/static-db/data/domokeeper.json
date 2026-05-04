@@ -1,0 +1,28 @@
+{
+  "packageName": "domokeeper",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cr67-78jr-j94p",
+      "packageName": "domokeeper",
+      "title": "Local File Inclusion in domokeeper",
+      "description": "All versions of `domokeeper` are vulnerable to Local File Inclusion. The `/plugin/` route passes a GET parameter unsanitized to a `require()` call. It then returns the output of `require()` in the server response. This may allow attackers to load unintended code in the application. It also allows attackers to exfiltrate information in `.json` files.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cr67-78jr-j94p",
+      "publishedAt": "2020-09-03T18:14:47Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cr67-78jr-j94p"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

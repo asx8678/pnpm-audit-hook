@@ -1,0 +1,50 @@
+{
+  "packageName": "postiz",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-89v5-38xr-9m4j",
+      "packageName": "postiz",
+      "title": "Postiz has Multiple SSRF Vectors - Webhooks, RSS Feed, URL Loader",
+      "description": "## Summary\n\nPostiz has multiple SSRF vulnerabilities where user-provided URLs are fetched server-side without any IP validation or SSRF protection.\n\n## Vulnerable Code\n\n### 1. Webhook Send Endpoint (Most Critical)\n\n**`apps/backend/src/api/routes/webhooks.controller.ts` lines 58-70:**\n```typescript\nasync sendWebhook(@Body() body: any, @Query('url') url: string) {\n  try {\n    await fetch(url, {  // No URL validation\n      method: 'POST',\n      body: JSON.stringify(body),\n      headers: { 'Content-",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-89v5-38xr-9m4j",
+      "publishedAt": "2026-03-27T15:47:57Z",
+      "modifiedAt": "2026-04-22T15:24:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-89v5-38xr-9m4j"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.12"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vj2p-7pgw-g2wf",
+      "packageName": "postiz",
+      "title": "Postiz App has a High-Severity SSRF Vulnerability via Next.js",
+      "description": "### Impact\nA successful SSRF attack allows an attacker to:\n- Bypass firewalls to scan and interact with internal network services/ports.\n- Access sensitive cloud metadata services (e.g., AWS IMDS 169.254.169.254) to potentially leak instance credentials.\n- Pivot into the internal network environment where Postiz is hosted.\n\n### Workarounds\nThere are no workarounds known to this, please upgrade to Postiz version `v2.21.1`.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vj2p-7pgw-g2wf",
+      "publishedAt": "2026-03-27T15:46:53Z",
+      "modifiedAt": "2026-03-27T15:46:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vj2p-7pgw-g2wf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.12"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

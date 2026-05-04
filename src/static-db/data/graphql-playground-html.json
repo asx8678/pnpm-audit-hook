@@ -1,0 +1,33 @@
+{
+  "packageName": "graphql-playground-html",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4852-vrh7-28rf",
+      "packageName": "graphql-playground-html",
+      "title": "Reflected XSS in GraphQL Playground",
+      "description": "### Impact\n\n**directly impacted:**\n\n- `graphql-playground-html@<1.6.22` - all unsanitized user input for `renderPlaygroundPage()`\n\n**all of our consuming packages** of `graphql-playground-html` are impacted:\n\n- `graphql-playground-middleware-express@<1.7.16` - unsanitized user input to `expressPlayground()`\n- `graphql-playground-middleware-koa@<1.6.15` - unsanitized user input to `koaPlayground()`\n- `graphql-playground-middleware-lambda@<1.7.17` - unsanitized user input to `lambdaPlayground()`\n-",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4852-vrh7-28rf",
+      "publishedAt": "2020-06-09T00:24:57Z",
+      "modifiedAt": "2023-01-09T05:02:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4852-vrh7-28rf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-4038"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.6.22",
+          "fixed": "1.6.22"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

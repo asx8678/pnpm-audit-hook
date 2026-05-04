@@ -1,0 +1,28 @@
+{
+  "packageName": "ladder-text-js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-33gc-f8v9-v8hm",
+      "packageName": "ladder-text-js",
+      "title": "Malicious Package in ladder-text-js",
+      "description": "`ladder-text-js` contained a malicious script that attempted to delete all files when `npm test` was run.\n\n\n\n## Recommendation\n\nThis module has been unpublished from the npm Registry. If you find this module in your environment remove it.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-33gc-f8v9-v8hm",
+      "publishedAt": "2020-09-01T20:41:40Z",
+      "modifiedAt": "2023-01-09T05:03:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-33gc-f8v9-v8hm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "packageName": "redbird",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8948-ffc6-jg52",
+      "packageName": "redbird",
+      "title": "Insecure Default Configuration in redbird",
+      "description": "Versions of `redbird` prior to 0.9.1 have a vulnerable default configuration of allowing TLS 1.0 connections on `lib/proxy.js`. The package does not provide an option to disable TLS 1.0 which is deprecated and vulnerable.\n\n\n## Recommendation\n\nUpgrade to version 0.9.1 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8948-ffc6-jg52",
+      "publishedAt": "2019-06-06T15:32:21Z",
+      "modifiedAt": "2023-01-09T05:01:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8948-ffc6-jg52"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.9.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

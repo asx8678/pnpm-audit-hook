@@ -1,0 +1,32 @@
+{
+  "packageName": "ldapauth",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-82mg-x548-gq3j",
+      "packageName": "ldapauth",
+      "title": "LDAP Injection in ldapauth",
+      "description": "Versions 2.2.4 and earlier of `ldapauth-fork` are affected by an LDAP injection vulnerability. This allows an attacker to inject and run arbitrary LDAP commands via the username parameter.\n\n\n\n## Recommendation\n\nldapauth is not actively maintained, having not seen a publish since 2014. As a result, there is no patch available. Consider updating to use [ldapauth-fork](https://www.npmjs.com/package/ldapauth-fork) 2.3.3 or greater.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-82mg-x548-gq3j",
+      "publishedAt": "2020-08-31T22:49:46Z",
+      "modifiedAt": "2023-01-09T05:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-82mg-x548-gq3j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-7294"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,15 +1,16 @@
 {
   "packageName": "minimist",
-  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xvch-5gv4-984h",
       "packageName": "minimist",
       "title": "Prototype Pollution in minimist",
+      "description": "Minimist prior to 1.2.6 and 0.2.4 is vulnerable to Prototype Pollution via file `index.js`, function `setKey()` (lines 69-95).",
       "severity": "critical",
       "url": "https://github.com/advisories/GHSA-xvch-5gv4-984h",
-      "publishedAt": "2022-03-17T00:00:00Z",
-      "modifiedAt": "2023-09-11T22:36:00Z",
+      "publishedAt": "2022-03-18T00:01:09Z",
+      "modifiedAt": "2024-06-21T21:33:52Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -22,8 +23,8 @@
       ],
       "affectedVersions": [
         {
-          "range": "<1.2.6",
-          "fixed": "1.2.6"
+          "range": "< 0.2.4",
+          "fixed": "0.2.4"
         }
       ],
       "source": "github"
@@ -32,10 +33,11 @@
       "id": "GHSA-vh95-rmgr-6w4m",
       "packageName": "minimist",
       "title": "Prototype Pollution in minimist",
+      "description": "Affected versions of `minimist` are vulnerable to prototype pollution. Arguments are not properly sanitized, allowing an attacker to modify the prototype of `Object`, causing the addition or modification of an existing property that will exist on all objects.  \nParsing the argument `--__proto__.y=Polluted` adds a `y` property with value `Polluted` to all objects. The argument `--__proto__=Polluted` raises and uncaught error and crashes the application.  \nThis is exploitable if attackers have con",
       "severity": "medium",
       "url": "https://github.com/advisories/GHSA-vh95-rmgr-6w4m",
-      "publishedAt": "2020-03-11T23:00:00Z",
-      "modifiedAt": "2023-09-11T22:01:00Z",
+      "publishedAt": "2020-04-03T21:48:32Z",
+      "modifiedAt": "2024-02-13T20:00:55Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -48,8 +50,31 @@
       ],
       "affectedVersions": [
         {
-          "range": "<0.2.1",
-          "fixed": "0.2.1"
+          "range": ">= 1.0.0, < 1.2.3",
+          "fixed": "1.2.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7fhm-mqm4-2wp7",
+      "packageName": "minimist",
+      "title": "Withdrawn: ESLint dependencies are vulnerable (ReDoS and Prototype Pollution)",
+      "description": "**Withdrawn**\nGitHub has withdrawn this advisory in place of GHSA-vh95-rmgr-6w4m and GHSA-6chw-6frg-f759.\nThe reason for withdrawing is that some mistakes were made during the ingestion of CVE-2020-7598\nwhich caused this advisory to be published with incorrect information.\n\nIn order to provide accurate advisory information, new advisories were created:\n\n- minimist: https://github.com/advisories/GHSA-vh95-rmgr-6w4m\n- acorn: https://github.com/advisories/GHSA-6chw-6frg-f759",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7fhm-mqm4-2wp7",
+      "publishedAt": "2020-03-13T20:36:16Z",
+      "modifiedAt": "2023-01-09T05:02:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7fhm-mqm4-2wp7"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.2.2",
+          "fixed": "1.2.2"
         }
       ],
       "source": "github"

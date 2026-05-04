@@ -1,0 +1,33 @@
+{
+  "packageName": "ckeditor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g68x-vvqq-pvw3",
+      "packageName": "ckeditor",
+      "title": "Ckeditor XSS Vulnerability",
+      "description": "CKEditor 4.x before 4.11.0 allows user-assisted XSS involving a source-mode paste. It was possible to execute XSS inside the CKEditor source area after persuading the victim to: (i) switch CKEditor to source mode, then (ii) paste a specially crafted HTML code, prepared by the attacker, into the opened CKEditor source area, and (iii) switch back to WYSIWYG mode. Although this is an unlikely scenario, it is recommended to upgrade to the latest editor version.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g68x-vvqq-pvw3",
+      "publishedAt": "2018-11-21T22:19:50Z",
+      "modifiedAt": "2024-02-05T15:34:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g68x-vvqq-pvw3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-17960"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.11.0",
+          "fixed": "4.11.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

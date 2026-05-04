@@ -1,0 +1,29 @@
+{
+  "packageName": "ascii-art",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9hqj-38j2-5jgm",
+      "packageName": "ascii-art",
+      "title": "Command Injection in ascii-art",
+      "description": "Versions of `ascii-art` before 1.4.4 are vulnerable to command injection. This is exploitable when user input is passed into the argument of the `ascii-art preview` command. \n\n\nExample Proof of concept:\n`ascii-art preview 'doom\"; touch /tmp/malicious; echo \"'`\n\nGiven that the input is passed on the command line and none of the api methods are vulnerable to this,  the likely exploitation vector is when the ascii-art comment is being called programmatically using something like `execFile`.\n\n\n## Re",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-9hqj-38j2-5jgm",
+      "publishedAt": "2020-09-01T21:19:23Z",
+      "modifiedAt": "2023-01-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9hqj-38j2-5jgm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.2",
+          "fixed": "1.4.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "packageName": "cmmn-js-properties-panel",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vmh4-322v-cfpc",
+      "packageName": "cmmn-js-properties-panel",
+      "title": "Cross-Site Scripting in cmmn-js-properties-panel",
+      "description": "Versions of `cmmn-js-properties-panel` prior to 0.8.0 are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize input in specially configured diagrams, which may allow attackers to inject arbitrary JavaScript in the embedding website.\n\n\n## Recommendation\n\nUpgrade to version 0.8.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vmh4-322v-cfpc",
+      "publishedAt": "2020-09-03T18:18:06Z",
+      "modifiedAt": "2023-01-09T05:03:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vmh4-322v-cfpc"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.8.0",
+          "fixed": "0.8.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

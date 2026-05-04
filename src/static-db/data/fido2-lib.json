@@ -1,0 +1,29 @@
+{
+  "packageName": "fido2-lib",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g3qj-j598-cxmq",
+      "packageName": "fido2-lib",
+      "title": "fido2-lib is vulnerable to DoS via cbor-extract heap buffer over-read in CBOR attestation parsing",
+      "description": "### Summary\nfido2-lib v3.x depends on cbor-x (~1.6.0), which optionally pulls in cbor-extract (C++ native addon). cbor-extract <= 2.2.0 has a heap buffer over-read in `extractStrings()` — a 5-byte CBOR payload crashes Node.js with SIGSEGV. No JS exception, no try/catch, process dead.\n\nThe crash triggers during WebAuthn registration when the server decodes the attestation object. An attacker sends a crafted authenticator response to the registration endpoint — single request, unauthenticated, ins",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g3qj-j598-cxmq",
+      "publishedAt": "2026-03-24T19:10:38Z",
+      "modifiedAt": "2026-03-24T19:10:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g3qj-j598-cxmq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.5.7",
+          "fixed": "3.5.8"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

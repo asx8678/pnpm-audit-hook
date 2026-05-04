@@ -1,0 +1,33 @@
+{
+  "packageName": "hyperterse",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-92gp-jfgx-9qpv",
+      "packageName": "hyperterse",
+      "title": "Hyperterse: Raw exposure of database statements in MCP search tool",
+      "description": "Hyperterse allows users to specify database queries for tools to execute under the hood. As of [v2.0.0](https://github.com/hyperterse/hyperterse/releases/tag/v2.0.0), there are only two tools exposed - `search` and `execute`. \n\nThe `search` tool allows LLMs to search for tools using natural language. While returning results, Hyperterse also returned the raw SQL queries, exposing statements which were supposed to be executed under the hood, and protected from being displayed publicly.\n\nThis issue",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-92gp-jfgx-9qpv",
+      "publishedAt": "2026-03-12T18:32:54Z",
+      "modifiedAt": "2026-03-12T18:32:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-92gp-jfgx-9qpv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31841"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.2.0",
+          "fixed": "2.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

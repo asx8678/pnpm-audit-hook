@@ -1,0 +1,32 @@
+{
+  "packageName": "vulnogram",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vggc-6pg2-xvp9",
+      "packageName": "vulnogram",
+      "title": "Vulnogram contains a stored cross-site scripting vulnerability in comment hypertext handling",
+      "description": "Vulnogram 1.0.0 contains a stored cross-site scripting vulnerability in comment hypertext handling that allows attackers to inject malicious scripts. Remote attackers can inject XSS payloads through comments to execute arbitrary JavaScript in victims' browsers.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vggc-6pg2-xvp9",
+      "publishedAt": "2026-03-16T15:30:43Z",
+      "modifiedAt": "2026-03-20T20:58:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vggc-6pg2-xvp9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32774"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

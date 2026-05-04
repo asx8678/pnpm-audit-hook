@@ -1,0 +1,32 @@
+{
+  "packageName": "exxxxxxxxxxx",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pq5x-rprq-8jrj",
+      "packageName": "exxxxxxxxxxx",
+      "title": "Directory Traversal in exxxxxxxxxxx",
+      "description": "Affected versions of `exxxxxxxxxxx` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\nThis vulnerability is only effective for files that have a file extension, which provides a partial mitigation. \n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:fo",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pq5x-rprq-8jrj",
+      "publishedAt": "2018-07-23T22:06:14Z",
+      "modifiedAt": "2023-09-13T20:26:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pq5x-rprq-8jrj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16130"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

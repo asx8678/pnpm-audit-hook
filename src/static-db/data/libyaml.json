@@ -1,0 +1,33 @@
+{
+  "packageName": "libyaml",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m75h-cghq-c8h5",
+      "packageName": "libyaml",
+      "title": "Heap Based Buffer Overflow in libyaml",
+      "description": "Versions 0.2.2 and earlier depend on native libyaml version 0.1.5 or earlier. As such, they are affected by a heap-based buffer overflow vulnerability that may result in a crash or arbitrary code execution when parsing YAML tags.\n\n\n\n\n\n## Recommendation\n\n- Update to version 0.2.3 that includes a version of LibYAML that contains a fix for this issue.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m75h-cghq-c8h5",
+      "publishedAt": "2020-08-31T22:51:50Z",
+      "modifiedAt": "2023-09-07T22:05:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m75h-cghq-c8h5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2013-6393"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.2.3",
+          "fixed": "0.2.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

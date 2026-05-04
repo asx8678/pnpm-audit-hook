@@ -1,7 +1,34 @@
 {
   "packageName": "lodash.template",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-r5fr-rjxr-66jc",
+      "packageName": "lodash.template",
+      "title": "lodash vulnerable to Code Injection via `_.template` imports key names",
+      "description": "### Impact\n\nThe fix for [CVE-2021-23337](https://github.com/advisories/GHSA-35jh-r3h4-6jhm) added validation for the `variable` option in `_.template` but did not apply the same validation to `options.imports` key names. Both paths flow into the same `Function()` constructor sink.\n\nWhen an application passes untrusted input as `options.imports` key names, an attacker can inject default-parameter expressions that execute arbitrary code at template compilation time.\n\nAdditionally, `_.template` use",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r5fr-rjxr-66jc",
+      "publishedAt": "2026-04-01T23:51:12Z",
+      "modifiedAt": "2026-04-01T23:51:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r5fr-rjxr-66jc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-4800"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.18.0",
+          "fixed": "4.18.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-35jh-r3h4-6jhm",
       "packageName": "lodash.template",

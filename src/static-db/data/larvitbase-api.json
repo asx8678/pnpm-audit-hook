@@ -1,0 +1,33 @@
+{
+  "packageName": "larvitbase-api",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xf27-jqwv-gf3r",
+      "packageName": "larvitbase-api",
+      "title": "Unintended Require in larvitbase-api",
+      "description": "Versions of `larvitbase-api` prior to 0.5.4 are vulnerable to an Unintended Require. The package exposes an API endpoint and passes a GET parameter unsanitized to an `require()` call. This allows attackers to execute any `.js` file in the same folder as the server is running.\n\n\n## Recommendation\n\nUpgrade to version 0.5.4 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xf27-jqwv-gf3r",
+      "publishedAt": "2019-09-11T23:03:57Z",
+      "modifiedAt": "2023-09-11T18:33:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xf27-jqwv-gf3r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-5479"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.5.5",
+          "fixed": "0.5.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

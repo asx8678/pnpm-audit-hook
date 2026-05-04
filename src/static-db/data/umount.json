@@ -1,0 +1,32 @@
+{
+  "packageName": "umount",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6q48-vjq2-mwcj",
+      "packageName": "umount",
+      "title": "Command Injection in umount",
+      "description": "All versions of `umount ` are vulnerable to Command Injection. The package fails to sanitize input rules and passes it directly to an `exec` call on the `umount` function . This may allow attackers to execute arbitrary code in the system if the `device` value passed to the function is user-controlled.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6q48-vjq2-mwcj",
+      "publishedAt": "2020-06-10T20:28:03Z",
+      "modifiedAt": "2023-02-01T05:03:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6q48-vjq2-mwcj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7628"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "packageName": "ngx-md",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xr53-m937-jr9c",
+      "packageName": "ngx-md",
+      "title": "Cross-Site Scripting in ngx-md",
+      "description": "Versions of `ngx-md` prior to 6.0.3 are vulnerable to Cross-Site Scripting.  Links are not properly restricted to http/https and can contain JavaScript which may lead to arbitrary code execution. Markdown input such as `[Click Me](javascript:alert('Injected!'%29)` is rendered as a `Click Me` link that executes JavaScript.\n\n\n## Recommendation\n\nUpgrade to version 6.0.3 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xr53-m937-jr9c",
+      "publishedAt": "2020-09-03T15:49:14Z",
+      "modifiedAt": "2023-01-09T05:04:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xr53-m937-jr9c"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.0.3",
+          "fixed": "6.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

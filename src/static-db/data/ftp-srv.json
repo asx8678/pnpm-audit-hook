@@ -1,7 +1,30 @@
 {
   "packageName": "ftp-srv",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-r4m5-47cq-6qg8",
+      "packageName": "ftp-srv",
+      "title": "Server-Side Request Forgery in ftp-srv",
+      "description": "All versions of `ftp-srv` from v1.0.0 onward to v4.3.3 are vulnerable to Server-Side Request Forgery (SSRF). The package fails to prevent remote clients to access other resources in the network, for example when connecting to the server through telnet. This allows attackers to access any network resources available to the server, including private resources in the hosting environment.\n\n\n## Recommendation\n\nUpgrade to patched versions\n`^2.19.6, ^3.1.2, ^4.3.4`\n\n## Workarounds\nBlacklisting the FTP ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r4m5-47cq-6qg8",
+      "publishedAt": "2020-09-04T17:25:13Z",
+      "modifiedAt": "2024-01-08T21:29:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r4m5-47cq-6qg8"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.3.4",
+          "fixed": "4.3.4"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-pmw4-jgxx-pcq9",
       "packageName": "ftp-srv",
@@ -25,6 +48,33 @@
         {
           "range": "< 4.4.0",
           "fixed": "4.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jw37-5gqr-cf9j",
+      "packageName": "ftp-srv",
+      "title": "Server-Side Request Forgery in ftp-srv",
+      "description": "### Background\n\nThe FTP protocol creates two connections, one for commands and one for transferring data.\nThis second data connection can be created in two ways, on the server by sending the PASV command, or on the client by sending the PORT command.\n\nThe PORT command sends the IP and port for the server to connect to the client with.\n\n### Issue\nSince the client can send an arbitrary IP with the PORT command, this can be used to cause the server to make a connection elsewhere.\n\n### Patches\n\n* _f",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-jw37-5gqr-cf9j",
+      "publishedAt": "2020-08-17T21:44:54Z",
+      "modifiedAt": "2023-02-01T05:04:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jw37-5gqr-cf9j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15152"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.3.4",
+          "fixed": "4.3.4"
         }
       ],
       "source": "github"

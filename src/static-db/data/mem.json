@@ -1,0 +1,29 @@
+{
+  "packageName": "mem",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4xcv-9jjx-gfj3",
+      "packageName": "mem",
+      "title": "Denial of Service in mem",
+      "description": "Versions of `mem` prior to 4.0.0 are vulnerable to Denial of Service (DoS).  The package fails to remove old values from the cache even after a value passes its `maxAge` property. This may allow attackers to exhaust the system's memory if they are able to abuse the application logging.\n\n\n## Recommendation\n\nUpgrade to version 4.0.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4xcv-9jjx-gfj3",
+      "publishedAt": "2019-07-05T21:07:58Z",
+      "modifiedAt": "2023-01-09T05:01:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4xcv-9jjx-gfj3"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.0.0",
+          "fixed": "4.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

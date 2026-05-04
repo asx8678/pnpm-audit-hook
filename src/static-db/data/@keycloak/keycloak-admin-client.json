@@ -1,0 +1,32 @@
+{
+  "packageName": "@keycloak/keycloak-admin-client",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r8jr-wg88-fq5c",
+      "packageName": "@keycloak/keycloak-admin-client",
+      "title": "Keycloak vulnerable to authorization bypass via the Admin API",
+      "description": "A flaw was found in Keycloak. An authorization bypass vulnerability in the Keycloak Admin API allows any authenticated user, even those without administrative privileges, to enumerate the organization memberships of other users. This information disclosure occurs if the attacker knows the victim's unique identifier (UUID) and the Organizations feature is enabled.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-r8jr-wg88-fq5c",
+      "publishedAt": "2026-03-12T12:30:29Z",
+      "modifiedAt": "2026-04-02T15:31:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r8jr-wg88-fq5c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-2366"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 26.5.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

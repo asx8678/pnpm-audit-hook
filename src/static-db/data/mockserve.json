@@ -1,0 +1,32 @@
+{
+  "packageName": "mockserve",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vgjp-vh3c-32v3",
+      "packageName": "mockserve",
+      "title": "Directory Traversal in mockserve",
+      "description": "Affected versions of `mockserve` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vgjp-vh3c-32v3",
+      "publishedAt": "2018-07-23T20:46:55Z",
+      "modifiedAt": "2023-09-07T20:38:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vgjp-vh3c-32v3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16146"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "packageName": "@nocobase/plugin-workflow-request",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mvvv-v22x-xqwp",
+      "packageName": "@nocobase/plugin-workflow-request",
+      "title": "NocoBase has SSRF in Workflow HTTP Request and Custom Request Plugins",
+      "description": "## Summary\n\nNocoBase's workflow HTTP request plugin and custom request action plugin make server-side HTTP requests to user-provided URLs without any SSRF protection. An authenticated user can access internal network services, cloud metadata endpoints, and localhost.\n\n## Vulnerable Code\n\n### 1. Workflow HTTP Request Plugin\n\n**`packages/plugins/@nocobase/plugin-workflow-request/src/server/RequestInstruction.ts` lines 117-128:**\n```typescript\nreturn axios.request({\n  url: trim(url),  // User-contr",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mvvv-v22x-xqwp",
+      "publishedAt": "2026-04-15T19:43:50Z",
+      "modifiedAt": "2026-04-24T20:51:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mvvv-v22x-xqwp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-40346"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.37",
+          "fixed": "2.0.37"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

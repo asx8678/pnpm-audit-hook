@@ -1,0 +1,32 @@
+{
+  "packageName": "botbait",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4r5x-qjqc-p579",
+      "packageName": "botbait",
+      "title": "Tracking Module in botbait",
+      "description": "The module `botbait` is a tool to be used to track bot and automated tools usage with-in the npm ecosystem.\n\n`botbait` is known to record and track user information.\n\nThe module tracks the following information.\n- Source IP\n- process.versions\n- process.platform\n- How the module was invoked (test, require, pre-install)\n\n\n## Recommendation\n\nThis package has no functional value, and should be removed from your environment if discovered.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4r5x-qjqc-p579",
+      "publishedAt": "2020-09-01T18:57:44Z",
+      "modifiedAt": "2023-02-06T19:47:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4r5x-qjqc-p579"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16126"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

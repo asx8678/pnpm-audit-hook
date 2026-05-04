@@ -1,0 +1,28 @@
+{
+  "packageName": "rimrafall",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8hq2-fcqm-39hq",
+      "packageName": "rimrafall",
+      "title": "Malicious Package in rimrafall",
+      "description": "Version 1.0.0 of `rimrafall` contains malicious code as a preinstall script. The package attempts to remove all files in the system's root folder.\n\n\n## Recommendation\n\nIf you installed this package it is likely your machine was erased. If not, remove the package from your system and verify if any files were deleted.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8hq2-fcqm-39hq",
+      "publishedAt": "2020-09-02T21:46:05Z",
+      "modifiedAt": "2023-01-09T05:03:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8hq2-fcqm-39hq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

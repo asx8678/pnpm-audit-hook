@@ -1,0 +1,33 @@
+{
+  "packageName": "connect-pg-simple",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xqh8-5j36-4556",
+      "packageName": "connect-pg-simple",
+      "title": "SQL Injection in connect-pg-simple",
+      "description": "### Impact\nAn unlikely SQL injection if the case of an unsanitized table name input.\n\n### Patches\nThe user should upgrade to `6.0.1`. Due to its low impact a backport has not been made to the `5.x` branch.\n\n### Workarounds\nIf there is no likelihood that the `tableName` or `schemaName` options sent to the constructor could be of an unsanitized nature, then no workaround is needed. Else the input could be sanitized and escaped before sending it in. Take note though that such an escaping would need",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xqh8-5j36-4556",
+      "publishedAt": "2019-08-26T16:59:45Z",
+      "modifiedAt": "2023-01-11T05:05:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xqh8-5j36-4556"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15658"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.0.1",
+          "fixed": "6.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

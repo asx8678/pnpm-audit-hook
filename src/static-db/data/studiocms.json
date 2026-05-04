@@ -1,7 +1,169 @@
 {
   "packageName": "studiocms",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-xvf4-ch4q-2m24",
+      "packageName": "studiocms",
+      "title": "StudioCMS REST getUsers Exposes Owner Account Records to Admin Tokens",
+      "description": "## Summary\n\nThe REST API `getUsers` endpoint in StudioCMS uses the attacker-controlled `rank` query parameter to decide whether owner accounts should be filtered from the result set. As a result, an admin token can request `rank=owner` and receive owner account records, including IDs, usernames, display names, and email addresses, even though the adjacent `getUser` endpoint correctly blocks admins from viewing owner users. This is an authorization inconsistency inside the same user-management su",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-xvf4-ch4q-2m24",
+      "publishedAt": "2026-03-16T16:37:42Z",
+      "modifiedAt": "2026-03-18T21:51:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xvf4-ch4q-2m24"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32638"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.4.3",
+          "fixed": "0.4.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wj56-g96r-673q",
+      "packageName": "studiocms",
+      "title": "StudioCMS: REST API Missing Rank Check Allows Admin to Create Peer Admin Accounts",
+      "description": "## Summary\n\nThe REST API `createUser` endpoint uses string-based rank checks that only block creating `owner` accounts, while the Dashboard API uses `indexOf`-based rank comparison that prevents creating users at or above your own rank. This inconsistency allows an admin to create additional admin accounts via the REST API, enabling privilege proliferation and persistence.\n\n## Details\n\nThe REST API handler in `packages/studiocms/frontend/pages/studiocms_api/_handlers/rest-api/v1/secure.ts:1365-1",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wj56-g96r-673q",
+      "publishedAt": "2026-03-12T14:49:48Z",
+      "modifiedAt": "2026-03-12T14:49:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wj56-g96r-673q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32106"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.4.2",
+          "fixed": "0.4.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9v82-xrm4-mp52",
+      "packageName": "studiocms",
+      "title": "StudioCMS: IDOR in User Notification Preferences Allows Any Authenticated User to Modify Any User's Settings",
+      "description": "## Summary\n\nThe `updateUserNotifications` endpoint accepts a user ID from the request payload and uses it to update that user's notification preferences. It checks that the caller is logged in but never verifies that the caller owns the target account (`id !== userData.user.id`). Any authenticated visitor can modify notification preferences for any user, including disabling admin notifications to suppress detection of malicious activity.\n\n## Details\n\nThe vulnerable handler is in `packages/studio",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9v82-xrm4-mp52",
+      "publishedAt": "2026-03-12T14:49:41Z",
+      "modifiedAt": "2026-03-12T14:49:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9v82-xrm4-mp52"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32104"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.4.2",
+          "fixed": "0.4.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-h7vr-cg25-jf8c",
+      "packageName": "studiocms",
+      "title": "StudioCMS: IDOR — Admin-to-Owner Account Takeover via Password Reset Link Generation",
+      "description": "## Summary\nThe POST /studiocms_api/dashboard/create-reset-link endpoint allows any authenticated user with admin privileges to generate a password reset token for any other user, including the owner account. The handler verifies that the caller is an admin but does not enforce role hierarchy, nor does it validate that the target userId matches the caller's identity. Combined with the POST /studiocms_api/dashboard/reset-password endpoint, this allows a complete account takeover of the highest-pri",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h7vr-cg25-jf8c",
+      "publishedAt": "2026-03-12T14:49:38Z",
+      "modifiedAt": "2026-03-12T14:49:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h7vr-cg25-jf8c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32103"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.4.2",
+          "fixed": "0.4.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8rgj-vrfr-6hqr",
+      "packageName": "studiocms",
+      "title": "StudioCMS: IDOR — Arbitrary API Token Revocation Leading to Denial of Service",
+      "description": "## Summary\nThe DELETE /studiocms_api/dashboard/api-tokens endpoint allows any authenticated user with editor privileges or above to revoke API tokens belonging to any other user, including admin and owner accounts. The handler accepts tokenID and userID directly from the request payload without verifying token ownership, caller identity, or role hierarchy. This enables targeted denial of service against critical integrations and automations.\n\n## Details\n#### Vulnerable Code\nThe following is the ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8rgj-vrfr-6hqr",
+      "publishedAt": "2026-03-11T00:16:41Z",
+      "modifiedAt": "2026-03-11T00:16:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8rgj-vrfr-6hqr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30945"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.0",
+          "fixed": "0.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-667w-mmh7-mrr4",
+      "packageName": "studiocms",
+      "title": "StudioCMS has Privilege Escalation via Insecure API Token Generation",
+      "description": "## Summary\nThe /studiocms_api/dashboard/api-tokens endpoint allows any authenticated user (at least Editor) to generate API tokens for any other user, including owner and admin accounts. The endpoint fails to validate whether the requesting user is authorized to create tokens on behalf of the target user ID, resulting in a full privilege escalation.\n\n## Details\nThe API token generation endpoint accepts a user parameter in the request body that specifies which user the token should be created for",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-667w-mmh7-mrr4",
+      "publishedAt": "2026-03-10T18:16:41Z",
+      "modifiedAt": "2026-03-10T18:45:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-667w-mmh7-mrr4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30944"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.0",
+          "fixed": "0.4.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-8cw6-53m5-4932",
       "packageName": "studiocms",

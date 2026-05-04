@@ -1,6 +1,6 @@
 {
   "packageName": "browserstack-local",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-g4w6-c99w-4wh7",
@@ -10,7 +10,7 @@
       "severity": "medium",
       "url": "https://github.com/advisories/GHSA-g4w6-c99w-4wh7",
       "publishedAt": "2026-01-28T18:30:47Z",
-      "modifiedAt": "2026-01-29T15:46:52Z",
+      "modifiedAt": "2026-02-27T16:40:19Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -23,7 +23,8 @@
       ],
       "affectedVersions": [
         {
-          "range": "<= 1.5.8"
+          "range": "<= 1.5.8",
+          "fixed": "1.5.9"
         }
       ],
       "source": "github"

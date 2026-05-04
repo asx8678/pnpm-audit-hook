@@ -1,0 +1,29 @@
+{
+  "packageName": "telejson",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-ccgf-5rwj-j3hv",
+      "packageName": "telejson",
+      "title": "TeleJSON: DOM XSS via unsanitised constructor name in `new Function()`",
+      "description": "## Summary\n \ntelejson versions prior to 6.0.0 (released 2022) are vulnerable to DOM-based Cross-Site Scripting (XSS) through unsafe deserialisation. Attacker-controlled input from the `_constructor-name_` property in parsed JSON is passed directly to `new Function()` without sanitisation, allowing arbitrary JavaScript execution.\n \n## Affected versions\n \n| Package  | Affected  | Fixed    |\n|----------|-----------|----------|\n| telejson | < 6.0.0   | >= 6.0.0 |\n \n \n## Details\n \ntelejson's `parse()",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-ccgf-5rwj-j3hv",
+      "publishedAt": "2026-04-02T23:21:23Z",
+      "modifiedAt": "2026-04-02T23:21:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ccgf-5rwj-j3hv"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.0.0",
+          "fixed": "6.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

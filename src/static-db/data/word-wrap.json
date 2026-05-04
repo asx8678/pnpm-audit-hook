@@ -1,15 +1,16 @@
 {
   "packageName": "word-wrap",
-  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j8xg-fqg3-53r7",
       "packageName": "word-wrap",
-      "title": "word-wrap Regular Expression Denial of Service vulnerability",
+      "title": "word-wrap vulnerable to Regular Expression Denial of Service",
+      "description": "All versions of the package word-wrap are vulnerable to Regular Expression Denial of Service (ReDoS) due to the usage of an insecure regular expression within the result variable.",
       "severity": "medium",
       "url": "https://github.com/advisories/GHSA-j8xg-fqg3-53r7",
-      "publishedAt": "2023-06-22T21:30:00Z",
-      "modifiedAt": "2024-01-09T20:27:00Z",
+      "publishedAt": "2023-06-22T06:30:18Z",
+      "modifiedAt": "2025-02-13T19:00:45Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -22,7 +23,7 @@
       ],
       "affectedVersions": [
         {
-          "range": "<1.2.4",
+          "range": "< 1.2.4",
           "fixed": "1.2.4"
         }
       ],

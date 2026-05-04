@@ -1,0 +1,28 @@
+{
+  "packageName": "epress",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vf8q-pw7h-r2x2",
+      "packageName": "epress",
+      "title": "Malicious Package in epress",
+      "description": "Version 4.13.2 of `epress` contains malicious code . The package is malware designed to take advantage of users making a mistake when typing the name of a module to install. Upon require the package attempts to start a cryptocurrency miner using coin-hive.\n\n\n## Recommendation\n\nRemove the package from your environment and verify whether your system is running the cryptocurrency miner.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vf8q-pw7h-r2x2",
+      "publishedAt": "2020-09-11T21:15:54Z",
+      "modifiedAt": "2023-01-09T05:04:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vf8q-pw7h-r2x2"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

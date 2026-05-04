@@ -1,0 +1,83 @@
+{
+  "packageName": "m-server",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gmxv-xf2q-6j8m",
+      "packageName": "m-server",
+      "title": "Cross-Site Scripting in m-server",
+      "description": "Versions of `m-server` before 1.4.2 are vulnerable to stored cross-site scripting. This vulnerability is exploitable if an attacker is able to control the name of a file that `m-server` is serving.\n\n\n## Recommendation\n\nUpdate to version 1.4.2 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gmxv-xf2q-6j8m",
+      "publishedAt": "2019-02-07T18:16:16Z",
+      "modifiedAt": "2023-09-13T19:48:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gmxv-xf2q-6j8m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16484"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.2",
+          "fixed": "1.4.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-899g-6q6w-7v94",
+      "packageName": "m-server",
+      "title": "m-server Vulnerable to Directory Traversal",
+      "description": "Path Traversal vulnerability in module m-server <1.4.1 allows malicious user to access unauthorized content of any file in the directory tree e.g. /etc/passwd by appending slashes to the URL request.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-899g-6q6w-7v94",
+      "publishedAt": "2019-02-18T23:58:00Z",
+      "modifiedAt": "2023-09-12T20:43:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-899g-6q6w-7v94"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16485"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.1",
+          "fixed": "1.4.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vc6r-4x6g-mmqc",
+      "packageName": "m-server",
+      "title": "Path Traversal in m-server",
+      "description": "Versions of `m-server` before 1.4.2 are vulnerable to path traversal allowing a remote attacker to display content of arbitrary files from the server.\n\n\n## Recommendation\n\nUpdate to version 1.4.2 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vc6r-4x6g-mmqc",
+      "publishedAt": "2019-06-11T16:16:23Z",
+      "modifiedAt": "2023-01-09T05:01:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vc6r-4x6g-mmqc"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.2",
+          "fixed": "1.4.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

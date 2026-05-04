@@ -1,0 +1,29 @@
+{
+  "packageName": "@pdfme/pdf-lib",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vrqm-gvq7-rrwh",
+      "packageName": "@pdfme/pdf-lib",
+      "title": "PDFME Affected by Decompression Bomb in FlateDecode Stream Parsing Causes Memory Exhaustion DoS",
+      "description": "## Summary\n\nThe `DecodeStream.ensureBuffer()` method in `@pdfme/pdf-lib` doubles its internal buffer without any upper bound on the decompressed size. A crafted PDF containing a FlateDecode stream with a high compression ratio (decompression bomb) causes unbounded memory allocation during stream decoding, leading to memory exhaustion and denial of service in both server-side (generator) and client-side (UI) contexts.\n\n## Details\n\nThe vulnerability exists in the `DecodeStream` class, which is the",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vrqm-gvq7-rrwh",
+      "publishedAt": "2026-03-20T20:44:52Z",
+      "modifiedAt": "2026-03-20T20:44:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vrqm-gvq7-rrwh"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.5.9",
+          "fixed": "5.5.10"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

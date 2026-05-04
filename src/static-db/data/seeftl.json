@@ -1,0 +1,32 @@
+{
+  "packageName": "seeftl",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4g46-5grc-wq49",
+      "packageName": "seeftl",
+      "title": "Cross-Site Scripting in seeftl",
+      "description": "All versions of `seeftl` are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize filenames, allowing attackers to execute arbitrary JavaScript in the victim's browser through files with names containing malicious code.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4g46-5grc-wq49",
+      "publishedAt": "2020-04-01T16:36:31Z",
+      "modifiedAt": "2023-01-09T05:02:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4g46-5grc-wq49"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15603"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

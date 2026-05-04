@@ -1,0 +1,32 @@
+{
+  "packageName": "lix",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q8xg-8xwf-m598",
+      "packageName": "lix",
+      "title": "Machine-In-The-Middle in lix",
+      "description": "All versions of `lix` are vulnerable to Machine-In-The-Middle. The package accepts downloads with `http` and follows `location` header redirects for package downloads. This allows for an attacker in a privileged network position to intercept a lix package installation and redirect the download to a malicious source.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q8xg-8xwf-m598",
+      "publishedAt": "2020-04-16T03:14:59Z",
+      "modifiedAt": "2023-02-01T05:03:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q8xg-8xwf-m598"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-10800"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 15.11.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

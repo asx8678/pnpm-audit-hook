@@ -1,0 +1,33 @@
+{
+  "packageName": "scratch-vm",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vc9j-fhvv-8vrf",
+      "packageName": "scratch-vm",
+      "title": "Remote Code Execution in scratch-vm",
+      "description": "MIT Lifelong Kindergarten Scratch scratch-vm before `0.2.0-prerelease.20200714185213` loads extension URLs from untrusted project.json files with certain `_` characters, resulting in remote code execution because the URL's content is treated as a script and is executed as a worker. The responsible code is `getExtensionIdForOpcode` in serialization/sb3.js. The use of `_` is incompatible with a protection mechanism in older versions, in which URLs were split and consequently deserialization attack",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vc9j-fhvv-8vrf",
+      "publishedAt": "2020-07-27T19:55:52Z",
+      "modifiedAt": "2023-09-12T18:20:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vc9j-fhvv-8vrf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-14000"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.2.0-prerelease.20200709173451",
+          "fixed": "0.2.0-prerelease.20200714185213"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

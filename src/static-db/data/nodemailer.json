@@ -1,30 +1,49 @@
 {
   "packageName": "nodemailer",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
-      "id": "GHSA-46j5-6fg5-4gv3",
+      "id": "GHSA-vvjj-xcjg-gr5g",
       "packageName": "nodemailer",
-      "title": "Nodemailer is vulnerable to DoS through Uncontrolled Recursion",
-      "description": "A flaw was found in Nodemailer. This vulnerability allows a denial of service (DoS) via a crafted email address header that triggers infinite recursion in the address parser.",
+      "title": "Nodemailer Vulnerable to SMTP Command Injection via CRLF in Transport name Option (EHLO/HELO) ",
+      "description": "### Summary\n\nNodemailer versions up to and including 8.0.4 are vulnerable to SMTP command injection via CRLF sequences in the transport `name` configuration option. The `name` value is used directly in the EHLO/HELO SMTP command without any sanitization for carriage return and line feed characters (`\\r\\n`). An attacker who can influence this option can inject arbitrary SMTP commands, enabling unauthorized email sending, email spoofing, and phishing attacks.\n\n### Details\n\nThe vulnerability exists",
       "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-46j5-6fg5-4gv3",
-      "publishedAt": "2025-12-18T09:30:30Z",
-      "modifiedAt": "2025-12-18T22:43:41Z",
+      "url": "https://github.com/advisories/GHSA-vvjj-xcjg-gr5g",
+      "publishedAt": "2026-04-08T15:05:20Z",
+      "modifiedAt": "2026-04-08T15:05:21Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-46j5-6fg5-4gv3"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-14874"
+          "value": "GHSA-vvjj-xcjg-gr5g"
         }
       ],
       "affectedVersions": [
         {
-          "range": "< 7.0.11",
-          "fixed": "7.0.11"
+          "range": "<= 8.0.4",
+          "fixed": "8.0.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-c7w3-x93f-qmm8",
+      "packageName": "nodemailer",
+      "title": "Nodemailer has SMTP command injection due to unsanitized `envelope.size` parameter",
+      "description": "### Summary\nWhen a custom `envelope` object is passed to `sendMail()` with a `size` property containing CRLF characters (`\\r\\n`), the value is concatenated directly into the SMTP `MAIL FROM` command without sanitization. This allows injection of arbitrary SMTP commands, including `RCPT TO` — silently adding attacker-controlled recipients to outgoing emails.\n\n\n### Details\nIn `lib/smtp-connection/index.js` (lines 1161-1162), the `envelope.size` value is concatenated into the SMTP `MAIL FROM` comma",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-c7w3-x93f-qmm8",
+      "publishedAt": "2026-03-26T22:26:46Z",
+      "modifiedAt": "2026-03-26T22:26:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c7w3-x93f-qmm8"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.0.4",
+          "fixed": "8.0.4"
         }
       ],
       "source": "github"
@@ -34,19 +53,46 @@
       "packageName": "nodemailer",
       "title": "Nodemailer’s addressparser is vulnerable to DoS caused by recursive calls",
       "description": "### Summary\nA DoS can occur that immediately halts the system due to the use of an unsafe function.\n\n### Details\nAccording to **RFC 5322**, nested group structures (a group inside another group) are not allowed. Therefore, in lib/addressparser/index.js, the email address parser performs flattening when nested groups appear, since such input is likely to be abnormal. (If the address is valid, it is added as-is.) In other words, the parser flattens all nested groups and inserts them into the final",
-      "severity": "low",
+      "severity": "high",
       "url": "https://github.com/advisories/GHSA-rcmh-qjqh-p98v",
       "publishedAt": "2025-12-01T20:44:25Z",
-      "modifiedAt": "2025-12-01T20:44:26Z",
+      "modifiedAt": "2026-02-12T22:09:03Z",
       "identifiers": [
         {
           "type": "GHSA",
           "value": "GHSA-rcmh-qjqh-p98v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-14874"
         }
       ],
       "affectedVersions": [
         {
           "range": "<= 7.0.10",
+          "fixed": "7.0.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-46j5-6fg5-4gv3",
+      "packageName": "nodemailer",
+      "title": "Duplicate Advisory: Nodemailer is vulnerable to DoS through Uncontrolled Recursion",
+      "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-rcmh-qjqh-p98v. This link is maintained to preserve external references.\n\n## Original Description\nA flaw was found in Nodemailer. This vulnerability allows a denial of service (DoS) via a crafted email address header that triggers infinite recursion in the address parser.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-46j5-6fg5-4gv3",
+      "publishedAt": "2025-12-18T09:30:30Z",
+      "modifiedAt": "2026-02-03T17:37:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-46j5-6fg5-4gv3"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 7.0.11",
           "fixed": "7.0.11"
         }
       ],

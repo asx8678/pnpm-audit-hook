@@ -1,0 +1,33 @@
+{
+  "packageName": "pouchdb",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cgqv-x5cx-xvqh",
+      "packageName": "pouchdb",
+      "title": "Arbitrary Code Injection in pouchdb",
+      "description": "Affected versions of `pouchdb` do not properly sandbox the code execution engine which executes the map/reduce functions for temporary views and design documents. Under certain circumstances, an attacker could uses this to run arbitrary code on the server.\n\n\n## Recommendation\n\nUpdate to version 6.0.5 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cgqv-x5cx-xvqh",
+      "publishedAt": "2018-07-26T16:22:08Z",
+      "modifiedAt": "2023-01-09T05:03:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cgqv-x5cx-xvqh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10546"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.0.5",
+          "fixed": "6.0.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

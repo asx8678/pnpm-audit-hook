@@ -1,0 +1,28 @@
+{
+  "packageName": "import-mysql",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-whjr-jj69-7prm",
+      "packageName": "import-mysql",
+      "title": "Malicious Package in import-mysql",
+      "description": "This package contained malicious code. The package uploaded system information such as OS and hostname to a remote server.\n\n\n## Recommendation\n\nRemove the package from your environment. There are no indications of further compromise.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-whjr-jj69-7prm",
+      "publishedAt": "2020-09-03T19:44:35Z",
+      "modifiedAt": "2023-01-09T05:04:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-whjr-jj69-7prm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

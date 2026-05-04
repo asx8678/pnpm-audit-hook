@@ -1,6 +1,6 @@
 {
   "packageName": "merge",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7wpw-2hjm-89gp",
@@ -25,6 +25,33 @@
         {
           "range": "< 2.1.1",
           "fixed": "2.1.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f9cm-qmx5-m98h",
+      "packageName": "merge",
+      "title": "Prototype Pollution in merge",
+      "description": "Versions of `merge` before 1.2.1 are vulnerable to prototype pollution. The `merge.recursive` function can be tricked into adding or modifying properties of the Object prototype.\n\n\n## Recommendation\n\nUpdate to version 1.2.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f9cm-qmx5-m98h",
+      "publishedAt": "2018-11-01T14:45:42Z",
+      "modifiedAt": "2023-09-07T20:34:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f9cm-qmx5-m98h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16469"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.2.1",
+          "fixed": "1.2.1"
         }
       ],
       "source": "github"

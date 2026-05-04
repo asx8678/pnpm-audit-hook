@@ -1,6 +1,6 @@
 {
   "packageName": "markdown-to-jsx",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4wx3-54gh-9fr9",
@@ -25,6 +25,29 @@
         {
           "range": "< 7.4.0",
           "fixed": "7.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-ccrp-c664-8p4j",
+      "packageName": "markdown-to-jsx",
+      "title": "Cross-Site Scripting in markdown-to-jsx",
+      "description": "Versions of `markdown-to-jsx` prior to 6.11.4 are vulnerable to Cross-Site Scripting. Due to insufficient input sanitization the package may render output containing malicious JavaScript. This vulnerability can be exploited through input of links containing `data` or VBScript URIs and a base64-encoded payload.\n\n\n## Recommendation\n\nUpgrade to version 6.11.4 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-ccrp-c664-8p4j",
+      "publishedAt": "2020-09-03T21:17:36Z",
+      "modifiedAt": "2023-01-09T05:04:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ccrp-c664-8p4j"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.11.4",
+          "fixed": "6.11.4"
         }
       ],
       "source": "github"

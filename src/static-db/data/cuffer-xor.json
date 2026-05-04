@@ -1,0 +1,28 @@
+{
+  "packageName": "cuffer-xor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6xm4-p6r2-mwrc",
+      "packageName": "cuffer-xor",
+      "title": "Malicious Package in cuffer-xor",
+      "description": "Version 2.0.2 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6xm4-p6r2-mwrc",
+      "publishedAt": "2020-09-03T22:47:30Z",
+      "modifiedAt": "2023-01-09T05:03:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6xm4-p6r2-mwrc"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

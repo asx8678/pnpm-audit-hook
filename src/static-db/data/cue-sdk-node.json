@@ -1,0 +1,32 @@
+{
+  "packageName": "cue-sdk-node",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p2hm-8725-c8x8",
+      "packageName": "cue-sdk-node",
+      "title": "Downloads Resources over HTTP in cue-sdk-node",
+      "description": "Affected versions of `cue-sdk-node` insecurely download an executable over an unencrypted HTTP connection. \nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `cue-sdk-node`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p2hm-8725-c8x8",
+      "publishedAt": "2019-02-18T23:50:58Z",
+      "modifiedAt": "2023-01-09T05:03:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p2hm-8725-c8x8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10590"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

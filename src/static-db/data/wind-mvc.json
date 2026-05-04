@@ -1,0 +1,32 @@
+{
+  "packageName": "wind-mvc",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7g8m-5qh9-9pgw",
+      "packageName": "wind-mvc",
+      "title": "Directory Traversal in wind-mvc",
+      "description": "Affected versions of `wind-mvc` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only u",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7g8m-5qh9-9pgw",
+      "publishedAt": "2020-09-01T18:07:51Z",
+      "modifiedAt": "2023-09-13T20:25:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7g8m-5qh9-9pgw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16220"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

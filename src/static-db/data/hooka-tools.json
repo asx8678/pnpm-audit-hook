@@ -1,0 +1,28 @@
+{
+  "packageName": "hooka-tools",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m36m-x4c5-rjxj",
+      "packageName": "hooka-tools",
+      "title": "Silently Runs Cryptocoin Miner in hooka-tools",
+      "description": "Affected versions of `hooka-tools` were compromised and modified to silently run a cryptocoin miner in the background.\n\nAll affected versions have been unpublished from the npm registry.\n\n\n## Recommendation\n\nWhile this module has been unpublished, some versions may exist in mirrors or caches. Do not install this module, and remove it if found.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-m36m-x4c5-rjxj",
+      "publishedAt": "2020-09-01T19:01:58Z",
+      "modifiedAt": "2023-01-09T05:03:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m36m-x4c5-rjxj"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

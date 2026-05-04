@@ -1,0 +1,28 @@
+{
+  "packageName": "secure_identity_login_module",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-59x8-7wx6-4hj9",
+      "packageName": "secure_identity_login_module",
+      "title": "Malicious Package in secure_identity_login_module",
+      "description": "All versions of `secure_identity_login_module` contain malicious code. The package uploads system information to a remote server, downloads a file and executes it.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been given to an outside entity, there i",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-59x8-7wx6-4hj9",
+      "publishedAt": "2020-09-03T17:47:52Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-59x8-7wx6-4hj9"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "shadowsock",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-36vc-cw62-fqvr",
+      "packageName": "shadowsock",
+      "title": "Shadowsock is malware",
+      "description": "The `shadowsock` package is a piece of malware that steals environment variables and sends them to attacker controlled locations. \n\nAll versions have been unpublished from the npm registry.\n\n\n## Recommendation\n\n\nAs this package is malware, if you find it installed in your environment, the real security concern is determining how it got there. \n\nIf you have found this installed in your environment, you should:\n1. Delete the package\n2. Clear your npm cache\n3. Ensure it is not present in any other ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-36vc-cw62-fqvr",
+      "publishedAt": "2018-08-27T19:07:23Z",
+      "modifiedAt": "2023-09-05T22:35:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-36vc-cw62-fqvr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16078"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "> 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

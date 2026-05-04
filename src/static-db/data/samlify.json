@@ -1,6 +1,6 @@
 {
   "packageName": "samlify",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-r683-v43c-6xqv",
@@ -25,6 +25,33 @@
         {
           "range": "< 2.10.0",
           "fixed": "2.10.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8jjf-w7j6-323c",
+      "packageName": "samlify",
+      "title": "Samlify vulnerable to Authentication Bypass by allowing tokens to be reused with different usernames",
+      "description": "Versions of `samlify` prior to 2.4.0-rc5 are vulnerable to Authentication Bypass. The package fails to prevent XML Signature Wrapping, allowing tokens to be reused with different usernames. A remote attacker can modify SAML content for a SAML service provider without invalidating the cryptographic signature, which may allow attackers to bypass primary authentication for the affected SAML service provider.\n\n\n## Recommendation\n\nUpgrade to version 2.4.0-rc5 or later",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8jjf-w7j6-323c",
+      "publishedAt": "2018-01-04T21:03:33Z",
+      "modifiedAt": "2023-08-18T21:00:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8jjf-w7j6-323c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-1000452"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.4.0-rc5",
+          "fixed": "2.4.0-rc5"
         }
       ],
       "source": "github"

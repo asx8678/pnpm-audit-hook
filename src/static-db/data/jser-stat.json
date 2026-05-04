@@ -1,0 +1,32 @@
+{
+  "packageName": "jser-stat",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5w4p-h4gm-3w26",
+      "packageName": "jser-stat",
+      "title": "Downloads Resources over HTTP in jser-stat",
+      "description": "Affected versions of `jser-stat` insecurely downloads resources over HTTP. \n\nIn scenarios where an attacker has a privileged network position, they can modify or read such resources at will. While the exact severity of impact for a vulnerability like this is highly variable and depends on the behavior of the package itself, it ranges from being able to read sensitive information all the way up to and including remote code execution.\n\n\n## Recommendation\n\nNo patch is currently available for this v",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5w4p-h4gm-3w26",
+      "publishedAt": "2019-02-18T23:50:53Z",
+      "modifiedAt": "2023-01-09T05:02:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5w4p-h4gm-3w26"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10592"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

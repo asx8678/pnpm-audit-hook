@@ -1,0 +1,32 @@
+{
+  "packageName": "360class.jansenhm",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-25jw-gcfj-283j",
+      "packageName": "360class.jansenhm",
+      "title": "Directory Traversal in 360class.jansenhm",
+      "description": "Affected versions of `360class.jansenhm` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-25jw-gcfj-283j",
+      "publishedAt": "2020-09-01T18:27:04Z",
+      "modifiedAt": "2023-09-07T22:09:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-25jw-gcfj-283j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16186"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

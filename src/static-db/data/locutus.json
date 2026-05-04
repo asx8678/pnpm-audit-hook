@@ -1,7 +1,142 @@
 {
   "packageName": "locutus",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-vc8f-x9pp-wf5p",
+      "packageName": "locutus",
+      "title": "Locutus Prototype Pollution due to incomplete fix for CVE-2026-25521",
+      "description": "## Summary\n\nA prototype pollution vulnerability exists in the `parse_str` function of the npm package locutus. An attacker can pollute `Object.prototype` by overriding `RegExp.prototype.test` and then passing a crafted query string to `parse_str`, bypassing the prototype pollution guard.\n\nThis vulnerability stems from an incomplete fix for [CVE-2026-25521](https://github.com/locutusjs/locutus/security/advisories/GHSA-rxrv-835q-v5mh). The CVE-2026-25521 patch replaced the `String.prototype.includ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vc8f-x9pp-wf5p",
+      "publishedAt": "2026-03-27T17:58:48Z",
+      "modifiedAt": "2026-03-30T20:15:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vc8f-x9pp-wf5p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33994"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.39, < 3.0.25",
+          "fixed": "3.0.25"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4mph-v827-f877",
+      "packageName": "locutus",
+      "title": "Locutus has Prototype Pollution via __proto__ Key Injection in unserialize()",
+      "description": "## Summary\n\nThe `unserialize()` function in `locutus/php/var/unserialize` assigns deserialized keys to plain objects via bracket notation without filtering the `__proto__` key. When a PHP serialized payload contains `__proto__` as an array or object key, JavaScript's `__proto__` setter is invoked, replacing the deserialized object's prototype with attacker-controlled content. This enables property injection, for...in propagation of injected properties, and denial of service via built-in method o",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4mph-v827-f877",
+      "publishedAt": "2026-03-27T17:57:39Z",
+      "modifiedAt": "2026-03-30T20:14:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4mph-v827-f877"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33993"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.25",
+          "fixed": "3.0.25"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vh9h-29pq-r5m8",
+      "packageName": "locutus",
+      "title": "Locutus vulnerable to RCE via unsanitized input in create_function()",
+      "description": "## Summary\n\nThe `create_function(args, code)` function passes both parameters directly to the `Function` constructor without any sanitization, allowing arbitrary code execution.\n\nThis is distinct from CVE-2026-29091 (GHSA-fp25-p6mj-qqg6) which was `call_user_func_array` using `eval()` in v2.x. This finding affects `create_function` using `new Function()` in v3.x.\n\n## Root Cause\n\n`src/php/funchand/create_function.ts:17`:\n```typescript\nreturn new Function(...params, code)\n```\n\nZero input validatio",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vh9h-29pq-r5m8",
+      "publishedAt": "2026-03-13T16:10:29Z",
+      "modifiedAt": "2026-03-16T17:06:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vh9h-29pq-r5m8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32304"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.0.14"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fp25-p6mj-qqg6",
+      "packageName": "locutus",
+      "title": "locutus call_user_func_array vulnerable to Remote Code Execution (RCE) due to Code Injection",
+      "description": "### Details\n\nA Remote Code Execution (RCE) flaw was discovered in the `locutus` project (v2.0.39), specifically within the `call_user_func_array` function implementation. The vulnerability allows an attacker to inject arbitrary JavaScript code into the application's runtime environment. This issue stems from an insecure implementation of the `call_user_func_array` function (and its wrapper `call_user_func`), which fails to properly validate all components of a callback array before passing them ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fp25-p6mj-qqg6",
+      "publishedAt": "2026-03-04T20:19:55Z",
+      "modifiedAt": "2026-03-06T22:44:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fp25-p6mj-qqg6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29091"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.39",
+          "fixed": "3.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rxrv-835q-v5mh",
+      "packageName": "locutus",
+      "title": "locutus is vulnerable to Prototype Pollution",
+      "description": "### Summary\nA Prototype Pollution vulnerability exists in the the npm package locutus (>2.0.12). Despite a previous fix that attempted to mitigate Prototype Pollution by checking whether user input contained a forbidden key, it is still possible to pollute Object.prototype via a crafted input using String.prototype. This issue was fixed in version 2.0.39.\n\n### Details\nThe vulnerability resides in line 77 to 79 of https://github.com/locutusjs/locutus/blob/main/src/php/strings/parse_str.js where i",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-rxrv-835q-v5mh",
+      "publishedAt": "2026-02-02T22:21:54Z",
+      "modifiedAt": "2026-02-05T00:35:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rxrv-835q-v5mh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25521"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.12, < 2.0.39",
+          "fixed": "2.0.39"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-h86x-mv66-gr5q",
       "packageName": "locutus",
@@ -78,60 +213,6 @@
         {
           "range": "< 2.0.12",
           "fixed": "2.0.12"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-fp25-p6mj-qqg6",
-      "packageName": "locutus",
-      "title": "locutus call_user_func_array vulnerable to Remote Code Execution (RCE) due to Code Injection",
-      "description": "### Details\n\nA Remote Code Execution (RCE) flaw was discovered in the `locutus` project (v2.0.39), specifically within the `call_user_func_array` function implementation. The vulnerability allows an attacker to inject arbitrary JavaScript code into the application's runtime environment. This issue stems from an insecure implementation of the `call_user_func_array` function (and its wrapper `call_user_func`), which fails to properly validate all components of a callback array before passing them ",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-fp25-p6mj-qqg6",
-      "publishedAt": "2026-03-04T20:19:55Z",
-      "modifiedAt": "2026-03-06T22:44:26Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-fp25-p6mj-qqg6"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-29091"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 2.0.39",
-          "fixed": "3.0.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-rxrv-835q-v5mh",
-      "packageName": "locutus",
-      "title": "locutus is vulnerable to Prototype Pollution",
-      "description": "### Summary\nA Prototype Pollution vulnerability exists in the the npm package locutus (>2.0.12). Despite a previous fix that attempted to mitigate Prototype Pollution by checking whether user input contained a forbidden key, it is still possible to pollute Object.prototype via a crafted input using String.prototype. This issue was fixed in version 2.0.39.\n\n### Details\nThe vulnerability resides in line 77 to 79 of https://github.com/locutusjs/locutus/blob/main/src/php/strings/parse_str.js where i",
-      "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-rxrv-835q-v5mh",
-      "publishedAt": "2026-02-02T22:21:54Z",
-      "modifiedAt": "2026-02-05T00:35:15Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-rxrv-835q-v5mh"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-25521"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 2.0.12, < 2.0.39",
-          "fixed": "2.0.39"
         }
       ],
       "source": "github"

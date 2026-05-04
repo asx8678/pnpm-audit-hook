@@ -1,0 +1,28 @@
+{
+  "packageName": "priest-runner",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9px9-f7jw-fwhj",
+      "packageName": "priest-runner",
+      "title": "Command Injection in priest-runner",
+      "description": "All versions of `priest-runner` are vulnerable to Command Injection. The package fails to sanitize input and passes it directly to a `spawn` call, which may allow attackers to execute arbitrary code in the system. The `PriestController.prototype.createChild ` function is vulnerable since the `spawn` parameters come from a POST request body.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9px9-f7jw-fwhj",
+      "publishedAt": "2020-09-03T15:49:37Z",
+      "modifiedAt": "2023-01-09T05:04:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9px9-f7jw-fwhj"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

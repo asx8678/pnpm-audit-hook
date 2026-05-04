@@ -1,0 +1,28 @@
+{
+  "packageName": "js-rha3",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-95cg-3r4g-7w6j",
+      "packageName": "js-rha3",
+      "title": "Malicious Package in js-rha3",
+      "description": "Version 0.8.0 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-95cg-3r4g-7w6j",
+      "publishedAt": "2020-09-03T23:01:29Z",
+      "modifiedAt": "2023-01-09T05:04:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-95cg-3r4g-7w6j"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

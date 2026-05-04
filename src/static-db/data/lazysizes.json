@@ -1,6 +1,6 @@
 {
   "packageName": "lazysizes",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hg2p-2cvq-4ppv",
@@ -25,6 +25,29 @@
         {
           "range": "<= 5.2.0",
           "fixed": "5.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w4vp-3mq7-7v82",
+      "packageName": "lazysizes",
+      "title": "Cross-Site Scripting in lazysizes",
+      "description": "Versions of `lazysizes` prior to 5.2.1-rc1 are vulnerable to Cross-Site Scripting.  The `video-embed` plugin fails to sanitize the following attributes: data-vimeo, `data-vimeoparams`, `data-youtube` and `data-ytparams`. This allows attackers to execute arbitrary JavaScript in a victim's browser if the attacker has control over the vulnerable attributes.\n\n\n## Recommendation\n\nUpgrade to version 5.2.1-rc1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w4vp-3mq7-7v82",
+      "publishedAt": "2020-09-03T15:49:48Z",
+      "modifiedAt": "2023-01-09T05:04:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w4vp-3mq7-7v82"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.2.1-rc0",
+          "fixed": "5.2.1-rc1"
         }
       ],
       "source": "github"

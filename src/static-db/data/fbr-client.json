@@ -1,0 +1,32 @@
+{
+  "packageName": "fbr-client",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qmhf-qg6f-pc4v",
+      "packageName": "fbr-client",
+      "title": "Directory Traversal in fbr-client",
+      "description": "Affected versions of `fbr-client` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qmhf-qg6f-pc4v",
+      "publishedAt": "2018-07-23T20:39:51Z",
+      "modifiedAt": "2023-09-12T21:23:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qmhf-qg6f-pc4v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16217"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

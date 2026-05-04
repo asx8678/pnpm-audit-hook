@@ -1,6 +1,6 @@
 {
   "packageName": "tree-kill",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-j7fq-p9q7-5wfv",
@@ -19,6 +19,33 @@
         {
           "type": "CVE",
           "value": "CVE-2019-15598"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.2.2",
+          "fixed": "1.2.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-884p-74jh-xrg2",
+      "packageName": "tree-kill",
+      "title": "Command Injection in tree-kill",
+      "description": "Versions of `tree-kill` prior to 1.2.2 are vulnerable to Command Injection. The package fails to sanitize values passed to the  `kill` function. If this value is user-controlled it  may allow attackers to run arbitrary commands in the server. The issue only affects Windows systems.\n\n\n## Recommendation\n\nUpgrade to version 1.2.2 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-884p-74jh-xrg2",
+      "publishedAt": "2020-09-04T16:57:20Z",
+      "modifiedAt": "2023-11-29T22:32:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-884p-74jh-xrg2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15599"
         }
       ],
       "affectedVersions": [

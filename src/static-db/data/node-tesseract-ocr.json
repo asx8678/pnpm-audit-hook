@@ -1,0 +1,32 @@
+{
+  "packageName": "node-tesseract-ocr",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8j44-735h-w4w2",
+      "packageName": "node-tesseract-ocr",
+      "title": "node-tesseract-ocr is vulnerable to OS Command Injection through unsanitized recognize() function parameter",
+      "description": "node-tesseract-ocr is an npm package that provides a Node.js wrapper for Tesseract OCR. In all versions through 2.2.1, the recognize() function in src/index.js is vulnerable to OS Command Injection. The file path parameter is concatenated into a shell command string and passed to child_process.exec() without proper sanitization",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8j44-735h-w4w2",
+      "publishedAt": "2026-03-25T18:31:47Z",
+      "modifiedAt": "2026-03-27T19:38:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8j44-735h-w4w2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26832"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.2.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

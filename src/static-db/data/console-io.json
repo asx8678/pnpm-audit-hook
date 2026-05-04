@@ -1,0 +1,33 @@
+{
+  "packageName": "console-io",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q52j-4q2q-hcj6",
+      "packageName": "console-io",
+      "title": "Authentication Bypass in console-io",
+      "description": "Affected versions of the `console-io` package do not configure the underlying websocket library to require authentication, resulting in an authentication bypass vulnerability. As `console-io` allows terminal access on the server via a web page, an authentication bypass is essentially remote code execution.\n\n\n\n## Recommendation\n\nUpdate to version 2.3.0 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-q52j-4q2q-hcj6",
+      "publishedAt": "2019-02-18T23:39:39Z",
+      "modifiedAt": "2023-01-09T05:03:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q52j-4q2q-hcj6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10532"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.3.0",
+          "fixed": "2.3.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

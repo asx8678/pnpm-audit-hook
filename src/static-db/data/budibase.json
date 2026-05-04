@@ -1,7 +1,33 @@
 {
   "packageName": "budibase",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-4647-wpjq-hh7f",
+      "packageName": "budibase",
+      "title": "Budibase Unrestricted Server-Side Request Forgery (SSRF) via REST Datasource Query Preview",
+      "description": "### Summary\nThe REST datasource query preview endpoint (`POST /api/queries/preview`) makes server-side HTTP requests to any URL supplied by the user in `fields.path` with no validation. An authenticated admin can reach internal services that are not exposed to the internet — including cloud metadata endpoints (AWS/GCP/Azure), internal databases, Kubernetes APIs, and other pods on the internal network. On GCP this leads to OAuth2 token theft with `cloud-platform` scope (full GCP access). On any d",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4647-wpjq-hh7f",
+      "publishedAt": "2026-03-18T20:22:11Z",
+      "modifiedAt": "2026-03-25T18:15:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4647-wpjq-hh7f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33226"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.30.6"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-rvhr-26g4-p2r8",
       "packageName": "budibase",

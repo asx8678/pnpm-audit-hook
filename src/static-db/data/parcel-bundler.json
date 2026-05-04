@@ -1,0 +1,56 @@
+{
+  "packageName": "parcel-bundler",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-37q6-576q-vgr7",
+      "packageName": "parcel-bundler",
+      "title": "Missing Origin Validation in parcel-bundler",
+      "description": "Versions of `parcel-bundler` before 1.10.0 are missing origin validation on the websocket server. This vulnerability allows a remote attacker to steal a developer's source code because the origin of requests to the websocket server that is used for Hot Module Replacement (HMR) are not validated.\n\n\n## Recommendation\n\nUpdate to version 1.10.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-37q6-576q-vgr7",
+      "publishedAt": "2018-10-30T20:36:53Z",
+      "modifiedAt": "2023-01-09T05:02:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-37q6-576q-vgr7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-14731"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.10.0",
+          "fixed": "1.10.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5j4m-89xf-mf5p",
+      "packageName": "parcel-bundler",
+      "title": "Missing Origin Validation in parcel-bundler",
+      "description": "Withdrawn: Duplicate of GHSA-37q6-576q-vgr7",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5j4m-89xf-mf5p",
+      "publishedAt": "2020-08-27T22:58:46Z",
+      "modifiedAt": "2023-01-09T05:01:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5j4m-89xf-mf5p"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.10.0",
+          "fixed": "1.10.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "section2.madisonjbrooks12",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h372-w3xp-2jg3",
+      "packageName": "section2.madisonjbrooks12",
+      "title": "Directory Traversal in section2.madisonjbrooks12",
+      "description": "Affected versions of `section2.madisonjbrooks12` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h372-w3xp-2jg3",
+      "publishedAt": "2020-09-01T18:54:34Z",
+      "modifiedAt": "2023-09-07T21:55:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h372-w3xp-2jg3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16172"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "packageName": "treekill",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-533p-g2hq-qr26",
+      "packageName": "treekill",
+      "title": "Command Injection in treekill",
+      "description": "All versions of `treekill` are vulnerable to Command Injection. The package fails to sanitize values passed to the  `kill` function. If this value is user-controlled it  may allow attackers to run arbitrary commands in the server. The issue only affects Windows systems.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-533p-g2hq-qr26",
+      "publishedAt": "2020-09-04T17:16:35Z",
+      "modifiedAt": "2023-01-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-533p-g2hq-qr26"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

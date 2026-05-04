@@ -1,0 +1,33 @@
+{
+  "packageName": "smartbanner.js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9mrq-cjgh-32g2",
+      "packageName": "smartbanner.js",
+      "title": "smartbanner.js rel noopener vulnerability",
+      "description": "## rel noopener vulnerability\n\n### Impact\nClicking on smartbanner _View_ link and navigating to 3rd party page leaves `window.opener` exposed. It may allow hostile 3rd parties to abuse `window.opener`, e.g. by redirection or injection on the original page with smartbanner.\n\n### Patches\n`rel=\"noopener\"` is automatically populated to links as of `v1.14.1` which is a recommended upgrade to resolve the vulnerability.\n\n### Workarounds\nIf you can not upgrade to `v1.14.1`:\n1. Ensure _View_ link is only",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-9mrq-cjgh-32g2",
+      "publishedAt": "2019-09-13T13:22:33Z",
+      "modifiedAt": "2025-02-18T18:27:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9mrq-cjgh-32g2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-25300"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.14.1",
+          "fixed": "1.14.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

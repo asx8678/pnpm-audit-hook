@@ -1,0 +1,28 @@
+{
+  "packageName": "my-very-own-package",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-crr2-ph72-c52g",
+      "packageName": "my-very-own-package",
+      "title": "Malicious Package in my-very-own-package",
+      "description": "All versions of `my-very-own-package` contain malicious code. The package sends the output of `process.versions`, `process.arch` and `process.platform` to a remote server in a postinstall script.\n\n\n## Recommendation\n\nRemove the package from your environment. There are no further signs of compromise.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-crr2-ph72-c52g",
+      "publishedAt": "2020-09-03T17:27:22Z",
+      "modifiedAt": "2023-01-09T05:03:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-crr2-ph72-c52g"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

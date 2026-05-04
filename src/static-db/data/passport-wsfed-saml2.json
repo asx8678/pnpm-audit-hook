@@ -1,6 +1,6 @@
 {
   "packageName": "passport-wsfed-saml2",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8gqj-226h-gm8r",
@@ -96,6 +96,29 @@
         {
           "type": "CVE",
           "value": "CVE-2017-16897"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.5",
+          "fixed": "3.0.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7fpw-cfc4-3p2c",
+      "packageName": "passport-wsfed-saml2",
+      "title": "Duplicate advisory: High severity vulnerability that affects passport-wsfed-saml2",
+      "description": "## Duplicate advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-77fw-rf4v-vfp9. This link is maintained to preserve external references.\n\n## Original Description\nA vulnerability has been discovered in the Auth0 passport-wsfed-saml2 library affecting versions < 3.0.5. This vulnerability allows an attacker to impersonate another user and potentially elevate their privileges if the SAML identity provider does not sign the full SAML response (e.g., only signs the assertion w",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7fpw-cfc4-3p2c",
+      "publishedAt": "2017-12-28T22:51:45Z",
+      "modifiedAt": "2023-06-21T22:00:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7fpw-cfc4-3p2c"
         }
       ],
       "affectedVersions": [

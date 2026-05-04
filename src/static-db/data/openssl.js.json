@@ -1,0 +1,32 @@
+{
+  "packageName": "openssl.js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-22gq-x6pg-752j",
+      "packageName": "openssl.js",
+      "title": "openssl.js is malware",
+      "description": "The `openssl.js` package is a piece of malware that steals environment variables and sends them to attacker controlled locations. \n\nAll versions have been unpublished from the npm registry.\n\n\n## Recommendation\n\nAs this package is malware, if you find it installed in your environment, the real security concern is determining how it got there. \n\nIf you have found this installed in your environment, you should:\n1. Delete the package\n2. Clear your npm cache\n3. Ensure it is not present in any other p",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-22gq-x6pg-752j",
+      "publishedAt": "2018-08-29T23:45:41Z",
+      "modifiedAt": "2023-09-07T22:47:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-22gq-x6pg-752j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16065"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

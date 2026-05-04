@@ -1,0 +1,33 @@
+{
+  "packageName": "macaca-chromedriver",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-769c-qphh-g3wm",
+      "packageName": "macaca-chromedriver",
+      "title": "Downloads Resources over HTTP in macaca-chromedriver",
+      "description": "Affected versions of `macaca-chromedriver` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `macaca-chromedriver`.\n\n\n## Recommendation\n\nUpdate to version 1.0.29 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-769c-qphh-g3wm",
+      "publishedAt": "2019-02-18T23:51:09Z",
+      "modifiedAt": "2023-01-09T05:02:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-769c-qphh-g3wm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10586"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.29",
+          "fixed": "1.0.29"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

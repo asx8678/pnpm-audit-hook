@@ -1,0 +1,33 @@
+{
+  "packageName": "dot-prop",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-ff7x-qrg7-qggm",
+      "packageName": "dot-prop",
+      "title": "dot-prop Prototype Pollution vulnerability",
+      "description": "Prototype pollution vulnerability in dot-prop npm package versions before 4.2.1 and versions 5.x before 5.1.1 allows an attacker to add arbitrary properties to JavaScript language constructs such as objects.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-ff7x-qrg7-qggm",
+      "publishedAt": "2020-07-29T20:56:59Z",
+      "modifiedAt": "2025-02-12T05:10:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ff7x-qrg7-qggm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8116"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.1.1",
+          "fixed": "5.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

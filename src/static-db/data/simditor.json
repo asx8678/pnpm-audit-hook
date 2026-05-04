@@ -1,6 +1,6 @@
 {
   "packageName": "simditor",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-p9wj-wrrm-84m5",
@@ -24,6 +24,33 @@
       "affectedVersions": [
         {
           "range": "<= 2.3.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8v67-x8q5-3x3g",
+      "packageName": "simditor",
+      "title": "Cross-Site Scripting in simditor",
+      "description": "Versions of `simditor` prior to 2.3.22 are vulnerable to Cross-Site Scripting. The package does not sanitize user input that is rendered with `innerHTML`, allowing attackers to execute arbitrary JavaScript.\n\n\n## Recommendation\n\nUpgrade to version 2.3.22 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8v67-x8q5-3x3g",
+      "publishedAt": "2019-05-14T04:01:27Z",
+      "modifiedAt": "2023-01-09T05:01:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8v67-x8q5-3x3g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-19048"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.3.22",
+          "fixed": "2.3.22"
         }
       ],
       "source": "github"

@@ -1,0 +1,28 @@
+{
+  "packageName": "wizard-syncronizer",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wgw3-gf4p-62xc",
+      "packageName": "wizard-syncronizer",
+      "title": "Command Injection in wizard-syncronizer",
+      "description": "All versions of `wizard-syncronizer` are vulnerable to Command Injection. The package does not validate input on the `cloneAndSync` function  and concatenates it to an exec call. This can be abused through a malicious widget containing the payload in the `gitURL` value or through a MITM attack since the package does not enforce HTTPS. This may allow attackers to run arbitrary commands in the system.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wgw3-gf4p-62xc",
+      "publishedAt": "2020-09-11T21:16:59Z",
+      "modifiedAt": "2023-01-09T05:03:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wgw3-gf4p-62xc"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

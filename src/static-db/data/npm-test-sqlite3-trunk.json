@@ -1,0 +1,32 @@
+{
+  "packageName": "npm-test-sqlite3-trunk",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mf7c-58q5-7v65",
+      "packageName": "npm-test-sqlite3-trunk",
+      "title": "Downloads Resources over HTTP in npm-test-sqlite3-trunk",
+      "description": "Affected versions of `npm-test-sqlite3-trunk` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `npm-test-sqlite3-trunk`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a d",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mf7c-58q5-7v65",
+      "publishedAt": "2020-09-01T16:15:28Z",
+      "modifiedAt": "2023-01-09T05:03:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mf7c-58q5-7v65"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10695"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

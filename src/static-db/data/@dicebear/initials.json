@@ -1,0 +1,33 @@
+{
+  "packageName": "@dicebear/initials",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mr9r-mww3-v6gv",
+      "packageName": "@dicebear/initials",
+      "title": "SVG Injection via Unsanitized Options in @dicebear/core and @dicebear/initials",
+      "description": "## Summary\n\nSVG attribute values derived from user-supplied options (`backgroundColor`, `fontFamily`, `textColor`) were not XML-escaped before interpolation into SVG output. This could allow Cross-Site Scripting (XSS) when applications pass untrusted input to `createAvatar()` and serve the resulting SVG inline or with `Content-Type: image/svg+xml`.\n\n## Affected packages\n\n- **`@dicebear/core`** — `backgroundColor` option values interpolated into SVG attributes without escaping (affects `solid` an",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mr9r-mww3-v6gv",
+      "publishedAt": "2026-03-19T17:49:28Z",
+      "modifiedAt": "2026-03-25T20:52:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mr9r-mww3-v6gv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33311"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 9.0.0, <= 9.4.0",
+          "fixed": "9.4.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

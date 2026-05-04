@@ -1,6 +1,6 @@
 {
   "packageName": "webpack-dev-server",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9jgg-88mc-972h",
@@ -52,6 +52,33 @@
         {
           "range": "<= 5.2.0",
           "fixed": "5.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cf66-xwfp-gvc4",
+      "packageName": "webpack-dev-server",
+      "title": "Missing Origin Validation in webpack-dev-server",
+      "description": "Versions of `webpack-dev-server` before 3.1.10 are missing origin validation on the websocket server. This vulnerability allows a remote attacker to steal a developer's source code because the origin of requests to the websocket server that is used for Hot Module Replacement (HMR) are not validated.\n\n\n## Recommendation\nFor `webpack-dev-server` update to version 3.1.11 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cf66-xwfp-gvc4",
+      "publishedAt": "2019-01-04T17:40:59Z",
+      "modifiedAt": "2023-01-09T05:03:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cf66-xwfp-gvc4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-14732"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.1.11",
+          "fixed": "3.1.11"
         }
       ],
       "source": "github"

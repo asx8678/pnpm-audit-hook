@@ -1,0 +1,33 @@
+{
+  "packageName": "xterm",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mc23-976p-j42x",
+      "packageName": "xterm",
+      "title": "xterm vulnerable to remote code execution ",
+      "description": "A remote code execution vulnerability exists in Xterm.js when the component mishandles special characters.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mc23-976p-j42x",
+      "publishedAt": "2019-01-14T16:19:55Z",
+      "modifiedAt": "2023-03-07T00:43:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mc23-976p-j42x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-0542"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.10.0, < 3.10.1",
+          "fixed": "3.10.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

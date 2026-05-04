@@ -1,0 +1,29 @@
+{
+  "packageName": "googleapis",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7543-mr7h-6v86",
+      "packageName": "googleapis",
+      "title": "Improper Authorization in googleapis",
+      "description": "Versions of `googleapis` prior to 39.1.0 are vulnerable to Improper Authorization. Setting credentials to one client may apply to all clients which may cause requests to be sent with the incorrect credentials.\n\n\n## Recommendation\n\nUpgrade to version 39.1.0.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7543-mr7h-6v86",
+      "publishedAt": "2020-09-02T16:00:26Z",
+      "modifiedAt": "2023-01-09T05:03:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7543-mr7h-6v86"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 39.1.0",
+          "fixed": "39.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

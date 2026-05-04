@@ -1,0 +1,32 @@
+{
+  "packageName": "@risingstack/protect",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vpch-rxw3-fgx8",
+      "packageName": "@risingstack/protect",
+      "title": "Cross-Site Scripting in @risingstack/protect",
+      "description": "All versions of `@risingstack/protect` are vulnerable to Cross-Site Scripting. The  `isXss()` XSS validator has several bypasses that may allow attackers to execute arbitrary JavaScript in a victim's browser.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package. The package is not actively maintained and will not be patched.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vpch-rxw3-fgx8",
+      "publishedAt": "2018-04-25T14:30:43Z",
+      "modifiedAt": "2023-01-09T05:03:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vpch-rxw3-fgx8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-1000160"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

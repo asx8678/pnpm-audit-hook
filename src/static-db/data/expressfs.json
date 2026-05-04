@@ -1,0 +1,28 @@
+{
+  "packageName": "expressfs",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mxmj-84q8-34r7",
+      "packageName": "expressfs",
+      "title": "Command Injection in expressfs",
+      "description": "All versions of `expressfs` are vulnerable to Command Injection. The package does not validate user input on several API endpoints, allowing attackers to run arbitrary commands in the system. The affected endpoints are: `expressfs.appendFile`,  `expressfs.cp`, `expressfs.create` and `expressfs.rmdir`.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mxmj-84q8-34r7",
+      "publishedAt": "2020-09-03T02:39:49Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mxmj-84q8-34r7"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

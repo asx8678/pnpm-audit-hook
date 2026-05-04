@@ -1,6 +1,6 @@
 {
   "packageName": "pannellum",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8423-w5wx-h2r6",
@@ -25,6 +25,33 @@
         {
           "range": ">= 2.5.0, < 2.5.7",
           "fixed": "2.5.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m52x-29pq-w3vv",
+      "packageName": "pannellum",
+      "title": "Pannellum Cross-Site Scripting due to data not being sanitized for URIs or vbscript",
+      "description": "Versions of `pannellum` prior to 2.5.6 are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize URLs for data URIs, which may allow attackers to execute arbitrary code in a victim's browser. \n\n\n## Recommendation\n\nUpgrade to version 2.5.6 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m52x-29pq-w3vv",
+      "publishedAt": "2019-11-22T18:18:03Z",
+      "modifiedAt": "2023-01-11T05:08:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m52x-29pq-w3vv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-16763"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.5.0, < 2.5.5",
+          "fixed": "2.5.5"
         }
       ],
       "source": "github"

@@ -1,0 +1,32 @@
+{
+  "packageName": "626",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r4r9-mgjc-g6q3",
+      "packageName": "626",
+      "title": "Path Traversal in 626",
+      "description": "All versions of `626` are vulnerable to path traversal. This enables a remote attacker to read arbitrary files from the remote server using this module.\n\n\n## Recommendation\n\nNo fix is currently available for this vulnerability.\nIt is our recommendation to not install or use this module at this time.\n ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r4r9-mgjc-g6q3",
+      "publishedAt": "2020-09-01T19:06:15Z",
+      "modifiedAt": "2023-06-01T19:46:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r4r9-mgjc-g6q3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3727"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

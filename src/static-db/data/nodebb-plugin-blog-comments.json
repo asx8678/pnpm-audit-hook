@@ -1,0 +1,33 @@
+{
+  "packageName": "nodebb-plugin-blog-comments",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-43m5-c88r-cjvv",
+      "packageName": "nodebb-plugin-blog-comments",
+      "title": "XSS due to lack of CSRF validation for replying/publishing",
+      "description": "### Impact\nDue to lack of CSRF validation, a logged in user is potentially vulnerable to an XSS attack which could allow a third party to post on their behalf on the forum.\n\n### Patches\nUpgrade to the latest version v0.7.0\n\n### Workarounds\nYou can cherry-pick the following commit: [https://github.com/psychobunny/nodebb-plugin-blog-comments/commit/cf43beedb05131937ef46f365ab0a0c6fa6ac618](https://github.com/psychobunny/nodebb-plugin-blog-comments/commit/cf43beedb05131937ef46f365ab0a0c6fa6ac618)\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-43m5-c88r-cjvv",
+      "publishedAt": "2020-08-26T18:55:38Z",
+      "modifiedAt": "2023-01-09T05:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-43m5-c88r-cjvv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15156"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.7.0",
+          "fixed": "0.7.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

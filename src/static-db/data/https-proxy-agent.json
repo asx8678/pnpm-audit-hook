@@ -1,0 +1,79 @@
+{
+  "packageName": "https-proxy-agent",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pc5p-h8pf-mvwp",
+      "packageName": "https-proxy-agent",
+      "title": "Machine-In-The-Middle in https-proxy-agent",
+      "description": "Versions of `https-proxy-agent` prior to 2.2.3 are vulnerable to Machine-In-The-Middle. The package fails to enforce TLS on the socket if the proxy server responds the to the request with a HTTP status different than 200. This allows an attacker with access to the proxy server to intercept unencrypted communications, which may include sensitive information such as credentials.\n\n\n## Recommendation\n\nUpgrade to version 3.0.0 or 2.2.3.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pc5p-h8pf-mvwp",
+      "publishedAt": "2020-04-16T03:14:56Z",
+      "modifiedAt": "2023-11-01T20:54:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pc5p-h8pf-mvwp"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.3",
+          "fixed": "2.2.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8g7p-74h8-hg48",
+      "packageName": "https-proxy-agent",
+      "title": "Denial of Service in https-proxy-agent",
+      "description": "Versions of `https-proxy-agent` before 2.2.0 are vulnerable to denial of service. This is due to unsanitized options (proxy.auth) being passed to `Buffer()`.\n\n\n## Recommendation\n\nUpdate to version 2.2.0 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8g7p-74h8-hg48",
+      "publishedAt": "2018-07-27T17:04:52Z",
+      "modifiedAt": "2023-01-09T05:03:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8g7p-74h8-hg48"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3739"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.0",
+          "fixed": "2.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qrg3-f6h6-vq8q",
+      "packageName": "https-proxy-agent",
+      "title": "Denial of Service in https-proxy-agent",
+      "description": "Withdrawn: Duplicate of GHSA-8g7p-74h8-hg48",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qrg3-f6h6-vq8q",
+      "publishedAt": "2020-08-19T22:15:57Z",
+      "modifiedAt": "2023-01-09T05:01:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qrg3-f6h6-vq8q"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.0",
+          "fixed": "2.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "packageName": "mavon-editor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jfcc-rm7f-xgf8",
+      "packageName": "mavon-editor",
+      "title": "Cross-Site Scripting in mavon-editor",
+      "description": "All versions of `mavon-editor` are vulnerable to Cross-Site Scripting. The package fails to sanitize entered input, allowing attackers to execute arbitrary JavaScript in a victim's browser.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jfcc-rm7f-xgf8",
+      "publishedAt": "2020-09-03T20:36:35Z",
+      "modifiedAt": "2023-01-09T05:04:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jfcc-rm7f-xgf8"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.8.2",
+          "fixed": "2.8.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

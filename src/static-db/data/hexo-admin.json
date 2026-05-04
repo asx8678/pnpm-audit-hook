@@ -1,6 +1,6 @@
 {
   "packageName": "hexo-admin",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-g784-q3p3-26rm",
@@ -24,6 +24,28 @@
       "affectedVersions": [
         {
           "range": "<= 2.3.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-phph-xpj4-wvcv",
+      "packageName": "hexo-admin",
+      "title": "Cross-Site Scripting in hexo-admin",
+      "description": "All versions of `hexo-admin` are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize rendered markdown, allowing attackers to execute arbitrary JavaScript in a victim's browser if they are able to create new posts.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-phph-xpj4-wvcv",
+      "publishedAt": "2020-09-03T21:13:07Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-phph-xpj4-wvcv"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
         }
       ],
       "source": "github"

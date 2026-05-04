@@ -1,0 +1,29 @@
+{
+  "packageName": "simple-crypto-js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5v7r-jg9r-vq44",
+      "packageName": "simple-crypto-js",
+      "title": "Insecure Cryptography Algorithm in simple-crypto-js",
+      "description": "Versions of `simple-crypto-js` prior to 2.3.0 use AES-CBC with PKCS#7 padding, which is vulnerable to padding oracle attacks. This may allow attackers to break the encryption and access sensitive data.\n\n\n## Recommendation\n\nUpgrade to version 2.3.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5v7r-jg9r-vq44",
+      "publishedAt": "2020-09-03T21:19:46Z",
+      "modifiedAt": "2023-04-17T15:44:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5v7r-jg9r-vq44"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.3.0",
+          "fixed": "2.3.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "packageName": "@stablelib/cbor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w48f-fwg7-ww6p",
+      "packageName": "@stablelib/cbor",
+      "title": "@stablelib/cbor: Prototype poisoning via `__proto__` map keys in CBOR decoding",
+      "description": "### Summary\n\n`@stablelib/cbor` decodes CBOR maps into ordinary JavaScript objects and assigns attacker-controlled keys directly onto those objects. A CBOR map key named `__proto__` therefore changes the prototype of the decoded object instead of becoming an ordinary data property.\n\n### Details\n\nThe decoder builds map results with a plain `{}` and then stores attacker-controlled keys using bracket assignment.\n\nThat is unsafe for special property names. In JavaScript, assigning to `obj[\"__proto__\"",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w48f-fwg7-ww6p",
+      "publishedAt": "2026-04-04T04:24:27Z",
+      "modifiedAt": "2026-04-07T14:23:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w48f-fwg7-ww6p"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.3",
+          "fixed": "2.0.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5jg4-p4qw-cgfr",
+      "packageName": "@stablelib/cbor",
+      "title": "@stablelib/cbor: Stack exhaustion Denial of Service via deeply nested CBOR arrays, maps, or tags",
+      "description": "### Summary\n\n`@stablelib/cbor` decodes nested CBOR structures recursively and does not enforce a maximum nesting depth. A sufficiently deep attacker-controlled CBOR payload can therefore crash decoding with `RangeError: Maximum call stack size exceeded`.\n\n### Details\n\nThe decoder processes arrays, maps, and tagged values through recursive calls. Each nested container causes another descent into `_decodeValue()` until a leaf value is reached.\n\nThere is no depth limit, no iterative fallback, and n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5jg4-p4qw-cgfr",
+      "publishedAt": "2026-04-04T05:33:09Z",
+      "modifiedAt": "2026-04-07T14:22:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5jg4-p4qw-cgfr"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.3",
+          "fixed": "2.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

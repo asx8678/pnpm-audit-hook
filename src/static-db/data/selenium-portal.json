@@ -1,0 +1,32 @@
+{
+  "packageName": "selenium-portal",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6fvw-7vch-x489",
+      "packageName": "selenium-portal",
+      "title": "Downloads Resources over HTTP in selenium-portal",
+      "description": "Affected versions of `selenium-portal` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `selenium-portal`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability, and the package has not seen an update since 2014.\n\nThe best mitigation is currently t",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6fvw-7vch-x489",
+      "publishedAt": "2019-02-18T23:44:36Z",
+      "modifiedAt": "2023-01-09T05:02:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6fvw-7vch-x489"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10667"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.1-2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

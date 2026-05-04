@@ -1,0 +1,33 @@
+{
+  "packageName": "@striae-org/striae",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mmf8-487q-p45m",
+      "packageName": "@striae-org/striae",
+      "title": "Striae has a hash validation utility vulnerability",
+      "description": "## Summary\n\nA high-severity integrity bypass vulnerability existed in Striae's digital confirmation workflow prior to v3.0.0. Hash-only validation trusted manifest hash fields that could be modified together with package content, allowing tampered confirmation packages to pass integrity checks.\n\n## Impact\n\nConfirmation package integrity could be bypassed because both content and hash values were mutable in the same trust boundary. An attacker with access to an exported package could alter confir",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mmf8-487q-p45m",
+      "publishedAt": "2026-03-11T14:55:49Z",
+      "modifiedAt": "2026-03-11T20:43:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mmf8-487q-p45m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31839"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.9.22-0, < 3.0.0",
+          "fixed": "3.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

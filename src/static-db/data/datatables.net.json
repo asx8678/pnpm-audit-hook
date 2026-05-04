@@ -1,6 +1,6 @@
 {
   "packageName": "datatables.net",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-h73q-5wmj-q8pj",
@@ -25,6 +25,33 @@
         {
           "range": "< 1.11.3",
           "fixed": "1.11.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m7j4-fhg6-xf5v",
+      "packageName": "datatables.net",
+      "title": "datatables.net vulnerable to Prototype Pollution due to incomplete fix",
+      "description": "All versions of package datatables.net are vulnerable to Prototype Pollution due to an incomplete fix for https://snyk.io/vuln/SNYK-JS-DATATABLESNET-598806.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m7j4-fhg6-xf5v",
+      "publishedAt": "2020-12-17T21:00:50Z",
+      "modifiedAt": "2024-06-21T21:33:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m7j4-fhg6-xf5v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28458"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.10.22",
+          "fixed": "1.10.22"
         }
       ],
       "source": "github"

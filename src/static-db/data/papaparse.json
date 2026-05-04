@@ -1,7 +1,34 @@
 {
   "packageName": "papaparse",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-qvjc-g5vr-mfgr",
+      "packageName": "papaparse",
+      "title": "Regular Expression Denial of Service in papaparse",
+      "description": "Versions of `papaparse` prior to 5.2.0 are vulnerable to Regular Expression Denial of Service (ReDos). The `parse` function contains a malformed regular expression that takes exponentially longer to process non-numerical inputs. This allows attackers to stall systems and lead to Denial of Service.\n\n\n## Recommendation\n\nUpgrade to version 5.2.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qvjc-g5vr-mfgr",
+      "publishedAt": "2020-09-04T18:03:04Z",
+      "modifiedAt": "2025-06-16T14:03:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qvjc-g5vr-mfgr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-36649"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.2.0",
+          "fixed": "5.2.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-798h-g4j5-5537",
       "packageName": "papaparse",

@@ -1,0 +1,28 @@
+{
+  "packageName": "babel-laoder",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qp6m-jqfr-2f7v",
+      "packageName": "babel-laoder",
+      "title": "Malicious Package in babel-laoder",
+      "description": "All versions of this package contained malware. The package was designed to find and exfiltrate cryptocurrency wallets.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package wil",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qp6m-jqfr-2f7v",
+      "publishedAt": "2020-09-04T15:27:11Z",
+      "modifiedAt": "2023-01-09T05:04:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qp6m-jqfr-2f7v"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

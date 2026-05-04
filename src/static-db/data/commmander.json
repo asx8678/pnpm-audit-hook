@@ -1,0 +1,28 @@
+{
+  "packageName": "commmander",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q42c-rrp3-r3xm",
+      "packageName": "commmander",
+      "title": "Malicious Package in commmander",
+      "description": "All versions of `commmander` contain malicious code . The package is malware designed to take advantage of users making a mistake when typing the name of a module to install. Upon require the package attempts to start a cryptocurrency miner using coin-hive.\n\n\n## Recommendation\n\nRemove the package from your environment and verify whether your system is running the cryptocurrency miner.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-q42c-rrp3-r3xm",
+      "publishedAt": "2020-09-11T21:13:44Z",
+      "modifiedAt": "2023-01-09T05:03:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q42c-rrp3-r3xm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

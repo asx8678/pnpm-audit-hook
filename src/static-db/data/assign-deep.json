@@ -1,0 +1,60 @@
+{
+  "packageName": "assign-deep",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xcvv-84j5-jw9h",
+      "packageName": "assign-deep",
+      "title": "Prototype Pollution in assign-deep",
+      "description": "Versions of `assign-deep` before 0.4.7 are vulnerable to prototype pollution via merging functions.\n\n\n## Recommendation\n\nUpdate to version 0.4.7 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xcvv-84j5-jw9h",
+      "publishedAt": "2018-07-26T15:12:31Z",
+      "modifiedAt": "2023-09-08T23:03:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xcvv-84j5-jw9h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3720"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.4.7",
+          "fixed": "0.4.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-66rh-8fw6-59q6",
+      "packageName": "assign-deep",
+      "title": "assign-deep Vulnerable to Prototype Pollution",
+      "description": "Versions of `assign-deep` prior to 1.0.1 and 0.4.8 are vulnerable to Prototype Pollution. The `assign` function fails to validate which Object properties it updates. This allows attackers to modify the prototype of Object, causing the addition or modification of an existing property on all objects.\n\n## Recommendation\n\nUpgrade to versions 1.0.1, 0.4.8, or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-66rh-8fw6-59q6",
+      "publishedAt": "2019-08-21T16:15:13Z",
+      "modifiedAt": "2023-01-27T05:09:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-66rh-8fw6-59q6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10745"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.0.0",
+          "fixed": "1.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

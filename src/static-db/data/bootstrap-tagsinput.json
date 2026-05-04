@@ -1,0 +1,32 @@
+{
+  "packageName": "bootstrap-tagsinput",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v2jq-9475-r5g8",
+      "packageName": "bootstrap-tagsinput",
+      "title": "Cross-Site Scripting in bootstrap-tagsinput",
+      "description": "All versions of `bootstrap-tagsinput` are vulnerable to cross-site scripting when user input is passed into the `itemTitle` parameter unmodified, as the package fails to properly sanitize or encode user input for that parameter.\n\n\n\n## Recommendation\n\nThis package is not actively maintained, and has not seen an update since 2015. \n\nBecause of this, the simplest mitigation is to avoid using the `itemTitle` parameter. With over 200 open issues and over 100 open pull requests as of 2/2018, it seems ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v2jq-9475-r5g8",
+      "publishedAt": "2020-09-01T15:29:51Z",
+      "modifiedAt": "2023-01-09T05:03:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v2jq-9475-r5g8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-1000227"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.8.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

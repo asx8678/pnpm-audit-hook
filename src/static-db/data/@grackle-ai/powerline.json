@@ -1,0 +1,29 @@
+{
+  "packageName": "@grackle-ai/powerline",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xq7h-vwjp-5vrh",
+      "packageName": "@grackle-ai/powerline",
+      "title": "@grackle-ai/powerline Runs Without Authentication by Default",
+      "description": "### Impact\n\nWhen `--token` is not provided and `GRACKLE_POWERLINE_TOKEN` is not set, the PowerLine gRPC server runs with **zero authentication**. A warning is logged (`\"NO AUTH (development only)\"`) but nothing prevents deployment in this state. Any client that can reach the PowerLine port can spawn agent sessions, access credential tokens, and execute code.\n\nThe default binding is `127.0.0.1` (loopback only), which limits exposure to the local machine. However, if PowerLine is accidentally expo",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xq7h-vwjp-5vrh",
+      "publishedAt": "2026-03-25T17:30:46Z",
+      "modifiedAt": "2026-03-25T17:30:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xq7h-vwjp-5vrh"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.70.0",
+          "fixed": "0.70.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

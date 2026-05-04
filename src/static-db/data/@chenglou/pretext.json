@@ -1,0 +1,29 @@
+{
+  "packageName": "@chenglou/pretext",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5478-66c3-rhxr",
+      "packageName": "@chenglou/pretext",
+      "title": "Pretext: Algorithmic Complexity (DoS) in the text analysis phase",
+      "description": "`isRepeatedSingleCharRun()` in `src/analysis.ts` (line 285) re-scans the entire accumulated segment on every merge iteration during text analysis, producing O(n²) total work for input consisting of repeated identical punctuation characters. An attacker who controls text passed to `prepare()` can block the main thread for ~20 seconds with 80KB of input (e.g., `\"(\".repeat(80_000)`).\n\nTested against commit 9364741d3562fcc65aacc50953e867a5cb9fdb23 (v0.0.4) on Node.js v24.12.0, Windows x64.\n\nA standa",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5478-66c3-rhxr",
+      "publishedAt": "2026-04-08T21:50:51Z",
+      "modifiedAt": "2026-04-08T21:50:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5478-66c3-rhxr"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.4",
+          "fixed": "0.0.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

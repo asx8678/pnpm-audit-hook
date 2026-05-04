@@ -5,6 +5,7 @@ const SRC_DIR = path.join(__dirname, "..", "src", "static-db", "data");
 const DEST_DIR = path.join(__dirname, "..", "dist", "static-db", "data");
 
 async function copyStaticDb() {
+  await fs.rm(DEST_DIR, { recursive: true, force: true });
   await fs.mkdir(path.dirname(DEST_DIR), { recursive: true });
   await fs.cp(SRC_DIR, DEST_DIR, { recursive: true });
 }

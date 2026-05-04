@@ -1,0 +1,28 @@
+{
+  "packageName": "js-regular",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qcc9-q247-3m2m",
+      "packageName": "js-regular",
+      "title": "Malicious Package in js-regular",
+      "description": "This package contained malicious code. The package uploaded system information such as OS and hostname to a remote server.\n\n\n## Recommendation\n\nRemove the package from your environment. There are no indications of further compromise.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qcc9-q247-3m2m",
+      "publishedAt": "2020-09-03T19:46:49Z",
+      "modifiedAt": "2023-01-09T05:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qcc9-q247-3m2m"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

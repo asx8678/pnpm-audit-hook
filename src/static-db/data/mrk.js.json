@@ -1,0 +1,29 @@
+{
+  "packageName": "mrk.js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hpr5-wp7c-hh5q",
+      "packageName": "mrk.js",
+      "title": "Cross-Site Scripting in mrk.js",
+      "description": "Versions of `mrk.js` before 2.0.1 are vulnerable to cross-site scripting (XSS) when markdown is converted to HTML.\n\n\n## Recommendation\n\nUpdate to version 2.0.1 or later and use `mark.sanitizeURL()` for any `src` and `href` attributes when extending the markdown.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hpr5-wp7c-hh5q",
+      "publishedAt": "2020-09-01T19:37:29Z",
+      "modifiedAt": "2023-01-09T05:03:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hpr5-wp7c-hh5q"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.1",
+          "fixed": "2.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

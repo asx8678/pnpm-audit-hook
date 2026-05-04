@@ -1,7 +1,396 @@
 {
   "packageName": "flowise-components",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-3hjv-c53m-58jj",
+      "packageName": "flowise-components",
+      "title": "Flowise: CSV Agent Prompt Injection Remote Code Execution Vulnerability",
+      "description": "## Abstract\n\nTrend Micro's Zero Day Initiative has identified a vulnerability affecting FlowiseAI Flowise.\n\n## Vulnerability Details\n\n- **Version tested:** 3.0.13\n- **Installer file:** https://github.com/FlowiseAI/Flowise\n- **Platform tested:** Ubuntu 25.10\n\n## Analysis\n\nThis vulnerability allows remote attackers to execute arbitrary code on affected installations of FlowiseAI Flowise. Authentication is not required to exploit this vulnerability.\n\nThe specific flaw exists within the `run` method",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3hjv-c53m-58jj",
+      "publishedAt": "2026-04-21T20:19:52Z",
+      "modifiedAt": "2026-04-27T16:34:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3hjv-c53m-58jj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41264"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xhmj-rg95-44hv",
+      "packageName": "flowise-components",
+      "title": "Flowise: SSRF Protection Bypass via Unprotected Built-in HTTP Modules in Custom Function Sandbox",
+      "description": "### Summary\nA Server-Side Request Forgery (SSRF) protection bypass vulnerability exists in the Custom Function feature. While the application implements SSRF protection via HTTP_DENY_LIST for axios and node-fetch libraries, the built-in Node.js `http`, `https`, and `net` modules are allowed in the NodeVM sandbox without equivalent protection. This allows authenticated users to bypass SSRF controls and access internal network resources (e.g., cloud provider metadata services)\n\n### Details\nThe vul",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xhmj-rg95-44hv",
+      "publishedAt": "2026-04-16T21:50:12Z",
+      "modifiedAt": "2026-04-27T16:11:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xhmj-rg95-44hv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41270"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2x8m-83vc-6wv4",
+      "packageName": "flowise-components",
+      "title": "Flowise: SSRF Protection Bypass (TOCTOU & Default Insecure)",
+      "description": "### Summary\nThe core security wrappers (secureAxiosRequest and secureFetch) intended to prevent Server-Side Request Forgery (SSRF) contain multiple logic flaws. These flaws allow attackers to bypass the allow/deny lists via DNS Rebinding (Time-of-Check Time-of-Use) or by exploiting the default configuration which fails to enforce any deny list.\n\n\n### Details\nThe flaws exist in `packages/components/src/httpSecurity.ts`.\n\nDefault Insecure: If process.env.HTTP_DENY_LIST is undefined, checkDenyList ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2x8m-83vc-6wv4",
+      "publishedAt": "2026-04-16T21:51:00Z",
+      "modifiedAt": "2026-04-24T21:01:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2x8m-83vc-6wv4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41272"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6r77-hqx7-7vw8",
+      "packageName": "flowise-components",
+      "title": "Flowise:  APIChain Prompt Injection SSRF in GET/POST API Chains",
+      "description": "### Summary\nA Server-Side Request Forgery (SSRF) vulnerability exists in FlowiseAI's POST/GET API Chain components that allows unauthenticated attackers to force the server to make arbitrary HTTP requests to internal and external systems. By injecting malicious prompt templates, attackers can bypass the intended API documentation constraints and redirect requests to sensitive internal services, potentially leading to internal network reconnaissance and data exfiltration.\n\n### Details\nThe vulnera",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6r77-hqx7-7vw8",
+      "publishedAt": "2026-04-16T21:52:11Z",
+      "modifiedAt": "2026-04-24T20:59:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6r77-hqx7-7vw8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41271"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v38x-c887-992f",
+      "packageName": "flowise-components",
+      "title": "Flowise: Airtable_Agent Code Injection Remote Code Execution Vulnerability",
+      "description": "ZDI-CAN-29412: FlowiseAI Flowise Airtable_Agent Code Injection Remote Code Execution Vulnerability\n\nTrend Micro's Zero Day Initiative has identified a vulnerability affecting the following products:\nFlowise - Flowise\n\n-- VULNERABILITY DETAILS ------------------------\n* Version tested:   3.0.13\n* Installer file:   hxxps://github.com/FlowiseAI/Flowise\n* Platform tested:  Ubuntu 25.10\n\n---\n\n### Analysis\n\n# FlowiseAI Flowise Airtable Agent pythonCode Prompt Injection Remote Code Execution Vulnerabil",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-v38x-c887-992f",
+      "publishedAt": "2026-04-18T00:46:04Z",
+      "modifiedAt": "2026-04-24T20:58:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v38x-c887-992f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41265"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cvrr-qhgw-2mm6",
+      "packageName": "flowise-components",
+      "title": "Flowise: Parameter Override Bypass Remote Command Execution",
+      "description": "### Summary\n\nFlowise is vulnerable to a critical unauthenticated remote command execution (RCE) vulnerability. It can be exploited via a parameter override bypass using the `FILE-STORAGE::` keyword combined with a `NODE_OPTIONS` environment variable injection. This allows for the execution of arbitrary system commands with root privileges within the containerized Flowise instance, requiring only a single HTTP request and no authentication or knowledge of the instance.\n\n### Details\n\nThe vulnerabi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cvrr-qhgw-2mm6",
+      "publishedAt": "2026-04-16T21:46:39Z",
+      "modifiedAt": "2026-04-24T20:58:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cvrr-qhgw-2mm6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41268"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f228-chmx-v6j6",
+      "packageName": "flowise-components",
+      "title": "Flowise: Remote code execution vulnerability in AirtableAgent.ts caused by lack of input verification when using `Pandas`.",
+      "description": "## Description\n\n### Summary\n\n“AirtableAgent” is an agent function provided by FlowiseAI that retrieves search results by accessing private datasets from airtable.com. “AirtableAgent” uses Python, along with `Pyodide` and `Pandas`, to get and return results.\n\nThe user’s input is directly applied to the question parameter within the prompt template and it is reflected to the Python code without any sanitization.\n\n**The point is that an attacker can bypass the intended behavior of the LLM and trigg",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f228-chmx-v6j6",
+      "publishedAt": "2026-04-16T21:43:57Z",
+      "modifiedAt": "2026-04-24T20:45:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f228-chmx-v6j6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41138"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9wc7-mj3f-74xv",
+      "packageName": "flowise-components",
+      "title": "Flowise: Code Injection in CSVAgent leads to Authenticated RCE",
+      "description": "### Summary\nThe CSVAgent allows providing a custom Pandas CSV read code. Due to lack of sanitization, an attacker can provide the following payload: `DataFrame({'foo': ['bar!']});import os;os.system('whoami')` that will get interpolated and executed by the server.\n\n### Details\nThe code in question that introduces the issue is in [CSVAgent.ts](https://github.com/FlowiseAI/Flowise/blob/78674897270d58a7086c6c7ccefcc44a5fe9fbf6/packages/components/nodes/agents/CSVAgent/CSVAgent.ts#L157]).\n`customRea",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9wc7-mj3f-74xv",
+      "publishedAt": "2026-04-16T21:44:15Z",
+      "modifiedAt": "2026-04-24T20:44:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9wc7-mj3f-74xv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41137"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-28g4-38q8-3cwc",
+      "packageName": "flowise-components",
+      "title": "Flowise: Cypher Injection in GraphCypherQAChain",
+      "description": "## Summary\n\nThe GraphCypherQAChain node forwards user-provided input directly into the Cypher query execution pipeline without proper sanitization. An attacker can inject arbitrary Cypher commands that are executed on the underlying Neo4j database, enabling data exfiltration, modification, or deletion.\n\n## Vulnerability Details\n\n| Field | Value |\n|-------|-------|\n| Affected File | `packages/components/nodes/chains/GraphCypherQAChain/GraphCypherQAChain.ts` |\n| Affected Lines | 193-219 (run metho",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-28g4-38q8-3cwc",
+      "publishedAt": "2026-04-16T21:54:26Z",
+      "modifiedAt": "2026-04-24T19:40:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-28g4-38q8-3cwc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41274"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9hrv-gvrv-6gf2",
+      "packageName": "flowise-components",
+      "title": "Flowise Execute Flow function has an SSRF vulnerability",
+      "description": "### Summary\n\nThe attacker provides an intranet address through the base url field configured in the Execute Flow node \n→ Bypass checkDenyList / resolveAndValidate in httpSecurity.ts (not called)\n→ Causes the server to initiate an HTTP request to any internal network address, read cloud metadata, or detect internal network services \n\n### Details\n\n<img width=\"1280\" height=\"860\" alt=\"9a52a74e6fe2fd78e4962d1d68057fc2\" src=\"https://github.com/user-attachments/assets/20df0006-9129-4886-8928-16d19a617c",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9hrv-gvrv-6gf2",
+      "publishedAt": "2026-04-16T21:23:17Z",
+      "modifiedAt": "2026-04-16T21:23:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9hrv-gvrv-6gf2"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qqvm-66q4-vf5c",
+      "packageName": "flowise-components",
+      "title": "Flowise: SSRF Protection Bypass via Direct node-fetch / axios Usage (Patch Enforcement Failure)",
+      "description": "### Summary\n\nFlowise introduced SSRF protections through a centralized HTTP security wrapper (`httpSecurity.ts`) that implements deny-list validation and IP pinning logic.\n\nHowever, multiple tool implementations directly import and invoke raw HTTP clients (`node-fetch`, `axios`Instead of using the secured wrapper.\n\nBecause enforcement is neither mandatory nor centralized, these tools bypass SSRF mitigation entirely, restoring full SSRF capability even after the patch.\n\nThis issue is distinct fro",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qqvm-66q4-vf5c",
+      "publishedAt": "2026-04-16T21:23:03Z",
+      "modifiedAt": "2026-04-16T21:23:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qqvm-66q4-vf5c"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w6v6-49gh-mc9w",
+      "packageName": "flowise-components",
+      "title": "Flowise: Path Traversal in Vector Store basePath",
+      "description": "## Summary\n\nThe Faiss and SimpleStore (LlamaIndex) vector store implementations accept a `basePath` parameter from user-controlled input and pass it directly to filesystem write operations without any sanitization. An authenticated attacker can exploit this to write vector store data to arbitrary locations on the server filesystem.\n\n## Vulnerability Details\n\n| Field | Value |\n|-------|-------|\n| Affected File | `packages/components/nodes/vectorstores/Faiss/Faiss.ts` (lines 79, 91) |\n| Affected F",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w6v6-49gh-mc9w",
+      "publishedAt": "2026-04-16T21:22:49Z",
+      "modifiedAt": "2026-04-16T21:22:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w6v6-49gh-mc9w"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-c9gw-hvqq-f33r",
+      "packageName": "flowise-components",
+      "title": "Flowise: Authenticated RCE Via MCP Adapters",
+      "description": "### Summary\nDue to unsafe serialization of stdio commands in the MCP adapter, an authenticated attacker can add an MCP stdio server with an arbitrary command, achieving command execution.\n\n### Details\nThe vulnerability lies in a bug in the input sanitization from the “Custom MCP” configuration in http://localhost:3000/canvas - where any user can add a new MCP, when doing so - adding a new MCP using stdio, the user can add any command, even though your code have input sanitization checks such as ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-c9gw-hvqq-f33r",
+      "publishedAt": "2026-04-16T21:18:17Z",
+      "modifiedAt": "2026-04-16T21:18:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c9gw-hvqq-f33r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-40933"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fvcw-9w9r-pxc7",
+      "packageName": "flowise-components",
+      "title": "Flowise affected by Server-Side Request Forgery (SSRF) in HTTP Node Leading to Internal Network Access",
+      "description": "**Description:**\nFlowise exposes an HTTP Node in AgentFlow and Chatflow that performs server-side HTTP requests using user-controlled URLs. By default, there are no restrictions on target hosts, including private/internal IP ranges (RFC 1918), localhost, or cloud metadata endpoints.\nThis enables Server-Side Request Forgery (SSRF), allowing any user interacting with a publicly exposed chatflow to force the Flowise server to make requests to internal network resources that are inaccessible from th",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fvcw-9w9r-pxc7",
+      "publishedAt": "2026-03-11T00:24:05Z",
+      "modifiedAt": "2026-04-10T17:33:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fvcw-9w9r-pxc7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31829"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.12",
+          "fixed": "3.0.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-j44m-5v8f-gc9c",
+      "packageName": "flowise-components",
+      "title": "Flowise is vulnerable to arbitrary file exposure through its ReadFileTool",
+      "description": "### Summary\n\nThe ReadFileTool in Flowise does not restrict file path access, allowing authenticated attackers to exploit this vulnerability to read arbitrary files from the file system, potentially leading to remote command execution.\n\n### Details\n\nFlowise supports providing ReadFileTool for large models to read files in the server's file system. The implementation of this tool is located at packages/components/nodes/tools/ReadFile/ReadFile.ts.\n\n```\n/**\n * Class for reading files from the disk. ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j44m-5v8f-gc9c",
+      "publishedAt": "2025-10-10T22:55:09Z",
+      "modifiedAt": "2026-02-03T14:16:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j44m-5v8f-gc9c"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.8",
+          "fixed": "3.0.8"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-jv9m-vf54-chjj",
       "packageName": "flowise-components",
@@ -19,29 +408,6 @@
         {
           "type": "CVE",
           "value": "CVE-2025-61913"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 3.0.8",
-          "fixed": "3.0.8"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-j44m-5v8f-gc9c",
-      "packageName": "flowise-components",
-      "title": "Flowise is vulnerable to arbitrary file exposure through its ReadFileTool",
-      "description": "### Summary\n\nThe ReadFileTool in Flowise does not restrict file path access, allowing authenticated attackers to exploit this vulnerability to read arbitrary files from the file system, potentially leading to remote command execution.\n\n### Details\n\nFlowise supports providing ReadFileTool for large models to read files in the server's file system. The implementation of this tool is located at packages/components/nodes/tools/ReadFile/ReadFile.ts.\n\n```\n/**\n * Class for reading files from the disk. ",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-j44m-5v8f-gc9c",
-      "publishedAt": "2025-10-10T22:55:09Z",
-      "modifiedAt": "2025-11-07T16:46:15Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-j44m-5v8f-gc9c"
         }
       ],
       "affectedVersions": [

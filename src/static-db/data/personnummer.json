@@ -1,0 +1,29 @@
+{
+  "packageName": "personnummer",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vpgc-7h78-gx8f",
+      "packageName": "personnummer",
+      "title": "personnummer/js vulnerable to Improper Input Validation",
+      "description": "This vulnerability was reported to the personnummer team in June 2020. The slow response was due to locked ownership of some of the affected packages, which caused delays to update packages prior to disclosure.\n\nThe vulnerability is determined to be low severity.\n\n### Impact\n\nThis vulnerability impacts users who rely on the for last digits of personnummer to be a _real_ personnummer.  \n\n### Patches\n\nThe issue have been patched in all repositories. The following versions should be updated to as s",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-vpgc-7h78-gx8f",
+      "publishedAt": "2020-09-04T18:05:14Z",
+      "modifiedAt": "2023-01-12T05:04:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vpgc-7h78-gx8f"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.1.0",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

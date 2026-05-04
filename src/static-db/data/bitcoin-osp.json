@@ -1,0 +1,28 @@
+{
+  "packageName": "bitcoin-osp",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v8g7-9qv2-j865",
+      "packageName": "bitcoin-osp",
+      "title": "Malicious Package in bitcoin-osp",
+      "description": "All versions of this package contained malware. The package was designed to find and exfiltrate cryptocurrency wallets.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package wil",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-v8g7-9qv2-j865",
+      "publishedAt": "2020-09-04T16:38:55Z",
+      "modifiedAt": "2023-01-09T05:04:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v8g7-9qv2-j865"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

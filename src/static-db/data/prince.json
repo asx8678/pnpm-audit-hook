@@ -1,0 +1,33 @@
+{
+  "packageName": "prince",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cr79-9pwf-r6f5",
+      "packageName": "prince",
+      "title": "Downloads Resources over HTTP in prince",
+      "description": "Affected versions of `prince` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `prince`.\n\n\n## Recommendation\n\nUpdate to version 1.4.6 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cr79-9pwf-r6f5",
+      "publishedAt": "2019-02-18T23:34:24Z",
+      "modifiedAt": "2023-01-09T05:03:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cr79-9pwf-r6f5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10591"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.6",
+          "fixed": "1.4.7"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

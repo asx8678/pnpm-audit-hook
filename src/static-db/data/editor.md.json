@@ -1,6 +1,6 @@
 {
   "packageName": "editor.md",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-847g-34c5-vvm8",
@@ -24,6 +24,58 @@
       "affectedVersions": [
         {
           "range": "<= 1.5.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vjcj-5g2r-vxqc",
+      "packageName": "editor.md",
+      "title": "Pandao editor.md vulnerable to XSS in IMG attributes",
+      "description": "Pandao Editor.md 1.5.0 allows XSS via crafted attributes of an invalid IMG element.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vjcj-5g2r-vxqc",
+      "publishedAt": "2018-09-06T03:22:00Z",
+      "modifiedAt": "2023-09-08T20:06:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vjcj-5g2r-vxqc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16330"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.5.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x3g3-334f-q6h4",
+      "packageName": "editor.md",
+      "title": "Pandao editor.md vulnerable to DOM XSS",
+      "description": "pandao Editor.md 1.5.0 has DOM XSS via input starting with a `<<` substring, which is mishandled during construction of an `A` element.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x3g3-334f-q6h4",
+      "publishedAt": "2018-11-09T17:41:15Z",
+      "modifiedAt": "2023-09-08T19:44:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x3g3-334f-q6h4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-19056"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.5.0"
         }
       ],
       "source": "github"
@@ -76,6 +128,84 @@
       "affectedVersions": [
         {
           "range": "<= 1.5.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x65c-4fgj-5fc3",
+      "packageName": "editor.md",
+      "title": "Cross-site Scripting in pandao",
+      "description": "pandao Editor.md 1.5.0 allows XSS via an attribute of an ABBR or SUP element.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x65c-4fgj-5fc3",
+      "publishedAt": "2019-08-23T00:05:00Z",
+      "modifiedAt": "2023-02-01T05:02:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x65c-4fgj-5fc3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-14653"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.5.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5q54-8p9j-x74j",
+      "packageName": "editor.md",
+      "title": "Cross-site Scripting in pandao editor.md",
+      "description": "pandao Editor.md 1.5.0 allows XSS via the Javas&#99;ript: string.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5q54-8p9j-x74j",
+      "publishedAt": "2019-08-23T00:05:03Z",
+      "modifiedAt": "2023-02-01T05:02:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5q54-8p9j-x74j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-14517"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.5.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2j5v-fc74-j9q2",
+      "packageName": "editor.md",
+      "title": "Cross-Site Scripting in editor.md",
+      "description": "All versions of `editor.md` are vulnerable to Cross-Site Scripting. User input is insufficiently sanitized, allowing attackers to inject malicious code in payloads containing  base64-encoded content.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2j5v-fc74-j9q2",
+      "publishedAt": "2019-03-14T15:38:56Z",
+      "modifiedAt": "2023-01-09T05:02:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2j5v-fc74-j9q2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-9737"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.5.0"
         }
       ],
       "source": "github"

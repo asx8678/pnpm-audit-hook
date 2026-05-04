@@ -1,6 +1,6 @@
 {
   "packageName": "pbkdf2",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-v62p-rq8g-8h59",
@@ -10,7 +10,7 @@
       "severity": "critical",
       "url": "https://github.com/advisories/GHSA-v62p-rq8g-8h59",
       "publishedAt": "2025-06-23T22:42:00Z",
-      "modifiedAt": "2025-06-23T22:42:02Z",
+      "modifiedAt": "2026-02-17T16:39:01Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -23,7 +23,7 @@
       ],
       "affectedVersions": [
         {
-          "range": "<= 3.1.2",
+          "range": ">= 1.0.0, <= 3.1.2",
           "fixed": "3.1.3"
         }
       ],

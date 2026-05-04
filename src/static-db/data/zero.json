@@ -1,0 +1,29 @@
+{
+  "packageName": "zero",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-crf7-fvjx-863q",
+      "packageName": "zero",
+      "title": "Path Traversal in zero",
+      "description": "Versions of `zero` prior to 1.0.6 are vulnerable to Path Traversal.  Due to insufficient input sanitization in URLs, attackers can access server files by using relative paths when fetching files. \n\n\n## Recommendation\n\nUpgrade to version 1.0.6 or later.\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-crf7-fvjx-863q",
+      "publishedAt": "2020-09-03T17:09:26Z",
+      "modifiedAt": "2023-01-09T05:03:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-crf7-fvjx-863q"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.6",
+          "fixed": "1.0.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

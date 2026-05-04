@@ -1,0 +1,60 @@
+{
+  "packageName": "@clerk/shared",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w24r-5266-9c3c",
+      "packageName": "@clerk/shared",
+      "title": "Clerk has an authorization bypass when combining organization, billing, or reverification checks",
+      "description": "### Summary\n\n`has()`, `auth.protect()`, and related authorization predicates in `@clerk/shared`, `@clerk/nextjs`, `@clerk/backend`, and other framework SDKs can return true for certain combined authorization checks when the result should be false, allowing a gated action to proceed for a user who does not satisfy the full set of requested conditions.\n\nSessions are not compromised and no existing user can be impersonated. The bypass is limited to the authorization decision returned by the predica",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w24r-5266-9c3c",
+      "publishedAt": "2026-04-30T18:20:02Z",
+      "modifiedAt": "2026-04-30T18:20:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w24r-5266-9c3c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-42349"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, <= 4.8.2",
+          "fixed": "4.8.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vqx2-fgx2-5wq9",
+      "packageName": "@clerk/shared",
+      "title": "Official Clerk JavaScript SDKs: Middleware-based route protection bypass",
+      "description": "## Summary\n\n`createRouteMatcher` in `@clerk/nextjs`, `@clerk/nuxt`, and `@clerk/astro` can be bypassed by certain crafted requests, allowing them to skip middleware gating and reach downstream handlers.\n\nSessions are not compromised and no existing user can be impersonated - the bypass only affects the middleware-level gating decision.\n\n## Who is affected\n\nAll apps using `createRouteMatcher` should upgrade to the patched versions. Patches are drop-in with no API changes. The information below de",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vqx2-fgx2-5wq9",
+      "publishedAt": "2026-04-16T21:28:26Z",
+      "modifiedAt": "2026-04-27T16:08:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vqx2-fgx2-5wq9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41248"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.8.1",
+          "fixed": "4.8.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

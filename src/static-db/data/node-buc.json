@@ -1,0 +1,28 @@
+{
+  "packageName": "node-buc",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x3m6-rprw-862w",
+      "packageName": "node-buc",
+      "title": "Malicious Package in node-buc",
+      "description": "All versions of `node-buc` contain malicious code. The package uploads system information to a remote server, downloads a file and executes it.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-x3m6-rprw-862w",
+      "publishedAt": "2020-09-03T17:43:31Z",
+      "modifiedAt": "2023-01-09T05:03:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x3m6-rprw-862w"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

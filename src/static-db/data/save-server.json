@@ -1,0 +1,33 @@
+{
+  "packageName": "save-server",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wwrj-35w6-77ff",
+      "packageName": "save-server",
+      "title": "CSRF vulnerability in save-server",
+      "description": "### Impact\nVersions prior to version v1.05 are affected by a CSRF vulnerability, as there is no CSRF mitigation (Tokens etc.). The fix introduced in version v1.05 unintentionally breaks uploading so version v1.0.7 is the fixed version.\n\nThis is patched by implementing [Double submit](https://medium.com/cross-site-request-forgery-csrf/double-submit-cookie-pattern-65bb71d80d9f).\n\nThe CSRF attack would require you to navigate to a malicious site while you have an active session with Save-Server (Se",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wwrj-35w6-77ff",
+      "publishedAt": "2020-08-04T14:54:08Z",
+      "modifiedAt": "2023-01-09T05:03:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wwrj-35w6-77ff"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15135"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.5",
+          "fixed": "1.0.7"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

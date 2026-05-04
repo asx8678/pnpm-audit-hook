@@ -1,0 +1,33 @@
+{
+  "packageName": "bower",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p6mr-pxg4-68hx",
+      "packageName": "bower",
+      "title": "Symlink Arbitrary File Overwrite in bower",
+      "description": "Versions of `bower` prior to 1.8.8 are affected by an arbitrary file write vulnerability. The vulnerability occurs because `bower` does not verify that extracted symbolic links do not resolve to targets outside of the extraction root directory.\n\n\n\n## Recommendation\n\nUpdate to version 1.8.8 or later",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p6mr-pxg4-68hx",
+      "publishedAt": "2019-09-17T23:21:34Z",
+      "modifiedAt": "2023-03-01T01:53:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p6mr-pxg4-68hx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-5484"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.8.8",
+          "fixed": "1.8.8"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

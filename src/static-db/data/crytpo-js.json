@@ -1,0 +1,28 @@
+{
+  "packageName": "crytpo-js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m4fq-xh7w-jhfm",
+      "packageName": "crytpo-js",
+      "title": "Malicious Package in crytpo-js",
+      "description": "All versions of this package contained malware. The package was designed to find and exfiltrate cryptocurrency wallets.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package wil",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m4fq-xh7w-jhfm",
+      "publishedAt": "2020-09-03T19:39:46Z",
+      "modifiedAt": "2023-01-09T05:04:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m4fq-xh7w-jhfm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

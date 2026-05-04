@@ -1,0 +1,79 @@
+{
+  "packageName": "lodash.defaultsdeep",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jf85-cpcp-j695",
+      "packageName": "lodash.defaultsdeep",
+      "title": "Prototype Pollution in lodash",
+      "description": "Versions of `lodash` before 4.17.12 are vulnerable to Prototype Pollution.  The function `defaultsDeep` allows a malicious user to modify the prototype of `Object` via `{constructor: {prototype: {...}}}` causing the addition or modification of an existing property that will exist on all objects.\n\n## Recommendation\n\nUpdate to version 4.17.12 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-jf85-cpcp-j695",
+      "publishedAt": "2019-07-10T19:45:23Z",
+      "modifiedAt": "2025-08-12T21:43:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jf85-cpcp-j695"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10744"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.6.1",
+          "fixed": "4.6.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-46fh-8fc5-xcwx",
+      "packageName": "lodash.defaultsdeep",
+      "title": "Prototype Pollution in lodash.defaultsdeep",
+      "description": "Versions of `lodash.defaultsdeep` before 4.6.1 are vulnerable to Prototype Pollution. The function 'defaultsDeep' may allow a malicious user to modify the prototype of `Object` via `__proto__` causing the addition or modification of an existing property that will exist on all objects.\n\n\n\n\n## Recommendation\n\nUpdate to version 4.6.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-46fh-8fc5-xcwx",
+      "publishedAt": "2020-09-03T18:09:16Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-46fh-8fc5-xcwx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.6.1",
+          "fixed": "4.6.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-h5mp-5q4p-ggf5",
+      "packageName": "lodash.defaultsdeep",
+      "title": "Prototype Pollution in lodash.defaultsdeep",
+      "description": "Versions of `lodash.defaultsdeep` before 4.6.1 are vulnerable to prototype pollution. The function `mergeWith` may allow a malicious user to modify the prototype of `Object` via `{constructor: {prototype: {...}}}` causing the addition or modification of an existing property that will exist on all objects.\n\n\n\n\n## Recommendation\n\nUpdate to version 4.6.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h5mp-5q4p-ggf5",
+      "publishedAt": "2020-09-03T18:07:05Z",
+      "modifiedAt": "2023-01-09T05:03:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h5mp-5q4p-ggf5"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.6.1",
+          "fixed": "4.6.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

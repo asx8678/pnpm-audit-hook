@@ -1,0 +1,28 @@
+{
+  "packageName": "serve-here",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g8m7-qhv7-9h5x",
+      "packageName": "serve-here",
+      "title": "Path Traversal in serve-here.js",
+      "description": "Versions of `serve-here.js` prior to 1.2.0 are vulnerable to Path Traversal. The package fails to sanitize URLs, allowing attackers to access server files outside of the served folder using relative paths.\n\n\n## Recommendation\n\nUpgrade to version 1.2.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g8m7-qhv7-9h5x",
+      "publishedAt": "2019-07-05T21:07:14Z",
+      "modifiedAt": "2023-01-09T05:01:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g8m7-qhv7-9h5x"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

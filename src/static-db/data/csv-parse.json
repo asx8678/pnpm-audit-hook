@@ -1,0 +1,33 @@
+{
+  "packageName": "csv-parse",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-582f-p4pg-xc74",
+      "packageName": "csv-parse",
+      "title": "Regular Expression Denial of Service in csv-parse",
+      "description": "Versions of `csv-parse` prior to 4.4.6 are vulnerable to Regular Expression Denial of Service. The `__isInt()` function contains a malformed regular expression that processes large specially-crafted input very slowly, leading to a Denial of Service. This is triggered when using the `cast` option.\n\n\n## Recommendation\n\nUpgrade to version 4.4.6 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-582f-p4pg-xc74",
+      "publishedAt": "2019-10-15T20:06:16Z",
+      "modifiedAt": "2023-02-01T05:02:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-582f-p4pg-xc74"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-17592"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.4.6",
+          "fixed": "4.4.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "packageName": "file-static-server",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qjfh-xc44-rm9x",
+      "packageName": "file-static-server",
+      "title": "Path Traversal in file-static-server",
+      "description": "All versions of `file-static-server` are vulnerable to Path Traversal.  Due to insufficient input sanitization in URLs, attackers can access server files by using relative paths when fetching files. \n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qjfh-xc44-rm9x",
+      "publishedAt": "2020-09-03T16:49:43Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qjfh-xc44-rm9x"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

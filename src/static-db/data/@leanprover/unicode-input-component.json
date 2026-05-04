@@ -1,0 +1,33 @@
+{
+  "packageName": "@leanprover/unicode-input-component",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6ggm-pwr9-r5h2",
+      "packageName": "@leanprover/unicode-input-component",
+      "title": "XSS in @leanprover/unicode-input-component",
+      "description": "### Impact\nProjects that use [@leanprover/unicode-input-component](https://www.npmjs.com/package/@leanprover/unicode-input-component) are vulnerable to an XSS exploit in 0.1.9 of the package and lower. \nThe component re-inserted text in the input element back into the input element as unescaped HTML.\n\n### Patches\nThe issue has been resolved in 0.2.0.\n\n### Workarounds\nReplace the unicode input component with a basic HTML text field.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-6ggm-pwr9-r5h2",
+      "publishedAt": "2026-03-16T16:39:55Z",
+      "modifiedAt": "2026-03-16T16:39:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6ggm-pwr9-r5h2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32732"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.2.0",
+          "fixed": "0.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

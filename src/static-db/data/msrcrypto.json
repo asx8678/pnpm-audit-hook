@@ -1,6 +1,6 @@
 {
   "packageName": "msrcrypto",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9x9j-836w-8f55",
@@ -25,6 +25,33 @@
         {
           "range": "< 1.5.8",
           "fixed": "1.5.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qg3g-2mgh-33j8",
+      "packageName": "msrcrypto",
+      "title": "Sensitive Data Exposure in msrcrypto",
+      "description": "Versions of `msrcrypto` prior to 1.4.1 are vulnerable to Sensitive Data Exposure. The package's Elliptic Curve Cryptography (ECC) implementation may leak information about a server's private ECC key. It can also allow attackers to craft invalid ECDSA signatures that pass as valid. There is no published proof-of-concept for this vulnerability.\n\n\n## Recommendation\n\nUpgrade to version 1.4.1 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qg3g-2mgh-33j8",
+      "publishedAt": "2018-09-10T15:19:49Z",
+      "modifiedAt": "2023-01-09T05:03:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qg3g-2mgh-33j8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-8319"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.1",
+          "fixed": "1.4.1"
         }
       ],
       "source": "github"

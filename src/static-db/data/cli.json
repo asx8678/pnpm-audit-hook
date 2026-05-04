@@ -1,6 +1,6 @@
 {
   "packageName": "cli",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3mrp-qhcj-mwv5",
@@ -24,6 +24,33 @@
       "affectedVersions": [
         {
           "range": ">= 0.1.0, <= 0.11.3",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6cpc-mj5c-m9rq",
+      "packageName": "cli",
+      "title": "Arbitrary File Write in cli",
+      "description": "Affected versions of `cli` use predictable temporary file names. If an attacker can create a symbolic link at the location of one of these temporarly file names, the attacker can arbitrarily write to any file that the user which owns the `cli` process has permission to write to.\n\n\n## Proof of Concept\n\nBy creating Symbolic Links at the following locations, the target of the link can be written to.\n```\nlock_file = '/tmp/' + cli.app + '.pid',\nlog_file = '/tmp/' + cli.app + '.log';\n```\n\n\n## Recommen",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-6cpc-mj5c-m9rq",
+      "publishedAt": "2019-02-18T23:40:03Z",
+      "modifiedAt": "2023-01-09T05:02:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6cpc-mj5c-m9rq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10538"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0",
           "fixed": "1.0.0"
         }
       ],

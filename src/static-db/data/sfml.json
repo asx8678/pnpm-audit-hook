@@ -1,0 +1,32 @@
+{
+  "packageName": "sfml",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5q5w-mf87-57x4",
+      "packageName": "sfml",
+      "title": "Downloads Resources over HTTP in sfml",
+      "description": "Affected versions of `sfml` insecurely download resources over HTTP. \n\nIn scenarios where an attacker has a privileged network position, they can modify or read such resources at will. While the exact severity of impact for a vulnerability like this is highly variable and depends on the behavior of the package itself, it ranges from being able to read sensitive information all the way up to and including remote code execution.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnera",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5q5w-mf87-57x4",
+      "publishedAt": "2019-02-18T23:45:18Z",
+      "modifiedAt": "2023-01-09T05:02:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5q5w-mf87-57x4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10654"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

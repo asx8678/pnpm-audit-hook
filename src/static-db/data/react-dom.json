@@ -1,0 +1,33 @@
+{
+  "packageName": "react-dom",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mvjj-gqq2-p4hw",
+      "packageName": "react-dom",
+      "title": "Cross-Site Scripting in react-dom",
+      "description": "Affected versions of `react-dom` are vulnerable to Cross-Site Scripting (XSS). The package fails to validate attribute names in HTML tags which may lead to Cross-Site Scripting in specific scenarios. This may allow attackers to execute arbitrary JavaScript in the victim's browser. To be affected by this vulnerability, the application needs to:\n- be a server-side React app\n- be rendered to HTML using `ReactDOMServer`\n- include an attribute name from user input in an HTML tag\n\n\n## Recommendation\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mvjj-gqq2-p4hw",
+      "publishedAt": "2019-01-04T19:05:35Z",
+      "modifiedAt": "2023-09-13T19:45:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mvjj-gqq2-p4hw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-6341"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 16.4.0, < 16.4.2",
+          "fixed": "16.4.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "packageName": "@delmaredigital/payload-puck",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-65w6-pf7x-5g85",
+      "packageName": "@delmaredigital/payload-puck",
+      "title": "@delmaredigital/payload-puc is missing authorization on /api/puck/* CRUD endpoints allows unauthenticated access to Puck-registered collections",
+      "description": "### Impact\n\nAll `/api/puck/*` CRUD endpoint handlers registered by `createPuckPlugin()` called Payload's local API with the default `overrideAccess: true`, bypassing all collection-level access control. The `access` option passed to `createPuckPlugin()` and any `access` rules defined on Puck-registered collections were silently ignored on these endpoints.\n\nAn unauthenticated remote attacker could:\n\n- List all documents (including drafts) in any Puck-registered collection\n- Read any document by I",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-65w6-pf7x-5g85",
+      "publishedAt": "2026-04-08T00:15:54Z",
+      "modifiedAt": "2026-04-08T00:15:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-65w6-pf7x-5g85"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39397"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.6.23",
+          "fixed": "0.6.23"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

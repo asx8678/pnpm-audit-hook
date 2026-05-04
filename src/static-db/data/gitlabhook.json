@@ -1,0 +1,32 @@
+{
+  "packageName": "gitlabhook",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-549f-73hh-mj38",
+      "packageName": "gitlabhook",
+      "title": "Command Injection in gitlabhook",
+      "description": "All versions of `gitlabhook` are vulnerable to Command Injection. The package does not validate input the body of POST request and concatenates it to an exec call, allowing attackers to run arbitrary commands in the system.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-549f-73hh-mj38",
+      "publishedAt": "2019-09-16T22:24:02Z",
+      "modifiedAt": "2023-06-01T19:46:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-549f-73hh-mj38"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-5485"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.17"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

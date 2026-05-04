@@ -1,6 +1,6 @@
 {
   "packageName": "quill",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-v3m3-f69x-jf25",
@@ -10,7 +10,7 @@
       "severity": "low",
       "url": "https://github.com/advisories/GHSA-v3m3-f69x-jf25",
       "publishedAt": "2026-01-13T21:31:46Z",
-      "modifiedAt": "2026-01-16T16:58:04Z",
+      "modifiedAt": "2026-04-10T19:34:25Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -50,6 +50,29 @@
       "affectedVersions": [
         {
           "range": "<= 1.3.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-588m-9qg5-35pq",
+      "packageName": "quill",
+      "title": "Reverse Tabnabbing in quill",
+      "description": "Versions of `quill` prior to 1.3.7 are vulnerable to [Reverse Tabnabbing](https://www.owasp.org/index.php/Reverse_Tabnabbing). The package uses `target='_blank'` in anchor tags, allowing attackers to access `window.opener` for the original page when opening links. This is commonly used for phishing attacks.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-588m-9qg5-35pq",
+      "publishedAt": "2020-09-03T17:19:09Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-588m-9qg5-35pq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.3.7",
+          "fixed": "1.3.7"
         }
       ],
       "source": "github"

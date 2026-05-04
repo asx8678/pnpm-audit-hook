@@ -1,0 +1,28 @@
+{
+  "packageName": "jquery-mobile",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fj93-7wm4-8x2g",
+      "packageName": "jquery-mobile",
+      "title": "Cross-Site Scripting in jquery-mobile",
+      "description": "All version of `jquery-mobile` are vulnerable to Cross-Site Scripting. The package checks for content in `location.hash` and if a URL is found it does an XmlHttpRequest (XHR) to the URL and renders the response with `innerHTML`. It fails to validate the `Content-Type` of the response, allowing attackers to include malicious payloads as part of query parameters that are reflected back to the user. A response such as `{\"q\":\"<iframe/src='javascript:alert(1)'></iframe>\",\"results\":[]}` would be parse",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fj93-7wm4-8x2g",
+      "publishedAt": "2020-09-02T21:22:47Z",
+      "modifiedAt": "2023-01-09T05:04:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fj93-7wm4-8x2g"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

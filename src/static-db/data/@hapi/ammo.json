@@ -1,0 +1,29 @@
+{
+  "packageName": "@hapi/ammo",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gjph-xf5q-6mfq",
+      "packageName": "@hapi/ammo",
+      "title": "Denial of Service in @hapi/ammo",
+      "description": "Versions of `@hapi/ammo` prior to 3.1.2 or 5.0.1 are vulnerable to Denial of Service. The Range HTTP header parser has a vulnerability which will cause the function to throw a system error if the header is set to an invalid value. Because hapi is not expecting the function to ever throw, the error is thrown all the way up the stack. If no unhandled exception handler is available, the application will exist, allowing an attacker to shut down services.\n\n\n## Recommendation\n\nUpgrade to version 3.1.2",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gjph-xf5q-6mfq",
+      "publishedAt": "2020-09-03T15:46:02Z",
+      "modifiedAt": "2023-01-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gjph-xf5q-6mfq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 5.0.1",
+          "fixed": "5.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

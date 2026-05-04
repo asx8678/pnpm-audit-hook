@@ -1,7 +1,57 @@
 {
   "packageName": "@samanhappy/mcphub",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-p3h2-2j4p-p83g",
+      "packageName": "@samanhappy/mcphub",
+      "title": "MCPHub has Path Traversal via Malicious MCPB Manifest Name",
+      "description": "The MCPB file upload handler extracts a ZIP file and reads `manifest.json` from it. The `name` field from the manifest is concatenated directly into the file path (line 107) without any sanitization or path traversal character validation. An attacker can craft a malicious MCPB file with `manifest.name` set to `'../../../etc/malicious'` or similar, causing files to be extracted to arbitrary locations on the file system. The `cleanupOldMcpbServer` function (line 110) also uses the unsanitized name",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p3h2-2j4p-p83g",
+      "publishedAt": "2026-04-22T20:50:19Z",
+      "modifiedAt": "2026-04-22T20:50:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p3h2-2j4p-p83g"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.12.13",
+          "fixed": "0.12.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9vq7-9h42-j88h",
+      "packageName": "@samanhappy/mcphub",
+      "title": "MCPHub has an authentication bypass",
+      "description": "MCPHub in versions below 0.11.0 is vulnerable to authentication bypass. Some endpoints are not protected by authentication middleware, allowing an unauthenticated attacker to perform actions in the name of other users and using their privileges.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9vq7-9h42-j88h",
+      "publishedAt": "2026-04-14T12:31:28Z",
+      "modifiedAt": "2026-04-15T19:42:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9vq7-9h42-j88h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-13822"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.11.0",
+          "fixed": "0.11.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-5q2p-3jg8-2m98",
       "packageName": "@samanhappy/mcphub",

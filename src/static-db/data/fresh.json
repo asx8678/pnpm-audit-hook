@@ -1,0 +1,33 @@
+{
+  "packageName": "fresh",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9qj9-36jm-prpv",
+      "packageName": "fresh",
+      "title": "Regular Expression Denial of Service in fresh",
+      "description": "Affected versions of `fresh` are vulnerable to regular expression denial of service when parsing specially crafted user input.\n\n\n## Recommendation\n\nUpdate to version 0.5.2 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9qj9-36jm-prpv",
+      "publishedAt": "2018-07-24T20:16:57Z",
+      "modifiedAt": "2023-09-08T21:32:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9qj9-36jm-prpv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16119"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.5.2",
+          "fixed": "0.5.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

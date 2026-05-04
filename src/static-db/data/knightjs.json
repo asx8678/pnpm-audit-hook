@@ -1,0 +1,32 @@
+{
+  "packageName": "knightjs",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3hvm-hgpw-rx4j",
+      "packageName": "knightjs",
+      "title": "Path Traversal in knightjs",
+      "description": "All versions of `knightjs` are vulnerable to Path Traversal. \n\nThis vulnerability allows an attacker to read content of arbitrary files on the server due to lack of input validation.\n\n\n## Recommendation\n\nAs there is currently no fix for this module we recommend not using this module in production environments. ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3hvm-hgpw-rx4j",
+      "publishedAt": "2018-11-06T23:11:10Z",
+      "modifiedAt": "2023-09-12T20:40:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3hvm-hgpw-rx4j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16475"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

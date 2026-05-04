@@ -1,6 +1,6 @@
 {
   "packageName": "angular-expressions",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-5462-4vcx-jh7j",
@@ -52,6 +52,33 @@
         {
           "range": "< 1.1.2",
           "fixed": "1.1.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hxhm-96pp-2m43",
+      "packageName": "angular-expressions",
+      "title": "Remote Code Execution in Angular Expressions",
+      "description": "### Impact\n\nThe vulnerability, reported by GoSecure Inc, allows Remote Code Execution, if you call `expressions.compile(userControlledInput)` where `userControlledInput` is text that comes from user input.\n\n* If running angular-expressions in the browser, an attacker could run any browser script when the application code calls expressions.compile(userControlledInput).\n* If running angular-expressions on the server, an attacker could run any Javascript expression, thus gaining Remote Code Executi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hxhm-96pp-2m43",
+      "publishedAt": "2020-01-24T15:27:25Z",
+      "modifiedAt": "2023-01-09T05:01:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hxhm-96pp-2m43"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-5219"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.1",
+          "fixed": "1.0.1"
         }
       ],
       "source": "github"

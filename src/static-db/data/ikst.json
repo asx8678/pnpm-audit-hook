@@ -1,0 +1,33 @@
+{
+  "packageName": "ikst",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w23f-f3c5-r9qh",
+      "packageName": "ikst",
+      "title": "ikst Downloads Resources over HTTP",
+      "description": "Affected versions of `ikst` insecurely download resources over HTTP. \n\nIn scenarios where an attacker has a privileged network position, they can modify or read such resources at will. While the exact severity of impact for a vulnerability like this is highly variable and depends on the behavior of the package itself, it ranges from being able to read sensitive information all the way up to and including remote code execution.\n\n\n## Recommendation\n\nUpgrade to version 1.1.2 or greater.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w23f-f3c5-r9qh",
+      "publishedAt": "2018-07-24T15:56:19Z",
+      "modifiedAt": "2023-09-05T23:34:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w23f-f3c5-r9qh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16041"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.2",
+          "fixed": "1.1.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

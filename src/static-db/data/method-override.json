@@ -1,0 +1,33 @@
+{
+  "packageName": "method-override",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qx2f-477c-35rq",
+      "packageName": "method-override",
+      "title": "method-override ReDoS when untrusted user input passed into X-HTTP-Method-Override header",
+      "description": "Affected versions of `method-override` are vulnerable to a regular expression denial of service vulnerability when untrusted user input is passed into the `X-HTTP-Method-Override` header.\n\n\n## Recommendation\n\nUpdate to version 2.3.10 or later",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qx2f-477c-35rq",
+      "publishedAt": "2018-07-24T20:06:04Z",
+      "modifiedAt": "2023-09-11T18:24:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qx2f-477c-35rq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16136"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.3.10",
+          "fixed": "2.3.10"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

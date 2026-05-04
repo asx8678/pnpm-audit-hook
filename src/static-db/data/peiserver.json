@@ -1,0 +1,32 @@
+{
+  "packageName": "peiserver",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-74f5-4m28-gq5c",
+      "packageName": "peiserver",
+      "title": "Directory Traversal in peiserver",
+      "description": "Affected versions of `peiserver` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-74f5-4m28-gq5c",
+      "publishedAt": "2020-09-01T18:09:59Z",
+      "modifiedAt": "2023-09-11T23:15:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-74f5-4m28-gq5c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16214"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

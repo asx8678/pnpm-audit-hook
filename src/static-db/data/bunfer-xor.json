@@ -1,0 +1,28 @@
+{
+  "packageName": "bunfer-xor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6f93-xj8r-jp82",
+      "packageName": "bunfer-xor",
+      "title": "Malicious Package in bunfer-xor",
+      "description": "Version 2.0.2 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6f93-xj8r-jp82",
+      "publishedAt": "2020-09-03T22:28:21Z",
+      "modifiedAt": "2023-01-09T05:04:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6f93-xj8r-jp82"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

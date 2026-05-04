@@ -1,0 +1,32 @@
+{
+  "packageName": "serverliujiayi1",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vhx6-cp8w-295m",
+      "packageName": "serverliujiayi1",
+      "title": "Directory Traversal in serverliujiayi1",
+      "description": "Affected versions of `serverliujiayi1` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vhx6-cp8w-295m",
+      "publishedAt": "2020-09-01T16:55:45Z",
+      "modifiedAt": "2023-09-08T18:50:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vhx6-cp8w-295m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16095"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

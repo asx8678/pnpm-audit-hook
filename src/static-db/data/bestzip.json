@@ -1,6 +1,6 @@
 {
   "packageName": "bestzip",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6xv6-jpvw-cx6q",
@@ -19,6 +19,29 @@
         {
           "type": "CVE",
           "value": "CVE-2020-7730"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.7",
+          "fixed": "2.1.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4qqc-mp5f-ccv4",
+      "packageName": "bestzip",
+      "title": "Command Injection in bestzip",
+      "description": "Versions of `bestzip` prior to 2.1.7 are vulnerable to Command Injection. The package fails to sanitize input rules and passes it directly to an `exec` call on the `zip` function . This may allow attackers to execute arbitrary code in the system as long as the values of `destination` is user-controlled. This only affects users with a native `zip` command available. The following examples demonstrate the issue from the CLI and also programatically:\n- `bestzip test.zip 'sourcefile; mkdir folder'`\n",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4qqc-mp5f-ccv4",
+      "publishedAt": "2020-09-02T15:05:51Z",
+      "modifiedAt": "2023-01-09T05:04:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4qqc-mp5f-ccv4"
         }
       ],
       "affectedVersions": [

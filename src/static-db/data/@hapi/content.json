@@ -1,0 +1,56 @@
+{
+  "packageName": "@hapi/content",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jg4p-7fhp-p32p",
+      "packageName": "@hapi/content",
+      "title": "@hapi/content: Regular Expression Denial of Service (ReDoS) in HTTP header parsing",
+      "description": "All versions of `@hapi/content` through 6.0.0 are vulnerable to Regular Expression Denial of Service (ReDoS) via crafted HTTP header values. Three regular expressions used to parse `Content-Type` and `Content-Disposition` headers contain patterns susceptible to catastrophic backtracking. This has been fixed in v6.0.1.\n\n### Impact\n\nDenial of Service. An unauthenticated remote attacker can cause a Node.js process to become unresponsive by sending a single HTTP request with a maliciously crafted he",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jg4p-7fhp-p32p",
+      "publishedAt": "2026-04-04T04:23:03Z",
+      "modifiedAt": "2026-04-24T13:43:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jg4p-7fhp-p32p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35213"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 6.0.0",
+          "fixed": "6.0.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3wqh-h42r-x8fq",
+      "packageName": "@hapi/content",
+      "title": "Denial of Service in @hapi/content",
+      "description": "Versions of `@hapi/content` prior to 4.1.1 and 5.0.1 are vulnerable to Denial of Service. The Content-Encoding HTTP header parser has a vulnerability which will cause the function to throw a system error if the header contains some invalid values. Because hapi rethrows system errors (as opposed to catching expected application errors), the error is thrown all the way up the stack. If no unhandled exception handler is available, the application will exist, allowing an attacker to shut down servic",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3wqh-h42r-x8fq",
+      "publishedAt": "2020-09-03T15:46:22Z",
+      "modifiedAt": "2025-09-25T22:29:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3wqh-h42r-x8fq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.0.2",
+          "fixed": "5.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

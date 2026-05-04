@@ -1,0 +1,32 @@
+{
+  "packageName": "parsejson",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q75g-2496-mxpp",
+      "packageName": "parsejson",
+      "title": "Regular Expression Denial of Service in parsejson",
+      "description": "Affected versions of `parsejson` are vulnerable to a regular expression denial of service when parsing untrusted user input.\n\n\n## Recommendation\n\nThe `parsejson` package has not been functionally updated since it was initially released.\n\nAdditionally, it provides functionality which is natively included in Node.js, and therefore the native `JSON.parse()` should be used, for both performance and security reasons.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q75g-2496-mxpp",
+      "publishedAt": "2018-07-24T20:11:13Z",
+      "modifiedAt": "2023-01-09T05:03:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q75g-2496-mxpp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16113"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

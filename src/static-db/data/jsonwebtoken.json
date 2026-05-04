@@ -1,6 +1,6 @@
 {
   "packageName": "jsonwebtoken",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-qwph-4952-7xr6",
@@ -106,6 +106,33 @@
         {
           "range": "<= 8.5.1",
           "fixed": "9.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-c7hr-j4mj-j2w6",
+      "packageName": "jsonwebtoken",
+      "title": "Verification Bypass in jsonwebtoken",
+      "description": "Versions 4.2.1 and earlier of `jsonwebtoken` are affected by a verification bypass vulnerability. This is a result of weak validation of the JWT algorithm type, occuring when an attacker is allowed to arbitrarily specify the JWT algorithm.\n\n\n\n\n## Recommendation\n\nUpdate to version 4.2.2 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-c7hr-j4mj-j2w6",
+      "publishedAt": "2018-10-09T00:38:30Z",
+      "modifiedAt": "2023-01-09T05:02:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c7hr-j4mj-j2w6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-9235"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.2.2",
+          "fixed": "4.2.2"
         }
       ],
       "source": "github"

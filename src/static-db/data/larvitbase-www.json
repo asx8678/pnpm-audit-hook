@@ -1,0 +1,28 @@
+{
+  "packageName": "larvitbase-www",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-88h9-fc6v-jcw7",
+      "packageName": "larvitbase-www",
+      "title": "Unintended Require in larvitbase-www",
+      "description": "All versions of `larvitbase-www` are vulnerable to an Unintended Require. The package exposes an API endpoint and passes a GET parameter unsanitized to an `require()` call. This allows attackers to execute any `.js` file in the same folder as the server is running.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-88h9-fc6v-jcw7",
+      "publishedAt": "2020-09-03T20:28:51Z",
+      "modifiedAt": "2023-01-09T05:04:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-88h9-fc6v-jcw7"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

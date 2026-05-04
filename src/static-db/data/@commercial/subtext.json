@@ -1,0 +1,75 @@
+{
+  "packageName": "@commercial/subtext",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fvwr-h9xh-m6wc",
+      "packageName": "@commercial/subtext",
+      "title": "Denial of Service in @commercial/subtext",
+      "description": "Versions of `@commercial/subtext` prior to 5.1.1 are vulnerable to Denial of Service (DoS). The package fails to enforce the `maxBytes` configuration for payloads with chunked encoding that are written to the file system. This allows attackers to send requests with arbitrary payload sizes, which may exhaust system resources leading to Denial of Service.\n\n\n## Recommendation\n\nUpgrade to version 5.1.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fvwr-h9xh-m6wc",
+      "publishedAt": "2020-09-03T20:33:17Z",
+      "modifiedAt": "2023-04-11T00:21:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fvwr-h9xh-m6wc"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.1.1",
+          "fixed": "5.1.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-36c4-4r89-6whg",
+      "packageName": "@commercial/subtext",
+      "title": "Prototype Pollution in @commercial/subtext",
+      "description": "Versions of `@commercial/subtext` prior to 5.1.2 are vulnerable to Prototype Pollution. A multipart payload can be constructed in a way that one of the parts’ content can be set as the entire payload object’s prototype. If this prototype contains data, it may bypass other validation rules which enforce access and privacy. If this prototype evaluates to null, it can cause unhandled exceptions when the request payload is accessed.\n\n\n## Recommendation\n\nUpgrade to version 5.1.2 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-36c4-4r89-6whg",
+      "publishedAt": "2020-09-03T15:49:02Z",
+      "modifiedAt": "2023-01-09T05:04:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-36c4-4r89-6whg"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.1.2",
+          "fixed": "5.1.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cvfm-xjc8-f2vm",
+      "packageName": "@commercial/subtext",
+      "title": "Denial of Service in @commercial/subtext",
+      "description": "Version 5.1.1 of `@commercial/subtext` is vulnerable to Denial of Service. The Content-Encoding HTTP header parser has a vulnerability which will cause the function to throw a system error if the header contains some invalid values. Because hapi rethrows system errors (as opposed to catching expected application errors), the error is thrown all the way up the stack. If no unhandled exception handler is available, the application will exist, allowing an attacker to shut down services.\n\n\n## Recomm",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cvfm-xjc8-f2vm",
+      "publishedAt": "2020-09-03T15:46:36Z",
+      "modifiedAt": "2023-01-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cvfm-xjc8-f2vm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 5.1.1",
+          "fixed": "5.1.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

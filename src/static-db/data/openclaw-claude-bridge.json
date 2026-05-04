@@ -1,0 +1,33 @@
+{
+  "packageName": "openclaw-claude-bridge",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7853-gqqm-vcwx",
+      "packageName": "openclaw-claude-bridge",
+      "title": "openclaw-claude-bridge: sandbox is not effective - `--allowed-tools \"\"` does not restrict available tools",
+      "description": "## Affected\n\nopenclaw-claude-bridge v1.1.0\n\n## Issue\n\nv1.1.0 spawns the Claude Code CLI subprocess with `--allowed-tools \"\"` and the release notes + README claim this **\"disables all CLI tools\"** for sandboxing. This claim is incorrect.\n\nPer the Claude Code CLI documentation, `--allowed-tools` (alias `--allowedTools`) is an **auto-approve allowlist** of tools that execute without permission prompts — NOT a restriction on which tools are available. The correct flag to restrict the available tool ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7853-gqqm-vcwx",
+      "publishedAt": "2026-04-08T00:16:09Z",
+      "modifiedAt": "2026-04-08T00:16:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7853-gqqm-vcwx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39398"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.1",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "jdf-sass",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8cc8-8vvx-fhgw",
+      "packageName": "jdf-sass",
+      "title": "jdf-sass downloads Resources over HTTP",
+      "description": "Affected versions of `jdf-sass` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `jdf-sass`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if availabl",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8cc8-8vvx-fhgw",
+      "publishedAt": "2019-02-18T23:34:11Z",
+      "modifiedAt": "2023-09-13T19:09:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8cc8-8vvx-fhgw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10595"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.18"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

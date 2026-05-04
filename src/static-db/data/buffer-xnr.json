@@ -1,0 +1,28 @@
+{
+  "packageName": "buffer-xnr",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c4hh-fg8x-6h9p",
+      "packageName": "buffer-xnr",
+      "title": "Malicious Package in buffer-xnr",
+      "description": "Version 2.0.2 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-c4hh-fg8x-6h9p",
+      "publishedAt": "2020-09-03T21:57:29Z",
+      "modifiedAt": "2023-01-09T05:04:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c4hh-fg8x-6h9p"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

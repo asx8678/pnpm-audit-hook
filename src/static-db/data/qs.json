@@ -1,15 +1,70 @@
 {
   "packageName": "qs",
-  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-6rw7-vpxm-498p",
+      "packageName": "qs",
+      "title": "qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion",
+      "description": "### Summary\n\nThe `arrayLimit` option in qs did not enforce limits for bracket notation (`a[]=1&a[]=2`), only for indexed notation (`a[0]=1`). This is a consistency bug; `arrayLimit` should apply uniformly across all array notations.\n\n**Note:** The default `parameterLimit` of 1000 effectively mitigates the DoS scenario originally described. With default options, bracket notation cannot produce arrays larger than `parameterLimit` regardless of `arrayLimit`, because each `a[]=value` consumes one pa",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6rw7-vpxm-498p",
+      "publishedAt": "2025-12-30T21:02:54Z",
+      "modifiedAt": "2026-03-02T22:05:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6rw7-vpxm-498p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-15284"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.14.1",
+          "fixed": "6.14.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w7fw-mjwx-w883",
+      "packageName": "qs",
+      "title": "qs's arrayLimit bypass in comma parsing allows denial of service",
+      "description": "### Summary\nThe `arrayLimit` option in qs does not enforce limits for comma-separated values when `comma: true` is enabled, allowing attackers to cause denial-of-service via memory exhaustion. This is a bypass of the array limit enforcement, similar to the bracket notation bypass addressed in GHSA-6rw7-vpxm-498p (CVE-2025-15284).\n\n### Details\nWhen the `comma` option is set to `true` (not the default, but configurable in applications), qs allows parsing comma-separated strings as arrays (e.g., `?",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-w7fw-mjwx-w883",
+      "publishedAt": "2026-02-12T17:04:39Z",
+      "modifiedAt": "2026-02-12T20:08:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w7fw-mjwx-w883"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-2391"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 6.7.0, <= 6.14.1",
+          "fixed": "6.14.2"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-hrpp-h998-j3pp",
       "packageName": "qs",
       "title": "qs vulnerable to Prototype Pollution",
+      "description": "qs before 6.10.3 allows attackers to cause a Node process hang because an `__ proto__` key can be used. In many typical web framework use cases, an unauthenticated remote attacker can place the attack payload in the query string of the URL that is used to visit the application, such as `a[__proto__]=b&a[__proto__]&a[length]=100000000`. The fix was backported to qs 6.9.7, 6.8.3, 6.7.3, 6.6.1, 6.5.3, 6.4.1, 6.3.3, and 6.2.4.",
       "severity": "high",
       "url": "https://github.com/advisories/GHSA-hrpp-h998-j3pp",
-      "publishedAt": "2022-11-28T00:00:00Z",
-      "modifiedAt": "2023-09-07T21:31:00Z",
+      "publishedAt": "2022-11-27T00:30:50Z",
+      "modifiedAt": "2025-04-29T15:41:45Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -22,8 +77,112 @@
       ],
       "affectedVersions": [
         {
-          "range": ">=6.0.0 <6.5.3",
-          "fixed": "6.5.3"
+          "range": "< 6.2.4",
+          "fixed": "6.2.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jjv7-qpx3-h62q",
+      "packageName": "qs",
+      "title": "Denial-of-Service Memory Exhaustion in qs",
+      "description": "Versions prior to 1.0 of `qs` are affected by a denial of service condition. This condition is triggered by parsing a crafted string that deserializes into very large sparse arrays, resulting in the process running out of memory and eventually crashing.\n\n\n## Recommendation\n\nUpdate to version 1.0.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jjv7-qpx3-h62q",
+      "publishedAt": "2017-10-24T18:33:36Z",
+      "modifiedAt": "2023-04-11T00:27:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jjv7-qpx3-h62q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2014-7191"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f9cm-p3w6-xvr3",
+      "packageName": "qs",
+      "title": "Denial-of-Service Extended Event Loop Blocking in qs",
+      "description": "Versions prior to 1.0.0 of `qs` are affected by a denial of service vulnerability that results from excessive recursion in parsing a deeply nested JSON string.\n\n\n\n\n## Recommendation\n\nUpdate to version 1.0.0 or later",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f9cm-p3w6-xvr3",
+      "publishedAt": "2018-10-09T00:38:48Z",
+      "modifiedAt": "2023-01-09T05:02:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f9cm-p3w6-xvr3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2014-10064"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-crvj-3gj9-gm2p",
+      "packageName": "qs",
+      "title": "High severity vulnerability that affects qs",
+      "description": "Withdrawn, accidental duplicate publish.\r\n\r\nThe qs module before 1.0.0 in Node.js does not call the compact function for array data, which allows remote attackers to cause a denial of service (memory consumption) by using a large index value to create a sparse array.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-crvj-3gj9-gm2p",
+      "publishedAt": "2018-10-09T00:44:29Z",
+      "modifiedAt": "2023-01-09T05:02:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-crvj-3gj9-gm2p"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gqgv-6jq5-jjj9",
+      "packageName": "qs",
+      "title": "Prototype Pollution Protection Bypass in qs",
+      "description": "Affected version of `qs` are vulnerable to Prototype Pollution because it is possible to bypass the protection. The `qs.parse` function fails to properly prevent an object's prototype to be altered when parsing arbitrary input. Input containing `[` or `]` may bypass the prototype pollution protection and alter the Object prototype. This allows attackers to override properties that will exist in all objects, which may lead to Denial of Service or Remote Code Execution in specific circumstances.\n\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gqgv-6jq5-jjj9",
+      "publishedAt": "2020-04-30T17:16:47Z",
+      "modifiedAt": "2023-01-09T05:02:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gqgv-6jq5-jjj9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-1000048"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 6.3.0, < 6.3.2",
+          "fixed": "6.3.2"
         }
       ],
       "source": "github"

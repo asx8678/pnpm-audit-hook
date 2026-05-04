@@ -1,0 +1,32 @@
+{
+  "packageName": "susu-sum",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w7jg-972m-rphv",
+      "packageName": "susu-sum",
+      "title": "Directory Traversal in susu-sum",
+      "description": "Affected versions of `susu-sum` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only u",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w7jg-972m-rphv",
+      "publishedAt": "2020-09-01T18:17:28Z",
+      "modifiedAt": "2023-09-12T21:23:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w7jg-972m-rphv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16199"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "packageName": "geddy",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-333x-9vgq-v2j4",
+      "packageName": "geddy",
+      "title": "Directory Traversal in geddy",
+      "description": "Versions 13.0.8 and earlier of geddy are vulnerable to a directory traversal attack via URI encoded attack vectors.\n\n### Proof of Concept\n```\nhttp://localhost:4000/..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc/passwd\n```\n\n\n## Recommendation\n\nUpdate geddy to version >= 13.0.8",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-333x-9vgq-v2j4",
+      "publishedAt": "2017-10-24T18:33:36Z",
+      "modifiedAt": "2023-01-09T05:02:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-333x-9vgq-v2j4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-5688"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 13.0.8",
+          "fixed": "13.0.8"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

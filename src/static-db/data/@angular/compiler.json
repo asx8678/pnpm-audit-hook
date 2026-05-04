@@ -1,7 +1,33 @@
 {
   "packageName": "@angular/compiler",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-g93w-mfhg-p222",
+      "packageName": "@angular/compiler",
+      "title": "Angular vulnerable to XSS in i18n attribute bindings",
+      "description": "A Cross-Site Scripting (XSS) vulnerability has been identified in the Angular runtime and compiler. It occurs when the application uses a security-sensitive attribute (for example href on an anchor tag) together with Angular's ability to internationalize attributes. Enabling internationalization for the sensitive attribute by adding `i18n-<attribute>` name bypasses Angular's built-in sanitization mechanism, which when combined with a data binding to untrusted user-generated data can allow an att",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g93w-mfhg-p222",
+      "publishedAt": "2026-03-13T20:56:18Z",
+      "modifiedAt": "2026-03-17T01:15:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g93w-mfhg-p222"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32635"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 17.0.0-next.0, <= 18.2.14"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-jrmj-c5cx-3cw6",
       "packageName": "@angular/compiler",

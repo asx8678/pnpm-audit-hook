@@ -1,0 +1,28 @@
+{
+  "packageName": "upmerge",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gm9g-2g8v-fvxj",
+      "packageName": "upmerge",
+      "title": "Prototype Pollution in upmerge",
+      "description": "All versions of `upmerge` are vulnerable to Prototype Pollution. The merge() function fails to prevent user input to alter an Object's prototype, allowing attackers to modify override properties of all objects in the application. This may lead to Denial of Service or may be chained with other vulnerabilities leading to Remote Code Execution.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gm9g-2g8v-fvxj",
+      "publishedAt": "2019-06-06T15:32:28Z",
+      "modifiedAt": "2023-01-09T05:01:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gm9g-2g8v-fvxj"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.8"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

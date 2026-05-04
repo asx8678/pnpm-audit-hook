@@ -1,0 +1,32 @@
+{
+  "packageName": "adamvr-geoip-lite",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h2jv-5v3f-7m7j",
+      "packageName": "adamvr-geoip-lite",
+      "title": "Downloads Resources over HTTP in adamvr-geoip-lite",
+      "description": "Affected versions of `adamvr-geoip-lite` insecurely download resources over HTTP. \n\nIn scenarios where an attacker has a privileged network position, they can modify or read such resources at will. This could impact the integrity and availability of the data being used to make geolocation decisions by an application.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if available. \n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h2jv-5v3f-7m7j",
+      "publishedAt": "2020-09-01T16:10:03Z",
+      "modifiedAt": "2023-01-09T05:03:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h2jv-5v3f-7m7j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10680"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,7 +1,381 @@
 {
   "packageName": "directus",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-cf45-hxwj-4cfj",
+      "packageName": "directus",
+      "title": "Directus: Open Redirect via Parser Bypass in OAuth2/SAML Authentication Flow",
+      "description": "### Summary\n\nAn open redirect vulnerability exists in the login redirection logic. The `isLoginRedirectAllowed` function fails to correctly identify certain malformed URLs as external, allowing attackers to bypass redirect allow-list validation and redirect users to arbitrary external domains upon successful authentication.\n\n### Details\n\nA parser differential exists between the server-side URL validation logic and how modern browsers interpret URL path segments containing backslashes. Specifical",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cf45-hxwj-4cfj",
+      "publishedAt": "2026-04-04T06:09:55Z",
+      "modifiedAt": "2026-04-18T11:30:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cf45-hxwj-4cfj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35410"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.16.1",
+          "fixed": "11.16.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mvv8-v4jj-g47j",
+      "packageName": "directus",
+      "title": "Directus: Sensitive fields exposed in revision history",
+      "description": "### Summary\n\nDirectus stores revision records (in `directus_revisions`) whenever items are created or updated. Due to the revision snapshot code not consistently calling the `prepareDelta` sanitization pipeline, sensitive fields (including user tokens, two-factor authentication secrets, external auth identifiers, auth data, stored credentials, and AI provider API keys) could be stored in plaintext within revision records.\n\n### Impact\nAny user or service account with read access to `directus_revi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mvv8-v4jj-g47j",
+      "publishedAt": "2026-04-04T06:12:07Z",
+      "modifiedAt": "2026-04-09T19:05:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mvv8-v4jj-g47j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39943"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.17.0",
+          "fixed": "11.17.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-393c-p46r-7c95",
+      "packageName": "directus",
+      "title": "Directus: Path Traversal and Broken Access Control in File Management API",
+      "description": "## Summary\n\nA broken access control vulnerability was identified in the Directus file management API that allows authenticated users to overwrite files belonging to other users by manipulating the `filename_disk` parameter.\n\n## Details\n\nThe `PATCH /files/{id}` endpoint accepts a user-controlled `filename_disk` parameter. By setting this value to match the storage path of another user's file, an attacker can overwrite that file's content while manipulating metadata fields such as `uploaded_by` to",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-393c-p46r-7c95",
+      "publishedAt": "2026-04-04T06:06:39Z",
+      "modifiedAt": "2026-04-09T19:05:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-393c-p46r-7c95"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39942"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.17.0",
+          "fixed": "11.17.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-38hg-ww64-rrwc",
+      "packageName": "directus",
+      "title": "Directus: Authenticated Users Can Extract Concealed Fields via Aggregate Queries",
+      "description": "### Summary\n\nAggregate functions (`min`, `max`) applied to fields with the `conceal` special type incorrectly return raw database values instead of the masked placeholder. When combined with `groupBy`, any authenticated user with read access to the affected collection can extract concealed field values, including static API tokens and two-factor authentication secrets from `directus_users`.\n\n### Details\n\nFields marked with `conceal` are protected by payload processing logic that replaces real va",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-38hg-ww64-rrwc",
+      "publishedAt": "2026-04-04T06:13:57Z",
+      "modifiedAt": "2026-04-07T14:20:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-38hg-ww64-rrwc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35442"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.17.0",
+          "fixed": "11.17.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-ph52-67fq-75wj",
+      "packageName": "directus",
+      "title": "Directus: GraphQL Alias Amplification Denial of Service Due to Missing Query Cost/Complexity Limits",
+      "description": "### Summary\n\nDirectus' GraphQL endpoints (`/graphql` and `/graphql/system`) did not deduplicate resolver invocations within a single request. An authenticated user could exploit GraphQL aliasing to repeat an expensive relational query many times in a single request, forcing the server to execute a large number of independent complex database queries concurrently, multiplying database load linearly with the number of aliases. The existing token limit on GraphQL queries still permitted enough alia",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-ph52-67fq-75wj",
+      "publishedAt": "2026-04-04T06:12:52Z",
+      "modifiedAt": "2026-04-07T14:20:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ph52-67fq-75wj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35441"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.17.0",
+          "fixed": "11.17.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qqmv-5p3g-px89",
+      "packageName": "directus",
+      "title": "Directus: TUS Upload Authorization Bypass Allows Arbitrary File Overwrite",
+      "description": "## Summary\n\nDirectus' TUS resumable upload endpoint (`/files/tus`) allows any authenticated user with basic file upload permissions to overwrite arbitrary existing files by UUID. The TUS controller performs only collection-level authorization checks, verifying the user has some permission on `directus_files`, but never validates item-level access to the specific file being replaced. As a result, row-level permission rules (e.g., \"users can only update their own files\") are completely bypassed vi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qqmv-5p3g-px89",
+      "publishedAt": "2026-04-04T06:11:18Z",
+      "modifiedAt": "2026-04-07T14:20:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qqmv-5p3g-px89"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35412"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.16.1",
+          "fixed": "11.16.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wv3h-5fx7-966h",
+      "packageName": "directus",
+      "title": "Directus: SSRF Protection Bypass via IPv4-Mapped IPv6 Addresses in File Import",
+      "description": "### Summary\nA Server-Side Request Forgery (SSRF) protection bypass has been identified and fixed in Directus. The IP address validation mechanism used to block requests to local and private networks could be circumvented using IPv4-Mapped IPv6 address notation.\n\n### Details\nDirectus implements an IP deny-list to prevent server-side requests to internal/private network ranges. The validation logic failed to normalize IPv4-Mapped IPv6 addresses (e.g., the IPv6 representation of `127.0.0.1`) before",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wv3h-5fx7-966h",
+      "publishedAt": "2026-04-04T06:10:53Z",
+      "modifiedAt": "2026-04-07T14:20:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wv3h-5fx7-966h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35409"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.16.0",
+          "fixed": "11.16.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wxwm-3fxv-mrvx",
+      "packageName": "directus",
+      "title": "Directus: GraphQL Schema SDL Disclosure Setting",
+      "description": "## Summary\n\nWhen `GRAPHQL_INTROSPECTION=false` is configured, Directus correctly blocks standard GraphQL introspection queries (`__schema`, `__type`). However, the `server_specs_graphql` resolver on the `/graphql/system` endpoint returns an equivalent SDL representation of the schema and was not subject to the same restriction. This allowed the introspection control to be bypassed, exposing schema structure (collection names, field names, types, and relationships) to unauthenticated users at the",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wxwm-3fxv-mrvx",
+      "publishedAt": "2026-04-04T06:10:27Z",
+      "modifiedAt": "2026-04-07T14:20:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wxwm-3fxv-mrvx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35413"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.16.1",
+          "fixed": "11.16.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q75c-4gmv-mg9x",
+      "packageName": "directus",
+      "title": "Directus: Open Redirect in Admin 2FA Setup Page",
+      "description": "### Summary\n\nDirectus is vulnerable to an Open Redirect via the redirect query parameter on the `/admin/tfa-setup` page. When an administrator who has not yet configured Two-Factor Authentication (2FA) visits a crafted URL, they are presented with the legitimate Directus 2FA setup page. After completing the setup process, the application redirects the user to the attacker-controlled URL specified in the `redirect` parameter without any validation.\n\nThis vulnerability could be used in phishing at",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q75c-4gmv-mg9x",
+      "publishedAt": "2026-04-04T06:08:26Z",
+      "modifiedAt": "2026-04-07T14:19:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q75c-4gmv-mg9x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35411"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.16.1",
+          "fixed": "11.16.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8m32-p958-jg99",
+      "packageName": "directus",
+      "title": "Directus: Missing Cross-Origin Opener Policy",
+      "description": "## Summary\n\nDirectus's Single Sign-On (SSO) login pages lacked a `Cross-Origin-Opener-Policy` (COOP) HTTP response header. Without this header, a malicious cross-origin window that opens the Directus login page retains the ability to access and manipulate the `window` object of that page. An attacker can exploit this to intercept and redirect the OAuth authorization flow to an attacker-controlled OAuth client, causing the victim to unknowingly grant access to their authentication provider accoun",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8m32-p958-jg99",
+      "publishedAt": "2026-04-04T06:06:00Z",
+      "modifiedAt": "2026-04-07T14:19:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8m32-p958-jg99"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35408"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.17.0",
+          "fixed": "11.17.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6q22-g298-grjh",
+      "packageName": "directus",
+      "title": "Directus: Unauthenticated Denial of Service via GraphQL Alias Amplification of Expensive Health Check Resolver",
+      "description": "## Summary\n\nThe GraphQL specification permits a single query to repeat the same field multiple times using aliases, with each alias resolved independently by default. Directus did not deduplicate resolver invocations within a single request, meaning each alias triggered a full, independent execution of the underlying resolver.\n\nThe health check resolver ran all backend checks (database connectivity, cache, storage writes, and SMTP verification) on every invocation. Combined with unauthenticated ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6q22-g298-grjh",
+      "publishedAt": "2026-04-04T06:13:25Z",
+      "modifiedAt": "2026-04-04T06:13:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6q22-g298-grjh"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.17.0",
+          "fixed": "11.17.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qw9g-7549-7wg5",
+      "packageName": "directus",
+      "title": "Directus has MySQL accent insensitive email matching",
+      "description": "## Password reset vulnerable to accent confusion\n\nThe password reset mechanism of the Directus backend is implemented in a way where combined with (specific, need to double check if i can work around) configuration in MySQL or MariaDB. As such, it allows attackers to receive a password reset email of a victim user, specifically having it arrive at a similar email address as the victim with a one or more characters changed to use accents. \n\nThis is due to the fact that by default MySQL/MariaDB ar",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qw9g-7549-7wg5",
+      "publishedAt": "2024-03-01T16:58:20Z",
+      "modifiedAt": "2026-03-21T05:28:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qw9g-7549-7wg5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-27295"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 10.8.2",
+          "fixed": "10.8.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5mhg-wv8w-p59j",
+      "packageName": "directus",
+      "title": "Directus version number disclosure",
+      "description": "### Impact\n\nCurrently the exact Directus version number is being shipped in compiled JS bundles which are accessible without authentication. With this information a malicious attacker can trivially look for known vulnerabilities in Directus core or any of its shipped dependencies in that specific running version.\n\n### Patches\n\nThe problem has been resolved in versions 10.8.3 and newer\n\n### Workarounds\n\nNone",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5mhg-wv8w-p59j",
+      "publishedAt": "2024-03-01T20:11:05Z",
+      "modifiedAt": "2026-03-21T05:27:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5mhg-wv8w-p59j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-27296"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 10.8.2",
+          "fixed": "10.8.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jr94-gj3h-c8rf",
+      "packageName": "directus",
+      "title": "Directus Vulnerable to User Enumeration via Password Reset Timing Attack",
+      "description": "### Summary\n\nA timing-based user enumeration vulnerability exists in the password reset functionality. When an invalid reset_url parameter is provided, the response time differs by approximately 500ms between existing and non-existing users, enabling reliable user enumeration.\n\n### Details\n\nThe password reset endpoint implements a timing protection mechanism to prevent user enumeration; however, URL validation executes before the timing protection is applied. This allows an attacker to distingui",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jr94-gj3h-c8rf",
+      "publishedAt": "2026-02-12T22:13:04Z",
+      "modifiedAt": "2026-02-13T17:15:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jr94-gj3h-c8rf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26185"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.14.1",
+          "fixed": "11.14.1"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-gggm-66rh-pp98",
       "packageName": "directus",
@@ -907,60 +1281,6 @@
       "source": "github"
     },
     {
-      "id": "GHSA-qw9g-7549-7wg5",
-      "packageName": "directus",
-      "title": "Directus has MySQL accent insensitive email matching",
-      "description": "## Password reset vulnerable to accent confusion\n\nThe password reset mechanism of the Directus backend is implemented in a way where combined with (specific, need to double check if i can work around) configuration in MySQL or MariaDB. As such, it allows attackers to receive a password reset email of a victim user, specifically having it arrive at a similar email address as the victim with a one or more characters changed to use accents. \n\nThis is due to the fact that by default MySQL/MariaDB ar",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-qw9g-7549-7wg5",
-      "publishedAt": "2024-03-01T16:58:20Z",
-      "modifiedAt": "2024-03-02T22:17:03Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-qw9g-7549-7wg5"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2024-27295"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 10.8.2",
-          "fixed": "10.8.3"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-5mhg-wv8w-p59j",
-      "packageName": "directus",
-      "title": "Directus version number disclosure",
-      "description": "### Impact\n\nCurrently the exact Directus version number is being shipped in compiled JS bundles which are accessible without authentication. With this information a malicious attacker can trivially look for known vulnerabilities in Directus core or any of its shipped dependencies in that specific running version.\n\n### Patches\n\nThe problem has been resolved in versions 10.8.3 and newer\n\n### Workarounds\n\nNone",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-5mhg-wv8w-p59j",
-      "publishedAt": "2024-03-01T20:11:05Z",
-      "modifiedAt": "2024-03-01T20:11:11Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-5mhg-wv8w-p59j"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2024-27296"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 10.8.2",
-          "fixed": "10.8.3"
-        }
-      ],
-      "source": "github"
-    },
-    {
       "id": "GHSA-hmgw-9jrg-hf2m",
       "packageName": "directus",
       "title": "Directus crashes on invalid WebSocket message",
@@ -1222,33 +1542,6 @@
         {
           "range": "< 9.7.0",
           "fixed": "9.7.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-jr94-gj3h-c8rf",
-      "packageName": "directus",
-      "title": "Directus Vulnerable to User Enumeration via Password Reset Timing Attack",
-      "description": "### Summary\n\nA timing-based user enumeration vulnerability exists in the password reset functionality. When an invalid reset_url parameter is provided, the response time differs by approximately 500ms between existing and non-existing users, enabling reliable user enumeration.\n\n### Details\n\nThe password reset endpoint implements a timing protection mechanism to prevent user enumeration; however, URL validation executes before the timing protection is applied. This allows an attacker to distingui",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-jr94-gj3h-c8rf",
-      "publishedAt": "2026-02-12T22:13:04Z",
-      "modifiedAt": "2026-02-13T17:15:49Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-jr94-gj3h-c8rf"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-26185"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 11.14.1",
-          "fixed": "11.14.1"
         }
       ],
       "source": "github"

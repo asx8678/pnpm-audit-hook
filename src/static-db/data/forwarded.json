@@ -1,0 +1,33 @@
+{
+  "packageName": "forwarded",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mpcf-4gmh-23w8",
+      "packageName": "forwarded",
+      "title": "Regular Expression Denial of Service in forwarded",
+      "description": "Affected versions of `forwarded` are vulnerable to regular expression denial of service when parsing specially crafted user input.\n\n\n## Recommendation\n\nUpdate to version 0.1.2 or later",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mpcf-4gmh-23w8",
+      "publishedAt": "2018-07-24T20:16:30Z",
+      "modifiedAt": "2023-09-11T22:05:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mpcf-4gmh-23w8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16118"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.1.2",
+          "fixed": "0.1.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

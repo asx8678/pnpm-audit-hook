@@ -1,0 +1,32 @@
+{
+  "packageName": "copilot-api",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3vr4-cvmg-7fx4",
+      "packageName": "copilot-api",
+      "title": "copilot-api has Reliance on Reverse DNS Resolution for a Security-Critical Action",
+      "description": "A vulnerability was determined in ericc-ch copilot-api up to 0.7.0. This impacts an unknown function of the file /token of the component Header Handler. Executing a manipulation of the argument Host can lead to reliance on reverse dns resolution. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-3vr4-cvmg-7fx4",
+      "publishedAt": "2026-04-23T00:31:20Z",
+      "modifiedAt": "2026-04-30T20:53:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3vr4-cvmg-7fx4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-6874"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.7.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

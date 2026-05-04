@@ -1,0 +1,32 @@
+{
+  "packageName": "node-browser",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8r98-rqg5-4vm3",
+      "packageName": "node-browser",
+      "title": "node-browser downloads Resources over HTTP",
+      "description": "Affected versions of `node-browser` insecurely downloads resources over HTTP. \n\nIn scenarios where an attacker has a privileged network position, they can modify or read such resources at will. While the exact severity of impact for a vulnerability like this is highly variable and depends on the behavior of the package itself, it ranges from being able to read sensitive information all the way up to and including remote code execution.\n\n\n## Recommendation\n\nNo patch is currently available for thi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8r98-rqg5-4vm3",
+      "publishedAt": "2019-02-18T23:56:50Z",
+      "modifiedAt": "2023-09-08T21:30:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8r98-rqg5-4vm3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10618"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

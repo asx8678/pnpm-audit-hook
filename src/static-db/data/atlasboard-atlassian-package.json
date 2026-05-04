@@ -1,0 +1,28 @@
+{
+  "packageName": "atlasboard-atlassian-package",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-25v4-mcx4-hh35",
+      "packageName": "atlasboard-atlassian-package",
+      "title": "Cross-Site Scripting in atlasboard-atlassian-package",
+      "description": "All versions of `atlasboard-atlassian-package` prior to 0.4.2 are vulnerable to Cross-Site Scripting (XSS).  The package fails to properly sanitize user input that is rendered as HTML, which may allow attackers to execute arbitrary JavaScript in a victim's browser. This requires attackers being able to change issue summaries in Jira tickets.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-25v4-mcx4-hh35",
+      "publishedAt": "2020-09-04T17:28:28Z",
+      "modifiedAt": "2023-01-09T05:03:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-25v4-mcx4-hh35"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

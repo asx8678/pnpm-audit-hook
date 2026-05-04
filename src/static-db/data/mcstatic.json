@@ -1,0 +1,58 @@
+{
+  "packageName": "mcstatic",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cxmj-qjv6-vx9p",
+      "packageName": "mcstatic",
+      "title": "mcstatic directory traversal vulnerability",
+      "description": "A server directory traversal vulnerability was found on node module mcstatic <=0.0.20 that would allow an attack to access sensitive information in the file system by appending slashes in the URL path.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cxmj-qjv6-vx9p",
+      "publishedAt": "2019-02-07T18:15:44Z",
+      "modifiedAt": "2023-09-12T20:46:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cxmj-qjv6-vx9p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16482"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.20"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3r8f-gphx-9m2c",
+      "packageName": "mcstatic",
+      "title": "Path Traversal in mcstatic",
+      "description": "All versions of `mcstatic` are vulnerable to path traversal.\n\n\n## Recommendation\n\nNo fix is currently available for this vulnerability. It is our recommendation to not install or use this module at this time.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3r8f-gphx-9m2c",
+      "publishedAt": "2018-07-27T17:04:16Z",
+      "modifiedAt": "2023-01-31T01:39:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3r8f-gphx-9m2c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3730"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.20"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

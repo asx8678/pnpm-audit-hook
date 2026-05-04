@@ -1,0 +1,33 @@
+{
+  "packageName": "printer",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5c8j-xr24-2665",
+      "packageName": "printer",
+      "title": "Potential Command Injection in printer",
+      "description": "Versions 0.0.1 and earlier of `printer` are affected by a command injection vulnerability resulting from a failure to sanitize command arguments properly in the `printDirect()` function. \n\n\n\n## Recommendation\n\nUpdate to version 0.0.2 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5c8j-xr24-2665",
+      "publishedAt": "2017-11-28T22:44:52Z",
+      "modifiedAt": "2023-01-09T05:02:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5c8j-xr24-2665"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2014-3741"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.1",
+          "fixed": "0.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

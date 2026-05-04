@@ -1,7 +1,130 @@
 {
   "packageName": "@sveltejs/kit",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-3f6h-2hrp-w5wx",
+      "packageName": "@sveltejs/kit",
+      "title": "@sveltejs/kit: Unvalidated redirect in handle hook causes Denial-of-Service",
+      "description": "`redirect`, when called from inside the `handle` server hook with a location parameter containing characters that are invalid in a HTTP header, will cause an unhandled `TypeError`. This could result in DoS on some platforms, especially if the location passed to `redirect` contains unsanitized user input.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3f6h-2hrp-w5wx",
+      "publishedAt": "2026-04-10T17:32:00Z",
+      "modifiedAt": "2026-04-10T19:46:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3f6h-2hrp-w5wx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-40074"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.57.0",
+          "fixed": "2.57.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2crg-3p73-43xp",
+      "packageName": "@sveltejs/kit",
+      "title": "@sveltejs/adapter-node has a BODY_SIZE_LIMIT bypass",
+      "description": "Under certain circumstances, requests could bypass the `BODY_SIZE_LIMIT` on SvelteKit applications running with `adapter-node`. This bypass does not affect body size limits at other layers of the application stack, so limits enforced in the WAF, gateway, or at the platform level are unaffected.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2crg-3p73-43xp",
+      "publishedAt": "2026-04-10T17:24:31Z",
+      "modifiedAt": "2026-04-10T19:46:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2crg-3p73-43xp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-40073"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.57.0",
+          "fixed": "2.57.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fpg4-jhqr-589c",
+      "packageName": "@sveltejs/kit",
+      "title": "SvelteKit  has deserialization expansion in unvalidated `form` remote function leading to Denial of Service (experimental only)",
+      "description": "Some relatively small inputs can cause very large files arrays in `form` handlers. If the SvelteKit application code doesn't check `files.length` or individual files' sizes and performs expensive processing with them, it can result in Denial of Service.\n\nOnly users with `experimental.remoteFunctions: true` who are using the `form` function and are processing the `files` array without validation are vulnerable.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-fpg4-jhqr-589c",
+      "publishedAt": "2026-02-28T02:04:39Z",
+      "modifiedAt": "2026-02-28T02:04:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fpg4-jhqr-589c"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.49.0, <= 2.53.2",
+          "fixed": "2.53.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-88qp-p4qg-rqm6",
+      "packageName": "@sveltejs/kit",
+      "title": "CPU exhaustion in SvelteKit remote form deserialization (experimental only)",
+      "description": "Versions of `@sveltejs/kit` prior to 2.52.2 with remote functions enabled are vulnerable to CPU exhaustion. Malformed form data can cause the server to become unresponsive while processing a request, resulting in denial of service.\n\nOnly applications using both `experimental.remoteFunctions` and `form` are vulnerable.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-88qp-p4qg-rqm6",
+      "publishedAt": "2026-02-19T20:30:25Z",
+      "modifiedAt": "2026-02-19T20:30:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-88qp-p4qg-rqm6"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.49.0, <= 2.52.1",
+          "fixed": "2.52.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vrhm-gvg7-fpcf",
+      "packageName": "@sveltejs/kit",
+      "title": " Memory exhaustion in SvelteKit remote form deserialization (experimental only)",
+      "description": "Versions of `@sveltejs/kit` prior to 2.52.2 with remote functions enabled can be vulnerable to memory exhaustion. Malformed form data can cause the server process to crash due to excessive memory allocation, resulting in denial of service.\n\nOnly applications using both `experimental.remoteFunctions` and `form` are vulnerable.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vrhm-gvg7-fpcf",
+      "publishedAt": "2026-02-19T20:29:42Z",
+      "modifiedAt": "2026-02-19T20:29:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vrhm-gvg7-fpcf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.49.0, <= 2.52.1",
+          "fixed": "2.52.2"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-j2f3-wq62-6q46",
       "packageName": "@sveltejs/kit",
@@ -214,75 +337,6 @@
         {
           "range": "< 1.15.1",
           "fixed": "1.15.1"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-fpg4-jhqr-589c",
-      "packageName": "@sveltejs/kit",
-      "title": "SvelteKit  has deserialization expansion in unvalidated `form` remote function leading to Denial of Service (experimental only)",
-      "description": "Some relatively small inputs can cause very large files arrays in `form` handlers. If the SvelteKit application code doesn't check `files.length` or individual files' sizes and performs expensive processing with them, it can result in Denial of Service.\n\nOnly users with `experimental.remoteFunctions: true` who are using the `form` function and are processing the `files` array without validation are vulnerable.",
-      "severity": "low",
-      "url": "https://github.com/advisories/GHSA-fpg4-jhqr-589c",
-      "publishedAt": "2026-02-28T02:04:39Z",
-      "modifiedAt": "2026-02-28T02:04:40Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-fpg4-jhqr-589c"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 2.49.0, <= 2.53.2",
-          "fixed": "2.53.3"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-88qp-p4qg-rqm6",
-      "packageName": "@sveltejs/kit",
-      "title": "CPU exhaustion in SvelteKit remote form deserialization (experimental only)",
-      "description": "Versions of `@sveltejs/kit` prior to 2.52.2 with remote functions enabled are vulnerable to CPU exhaustion. Malformed form data can cause the server to become unresponsive while processing a request, resulting in denial of service.\n\nOnly applications using both `experimental.remoteFunctions` and `form` are vulnerable.",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-88qp-p4qg-rqm6",
-      "publishedAt": "2026-02-19T20:30:25Z",
-      "modifiedAt": "2026-02-19T20:30:29Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-88qp-p4qg-rqm6"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 2.49.0, <= 2.52.1",
-          "fixed": "2.52.2"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-vrhm-gvg7-fpcf",
-      "packageName": "@sveltejs/kit",
-      "title": " Memory exhaustion in SvelteKit remote form deserialization (experimental only)",
-      "description": "Versions of `@sveltejs/kit` prior to 2.52.2 with remote functions enabled can be vulnerable to memory exhaustion. Malformed form data can cause the server process to crash due to excessive memory allocation, resulting in denial of service.\n\nOnly applications using both `experimental.remoteFunctions` and `form` are vulnerable.",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-vrhm-gvg7-fpcf",
-      "publishedAt": "2026-02-19T20:29:42Z",
-      "modifiedAt": "2026-02-19T20:29:43Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-vrhm-gvg7-fpcf"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 2.49.0, <= 2.52.1",
-          "fixed": "2.52.2"
         }
       ],
       "source": "github"

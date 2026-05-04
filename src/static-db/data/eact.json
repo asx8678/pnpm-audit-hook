@@ -1,0 +1,28 @@
+{
+  "packageName": "eact",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pmgv-94f5-6w7w",
+      "packageName": "eact",
+      "title": "Malicious Package in eact",
+      "description": "All versions of `eact` typosquatted a popular package of similar name and tracked users who had installed the incorrect package. The package uploaded information to a remote server including: name of the downloaded package, name of the intended package, the Node version and whether the process was running as sudo. There is no further compromise.\n\n\n## Recommendation\n\nRemove the package from your dependencies and always ensure package names are typed correctly upon installation.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-pmgv-94f5-6w7w",
+      "publishedAt": "2020-09-02T20:21:30Z",
+      "modifiedAt": "2023-01-09T05:03:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pmgv-94f5-6w7w"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

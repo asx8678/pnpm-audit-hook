@@ -1,0 +1,29 @@
+{
+  "packageName": "centra",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v6cj-r88p-92rm",
+      "packageName": "centra",
+      "title": "Buffer Overflow in centra",
+      "description": "## Denial of Service\n\n### Impact\n\nAffected Centra versions will, when not in stream mode, buffer responses to requests into memory with no size limit. This issue affects anyone requesting content from untrusted sources.\n\n### Patches\n\nVersion 2.4.0 resolves the issue by limiting the size of buffered response body.\n\n### Workarounds\n\nAttempting workarounds isn't recommended. Updating is preferred.\n\n### For more information\n\nIf you have any questions or comments about this advisory, open an issue in",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v6cj-r88p-92rm",
+      "publishedAt": "2019-09-30T19:31:59Z",
+      "modifiedAt": "2023-01-09T05:03:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v6cj-r88p-92rm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.4.0",
+          "fixed": "2.4.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

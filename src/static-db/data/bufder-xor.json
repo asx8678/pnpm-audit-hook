@@ -1,0 +1,28 @@
+{
+  "packageName": "bufder-xor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w9q5-mvc6-5cw3",
+      "packageName": "bufder-xor",
+      "title": "Malicious Package in bufder-xor",
+      "description": "Version 2.0.2 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-w9q5-mvc6-5cw3",
+      "publishedAt": "2020-09-03T21:45:13Z",
+      "modifiedAt": "2023-01-09T05:04:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w9q5-mvc6-5cw3"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

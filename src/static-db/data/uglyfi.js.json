@@ -1,0 +1,28 @@
+{
+  "packageName": "uglyfi.js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8jf2-cq6v-w234",
+      "packageName": "uglyfi.js",
+      "title": "Malicious Package in uglyfi.js",
+      "description": "Version 0.17.3 of `uglyfi.js` contains malicious code as a preinstall script. The package is malware designed to take advantage of users making a mistake when typing the name of a module to install. When installed, the package downloads a file from a remote server, executes it and opens a backdoor.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a d",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8jf2-cq6v-w234",
+      "publishedAt": "2020-09-03T21:10:53Z",
+      "modifiedAt": "2023-01-09T05:04:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8jf2-cq6v-w234"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

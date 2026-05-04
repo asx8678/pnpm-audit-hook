@@ -1,0 +1,28 @@
+{
+  "packageName": "pm-controls",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-84qj-9qf2-q92r",
+      "packageName": "pm-controls",
+      "title": "Malicious Package in pm-controls",
+      "description": "Version 1.1.8 of `pm-controls` contained malicious code. The code when executed in the browser would enumerate password, cvc and cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nRemove the package from your environment and evaluate your application to determine whether or not user data was compromised. Users may downgrade to 1.1.7",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-84qj-9qf2-q92r",
+      "publishedAt": "2020-09-03T00:32:30Z",
+      "modifiedAt": "2023-07-13T21:06:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-84qj-9qf2-q92r"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.1.8"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

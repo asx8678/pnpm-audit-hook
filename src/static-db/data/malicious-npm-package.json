@@ -1,0 +1,28 @@
+{
+  "packageName": "malicious-npm-package",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-49c6-3wr4-8jr4",
+      "packageName": "malicious-npm-package",
+      "title": "Malicious Package in malicious-npm-package",
+      "description": "All versions of `malicious-npm-package` contain malicious code. The malware targets Windows systems. It runs a powershell command that downloads an executable file from a remote server and runs it.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been g",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-49c6-3wr4-8jr4",
+      "publishedAt": "2020-09-04T15:05:26Z",
+      "modifiedAt": "2023-01-09T05:04:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-49c6-3wr4-8jr4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

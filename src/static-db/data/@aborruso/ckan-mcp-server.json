@@ -1,0 +1,33 @@
+{
+  "packageName": "@aborruso/ckan-mcp-server",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3xm7-qw7j-qc8v",
+      "packageName": "@aborruso/ckan-mcp-server",
+      "title": "SSRF in @aborruso/ckan-mcp-server via base_url allows access to internal networks",
+      "description": "## Summary\n\nThe `@aborruso/ckan-mcp-server` MCP server provides tools including `ckan_package_search` and `sparql_query` that accept a `base_url` parameter, making HTTP requests to arbitrary endpoints without restriction. A CKAN portal client has no legitimate reason to contact cloud metadata or internal network services.\n\n## Severity\n\nAttack complexity is HIGH because exploitation requires prompt injection via malicious content (webpage, document) while the victim's AI assistant has this MCP se",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3xm7-qw7j-qc8v",
+      "publishedAt": "2026-03-18T12:59:42Z",
+      "modifiedAt": "2026-04-24T20:46:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3xm7-qw7j-qc8v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33060"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.4.85",
+          "fixed": "0.4.85"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

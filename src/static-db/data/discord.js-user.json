@@ -1,0 +1,28 @@
+{
+  "packageName": "discord.js-user",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-69r6-7h4f-9p7q",
+      "packageName": "discord.js-user",
+      "title": "Malicious Package in discord.js-user",
+      "description": "All versions of `discord.js-user` contain malicious code. The package uploads the user's Discord token to a remote server.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure any compromised tokens are invalidated.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-69r6-7h4f-9p7q",
+      "publishedAt": "2020-09-03T20:41:01Z",
+      "modifiedAt": "2023-01-09T05:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-69r6-7h4f-9p7q"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

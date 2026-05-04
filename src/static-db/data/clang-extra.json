@@ -1,0 +1,32 @@
+{
+  "packageName": "clang-extra",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-59m2-j944-839w",
+      "packageName": "clang-extra",
+      "title": "clang-extra downloads Resources over HTTP",
+      "description": "Affected versions of `clang-extra` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `clang-extra`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability. The package author stated that no patch is possible until llvm provides HTTPS support, and a p",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-59m2-j944-839w",
+      "publishedAt": "2019-02-18T23:45:13Z",
+      "modifiedAt": "2023-09-07T20:12:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-59m2-j944-839w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10655"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

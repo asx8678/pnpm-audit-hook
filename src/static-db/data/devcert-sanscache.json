@@ -1,0 +1,33 @@
+{
+  "packageName": "devcert-sanscache",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4gp3-p7ph-x2jr",
+      "packageName": "devcert-sanscache",
+      "title": "OS Command Injection in devcert-sanscache",
+      "description": "devcert-sanscache before 0.4.7 allows remote attackers to execute arbitrary code or cause a Command Injection via the exec function. The variable `commonName` controlled by user input is used as part of the `exec` function without any sanitization.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4gp3-p7ph-x2jr",
+      "publishedAt": "2020-04-14T23:09:00Z",
+      "modifiedAt": "2023-01-09T05:02:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4gp3-p7ph-x2jr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10778"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.4.7",
+          "fixed": "0.4.7"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

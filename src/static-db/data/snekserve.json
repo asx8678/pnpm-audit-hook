@@ -1,0 +1,28 @@
+{
+  "packageName": "snekserve",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hv4w-jhcj-6wfw",
+      "packageName": "snekserve",
+      "title": "Cross-Site Scripting in snekserve",
+      "description": "All versions of `snekserve` are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize filenames, allowing attackers to execute arbitrary JavaScript in the victim's browser through files with names containing malicious code.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hv4w-jhcj-6wfw",
+      "publishedAt": "2020-09-03T20:34:23Z",
+      "modifiedAt": "2023-01-09T05:04:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hv4w-jhcj-6wfw"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

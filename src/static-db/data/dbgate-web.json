@@ -1,0 +1,60 @@
+{
+  "packageName": "dbgate-web",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j8j5-7r4h-vj2g",
+      "packageName": "dbgate-web",
+      "title": "DbGate has cross site scripting via the  SVG Icon String Handler component",
+      "description": "A security vulnerability has been detected in DbGate up to 7.1.4. This affects an unknown function of the file packages/web/src/icons/FontIcon.svelte of the component SVG Icon String Handler. Such manipulation of the argument applicationIcon leads to cross site scripting. The attack may be launched remotely. The exploit has been disclosed publicly and may be used. Upgrading to version 7.1.5 mitigates this issue. It is advisable to upgrade the affected component.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-j8j5-7r4h-vj2g",
+      "publishedAt": "2026-04-13T21:30:45Z",
+      "modifiedAt": "2026-04-14T23:37:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j8j5-7r4h-vj2g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-6216"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 7.1.5",
+          "fixed": "7.1.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-35xm-qvjg-8m42",
+      "packageName": "dbgate-web",
+      "title": "dbgate-web: Stored XSS in applicationIcon leads to potential RCE in Electron due to unsafe renderer configuration",
+      "description": "### Summary\nA stored XSS vulnerability exists in DbGate because attacker-controlled SVG icon strings are rendered as raw HTML without sanitization. In the web UI this allows script execution in another user's browser; in the Electron desktop app this can escalate to local code execution because Electron is configured with `nodeIntegration: true` and `contextIsolation: false`.\n\n### Details\nThe issue is in the icon rendering path:\n\n- `packages/web/src/icons/FontIcon.svelte`\n  - treats any icon str",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-35xm-qvjg-8m42",
+      "publishedAt": "2026-04-01T22:19:57Z",
+      "modifiedAt": "2026-04-06T17:25:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-35xm-qvjg-8m42"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34725"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0, < 7.1.5",
+          "fixed": "7.1.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

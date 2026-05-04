@@ -1,0 +1,28 @@
+{
+  "packageName": "axios-http",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r2rg-683g-ff96",
+      "packageName": "axios-http",
+      "title": "Malicious Package in axios-http",
+      "description": "This package contained malicious code. The package uploaded system information such as OS and hostname to a remote server.\n\n\n## Recommendation\n\nRemove the package from your environment. There are no indications of further compromise.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-r2rg-683g-ff96",
+      "publishedAt": "2020-09-03T19:40:12Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r2rg-683g-ff96"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

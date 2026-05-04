@@ -1,0 +1,28 @@
+{
+  "packageName": "angluar-cli",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8mm3-2mcj-cx6r",
+      "packageName": "angluar-cli",
+      "title": "Malicious Package in angluar-cli",
+      "description": "Version 0.0.3 of `angluar-cli` contains malicious code as a postinstall script. The package is malware designed to take advantage of users making a mistake when typing the name of a module to install. When installed the package attempts to remove files and stop processes related to McAfee antivirus on macOS.\n\n\n## Recommendation\n\nRemove the package from your environment and verify whether files were deleted and if processes were stopped.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8mm3-2mcj-cx6r",
+      "publishedAt": "2020-09-11T21:09:24Z",
+      "modifiedAt": "2023-01-09T05:04:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8mm3-2mcj-cx6r"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,7 +1,30 @@
 {
   "packageName": "node-rules",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-8whr-v3gm-w8h9",
+      "packageName": "node-rules",
+      "title": "Duplicate Advisory: Command Injection in node-rules",
+      "description": "## Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-f78f-353m-cf4j. This link is maintained to preserve external references.\n\n## Original Description\nVersions of `node-rules` prior to 5.0.0 are vulnerable to Command Injection. The package fails to sanitize input rules and passes it directly to an `eval` call when using the `fromJSON` function. This may allow attackers to execute arbitrary code in the system if the rules are user-controlled.\n\n\n## Recommendatio",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8whr-v3gm-w8h9",
+      "publishedAt": "2020-09-03T15:51:04Z",
+      "modifiedAt": "2026-01-23T22:49:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8whr-v3gm-w8h9"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.0.0",
+          "fixed": "5.0.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-f78f-353m-cf4j",
       "packageName": "node-rules",

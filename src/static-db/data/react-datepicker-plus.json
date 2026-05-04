@@ -1,0 +1,29 @@
+{
+  "packageName": "react-datepicker-plus",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4wcx-c9c4-89p2",
+      "packageName": "react-datepicker-plus",
+      "title": "Malicious Package in react-datepicker-plus",
+      "description": "Versions 2.4.3 and 2.4.2 of `react-datepicker-plus` contained malicious code. The code when executed in the browser would enumerate password, cvc and cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nRemove the package from your environment and evaluate your application to determine whether or not user data was compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4wcx-c9c4-89p2",
+      "publishedAt": "2020-09-11T21:23:30Z",
+      "modifiedAt": "2023-01-09T05:03:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4wcx-c9c4-89p2"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.4.2, <= 2.4.3",
+          "fixed": "2.4.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

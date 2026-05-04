@@ -1,0 +1,32 @@
+{
+  "packageName": "redis-srvr",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j3cr-j9jx-mf4p",
+      "packageName": "redis-srvr",
+      "title": "Downloads Resources over HTTP in redis-srvr",
+      "description": "Affected versions of `redis-srvr` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `redis-srvr`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability, and the package has not seen an update since 2014.\n\nThe best mitigation is currently to avoid us",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j3cr-j9jx-mf4p",
+      "publishedAt": "2019-02-18T23:47:07Z",
+      "modifiedAt": "2023-01-09T05:03:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j3cr-j9jx-mf4p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10639"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.8.17-beta.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

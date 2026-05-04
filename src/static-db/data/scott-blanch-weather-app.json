@@ -1,0 +1,32 @@
+{
+  "packageName": "scott-blanch-weather-app",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jp46-fw6c-3pm9",
+      "packageName": "scott-blanch-weather-app",
+      "title": "Directory Traversal in scott-blanch-weather-app",
+      "description": "Affected versions of `scott-blanch-weather-app` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the p",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jp46-fw6c-3pm9",
+      "publishedAt": "2020-09-01T18:46:58Z",
+      "modifiedAt": "2023-09-13T20:24:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jp46-fw6c-3pm9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16184"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

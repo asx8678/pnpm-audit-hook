@@ -1,0 +1,28 @@
+{
+  "packageName": "react-oauth-flow",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-65m9-m259-7jqw",
+      "packageName": "react-oauth-flow",
+      "title": "Improper Authorization in react-oauth-flow",
+      "description": "All versions of `react-oauth-flow` fail to properly implement the OAuth protocol. The package stores secrets in the front-end code. Instead of using a public OAuth client, it uses a confidential client on the browser. This may allow attackers to compromise server credentials.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-65m9-m259-7jqw",
+      "publishedAt": "2020-09-03T15:49:29Z",
+      "modifiedAt": "2023-01-09T05:03:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-65m9-m259-7jqw"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

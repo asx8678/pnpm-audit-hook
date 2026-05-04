@@ -1,0 +1,33 @@
+{
+  "packageName": "apex-publish-static-files",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9jm3-5835-537m",
+      "packageName": "apex-publish-static-files",
+      "title": "Command Injection in apex-publish-static-files",
+      "description": "Versions of `apex-publish-static-files` before 2.0.1 are vulnerable to command injection. This is exploitable if user input is passed into the `connectString` option in the `publish` method.\n\n\n## Recommendation\n\nUpdate to version 2.0.1 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9jm3-5835-537m",
+      "publishedAt": "2018-11-01T14:48:50Z",
+      "modifiedAt": "2023-09-13T19:36:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9jm3-5835-537m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16462"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.1",
+          "fixed": "2.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

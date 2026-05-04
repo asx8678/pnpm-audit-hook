@@ -1,0 +1,32 @@
+{
+  "packageName": "noderequest",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5cv7-r488-wc5x",
+      "packageName": "noderequest",
+      "title": "noderequest is malware",
+      "description": "The `noderequest` package is a piece of malware that steals environment variables and sends them to attacker controlled locations. \n\nAll versions have been unpublished from the npm registry.\n\n\n## Recommendation\n\n\nAs this package is malware, if you find it installed in your environment, the real security concern is determining how it got there. \n\nIf you have found this installed in your environment, you should:\n1. Delete the package\n2. Clear your npm cache\n3. Ensure it is not present in any other",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5cv7-r488-wc5x",
+      "publishedAt": "2018-09-17T20:39:17Z",
+      "modifiedAt": "2023-09-07T18:32:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5cv7-r488-wc5x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16073"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

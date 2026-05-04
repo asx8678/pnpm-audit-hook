@@ -1,7 +1,57 @@
 {
   "packageName": "ua-parser-js",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-pjwm-rvh2-c87w",
+      "packageName": "ua-parser-js",
+      "title": "Embedded malware in ua-parser-js",
+      "description": "The npm package `ua-parser-js` had three versions published with malicious code. Users of affected versions (0.7.29, 0.8.0, 1.0.0) should upgrade as soon as possible and check their systems for suspicious activity. See [this issue](https://github.com/faisalman/ua-parser-js/issues/536) for details as they unfold.\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a differe",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pjwm-rvh2-c87w",
+      "publishedAt": "2021-10-22T20:38:14Z",
+      "modifiedAt": "2026-02-17T21:57:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pjwm-rvh2-c87w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-4229"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.0.0",
+          "fixed": "1.0.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-236c-vhj4-gfxg",
+      "packageName": "ua-parser-js",
+      "title": "Duplicate Advisory: Embedded malware in ua-parser-js",
+      "description": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-pjwm-rvh2-c87w. This link is maintained to preserve external references.\n\n### Original Description\nA vulnerability was found in ua-parser-js 0.7.29/0.8.0/1.0.0. It has been rated as critical. This issue affects the crypto mining component which introduces a backdoor. Upgrading to version 0.7.30, 0.8.1 and 1.0.1 is able to address this issue. It is recommended to upgrade the affected component.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-236c-vhj4-gfxg",
+      "publishedAt": "2022-05-25T00:00:31Z",
+      "modifiedAt": "2026-02-17T21:40:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-236c-vhj4-gfxg"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.0.0",
+          "fixed": "1.0.1"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-fhg7-m89q-25r3",
       "packageName": "ua-parser-js",
@@ -25,29 +75,6 @@
         {
           "range": ">= 0.7.30, < 0.7.33",
           "fixed": "0.7.33"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-pjwm-rvh2-c87w",
-      "packageName": "ua-parser-js",
-      "title": "Embedded malware in ua-parser-js",
-      "description": "The npm package `ua-parser-js` had three versions published with malicious code. Users of affected versions (0.7.29, 0.8.0, 1.0.0) should upgrade as soon as possible and check their systems for suspicious activity. See [this issue](https://github.com/faisalman/ua-parser-js/issues/536) for details as they unfold.\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a differe",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-pjwm-rvh2-c87w",
-      "publishedAt": "2021-10-22T20:38:14Z",
-      "modifiedAt": "2023-07-28T15:38:49Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-pjwm-rvh2-c87w"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "= 1.0.0",
-          "fixed": "1.0.1"
         }
       ],
       "source": "github"
@@ -129,29 +156,6 @@
         {
           "range": "< 0.7.22",
           "fixed": "0.7.22"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-236c-vhj4-gfxg",
-      "packageName": "ua-parser-js",
-      "title": "Duplicate Advisory: Embedded malware in ua-parser-js",
-      "description": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-pjwm-rvh2-c87w. This link is maintained to preserve external references.\n\n### Original Description\nA vulnerability was found in ua-parser-js 0.7.29/0.8.0/1.0.0. It has been rated as critical. This issue affects the crypto mining component which introduces a backdoor. Upgrading to version 0.7.30, 0.8.1 and 1.0.1 is able to address this issue. It is recommended to upgrade the affected component.",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-236c-vhj4-gfxg",
-      "publishedAt": "2022-05-25T00:00:31Z",
-      "modifiedAt": "2026-02-17T21:40:22Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-236c-vhj4-gfxg"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "= 1.0.0",
-          "fixed": "1.0.1"
         }
       ],
       "source": "github"

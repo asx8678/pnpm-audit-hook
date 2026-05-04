@@ -1,0 +1,28 @@
+{
+  "packageName": "only-test-not-install",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g9wf-393q-4w38",
+      "packageName": "only-test-not-install",
+      "title": "Malicious Package in only-test-not-install",
+      "description": "All versions of `only-test-not-install` contain malicious code. The package deletes the folder `~/test` from the system as a postinstall script.\n\n\n## Recommendation\n\nRemove the package from your environment. There are no further signs of compromise.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-g9wf-393q-4w38",
+      "publishedAt": "2020-09-03T17:28:26Z",
+      "modifiedAt": "2023-01-09T05:04:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g9wf-393q-4w38"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

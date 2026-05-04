@@ -1,0 +1,32 @@
+{
+  "packageName": "xd-testing",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j7j5-752x-wr4v",
+      "packageName": "xd-testing",
+      "title": "xd-testing Downloads Resources over HTTP",
+      "description": "Affected versions of `xd-testing` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `xd-testing`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if avai",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j7j5-752x-wr4v",
+      "publishedAt": "2019-02-18T23:45:21Z",
+      "modifiedAt": "2023-09-12T21:03:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j7j5-752x-wr4v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10653"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

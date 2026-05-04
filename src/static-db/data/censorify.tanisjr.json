@@ -1,0 +1,32 @@
+{
+  "packageName": "censorify.tanisjr",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-776r-w3v9-96mv",
+      "packageName": "censorify.tanisjr",
+      "title": "Directory Traversal in censorify.tanisjr",
+      "description": "Affected versions of `censorify.tanisjr` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-776r-w3v9-96mv",
+      "publishedAt": "2018-07-23T20:46:16Z",
+      "modifiedAt": "2023-09-11T19:01:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-776r-w3v9-96mv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16157"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "packageName": "bruteser",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v7cp-5326-54fh",
+      "packageName": "bruteser",
+      "title": "Path Traversal in bruteser",
+      "description": "Versions of `bruteser` prior to 0.1.0 are vulnerable to Path Traversal. The package fails to sanitize URLs, allowing attackers to access server files outside of the served folder using relative paths.\n\n\n## Recommendation\n\nUpgrade to version 0.1.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v7cp-5326-54fh",
+      "publishedAt": "2020-09-03T16:45:15Z",
+      "modifiedAt": "2023-01-09T05:03:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v7cp-5326-54fh"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.1.0",
+          "fixed": "0.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

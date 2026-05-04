@@ -1,0 +1,28 @@
+{
+  "packageName": "nothing-js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-353r-3v84-9pjj",
+      "packageName": "nothing-js",
+      "title": "Malicious Package in nothing-js",
+      "description": "`nothing-js` contained a malicious script that attempted to delete all files when `npm test` was run.\n\n\n## Recommendation\n\nThis module has been unpublished from the npm Registry. If you find this module in your environment remove it.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-353r-3v84-9pjj",
+      "publishedAt": "2020-09-01T20:40:36Z",
+      "modifiedAt": "2023-01-09T05:04:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-353r-3v84-9pjj"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "packageName": "web3",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-27v7-qhfv-rqq8",
+      "packageName": "web3",
+      "title": "Insecure Credential Storage in web3",
+      "description": "All versions of `web3` are vulnerable to Insecure Credential Storage. The package stores encrypted wallets in local storage and requires a password to load the wallet. Once the wallet is loaded, the private key is accessible via LocalStorage. Exploiting this vulnerability likely requires a Cross-Site Scripting vulnerability to access the private key.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-27v7-qhfv-rqq8",
+      "publishedAt": "2019-05-30T17:26:30Z",
+      "modifiedAt": "2023-01-09T05:01:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-27v7-qhfv-rqq8"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.5.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

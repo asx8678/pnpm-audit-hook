@@ -1,0 +1,32 @@
+{
+  "packageName": "ibapi",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-92qm-hc53-jjrj",
+      "packageName": "ibapi",
+      "title": "ibapi downloads Resources over HTTP",
+      "description": "Affected versions of `ibapi` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `ibapi`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if available. \n\nA",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-92qm-hc53-jjrj",
+      "publishedAt": "2019-02-18T23:34:17Z",
+      "modifiedAt": "2023-09-07T20:05:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-92qm-hc53-jjrj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10593"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.6.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

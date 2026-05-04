@@ -1,0 +1,28 @@
+{
+  "packageName": "buffev-xor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x3w4-mrmv-cw2x",
+      "packageName": "buffev-xor",
+      "title": "Malicious Package in buffev-xor",
+      "description": "Version 2.0.2 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-x3w4-mrmv-cw2x",
+      "publishedAt": "2020-09-03T22:19:44Z",
+      "modifiedAt": "2023-01-09T05:04:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x3w4-mrmv-cw2x"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

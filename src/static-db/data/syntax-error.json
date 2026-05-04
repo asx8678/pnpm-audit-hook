@@ -1,0 +1,33 @@
+{
+  "packageName": "syntax-error",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5726-g6r9-5f22",
+      "packageName": "syntax-error",
+      "title": "Potential for Script Injection in syntax-error",
+      "description": "Versions of `syntax-error` prior to 1.1.1 are affected by a cross-site scripting vulnerability which may allow a malicious file to execute code when browserified. \n\n## Recommendation\n\nUpdate to version 1.1.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5726-g6r9-5f22",
+      "publishedAt": "2017-10-24T18:33:36Z",
+      "modifiedAt": "2023-01-09T05:02:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5726-g6r9-5f22"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2014-7192"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.1",
+          "fixed": "1.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

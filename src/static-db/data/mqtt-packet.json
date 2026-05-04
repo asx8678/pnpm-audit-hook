@@ -1,0 +1,60 @@
+{
+  "packageName": "mqtt-packet",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wv67-9jq7-8r69",
+      "packageName": "mqtt-packet",
+      "title": "Improper Input Validation and Buffer Over-read in mqtt-packet",
+      "description": "A specifically malformed MQTT Subscribe packet crashes MQTT Brokers using the mqtt-packet module versions < 3.5.1, 4.0.0 - 4.1.3, 5.0.0 - 5.6.1, 6.0.0 - 6.1.2 for decoding.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wv67-9jq7-8r69",
+      "publishedAt": "2019-05-14T04:02:45Z",
+      "modifiedAt": "2023-02-01T05:01:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wv67-9jq7-8r69"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-5432"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 6.0.0, < 6.1.2",
+          "fixed": "6.1.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-g3r2-65gc-qpqc",
+      "packageName": "mqtt-packet",
+      "title": "Denial of Service in mqtt-packet",
+      "description": "Versions of `mqtt-packet` prior to 3.4.6, or 4.x prior to 4.0.5 are affected by a denial of service vulnerability wherein specific sequences of MQTT packets can crash the application.\n\n\n\n\n## Recommendation\n\nVersion 3.x: Update to version 3.4.6 or later.\nVersion 4.x: Update to version 4.0.5 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g3r2-65gc-qpqc",
+      "publishedAt": "2019-02-18T23:38:45Z",
+      "modifiedAt": "2023-01-09T05:02:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g3r2-65gc-qpqc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10523"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.0.5",
+          "fixed": "4.0.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "qinserve",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cxwc-8pqp-2whw",
+      "packageName": "qinserve",
+      "title": "Directory Traversal in qinserve",
+      "description": "Affected versions of `qinserve` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only u",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cxwc-8pqp-2whw",
+      "publishedAt": "2020-09-01T18:20:40Z",
+      "modifiedAt": "2023-09-07T00:11:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cxwc-8pqp-2whw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16197"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

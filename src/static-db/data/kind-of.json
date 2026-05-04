@@ -1,15 +1,16 @@
 {
   "packageName": "kind-of",
-  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6c8f-qphg-qjgp",
       "packageName": "kind-of",
       "title": "Validation Bypass in kind-of",
+      "description": "Versions of `kind-of` 6.x prior to 6.0.3 are vulnerable to a Validation Bypass. A maliciously crafted object can alter the result of the type check, allowing attackers to bypass the type checking validation. \n\n\n## Recommendation\n\nUpgrade to versions 6.0.3 or later.",
       "severity": "high",
       "url": "https://github.com/advisories/GHSA-6c8f-qphg-qjgp",
-      "publishedAt": "2020-03-06T18:49:00Z",
-      "modifiedAt": "2023-09-11T22:00:00Z",
+      "publishedAt": "2020-03-31T15:59:54Z",
+      "modifiedAt": "2023-11-29T20:47:27Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -22,7 +23,7 @@
       ],
       "affectedVersions": [
         {
-          "range": ">=6.0.0 <6.0.3",
+          "range": ">= 6.0.0, < 6.0.3",
           "fixed": "6.0.3"
         }
       ],

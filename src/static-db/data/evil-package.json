@@ -1,0 +1,28 @@
+{
+  "packageName": "evil-package",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p62r-jf56-h429",
+      "packageName": "evil-package",
+      "title": "Malicious Package in evil-package",
+      "description": "All versions of `evil-package` contain malicious code. The package uploads the contents of `process.env` to `example.com/log`.\n\n\n## Recommendation\n\nRemove the package from your environment. Given the host where the information was uploaded to there is no further indication of compromise.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-p62r-jf56-h429",
+      "publishedAt": "2020-09-03T20:29:58Z",
+      "modifiedAt": "2023-01-09T05:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p62r-jf56-h429"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

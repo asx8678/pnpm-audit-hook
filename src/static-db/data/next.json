@@ -1,7 +1,218 @@
 {
   "packageName": "next",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-q4gf-8mx6-v5v3",
+      "packageName": "next",
+      "title": "Next.js has a Denial of Service with Server Components",
+      "description": "A vulnerability affects certain React Server Components packages for versions 19.x and frameworks that use the affected packages, including Next.js 13.x, 14.x, 15.x, and 16.x using the App Router. The issue is tracked upstream as [CVE-2026-23869](https://github.com/facebook/react/security/advisories/GHSA-479c-33wc-g2pg). You can read more about this advisory our [this changelog](https://vercel.com/changelog/summary-of-cve-2026-23869).\n\nA specially crafted HTTP request can be sent to any App Rout",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q4gf-8mx6-v5v3",
+      "publishedAt": "2026-04-10T15:35:47Z",
+      "modifiedAt": "2026-04-10T15:35:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q4gf-8mx6-v5v3"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 16.0.0-beta.0, < 16.2.3",
+          "fixed": "16.2.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5f7q-jpqc-wp7h",
+      "packageName": "next",
+      "title": "Next.js has Unbounded Memory Consumption via PPR Resume Endpoint ",
+      "description": "A denial of service vulnerability exists in Next.js versions with Partial Prerendering (PPR) enabled when running in minimal mode. The PPR resume endpoint accepts unauthenticated POST requests with the `Next-Resume: 1` header and processes attacker-controlled postponed state data. Two closely related vulnerabilities allow an attacker to crash the server process through memory exhaustion:\n\n1. **Unbounded request body buffering**: The server buffers the entire POST request body into memory using `",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5f7q-jpqc-wp7h",
+      "publishedAt": "2026-01-28T15:20:55Z",
+      "modifiedAt": "2026-04-08T20:56:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5f7q-jpqc-wp7h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59472"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 15.5.1-canary.0, <= 15.5.1-canary.39"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jcc7-9wpm-mj36",
+      "packageName": "next",
+      "title": "Next.js: null origin can bypass dev HMR websocket CSRF checks",
+      "description": "## Summary\nIn `next dev`, cross-site protections for internal development endpoints could treat `Origin: null` as a bypass case even when [`allowedDevOrigins`](https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins) is configured. This could allow privacy-sensitive or opaque browser contexts, such as sandboxed documents, to access privileged internal dev-server functionality unexpectedly.\n\n## Impact\nIf a developer visits attacker-controlled content while running an aff",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-jcc7-9wpm-mj36",
+      "publishedAt": "2026-03-17T15:29:48Z",
+      "modifiedAt": "2026-03-25T18:51:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jcc7-9wpm-mj36"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27977"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 16.0.1, < 16.1.7",
+          "fixed": "16.1.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3x4c-7xq6-9pq8",
+      "packageName": "next",
+      "title": "Next.js: Unbounded next/image disk cache growth can exhaust storage",
+      "description": "## Summary\nThe default Next.js image optimization disk cache (`/_next/image`) did not have a configurable upper bound, allowing unbounded cache growth.\n\n## Impact\nAn attacker could generate many unique image-optimization variants and exhaust disk space, causing denial of service. Note that this does not impact platforms that have their own image optimization capabilities, such as Vercel.\n\n## Patches\nFixed by adding an LRU-backed disk cache with `images.maximumDiskCacheSize`, including eviction o",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3x4c-7xq6-9pq8",
+      "publishedAt": "2026-03-17T16:17:06Z",
+      "modifiedAt": "2026-03-19T18:33:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3x4c-7xq6-9pq8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27980"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 10.0.0, < 15.5.14",
+          "fixed": "15.5.14"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-h27x-g6w4-24gq",
+      "packageName": "next",
+      "title": "Next.js: Unbounded postponed resume buffering can lead to DoS",
+      "description": "## Summary\nA request containing the `next-resume: 1` header (corresponding with a PPR resume request) would buffer request bodies without consistently enforcing `maxPostponedStateSize` in certain setups. The previous mitigation protected minimal-mode deployments, but equivalent non-minimal deployments remained vulnerable to the same unbounded postponed resume-body buffering behavior.\n\n## Impact\nIn applications using the App Router with Partial Prerendering capability enabled (via `experimental.p",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h27x-g6w4-24gq",
+      "publishedAt": "2026-03-17T16:16:49Z",
+      "modifiedAt": "2026-03-19T18:31:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h27x-g6w4-24gq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27979"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 16.0.1, < 16.1.7",
+          "fixed": "16.1.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mq59-m269-xvcx",
+      "packageName": "next",
+      "title": "Next.js: null origin can bypass Server Actions CSRF checks",
+      "description": "## Summary\n`origin: null` was treated as a \"missing\" origin during Server Action CSRF validation. As a result, requests from opaque contexts (such as sandboxed iframes) could bypass origin verification instead of being validated as cross-origin requests.\n\n## Impact\nAn attacker could induce a victim browser to submit Server Actions from a sandboxed context, potentially executing state-changing actions with victim credentials (CSRF).\n\n## Patches\nFixed by treating `'null'` as an explicit origin val",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mq59-m269-xvcx",
+      "publishedAt": "2026-03-17T15:30:14Z",
+      "modifiedAt": "2026-03-19T18:28:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mq59-m269-xvcx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27978"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 16.0.1, < 16.1.7",
+          "fixed": "16.1.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-ggv3-7p47-pfv8",
+      "packageName": "next",
+      "title": "Next.js: HTTP request smuggling in rewrites",
+      "description": "## Summary\nWhen Next.js rewrites proxy traffic to an external backend, a crafted `DELETE`/`OPTIONS` request using `Transfer-Encoding: chunked` could trigger request boundary disagreement between the proxy and backend. This could allow request smuggling through rewritten routes.\n\n## Impact\nAn attacker could smuggle a second request to unintended backend routes (for example, internal/admin endpoints), bypassing assumptions that only the configured rewrite destination/path is reachable. This does n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-ggv3-7p47-pfv8",
+      "publishedAt": "2026-03-17T16:17:15Z",
+      "modifiedAt": "2026-03-18T21:53:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ggv3-7p47-pfv8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29057"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 9.5.0, < 15.5.13",
+          "fixed": "15.5.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f82v-jwr5-mffw",
+      "packageName": "next",
+      "title": "Authorization Bypass in Next.js Middleware",
+      "description": "# Impact\nIt is possible to bypass authorization checks within a Next.js application, if the authorization check occurs in middleware.\n\n# Patches\n* For Next.js 15.x, this issue is fixed in `15.2.3`\n* For Next.js 14.x, this issue is fixed in `14.2.25`\n* For Next.js 13.x, this issue is fixed in 13.5.9\n* For Next.js 12.x, this issue is fixed in 12.3.5\n* For Next.js 11.x, consult the below workaround.\n\n_Note: Next.js deployments hosted on Vercel are automatically protected against this vulnerability.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-f82v-jwr5-mffw",
+      "publishedAt": "2025-03-21T15:20:12Z",
+      "modifiedAt": "2026-03-02T16:59:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f82v-jwr5-mffw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-29927"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 12.0.0, < 12.3.5",
+          "fixed": "12.3.5"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-h25m-26qc-wcjf",
       "packageName": "next",
@@ -20,33 +231,6 @@
       "affectedVersions": [
         {
           "range": ">= 16.1.0-canary.0, < 16.1.5",
-          "fixed": "16.1.5"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-5f7q-jpqc-wp7h",
-      "packageName": "next",
-      "title": "Next.js has Unbounded Memory Consumption via PPR Resume Endpoint ",
-      "description": "A denial of service vulnerability exists in Next.js versions with Partial Prerendering (PPR) enabled when running in minimal mode. The PPR resume endpoint accepts unauthenticated POST requests with the `Next-Resume: 1` header and processes attacker-controlled postponed state data. Two closely related vulnerabilities allow an attacker to crash the server process through memory exhaustion:\n\n1. **Unbounded request body buffering**: The server buffers the entire POST request body into memory using `",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-5f7q-jpqc-wp7h",
-      "publishedAt": "2026-01-28T15:20:55Z",
-      "modifiedAt": "2026-01-28T15:20:57Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-5f7q-jpqc-wp7h"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-59472"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 16.0.0-beta.0, < 16.1.5",
           "fixed": "16.1.5"
         }
       ],
@@ -199,28 +383,28 @@
       "source": "github"
     },
     {
-      "id": "GHSA-f82v-jwr5-mffw",
+      "id": "GHSA-fq77-7p7r-83rj",
       "packageName": "next",
-      "title": "Authorization Bypass in Next.js Middleware",
-      "description": "# Impact\nIt is possible to bypass authorization checks within a Next.js application, if the authorization check occurs in middleware.\n\n# Patches\n* For Next.js 15.x, this issue is fixed in `15.2.3`\n* For Next.js 14.x, this issue is fixed in `14.2.25`\n* For Next.js 13.x, this issue is fixed in 13.5.9\n* For Next.js 12.x, this issue is fixed in 12.3.5\n* For Next.js 11.x, consult the below workaround.\n\n_Note: Next.js deployments hosted on Vercel are automatically protected against this vulnerability.",
-      "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-f82v-jwr5-mffw",
-      "publishedAt": "2025-03-21T15:20:12Z",
-      "modifiedAt": "2025-10-13T15:32:09Z",
+      "title": "Directory Traversal in Next.js",
+      "description": "### Impact\n\n- **Not affected**: Deployments on ZEIT Now v2 ([https://zeit.co](https://zeit.co/)) are not affected\n- **Not affected**: Deployments using the `serverless` target\n- **Not affected**: Deployments using `next export`\n- **Affected**: Users of Next.js below 9.3.2\n\nWe recommend everyone to upgrade regardless of whether you can reproduce the issue or not.\n\n### Patches\n\nhttps://github.com/zeit/next.js/releases/tag/v9.3.2\n\n### References\n\nhttps://github.com/zeit/next.js/releases/tag/v9.3.2",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fq77-7p7r-83rj",
+      "publishedAt": "2020-03-30T20:40:50Z",
+      "modifiedAt": "2025-09-26T17:49:57Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-f82v-jwr5-mffw"
+          "value": "GHSA-fq77-7p7r-83rj"
         },
         {
           "type": "CVE",
-          "value": "CVE-2025-29927"
+          "value": "CVE-2020-5284"
         }
       ],
       "affectedVersions": [
         {
-          "range": ">= 11.1.4, < 12.3.5",
-          "fixed": "12.3.5"
+          "range": ">= 0.9.9, < 9.3.2",
+          "fixed": "9.3.2"
         }
       ],
       "source": "github"
@@ -604,6 +788,33 @@
       "source": "github"
     },
     {
+      "id": "GHSA-3f5c-4qxj-vmpf",
+      "packageName": "next",
+      "title": "Next.js Directory Traversal Vulnerability",
+      "description": "Next.js before 2.4.1 has directory traversal under the `/_next` and `/static` request namespace, allowing attackers to obtain sensitive information.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3f5c-4qxj-vmpf",
+      "publishedAt": "2017-12-05T02:04:14Z",
+      "modifiedAt": "2024-04-22T19:49:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3f5c-4qxj-vmpf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16877"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0, < 2.4.1",
+          "fixed": "2.4.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
       "id": "GHSA-25mp-g6fv-mqxx",
       "packageName": "next",
       "title": "Unexpected server crash in Next.js.",
@@ -788,6 +999,110 @@
         {
           "range": "= 12.2.3",
           "fixed": "12.2.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5vj8-3v2h-h38v",
+      "packageName": "next",
+      "title": "Remote Code Execution in next",
+      "description": "Versions of `next` prior to 5.1.0 are vulnerable to Remote Code Execution. The `/path:` route fails to properly sanitize input and passes it to a `require()` call. This allows attackers to execute JavaScript code on the server. Note that prior version 0.9.9 package `next` npm package hosted a different utility (0.4.1 being the latest version of that codebase), and this advisory does not apply to those versions.\n\n## Recommendation\n\nUpgrade to version 5.1.0.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5vj8-3v2h-h38v",
+      "publishedAt": "2020-09-04T18:04:08Z",
+      "modifiedAt": "2023-01-09T05:04:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5vj8-3v2h-h38v"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.9.9, < 5.1.0",
+          "fixed": "5.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x56p-c8cg-q435",
+      "packageName": "next",
+      "title": "Open Redirect in Next.js versions",
+      "description": "### Impact\n\n- **Affected**: Users of Next.js between 9.5.0 and 9.5.3 \n- **Not affected**: Deployments on Vercel ([https://vercel.com](https://vercel.com)) are not affected\n- **Not affected**: Deployments using `next export`\n\nWe recommend everyone to upgrade regardless of whether you can reproduce the issue or not.\n\n### Patches\n\nhttps://github.com/vercel/next.js/releases/tag/v9.5.4\n\n### References\n\nhttps://github.com/vercel/next.js/releases/tag/v9.5.4\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x56p-c8cg-q435",
+      "publishedAt": "2020-10-08T19:28:07Z",
+      "modifiedAt": "2023-01-09T05:03:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x56p-c8cg-q435"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15242"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 9.5.0, < 9.5.4",
+          "fixed": "9.5.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qw96-mm2g-c8m7",
+      "packageName": "next",
+      "title": "Next.js has cross site scripting (XSS) vulnerability via the 404 or 500 /_error page",
+      "description": "Next.js 7.0.0 and 7.0.1 has XSS via the 404 or 500 /_error page.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qw96-mm2g-c8m7",
+      "publishedAt": "2018-10-15T21:43:12Z",
+      "modifiedAt": "2023-01-09T05:03:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qw96-mm2g-c8m7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-18282"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0, < 7.0.2",
+          "fixed": "7.0.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m34x-wgrh-g897",
+      "packageName": "next",
+      "title": "Directory traversal vulnerability in Next.js",
+      "description": "Next.js 4 before 4.2.3 has Directory Traversal under the `/_next` request namespace.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m34x-wgrh-g897",
+      "publishedAt": "2018-01-24T19:38:52Z",
+      "modifiedAt": "2023-01-09T05:03:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m34x-wgrh-g897"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-6184"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0, < 4.2.3",
+          "fixed": "4.2.3"
         }
       ],
       "source": "github"

@@ -1,0 +1,32 @@
+{
+  "packageName": "uv-tj-demo",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m362-87jc-f39v",
+      "packageName": "uv-tj-demo",
+      "title": "Directory Traversal in uv-tj-demo",
+      "description": "Affected versions of `uv-tj-demo` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m362-87jc-f39v",
+      "publishedAt": "2020-09-01T18:16:24Z",
+      "modifiedAt": "2023-09-05T23:04:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m362-87jc-f39v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16200"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

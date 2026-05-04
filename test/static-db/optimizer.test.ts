@@ -230,6 +230,13 @@ describe("Index Optimization", () => {
       lodash: { count: 5, maxSeverity: "critical", latestVuln: "2024-04-15T00:00:00Z" },
       express: { count: 3, maxSeverity: "high" },
     },
+    coverage: {
+      mode: "recent",
+      ecosystem: "NPM",
+      cutoffDate: "2024-05-01T00:00:00.000Z",
+      sinceDate: "2023-05-01T00:00:00.000Z",
+      retentionYears: 1,
+    },
   };
 
   describe("optimizeIndex", () => {
@@ -244,6 +251,7 @@ describe("Index Optimization", () => {
       assert.equal(optimized.p.lodash!.c, 5);
       assert.equal(optimized.p.lodash!.s, 4); // critical = 4
       assert.equal(optimized.p.lodash!.l, "2024-04-15");
+      assert.deepEqual(optimized.cov, sampleIndex.coverage);
     });
 
     it("should create sorted package list", () => {
@@ -264,6 +272,7 @@ describe("Index Optimization", () => {
       assert.equal(expanded.totalVulnerabilities, 100);
       assert.equal(expanded.packages.lodash!.count, 5);
       assert.equal(expanded.packages.lodash!.maxSeverity, "critical");
+      assert.deepEqual(expanded.coverage, sampleIndex.coverage);
     });
   });
 });

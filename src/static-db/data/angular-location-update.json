@@ -1,0 +1,28 @@
+{
+  "packageName": "angular-location-update",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-53jx-4wwh-gcqj",
+      "packageName": "angular-location-update",
+      "title": "Malicious Package in angular-location-update",
+      "description": "Version 0.0.3 of `angular-location-update` contained malicious code. The code when executed in the browser would enumerate password, cvc and cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nRemove the package from your environment and evaluate your application to determine whether or not user data was compromised.\n\nUsers may consider downgrading to version 0.0.2",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-53jx-4wwh-gcqj",
+      "publishedAt": "2020-09-11T21:11:34Z",
+      "modifiedAt": "2023-07-27T00:09:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-53jx-4wwh-gcqj"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 0.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "packageName": "grunt-radic",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9p49-cwh3-4qhf",
+      "packageName": "grunt-radic",
+      "title": "Malicious Package in grunt-radic",
+      "description": "Version 0.1.1 of `grunt-radic` contained malicious code. The code when executed in the browser would enumerate password, cvc and cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nRemove the package from your environment and evaluate your application to determine whether or not user data was compromised.\n\nUsers may consider downgrading to version 0.1.0",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9p49-cwh3-4qhf",
+      "publishedAt": "2020-09-11T21:21:19Z",
+      "modifiedAt": "2023-07-27T00:05:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9p49-cwh3-4qhf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 0.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

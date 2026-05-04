@@ -1,6 +1,6 @@
 {
   "packageName": "droppy",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-grv5-w5vr-8h98",
@@ -24,6 +24,33 @@
       "affectedVersions": [
         {
           "range": "<= 12.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rhvc-x32h-5526",
+      "packageName": "droppy",
+      "title": "No CSRF Validation in droppy",
+      "description": "Affected versions of `droppy`  are vulnerable to cross-site socket forgery. The package does not perform verification for cross-domain websocket requests, and as a result, an attacker can create a web page that opens up a websocket connection on behalf of the user visiting the page. The attacker can then perform any action that the target user could, including adding a new admin account under their control, or deleting others.\n\n\n## Recommendation\n\nUpdate to version 3.5.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rhvc-x32h-5526",
+      "publishedAt": "2019-02-18T23:39:32Z",
+      "modifiedAt": "2023-01-09T05:03:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rhvc-x32h-5526"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10529"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.5.0",
+          "fixed": "3.5.0"
         }
       ],
       "source": "github"

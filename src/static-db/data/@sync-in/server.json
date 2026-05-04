@@ -1,7 +1,34 @@
 {
   "packageName": "@sync-in/server",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-43fj-qp3h-hrh5",
+      "packageName": "@sync-in/server",
+      "title": "Sync-in Server has Username Enumeration via Timing Attack",
+      "description": "### Summary\nThe `/api/auth/login` endpoint contains a logic flaw that allows unauthenticated remote attackers to enumerate valid usernames by measuring the application's response time.\n\n### Details\nThe logic flaw can be located at the below point in source:\nhttps://github.com/Sync-in/server/blob/7868bb2b3025f92e6c38087456304758713971b2/backend/src/applications/users/services/users-queries.service.ts#L91-L95\n\nEndpoints used for authentication should respond to the user with a consistent cadence, ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-43fj-qp3h-hrh5",
+      "publishedAt": "2026-04-15T18:57:50Z",
+      "modifiedAt": "2026-04-27T15:22:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-43fj-qp3h-hrh5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41161"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.1.0",
+          "fixed": "2.2.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-9jmq-xgjm-p8c2",
       "packageName": "@sync-in/server",

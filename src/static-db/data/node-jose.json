@@ -1,6 +1,6 @@
 {
   "packageName": "node-jose",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-jfxm-w8g2-4rcv",
@@ -25,6 +25,33 @@
         {
           "range": "< 0.11.0",
           "fixed": "0.11.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rvj9-8cvx-3vq9",
+      "packageName": "node-jose",
+      "title": "Invalid Curve Attack in node-jose",
+      "description": "Affected versions of `node-jose` are vulnerable to an invalid curve attack. This allows an attacker to recover the private secret key when JWE with Key Agreement with Elliptic Curve Diffie-Hellman Ephemeral Static (ECDH-ES) is used.\n\n[Proof of Concept](https://gist.github.com/asanso/fa25685348051ef6a28d49aa0f27a4ae)\n\n\n## Recommendation\n\nUpdate to version 0.9.3 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rvj9-8cvx-3vq9",
+      "publishedAt": "2018-07-20T21:10:14Z",
+      "modifiedAt": "2023-09-06T23:38:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rvj9-8cvx-3vq9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16007"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.9.3",
+          "fixed": "0.9.3"
         }
       ],
       "source": "github"

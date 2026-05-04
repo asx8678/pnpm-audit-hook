@@ -1,34 +1,7 @@
 {
   "packageName": "dottie",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
-    {
-      "id": "GHSA-4gxf-g5gf-22h4",
-      "packageName": "dottie",
-      "title": "dottie vulnerable to Prototype Pollution",
-      "description": "Versions of the package dottie before 2.0.4 are vulnerable to Prototype Pollution due to insufficient checks, via the `set()` function and the current variable in the `/dottie.js` file.",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-4gxf-g5gf-22h4",
-      "publishedAt": "2023-06-10T06:30:25Z",
-      "modifiedAt": "2023-11-29T00:14:37Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-4gxf-g5gf-22h4"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2023-26132"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 2.0.4",
-          "fixed": "2.0.4"
-        }
-      ],
-      "source": "github"
-    },
     {
       "id": "GHSA-r5mx-6wc6-7h9w",
       "packageName": "dottie",
@@ -52,6 +25,33 @@
         {
           "range": ">= 2.0.4, <= 2.0.6",
           "fixed": "2.0.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4gxf-g5gf-22h4",
+      "packageName": "dottie",
+      "title": "dottie vulnerable to Prototype Pollution",
+      "description": "Versions of the package dottie before 2.0.4 are vulnerable to Prototype Pollution due to insufficient checks, via the `set()` function and the current variable in the `/dottie.js` file.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4gxf-g5gf-22h4",
+      "publishedAt": "2023-06-10T06:30:25Z",
+      "modifiedAt": "2023-11-29T00:14:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4gxf-g5gf-22h4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26132"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.4",
+          "fixed": "2.0.4"
         }
       ],
       "source": "github"

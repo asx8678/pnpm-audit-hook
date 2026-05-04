@@ -1,6 +1,6 @@
 {
   "packageName": "canvas",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-73rg-x683-m3qw",
@@ -25,6 +25,29 @@
         {
           "range": "< 1.6.11",
           "fixed": "1.6.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vpq5-4rc8-c222",
+      "packageName": "canvas",
+      "title": "Denial of Service in canvas",
+      "description": "Versions of `canvas` prior to 1.6.10 are vulnerable to Denial of Service. Processing malicious JPEGs or GIFs could crash the node process.\n\n\n## Recommendation\n\nUpgrade to version 1.6.10",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vpq5-4rc8-c222",
+      "publishedAt": "2019-06-05T14:10:45Z",
+      "modifiedAt": "2023-01-09T05:01:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vpq5-4rc8-c222"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.6.10",
+          "fixed": "1.6.10"
         }
       ],
       "source": "github"

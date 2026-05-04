@@ -1,0 +1,56 @@
+{
+  "packageName": "bl",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pp7h-53gx-mx7r",
+      "packageName": "bl",
+      "title": "Remote Memory Exposure in bl",
+      "description": "A buffer over-read vulnerability exists in bl <4.0.3, <3.0.1, <2.2.1, and <1.2.3 which could allow an attacker to supply user input (even typed) that if it ends up in consume() argument and can become negative, the BufferList state can be corrupted, tricking it into exposing uninitialized memory via regular .slice() calls.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pp7h-53gx-mx7r",
+      "publishedAt": "2020-09-02T15:26:19Z",
+      "modifiedAt": "2023-02-01T05:04:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pp7h-53gx-mx7r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8244"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.2.1",
+          "fixed": "2.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wrw9-m778-g6mc",
+      "packageName": "bl",
+      "title": "Memory Exposure in bl",
+      "description": "Versions of `bl` before 0.9.5 and 1.0.1 are vulnerable to memory exposure.\n\n`bl.append(number)` in the affected `bl` versions passes a number to Buffer constructor, appending a chunk of uninitialized memory\n\n\n## Recommendation\n\nUpdate to version 0.9.5, 1.0.1 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wrw9-m778-g6mc",
+      "publishedAt": "2019-06-03T17:27:57Z",
+      "modifiedAt": "2023-01-09T05:01:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wrw9-m778-g6mc"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.0.0",
+          "fixed": "1.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

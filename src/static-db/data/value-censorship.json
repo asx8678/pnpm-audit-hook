@@ -1,0 +1,28 @@
+{
+  "packageName": "value-censorship",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xrr6-6ww3-f3qm",
+      "packageName": "value-censorship",
+      "title": "Sandbox Breakout / Arbitrary Code Execution in value-censorship",
+      "description": "All versions of `value-censorship` are vulnerable to Sandbox Escape leading to Remote Code Execution. The package fails to validate async function constructors allowing attackers to execute arbitrary code.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xrr6-6ww3-f3qm",
+      "publishedAt": "2020-09-02T21:25:58Z",
+      "modifiedAt": "2023-01-09T05:03:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xrr6-6ww3-f3qm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

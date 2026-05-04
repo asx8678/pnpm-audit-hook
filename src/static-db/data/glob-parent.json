@@ -1,15 +1,43 @@
 {
   "packageName": "glob-parent",
-  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-cj88-88mr-972w",
+      "packageName": "glob-parent",
+      "title": "glob-parent 6.0.0 vulnerable to Regular Expression Denial of Service",
+      "description": "glob-parent 6.0.0 is vulnerable to Regular Expression Denial of Service (ReDoS). This issue is fixed in version 6.0.1.\n\nThis vulnerability is separate from [GHSA-ww39-953v-wcq6](https://github.com/advisories/GHSA-ww39-953v-wcq6).",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cj88-88mr-972w",
+      "publishedAt": "2022-07-18T17:03:23Z",
+      "modifiedAt": "2025-04-14T22:13:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cj88-88mr-972w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-35065"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 6.0.0",
+          "fixed": "6.0.1"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-ww39-953v-wcq6",
       "packageName": "glob-parent",
-      "title": "Regular expression denial of service",
+      "title": "glob-parent vulnerable to Regular Expression Denial of Service in enclosure regex",
+      "description": "This affects the package glob-parent before 5.1.2. The enclosure regex used to check for strings ending in enclosure containing path separator.",
       "severity": "high",
       "url": "https://github.com/advisories/GHSA-ww39-953v-wcq6",
-      "publishedAt": "2021-05-06T16:05:00Z",
-      "modifiedAt": "2023-09-11T22:03:00Z",
+      "publishedAt": "2021-06-07T21:56:34Z",
+      "modifiedAt": "2024-06-27T14:00:25Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -22,7 +50,7 @@
       ],
       "affectedVersions": [
         {
-          "range": "<5.1.2",
+          "range": ">= 4.0.0, < 5.1.2",
           "fixed": "5.1.2"
         }
       ],

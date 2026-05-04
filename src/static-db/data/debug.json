@@ -1,6 +1,6 @@
 {
   "packageName": "debug",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4x49-vf9v-38px",
@@ -25,6 +25,33 @@
         {
           "range": "= 4.4.2",
           "fixed": "4.4.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gxpj-cx7g-858c",
+      "packageName": "debug",
+      "title": "Regular Expression Denial of Service in debug",
+      "description": "Affected versions of `debug` are vulnerable to regular expression denial of service when untrusted user input is passed into the `o` formatter. \n\nAs it takes 50,000 characters to block the event loop for 2 seconds, this issue is a low severity issue.\n\nThis was later re-introduced in version v3.2.0, and then repatched in versions 3.2.7 and 4.3.1.\n\n## Recommendation\n\nVersion 2.x.x: Update to version 2.6.9 or later.\nVersion 3.1.x: Update to version 3.1.0 or later.\nVersion 3.2.x: Update to version 3",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-gxpj-cx7g-858c",
+      "publishedAt": "2018-08-09T20:18:07Z",
+      "modifiedAt": "2024-03-25T19:01:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gxpj-cx7g-858c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16137"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.3.1",
+          "fixed": "4.3.1"
         }
       ],
       "source": "github"

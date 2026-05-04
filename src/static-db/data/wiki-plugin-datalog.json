@@ -1,0 +1,29 @@
+{
+  "packageName": "wiki-plugin-datalog",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pm52-wwrw-c282",
+      "packageName": "wiki-plugin-datalog",
+      "title": "Command Injection in wiki-plugin-datalog",
+      "description": "Versions of `wiki-plugin-datalog` prior to 0.1.6 are vulnerable to Command Injection. The package failed to sanitize URLs on the curl endpoint, allowing attackers to inject commands and possibly achieving Remote Code Execution on the system.\n\n\n## Recommendation\n\nUpgrade to version 0.1.6 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pm52-wwrw-c282",
+      "publishedAt": "2019-06-13T18:59:06Z",
+      "modifiedAt": "2023-01-09T05:01:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pm52-wwrw-c282"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.1.6",
+          "fixed": "0.1.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

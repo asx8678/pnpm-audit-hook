@@ -1,0 +1,33 @@
+{
+  "packageName": "deeply",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8j4w-5fw4-rm27",
+      "packageName": "deeply",
+      "title": "Prototype Pollution in deeply",
+      "description": "Versions of `deeply` prior to 1.0.1 are vulnerable to Prototype Pollution. The package fails to validate which Object properties it updates. This allows attackers to modify the prototype of Object, causing the addition or modification of an existing property on all objects.\n\n\n\n\n## Recommendation\n\nUpgrade to version 3.1.0 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8j4w-5fw4-rm27",
+      "publishedAt": "2019-08-27T17:45:33Z",
+      "modifiedAt": "2023-01-09T05:01:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8j4w-5fw4-rm27"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10750"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.1.0",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

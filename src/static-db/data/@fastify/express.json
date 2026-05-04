@@ -1,7 +1,61 @@
 {
   "packageName": "@fastify/express",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-6hw5-45gm-fj88",
+      "packageName": "@fastify/express",
+      "title": "@fastify/express has a middleware authentication bypass via URL normalization gaps (duplicate slashes and semicolons)",
+      "description": "### Summary\n\n`@fastify/express` v4.0.4 fails to normalize URLs before passing them to Express middleware when Fastify router normalization options are enabled. This allows complete bypass of path-scoped authentication middleware via two vectors:\n\n1. **Duplicate slashes** (`//admin/dashboard`) when `ignoreDuplicateSlashes: true` is configured\n2. **Semicolon delimiters** (`/admin;bypass`) when `useSemicolonDelimiter: true` is configured\n\nIn both cases, Fastify's router normalizes the URL and match",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6hw5-45gm-fj88",
+      "publishedAt": "2026-04-16T01:03:46Z",
+      "modifiedAt": "2026-04-16T01:03:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6hw5-45gm-fj88"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33808"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.4",
+          "fixed": "4.0.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hrwm-hgmj-7p9c",
+      "packageName": "@fastify/express",
+      "title": "@fastify/express's middleware path doubling causes authentication bypass in child plugin scopes",
+      "description": "### Summary\n\n`@fastify/express` v4.0.4 contains a path handling bug in the `onRegister` function that causes middleware paths to be doubled when inherited by child plugins. This results in complete bypass of Express middleware security controls for all routes defined within child plugin scopes that share a prefix with parent-scoped middleware. No special configuration is required — this affects the default Fastify configuration.\n\n### Details\n\nThe vulnerability exists in the `onRegister` function",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-hrwm-hgmj-7p9c",
+      "publishedAt": "2026-04-16T01:03:25Z",
+      "modifiedAt": "2026-04-16T01:03:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hrwm-hgmj-7p9c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33807"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.4",
+          "fixed": "4.0.5"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-g6q3-96cp-5r5m",
       "packageName": "@fastify/express",

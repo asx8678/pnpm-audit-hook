@@ -1,0 +1,33 @@
+{
+  "packageName": "locize",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w937-fg2h-xhq2",
+      "packageName": "locize",
+      "title": "locize Client SDK: Cross-origin DOM XSS & Handler Hijack Through Missing e.origin Validation in InContext Editor ",
+      "description": "### Summary\n\nVersions of the `locize` client SDK (the browser module that wires up the locize InContext translation editor) prior to 4.0.21 register a `window.addEventListener(\"message\", …)` handler that dispatches to registered internal handlers (`editKey`, `commitKey`, `commitKeys`, `isLocizeEnabled`, `requestInitialize`, …) **without validating `event.origin`**.\n\nThe pre-patch listener in `src/api/postMessage.js` gates dispatch on `event.data.sender === \"i18next-editor-frame\"` — that value si",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w937-fg2h-xhq2",
+      "publishedAt": "2026-04-22T20:32:11Z",
+      "modifiedAt": "2026-04-30T21:00:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w937-fg2h-xhq2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41886"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.0.21",
+          "fixed": "4.0.21"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "box2d-native",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-362x-34h3-h6h6",
+      "packageName": "box2d-native",
+      "title": "Downloads Resources over HTTP in box2d-native",
+      "description": "Affected versions of `box2d-native` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `box2d-native`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-362x-34h3-h6h6",
+      "publishedAt": "2019-02-18T23:56:48Z",
+      "modifiedAt": "2023-01-09T05:02:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-362x-34h3-h6h6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10617"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.8"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

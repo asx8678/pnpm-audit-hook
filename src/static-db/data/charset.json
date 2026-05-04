@@ -1,0 +1,33 @@
+{
+  "packageName": "charset",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9cp3-fh5x-xfcj",
+      "packageName": "charset",
+      "title": "Regular Expression Denial of Service in charset",
+      "description": "Affected versions of `charset` are susceptible to a regular expression denial of service.\n\nThe amplification on this vulnerability is relatively low - it takes around 2 seconds for the engine to execute on a malicious input which is 50,000 characters in length.\n\n\nIf node was compiled using the `-DHTTP_MAX_HEADER_SIZE` however, the impact of the vulnerability can be significant, as the primary limitation for the vulnerability is the default max HTTP header length in node.\n\n\n## Recommendation\n\nUpd",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9cp3-fh5x-xfcj",
+      "publishedAt": "2018-08-09T20:55:46Z",
+      "modifiedAt": "2023-03-31T15:44:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9cp3-fh5x-xfcj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16098"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.1",
+          "fixed": "1.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

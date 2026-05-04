@@ -1,6 +1,6 @@
 {
   "packageName": "node-red-dashboard",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-2hw7-mxvj-m455",
@@ -52,6 +52,33 @@
         {
           "range": "< 3.2.0",
           "fixed": "3.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xg59-m7wx-853q",
+      "packageName": "node-red-dashboard",
+      "title": "Cross-site Scripting in node-red-dashboard",
+      "description": "It is possible to inject JavaScript within node-red-dashboard versions prior to version 2.17.0 due to the ui_notification node accepting raw HTML by default.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xg59-m7wx-853q",
+      "publishedAt": "2019-10-25T19:41:24Z",
+      "modifiedAt": "2023-02-01T05:02:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xg59-m7wx-853q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10756"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.17.0",
+          "fixed": "2.17.0"
         }
       ],
       "source": "github"

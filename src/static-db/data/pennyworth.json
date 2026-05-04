@@ -1,0 +1,32 @@
+{
+  "packageName": "pennyworth",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x3j8-g4v9-67jq",
+      "packageName": "pennyworth",
+      "title": "Downloads Resources over HTTP in pennyworth",
+      "description": "Affected versions of `pennyworth` insecurely downloads resources over HTTP. \n\nIn scenarios where an attacker has a privileged network position, they can modify or read such resources at will. While the exact severity of impact for a vulnerability like this is highly variable and depends on the behavior of the package itself, it ranges from being able to read sensitive information all the way up to and including remote code execution.\n\n\n## Recommendation\n\nNo patch is currently available for this ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x3j8-g4v9-67jq",
+      "publishedAt": "2019-02-18T23:56:51Z",
+      "modifiedAt": "2023-01-09T05:03:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x3j8-g4v9-67jq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10619"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

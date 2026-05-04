@@ -1,0 +1,28 @@
+{
+  "packageName": "getcookies",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3cjv-4phw-gvvv",
+      "packageName": "getcookies",
+      "title": "Malicious Package in getcookies",
+      "description": "The `getcookies` module contained a backdoor that would allow for a remote attacker to execute arbitrary commands on the system running the malicious module.\n\n\n## Recommendation\n\nThis module should be uninstalled if found used within an application. In addition to removing the installed module, you will also want to evaluate your application to determine whether or not user data or systems were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3cjv-4phw-gvvv",
+      "publishedAt": "2020-09-01T20:39:33Z",
+      "modifiedAt": "2023-01-09T05:04:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3cjv-4phw-gvvv"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

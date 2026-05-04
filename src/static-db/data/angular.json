@@ -1,7 +1,61 @@
 {
   "packageName": "angular",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-mhp6-pxh8-r675",
+      "packageName": "angular",
+      "title": "Angular vulnerable to Cross-site Scripting",
+      "description": "angular.js prior to 1.8.0 allows cross site scripting. The regex-based input HTML replacement may turn sanitized code into unsanitized one. Wrapping `<option>` elements in `<select>` ones changes parsing behavior, leading to possibly unsanitizing code.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mhp6-pxh8-r675",
+      "publishedAt": "2020-06-18T14:19:58Z",
+      "modifiedAt": "2025-11-20T19:31:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mhp6-pxh8-r675"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7676"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.8.0",
+          "fixed": "1.8.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-89mq-4x47-5v83",
+      "packageName": "angular",
+      "title": "angular Prototype Pollution vulnerability",
+      "description": "Versions of `angular ` prior to 1.7.9 are vulnerable to prototype pollution. The deprecated API function `merge()` does not restrict the modification of an Object's prototype in the , which may allow an attacker to add or modify an existing property that will exist on all objects.\n\n## Recommendation\n\nUpgrade to version 1.7.9 or later. The function was already deprecated and upgrades are not expected to break functionality.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-89mq-4x47-5v83",
+      "publishedAt": "2019-11-20T15:29:43Z",
+      "modifiedAt": "2025-11-20T19:30:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-89mq-4x47-5v83"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10768"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.7.9",
+          "fixed": "1.7.9"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-mqm9-c95h-x2p6",
       "packageName": "angular",
@@ -232,6 +286,79 @@
       "affectedVersions": [
         {
           "range": "<= 1.8.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r5fx-8r73-v86c",
+      "packageName": "angular",
+      "title": "AngularJS Cross-site Scripting due to failure to sanitize `xlink.href` attributes",
+      "description": "Versions of `angular` prior to 1.5.0-beta.1 are vulnerable to Cross-Site Scripting. The package fails to sanitize `xlink:href` attributes, which may allow attackers to execute arbitrary JavaScript in a victim's browser if the value is user-controlled.\n\n\n## Recommendation\n\nUpgrade to version 1.5.0-beta.1 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-r5fx-8r73-v86c",
+      "publishedAt": "2020-02-14T23:08:49Z",
+      "modifiedAt": "2023-01-27T05:02:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r5fx-8r73-v86c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-14863"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.5.0-beta.1",
+          "fixed": "1.5.0-beta.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5cp4-xmrw-59wf",
+      "packageName": "angular",
+      "title": "XSS via JQLite DOM manipulation functions in AngularJS",
+      "description": "### Summary\nXSS may be triggered in AngularJS applications that sanitize user-controlled HTML snippets before passing them to `JQLite` methods like `JQLite.prepend`, `JQLite.after`, `JQLite.append`, `JQLite.replaceWith`, `JQLite.append`, `new JQLite` and `angular.element`.\n\n### Description\n\nJQLite (DOM manipulation library that's part of AngularJS) manipulates input HTML before inserting it to the DOM in `jqLiteBuildFragment`.\n\nOne of the modifications performed [expands an XHTML self-closing ta",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5cp4-xmrw-59wf",
+      "publishedAt": "2020-08-05T21:47:02Z",
+      "modifiedAt": "2023-01-09T05:03:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5cp4-xmrw-59wf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.8.0",
+          "fixed": "1.8.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-28hp-fgcr-2r4h",
+      "packageName": "angular",
+      "title": "Cross-Site Scripting via JSONP",
+      "description": "JSONP allows untrusted resource URLs, which provides a vector for attack by malicious actors.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-28hp-fgcr-2r4h",
+      "publishedAt": "2019-06-27T17:25:42Z",
+      "modifiedAt": "2023-01-09T05:01:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-28hp-fgcr-2r4h"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.6.0",
+          "fixed": "1.6.0"
         }
       ],
       "source": "github"

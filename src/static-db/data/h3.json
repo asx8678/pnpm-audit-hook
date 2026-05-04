@@ -1,6 +1,6 @@
 {
   "packageName": "h3",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mp2g-9vg9-f4cg",
@@ -10,7 +10,7 @@
       "severity": "high",
       "url": "https://github.com/advisories/GHSA-mp2g-9vg9-f4cg",
       "publishedAt": "2026-01-15T20:10:51Z",
-      "modifiedAt": "2026-01-15T22:34:09Z",
+      "modifiedAt": "2026-04-13T16:47:53Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -25,6 +25,229 @@
         {
           "range": "<= 1.15.4",
           "fixed": "1.15.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2j6q-whv2-gh6w",
+      "packageName": "h3",
+      "title": "h3: Missing Path Segment Boundary Check in `mount()` Causes Middleware Execution on Unrelated Prefix-Matching Routes",
+      "description": "## Summary\n\nThe `mount()` method in h3 uses a simple `startsWith()` check to determine whether incoming requests fall under a mounted sub-application's path prefix. Because this check does not verify a path segment boundary (i.e., that the next character after the base is `/` or end-of-string), middleware registered on a mount like `/admin` will also execute for unrelated routes such as `/admin-public`, `/administrator`, or `/adminstuff`. This allows an attacker to trigger context-setting middle",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-2j6q-whv2-gh6w",
+      "publishedAt": "2026-03-20T20:50:27Z",
+      "modifiedAt": "2026-03-27T20:58:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2j6q-whv2-gh6w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33490"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.1-alpha.0, <= 2.0.1-rc.16",
+          "fixed": "2.0.1-rc.17"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q5pr-72pq-83v3",
+      "packageName": "h3",
+      "title": "H3: Unbounded Chunked Cookie Count in Session Cleanup Loop may Lead to Denial of Service",
+      "description": "## Summary\n\nThe `setChunkedCookie()` and `deleteChunkedCookie()` functions in h3 trust the chunk count parsed from a user-controlled cookie value (`__chunked__N`) without any upper bound validation. An unauthenticated attacker can send a single request with a crafted cookie header (e.g., `Cookie: h3=__chunked__999999`) to any endpoint using sessions, causing the server to enter an O(n²) loop that hangs the process.\n\n## Details\n\nThe chunked cookie system stores large cookie values by splitting th",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q5pr-72pq-83v3",
+      "publishedAt": "2026-03-23T21:44:55Z",
+      "modifiedAt": "2026-03-23T21:49:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q5pr-72pq-83v3"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0-beta.4, < 2.0.1-rc.18",
+          "fixed": "2.0.1-rc.18"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fp4x-ggrf-wmc6",
+      "packageName": "h3",
+      "title": "H3 has an Open Redirect via Protocol-Relative Path in redirectBack() Referer Validation",
+      "description": "## Summary\n\nThe `redirectBack()` utility in h3 validates that the `Referer` header shares the same origin as the request before using its pathname as the redirect `Location`. However, the pathname is not sanitized for protocol-relative paths (starting with `//`). An attacker can craft a same-origin URL with a double-slash path segment that passes the origin check but produces a `Location` header interpreted by browsers as a protocol-relative redirect to an external domain.\n\n## Details\n\nThe vulne",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fp4x-ggrf-wmc6",
+      "publishedAt": "2026-03-23T21:48:24Z",
+      "modifiedAt": "2026-03-23T21:48:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fp4x-ggrf-wmc6"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 2.0.1-rc.17",
+          "fixed": "2.0.1-rc.18"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3vj8-jmxq-cgj5",
+      "packageName": "h3",
+      "title": "h3 has a middleware bypass with one gadget",
+      "description": "# H3 NodeRequestUrl bugs \n\nVulnerable pieces of code : \n```js\nimport { H3, serve, defineHandler, getQuery, getHeaders, readBody, defineNodeHandler } from \"h3\";\nlet app = new H3()\n\nconst internalOnly = defineHandler((event, next) => {\n  const token = event.headers.get(\"x-internal-key\");\n\n  if (token !== \"SUPERRANDOMCANNOTBELEAKED\") {\n    return new Response(\"Forbidden\", { status: 403 });\n  }\n\n  return next();\n});\nconst logger = defineHandler((event, next) => {\n    console.log(\"Logging : \" +  even",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3vj8-jmxq-cgj5",
+      "publishedAt": "2026-03-18T16:18:12Z",
+      "modifiedAt": "2026-03-20T21:28:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3vj8-jmxq-cgj5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33131"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0-0, < 2.0.1-rc.15",
+          "fixed": "2.0.1-rc.15"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-26f5-8h2x-34xh",
+      "packageName": "h3",
+      "title": "h3 has an observable timing discrepancy in basic auth utils",
+      "description": "### Summary\nA Timing Side-Channel vulnerability exists in the `requireBasicAuth` function due to the use of unsafe string comparison (`!==`). This allows an attacker to deduce the valid password character-by-character by measuring the server's response time, effectively bypassing password complexity protections.\n\n### Details\nThe vulnerability is located in the `requireBasicAuth` function. The code performs a standard string comparison between the user-provided password and the expected password:",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-26f5-8h2x-34xh",
+      "publishedAt": "2026-03-18T16:17:58Z",
+      "modifiedAt": "2026-03-20T21:27:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-26f5-8h2x-34xh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33129"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0-beta.0, <= 2.0.0-rc.8",
+          "fixed": "2.0.1-rc.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-22cc-p3c6-wpvm",
+      "packageName": "h3",
+      "title": "h3 has a Server-Sent Events Injection via Unsanitized Newlines in Event Stream Fields",
+      "description": "## Summary\n\n`createEventStream` in h3 is vulnerable to Server-Sent Events (SSE) injection due to missing newline sanitization in `formatEventStreamMessage()` and `formatEventStreamComment()`. An attacker who controls any part of an SSE message field (`id`, `event`, `data`, or comment) can inject arbitrary SSE events to connected clients.\n\n## Details\n\nThe vulnerability exists in `src/utils/internal/event-stream.ts`, lines [170](https://github.com/h3js/h3/blob/52c82e18bb643d124b8b9ec3b1f62b081f044",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-22cc-p3c6-wpvm",
+      "publishedAt": "2026-03-18T16:17:43Z",
+      "modifiedAt": "2026-03-20T21:27:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-22cc-p3c6-wpvm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33128"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.15.6",
+          "fixed": "1.15.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4hxc-9384-m385",
+      "packageName": "h3",
+      "title": "h3: SSE Event Injection via Unsanitized Carriage Return (`\\r`) in EventStream Data and Comment Fields (Bypass of CVE Fix)",
+      "description": "## Summary\n\nThe `EventStream` class in h3 fails to sanitize carriage return (`\\r`) characters in `data` and `comment` fields. Per the SSE specification, `\\r` is a valid line terminator, so browsers interpret injected `\\r` as line breaks. This allows an attacker to inject arbitrary SSE events, spoof event types, and split a single `push()` call into multiple distinct browser-parsed events. This is an incomplete fix bypass of commit `7791538` which addressed `\\n` injection but missed `\\r`-only inj",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4hxc-9384-m385",
+      "publishedAt": "2026-03-20T20:50:38Z",
+      "modifiedAt": "2026-03-20T20:50:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4hxc-9384-m385"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.15.9",
+          "fixed": "1.15.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-72gr-qfp7-vwhw",
+      "packageName": "h3",
+      "title": "h3: Double Decoding in `serveStatic` Bypasses `resolveDotSegments` Path Traversal Protection via `%252e%252e`",
+      "description": "## Summary\n\nThe `serveStatic` utility in h3 applies a redundant `decodeURI()` call to the request pathname after `H3Event` has already performed percent-decoding with `%25` preservation. This double decoding converts `%252e%252e` into `%2e%2e`, which bypasses `resolveDotSegments()` (since it checks for literal `.` characters, not percent-encoded equivalents). When the resulting asset ID is resolved by URL-based backends (CDN, S3, object storage), `%2e%2e` is interpreted as `..` per the URL Stand",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-72gr-qfp7-vwhw",
+      "publishedAt": "2026-03-20T20:50:09Z",
+      "modifiedAt": "2026-03-20T20:50:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-72gr-qfp7-vwhw"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.15.8",
+          "fixed": "1.15.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wr4h-v87w-p3r7",
+      "packageName": "h3",
+      "title": "h3 has a Path Traversal via Percent-Encoded Dot Segments in serveStatic Allows Arbitrary File Read",
+      "description": "## Summary\n\n`serveStatic()` in h3 is vulnerable to path traversal via percent-encoded dot segments (`%2e%2e`), allowing an unauthenticated attacker to read arbitrary files outside the intended static directory on Node.js deployments.\n\n## Details\n\nThe vulnerability exists in `src/utils/static.ts` at [line 86](https://github.com/h3js/h3/blob/52c82e18bb643d124b8b9ec3b1f62b081f044611/src/utils/static.ts#L86):\n\n```typescript\nconst originalId = decodeURI(withLeadingSlash(withoutTrailingSlash(event.url",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wr4h-v87w-p3r7",
+      "publishedAt": "2026-03-18T16:18:32Z",
+      "modifiedAt": "2026-03-18T16:18:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wr4h-v87w-p3r7"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.15.6",
+          "fixed": "1.15.6"
         }
       ],
       "source": "github"

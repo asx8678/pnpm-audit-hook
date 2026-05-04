@@ -1,0 +1,28 @@
+{
+  "packageName": "@stablelib/ed25519",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x3ff-w252-2g7j",
+      "packageName": "@stablelib/ed25519",
+      "title": "StableLib Ed25519 Signature Malleability via Missing S < L Check",
+      "description": "# Ed25519 Signature Malleability via Missing S < L Check -- Same Class as node-forge CVE-2026-33895 (CWE-347)\n\n## Target\n- Repository: StableLib/stablelib (package: @stablelib/ed25519)\n- Platform: GitHub PVR\n- Bounty: CVE credit\n- CWE: CWE-347 (Improper Verification of Cryptographic Signature)\n- Version: 2.0.2 (latest, 2026-03-28)\n\n## Root Cause\n\nThe `verify()` function in `@stablelib/ed25519` does not check that the `S` component of the signature is less than the group order `L`. Per CFRG recom",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x3ff-w252-2g7j",
+      "publishedAt": "2026-04-01T22:13:35Z",
+      "modifiedAt": "2026-04-07T14:23:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x3ff-w252-2g7j"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

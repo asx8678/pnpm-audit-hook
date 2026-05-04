@@ -1,6 +1,6 @@
 {
   "packageName": "pidusage",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-h2p3-h48h-9jj7",
@@ -19,6 +19,33 @@
         {
           "type": "CVE",
           "value": "CVE-2017-1000220"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.4",
+          "fixed": "1.1.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hfq9-rfpv-j8r8",
+      "packageName": "pidusage",
+      "title": "Command Injection in pidusage",
+      "description": "Affected versions of `pidusage` pass unsanitized input to `child_process.exec()`, resulting in arbitrary code execution in the `ps` method.\n \nThis package is vulnerable to this PoC on Darwin, SunOS, FreeBSD, and AIX.\n\nWindows and Linux are not vulnerable. \n\n## Proof of Concept\n```\nvar pid = require('pidusage');\npid.stat('1 && /usr/local/bin/python');\n```\n\n\n## Recommendation\n\nUpdate to version 1.1.5 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-hfq9-rfpv-j8r8",
+      "publishedAt": "2020-09-01T16:49:19Z",
+      "modifiedAt": "2023-01-09T05:04:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hfq9-rfpv-j8r8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16034"
         }
       ],
       "affectedVersions": [

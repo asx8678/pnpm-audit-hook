@@ -1,6 +1,6 @@
 {
   "packageName": "jquery-ui",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gpqq-952q-5327",
@@ -57,6 +57,60 @@
       "source": "github"
     },
     {
+      "id": "GHSA-wcm2-9c89-wmfm",
+      "packageName": "jquery-ui",
+      "title": "Cross-site Scripting in jquery-ui",
+      "description": "Cross-site scripting (XSS) vulnerability in jquery.ui.dialog.js in the Dialog widget in jQuery UI before 1.10.0 allows remote attackers to inject arbitrary web script or HTML via the title option.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wcm2-9c89-wmfm",
+      "publishedAt": "2017-10-24T18:33:38Z",
+      "modifiedAt": "2025-04-14T21:53:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wcm2-9c89-wmfm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2010-5312"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.7.0, < 1.10.0",
+          "fixed": "1.10.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qqxp-xp9v-vvx6",
+      "packageName": "jquery-ui",
+      "title": "jquery-ui Tooltip widget vulnerable to XSS",
+      "description": "Cross-site scripting (XSS) vulnerability in the default content option in jquery.ui.tooltip.js in the Tooltip widget in jQuery UI before 1.10.0 allows remote attackers to inject arbitrary web script or HTML via the title attribute, which is not properly handled in the autocomplete combo box demo.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qqxp-xp9v-vvx6",
+      "publishedAt": "2017-10-24T18:33:37Z",
+      "modifiedAt": "2023-11-09T05:04:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qqxp-xp9v-vvx6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2012-6662"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.10.0",
+          "fixed": "1.10.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
       "id": "GHSA-9gj3-hwp5-pmwc",
       "packageName": "jquery-ui",
       "title": "XSS in the `altField` option of the Datepicker widget in jquery-ui",
@@ -84,6 +138,29 @@
       "source": "github"
     },
     {
+      "id": "GHSA-g8q2-24jh-5hpc",
+      "packageName": "jquery-ui",
+      "title": "High severity vulnerability that affects jquery-ui",
+      "description": "Withdrawn, accidental duplicate publish.\n\nCross-site scripting (XSS) vulnerability in jQuery UI before 1.12.0 might allow remote attackers to inject arbitrary web script or HTML via the closeText parameter of the dialog function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g8q2-24jh-5hpc",
+      "publishedAt": "2018-07-27T14:47:52Z",
+      "modifiedAt": "2023-09-26T18:29:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g8q2-24jh-5hpc"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.12.0",
+          "fixed": "1.12.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
       "id": "GHSA-j7qv-pgf6-hvh4",
       "packageName": "jquery-ui",
       "title": "XSS in `*Text` options of the Datepicker widget in jquery-ui",
@@ -106,6 +183,33 @@
         {
           "range": "< 1.13.0",
           "fixed": "1.13.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hpcf-8vf9-q4gj",
+      "packageName": "jquery-ui",
+      "title": "jQuery-UI vulnerable to Cross-site Scripting in dialog closeText",
+      "description": "Affected versions of `jquery-ui` are vulnerable to a cross-site scripting vulnerability when arbitrary user input is supplied as the value of the `closeText` parameter in the `dialog` function. \n\njQuery-UI is a library for manipulating UI elements via jQuery.\n\nVersion 1.11.4 has a cross site scripting (XSS) vulnerability in the `closeText` parameter of the `dialog`  function.  If your application passes user input to this parameter, it may be vulnerable to XSS via this attack vector.\n\n\n## Recomm",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hpcf-8vf9-q4gj",
+      "publishedAt": "2017-10-24T18:33:35Z",
+      "modifiedAt": "2023-09-26T17:58:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hpcf-8vf9-q4gj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-7103"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.12.0",
+          "fixed": "1.12.0"
         }
       ],
       "source": "github"

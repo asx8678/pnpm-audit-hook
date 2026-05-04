@@ -1,0 +1,28 @@
+{
+  "packageName": "@zhaoyao91/eval-in-vm",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jp99-5h8w-gmxc",
+      "packageName": "@zhaoyao91/eval-in-vm",
+      "title": "Sandbox Breakout / Arbitrary Code Execution in @zhaoyao91/eval-in-vm",
+      "description": "All versions of `@zhaoyao91/eval-in-vm` are vulnerable to Sandbox Escape leading to Remote Code Execution. The package fails to restrict access to the main context through `this.constructor.constructor` . This may allow attackers to execute arbitrary code in the system. Evaluating the payload `this.constructor.constructor('return process.env')()` prints the contents of `process.env`.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made ava",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-jp99-5h8w-gmxc",
+      "publishedAt": "2020-09-04T15:03:13Z",
+      "modifiedAt": "2023-01-09T05:03:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jp99-5h8w-gmxc"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

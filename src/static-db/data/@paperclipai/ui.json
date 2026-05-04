@@ -1,0 +1,29 @@
+{
+  "packageName": "@paperclipai/ui",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fpw4-p57j-hqmq",
+      "packageName": "@paperclipai/ui",
+      "title": "Paperclip: Stored XSS via javascript: URLs in MarkdownBody — urlTransform override disables react-markdown sanitization",
+      "description": "## Summary\n\n`MarkdownBody`, the shared component used to render every Markdown surface in the Paperclip UI (issue documents, issue comments, chat threads, approvals, agent details, export previews, etc.), passes `urlTransform={(url) => url}` to `react-markdown`. That override replaces `react-markdown`'s built-in `defaultUrlTransform` — the library's only defense against `javascript:`/`vbscript:`/`data:` URL injection — with a no-op, and the custom `a` component then renders the unsanitized href ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fpw4-p57j-hqmq",
+      "publishedAt": "2026-04-16T22:49:13Z",
+      "modifiedAt": "2026-04-16T22:49:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fpw4-p57j-hqmq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2026.416.0",
+          "fixed": "2026.416.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

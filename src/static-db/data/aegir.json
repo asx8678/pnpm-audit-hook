@@ -1,0 +1,60 @@
+{
+  "packageName": "aegir",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qfcv-5whw-7pcw",
+      "packageName": "aegir",
+      "title": "Exposure of Sensitive Information to an Unauthorized Actor in AEgir",
+      "description": "### Impact\n`aegir publish` and `aegir build` may leak secrets from environmental variables in the browser bundle published to npm.\n\n### Patches\nThe code has been patched, users should upgrade to >= 21.10.1\n\n### Workarounds\nRun `printenv` to check your environment variables and revoke any secrets.\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Open an issue in [aegir](https://github.com/ipfs/aegir)",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qfcv-5whw-7pcw",
+      "publishedAt": "2020-05-27T21:09:15Z",
+      "modifiedAt": "2023-10-10T19:06:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qfcv-5whw-7pcw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-11059"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 21.7.0, < 21.10.1",
+          "fixed": "21.10.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6xhf-x49c-m5m6",
+      "packageName": "aegir",
+      "title": "Github Token Leak in aegir",
+      "description": "Affected versions of `aegir` bundle and publish the current users github token to npm when `aegir-release` is executed.\n\n\n## Recommendation\n\nUpdate to version 12.0.8 or later.\n\nIf you used this module to do a release for your project you should invalidate the GitHub tokens that were leaked.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6xhf-x49c-m5m6",
+      "publishedAt": "2018-07-24T20:04:11Z",
+      "modifiedAt": "2023-01-09T05:02:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6xhf-x49c-m5m6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16225"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 12.0.0, <= 12.0.7",
+          "fixed": "12.0.8"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

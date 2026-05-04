@@ -1,0 +1,29 @@
+{
+  "packageName": "uuid",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w5hq-g745-h8pq",
+      "packageName": "uuid",
+      "title": "uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided",
+      "description": "### Summary\n\n`v3`, `v5`, and `v6` accept external output buffers but do not reject out-of-range writes (small `buf` or large `offset`).  \nBy contrast, `v4`, `v1`, and `v7` explicitly throw `RangeError` on invalid bounds.\n\nThis inconsistency allows **silent partial writes** into caller-provided buffers.\n\n\n### Affected code\n\n- `src/v35.ts` (`v3`/`v5` path) writes `buf[offset + i]` without bounds validation.\n- `src/v6.ts` writes `buf[offset + i]` without bounds validation.\n\n### Reproducible PoC\n\n``",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w5hq-g745-h8pq",
+      "publishedAt": "2026-04-22T20:53:24Z",
+      "modifiedAt": "2026-04-22T20:53:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w5hq-g745-h8pq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 14.0.0",
+          "fixed": "14.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

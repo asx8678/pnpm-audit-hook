@@ -1,7 +1,30 @@
 {
   "packageName": "@aiondadotcom/mcp-ssh",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-p4h8-56qp-hpgv",
+      "packageName": "@aiondadotcom/mcp-ssh",
+      "title": "SSH/SCP option injection allowing local RCE in @aiondadotcom/mcp-ssh",
+      "description": "## Impact\n\nA crafted `hostAlias` argument such as `-oProxyCommand=...` was passed to `ssh`/`scp` without an argument terminator. SSH interprets arguments starting with `-` as options regardless of position, so the option-injection caused SSH to execute the attacker-supplied `ProxyCommand` **locally** on the machine running the MCP server — before any network connection. This bypassed the documented protection of `# @password:` annotations and exposed local SSH keys, browser cookies, other MCP se",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p4h8-56qp-hpgv",
+      "publishedAt": "2026-04-14T00:04:10Z",
+      "modifiedAt": "2026-04-14T00:04:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p4h8-56qp-hpgv"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.3.5",
+          "fixed": "1.3.5"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-694p-3fxc-m92h",
       "packageName": "@aiondadotcom/mcp-ssh",

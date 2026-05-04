@@ -1,0 +1,114 @@
+{
+  "packageName": "auth0-js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3rpr-mg43-xhq4",
+      "packageName": "auth0-js",
+      "title": "auth0-js Privilege Escalation Vulnerability",
+      "description": "A cross-origin vulnerability has been discovered in the Auth0 auth0.js library affecting versions &lt; 8.12. This vulnerability allows an attacker to acquire authenticated users' tokens and invoke services on a user's behalf if the target site or application uses a popup callback page with `auth0.popup.callback()`.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3rpr-mg43-xhq4",
+      "publishedAt": "2017-12-21T00:47:20Z",
+      "modifiedAt": "2023-09-13T22:14:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3rpr-mg43-xhq4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-17068"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.12.0",
+          "fixed": "8.12.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wv26-rj8c-4r33",
+      "packageName": "auth0-js",
+      "title": "Cross-Site Request Forgery (CSRF) in Auth0",
+      "description": "CSRF exists in the Auth0 authentication service through 14591 if the Legacy Lock API flag is enabled.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wv26-rj8c-4r33",
+      "publishedAt": "2018-11-06T23:15:13Z",
+      "modifiedAt": "2023-01-09T05:04:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wv26-rj8c-4r33"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-6874"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 9.0.0",
+          "fixed": "9.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wpq7-q8j4-72jg",
+      "packageName": "auth0-js",
+      "title": "Auth0-js bypasses CSRF checks",
+      "description": "The Auth0.js library has a vulnerability affecting versions below 9.3 that allows an attacker to bypass the CSRF check from the state parameter if it's missing from the authorization response, leaving the client vulnerable to CSRF attacks.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wpq7-q8j4-72jg",
+      "publishedAt": "2018-03-07T22:22:24Z",
+      "modifiedAt": "2023-01-09T05:03:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wpq7-q8j4-72jg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-7307"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 9.3.0",
+          "fixed": "9.3.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-prfq-f66g-43mp",
+      "packageName": "auth0-js",
+      "title": "Information disclosure through error object in auth0.js",
+      "description": "## Overview\nBetween versions 8.0.0 and  9.13.1(inclusive), in the case of an (authentication) error, the error object returned by the library contains the original request of the user, which may include the plaintext password the user entered. \n\nIf the error object is exposed or logged without modification, the application risks password exposure.\n\n## Am I affected?\nYou are affected by this vulnerability if all of the following conditions apply:\n\n- You are using Auth0.js version between 8.0.0 an",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-prfq-f66g-43mp",
+      "publishedAt": "2020-04-10T18:19:10Z",
+      "modifiedAt": "2023-01-09T05:02:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-prfq-f66g-43mp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-5263"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 8.0.0, < 9.13.2",
+          "fixed": "9.13.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

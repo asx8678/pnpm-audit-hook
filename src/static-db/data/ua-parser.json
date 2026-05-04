@@ -1,0 +1,32 @@
+{
+  "packageName": "ua-parser",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pmg9-p9r2-6q87",
+      "packageName": "ua-parser",
+      "title": "ReDoS via long UserAgent header in ua-parser",
+      "description": "Affected versions of `ua-parser` are vulnerable to regular expression denial of service when given a specially crafted `User-Agent` header.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different, functionally equivalent package such as [useragent](https://www.npmjs.com/package/useragent).",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pmg9-p9r2-6q87",
+      "publishedAt": "2018-07-24T19:46:37Z",
+      "modifiedAt": "2023-01-09T05:03:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pmg9-p9r2-6q87"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16086"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "merge-recursive",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cvxm-f295-x957",
+      "packageName": "merge-recursive",
+      "title": "Prototype Pollution in merge-recursive",
+      "description": "All versions of `merge-recursive` are vulnerable to Prototype Pollution. When malicious user input is merged with another object it allows the attacker to modify the prototype of Object via `__proto__` causing the addition or modification of an existing property.\n\nProof of concept:\n\n```js\nvar merge = require('merge-recursive').recursive;\nvar malicious_payload = '{\"__proto__\":{\"oops\":\"It works !\"}}';\n\nvar a = {};\nconsole.log(\"Before : \" + a.oops);\nmerge({}, JSON.parse(malicious_payload));\nconsole",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cvxm-f295-x957",
+      "publishedAt": "2018-09-18T13:46:06Z",
+      "modifiedAt": "2023-09-12T18:47:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cvxm-f295-x957"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3751"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

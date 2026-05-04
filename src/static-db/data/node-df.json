@@ -1,0 +1,32 @@
+{
+  "packageName": "node-df",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wp7m-mrvf-599c",
+      "packageName": "node-df",
+      "title": "Command Injection in node-df",
+      "description": "All versions of `node-df` are vulnerable to Command Injection. The package fails to sanitize filenames passed to the  `file` option. If this value is user-controlled it  may allow attackers to run arbitrary commands in the server.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wp7m-mrvf-599c",
+      "publishedAt": "2020-02-14T23:09:10Z",
+      "modifiedAt": "2023-02-01T05:02:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wp7m-mrvf-599c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15597"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

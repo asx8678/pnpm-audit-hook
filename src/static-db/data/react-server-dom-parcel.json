@@ -1,7 +1,34 @@
 {
   "packageName": "react-server-dom-parcel",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-479c-33wc-g2pg",
+      "packageName": "react-server-dom-parcel",
+      "title": "React Server Components have a Denial of Service Vulnerability",
+      "description": "## Impact\n\nA denial of service vulnerability exists in React Server Components, affecting the following packages: react-server-dom-parcel, react-server-dom-turbopack, react-server-dom-webpack versions 19.0.0, 19.1.0 and 19.2.0. The vulnerability is triggered by sending specially crafted HTTP requests to Server Function endpoints.\n\nThe payload of the HTTP request causes excessive CPU usage for up to a minute ending in a thrown error that is catchable.\n\nWe recommend updating immediately.\n\nThe vuln",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-479c-33wc-g2pg",
+      "publishedAt": "2026-04-10T15:35:37Z",
+      "modifiedAt": "2026-04-10T15:35:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-479c-33wc-g2pg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23869"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 19.2.0, < 19.2.5",
+          "fixed": "19.2.5"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-83fc-fqcc-2hmg",
       "packageName": "react-server-dom-parcel",

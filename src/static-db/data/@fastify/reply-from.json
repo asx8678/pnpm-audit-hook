@@ -1,7 +1,34 @@
 {
   "packageName": "@fastify/reply-from",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-gwhp-pf74-vj37",
+      "packageName": "@fastify/reply-from",
+      "title": "Fastify's connection header abuse enables stripping of proxy-added headers",
+      "description": "### Summary\n\n`@fastify/reply-from` and `@fastify/http-proxy` process the client's `Connection` header after the proxy has added its own headers via `rewriteRequestHeaders`. This allows attackers to retroactively strip proxy-added headers (like access control or identification headers) from upstream requests by listing them in the `Connection` header value. This affects applications using these plugins with custom header injection for routing, access control, or security purposes.\n\n### Details\n\nT",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-gwhp-pf74-vj37",
+      "publishedAt": "2026-04-16T01:02:59Z",
+      "modifiedAt": "2026-04-16T01:03:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gwhp-pf74-vj37"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33805"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 12.6.1",
+          "fixed": "12.6.2"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-2q7r-29rg-6m5h",
       "packageName": "@fastify/reply-from",

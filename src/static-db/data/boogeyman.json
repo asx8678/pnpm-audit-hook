@@ -1,0 +1,28 @@
+{
+  "packageName": "boogeyman",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9hc2-w9gg-q6jw",
+      "packageName": "boogeyman",
+      "title": "Malicious Package in boogeyman",
+      "description": "All versions of `boogeyman` are considered malicious. This particular package would download a payload from pastebin.com, eval it to read ssh keys and the users `.npmrc` and send them to a private pastebin account.\n\n\n## Recommendation\n\nThis package was published to the npm Registry for a very short period of time. If you happen to find it in your environment you should revoke and rotate your ssh keys and your npm token.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9hc2-w9gg-q6jw",
+      "publishedAt": "2020-09-01T21:07:41Z",
+      "modifiedAt": "2023-01-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9hc2-w9gg-q6jw"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

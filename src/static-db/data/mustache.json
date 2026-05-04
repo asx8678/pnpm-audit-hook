@@ -1,0 +1,56 @@
+{
+  "packageName": "mustache",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w3w8-37jv-2c58",
+      "packageName": "mustache",
+      "title": "Cross-Site Scripting in mustache",
+      "description": "Versions of `mustache` prior to 2.2.1 are affected by a cross-site scripting vulnerability when attributes in mustache templates are not quoted.\n\n\n\n### Example\nTemplate:\n```<a href={{foo}}/>```\n\nInput:\n```{ 'foo' : 'test.com onload=alert(1)'}```\n\nRendered result:\n```<a href=test.com onload=alert(1)/>```\n\n\n## Recommendation\n\nUpdate to version 2.2.1 or later.\nAlternatively, ensure that all attributes in hmustache templates are encapsulated with quotes.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w3w8-37jv-2c58",
+      "publishedAt": "2017-10-24T18:33:36Z",
+      "modifiedAt": "2023-01-09T05:03:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w3w8-37jv-2c58"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-8862"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.1",
+          "fixed": "2.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3233-rgx3-c2wh",
+      "packageName": "mustache",
+      "title": "Moderate severity vulnerability that affects mustache",
+      "description": "Withdrawn, accidental duplicate publish.\r\n\r\nmustache package before 2.2.1 for Node.js allows remote attackers to conduct cross-site scripting (XSS) attacks by leveraging a template with an attribute that is not quoted.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3233-rgx3-c2wh",
+      "publishedAt": "2018-10-09T00:38:09Z",
+      "modifiedAt": "2023-01-09T05:02:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3233-rgx3-c2wh"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.1",
+          "fixed": "2.2.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

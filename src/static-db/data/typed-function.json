@@ -1,0 +1,33 @@
+{
+  "packageName": "typed-function",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3qh4-r86r-grvm",
+      "packageName": "typed-function",
+      "title": "Arbitrary JavaScript Execution in typed-function",
+      "description": "Versions of `typed-function` prior to 0.10.6 are vulnerable to Arbitrary JavaScript Execution. Function names are not properly sanitized and may allow an attacker to execute arbitrary code.\n\n\n## Recommendation\n\nUpgrade to version 0.10.6 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3qh4-r86r-grvm",
+      "publishedAt": "2020-09-02T18:24:39Z",
+      "modifiedAt": "2023-01-09T05:03:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3qh4-r86r-grvm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-1001004"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.10.6",
+          "fixed": "0.10.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

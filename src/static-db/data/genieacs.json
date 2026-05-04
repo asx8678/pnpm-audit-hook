@@ -1,7 +1,33 @@
 {
   "packageName": "genieacs",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-2h6j-mhcp-9j9h",
+      "packageName": "genieacs",
+      "title": "GenieACS has an unauthenticated access vulnerability via the NBI API endpoint",
+      "description": "In GenieACS 1.2.13, an unauthenticated access vulnerability exists in the NBI API endpoint.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2h6j-mhcp-9j9h",
+      "publishedAt": "2026-04-07T21:32:39Z",
+      "modifiedAt": "2026-04-10T19:54:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2h6j-mhcp-9j9h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-56015"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.2.13"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-2877-693q-pj33",
       "packageName": "genieacs",

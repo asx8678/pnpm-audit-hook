@@ -1,6 +1,6 @@
 {
   "packageName": "statics-server",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-393x-fr59-r8fg",
@@ -19,6 +19,54 @@
         {
           "type": "CVE",
           "value": "CVE-2018-3771"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-j27j-4w6m-8fc4",
+      "packageName": "statics-server",
+      "title": "Path Traversal in statics-server",
+      "description": "All versions of `statics-server` are vulnerable to Path Traversal. The package fails to limit access to files outside of the served folder through symlinks.\n\n\n## Recommendation\n\nNo fix is currently available. Do not use `statics-server` in production or consider using an alternative module until a fix is made available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j27j-4w6m-8fc4",
+      "publishedAt": "2020-03-31T17:02:12Z",
+      "modifiedAt": "2023-01-09T05:02:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j27j-4w6m-8fc4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15596"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-74cp-qw7f-7hpw",
+      "packageName": "statics-server",
+      "title": "Path Traversal in statics-server",
+      "description": "All versions of `statics-server` are vulnerable to Path Traversal.  Due to insufficient input sanitization, attackers can access server files by using relative paths. \n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-74cp-qw7f-7hpw",
+      "publishedAt": "2019-06-05T14:10:23Z",
+      "modifiedAt": "2023-01-09T05:01:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-74cp-qw7f-7hpw"
         }
       ],
       "affectedVersions": [

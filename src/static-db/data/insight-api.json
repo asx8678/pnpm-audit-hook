@@ -1,0 +1,32 @@
+{
+  "packageName": "insight-api",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8p2p-p8mg-x3cw",
+      "packageName": "insight-api",
+      "title": "Insight API transaction broadcast endpoint can result in Full Path Disclosure",
+      "description": "Bitpay/insight-api Insight-api version 5.0.0 and earlier contains a CWE-20: input validation vulnerability in transaction broadcast endpoint that can result in Full Path Disclosure. This attack appear to be exploitable via Web request.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8p2p-p8mg-x3cw",
+      "publishedAt": "2018-03-05T19:33:54Z",
+      "modifiedAt": "2023-01-09T05:02:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8p2p-p8mg-x3cw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-1000023"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

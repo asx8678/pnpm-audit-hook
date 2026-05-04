@@ -1,0 +1,28 @@
+{
+  "packageName": "put",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v6gv-fg46-h89j",
+      "packageName": "put",
+      "title": "Sensitive Data Exposure in put",
+      "description": "All versions of `put` are vulnerable to Uninitialized Memory Exposure. The package incorrectly calculates the allocated Buffer size and does not trim the bytes written, which may allow attackers to access uninitialized memory containing sensitive data. This vulnerability only affects versions of Node.js <=6.x.\n\n\n## Recommendation\n\nUpgrade your Node.js version or consider using an alternative package.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-v6gv-fg46-h89j",
+      "publishedAt": "2020-09-03T16:48:36Z",
+      "modifiedAt": "2023-01-09T05:03:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v6gv-fg46-h89j"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

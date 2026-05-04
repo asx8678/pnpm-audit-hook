@@ -1,6 +1,6 @@
 {
   "packageName": "tinymce",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9hcv-j9pv-qmph",
@@ -363,6 +363,60 @@
       "source": "github"
     },
     {
+      "id": "GHSA-27gm-ghr9-4v95",
+      "packageName": "tinymce",
+      "title": "Cross-site scripting vulnerability in TinyMCE",
+      "description": "### Impact\nA cross-site scripting (XSS) vulnerability was discovered in: the core parser, `paste` and `visualchars` plugins. The vulnerability allowed arbitrary JavaScript execution when inserting a specially crafted piece of content into the editor via the clipboard or APIs. This impacts all users who are using TinyMCE 4.9.6 or lower and TinyMCE 5.1.3 or lower.\n\n### Patches\nThis vulnerability has been patched in TinyMCE 4.9.7 and 5.1.4 by improved parser logic and HTML sanitization.\n\n### Workar",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-27gm-ghr9-4v95",
+      "publishedAt": "2020-01-30T21:22:15Z",
+      "modifiedAt": "2023-06-27T23:07:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-27gm-ghr9-4v95"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-17480"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.1.4",
+          "fixed": "5.1.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vrv8-v4w8-f95h",
+      "packageName": "tinymce",
+      "title": "Cross-site scripting vulnerability in TinyMCE",
+      "description": "### Impact\nA cross-site scripting (XSS) vulnerability was discovered in the core parser. The vulnerability allowed arbitrary JavaScript execution when inserting a specially crafted piece of content into the editor via the clipboard or APIs. This impacts all users who are using TinyMCE 4.9.10 or lower and TinyMCE 5.4.0 or lower.\n\n### Patches\nThis vulnerability has been patched in TinyMCE 4.9.11 and 5.4.1 by improved HTML parsing and sanitization logic.\n\n### Workarounds\nThe workarounds available a",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vrv8-v4w8-f95h",
+      "publishedAt": "2020-08-11T14:55:01Z",
+      "modifiedAt": "2023-05-22T14:51:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vrv8-v4w8-f95h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-12648"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.4.1",
+          "fixed": "5.4.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
       "id": "GHSA-gg8r-xjwq-4w92",
       "packageName": "tinymce",
       "title": "Cross-site scripting vulnerability in TinyMCE alerts",
@@ -431,6 +485,33 @@
         {
           "range": "< 5.6.0",
           "fixed": "5.6.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-c78w-2gw7-gjv3",
+      "packageName": "tinymce",
+      "title": "XSS in TinyMCE",
+      "description": "### Impact\nA cross-site scripting (XSS) vulnerability was discovered in: the core parser and `media` plugin. The vulnerability allowed arbitrary JavaScript execution when inserting a specially crafted piece of content into the editor via the clipboard or APIs. This impacts all users who are using TinyMCE 4.9.9 or lower and TinyMCE 5.2.1 or lower.\n\n### Patches\nThis vulnerability has been patched in TinyMCE 4.9.10 and 5.2.2 by improved HTML parsing and sanitization logic.\n\n### Workarounds\nThe work",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c78w-2gw7-gjv3",
+      "publishedAt": "2020-05-11T20:00:15Z",
+      "modifiedAt": "2023-01-09T05:02:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c78w-2gw7-gjv3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-1010091"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.2.2",
+          "fixed": "5.2.2"
         }
       ],
       "source": "github"

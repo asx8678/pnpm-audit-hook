@@ -1,0 +1,28 @@
+{
+  "packageName": "buffer-por",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6xg2-cf6h-x4v8",
+      "packageName": "buffer-por",
+      "title": "Malicious Package in buffer-por",
+      "description": "Version 2.0.2 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6xg2-cf6h-x4v8",
+      "publishedAt": "2020-09-03T21:53:05Z",
+      "modifiedAt": "2023-01-09T05:04:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6xg2-cf6h-x4v8"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

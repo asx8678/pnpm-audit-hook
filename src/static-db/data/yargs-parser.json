@@ -1,15 +1,16 @@
 {
   "packageName": "yargs-parser",
-  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-p9pc-299p-vxgp",
       "packageName": "yargs-parser",
-      "title": "Prototype Pollution in yargs-parser",
+      "title": "yargs-parser Vulnerable to Prototype Pollution",
+      "description": "Affected versions of `yargs-parser` are vulnerable to prototype pollution. Arguments are not properly sanitized, allowing an attacker to modify the prototype of `Object`, causing the addition or modification of an existing property that will exist on all objects.  \nParsing the argument `--foo.__proto__.bar baz'` adds a `bar` property with value `baz` to all objects. This is only exploitable if attackers have control over the arguments being passed to `yargs-parser`.\n\n\n\n## Recommendation\n\nUpgrade",
       "severity": "medium",
       "url": "https://github.com/advisories/GHSA-p9pc-299p-vxgp",
-      "publishedAt": "2020-05-27T16:36:00Z",
-      "modifiedAt": "2023-09-11T22:00:00Z",
+      "publishedAt": "2020-09-04T18:00:54Z",
+      "modifiedAt": "2023-01-27T05:00:51Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -22,8 +23,8 @@
       ],
       "affectedVersions": [
         {
-          "range": "<13.1.2",
-          "fixed": "13.1.2"
+          "range": ">= 16.0.0, < 18.1.1",
+          "fixed": "18.1.1"
         }
       ],
       "source": "github"

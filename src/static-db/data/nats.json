@@ -1,7 +1,34 @@
 {
   "packageName": "nats",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-82rf-q3pr-4f6p",
+      "packageName": "nats",
+      "title": "Sensitive data exposure in NATS",
+      "description": "Preview versions of two NPM packages and one Deno package from the NATS project contain an information disclosure flaw, leaking options to the NATS server; for one package, this includes TLS private credentials.\n\nThe `_connection_` configuration options in these JavaScript-based implementations were fully serialized and sent to the server in the client's CONNECT message, immediately after TLS establishment.\n\nThe nats.js client supports Mutual TLS and the credentials for the TLS client key are in",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-82rf-q3pr-4f6p",
+      "publishedAt": "2020-10-08T22:11:32Z",
+      "modifiedAt": "2023-09-11T20:18:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-82rf-q3pr-4f6p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26149"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0-201, <= 2.0.0-206",
+          "fixed": "2.0.0-209"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-prmc-5v5w-c465",
       "packageName": "nats",

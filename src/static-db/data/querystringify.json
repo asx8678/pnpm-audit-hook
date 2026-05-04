@@ -1,0 +1,29 @@
+{
+  "packageName": "querystringify",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hxcm-v35h-mg2x",
+      "packageName": "querystringify",
+      "title": "Prototype Pollution in querystringify",
+      "description": "A vulnerability was found in querystringify before 2.0.0. It's possible to override built-in properties of the resulting query string object if a malicious string is inserted in the query string.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hxcm-v35h-mg2x",
+      "publishedAt": "2019-06-07T21:12:50Z",
+      "modifiedAt": "2023-11-29T22:16:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hxcm-v35h-mg2x"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

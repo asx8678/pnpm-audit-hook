@@ -1,7 +1,34 @@
 {
   "packageName": "lodash.unset",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-f23m-r3pf-42rh",
+      "packageName": "lodash.unset",
+      "title": "lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and `_.omit`",
+      "description": "### Impact\n\nLodash versions 4.17.23 and earlier are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. The fix for [CVE-2025-13465](https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg) only guards against string key members, so an attacker can bypass the check by passing array-wrapped path segments. This allows deletion of properties from built-in prototypes such as `Object.prototype`, `Number.prototype`, and `String.prototype`.\n\nThe issue permits del",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f23m-r3pf-42rh",
+      "publishedAt": "2026-04-01T23:50:27Z",
+      "modifiedAt": "2026-04-01T23:50:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f23m-r3pf-42rh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-2950"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.18.0",
+          "fixed": "4.18.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-xxjr-mmjv-4gpg",
       "packageName": "lodash.unset",

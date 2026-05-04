@@ -1,6 +1,6 @@
 {
   "packageName": "njwt",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3hvj-2783-34x2",
@@ -25,6 +25,29 @@
         {
           "range": "< 2.0.1",
           "fixed": "2.0.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-g3qw-9pgp-xpj4",
+      "packageName": "njwt",
+      "title": "Out-of-bounds Read in njwt",
+      "description": "Versions of `njwt` prior to 1.0.0 are vulnerable to out-of-bounds reads when a number is passed into the `base64urlEncode` function. \n\nOn Node.js 6.x or lower this can expose sensitive information and on any other version of Node.js this creates a Denial of Service vulnerability.\n\n\n## Recommendation\n\nUpgrade to version 1.0.0.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-g3qw-9pgp-xpj4",
+      "publishedAt": "2020-09-01T21:08:44Z",
+      "modifiedAt": "2023-01-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g3qw-9pgp-xpj4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0",
+          "fixed": "1.0.0"
         }
       ],
       "source": "github"

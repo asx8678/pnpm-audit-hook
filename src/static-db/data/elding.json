@@ -1,0 +1,32 @@
+{
+  "packageName": "elding",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rp28-29ch-gh92",
+      "packageName": "elding",
+      "title": "Directory Traversal in elding",
+      "description": "Affected versions of `elding` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\nThis vulnerability only affects files that have file extensions - i.e. `/etc/passwd` will be treated as a directory, and a read attempt on `/etc/passwd/index.js` will be made and subsequently fail. \n\n**Example r",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rp28-29ch-gh92",
+      "publishedAt": "2018-08-06T21:30:15Z",
+      "modifiedAt": "2023-09-08T23:13:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rp28-29ch-gh92"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16222"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "packageName": "underscore.string",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v2p6-4mp7-3r9v",
+      "packageName": "underscore.string",
+      "title": "Regular Expression Denial of Service in underscore.string",
+      "description": "Versions of `underscore.string` prior to *3.3.5* are vulnerable to Regular Expression Denial of Service (ReDoS).\n\nThe function `unescapeHTML` is vulnerable to ReDoS due to an overly-broad regex. The slowdown is approximately 2s for 50,000 characters but grows exponentially with larger inputs.\n\n\n## Recommendation\n\nUpgrade to version 3.3.5 or higher.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v2p6-4mp7-3r9v",
+      "publishedAt": "2019-06-14T16:26:22Z",
+      "modifiedAt": "2023-01-09T05:01:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v2p6-4mp7-3r9v"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.3.5",
+          "fixed": "3.3.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,7 +1,34 @@
 {
   "packageName": "is-my-json-valid",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-f522-ffg8-j8r6",
+      "packageName": "is-my-json-valid",
+      "title": "Regular Expression Denial of Service in is-my-json-valid",
+      "description": "Version of `is-my-json-valid` before 2.12.4 are vulnerable to regular expression denial of service (ReDoS) via the email validation function.\n\n\n## Recommendation\n\nUpdate to version 2.12.4 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f522-ffg8-j8r6",
+      "publishedAt": "2017-10-24T18:33:35Z",
+      "modifiedAt": "2025-10-17T17:50:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f522-ffg8-j8r6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-2537"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.12.4",
+          "fixed": "2.12.4"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-4hpf-3wq7-5rpr",
       "packageName": "is-my-json-valid",
@@ -19,6 +46,52 @@
         {
           "type": "CVE",
           "value": "CVE-2018-1107"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.1",
+          "fixed": "1.4.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-ccq6-3qx5-vmqx",
+      "packageName": "is-my-json-valid",
+      "title": "Moderate severity vulnerability that affects is-my-json-valid",
+      "description": "Withdrawn, accidental duplicate publish.\r\n\r\nThe is-my-json-valid package before 2.12.4 for Node.js has an incorrect exports['utc-millisec'] regular expression, which allows remote attackers to cause a denial of service (blocked event loop) via a crafted string.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-ccq6-3qx5-vmqx",
+      "publishedAt": "2018-07-31T22:54:14Z",
+      "modifiedAt": "2023-01-09T05:03:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ccq6-3qx5-vmqx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.12.3",
+          "fixed": "2.12.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4x7c-cx64-49w8",
+      "packageName": "is-my-json-valid",
+      "title": "Regular Expression Denial of Service in is-my-json-valid",
+      "description": "Withdrawn: Duplicate of GHSA-f522-ffg8-j8r6",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-4x7c-cx64-49w8",
+      "publishedAt": "2020-08-19T22:06:03Z",
+      "modifiedAt": "2023-01-09T05:01:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4x7c-cx64-49w8"
         }
       ],
       "affectedVersions": [

@@ -1,0 +1,33 @@
+{
+  "packageName": "ep_imageconvert",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-28gr-86hg-r48w",
+      "packageName": "ep_imageconvert",
+      "title": "Unauthenticated Remote Command Injection in ep_imageconvert",
+      "description": "ep_imageconvert is a plugin for [Etherpad Lite](https://github.com/ether/etherpad-lite). ep_imageconvert <= 0.0.2 is vulnerable to remote command injection.\n\nAuthentication is not required for remote exploitation.\n\n\n## Recommendation\n\nUpdate to version 0.0.3 or greater.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-28gr-86hg-r48w",
+      "publishedAt": "2020-08-31T22:43:31Z",
+      "modifiedAt": "2023-01-09T05:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-28gr-86hg-r48w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2013-3364"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.2",
+          "fixed": "0.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

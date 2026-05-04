@@ -1,0 +1,33 @@
+{
+  "packageName": "webtorrent",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gjh4-fcv3-whpq",
+      "packageName": "webtorrent",
+      "title": "Cross-Site Scripting in webtorrent",
+      "description": "Versions of `webtorrent` prior to 0.107.6 are vulnerable to Cross-Site Scripting. `webtorrent` servers started with `torrent.createServer()` lists a torrent's title and files in the index page without sanitization. This allows attackers to execute arbitrary JavaScript in the victim's browser through files with names containing the malicious payload. The issue is mitigated due to the fact that the server only allows fetching data pieces from the torrent.\n\n\n## Recommendation\n\nUpgrade to version 0.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gjh4-fcv3-whpq",
+      "publishedAt": "2019-09-04T10:02:50Z",
+      "modifiedAt": "2023-04-04T17:26:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gjh4-fcv3-whpq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15782"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.107.6",
+          "fixed": "0.107.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

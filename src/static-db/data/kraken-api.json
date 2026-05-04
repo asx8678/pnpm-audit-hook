@@ -1,0 +1,28 @@
+{
+  "packageName": "kraken-api",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fgfj-rj24-mj7q",
+      "packageName": "kraken-api",
+      "title": "Malicious Package in kraken-api",
+      "description": "Version 0.1.8 of `kraken-api` contains malicious code as a postinstall script. When installed, the package calls home to a Command and Control server to execute arbitrary commands.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\n\nUsers may consider downgrading to version 0.1.7\nThe package should be removed, but as full control",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fgfj-rj24-mj7q",
+      "publishedAt": "2020-09-02T21:47:08Z",
+      "modifiedAt": "2023-07-27T20:16:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fgfj-rj24-mj7q"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 0.1.8"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

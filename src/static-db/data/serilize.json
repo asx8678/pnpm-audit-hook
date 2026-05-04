@@ -1,0 +1,28 @@
+{
+  "packageName": "serilize",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fw76-p9p2-6pvf",
+      "packageName": "serilize",
+      "title": "Malicious Package in serilize",
+      "description": "This package contained malicious code. The package uploaded system information such as OS and hostname to a remote server.\n\n\n## Recommendation\n\nRemove the package from your environment. There are no indications of further compromise.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fw76-p9p2-6pvf",
+      "publishedAt": "2020-09-03T19:58:58Z",
+      "modifiedAt": "2023-01-09T05:04:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fw76-p9p2-6pvf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

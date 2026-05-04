@@ -1,7 +1,34 @@
 {
   "packageName": "@openclaw/voice-call",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-mfg5-7q5g-f37j",
+      "packageName": "@openclaw/voice-call",
+      "title": "OpenClaw voice-call media stream validated streams after upgrade, which could allow pre-start unauthenticated sockets to increase resource pressure",
+      "description": "### Summary\n`@openclaw/voice-call` (and the bundled copy shipped in `openclaw`) accepted media-stream WebSocket upgrades before stream validation. In reachable deployments, unauthenticated pre-start sockets could be held open and increase resource pressure.\n\n### Affected Packages / Versions\n- `openclaw` (npm): vulnerable `<= 2026.2.21-2`, patched in `2026.2.22`.\n- `@openclaw/voice-call` (npm): vulnerable `<= 2026.2.21`, patched in `2026.2.22`.\n\n### Technical Details\nBefore this fix, the voice-ca",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mfg5-7q5g-f37j",
+      "publishedAt": "2026-03-02T22:39:43Z",
+      "modifiedAt": "2026-03-11T20:38:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mfg5-7q5g-f37j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32062"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2026.2.22",
+          "fixed": "2026.2.22"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-3m3q-x3gj-f79x",
       "packageName": "@openclaw/voice-call",
@@ -10,7 +37,7 @@
       "severity": "high",
       "url": "https://github.com/advisories/GHSA-3m3q-x3gj-f79x",
       "publishedAt": "2026-02-17T21:31:58Z",
-      "modifiedAt": "2026-03-06T01:01:24Z",
+      "modifiedAt": "2026-03-09T20:48:45Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -25,29 +52,6 @@
         {
           "range": "< 2026.2.3",
           "fixed": "2026.2.3"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-mfg5-7q5g-f37j",
-      "packageName": "@openclaw/voice-call",
-      "title": "OpenClaw voice-call media stream validated streams after upgrade, which could allow pre-start unauthenticated sockets to increase resource pressure",
-      "description": "### Summary\n`@openclaw/voice-call` (and the bundled copy shipped in `openclaw`) accepted media-stream WebSocket upgrades before stream validation. In reachable deployments, unauthenticated pre-start sockets could be held open and increase resource pressure.\n\n### Affected Packages / Versions\n- `openclaw` (npm): vulnerable `<= 2026.2.21-2`, patched in `2026.2.22`.\n- `@openclaw/voice-call` (npm): vulnerable `<= 2026.2.21`, patched in `2026.2.22`.\n\n### Technical Details\nBefore this fix, the voice-ca",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-mfg5-7q5g-f37j",
-      "publishedAt": "2026-03-02T22:39:43Z",
-      "modifiedAt": "2026-03-02T22:39:45Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-mfg5-7q5g-f37j"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 2026.2.22",
-          "fixed": "2026.2.22"
         }
       ],
       "source": "github"

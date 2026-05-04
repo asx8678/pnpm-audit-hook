@@ -1,7 +1,84 @@
 {
   "packageName": "@saltcorn/server",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-jp74-mfrx-3qvh",
+      "packageName": "@saltcorn/server",
+      "title": "Saltcorn: SQL Injection via Unparameterized Sync Endpoints (maxLoadedId)",
+      "description": "### Summary\nA critical SQL injection vulnerability in Saltcorn’s mobile-sync routes allows any authenticated low-privilege user with read access to at least one table to inject arbitrary SQL through sync parameters. This can lead to full database exfiltration, including admin password hashes and configuration secrets, and may also enable database modification or destruction depending on the backend. \n\n### Details\nThe issue affects the mobile-sync endpoints:\n\n- `POST /sync/load_changes`\n- `POST /",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-jp74-mfrx-3qvh",
+      "publishedAt": "2026-04-16T22:51:43Z",
+      "modifiedAt": "2026-04-27T16:20:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jp74-mfrx-3qvh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41478"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.6.0-alpha.0, < 1.6.0-beta.5",
+          "fixed": "1.6.0-beta.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f3g8-9xv5-77gv",
+      "packageName": "@saltcorn/server",
+      "title": "Saltcorn: Open Redirect in `POST /auth/login` due to incomplete `is_relative_url` validation (backslash bypass)",
+      "description": "### Summary\nSaltcorn validates the post-login `dest` parameter with a string check that only blocks `:/` and `//`. Because all WHATWG-compliant browsers normalise backslashes (`\\`) to forward slashes (`/`) for special schemes, a payload such as `/\\evil.com/path` slips through `is_relative_url()`, is emitted unchanged in the HTTP `Location` header, and causes the browser to navigate cross-origin to an attacker-controlled domain. The bug is reachable on a default install and only requires a victim",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f3g8-9xv5-77gv",
+      "publishedAt": "2026-04-16T23:00:45Z",
+      "modifiedAt": "2026-04-16T23:00:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f3g8-9xv5-77gv"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.6.0-alpha.0, < 1.6.0-beta.5",
+          "fixed": "1.6.0-beta.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-32pv-mpqg-h292",
+      "packageName": "@saltcorn/server",
+      "title": "Saltcorn has an Unauthenticated Path Traversal in sync endpoints, allowing arbitrary file write and directory read",
+      "description": "### Summary\n\nTwo unauthenticated path traversal vulnerabilities exist in Saltcorn's mobile sync endpoints. The `POST /sync/offline_changes` endpoint allows an unauthenticated attacker to create arbitrary directories and write a `changes.json` file with attacker-controlled JSON content anywhere on the server filesystem. The `GET /sync/upload_finished` endpoint allows an unauthenticated attacker to list arbitrary directory contents and read specific JSON files.\n\nThe safe path validation function `",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-32pv-mpqg-h292",
+      "publishedAt": "2026-04-10T19:30:27Z",
+      "modifiedAt": "2026-04-10T19:30:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-32pv-mpqg-h292"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-40163"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.6.0-alpha.0, < 1.6.0-beta.4",
+          "fixed": "1.6.0-beta.4"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-cr3w-cw5w-h3fj",
       "packageName": "@saltcorn/server",

@@ -1,0 +1,28 @@
+{
+  "packageName": "buffer-xoz",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j6x7-42x2-hpcf",
+      "packageName": "buffer-xoz",
+      "title": "Malicious Package in buffer-xoz",
+      "description": "Version 2.0.2 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-j6x7-42x2-hpcf",
+      "publishedAt": "2020-09-03T22:14:20Z",
+      "modifiedAt": "2023-01-09T05:04:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j6x7-42x2-hpcf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

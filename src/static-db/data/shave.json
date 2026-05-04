@@ -1,0 +1,33 @@
+{
+  "packageName": "shave",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gh4g-3gm9-5wrq",
+      "packageName": "shave",
+      "title": "Cross-Site Scripting in shave",
+      "description": "Versions of `shave` prior to 2.5.3 are vulnerable to Cross-Site Scripting. The `shave` package overwrites HTML elements and in doing so fails to properly encode the output. If encoded HTML input is passed into `shave` the output will be decoded which may lead to Cross-Site Scripting.\n\n\n## Recommendation\n\nUpgrade to version 2.5.3 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gh4g-3gm9-5wrq",
+      "publishedAt": "2019-05-29T18:38:08Z",
+      "modifiedAt": "2023-01-09T05:01:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gh4g-3gm9-5wrq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-12313"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.5.3",
+          "fixed": "2.5.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

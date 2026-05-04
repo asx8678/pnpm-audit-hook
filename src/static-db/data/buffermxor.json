@@ -1,0 +1,28 @@
+{
+  "packageName": "buffermxor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-536f-268f-6gxc",
+      "packageName": "buffermxor",
+      "title": "Malicious Package in buffermxor",
+      "description": "Version 2.0.2 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-536f-268f-6gxc",
+      "publishedAt": "2020-09-03T22:17:36Z",
+      "modifiedAt": "2023-01-09T05:04:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-536f-268f-6gxc"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

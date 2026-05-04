@@ -1,6 +1,6 @@
 {
   "packageName": "bootstrap-multiselect",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-gv5r-9gxr-v74w",
@@ -10,7 +10,7 @@
       "severity": "medium",
       "url": "https://github.com/advisories/GHSA-gv5r-9gxr-v74w",
       "publishedAt": "2025-05-13T18:30:53Z",
-      "modifiedAt": "2025-05-15T14:51:27Z",
+      "modifiedAt": "2026-02-26T21:59:01Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -23,7 +23,8 @@
       ],
       "affectedVersions": [
         {
-          "range": "<= 1.1.2"
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
         }
       ],
       "source": "github"

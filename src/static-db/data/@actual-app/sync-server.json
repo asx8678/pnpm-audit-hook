@@ -1,25 +1,57 @@
 {
   "packageName": "@actual-app/sync-server",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
-      "id": "GHSA-xvp7-8vm8-xfxx",
+      "id": "GHSA-prp4-2f49-fcgp",
       "packageName": "@actual-app/sync-server",
-      "title": "Actual Sync-server Gocardless service is logging sensitive data including bearer tokens and account numbers",
-      "description": "### Summary\nThe GoCardless components in Actualbudget in are logging responses to STDOUT in a parsed format using `console.log`and `console.debug` (Which in this version of node is an alias for `console.log`). This is exposing sensitive information in log files including, but not limited to:\n\n- Gocardless bearer tokens.\n- Account IBAN and Bank Account numbers.\n- PII of the account holder.\n- Transaction details (Payee bank information, Recipient account numbers, Transaction IDs)...\n\n### Details\n\n",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-xvp7-8vm8-xfxx",
-      "publishedAt": "2025-10-20T17:55:59Z",
-      "modifiedAt": "2025-10-20T17:56:00Z",
+      "title": "Actual has Privilege Escalation via 'change-password' Endpoint on OpenID-Migrated Servers",
+      "description": "### Summary\n\nAny authenticated user (including `BASIC` role) can escalate to `ADMIN` on servers migrated from password authentication to OpenID Connect. Three weaknesses combine: `POST /account/change-password` has no authorization check, allowing any session to overwrite the password hash; the inactive password `auth` row is never removed on migration; and the login endpoint accepts a client-supplied `loginMethod` that bypasses the server's active auth configuration. Together these allow an att",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-prp4-2f49-fcgp",
+      "publishedAt": "2026-04-23T21:23:38Z",
+      "modifiedAt": "2026-04-27T16:35:55Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-xvp7-8vm8-xfxx"
+          "value": "GHSA-prp4-2f49-fcgp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33318"
         }
       ],
       "affectedVersions": [
         {
-          "range": "<= 25.10.0"
+          "range": "< 26.4.0",
+          "fixed": "26.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-27vg-33gh-4hwg",
+      "packageName": "@actual-app/sync-server",
+      "title": "Actual Sync Server has an Authenticated Path Traversal",
+      "description": "# Description\n\nActual Sync Server allows authenticated users to upload files through `POST /sync/upload-user-file`. In versions prior to 26.3.0, improper validation of the user-controlled `x-actual-file-id` header means that traversal segments (`../`) can escape the intended directory and write files outside `userFiles`.\n\n## Mitigations\nThe vulnerability can be mitigated in prior versions by running the sync server in a filesystem sandbox.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-27vg-33gh-4hwg",
+      "publishedAt": "2026-03-10T01:02:15Z",
+      "modifiedAt": "2026-03-10T01:02:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-27vg-33gh-4hwg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-3089"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 26.2.0",
+          "fixed": "26.3.0"
         }
       ],
       "source": "github"
@@ -74,6 +106,28 @@
         {
           "range": "< 26.2.1",
           "fixed": "26.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xvp7-8vm8-xfxx",
+      "packageName": "@actual-app/sync-server",
+      "title": "Actual Sync-server Gocardless service is logging sensitive data including bearer tokens and account numbers",
+      "description": "### Summary\nThe GoCardless components in Actualbudget in are logging responses to STDOUT in a parsed format using `console.log`and `console.debug` (Which in this version of node is an alias for `console.log`). This is exposing sensitive information in log files including, but not limited to:\n\n- Gocardless bearer tokens.\n- Account IBAN and Bank Account numbers.\n- PII of the account holder.\n- Transaction details (Payee bank information, Recipient account numbers, Transaction IDs)...\n\n### Details\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xvp7-8vm8-xfxx",
+      "publishedAt": "2025-10-20T17:55:59Z",
+      "modifiedAt": "2025-10-20T17:56:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xvp7-8vm8-xfxx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 25.10.0"
         }
       ],
       "source": "github"

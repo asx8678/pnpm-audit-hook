@@ -1,0 +1,32 @@
+{
+  "packageName": "webrtc-native",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7xvg-m3vx-2hhv",
+      "packageName": "webrtc-native",
+      "title": "Downloads Resources over HTTP in webrtc-native",
+      "description": "Affected versions of `webrtc-native` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `webrtc-native`.\n\n\n## Recommendation\n\nNo direct patch is currently available for this vulnerability. \n\nHowever, if the native components of `webrtc-native` are built from source, this ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7xvg-m3vx-2hhv",
+      "publishedAt": "2019-02-18T23:50:26Z",
+      "modifiedAt": "2023-01-09T05:02:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7xvg-m3vx-2hhv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10600"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

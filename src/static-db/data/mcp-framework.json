@@ -1,0 +1,33 @@
+{
+  "packageName": "mcp-framework",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-353c-v8x9-v7c3",
+      "packageName": "mcp-framework",
+      "title": "MCP-Framework: Unbounded memory allocation in readRequestBody allows denial of service via HTTP transport",
+      "description": "### Summary\n\nThe `readRequestBody()` function in `src/transports/http/server.ts` concatenates HTTP request body chunks into a string with no size limit, allowing a remote unauthenticated attacker to crash the server via memory exhaustion with a single large HTTP POST request.\n\n### Details\n\n**File:** `src/transports/http/server.ts`, lines 224-240\n\n```typescript\nprivate async readRequestBody(req: IncomingMessage): Promise<any> {\n    return new Promise((resolve, reject) => {\n      let body = '';\n  ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-353c-v8x9-v7c3",
+      "publishedAt": "2026-04-16T20:44:32Z",
+      "modifiedAt": "2026-04-24T20:36:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-353c-v8x9-v7c3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39313"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.2.21",
+          "fixed": "0.2.22"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

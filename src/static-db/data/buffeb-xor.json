@@ -1,0 +1,28 @@
+{
+  "packageName": "buffeb-xor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5ggx-g294-qj3q",
+      "packageName": "buffeb-xor",
+      "title": "Malicious Package in buffeb-xor",
+      "description": "Version 2.0.2 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5ggx-g294-qj3q",
+      "publishedAt": "2020-09-03T21:47:29Z",
+      "modifiedAt": "2023-01-09T05:04:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5ggx-g294-qj3q"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

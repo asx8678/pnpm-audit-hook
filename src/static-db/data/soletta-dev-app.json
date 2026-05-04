@@ -1,0 +1,28 @@
+{
+  "packageName": "soletta-dev-app",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8mgg-5x65-m4m4",
+      "packageName": "soletta-dev-app",
+      "title": "Command Injection in soletta-dev-app",
+      "description": "All versions of `soletta-dev-app` are vulnerable to Command Injection. The package does not validate user input on the `/api/service/status` API endpoint, passing contents of the `service` query parameter to an exec call. This may allow attackers to run arbitrary commands in the system.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8mgg-5x65-m4m4",
+      "publishedAt": "2020-09-11T21:08:19Z",
+      "modifiedAt": "2023-01-09T05:03:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8mgg-5x65-m4m4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

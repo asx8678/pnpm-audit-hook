@@ -1,0 +1,33 @@
+{
+  "packageName": "pngcrush-installer",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g93h-75m9-3qq4",
+      "packageName": "pngcrush-installer",
+      "title": "pngcrush-installer downloads Resources over HTTP",
+      "description": "Affected versions of `pngcrush-installer` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `pngcrush-installer`.\n\n\n## Recommendation\n\nUpdate to version 1.8.10 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g93h-75m9-3qq4",
+      "publishedAt": "2019-02-18T23:52:27Z",
+      "modifiedAt": "2023-09-09T00:00:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g93h-75m9-3qq4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10570"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.8.10",
+          "fixed": "1.8.10"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

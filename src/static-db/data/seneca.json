@@ -1,0 +1,33 @@
+{
+  "packageName": "seneca",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2xwv-3cc9-fp7c",
+      "packageName": "seneca",
+      "title": "Sensitive Data Exposure in seneca",
+      "description": "Versions of `seneca` prior to 3.9.0 are vulnerable to Sensitive Data Exposure. When a process using the package crashes all environment variables are printed. This may leak sensitive data such as access keys, especially given scenarios when log-monitoring systems store the error output.\n\n\n## Recommendation\n\nUpgrade to version 3.9.0 or later.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-2xwv-3cc9-fp7c",
+      "publishedAt": "2019-09-11T23:07:57Z",
+      "modifiedAt": "2023-01-09T05:01:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2xwv-3cc9-fp7c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-5483"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.9.0",
+          "fixed": "3.9.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

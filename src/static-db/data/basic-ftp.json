@@ -1,7 +1,84 @@
 {
   "packageName": "basic-ftp",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-rp42-5vxx-qpwr",
+      "packageName": "basic-ftp",
+      "title": "basic-ftp vulnerable to denial of service via unbounded memory consumption in Client.list()",
+      "description": "### Summary\n`basic-ftp@5.2.2` is vulnerable to denial of service through unbounded memory growth while processing directory listings from a remote FTP server. A malicious or compromised server can send an extremely large or never-ending listing response to `Client.list()`, causing the client process to consume memory until it becomes unstable or crashes.\n\n### Details\nThe issue is in the package's default directory listing flow.\n\n`Client.list()` reaches `dist/Client.js`, where the full listing re",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rp42-5vxx-qpwr",
+      "publishedAt": "2026-04-16T21:37:48Z",
+      "modifiedAt": "2026-04-24T21:02:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rp42-5vxx-qpwr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41324"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.2.2",
+          "fixed": "5.3.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-chqc-8p9q-pq6q",
+      "packageName": "basic-ftp",
+      "title": "basic-ftp has FTP Command Injection via CRLF",
+      "description": "## Summary\n\n`basic-ftp` version `5.2.0` allows FTP command injection via CRLF sequences (`\\r\\n`) in file path parameters passed to high-level path APIs such as `cd()`, `remove()`, `rename()`, `uploadFrom()`, `downloadTo()`, `list()`, and `removeDir()`. The library's `protectWhitespace()` helper only handles leading spaces and returns other paths unchanged, while `FtpContext.send()` writes the resulting command string directly to the control socket with `\\r\\n` appended. This lets attacker-control",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-chqc-8p9q-pq6q",
+      "publishedAt": "2026-04-08T20:02:25Z",
+      "modifiedAt": "2026-04-11T20:19:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-chqc-8p9q-pq6q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39983"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 5.2.0",
+          "fixed": "5.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6v7q-wjvx-w8wg",
+      "packageName": "basic-ftp",
+      "title": "basic-ftp: Incomplete CRLF Injection Protection Allows Arbitrary FTP Command Execution via Credentials and MKD Commands",
+      "description": "## Summary\n\nbasic-ftp's CRLF injection protection (added in commit 2ecc8e2 for GHSA-chqc-8p9q-pq6q) is incomplete. Two code paths bypass the `protectWhitespace()` control character check: (1) the `login()` method directly concatenates user-supplied credentials into USER/PASS FTP commands without any validation, and (2) the `_openDir()` method sends an MKD command before `cd()` invokes `protectWhitespace()`, creating a TOCTOU bypass. Both vectors allow an attacker who controls input to inject arb",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6v7q-wjvx-w8wg",
+      "publishedAt": "2026-04-10T20:18:23Z",
+      "modifiedAt": "2026-04-10T20:18:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6v7q-wjvx-w8wg"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.2.1",
+          "fixed": "5.2.2"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-5rq4-664w-9x2c",
       "packageName": "basic-ftp",

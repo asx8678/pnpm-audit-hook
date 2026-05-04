@@ -1,0 +1,33 @@
+{
+  "packageName": "@marko/runtime-tags",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x9fj-57fh-c8wq",
+      "packageName": "@marko/runtime-tags",
+      "title": "Marko: XSS via case-insensitive script/style closing tag bypass in runtime HTML escaping",
+      "description": "### Summary\n\nWhen dynamic text is interpolated into a `<script>` or `<style>` tag the Marko runtime failed to prevent tag breakout when the closing tag used non-lowercase casing.\nAn attacker able to place input inside a `<script>` or `<style>` block could break out of the tag with `</SCRIPT>`, `</Style>`, etc. and inject arbitrary HTML/JavaScript, resulting in cross-site scripting.\n\n### Details\n\nThe affected helpers used case-sensitive regular expressions to detect attempts at closing the surrou",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x9fj-57fh-c8wq",
+      "publishedAt": "2026-04-22T19:55:51Z",
+      "modifiedAt": "2026-04-22T19:55:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x9fj-57fh-c8wq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41591"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.0.164",
+          "fixed": "6.0.164"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

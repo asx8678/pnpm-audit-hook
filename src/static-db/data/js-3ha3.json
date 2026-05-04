@@ -1,0 +1,28 @@
+{
+  "packageName": "js-3ha3",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-52c9-458g-whrf",
+      "packageName": "js-3ha3",
+      "title": "Malicious Package in js-3ha3",
+      "description": "Version 0.8.0 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-52c9-458g-whrf",
+      "publishedAt": "2020-09-03T22:58:17Z",
+      "modifiedAt": "2023-01-09T05:03:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-52c9-458g-whrf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

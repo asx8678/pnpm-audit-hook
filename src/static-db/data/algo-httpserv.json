@@ -1,0 +1,29 @@
+{
+  "packageName": "algo-httpserv",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cgjv-rghq-qhgp",
+      "packageName": "algo-httpserv",
+      "title": "Path Traversal in algo-httpserv",
+      "description": "Versions of `algo-httpserv` prior to 1.1.2 are vulnerable to Path Traversal.  Due to insufficient input sanitization, attackers can access server files by using relative paths. \n\n\n## Recommendation\n\nUpgrade to version 1.1.2 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cgjv-rghq-qhgp",
+      "publishedAt": "2019-09-11T23:00:57Z",
+      "modifiedAt": "2023-01-09T05:02:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cgjv-rghq-qhgp"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.2",
+          "fixed": "1.1.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "packageName": "oneuptime",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g5ph-f57v-mwjc",
+      "packageName": "oneuptime",
+      "title": "OneUptime WhatsApp Webhook Missing Signature Verification",
+      "description": "### Summary\n\nThe WhatsApp POST webhook handler (`/notification/whatsapp/webhook`) processes incoming status update events without verifying the Meta/WhatsApp `X-Hub-Signature-256` HMAC signature, allowing any unauthenticated attacker to send forged webhook payloads that manipulate notification delivery status records, suppress alerts, and corrupt audit trails. The codebase already implements proper signature verification for Slack webhooks.\n\n### Details\n\n**Vulnerable code — `App/FeatureSet/Notif",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g5ph-f57v-mwjc",
+      "publishedAt": "2026-03-18T17:25:02Z",
+      "modifiedAt": "2026-03-20T21:33:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g5ph-f57v-mwjc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33143"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 10.0.34",
+          "fixed": "10.0.34"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gcg3-c5p2-cqgg",
+      "packageName": "oneuptime",
+      "title": "OneUptime ClickHouse vulnerable to SQL Injection via unvalidated column identifiers in sort, select, and groupBy parameters",
+      "description": "The fix for GHSA-p5g2-jm85-8g35 (ClickHouse SQL injection via aggregate query parameters) added column name validation to the `_aggregateBy` method but did not apply the same validation to three other query construction paths in `StatementGenerator`. The `toSortStatement`, `toSelectStatement`, and `toGroupByStatement` methods accept user-controlled object keys from API request bodies and interpolate them as ClickHouse `Identifier` parameters without verifying they correspond to actual model colu",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gcg3-c5p2-cqgg",
+      "publishedAt": "2026-03-18T16:34:18Z",
+      "modifiedAt": "2026-03-20T21:33:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gcg3-c5p2-cqgg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33142"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 10.0.34",
+          "fixed": "10.0.34"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4524-cj9j-g4fj",
+      "packageName": "oneuptime",
+      "title": "OneUptime: Password Reset Token Logged at INFO Level",
+      "description": "### Summary\n\nThe password reset flow logs the complete password reset URL — containing the plaintext reset token — at INFO log level, which is enabled by default in production. Anyone with access to application logs (log aggregation, Docker logs, Kubernetes pod logs) can intercept reset tokens and perform account takeover on any user.\n\n### Details\n\n**Vulnerable code — `App/FeatureSet/Identity/API/Authentication.ts` lines 370-371:**\n```typescript\nlogger.info(\"User forgot password: \" + user.email?",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4524-cj9j-g4fj",
+      "publishedAt": "2026-03-13T20:05:12Z",
+      "modifiedAt": "2026-03-16T17:07:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4524-cj9j-g4fj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32598"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 10.0.23",
+          "fixed": "10.0.23"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p5g2-jm85-8g35",
+      "packageName": "oneuptime",
+      "title": " OneUptime ClickHouse SQL Injection via Aggregate Query Parameters",
+      "description": "### Summary\n\nThe telemetry aggregation API accepts user-controlled `aggregationType`, `aggregateColumnName`, and `aggregationTimestampColumnName` parameters and interpolates them directly into ClickHouse SQL queries via the `.append()` method (documented as \"trusted SQL\"). There is no allowlist, no parameterized query binding, and no input validation. An authenticated user can inject arbitrary SQL into ClickHouse, enabling full database read (including telemetry data from all tenants), data modi",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-p5g2-jm85-8g35",
+      "publishedAt": "2026-03-13T20:00:34Z",
+      "modifiedAt": "2026-03-16T17:06:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p5g2-jm85-8g35"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32306"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 10.0.23",
+          "fixed": "10.0.23"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wvh5-6vjm-23qh",
+      "packageName": "oneuptime",
+      "title": "OneUptime: Stored XSS via Mermaid Diagram Rendering (securityLevel: \"loose\")",
+      "description": "### Summary\n\nThe Markdown viewer component renders Mermaid diagrams with `securityLevel: \"loose\"` and injects the SVG output via `innerHTML`. This configuration explicitly allows interactive event bindings in Mermaid diagrams, enabling XSS through Mermaid's `click` directive which can execute arbitrary JavaScript. Any field that renders markdown (incident descriptions, status page announcements, monitor notes) is vulnerable.\n\n### Details\n\n**Mermaid configuration — `Common/UI/Components/Markdown.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wvh5-6vjm-23qh",
+      "publishedAt": "2026-03-13T20:00:38Z",
+      "modifiedAt": "2026-03-16T17:06:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wvh5-6vjm-23qh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32308"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 10.0.23",
+          "fixed": "10.0.23"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

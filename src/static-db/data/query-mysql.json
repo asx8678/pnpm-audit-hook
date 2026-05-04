@@ -1,0 +1,32 @@
+{
+  "packageName": "query-mysql",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9mr8-6prp-gwjv",
+      "packageName": "query-mysql",
+      "title": "SQL Injection in query-mysql",
+      "description": "All versions of `query-mysql` are vulnerable to SQL injection due to lack of user input sanitization allows to run arbitrary SQL queries when fetching data from database.\n\n\n## Recommendation\n\nNo fix is currently available for this vulnerability. It is our recommendation to not install or use this module if user input is passed into this module.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9mr8-6prp-gwjv",
+      "publishedAt": "2018-09-10T15:20:30Z",
+      "modifiedAt": "2023-01-09T05:03:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9mr8-6prp-gwjv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3754"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "packageName": "jws",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-869p-cjfg-cm3x",
@@ -25,6 +25,33 @@
         {
           "range": "= 4.0.0",
           "fixed": "4.0.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gjcw-v447-2w7q",
+      "packageName": "jws",
+      "title": "Forgeable Public/Private Tokens in jws",
+      "description": "Affected versions of the `jws` package allow users to select what algorithm the server will use to verify a provided JWT. A malicious actor can use this behaviour to arbitrarily modify the contents of a JWT while still passing verification. For the common use case of the JWT as a bearer token, the end result is a complete authentication bypass with minimal effort.\n\n\n\n\n## Recommendation\n\nUpdate to version 3.0.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gjcw-v447-2w7q",
+      "publishedAt": "2020-09-01T15:23:18Z",
+      "modifiedAt": "2023-01-09T05:03:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gjcw-v447-2w7q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-1000223"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.0",
+          "fixed": "3.0.0"
         }
       ],
       "source": "github"

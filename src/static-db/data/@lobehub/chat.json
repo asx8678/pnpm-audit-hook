@@ -1,16 +1,16 @@
 {
   "packageName": "@lobehub/chat",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4gpc-rhpj-9443",
       "packageName": "@lobehub/chat",
       "title": "Lobe Chat affected by Cross-Site Scripting(XSS) that can escalate to Remote Code Execution(RCE)",
-      "description": "### Summary\nA stored Cross-Site Scripting (XSS) vulnerability in the Mermaid artifact renderer allows attackers to execute arbitrary JavaScript within the application context. This XSS can be escalated to Remote Code Execution (RCE) by leveraging the exposed `electronAPI` IPC bridge, allowing attackers to run arbitrary system commands on the victim's machine.\n\n### Details\nThe vulnerability exists in the `Renderer` component responsible for rendering Mermaid diagrams within chat artifacts.\n```Typ",
-      "severity": "medium",
+      "description": "### Summary\nA stored Cross-Site Scripting (XSS) vulnerability in the Mermaid artifact renderer allows attackers to execute arbitrary JavaScript within the application context. This XSS can be escalated to Remote Code Execution (RCE).\n\n### Details\nThe vulnerability exists in the `Renderer` component responsible for rendering Mermaid diagrams within chat artifacts.\n```TypeScript\ncase 'application/lobe.artifacts.mermaid': {\n  return <Mermaid variant={'borderless'}>{content}</Mermaid>;\n}\n```\n\nThe `c",
+      "severity": "critical",
       "url": "https://github.com/advisories/GHSA-4gpc-rhpj-9443",
       "publishedAt": "2026-01-20T17:54:49Z",
-      "modifiedAt": "2026-01-20T17:54:50Z",
+      "modifiedAt": "2026-02-05T13:40:49Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -24,6 +24,33 @@
       "affectedVersions": [
         {
           "range": "<= 1.143.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wrrr-8jcv-wjf5",
+      "packageName": "@lobehub/chat",
+      "title": "LobeHub Vulnerable to Improper Authorization in Presigned Upload",
+      "description": "### Summary\nThe file upload feature in `Knowledge Base > File Upload` does not validate the integrity of the upload request, allowing users to intercept and modify the request parameters. As a result, it is possible to create arbitrary files in abnormal or unintended paths. In addition, since `lobechat.com` relies on the size parameter from the request to calculate file usage, an attacker can manipulate this value to misrepresent the actual file size, such as uploading a `1 GB` file while report",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wrrr-8jcv-wjf5",
+      "publishedAt": "2026-02-01T17:39:40Z",
+      "modifiedAt": "2026-02-01T17:39:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wrrr-8jcv-wjf5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23835"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.143.3",
+          "fixed": "1.143.3"
         }
       ],
       "source": "github"
@@ -266,33 +293,6 @@
         {
           "range": "<= 0.122.3",
           "fixed": "0.122.4"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-wrrr-8jcv-wjf5",
-      "packageName": "@lobehub/chat",
-      "title": "LobeHub Vulnerable to Improper Authorization in Presigned Upload",
-      "description": "### Summary\nThe file upload feature in `Knowledge Base > File Upload` does not validate the integrity of the upload request, allowing users to intercept and modify the request parameters. As a result, it is possible to create arbitrary files in abnormal or unintended paths. In addition, since `lobechat.com` relies on the size parameter from the request to calculate file usage, an attacker can manipulate this value to misrepresent the actual file size, such as uploading a `1 GB` file while report",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-wrrr-8jcv-wjf5",
-      "publishedAt": "2026-02-01T17:39:40Z",
-      "modifiedAt": "2026-02-01T17:39:42Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-wrrr-8jcv-wjf5"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-23835"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 1.143.3",
-          "fixed": "1.143.3"
         }
       ],
       "source": "github"

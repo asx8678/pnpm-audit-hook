@@ -1,0 +1,33 @@
+{
+  "packageName": "express-restify-mongoose",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cgjx-mwpx-47jv",
+      "packageName": "express-restify-mongoose",
+      "title": "Private Data Disclosure in express-restify-mongoose",
+      "description": "Affected versions of `express-restify-mongoose` are susceptible to an information leakage vulnerability which may allow an attacker to access fields on a model even if those fields are marked as private.\n\n\n## Proof of Concept\n\nIf you have a user model that you want to protect, such as the following User model:\n```\nconst User = mongoose.model('User', new mongoose.Schema({\n    name: String,\n    password: String,\n}));\n```\n\nYou would normally do something such as:\n```\nrestify.serve(router, User, {\n ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cgjx-mwpx-47jv",
+      "publishedAt": "2018-10-23T17:14:57Z",
+      "modifiedAt": "2023-04-03T21:45:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cgjx-mwpx-47jv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10533"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, <= 3.0.1",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

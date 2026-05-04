@@ -1,0 +1,33 @@
+{
+  "packageName": "eslint-utils",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3gx7-xhv7-5mx3",
+      "packageName": "eslint-utils",
+      "title": "Arbitrary Code Execution in eslint-utils",
+      "description": "Versions of `eslint-utils` >=1.2.0 or <1.4.1 are vulnerable to Arbitrary Code Execution. The `getStaticValue` does not properly sanitize user input allowing attackers to supply malicious input that executes arbitrary code during the linting process. The `getStringIfConstant` and `getPropertyName` functions are not affected.\n\n\n## Recommendation\n\nUpgrade to version 1.4.1 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3gx7-xhv7-5mx3",
+      "publishedAt": "2019-08-26T16:59:56Z",
+      "modifiedAt": "2025-02-12T05:09:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3gx7-xhv7-5mx3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15657"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.2.0, < 1.4.1",
+          "fixed": "1.4.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

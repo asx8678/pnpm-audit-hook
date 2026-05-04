@@ -1,0 +1,32 @@
+{
+  "packageName": "react-native-baidu-voice-synthesizer",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8hj4-w233-g35q",
+      "packageName": "react-native-baidu-voice-synthesizer",
+      "title": "Downloads Resources over HTTP in react-native-baidu-voice-synthesizer",
+      "description": "Affected versions of `react-native-baidu-voice-synthesizer` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `react-native-baidu-voice-synthesizer`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid u",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8hj4-w233-g35q",
+      "publishedAt": "2018-07-31T22:47:16Z",
+      "modifiedAt": "2023-01-09T05:03:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8hj4-w233-g35q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10697"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

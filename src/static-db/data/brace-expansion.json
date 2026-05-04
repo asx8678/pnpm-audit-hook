@@ -1,7 +1,34 @@
 {
   "packageName": "brace-expansion",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-f886-m6hf-6m8v",
+      "packageName": "brace-expansion",
+      "title": "brace-expansion: Zero-step sequence causes process hang and memory exhaustion",
+      "description": "### Impact\n\nA brace pattern with a zero step value (e.g., `{1..2..0}`) causes the sequence generation loop to run indefinitely, making the process hang for seconds and allocate heaps of memory.\n\nThe loop in question:\n\nhttps://github.com/juliangruber/brace-expansion/blob/daa71bcb4a30a2df9bcb7f7b8daaf2ab30e5794a/src/index.ts#L184\n\n`test()` is one of\n\nhttps://github.com/juliangruber/brace-expansion/blob/daa71bcb4a30a2df9bcb7f7b8daaf2ab30e5794a/src/index.ts#L107-L113\n\nThe increment is computed as `M",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f886-m6hf-6m8v",
+      "publishedAt": "2026-03-26T18:29:42Z",
+      "modifiedAt": "2026-03-27T21:38:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f886-m6hf-6m8v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33750"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.13",
+          "fixed": "1.1.13"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-v6h2-p8h4-qcjw",
       "packageName": "brace-expansion",
@@ -25,6 +52,33 @@
         {
           "range": "= 4.0.0",
           "fixed": "4.0.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-832h-xg76-4gv6",
+      "packageName": "brace-expansion",
+      "title": "ReDoS in brace-expansion",
+      "description": "Affected versions of `brace-expansion` are vulnerable to a regular expression denial of service condition.\n\n## Proof of Concept\n\n```\nvar expand = require('brace-expansion');\nexpand('{,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,\\n}');\n```\n\n\n## Recommendation\n\nUpdate to version 1.1.7 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-832h-xg76-4gv6",
+      "publishedAt": "2018-01-29T15:50:46Z",
+      "modifiedAt": "2023-04-11T00:23:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-832h-xg76-4gv6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-18077"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.7",
+          "fixed": "1.1.7"
         }
       ],
       "source": "github"

@@ -1,0 +1,55 @@
+{
+  "packageName": "ag-grid",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7p6w-x2gr-rrf8",
+      "packageName": "ag-grid",
+      "title": "ag-grid Cross-Site Scripting vulnerability",
+      "description": "Versions of `ag-grid` prior to 14.0.0 are vulnerable to Cross-Site Scripting (XSS). Grid contents are not properly sanitized and may allow attackers to execute arbitrary JavaScript if user input is rendered in the grid. \n\n\n## Recommendation\n\nUpgrade to version 14.0.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7p6w-x2gr-rrf8",
+      "publishedAt": "2020-09-02T21:28:05Z",
+      "modifiedAt": "2025-07-10T16:49:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7p6w-x2gr-rrf8"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 14.0.0",
+          "fixed": "14.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wfw3-rgfr-6g67",
+      "packageName": "ag-grid",
+      "title": "XSS via Angular Expression in ag-grid",
+      "description": "Affected versions of `ag-grid` are vulnerable to Cross-site Scripting (XSS) via Angular Expressions, if used in combination with AngularJS.\n\n\n## Recommendation\n\nAvoid using `ag-grid` in combination with AngularJS until a fix is available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wfw3-rgfr-6g67",
+      "publishedAt": "2020-09-01T16:40:42Z",
+      "modifiedAt": "2023-03-24T21:26:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wfw3-rgfr-6g67"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16009"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 18.1.3-beta.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

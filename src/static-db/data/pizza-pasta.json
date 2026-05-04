@@ -1,0 +1,28 @@
+{
+  "packageName": "pizza-pasta",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wxrm-2h86-v95f",
+      "packageName": "pizza-pasta",
+      "title": "Malicious Package in pizza-pasta",
+      "description": "Version 1.0.3 of `pizza-pasta` contains malicious code as a install scripts. The package created folders in the system's Desktop and downloaded an image from `imgur.com`. The package also printed the users SSH keys to the console.\n\n\n## Recommendation\n\nRemove the package from your environment. There are no evidences of further compromise.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wxrm-2h86-v95f",
+      "publishedAt": "2020-09-03T21:04:20Z",
+      "modifiedAt": "2023-01-09T05:04:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wxrm-2h86-v95f"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

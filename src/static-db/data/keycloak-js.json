@@ -1,0 +1,33 @@
+{
+  "packageName": "keycloak-js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mw35-24gh-f82w",
+      "packageName": "keycloak-js",
+      "title": "keycloak-connect and keycloak-js improperly handle invalid tokens",
+      "description": "It was found that the Keycloak Node.js adapter 2.5 - 3.0 did not handle invalid tokens correctly.  An attacker could use this flaw to bypass authentication and gain access to restricted information, or to possibly conduct further attacks.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mw35-24gh-f82w",
+      "publishedAt": "2017-11-15T20:41:51Z",
+      "modifiedAt": "2023-09-08T19:56:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mw35-24gh-f82w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-7474"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.5.0, < 3.1.0",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

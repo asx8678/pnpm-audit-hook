@@ -1,0 +1,55 @@
+{
+  "packageName": "tomato",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wqhw-frpx-5mmp",
+      "packageName": "tomato",
+      "title": "Command Injection in tomato",
+      "description": "All versions of `tomato` are vulnerable to Command Injection. The /api/exec endpoint does not validate user input allowing attackers to run arbitrary commands in the system.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wqhw-frpx-5mmp",
+      "publishedAt": "2020-09-02T16:01:33Z",
+      "modifiedAt": "2023-01-09T05:04:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wqhw-frpx-5mmp"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9vxc-g2jx-qj3p",
+      "packageName": "tomato",
+      "title": "API Admin Auth Weakness in tomato",
+      "description": "Versions of `tomato` prior to 0.0.6 are affected by a somewhat complex authentication bypass vulnerability in the admin service when only a single access key is configured on the server. The vulnerability allows an attacker to guess the password for the admin service, no matter how complex that password is, in less than 200 requests.\n\n\n## Details\nThe tomato API has an admin service that is enabled by setting up an `access_key` in the config options. This `access_key` is intended to protect the A",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9vxc-g2jx-qj3p",
+      "publishedAt": "2020-08-31T22:59:07Z",
+      "modifiedAt": "2023-01-09T05:04:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9vxc-g2jx-qj3p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2013-7379"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.5",
+          "fixed": "0.0.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

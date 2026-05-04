@@ -1,0 +1,33 @@
+{
+  "packageName": "pomelo",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4x6v-rwh4-55jw",
+      "packageName": "pomelo",
+      "title": "Pomelo allows external control of critical state data",
+      "description": "Pomelo v2.2.5 allows external control of critical state data. A malicious user input can corrupt arbitrary methods and attributes in `template/game-server/app/servers/connector/handler/entryHandler.js` because certain internal attributes can be overwritten via a conflicting name. Hence, a malicious attacker can manipulate internal attributes by adding additional attributes to user input.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4x6v-rwh4-55jw",
+      "publishedAt": "2019-12-02T18:16:34Z",
+      "modifiedAt": "2023-09-08T19:57:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4x6v-rwh4-55jw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-18954"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.7",
+          "fixed": "2.2.7"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

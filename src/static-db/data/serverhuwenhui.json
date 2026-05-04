@@ -1,0 +1,32 @@
+{
+  "packageName": "serverhuwenhui",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rx32-c25r-79mx",
+      "packageName": "serverhuwenhui",
+      "title": "Directory Traversal in serverhuwenhui",
+      "description": "Affected versions of `serverhuwenhui` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rx32-c25r-79mx",
+      "publishedAt": "2020-09-01T16:54:41Z",
+      "modifiedAt": "2023-09-13T23:05:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rx32-c25r-79mx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16102"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

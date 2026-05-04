@@ -1,7 +1,1897 @@
 {
   "packageName": "parse-server",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-g4v2-qx3q-4p64",
+      "packageName": "parse-server",
+      "title": "Parse Server's Endpoint `/sessions/me` bypasses `_Session` `protectedFields`",
+      "description": "### Impact\n\nThe `GET /sessions/me` endpoint returns `_Session` fields that the server operator explicitly configured as protected via the `protectedFields` server option. Any authenticated user can retrieve their own session's protected fields with a single request. The equivalent `GET /sessions` and `GET /sessions/:objectId` endpoints correctly strip protected fields.\n\n### Patches\n\nThe `GET /sessions/me` handler now re-fetches the session with the caller's auth context after validating the sess",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g4v2-qx3q-4p64",
+      "publishedAt": "2026-04-08T00:14:50Z",
+      "modifiedAt": "2026-04-15T21:17:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g4v2-qx3q-4p64"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39381"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0, < 8.6.75",
+          "fixed": "8.6.75"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mmpq-5hcv-hf2v",
+      "packageName": "parse-server",
+      "title": "Parse Server has a login timing side-channel reveals user existence",
+      "description": "### Impact\n\nThe login endpoint response time differs measurably depending on whether the submitted username or email exists in the database. When a user is not found, the server responds immediately. When a user exists but the password is wrong, a bcrypt comparison runs first, adding significant latency. This timing difference allows an unauthenticated attacker to enumerate valid usernames.\n\n### Patches\n\nA dummy bcrypt comparison is now performed when no user is found, normalizing response timin",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mmpq-5hcv-hf2v",
+      "publishedAt": "2026-04-08T00:07:10Z",
+      "modifiedAt": "2026-04-15T21:17:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mmpq-5hcv-hf2v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39321"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.74",
+          "fixed": "8.6.74"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vr5f-2r24-w5hc",
+      "packageName": "parse-server",
+      "title": "Parse Server: File upload Content-Type override via extension mismatch",
+      "description": "### Impact\n\nA file can be uploaded with a filename extension that passes the file extension allowlist (e.g., `.txt`) but with a `Content-Type` header that differs from the extension (e.g., `text/html`). The `Content-Type` is passed to the storage adapter without consistency validation. Storage adapters that store and serve the provided Content-Type (such as S3 or GCS) serve the file with the mismatched Content-Type. The default GridFS adapter is not affected because it derives Content-Type from ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-vr5f-2r24-w5hc",
+      "publishedAt": "2026-04-04T04:22:11Z",
+      "modifiedAt": "2026-04-06T23:43:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vr5f-2r24-w5hc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35200"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 8.6.72",
+          "fixed": "8.6.73"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wp76-gg32-8258",
+      "packageName": "parse-server",
+      "title": "Parse Server exposes auth data via verify password endpoint",
+      "description": "### Impact\n\nThe verify password endpoint returns unsanitized authentication data, including MFA TOTP secrets, recovery codes, and OAuth access tokens. An attacker who knows a user's password can extract the MFA secret to generate valid MFA codes, defeating multi-factor authentication protection.\n\n### Patches\n\nThe verify password endpoint now sanitizes authentication data through auth adapter hooks before returning the response, consistent with login and user retrieval endpoints.\n\n### Workarounds",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wp76-gg32-8258",
+      "publishedAt": "2026-03-29T15:14:03Z",
+      "modifiedAt": "2026-04-03T16:14:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wp76-gg32-8258"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34215"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.63",
+          "fixed": "8.6.63"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hpm8-9qx6-jvwv",
+      "packageName": "parse-server",
+      "title": "Parser Server's streaming file download bypasses afterFind file trigger authorization",
+      "description": "### Impact\n\nFile downloads via HTTP Range requests bypass the `afterFind(Parse.File)` trigger and its validators on storage adapters that support streaming (e.g. the default GridFS adapter). This allows access to files that should be protected by `afterFind` trigger authorization logic or built-in validators such as `requireUser`.\n\n### Patches\n\nThe streaming file download path now executes the `afterFind(Parse.File)` trigger before sending any data. Authentication is resolved from the session to",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hpm8-9qx6-jvwv",
+      "publishedAt": "2026-04-01T23:09:14Z",
+      "modifiedAt": "2026-04-01T23:09:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hpm8-9qx6-jvwv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34784"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.71",
+          "fixed": "8.6.71"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mmg8-87c5-jrc2",
+      "packageName": "parse-server",
+      "title": "Parse Server has a LiveQuery protected-field guard bypass via array-like logical operator value",
+      "description": "### Impact\n\nAn authenticated user with `find` class-level permission can bypass the `protectedFields` class-level permission setting on LiveQuery subscriptions. By sending a subscription with a `$or`, `$and`, or `$nor` operator value as a plain object with numeric keys and a `length` property (an \"array-like\" object) instead of an array, the protected-field guard is bypassed. The subscription event firing acts as a binary oracle, allowing the attacker to infer whether a protected field matches a",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mmg8-87c5-jrc2",
+      "publishedAt": "2026-04-01T00:07:39Z",
+      "modifiedAt": "2026-04-01T00:07:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mmg8-87c5-jrc2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34595"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.70",
+          "fixed": "8.6.70"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f6j3-w9v3-cq22",
+      "packageName": "parse-server",
+      "title": "Parse Server has a session field immutability bypass via falsy-value guard",
+      "description": "### Impact\n\nAn authenticated user can bypass the immutability guard on session fields (`expiresAt`, `createdWith`) by sending a null value in a PUT request to the session update endpoint. This allows nullifying the session expiry, making the session valid indefinitely and bypassing configured session length policies.\n\n### Patches\n\nThe truthiness-based guard checks were replaced with key-presence checks that reject any value for protected session fields, including null.\n\n### Workarounds\n\nThere is",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f6j3-w9v3-cq22",
+      "publishedAt": "2026-04-01T00:03:19Z",
+      "modifiedAt": "2026-04-01T00:03:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f6j3-w9v3-cq22"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34574"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.69",
+          "fixed": "8.6.69"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mfj6-6p54-m98c",
+      "packageName": "parse-server",
+      "title": "parse-server has GraphQL complexity validator exponential fragment traversal DoS",
+      "description": "### Impact\n\nThe GraphQL query complexity validator can be exploited to cause a denial-of-service by sending a crafted query with binary fan-out fragment spreads. A single unauthenticated request can block the Node.js event loop for seconds, denying service to all concurrent users. This only affects deployments that have enabled the `requestComplexity.graphQLDepth` or `requestComplexity.graphQLFields` configuration options.\n\n### Patches\n\nThe fix replaces the per-branch fragment traversal with mem",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mfj6-6p54-m98c",
+      "publishedAt": "2026-03-31T23:49:18Z",
+      "modifiedAt": "2026-03-31T23:49:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mfj6-6p54-m98c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34573"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.68",
+          "fixed": "8.6.68"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vpj2-qq7w-5qq6",
+      "packageName": "parse-server",
+      "title": "parse-server has cloud function validator bypass via prototype chain traversal",
+      "description": "### Impact\n\nAn attacker can bypass Cloud Function validator access controls by appending `.prototype.constructor` to the function name in the URL. When a Cloud Function handler is declared using the `function` keyword and its validator is a plain object or arrow function, the trigger store traversal resolves the handler through its own prototype chain while the validator store fails to mirror this traversal, causing all access control enforcement to be skipped.\n\nThis allows unauthenticated calle",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vpj2-qq7w-5qq6",
+      "publishedAt": "2026-03-31T23:48:38Z",
+      "modifiedAt": "2026-03-31T23:48:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vpj2-qq7w-5qq6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34532"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.67",
+          "fixed": "8.6.67"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q3p6-g7c4-829c",
+      "packageName": "parse-server",
+      "title": "GraphQL API endpoint ignores CORS origin restriction",
+      "description": "### Impact\n\nThe GraphQL API endpoint does not respect the `allowOrigin` server option and unconditionally allows cross-origin requests from any website. This bypasses origin restrictions that operators configure to control which websites can interact with the Parse Server API. The REST API correctly enforces the configured `allowOrigin` restriction.\n\n### Patches\n\nThe GraphQL API endpoint now uses the same CORS middleware as the REST API, ensuring the `allowOrigin` and `allowHeaders` server optio",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q3p6-g7c4-829c",
+      "publishedAt": "2026-03-30T18:05:47Z",
+      "modifiedAt": "2026-03-31T18:52:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q3p6-g7c4-829c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34373"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.5.0, < 8.6.66",
+          "fixed": "8.6.66"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m983-v2ff-wq65",
+      "packageName": "parse-server",
+      "title": "LiveQuery protected field leak via shared mutable state across concurrent subscribers",
+      "description": "### Impact\n\nWhen multiple clients subscribe to the same class via LiveQuery, the event handlers process each subscriber concurrently using shared mutable objects. The sensitive data filter modifies these shared objects in-place, so when one subscriber's filter removes a protected field, subsequent subscribers may receive the already-filtered object. This can cause protected fields and authentication data to leak to clients that should not see them, or cause clients that should see the data to re",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m983-v2ff-wq65",
+      "publishedAt": "2026-03-30T17:40:59Z",
+      "modifiedAt": "2026-03-31T18:51:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m983-v2ff-wq65"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34363"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.65",
+          "fixed": "8.6.65"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w73w-g5xw-rwhf",
+      "packageName": "parse-server",
+      "title": "Parse Server has an MFA single-use token bypass via concurrent authData login requests",
+      "description": "### Impact\n\nAn attacker who possesses a valid authentication provider token and a single MFA recovery code or SMS one-time password can create multiple authenticated sessions by sending concurrent login requests via the authData login endpoint. This defeats the single-use guarantee of MFA recovery codes and SMS one-time passwords, allowing session persistence even after the legitimate user revokes detected sessions.\n\n### Patches\n\nThe fix adds optimistic locking to the authData login path, ensuri",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-w73w-g5xw-rwhf",
+      "publishedAt": "2026-03-29T15:23:03Z",
+      "modifiedAt": "2026-03-31T18:51:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w73w-g5xw-rwhf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34224"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.64",
+          "fixed": "8.6.64"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jc39-686j-wp6q",
+      "packageName": "parse-server",
+      "title": "Parse Server's Session Update endpoint allows overwriting server-generated session fields",
+      "description": "### Impact\n\nAn authenticated user can overwrite server-generated session fields such as `expiresAt` and `createdWith` when updating their own session via the REST API. This allows bypassing the server's configured session lifetime policy, making a session effectively permanent.\n\n### Patches\n\nThe fix blocks authenticated users from setting `expiresAt` and `createdWith` fields when updating a session. Master key and maintenance key operations are not affected.\n\n### Workarounds\n\nThere is no known w",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jc39-686j-wp6q",
+      "publishedAt": "2026-03-24T16:34:11Z",
+      "modifiedAt": "2026-03-30T13:51:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jc39-686j-wp6q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33527"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.57",
+          "fixed": "8.6.57"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6qh5-m6g3-xhq6",
+      "packageName": "parse-server",
+      "title": "Parse Server LiveQuery subscription query depth bypass",
+      "description": "### Impact\n\nParse Server's LiveQuery component does not enforce the `requestComplexity.queryDepth` configuration setting when processing WebSocket subscription requests. An attacker can send a subscription with deeply nested logical operators, causing excessive recursion and CPU consumption that degrades or disrupts service availability.\n\nDeployments are affected when the LiveQuery WebSocket endpoint is reachable by untrusted clients.\n\n### Patches\n\nThe fix adds query condition depth validation t",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6qh5-m6g3-xhq6",
+      "publishedAt": "2026-03-20T21:48:17Z",
+      "modifiedAt": "2026-03-30T13:51:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6qh5-m6g3-xhq6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33508"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.56",
+          "fixed": "8.6.56"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9fjp-q3c4-6w3j",
+      "packageName": "parse-server",
+      "title": "Parse Server has a query condition depth bypass via pre-validation transform pipeline",
+      "description": "### Impact\n\nAn attacker can send an unauthenticated HTTP request with a deeply nested query containing logical operators to permanently hang the Parse Server process. The server becomes completely unresponsive and must be manually restarted. This is a bypass of the fix for CVE-2026-32944.\n\n### Patches\n\nThe query condition nesting depth is now validated before the query enters the transformation pipeline, preventing deeply nested structures from being recursively processed before the existing dep",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9fjp-q3c4-6w3j",
+      "publishedAt": "2026-03-20T20:56:22Z",
+      "modifiedAt": "2026-03-30T13:51:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9fjp-q3c4-6w3j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33498"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.55",
+          "fixed": "8.6.55"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qpc3-fg4j-8hgm",
+      "packageName": "parse-server",
+      "title": "Parse Server has a protected field change detection oracle via LiveQuery watch parameter",
+      "description": "### Impact\n\nAn attacker can subscribe to LiveQuery with a `watch` parameter targeting a protected field. Although the protected field value is properly stripped from event payloads, the presence or absence of update events reveals whether the protected field changed, creating a binary oracle. For boolean protected fields, the timing of change events is equivalent to knowing the field value.\n\n### Patches\n\nThe `watch` parameter is now validated against protected fields at subscription time, mirror",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qpc3-fg4j-8hgm",
+      "publishedAt": "2026-03-20T20:45:40Z",
+      "modifiedAt": "2026-03-30T13:51:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qpc3-fg4j-8hgm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33429"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.54",
+          "fixed": "8.6.54"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fph2-r4qg-9576",
+      "packageName": "parse-server",
+      "title": "Parse Server's LiveQuery bypasses CLP pointer permission enforcement",
+      "description": "### Impact\n\nParse Server's LiveQuery WebSocket interface does not enforce Class-Level Permission (CLP) pointer permissions (`readUserFields` and `pointerFields`). Any authenticated user can subscribe to LiveQuery events and receive real-time updates for all objects in classes protected by pointer permissions, regardless of whether the pointer fields on those objects point to the subscribing user. This bypasses the intended read access control, allowing unauthorized access to potentially sensitiv",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fph2-r4qg-9576",
+      "publishedAt": "2026-03-20T20:44:36Z",
+      "modifiedAt": "2026-03-30T13:51:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fph2-r4qg-9576"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33421"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.53",
+          "fixed": "8.6.53"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-pfj7-wv7c-22pr",
+      "packageName": "parse-server",
+      "title": "Parse Server has an auth provider validation bypass on login via partial authData",
+      "description": "### Impact\n\nAn authentication bypass vulnerability allows an attacker to log in as any user who has linked a third-party authentication provider, without knowing the user's credentials. The attacker only needs to know the user's provider ID to gain full access to their account, including a valid session token.\n\nThis affects Parse Server deployments where the server option `allowExpiredAuthDataToken` is set to `true`. The default value is `false`.\n\n### Patches\n\nAuth providers are now always valid",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pfj7-wv7c-22pr",
+      "publishedAt": "2026-03-19T21:32:10Z",
+      "modifiedAt": "2026-03-30T13:51:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pfj7-wv7c-22pr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33409"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.52",
+          "fixed": "8.6.52"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-h29g-q5c2-9h4f",
+      "packageName": "parse-server",
+      "title": "Parse Server email verification resend page leaks user existence",
+      "description": "### Impact\n\nThe Pages route and legacy PublicAPI route for resending email verification links return distinguishable responses depending on whether the provided username exists and has an unverified email. This allows an unauthenticated attacker to enumerate valid usernames by observing different redirect targets. The existing `emailVerifySuccessOnInvalidEmail` configuration option, which is enabled by default and protects the API route against this, did not apply to these routes.\n\n### Patches\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h29g-q5c2-9h4f",
+      "publishedAt": "2026-03-19T18:21:18Z",
+      "modifiedAt": "2026-03-30T13:51:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h29g-q5c2-9h4f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33323"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.51",
+          "fixed": "8.6.51"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-37mj-c2wf-cx96",
+      "packageName": "parse-server",
+      "title": "Parse Server exposes auth data via /users/me endpoint",
+      "description": "### Impact\n\nAn authenticated user calling `GET /users/me` receives unsanitized auth data, including sensitive credentials such as MFA TOTP secrets and recovery codes. The endpoint internally uses master-level authentication for the session query, and the master context leaks through to the user data, bypassing auth adapter sanitization. An attacker who obtains a user's session token can extract MFA secrets to generate valid TOTP codes indefinitely.\n\n### Patches\n\nThe `/users/me` endpoint now quer",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-37mj-c2wf-cx96",
+      "publishedAt": "2026-03-24T20:17:02Z",
+      "modifiedAt": "2026-03-27T21:55:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-37mj-c2wf-cx96"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33627"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.61",
+          "fixed": "8.6.61"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2299-ghjr-6vjp",
+      "packageName": "parse-server",
+      "title": "Parse Server: MFA recovery code single-use bypass via concurrent requests",
+      "description": "### Impact\n\nAn attacker who obtains a user's password and a single MFA recovery code can reuse that recovery code an unlimited number of times by sending concurrent login requests. This defeats the single-use design of recovery codes. The attack requires the user's password, a valid recovery code, and the ability to send concurrent requests within milliseconds.\n\n### Patches\n\nThe login handler now uses optimistic locking when updating auth data that contains consumed single-use tokens. If a concu",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-2299-ghjr-6vjp",
+      "publishedAt": "2026-03-24T19:48:24Z",
+      "modifiedAt": "2026-03-27T21:54:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2299-ghjr-6vjp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33624"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.60",
+          "fixed": "8.6.60"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p2w6-rmh7-w8q3",
+      "packageName": "parse-server",
+      "title": "Parse Server has SQL Injection through aggregate and distinct field names in PostgreSQL adapter",
+      "description": "### Impact\n\nAn attacker with master key access can execute arbitrary SQL statements on the PostgreSQL database by injecting SQL metacharacters into field name parameters of the aggregate `$group` pipeline stage or the `distinct` operation. This allows privilege escalation from Parse Server application-level administrator to PostgreSQL database-level access.\n\nOnly Parse Server deployments using PostgreSQL are affected. MongoDB deployments are not affected.\n\n### Patches\n\nField names in the aggrega",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p2w6-rmh7-w8q3",
+      "publishedAt": "2026-03-24T19:12:06Z",
+      "modifiedAt": "2026-03-27T21:54:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p2w6-rmh7-w8q3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33539"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.59",
+          "fixed": "8.6.59"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-g4cf-xj29-wqqr",
+      "packageName": "parse-server",
+      "title": "Parse Server: Denial of Service via unindexed database query for unconfigured auth providers",
+      "description": "### Impact\n\nAn unauthenticated attacker can cause Denial of Service by sending authentication requests with arbitrary, unconfigured provider names. The server executes a database query for each unconfigured provider before rejecting the request, and since no database index exists for unconfigured providers, each request triggers a full collection scan on the user database. This can be parallelized to saturate database resources.\n\n### Patches\n\nThe fix validates that an authentication provider is ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g4cf-xj29-wqqr",
+      "publishedAt": "2026-03-24T19:11:40Z",
+      "modifiedAt": "2026-03-27T21:53:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g4cf-xj29-wqqr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33538"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.58",
+          "fixed": "8.6.58"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6927-3vr9-fxf2",
+      "packageName": "parse-server",
+      "title": "ZDI-CAN-19105: Parse Server literalizeRegexPart SQL Injection",
+      "description": "### Impact\n\nThis vulnerability allows SQL injection when Parse Server is configured to use the PostgreSQL database.\n\n### Patches\n\nThe algorithm to detect SQL injection has been improved.\n\n### Workarounds\n\nNone.\n\n### References\n\n- https://github.com/parse-community/parse-server/security/advisories/GHSA-6927-3vr9-fxf2\n- https://github.com/parse-community/parse-server/releases/tag/6.5.0 (fixed in Parse Server 6)\n- https://github.com/parse-community/parse-server/releases/tag/7.0.0-alpha.20 (fixed in",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6927-3vr9-fxf2",
+      "publishedAt": "2024-03-01T20:08:23Z",
+      "modifiedAt": "2026-03-21T05:27:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6927-3vr9-fxf2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-27298"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0-alpha.1, < 7.0.0-alpha.20",
+          "fixed": "7.0.0-alpha.20"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5hmj-jcgp-6hff",
+      "packageName": "parse-server",
+      "title": "Parse Server leaks protected fields via LiveQuery afterEvent trigger",
+      "description": "### Impact\n\nWhen a `Parse.Cloud.afterLiveQueryEvent` trigger is registered for a class, the LiveQuery server leaks protected fields and `authData` to all subscribers of that class. Fields configured as protected via Class-Level Permissions (`protectedFields`) are included in LiveQuery event payloads for all event types (create, update, delete, enter, leave).\n\nAny user with sufficient CLP permissions to subscribe to the affected class can receive protected field data of other users, including sen",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5hmj-jcgp-6hff",
+      "publishedAt": "2026-03-18T19:49:27Z",
+      "modifiedAt": "2026-03-19T21:16:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5hmj-jcgp-6hff"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33163"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.50",
+          "fixed": "8.6.50"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wjqw-r9x4-j59v",
+      "packageName": "parse-server",
+      "title": "Parse Server affected by empty authData bypassing credential requirement on signup",
+      "description": "### Impact\n\nA user can sign up without providing credentials by sending an empty `authData` object, bypassing the username and password requirement. This allows the creation of authenticated sessions without proper credentials, even when anonymous users are disabled.\n\n### Patches\n\nThe fix ensures that empty or non-actionable `authData` is treated the same as absent `authData` for the purpose of credential validation on new user creation. Username and password are now required when no valid auth ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wjqw-r9x4-j59v",
+      "publishedAt": "2026-03-17T19:50:44Z",
+      "modifiedAt": "2026-03-19T21:13:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wjqw-r9x4-j59v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33042"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.49",
+          "fixed": "8.6.49"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9ccr-fpp6-78qf",
+      "packageName": "parse-server",
+      "title": "Parse Server vulnerable to schema poisoning via prototype pollution in deep copy",
+      "description": "### Impact\n\nAn attacker can bypass the default request keyword denylist protection and the class-level permission for adding fields by sending a crafted request that exploits prototype pollution in the deep copy mechanism. This allows injecting fields into class schemas that have field addition locked down, and can cause permanent schema type conflicts that cannot be resolved even with the master key.\n\n### Patches\n\nThe vulnerable third-party deep copy library has been replaced with a built-in de",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9ccr-fpp6-78qf",
+      "publishedAt": "2026-03-17T18:37:08Z",
+      "modifiedAt": "2026-03-19T21:13:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9ccr-fpp6-78qf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32878"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.44",
+          "fixed": "8.6.44"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5v7g-9h8f-8pgg",
+      "packageName": "parse-server",
+      "title": "Parse Server session creation endpoint allows overwriting server-generated session fields",
+      "description": "### Impact\n\nAn authenticated user can overwrite server-generated session fields (`sessionToken`, `expiresAt`, `createdWith`) when creating a session object via `POST /classes/_Session`. This allows bypassing the server's session expiration policy by setting an arbitrary far-future expiration date. It also allows setting a predictable session token value.\n\n### Patches\n\nThe session creation endpoint now filters out server-generated fields from user-supplied data, preventing them from being overwri",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5v7g-9h8f-8pgg",
+      "publishedAt": "2026-03-17T18:37:23Z",
+      "modifiedAt": "2026-03-19T21:13:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5v7g-9h8f-8pgg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32742"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.42",
+          "fixed": "8.6.42"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-827p-g5x5-h86c",
+      "packageName": "parse-server",
+      "title": "Parse Server LiveQuery subscription with invalid regular expression crashes server",
+      "description": "### Impact\n\nA remote attacker can crash the Parse Server by subscribing to a LiveQuery with an invalid regular expression pattern. The server process terminates when the invalid pattern reaches the regex engine during subscription matching, causing denial of service for all connected clients.\n\n### Patches\n\nThe fix validates regular expression patterns at subscription time, rejecting invalid patterns before they are stored. Additionally, a defense-in-depth try-catch prevents any subscription matc",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-827p-g5x5-h86c",
+      "publishedAt": "2026-03-17T18:37:30Z",
+      "modifiedAt": "2026-03-19T21:12:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-827p-g5x5-h86c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32770"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.43",
+          "fixed": "8.6.43"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4263-jgmp-7pf4",
+      "packageName": "parse-server",
+      "title": "Parse Server's Cloud function dispatch crashes server via prototype chain traversal",
+      "description": "### Impact\n\nRemote clients can crash the Parse Server process by calling a cloud function endpoint with a crafted function name that traverses the JavaScript prototype chain of a registered cloud function handler, causing a stack overflow.\n\n### Patches\n\nThe fix restricts property lookups during cloud function name resolution to own properties only, preventing prototype chain traversal from stored function handlers.\n\n### Workarounds\n\nThere is no known workaround.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4263-jgmp-7pf4",
+      "publishedAt": "2026-03-17T17:58:08Z",
+      "modifiedAt": "2026-03-19T21:12:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4263-jgmp-7pf4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32886"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.47",
+          "fixed": "8.6.47"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r3xq-68wh-gwvh",
+      "packageName": "parse-server",
+      "title": "Parse Server has a password reset token single-use bypass via concurrent requests",
+      "description": "### Impact\n\nThe password reset mechanism does not enforce single-use guarantees for reset tokens. When a user requests a password reset, the generated token can be consumed by multiple concurrent requests within a short time window. An attacker who has intercepted a password reset token can race the legitimate user's password reset request, causing both requests to succeed. This may result in the legitimate user believing their password was changed successfully while the attacker's password take",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-r3xq-68wh-gwvh",
+      "publishedAt": "2026-03-17T17:40:08Z",
+      "modifiedAt": "2026-03-19T21:12:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r3xq-68wh-gwvh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32943"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.48",
+          "fixed": "8.6.48"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9xp9-j92r-p88v",
+      "packageName": "parse-server",
+      "title": "Parse Server crash via deeply nested query condition operators",
+      "description": "### Impact\n\nAn unauthenticated attacker can crash the Parse Server process by sending a single request with deeply nested query condition operators. This terminates the server and denies service to all connected clients.\n\n### Patches\n\nA depth limit for query condition operator nesting has been added via the `requestComplexity.queryDepth` server option. The option is disabled by default to avoid a breaking change. To mitigate, upgrade and set the option to a value appropriate for your app.\n\n### W",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9xp9-j92r-p88v",
+      "publishedAt": "2026-03-17T17:35:52Z",
+      "modifiedAt": "2026-03-19T21:11:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9xp9-j92r-p88v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32944"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.45",
+          "fixed": "8.6.45"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-42ph-pf9q-cr72",
+      "packageName": "parse-server",
+      "title": "Parse Server has a stored XSS filter bypass via Content-Type MIME parameter and missing XML extension blocklist entries",
+      "description": "### Impact\n\nAn attacker who is allowed to upload files can bypass the file extension filter by appending a MIME parameter (e.g. `;charset=utf-8`) to the `Content-Type` header. This causes the extension validation to fail matching against the blocklist, allowing active content to be stored and served under the application's domain. In addition, certain XML-based file extensions that can render scripts in web browsers are not included in the default blocklist.\n\nThis can lead to stored XSS attacks,",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-42ph-pf9q-cr72",
+      "publishedAt": "2026-03-16T18:46:00Z",
+      "modifiedAt": "2026-03-19T21:11:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-42ph-pf9q-cr72"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32728"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.41",
+          "fixed": "8.6.41"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p2x3-8689-cwpg",
+      "packageName": "parse-server",
+      "title": "Parse Server's GraphQL WebSocket endpoint bypasses security middleware",
+      "description": "### Impact\n\nAny Parse Server deployment that uses the GraphQL API is affected. The GraphQL WebSocket endpoint for subscriptions does not pass requests through the Express middleware chain that enforces authentication, introspection control, and query complexity limits. An attacker can connect to the WebSocket endpoint and execute GraphQL operations without providing a valid application or API key, access the GraphQL schema via introspection even when public introspection is disabled, and send ar",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p2x3-8689-cwpg",
+      "publishedAt": "2026-03-13T20:04:44Z",
+      "modifiedAt": "2026-03-16T22:01:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p2x3-8689-cwpg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32594"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.0.0",
+          "fixed": "8.6.40"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cmj3-wx7h-ffvg",
+      "packageName": "parse-server",
+      "title": "Parse Server affected by denial-of-service via unbounded query complexity in REST and GraphQL API",
+      "description": "### Impact\n\nAn unauthenticated attacker can exhaust Parse Server resources (CPU, memory, database connections) through crafted queries that exploit the lack of complexity limits in the REST and GraphQL APIs.\n\nAll Parse Server deployments using the REST or GraphQL API are affected.\n\n### Patches\n\nThe vulnerability is fixed by introducing configurable request complexity limits via the `requestComplexity` server option with the following keys:\n\n- `subqueryDepth`: Maximum nesting depth for `$inQuery`",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cmj3-wx7h-ffvg",
+      "publishedAt": "2026-03-11T00:16:48Z",
+      "modifiedAt": "2026-03-16T20:42:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cmj3-wx7h-ffvg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30946"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 9.0.0, < 9.5.2-alpha.2",
+          "fixed": "9.5.2-alpha.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-69xg-f649-w5g2",
+      "packageName": "parse-server",
+      "title": "Parse Server OAuth2 adapter app ID validation sends wrong token to introspection endpoint",
+      "description": "### Impact\n\nThe OAuth2 authentication adapter does not correctly validate app IDs when `appidField` and `appIds` are configured. During app ID validation, a malformed value is sent to the token introspection endpoint instead of the user's actual access token. Depending on the introspection endpoint's behavior, this could either cause all OAuth2 logins to fail, or allow authentication from disallowed app contexts if the endpoint returns valid-looking data for the malformed request.\n\nDeployments u",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-69xg-f649-w5g2",
+      "publishedAt": "2026-03-13T20:02:25Z",
+      "modifiedAt": "2026-03-13T20:02:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-69xg-f649-w5g2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32269"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 8.0.2, < 8.6.39",
+          "fixed": "8.6.39"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5fw2-8jcv-xh87",
+      "packageName": "parse-server",
+      "title": "Parse Server: Account takeover via operator injection in authentication data identifier",
+      "description": "### Impact\n\nAn unauthenticated attacker can take over any user account that was created with an authentication provider that does not validate the format of the user identifier (e.g. anonymous authentication). By sending a crafted login request, the attacker can cause the server to perform a pattern-matching query instead of an exact-match lookup, allowing the attacker to match an existing user and obtain a valid session token for that user's account. Both MongoDB and PostgreSQL database backend",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5fw2-8jcv-xh87",
+      "publishedAt": "2026-03-12T17:29:55Z",
+      "modifiedAt": "2026-03-13T13:36:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5fw2-8jcv-xh87"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32248"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.38",
+          "fixed": "8.6.38"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2cjm-2gwv-m892",
+      "packageName": "parse-server",
+      "title": "Parse Server's OAuth2 adapter shares mutable state across providers via singleton instance",
+      "description": "### Impact\n\nParse Server's built-in OAuth2 auth adapter exports a singleton instance that is reused directly across all OAuth2 provider configurations. Under concurrent authentication requests for different OAuth2 providers, one provider's token validation may execute using another provider's configuration, potentially allowing a token that should be rejected by one provider to be accepted because it is validated against a different provider's policy.\n\nDeployments that configure multiple OAuth2 ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-2cjm-2gwv-m892",
+      "publishedAt": "2026-03-12T17:29:49Z",
+      "modifiedAt": "2026-03-13T13:36:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2cjm-2gwv-m892"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32242"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.37",
+          "fixed": "8.6.37"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-c442-97qw-j6c6",
+      "packageName": "parse-server",
+      "title": "Parse Server has a SQL injection via query field name when using PostgreSQL",
+      "description": "### Impact\n\nAn attacker with access to the master key can inject malicious SQL via crafted field names used in query constraints when Parse Server is configured with PostgreSQL as the database. The field name in a `$regex` query operator is passed to PostgreSQL using unparameterized string interpolation, allowing the attacker to manipulate the SQL query. While the master key controls what can be done through the Parse Server abstraction layer, this SQL injection bypasses Parse Server entirely an",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c442-97qw-j6c6",
+      "publishedAt": "2026-03-12T16:37:58Z",
+      "modifiedAt": "2026-03-12T16:37:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c442-97qw-j6c6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32234"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.36",
+          "fixed": "8.6.36"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-j7mm-f4rv-6q6q",
+      "packageName": "parse-server",
+      "title": "Parse Server has a protected fields bypass via LiveQuery subscription WHERE clause",
+      "description": "### Impact\n\nAn attacker can exploit LiveQuery subscriptions to infer the values of protected fields without directly receiving them. By subscribing with a WHERE clause that references a protected field (including via dot-notation or `$regex`), the attacker can observe whether LiveQuery events are delivered for matching objects. This creates a boolean oracle that leaks protected field values. The attack affects any class that has both `protectedFields` configured in Class-Level Permissions and Li",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j7mm-f4rv-6q6q",
+      "publishedAt": "2026-03-12T14:20:02Z",
+      "modifiedAt": "2026-03-12T14:20:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j7mm-f4rv-6q6q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32098"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.35",
+          "fixed": "8.6.35"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w54v-hf9p-8856",
+      "packageName": "parse-server",
+      "title": "Parse Server vulnerable to user enumeration via email verification endpoint",
+      "description": "### Impact\n\nThe email verification endpoint (`/verificationEmailRequest`) returns distinct error responses depending on whether an email address belongs to an existing user, is already verified, or does not exist. An attacker can send requests with different email addresses and observe the error codes to determine which email addresses are registered in the application.\n\nThis is a user enumeration vulnerability that affects any Parse Server deployment with email verification enabled (`verifyUser",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w54v-hf9p-8856",
+      "publishedAt": "2026-03-11T00:36:13Z",
+      "modifiedAt": "2026-03-11T21:37:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w54v-hf9p-8856"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31901"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.34",
+          "fixed": "8.6.34"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4hf6-3x24-c9m8",
+      "packageName": "parse-server",
+      "title": "Parse Server's MFA recovery codes not consumed after use",
+      "description": "### Impact\n\nWhen multi-factor authentication (MFA) via TOTP is enabled for a user account, Parse Server generates two single-use recovery codes. These codes are intended as a fallback when the user cannot provide a TOTP token. However, recovery codes are not consumed after use, allowing the same recovery code to be used an unlimited number of times. This defeats the single-use design of recovery codes and weakens the security of MFA-protected accounts.\n\nAn attacker who obtains a single recovery ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4hf6-3x24-c9m8",
+      "publishedAt": "2026-03-11T00:35:41Z",
+      "modifiedAt": "2026-03-11T20:57:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4hf6-3x24-c9m8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31875"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.33",
+          "fixed": "8.6.33"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r2m8-pxm9-9c4g",
+      "packageName": "parse-server",
+      "title": "Parse Server has a protected fields bypass via dot-notation in query and sort",
+      "description": "### Impact\n\nThe `protectedFields` class-level permission (CLP) can be bypassed using dot-notation in query WHERE clauses and sort parameters. An attacker can use dot-notation to query or sort by sub-fields of a protected field, enabling a binary oracle attack to enumerate protected field values.\n\nThis affects both MongoDB and PostgreSQL deployments.\n\n### Patches\n\nThe fix ensures that query WHERE clause keys and sort keys are checked against protected fields by extracting the root field from dot-",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r2m8-pxm9-9c4g",
+      "publishedAt": "2026-03-11T00:34:59Z",
+      "modifiedAt": "2026-03-11T20:57:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r2m8-pxm9-9c4g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31872"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.32",
+          "fixed": "8.6.32"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gqpp-xgvh-9h7h",
+      "packageName": "parse-server",
+      "title": "Parse Server vulnerable to SQL Injection via dot-notation sub-key name in `Increment` operation on PostgreSQL",
+      "description": "### Impact\n\nA SQL injection vulnerability exists in the PostgreSQL storage adapter when processing `Increment` operations on nested object fields using dot notation (e.g., `stats.counter`). The sub-key name is interpolated directly into SQL string literals without escaping. An attacker who can send write requests to the Parse Server REST API can inject arbitrary SQL via a crafted sub-key name containing single quotes, potentially executing commands or reading data from the database, bypassing CL",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-gqpp-xgvh-9h7h",
+      "publishedAt": "2026-03-11T00:34:40Z",
+      "modifiedAt": "2026-03-11T20:57:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gqpp-xgvh-9h7h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31871"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.31",
+          "fixed": "8.6.31"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v5hf-f4c3-m5rv",
+      "packageName": "parse-server",
+      "title": "Parse Server vulnerable to stored XSS via file upload of HTML-renderable file types",
+      "description": "### Impact\n\nAn attacker can upload a file with a file extension or content type that is not blocked by the default configuration of the Parse Server `fileUpload.fileExtensions` option. The file can contain malicious code, for example JavaScript in an SVG or XHTML file. When the file is accessed via its URL, the browser renders the file and executes the malicious code in the context of the Parse Server domain. This is a stored Cross-Site Scripting (XSS) vulnerability that can be exploited to stea",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v5hf-f4c3-m5rv",
+      "publishedAt": "2026-03-11T00:34:24Z",
+      "modifiedAt": "2026-03-11T20:57:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v5hf-f4c3-m5rv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31868"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.30",
+          "fixed": "8.6.30"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q3vj-96h2-gwvg",
+      "packageName": "parse-server",
+      "title": "Parse Server vulnerable to SQL injection via `Increment` operation on nested object field in PostgreSQL",
+      "description": "### Impact\n\nA SQL injection vulnerability exists in the PostgreSQL storage adapter when processing `Increment` operations on nested object fields using dot notation (e.g., `stats.counter`). The `amount` value is interpolated directly into the SQL query without parameterization or type validation. An attacker who can send write requests to the Parse Server REST API can inject arbitrary SQL subqueries to read any data from the database, bypassing CLPs and ACLs.\n\nMongoDB deployments are not affecte",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-q3vj-96h2-gwvg",
+      "publishedAt": "2026-03-11T00:26:37Z",
+      "modifiedAt": "2026-03-11T20:44:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q3vj-96h2-gwvg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31856"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.29",
+          "fixed": "8.6.29"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qpr4-jrj4-6f27",
+      "packageName": "parse-server",
+      "title": "Parse Server: SQL injection via dot-notation field name in PostgreSQL",
+      "description": "### Impact\n\nAn attacker can use a dot-notation field name in combination with the `sort` query parameter to inject SQL into the PostgreSQL database through an improper escaping of sub-field values in dot-notation queries. The vulnerability may also affect queries that use dot-notation field names with the `distinct` and `where` query parameters.\n\nThis vulnerability only affects deployments using a PostgreSQL database.\n\n### Patches\n\nThe fix escapes characters in dot-notation sub-field values that",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qpr4-jrj4-6f27",
+      "publishedAt": "2026-03-10T18:25:27Z",
+      "modifiedAt": "2026-03-11T20:44:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qpr4-jrj4-6f27"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31840"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.28",
+          "fixed": "8.6.28"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7m6r-fhh7-r47c",
+      "packageName": "parse-server",
+      "title": "Parse Server vulnerable to LDAP injection via unsanitized user input in DN and group filter construction",
+      "description": "### Impact\n\nThe LDAP authentication adapter is vulnerable to LDAP injection. User-supplied input (`authData.id`) is interpolated directly into LDAP Distinguished Names (DN) and group search filters without escaping special characters. This allows an attacker with valid LDAP credentials to manipulate the bind DN structure and to bypass group membership checks. This enables privilege escalation from any authenticated LDAP user to a member of any restricted group.\n\nThe vulnerability affects Parse S",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7m6r-fhh7-r47c",
+      "publishedAt": "2026-03-11T00:23:21Z",
+      "modifiedAt": "2026-03-11T05:47:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7m6r-fhh7-r47c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31828"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.26",
+          "fixed": "8.6.26"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7xg7-rqf6-pw6c",
+      "packageName": "parse-server",
+      "title": "Parse Server: Classes `_GraphQLConfig` and `_Audience` master key bypass via generic class routes",
+      "description": "### Impact\n\nThe `_GraphQLConfig` and `_Audience` internal classes can be read, modified, and deleted via the generic `/classes/_GraphQLConfig` and `/classes/_Audience` REST API routes without master key authentication. This bypasses the master key enforcement that exists on the dedicated `/graphql-config` and `/push_audiences` endpoints. An attacker can read, modify and delete GraphQL configuration and push audience data.\n\n### Patches\n\nThe fix adds the affected internal classes to the `classesWi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7xg7-rqf6-pw6c",
+      "publishedAt": "2026-03-11T00:23:01Z",
+      "modifiedAt": "2026-03-11T00:23:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7xg7-rqf6-pw6c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31800"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.25",
+          "fixed": "8.6.25"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-775h-3xrc-c228",
+      "packageName": "parse-server",
+      "title": "Parse Server has a rate limit bypass via batch request endpoint",
+      "description": "### Impact\n\nParse Server's rate limiting middleware is applied at the Express middleware layer, but the batch request endpoint (`/batch`) processes sub-requests internally by routing them directly through the Promise router, bypassing Express middleware including rate limiting. An attacker can bundle multiple requests targeting a rate-limited endpoint into a single batch request to circumvent the configured rate limit.\n\nAny Parse Server deployment that relies on the built-in rate limiting featur",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-775h-3xrc-c228",
+      "publishedAt": "2026-03-11T00:21:51Z",
+      "modifiedAt": "2026-03-11T00:21:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-775h-3xrc-c228"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30972"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.23",
+          "fixed": "8.6.23"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fr88-w35c-r596",
+      "packageName": "parse-server",
+      "title": "Parse Server OAuth2 authentication adapter account takeover via identity spoofing",
+      "description": "### Impact\n\nThe OAuth2 authentication adapter, when configured without the `useridField` option, only verifies that a token is active via the provider's token introspection endpoint, but does not verify that the token belongs to the user identified by `authData.id`. An attacker with any valid OAuth2 token from the same provider can authenticate as any other user.\n\nThis affects any Parse Server deployment that uses the generic OAuth2 authentication adapter (configured with `oauth2: true`) without",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fr88-w35c-r596",
+      "publishedAt": "2026-03-11T00:21:37Z",
+      "modifiedAt": "2026-03-11T00:21:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fr88-w35c-r596"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30967"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.22",
+          "fixed": "8.6.22"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5f92-jrq3-28rc",
+      "packageName": "parse-server",
+      "title": "Parse Server has role escalation and CLP bypass via direct `_Join` table write",
+      "description": "### Impact\n\nParse Server's internal tables, which store Relation field mappings such as role memberships, can be directly accessed via the REST API or GraphQL API by any client using only the application key. No master key is required.\n\nAn attacker can create, read, update, or delete records in any internal relationship table. Exploiting this allows the attacker to inject themselves into any Parse Role, gaining all permissions associated with that role, including full read, write, and delete acc",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5f92-jrq3-28rc",
+      "publishedAt": "2026-03-11T00:21:07Z",
+      "modifiedAt": "2026-03-11T00:21:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5f92-jrq3-28rc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30966"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.20",
+          "fixed": "8.6.20"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6r2j-cxgf-495f",
+      "packageName": "parse-server",
+      "title": "Parse Server vulnerable to session token exfiltration via `redirectClassNameForKey` query parameter",
+      "description": "### Impact\n\nA vulnerability in Parse Server's query handling allows an authenticated or unauthenticated attacker to exfiltrate session tokens of other users by exploiting the `redirectClassNameForKey` query parameter. Exfiltrated session tokens can be used to take over user accounts.\n\nThe vulnerability requires the attacker to be able to create or update an object with a new relation field, which depends on the Class-Level Permissions of at least one class.\n\n### Patches\n\nThe fix applies the same",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6r2j-cxgf-495f",
+      "publishedAt": "2026-03-11T00:20:38Z",
+      "modifiedAt": "2026-03-11T00:20:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6r2j-cxgf-495f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30965"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.21",
+          "fixed": "8.6.21"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-72hp-qff8-4pvv",
+      "packageName": "parse-server",
+      "title": "Parse Server has a protected fields bypass via logical query operators",
+      "description": "### Impact\n\nThe validation for protected fields only checks top-level query keys. By wrapping a query constraint on a protected field inside a logical operator, the check is bypassed entirely. This allows any authenticated user to query on protected fields to extract field values.\n\nAll Parse Server deployments have default protected fields and are vulnerable.\n\n### Patches\n\nThe fix adds recursive validation of sub-queries with logical operators, consistent with the existing recursive validation p",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-72hp-qff8-4pvv",
+      "publishedAt": "2026-03-11T00:19:57Z",
+      "modifiedAt": "2026-03-11T00:19:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-72hp-qff8-4pvv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30962"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.19",
+          "fixed": "8.6.19"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-48mh-j4p5-7j9v",
+      "packageName": "parse-server",
+      "title": "Parse Server missing audience validation in Keycloak authentication adapter",
+      "description": "### Impact\n\nThe Keycloak authentication adapter does not validate the `azp` (authorized party) claim of Keycloak access tokens against the configured `client-id`. A valid access token issued by the same Keycloak realm for a *different* client application can be used to authenticate as any user on the Parse Server that uses the Keycloak adapter. This enables cross-application account takeover in multi-client Keycloak realms.\n\nAll Parse Server deployments that use the Keycloak authentication adapt",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-48mh-j4p5-7j9v",
+      "publishedAt": "2026-03-11T00:17:53Z",
+      "modifiedAt": "2026-03-11T00:17:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-48mh-j4p5-7j9v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30949"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.18",
+          "fixed": "8.6.18"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hcj7-6gxh-24ww",
+      "packageName": "parse-server",
+      "title": "Parse Server vulnerable to stored cross-site scripting (XSS) via SVG file upload",
+      "description": "### Impact\n\nA stored cross-site scripting (XSS) vulnerability allows any authenticated user to upload an SVG file containing JavaScript. The file is served inline with `Content-Type: image/svg+xml` and without protective headers, causing the browser to execute embedded scripts in the Parse Server origin. This can be exploited to steal session tokens from `localStorage` and achieve account takeover.\n\nThe default `fileExtensions` option blocks HTML file extensions but does not block SVG, which is ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hcj7-6gxh-24ww",
+      "publishedAt": "2026-03-11T00:17:35Z",
+      "modifiedAt": "2026-03-11T00:17:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hcj7-6gxh-24ww"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30948"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.17",
+          "fixed": "8.6.17"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7ch5-98q2-7289",
+      "packageName": "parse-server",
+      "title": "Parse Server has a bypass of class-level permissions in LiveQuery",
+      "description": "### Impact\n\nClass-level permissions (CLP) are not enforced for LiveQuery subscriptions. An unauthenticated or unauthorized client can subscribe to any LiveQuery-enabled class and receive real-time events for all objects, regardless of CLP restrictions.\n\nAll Parse Server deployments that use LiveQuery with class-level permissions are affected. Data intended to be restricted by CLP is leaked to unauthorized subscribers in real time.\n\n### Patches\n\nThe fix enforces CLP before creating the subscripti",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7ch5-98q2-7289",
+      "publishedAt": "2026-03-11T00:17:16Z",
+      "modifiedAt": "2026-03-11T00:17:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7ch5-98q2-7289"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30947"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.16",
+          "fixed": "8.6.16"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vgjh-hmwf-c588",
+      "packageName": "parse-server",
+      "title": "Parse Server has a NoSQL injection via token type in password reset and email verification endpoints",
+      "description": "### Impact\n\nA NoSQL injection vulnerability allows an unauthenticated attacker to inject MongoDB query operators via the `token` field in the password reset and email verification resend endpoints. The `token` value is passed to database queries without type validation and can be used to extract password reset and email verification tokens.\n\nAny Parse Server deployment using MongoDB with email verification or password reset enabled is affected. When `emailVerifyTokenReuseIfValid` is configured, ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vgjh-hmwf-c588",
+      "publishedAt": "2026-03-11T00:16:26Z",
+      "modifiedAt": "2026-03-11T00:16:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vgjh-hmwf-c588"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30941"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.14",
+          "fixed": "8.6.14"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5j86-7r7m-p8h6",
+      "packageName": "parse-server",
+      "title": "Parse Server has Denial of Service (DoS) and Cloud Function Dispatch Bypass via Prototype Chain Resolution",
+      "description": "### Impact\n\nAn unauthenticated attacker can crash the Parse Server process by calling a Cloud Function endpoint with a prototype property name as the function name. The server recurses infinitely, causing a call stack size error that terminates the process.\n\nOther prototype property names bypass Cloud Function dispatch validation and return HTTP 200 responses, even though no such Cloud Functions are defined. The same applies to dot-notation traversal.\n\nAll Parse Server deployments that expose th",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5j86-7r7m-p8h6",
+      "publishedAt": "2026-03-10T00:57:57Z",
+      "modifiedAt": "2026-03-10T18:44:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5j86-7r7m-p8h6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30939"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 9.0.0-alpha.1, < 9.5.1-alpha.2",
+          "fixed": "9.5.1-alpha.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q342-9w2p-57fp",
+      "packageName": "parse-server",
+      "title": "Parse Server has denylist `requestKeywordDenylist` keyword scan bypass through nested object placement",
+      "description": "### Impact\n\nThe `requestKeywordDenylist` security control can be bypassed by placing any nested object or array before a prohibited keyword in the request payload. This is caused by a logic bug that stops scanning sibling keys after encountering the first nested value. Any custom `requestKeywordDenylist` entries configured by the developer are equally by-passable using the same technique.\n\nAll Parse Server deployments are affected. The `requestKeywordDenylist` is enabled by default.\n\n### Patches",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q342-9w2p-57fp",
+      "publishedAt": "2026-03-10T00:57:37Z",
+      "modifiedAt": "2026-03-10T18:44:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q342-9w2p-57fp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30938"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 9.0.0-alpha.1, < 9.5.1-alpha.1",
+          "fixed": "9.5.1-alpha.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mf3j-86qx-cq5j",
+      "packageName": "parse-server",
+      "title": "Parse Server has Regular Expression Denial of Service (ReDoS) via `$regex` query in LiveQuery",
+      "description": "### Impact\n\nA malicious client can subscribe to a LiveQuery with a crafted `$regex` pattern that causes catastrophic backtracking, blocking the Node.js event loop. This makes the entire Parse Server unresponsive, affecting all clients. Any Parse Server deployment with LiveQuery enabled is affected. The attacker only needs the application ID and JavaScript key, both of which are public in client-side apps.\n\nThis only affects LiveQuery subscription matching, which evaluates regex in JavaScript on ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mf3j-86qx-cq5j",
+      "publishedAt": "2026-03-10T00:57:18Z",
+      "modifiedAt": "2026-03-10T18:44:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mf3j-86qx-cq5j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30925"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.11",
+          "fixed": "8.6.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x6fw-778m-wr9v",
+      "packageName": "parse-server",
+      "title": "Parse Server: JWT audience validation bypass in Google, Apple, and Facebook authentication adapters",
+      "description": "### Impact\n\nThe Google, Apple, and Facebook authentication adapters use JWT verification to validate identity tokens. When the adapter's audience configuration option is not set (`clientId` for Google/Apple, `appIds` for Facebook), JWT verification silently skips audience claim validation. This allows an attacker to use a validly signed JWT issued for a different application to authenticate as any user on the target Parse Server.\n\n- For Google and Apple, the vulnerability is exploitable when the",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-x6fw-778m-wr9v",
+      "publishedAt": "2026-03-09T17:42:22Z",
+      "modifiedAt": "2026-03-09T17:42:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x6fw-778m-wr9v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30863"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.10",
+          "fixed": "8.6.10"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q5q9-2rhp-33qw",
+      "packageName": "parse-server",
+      "title": "Parse Server: GraphQL `__type` introspection bypass via inline fragments when public introspection is disabled",
+      "description": "### Impact\n\nWhen `graphQLPublicIntrospection` is disabled, `__type` queries nested inside inline fragments (e.g. `... on Query { __type(name:\"User\") { name } })` bypass the introspection control, allowing unauthenticated users to perform type reconnaissance. `__schema` introspection is not affected.\n\n### Patches\n\nThe check was changed from a flat iteration over root-level selections to a recursive walk of all selection sets, detecting `__type` inside inline fragments at any depth.\n\n### Workaroun",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q5q9-2rhp-33qw",
+      "publishedAt": "2026-03-09T17:42:17Z",
+      "modifiedAt": "2026-03-09T17:42:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q5q9-2rhp-33qw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30854"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 9.3.1-alpha.3, < 9.5.0-alpha.10",
+          "fixed": "9.5.0-alpha.10"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hwx8-q9cg-mqmc",
+      "packageName": "parse-server",
+      "title": "Parse Server: File metadata endpoint bypasses `beforeFind` / `afterFind` trigger authorization",
+      "description": "### Impact\n\nThe file metadata endpoint (GET `/files/:appId/metadata/:filename`) does not enforce `beforeFind` / `afterFind` file triggers. When these triggers are used as access-control gates, the metadata endpoint bypasses them entirely, allowing unauthorized access to file metadata.\n\nThis affects any deployment that relies on `Parse.Cloud.beforeFind(Parse.File, ...)` to restrict file access. Only file metadata (user-defined key-value pairs set via addMetadata) is exposed; file content remains ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hwx8-q9cg-mqmc",
+      "publishedAt": "2026-03-09T17:42:03Z",
+      "modifiedAt": "2026-03-09T17:42:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hwx8-q9cg-mqmc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30850"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 9.0.0-alpha.1, < 9.5.0-alpha.9",
+          "fixed": "9.5.0-alpha.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hm3f-q6rw-m6wh",
+      "packageName": "parse-server",
+      "title": "Parse Server: `PagesRouter` path traversal allows reading files outside configured pages directory",
+      "description": "### Impact\n\nThe `PagesRouter` static file serving route is vulnerable to a path traversal attack that allows unauthenticated reading of files outside the configured `pagesPath` directory. The boundary check uses a string prefix comparison without enforcing a directory separator boundary. An attacker can use path traversal sequences to access files in sibling directories whose names share the same prefix as the pages directory (e.g. `pages-secret` starts with `pages`).\n\nThis affects any Parse Ser",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hm3f-q6rw-m6wh",
+      "publishedAt": "2026-03-09T17:41:55Z",
+      "modifiedAt": "2026-03-09T17:41:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hm3f-q6rw-m6wh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30848"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 9.0.0-alpha.1, < 9.5.0-alpha.8",
+          "fixed": "9.5.0-alpha.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9cp7-3q5w-j92g",
+      "packageName": "parse-server",
+      "title": "parse-server: Malformed `$regex` query leaks database error details in API response",
+      "description": "### Impact\n\nA malformed $regex query parameter (e.g. `[abc)` causes the database to return a structured error object that is passed unsanitized through the API response. This leaks database internals such as error messages, error codes, code names, cluster timestamps, and topology details. The vulnerability is exploitable by any client that can send query requests, depending on the deployment's permission configuration.\n\n### Patches\n\nThe fix sanitizes database error objects so that only a generi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9cp7-3q5w-j92g",
+      "publishedAt": "2026-03-06T23:25:13Z",
+      "modifiedAt": "2026-03-06T23:25:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9cp7-3q5w-j92g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30835"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.7",
+          "fixed": "8.6.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-79wj-8rqv-jvp5",
+      "packageName": "parse-server",
+      "title": "parse-server's endpoint `/loginAs` allows `readOnlyMasterKey` to gain full read and write access as any user",
+      "description": "### Impact\n\nThe `readOnlyMasterKey` can call `POST /loginAs` to obtain a valid session token for any user. This allows a read-only credential to impersonate arbitrary users with full read and write access to their data. Any Parse Server deployment that uses `readOnlyMasterKey` is affected.\n\n### Patches\n\nThe fix adds a check to the `/logInAs` handler.\n\n### Workarounds\n\nThere is no workaround other than not using `readOnlyMasterKey`.\n\n### References\n\n- GitHub security advisory: https://github.com/",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-79wj-8rqv-jvp5",
+      "publishedAt": "2026-03-06T18:46:27Z",
+      "modifiedAt": "2026-03-06T22:53:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-79wj-8rqv-jvp5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30229"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 9.0.0, < 9.5.0-alpha.4",
+          "fixed": "9.5.0-alpha.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xfh7-phr7-gr2x",
+      "packageName": "parse-server",
+      "title": "parse-server's file creation and deletion bypasses `readOnlyMasterKey` write restriction",
+      "description": "### Impact\n\nThe `readOnlyMasterKey` can be used to create and delete files via the Files API (`POST /files/:filename`, `DELETE /files/:filename`). This bypasses the read-only restriction which violates the access scope of the `readOnlyMasterKey`.\n\nAny Parse Server deployment that uses `readOnlyMasterKey` and exposes the Files API is affected. An attacker with access to the `readOnlyMasterKey` can upload arbitrary files or delete existing files.\n\n### Patches\n\nThe fix adds permission checks to bot",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xfh7-phr7-gr2x",
+      "publishedAt": "2026-03-06T18:45:36Z",
+      "modifiedAt": "2026-03-06T22:52:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xfh7-phr7-gr2x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30228"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.6.5",
+          "fixed": "8.6.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vc89-5g3r-cmhh",
+      "packageName": "parse-server",
+      "title": "Parse Server's Cloud Hooks and Cloud Jobs bypass `readOnlyMasterKey` write restriction",
+      "description": "### Impact\n\nParse Server's `readOnlyMasterKey` option allows access with master-level read privileges but is documented to deny all write operations. However, some endpoints incorrectly accept the `readOnlyMasterKey` for mutating operations. This allows a caller who only holds the `readOnlyMasterKey` to create, modify, and delete Cloud Hooks and to start Cloud Jobs, which can be used for data exfiltration.\n\nAny Parse Server deployment that uses the `readOnlyMasterKey` option is affected. Note th",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vc89-5g3r-cmhh",
+      "publishedAt": "2026-03-05T00:33:18Z",
+      "modifiedAt": "2026-03-06T22:51:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vc89-5g3r-cmhh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29182"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 8.6.3",
+          "fixed": "8.6.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4q3h-vp4r-prv2",
+      "packageName": "parse-server",
+      "title": "Parse Server: Account takeover via JWT algorithm confusion in Google auth adapter",
+      "description": "### Impact\n\nAn unauthenticated attacker can forge a Google authentication token with `alg: \"none\"` to log in as any user linked to a Google account, without knowing their credentials. All deployments with Google authentication enabled are affected.\n\n### Patches\n\nThe fix hardcodes the expected `RS256` algorithm instead of trusting the JWT header, and replaces the Google adapter's custom key fetcher with `jwks-rsa` which rejects unknown key IDs.\n\n### Workarounds\n\nDisable Google authentication unti",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4q3h-vp4r-prv2",
+      "publishedAt": "2026-02-25T23:00:49Z",
+      "modifiedAt": "2026-02-27T21:52:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4q3h-vp4r-prv2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27804"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 8.6.2",
+          "fixed": "8.6.3"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-3f5f-xgrj-97pf",
       "packageName": "parse-server",
@@ -246,33 +2136,6 @@
       "source": "github"
     },
     {
-      "id": "GHSA-6927-3vr9-fxf2",
-      "packageName": "parse-server",
-      "title": "ZDI-CAN-19105: Parse Server literalizeRegexPart SQL Injection",
-      "description": "### Impact\n\nThis vulnerability allows SQL injection when Parse Server is configured to use the PostgreSQL database.\n\n### Patches\n\nThe algorithm to detect SQL injection has been improved.\n\n### Workarounds\n\nNone.\n\n### References\n\n- https://github.com/parse-community/parse-server/security/advisories/GHSA-6927-3vr9-fxf2\n- https://github.com/parse-community/parse-server/releases/tag/6.5.0 (fixed in Parse Server 6)\n- https://github.com/parse-community/parse-server/releases/tag/7.0.0-alpha.20 (fixed in",
-      "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-6927-3vr9-fxf2",
-      "publishedAt": "2024-03-01T20:08:23Z",
-      "modifiedAt": "2024-03-01T20:08:24Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-6927-3vr9-fxf2"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2024-27298"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 7.0.0-alpha.1, < 7.0.0-alpha.20",
-          "fixed": "7.0.0-alpha.20"
-        }
-      ],
-      "source": "github"
-    },
-    {
       "id": "GHSA-792q-q67h-w579",
       "packageName": "parse-server",
       "title": "Parse Server may crash when uploading file without extension",
@@ -376,6 +2239,33 @@
         {
           "range": ">= 6.0.0, < 6.2.2",
           "fixed": "6.2.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-236h-rqv8-8q73",
+      "packageName": "parse-server",
+      "title": "GraphQL: Security breach on Viewer query",
+      "description": "### Impact\nAn authenticated user using the viewer GraphQL query can bypass all read security on his User object and can also bypass all objects linked via relation or Pointer on his User object.\n\n### Patches\nThis vulnerability has been patched in Parse Server 4.3.0.\n\n### Workarounds\nNo\n\n### References\nSee [commit 78239ac](https://github.com/parse-community/parse-server/commit/78239ac9071167fdf243c55ae4bc9a2c0b0d89aa) for details.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-236h-rqv8-8q73",
+      "publishedAt": "2020-07-22T23:06:47Z",
+      "modifiedAt": "2023-10-26T11:33:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-236h-rqv8-8q73"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15126"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.5.0, < 4.3.0",
+          "fixed": "4.3.0"
         }
       ],
       "source": "github"
@@ -565,6 +2455,60 @@
         {
           "range": "< 4.10.4",
           "fixed": "4.10.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4w46-w44m-3jq3",
+      "packageName": "parse-server",
+      "title": "Parse Server stores password in plain text",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js.\nIn Parse Server before version 4.5.0, user passwords involved in LDAP authentication are stored in cleartext.\nThis is fixed in version 4.5.0 by stripping password after authentication to prevent cleartext password storage.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-4w46-w44m-3jq3",
+      "publishedAt": "2020-12-28T16:33:17Z",
+      "modifiedAt": "2023-02-01T05:05:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4w46-w44m-3jq3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26288"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.5.0",
+          "fixed": "4.5.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2xm2-xj2q-qgpj",
+      "packageName": "parse-server",
+      "title": "receiving subscription objects with deleted session",
+      "description": "Original Message:\nHi,\n\nI create objects with one client with an ACL of all users with a specific column value. Thats working so far.\n\nThen I deleted the session object from one user to look if he can receive subscription objects and he can receive them.\nThe client with the deleted session cant create new objects, which Parse restricts right.\n\nThe LiveQueryServer doesnt detect deleted sessions after the websocket connection was established.\nThere should be a mechanism that checks in an specific i",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2xm2-xj2q-qgpj",
+      "publishedAt": "2020-10-27T19:15:19Z",
+      "modifiedAt": "2023-02-01T05:04:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2xm2-xj2q-qgpj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15270"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.4.0",
+          "fixed": "4.4.0"
         }
       ],
       "source": "github"
@@ -836,136 +2780,82 @@
       "source": "github"
     },
     {
-      "id": "GHSA-9cp7-3q5w-j92g",
+      "id": "GHSA-8w3j-g983-8jh5",
       "packageName": "parse-server",
-      "title": "parse-server: Malformed `$regex` query leaks database error details in API response",
-      "description": "### Impact\n\nA malformed $regex query parameter (e.g. `[abc)` causes the database to return a structured error object that is passed unsanitized through the API response. This leaks database internals such as error messages, error codes, code names, cluster timestamps, and topology details. The vulnerability is exploitable by any client that can send query requests, depending on the deployment's permission configuration.\n\n### Patches\n\nThe fix sanitizes database error objects so that only a generi",
+      "title": "Sensitive Data Exposure in parse-server",
+      "description": "Versions of parse-server prior to 3.6.0 could allow an account enumeration attack via account linking.\n`ParseError.ACCOUNT_ALREADY_LINKED(208)` was thrown BEFORE the AuthController checks the password and throws a `ParseError.SESSION_MISSING(206)` for Insufficient auth.  An attacker can guess ids and get information about linked accounts/email addresses.\n\n### For more information\nIf you have any questions or comments about this advisory,\nOpen an issue in the [parse-server](https://github.com/par",
       "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-9cp7-3q5w-j92g",
-      "publishedAt": "2026-03-06T23:25:13Z",
-      "modifiedAt": "2026-03-06T23:25:14Z",
+      "url": "https://github.com/advisories/GHSA-8w3j-g983-8jh5",
+      "publishedAt": "2019-07-11T14:23:09Z",
+      "modifiedAt": "2023-01-09T05:03:02Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-9cp7-3q5w-j92g"
+          "value": "GHSA-8w3j-g983-8jh5"
         },
         {
           "type": "CVE",
-          "value": "CVE-2026-30835"
+          "value": "CVE-2019-1020013"
         }
       ],
       "affectedVersions": [
         {
-          "range": "< 8.6.7",
-          "fixed": "8.6.7"
+          "range": "< 3.6.0",
+          "fixed": "3.6.0"
         }
       ],
       "source": "github"
     },
     {
-      "id": "GHSA-79wj-8rqv-jvp5",
+      "id": "GHSA-h4mf-75hf-67w4",
       "packageName": "parse-server",
-      "title": "parse-server's endpoint `/loginAs` allows `readOnlyMasterKey` to gain full read and write access as any user",
-      "description": "### Impact\n\nThe `readOnlyMasterKey` can call `POST /loginAs` to obtain a valid session token for any user. This allows a read-only credential to impersonate arbitrary users with full read and write access to their data. Any Parse Server deployment that uses `readOnlyMasterKey` is affected.\n\n### Patches\n\nThe fix adds a check to the `/logInAs` handler.\n\n### Workarounds\n\nThere is no workaround other than not using `readOnlyMasterKey`.\n\n### References\n\n- GitHub security advisory: https://github.com/",
+      "title": "Information disclosure in parse-server",
+      "description": "1. you can fetch all the users' objects, by using regex in the NoSQL query.\nUsing the NoSQL, you can use a regex on sessionToken `(\"_SessionToken\":{\"$regex\":\"r:027f\"}}` and find valid accounts this way.\n\nUsing this method, it's possible to retrieve accounts without interaction from the users.\n\nGET /parse/users/me HTTP/1.1\n```\n{\n  \"_ApplicationId\": \"appName\",\n  \"_JavaScriptKey\": \"javascriptkey\",\n  \"_ClientVersion\": \"js2.10.0\",\n  \"_InstallationId\": \"ca713ee2-6e60-d023-a8fe-14e1bfb2f300\",\n  \"_Sessi",
       "severity": "high",
-      "url": "https://github.com/advisories/GHSA-79wj-8rqv-jvp5",
-      "publishedAt": "2026-03-06T18:46:27Z",
-      "modifiedAt": "2026-03-06T22:53:02Z",
+      "url": "https://github.com/advisories/GHSA-h4mf-75hf-67w4",
+      "publishedAt": "2020-03-04T20:20:27Z",
+      "modifiedAt": "2023-01-09T05:02:28Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-79wj-8rqv-jvp5"
+          "value": "GHSA-h4mf-75hf-67w4"
         },
         {
           "type": "CVE",
-          "value": "CVE-2026-30229"
+          "value": "CVE-2020-5251"
         }
       ],
       "affectedVersions": [
         {
-          "range": ">= 9.0.0, < 9.5.0-alpha.4",
-          "fixed": "9.5.0-alpha.4"
+          "range": "<= 4.0.0",
+          "fixed": "4.1.0"
         }
       ],
       "source": "github"
     },
     {
-      "id": "GHSA-xfh7-phr7-gr2x",
+      "id": "GHSA-2479-qvv7-47qq",
       "packageName": "parse-server",
-      "title": "parse-server's file creation and deletion bypasses `readOnlyMasterKey` write restriction",
-      "description": "### Impact\n\nThe `readOnlyMasterKey` can be used to create and delete files via the Files API (`POST /files/:filename`, `DELETE /files/:filename`). This bypasses the read-only restriction which violates the access scope of the `readOnlyMasterKey`.\n\nAny Parse Server deployment that uses `readOnlyMasterKey` and exposes the Files API is affected. An attacker with access to the `readOnlyMasterKey` can upload arbitrary files or delete existing files.\n\n### Patches\n\nThe fix adds permission checks to bot",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-xfh7-phr7-gr2x",
-      "publishedAt": "2026-03-06T18:45:36Z",
-      "modifiedAt": "2026-03-06T22:52:59Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-xfh7-phr7-gr2x"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-30228"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 8.6.5",
-          "fixed": "8.6.5"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-vc89-5g3r-cmhh",
-      "packageName": "parse-server",
-      "title": "Parse Server's Cloud Hooks and Cloud Jobs bypass `readOnlyMasterKey` write restriction",
-      "description": "### Impact\n\nParse Server's `readOnlyMasterKey` option allows access with master-level read privileges but is documented to deny all write operations. However, some endpoints incorrectly accept the `readOnlyMasterKey` for mutating operations. This allows a caller who only holds the `readOnlyMasterKey` to create, modify, and delete Cloud Hooks and to start Cloud Jobs, which can be used for data exfiltration.\n\nAny Parse Server deployment that uses the `readOnlyMasterKey` option is affected. Note th",
+      "title": "Parse Server before v3.4.1 vulnerable to Denial of Service",
+      "description": "### Impact\n\nIf a POST request is made to /parse/classes/_Audience (or other volatile class), any subsuquent POST requests result in an internal server error (500).\n\n\n### Patches\nAfflicted installations will also have to remove the offending collection from their database.\n\nYes, patched in 3.4.1\n\n### Workarounds\n\nYes, user can apply: https://github.com/parse-community/parse-server/commit/8709daf698ea69b59268cb66f0f7cee75b52daa5\n\n### References\nNothing other than this advisory at this time\n\n### Fo",
       "severity": "high",
-      "url": "https://github.com/advisories/GHSA-vc89-5g3r-cmhh",
-      "publishedAt": "2026-03-05T00:33:18Z",
-      "modifiedAt": "2026-03-06T22:51:36Z",
+      "url": "https://github.com/advisories/GHSA-2479-qvv7-47qq",
+      "publishedAt": "2019-06-13T16:22:13Z",
+      "modifiedAt": "2023-01-08T05:03:02Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-vc89-5g3r-cmhh"
+          "value": "GHSA-2479-qvv7-47qq"
         },
         {
           "type": "CVE",
-          "value": "CVE-2026-29182"
+          "value": "CVE-2019-1020012"
         }
       ],
       "affectedVersions": [
         {
-          "range": "<= 8.6.3",
-          "fixed": "8.6.4"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-4q3h-vp4r-prv2",
-      "packageName": "parse-server",
-      "title": "Parse Server: Account takeover via JWT algorithm confusion in Google auth adapter",
-      "description": "### Impact\n\nAn unauthenticated attacker can forge a Google authentication token with `alg: \"none\"` to log in as any user linked to a Google account, without knowing their credentials. All deployments with Google authentication enabled are affected.\n\n### Patches\n\nThe fix hardcodes the expected `RS256` algorithm instead of trusting the JWT header, and replaces the Google adapter's custom key fetcher with `jwks-rsa` which rejects unknown key IDs.\n\n### Workarounds\n\nDisable Google authentication unti",
-      "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-4q3h-vp4r-prv2",
-      "publishedAt": "2026-02-25T23:00:49Z",
-      "modifiedAt": "2026-02-27T21:52:22Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-4q3h-vp4r-prv2"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-27804"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 8.6.2",
-          "fixed": "8.6.3"
+          "range": "< 3.4.1",
+          "fixed": "3.4.1"
         }
       ],
       "source": "github"

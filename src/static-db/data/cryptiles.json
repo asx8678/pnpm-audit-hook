@@ -1,0 +1,33 @@
+{
+  "packageName": "cryptiles",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rq8g-5pc5-wrhr",
+      "packageName": "cryptiles",
+      "title": "Insufficient Entropy in cryptiles",
+      "description": "Versions of `cryptiles` prior to 4.1.2 are vulnerable to Insufficient Entropy. The `randomDigits()` method does not provide sufficient entropy and its generates digits that are not evenly distributed.\n\n\n## Recommendation\n\nUpgrade to version 4.1.2. The package is deprecated and has been moved to `@hapi/cryptiles` and it is strongly recommended to use the maintained package.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-rq8g-5pc5-wrhr",
+      "publishedAt": "2018-09-11T18:22:50Z",
+      "modifiedAt": "2025-02-12T05:10:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rq8g-5pc5-wrhr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-1000620"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.1.0, < 4.1.2",
+          "fixed": "4.1.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

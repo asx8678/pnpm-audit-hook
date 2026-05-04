@@ -1,0 +1,33 @@
+{
+  "packageName": "bittorrent-dht",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-77g4-36jp-5v3m",
+      "packageName": "bittorrent-dht",
+      "title": "Remote Memory Disclosure in bittorrent-dht",
+      "description": "Versions of `bittorrent-dht` prior to 5.1.3 are affected by a remote memory disclosure vulnerability. This vulnerability allows an attacker to send a specific series of of messages to a listening peer and get it to reveal internal memory.\n\n\nThere are two mitigating factors here, that slightly reduce the impact of this vulnerability:\n\n1. Any modern kernel will zero out new memory pages before handing them off to a process. This means that only memory previously used and deallocated by the node pr",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-77g4-36jp-5v3m",
+      "publishedAt": "2020-09-01T15:22:12Z",
+      "modifiedAt": "2023-01-09T05:04:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-77g4-36jp-5v3m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10519"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.1.3",
+          "fixed": "5.1.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "tomita-parser",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-722q-3g9x-vp8q",
+      "packageName": "tomita-parser",
+      "title": "Downloads Resources over HTTP in tomita-parser",
+      "description": "Affected versions of `tomita-parser` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `tomita-parser`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability, and the package has not seen an update since 2015.\n\nThe best mitigation is currently to av",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-722q-3g9x-vp8q",
+      "publishedAt": "2019-02-18T23:54:41Z",
+      "modifiedAt": "2023-01-09T05:02:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-722q-3g9x-vp8q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10666"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

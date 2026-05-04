@@ -1,0 +1,28 @@
+{
+  "packageName": "js-base64-int",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-76qf-6mvw-c5hm",
+      "packageName": "js-base64-int",
+      "title": "Malicious Package in js-base64-int",
+      "description": "This package contained malicious code. The package uploaded system information such as OS and hostname to a remote server.\n\n\n## Recommendation\n\nRemove the package from your environment. There are no indications of further compromise.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-76qf-6mvw-c5hm",
+      "publishedAt": "2020-09-03T19:45:42Z",
+      "modifiedAt": "2023-01-09T05:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-76qf-6mvw-c5hm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

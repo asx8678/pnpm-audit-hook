@@ -1,0 +1,32 @@
+{
+  "packageName": "fabric-js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v73m-fjxv-w4rh",
+      "packageName": "fabric-js",
+      "title": "fabric-js is malware",
+      "description": "The `fabric-js` package is a piece of malware that steals environment variables and sends them to attacker controlled locations. \n\nAll versions have been unpublished from the npm registry.\n\n\n## Recommendation\n\nAs this package is malware, if you find it installed in your environment, the real security concern is determining how it got there. \n\nIf you have found this installed in your environment, you should:\n1. Delete the package\n2. Clear your npm cache\n3. Ensure it is not present in any other pa",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v73m-fjxv-w4rh",
+      "publishedAt": "2018-07-23T20:50:18Z",
+      "modifiedAt": "2023-09-07T18:27:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v73m-fjxv-w4rh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16053"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

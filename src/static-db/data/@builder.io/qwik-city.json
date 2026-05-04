@@ -1,57 +1,30 @@
 {
   "packageName": "@builder.io/qwik-city",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
-      "id": "GHSA-qr9h-j6xg-2j72",
+      "id": "GHSA-whhv-gg5v-864r",
       "packageName": "@builder.io/qwik-city",
-      "title": "Qwik's unhandled exception vulnerabilty can cause server crashes from malicious requests",
-      "description": "### Summary\n\nPossibility to craft a request that will crash the Qwik Server in the default configuration.\n\n### Details\n\nWhen a Qwik Server Action QRL is executed it dynamically load the file containing the symbol. When an invalid qfunc is sent, the server does not handle the thrown error. The error then causes Node JS to exit.\n\n### PoC\n\n 1. Setup a Qwik Project `pnpm create qwik@latest`\n 2. Start the Qwik Server using `pnpm run preview`\n 3. Execute the following curl command to crash the instanc",
-      "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-qr9h-j6xg-2j72",
-      "publishedAt": "2025-07-09T18:10:29Z",
-      "modifiedAt": "2025-07-09T22:37:21Z",
+      "title": "Qwik City has array method pollution in FormData processing allows type confusion and DoS",
+      "description": "**Summary**\n\nQwik City improperly inferred arrays from dotted form field names during `FormData` parsing. By submitting mixed array-index and object-property keys for the same path, an attacker could cause user-controlled properties to be written onto values that application code expected to be arrays.\n\n**Description**\n\nWhen processing `application/x-www-form-urlencoded` or `multipart/form-data` requests, Qwik City converted dotted field names such as `items.0` and `items.1` into nested structur",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-whhv-gg5v-864r",
+      "publishedAt": "2026-03-20T15:56:44Z",
+      "modifiedAt": "2026-03-20T15:56:45Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-qr9h-j6xg-2j72"
+          "value": "GHSA-whhv-gg5v-864r"
         },
         {
           "type": "CVE",
-          "value": "CVE-2025-53620"
+          "value": "CVE-2026-32701"
         }
       ],
       "affectedVersions": [
         {
-          "range": "< 1.13.0",
-          "fixed": "1.13.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-c54w-7j5f-xg98",
-      "packageName": "@builder.io/qwik-city",
-      "title": "@builder.io/qwik-city Cross-Site Request Forgery  vulnerability",
-      "description": "Cross-Site Request Forgery (CSRF) in GitHub repository builderio/qwik prior to 0.104.0.",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-c54w-7j5f-xg98",
-      "publishedAt": "2023-04-26T18:30:21Z",
-      "modifiedAt": "2023-11-05T05:05:37Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-c54w-7j5f-xg98"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2023-2307"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 0.104.0",
-          "fixed": "0.104.0"
+          "range": "< 1.19.2",
+          "fixed": "1.19.2"
         }
       ],
       "source": "github"
@@ -187,6 +160,60 @@
         {
           "range": "< 1.19.0",
           "fixed": "1.19.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qr9h-j6xg-2j72",
+      "packageName": "@builder.io/qwik-city",
+      "title": "Qwik's unhandled exception vulnerabilty can cause server crashes from malicious requests",
+      "description": "### Summary\n\nPossibility to craft a request that will crash the Qwik Server in the default configuration.\n\n### Details\n\nWhen a Qwik Server Action QRL is executed it dynamically load the file containing the symbol. When an invalid qfunc is sent, the server does not handle the thrown error. The error then causes Node JS to exit.\n\n### PoC\n\n 1. Setup a Qwik Project `pnpm create qwik@latest`\n 2. Start the Qwik Server using `pnpm run preview`\n 3. Execute the following curl command to crash the instanc",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qr9h-j6xg-2j72",
+      "publishedAt": "2025-07-09T18:10:29Z",
+      "modifiedAt": "2025-07-09T22:37:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qr9h-j6xg-2j72"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-53620"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.13.0",
+          "fixed": "1.13.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-c54w-7j5f-xg98",
+      "packageName": "@builder.io/qwik-city",
+      "title": "@builder.io/qwik-city Cross-Site Request Forgery  vulnerability",
+      "description": "Cross-Site Request Forgery (CSRF) in GitHub repository builderio/qwik prior to 0.104.0.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c54w-7j5f-xg98",
+      "publishedAt": "2023-04-26T18:30:21Z",
+      "modifiedAt": "2023-11-05T05:05:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c54w-7j5f-xg98"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-2307"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.104.0",
+          "fixed": "0.104.0"
         }
       ],
       "source": "github"

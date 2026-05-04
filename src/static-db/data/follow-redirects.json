@@ -1,19 +1,70 @@
 {
   "packageName": "follow-redirects",
-  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-r4q5-vmmm-2653",
+      "packageName": "follow-redirects",
+      "title": "follow-redirects leaks Custom Authentication Headers to Cross-Domain Redirect Targets",
+      "description": "## Summary\n\nWhen an HTTP request follows a cross-domain redirect (301/302/307/308), `follow-redirects` only strips `authorization`, `proxy-authorization`, and `cookie` headers (matched by regex at index.js:469-476). Any custom authentication header (e.g., `X-API-Key`, `X-Auth-Token`, `Api-Key`, `Token`) is forwarded verbatim to the redirect target.\n\nSince `follow-redirects` is the redirect-handling dependency for **axios** (105K+ stars), this vulnerability affects the entire axios ecosystem.\n\n##",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-r4q5-vmmm-2653",
+      "publishedAt": "2026-04-14T01:11:11Z",
+      "modifiedAt": "2026-04-14T01:11:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r4q5-vmmm-2653"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.15.11",
+          "fixed": "1.16.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-jchw-25xp-jwwc",
       "packageName": "follow-redirects",
-      "title": "follow-redirects Exposure of Sensitive Information",
-      "severity": "high",
+      "title": "Follow Redirects improperly handles URLs in the url.parse() function",
+      "description": "Versions of the package follow-redirects before 1.15.4 are vulnerable to Improper Input Validation due to the improper handling of URLs by the url.parse() function. When new URL() throws an error, it can be manipulated to misinterpret the hostname. An attacker could exploit this weakness to redirect traffic to a malicious site, potentially leading to information disclosure, phishing attacks, or other security breaches.",
+      "severity": "medium",
       "url": "https://github.com/advisories/GHSA-jchw-25xp-jwwc",
-      "publishedAt": "2022-02-09T22:09:00Z",
-      "modifiedAt": "2023-09-11T22:19:00Z",
+      "publishedAt": "2024-01-02T06:30:30Z",
+      "modifiedAt": "2025-11-04T16:48:09Z",
       "identifiers": [
         {
           "type": "GHSA",
           "value": "GHSA-jchw-25xp-jwwc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-26159"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.15.4",
+          "fixed": "1.15.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-74fj-2j2h-c42q",
+      "packageName": "follow-redirects",
+      "title": "Exposure of sensitive information in follow-redirects",
+      "description": "follow-redirects is vulnerable to Exposure of Private Personal Information to an Unauthorized Actor",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-74fj-2j2h-c42q",
+      "publishedAt": "2022-01-12T22:46:26Z",
+      "modifiedAt": "2025-02-12T05:11:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-74fj-2j2h-c42q"
         },
         {
           "type": "CVE",
@@ -22,7 +73,7 @@
       ],
       "affectedVersions": [
         {
-          "range": "<1.14.7",
+          "range": "< 1.14.7",
           "fixed": "1.14.7"
         }
       ],
@@ -31,11 +82,12 @@
     {
       "id": "GHSA-cxjh-pqwp-8mfp",
       "packageName": "follow-redirects",
-      "title": "follow-redirects Improper Input Validation",
+      "title": "follow-redirects' Proxy-Authorization header kept across hosts",
+      "description": "When using [axios](https://github.com/axios/axios), its dependency follow-redirects only clears authorization header during cross-domain redirect, but allows the proxy-authentication header which contains credentials too.\n\n## Steps To Reproduce & PoC\n\nTest code:\n\n```js\nconst axios = require('axios');\n\naxios.get('http://127.0.0.1:10081/', {\n headers: {\n 'AuThorization': 'Rear Test',\n 'ProXy-AuthoriZation': 'Rear Test',\n 'coOkie': 't=1'\n }\n})\n .then((response) => {\n console.log(response);\n })\n```\n",
       "severity": "medium",
       "url": "https://github.com/advisories/GHSA-cxjh-pqwp-8mfp",
-      "publishedAt": "2024-01-11T06:30:00Z",
-      "modifiedAt": "2024-01-23T14:42:00Z",
+      "publishedAt": "2024-03-14T17:19:42Z",
+      "modifiedAt": "2024-04-02T17:54:22Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -48,8 +100,35 @@
       ],
       "affectedVersions": [
         {
-          "range": "<1.15.4",
-          "fixed": "1.15.4"
+          "range": "<= 1.15.5",
+          "fixed": "1.15.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-pw2r-vq6v-hr8c",
+      "packageName": "follow-redirects",
+      "title": "Exposure of Sensitive Information to an Unauthorized Actor in follow-redirects",
+      "description": "Exposure of Sensitive Information to an Unauthorized Actor in NPM follow-redirects prior to 1.14.8.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pw2r-vq6v-hr8c",
+      "publishedAt": "2022-02-10T00:00:31Z",
+      "modifiedAt": "2023-07-21T19:16:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pw2r-vq6v-hr8c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-0536"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.14.8",
+          "fixed": "1.14.8"
         }
       ],
       "source": "github"

@@ -1,0 +1,33 @@
+{
+  "packageName": "strapi-plugin-content-type-builder",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4p55-xj37-fx7g",
+      "packageName": "strapi-plugin-content-type-builder",
+      "title": "Improper Authorization in Strapi",
+      "description": "In Strapi before 3.2.5, there is no `admin::hasPermissions` restriction for CTB (aka content-type-builder) routes.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4p55-xj37-fx7g",
+      "publishedAt": "2020-10-29T18:29:31Z",
+      "modifiedAt": "2023-09-13T19:30:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4p55-xj37-fx7g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-27665"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.2.5",
+          "fixed": "3.2.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "packageName": "@seafile/sdoc-editor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rqj3-x344-qvxc",
+      "packageName": "@seafile/sdoc-editor",
+      "title": "Seafile Server has multiple stored XSS vulnerabilities",
+      "description": "Multiple Stored XSS vulnerabilities exist in Seafile Server version 13.0.15,13.0.16-pro,12.0.14 and prior and fixed in 13.0.17, 13.0.17-pro, and 12.0.20-pro, via the Seadoc (sdoc) editor. The application fails to properly sanitize WebSocket messages regarding document structure updates. This allows authenticated remote attackers to inject malicious JavaScript payloads via the src attribute of embedded Excalidraw whiteboards or the href attribute of anchor tags.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rqj3-x344-qvxc",
+      "publishedAt": "2026-03-25T18:31:55Z",
+      "modifiedAt": "2026-04-02T00:00:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rqj3-x344-qvxc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30587"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.209",
+          "fixed": "2.0.209"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

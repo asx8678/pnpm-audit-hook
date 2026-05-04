@@ -1,7 +1,34 @@
 {
   "packageName": "yaml",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-48c2-rrv3-qjmp",
+      "packageName": "yaml",
+      "title": "yaml is vulnerable to Stack Overflow via deeply nested YAML collections",
+      "description": "Parsing a YAML document with `yaml` may throw a RangeError due to a stack overflow.\n\nThe node resolution/composition phase uses recursive function calls without a depth bound. An attacker who can supply YAML for parsing can trigger a `RangeError: Maximum call stack size exceeded` with a small payload (~2–10 KB). The `RangeError` is not a `YAMLParseError`, so applications that only catch YAML-specific errors will encounter an unexpected exception type. Depending on the host application's exceptio",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-48c2-rrv3-qjmp",
+      "publishedAt": "2026-03-25T20:08:24Z",
+      "modifiedAt": "2026-03-27T21:34:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-48c2-rrv3-qjmp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33532"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0, < 1.10.3",
+          "fixed": "1.10.3"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-f9xv-q969-pqx4",
       "packageName": "yaml",

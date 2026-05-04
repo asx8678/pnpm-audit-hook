@@ -1,15 +1,16 @@
 {
   "packageName": "express",
-  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rv95-896h-c2vc",
       "packageName": "express",
-      "title": "Express.js Open Redirect vulnerability",
+      "title": "Express.js Open Redirect in malformed URLs",
+      "description": "### Impact\n\nVersions of Express.js prior to 4.19.2 and pre-release alpha and beta versions before 5.0.0-beta.3 are affected by an open redirect vulnerability using malformed URLs.\n\nWhen a user of Express performs a redirect using a user-provided URL Express performs an encode [using `encodeurl`](https://github.com/pillarjs/encodeurl) on the contents before passing it to the `location` header. This can cause malformed URLs to be evaluated in unexpected ways by common redirect allow list implement",
       "severity": "medium",
       "url": "https://github.com/advisories/GHSA-rv95-896h-c2vc",
-      "publishedAt": "2024-03-25T19:40:00Z",
-      "modifiedAt": "2024-03-26T16:57:00Z",
+      "publishedAt": "2024-03-25T19:40:26Z",
+      "modifiedAt": "2025-12-20T00:09:31Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -22,8 +23,143 @@
       ],
       "affectedVersions": [
         {
-          "range": "<4.19.2",
-          "fixed": "4.19.2"
+          "range": ">= 5.0.0-alpha.1, < 5.0.0-beta.3",
+          "fixed": "5.0.0-beta.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-pj86-cfqh-vqx6",
+      "packageName": "express",
+      "title": "Withdrawn Advisory: express improperly controls modification of query properties",
+      "description": "## Withdrawn Advisory\nThis advisory has been withdrawn because it describes a correctness bug, not a vulnerability with real security impact. This link is maintained to preserve external references.\n\n## Original Description\n### Impact\n\nwhen using the extended query parser in express (`'query parser': 'extended'`), the `request.query` object inherits all object prototype properties, but these properties can be overwritten by query string parameter keys that match the property names\n\n> [!IMPORTANT",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-pj86-cfqh-vqx6",
+      "publishedAt": "2025-12-01T18:59:17Z",
+      "modifiedAt": "2025-12-02T15:11:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pj86-cfqh-vqx6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-51999"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.2.0",
+          "fixed": "5.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cm5g-3pgc-8rg4",
+      "packageName": "express",
+      "title": "Express ressource injection",
+      "description": "A vulnerability has been identified in the Express response.links function, allowing for arbitrary resource injection in the Link header when unsanitized data is used.\n\nThe issue arises from improper sanitization in `Link` header values, which can allow a combination of characters like `,`, `;`, and `<>` to preload malicious resources.\n\nThis vulnerability is especially relevant for dynamic parameters.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cm5g-3pgc-8rg4",
+      "publishedAt": "2024-10-29T18:30:37Z",
+      "modifiedAt": "2024-12-19T17:52:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cm5g-3pgc-8rg4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-10491"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.21.4",
+          "fixed": "4.0.0-rc1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qw6h-vgh9-j6wx",
+      "packageName": "express",
+      "title": "express vulnerable to XSS via response.redirect()",
+      "description": "### Impact\n\nIn express <4.20.0, passing untrusted user input - even after sanitizing it - to `response.redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in express 4.20.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-qw6h-vgh9-j6wx",
+      "publishedAt": "2024-09-10T19:41:04Z",
+      "modifiedAt": "2024-11-18T16:27:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qw6h-vgh9-j6wx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-43796"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0-alpha.1, < 5.0.0",
+          "fixed": "5.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jj78-5fmv-mv28",
+      "packageName": "express",
+      "title": "Express Open Redirect vulnerability",
+      "description": "URL Redirection to Untrusted Site ('Open Redirect') vulnerability in Express. This vulnerability affects the use of the Express Response object. This issue impacts Express: from 3.4.5 before 4.0.0-rc1.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-jj78-5fmv-mv28",
+      "publishedAt": "2024-10-03T21:31:05Z",
+      "modifiedAt": "2024-10-09T23:46:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jj78-5fmv-mv28"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-9266"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.4.5, < 4.0.0-rc1",
+          "fixed": "4.0.0-rc1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gpvr-g6gh-9mc2",
+      "packageName": "express",
+      "title": "No Charset in Content-Type Header in express",
+      "description": "Vulnerable versions of express do not specify a charset field in the content-type header while displaying 400 level response messages. The lack of enforcing user's browser to set correct charset, could be leveraged by an attacker to perform a cross-site scripting attack, using non-standard encodings, like UTF-7.\n\n\n## Recommendation\n\nFor express 3.x, update express to version 3.11 or later.\nFor express 4.x, update express to version 4.5 or later. ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gpvr-g6gh-9mc2",
+      "publishedAt": "2018-10-23T17:22:54Z",
+      "modifiedAt": "2023-02-01T05:03:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gpvr-g6gh-9mc2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2014-6393"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.5.0",
+          "fixed": "4.5.0"
         }
       ],
       "source": "github"

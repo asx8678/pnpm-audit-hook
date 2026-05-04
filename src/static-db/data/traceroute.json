@@ -1,6 +1,6 @@
 {
   "packageName": "traceroute",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8j9v-qhp4-wv55",
@@ -24,6 +24,28 @@
       "affectedVersions": [
         {
           "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rjvj-673q-4hfw",
+      "packageName": "traceroute",
+      "title": "Command Injection in traceroute",
+      "description": "All versions of `traceroute` are vulnerable to Command Injection. The package fails to sanitize input and passes it directly to an `exec` call, which may allow attackers to execute arbitrary code in the system. The `trace` function is vulnerable and can be abused if the `host` value is controlled by an attacker.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-rjvj-673q-4hfw",
+      "publishedAt": "2020-09-04T17:54:31Z",
+      "modifiedAt": "2023-01-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rjvj-673q-4hfw"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
         }
       ],
       "source": "github"

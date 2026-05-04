@@ -1,0 +1,33 @@
+{
+  "packageName": "mquery",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-45q2-34rf-mr94",
+      "packageName": "mquery",
+      "title": "Code Injection in mquery",
+      "description": "lib/utils.js in mquery before 3.2.3 allows a pollution attack because a special property (e.g., __proto__) can be copied during a merge or clone operation.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-45q2-34rf-mr94",
+      "publishedAt": "2020-12-18T18:23:43Z",
+      "modifiedAt": "2023-01-09T05:04:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-45q2-34rf-mr94"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-35149"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.2.3",
+          "fixed": "3.2.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

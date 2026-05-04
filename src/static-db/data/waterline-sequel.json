@@ -1,0 +1,56 @@
+{
+  "packageName": "waterline-sequel",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cgpp-wm2h-6hqx",
+      "packageName": "waterline-sequel",
+      "title": "SQL Injection in waterline-sequel",
+      "description": "Affected versions of `waterline-sequel` are vulnerable to SQL injection in cases where user input is passed into the `like`, `contains`, `startsWith`, or `endsWith` methods.\n\n\n\n## Recommendation\n\nUpgrade to at least version 0.5.1",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cgpp-wm2h-6hqx",
+      "publishedAt": "2019-02-18T23:54:28Z",
+      "modifiedAt": "2023-01-09T05:03:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cgpp-wm2h-6hqx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10551"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.5.1",
+          "fixed": "0.5.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mpcx-8qqw-rmcq",
+      "packageName": "waterline-sequel",
+      "title": "SQL Injection in waterline-sequel",
+      "description": "Withdrawn: Duplicate of GHSA-cgpp-wm2h-6hqx",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mpcx-8qqw-rmcq",
+      "publishedAt": "2020-08-19T21:51:20Z",
+      "modifiedAt": "2023-01-09T05:01:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mpcx-8qqw-rmcq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.5.1",
+          "fixed": "0.5.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

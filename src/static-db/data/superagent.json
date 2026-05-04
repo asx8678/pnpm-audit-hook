@@ -1,0 +1,33 @@
+{
+  "packageName": "superagent",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8225-6cvr-8pqp",
+      "packageName": "superagent",
+      "title": "superagent vulnerable to zip bomb attacks",
+      "description": "Affected versions of `superagent` do not check the post-decompression size of ZIP compressed HTTP responses prior to decompressing. This results in the package being vulnerable to a [ZIP bomb](https://en.wikipedia.org/wiki/Zip_bomb) attack, where an extremely small ZIP file becomes many orders of magnitude larger when decompressed. \n\nThis may result in unrestrained CPU/Memory/Disk consumption, causing a denial of service condition.\n\n\n## Recommendation\n\nUpdate to version 3.7.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8225-6cvr-8pqp",
+      "publishedAt": "2018-08-09T20:13:01Z",
+      "modifiedAt": "2023-09-08T23:55:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8225-6cvr-8pqp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16129"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.7.0",
+          "fixed": "3.7.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "packageName": "schema-inspector",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-f38p-c2gq-4pmr",
@@ -25,6 +25,33 @@
         {
           "range": "< 2.0.0",
           "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r24h-634p-m72x",
+      "packageName": "schema-inspector",
+      "title": "Validation Bypass in schema-inspector",
+      "description": "In schema-inspector before 1.6.9, a maliciously crafted JavaScript object can bypass the `sanitize()` and the `validate()` function used within schema-inspector.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-r24h-634p-m72x",
+      "publishedAt": "2020-06-10T20:02:47Z",
+      "modifiedAt": "2023-01-09T05:02:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r24h-634p-m72x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10781"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.6.9",
+          "fixed": "1.6.9"
         }
       ],
       "source": "github"

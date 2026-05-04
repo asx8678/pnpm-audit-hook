@@ -1,0 +1,33 @@
+{
+  "packageName": "puppeteer",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c2gp-86p4-5935",
+      "packageName": "puppeteer",
+      "title": "Use-After-Free in puppeteer",
+      "description": "Versions of `puppeteer` prior to 1.13.0 are vulnerable to the Use-After-Free vulnerability in Chromium (CVE-2019-5786). The Chromium FileReader API is vulnerable to Use-After-Free which may lead to Remote Code Execution.\n\n\n## Recommendation\n\nUpgrade to version 1.13.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c2gp-86p4-5935",
+      "publishedAt": "2020-09-02T18:25:43Z",
+      "modifiedAt": "2023-11-11T05:05:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c2gp-86p4-5935"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-5786"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.13.0",
+          "fixed": "1.13.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

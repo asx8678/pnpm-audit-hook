@@ -1,7 +1,61 @@
 {
   "packageName": "systeminformation",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-5vv4-hvf7-2h46",
+      "packageName": "systeminformation",
+      "title": "Command Injection via Unsanitized `locate` Output in `versions()` — systeminformation",
+      "description": "# Command Injection via Unsanitized `locate` Output in `versions()` — systeminformation\n\n**Package:** systeminformation (npm)  \n**Tested Version:** 5.30.7  \n**Affected Platform:** Linux  \n**Author:** Sebastian Hildebrandt  \n**Weekly Downloads:** ~5,000,000+  \n**Repository:** https://github.com/sebhildebrandt/systeminformation  \n**Severity:** Medium  \n**CWE:** CWE-78 (OS Command Injection)  \n\n---\n\n### The Vulnerable Code Path\n\nInside the `versions()` function, when detecting the PostgreSQL versio",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5vv4-hvf7-2h46",
+      "publishedAt": "2026-02-18T22:36:50Z",
+      "modifiedAt": "2026-02-19T21:57:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5vv4-hvf7-2h46"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26318"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.30.7",
+          "fixed": "5.31.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9c88-49p5-5ggf",
+      "packageName": "systeminformation",
+      "title": "Systeminformation has a Command Injection via unsanitized interface parameter in wifi.js retry path",
+      "description": "### Summary\nA command injection vulnerability in the `wifiNetworks()` function allows an attacker to execute arbitrary OS commands via an unsanitized network interface parameter in the retry code path.\n\n### Details\nIn `lib/wifi.js`, the `wifiNetworks()` function sanitizes the `iface` parameter on the initial call (line 437). However, when the initial scan returns empty results, a `setTimeout` retry (lines 440-441) calls `getWifiNetworkListIw(iface)` with the **original unsanitized** `iface` valu",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9c88-49p5-5ggf",
+      "publishedAt": "2026-02-18T21:51:26Z",
+      "modifiedAt": "2026-02-19T21:57:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9c88-49p5-5ggf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26280"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.30.8",
+          "fixed": "5.30.8"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-wphj-fx3q-84ch",
       "packageName": "systeminformation",
@@ -111,6 +165,33 @@
       "source": "github"
     },
     {
+      "id": "GHSA-94xh-2fmc-xf5j",
+      "packageName": "systeminformation",
+      "title": "systeminformation command injection vulnerability",
+      "description": "### Impact\ncommand injection vulnerability\n\n### Patches\nProblem was fixed with a shell string sanitation fix. Please upgrade to version >= 4.27.11\n\n### Workarounds\nIf you cannot upgrade, be sure to check or sanitize service parameter strings that are passed to si.inetChecksite()\n\n### References\n_Are there any links users can visit to find out more?_\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Open an issue in [systeminformation](https://github.com/sebhi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-94xh-2fmc-xf5j",
+      "publishedAt": "2020-10-27T20:30:20Z",
+      "modifiedAt": "2023-09-06T23:53:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-94xh-2fmc-xf5j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7752"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.27.11",
+          "fixed": "4.27.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
       "id": "GHSA-8j36-q8x7-pm6q",
       "packageName": "systeminformation",
       "title": "OS Command Injection in systeminformation",
@@ -165,55 +246,82 @@
       "source": "github"
     },
     {
-      "id": "GHSA-5vv4-hvf7-2h46",
+      "id": "GHSA-fj59-f6c3-3vw4",
       "packageName": "systeminformation",
-      "title": "Command Injection via Unsanitized `locate` Output in `versions()` — systeminformation",
-      "description": "# Command Injection via Unsanitized `locate` Output in `versions()` — systeminformation\n\n**Package:** systeminformation (npm)  \n**Tested Version:** 5.30.7  \n**Affected Platform:** Linux  \n**Author:** Sebastian Hildebrandt  \n**Weekly Downloads:** ~5,000,000+  \n**Repository:** https://github.com/sebhildebrandt/systeminformation  \n**Severity:** Medium  \n**CWE:** CWE-78 (OS Command Injection)  \n\n---\n\n### The Vulnerable Code Path\n\nInside the `versions()` function, when detecting the PostgreSQL versio",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-5vv4-hvf7-2h46",
-      "publishedAt": "2026-02-18T22:36:50Z",
-      "modifiedAt": "2026-02-19T21:57:18Z",
+      "title": "Command Injection in systeminformation",
+      "description": "### Impact\ncommand injection vulnerability\n\n### Patches\nProblem was fixed with a shell string sanitation fix. Please upgrade to version >= 4.26.2\n\n### Workarounds\nIf you cannot upgrade, be sure to check or sanitize service parameter strings that are passed to `is.services()`, `is.inetChecksite()`, `si.inetLatency()`, `si.networkStats()`, `is.services()` and `si.processLoad()`\n\n### References\n_Are there any links users can visit to find out more?_\n\n### For more information\nIf you have any questio",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fj59-f6c3-3vw4",
+      "publishedAt": "2020-10-27T20:40:00Z",
+      "modifiedAt": "2023-02-01T05:05:04Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-5vv4-hvf7-2h46"
+          "value": "GHSA-fj59-f6c3-3vw4"
         },
         {
           "type": "CVE",
-          "value": "CVE-2026-26318"
+          "value": "CVE-2020-26300"
         }
       ],
       "affectedVersions": [
         {
-          "range": "<= 5.30.7",
-          "fixed": "5.31.0"
+          "range": "< 4.26.2",
+          "fixed": "4.26.2"
         }
       ],
       "source": "github"
     },
     {
-      "id": "GHSA-9c88-49p5-5ggf",
+      "id": "GHSA-4v2w-h9jm-mqjg",
       "packageName": "systeminformation",
-      "title": "Systeminformation has a Command Injection via unsanitized interface parameter in wifi.js retry path",
-      "description": "### Summary\nA command injection vulnerability in the `wifiNetworks()` function allows an attacker to execute arbitrary OS commands via an unsanitized network interface parameter in the retry code path.\n\n### Details\nIn `lib/wifi.js`, the `wifiNetworks()` function sanitizes the `iface` parameter on the initial call (line 437). However, when the initial scan returns empty results, a `setTimeout` retry (lines 440-441) calls `getWifiNetworkListIw(iface)` with the **original unsanitized** `iface` valu",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-9c88-49p5-5ggf",
-      "publishedAt": "2026-02-18T21:51:26Z",
-      "modifiedAt": "2026-02-19T21:57:03Z",
+      "title": "Prototype Pollution in systeminformation",
+      "description": "### Impact\ncommand injection vulnerability by prototype pollution\n\n### Patches\nProblem was fixed with a rewrite of shell sanitations to avoid prototyper pollution problems. Please upgrade to version >= 4.30.2\n\n### Workarounds\nIf you cannot upgrade, be sure to check or sanitize service parameter strings that are passed to si.inetChecksite()\n\n### For more information\nIf you have any questions or comments about this advisory:\n\n* Open an issue in [systeminformation](https://github.com/sebhildebrandt",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4v2w-h9jm-mqjg",
+      "publishedAt": "2020-11-27T16:07:15Z",
+      "modifiedAt": "2023-01-09T05:04:08Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-9c88-49p5-5ggf"
+          "value": "GHSA-4v2w-h9jm-mqjg"
         },
         {
           "type": "CVE",
-          "value": "CVE-2026-26280"
+          "value": "CVE-2020-26245"
         }
       ],
       "affectedVersions": [
         {
-          "range": "< 5.30.8",
-          "fixed": "5.30.8"
+          "range": "< 4.30.5",
+          "fixed": "4.30.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m57p-p67h-mq74",
+      "packageName": "systeminformation",
+      "title": "Command Injection Vulnerability in systeminformation",
+      "description": "### Impact\ncommand injection vulnerability\n\n### Patches\nProblem was fixed with a shell string sanitation fix. Please upgrade to version >= 4.31.1\n\n### Workarounds\nIf you cannot upgrade, be sure to check or sanitize service parameter strings that are passed to si.inetLatency()\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Open an issue in [systeminformation](https://github.com/sebhildebrandt/systeminformation/issues/new?template=bug_report.md)",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m57p-p67h-mq74",
+      "publishedAt": "2020-12-16T19:25:00Z",
+      "modifiedAt": "2023-01-09T05:03:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m57p-p67h-mq74"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26274"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.31.1",
+          "fixed": "4.31.1"
         }
       ],
       "source": "github"

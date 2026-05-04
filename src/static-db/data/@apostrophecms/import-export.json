@@ -1,0 +1,33 @@
+{
+  "packageName": "@apostrophecms/import-export",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mwxc-m426-3f78",
+      "packageName": "@apostrophecms/import-export",
+      "title": "ApostropheCMS has Arbitrary File Write (Zip Slip / Path Traversal) in Import-Export Gzip Extraction",
+      "description": "**Reported:** 2026-03-08  \n**Status:** patched and released in version 3.5.3 of `@apostrophecms/import-export`\n\n---\n\n## Product\n\n| Field | Value |\n|---|---|\n| Repository | `apostrophecms/apostrophe` (monorepo) |\n| Affected Package | `@apostrophecms/import-export` |\n| Affected File | `packages/import-export/lib/formats/gzip.js` |\n| Affected Function | `extract(filepath, exportPath)` — lines ~132–157 |\n| Minimum Required Permission | **Global Content Modify** (any editor-level user with import acc",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mwxc-m426-3f78",
+      "publishedAt": "2026-03-18T19:49:07Z",
+      "modifiedAt": "2026-03-18T19:49:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mwxc-m426-3f78"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32731"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.5.2",
+          "fixed": "3.5.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

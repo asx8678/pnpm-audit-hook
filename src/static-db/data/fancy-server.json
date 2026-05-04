@@ -1,0 +1,33 @@
+{
+  "packageName": "fancy-server",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m273-wwfv-h6jp",
+      "packageName": "fancy-server",
+      "title": "Directory Traversal in fancy-server",
+      "description": "Versions 0.1.4 and earlier of fancy-server are vulnerable to a directory traversal attack. \n\nStandard attack vectors such as `../` will allow an attacker to read files outside of the served directory.\n\n\n## Recommendation\n\nUpgrade to version 0.1.4 or greater.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m273-wwfv-h6jp",
+      "publishedAt": "2020-08-31T22:44:33Z",
+      "modifiedAt": "2023-01-09T05:03:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m273-wwfv-h6jp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2014-10066"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.1.4",
+          "fixed": "0.1.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

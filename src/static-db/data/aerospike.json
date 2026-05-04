@@ -1,0 +1,33 @@
+{
+  "packageName": "aerospike",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v5v3-8jqf-vg27",
+      "packageName": "aerospike",
+      "title": "Downloads Resources over HTTP in aerospike",
+      "description": "Affected versions of `aerospike` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `aerospike`.\n\n\n## Recommendation\n\nUpdate to version 2.4.2 or later",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v5v3-8jqf-vg27",
+      "publishedAt": "2019-02-18T23:54:22Z",
+      "modifiedAt": "2023-01-09T05:03:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v5v3-8jqf-vg27"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10558"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.4.2",
+          "fixed": "2.4.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

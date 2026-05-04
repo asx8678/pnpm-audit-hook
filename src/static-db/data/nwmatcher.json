@@ -1,0 +1,29 @@
+{
+  "packageName": "nwmatcher",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6394-6h9h-cfjg",
+      "packageName": "nwmatcher",
+      "title": "Regular Expression Denial of Service",
+      "description": "A Regular Expression vulnerability was found in nwmatcher before 1.4.4. The fix replacing multiple repeated instances of the \"\\s*\" pattern.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6394-6h9h-cfjg",
+      "publishedAt": "2019-06-07T21:12:35Z",
+      "modifiedAt": "2023-01-09T05:01:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6394-6h9h-cfjg"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.4",
+          "fixed": "1.4.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

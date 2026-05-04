@@ -1,0 +1,75 @@
+{
+  "packageName": "@evomap/evolver",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r466-rxw4-3j9j",
+      "packageName": "@evomap/evolver",
+      "title": "Evolver: Path Traversal via `--out` flag in `fetch` command allows Arbitrary File Write",
+      "description": "### Summary\nA path traversal vulnerability in the skill download (`fetch`) command allows attackers to write files to arbitrary locations on the filesystem. The `--out=` flag accepts user-provided paths without validation, enabling directory traversal attacks that can overwrite critical system files or create files in sensitive locations.\n\n### Details\nThe vulnerability exists in `index.js` at lines 752-767:\n\n```javascript\n// index.js:751-768\nconst outFlag = args.find(a => typeof a === 'string' &",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r466-rxw4-3j9j",
+      "publishedAt": "2026-04-22T22:06:15Z",
+      "modifiedAt": "2026-04-22T22:06:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r466-rxw4-3j9j"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.69.3",
+          "fixed": "1.69.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-j5w5-568x-rq53",
+      "packageName": "@evomap/evolver",
+      "title": "Evolver: Command Injection via `execSync` in `_extractLLM()` function allows Remote Code Execution",
+      "description": "### Summary\nA command injection vulnerability in the `_extractLLM()` function allows attackers to execute arbitrary shell commands on the server. The function constructs a curl command using string concatenation and passes it to `execSync()` without proper sanitization, enabling remote code execution when the `corpus` parameter contains shell metacharacters.\n\n### Details\nThe vulnerability exists in `src/gep/signals.js` at lines 260-274:\n\n```javascript\n// src/gep/signals.js:260-274\nfunction _extr",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-j5w5-568x-rq53",
+      "publishedAt": "2026-04-22T22:06:03Z",
+      "modifiedAt": "2026-04-22T22:06:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j5w5-568x-rq53"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.69.3",
+          "fixed": "1.69.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2cjr-5v3h-v2w4",
+      "packageName": "@evomap/evolver",
+      "title": "Evolver has Prototype Pollution via `Object.assign()` in its mailbox store operations",
+      "description": "### Summary\nA prototype pollution vulnerability in the mailbox store module allows attackers to modify the behavior of all JavaScript objects by injecting malicious properties into `Object.prototype`. The vulnerability exists in the `_applyUpdate()` and `_updateRecord()` functions which use `Object.assign()` to merge user-controlled data without filtering dangerous keys like `__proto__`, `constructor`, or `prototype`.\n\n### Details\nThe vulnerability exists in `src/proxy/mailbox/store.js` at lines",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2cjr-5v3h-v2w4",
+      "publishedAt": "2026-04-22T22:05:28Z",
+      "modifiedAt": "2026-04-22T22:05:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2cjr-5v3h-v2w4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.69.3",
+          "fixed": "1.69.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

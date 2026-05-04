@@ -1,0 +1,32 @@
+{
+  "packageName": "robot-js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6v7p-j23v-4xmw",
+      "packageName": "robot-js",
+      "title": "robot-js downloads Resources over HTTP",
+      "description": "Affected versions of `robot-js` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `robot-js`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if availabl",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6v7p-j23v-4xmw",
+      "publishedAt": "2019-02-18T23:48:03Z",
+      "modifiedAt": "2023-09-12T20:31:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6v7p-j23v-4xmw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10608"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

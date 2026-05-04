@@ -1,7 +1,59 @@
 {
   "packageName": "@perfood/couch-auth",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-mjqr-5c55-g77h",
+      "packageName": "@perfood/couch-auth",
+      "title": "@perfood/couch-auth has an Observable Timing Discrepancy ",
+      "description": "An Observable Timing Discrepancy in @perfood/couch-auth v0.26.0 allows attackers to access sensitive information via a timing side-channel.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mjqr-5c55-g77h",
+      "publishedAt": "2026-03-05T21:30:49Z",
+      "modifiedAt": "2026-03-06T23:11:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mjqr-5c55-g77h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-70949"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.26.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qw8v-34ww-6q9p",
+      "packageName": "@perfood/couch-auth",
+      "title": "@perfood/couch-auth has a host header injection vulnerability",
+      "description": "A host header injection vulnerability in the mailer component of @perfood/couch-auth v0.26.0 allows attackers to obtain reset tokens and execute an account takeover via spoofing the HTTP Host header.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qw8v-34ww-6q9p",
+      "publishedAt": "2026-03-05T21:30:49Z",
+      "modifiedAt": "2026-03-06T23:00:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qw8v-34ww-6q9p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-70948"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.26.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-r385-c5fc-x56c",
       "packageName": "@perfood/couch-auth",
@@ -76,58 +128,6 @@
       "affectedVersions": [
         {
           "range": "<= 0.20.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-mjqr-5c55-g77h",
-      "packageName": "@perfood/couch-auth",
-      "title": "@perfood/couch-auth has an Observable Timing Discrepancy ",
-      "description": "An Observable Timing Discrepancy in @perfood/couch-auth v0.26.0 allows attackers to access sensitive information via a timing side-channel.",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-mjqr-5c55-g77h",
-      "publishedAt": "2026-03-05T21:30:49Z",
-      "modifiedAt": "2026-03-06T23:11:42Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-mjqr-5c55-g77h"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-70949"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 0.26.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-qw8v-34ww-6q9p",
-      "packageName": "@perfood/couch-auth",
-      "title": "@perfood/couch-auth has a host header injection vulnerability",
-      "description": "A host header injection vulnerability in the mailer component of @perfood/couch-auth v0.26.0 allows attackers to obtain reset tokens and execute an account takeover via spoofing the HTTP Host header.",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-qw8v-34ww-6q9p",
-      "publishedAt": "2026-03-05T21:30:49Z",
-      "modifiedAt": "2026-03-06T23:00:44Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-qw8v-34ww-6q9p"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-70948"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 0.26.0"
         }
       ],
       "source": "github"

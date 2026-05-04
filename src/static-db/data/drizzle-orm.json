@@ -1,0 +1,33 @@
+{
+  "packageName": "drizzle-orm",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gpj5-g38j-94v9",
+      "packageName": "drizzle-orm",
+      "title": "Drizzle ORM has SQL injection via improperly escaped SQL identifiers",
+      "description": "### Summary\n\nDrizzle ORM improperly escaped quoted SQL identifiers in its dialect-specific `escapeName()` implementations. In affected versions, embedded identifier delimiters were not escaped before the identifier was wrapped in quotes or backticks.\n\nAs a result, applications that pass attacker-controlled input to APIs that construct SQL identifiers or aliases, such as `sql.identifier()`, `.as()`, may allow an attacker to terminate the quoted identifier and inject SQL.\n\n### Affected components\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gpj5-g38j-94v9",
+      "publishedAt": "2026-04-08T00:14:58Z",
+      "modifiedAt": "2026-04-08T00:14:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gpj5-g38j-94v9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39356"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0-beta.2, < 1.0.0-beta.20",
+          "fixed": "1.0.0-beta.20"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

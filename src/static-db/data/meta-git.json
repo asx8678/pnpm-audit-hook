@@ -1,0 +1,28 @@
+{
+  "packageName": "meta-git",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qcff-ffx3-m25c",
+      "packageName": "meta-git",
+      "title": "Command Injection in meta-git",
+      "description": "All versions of `meta-git` are vulnerable to Command Injection. The package fails to sanitize input and passes it directly to an `exec` call, which may allow attackers to execute arbitrary code in the system. The `clone` command is vulnerable through the branch name.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qcff-ffx3-m25c",
+      "publishedAt": "2020-09-04T17:31:44Z",
+      "modifiedAt": "2023-01-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qcff-ffx3-m25c"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

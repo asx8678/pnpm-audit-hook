@@ -1,0 +1,33 @@
+{
+  "packageName": "unicode-json",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hw4r-xr38-hm8j",
+      "packageName": "unicode-json",
+      "title": "Downloads Resources over HTTP in unicode-json",
+      "description": "Affected versions of `unicode-json` insecurely downloads resources over HTTP. \n\nIn scenarios where an attacker has a privileged network position, they can modify or read such resources at will. While the exact severity of impact for a vulnerability like this is highly variable and depends on the behavior of the package itself, it ranges from being able to read sensitive information all the way up to and including remote code execution.\n\n\n## Recommendation\n\nInstall version 2.0.0 or greater.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hw4r-xr38-hm8j",
+      "publishedAt": "2019-02-18T23:47:59Z",
+      "modifiedAt": "2023-01-09T05:02:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hw4r-xr38-hm8j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10610"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

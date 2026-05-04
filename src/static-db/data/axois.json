@@ -1,0 +1,28 @@
+{
+  "packageName": "axois",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wpfc-3w63-g4hm",
+      "packageName": "axois",
+      "title": "Malicious Package in axois",
+      "description": "All versions of `axois` are considered malicious. The package is malware designed to take advantage of users making a mistake when typing the name of a module to install. When executed, the package calls home to a Command and Control server to execute arbitrary commands.\n\n\n## Recommendation\n\nThis package was published to the npm Registry for a very short period of time. If you happen to find it in your environment you should revoke and rotate all credentials  found on the compromised machine, as",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wpfc-3w63-g4hm",
+      "publishedAt": "2020-09-01T21:09:48Z",
+      "modifiedAt": "2023-01-09T05:03:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wpfc-3w63-g4hm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

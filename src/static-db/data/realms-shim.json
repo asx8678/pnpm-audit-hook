@@ -1,6 +1,6 @@
 {
   "packageName": "realms-shim",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-pwm7-qr6j-3vjg",
@@ -50,6 +50,52 @@
       "affectedVersions": [
         {
           "range": "<= 1.2.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6jg8-7333-554w",
+      "packageName": "realms-shim",
+      "title": "Sandbox Breakout in realms-shim",
+      "description": "Versions of `realms-shim` prior to 1.2.0 are vulnerable to a Sandbox Breakout. `Reflect.construct` can be used on the sandboxed Function constructor to reach the prototypes of the primal Realm, which may allow an attacker to escape the sandbox and execute arbitrary code.\n\n\n## Recommendation\n\nUpgrade to version 1.2.0 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6jg8-7333-554w",
+      "publishedAt": "2019-10-04T17:56:12Z",
+      "modifiedAt": "2023-01-09T05:02:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6jg8-7333-554w"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.2.0",
+          "fixed": "1.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7cg8-pq9v-x98q",
+      "packageName": "realms-shim",
+      "title": "Sandbox Breakout in realms-shim",
+      "description": "Versions of `realms-shim` prior to 1.2.1 are vulnerable to a Sandbox Breakout. The Realms evaluation function has an option to apply Babel-like transformations to the source code before it reaches the evaluator. One portion of this transform pipeline exposed a primal-Realm object to the rewriting function. Confined code which used the evaluator itself could provide a malicious rewriter function that captured this object, and use it to breach the sandbox.\n\n\n## Recommendation\n\nUpgrade to version 1",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7cg8-pq9v-x98q",
+      "publishedAt": "2019-10-21T21:58:55Z",
+      "modifiedAt": "2023-01-09T05:02:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7cg8-pq9v-x98q"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.2.1",
+          "fixed": "1.2.1"
         }
       ],
       "source": "github"

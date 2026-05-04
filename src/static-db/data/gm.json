@@ -1,0 +1,33 @@
+{
+  "packageName": "gm",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pjh3-jv7w-9jpr",
+      "packageName": "gm",
+      "title": "Command Injection in gm",
+      "description": "Versions of `gm` prior to 1.21.1 are affected by a command injection vulnerability. The vulnerability is triggered when user input is passed into `gm.compare()`, which fails to sanitize input correctly before calling the graphics magic binary.\n\n\n## Recommendation\n\nUpdate to version 1.21.1 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-pjh3-jv7w-9jpr",
+      "publishedAt": "2020-09-01T15:18:55Z",
+      "modifiedAt": "2023-01-09T05:04:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pjh3-jv7w-9jpr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-7982"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.20.0",
+          "fixed": "1.21.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

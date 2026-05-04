@@ -1,0 +1,32 @@
+{
+  "packageName": "uekw1511server",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pm44-7gw9-6g8p",
+      "packageName": "uekw1511server",
+      "title": "Directory Traversal in uekw1511server",
+      "description": "Affected versions of `uekw1511server` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pm44-7gw9-6g8p",
+      "publishedAt": "2020-09-01T18:28:08Z",
+      "modifiedAt": "2023-09-12T19:32:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pm44-7gw9-6g8p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16185"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

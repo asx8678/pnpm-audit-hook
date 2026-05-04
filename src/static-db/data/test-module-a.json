@@ -1,0 +1,28 @@
+{
+  "packageName": "test-module-a",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-76xq-58hj-vwm2",
+      "packageName": "test-module-a",
+      "title": "Malicious Package in test-module-a",
+      "description": "All versions of `test-module-a` contain malicious code as a preinstall script. The package fetches all names of npm packages owned by the user and attempts to add another maintainer to every package as a means of package hijacking,\n\n\n## Recommendation\n\nRemove the package from your system. If you own any packages that were compromised please contact npm security immediately at security@npmjs.com. Also enable 2FA for publishing to further secure packages you maintain.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-76xq-58hj-vwm2",
+      "publishedAt": "2020-09-11T21:16:59Z",
+      "modifiedAt": "2023-01-09T05:04:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-76xq-58hj-vwm2"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

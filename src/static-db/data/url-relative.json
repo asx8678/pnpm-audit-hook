@@ -1,0 +1,28 @@
+{
+  "packageName": "url-relative",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-86p3-4gfq-38f2",
+      "packageName": "url-relative",
+      "title": "Denial of Service in url-relative",
+      "description": "All versions of `url-relative` are vulnerable to Denial of Service. If the values `to` and `from` are equal, the function hangs and never returns. This may cause a Denial of Service.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-86p3-4gfq-38f2",
+      "publishedAt": "2019-06-05T14:10:34Z",
+      "modifiedAt": "2023-01-09T05:01:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-86p3-4gfq-38f2"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

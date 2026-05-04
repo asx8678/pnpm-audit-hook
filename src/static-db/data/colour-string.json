@@ -1,0 +1,28 @@
+{
+  "packageName": "colour-string",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8mmf-qp7j-2w24",
+      "packageName": "colour-string",
+      "title": "Malicious Package in colour-string",
+      "description": "Version 1.5.3 of `colour-string` contained malicious code as a preinstall script. The package downloaded a file from a remote server, executed it and opened a backdoor.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been given to an outside entity, th",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8mmf-qp7j-2w24",
+      "publishedAt": "2020-09-02T21:35:33Z",
+      "modifiedAt": "2023-01-09T05:03:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8mmf-qp7j-2w24"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

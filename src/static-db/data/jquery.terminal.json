@@ -1,6 +1,6 @@
 {
   "packageName": "jquery.terminal",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-x9r5-jxvq-4387",
@@ -25,6 +25,29 @@
         {
           "range": "< 2.31.1",
           "fixed": "2.31.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2hwp-g4g7-mwwj",
+      "packageName": "jquery.terminal",
+      "title": "Reflected Cross-Site Scripting in jquery.terminal",
+      "description": "Versions of `jquery.terminal` prior to 1.21.0 are vulnerable to Reflected Cross-Site Scripting. If the application has either of the options `anyLinks` or `invokeMethods` set to true, the application may execute arbitrary JavaScript through crafted malicious payloads due to insufficient sanitization.\n\n\n## Recommendation\n\nUpgrade to version 1.21.0 or later",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2hwp-g4g7-mwwj",
+      "publishedAt": "2019-05-29T20:25:35Z",
+      "modifiedAt": "2023-01-09T05:01:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2hwp-g4g7-mwwj"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.21.0",
+          "fixed": "1.21.0"
         }
       ],
       "source": "github"

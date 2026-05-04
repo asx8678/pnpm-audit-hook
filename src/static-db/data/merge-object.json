@@ -1,0 +1,32 @@
+{
+  "packageName": "merge-object",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fp82-2h99-3fpp",
+      "packageName": "merge-object",
+      "title": "Prototype Pollution in async merge-object",
+      "description": "The utilities function in all versions of the merge-object node module can be tricked into modifying the prototype of Object when the attacker can control part of the structure passed to this function. This can let an attacker add or modify existing properties that will exist on all objects.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fp82-2h99-3fpp",
+      "publishedAt": "2018-09-18T13:47:24Z",
+      "modifiedAt": "2023-01-09T05:03:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fp82-2h99-3fpp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3753"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

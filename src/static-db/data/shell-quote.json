@@ -1,15 +1,16 @@
 {
   "packageName": "shell-quote",
-  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-g4rg-993r-mgx7",
       "packageName": "shell-quote",
-      "title": "Improper Neutralization of Special Elements used in a Command",
+      "title": "Improper Neutralization of Special Elements used in a Command in Shell-quote",
+      "description": "The shell-quote package before 1.7.3 for Node.js allows command injection. An attacker can inject unescaped shell metacharacters through a regex designed to support Windows drive letters. If the output of this package is passed to a real shell as a quoted argument to a command with `exec()`, an attacker can inject arbitrary commands. This is because the Windows drive letter regex character class is `[A-z]` instead of the correct `[A-Za-z]`. Several shell metacharacters exist in the space between",
       "severity": "critical",
       "url": "https://github.com/advisories/GHSA-g4rg-993r-mgx7",
-      "publishedAt": "2022-06-24T00:00:00Z",
-      "modifiedAt": "2023-09-08T19:54:00Z",
+      "publishedAt": "2022-05-24T19:18:27Z",
+      "modifiedAt": "2025-09-10T17:27:09Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -22,8 +23,35 @@
       ],
       "affectedVersions": [
         {
-          "range": "<1.7.3",
+          "range": ">= 1.6.3, <= 1.7.2",
           "fixed": "1.7.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qg8p-v9q4-gh34",
+      "packageName": "shell-quote",
+      "title": "Potential Command Injection in shell-quote",
+      "description": "Affected versions of `shell-quote` do not properly escape command line arguments, which may result in command injection if the library is used to escape user input destined for use as command line arguments.\n\n\n\n## Proof of Concept:\n\nThe following characters are not escaped properly: `>`,`;`,`{`,`}`\n\nBash has a neat but not well known feature known as \"Bash Brace Expansion\", wherein a sub-command can be executed without spaces by running it between a set of `{}` and using the `,` instead of ` ` t",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qg8p-v9q4-gh34",
+      "publishedAt": "2019-02-18T23:58:29Z",
+      "modifiedAt": "2023-02-02T05:01:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qg8p-v9q4-gh34"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10541"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.6.1",
+          "fixed": "1.6.1"
         }
       ],
       "source": "github"

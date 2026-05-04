@@ -1,0 +1,28 @@
+{
+  "packageName": "midway-xtpl",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w65v-hx54-xrqx",
+      "packageName": "midway-xtpl",
+      "title": "Malicious Package in midway-xtpl",
+      "description": "All versions of `midway-xtpl` contain malicious code. The package uploads system information to a remote server, downloads a file and executes it.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee th",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-w65v-hx54-xrqx",
+      "publishedAt": "2020-09-03T17:41:23Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w65v-hx54-xrqx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "packageName": "base64-url",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j4mr-9xw3-c9jx",
+      "packageName": "base64-url",
+      "title": "Out-of-bounds Read in base64-url",
+      "description": "Versions of `base64-url` before 2.0.0 are vulnerable to out-of-bounds read as it allocates uninitialized Buffers when number is passed in input.\n\n\n## Recommendation\n\nUpdate to version 2.0.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j4mr-9xw3-c9jx",
+      "publishedAt": "2019-05-31T23:47:01Z",
+      "modifiedAt": "2023-01-09T05:01:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j4mr-9xw3-c9jx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

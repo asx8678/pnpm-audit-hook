@@ -1,0 +1,29 @@
+{
+  "packageName": "mirador",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hgwm-pv9h-q5m7",
+      "packageName": "mirador",
+      "title": "Potential XSS in jQuery dependency in Mirador",
+      "description": "### Impact\nMirador users less than v3.0.0 (alpha-rc) versions that have an unpatched jQuery. When adopters update jQuery they will find some of Mirador functionality to be broken.\n\n### Patches\nMirador adopters should update to v3.0.0, no updates exist for v2.x releases.\n\n### Workarounds\nYes, Mirador users could fork and create their own custom build of Mirador and make the bug fixes themselves.\n\n### References\nhttps://github.com/advisories/GHSA-gxr4-xjj5-5px2\nhttps://github.com/advisories/GHSA-j",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hgwm-pv9h-q5m7",
+      "publishedAt": "2020-09-18T18:03:29Z",
+      "modifiedAt": "2023-01-09T05:04:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hgwm-pv9h-q5m7"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.7.2",
+          "fixed": "3.0.0-alpha.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

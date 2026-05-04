@@ -1,7 +1,342 @@
 {
   "packageName": "hono",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-xpcf-pg52-r92g",
+      "packageName": "hono",
+      "title": "Hono has incorrect IP matching in ipRestriction() for IPv4-mapped IPv6 addresses",
+      "description": "## Summary\n\n`ipRestriction()` does not canonicalize IPv4-mapped IPv6 client addresses (e.g. `::ffff:127.0.0.1`) before applying IPv4 allow or deny rules. In environments such as Node.js dual-stack, this can cause IPv4 rules to fail to match, leading to unintended authorization behavior.\n\n## Details\n\nThe middleware classifies client addresses based on their textual form. Addresses containing \"`:`\" are treated as IPv6, including IPv4-mapped IPv6 addresses such as `::ffff:127.0.0.1`. These addresse",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xpcf-pg52-r92g",
+      "publishedAt": "2026-04-08T00:17:14Z",
+      "modifiedAt": "2026-04-24T21:06:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xpcf-pg52-r92g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39409"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.12.12",
+          "fixed": "4.12.12"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-458j-xx4x-4375",
+      "packageName": "hono",
+      "title": "hono Improperly Handles JSX Attribute Names Allows HTML Injection in hono/jsx SSR",
+      "description": "## Summary\n\nImproper handling of JSX attribute names in hono/jsx allows malformed attribute keys to corrupt the generated HTML output.\n\nWhen untrusted input is used as attribute keys during server-side rendering, specially crafted keys can break out of attribute or tag boundaries and inject unintended HTML.\n\n## Details\n\nWhen rendering JSX elements to HTML strings, attribute values are escaped, but attribute names (keys) were previously inserted into the output without validation.\n\nIf an attribut",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-458j-xx4x-4375",
+      "publishedAt": "2026-04-16T01:02:24Z",
+      "modifiedAt": "2026-04-16T01:02:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-458j-xx4x-4375"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.12.14",
+          "fixed": "4.12.14"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r5rp-j6wh-rvv4",
+      "packageName": "hono",
+      "title": "Hono: Non-breaking space prefix bypass in cookie name handling in getCookie()",
+      "description": "## Summary\n\nA discrepancy between browser cookie parsing and `parse()` handling allows cookie prefix protections to be bypassed.\n\nCookie names that are treated as distinct by the browser may be normalized to the same key by `parse()`, allowing attacker-controlled cookies to override legitimate ones.\n\n## Details\n\nBrowsers follow RFC 6265bis and only trim SP (`0x20`) and HTAB (`0x09`) from cookie names. Other characters, such as the non-breaking space (`U+00A0`), are preserved as part of the cooki",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-r5rp-j6wh-rvv4",
+      "publishedAt": "2026-04-08T00:17:21Z",
+      "modifiedAt": "2026-04-08T15:34:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r5rp-j6wh-rvv4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39410"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.12.12",
+          "fixed": "4.12.12"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xf4j-xp2r-rqqx",
+      "packageName": "hono",
+      "title": "Hono: Path traversal in toSSG() allows writing files outside the output directory",
+      "description": "## Summary\n\nA path traversal issue in `toSSG()` allows files to be written outside the configured output directory during static site generation. When using dynamic route parameters via `ssgParams`, specially crafted values can cause generated file paths to escape the intended output directory.\n\n## Details\n\nThe static site generation process creates output files based on route paths derived from application routes and parameters. When `ssgParams` is used to provide values for dynamic routes, tho",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xf4j-xp2r-rqqx",
+      "publishedAt": "2026-04-08T00:16:51Z",
+      "modifiedAt": "2026-04-08T15:34:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xf4j-xp2r-rqqx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39408"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, <= 4.12.11",
+          "fixed": "4.12.12"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wmmm-f939-6g9c",
+      "packageName": "hono",
+      "title": "Hono: Middleware bypass via repeated slashes in serveStatic",
+      "description": "## Summary\n\nA path handling inconsistency in `serveStatic` allows protected static files to be accessed by using repeated slashes (`//`) in the request path.\n\nWhen route-based middleware (e.g., `/admin/*`) is used for authorization, the router may not match paths containing repeated slashes, while serveStatic resolves them as normalized paths. This can lead to a middleware bypass.\n\n## Details\n\nThe routing layer and `serveStatic` handle repeated slashes differently.\n\nFor example:\n\n```\n/admin/secr",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wmmm-f939-6g9c",
+      "publishedAt": "2026-04-08T00:16:45Z",
+      "modifiedAt": "2026-04-08T15:34:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wmmm-f939-6g9c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39407"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.12.12",
+          "fixed": "4.12.12"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-26pp-8wgv-hjvm",
+      "packageName": "hono",
+      "title": "Hono missing validation of cookie name on write path in setCookie()",
+      "description": "## Summary\n\nCookie names are not validated on the write path when using `setCookie()`, `serialize()`, or `serializeSigned()` to generate Set-Cookie headers.\n\nWhile certain cookie attributes such as domain and path are validated, the cookie name itself may contain invalid characters.\n\nThis results in inconsistent handling of cookie names between parsing (read path) and serialization (write path).\n\n## Details\n\nWhen applications use `setCookie()`, `serialize()`, or `serializeSigned()` with a user-c",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-26pp-8wgv-hjvm",
+      "publishedAt": "2026-04-08T00:17:02Z",
+      "modifiedAt": "2026-04-08T00:17:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-26pp-8wgv-hjvm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.12.12",
+          "fixed": "4.12.12"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v8w9-8mx6-g223",
+      "packageName": "hono",
+      "title": "Hono vulnerable to Prototype Pollution possible through __proto__ key allowed in parseBody({ dot: true })",
+      "description": "## Summary\n\nWhen using `parseBody({ dot: true })` in HonoRequest, specially crafted form field names such as `__proto__.x` could create objects containing a `__proto__` property.\n\nIf the parsed result is later merged into regular JavaScript objects using unsafe merge patterns, this may lead to prototype pollution in the target object.\n\n## Details\n\nThe `parseBody({ dot: true })` feature supports dot notation to construct nested objects from form field names.\n\nIn previous versions, the `__proto__`",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v8w9-8mx6-g223",
+      "publishedAt": "2026-03-11T00:31:47Z",
+      "modifiedAt": "2026-03-11T00:31:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v8w9-8mx6-g223"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.12.7",
+          "fixed": "4.12.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5pq2-9x2x-5p6w",
+      "packageName": "hono",
+      "title": "Hono Vulnerable to Cookie Attribute Injection via Unsanitized domain and path in setCookie()",
+      "description": "## Summary\n\nThe `setCookie()` utility did not validate semicolons (`;`), carriage returns (`\\r`), or newline characters (`\\n`) in the `domain` and `path` options when constructing the `Set-Cookie` header.\n\nBecause cookie attributes are delimited by semicolons, this could allow injection of additional cookie attributes if untrusted input was passed into these fields.\n\n## Details\n\n`setCookie()` builds the `Set-Cookie` header by concatenating option values. While the cookie value itself is URL-enco",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5pq2-9x2x-5p6w",
+      "publishedAt": "2026-03-04T19:49:14Z",
+      "modifiedAt": "2026-03-05T15:26:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5pq2-9x2x-5p6w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29086"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.12.4",
+          "fixed": "4.12.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p6xx-57qc-3wxr",
+      "packageName": "hono",
+      "title": "Hono Vulnerable to SSE Control Field Injection via CR/LF in writeSSE()",
+      "description": "## Summary\n\nWhen using `streamSSE()` in Streaming Helper, the `event`, `id`, and `retry` fields were not validated for carriage return (`\\r`) or newline (`\\n`) characters.\n\nBecause the SSE protocol uses line breaks as field delimiters, this could allow injection of additional SSE fields within the same event frame if untrusted input was passed into these fields.\n\n## Details\n\nThe SSE helper builds event frames by joining lines with `\\n`. While multi-line `data:` fields are handled according to th",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p6xx-57qc-3wxr",
+      "publishedAt": "2026-03-04T19:48:41Z",
+      "modifiedAt": "2026-03-05T15:26:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p6xx-57qc-3wxr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29085"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.12.4",
+          "fixed": "4.12.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q5qw-h33p-qvwr",
+      "packageName": "hono",
+      "title": "Hono vulnerable to arbitrary file access via serveStatic vulnerability ",
+      "description": "## Summary\n\nWhen using `serveStatic` together with route-based middleware protections (e.g. `app.use('/admin/*', ...)`), inconsistent URL decoding allowed protected static resources to be accessed without authorization.\n\nThe router used `decodeURI`, while `serveStatic` used `decodeURIComponent`. This mismatch allowed paths containing encoded slashes (`%2F`) to bypass middleware protections while still resolving to the intended filesystem path.\n\n\n## Details\n\nThe routing layer preserved `%2F` as a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q5qw-h33p-qvwr",
+      "publishedAt": "2026-03-04T19:48:00Z",
+      "modifiedAt": "2026-03-05T15:26:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q5qw-h33p-qvwr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29045"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.12.4",
+          "fixed": "4.12.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xh87-mx6m-69f3",
+      "packageName": "hono",
+      "title": "Hono is Vulnerable to Authentication Bypass by IP Spoofing in AWS Lambda ALB conninfo",
+      "description": "## Summary\n\nWhen using the AWS Lambda adapter (`hono/aws-lambda`) behind an Application Load Balancer (ALB), the `getConnInfo()` function incorrectly selected the first value from the `X-Forwarded-For` header.\n\nBecause AWS ALB appends the real client IP address to the end of the `X-Forwarded-For` header, the first value can be attacker-controlled.\n\nThis could allow IP-based access control mechanisms (such as the `ipRestriction` middleware) to be bypassed.\n\n## Details\n\nIn ALB environments, AWS ap",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xh87-mx6m-69f3",
+      "publishedAt": "2026-02-25T18:02:19Z",
+      "modifiedAt": "2026-02-27T20:55:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xh87-mx6m-69f3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27700"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.12.0, < 4.12.2",
+          "fixed": "4.12.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gq3j-xvxp-8hrf",
+      "packageName": "hono",
+      "title": "Hono added timing comparison hardening in basicAuth and bearerAuth",
+      "description": "## Summary\n\nThe `basicAuth` and `bearerAuth` middlewares previously used a comparison that was not fully timing-safe.\n\nThe `timingSafeEqual` function used normal string equality (`===`) when comparing hash values. This comparison may stop early if values differ, which can theoretically cause small timing differences.\n\nThe implementation has been updated to use a safer comparison method.\n\n\n## Details\n\nThe issue was caused by the use of normal string equality (`===`) when comparing hash values ins",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-gq3j-xvxp-8hrf",
+      "publishedAt": "2026-02-19T20:15:59Z",
+      "modifiedAt": "2026-02-19T20:16:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gq3j-xvxp-8hrf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.11.10",
+          "fixed": "4.11.10"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w332-q679-j88p",
+      "packageName": "hono",
+      "title": "Hono has an Arbitrary Key Read in Serve static Middleware (Cloudflare Workers Adapter)",
+      "description": "## Summary\n\nServe static Middleware for the Cloudflare Workers adapter contains an information disclosure vulnerability that may allow attackers to read arbitrary keys from the Workers environment. Improper validation of user-controlled paths can result in unintended access to internal asset keys.\n\n## Details\n\nThe vulnerability exists in the serve-static middleware used with the Cloudflare Workers adapter. When serving static assets, the middleware does not sufficiently validate or restrict user",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w332-q679-j88p",
+      "publishedAt": "2026-01-27T19:09:01Z",
+      "modifiedAt": "2026-02-04T19:53:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w332-q679-j88p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24473"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.11.7",
+          "fixed": "4.11.7"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-6wqw-2p9w-4vw4",
       "packageName": "hono",
@@ -19,33 +354,6 @@
         {
           "type": "CVE",
           "value": "CVE-2026-24472"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 4.11.7",
-          "fixed": "4.11.7"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-w332-q679-j88p",
-      "packageName": "hono",
-      "title": "Hono has an Arbitrary Key Read in Serve static Middleware (Cloudflare Workers Adapter)",
-      "description": "## Summary\n\nServe static Middleware for the Cloudflare Workers adapter contains an information disclosure vulnerability that may allow attackers to read arbitrary keys from the Workers environment. Improper validation of user-controlled paths can result in unintended access to internal asset keys.\n\n## Details\n\nThe vulnerability exists in the serve-static middleware used with the Cloudflare Workers adapter. When serving static assets, the middleware does not sufficiently validate or restrict user",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-w332-q679-j88p",
-      "publishedAt": "2026-01-27T19:09:01Z",
-      "modifiedAt": "2026-01-29T03:39:13Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-w332-q679-j88p"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-24473"
         }
       ],
       "affectedVersions": [
@@ -372,137 +680,6 @@
         {
           "range": "< 3.11.7",
           "fixed": "3.11.7"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-5pq2-9x2x-5p6w",
-      "packageName": "hono",
-      "title": "Hono Vulnerable to Cookie Attribute Injection via Unsanitized domain and path in setCookie()",
-      "description": "## Summary\n\nThe `setCookie()` utility did not validate semicolons (`;`), carriage returns (`\\r`), or newline characters (`\\n`) in the `domain` and `path` options when constructing the `Set-Cookie` header.\n\nBecause cookie attributes are delimited by semicolons, this could allow injection of additional cookie attributes if untrusted input was passed into these fields.\n\n## Details\n\n`setCookie()` builds the `Set-Cookie` header by concatenating option values. While the cookie value itself is URL-enco",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-5pq2-9x2x-5p6w",
-      "publishedAt": "2026-03-04T19:49:14Z",
-      "modifiedAt": "2026-03-05T15:26:44Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-5pq2-9x2x-5p6w"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-29086"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 4.12.4",
-          "fixed": "4.12.4"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-p6xx-57qc-3wxr",
-      "packageName": "hono",
-      "title": "Hono Vulnerable to SSE Control Field Injection via CR/LF in writeSSE()",
-      "description": "## Summary\n\nWhen using `streamSSE()` in Streaming Helper, the `event`, `id`, and `retry` fields were not validated for carriage return (`\\r`) or newline (`\\n`) characters.\n\nBecause the SSE protocol uses line breaks as field delimiters, this could allow injection of additional SSE fields within the same event frame if untrusted input was passed into these fields.\n\n## Details\n\nThe SSE helper builds event frames by joining lines with `\\n`. While multi-line `data:` fields are handled according to th",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-p6xx-57qc-3wxr",
-      "publishedAt": "2026-03-04T19:48:41Z",
-      "modifiedAt": "2026-03-05T15:26:38Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-p6xx-57qc-3wxr"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-29085"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 4.12.4",
-          "fixed": "4.12.4"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-q5qw-h33p-qvwr",
-      "packageName": "hono",
-      "title": "Hono vulnerable to arbitrary file access via serveStatic vulnerability ",
-      "description": "## Summary\n\nWhen using `serveStatic` together with route-based middleware protections (e.g. `app.use('/admin/*', ...)`), inconsistent URL decoding allowed protected static resources to be accessed without authorization.\n\nThe router used `decodeURI`, while `serveStatic` used `decodeURIComponent`. This mismatch allowed paths containing encoded slashes (`%2F`) to bypass middleware protections while still resolving to the intended filesystem path.\n\n\n## Details\n\nThe routing layer preserved `%2F` as a",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-q5qw-h33p-qvwr",
-      "publishedAt": "2026-03-04T19:48:00Z",
-      "modifiedAt": "2026-03-05T15:26:34Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-q5qw-h33p-qvwr"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-29045"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 4.12.4",
-          "fixed": "4.12.4"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-xh87-mx6m-69f3",
-      "packageName": "hono",
-      "title": "Hono is Vulnerable to Authentication Bypass by IP Spoofing in AWS Lambda ALB conninfo",
-      "description": "## Summary\n\nWhen using the AWS Lambda adapter (`hono/aws-lambda`) behind an Application Load Balancer (ALB), the `getConnInfo()` function incorrectly selected the first value from the `X-Forwarded-For` header.\n\nBecause AWS ALB appends the real client IP address to the end of the `X-Forwarded-For` header, the first value can be attacker-controlled.\n\nThis could allow IP-based access control mechanisms (such as the `ipRestriction` middleware) to be bypassed.\n\n## Details\n\nIn ALB environments, AWS ap",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-xh87-mx6m-69f3",
-      "publishedAt": "2026-02-25T18:02:19Z",
-      "modifiedAt": "2026-02-27T20:55:24Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-xh87-mx6m-69f3"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-27700"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 4.12.0, < 4.12.2",
-          "fixed": "4.12.2"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-gq3j-xvxp-8hrf",
-      "packageName": "hono",
-      "title": "Hono added timing comparison hardening in basicAuth and bearerAuth",
-      "description": "## Summary\n\nThe `basicAuth` and `bearerAuth` middlewares previously used a comparison that was not fully timing-safe.\n\nThe `timingSafeEqual` function used normal string equality (`===`) when comparing hash values. This comparison may stop early if values differ, which can theoretically cause small timing differences.\n\nThe implementation has been updated to use a safer comparison method.\n\n\n## Details\n\nThe issue was caused by the use of normal string equality (`===`) when comparing hash values ins",
-      "severity": "low",
-      "url": "https://github.com/advisories/GHSA-gq3j-xvxp-8hrf",
-      "publishedAt": "2026-02-19T20:15:59Z",
-      "modifiedAt": "2026-02-19T20:16:02Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-gq3j-xvxp-8hrf"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 4.11.10",
-          "fixed": "4.11.10"
         }
       ],
       "source": "github"

@@ -1,0 +1,28 @@
+{
+  "packageName": "react-server-native",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fwvp-x5gj-773j",
+      "packageName": "react-server-native",
+      "title": "Malicious Package in react-server-native",
+      "description": "Version 0.0.7 of `react-server-native` contained malicious code. The code when executed in the browser would enumerate password, cvc, cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nIf version 0.0.7 of this module is found installed you will want to replace it with a version before or after 0.0.7. In addition to replacing the installed module, you will also want to evaluate your application to determine whether or not use",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fwvp-x5gj-773j",
+      "publishedAt": "2020-09-01T20:33:10Z",
+      "modifiedAt": "2023-07-27T20:35:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fwvp-x5gj-773j"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 0.0.7"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

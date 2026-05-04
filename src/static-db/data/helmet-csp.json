@@ -1,0 +1,29 @@
+{
+  "packageName": "helmet-csp",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c3m8-x3cg-qm2c",
+      "packageName": "helmet-csp",
+      "title": "Configuration Override in helmet-csp",
+      "description": "Versions of `helmet-csp` before to 2.9.1 are vulnerable to a Configuration Override affecting the application's Content Security Policy (CSP). The package's browser sniffing for Firefox deletes the `default-src` CSP policy, which is the fallback policy. This allows an attacker to remove an application's default CSP, possibly rendering the application vulnerable to Cross-Site Scripting.\n\n\n## Recommendation\n\nUpgrade to version 2.9.1 or later. Setting the `browserSniff` configuration to `false` in ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c3m8-x3cg-qm2c",
+      "publishedAt": "2020-09-03T20:39:53Z",
+      "modifiedAt": "2023-01-09T05:04:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c3m8-x3cg-qm2c"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.2.2, < 2.9.1",
+          "fixed": "2.9.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

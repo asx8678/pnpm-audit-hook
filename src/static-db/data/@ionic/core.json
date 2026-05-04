@@ -1,0 +1,29 @@
+{
+  "packageName": "@ionic/core",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r3xc-47qg-h929",
+      "packageName": "@ionic/core",
+      "title": "Cross-Site Scripting in @ionic/core",
+      "description": "Versions of  `@ionic/core` prior to 4.0.3, 4.1.3, 4.2.1 or 4.3.1 are vulnerable to Cross-Site Scripting (XSS). The package uses the unsafe `innerHTML` function without sanitizing input, which may allow attackers to execute arbitrary JavaScript on the victim's browser. This issue affects the components:\n- `<ion-alert>.message`\n- `<ion-searchbar>.placeholder`\n- `<ion-infinite-scroll-content>.loadingText`\n- `<ion-refresher-content>.pullingText`\n- `<ion-refresher-content>.refershingText`\n\n\n## Recomm",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r3xc-47qg-h929",
+      "publishedAt": "2020-09-03T17:06:09Z",
+      "modifiedAt": "2023-01-09T05:03:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r3xc-47qg-h929"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.3.0, < 4.3.1",
+          "fixed": "4.3.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

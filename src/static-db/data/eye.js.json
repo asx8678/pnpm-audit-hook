@@ -1,0 +1,29 @@
+{
+  "packageName": "eye.js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mgv2-57vj-99xc",
+      "packageName": "eye.js",
+      "title": "Low severity vulnerability that affects eye.js",
+      "description": "## Test breaking\n\n### Impact\nIn v1.2.0, tests are broken: all tests are always succeeding. If tests are looking for security vulnerabilities, these were compromised.\n\n### Patches\nUsers should upgrade to `v1.2.1`\n\n### Workarounds\nUsers who don't use eye.js for looking for vulnerabilities are safe. Upgrading will just fix some bugs.\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Open an issue in [EyeJS](https://github.com/arguiot/EyeJS)\n* Email us at [arguio",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-mgv2-57vj-99xc",
+      "publishedAt": "2019-10-07T16:54:24Z",
+      "modifiedAt": "2023-01-09T05:03:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mgv2-57vj-99xc"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.2.0",
+          "fixed": "1.2.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

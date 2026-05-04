@@ -1,6 +1,6 @@
 {
   "packageName": "@supabase/auth-js",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8r88-6cj9-9fh5",
@@ -10,7 +10,7 @@
       "severity": "low",
       "url": "https://github.com/advisories/GHSA-8r88-6cj9-9fh5",
       "publishedAt": "2025-05-27T18:00:17Z",
-      "modifiedAt": "2025-05-28T19:42:24Z",
+      "modifiedAt": "2026-04-27T21:11:49Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -23,8 +23,8 @@
       ],
       "affectedVersions": [
         {
-          "range": "< 2.69.1",
-          "fixed": "2.69.1"
+          "range": "<= 2.69.1",
+          "fixed": "2.70.0"
         }
       ],
       "source": "github"

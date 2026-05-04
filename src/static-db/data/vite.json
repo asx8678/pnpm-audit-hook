@@ -1,7 +1,88 @@
 {
   "packageName": "vite",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-4w7w-66w2-5vf9",
+      "packageName": "vite",
+      "title": "Vite Vulnerable to Path Traversal in Optimized Deps `.map` Handling",
+      "description": "### Summary\n\nAny files ending with `.map` even out side the project can be returned to the browser.\n\n### Impact\n\nOnly apps that match the following conditions are affected:\n\n- explicitly exposes the Vite dev server to the network (using `--host` or [`server.host` config option](https://vitejs.dev/config/server-options.html#server-host))\n- have a sensitive content in files ending with `.map` and the path is predictable\n\n### Details\n\nIn Vite v7.3.1, the dev server’s handling of `.map` requests for",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4w7w-66w2-5vf9",
+      "publishedAt": "2026-04-06T18:03:46Z",
+      "modifiedAt": "2026-04-07T22:16:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4w7w-66w2-5vf9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39365"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 6.4.1",
+          "fixed": "6.4.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v2wj-q39q-566r",
+      "packageName": "vite",
+      "title": "Vite: `server.fs.deny` bypassed with queries",
+      "description": "### Summary\n\nThe contents of files that are specified by [`server.fs.deny`](https://vite.dev/config/server-options#server-fs-deny) can be returned to the browser.\n\n### Impact\n\nOnly apps that match the following conditions are affected:\n\n- explicitly exposes the Vite dev server to the network (using `--host` or [`server.host` config option](https://vitejs.dev/config/server-options.html#server-host))\n- the sensitive file exists in the allowed directories specified by [`server.fs.allow`](https://vi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v2wj-q39q-566r",
+      "publishedAt": "2026-04-06T18:03:32Z",
+      "modifiedAt": "2026-04-07T22:16:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v2wj-q39q-566r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39364"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 7.1.0, <= 7.3.1",
+          "fixed": "7.3.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p9ff-h696-f583",
+      "packageName": "vite",
+      "title": "Vite Vulnerable to Arbitrary File Read via Vite Dev Server WebSocket",
+      "description": "### Summary\n\n[`server.fs`](https://vite.dev/config/server-options#server-fs-strict) check was not enforced to the `fetchModule` method that is exposed in Vite dev server's WebSocket. \n\n### Impact\n\nOnly apps that match the following conditions are affected:\n\n- explicitly exposes the Vite dev server to the network (using `--host` or [`server.host` config option](https://vitejs.dev/config/server-options.html#server-host))\n- WebSocket is not disabled by `server.ws: false`\n\nArbitrary files on the ser",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p9ff-h696-f583",
+      "publishedAt": "2026-04-06T18:03:24Z",
+      "modifiedAt": "2026-04-07T22:16:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p9ff-h696-f583"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39363"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 6.0.0, <= 6.4.1",
+          "fixed": "6.4.2"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-4r4m-qw57-chr8",
       "packageName": "vite",

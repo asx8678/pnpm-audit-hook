@@ -1,0 +1,32 @@
+{
+  "packageName": "healthcenter",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j336-34q7-cgj3",
+      "packageName": "healthcenter",
+      "title": "Downloads Resources over HTTP in healthcenter",
+      "description": "Affected versions of `healthcenter` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `healthcenter`.\n\n\n## Recommendation\n\nThis package has been deprecated, and moved to a new package on npm: [`appmetrics`](https://npmjs.com/package/appmetrics).\n\nIn order to mitigate thi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j336-34q7-cgj3",
+      "publishedAt": "2019-02-18T23:42:06Z",
+      "modifiedAt": "2023-01-09T05:02:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j336-34q7-cgj3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10684"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

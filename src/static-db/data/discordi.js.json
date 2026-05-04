@@ -1,0 +1,32 @@
+{
+  "packageName": "discordi.js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fv9m-f7w4-889c",
+      "packageName": "discordi.js",
+      "title": "discordi.js is malware",
+      "description": "The `discordi.js` package is malware that attempts to discover and exfiltrate a user's [Discord](https://discordapp.com/) credentials, sending them to pastebin.\n\nAll versions have been unpublished from the npm registry.\n\n\n## Recommendation\n\nDo not install / use this module. It has been unpublished from the npm registry but may exist in some caches. Any users that logged into Discord using this library will need to change their credentials.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fv9m-f7w4-889c",
+      "publishedAt": "2018-08-06T21:43:03Z",
+      "modifiedAt": "2023-09-09T00:00:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fv9m-f7w4-889c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16207"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 14.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

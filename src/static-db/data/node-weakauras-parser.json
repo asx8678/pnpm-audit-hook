@@ -1,0 +1,29 @@
+{
+  "packageName": "node-weakauras-parser",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-86mr-6m89-vgj3",
+      "packageName": "node-weakauras-parser",
+      "title": "Buffer Overflow in node-weakauras-parser",
+      "description": "Affected versions of `node-weakauras-parser` are vulnerable to a Buffer Overflow. The `encode_weakaura` function fails to properly validate the input size. A buffer of 13835058055282163711 bytes causes an overflow on 64-bit systems.\n\n\n## Recommendation\n\nUpgrade to versions 1.0.5, 2.0.2, 3.0.1 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-86mr-6m89-vgj3",
+      "publishedAt": "2020-09-03T15:51:38Z",
+      "modifiedAt": "2023-01-09T05:03:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-86mr-6m89-vgj3"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 3.0.1",
+          "fixed": "3.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "tomita",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g84j-95x2-7g67",
+      "packageName": "tomita",
+      "title": "Downloads Resources over HTTP in tomita",
+      "description": "Affected versions of `tomita` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `tomita`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if available. \n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g84j-95x2-7g67",
+      "publishedAt": "2019-02-18T23:44:50Z",
+      "modifiedAt": "2023-01-09T05:02:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g84j-95x2-7g67"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10662"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

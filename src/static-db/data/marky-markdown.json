@@ -1,0 +1,50 @@
+{
+  "packageName": "marky-markdown",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pxmp-fwjc-4x7q",
+      "packageName": "marky-markdown",
+      "title": "HTML Injection in marky-markdown",
+      "description": "All versions of `marky-markdown` are vulnerable to HTML Injection due to a validation bypass. The package only allows iframes where the source is `youtube.com` but it is possible to bypass the validation with sources where `youtube.com` is the sub-domain, such as `youtube.com.evil.co`. This \n\n\n## Recommendation\n\nThis package is no longer maintained. Please upgrade to `@npmcorp/marky-markdown`",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pxmp-fwjc-4x7q",
+      "publishedAt": "2020-09-03T15:45:23Z",
+      "modifiedAt": "2023-01-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pxmp-fwjc-4x7q"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mg69-6j3m-jvgw",
+      "packageName": "marky-markdown",
+      "title": "HTML Injection in marky-markdown",
+      "description": "All versions of `marky-markdown` are vulnerable to HTML Injection. The package fails to sanitize `style` attributes in `img` tags of the markdown input. This may allow attackers to affect the size of images in the rendered HTML.\n\n\n## Recommendation\n\nThis package is no longer maintained. Please upgrade to `@npmcorp/marky-markdown`",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mg69-6j3m-jvgw",
+      "publishedAt": "2020-09-03T15:45:08Z",
+      "modifiedAt": "2023-01-09T05:03:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mg69-6j3m-jvgw"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

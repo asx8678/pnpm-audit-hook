@@ -1,0 +1,52 @@
+{
+  "packageName": "constantinople",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hg7c-66ff-9q8g",
+      "packageName": "constantinople",
+      "title": "Sandbox bypass in constantinople",
+      "description": "constantinople before 3.1.1 affected by a sandbox bypass.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hg7c-66ff-9q8g",
+      "publishedAt": "2020-07-31T16:18:53Z",
+      "modifiedAt": "2023-01-09T05:02:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hg7c-66ff-9q8g"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.1.1",
+          "fixed": "3.1.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4vmm-mhcq-4x9j",
+      "packageName": "constantinople",
+      "title": "Sandbox Bypass Leading to Arbitrary Code Execution in constantinople",
+      "description": "Versions of `constantinople` prior to 3.1.1 are vulnerable to a sandbox bypass which can lead to arbitrary code execution.\n\n\n## Recommendation\n\nUpdate to version 3.1.1 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4vmm-mhcq-4x9j",
+      "publishedAt": "2019-06-14T16:15:14Z",
+      "modifiedAt": "2023-01-09T05:01:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4vmm-mhcq-4x9j"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.1.1",
+          "fixed": "3.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

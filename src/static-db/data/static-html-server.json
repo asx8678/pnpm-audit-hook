@@ -1,0 +1,32 @@
+{
+  "packageName": "static-html-server",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9j5m-873f-xh76",
+      "packageName": "static-html-server",
+      "title": "Directory Traversal in static-html-server",
+      "description": "Affected versions of `static-html-server` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9j5m-873f-xh76",
+      "publishedAt": "2018-07-23T20:46:32Z",
+      "modifiedAt": "2023-09-11T16:35:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9j5m-873f-xh76"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16152"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

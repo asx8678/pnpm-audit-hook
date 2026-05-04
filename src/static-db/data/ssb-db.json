@@ -1,0 +1,33 @@
+{
+  "packageName": "ssb-db",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mpgr-2cx9-327h",
+      "packageName": "ssb-db",
+      "title": "Information disclosure in SSB-DB",
+      "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\n\nServers running SSB-DB 20.0.0 (which is packaged with SSB-Server 16.0.0) must upgrade immediately.\n\n**There is no evidence that other SSB apps are vulnerable or that this problem has been exploited in the wild.**\n\nThe `get()` method is supposed to only decrypt messages when you explicitly ask it to, but there's a bug where it's decrypting any message that it can. This means that it's returning the decrypted content of private messa",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mpgr-2cx9-327h",
+      "publishedAt": "2020-06-11T21:09:04Z",
+      "modifiedAt": "2023-01-09T05:02:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mpgr-2cx9-327h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-4045"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 20.0.0",
+          "fixed": "20.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

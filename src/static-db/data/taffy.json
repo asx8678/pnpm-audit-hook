@@ -1,0 +1,32 @@
+{
+  "packageName": "taffy",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mxhp-79qh-mcx6",
+      "packageName": "taffy",
+      "title": "TaffyDB can allow access to any data items in the DB",
+      "description": "TaffyDB allows attackers to forge adding additional properties into user-input processed by taffy which can allow access to any data items in the DB. Taffy sets an internal index for each data item in its DB. However, it is found that the internal index can be forged by adding additional properties into user-input. If index is found in the query, TaffyDB will ignore other query conditions and directly return the indexed data item. Moreover, the internal index is in an easily-guessable format (e.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mxhp-79qh-mcx6",
+      "publishedAt": "2020-02-19T16:43:42Z",
+      "modifiedAt": "2023-01-30T19:22:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mxhp-79qh-mcx6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10790"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.6.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

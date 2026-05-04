@@ -1,30 +1,26 @@
 {
   "packageName": "opencc",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
-      "id": "GHSA-9qh2-6fxg-9m4g",
+      "id": "GHSA-7fqq-q52p-2jjg",
       "packageName": "opencc",
-      "title": "Open Chinese Convert subject to Denial of Service via Out-of-bounds Read",
-      "description": "Open Chinese Convert (OpenCC) 1.0.5 allows attackers to cause a denial of service (segmentation fault) because BinaryDict::NewFromFile in BinaryDict.cpp may have out-of-bounds keyOffset and valueOffset values via a crafted .ocd file.",
+      "title": "OpenCC  has an Out-of-bounds read when processing truncated UTF-8 input",
+      "description": "### Summary\n\nOpenCC versions before 1.2.0 contain two `CWE-125: Out-of-bounds Read` issues caused by length validation failures in UTF-8 processing. When handling malformed or truncated UTF-8 input, OpenCC trusted derived length values without enforcing the invariant that processed length must not exceed the remaining input buffer. This could result in out-of-bounds reads during segmentation or conversion.\n\n### Details\n\nTwo independent code paths in OpenCC failed to enforce the invariant:\n\n`matc",
       "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-9qh2-6fxg-9m4g",
-      "publishedAt": "2022-05-14T01:55:28Z",
-      "modifiedAt": "2024-11-22T17:59:52Z",
+      "url": "https://github.com/advisories/GHSA-7fqq-q52p-2jjg",
+      "publishedAt": "2026-03-29T15:27:41Z",
+      "modifiedAt": "2026-03-29T15:27:43Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-9qh2-6fxg-9m4g"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2018-16982"
+          "value": "GHSA-7fqq-q52p-2jjg"
         }
       ],
       "affectedVersions": [
         {
-          "range": "< 1.1.2",
-          "fixed": "1.1.2"
+          "range": "< 1.2.0",
+          "fixed": "1.2.0"
         }
       ],
       "source": "github"
@@ -52,6 +48,33 @@
         {
           "range": "<= 1.1.9",
           "fixed": "1.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9qh2-6fxg-9m4g",
+      "packageName": "opencc",
+      "title": "Open Chinese Convert subject to Denial of Service via Out-of-bounds Read",
+      "description": "Open Chinese Convert (OpenCC) 1.0.5 allows attackers to cause a denial of service (segmentation fault) because BinaryDict::NewFromFile in BinaryDict.cpp may have out-of-bounds keyOffset and valueOffset values via a crafted .ocd file.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9qh2-6fxg-9m4g",
+      "publishedAt": "2022-05-14T01:55:28Z",
+      "modifiedAt": "2024-11-22T17:59:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9qh2-6fxg-9m4g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16982"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.2",
+          "fixed": "1.1.2"
         }
       ],
       "source": "github"

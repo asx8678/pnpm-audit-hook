@@ -1,0 +1,32 @@
+{
+  "packageName": "ipip",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9gqh-q4cx-f2h9",
+      "packageName": "ipip",
+      "title": "ipip downloads Resources over HTTP",
+      "description": "Affected versions of `ipip` insecurely downloads resources over HTTP. \n\nIn scenarios where an attacker has a privileged network position, they can modify or read such resources at will. While the exact severity of impact for a vulnerability like this is highly variable and depends on the behavior of the package itself, it ranges from being able to read sensitive information all the way up to and including remote code execution.\n\n\n## Recommendation\n\nNo patch is currently available for this vulner",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9gqh-q4cx-f2h9",
+      "publishedAt": "2019-02-18T23:50:41Z",
+      "modifiedAt": "2025-01-14T22:16:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9gqh-q4cx-f2h9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10594"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

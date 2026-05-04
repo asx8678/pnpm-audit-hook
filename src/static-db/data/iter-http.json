@@ -1,0 +1,32 @@
+{
+  "packageName": "iter-http",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3cgg-gh9j-w8vm",
+      "packageName": "iter-http",
+      "title": "Directory Traversal in iter-http",
+      "description": "Affected versions of `iter-http` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3cgg-gh9j-w8vm",
+      "publishedAt": "2018-07-24T13:58:10Z",
+      "modifiedAt": "2023-09-08T20:52:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3cgg-gh9j-w8vm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16094"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.13"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

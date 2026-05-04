@@ -1,0 +1,33 @@
+{
+  "packageName": "@nuxt/devalue",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6677-83pp-f862",
+      "packageName": "@nuxt/devalue",
+      "title": "Cross-Site Scripting in @nuxt/devalue",
+      "description": "Versions of `@nuxt/devalue` prior to 1.2.3 are vulnerable to Cross-Site Scripting. Due to insufficient input sanitization attacker may inject arbitrary JavaScript code through object keys.\n\n\n## Recommendation\n\nUpgrade to version 1.2.3 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6677-83pp-f862",
+      "publishedAt": "2019-07-16T00:42:02Z",
+      "modifiedAt": "2023-01-09T05:01:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6677-83pp-f862"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-13506"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.2.3",
+          "fixed": "1.2.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "packageName": "bracket-template",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-488m-6gh8-9j36",
+      "packageName": "bracket-template",
+      "title": "bracket-template vulnerable to reflected XSS",
+      "description": "bracket-template suffers from reflected XSS possible when variable passed via GET parameter is used in template",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-488m-6gh8-9j36",
+      "publishedAt": "2018-07-27T17:05:06Z",
+      "modifiedAt": "2023-09-11T22:24:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-488m-6gh8-9j36"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3735"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jj6g-7j8p-7gf2",
+      "packageName": "bracket-template",
+      "title": "Cross-Site Scripting in bracket-template",
+      "description": "All versions of `bracket-template` are vulnerable to stored cross-site scripting (XSS). This is exploitable when a variable passed in via a GET parameter is used in a template.\n\n\n## Recommendation\n\nNo fix is currently available for this vulnerability. It is our recommendation to not install or use this module at this time.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jj6g-7j8p-7gf2",
+      "publishedAt": "2019-05-30T21:03:24Z",
+      "modifiedAt": "2023-01-09T05:01:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jj6g-7j8p-7gf2"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

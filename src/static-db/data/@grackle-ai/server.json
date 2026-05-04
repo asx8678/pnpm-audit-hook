@@ -1,0 +1,121 @@
+{
+  "packageName": "@grackle-ai/server",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8g29-8xwr-qmhr",
+      "packageName": "@grackle-ai/server",
+      "title": "@grackle-ai/server JSON.parse lacks try-catch logic in its gRPC Service AdapterConfig Handling",
+      "description": "### Impact\n\n`JSON.parse(env.adapterConfig)` is called without error handling in three locations within the gRPC service. While the data originates from the server's own SQLite database and should always be valid JSON, database corruption, migration errors, or unexpected state could cause an unhandled exception that crashes the gRPC handler.\n\nAdditionally, the parsed result is cast as `Record<string, unknown>` and passed to adapter methods without property validation, creating a theoretical proto",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-8g29-8xwr-qmhr",
+      "publishedAt": "2026-03-25T17:33:01Z",
+      "modifiedAt": "2026-03-25T17:33:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8g29-8xwr-qmhr"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.70.5",
+          "fixed": "0.70.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5j35-xr4g-vwf4",
+      "packageName": "@grackle-ai/server",
+      "title": "@grackle-ai/server has a Missing Secure Flag on Session Cookie",
+      "description": "### Impact\n\nThe session cookie is set with `HttpOnly; SameSite=Lax; Path=/` but does not include the `Secure` flag. This means the cookie will be sent over plain HTTP connections.\n\nSince the server binds to `127.0.0.1` by default and uses HTTP (not HTTPS), this is acceptable for localhost use. However, when `--allow-network` is used to bind to `0.0.0.0`, cookies could be transmitted over insecure network connections and intercepted by an attacker.\n\n**Affected code:**\n- `packages/server/src/sessi",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-5j35-xr4g-vwf4",
+      "publishedAt": "2026-03-25T17:32:39Z",
+      "modifiedAt": "2026-03-25T17:32:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5j35-xr4g-vwf4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.70.4",
+          "fixed": "0.70.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3mjm-x6gw-2x42",
+      "packageName": "@grackle-ai/server",
+      "title": "@grackle-ai/server has Missing Content-Security-Policy and X-Frame-Options Headers",
+      "description": "### Impact\n\nThe HTTP server does not set `Content-Security-Policy`, `X-Frame-Options`, or `X-Content-Type-Options` headers on any response. This reduces defense-in-depth against XSS, clickjacking, and MIME-sniffing attacks.\n\nWhile the current XSS attack surface is small (React-markdown is configured safely, no `dangerouslySetInnerHTML`, Vite does not generate source maps), the absence of these headers means any future XSS vulnerability would have no secondary defense layer.\n\n**Affected code:**\n-",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3mjm-x6gw-2x42",
+      "publishedAt": "2026-03-25T17:32:04Z",
+      "modifiedAt": "2026-03-25T17:32:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3mjm-x6gw-2x42"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.70.3",
+          "fixed": "0.70.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w3hv-x4fp-6h6j",
+      "packageName": "@grackle-ai/server",
+      "title": "@grackle-ai/server has Missing WebSocket Origin Header Validation",
+      "description": "### Impact\n\nThe WebSocket upgrade handler in the server validates authentication (API key token or session cookie) but does not check the `Origin` header. A malicious webpage on a different origin could initiate a WebSocket connection to `ws://localhost:3000/ws` if it can leverage the user's session cookie (which is `SameSite=Lax`, allowing top-level navigations).\n\nThis enables **cross-origin WebSocket hijacking** — if a user visits a malicious site while a Grackle session is active, the attacke",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w3hv-x4fp-6h6j",
+      "publishedAt": "2026-03-25T17:27:48Z",
+      "modifiedAt": "2026-03-25T17:28:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w3hv-x4fp-6h6j"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.70.2",
+          "fixed": "0.70.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7q9x-8g6p-3x75",
+      "packageName": "@grackle-ai/server",
+      "title": "@grackle-ai/server: Unescaped Error String in renderPairingPage() HTML Template",
+      "description": "### Impact\n\nThe `renderPairingPage()` function embeds the `error` parameter directly into HTML without escaping:\n```typescript\nconst errorHtml = error ? `<p style=\"color:#e74c3c\">${error}</p>` : \"\";\n```\n\nAll current call sites pass hardcoded strings, so this is **not exploitable today**. However, the function is architecturally fragile — if a future code change passes user-controlled or dynamic content into the error parameter, it would create an XSS vulnerability.\n\nThe `renderAuthorizePage()` f",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-7q9x-8g6p-3x75",
+      "publishedAt": "2026-03-25T17:15:40Z",
+      "modifiedAt": "2026-03-25T17:15:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7q9x-8g6p-3x75"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.70.0",
+          "fixed": "0.70.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

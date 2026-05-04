@@ -1,16 +1,16 @@
 {
   "packageName": "@parcel/reporter-dev-server",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-qm9p-f9j5-w83w",
       "packageName": "@parcel/reporter-dev-server",
       "title": "Parcel has an Origin Validation Error vulnerability",
-      "description": "parcel versions 1.6.1 and above have an Origin Validation Error vulnerability. Malicious websites can send XMLHTTPRequests to the application's development server and read the response to steal source code when developers visit them.",
+      "description": "parcel versions 1.6.1 and above have an Origin Validation Error vulnerability. Malicious websites can send XMLHTTPRequests to the application's development server and read the response to steal source code when developers visit them. Version 2.16.4 supports a `--no-cors` option which disables CORS headers in the dev server.",
       "severity": "medium",
       "url": "https://github.com/advisories/GHSA-qm9p-f9j5-w83w",
       "publishedAt": "2025-09-17T21:30:42Z",
-      "modifiedAt": "2026-01-29T02:38:01Z",
+      "modifiedAt": "2026-04-13T18:49:41Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -23,7 +23,8 @@
       ],
       "affectedVersions": [
         {
-          "range": ">= 1.6.1, <= 2.16.3"
+          "range": ">= 1.6.1, <= 2.16.3",
+          "fixed": "2.16.4"
         }
       ],
       "source": "github"

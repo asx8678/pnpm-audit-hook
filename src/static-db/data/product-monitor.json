@@ -1,0 +1,33 @@
+{
+  "packageName": "product-monitor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h2r4-4xgf-3865",
+      "packageName": "product-monitor",
+      "title": "Downloads Resources over HTTP in product-monitor",
+      "description": "Affected versions of `product-monitor` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `product-monitor`.\n\n\n## Recommendation\n\nUpdate to versions 2.2.5 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h2r4-4xgf-3865",
+      "publishedAt": "2019-02-18T23:35:32Z",
+      "modifiedAt": "2023-01-09T05:03:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h2r4-4xgf-3865"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10567"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.5",
+          "fixed": "2.2.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

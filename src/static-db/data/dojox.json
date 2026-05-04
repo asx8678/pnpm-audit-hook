@@ -1,0 +1,87 @@
+{
+  "packageName": "dojox",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-84cm-x2q5-8225",
+      "packageName": "dojox",
+      "title": "dojox vulnerable to unescaped string injection",
+      "description": "In Dojo Toolkit before 1.14.0, there is unescaped string injection in dojox/Grid/DataGrid.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-84cm-x2q5-8225",
+      "publishedAt": "2018-10-15T22:03:48Z",
+      "modifiedAt": "2023-09-27T12:57:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-84cm-x2q5-8225"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-15494"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.14.0",
+          "fixed": "1.14.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3hw5-q855-g6cw",
+      "packageName": "dojox",
+      "title": "Prototype Pollution in Dojox",
+      "description": "The Dojox jQuery wrapper `jqMix` mixin method is vulnerable to Prototype Pollution. \n\nAffected Area:\n```\n//https://github.com/dojo/dojox/blob/master/jq.js#L442\n\t\tvar tobj = {};\n\t\tfor(var x in props){\n\t\t\t// the \"tobj\" condition avoid copying properties in \"props\"\n\t\t\t// inherited from Object.prototype.  For example, if obj has a custom\n\t\t\t// toString() method, don't overwrite it with the toString() method\n\t\t\t// that props inherited from Object.prototype\n\t\t\tif((tobj[x] === undefined || tobj[x] != p",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-3hw5-q855-g6cw",
+      "publishedAt": "2020-03-10T18:03:32Z",
+      "modifiedAt": "2023-01-09T05:02:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3hw5-q855-g6cw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-5259"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.16.0, < 1.16.2",
+          "fixed": "1.16.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-pg97-ww7h-5mjr",
+      "packageName": "dojox",
+      "title": "XSS in dojox due to insufficient escape in dojox.xmpp.util.xmlEncode ",
+      "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\n\nPotential XSS vulnerability for users of `dojox/xmpp` and `dojox/dtl`.\n\n### Patches\n_Has the problem been patched? What versions should users upgrade to?_\n\nYes, patches are available for the 1.11 through 1.16 versions. Users should upgrade to one of these versions of Dojo:\n\n* 1.16.1\n* 1.15.2\n* 1.14.5\n* 1.13.6\n* 1.12.7\n* 1.11.9\n\nUsers of Dojo 1.10.x and earlier should review this change and determine if it impacts them, and backport",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pg97-ww7h-5mjr",
+      "publishedAt": "2020-02-13T22:21:06Z",
+      "modifiedAt": "2023-01-09T05:02:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pg97-ww7h-5mjr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10785"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.16.0",
+          "fixed": "1.16.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

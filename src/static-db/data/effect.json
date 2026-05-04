@@ -1,7 +1,34 @@
 {
   "packageName": "effect",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-38f7-945m-qr2g",
+      "packageName": "effect",
+      "title": "Effect `AsyncLocalStorage` context lost/contaminated inside Effect fibers under concurrent load with RPC",
+      "description": "## Versions\n\n- `effect`: 3.19.15\n- `@effect/rpc`: 0.72.1\n- `@effect/platform`: 0.94.2\n- Node.js: v22.20.0\n- Vercel runtime with Fluid compute\n- Next.js: 16 (App Router)\n- `@clerk/nextjs`: 6.x\n\n## Root cause\n\nEffect's `MixedScheduler` batches fiber continuations and drains them inside a **single** microtask or timer callback. The `AsyncLocalStorage` context active during that callback belongs to whichever request first triggered the scheduler's drain cycle — **not** the request that owns the fibe",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-38f7-945m-qr2g",
+      "publishedAt": "2026-03-20T20:34:06Z",
+      "modifiedAt": "2026-03-25T18:11:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-38f7-945m-qr2g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32887"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.20.0",
+          "fixed": "3.20.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-6hr9-4692-fch9",
       "packageName": "effect",

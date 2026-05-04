@@ -1,0 +1,33 @@
+{
+  "packageName": "@usebruno/cli",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-658g-p7jg-wx5g",
+      "packageName": "@usebruno/cli",
+      "title": "Axios npm Supply Chain Incident Impacting @usebruno/cli",
+      "description": "### **Impact**\n\nThis is a **supply chain attack** involving compromised versions of the `axios` npm package, which introduced a hidden dependency deploying a cross-platform Remote Access Trojan (RAT).\n\nUsers of **@usebruno/cli** who ran `npm install` between **00:21 UTC and ~03:30 UTC on March 31, 2026** may have been impacted.\n\nPotential impact includes:\n\n* Execution of a malicious `postinstall` script\n* Remote Access Trojan (RAT) installation\n* Exfiltration of credentials and sensitive data\n\n*",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-658g-p7jg-wx5g",
+      "publishedAt": "2026-04-02T18:34:04Z",
+      "modifiedAt": "2026-04-06T23:41:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-658g-p7jg-wx5g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34841"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.2.0",
+          "fixed": "3.2.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

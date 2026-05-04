@@ -1,0 +1,32 @@
+{
+  "packageName": "api-lab-mcp",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-crh9-3gjh-m6gc",
+      "packageName": "api-lab-mcp",
+      "title": "api-lab-mcp vulnerable to SSRF",
+      "description": "A weakness has been identified in atototo api-lab-mcp up to 0.2.1. This affects the function analyze_api_spec/generate_test_scenarios/test_http_endpoint of the file src/mcp/http-server.ts of the component HTTP Interface. This manipulation of the argument source/url causes server-side request forgery. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be used for attacks. The project was informed of the problem early through an issue rep",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-crh9-3gjh-m6gc",
+      "publishedAt": "2026-04-09T03:31:15Z",
+      "modifiedAt": "2026-04-10T19:19:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-crh9-3gjh-m6gc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-5832"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.2.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

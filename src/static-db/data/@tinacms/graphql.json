@@ -1,7 +1,115 @@
 {
   "packageName": "@tinacms/graphql",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-g9c2-gf25-3x67",
+      "packageName": "@tinacms/graphql",
+      "title": "@tinacms/graphql's `FilesystemBridge` Path Validation Can Be Bypassed via Symlinks or Junctions",
+      "description": "## Summary\n\n`@tinacms/graphql` uses string-based path containment checks in `FilesystemBridge`:\n\n- `path.resolve(path.join(baseDir, filepath))`\n- `startsWith(resolvedBase + path.sep)`\n\nThat blocks plain `../` traversal, but it does not resolve symlink or junction targets. If a symlink/junction already exists under the allowed content root, a path like `content/posts/pivot/owned.md` is still considered \"inside\" the base even though the real filesystem target can be outside it.\n\nAs a result, `File",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g9c2-gf25-3x67",
+      "publishedAt": "2026-04-01T00:25:22Z",
+      "modifiedAt": "2026-04-06T16:44:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g9c2-gf25-3x67"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34604"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.2.0",
+          "fixed": "2.2.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-g87c-r2jp-293w",
+      "packageName": "@tinacms/graphql",
+      "title": "@tinacms/graphql's Media Endpoints Can Escape the Media Root via Symlinks or Junctions",
+      "description": "## Summary\n\n`@tinacms/cli` recently added lexical path-traversal checks to the dev media routes, but the implementation still validates only the path string and does not resolve symlink or junction targets.\n\nIf a link already exists under the media root, Tina accepts a path like `pivot/written-from-media.txt` as \"inside\" the media directory and then performs real filesystem operations through that link target. This allows out-of-root media listing and write access, and the same root cause also a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g87c-r2jp-293w",
+      "publishedAt": "2026-04-01T00:23:02Z",
+      "modifiedAt": "2026-04-06T16:44:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g87c-r2jp-293w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34603"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.2.1",
+          "fixed": "2.2.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v9p7-gf3q-h779",
+      "packageName": "@tinacms/graphql",
+      "title": "@tinacms/graphql has Path Traversal that leads to overwrite of arbitrary files",
+      "description": "### Summary\nA Path Traversal vulnerability in `@tinacms/graphql` allows unauthenticated users to write and overwrite arbitrary files within the project root. This is achieved by manipulating the `relativePath` parameter in GraphQL mutations. The impact includes the ability to replace critical server configuration files and potentially execute arbitrary commands by sabotaging build scripts.\n\n### Details\nThe vulnerability exists in the path validation logic within `@tinacms/graphql`. Specifically,",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v9p7-gf3q-h779",
+      "publishedAt": "2026-03-30T17:07:53Z",
+      "modifiedAt": "2026-04-06T16:43:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v9p7-gf3q-h779"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33949"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.2.1",
+          "fixed": "2.2.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2238-xc5r-v9hj",
+      "packageName": "@tinacms/graphql",
+      "title": "@tinacms/graphql has a Path Traversal issue",
+      "description": "### Description\n\nTinaCMS allows users to create, update, and delete content documents using relative file paths (`relativePath`, `newRelativePath`) via GraphQL mutations. Under certain conditions, these paths are combined with the collection path using `path.join()` without validating that the resolved path remains within the collection root directory.\n\nBecause `path.join()` does not prevent directory traversal, paths containing `../` sequences can escape the intended directory boundary.\n\n### At",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2238-xc5r-v9hj",
+      "publishedAt": "2026-03-12T17:50:28Z",
+      "modifiedAt": "2026-03-12T19:13:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2238-xc5r-v9hj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24125"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.1.1",
+          "fixed": "2.1.2"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-529f-9qwm-9628",
       "packageName": "@tinacms/graphql",

@@ -1,0 +1,29 @@
+{
+  "packageName": "@google/gemini-cli",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wpqr-6v78-jr5g",
+      "packageName": "@google/gemini-cli",
+      "title": "Gemini CLI: Remote Code Execution via workspace trust and tool allowlisting bypasses",
+      "description": "# Summary\n\nGemini CLI (`@google/gemini-cli`) and the `run-gemini-cli` GitHub Action are being updated to harden workspace trust and tool allowlisting, in particular when used in untrusted environments like GitHub Actions. This update introduces a breaking change to how non-interactive (headless) environments handle folder trust, which may impact existing CI/CD workflows under specific conditions.\n\n# Details\n\nFolder Trust in Headless Mode\n\nIn previous versions, Gemini CLI running in CI environmen",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wpqr-6v78-jr5g",
+      "publishedAt": "2026-04-24T19:30:01Z",
+      "modifiedAt": "2026-04-25T19:59:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wpqr-6v78-jr5g"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 0.40.0-preview.2",
+          "fixed": "0.40.0-preview.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

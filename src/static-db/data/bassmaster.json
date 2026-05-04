@@ -1,0 +1,33 @@
+{
+  "packageName": "bassmaster",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5j3g-jfq3-7jwx",
+      "packageName": "bassmaster",
+      "title": "Arbitrary JavaScript Execution in bassmaster",
+      "description": "A vulnerability exists in bassmaster <= 1.5.1 that allows for an attacker to provide arbitrary JavaScript that is then executed server side via eval.\n\n\n## Recommendation\n\nUpdate to bassmaster version 1.5.2 or greater.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5j3g-jfq3-7jwx",
+      "publishedAt": "2017-10-24T18:33:36Z",
+      "modifiedAt": "2023-01-09T05:02:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5j3g-jfq3-7jwx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2014-7205"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.5.2",
+          "fixed": "1.5.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

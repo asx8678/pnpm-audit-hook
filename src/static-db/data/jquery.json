@@ -1,7 +1,34 @@
 {
   "packageName": "jquery",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-gxr4-xjj5-5px2",
+      "packageName": "jquery",
+      "title": "Potential XSS vulnerability in jQuery",
+      "description": "### Impact\nPassing HTML from untrusted sources - even after sanitizing it - to one of jQuery's DOM manipulation methods (i.e. `.html()`, `.append()`, and others) may execute untrusted code.\n\n### Patches\nThis problem is patched in jQuery 3.5.0.\n\n### Workarounds\nTo workaround the issue without upgrading, adding the following to your code:\n\n```js\njQuery.htmlPrefilter = function( html ) {\n\treturn html;\n};\n```\n\nYou need to use at least jQuery 1.12/2.2 or newer to be able to apply this workaround.\n\n##",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gxr4-xjj5-5px2",
+      "publishedAt": "2020-04-29T22:18:55Z",
+      "modifiedAt": "2026-04-13T13:46:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gxr4-xjj5-5px2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-11022"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.12.0, < 3.5.0",
+          "fixed": "3.5.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-579v-mp3v-rrw5",
       "packageName": "jquery",
@@ -30,6 +57,114 @@
       "source": "github"
     },
     {
+      "id": "GHSA-jpcq-cgw6-v4j6",
+      "packageName": "jquery",
+      "title": "Potential XSS vulnerability in jQuery",
+      "description": "### Impact\nPassing HTML containing `<option>` elements from untrusted sources - even after sanitizing them - to one of jQuery's DOM manipulation methods (i.e. `.html()`, `.append()`, and others) may execute untrusted code.\n\n### Patches\nThis problem is patched in jQuery 3.5.0.\n\n### Workarounds\nTo workaround this issue without upgrading, use [DOMPurify](https://github.com/cure53/DOMPurify) with its `SAFE_FOR_JQUERY` option to sanitize the HTML string before passing it to a jQuery method.\n\n### Refe",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jpcq-cgw6-v4j6",
+      "publishedAt": "2020-04-29T22:19:14Z",
+      "modifiedAt": "2025-10-22T17:52:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jpcq-cgw6-v4j6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-11023"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.3, < 3.5.0",
+          "fixed": "3.5.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mhpp-875w-9cpv",
+      "packageName": "jquery",
+      "title": "Denial of Service in jquery",
+      "description": "Affected versions of `jquery` use a lowercasing logic on attribute names. When given a boolean attribute with a name that contains uppercase characters, `jquery` enters into an infinite recursion loop, exceeding the call stack limit, and resulting in a denial of service condition.\n\n\n## Recommendation\n\nUpdate to version 3.0.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mhpp-875w-9cpv",
+      "publishedAt": "2018-01-22T13:32:42Z",
+      "modifiedAt": "2025-09-02T22:35:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mhpp-875w-9cpv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10707"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 3.0.0-rc.1",
+          "fixed": "3.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6c3j-c64m-qhgq",
+      "packageName": "jquery",
+      "title": "XSS in jQuery as used in Drupal, Backdrop CMS, and other products",
+      "description": "jQuery from 1.1.4 until 3.4.0, as used in Drupal, Backdrop CMS, and other products, mishandles `jQuery.extend(true, {}, ...)` because of `Object.prototype` pollution. If an unsanitized source object contained an enumerable `__proto__` property, it could extend the native `Object.prototype`.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6c3j-c64m-qhgq",
+      "publishedAt": "2019-04-26T16:29:11Z",
+      "modifiedAt": "2024-11-05T20:16:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6c3j-c64m-qhgq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-11358"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.1.4, < 3.4.0",
+          "fixed": "3.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q4m3-2j7h-f7xw",
+      "packageName": "jquery",
+      "title": "Cross-Site Scripting in jquery",
+      "description": "Versions of `jquery` prior to 1.9.0 are vulnerable to Cross-Site Scripting. The load method fails to recognize and remove `<script>` HTML tags that contain a whitespace character, i.e: `</script >`, which results in the enclosed script logic to be executed. This allows attackers to execute arbitrary JavaScript in a victim's browser.\n\n\n## Recommendation\n\nUpgrade to version 1.9.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q4m3-2j7h-f7xw",
+      "publishedAt": "2020-05-20T16:18:01Z",
+      "modifiedAt": "2024-10-10T16:17:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q4m3-2j7h-f7xw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7656"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.2.1, < 1.9.0",
+          "fixed": "1.9.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
       "id": "GHSA-257q-pv89-v3xv",
       "packageName": "jquery",
       "title": "Duplicate Advisory: jQuery Cross Site Scripting vulnerability",
@@ -52,6 +187,87 @@
         {
           "range": ">= 1.0.3, < 3.5.0",
           "fixed": "3.5.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rmxg-73gg-4p98",
+      "packageName": "jquery",
+      "title": "Cross-Site Scripting (XSS) in jquery",
+      "description": "Affected versions of `jquery` interpret `text/javascript` responses from cross-origin ajax requests, and automatically execute the contents in `jQuery.globalEval`, even when the ajax request doesn't contain the `dataType` option.\n\n\n## Recommendation\n\nUpdate to version 3.0.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rmxg-73gg-4p98",
+      "publishedAt": "2018-01-22T13:32:06Z",
+      "modifiedAt": "2023-09-25T23:28:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rmxg-73gg-4p98"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-9251"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.12.3, < 3.0.0",
+          "fixed": "3.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wv67-q8rr-grjp",
+      "packageName": "jquery",
+      "title": "Duplicate Advisory: Prototype Pollution in jquery",
+      "description": "## Duplicate Advisory\nThis advisory is a duplicate of [GHSA-6c3j-c64m-qhgq](https://github.com/advisories/GHSA-6c3j-c64m-qhgq). This link is maintained to preserve external references.\n\n## Original Description\nVersions of `jquery`  prior to 3.4.0 are vulnerable to Prototype Pollution. The extend() method allows an attacker to modify the prototype for `Object` causing changes in properties that will exist on all objects.\n\n## Recommendation\nUpgrade to version 3.4.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wv67-q8rr-grjp",
+      "publishedAt": "2019-04-23T15:59:10Z",
+      "modifiedAt": "2023-09-25T23:22:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wv67-q8rr-grjp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-5428"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.4.0",
+          "fixed": "3.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2pqj-h3vj-pqgw",
+      "packageName": "jquery",
+      "title": "Cross-Site Scripting in jquery",
+      "description": "Affected versions of `jquery` are vulnerable to cross-site scripting. This occurs because the main `jquery` function uses a regular expression to differentiate between HTML and selectors, but does not properly anchor the regular expression. The result is that `jquery` may interpret HTML as selectors when given certain inputs, allowing for client side code execution.\n\n## Proof of Concept\n```\n$(\"#log\").html(\n    $(\"element[attribute='<img src=\\\"x\\\" onerror=\\\"alert(1)\\\" />']\").html()\n);\n```\n\n\n\n\n## ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2pqj-h3vj-pqgw",
+      "publishedAt": "2020-09-01T16:41:46Z",
+      "modifiedAt": "2023-07-10T13:00:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2pqj-h3vj-pqgw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2012-6708"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.8.3",
+          "fixed": "1.9.0"
         }
       ],
       "source": "github"

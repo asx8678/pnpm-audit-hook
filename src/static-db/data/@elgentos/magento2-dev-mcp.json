@@ -1,0 +1,32 @@
+{
+  "packageName": "@elgentos/magento2-dev-mcp",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xqv9-qr76-hfq2",
+      "packageName": "@elgentos/magento2-dev-mcp",
+      "title": "@elgentos/magento2-dev-mcp vulnerable to command injection",
+      "description": "A vulnerability was identified in elgentos magento2-dev-mcp up to 1.0.2. The affected element is the function executeMagerun2Command of the file src/index.ts. Such manipulation leads to os command injection. An attack has to be approached locally. The exploit is publicly available and might be used. The name of the patch is aa1ffcc0aea1b212c69787391783af27df15ae9d. A patch should be applied to remediate this issue.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-xqv9-qr76-hfq2",
+      "publishedAt": "2026-04-06T00:30:24Z",
+      "modifiedAt": "2026-04-06T18:02:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xqv9-qr76-hfq2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-5603"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

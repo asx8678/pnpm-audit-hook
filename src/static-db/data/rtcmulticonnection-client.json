@@ -1,0 +1,32 @@
+{
+  "packageName": "rtcmulticonnection-client",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vcqg-cmv3-wj57",
+      "packageName": "rtcmulticonnection-client",
+      "title": "Directory Traversal in rtcmulticonnection-client",
+      "description": "Affected versions of `rtcmulticonnection-client` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vcqg-cmv3-wj57",
+      "publishedAt": "2018-07-23T22:48:49Z",
+      "modifiedAt": "2023-09-11T23:12:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vcqg-cmv3-wj57"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16125"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

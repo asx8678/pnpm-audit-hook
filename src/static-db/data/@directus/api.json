@@ -1,7 +1,34 @@
 {
   "packageName": "@directus/api",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-jr94-gj3h-c8rf",
+      "packageName": "@directus/api",
+      "title": "Directus Vulnerable to User Enumeration via Password Reset Timing Attack",
+      "description": "### Summary\n\nA timing-based user enumeration vulnerability exists in the password reset functionality. When an invalid reset_url parameter is provided, the response time differs by approximately 500ms between existing and non-existing users, enabling reliable user enumeration.\n\n### Details\n\nThe password reset endpoint implements a timing protection mechanism to prevent user enumeration; however, URL validation executes before the timing protection is applied. This allows an attacker to distingui",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jr94-gj3h-c8rf",
+      "publishedAt": "2026-02-12T22:13:04Z",
+      "modifiedAt": "2026-02-13T17:15:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jr94-gj3h-c8rf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26185"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 32.2.0",
+          "fixed": "32.2.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-3573-4c68-g8cc",
       "packageName": "@directus/api",
@@ -295,33 +322,6 @@
         {
           "range": "< 17.1.0",
           "fixed": "17.1.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-jr94-gj3h-c8rf",
-      "packageName": "@directus/api",
-      "title": "Directus Vulnerable to User Enumeration via Password Reset Timing Attack",
-      "description": "### Summary\n\nA timing-based user enumeration vulnerability exists in the password reset functionality. When an invalid reset_url parameter is provided, the response time differs by approximately 500ms between existing and non-existing users, enabling reliable user enumeration.\n\n### Details\n\nThe password reset endpoint implements a timing protection mechanism to prevent user enumeration; however, URL validation executes before the timing protection is applied. This allows an attacker to distingui",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-jr94-gj3h-c8rf",
-      "publishedAt": "2026-02-12T22:13:04Z",
-      "modifiedAt": "2026-02-13T17:15:49Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-jr94-gj3h-c8rf"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-26185"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 32.2.0",
-          "fixed": "32.2.0"
         }
       ],
       "source": "github"

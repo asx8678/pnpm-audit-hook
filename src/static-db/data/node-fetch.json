@@ -1,15 +1,43 @@
 {
   "packageName": "node-fetch",
-  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-w7rc-rwvf-8q5r",
+      "packageName": "node-fetch",
+      "title": "The `size` option isn't honored after following a redirect in node-fetch",
+      "description": "### Impact\nNode Fetch did not honor the `size` option after following a redirect, which means that when a content size was over the limit, a `FetchError` would never get thrown and the process would end without failure.\n\nFor most people, this fix will have a little or no impact. However, if you are relying on node-fetch to gate files above a size, the impact could be significant, for example: If you don't double-check the size of the data after `fetch()` has completed, your JS thread could get t",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-w7rc-rwvf-8q5r",
+      "publishedAt": "2020-09-10T17:46:21Z",
+      "modifiedAt": "2024-07-15T19:46:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w7rc-rwvf-8q5r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15168"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.6.1",
+          "fixed": "2.6.1"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-r683-j2x4-v87g",
       "packageName": "node-fetch",
-      "title": "node-fetch is vulnerable to Exposure of Sensitive Information",
+      "title": "node-fetch forwards secure headers to untrusted sites",
+      "description": "node-fetch forwards secure headers such as `authorization`, `www-authenticate`, `cookie`, & `cookie2` when redirecting to a untrusted site.",
       "severity": "high",
       "url": "https://github.com/advisories/GHSA-r683-j2x4-v87g",
-      "publishedAt": "2022-01-14T21:04:00Z",
-      "modifiedAt": "2023-09-11T22:17:00Z",
+      "publishedAt": "2022-01-21T23:55:52Z",
+      "modifiedAt": "2023-11-29T22:08:39Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -22,8 +50,35 @@
       ],
       "affectedVersions": [
         {
-          "range": "<2.6.7",
+          "range": "< 2.6.7",
           "fixed": "2.6.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vp56-6g26-6827",
+      "packageName": "node-fetch",
+      "title": "node-fetch Inefficient Regular Expression Complexity ",
+      "description": "[node-fetch](https://www.npmjs.com/package/node-fetch) is a light-weight module that brings window.fetch to node.js.\n\nAffected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS) in the `isOriginPotentiallyTrustworthy()` function in `referrer.js`, when processing a URL string with alternating letters and periods, such as `'http://' + 'a.a.'.repeat(i) + 'a'`.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vp56-6g26-6827",
+      "publishedAt": "2022-08-02T00:00:25Z",
+      "modifiedAt": "2023-07-11T13:42:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vp56-6g26-6827"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-2596"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 3.2.10",
+          "fixed": "3.2.10"
         }
       ],
       "source": "github"

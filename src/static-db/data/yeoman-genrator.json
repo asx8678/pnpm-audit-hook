@@ -1,0 +1,50 @@
+{
+  "packageName": "yeoman-genrator",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f7g4-fm4c-54m9",
+      "packageName": "yeoman-genrator",
+      "title": "Malicious Package in yeoman-genrator",
+      "description": "Version 2.0.2 of `yoeman-generator` contains malicious code as a preinstall script. The package is malware designed to take advantage of users making a mistake when typing the name of a module to install. When installed, the package downloads a file from a remote server, executes it and opens a backdoor.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately fr",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-f7g4-fm4c-54m9",
+      "publishedAt": "2020-09-03T21:06:31Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f7g4-fm4c-54m9"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fm7r-2pr7-rw2p",
+      "packageName": "yeoman-genrator",
+      "title": "Malicious Package in yeoman-genrator",
+      "description": "Version 3.1.1 of `yeoman-genrator` contains malicious code as a preinstall script. The package is malware designed to take advantage of users making a mistake when typing the name of a module to install. When installed, the package downloads a file from a remote server, executes it and opens a backdoor.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately fro",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fm7r-2pr7-rw2p",
+      "publishedAt": "2020-09-02T21:45:02Z",
+      "modifiedAt": "2023-01-09T05:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fm7r-2pr7-rw2p"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

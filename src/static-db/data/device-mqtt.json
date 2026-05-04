@@ -1,0 +1,28 @@
+{
+  "packageName": "device-mqtt",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-563h-697m-j7x5",
+      "packageName": "device-mqtt",
+      "title": "Malicious Package in device-mqtt",
+      "description": "Version 1.0.11 of `device-mqtt` contained malicious code. The code when executed in the browser would enumerate password, cvc, cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nRemove the package from your environment. It's also recommended to evaluate your application to determine whether or not user data was compromised.\n\nUsers may consider downgrading to version 1.0.10",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-563h-697m-j7x5",
+      "publishedAt": "2020-09-03T19:18:58Z",
+      "modifiedAt": "2023-07-27T20:36:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-563h-697m-j7x5"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.0.11"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

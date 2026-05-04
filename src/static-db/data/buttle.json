@@ -1,0 +1,80 @@
+{
+  "packageName": "buttle",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m8cr-q935-8j67",
+      "packageName": "buttle",
+      "title": "Path Traversal in buttle",
+      "description": "All versions of `buttle` are vulnerable to Path Traversal.  Due to insufficient input sanitization, attackers can access server files by using relative paths when fetching files. \n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m8cr-q935-8j67",
+      "publishedAt": "2018-09-18T13:47:57Z",
+      "modifiedAt": "2023-03-01T01:34:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m8cr-q935-8j67"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3766"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-pqpp-2363-649v",
+      "packageName": "buttle",
+      "title": "Cross-Site Scripting in buttle",
+      "description": "All versions of `buttle` are vulnerable to Cross-Site Scripting. Due to misconfiguration of its rendering engine, `buttle` does not sanitize the HTML output allowing attackers to run arbitrary JavaScript when processing malicious markdown files.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pqpp-2363-649v",
+      "publishedAt": "2020-09-02T18:22:30Z",
+      "modifiedAt": "2023-01-09T05:03:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pqpp-2363-649v"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gm29-35c7-8cfw",
+      "packageName": "buttle",
+      "title": "Cross-Site Scripting in buttle",
+      "description": "All versions of `buttle` are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize filenames, allowing attackers to execute arbitrary JavaScript in the victim's browser through files with names containing malicious code.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gm29-35c7-8cfw",
+      "publishedAt": "2019-04-08T15:18:38Z",
+      "modifiedAt": "2023-01-09T05:03:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gm29-35c7-8cfw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-5422"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

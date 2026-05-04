@@ -1,0 +1,32 @@
+{
+  "packageName": "apk-parser2",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hxhm-3vj9-6cqh",
+      "packageName": "apk-parser2",
+      "title": "apk-parser2 downloads Resources over HTTP",
+      "description": "Affected versions of `apk-parser2` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `apk-parser2`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability, and the package has not been updated since 2014.\n\nThe best mitigation is currently to avoid us",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hxhm-3vj9-6cqh",
+      "publishedAt": "2018-09-18T13:49:31Z",
+      "modifiedAt": "2023-09-16T05:03:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hxhm-3vj9-6cqh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10632"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

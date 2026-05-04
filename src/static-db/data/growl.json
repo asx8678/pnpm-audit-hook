@@ -1,0 +1,33 @@
+{
+  "packageName": "growl",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qh2h-chj9-jffq",
+      "packageName": "growl",
+      "title": "Growl before 1.10.0 vulnerable to Command Injection",
+      "description": "Affected versions of `growl` do not properly sanitize input prior to passing it into a shell command, allowing for arbitrary command execution.\n\n\n## Recommendation\n\nUpdate to version 1.10.0 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qh2h-chj9-jffq",
+      "publishedAt": "2018-06-08T12:43:43Z",
+      "modifiedAt": "2023-01-11T05:08:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qh2h-chj9-jffq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16042"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.10.0",
+          "fixed": "1.10.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

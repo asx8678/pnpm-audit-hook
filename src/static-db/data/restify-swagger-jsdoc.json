@@ -1,0 +1,29 @@
+{
+  "packageName": "restify-swagger-jsdoc",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gvff-25cc-4f66",
+      "packageName": "restify-swagger-jsdoc",
+      "title": "Path Traversal in restify-swagger-jsdoc",
+      "description": "Versions of `restify-swagger-jsdoc` prior to 3.2.1 are vulnerable to Path Traversal.  The package fails to properly sanitize URLs, which may allow attackers to access server files outside the `swagger-ui` folder by using relative paths.  \n\n\n\n## Recommendation\n\nUpgrade to version 3.2.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gvff-25cc-4f66",
+      "publishedAt": "2020-09-03T17:15:56Z",
+      "modifiedAt": "2023-01-09T05:03:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gvff-25cc-4f66"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.2.1",
+          "fixed": "3.2.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

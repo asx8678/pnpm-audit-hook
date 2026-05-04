@@ -1,0 +1,83 @@
+{
+  "packageName": "nuxt-og-image",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mg36-wvcr-m75h",
+      "packageName": "nuxt-og-image",
+      "title": "Nuxt OG Image is vulnerable to reflected XSS via query parameter injection into HTML attributes",
+      "description": "**Product:** Nuxt OG Image \n**Version:** 6.1.2\n**CWE-ID:** [CWE-79](https://cwe.mitre.org/data/definitions/79.html): Improper Neutralization of Input During Web Page Generation\n**Description:** Incorrect parsing of GET parameters leads to the possibility of HTML injection and JavaScript code injection.\n**Impact:** Client-Side JavaScript Execution\n**Exploitation condition:** An external user\n**Mitigation:** Correct the logic of parsing GET parameters and their subsequent implementation into the g",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mg36-wvcr-m75h",
+      "publishedAt": "2026-03-31T23:27:03Z",
+      "modifiedAt": "2026-04-06T16:39:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mg36-wvcr-m75h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34405"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.2.5",
+          "fixed": "6.2.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-c7xp-q6q8-hg76",
+      "packageName": "nuxt-og-image",
+      "title": "Nuxt OG Image is vulnerable to Denial of Service via unbounded image dimensions",
+      "description": "**Product:** Nuxt OG Image \n**Version:** 6.1.2\n**CWE-ID:** [CWE-404](https://cwe.mitre.org/data/definitions/404.html): Improper Resource Shutdown or Release\n**Description:** Failure to limit the length and width of the generated image results in a denial of service.\n**Impact:** Denial of service\n**Exploitation condition:** An external user\n**Mitigation:** Implement a limitation on the width and length of the generated image.\n**Researcher:** Dmitry Prokhorov (Positive Technologies)\n\n## Research \n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c7xp-q6q8-hg76",
+      "publishedAt": "2026-03-31T23:25:53Z",
+      "modifiedAt": "2026-04-06T16:39:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c7xp-q6q8-hg76"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34404"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.2.5",
+          "fixed": "6.2.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-pqhr-mp3f-hrpp",
+      "packageName": "nuxt-og-image",
+      "title": "Nuxt OG Image vulnerable to Server-Side Request Forgery via user-controlled parameters",
+      "description": "**Product:** Nuxt OG Image\n**Version:** < 6.2.5\n**CWE-ID:** [CWE-918](https://cwe.mitre.org/data/definitions/918.html): Server-Side Request Forgery\n\n## Description\n\nThe image generation endpoint (`/_og/d/`) accepts user-controlled parameters that are passed to the server-side renderer without proper validation or filtering. An attacker can trigger server-side requests to internal network addresses through multiple vectors.\n\n## Impact\n\n- Scanning internal ports and services inaccessible from the ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pqhr-mp3f-hrpp",
+      "publishedAt": "2026-03-31T23:26:29Z",
+      "modifiedAt": "2026-03-31T23:26:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pqhr-mp3f-hrpp"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.2.5",
+          "fixed": "6.2.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

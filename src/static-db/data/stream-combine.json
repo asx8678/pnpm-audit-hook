@@ -1,0 +1,28 @@
+{
+  "packageName": "stream-combine",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w6xj-45gv-fw35",
+      "packageName": "stream-combine",
+      "title": "Malicious Package in stream-combine",
+      "description": "Version 2.0.2 of `stream-combine` has malicious code design to steal credentials and credit card information. The code searches all form elements for passwords, credit card numbers and CVC codes. It then uploads the information to a remote server using HTML links embedded in the page or form actions. If your application has Content Security Policy set you are not affected by this issue.\n\n\n## Recommendation\n\nThis package is not available on the npm Registry anymore. If you used this module and yo",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-w6xj-45gv-fw35",
+      "publishedAt": "2020-09-02T15:57:06Z",
+      "modifiedAt": "2023-07-27T20:12:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w6xj-45gv-fw35"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 2.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

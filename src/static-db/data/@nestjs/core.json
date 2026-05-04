@@ -1,7 +1,34 @@
 {
   "packageName": "@nestjs/core",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-36xv-jgw5-4q75",
+      "packageName": "@nestjs/core",
+      "title": "@nestjs/core Improperly Neutralizes Special Elements in Output Used by a Downstream Component ('Injection')",
+      "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\n\n[`SseStream._transform()`](https://github.com/nestjs/nest/blob/dea5279ef8fcb568de158003e4281759a2cd7675/packages/core/router/sse-stream.ts) interpolates `message.type` and `message.id` directly into Server-Sent Events text protocol output without sanitizing newline characters (`\\r`, `\\n`). Since the SSE protocol treats both `\\r` and `\\n` as field delimiters and `\\n\\n` as event boundaries, an attacker who can influence these fields ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-36xv-jgw5-4q75",
+      "publishedAt": "2026-04-06T17:59:51Z",
+      "modifiedAt": "2026-04-24T20:46:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-36xv-jgw5-4q75"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35515"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 11.1.17",
+          "fixed": "11.1.18"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-4jpv-8r57-pv7j",
       "packageName": "@nestjs/core",

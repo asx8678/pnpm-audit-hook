@@ -1,6 +1,6 @@
 {
   "packageName": "ejs",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-ghr5-ch3p-vcr6",
@@ -25,6 +25,87 @@
         {
           "range": "< 3.1.10",
           "fixed": "3.1.10"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hwcf-pp87-7x6p",
+      "packageName": "ejs",
+      "title": "mde ejs vulnerable to XSS",
+      "description": "nodejs ejs version older than 2.5.5 is vulnerable to a Cross-site-scripting in the `ejs.renderFile()` resulting in code injection",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hwcf-pp87-7x6p",
+      "publishedAt": "2017-11-30T23:15:05Z",
+      "modifiedAt": "2023-09-08T21:35:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hwcf-pp87-7x6p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-1000188"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.5.5",
+          "fixed": "2.5.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6x77-rpqf-j6mw",
+      "packageName": "ejs",
+      "title": "ejs vulnerable to DoS due to weak input validation",
+      "description": "nodejs ejs version older than 2.5.5 is vulnerable to a denial-of-service due to weak input validation in `ejs.renderFile()`",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6x77-rpqf-j6mw",
+      "publishedAt": "2018-03-05T18:54:33Z",
+      "modifiedAt": "2023-09-08T21:00:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6x77-rpqf-j6mw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-1000189"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.5.5",
+          "fixed": "2.5.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3w5v-p54c-f74x",
+      "packageName": "ejs",
+      "title": "ejs is vulnerable to remote code execution due to weak input validation",
+      "description": "nodejs ejs versions older than 2.5.3 is vulnerable to remote code execution due to weak input validation in `ejs.renderFile()` function",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3w5v-p54c-f74x",
+      "publishedAt": "2017-11-30T23:15:19Z",
+      "modifiedAt": "2023-09-08T20:54:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3w5v-p54c-f74x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-1000228"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.5.3",
+          "fixed": "2.5.5"
         }
       ],
       "source": "github"

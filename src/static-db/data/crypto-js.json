@@ -1,16 +1,16 @@
 {
   "packageName": "crypto-js",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3w3w-pxmm-2w2j",
       "packageName": "crypto-js",
       "title": "crypto-js uses insecure random numbers",
-      "description": "The crypto-js package before 3.2.1 for Node.js generates random numbers by concatenating the string \"0.\" with an integer, which makes the output more predictable than necessary.",
+      "description": "The crypto-js package 3.2.0 for Node.js generates random numbers by concatenating the string \"0.\" with an integer, which makes the output more predictable than necessary.",
       "severity": "medium",
       "url": "https://github.com/advisories/GHSA-3w3w-pxmm-2w2j",
       "publishedAt": "2023-06-12T03:30:17Z",
-      "modifiedAt": "2025-01-06T18:35:21Z",
+      "modifiedAt": "2026-03-16T21:32:01Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -23,7 +23,7 @@
       ],
       "affectedVersions": [
         {
-          "range": "< 3.2.1",
+          "range": "= 3.2.0",
           "fixed": "3.2.1"
         }
       ],

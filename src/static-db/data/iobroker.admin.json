@@ -1,0 +1,33 @@
+{
+  "packageName": "iobroker.admin",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-54xj-q58h-9x57",
+      "packageName": "iobroker.admin",
+      "title": "Arbitrary File Write in iobroker.admin",
+      "description": "Versions of `iobroker.admin` prior to 3.6.12 are vulnerable to Path Traversal. The package fails to restrict access to folders outside of the intended folder in the `/log/` route, which may allow attackers to include arbitrary files in the system. An attacker would need to be authenticated to perform the attack but the package has authentication disabled by default.\n\n\n## Recommendation\n\nUpgrade to version 3.6.12 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-54xj-q58h-9x57",
+      "publishedAt": "2020-09-04T15:24:56Z",
+      "modifiedAt": "2023-01-09T05:04:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-54xj-q58h-9x57"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10765"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.6.12",
+          "fixed": "3.6.12"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

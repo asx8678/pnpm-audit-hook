@@ -1,0 +1,32 @@
+{
+  "packageName": "unicorn-list",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3vg2-4qxc-ch4j",
+      "packageName": "unicorn-list",
+      "title": "Directory Traversal in unicorn-list",
+      "description": "Affected versions of `unicorn-list` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is on",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3vg2-4qxc-ch4j",
+      "publishedAt": "2018-07-23T20:49:38Z",
+      "modifiedAt": "2023-09-11T16:38:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3vg2-4qxc-ch4j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16131"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

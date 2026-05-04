@@ -1,0 +1,33 @@
+{
+  "packageName": "just-extend",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-675m-85rw-j3w4",
+      "packageName": "just-extend",
+      "title": "Prototype Pollution in just-extend",
+      "description": "Versions of `just-extend` before 4.0.0 are vulnerable to prototype pollution. Provided certain input `just-extend` can add or modify properties of the `Object` prototype. These properties will be present on all objects.\n\n\n## Recommendation\n\nUpdate to version `4.0.0` or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-675m-85rw-j3w4",
+      "publishedAt": "2019-02-07T18:17:12Z",
+      "modifiedAt": "2023-09-07T18:30:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-675m-85rw-j3w4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16489"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.0.0",
+          "fixed": "4.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

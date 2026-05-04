@@ -1,0 +1,59 @@
+{
+  "packageName": "defaults-deep",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pjxw-22xf-6pwc",
+      "packageName": "defaults-deep",
+      "title": "Prototype Pollution in defaults-deep",
+      "description": "All versions of `defaults-deep` are vulnerable to prototype pollution. Provided certain input `defaults-deep` can add or modify properties of the `Object` prototype. These properties will be present on all objects.\n\n\n## Recommendation\n\nAs no patch is currently available for this vulnerability it is our recommendation to select another module that can provide this functionality.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-pjxw-22xf-6pwc",
+      "publishedAt": "2019-02-07T18:16:38Z",
+      "modifiedAt": "2023-09-12T21:05:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pjxw-22xf-6pwc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16486"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.2.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cqp5-m4pq-gfgp",
+      "packageName": "defaults-deep",
+      "title": "Prototype Pollution in defaults-deep",
+      "description": "Versions of `default-deep` before 0.2.4 are vulnerable to prototype pollution\n\n\n## Recommendation\n\nUpdate to version 0.2.4 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cqp5-m4pq-gfgp",
+      "publishedAt": "2018-07-26T15:18:43Z",
+      "modifiedAt": "2023-09-12T20:44:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cqp5-m4pq-gfgp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3723"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.2.4",
+          "fixed": "0.2.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

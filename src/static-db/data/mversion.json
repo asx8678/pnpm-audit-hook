@@ -1,6 +1,6 @@
 {
   "packageName": "mversion",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6m8p-4fxj-pgc2",
@@ -25,6 +25,33 @@
         {
           "range": "<= 1.13.0",
           "fixed": "2.0.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qjg4-w4c6-f6c6",
+      "packageName": "mversion",
+      "title": "Command injection in mversion",
+      "description": "### Impact\nThis issue may lead to remote code execution if a client of the library calls the vulnerable method with untrusted input.\n\n### Patches\nPatched by version 2.0.0. Previous releases are deprecated in npm.\n\n### Workarounds\nMake sure to escape git commit messages when using the commitMessage option for the update function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qjg4-w4c6-f6c6",
+      "publishedAt": "2020-06-18T19:23:17Z",
+      "modifiedAt": "2023-01-09T05:03:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qjg4-w4c6-f6c6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-4059"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
         }
       ],
       "source": "github"

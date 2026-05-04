@@ -1,0 +1,33 @@
+{
+  "packageName": "hot-formula-parser",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rc77-xxq6-4mff",
+      "packageName": "hot-formula-parser",
+      "title": "Command Injection in hot-formula-parser",
+      "description": "Versions of `hot-formula-parser` prior to 3.0.1 are vulnerable to Command Injection. The package fails to sanitize values passed to the  `parse` function and concatenates it in an `eval` call. If a value of the formula is supplied by user-controlled input it may allow attackers to run arbitrary commands in the server.  \nParsing the following formula creates a `test` file in the present directory:  \n`\"SUM([(function(){require('child_process').execSync('touch test')})(),2])\"`\n\n\n## Recommendation\n\n",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-rc77-xxq6-4mff",
+      "publishedAt": "2020-05-06T19:32:33Z",
+      "modifiedAt": "2023-01-09T05:02:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rc77-xxq6-4mff"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-6836"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.1",
+          "fixed": "3.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

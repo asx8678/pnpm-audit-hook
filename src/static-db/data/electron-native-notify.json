@@ -1,0 +1,28 @@
+{
+  "packageName": "electron-native-notify",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j8qr-rvcv-crhv",
+      "packageName": "electron-native-notify",
+      "title": "Malicious Package in electron-native-notify",
+      "description": "All versions of `electron-native-notify` contain malicious code. The package was part of a targeted attack to steal cryptocurrency wallet seeds and upload them to a remote server, effectively giving attackers access to users wallets.\n\n\n## Recommendation\n\nRemove the package from your environment and [follow the recommendations by Komodo](https://komodoplatform.com/vulnerability-discovered-in-komodos-agama-wallet-this-is-what-you-need-to-do/)",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-j8qr-rvcv-crhv",
+      "publishedAt": "2020-09-11T21:18:05Z",
+      "modifiedAt": "2023-01-09T05:03:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j8qr-rvcv-crhv"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

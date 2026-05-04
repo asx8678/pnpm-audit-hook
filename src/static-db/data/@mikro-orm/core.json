@@ -1,0 +1,60 @@
+{
+  "packageName": "@mikro-orm/core",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qpfv-44f3-qqx6",
+      "packageName": "@mikro-orm/core",
+      "title": "MikroORM has Prototype Pollution in Utils.merge",
+      "description": "A prototype pollution vulnerability exists in the `Utils.merge` helper used internally by MikroORM when merging object structures.\n\nThe function did not prevent special keys such as `__proto__`, `constructor`, or `prototype`, allowing attacker-controlled input to modify the JavaScript object prototype when merged.\n\nExploitation requires application code to pass untrusted user input into ORM operations that merge object structures, such as entity property assignment or query condition constructio",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qpfv-44f3-qqx6",
+      "publishedAt": "2026-03-29T15:44:16Z",
+      "modifiedAt": "2026-03-31T18:55:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qpfv-44f3-qqx6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34221"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0-dev.0, < 7.0.6",
+          "fixed": "7.0.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gwhv-j974-6fxm",
+      "packageName": "@mikro-orm/core",
+      "title": "MikroORM is vulnerable to SQL Injection via specially crafted object",
+      "description": "## Summary\n\nMikroORM versions <= 6.6.9 and <= 7.0.5 are vulnerable to SQL injection when specially crafted objects are interpreted as raw SQL query fragments.\n\n## Impact\n\nIf user-controlled input is passed directly to MikroORM query construction APIs, an attacker may inject raw SQL fragments. This can lead to SQL injection depending on the database and query being executed.\n\n## Affected usage\n\nThe issue occurs when untrusted objects are passed to ORM write APIs such as:\n\n- `wrap(entity).assign(u",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-gwhv-j974-6fxm",
+      "publishedAt": "2026-03-29T15:44:04Z",
+      "modifiedAt": "2026-03-31T18:55:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gwhv-j974-6fxm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34220"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0-dev.0, < 7.0.6",
+          "fixed": "7.0.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

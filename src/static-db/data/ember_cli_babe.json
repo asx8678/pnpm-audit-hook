@@ -1,0 +1,28 @@
+{
+  "packageName": "ember_cli_babe",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vm7j-4rj6-mw2p",
+      "packageName": "ember_cli_babe",
+      "title": "Malicious Package in ember_cli_babe",
+      "description": "Version 6.16.0 of `ember_cli_babe` contains malicious code as a preinstall script. The package is malware designed to take advantage of users making a mistake when typing the name of a module to install. When installed, the package downloads a file from a remote server, executes it and opens a backdoor.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately fro",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vm7j-4rj6-mw2p",
+      "publishedAt": "2020-09-03T21:08:42Z",
+      "modifiedAt": "2023-01-09T05:04:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vm7j-4rj6-mw2p"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

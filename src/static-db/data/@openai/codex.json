@@ -1,7 +1,33 @@
 {
   "packageName": "@openai/codex",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-xrxf-jgv3-qmrm",
+      "packageName": "@openai/codex",
+      "title": "OpenAI Codex CLI enables code execution through malicious MCP (Model Context Protocol) configuration files",
+      "description": "A vulnerability was identified in OpenAI Codex CLI v0.23.0 and before that enables code execution through malicious MCP (Model Context Protocol) configuration files. The attack is triggered when a user runs the codex command inside a malicious or compromised repository. Codex automatically loads project-local .env and .codex/config.toml files without requiring user confirmation, allowing attackers to embed arbitrary commands that execute immediately.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-xrxf-jgv3-qmrm",
+      "publishedAt": "2026-04-14T15:30:34Z",
+      "modifiedAt": "2026-04-16T22:56:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xrxf-jgv3-qmrm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-61260"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.23.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-w5fx-fh39-j5rw",
       "packageName": "@openai/codex",

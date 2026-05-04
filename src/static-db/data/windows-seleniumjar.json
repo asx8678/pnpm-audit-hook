@@ -1,0 +1,32 @@
+{
+  "packageName": "windows-seleniumjar",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m79w-4mqv-r39f",
+      "packageName": "windows-seleniumjar",
+      "title": "windows-seleniumjar downloads Resources over HTTP",
+      "description": "Affected versions of `windows-seleniumjar` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `windows-seleniumjar`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a differe",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m79w-4mqv-r39f",
+      "publishedAt": "2018-07-31T22:06:33Z",
+      "modifiedAt": "2023-09-07T20:36:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m79w-4mqv-r39f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10691"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.48.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "packageName": "otpauth",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rmmc-8cqj-hfp3",
+      "packageName": "otpauth",
+      "title": "Authentication Bypass in otpauth",
+      "description": "Versions of `otpauth` prior to 3.2.8 are vulnerable to Authentication Bypass. The package's `totp.validate()` function may return positive values for single digit tokens even if they are invalid. This may allow attackers to bypass the OTP authentication by providing single digit tokens.\n\n\n## Recommendation\n\nUpgrade to version 3.2.8 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rmmc-8cqj-hfp3",
+      "publishedAt": "2020-09-03T18:24:43Z",
+      "modifiedAt": "2023-01-09T05:04:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rmmc-8cqj-hfp3"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.2.8",
+          "fixed": "3.2.8"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

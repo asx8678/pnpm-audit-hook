@@ -1,7 +1,142 @@
 {
   "packageName": "snyk-broker",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-2fmp-7xwf-wvwr",
+      "packageName": "snyk-broker",
+      "title": "Arbitrary File Read in Snyk Broker",
+      "description": "All versions of snyk-broker after 4.72.0 including and before 4.73.1 are vulnerable to Arbitrary File Read. It allows arbitrary file reads to users with access to Snyk's internal network of any files ending in the following extensions: yaml, yml or json.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2fmp-7xwf-wvwr",
+      "publishedAt": "2020-06-03T22:02:16Z",
+      "modifiedAt": "2023-02-01T05:03:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2fmp-7xwf-wvwr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7650"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.73.1",
+          "fixed": "4.73.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mgh5-4h95-qj4p",
+      "packageName": "snyk-broker",
+      "title": "Information Exposure in Snyk Broker",
+      "description": "All versions of snyk-broker before 4.73.1 are vulnerable to Information Exposure. It logs private keys if logging level is set to DEBUG.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mgh5-4h95-qj4p",
+      "publishedAt": "2020-06-03T22:02:14Z",
+      "modifiedAt": "2023-02-01T05:03:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mgh5-4h95-qj4p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7654"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.73.1",
+          "fixed": "4.73.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-45hw-29x7-9x95",
+      "packageName": "snyk-broker",
+      "title": "Arbitrary File Read in Snyk Broker",
+      "description": "All versions of snyk-broker before 4.79.0 are vulnerable to Arbitrary File Read. It allows partial file reads for users who have access to Snyk's internal network via patch history from GitHub Commits API.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-45hw-29x7-9x95",
+      "publishedAt": "2020-06-03T22:02:11Z",
+      "modifiedAt": "2023-02-01T05:03:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-45hw-29x7-9x95"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7651"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.79.0",
+          "fixed": "4.79.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4vj3-f849-5r48",
+      "packageName": "snyk-broker",
+      "title": "Arbitrary File Read in Snyk Broker",
+      "description": "All versions of snyk-broker before 4.80.0 are vulnerable to Arbitrary File Read. It allows arbitrary file reads for users with access to Snyk's internal network by creating symlinks to match whitelisted paths.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4vj3-f849-5r48",
+      "publishedAt": "2020-06-03T22:02:21Z",
+      "modifiedAt": "2023-02-01T05:03:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4vj3-f849-5r48"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7653"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.80.0",
+          "fixed": "4.80.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9xv2-548x-5h79",
+      "packageName": "snyk-broker",
+      "title": "Arbitrary File Read in Snyk Broker",
+      "description": "All versions of snyk-broker before 4.72.2 are vulnerable to Arbitrary File Read. It allows arbitrary file reads for users who have access to Snyk's internal network by appending the URL with a fragment identifier and a whitelisted path e.g. `#package.json`",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9xv2-548x-5h79",
+      "publishedAt": "2020-06-03T22:02:19Z",
+      "modifiedAt": "2023-02-01T05:02:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9xv2-548x-5h79"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7648"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.72.2",
+          "fixed": "4.72.2"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-gq75-5gc3-rfwg",
       "packageName": "snyk-broker",
@@ -25,6 +160,33 @@
         {
           "range": "< 4.73.0",
           "fixed": "4.73.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x7m2-6g99-84w5",
+      "packageName": "snyk-broker",
+      "title": "Arbitrary File Read in Snyk Broker",
+      "description": "All versions of snyk-broker before 4.80.0 are vulnerable to Arbitrary File Read. It allows arbitrary file reads for users with access to Snyk's internal network via directory traversal.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x7m2-6g99-84w5",
+      "publishedAt": "2020-06-03T22:02:24Z",
+      "modifiedAt": "2023-01-09T05:02:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x7m2-6g99-84w5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7652"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.80.0",
+          "fixed": "4.80.0"
         }
       ],
       "source": "github"

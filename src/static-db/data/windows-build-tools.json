@@ -1,0 +1,33 @@
+{
+  "packageName": "windows-build-tools",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9p47-w5xp-f4xr",
+      "packageName": "windows-build-tools",
+      "title": "windows-build-tools downloads Resources over HTTP",
+      "description": "Affected versions of `windows-build-tools` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `windows-build-tools`.\n\n\n## Recommendation\n\nUpdate to version 1.0.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9p47-w5xp-f4xr",
+      "publishedAt": "2018-11-09T17:48:37Z",
+      "modifiedAt": "2023-09-13T22:23:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9p47-w5xp-f4xr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16003"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

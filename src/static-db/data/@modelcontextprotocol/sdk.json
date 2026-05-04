@@ -1,34 +1,7 @@
 {
   "packageName": "@modelcontextprotocol/sdk",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
-    {
-      "id": "GHSA-8r9q-7v3j-jr4g",
-      "packageName": "@modelcontextprotocol/sdk",
-      "title": "Anthropic's MCP TypeScript SDK has a ReDoS vulnerability",
-      "description": "### Impact\n\nA ReDoS vulnerability in the `UriTemplate` class allows attackers to cause denial of service. The `partToRegExp()` function generates a regex pattern with nested quantifiers (`([^/]+(?:,[^/]+)*)`) for exploded template variables (e.g., `{/id*}`, `{?tags*}`), causing catastrophic backtracking on malicious input.\n\n**Who is affected:** MCP servers that register resource templates with exploded array patterns and accept requests from untrusted clients.\n\n**Attack result:** An attacker sen",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-8r9q-7v3j-jr4g",
-      "publishedAt": "2026-01-05T21:30:33Z",
-      "modifiedAt": "2026-01-07T16:16:29Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-8r9q-7v3j-jr4g"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-0621"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 1.25.2",
-          "fixed": "1.25.2"
-        }
-      ],
-      "source": "github"
-    },
     {
       "id": "GHSA-w48q-cv73-mx4w",
       "packageName": "@modelcontextprotocol/sdk",
@@ -37,7 +10,7 @@
       "severity": "high",
       "url": "https://github.com/advisories/GHSA-w48q-cv73-mx4w",
       "publishedAt": "2025-12-02T16:51:57Z",
-      "modifiedAt": "2025-12-02T21:43:54Z",
+      "modifiedAt": "2026-02-17T17:50:08Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -79,6 +52,33 @@
         {
           "range": ">= 1.10.0, <= 1.25.3",
           "fixed": "1.26.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8r9q-7v3j-jr4g",
+      "packageName": "@modelcontextprotocol/sdk",
+      "title": "Anthropic's MCP TypeScript SDK has a ReDoS vulnerability",
+      "description": "### Impact\n\nA ReDoS vulnerability in the `UriTemplate` class allows attackers to cause denial of service. The `partToRegExp()` function generates a regex pattern with nested quantifiers (`([^/]+(?:,[^/]+)*)`) for exploded template variables (e.g., `{/id*}`, `{?tags*}`), causing catastrophic backtracking on malicious input.\n\n**Who is affected:** MCP servers that register resource templates with exploded array patterns and accept requests from untrusted clients.\n\n**Attack result:** An attacker sen",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8r9q-7v3j-jr4g",
+      "publishedAt": "2026-01-05T21:30:33Z",
+      "modifiedAt": "2026-01-07T16:16:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8r9q-7v3j-jr4g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-0621"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.25.2",
+          "fixed": "1.25.2"
         }
       ],
       "source": "github"

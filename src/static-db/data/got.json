@@ -1,15 +1,16 @@
 {
   "packageName": "got",
-  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-pfrx-2q88-qq97",
       "packageName": "got",
       "title": "Got allows a redirect to a UNIX socket",
+      "description": "The got package before 11.8.5 and 12.1.0 for Node.js allows a redirect to a UNIX socket.",
       "severity": "medium",
       "url": "https://github.com/advisories/GHSA-pfrx-2q88-qq97",
-      "publishedAt": "2022-05-24T19:01:00Z",
-      "modifiedAt": "2023-09-08T19:54:00Z",
+      "publishedAt": "2022-06-19T00:00:21Z",
+      "modifiedAt": "2023-01-27T05:05:01Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -22,7 +23,7 @@
       ],
       "affectedVersions": [
         {
-          "range": "<11.8.5",
+          "range": "< 11.8.5",
           "fixed": "11.8.5"
         }
       ],

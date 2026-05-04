@@ -1,0 +1,32 @@
+{
+  "packageName": "closure-util",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2hpj-g53m-9gj6",
+      "packageName": "closure-util",
+      "title": "closure-util downloads Resources over HTTP",
+      "description": "Affected versions of `closure-util` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `closure-util`.\n\n\n## Recommendation\n\nTo mitigate this issue:\n1. Install the package using npm's `--ignore-scripts` flag.\n2. Navigate to the package directory, and open `default-config.j",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2hpj-g53m-9gj6",
+      "publishedAt": "2019-02-18T23:58:03Z",
+      "modifiedAt": "2023-09-08T20:52:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2hpj-g53m-9gj6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10583"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.0-beta.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,7 +1,59 @@
 {
   "packageName": "@angular/core",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-g93w-mfhg-p222",
+      "packageName": "@angular/core",
+      "title": "Angular vulnerable to XSS in i18n attribute bindings",
+      "description": "A Cross-Site Scripting (XSS) vulnerability has been identified in the Angular runtime and compiler. It occurs when the application uses a security-sensitive attribute (for example href on an anchor tag) together with Angular's ability to internationalize attributes. Enabling internationalization for the sensitive attribute by adding `i18n-<attribute>` name bypasses Angular's built-in sanitization mechanism, which when combined with a data binding to untrusted user-generated data can allow an att",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g93w-mfhg-p222",
+      "publishedAt": "2026-03-13T20:56:18Z",
+      "modifiedAt": "2026-03-17T01:15:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g93w-mfhg-p222"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32635"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 17.0.0-next.0, <= 18.2.14"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-prjf-86w9-mfqv",
+      "packageName": "@angular/core",
+      "title": "Angular i18n vulnerable to Cross-Site Scripting",
+      "description": "A [Cross-site Scripting (XSS)](https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/XSS) vulnerability has been identified in the Angular internationalization (i18n) pipeline. In ICU messages (International Components for Unicode), HTML from translated content was not properly sanitized and could execute arbitrary JavaScript.\n\nAngular i18n typically involves three steps, extracting all messages from an application in the source language, sending the messages to be translated, and then m",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-prjf-86w9-mfqv",
+      "publishedAt": "2026-02-27T18:33:16Z",
+      "modifiedAt": "2026-02-27T18:33:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-prjf-86w9-mfqv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27970"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 18.2.14"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-jrmj-c5cx-3cw6",
       "packageName": "@angular/core",
@@ -51,32 +103,6 @@
         {
           "range": "< 10.2.5",
           "fixed": "10.2.5"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-prjf-86w9-mfqv",
-      "packageName": "@angular/core",
-      "title": "Angular i18n vulnerable to Cross-Site Scripting",
-      "description": "A [Cross-site Scripting (XSS)](https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/XSS) vulnerability has been identified in the Angular internationalization (i18n) pipeline. In ICU messages (International Components for Unicode), HTML from translated content was not properly sanitized and could execute arbitrary JavaScript.\n\nAngular i18n typically involves three steps, extracting all messages from an application in the source language, sending the messages to be translated, and then m",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-prjf-86w9-mfqv",
-      "publishedAt": "2026-02-27T18:33:16Z",
-      "modifiedAt": "2026-02-27T18:33:17Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-prjf-86w9-mfqv"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-27970"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 18.2.14"
         }
       ],
       "source": "github"

@@ -1,0 +1,32 @@
+{
+  "packageName": "@developer.notchatbot/webchat",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w3vx-52j6-9fjp",
+      "packageName": "@developer.notchatbot/webchat",
+      "title": "NotChatbot WebChat has a stored cross-site scripting (XSS) vulnerability",
+      "description": "A stored cross-site scripting (XSS) vulnerability exists in the NotChatbot WebChat widget thru 1.4.4. User-supplied input is not properly sanitized before being stored and rendered in the chat conversation history. This allows an attacker to inject arbitrary JavaScript code which is executed when the chat history is reloaded. The issue is reproducible across multiple independent implementations of the widget, indicating that the vulnerability resides in the product itself rather than in a specif",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w3vx-52j6-9fjp",
+      "publishedAt": "2026-03-18T18:31:18Z",
+      "modifiedAt": "2026-03-19T12:50:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w3vx-52j6-9fjp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30048"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.5.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

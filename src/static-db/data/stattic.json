@@ -1,0 +1,33 @@
+{
+  "packageName": "stattic",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w4pv-w56c-mg4v",
+      "packageName": "stattic",
+      "title": "Path Traversal in stattic",
+      "description": "Versions of `stattic` before 0.3.0 are vulnerable to path traversal allowing a remote attacker to read arbitrary files with any extension from the server that users `stattic`.\n\n\n## Recommendation\n\nUpdate to version 0.3.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w4pv-w56c-mg4v",
+      "publishedAt": "2018-07-18T21:20:15Z",
+      "modifiedAt": "2023-01-31T01:40:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w4pv-w56c-mg4v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3734"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.3.0",
+          "fixed": "0.3.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

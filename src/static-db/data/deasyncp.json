@@ -1,0 +1,28 @@
+{
+  "packageName": "deasyncp",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qfc9-x7gv-27jr",
+      "packageName": "deasyncp",
+      "title": "Malicious Package in deasyncp",
+      "description": "All versions of `deasyncp ` contain malicious code. The package shuts down the machine upon installation as a preinstall script.\n\n\n## Recommendation\n\nRemove the package from your environment. There is no further compromise.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-qfc9-x7gv-27jr",
+      "publishedAt": "2020-09-03T18:12:36Z",
+      "modifiedAt": "2023-01-09T05:03:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qfc9-x7gv-27jr"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "serverlyr",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-46q2-93hm-52p5",
+      "packageName": "serverlyr",
+      "title": "Directory Traversal in serverlyr",
+      "description": "Affected versions of `serverlyr` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-46q2-93hm-52p5",
+      "publishedAt": "2020-09-01T16:53:37Z",
+      "modifiedAt": "2023-09-11T20:33:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-46q2-93hm-52p5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16089"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

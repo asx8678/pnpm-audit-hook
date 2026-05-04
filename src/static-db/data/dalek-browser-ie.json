@@ -1,0 +1,32 @@
+{
+  "packageName": "dalek-browser-ie",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-65q2-x652-xx84",
+      "packageName": "dalek-browser-ie",
+      "title": "dalek-browser-ie downloads Resources over HTTP",
+      "description": "Affected versions of `dalek-browser-ie` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `dalek-browser-ie`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability, and the package author has marked the package as deprecated.\n\nThe best mitigation is",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-65q2-x652-xx84",
+      "publishedAt": "2019-02-18T23:50:04Z",
+      "modifiedAt": "2023-09-07T20:08:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-65q2-x652-xx84"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10605"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "packageName": "soket.js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x6gq-467r-hwcc",
+      "packageName": "soket.js",
+      "title": "Malicious Package in soket.js",
+      "description": "All versions of `soket.js` are considered malicious. The package is malware designed to take advantage of users making a mistake when typing the name of a module to install. When executed, the package calls home to a Command and Control server to execute arbitrary commands.\n\n\n## Recommendation\n\nThis package was published to the npm Registry for a very short period of time. If you happen to find it in your environment you should revoke and rotate all credentials  found on the compromised machine,",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-x6gq-467r-hwcc",
+      "publishedAt": "2020-09-01T21:14:05Z",
+      "modifiedAt": "2023-01-09T05:03:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x6gq-467r-hwcc"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

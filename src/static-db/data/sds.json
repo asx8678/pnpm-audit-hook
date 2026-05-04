@@ -1,6 +1,6 @@
 {
   "packageName": "sds",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-ph28-wwfj-fv7f",
@@ -24,6 +24,33 @@
       "affectedVersions": [
         {
           "range": "<= 4.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cxm3-284p-qc4v",
+      "packageName": "sds",
+      "title": "Prototype Pollution in sds",
+      "description": "Affected versions of `sds` are vulnerable to prototype pollution. The `set` function does not restrict the modification of an Object's prototype, which may allow an attacker to add or modify an existing property that will exist on all objects.\n\n## Recommendation\n\nUpgrade to version 4.0.0 or later",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cxm3-284p-qc4v",
+      "publishedAt": "2020-09-03T15:53:12Z",
+      "modifiedAt": "2023-01-27T05:08:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cxm3-284p-qc4v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7618"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.0.0",
+          "fixed": "4.0.0"
         }
       ],
       "source": "github"

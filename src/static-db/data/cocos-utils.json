@@ -1,0 +1,28 @@
+{
+  "packageName": "cocos-utils",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rffp-mc78-wjf7",
+      "packageName": "cocos-utils",
+      "title": "Command Injection in cocos-utils",
+      "description": "All versions of `cocos-utils` are vulnerable to Remote Code Execution. The `unzip()` function concatenates user input to `exec()` which may allow attackers to execute arbitrary commands  on the server.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rffp-mc78-wjf7",
+      "publishedAt": "2020-09-02T18:26:48Z",
+      "modifiedAt": "2023-01-09T05:03:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rffp-mc78-wjf7"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

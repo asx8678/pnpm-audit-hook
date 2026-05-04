@@ -1,0 +1,32 @@
+{
+  "packageName": "closurecompiler",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hjgp-8ffr-hwwr",
+      "packageName": "closurecompiler",
+      "title": "closurecompiler downloads Resources over HTTP",
+      "description": "Affected versions of `closurecompiler` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `closurecompiler`.\n\n\n## Recommendation\n\nUpdate to version 1.6.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hjgp-8ffr-hwwr",
+      "publishedAt": "2019-02-18T23:51:19Z",
+      "modifiedAt": "2023-09-13T23:02:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hjgp-8ffr-hwwr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10582"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.6.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

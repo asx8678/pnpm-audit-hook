@@ -1,7 +1,34 @@
 {
   "packageName": "@orval/core",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-h526-wf6g-67jv",
+      "packageName": "@orval/core",
+      "title": "Orval has a code injection via unsanitized x-enum-descriptions in enum generation",
+      "description": "### Impact\nArbitrary code execution in environments consuming generated clients\n\nThis issue is similar in nature to the recently-patched MCP vulnerability (CVE-2026-22785), but affects a different code path in @orval/core that was not addressed by that fix.\n\nThe vulnerability allows untrusted OpenAPI specifications to inject arbitrary TypeScript/JavaScript code into generated clients via the x-enumDescriptions field, which is embedded without proper escaping in getEnumImplementation(). I have co",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-h526-wf6g-67jv",
+      "publishedAt": "2026-01-21T01:01:13Z",
+      "modifiedAt": "2026-02-27T22:18:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h526-wf6g-67jv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23947"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 7.19.0",
+          "fixed": "7.19.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-gch2-phqh-fg9q",
       "packageName": "@orval/core",
@@ -25,33 +52,6 @@
         {
           "range": ">= 8.0.0, < 8.2.0",
           "fixed": "8.2.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-h526-wf6g-67jv",
-      "packageName": "@orval/core",
-      "title": "Orval has a code injection via unsanitized x-enum-descriptions in enum generation",
-      "description": "### Impact\nArbitrary code execution in environments consuming generated clients\n\nThis issue is similar in nature to the recently-patched MCP vulnerability (CVE-2026-22785), but affects a different code path in @orval/core that was not addressed by that fix.\n\nThe vulnerability allows untrusted OpenAPI specifications to inject arbitrary TypeScript/JavaScript code into generated clients via the x-enumDescriptions field, which is embedded without proper escaping in getEnumImplementation(). I have co",
-      "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-h526-wf6g-67jv",
-      "publishedAt": "2026-01-21T01:01:13Z",
-      "modifiedAt": "2026-01-21T17:08:33Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-h526-wf6g-67jv"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-23947"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 7.19.0",
-          "fixed": "7.19.0"
         }
       ],
       "source": "github"

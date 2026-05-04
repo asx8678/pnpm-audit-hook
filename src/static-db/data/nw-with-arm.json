@@ -1,0 +1,32 @@
+{
+  "packageName": "nw-with-arm",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9jf3-f2pg-7868",
+      "packageName": "nw-with-arm",
+      "title": "nw-with-arm downloads Resources over HTTP",
+      "description": "Affected versions of `nw-with-arm` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `nw-with-arm`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if av",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9jf3-f2pg-7868",
+      "publishedAt": "2019-02-18T23:57:01Z",
+      "modifiedAt": "2023-09-11T21:50:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9jf3-f2pg-7868"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10629"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.14.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

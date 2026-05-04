@@ -1,0 +1,33 @@
+{
+  "packageName": "nw",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hv96-xxx2-5v7w",
+      "packageName": "nw",
+      "title": "Downloads Resources over HTTP in nw",
+      "description": "Affected versions of `nw` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `nw`.\n\n\n## Recommendation\n\nUpdate to version 0.23.6-1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hv96-xxx2-5v7w",
+      "publishedAt": "2019-02-18T23:51:04Z",
+      "modifiedAt": "2023-01-09T05:02:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hv96-xxx2-5v7w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10588"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.23.6-sdk",
+          "fixed": "0.23.6-1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

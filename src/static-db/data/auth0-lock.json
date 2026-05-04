@@ -1,7 +1,34 @@
 {
   "packageName": "auth0-lock",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-w2pf-g6r8-pg22",
+      "packageName": "auth0-lock",
+      "title": "auth0-lock vulnerable to XSS via unsanitized placeholder property",
+      "description": "## Overview\n\nAuth0 Lock version 11.20.4 and earlier did not properly sanitize the generated HTML code. Customers using the `additionalSignUpFields` customization option to add a checkbox to the sign-up dialog that are passing a `placeholder` property obtained from an untrusted source (e.g. a query parameter) could allow cross-site scripting (XSS) on their signup pages.\n\n## Am I affected?\n\nYou are affected by this vulnerability if all of the following conditions apply:\n\n- You are using Auth0 Lock",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w2pf-g6r8-pg22",
+      "publishedAt": "2020-01-31T17:59:51Z",
+      "modifiedAt": "2023-09-11T18:14:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w2pf-g6r8-pg22"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-20174"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.21.0",
+          "fixed": "11.21.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-jr3j-whm4-9wwm",
       "packageName": "auth0-lock",
@@ -52,6 +79,33 @@
         {
           "range": "< 11.33.0",
           "fixed": "11.33.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6gg3-pmm7-97xc",
+      "packageName": "auth0-lock",
+      "title": "DOM-based XSS in auth0-lock",
+      "description": "### Overview\nVersions before and including `11.25.1` are using `dangerouslySetInnerHTML` to display an informational message when used with a Passwordless or Enterprise connection.\n\n- For Passwordless connection, the value of the input (email or phone number) is displayed back to the user while waiting for verification code input.  \n- For Enterprise connection, the value of the input (IdP Domain) from the Enterprise connection setup screen (Auth0 Dashboard) is displayed back to the user when the",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-6gg3-pmm7-97xc",
+      "publishedAt": "2020-08-19T21:05:03Z",
+      "modifiedAt": "2023-01-09T05:03:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6gg3-pmm7-97xc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15119"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 11.25.1",
+          "fixed": "11.26.3"
         }
       ],
       "source": "github"

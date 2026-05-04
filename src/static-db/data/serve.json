@@ -1,7 +1,34 @@
 {
   "packageName": "serve",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-v588-qcp3-jv46",
+      "packageName": "serve",
+      "title": "Path Traversal in serve",
+      "description": "Versions of `serve` prior to 7.0.1 are vulnerable to Path Traversal. Explicitly ignored folders can be accessed through if the path contains a `/./`, which allows attackers to access hidden folders and files.\n\n\n## Recommendation\n\nUpgrade to version 7.0.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v588-qcp3-jv46",
+      "publishedAt": "2019-03-25T18:03:58Z",
+      "modifiedAt": "2025-07-15T20:11:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v588-qcp3-jv46"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-5415"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 7.0.0",
+          "fixed": "7.0.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-5rc4-8qqh-vq7f",
       "packageName": "serve",
@@ -25,6 +52,179 @@
         {
           "range": "< 6.5.2",
           "fixed": "6.5.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q2qh-cgc2-qhr3",
+      "packageName": "serve",
+      "title": "Directory Traversal in serve",
+      "description": "Affected versions of `serve` do not properly handle `%2e` (.) and `%2f` (/) characters, and allow the, characters to be used in paths. This can be used to traverse the directory tree and list content of any directory the user running the process has access to.\n\nMitigating factors:\nThis vulnerability only allows listing of directory contents and does not allow reading of arbitrary files.\n\n\n## Recommendation\n\nUpdate to version 6.4.9 later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q2qh-cgc2-qhr3",
+      "publishedAt": "2018-07-27T17:07:50Z",
+      "modifiedAt": "2023-04-21T19:00:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q2qh-cgc2-qhr3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3712"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 6.4.8",
+          "fixed": "6.4.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-48gc-5j93-5cfq",
+      "packageName": "serve",
+      "title": "Path Traversal in serve",
+      "description": "Versions of `serve` prior to 10.1.2 are vulnerable to Path Traversal. Explicitly ignored folders can be accessed through relative paths, which allows attackers to access hidden folders and files.\n\n\n## Recommendation\n\nUpgrade to version 10.1.2 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-48gc-5j93-5cfq",
+      "publishedAt": "2020-09-11T21:15:54Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-48gc-5j93-5cfq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 10.1.2",
+          "fixed": "10.1.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wm7q-rxch-43mx",
+      "packageName": "serve",
+      "title": "Byass due to validation before canonicalization in serve",
+      "description": "Versions of `serve` before 6.5.2 are vulnerable to the bypass of the ignore functionality. The bypass is possible because validation happens before canonicalization of paths and filenames.\n\n\n\nExample:\nHere we have a server that ignores the file test.txt.\n```\nconst serve = require('serve')\nconst server = serve(__dirname, {\n      port: 1337,\n      ignore: ['test.txt']\n})\n```\n\nUsing the URL encoded form of a letter (%65 instead of e) attacker can bypass the ignore control accessing the file. \n\n`cur",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wm7q-rxch-43mx",
+      "publishedAt": "2020-09-01T19:38:33Z",
+      "modifiedAt": "2023-01-09T05:03:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wm7q-rxch-43mx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.5.2",
+          "fixed": "6.5.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cpgr-wmr9-qxv4",
+      "packageName": "serve",
+      "title": "Cross-Site Scripting in serve",
+      "description": "Versions of `serve` prior to 10.0.2 are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize filenames, allowing attackers to execute arbitrary JavaScript in the victim's browser through files with names containing malicious code.\n\n\n## Recommendation\n\nUpgrade to version 10.0.2 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cpgr-wmr9-qxv4",
+      "publishedAt": "2020-09-11T21:20:14Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cpgr-wmr9-qxv4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 10.0.2",
+          "fixed": "10.0.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xw79-hhv6-578c",
+      "packageName": "serve",
+      "title": "Cross-Site Scripting in serve",
+      "description": "Versions of `serve` prior to 10.0.2 are vulnerable to Cross-Site Scripting (XSS). The package does not encode output, allowing attackers to execute arbitrary JavaScript in the victim's browser if user-supplied input is rendered.\n\n\n## Recommendation\n\nUpgrade to version 10.0.2 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xw79-hhv6-578c",
+      "publishedAt": "2020-09-11T21:16:59Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xw79-hhv6-578c"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 10.0.2",
+          "fixed": "10.0.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xg75-3277-gvvj",
+      "packageName": "serve",
+      "title": "Directory Traversal in serve",
+      "description": "Versions of `serve` before 7.1.3 are vulnerable to Directory Traversal. File paths are not sanitized leading to unauthorized access of system files.\n\n\n## Recommendation\n\nUpgrade to version 7.1.3 or later",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xg75-3277-gvvj",
+      "publishedAt": "2019-03-25T18:04:01Z",
+      "modifiedAt": "2023-01-09T05:03:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xg75-3277-gvvj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-5417"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 7.1.3",
+          "fixed": "7.1.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-686g-3xr3-x4x6",
+      "packageName": "serve",
+      "title": "Information Exposure on Case Insensitive File Systems in serve",
+      "description": "Versions of `serve` before 7.0.0 are vulnerable to information exposure, bypassing the ignore security control, but only on case insensitive file systems.\n\n\n\n## Recommendation\n\nUpdate to version 7.0.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-686g-3xr3-x4x6",
+      "publishedAt": "2018-07-18T18:33:15Z",
+      "modifiedAt": "2023-01-09T05:02:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-686g-3xr3-x4x6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3809"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 7.0.0",
+          "fixed": "7.0.0"
         }
       ],
       "source": "github"

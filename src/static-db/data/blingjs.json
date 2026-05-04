@@ -1,0 +1,28 @@
+{
+  "packageName": "blingjs",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hfc6-79wv-5hpw",
+      "packageName": "blingjs",
+      "title": "Malicious Package in blingjs",
+      "description": "Version 0.0.4 of `blingjs` contained malicious code. The code when executed in the browser would enumerate password, cvc, cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nIf version 0.0.4 of this module is found installed you will want to replace it with a version before or after 0.0.4. In addition to replacing the installed module, you will also want to evaluate your application to determine whether or not user data was c",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-hfc6-79wv-5hpw",
+      "publishedAt": "2020-09-01T19:48:13Z",
+      "modifiedAt": "2023-01-09T05:03:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hfc6-79wv-5hpw"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 0.0.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

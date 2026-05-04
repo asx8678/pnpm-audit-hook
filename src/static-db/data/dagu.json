@@ -1,0 +1,33 @@
+{
+  "packageName": "dagu",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9wmw-9wph-2vwp",
+      "packageName": "dagu",
+      "title": "Dagu: SSE Authentication Bypass in Basic Auth Mode",
+      "description": "# SSE Authentication Bypass in Basic Auth Mode\n\n## Summary\n\nWhen Dagu is configured with HTTP Basic authentication (`DAGU_AUTH_MODE=basic`), all Server-Sent Events (SSE) endpoints are accessible without any credentials. This allows unauthenticated attackers to access real-time DAG execution data, workflow configurations, execution logs, and queue status — bypassing the authentication that protects the REST API.\n\n## Severity\n\n**HIGH** (CVSS 3.1: 7.5 — AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N)\n\n## Affe",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9wmw-9wph-2vwp",
+      "publishedAt": "2026-03-13T15:05:32Z",
+      "modifiedAt": "2026-03-16T17:06:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9wmw-9wph-2vwp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31882"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.4",
+          "fixed": "2.2.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

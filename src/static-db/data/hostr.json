@@ -1,0 +1,33 @@
+{
+  "packageName": "hostr",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xqqr-p362-6rmc",
+      "packageName": "hostr",
+      "title": "Directory Traversal in hostr",
+      "description": "Affected versions of `hostr` are vulnerable to directory traversal which allows attackers to read files outside the current directory by sending `../` in the url path for GET requests.\n\n\n## Recommendation\n\nUpgrade to version 2.3.6 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xqqr-p362-6rmc",
+      "publishedAt": "2018-11-09T17:44:20Z",
+      "modifiedAt": "2023-09-12T21:11:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xqqr-p362-6rmc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16029"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.3.5",
+          "fixed": "2.3.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

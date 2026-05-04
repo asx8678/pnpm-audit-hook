@@ -1,0 +1,32 @@
+{
+  "packageName": "commentapp.stetsonwood",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j5mg-fpq8-vvxv",
+      "packageName": "commentapp.stetsonwood",
+      "title": "Directory Traversal in commentapp.stetsonwood",
+      "description": "Affected versions of `commentapp.stetsonwood` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the pac",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j5mg-fpq8-vvxv",
+      "publishedAt": "2018-07-23T20:48:14Z",
+      "modifiedAt": "2023-09-07T18:25:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j5mg-fpq8-vvxv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16143"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

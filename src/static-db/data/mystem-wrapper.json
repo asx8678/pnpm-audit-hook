@@ -1,0 +1,32 @@
+{
+  "packageName": "mystem-wrapper",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wg5r-c793-w5w2",
+      "packageName": "mystem-wrapper",
+      "title": "Downloads Resources over HTTP in mystem-wrapper",
+      "description": "Affected versions of `mystem-wrapper` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `mystem-wrapper`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wg5r-c793-w5w2",
+      "publishedAt": "2019-02-18T23:44:28Z",
+      "modifiedAt": "2023-01-09T05:03:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wg5r-c793-w5w2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10671"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

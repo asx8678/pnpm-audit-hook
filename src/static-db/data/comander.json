@@ -1,0 +1,28 @@
+{
+  "packageName": "comander",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4xg9-g7qj-jhg4",
+      "packageName": "comander",
+      "title": "Malicious Package in comander",
+      "description": "All versions of `comander` contains malicious code . The package is malware designed to take advantage of users making a mistake when typing the name of a module to install. Upon require the package attempts to start a cryptocurrency miner using coin-hive.\n\n\n## Recommendation\n\nRemove the package from your environment and verify whether your system is running the cryptocurrency miner.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4xg9-g7qj-jhg4",
+      "publishedAt": "2020-09-03T20:46:36Z",
+      "modifiedAt": "2023-01-09T05:04:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4xg9-g7qj-jhg4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

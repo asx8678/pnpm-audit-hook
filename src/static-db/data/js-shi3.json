@@ -1,0 +1,28 @@
+{
+  "packageName": "js-shi3",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g37j-v5gh-g25c",
+      "packageName": "js-shi3",
+      "title": "Malicious Package in js-shi3",
+      "description": "Version 0.8.0 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-g37j-v5gh-g25c",
+      "publishedAt": "2020-09-03T23:06:48Z",
+      "modifiedAt": "2023-01-09T05:03:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g37j-v5gh-g25c"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

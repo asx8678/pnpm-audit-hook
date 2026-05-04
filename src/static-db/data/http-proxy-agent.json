@@ -1,7 +1,30 @@
 {
   "packageName": "http-proxy-agent",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-8w57-jfpm-945m",
+      "packageName": "http-proxy-agent",
+      "title": "Denial of Service in http-proxy-agent",
+      "description": "Versions of `http-proxy-agent` before 2.1.0 are vulnerable to denial of service and uninitialized memory leak when unsanitized options are passed to `Buffer`. An attacker may leverage these unsanitized options to consume system resources.\n\n\n## Recommendation\n\nUpdate to version 2.1.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8w57-jfpm-945m",
+      "publishedAt": "2019-06-11T16:16:07Z",
+      "modifiedAt": "2023-04-11T00:26:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8w57-jfpm-945m"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.0",
+          "fixed": "2.1.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-86wf-436m-h424",
       "packageName": "http-proxy-agent",

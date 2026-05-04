@@ -1,0 +1,33 @@
+{
+  "packageName": "no-case",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-ff6r-5jwm-8292",
+      "packageName": "no-case",
+      "title": "Regular Expression Denial of Service in no-case",
+      "description": "Affected versions of `no-case` are vulnerable to a regular expression denial of service when parsing untrusted user input.\n\n\n## Recommendation\n\nUpdate to version 2.3.2 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-ff6r-5jwm-8292",
+      "publishedAt": "2018-07-24T19:51:16Z",
+      "modifiedAt": "2023-09-11T21:52:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ff6r-5jwm-8292"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16099"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.3.2",
+          "fixed": "2.3.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

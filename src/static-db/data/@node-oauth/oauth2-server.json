@@ -1,0 +1,33 @@
+{
+  "packageName": "@node-oauth/oauth2-server",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jhm7-29pj-4xvf",
+      "packageName": "@node-oauth/oauth2-server",
+      "title": "@node-oauth/oauth2-server: PKCE code_verifier ABNF not enforced in token exchange allows brute-force redemption of intercepted authorization codes",
+      "description": "## Summary\n\nThe token exchange path accepts RFC7636-invalid `code_verifier` values (including one-character strings) for `S256` PKCE flows.  \nBecause short/weak verifiers are accepted and failed verifier attempts do not consume the authorization code, an attacker who intercepts an authorization code can brute-force `code_verifier` guesses online until token issuance succeeds.\n\n\n\n### Root cause\n\n1. `lib/pkce/pkce.js` (`getHashForCodeChallenge`) only checks that `verifier` is a non-empty string be",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jhm7-29pj-4xvf",
+      "publishedAt": "2026-04-16T21:09:50Z",
+      "modifiedAt": "2026-04-24T20:53:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jhm7-29pj-4xvf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41213"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.2.1",
+          "fixed": "5.3.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "packageName": "@fedify/vocab-runtime",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gm9m-gwc4-hwgp",
+      "packageName": "@fedify/vocab-runtime",
+      "title": "Fedify affected by resource exhaustion caused by unbounded redirect following during remote key/document resolution",
+      "description": "### Summary\n\n`@fedify/fedify` follows HTTP redirects recursively in its remote document loader and authenticated document loader without enforcing a maximum redirect count or visited-URL loop detection. An attacker who controls a remote ActivityPub key or actor URL can force a server using Fedify to make repeated outbound requests from a single inbound request, leading to resource consumption and denial of service.\n\n### Details\n\nFedify verifies ActivityPub HTTP signatures by fetching the remote ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gm9m-gwc4-hwgp",
+      "publishedAt": "2026-04-07T18:04:09Z",
+      "modifiedAt": "2026-04-07T18:04:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gm9m-gwc4-hwgp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34148"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 2.1.0",
+          "fixed": "2.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

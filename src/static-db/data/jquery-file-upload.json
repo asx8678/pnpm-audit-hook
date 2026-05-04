@@ -1,6 +1,6 @@
 {
   "packageName": "jquery-file-upload",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-43x9-7hfv-mxrf",
@@ -24,6 +24,33 @@
       "affectedVersions": [
         {
           "range": "<= 4.0.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mxr5-p36v-479m",
+      "packageName": "jquery-file-upload",
+      "title": "Unrestricted Upload of File with Dangerous Type in jquery-file-upload",
+      "description": "Arbitrary file upload in jQuery Upload File <= 4.0.2",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mxr5-p36v-479m",
+      "publishedAt": "2018-12-19T19:24:03Z",
+      "modifiedAt": "2023-01-09T05:04:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mxr5-p36v-479m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-9207"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.2",
+          "fixed": "4.0.5"
         }
       ],
       "source": "github"

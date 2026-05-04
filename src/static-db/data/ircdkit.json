@@ -1,0 +1,29 @@
+{
+  "packageName": "ircdkit",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f7r3-p866-q9qr",
+      "packageName": "ircdkit",
+      "title": "ircdkit vulnerable to Denial of Service due to unhandled connection end event",
+      "description": "Versions of `ircdkit` 1.0.3 and prior are vulnerable to a remote denial of service.\n\n\n## Recommendation\n\nUpgrade to version 1.0.4.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-f7r3-p866-q9qr",
+      "publishedAt": "2019-06-03T17:27:49Z",
+      "modifiedAt": "2023-01-11T05:08:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f7r3-p866-q9qr"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.3",
+          "fixed": "1.0.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

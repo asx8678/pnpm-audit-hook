@@ -1,0 +1,83 @@
+{
+  "packageName": "uglify-js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-34r7-q49f-h37c",
+      "packageName": "uglify-js",
+      "title": "Incorrect Handling of Non-Boolean Comparisons During Minification in uglify-js",
+      "description": "Versions of `uglify-js` prior to 2.4.24 are affected by a vulnerability which may cause crafted JavaScript to have altered functionality after minification.\n\n## Recommendation\n\nUpgrade UglifyJS to version >= 2.4.24.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-34r7-q49f-h37c",
+      "publishedAt": "2017-10-24T18:33:36Z",
+      "modifiedAt": "2023-04-12T17:38:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-34r7-q49f-h37c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-8857"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.4.24",
+          "fixed": "2.4.24"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-c9f4-xj24-8jqx",
+      "packageName": "uglify-js",
+      "title": "Regular Expression Denial of Service in uglify-js",
+      "description": "Versions of `uglify-js` prior to 2.6.0 are affected by a regular expression denial of service vulnerability when malicious inputs are passed into the `parse()` method.\n\n\n### Proof of Concept\n\n```\nvar u = require('uglify-js');\nvar genstr = function (len, chr) {\n    var result = \"\";\n    for (i=0; i<=len; i++) {\n        result = result + chr;\n    }\n\n    return result;\n}\n\nu.parse(\"var a = \" + genstr(process.argv[2], \"1\") + \".1ee7;\");\n```\n\n### Results\n```\n$ time node test.js 10000\nreal\t0m1.091s\nuser\t",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-c9f4-xj24-8jqx",
+      "publishedAt": "2017-10-24T18:33:36Z",
+      "modifiedAt": "2023-04-11T00:22:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c9f4-xj24-8jqx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-8858"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.6.0",
+          "fixed": "2.6.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-g6f4-j6c2-w3p3",
+      "packageName": "uglify-js",
+      "title": "High severity vulnerability that affects uglify-js",
+      "description": "Withdrawn, accidental duplicate publish.\r\n\r\nThe uglify-js package before 2.4.24 for Node.js does not properly account for non-boolean values when rewriting boolean expressions, which might allow attackers to bypass security mechanisms or possibly have unspecified other impact by leveraging improperly rewritten Javascript.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g6f4-j6c2-w3p3",
+      "publishedAt": "2018-10-09T00:39:43Z",
+      "modifiedAt": "2023-01-09T05:03:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g6f4-j6c2-w3p3"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.4.24",
+          "fixed": "2.4.24"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

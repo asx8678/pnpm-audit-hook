@@ -1,6 +1,6 @@
 {
   "packageName": "find-my-way",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rrr8-f88r-h8q6",
@@ -25,6 +25,33 @@
         {
           "range": ">= 5.5.0, < 8.2.2",
           "fixed": "8.2.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jgrh-5m3h-9c5f",
+      "packageName": "find-my-way",
+      "title": "Web Cache Poisoning in find-my-way",
+      "description": "This affects the package find-my-way before 2.2.5, from 3.0.0 and before 3.0.5. It accepts the Accept-Version' header by default, and if versioned routes are not being used, this could lead to a denial of service. Accept-Version can be used as an unkeyed header in a cache poisoning attack.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jgrh-5m3h-9c5f",
+      "publishedAt": "2020-11-09T22:17:13Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jgrh-5m3h-9c5f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7764"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 3.0.5",
+          "fixed": "3.0.5"
         }
       ],
       "source": "github"

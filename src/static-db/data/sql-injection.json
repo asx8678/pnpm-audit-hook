@@ -1,0 +1,28 @@
+{
+  "packageName": "sql-injection",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hvxq-j2r4-4jm8",
+      "packageName": "sql-injection",
+      "title": "Regular Expression Denial of Service in sql-injection",
+      "description": "All versions of `sql-injection` are vulnerable to Regular Expression Denial of Service. The package processes a request's body with regular expressions that may take exponentially longer to execute for large inputs.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hvxq-j2r4-4jm8",
+      "publishedAt": "2020-09-03T20:31:04Z",
+      "modifiedAt": "2023-01-09T05:04:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hvxq-j2r4-4jm8"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

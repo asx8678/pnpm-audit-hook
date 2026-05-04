@@ -1,7 +1,34 @@
 {
   "packageName": "jpeg-js",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-w7q9-p3jq-fmhm",
+      "packageName": "jpeg-js",
+      "title": "Uncontrolled resource consumption in jpeg-js",
+      "description": "Uncontrolled resource consumption in `jpeg-js` before 0.4.0 may allow attacker to launch denial of service attacks using specially a crafted JPEG image.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w7q9-p3jq-fmhm",
+      "publishedAt": "2020-07-27T15:46:57Z",
+      "modifiedAt": "2023-09-08T22:35:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w7q9-p3jq-fmhm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8175"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.4.0",
+          "fixed": "0.4.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-xvf7-4v9q-58w6",
       "packageName": "jpeg-js",

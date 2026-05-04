@@ -1,7 +1,33 @@
 {
   "packageName": "@angular/platform-server",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-45q2-gjvg-7973",
+      "packageName": "@angular/platform-server",
+      "title": "Angular: SSRF via protocol-relative and backslash URLs in Angular Platform-Server",
+      "description": "### Impact\n\nA [Server-Side Request Forgery (SSRF)](https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/SSRF) vulnerability exists in `@angular/platform-server` due to improper handling of URLs during Server-Side Rendering (SSR).\n\nWhen an attacker sends a request such as `GET /\\evil.com/ HTTP/1.1` the server engine (Express, etc.) passes the URL string to Angular’s rendering functions.\n\nBecause the URL parser normalizes the backslash to a forward slash for HTTP/HTTPS schemes, the intern",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-45q2-gjvg-7973",
+      "publishedAt": "2026-04-16T22:36:01Z",
+      "modifiedAt": "2026-04-27T16:19:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-45q2-gjvg-7973"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41423"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 18.2.14"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-68x2-mx4q-78m7",
       "packageName": "@angular/platform-server",

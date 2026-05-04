@@ -1,0 +1,32 @@
+{
+  "packageName": "dcdcdcdcdc",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8vmc-g99q-xj94",
+      "packageName": "dcdcdcdcdc",
+      "title": "Directory Traversal in dcdcdcdcdc",
+      "description": "Affected versions of `dcdcdcdcdc` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8vmc-g99q-xj94",
+      "publishedAt": "2020-09-01T18:23:52Z",
+      "modifiedAt": "2023-09-11T23:14:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8vmc-g99q-xj94"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16190"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

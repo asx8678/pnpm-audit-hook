@@ -1,6 +1,6 @@
 {
   "packageName": "joplin",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hff8-hjwv-j9q7",
@@ -294,6 +294,33 @@
         {
           "range": "< 1.3.11",
           "fixed": "1.3.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6r7x-hc8m-985r",
+      "packageName": "joplin",
+      "title": "Cross-site Scripting in Joplin",
+      "description": "Joplin through 1.0.184 allows Arbitrary File Read via Cross-site Scripting (XSS).",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6r7x-hc8m-985r",
+      "publishedAt": "2020-10-13T17:29:25Z",
+      "modifiedAt": "2023-02-01T05:04:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6r7x-hc8m-985r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-9038"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.2.1",
+          "fixed": "1.2.1"
         }
       ],
       "source": "github"

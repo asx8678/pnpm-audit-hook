@@ -1,0 +1,28 @@
+{
+  "packageName": "js-sja3",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6343-m2qr-66gf",
+      "packageName": "js-sja3",
+      "title": "Malicious Package in js-sja3",
+      "description": "Version 0.8.0 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6343-m2qr-66gf",
+      "publishedAt": "2020-09-03T23:10:41Z",
+      "modifiedAt": "2023-01-09T05:04:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6343-m2qr-66gf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

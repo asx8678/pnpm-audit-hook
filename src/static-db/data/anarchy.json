@@ -1,0 +1,28 @@
+{
+  "packageName": "anarchy",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jjhg-qw5v-r8xx",
+      "packageName": "anarchy",
+      "title": "Malicious Package in anarchy",
+      "description": "All versions of `anarchy` contain malicious code. The package ran `rm - rf /` as an install script.\n\n\n## Recommendation\n\nRemove the package from your environment.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-jjhg-qw5v-r8xx",
+      "publishedAt": "2020-09-03T19:01:20Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jjhg-qw5v-r8xx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

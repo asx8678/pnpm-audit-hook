@@ -1,0 +1,29 @@
+{
+  "packageName": "atompm",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v86x-f47q-f7f4",
+      "packageName": "atompm",
+      "title": "Unauthorized File Access in atompm",
+      "description": "Versions of `atompm` prior to 0.8.2 are vulnerable to Unauthorized File Access. The package fails to sanitize relative paths in the URL for file downloads, allowing attackers to download arbitrary files from the system.\n\n\n## Recommendation\n\nUpgrade to version 0.8.2 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v86x-f47q-f7f4",
+      "publishedAt": "2020-09-11T21:09:24Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v86x-f47q-f7f4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.8.2",
+          "fixed": "0.8.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "packageName": "libnotify",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6898-wx94-8jq8",
+      "packageName": "libnotify",
+      "title": "Potential Command Injection in libnotify",
+      "description": "Versions 1.0.3 and earlier of libnotify are affected by a shell command injection vulnerability. This may result in execution of arbitrary shell commands, if user input is passed into libnotify.notify.\n\nUntrusted input passed in the call to libnotify.notify could result in execution of shell commands. Callers may be unaware of this.\n\n### Example\n```js\nvar libnotify = require('libnotify')\nlibnotify.notify('UNTRUSTED INPUT', { title: \\\"\\\" }, function () {\n    console.log(arguments);\n})\n```\n\nSpecia",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6898-wx94-8jq8",
+      "publishedAt": "2020-08-31T22:50:48Z",
+      "modifiedAt": "2023-09-08T20:38:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6898-wx94-8jq8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2013-7381"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.3",
+          "fixed": "1.0.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

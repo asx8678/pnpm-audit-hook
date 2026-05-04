@@ -1,0 +1,33 @@
+{
+  "packageName": "cookie-signature",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-92vm-wfm5-mxvv",
+      "packageName": "cookie-signature",
+      "title": "cookie-signature Timing Attack",
+      "description": "Affected versions of `cookie-signature` are vulnerable to timing attacks as a result of using a fail-early comparison instead of a constant-time comparison. \n\nTiming attacks remove the exponential increase in entropy gained from increased secret length, by providing per-character feedback on the correctness of a guess via miniscule timing differences.\n\nUnder favorable network conditions, an attacker can exploit this to guess the secret in no more than `charset*length` guesses, instead of `charse",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-92vm-wfm5-mxvv",
+      "publishedAt": "2020-01-06T18:44:10Z",
+      "modifiedAt": "2023-01-11T05:08:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-92vm-wfm5-mxvv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-1000236"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.4",
+          "fixed": "1.0.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

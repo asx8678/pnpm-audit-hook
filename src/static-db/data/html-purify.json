@@ -1,0 +1,28 @@
+{
+  "packageName": "html-purify",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5p28-63mc-cgr9",
+      "packageName": "html-purify",
+      "title": "Cross-Site Scripting bypass in html-purify",
+      "description": "All versions of html-purify are vulnerable to cross-site scripting. The data attribute inside of object tags is not properly sanitized and allows javascript URIs leading to code execution.\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5p28-63mc-cgr9",
+      "publishedAt": "2020-12-04T20:04:37Z",
+      "modifiedAt": "2023-01-09T05:04:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5p28-63mc-cgr9"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "packageName": "yar",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gg6m-fhqv-hg56",
+      "packageName": "yar",
+      "title": "Denial of Service in yar",
+      "description": "Versions of `yar` prior to 2.2.0 are affected by a denial of service vulnerability related to an invalid encrypted session cookie value.\n\nWhen an invalid encryped session cookie value is provided, the process will crash.\n\n\n## Recommendation\n\nUpdate to version 2.2.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gg6m-fhqv-hg56",
+      "publishedAt": "2020-09-01T15:15:36Z",
+      "modifiedAt": "2023-01-09T05:03:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gg6m-fhqv-hg56"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2014-4179"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.0",
+          "fixed": "2.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

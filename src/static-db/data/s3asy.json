@@ -1,0 +1,28 @@
+{
+  "packageName": "s3asy",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3wjm-33mw-h388",
+      "packageName": "s3asy",
+      "title": "Malicious Package in s3asy",
+      "description": "Version 0.4.8 of `s3asy` contained malicious code. The code when executed in the browser would enumerate password, cvc, cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nIf version 0.4.8 of this module is found installed you will want to replace it with a version before or after 0.4.8. In addition to replacing the installed module, you will also want to evaluate your application to determine whether or not user data was com",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3wjm-33mw-h388",
+      "publishedAt": "2020-09-01T20:34:14Z",
+      "modifiedAt": "2023-07-27T20:10:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3wjm-33mw-h388"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 0.4.8"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

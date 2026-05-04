@@ -1,0 +1,28 @@
+{
+  "packageName": "tensorplow",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m2fp-c79h-rr79",
+      "packageName": "tensorplow",
+      "title": "Malicious Package in tensorplow",
+      "description": "All versions of `tensorplow` contain malicious code as a preinstall script. When installed, the package calls home to a Command and Control server to execute arbitrary commands.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been given to an outside e",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m2fp-c79h-rr79",
+      "publishedAt": "2020-09-02T21:42:56Z",
+      "modifiedAt": "2023-01-09T05:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m2fp-c79h-rr79"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

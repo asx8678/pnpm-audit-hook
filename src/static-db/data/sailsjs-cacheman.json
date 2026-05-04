@@ -1,0 +1,28 @@
+{
+  "packageName": "sailsjs-cacheman",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5w65-6875-rhq8",
+      "packageName": "sailsjs-cacheman",
+      "title": "Undefined Behavior in sailsjs-cacheman",
+      "description": "All versions of `sailsjs-cacheman` have a vulnerability that may lead to Undefined Behavior. The config variable is exposing to the global scope which may overwrite other variables and cause the application to misbehave.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-5w65-6875-rhq8",
+      "publishedAt": "2019-09-11T23:01:57Z",
+      "modifiedAt": "2023-01-09T05:01:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5w65-6875-rhq8"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

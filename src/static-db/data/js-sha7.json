@@ -1,0 +1,28 @@
+{
+  "packageName": "js-sha7",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hvgc-mggg-pxr2",
+      "packageName": "js-sha7",
+      "title": "Malicious Package in js-sha7",
+      "description": "Version 0.8.0 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-hvgc-mggg-pxr2",
+      "publishedAt": "2020-09-03T23:02:33Z",
+      "modifiedAt": "2023-01-09T05:03:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hvgc-mggg-pxr2"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

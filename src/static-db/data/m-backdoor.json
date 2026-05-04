@@ -1,0 +1,28 @@
+{
+  "packageName": "m-backdoor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vv52-3mrp-455m",
+      "packageName": "m-backdoor",
+      "title": "Malicious Package in m-backdoor",
+      "description": "All versions of `m-backdoor` contain malicious code. The package downloads a file from a remote server and executes it as a preinstall script. At the time of the release of this advisory the downloaded file only defaces websites by removing elements randomly from the DOM. \n\n\n## Recommendation\n\nRemove the package from your system.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vv52-3mrp-455m",
+      "publishedAt": "2020-09-03T15:53:36Z",
+      "modifiedAt": "2023-01-09T05:03:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vv52-3mrp-455m"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

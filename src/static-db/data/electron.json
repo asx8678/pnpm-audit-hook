@@ -1,30 +1,1271 @@
 {
-  "packageName": "Electron",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "packageName": "electron",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
-      "id": "GHSA-6h98-cf9g-vmg2",
-      "packageName": "Electron",
-      "title": "Electron vulnerable to URL spoofing via PDFium",
-      "description": "Electron version 1.7.0 - 1.7.5 is vulnerable to a URL Spoofing problem when opening PDFs in PDFium resulting loading arbitrary PDFs that a hacker can control.",
+      "id": "GHSA-f3pv-wv63-48x8",
+      "packageName": "electron",
+      "title": "Electron: Named window.open targets not scoped to the opener's browsing context",
+      "description": "### Impact\nWhen a renderer calls `window.open()` with a target name, Electron did not correctly scope the named-window lookup to the opener's browsing context group. A renderer could navigate an existing child window that was opened by a different, unrelated renderer if both used the same target name. If that existing child was created with more permissive `webPreferences` (via `setWindowOpenHandler`'s `overrideBrowserWindowOptions`), content loaded by the second renderer inherits those permissi",
       "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-6h98-cf9g-vmg2",
-      "publishedAt": "2022-05-13T01:41:15Z",
-      "modifiedAt": "2023-09-13T19:59:23Z",
+      "url": "https://github.com/advisories/GHSA-f3pv-wv63-48x8",
+      "publishedAt": "2026-04-07T15:52:25Z",
+      "modifiedAt": "2026-04-09T05:01:00Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-6h98-cf9g-vmg2"
+          "value": "GHSA-f3pv-wv63-48x8"
         },
         {
           "type": "CVE",
-          "value": "CVE-2017-1000424"
+          "value": "CVE-2026-34765"
         }
       ],
       "affectedVersions": [
         {
-          "range": ">= 1.7.0, < 1.7.6",
-          "fixed": "1.7.6"
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-alpha.5",
+          "fixed": "42.0.0-alpha.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f37v-82c4-4x64",
+      "packageName": "electron",
+      "title": "Electron: Crash in clipboard.readImage() on malformed clipboard image data",
+      "description": "### Impact\nApps that call `clipboard.readImage()` may be vulnerable to a denial of service. If the system clipboard contains image data that fails to decode, the resulting null bitmap is passed unchecked to image construction, triggering a controlled abort and crashing the process.\n\nApps are only affected if they call `clipboard.readImage()`. Apps that do not read images from the clipboard are not affected. This issue does not allow memory corruption or code execution.\n\n### Workarounds\nValidate ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-f37v-82c4-4x64",
+      "publishedAt": "2026-04-07T15:52:28Z",
+      "modifiedAt": "2026-04-08T11:57:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f37v-82c4-4x64"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34781"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-alpha.5",
+          "fixed": "42.0.0-alpha.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8x5q-pvf5-64mp",
+      "packageName": "electron",
+      "title": "Electron: Use-after-free in offscreen shared texture release() callback",
+      "description": "### Impact\nApps that use offscreen rendering with GPU shared textures may be vulnerable to a use-after-free. Under certain conditions, the `release()` callback provided on a `paint` event texture can outlive its backing native state, and invoking it after that point dereferences freed memory in the main process, which may lead to a crash or memory corruption.\n\nApps are only affected if they use offscreen rendering with `webPreferences.offscreen: { useSharedTexture: true }`. Apps that do not enab",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-8x5q-pvf5-64mp",
+      "publishedAt": "2026-04-03T21:52:33Z",
+      "modifiedAt": "2026-04-06T23:40:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8x5q-pvf5-64mp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34764"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-alpha.5",
+          "fixed": "42.0.0-alpha.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jfqg-hf23-qpw2",
+      "packageName": "electron",
+      "title": "Electron: Context Isolation bypass via contextBridge VideoFrame transfer",
+      "description": "### Impact\nApps that pass `VideoFrame` objects (from the WebCodecs API) across the `contextBridge` are vulnerable to a context isolation bypass. An attacker who can execute JavaScript in the main world (for example, via XSS) can use a bridged `VideoFrame` to gain access to the isolated world, including any Node.js APIs exposed to the preload script.\n\nApps are only affected if a preload script returns, resolves, or passes a `VideoFrame` object to the main world via `contextBridge.exposeInMainWorl",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jfqg-hf23-qpw2",
+      "publishedAt": "2026-04-03T02:46:56Z",
+      "modifiedAt": "2026-04-06T23:11:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jfqg-hf23-qpw2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34780"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0-beta.8",
+          "fixed": "41.0.0-beta.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5rqw-r77c-jp79",
+      "packageName": "electron",
+      "title": "Electron: AppleScript injection in app.moveToApplicationsFolder on macOS",
+      "description": "### Impact\nOn macOS, `app.moveToApplicationsFolder()` used an AppleScript fallback path that did not properly handle certain characters in the application bundle path. Under specific conditions, a crafted launch path could lead to arbitrary AppleScript execution when the user accepted the move-to-Applications prompt.\n\nApps are only affected if they call `app.moveToApplicationsFolder()`. Apps that do not use this API are not affected.\n\n### Workarounds\nThere are no app side workarounds, developers",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5rqw-r77c-jp79",
+      "publishedAt": "2026-04-03T02:46:16Z",
+      "modifiedAt": "2026-04-06T23:11:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5rqw-r77c-jp79"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34779"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0-beta.8",
+          "fixed": "41.0.0-beta.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xj5x-m3f3-5x3h",
+      "packageName": "electron",
+      "title": "Electron: Service worker can spoof executeJavaScript IPC replies",
+      "description": "### Impact\nA service worker running in a session could spoof reply messages on the internal IPC channel used by `webContents.executeJavaScript()` and related methods, causing the main-process promise to resolve with attacker-controlled data.\n\nApps are only affected if they have service workers registered and use the result of `webContents.executeJavaScript()` (or `webFrameMain.executeJavaScript()`) in security-sensitive decisions.\n\n### Workarounds\nDo not trust the return value of `webContents.ex",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xj5x-m3f3-5x3h",
+      "publishedAt": "2026-04-03T02:44:59Z",
+      "modifiedAt": "2026-04-06T23:11:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xj5x-m3f3-5x3h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34778"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0",
+          "fixed": "41.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r5p7-gp4j-qhrx",
+      "packageName": "electron",
+      "title": "Electron: Incorrect origin passed to permission request handler for iframe requests",
+      "description": "### Impact\nWhen an iframe requests `fullscreen`, `pointerLock`, `keyboardLock`, `openExternal`, or `media` permissions, the origin passed to `session.setPermissionRequestHandler()` was the top-level page's origin rather than the requesting iframe's origin. Apps that grant permissions based on the origin parameter or `webContents.getURL()` may inadvertently grant permissions to embedded third-party content.\n\nThe correct requesting URL remains available via `details.requestingUrl`. Apps that alrea",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-r5p7-gp4j-qhrx",
+      "publishedAt": "2026-04-03T02:44:26Z",
+      "modifiedAt": "2026-04-06T23:11:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r5p7-gp4j-qhrx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34777"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0",
+          "fixed": "41.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3c8v-cfp5-9885",
+      "packageName": "electron",
+      "title": "Electron: Out-of-bounds read in second-instance IPC on macOS and Linux",
+      "description": "### Impact\nOn macOS and Linux, apps that call `app.requestSingleInstanceLock()` were vulnerable to an out-of-bounds heap read when parsing a crafted second-instance message. Leaked memory could be delivered to the app's `second-instance` event handler.\n\nThis issue is limited to processes running as the same user as the Electron app.\n\nApps that do not call `app.requestSingleInstanceLock()` are not affected. Windows is not affected by this issue.\n\n### Workarounds\nThere are no app side workarounds,",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3c8v-cfp5-9885",
+      "publishedAt": "2026-04-03T02:43:59Z",
+      "modifiedAt": "2026-04-06T23:11:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3c8v-cfp5-9885"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34776"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0",
+          "fixed": "41.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xwr5-m59h-vwqr",
+      "packageName": "electron",
+      "title": "Electron: nodeIntegrationInWorker not correctly scoped in shared renderer processes",
+      "description": "### Impact\nThe `nodeIntegrationInWorker` webPreference was not correctly scoped in all configurations. In certain process-sharing scenarios, workers spawned in frames configured with `nodeIntegrationInWorker: false` could still receive Node.js integration.\n\nApps are only affected if they enable `nodeIntegrationInWorker`. Apps that do not use `nodeIntegrationInWorker` are not affected.\n\n### Workarounds\nAvoid enabling `nodeIntegrationInWorker` in apps that also open child windows or embed content ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xwr5-m59h-vwqr",
+      "publishedAt": "2026-04-03T02:43:05Z",
+      "modifiedAt": "2026-04-06T23:11:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xwr5-m59h-vwqr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34775"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0",
+          "fixed": "41.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-532v-xpq5-8h95",
+      "packageName": "electron",
+      "title": "Electron: Use-after-free in offscreen child window paint callback",
+      "description": "### Impact\nApps that use offscreen rendering and allow child windows via `window.open()` may be vulnerable to a use-after-free. If the parent offscreen `WebContents` is destroyed while a child window remains open, subsequent paint frames on the child dereference freed memory, which may lead to a crash or memory corruption.\n\nApps are only affected if they use offscreen rendering (`webPreferences.offscreen: true`) and their `setWindowOpenHandler` permits child windows. Apps that do not use offscre",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-532v-xpq5-8h95",
+      "publishedAt": "2026-04-03T02:42:27Z",
+      "modifiedAt": "2026-04-06T23:10:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-532v-xpq5-8h95"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34774"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0",
+          "fixed": "41.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mwmh-mq4g-g6gr",
+      "packageName": "electron",
+      "title": "Electron: Registry key path injection in app.setAsDefaultProtocolClient on Windows",
+      "description": "### Impact\nOn Windows, `app.setAsDefaultProtocolClient(protocol)` did not validate the protocol name before writing to the registry. Apps that pass untrusted input as the protocol name may allow an attacker to write to arbitrary subkeys under `HKCU\\Software\\Classes\\`, potentially hijacking existing protocol handlers.\n\nApps are only affected if they call `app.setAsDefaultProtocolClient()` with a protocol name derived from external or untrusted input. Apps that use a hardcoded protocol name are no",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mwmh-mq4g-g6gr",
+      "publishedAt": "2026-04-03T02:41:52Z",
+      "modifiedAt": "2026-04-06T23:10:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mwmh-mq4g-g6gr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34773"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0",
+          "fixed": "41.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9w97-2464-8783",
+      "packageName": "electron",
+      "title": "Electron: Use-after-free in download save dialog callback",
+      "description": "### Impact\nApps that allow downloads and programmatically destroy sessions may be vulnerable to a use-after-free. If a session is torn down while a native save-file dialog is open for a download, dismissing the dialog dereferences freed memory, which may lead to a crash or memory corruption.\n\nApps that do not destroy sessions at runtime, or that do not permit downloads, are not affected.\n\n### Workarounds\nAvoid destroying sessions while a download save dialog may be open. Cancel pending downloads",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9w97-2464-8783",
+      "publishedAt": "2026-04-03T02:41:23Z",
+      "modifiedAt": "2026-04-06T23:10:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9w97-2464-8783"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34772"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0-beta.7",
+          "fixed": "41.0.0-beta.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8337-3p73-46f4",
+      "packageName": "electron",
+      "title": "Electron: Use-after-free in WebContents fullscreen, pointer-lock, and keyboard-lock permission callbacks",
+      "description": "### Impact\nApps that register an asynchronous `session.setPermissionRequestHandler()` may be vulnerable to a use-after-free when handling fullscreen, pointer-lock, or keyboard-lock permission requests. If the requesting frame navigates or the window closes while the permission handler is pending, invoking the stored callback dereferences freed memory, which may lead to a crash or memory corruption.\n\nApps that do not set a permission request handler, or whose handler responds synchronously, are n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8337-3p73-46f4",
+      "publishedAt": "2026-04-03T02:40:24Z",
+      "modifiedAt": "2026-04-06T23:10:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8337-3p73-46f4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34771"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0-beta.8",
+          "fixed": "41.0.0-beta.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jjp3-mq3x-295m",
+      "packageName": "electron",
+      "title": "Electron: Use-after-free in PowerMonitor on Windows and macOS",
+      "description": "### Impact\nApps that use the `powerMonitor` module may be vulnerable to a use-after-free. After the native `PowerMonitor` object is garbage-collected, the associated OS-level resources (a message window on Windows, a shutdown handler on macOS) retain dangling references. A subsequent session-change event (Windows) or system shutdown (macOS) dereferences freed memory, which may lead to a crash or memory corruption.\n\nAll apps that access `powerMonitor` events (`suspend`, `resume`, `lock-screen`, e",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jjp3-mq3x-295m",
+      "publishedAt": "2026-04-03T02:39:52Z",
+      "modifiedAt": "2026-04-06T23:10:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jjp3-mq3x-295m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34770"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0-beta.8",
+          "fixed": "41.0.0-beta.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9wfr-w7mm-pc7f",
+      "packageName": "electron",
+      "title": "Electron: Renderer command-line switch injection via undocumented commandLineSwitches webPreference",
+      "description": "### Impact\nAn undocumented `commandLineSwitches` webPreference allowed arbitrary switches to be appended to the renderer process command line. Apps that construct `webPreferences` by spreading untrusted configuration objects may inadvertently allow an attacker to inject switches that disable renderer sandboxing or web security controls.\n\nApps are only affected if they construct `webPreferences` from external or untrusted input without an allowlist. Apps that use a fixed, hardcoded `webPreference",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9wfr-w7mm-pc7f",
+      "publishedAt": "2026-04-03T02:39:15Z",
+      "modifiedAt": "2026-04-06T23:10:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9wfr-w7mm-pc7f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34769"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0-beta.8",
+          "fixed": "41.0.0-beta.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jfqx-fxh3-c62j",
+      "packageName": "electron",
+      "title": "Electron: Unquoted executable path in app.setLoginItemSettings on Windows",
+      "description": "### Impact\nOn Windows, `app.setLoginItemSettings({openAtLogin: true})` wrote the executable path to the `Run` registry key without quoting. If the app is installed to a path containing spaces, an attacker with write access to an ancestor directory may be able to cause a different executable to run at login instead of the intended app.\n\nOn a default Windows install, standard system directories are protected against writes by standard users, so exploitation typically requires a non-standard instal",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-jfqx-fxh3-c62j",
+      "publishedAt": "2026-04-03T02:38:08Z",
+      "modifiedAt": "2026-04-06T23:10:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jfqx-fxh3-c62j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34768"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0-beta.8",
+          "fixed": "41.0.0-beta.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4p4r-m79c-wq3v",
+      "packageName": "electron",
+      "title": "Electron: HTTP Response Header Injection in custom protocol handlers and webRequest",
+      "description": "### Impact\nApps that register custom protocol handlers via `protocol.handle()` / `protocol.registerSchemesAsPrivileged()` or modify response headers via `webRequest.onHeadersReceived` may be vulnerable to HTTP response header injection if attacker-controlled input is reflected into a response header name or value.\n\nAn attacker who can influence a header value may be able to inject additional response headers, affecting cookies, content security policy, or cross-origin access controls.\n\nApps that",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4p4r-m79c-wq3v",
+      "publishedAt": "2026-04-03T02:37:24Z",
+      "modifiedAt": "2026-04-06T23:10:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4p4r-m79c-wq3v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34767"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.3",
+          "fixed": "41.0.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9899-m83m-qhpj",
+      "packageName": "electron",
+      "title": "Electron: USB device selection not validated against filtered device list",
+      "description": "### Impact\nThe `select-usb-device` event callback did not validate the chosen device ID against the filtered list that was presented to the handler. An app whose handler could be influenced to select a device ID outside the filtered set would grant access to a device that did not match the renderer's requested `filters` or was listed in `exclusionFilters`.\n\nThe WebUSB security blocklist remained enforced regardless, so security-sensitive devices on the blocklist were not affected. The practical ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-9899-m83m-qhpj",
+      "publishedAt": "2026-04-03T02:36:52Z",
+      "modifiedAt": "2026-04-06T23:10:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9899-m83m-qhpj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34766"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0-beta.8",
+          "fixed": "41.0.0-beta.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vmqv-hx8q-j7mg",
+      "packageName": "electron",
+      "title": "Electron has ASAR Integrity Bypass via resource modification",
+      "description": "### Impact\nThis only impacts apps that have the `embeddedAsarIntegrityValidation` and `onlyLoadAppFromAsar` [fuses](https://www.electronjs.org/docs/latest/tutorial/fuses) enabled.  Apps without these fuses enabled are not impacted.\n\nSpecifically this issue can only be exploited if your app is launched from a filesystem the attacker has write access too.  i.e. the ability to edit files inside the `resources` folder in your app installation on Windows which these fuses are supposed to protect agai",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vmqv-hx8q-j7mg",
+      "publishedAt": "2025-09-03T21:27:37Z",
+      "modifiedAt": "2025-09-05T16:10:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vmqv-hx8q-j7mg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-55305"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 38.0.0-alpha.1, < 38.0.0-beta.6",
+          "fixed": "38.0.0-beta.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-j7hp-h8jx-5ppr",
+      "packageName": "electron",
+      "title": "libwebp: OOB write in BuildHuffmanTable",
+      "description": "Heap buffer overflow in libwebp allow a remote attacker to perform an out of bounds memory write via a crafted HTML page.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j7hp-h8jx-5ppr",
+      "publishedAt": "2023-09-12T15:30:20Z",
+      "modifiedAt": "2025-07-09T15:52:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j7hp-h8jx-5ppr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-4863"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 27.0.0-beta.1, < 27.0.0-beta.2",
+          "fixed": "27.0.0-beta.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6r2x-8pq8-9489",
+      "packageName": "electron",
+      "title": "Electron vulnerable to Heap Buffer Overflow in NativeImage",
+      "description": "### Impact\nThe `nativeImage.createFromPath()` and `nativeImage.createFromBuffer()` functions call a function downstream that is vulnerable to a heap buffer overflow. An Electron program that uses either of the affected functions is vulnerable to a buffer overflow if an attacker is in control of the image's height, width, and contents.\n\n### Workaround\nThere are no app-side workarounds for this issue. You must update your Electron version to be protected.\n\n### Patches\n\n- `v28.3.2`\n- `v29.3.3`\n- `v",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6r2x-8pq8-9489",
+      "publishedAt": "2025-06-30T18:41:08Z",
+      "modifiedAt": "2025-07-01T13:13:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6r2x-8pq8-9489"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-46993"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 30.0.0-alpha.1, < 30.0.3",
+          "fixed": "30.0.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xw5q-g62x-2qjc",
+      "packageName": "electron",
+      "title": "electron ASAR Integrity bypass by just modifying the content",
+      "description": "electron's ASAR Integrity can be bypass by modifying the content.\n\n### Impact\nThis only impacts apps that have the `embeddedAsarIntegrityValidation` and `onlyLoadAppFromAsar` [fuses](https://www.electronjs.org/docs/latest/tutorial/fuses) enabled. Apps without these fuses enabled are not impacted. This issue is specific to Windows, apps using these fuses on macOS are unimpacted.\n\nSpecifically this issue can only be exploited if your app is launched from a filesystem the attacker has write access ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xw5q-g62x-2qjc",
+      "publishedAt": "2025-06-30T17:54:11Z",
+      "modifiedAt": "2025-07-01T13:13:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xw5q-g62x-2qjc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-46992"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 31.0.0-alpha.1, < 31.0.0-beta.1",
+          "fixed": "31.0.0-beta.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hvf8-h2qh-37m9",
+      "packageName": "electron",
+      "title": "IPC messages delivered to the wrong frame in Electron",
+      "description": "### Impact\nIPC messages sent from the main process to a subframe in the renderer process, through `webContents.sendToFrame`, `event.reply` or when using the `remote` module, can in some cases be delivered to the wrong frame.\n\nIf your app does ANY of the following, then it is impacted by this issue:\n- Uses `remote`\n- Calls `webContents.sendToFrame`\n- Calls `event.reply` in an IPC message handler\n\n### Patches\nThis has been fixed in the following versions:\n\n- 9.4.0\n- 10.2.0\n- 11.1.0\n- 12.0.0-beta.9",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hvf8-h2qh-37m9",
+      "publishedAt": "2021-01-28T19:11:34Z",
+      "modifiedAt": "2025-05-27T15:20:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hvf8-h2qh-37m9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26272"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 11.0.0, < 11.1.0",
+          "fixed": "11.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7m48-wc93-9g85",
+      "packageName": "electron",
+      "title": "ASAR Integrity bypass via filetype confusion in electron",
+      "description": "### Impact\nThis only impacts apps that have the `embeddedAsarIntegrityValidation` and `onlyLoadAppFromAsar` [fuses](https://www.electronjs.org/docs/latest/tutorial/fuses) enabled.  Apps without these fuses enabled are not impacted.  This issue is specific to macOS as these fuses are only currently supported on macOS.\n\nSpecifically this issue can only be exploited if your app is launched from a filesystem the attacker has write access too.  i.e. the ability to edit files inside the `resources` fo",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7m48-wc93-9g85",
+      "publishedAt": "2023-12-01T21:32:06Z",
+      "modifiedAt": "2024-09-18T20:13:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7m48-wc93-9g85"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-44402"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 23.0.0-alpha.1, <= 23.3.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qqvq-6xgj-jw8g",
+      "packageName": "electron",
+      "title": "Electron affected by libvpx's heap buffer overflow in vp8 encoding",
+      "description": "Heap buffer overflow in vp8 encoding in libvpx in Google Chrome prior to 117.0.5938.132 and libvpx 1.13.1 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qqvq-6xgj-jw8g",
+      "publishedAt": "2023-09-28T18:30:45Z",
+      "modifiedAt": "2024-02-15T15:02:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qqvq-6xgj-jw8g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-5217"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 27.0.0-alpha.1, < 27.0.0-beta.8",
+          "fixed": "27.0.0-beta.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gxh7-wv9q-fwfr",
+      "packageName": "electron",
+      "title": "Electron's Content-Secrity-Policy disabling eval not applied consistently in renderers with sandbox disabled",
+      "description": "### Impact\nA Content-Security-Policy that disables eval, specifically setting a `script-src` directive and _not_ providing `unsafe-eval` in that directive, is not respected in renderers that have sandbox and contextIsolation disabled.  i.e. `sandbox: false` and `contextIsolation: false` in the `webPreferences` object.\n\nThis resulted in incorrectly allowing usage of methods like `eval()` and `new Function`, which can result in an expanded attack surface.\n\n### Patches\nThis issue only ever affected",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gxh7-wv9q-fwfr",
+      "publishedAt": "2023-09-06T18:42:17Z",
+      "modifiedAt": "2023-11-29T20:41:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gxh7-wv9q-fwfr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-23623"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 23.0.0-alpha.1, < 23.0.0-alpha.2",
+          "fixed": "23.0.0-alpha.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p7v2-p9m8-qqg7",
+      "packageName": "electron",
+      "title": "Electron context isolation bypass via nested unserializable return value",
+      "description": "### Impact\nApps using `contextIsolation` and `contextBridge` are affected.\n\nThis is a context isolation bypass, meaning that code running in the main world context in the renderer can reach into the isolated Electron context and perform privileged actions.\n\n### Workarounds\nThis issue is exploitable under either of two conditions:\n* If an API exposed to the main world via `contextBridge` can return an object or array that contains a JS object which cannot be serialized, for instance, a canvas ren",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p7v2-p9m8-qqg7",
+      "publishedAt": "2023-09-06T19:50:58Z",
+      "modifiedAt": "2023-11-06T05:05:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p7v2-p9m8-qqg7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-29198"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 25.0.0-alpha.1, < 25.0.0-alpha.2",
+          "fixed": "25.0.0-alpha.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7x97-j373-85x5",
+      "packageName": "electron",
+      "title": "Electron vulnerable to out-of-package code execution when launched with arbitrary cwd",
+      "description": "### Impact\nApps that are launched as command line executables are impacted.  E.g. if your app exposes itself in the path as `myapp --help`\n\nSpecifically this issue can only be exploited if the following conditions are met:\n* Your app is launched with an attacker-controlled working directory\n* The attacker has the ability to write files to that working directory\n\nThis makes the risk quite low, in fact normally issues of this kind are considered outside of our threat model as similar to Chromium w",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7x97-j373-85x5",
+      "publishedAt": "2023-09-06T19:51:33Z",
+      "modifiedAt": "2023-11-06T05:04:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7x97-j373-85x5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-39956"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 26.0.0-alpha.1, < 26.0.0-beta.13",
+          "fixed": "26.0.0-beta.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7fv9-m79r-j9x8",
+      "packageName": "electron",
+      "title": "Electron vulnerable to remote command execution",
+      "description": "Electron before 1.6.8 allows remote command execution because of a `nodeIntegration` bypass vulnerability. This also affects all applications that bundle Electron code equivalent to 1.6.8 or earlier. Bypassing the Same Origin Policy (SOP) is a precondition; however, recent Electron versions do not have strict SOP enforcement. Combining an SOP bypass with a privileged URL internally used by Electron, it was possible to execute native Node.js primitives in order to run OS commands on the user's ho",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7fv9-m79r-j9x8",
+      "publishedAt": "2022-05-17T02:14:12Z",
+      "modifiedAt": "2023-10-19T18:37:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7fv9-m79r-j9x8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-12581"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.6.8",
+          "fixed": "1.6.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4w88-rjj3-x7wp",
+      "packageName": "electron",
+      "title": "Chromium Remote Code Execution in electron",
+      "description": "Affected versions of `ElectronJS` are susceptible to a remote code execution vulnerability that occurs when an affected application access remote content, even if the [sandbox option](https://electron.atom.io/docs/api/sandbox-option) is enabled.\n\n\n\n## Recommendation\n\nUpdate to electron version 1.7.8 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4w88-rjj3-x7wp",
+      "publishedAt": "2018-07-24T20:04:23Z",
+      "modifiedAt": "2023-09-13T19:15:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4w88-rjj3-x7wp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16151"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.7.0, < 1.7.8",
+          "fixed": "1.7.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8xwg-wv7v-4vqp",
+      "packageName": "electron",
+      "title": "Electron Vulnerable to Code Execution by Re-Enabling Node.js Integration",
+      "description": "A vulnerability has been discovered which allows Node.js integration to be re-enabled in some Electron applications that disable it.\n\nFor the application to be impacted by this vulnerability it must meet all of these conditions\n\n- Runs on Electron 1.7, 1.8, or a 2.0.0-beta\n- Allows execution of arbitrary remote code\n- Disables Node.js integration\n- Does not explicitly declare webviewTag: false in its webPreferences\n- Does not enable the nativeWindowOption option\n- Does not intercept new-window e",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8xwg-wv7v-4vqp",
+      "publishedAt": "2018-03-26T16:41:17Z",
+      "modifiedAt": "2023-09-13T19:06:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8xwg-wv7v-4vqp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-1000136"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.8.0, < 1.8.4",
+          "fixed": "1.8.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3p22-ghq8-v749",
+      "packageName": "electron",
+      "title": "Renderers can obtain access to random bluetooth device without permission in Electron",
+      "description": "### Impact\nThis vulnerability allows renderers to obtain access to a random bluetooth device via the [web bluetooth API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API) if the app has not configured a custom `select-bluetooth-device` event handler.  The device that is accessed is random and the attacker would have no way of selecting a specific device.\n\nAll current stable versions of Electron are affected.\n\n### Patches\nThis has been patched and the following Electron versions",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-3p22-ghq8-v749",
+      "publishedAt": "2022-03-22T18:49:36Z",
+      "modifiedAt": "2023-07-24T19:30:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3p22-ghq8-v749"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-21718"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 17.0.0-alpha.1, <= 17.0.0-alpha.5",
+          "fixed": "17.0.0-alpha.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-995f-9x5r-2rcj",
+      "packageName": "electron",
+      "title": "Heap buffer overflow in GPU",
+      "description": "Heap buffer overflow in GPU in Google Chrome prior to 107.0.5304.121 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-995f-9x5r-2rcj",
+      "publishedAt": "2022-11-25T03:30:19Z",
+      "modifiedAt": "2023-05-03T13:53:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-995f-9x5r-2rcj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-4135"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 19.0.0, < 19.1.8",
+          "fixed": "19.1.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2q4g-w47c-4674",
+      "packageName": "electron",
+      "title": "Unpreventable top-level navigation",
+      "description": "### Impact\nThe `will-navigate` event that apps use to prevent navigations to unexpected destinations [as per our security recommendations](https://www.electronjs.org/docs/tutorial/security) can be bypassed when a sub-frame performs a top-frame navigation across sites.\n\n### Patches\n\n* `11.0.0-beta.1`\n* `10.0.1`\n* `9.3.0`\n* `8.5.1`\n\n### Workarounds\nSandbox all your iframes using the [`sandbox` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-sandbox).  This will pre",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2q4g-w47c-4674",
+      "publishedAt": "2020-10-06T14:24:04Z",
+      "modifiedAt": "2023-02-01T05:04:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2q4g-w47c-4674"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15174"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 10.0.0-beta.0, < 10.0.1",
+          "fixed": "10.0.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p2jh-44qj-pf2v",
+      "packageName": "electron",
+      "title": "Exfiltration of hashed SMB credentials on Windows via file:// redirect",
+      "description": "### Impact\nWhen following a redirect, Electron delays a check for redirecting to file:// URLs from other schemes. The contents of the file is not available to the renderer following the redirect, but if the redirect target is a SMB URL such as `file://some.website.com/`, then in some cases, Windows will connect to that server and attempt NTLM authentication, which can include sending hashed credentials.\n\n### Patches\nThis issue has been fixed in all current stable versions of Electron. Specifical",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p2jh-44qj-pf2v",
+      "publishedAt": "2022-11-10T12:38:57Z",
+      "modifiedAt": "2023-01-30T05:06:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p2jh-44qj-pf2v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-36077"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 19.0.0-beta.1, < 19.0.11",
+          "fixed": "19.0.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mpjm-v997-c4h4",
+      "packageName": "electron",
+      "title": "Electron's sandboxed renderers can obtain thumbnails of arbitrary files through the nativeImage API",
+      "description": "### Impact\nThis vulnerability allows a sandboxed renderer to request a \"thumbnail\" image of an arbitrary file on the user's system. The thumbnail can potentially include significant parts of the original file, including textual data in many cases.\n\nAll current stable versions of Electron are affected.\n\n### Patches\nThis was fixed with #30728, and the following Electron versions contain the fix:\n\n- 15.0.0-alpha.10\n- 14.0.0\n- 13.3.0\n- 12.1.0\n- 11.5.0\n\n### Workarounds\nIf your app enables `contextIso",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mpjm-v997-c4h4",
+      "publishedAt": "2021-10-12T21:59:13Z",
+      "modifiedAt": "2023-01-30T05:02:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mpjm-v997-c4h4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-39184"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 13.0.0, < 13.3.0",
+          "fixed": "13.3.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mq8j-3h7h-p8g7",
+      "packageName": "electron",
+      "title": "Compromised child renderer processes could obtain IPC access without nodeIntegrationInSubFrames being enabled",
+      "description": "### Impact\nThis vulnerability allows a renderer with JS execution to obtain access to a new renderer process with `nodeIntegrationInSubFrames` enabled which in turn allows effective access to `ipcRenderer`.\n\nPlease note the misleadingly named `nodeIntegrationInSubFrames` option does not implicitly grant Node.js access rather it depends on the existing `sandbox` setting.  If your application is sandboxed then `nodeIntegrationInSubFrames` just gives access to the sandboxed renderer APIs (which inc",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-mq8j-3h7h-p8g7",
+      "publishedAt": "2022-06-16T23:14:33Z",
+      "modifiedAt": "2023-01-27T05:04:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mq8j-3h7h-p8g7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-29247"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 18.0.0-beta.1, <= 18.0.0-beta.5",
+          "fixed": "18.0.0-beta.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-77xc-hjv8-ww97",
+      "packageName": "electron",
+      "title": "AutoUpdater module fails to validate certain nested components of the bundle",
+      "description": "### Impact\nThis vulnerability allows attackers who have control over a given apps update server / update storage to serve maliciously crafted update packages that pass the code signing validation check but contain malicious code in some components.\n\nPlease note that this kind of attack would require **significant** privileges in your own auto updating infrastructure and the ease of that attack entirely depends on your infrastructure security.\n\n### Patches\nThis has been patched and the following ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-77xc-hjv8-ww97",
+      "publishedAt": "2022-06-16T23:18:47Z",
+      "modifiedAt": "2023-01-27T05:04:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-77xc-hjv8-ww97"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-29257"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 18.0.0-beta.1, <= 18.0.0-beta.5",
+          "fixed": "18.0.0-beta.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hv9c-qwqg-qj3v",
+      "packageName": "electron",
+      "title": "Electron webPreferences vulnerability can be used to perform remote code execution",
+      "description": "GitHub Electron 1.7.15, 1.8.7, 2.0.7, and 3.0.0-beta.6, in certain scenarios involving IFRAME elements and \"nativeWindowOpen: true\" or \"sandbox: true\" options, is affected by a webPreferences vulnerability that can be leveraged to perform remote code execution.\n\nMore information to determine if you are impacted can be found on the [electron blog](https://electronjs.org/blog/web-preferences-fix).\n\n\n## Recommendation\n\nUpgrade Electron to >=3.0.0-beta.7, >=2.0.8, >=1.8.8, or >=1.7.16.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hv9c-qwqg-qj3v",
+      "publishedAt": "2018-08-23T19:12:08Z",
+      "modifiedAt": "2023-01-11T05:08:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hv9c-qwqg-qj3v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-15685"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0-beta.1, < 3.0.0-beta.7",
+          "fixed": "3.0.0-beta.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-56pc-6jqp-xqj8",
+      "packageName": "electron",
+      "title": "Context isolation bypass in Electron",
+      "description": "### Impact\nApps using both `contextIsolation` and `sandbox: true` are affected.\nApps using both `contextIsolation` and `nativeWindowOpen: true` are affected.\n\nThis is a context isolation bypass, meaning that code running in the main world context in the renderer can reach into the isolated Electron context and perform privileged actions.\n\n### Workarounds\nThere are no app-side workarounds, you must update your Electron version to be protected.\n\n### Fixed Versions\n* `11.0.0-beta.6`\n* `10.1.2`\n* `9",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-56pc-6jqp-xqj8",
+      "publishedAt": "2020-10-06T17:46:40Z",
+      "modifiedAt": "2023-01-09T05:03:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-56pc-6jqp-xqj8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15215"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 11.0.0-beta.0, <= 11.0.0-beta.5",
+          "fixed": "11.0.0-beta.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6vrv-94jv-crrg",
+      "packageName": "electron",
+      "title": "Context isolation bypass via Promise in Electron",
+      "description": "### Impact\nApps using `contextIsolation` are affected.\n\nThis is a context isolation bypass, meaning that code running in the main world context in the renderer can reach into the isolated Electron context and perform privileged actions.\n\n### Workarounds\nThere are no app-side workarounds, you must update your Electron version to be protected.\n\n### Fixed Versions\n* `9.0.0-beta.21`\n* `8.2.4`\n* `7.2.4`\n* `6.1.11`\n\n### For more information\nIf you have any questions or comments about this advisory:\n* ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-6vrv-94jv-crrg",
+      "publishedAt": "2020-07-07T00:01:05Z",
+      "modifiedAt": "2023-01-09T05:03:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6vrv-94jv-crrg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15096"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 8.0.0, < 8.2.4",
+          "fixed": "8.2.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m93v-9qjc-3g79",
+      "packageName": "electron",
+      "title": "Context isolation bypass via leaked cross-context objects in Electron",
+      "description": "### Impact\nApps using `contextIsolation` are affected.\n\nThis is a context isolation bypass, meaning that code running in the main world context in the renderer can reach into the isolated Electron context and perform privileged actions.\n\n### Workarounds\nThere are no app-side workarounds, you must update your Electron version to be protected.\n\n### Fixed Versions\n* `9.0.0-beta.21`\n* `8.2.4`\n* `7.2.4`\n\n### Non-Impacted Versions\n* `9.0.0-beta.*`\n\n### For more information\nIf you have any questions or",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m93v-9qjc-3g79",
+      "publishedAt": "2020-07-07T00:01:07Z",
+      "modifiedAt": "2023-01-09T05:03:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m93v-9qjc-3g79"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-4076"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 7.2.4",
+          "fixed": "7.2.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w222-53c6-c86p",
+      "packageName": "electron",
+      "title": "Remote Code Execution in electron",
+      "description": "Affected versions of `electron` may be susceptible to a remote code execution flaw when certain conditions are met:\n1. The electron application is running on Windows.\n2. The electron application registers as the default handler for a protocol, such as `nodeapp://`.\n\nThis vulnerability is caused by a failure to sanitize additional arguments to chromium in the command line handler for Electron.\n\nMacOS and Linux are not vulnerable.\n\n\n## Recommendation\n\nUpdate electron to a version that is not vulne",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w222-53c6-c86p",
+      "publishedAt": "2018-01-23T03:57:44Z",
+      "modifiedAt": "2023-01-09T05:03:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w222-53c6-c86p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-1000006"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.8.0, <= 1.8.2-beta.3",
+          "fixed": "1.8.2-beta.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f9mq-jph6-9mhm",
+      "packageName": "electron",
+      "title": "Arbitrary file read via window-open IPC in Electron",
+      "description": "### Impact\nThe vulnerability allows arbitrary local file read by defining unsafe window options on a child window opened via window.open.\n\n### Workarounds\nEnsure you are calling `event.preventDefault()` on all [`new-window`](https://electronjs.org/docs/api/web-contents#event-new-window) events where the `url` or `options` is not something you expect.\n\n### Fixed Versions\n* `9.0.0-beta.21`\n* `8.2.4`\n* `7.2.4`\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Em",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f9mq-jph6-9mhm",
+      "publishedAt": "2020-07-07T00:01:13Z",
+      "modifiedAt": "2023-01-09T05:03:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f9mq-jph6-9mhm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-4075"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 7.2.4",
+          "fixed": "7.2.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-h9jc-284h-533g",
+      "packageName": "electron",
+      "title": "Context isolation bypass via contextBridge in Electron",
+      "description": "### Impact\nApps using both `contextIsolation` and `contextBridge` are affected.\n\nThis is a context isolation bypass, meaning that code running in the main world context in the renderer can reach into the isolated Electron context and perform privileged actions.\n\n### Workarounds\nThere are no app-side workarounds, you must update your Electron version to be protected.\n\n### Fixed Versions\n* `9.0.0-beta.21`\n* `8.2.4`\n* `7.2.4`\n\n### For more information\nIf you have any questions or comments about thi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h9jc-284h-533g",
+      "publishedAt": "2020-07-07T00:01:10Z",
+      "modifiedAt": "2023-01-09T05:03:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h9jc-284h-533g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-4077"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 7.2.4",
+          "fixed": "7.2.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fjqr-fx3f-g4rv",
+      "packageName": "electron",
+      "title": "Electron protocol handler browser vulnerable to Command Injection",
+      "description": "Github Electron version Electron 1.8.2-beta.4 and earlier contains a Command Injection vulnerability in Protocol Handler that can result in command execute. This attack appear to be exploitable via the victim opening an electron protocol handler in their browser. This vulnerability appears to have been fixed in Electron 1.8.2-beta.5. This issue is due to an incomplete fix for CVE-2018-1000006, specifically the black list used was not case insensitive allowing an attacker to potentially bypass it",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fjqr-fx3f-g4rv",
+      "publishedAt": "2018-03-26T16:41:20Z",
+      "modifiedAt": "2023-01-09T05:03:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fjqr-fx3f-g4rv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-1000118"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.8.2-beta4",
+          "fixed": "1.8.2-beta5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gvcj-pfq2-wxj7",
+      "packageName": "electron",
+      "title": "High severity vulnerability that affects electron",
+      "description": "Untrusted search path vulnerability in Atom Electron before 0.33.5 allows local users to gain privileges via a Trojan horse Node.js module in a parent directory of a directory named on a require line.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gvcj-pfq2-wxj7",
+      "publishedAt": "2017-10-24T18:33:35Z",
+      "modifiedAt": "2023-01-09T05:02:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gvcj-pfq2-wxj7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-1202"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.33.5",
+          "fixed": "0.33.5"
         }
       ],
       "source": "github"

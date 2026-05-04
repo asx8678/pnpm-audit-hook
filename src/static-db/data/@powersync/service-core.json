@@ -1,6 +1,6 @@
 {
   "packageName": "@powersync/service-core",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-q6wc-xx4m-92fj",
@@ -10,16 +10,20 @@
       "severity": "medium",
       "url": "https://github.com/advisories/GHSA-q6wc-xx4m-92fj",
       "publishedAt": "2026-03-07T02:23:24Z",
-      "modifiedAt": "2026-03-07T02:23:25Z",
+      "modifiedAt": "2026-03-23T17:29:18Z",
       "identifiers": [
         {
           "type": "GHSA",
           "value": "GHSA-q6wc-xx4m-92fj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30870"
         }
       ],
       "affectedVersions": [
         {
-          "range": "<= 1.20.0",
+          "range": "= 1.20.0",
           "fixed": "1.20.1"
         }
       ],

@@ -1,7 +1,250 @@
 {
   "packageName": "jspdf",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-wfv2-pwc8-crg5",
+      "packageName": "jspdf",
+      "title": "jsPDF has HTML Injection in New Window paths",
+      "description": "### Impact\n\nUser control of the `options` argument of the `output` function allows attackers to inject arbitrary HTML (such as scripts) into the browser context the created PDF is opened in. The affected overloads and options are:\n\n* `\"pdfobjectnewwindow\"`: the `pdfObjectUrl` option and the entire options object, which is JSON-serialized and included verbatim in the generated HTML-string.\n* `\"pdfjsnewwindow\"`: the `pdfJsUrl` and `filename` options\n* `\"dataurlnewwindow\"`: the `filename` option\n\nT",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wfv2-pwc8-crg5",
+      "publishedAt": "2026-03-17T17:07:59Z",
+      "modifiedAt": "2026-03-19T21:00:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wfv2-pwc8-crg5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31938"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.2.0",
+          "fixed": "4.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7x6v-j9x4-qf24",
+      "packageName": "jspdf",
+      "title": "jsPDF has a PDF Object Injection via FreeText color",
+      "description": "### Impact\n\nUser control of arguments of the `createAnnotation` method allows users to inject arbitrary PDF objects, such as JavaScript actions.\n\nIf given the possibility to pass unsanitized input to the following method, a user can inject arbitrary PDF objects, such as JavaScript actions, which might trigger when the PDF is opened or interacted with..\n\n* `createAnnotation`: `color` parameter\n\nExample attack vector:\n\n```js\nimport { jsPDF } from 'jspdf'\n\nconst doc = new jsPDF();\n\nconst payload = ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7x6v-j9x4-qf24",
+      "publishedAt": "2026-03-17T17:07:51Z",
+      "modifiedAt": "2026-03-19T19:01:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7x6v-j9x4-qf24"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31898"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.2.0",
+          "fixed": "4.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p5xg-68wr-hm3m",
+      "packageName": "jspdf",
+      "title": "jsPDF has a PDF Injection in AcroForm module allows Arbitrary JavaScript Execution (RadioButton.createOption and \"AS\" property)",
+      "description": "### Impact\n\nUser control of properties and methods of the Acroform module allows users to inject arbitrary PDF objects, such as JavaScript actions.\n\nIf given the possibility to pass unsanitized input to the following property, a user can inject arbitrary PDF objects, such as JavaScript actions, which are executed when the victim hovers over the radio option.\n\n* `AcroformChildClass.appearanceState`\n\nExample attack vector:\n\n```js\nimport { jsPDF } from \"jspdf\"\nconst doc = new jsPDF();\n\nconst group ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p5xg-68wr-hm3m",
+      "publishedAt": "2026-02-19T19:32:48Z",
+      "modifiedAt": "2026-03-11T20:34:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p5xg-68wr-hm3m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25940"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.2.0",
+          "fixed": "4.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-67pg-wm7f-q7fj",
+      "packageName": "jspdf",
+      "title": "jsPDF Affected by Client-Side/Server-Side Denial of Service via Malicious GIF Dimensions",
+      "description": "### Impact\n\nUser control of the first argument of the `addImage` method results in denial of service.\n\nIf given the possibility to pass unsanitized image data or URLs to the `addImage` method, a user can provide a harmful GIF file that results in out of memory errors and denial of service. Harmful GIF files have large width and/or height entries in their headers, wich lead to excessive memory allocation.\n\nOther affected methods are: `html`.\n\nExample attack vector:\n\n```js\nimport { jsPDF } from \"j",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-67pg-wm7f-q7fj",
+      "publishedAt": "2026-02-19T15:25:48Z",
+      "modifiedAt": "2026-02-19T20:58:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-67pg-wm7f-q7fj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25535"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.2.0",
+          "fixed": "4.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9vjf-qc39-jprp",
+      "packageName": "jspdf",
+      "title": "jsPDF has a PDF Object Injection via Unsanitized Input in addJS Method",
+      "description": "### Impact\n\nUser control of the argument of the `addJS` method allows an attacker to inject arbitrary PDF objects into the generated document. By crafting a payload that escapes the JavaScript string delimiter, an attacker can execute malicious actions or alter the document structure, impacting any user who opens the generated PDF.\n\n```js\nimport { jsPDF } from \"jspdf\";\nconst doc = new jsPDF();\n// Payload:\n// 1. ) closes the JS string.\n// 2. > closes the current dictionary.\n// 3. /AA ... injects ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9vjf-qc39-jprp",
+      "publishedAt": "2026-02-19T19:32:36Z",
+      "modifiedAt": "2026-02-19T19:32:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9vjf-qc39-jprp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25755"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.2.0",
+          "fixed": "4.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-pqxr-3g65-p328",
+      "packageName": "jspdf",
+      "title": "jsPDF has PDF Injection in AcroFormChoiceField that allows Arbitrary JavaScript Execution",
+      "description": "### Impact\n\nUser control of properties and methods of the Acroform module allows users to inject arbitrary PDF objects, such as JavaScript actions.\n\nIf given the possibility to pass unsanitized input to one of the following methods or properties, a user can inject arbitrary PDF objects, such as JavaScript actions, which are executed when the victim opens the document. The vulnerable API members are:\n\n* `AcroformChoiceField.addOption`\n* `AcroformChoiceField.setOptions`\n* `AcroFormCheckBox.appeara",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pqxr-3g65-p328",
+      "publishedAt": "2026-02-02T18:29:49Z",
+      "modifiedAt": "2026-02-03T16:13:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pqxr-3g65-p328"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24737"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.0",
+          "fixed": "4.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-95fx-jjr5-f39c",
+      "packageName": "jspdf",
+      "title": "jsPDF Vulnerable to Denial of Service (DoS) via Unvalidated BMP Dimensions in BMPDecoder",
+      "description": "### Impact\n\nUser control of the first argument of the `addImage` method results in Denial of Service.\n\nIf given the possibility to pass unsanitized image data or URLs to the `addImage` method, a user can provide a harmful BMP file that results in out of memory errors and denial of service. Harmful BMP files have large width and/or height entries in their headers, wich lead to excessive memory allocation.\n\nOther affected methods are: `html`.\n\nExample attack vector:\n\n```js\nimport { jsPDF } from \"j",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-95fx-jjr5-f39c",
+      "publishedAt": "2026-02-02T18:29:13Z",
+      "modifiedAt": "2026-02-03T16:12:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-95fx-jjr5-f39c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24133"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.0",
+          "fixed": "4.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vm32-vv63-w422",
+      "packageName": "jspdf",
+      "title": "jsPDF Vulnerable to Stored XMP Metadata Injection (Spoofing & Integrity Violation)",
+      "description": "### Impact\n\nUser control of the first argument of the `addMetadata` function allows users to inject arbitrary XML.\n\nIf given the possibility to pass unsanitized input to the `addMetadata` method, a user can inject arbitrary XMP metadata into the generated PDF. If the generated PDF is signed, stored or otherwise processed after, the integrity of the PDF can no longer be guaranteed.\n\nExample attack vector:\n\n```js\nimport { jsPDF } from \"jspdf\"\n\nconst doc = new jsPDF()\n\n// Input a string that closes",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vm32-vv63-w422",
+      "publishedAt": "2026-02-02T18:28:29Z",
+      "modifiedAt": "2026-02-03T16:12:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vm32-vv63-w422"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24043"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.0",
+          "fixed": "4.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cjw8-79x6-5cj4",
+      "packageName": "jspdf",
+      "title": "jsPDF has Shared State Race Condition in addJS Plugin",
+      "description": "### Impact\n\nThe addJS method in the jspdf Node.js build utilizes a shared module-scoped variable (text) to store JavaScript content. When used in a concurrent environment (e.g., a Node.js web server), this variable is shared across all requests.\n\nIf multiple requests generate PDFs simultaneously, the JavaScript content intended for one user may be overwritten by a subsequent request before the document is generated. This results in Cross-User Data Leakage, where the PDF generated for User A cont",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cjw8-79x6-5cj4",
+      "publishedAt": "2026-02-02T18:20:02Z",
+      "modifiedAt": "2026-02-03T16:12:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cjw8-79x6-5cj4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-24040"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.0",
+          "fixed": "4.1.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-f8cm-6447-x5h2",
       "packageName": "jspdf",
@@ -160,195 +403,6 @@
         {
           "range": "< 2.0.0",
           "fixed": "2.0.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-67pg-wm7f-q7fj",
-      "packageName": "jspdf",
-      "title": "jsPDF Affected by Client-Side/Server-Side Denial of Service via Malicious GIF Dimensions",
-      "description": "### Impact\n\nUser control of the first argument of the `addImage` method results in denial of service.\n\nIf given the possibility to pass unsanitized image data or URLs to the `addImage` method, a user can provide a harmful GIF file that results in out of memory errors and denial of service. Harmful GIF files have large width and/or height entries in their headers, wich lead to excessive memory allocation.\n\nOther affected methods are: `html`.\n\nExample attack vector:\n\n```js\nimport { jsPDF } from \"j",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-67pg-wm7f-q7fj",
-      "publishedAt": "2026-02-19T15:25:48Z",
-      "modifiedAt": "2026-02-19T20:58:09Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-67pg-wm7f-q7fj"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-25535"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 4.2.0",
-          "fixed": "4.2.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-p5xg-68wr-hm3m",
-      "packageName": "jspdf",
-      "title": "jsPDF has a PDF Injection in AcroForm module allows Arbitrary JavaScript Execution (RadioButton.createOption and \"AS\" property)",
-      "description": "### Impact\n\nUser control of properties and methods of the Acroform module allows users to inject arbitrary PDF objects, such as JavaScript actions.\n\nIf given the possibility to pass unsanitized input to one of the following property, a user can inject arbitrary PDF objects, such as JavaScript actions, which are executed when the victim hovers over the radio option.\n\n* `AcroformChildClass.appearanceState`\n\nExample attack vector:\n\n```js\nimport { jsPDF } from \"jspdf\"\nconst doc = new jsPDF();\n\nconst",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-p5xg-68wr-hm3m",
-      "publishedAt": "2026-02-19T19:32:48Z",
-      "modifiedAt": "2026-02-19T19:32:48Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-p5xg-68wr-hm3m"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-25940"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 4.2.0",
-          "fixed": "4.2.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-9vjf-qc39-jprp",
-      "packageName": "jspdf",
-      "title": "jsPDF has a PDF Object Injection via Unsanitized Input in addJS Method",
-      "description": "### Impact\n\nUser control of the argument of the `addJS` method allows an attacker to inject arbitrary PDF objects into the generated document. By crafting a payload that escapes the JavaScript string delimiter, an attacker can execute malicious actions or alter the document structure, impacting any user who opens the generated PDF.\n\n```js\nimport { jsPDF } from \"jspdf\";\nconst doc = new jsPDF();\n// Payload:\n// 1. ) closes the JS string.\n// 2. > closes the current dictionary.\n// 3. /AA ... injects ",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-9vjf-qc39-jprp",
-      "publishedAt": "2026-02-19T19:32:36Z",
-      "modifiedAt": "2026-02-19T19:32:37Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-9vjf-qc39-jprp"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-25755"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 4.2.0",
-          "fixed": "4.2.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-pqxr-3g65-p328",
-      "packageName": "jspdf",
-      "title": "jsPDF has PDF Injection in AcroFormChoiceField that allows Arbitrary JavaScript Execution",
-      "description": "### Impact\n\nUser control of properties and methods of the Acroform module allows users to inject arbitrary PDF objects, such as JavaScript actions.\n\nIf given the possibility to pass unsanitized input to one of the following methods or properties, a user can inject arbitrary PDF objects, such as JavaScript actions, which are executed when the victim opens the document. The vulnerable API members are:\n\n* `AcroformChoiceField.addOption`\n* `AcroformChoiceField.setOptions`\n* `AcroFormCheckBox.appeara",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-pqxr-3g65-p328",
-      "publishedAt": "2026-02-02T18:29:49Z",
-      "modifiedAt": "2026-02-03T16:13:02Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-pqxr-3g65-p328"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-24737"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 4.0.0",
-          "fixed": "4.1.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-95fx-jjr5-f39c",
-      "packageName": "jspdf",
-      "title": "jsPDF Vulnerable to Denial of Service (DoS) via Unvalidated BMP Dimensions in BMPDecoder",
-      "description": "### Impact\n\nUser control of the first argument of the `addImage` method results in Denial of Service.\n\nIf given the possibility to pass unsanitized image data or URLs to the `addImage` method, a user can provide a harmful BMP file that results in out of memory errors and denial of service. Harmful BMP files have large width and/or height entries in their headers, wich lead to excessive memory allocation.\n\nOther affected methods are: `html`.\n\nExample attack vector:\n\n```js\nimport { jsPDF } from \"j",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-95fx-jjr5-f39c",
-      "publishedAt": "2026-02-02T18:29:13Z",
-      "modifiedAt": "2026-02-03T16:12:58Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-95fx-jjr5-f39c"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-24133"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 4.0.0",
-          "fixed": "4.1.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-vm32-vv63-w422",
-      "packageName": "jspdf",
-      "title": "jsPDF Vulnerable to Stored XMP Metadata Injection (Spoofing & Integrity Violation)",
-      "description": "### Impact\n\nUser control of the first argument of the `addMetadata` function allows users to inject arbitrary XML.\n\nIf given the possibility to pass unsanitized input to the `addMetadata` method, a user can inject arbitrary XMP metadata into the generated PDF. If the generated PDF is signed, stored or otherwise processed after, the integrity of the PDF can no longer be guaranteed.\n\nExample attack vector:\n\n```js\nimport { jsPDF } from \"jspdf\"\n\nconst doc = new jsPDF()\n\n// Input a string that closes",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-vm32-vv63-w422",
-      "publishedAt": "2026-02-02T18:28:29Z",
-      "modifiedAt": "2026-02-03T16:12:32Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-vm32-vv63-w422"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-24043"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 4.0.0",
-          "fixed": "4.1.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-cjw8-79x6-5cj4",
-      "packageName": "jspdf",
-      "title": "jsPDF has Shared State Race Condition in addJS Plugin",
-      "description": "### Impact\n\nThe addJS method in the jspdf Node.js build utilizes a shared module-scoped variable (text) to store JavaScript content. When used in a concurrent environment (e.g., a Node.js web server), this variable is shared across all requests.\n\nIf multiple requests generate PDFs simultaneously, the JavaScript content intended for one user may be overwritten by a subsequent request before the document is generated. This results in Cross-User Data Leakage, where the PDF generated for User A cont",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-cjw8-79x6-5cj4",
-      "publishedAt": "2026-02-02T18:20:02Z",
-      "modifiedAt": "2026-02-03T16:12:27Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-cjw8-79x6-5cj4"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-24040"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 4.0.0",
-          "fixed": "4.1.0"
         }
       ],
       "source": "github"

@@ -1,6 +1,6 @@
 {
   "packageName": "socket.io",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-25hc-qcg6-38wj",
@@ -52,6 +52,33 @@
         {
           "range": "< 2.4.0",
           "fixed": "2.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qv2v-m59f-v5fw",
+      "packageName": "socket.io",
+      "title": "Insecure randomness in socket.io",
+      "description": "Affected versions of `socket.io` depend on `Math.random()` to create socket IDs, and therefore the IDs are predictable. With enough information on prior IDs, an attacker may be able to guess the socket ID and gain access to socket.io servers without authorization.\n\n\n## Recommendation\n\nUpdate to v0.9.7 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qv2v-m59f-v5fw",
+      "publishedAt": "2018-11-07T00:29:37Z",
+      "modifiedAt": "2023-01-09T05:03:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qv2v-m59f-v5fw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16031"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.9.6",
+          "fixed": "0.9.7"
         }
       ],
       "source": "github"

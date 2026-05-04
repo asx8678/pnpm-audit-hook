@@ -1,6 +1,6 @@
 {
   "packageName": "pomelo-monitor",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4j54-mxf6-wxx2",
@@ -24,6 +24,28 @@
       "affectedVersions": [
         {
           "range": "<= 0.3.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m5ch-gx8g-rg73",
+      "packageName": "pomelo-monitor",
+      "title": "Remote Code Execution in pomelo-monitor",
+      "description": "All versions of `pomelo-monitor` are vulnerable to Remote Code Execution. Due to insufficient input validation an attacker could run arbitrary commands on the server thus rendering the package vulnerable to Remote Code Execution.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m5ch-gx8g-rg73",
+      "publishedAt": "2020-09-02T15:43:53Z",
+      "modifiedAt": "2023-01-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m5ch-gx8g-rg73"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
         }
       ],
       "source": "github"

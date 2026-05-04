@@ -1,0 +1,32 @@
+{
+  "packageName": "lodash.set",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p6mc-m468-83gw",
+      "packageName": "lodash.set",
+      "title": "Prototype Pollution in lodash",
+      "description": "Versions of lodash prior to 4.17.19 are vulnerable to Prototype Pollution. The functions `pick`, `set`, `setWith`, `update`, `updateWith`, and `zipObjectDeep` allow a malicious user to modify the prototype of Object if the property identifiers are user-supplied. Being affected by this issue requires manipulating objects based on user-provided property values or arrays.\n\nThis vulnerability causes the addition or modification of an existing property that will exist on all objects and may lead to D",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p6mc-m468-83gw",
+      "publishedAt": "2020-07-15T19:15:48Z",
+      "modifiedAt": "2025-08-12T21:43:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p6mc-m468-83gw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8203"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.7.0, <= 4.3.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "packageName": "websocket-extensions",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g78m-2chm-r7qv",
+      "packageName": "websocket-extensions",
+      "title": "Regular Expression Denial of Service in websocket-extensions (NPM package)",
+      "description": "### Impact\n\nThe ReDoS flaw allows an attacker to exhaust the server's capacity to process\nincoming requests by sending a WebSocket handshake request containing a header\nof the following form:\n\n    Sec-WebSocket-Extensions: a; b=\"\\c\\c\\c\\c\\c\\c\\c\\c\\c\\c ...\n\nThat is, a header containing an unclosed string parameter value whose content is\na repeating two-byte sequence of a backslash and some other character. The\nparser takes exponential time to reject this header as invalid, and this will\nblock the p",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g78m-2chm-r7qv",
+      "publishedAt": "2020-06-05T16:16:12Z",
+      "modifiedAt": "2023-01-09T05:02:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g78m-2chm-r7qv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7662"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.1.4",
+          "fixed": "0.1.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

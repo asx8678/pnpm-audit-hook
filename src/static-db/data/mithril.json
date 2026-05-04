@@ -1,0 +1,29 @@
+{
+  "packageName": "mithril",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c3px-v9c7-m734",
+      "packageName": "mithril",
+      "title": "Prototype Pollution in mithril",
+      "description": "Affected versions of `mithril`are vulnerable to prototype pollution. The function `parseQueryString` may allow a malicious user to modify the prototype of `Object`, causing the addition or modification of an existing property that will exist on all objects. A payload such as `__proto__%5BtoString%5D=123` in the query string would change the `toString()` function to `123`.\n\n\n\n## Recommendation\n\nIf you are using mithril 2.x, upgrade to version 2.0.2 or later.\nIf you are using mithril 1.x, upgrade ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-c3px-v9c7-m734",
+      "publishedAt": "2020-09-03T19:04:39Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c3px-v9c7-m734"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.0.2",
+          "fixed": "2.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

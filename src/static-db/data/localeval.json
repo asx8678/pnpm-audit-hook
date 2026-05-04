@@ -1,0 +1,29 @@
+{
+  "packageName": "localeval",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mmqv-m45h-q2hp",
+      "packageName": "localeval",
+      "title": "Sandbox Breakout / Arbitrary Code Execution in localeval",
+      "description": "All versions of `localeval` are vulnerable to Sandbox Escape leading to Remote Code Execution. The package fails to restrict access to the main context through `constructor.constructor`. This may allow attackers to execute arbitrary code in the system.  Evaluating the payload \n```\nconstructor.constructor(\"return process.env\")()\n``` \n\nreturns the contents of `process.env`.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mmqv-m45h-q2hp",
+      "publishedAt": "2020-09-04T15:22:40Z",
+      "modifiedAt": "2026-01-16T14:47:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mmqv-m45h-q2hp"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0, < 15.3.0",
+          "fixed": "15.3.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

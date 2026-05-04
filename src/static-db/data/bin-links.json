@@ -1,0 +1,75 @@
+{
+  "packageName": "bin-links",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2mj8-pj3j-h362",
+      "packageName": "bin-links",
+      "title": "Symlink reference outside of node_modules in bin-links",
+      "description": "Versions of `bin-links` prior to 1.1.5 are vulnerable to a Symlink reference outside of node_modules. It is possible to create symlinks to files outside of the`node_modules` folder through the `bin` field. This may allow attackers to access unauthorized files.\n\n\n## Recommendation\n\nUpgrade to version 1.1.5 or later.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-2mj8-pj3j-h362",
+      "publishedAt": "2020-09-04T17:17:39Z",
+      "modifiedAt": "2023-01-09T05:04:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2mj8-pj3j-h362"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.5",
+          "fixed": "1.1.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v45m-2wcp-gg98",
+      "packageName": "bin-links",
+      "title": "Global node_modules Binary Overwrite in bin-links",
+      "description": "Versions of  `bin-links` prior to 1.1.6 are vulnerable to a Global node_modules Binary Overwrite. It fails to prevent globally-installed binaries to be overwritten by other package installs. For example, if a package was installed globally and created a `serve` binary, any subsequent installs of packages that also create a `serve` binary would overwrite the first binary. This behavior is still allowed in local installations.\n\n\n## Recommendation\n\nUpgrade to version 1.1.6 or later.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-v45m-2wcp-gg98",
+      "publishedAt": "2020-09-04T17:18:44Z",
+      "modifiedAt": "2023-01-09T05:04:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v45m-2wcp-gg98"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.6",
+          "fixed": "1.1.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gqf6-75v8-vr26",
+      "packageName": "bin-links",
+      "title": "Arbitrary File Write in bin-links",
+      "description": "Versions of `bin-links` prior to 1.1.5 are vulnerable to an Arbitrary File Write. The package fails to restrict access to folders outside of the intended `node_modules` folder through the `bin` field. This allows attackers to create arbitrary files in the system. Note it is not possible to overwrite files that already exist.\n\n\n## Recommendation\n\nUpgrade to version 1.1.5 or later.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-gqf6-75v8-vr26",
+      "publishedAt": "2020-09-04T16:56:11Z",
+      "modifiedAt": "2023-01-09T05:03:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gqf6-75v8-vr26"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.5",
+          "fixed": "1.1.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

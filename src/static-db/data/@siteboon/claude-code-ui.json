@@ -1,0 +1,60 @@
+{
+  "packageName": "@siteboon/claude-code-ui",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gv8f-wpm2-m5wr",
+      "packageName": "@siteboon/claude-code-ui",
+      "title": "@siteboon/claude-code-ui Vulnerable to Unauthenticated RCE via WebSocket Shell Injection",
+      "description": "# Security Advisory: Insecure Default JWT Secret + WebSocket Auth Bypass Enables Unauthenticated RCE via Shell Injection\nDownload: [cve_claudecodeui_submission_v2.zip](https://github.com/user-attachments/files/25686652/cve_claudecodeui_submission_v2.zip)\n\n##  Submission Info\n\n| Field | Value |\n|-------|-------|\n| **Package** | `@siteboon/claude-code-ui` |\n| **Ecosystem** | npm |\n| **Affected versions** | `<= 1.24.0` (latest) |\n| **Severity** | Critical |\n| **CVSS Score** | 9.8 |\n| **CVSS Vector",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gv8f-wpm2-m5wr",
+      "publishedAt": "2026-03-11T00:37:25Z",
+      "modifiedAt": "2026-03-11T20:58:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gv8f-wpm2-m5wr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31975"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.24.0",
+          "fixed": "1.25.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7fv4-fmmc-86g2",
+      "packageName": "@siteboon/claude-code-ui",
+      "title": "@siteboon/claude-code-ui is Vulnerable to Shell Command Injection in Git Routes",
+      "description": "# Shell Command Injection in User Git Config Endpoint\n\n| Field | Value |\n|-------|-------|\n| **Severity** | High |\n| **CVSS 3.1** | 8.8 (High) — when chained with VULN-01 |\n| **CWE** | CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') |\n| **Attack Vector** | Network |\n| **Authentication** | JWT required (bypassable via VULN-01) |\n| **Affected Files** | `server/routes/user.js` (lines 58-59) |\n\n## Description\n\nThe `/api/user/git-config` endpoint con",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7fv4-fmmc-86g2",
+      "publishedAt": "2026-03-10T23:57:23Z",
+      "modifiedAt": "2026-03-11T20:45:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7fv4-fmmc-86g2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31861"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.23.0",
+          "fixed": "1.24.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

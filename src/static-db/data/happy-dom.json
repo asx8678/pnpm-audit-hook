@@ -1,7 +1,61 @@
 {
   "packageName": "happy-dom",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-6q6h-j7hj-3r64",
+      "packageName": "happy-dom",
+      "title": "Happy DOM ECMAScriptModuleCompiler: unsanitized export names are interpolated as executable code",
+      "description": "### Summary\n\nA code injection vulnerability in `ECMAScriptModuleCompiler` allows an attacker to achieve Remote Code Execution (RCE) by injecting arbitrary JavaScript expressions inside `export { }` declarations in ES module scripts processed by happy-dom. The compiler directly interpolates unsanitized content into generated code as an executable expression, and the quote filter does not strip backticks, allowing template literal-based payloads to bypass sanitization.\n\n### Details\n\n**Vulnerable f",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6q6h-j7hj-3r64",
+      "publishedAt": "2026-03-26T22:22:20Z",
+      "modifiedAt": "2026-03-30T20:07:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6q6h-j7hj-3r64"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33943"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 15.10.0, <= 20.8.7",
+          "fixed": "20.8.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w4gp-fjgq-3q4g",
+      "packageName": "happy-dom",
+      "title": "Happy DOM's fetch credentials include uses page-origin cookies instead of target-origin cookies",
+      "description": "### Summary\n`happy-dom` may attach cookies from the current page origin (`window.location`) instead of the request target URL when `fetch(..., { credentials: \"include\" })` is used. This can leak cookies from origin A to destination B.\n\n### Details\nIn [`packages/happy-dom/src/fetch/utilities/FetchRequestHeaderUtility.ts`](https://github.com/capricorn86/happy-dom/blob/f8d8cad41e9722fab9eefb9dfb3cca696462e908/packages/happy-dom/src/fetch/utilities/FetchRequestHeaderUtility.ts) (`getRequestHeaders()",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w4gp-fjgq-3q4g",
+      "publishedAt": "2026-03-29T15:23:57Z",
+      "modifiedAt": "2026-03-29T15:23:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w4gp-fjgq-3q4g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34226"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 20.8.9",
+          "fixed": "20.8.9"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-qpm2-6cq5-7pq5",
       "packageName": "happy-dom",

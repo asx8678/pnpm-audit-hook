@@ -1,34 +1,7 @@
 {
   "packageName": "swiper",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
-    {
-      "id": "GHSA-p3hc-fv2j-rp68",
-      "packageName": "swiper",
-      "title": "Prototype Pollution in swiper",
-      "description": "Versions of the package swiper before 6.5.1 are susceptible to prototype pollution.",
-      "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-p3hc-fv2j-rp68",
-      "publishedAt": "2021-05-10T15:36:30Z",
-      "modifiedAt": "2023-02-01T05:05:35Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-p3hc-fv2j-rp68"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2021-23370"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 6.5.1",
-          "fixed": "6.5.1"
-        }
-      ],
-      "source": "github"
-    },
     {
       "id": "GHSA-hmx5-qpq5-p643",
       "packageName": "swiper",
@@ -52,6 +25,33 @@
         {
           "range": ">= 6.5.1, < 12.1.2",
           "fixed": "12.1.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p3hc-fv2j-rp68",
+      "packageName": "swiper",
+      "title": "Prototype Pollution in swiper",
+      "description": "Versions of the package swiper before 6.5.1 are susceptible to prototype pollution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-p3hc-fv2j-rp68",
+      "publishedAt": "2021-05-10T15:36:30Z",
+      "modifiedAt": "2023-02-01T05:05:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p3hc-fv2j-rp68"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23370"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.5.1",
+          "fixed": "6.5.1"
         }
       ],
       "source": "github"

@@ -11,6 +11,8 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 
+import "./update-vuln-db-cli-cases";
+
 import {
   mapSeverity,
   SEVERITY_RANK,
@@ -443,3 +445,4 @@ describe("normalizePackageData", () => {
     }
   });
 });
+

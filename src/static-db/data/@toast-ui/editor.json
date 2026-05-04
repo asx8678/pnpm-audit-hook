@@ -1,0 +1,29 @@
+{
+  "packageName": "@toast-ui/editor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cr56-66mx-293v",
+      "packageName": "@toast-ui/editor",
+      "title": "Cross-Site Scripting in @toast-ui/editor",
+      "description": "Versions of `@toast-ui/editor` prior to 2.2.0 are vulnerable to Cross-Site Scripting (XSS).  There are multiple bypasses to the package's built-in XSS sanitization. This may allow attackers to execute arbitrary JavaScript on a victim's browser.\n\n## Recommendation\n\nUpgrade to version 2.2.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cr56-66mx-293v",
+      "publishedAt": "2020-09-03T15:53:50Z",
+      "modifiedAt": "2023-04-03T21:23:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cr56-66mx-293v"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.0",
+          "fixed": "2.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

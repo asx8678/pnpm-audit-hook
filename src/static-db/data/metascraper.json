@@ -1,0 +1,33 @@
+{
+  "packageName": "metascraper",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8f64-q7jc-ccgp",
+      "packageName": "metascraper",
+      "title": "metascraper before v5.2.0 vulnerable to stored cross-site scripting",
+      "description": "Versions of `metascraper` prior to 5.2.0 are vulnerable to stored cross-site scripting (XSS).\n\n\n## Recommendation\n\nUpgrade to version 5.2.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8f64-q7jc-ccgp",
+      "publishedAt": "2018-08-08T22:25:57Z",
+      "modifiedAt": "2023-01-31T01:53:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8f64-q7jc-ccgp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3773"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.2.0",
+          "fixed": "5.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

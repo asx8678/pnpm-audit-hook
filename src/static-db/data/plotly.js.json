@@ -1,6 +1,6 @@
 {
   "packageName": "plotly.js",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wjc4-73q6-gv3m",
@@ -25,6 +25,33 @@
         {
           "range": "< 2.25.2",
           "fixed": "2.25.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2fqv-h3r5-m4vf",
+      "packageName": "plotly.js",
+      "title": "Cross Site Scripting (XSS) in plotly.js",
+      "description": "Affected versions of `plotly.js` are vulnerable to cross-site scripting if an attacker can convince a user to visit a malicious plot on a site using this package.\n\n\n## Recommendation\n\nUpdate to 1.16.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2fqv-h3r5-m4vf",
+      "publishedAt": "2017-10-24T18:33:35Z",
+      "modifiedAt": "2023-01-09T05:02:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2fqv-h3r5-m4vf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-1000006"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.16.0",
+          "fixed": "1.16.0"
         }
       ],
       "source": "github"

@@ -1,0 +1,28 @@
+{
+  "packageName": "malicious-do-not-install",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6879-xr95-5gf4",
+      "packageName": "malicious-do-not-install",
+      "title": "Malicious Package in malicious-do-not-install",
+      "description": "All versions of `malicious-do-not-install` contain malicious code. The package copies the contents of `/etc/passwd` and `/etc/shadow` to files in the local `/tmp/` folder.\n\n\n## Recommendation\n\nRemove the package from your environment and rotate affected credentials.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6879-xr95-5gf4",
+      "publishedAt": "2020-09-03T17:20:15Z",
+      "modifiedAt": "2023-01-09T05:04:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6879-xr95-5gf4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

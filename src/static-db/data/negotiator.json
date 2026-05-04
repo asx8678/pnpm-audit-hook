@@ -1,0 +1,33 @@
+{
+  "packageName": "negotiator",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7mc5-chhp-fmc3",
+      "packageName": "negotiator",
+      "title": "Regular Expression Denial of Service in negotiator",
+      "description": "Affected versions of `negotiator` are vulnerable to regular expression denial of service attacks, which trigger upon parsing a specially crafted `Accept-Language` header value.\n\n\n\n\n## Recommendation\n\nUpdate to version 0.6.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7mc5-chhp-fmc3",
+      "publishedAt": "2018-10-09T00:30:30Z",
+      "modifiedAt": "2023-01-09T05:02:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7mc5-chhp-fmc3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10539"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.6.1",
+          "fixed": "0.6.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

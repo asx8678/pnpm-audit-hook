@@ -1,0 +1,29 @@
+{
+  "packageName": "superstatic",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wm77-q74p-5763",
+      "packageName": "superstatic",
+      "title": "Path Traversal in superstatic",
+      "description": "Affected of `superstatic` are vulnerable to path traversal when used on Windows. \n\nAdditionally, it is vulnerable to path traversal on other platforms combined with certain Node.js versions which erroneously normalize `\\\\` to `/` in paths on all platforms (a known example being Node.js v9.9.0).\n\n\n## Recommendation\n\nUpdate to version 5.0.2 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wm77-q74p-5763",
+      "publishedAt": "2018-07-27T17:06:03Z",
+      "modifiedAt": "2023-01-09T05:03:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wm77-q74p-5763"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.0.2",
+          "fixed": "5.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

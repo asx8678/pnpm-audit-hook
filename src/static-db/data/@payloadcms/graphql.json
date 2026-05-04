@@ -1,7 +1,34 @@
 {
   "packageName": "@payloadcms/graphql",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-hp5w-3hxx-vmwf",
+      "packageName": "@payloadcms/graphql",
+      "title": "Payload: Pre-Authentication Account Takeover via Parameter Injection in Password Recovery",
+      "description": "### Impact\n\nA vulnerability in the password recovery flow could allow an unauthenticated attacker to perform actions on behalf of a user who initiates a password reset.\n\nUsers are affected if:\n\n- They are using Payload version **< v3.79.1** with any auth-enabled collection using the built-in `forgot-password` functionality.\n\n### Patches\n\nInput validation and URL construction in the password recovery flow have been hardened.\n\nUsers should upgrade to **v3.79.1** or later.\n\n### Workarounds\n\nThere a",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-hp5w-3hxx-vmwf",
+      "publishedAt": "2026-04-01T16:08:02Z",
+      "modifiedAt": "2026-04-08T18:19:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hp5w-3hxx-vmwf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34751"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.79.1",
+          "fixed": "3.79.1"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-26rv-h2hf-3fw4",
       "packageName": "@payloadcms/graphql",

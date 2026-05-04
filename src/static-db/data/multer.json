@@ -1,7 +1,88 @@
 {
   "packageName": "multer",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-5528-5vmv-3xc2",
+      "packageName": "multer",
+      "title": "Multer Vulnerable to Denial of Service via Uncontrolled Recursion",
+      "description": "### Impact\n\nA vulnerability in Multer versions < 2.1.1 allows an attacker to trigger a Denial of Service (DoS) by sending malformed requests, potentially causing stack overflow.\n\n### Patches\n\nUsers should upgrade to `2.1.1`\n\n### Workarounds\n\nNone\n\n### Resources\n\n- https://github.com/expressjs/multer/security/advisories/GHSA-5528-5vmv-3xc2\n- https://www.cve.org/CVERecord?id=CVE-2026-3520\n- https://github.com/expressjs/multer/commit/7e66481f8b2e6c54b982b34c152479e096ce2752\n- https://cna.openjsf.or",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5528-5vmv-3xc2",
+      "publishedAt": "2026-03-05T00:27:50Z",
+      "modifiedAt": "2026-03-05T00:27:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5528-5vmv-3xc2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-3520"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.1",
+          "fixed": "2.1.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v52c-386h-88mc",
+      "packageName": "multer",
+      "title": "Multer vulnerable to Denial of Service via resource exhaustion",
+      "description": "### Impact\n\nA vulnerability in Multer versions < 2.1.0 allows an attacker to trigger a Denial of Service (DoS) by dropping connection during file upload, potentially causing resource exhaustion.\n\n### Patches\n\nUsers should upgrade to `2.1.0`\n\n### Workarounds\n\nNone",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v52c-386h-88mc",
+      "publishedAt": "2026-03-01T01:18:27Z",
+      "modifiedAt": "2026-03-01T01:19:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v52c-386h-88mc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-2359"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.0",
+          "fixed": "2.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xf7r-hgr6-v32p",
+      "packageName": "multer",
+      "title": "Multer vulnerable to Denial of Service via incomplete cleanup",
+      "description": "### Impact\n\nA vulnerability in Multer versions < 2.1.0 allows an attacker to trigger a Denial of Service (DoS) by sending malformed requests, potentially causing resource exhaustion.\n\n### Patches\n\nUsers should upgrade to `2.1.0`\n\n### Workarounds\n\nNone",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xf7r-hgr6-v32p",
+      "publishedAt": "2026-03-01T01:18:50Z",
+      "modifiedAt": "2026-03-01T01:18:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xf7r-hgr6-v32p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-3304"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.0",
+          "fixed": "2.1.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-fjgf-rc76-4x9p",
       "packageName": "multer",
@@ -106,87 +187,6 @@
         {
           "range": ">= 1.4.4-lts.1, < 2.0.0",
           "fixed": "2.0.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-5528-5vmv-3xc2",
-      "packageName": "multer",
-      "title": "Multer Vulnerable to Denial of Service via Uncontrolled Recursion",
-      "description": "### Impact\n\nA vulnerability in Multer versions < 2.1.1 allows an attacker to trigger a Denial of Service (DoS) by sending malformed requests, potentially causing stack overflow.\n\n### Patches\n\nUsers should upgrade to `2.1.1`\n\n### Workarounds\n\nNone\n\n### Resources\n\n- https://github.com/expressjs/multer/security/advisories/GHSA-5528-5vmv-3xc2\n- https://www.cve.org/CVERecord?id=CVE-2026-3520\n- https://github.com/expressjs/multer/commit/7e66481f8b2e6c54b982b34c152479e096ce2752\n- https://cna.openjsf.or",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-5528-5vmv-3xc2",
-      "publishedAt": "2026-03-05T00:27:50Z",
-      "modifiedAt": "2026-03-05T00:27:52Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-5528-5vmv-3xc2"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-3520"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 2.1.1",
-          "fixed": "2.1.1"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-v52c-386h-88mc",
-      "packageName": "multer",
-      "title": "Multer vulnerable to Denial of Service via resource exhaustion",
-      "description": "### Impact\n\nA vulnerability in Multer versions < 2.1.0 allows an attacker to trigger a Denial of Service (DoS) by dropping connection during file upload, potentially causing resource exhaustion.\n\n### Patches\n\nUsers should upgrade to `2.1.0`\n\n### Workarounds\n\nNone",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-v52c-386h-88mc",
-      "publishedAt": "2026-03-01T01:18:27Z",
-      "modifiedAt": "2026-03-01T01:19:07Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-v52c-386h-88mc"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-2359"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 2.1.0",
-          "fixed": "2.1.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-xf7r-hgr6-v32p",
-      "packageName": "multer",
-      "title": "Multer vulnerable to Denial of Service via incomplete cleanup",
-      "description": "### Impact\n\nA vulnerability in Multer versions < 2.1.0 allows an attacker to trigger a Denial of Service (DoS) by sending malformed requests, potentially causing resource exhaustion.\n\n### Patches\n\nUsers should upgrade to `2.1.0`\n\n### Workarounds\n\nNone",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-xf7r-hgr6-v32p",
-      "publishedAt": "2026-03-01T01:18:50Z",
-      "modifiedAt": "2026-03-01T01:18:51Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-xf7r-hgr6-v32p"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-3304"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 2.1.0",
-          "fixed": "2.1.0"
         }
       ],
       "source": "github"

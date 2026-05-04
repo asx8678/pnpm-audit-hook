@@ -1,0 +1,72 @@
+{
+  "packageName": "parsel",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q643-w9jp-q2qg",
+      "packageName": "parsel",
+      "title": "Hardcoded Initialization Vector in parsel",
+      "description": "All versions of `parsel` have a default hardcoded initialization vector. In cases where the IV is not provided, the package defaults to a hardcoded IV which renders the cipher vulnerable to chosen plaintext attacks.\n\n\n## Recommendation\n\nThe package is deprecated and will not be updated. Consider using an alternative package.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q643-w9jp-q2qg",
+      "publishedAt": "2020-09-04T17:34:59Z",
+      "modifiedAt": "2023-01-09T05:04:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q643-w9jp-q2qg"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vjvw-wcmw-pr26",
+      "packageName": "parsel",
+      "title": "Insufficient Entropy in parsel",
+      "description": "All versions of `parsel` use an insecure key derivation function. The package runs keys of arbitrary lengths through one round of SHA256 hashing for key stretching. This allows for the use of keys of insufficient entropy with inappropriate key stretching.\n\n\n## Recommendation\n\nThe package is deprecated and will not be updated. Consider using an alternative package.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vjvw-wcmw-pr26",
+      "publishedAt": "2020-09-04T17:37:08Z",
+      "modifiedAt": "2023-01-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vjvw-wcmw-pr26"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wqgx-4q47-j2w5",
+      "packageName": "parsel",
+      "title": "Insecure Cryptography Algorithm in parsel",
+      "description": "All versions of `parsel` use an insecure cryptography algorithm. The package uses `aes-256-cbc` without integrity checks, which renders the ciphertext vulnerable to bit-flipping attacks.\n\n\n## Recommendation\n\nThe package is deprecated and will not be updated. Consider using an alternative package.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wqgx-4q47-j2w5",
+      "publishedAt": "2020-09-04T17:36:04Z",
+      "modifiedAt": "2023-01-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wqgx-4q47-j2w5"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "packageName": "beffer-xor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7cvf-p83w-48q6",
+      "packageName": "beffer-xor",
+      "title": "Malicious Package in beffer-xor",
+      "description": "Version 2.0.2 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7cvf-p83w-48q6",
+      "publishedAt": "2020-09-03T21:37:29Z",
+      "modifiedAt": "2023-12-07T22:07:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7cvf-p83w-48q6"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

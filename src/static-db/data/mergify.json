@@ -1,0 +1,28 @@
+{
+  "packageName": "mergify",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3f95-w5h5-fq86",
+      "packageName": "mergify",
+      "title": "Prototype Pollution in mergify",
+      "description": "All versions of `mergify` are vulnerable to Prototype Pollution. The `mergify()` function allows attackers to modify the prototype of Object causing the addition or modification of an existing property that will exist on all objects.\n\n\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module as the package is deprecated.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3f95-w5h5-fq86",
+      "publishedAt": "2020-09-11T21:22:24Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3f95-w5h5-fq86"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

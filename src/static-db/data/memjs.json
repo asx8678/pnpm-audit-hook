@@ -1,0 +1,32 @@
+{
+  "packageName": "memjs",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cx8m-8xmx-q8v3",
+      "packageName": "memjs",
+      "title": "Denial of Service in memjs",
+      "description": "Versions of `memjs` prior to 1.2.2 are vulnerable to Denial of Service (DoS).  The package fails to sanitize the `value` option passed to the Buffer constructor, which may allow attackers to pass large values exhausting system resources.\n\n\n## Recommendation\n\nUpgrade to version 1.2.2 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cx8m-8xmx-q8v3",
+      "publishedAt": "2018-10-10T17:25:12Z",
+      "modifiedAt": "2023-09-12T18:51:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cx8m-8xmx-q8v3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3767"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

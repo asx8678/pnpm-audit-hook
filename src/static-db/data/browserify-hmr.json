@@ -1,0 +1,33 @@
+{
+  "packageName": "browserify-hmr",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-77q4-m83q-w76v",
+      "packageName": "browserify-hmr",
+      "title": "Missing Origin Validation in browserify-hmr",
+      "description": "Versions of `browserify-hmr` prior to 0.4.0 are missing origin validation on the websocket server. \n\nThis vulnerability allows a remote attacker to steal a developer's source code because the origin of requests to the websocket server that is used for Hot Module Replacement (HMR) are not validated.\n\n\n## Recommendation\n\nUpgrade to version 0.4.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-77q4-m83q-w76v",
+      "publishedAt": "2020-09-01T21:18:20Z",
+      "modifiedAt": "2023-01-09T05:03:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-77q4-m83q-w76v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-14730"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.4.0",
+          "fixed": "0.4.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

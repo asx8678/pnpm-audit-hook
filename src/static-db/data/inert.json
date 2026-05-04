@@ -1,0 +1,33 @@
+{
+  "packageName": "inert",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g4xp-36c3-f7mr",
+      "packageName": "inert",
+      "title": "Hidden Directories Always Served in inert",
+      "description": "Versions 1.1.1 and earlier of `inert` are vulnerable to an information leakage vulnerability which causes files in hidden directories to be served, even when showHidden is false.\n\nThe inert directory handler always allows files in hidden directories to be served, even when `showHidden` is false.\n\n\n## Recommendation\n\nUpdate to version >= 1.1.1.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g4xp-36c3-f7mr",
+      "publishedAt": "2020-08-31T22:47:41Z",
+      "modifiedAt": "2023-01-09T05:03:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g4xp-36c3-f7mr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2014-10068"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.1",
+          "fixed": "1.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

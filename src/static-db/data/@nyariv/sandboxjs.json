@@ -1,57 +1,138 @@
 {
   "packageName": "@nyariv/sandboxjs",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
-      "id": "GHSA-wxhw-j4hc-fmq6",
+      "id": "GHSA-hg73-4w7g-q96w",
       "packageName": "@nyariv/sandboxjs",
-      "title": "SandboxJS has Sandbox Escape via Unprotected AsyncFunction Constructor",
-      "description": "### Summary\nA sandbox escape vulnerability due to `AsyncFunction` not being isolated in `SandboxFunction`\n\n### Details\n\nThe library attempts to sandbox code execution by replacing the global `Function` constructor with a safe, sandboxed version (`SandboxFunction`). This is handled in `utils.ts` by mapping `Function` to `sandboxFunction` within a map used for lookups.\n\nHowever, the library did not include mappings for `AsyncFunction`, `GeneratorFunction`, and `AsyncGeneratorFunction`. These const",
-      "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-wxhw-j4hc-fmq6",
-      "publishedAt": "2026-01-27T19:55:11Z",
-      "modifiedAt": "2026-01-29T03:43:44Z",
+      "title": "SandboxJS: Sandbox Escape via Prop Object Leak in New Handler",
+      "description": "## Description\n\nA scope modification vulnerability exists in `@nyariv/sandboxjs` version 0.8.35 and below. The vulnerability allows untrusted sandboxed code to leak internal interpreter objects through the `new` operator, exposing sandbox scope objects in the scope hierarchy to untrusted code; an unexpected and undesired exploit. While this could allow modifying scopes inside the sandbox, code evaluation remains sandboxed and prototypes remain protected throughout the execution.\n\n## Vulnerable C",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hg73-4w7g-q96w",
+      "publishedAt": "2026-04-03T21:45:38Z",
+      "modifiedAt": "2026-04-06T23:18:33Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-wxhw-j4hc-fmq6"
+          "value": "GHSA-hg73-4w7g-q96w"
         },
         {
           "type": "CVE",
-          "value": "CVE-2026-23830"
+          "value": "CVE-2026-34217"
         }
       ],
       "affectedVersions": [
         {
-          "range": "< 0.8.26",
-          "fixed": "0.8.26"
+          "range": "<= 0.8.35",
+          "fixed": "0.8.36"
         }
       ],
       "source": "github"
     },
     {
-      "id": "GHSA-9qm3-6qrr-c76m",
+      "id": "GHSA-8pfc-jjgw-6g26",
       "packageName": "@nyariv/sandboxjs",
-      "title": "@nyariv/sandboxjs has Prototype Pollution vulnerability that may lead to RCE",
-      "description": "A prototype pollution vulnerability exists in @nyariv/sandboxjs versions <= 0.8.23, allowing attackers to inject arbitrary properties into Object.prototype via crafted JavaScript code. This can result in a denial-of-service (DoS) condition or, under certain conditions, escape the sandboxed environment intended to restrict code execution. The vulnerability stems from insufficient prototype access checks in the sandbox’s executor logic, particularly in the handling of JavaScript function objects r",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-9qm3-6qrr-c76m",
-      "publishedAt": "2025-07-31T15:35:50Z",
-      "modifiedAt": "2025-07-31T19:28:30Z",
+      "title": "SandboxJS: Stack overflow DoS via deeply nested expressions in recursive descent parser",
+      "description": "## Summary\n\nThe `@nyariv/sandboxjs` parser contains unbounded recursion in the `restOfExp` function and the `lispify`/`lispifyExpr` call chain. An attacker can crash any Node.js process that parses untrusted input by supplying deeply nested expressions (e.g., ~2000 nested parentheses), causing a `RangeError: Maximum call stack size exceeded` that terminates the process.\n\n## Details\n\nThe root cause is in `src/parser.ts`. The `restOfExp` function (line 443) iterates through expression characters, ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8pfc-jjgw-6g26",
+      "publishedAt": "2026-04-03T21:45:14Z",
+      "modifiedAt": "2026-04-06T23:18:28Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-9qm3-6qrr-c76m"
+          "value": "GHSA-8pfc-jjgw-6g26"
         },
         {
           "type": "CVE",
-          "value": "CVE-2025-34146"
+          "value": "CVE-2026-34211"
         }
       ],
       "affectedVersions": [
         {
-          "range": "< 0.8.24",
-          "fixed": "0.8.24"
+          "range": "<= 0.8.35",
+          "fixed": "0.8.36"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2gg9-6p7w-6cpj",
+      "packageName": "@nyariv/sandboxjs",
+      "title": "SandboxJS: Sandbox integrity escape ",
+      "description": "### Summary\nSandboxJS blocks direct assignment to global objects (for example `Math.random = ...`), but this protection can be bypassed through an exposed callable constructor path: `this.constructor.call(target, attackerObject)`. Because `this.constructor` resolves to the internal `SandboxGlobal` function and `Function.prototype.call` is allowed, attacker code can write arbitrary properties into host global objects and persist those mutations across sandbox instances in the same process.\n\n### D",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-2gg9-6p7w-6cpj",
+      "publishedAt": "2026-04-03T21:44:39Z",
+      "modifiedAt": "2026-04-06T23:18:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2gg9-6p7w-6cpj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34208"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.8.36",
+          "fixed": "0.8.36"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7p5m-xrh7-769r",
+      "packageName": "@nyariv/sandboxjs",
+      "title": "SandboxJS has an execution-quota bypass (cross-sandbox currentTicks race) in SandboxJS timers",
+      "description": "## Summary\n\nAssumed repo path is `/Users/zwique/Downloads/SandboxJS-0.8.34` (no `/Users/zwique/Downloads/SandboxJS` found). A global tick state (`currentTicks.current`) is shared between sandboxes. Timer string handlers are compiled at execution time using that global tick state rather than the scheduling sandbox's tick object. In multi-tenant / concurrent sandbox scenarios, another sandbox can overwrite `currentTicks.current` between scheduling and execution, causing the timer callback to run u",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7p5m-xrh7-769r",
+      "publishedAt": "2026-03-16T16:43:05Z",
+      "modifiedAt": "2026-03-19T21:11:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7p5m-xrh7-769r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32723"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.8.34",
+          "fixed": "0.8.35"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6r9f-759j-hjgv",
+      "packageName": "@nyariv/sandboxjs",
+      "title": "SandboxJS affected by a Sandbox Escape",
+      "description": "### Summary\n\nIt is possible to obtain arrays containing `Function`, which allows escaping the sandbox.\n\n### Details\n\nThere are various ways to get an array containing `Function`, e.g.\n\n```js\nObject.entries(this).at(1) // [ 'Function', [Function: Function] ]\nObject.values(this).slice(1, 2) // [ [Function: Function] ]\n```\n\nGiven an array containing `Function`, and  `Object.fromEntries`, it is possible to construct `{[p]: Function}` where `p` is any constructible property. This can be used to escap",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6r9f-759j-hjgv",
+      "publishedAt": "2026-03-13T13:46:08Z",
+      "modifiedAt": "2026-03-16T17:05:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6r9f-759j-hjgv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26954"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.8.33",
+          "fixed": "0.8.34"
         }
       ],
       "source": "github"
@@ -214,6 +295,60 @@
         {
           "range": "<= 0.8.28",
           "fixed": "0.8.29"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wxhw-j4hc-fmq6",
+      "packageName": "@nyariv/sandboxjs",
+      "title": "SandboxJS has Sandbox Escape via Unprotected AsyncFunction Constructor",
+      "description": "### Summary\nA sandbox escape vulnerability due to `AsyncFunction` not being isolated in `SandboxFunction`\n\n### Details\n\nThe library attempts to sandbox code execution by replacing the global `Function` constructor with a safe, sandboxed version (`SandboxFunction`). This is handled in `utils.ts` by mapping `Function` to `sandboxFunction` within a map used for lookups.\n\nHowever, the library did not include mappings for `AsyncFunction`, `GeneratorFunction`, and `AsyncGeneratorFunction`. These const",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wxhw-j4hc-fmq6",
+      "publishedAt": "2026-01-27T19:55:11Z",
+      "modifiedAt": "2026-01-29T03:43:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wxhw-j4hc-fmq6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-23830"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.8.26",
+          "fixed": "0.8.26"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9qm3-6qrr-c76m",
+      "packageName": "@nyariv/sandboxjs",
+      "title": "@nyariv/sandboxjs has Prototype Pollution vulnerability that may lead to RCE",
+      "description": "A prototype pollution vulnerability exists in @nyariv/sandboxjs versions <= 0.8.23, allowing attackers to inject arbitrary properties into Object.prototype via crafted JavaScript code. This can result in a denial-of-service (DoS) condition or, under certain conditions, escape the sandboxed environment intended to restrict code execution. The vulnerability stems from insufficient prototype access checks in the sandbox’s executor logic, particularly in the handling of JavaScript function objects r",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9qm3-6qrr-c76m",
+      "publishedAt": "2025-07-31T15:35:50Z",
+      "modifiedAt": "2025-07-31T19:28:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9qm3-6qrr-c76m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-34146"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.8.24",
+          "fixed": "0.8.24"
         }
       ],
       "source": "github"

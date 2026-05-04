@@ -1,0 +1,32 @@
+{
+  "packageName": "chromedriver126",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jppx-hw2f-8gx4",
+      "packageName": "chromedriver126",
+      "title": "chromedriver126 downloads Resources over HTTP",
+      "description": "Affected versions of `chromedriver126` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `chromedriver126`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different packa",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jppx-hw2f-8gx4",
+      "publishedAt": "2019-02-18T23:33:30Z",
+      "modifiedAt": "2023-09-07T18:26:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jppx-hw2f-8gx4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10609"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.15"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

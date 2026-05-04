@@ -1,0 +1,29 @@
+{
+  "packageName": "engramx",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2r2p-4cgf-hv7h",
+      "packageName": "engramx",
+      "title": "engram: HTTP server CORS wildcard + auth-off-by-default enables CSRF graph exfiltration and persistent indirect prompt injection",
+      "description": "### Summary\n\nThe local HTTP server started by `engram server` (binding `127.0.0.1:7337` by default) was exposed to any browser origin with no authentication unless `ENGRAM_API_TOKEN` was explicitly set. Combined with `Access-Control-Allow-Origin: *` on every response and a body parser that did not require `Content-Type: application/json`, this allowed a malicious web page the developer visited to:\n\n1. **Exfiltrate** the local knowledge graph via `GET /query` and `GET /stats` (function names, fil",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2r2p-4cgf-hv7h",
+      "publishedAt": "2026-04-22T14:52:03Z",
+      "modifiedAt": "2026-04-23T10:04:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2r2p-4cgf-hv7h"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.2",
+          "fixed": "2.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

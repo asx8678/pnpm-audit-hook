@@ -1,0 +1,33 @@
+{
+  "packageName": "restify",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qw3g-35hc-fcrh",
+      "packageName": "restify",
+      "title": "Cross-Site Scripting (XSS) in restify",
+      "description": "Affected versions of `restify` are susceptible to a cross-site scripting vulnerability when using URL encoded script tags in a non-existent URL.\n\n## Proof of Concept:\n\nRequest\n```\nhttps://localhost:3000/no5_such3_file7.pl?%22%3E%3Cscript%3Ealert(73541);%3C/script%3E\n```\n\nWill be included in response:\n\n```<script>alert(73541);</script>```\n\n\n## Recommendation\n\nUpdate to version 4.1.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qw3g-35hc-fcrh",
+      "publishedAt": "2018-11-09T17:45:38Z",
+      "modifiedAt": "2023-09-12T21:05:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qw3g-35hc-fcrh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16018"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, <= 4.0.4",
+          "fixed": "4.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

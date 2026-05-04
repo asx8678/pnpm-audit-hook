@@ -1,0 +1,33 @@
+{
+  "packageName": "cordova-plugin-inappbrowser",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c6pw-q7f2-97hv",
+      "packageName": "cordova-plugin-inappbrowser",
+      "title": "Privilege Escalation in cordova-plugin-inappbrowser",
+      "description": "Versions of `cordova-plugin-inappbrowser` prior to 3.1.0 are vulnerable to Privilege Escalation. A website running in the InAppBrowser webview on Android could execute arbitrary JavaScript in the main application's webview using a specially crafted gap-iab: URI. This affects Cordova Android applications using the package.\n\n\n## Recommendation\n\nUpgrade to version 3.1.0 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-c6pw-q7f2-97hv",
+      "publishedAt": "2020-09-04T17:57:43Z",
+      "modifiedAt": "2023-01-27T05:02:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c6pw-q7f2-97hv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-0219"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.1.0",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

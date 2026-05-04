@@ -1,7 +1,88 @@
 {
   "packageName": "ghost",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-9m84-wc28-w895",
+      "packageName": "ghost",
+      "title": "Ghost has incomplete CSRF protections around OTC use",
+      "description": "### Impact\n\nIncomplete CSRF protections around `/session/verify` made it possible to use OTCs in login sessions different from the requesting session. In some scenarios this might have made it easier for phishers to take over a Ghost site. \n\n### Vulnerable versions\n\nThis vulnerability is present in Ghost from v5.101.6 up to v6.19.2.\n\n### Patches\n\nv6.19.3 contains a fix for this issue.\n\n### How to update\n\nFor self-hosters using Docker, find [Docker's official Ghost image here](https://hub.docker.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9m84-wc28-w895",
+      "publishedAt": "2026-03-05T00:42:55Z",
+      "modifiedAt": "2026-03-09T15:49:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9m84-wc28-w895"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29784"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.101.6, <= 6.19.2",
+          "fixed": "6.19.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cgc2-rcrh-qr5x",
+      "packageName": "ghost",
+      "title": "Ghost Vulnerable to Remote Code Execution via Malicious Themes",
+      "description": "### Impact\n\nSpecifically crafted malicious themes can execute arbitrary code on the server running Ghost. \n\n### Vulnerable Versions\n\nThis vulnerability is present in Ghost v0.7.2 to v6.19.0.\n\n### Patches\n\nv6.19.1 contains a fix for this issue.\n\n### Workarounds\n\nGhost generally recommends users refrain from installing untrusted themes. If a malicious theme has already been installed, it is recommended to uninstall the theme and then inspect it to understand its impact, which will be attack-specif",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cgc2-rcrh-qr5x",
+      "publishedAt": "2026-03-03T20:01:21Z",
+      "modifiedAt": "2026-03-05T15:28:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cgc2-rcrh-qr5x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29053"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.7.2, <= 6.19.0",
+          "fixed": "6.19.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w52v-v783-gw97",
+      "packageName": "ghost",
+      "title": "Ghost has a SQL injection in Content API",
+      "description": "### Impact\n\nA SQL injection vulnerability existed in Ghost's Content API that allowed unauthenticated attackers to read arbitrary data from the database. \n\n### Vulnerable Versions\n\nThis vulnerability is present in Ghost v3.24.0 to v6.19.0.\n\n### Patches\n\nv6.19.1 contains a fix for this issue.\n\n### Workarounds\n\nThere is no application-level workaround. The Content API key is public by design, so restricting key access does not mitigate this vulnerability.\n\nAs a temporary mitigation, a reverse prox",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-w52v-v783-gw97",
+      "publishedAt": "2026-02-18T21:50:23Z",
+      "modifiedAt": "2026-02-20T16:48:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w52v-v783-gw97"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26980"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.24.0, < 6.19.1",
+          "fixed": "6.19.1"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-gv6q-2m97-882h",
       "packageName": "ghost",
@@ -550,87 +631,6 @@
         {
           "range": ">= 5.0.0, < 5.2.3",
           "fixed": "5.2.3"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-9m84-wc28-w895",
-      "packageName": "ghost",
-      "title": "Ghost has incomplete CSRF protections around OTC use",
-      "description": "### Impact\n\nIncomplete CSRF protections around `/session/verify` made it possible to use OTCs in login sessions different from the requesting session. In some scenarios this might have made it easier for phishers to take over a Ghost site. \n\n### Vulnerable versions\n\nThis vulnerability is present in Ghost from v5.101.6 up to v6.19.2.\n\n### Patches\n\nv6.19.3 contains a fix for this issue.\n\n### How to update\n\nFor self-hosters using Docker, find [Docker's official Ghost image here](https://hub.docker.",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-9m84-wc28-w895",
-      "publishedAt": "2026-03-05T00:42:55Z",
-      "modifiedAt": "2026-03-05T22:05:01Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-9m84-wc28-w895"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-29784"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 5.101.6, <= 6.19.2",
-          "fixed": "6.19.3"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-cgc2-rcrh-qr5x",
-      "packageName": "ghost",
-      "title": "Ghost Vulnerable to Remote Code Execution via Malicious Themes",
-      "description": "### Impact\n\nSpecifically crafted malicious themes can execute arbitrary code on the server running Ghost. \n\n### Vulnerable Versions\n\nThis vulnerability is present in Ghost v0.7.2 to v6.19.0.\n\n### Patches\n\nv6.19.1 contains a fix for this issue.\n\n### Workarounds\n\nGhost generally recommends users refrain from installing untrusted themes. If a malicious theme has already been installed, it is recommended to uninstall the theme and then inspect it to understand its impact, which will be attack-specif",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-cgc2-rcrh-qr5x",
-      "publishedAt": "2026-03-03T20:01:21Z",
-      "modifiedAt": "2026-03-05T15:28:16Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-cgc2-rcrh-qr5x"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-29053"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 0.7.2, <= 6.19.0",
-          "fixed": "6.19.1"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-w52v-v783-gw97",
-      "packageName": "ghost",
-      "title": "Ghost has a SQL injection in Content API",
-      "description": "### Impact\n\nA SQL injection vulnerability existed in Ghost's Content API that allowed unauthenticated attackers to read arbitrary data from the database. \n\n### Vulnerable Versions\n\nThis vulnerability is present in Ghost v3.24.0 to v6.19.0.\n\n### Patches\n\nv6.19.1 contains a fix for this issue.\n\n### Workarounds\n\nThere is no application-level workaround. The Content API key is public by design, so restricting key access does not mitigate this vulnerability.\n\nAs a temporary mitigation, a reverse prox",
-      "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-w52v-v783-gw97",
-      "publishedAt": "2026-02-18T21:50:23Z",
-      "modifiedAt": "2026-02-20T16:48:10Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-w52v-v783-gw97"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-26980"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 3.24.0, < 6.19.1",
-          "fixed": "6.19.1"
         }
       ],
       "source": "github"

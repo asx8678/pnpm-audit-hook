@@ -1,30 +1,57 @@
 {
   "packageName": "@fastify/middie",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
-      "id": "GHSA-cxrg-g7r8-w69p",
+      "id": "GHSA-72c6-fx6q-fr5w",
       "packageName": "@fastify/middie",
-      "title": "Fastify Middie Middleware Path Bypass",
-      "description": "### Summary\nA security vulnerability exists in `@fastify/middie` where middleware registered with a specific path prefix can be bypassed using URL-encoded characters (e.g., `/%61dmin` instead of `/admin`). While the middleware engine fails to match the encoded path and skips execution, the underlying Fastify router correctly decodes the path and matches the route handler, allowing attackers to access protected endpoints without the middleware constraints.\n\n### Details\nThe vulnerability is caused",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-cxrg-g7r8-w69p",
-      "publishedAt": "2026-01-20T16:34:50Z",
-      "modifiedAt": "2026-01-20T16:34:50Z",
+      "title": "@fastify/middie vulnerable to middleware authentication bypass in child plugin scopes",
+      "description": "### Impact\n\n`@fastify/middie` v9.3.1 and earlier incorrectly re-prefixes middleware paths when propagating them to child plugin scopes. When a child plugin is registered with a prefix that overlaps with a parent-scoped middleware path, the middleware path is modified during inheritance and silently fails to match incoming requests.\n\nThis results in complete bypass of middleware security controls for all routes defined within affected child plugin scopes, including nested (grandchild) scopes. Aut",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-72c6-fx6q-fr5w",
+      "publishedAt": "2026-04-16T22:29:04Z",
+      "modifiedAt": "2026-04-16T22:29:06Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-cxrg-g7r8-w69p"
+          "value": "GHSA-72c6-fx6q-fr5w"
         },
         {
           "type": "CVE",
-          "value": "CVE-2026-22031"
+          "value": "CVE-2026-6270"
         }
       ],
       "affectedVersions": [
         {
-          "range": "<= 9.0.3",
-          "fixed": "9.1.0"
+          "range": "<= 9.3.1",
+          "fixed": "9.3.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v9ww-2j6r-98q6",
+      "packageName": "@fastify/middie",
+      "title": "@fastify/middie vulnerable to middleware bypass via deprecated ignoreDuplicateSlashes option",
+      "description": "### Impact\n\n`@fastify/middie` v9.3.1 and earlier does not read the deprecated (but still functional) top-level `ignoreDuplicateSlashes` option, only reading from `routerOptions`. This creates a normalization gap: Fastify's router normalizes duplicate slashes but middie does not, allowing middleware bypass via URLs with duplicate leading slashes (e.g., `//admin/secret`).\n\nThis only affects applications using the deprecated top-level configuration style (`fastify({ ignoreDuplicateSlashes: true })`",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v9ww-2j6r-98q6",
+      "publishedAt": "2026-04-16T22:28:54Z",
+      "modifiedAt": "2026-04-16T22:28:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v9ww-2j6r-98q6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33804"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 9.3.1",
+          "fixed": "9.3.2"
         }
       ],
       "source": "github"
@@ -52,6 +79,33 @@
         {
           "range": "< 9.2.0",
           "fixed": "9.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cxrg-g7r8-w69p",
+      "packageName": "@fastify/middie",
+      "title": "Fastify Middie Middleware Path Bypass",
+      "description": "### Summary\nA security vulnerability exists in `@fastify/middie` where middleware registered with a specific path prefix can be bypassed using URL-encoded characters (e.g., `/%61dmin` instead of `/admin`). While the middleware engine fails to match the encoded path and skips execution, the underlying Fastify router correctly decodes the path and matches the route handler, allowing attackers to access protected endpoints without the middleware constraints.\n\n### Details\nThe vulnerability is caused",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cxrg-g7r8-w69p",
+      "publishedAt": "2026-01-20T16:34:50Z",
+      "modifiedAt": "2026-01-20T16:34:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cxrg-g7r8-w69p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-22031"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 9.0.3",
+          "fixed": "9.1.0"
         }
       ],
       "source": "github"

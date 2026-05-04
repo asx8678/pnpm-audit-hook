@@ -1,0 +1,33 @@
+{
+  "packageName": "selenium-download",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2mvm-66q7-m256",
+      "packageName": "selenium-download",
+      "title": "Downloads Resources over HTTP in selenium-download",
+      "description": "Affected versions of `selenium-download` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `selenium-download`.\n\n\n## Recommendation\n\nUpdate to version 2.0.7 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2mvm-66q7-m256",
+      "publishedAt": "2019-02-18T23:40:25Z",
+      "modifiedAt": "2023-01-09T05:02:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2mvm-66q7-m256"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10559"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.7",
+          "fixed": "2.0.7"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

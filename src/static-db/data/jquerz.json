@@ -1,0 +1,28 @@
+{
+  "packageName": "jquerz",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c6f3-3c98-2j2f",
+      "packageName": "jquerz",
+      "title": "Malicious Package in jquerz",
+      "description": "Version 1.0.1 of `jquerz` contains malicious code as a preinstall script. The package is malware designed to take advantage of users making a mistake when typing the name of a module to install. When installed, the package downloads a file from a remote server, executes it and opens a backdoor.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a diffe",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-c6f3-3c98-2j2f",
+      "publishedAt": "2020-09-02T21:39:46Z",
+      "modifiedAt": "2023-01-09T05:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c6f3-3c98-2j2f"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

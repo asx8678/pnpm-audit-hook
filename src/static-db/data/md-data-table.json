@@ -1,0 +1,28 @@
+{
+  "packageName": "md-data-table",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hgr5-82rc-p936",
+      "packageName": "md-data-table",
+      "title": "Cross-Site Scripting in md-data-table",
+      "description": "All versions of `md-data-table` are vulnerable to cross-site scripting (XSS). This vulnerability is exploitable if an attacker has control over data that is rendered by `mdt-row`\n\n\n## Recommendation\n\nAs there is no fix for this vulnerability at this time we recommend either selecting another package to perform this functionality or properly sanitizing all user data prior to rendering with `md-data-table`",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hgr5-82rc-p936",
+      "publishedAt": "2020-09-01T21:24:41Z",
+      "modifiedAt": "2023-01-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hgr5-82rc-p936"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

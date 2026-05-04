@@ -1,6 +1,6 @@
 {
   "packageName": "diff",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-73rr-hh4g-fpgx",
@@ -25,6 +25,29 @@
         {
           "range": "< 3.5.1",
           "fixed": "3.5.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-h6ch-v84p-w6p9",
+      "packageName": "diff",
+      "title": "Regular Expression Denial of Service (ReDoS)",
+      "description": "A vulnerability was found in diff before v3.5.0, the affected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS) attacks.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h6ch-v84p-w6p9",
+      "publishedAt": "2019-06-13T18:58:54Z",
+      "modifiedAt": "2025-02-12T05:08:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h6ch-v84p-w6p9"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.5.0",
+          "fixed": "3.5.0"
         }
       ],
       "source": "github"

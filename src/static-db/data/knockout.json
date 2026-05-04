@@ -1,7 +1,34 @@
 {
   "packageName": "knockout",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-vcjj-xf2r-mwvc",
+      "packageName": "knockout",
+      "title": "XSS in knockout",
+      "description": "There is a vulnerability in knockout before version 3.5.0-beta, where after escaping the context of the web application, the web application delivers data to its users along with other trusted dynamic content, without validating it.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vcjj-xf2r-mwvc",
+      "publishedAt": "2020-04-01T15:47:45Z",
+      "modifiedAt": "2023-02-01T05:02:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vcjj-xf2r-mwvc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-14862"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.5.0",
+          "fixed": "3.5.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-qfmr-6qvh-49gm",
       "packageName": "knockout",

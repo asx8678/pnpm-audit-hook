@@ -1,0 +1,29 @@
+{
+  "packageName": "novu/api",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-26wg-9xf2-q495",
+      "packageName": "novu/api",
+      "title": "Novu has a XSS sanitization bypass",
+      "description": "### Summary\n\nXSS sanitization is incomplete, some attributes are missing such as `oncontentvisibilityautostatechange=`. This allows for the email preview to render HTML that executes arbitrary JavaScript,\n\n### Details\n\nSanitization is implemented here:\nhttps://github.com/novuhq/novu/blob/next/libs/application-generic/src/services/sanitize/sanitizer.service.ts\n\nWith `allowedAttributes: false`, all attributes are allowed through `sanitize-html`. Even dangerous ones like `oncontentvisibilityautosta",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-26wg-9xf2-q495",
+      "publishedAt": "2026-04-14T23:23:01Z",
+      "modifiedAt": "2026-04-14T23:23:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-26wg-9xf2-q495"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.15.0",
+          "fixed": "3.15.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

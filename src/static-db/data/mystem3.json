@@ -1,0 +1,33 @@
+{
+  "packageName": "mystem3",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-747p-jfqv-f43r",
+      "packageName": "mystem3",
+      "title": "Downloads Resources over HTTP in mystem3",
+      "description": "Affected versions of `mystem3` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `mystem3`.\n\n\n## Recommendation\n\nUpdate to version 1.0.8 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-747p-jfqv-f43r",
+      "publishedAt": "2019-02-18T23:47:26Z",
+      "modifiedAt": "2023-01-09T05:02:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-747p-jfqv-f43r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10626"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.7",
+          "fixed": "1.0.8"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

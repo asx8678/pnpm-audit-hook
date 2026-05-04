@@ -1,6 +1,6 @@
 {
   "packageName": "opencv",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mc7w-4cjf-c973",
@@ -19,6 +19,29 @@
         {
           "type": "CVE",
           "value": "CVE-2019-10061"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.1.0",
+          "fixed": "6.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f698-m2v9-5fh3",
+      "packageName": "opencv",
+      "title": "Command Injection in opencv",
+      "description": "Versions of `opencv`prior to 6.1.0 are vulnerable to Command Injection. The utils/ script find-opencv.js does not validate user input allowing attackers to execute arbitrary commands.\n\n\n## Recommendation\n\nUpgrade to version 6.1.0.\n",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-f698-m2v9-5fh3",
+      "publishedAt": "2019-06-04T20:11:44Z",
+      "modifiedAt": "2023-01-09T05:01:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f698-m2v9-5fh3"
         }
       ],
       "affectedVersions": [

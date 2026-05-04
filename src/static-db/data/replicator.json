@@ -1,7 +1,33 @@
 {
   "packageName": "replicator",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-2gmp-34j9-fqjm",
+      "packageName": "replicator",
+      "title": "Replicator deserializes untrusted user input",
+      "description": "An unauthenticated Remote Code Execution (RCE) vulnerability exists in applications that use the Replicator node package manager (npm) version 1.0.5 to deserialize untrusted user input and execute the resulting object.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2gmp-34j9-fqjm",
+      "publishedAt": "2026-04-01T18:36:38Z",
+      "modifiedAt": "2026-04-03T23:15:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2gmp-34j9-fqjm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-2265"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.5"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-hw46-vg6w-88fj",
       "packageName": "replicator",

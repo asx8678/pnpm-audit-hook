@@ -1,7 +1,233 @@
 {
   "packageName": "dompurify",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-h7mw-gpvr-xq4m",
+      "packageName": "dompurify",
+      "title": "DOMPurify: FORBID_TAGS bypassed by function-based ADD_TAGS predicate (asymmetry with FORBID_ATTR fix)",
+      "description": "There is an inconsistency between FORBID_TAGS and FORBID_ATTR handling when function-based ADD_TAGS is used.\n\nCommit [c361baa](https://github.com/cure53/DOMPurify/commit/c361baa18dbdcb3344a41110f4c48ad85bf48f80) added an early exit for FORBID_ATTR at line 1214:\n\n    /* FORBID_ATTR must always win, even if ADD_ATTR predicate would allow it */\n    if (FORBID_ATTR[lcName]) {\n      return false;\n    }\n\nThe same fix was not applied to FORBID_TAGS. At line 1118-1123, when EXTRA_ELEMENT_HANDLING.tagChe",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h7mw-gpvr-xq4m",
+      "publishedAt": "2026-04-22T17:34:17Z",
+      "modifiedAt": "2026-04-27T16:32:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h7mw-gpvr-xq4m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41240"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.4.0",
+          "fixed": "3.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-crv5-9vww-q3g8",
+      "packageName": "dompurify",
+      "title": "DOMPurify has a SAFE_FOR_TEMPLATES bypass in RETURN_DOM mode",
+      "description": "## Summary\n\n| Field | Value |\n|:------|:------|\n| **Severity** | Medium |\n| **Affected** | DOMPurify `main` at [`883ac15`](https://github.com/cure53/DOMPurify/tree/883ac15d47f907cb1a3b5a152fe90c4d8c10f9e6), introduced in v1.0.10 ([`7fc196db`](https://github.com/cure53/DOMPurify/commit/7fc196db0b42a0c360262dba0cc39c9c91bfe1ec)) |\n\n`SAFE_FOR_TEMPLATES` strips `{{...}}` expressions from untrusted HTML. This works in string mode but not with `RETURN_DOM` or `RETURN_DOM_FRAGMENT`, allowing XSS via te",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-crv5-9vww-q3g8",
+      "publishedAt": "2026-04-22T17:32:54Z",
+      "modifiedAt": "2026-04-27T16:32:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-crv5-9vww-q3g8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41239"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.10, < 3.4.0",
+          "fixed": "3.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v9jr-rg53-9pgp",
+      "packageName": "dompurify",
+      "title": "DOMPurify: Prototype Pollution to XSS Bypass via CUSTOM_ELEMENT_HANDLING Fallback",
+      "description": "## Summary\n\nDOMPurify versions 3.0.1 through 3.3.3 (latest) are vulnerable to a prototype pollution-based XSS bypass. When an application uses `DOMPurify.sanitize()` with the default configuration (no `CUSTOM_ELEMENT_HANDLING` option), a prior prototype pollution gadget can inject permissive `tagNameCheck` and `attributeNameCheck` regex values into `Object.prototype`, causing DOMPurify to allow arbitrary custom elements with arbitrary attributes — including event handlers — through sanitization.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v9jr-rg53-9pgp",
+      "publishedAt": "2026-04-22T17:31:32Z",
+      "modifiedAt": "2026-04-27T16:32:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v9jr-rg53-9pgp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41238"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.1, < 3.4.0",
+          "fixed": "3.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-39q2-94rc-95cp",
+      "packageName": "dompurify",
+      "title": "DOMPurify's ADD_TAGS function form bypasses FORBID_TAGS due to short-circuit evaluation",
+      "description": "## Summary\nIn `src/purify.ts:1117-1123`, `ADD_TAGS` as a function (via `EXTRA_ELEMENT_HANDLING.tagCheck`) bypasses `FORBID_TAGS` due to short-circuit evaluation.\n\nThe condition:\n```\n!(tagCheck(tagName)) && (!ALLOWED_TAGS[tagName] || FORBID_TAGS[tagName])\n```\nWhen `tagCheck(tagName)` returns `true`, the entire condition is `false` and the element is kept — `FORBID_TAGS[tagName]` is never evaluated.\n\n## Inconsistency\nThis contradicts the attribute-side pattern at line 1214 where `FORBID_ATTR` expl",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-39q2-94rc-95cp",
+      "publishedAt": "2026-04-16T00:46:35Z",
+      "modifiedAt": "2026-04-16T00:46:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-39q2-94rc-95cp"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.3.3",
+          "fixed": "3.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cjmm-f4jc-qw8r",
+      "packageName": "dompurify",
+      "title": "DOMPurify ADD_ATTR predicate skips URI validation",
+      "description": "## Summary\nDOMPurify allows `ADD_ATTR` to be provided as a predicate function via `EXTRA_ELEMENT_HANDLING.attributeCheck`. When the predicate returns `true`, `_isValidAttribute` short-circuits the attribute check before URI-safe validation runs. An attacker who supplies a predicate that accepts specific attribute/tag combinations can then sanitize input such as `<a href=\"javascript:alert(document.domain)\">` and have the `javascript:` URL survive, because URI validation is skipped for that attrib",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cjmm-f4jc-qw8r",
+      "publishedAt": "2026-04-03T03:46:07Z",
+      "modifiedAt": "2026-04-03T03:46:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cjmm-f4jc-qw8r"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.3.1",
+          "fixed": "3.3.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cj63-jhhr-wcxv",
+      "packageName": "dompurify",
+      "title": "DOMPurify USE_PROFILES prototype pollution allows event handlers",
+      "description": "## Summary\nWhen `USE_PROFILES` is enabled, DOMPurify rebuilds `ALLOWED_ATTR` as a plain array before populating it with the requested allowlists. Because the sanitizer still looks up attributes via `ALLOWED_ATTR[lcName]`, any `Array.prototype` property that is polluted also counts as an allowlisted attribute. An attacker who can set `Array.prototype.onclick = true` (or a runtime already subject to prototype pollution) can thus force DOMPurify to keep event handlers such as `onclick` even when th",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cj63-jhhr-wcxv",
+      "publishedAt": "2026-04-03T03:45:08Z",
+      "modifiedAt": "2026-04-03T03:45:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cj63-jhhr-wcxv"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.3.1",
+          "fixed": "3.3.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v2wj-7wpq-c8vv",
+      "packageName": "dompurify",
+      "title": "DOMPurify contains a Cross-site Scripting vulnerability",
+      "description": "DOMPurify 3.1.3 through 3.3.1 and 2.5.3 through 2.5.8, fixed in 2.5.9 and 3.3.2, contain a cross-site scripting vulnerability that allows attackers to bypass attribute sanitization by exploiting five missing rawtext elements (noscript, xmp, noembed, noframes, iframe) in the `SAFE_FOR_XML` regex. Attackers can include payloads like `</noscript><img src=x onerror=alert(1)>` in attribute values to execute JavaScript when sanitized output is placed inside these unprotected rawtext contexts.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v2wj-7wpq-c8vv",
+      "publishedAt": "2026-03-03T18:31:33Z",
+      "modifiedAt": "2026-03-30T14:51:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v2wj-7wpq-c8vv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-0540"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.5.3, <= 2.5.8",
+          "fixed": "2.5.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-h8r8-wccr-v5f2",
+      "packageName": "dompurify",
+      "title": "DOMPurify is vulnerable to mutation-XSS via Re-Contextualization ",
+      "description": "## Description\n\nA mutation-XSS (mXSS) condition was confirmed when sanitized HTML is reinserted into a new parsing context using `innerHTML` and special wrappers. The vulnerable wrappers confirmed in browser behavior are `script`, `xmp`, `iframe`, `noembed`, `noframes`, and `noscript`. The payload remains seemingly benign after `DOMPurify.sanitize()`, but mutates during the second parse into executable markup with an event handler, enabling JavaScript execution in the client (`alert(1)` in the P",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h8r8-wccr-v5f2",
+      "publishedAt": "2026-03-27T20:41:29Z",
+      "modifiedAt": "2026-03-27T20:41:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h8r8-wccr-v5f2"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.3.2",
+          "fixed": "3.3.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v8jm-5vwx-cfxm",
+      "packageName": "dompurify",
+      "title": "DOMPurify contains a Cross-site Scripting vulnerability",
+      "description": "DOMPurify 3.1.3 through 3.2.6 and 2.5.3 through 2.5.8 contain a cross-site scripting vulnerability that allows attackers to bypass attribute sanitization by exploiting missing textarea rawtext element validation in the SAFE_FOR_XML regex. Attackers can include closing rawtext tags like </textarea> in attribute values to break out of rawtext contexts and execute JavaScript when sanitized output is placed inside rawtext elements. The 3.x branch was fixed in 3.2.7; the 2.x branch was never patched.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v8jm-5vwx-cfxm",
+      "publishedAt": "2026-03-03T18:31:33Z",
+      "modifiedAt": "2026-03-04T20:50:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v8jm-5vwx-cfxm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-15599"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.5.3, <= 2.5.8"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-gx9m-whjm-85jf",
       "packageName": "dompurify",
@@ -138,54 +364,78 @@
       "source": "github"
     },
     {
-      "id": "GHSA-v2wj-7wpq-c8vv",
+      "id": "GHSA-chqj-j4fh-rw7m",
       "packageName": "dompurify",
-      "title": "DOMPurify contains a Cross-site Scripting vulnerability",
-      "description": "DOMPurify 3.1.3 through 3.3.1 and 2.5.3 through 2.5.8, fixed in 2.5.9 and 3.3.2, contain a cross-site scripting vulnerability that allows attackers to bypass attribute sanitization by exploiting five missing rawtext elements (noscript, xmp, noembed, noframes, iframe) in the `SAFE_FOR_XML` regex. Attackers can include payloads like `</noscript><img src=x onerror=alert(1)>` in attribute values to execute JavaScript when sanitized output is placed inside these unprotected rawtext contexts.",
+      "title": "Cross-Site Scripting in dompurify",
+      "description": "Versions of `dompurify` prior to 2.0.3 are vulnerable to Cross-Site Scripting (XSS). The package has an XSS filter bypass due to Mutation XSS in both Chrome and Safari through a combination of `<svg>`/`<math>` elements and `</p>`/`</br>`. An example payload is: `<svg></p><style><a id=\"</style><img src=1 onerror=alert(1)>\">`. This allows attackers to bypass the XSS protection and execute arbitrary JavaScript in a victim's browser.\n\n\n## Recommendation\n\nUpgrade to version 2.0.3 or later. You may al",
       "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-v2wj-7wpq-c8vv",
-      "publishedAt": "2026-03-03T18:31:33Z",
-      "modifiedAt": "2026-03-05T20:25:13Z",
+      "url": "https://github.com/advisories/GHSA-chqj-j4fh-rw7m",
+      "publishedAt": "2020-08-28T21:25:11Z",
+      "modifiedAt": "2023-09-13T18:51:45Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-v2wj-7wpq-c8vv"
+          "value": "GHSA-chqj-j4fh-rw7m"
         },
         {
           "type": "CVE",
-          "value": "CVE-2026-0540"
+          "value": "CVE-2019-16728"
         }
       ],
       "affectedVersions": [
         {
-          "range": ">= 2.5.3, <= 2.5.8",
-          "fixed": "2.5.9"
+          "range": "< 2.0.3",
+          "fixed": "2.0.3"
         }
       ],
       "source": "github"
     },
     {
-      "id": "GHSA-v8jm-5vwx-cfxm",
+      "id": "GHSA-63q7-h895-m982",
       "packageName": "dompurify",
-      "title": "DOMPurify contains a Cross-site Scripting vulnerability",
-      "description": "DOMPurify 3.1.3 through 3.2.6 and 2.5.3 through 2.5.8 contain a cross-site scripting vulnerability that allows attackers to bypass attribute sanitization by exploiting missing textarea rawtext element validation in the SAFE_FOR_XML regex. Attackers can include closing rawtext tags like </textarea> in attribute values to break out of rawtext contexts and execute JavaScript when sanitized output is placed inside rawtext elements. The 3.x branch was fixed in 3.2.7; the 2.x branch was never patched.",
+      "title": "Cross-site Scripting in dompurify",
+      "description": "Cure53 DOMPurify before 2.0.17 allows mutation XSS. This occurs because a serialize-parse roundtrip does not necessarily return the original DOM tree, and a namespace can change from HTML to MathML, as demonstrated by nesting of FORM elements.",
       "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-v8jm-5vwx-cfxm",
-      "publishedAt": "2026-03-03T18:31:33Z",
-      "modifiedAt": "2026-03-04T20:50:11Z",
+      "url": "https://github.com/advisories/GHSA-63q7-h895-m982",
+      "publishedAt": "2020-12-18T22:51:40Z",
+      "modifiedAt": "2023-02-01T05:05:07Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-v8jm-5vwx-cfxm"
+          "value": "GHSA-63q7-h895-m982"
         },
         {
           "type": "CVE",
-          "value": "CVE-2025-15599"
+          "value": "CVE-2020-26870"
         }
       ],
       "affectedVersions": [
         {
-          "range": ">= 2.5.3, <= 2.5.8"
+          "range": "< 2.0.17",
+          "fixed": "2.0.17"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mjjq-c88q-qhr6",
+      "packageName": "dompurify",
+      "title": "Cross-Site Scripting in dompurify",
+      "description": "Versions of `dompurify` prior to 2.0.7 are vulnerable to Cross-Site Scripting (XSS). It is possible to bypass the package sanitization through Mutation XSS, which may allow an attacker to execute arbitrary JavaScript in a victim's browser.\n\n\n## Recommendation\n\nUpgrade to version 2.0.7 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mjjq-c88q-qhr6",
+      "publishedAt": "2020-09-03T21:22:00Z",
+      "modifiedAt": "2023-01-09T05:04:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mjjq-c88q-qhr6"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.7",
+          "fixed": "2.0.7"
         }
       ],
       "source": "github"

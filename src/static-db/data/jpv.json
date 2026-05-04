@@ -1,6 +1,6 @@
 {
   "packageName": "jpv",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vh6r-g38f-q3w8",
@@ -25,6 +25,33 @@
         {
           "range": "< 2.2.2",
           "fixed": "2.2.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rh46-3fgc-mvrf",
+      "packageName": "jpv",
+      "title": "Validation bypass is possible in Json Pattern Validator",
+      "description": "In jpv (aka Json Pattern Validator) before 2.1.1, compareCommon() can be bypassed because certain internal attributes can be overwritten via a conflicting name, as demonstrated by 'constructor': {'name':'Array'}. This affects validate(). Hence, a crafted payload can overwrite this builtin attribute to manipulate the type detection result.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rh46-3fgc-mvrf",
+      "publishedAt": "2019-12-04T21:25:28Z",
+      "modifiedAt": "2023-01-09T05:01:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rh46-3fgc-mvrf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-19507"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.1",
+          "fixed": "2.1.1"
         }
       ],
       "source": "github"

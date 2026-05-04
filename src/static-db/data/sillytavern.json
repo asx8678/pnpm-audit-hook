@@ -1,7 +1,115 @@
 {
   "packageName": "sillytavern",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-wm7j-m6jm-8797",
+      "packageName": "sillytavern",
+      "title": "SillyTavern: Incomplete IP validation in /api/search/visit allows SSRF via localhost and IPv6",
+      "description": "### Details\nDistinct from CVE-2025-59159 and CVE-2026-26286 (all fixed in v1.16.0). This endpoint is still unpatched.\n\nIn `src/endpoints/search.js` line 419, the hostname is checked against `/^\\d+\\.\\d+\\.\\d+\\.\\d+$/`. This only matches literal dotted-quad IPv4 (e.g. `127.0.0.1`, `10.0.0.1`). It does not catch:\n- `localhost` (hostname, not dotted-quad)\n- `[::1]` (IPv6 loopback)\n- DNS names resolving to internal addresses (e.g. `localtest.me` -> 127.0.0.1)\n\nA separate port check (`urlObj.port !== ''",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wm7j-m6jm-8797",
+      "publishedAt": "2026-04-01T21:42:24Z",
+      "modifiedAt": "2026-04-06T17:25:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wm7j-m6jm-8797"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34526"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.16.0",
+          "fixed": "1.17.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xvww-xhx6-22pf",
+      "packageName": "sillytavern",
+      "title": "SillyTavern has a path traversal in `/api/chats/import` allows arbitrary file write outside intended chat directory",
+      "description": "### Summary\nA path traversal vulnerability in `/api/chats/import` allows an authenticated attacker to write attacker-controlled files outside the intended chats directory by injecting traversal sequences into `character_name`.\n\n### Details\n`character_name` is used unsafely as part of the destination filename and then passed into `path.join(...)` without sanitization.\n\nEvidence:\n- Import handler entrypoint:  \n  <https://github.com/SillyTavern/SillyTavern/blob/b7bb8be35a5c779b4db12a4a5b94d7e490960",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xvww-xhx6-22pf",
+      "publishedAt": "2026-04-01T21:36:40Z",
+      "modifiedAt": "2026-04-06T17:24:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xvww-xhx6-22pf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34522"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.16.0",
+          "fixed": "1.17.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vprr-q85p-79mf",
+      "packageName": "sillytavern",
+      "title": "SillyTavern: Path Traversal in `/api/chats/export` and `/api/chats/delete` allows arbitrary file read/delete within user data root",
+      "description": "## Summary\nA Path Traversal vulnerability in chat endpoints allows an authenticated attacker to read and delete arbitrary files under their user data root (for example `secrets.json` and `settings.json`) by supplying `avatar_url=\"..\"`.\n\n### Details\nThe input validator used by `avatar_url` blocks only `/` and NUL bytes, but does not block traversal segments like `..`.\n\nEvidence:\n- Weak validator regex (does not reject `..`):  \n  <https://github.com/SillyTavern/SillyTavern/blob/b7bb8be35a5c779b4db",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vprr-q85p-79mf",
+      "publishedAt": "2026-04-01T21:41:48Z",
+      "modifiedAt": "2026-04-06T17:24:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vprr-q85p-79mf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34524"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.16.0",
+          "fixed": "1.17.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-525j-2hrj-m8fp",
+      "packageName": "sillytavern",
+      "title": "SillyTavern: Path Traversal allows file existence oracle",
+      "description": "### Summary\n\nA path traversal vulnerability in the static file route handler allows any unauthenticated user to determine whether files exist anywhere on the server's filesystem. By sending percent-encoded `../` sequences (`%2E%2E%2F`) in requests to static file routes, an attacker can check for the existence of files (404 if it doesn't exist, 403 means it exists).\n\n### Details\n\nThe vulnerability is in `createRouteHandler` (`src/users.js:947–963`), which backs all user-data static file routes:\n\n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-525j-2hrj-m8fp",
+      "publishedAt": "2026-04-01T21:40:22Z",
+      "modifiedAt": "2026-04-06T17:24:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-525j-2hrj-m8fp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34523"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.16.0",
+          "fixed": "1.17.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-7cxj-w27x-x78q",
       "packageName": "sillytavern",

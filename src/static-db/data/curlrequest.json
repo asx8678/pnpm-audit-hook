@@ -1,0 +1,32 @@
+{
+  "packageName": "curlrequest",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m8xj-5v73-3hh8",
+      "packageName": "curlrequest",
+      "title": "curlrequest allows execution of arbitrary commands",
+      "description": "curlrequest through 1.0.1 allows execution of arbitrary commands. It is possible to inject arbitrary commands by using a semicolon char in any of the `options` values.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m8xj-5v73-3hh8",
+      "publishedAt": "2020-05-13T16:29:43Z",
+      "modifiedAt": "2023-01-09T05:02:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m8xj-5v73-3hh8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7646"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

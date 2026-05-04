@@ -1,0 +1,33 @@
+{
+  "packageName": "@jupyter-notebook/help-extension",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rch3-82jr-f9w9",
+      "packageName": "@jupyter-notebook/help-extension",
+      "title": "Jupyter Notebook Vulnerable to Authentication Token Theft via CommandLinker XSS",
+      "description": "### Impact\n\nA stored Cross-Site Scripting (XSS) vulnerability in Jupyter Notebook allows attackers to steal authentication tokens from users who open malicious notebook files and interact with elements that the attacker can make look indistinguishable from legitimate controls (single click interaction).\n\nThe vulnerability enables complete account takeover through the Jupyter REST API, allowing the attacker to:\n1. Read all files\n2. Modify/create files\n3. Access running kernels and execute arbitra",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rch3-82jr-f9w9",
+      "publishedAt": "2026-04-30T17:25:47Z",
+      "modifiedAt": "2026-04-30T17:25:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rch3-82jr-f9w9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-40171"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0, <= 7.5.5",
+          "fixed": "7.5.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

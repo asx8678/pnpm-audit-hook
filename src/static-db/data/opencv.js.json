@@ -1,0 +1,32 @@
+{
+  "packageName": "opencv.js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5hxw-r847-qfwp",
+      "packageName": "opencv.js",
+      "title": "opencv.js is malware",
+      "description": "opencv.js was a malicious module published with the intent to hijack environment variables. It has been unpublished by npm.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5hxw-r847-qfwp",
+      "publishedAt": "2018-08-29T23:47:07Z",
+      "modifiedAt": "2023-09-07T18:31:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5hxw-r847-qfwp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16066"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.2.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

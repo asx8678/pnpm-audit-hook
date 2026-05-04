@@ -1,0 +1,86 @@
+{
+  "packageName": "simplehttpserver",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vwr2-wj63-86gr",
+      "packageName": "simplehttpserver",
+      "title": "Path Traversal in simplehttpserver",
+      "description": "All versions of `simplehttpserver` are vulnerable to Path Traversal. \n\nThis vulnerability allows an attacker to access files outside the webroot since it allows symlink navigation in the URL.\n\n\n## Recommendation\n\nNo fix is currently available. Do not use `simplehttpserver` in production or consider using an alternative module until a fix is made available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vwr2-wj63-86gr",
+      "publishedAt": "2018-12-06T15:49:10Z",
+      "modifiedAt": "2023-09-12T21:07:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vwr2-wj63-86gr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16478"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gpvj-q7fp-jcch",
+      "packageName": "simplehttpserver",
+      "title": "simplehttpserver allows directory traversal and file listing",
+      "description": "Path traversal in simplehttpserver <v0.2.1 allows listing any file on the server.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gpvj-q7fp-jcch",
+      "publishedAt": "2018-09-06T03:22:59Z",
+      "modifiedAt": "2023-09-12T20:49:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gpvj-q7fp-jcch"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3787"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.2.1",
+          "fixed": "0.2.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jrhj-2j3q-xf3v",
+      "packageName": "simplehttpserver",
+      "title": "Stored Cross-Site Scripting in simplehttpserver",
+      "description": "Simplehttpserver prior to version 0.1.0 are vulnerable to stored cross-site scripting (XSS). To be exploited an attacker needs to control the filename of a file that is used in the directory listing output. This version is patched in 0.1.0",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jrhj-2j3q-xf3v",
+      "publishedAt": "2018-07-26T15:03:30Z",
+      "modifiedAt": "2023-01-31T01:51:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jrhj-2j3q-xf3v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3716"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.1.0",
+          "fixed": "0.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

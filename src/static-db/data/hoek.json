@@ -1,7 +1,34 @@
 {
   "packageName": "hoek",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-jp4x-w63m-7wgm",
+      "packageName": "hoek",
+      "title": "Prototype Pollution in hoek",
+      "description": "Versions of `hoek` prior to 4.2.1 and 5.0.3 are vulnerable to prototype pollution.\n\nThe `merge` function, and the `applyToDefaults` and `applyToDefaultsWithShallow` functions which leverage `merge` behind the scenes, are vulnerable to a prototype pollution attack when provided an _unvalidated_ payload created from a JSON string containing the `__proto__` property.\n\nThis can be demonstrated like so:\n\n```javascript\nvar Hoek = require('hoek');\nvar malicious_payload = '{\"__proto__\":{\"oops\":\"It works",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jp4x-w63m-7wgm",
+      "publishedAt": "2018-04-26T15:25:17Z",
+      "modifiedAt": "2025-05-29T22:49:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jp4x-w63m-7wgm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3728"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.2.1",
+          "fixed": "4.2.1"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-c429-5p7v-vgjp",
       "packageName": "hoek",

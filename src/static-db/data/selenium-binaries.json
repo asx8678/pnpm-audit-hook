@@ -1,0 +1,33 @@
+{
+  "packageName": "selenium-binaries",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h4mc-r4f4-hcf4",
+      "packageName": "selenium-binaries",
+      "title": "selenium-binaries downloads resources over HTTP",
+      "description": "Versions of `selenium-binaries` prior to 0.15.0 insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `selenium-binaries`.\n\n\n## Recommendation\n\nA fix for this vulnerability is available on the `master` branch of the repository as part of version 0.15.0.\n\nAnother mitigation c",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h4mc-r4f4-hcf4",
+      "publishedAt": "2019-02-18T23:34:37Z",
+      "modifiedAt": "2023-01-11T05:08:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h4mc-r4f4-hcf4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10589"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.15.0",
+          "fixed": "0.15.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

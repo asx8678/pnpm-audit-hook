@@ -1,6 +1,6 @@
 {
   "packageName": "nodebb",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-rfh2-8vxq-jqr8",
@@ -186,6 +186,33 @@
         {
           "range": ">= 1.0.4, < 1.18.5",
           "fixed": "1.18.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-72fv-qgj6-2w2p",
+      "packageName": "nodebb",
+      "title": "Cross-site Scripting in NodeBB",
+      "description": "Controllers.outgoing in controllers/index.js in NodeBB before 0.7.3 has outgoing XSS.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-72fv-qgj6-2w2p",
+      "publishedAt": "2019-05-01T18:37:08Z",
+      "modifiedAt": "2023-02-01T05:01:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-72fv-qgj6-2w2p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-9286"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.8.2",
+          "fixed": "0.8.2"
         }
       ],
       "source": "github"

@@ -1,0 +1,32 @@
+{
+  "packageName": "@better-auth/oauth-provider",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xr8f-h2gw-9xh6",
+      "packageName": "@better-auth/oauth-provider",
+      "title": "OAuth 2.1 Provider: Unprivileged users can register OAuth clients",
+      "description": "### Am I affected?\n\n  You're affected if all of the following are true:\n\n  - Using @better-auth/oauth-provider at version specified below \n  - You configured clientPrivileges in the plugin options expecting it to gate who can create OAuth clients\n  - The /oauth2/create-client or /admin/oauth2/create-client endpoints are reachable by authenticated users you don't fully trust\n\n  If clientPrivileges is not configured, this bug has no security consequence for your deployment\n\n  ---\n  ### Summary\n\n  ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xr8f-h2gw-9xh6",
+      "publishedAt": "2026-04-16T22:44:27Z",
+      "modifiedAt": "2026-04-27T15:24:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xr8f-h2gw-9xh6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41427"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.7.0-beta.0, <= 1.7.0-beta.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

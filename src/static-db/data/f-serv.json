@@ -1,0 +1,28 @@
+{
+  "packageName": "f-serv",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vx5w-cxch-wwc9",
+      "packageName": "f-serv",
+      "title": "Path Traversal in f-serv",
+      "description": "All versions of `f-serv` are vulnerable to Path Traversal.  Due to insufficient input sanitization in URLs, attackers can access server files by using relative paths when fetching files. \n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vx5w-cxch-wwc9",
+      "publishedAt": "2020-09-03T19:02:27Z",
+      "modifiedAt": "2023-01-09T05:04:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vx5w-cxch-wwc9"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

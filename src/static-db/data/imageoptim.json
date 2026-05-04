@@ -1,0 +1,32 @@
+{
+  "packageName": "imageoptim",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mm7h-323r-9p4g",
+      "packageName": "imageoptim",
+      "title": "Downloads Resources over HTTP in imageoptim",
+      "description": "imageoptim is a Node.js wrapper for some images compression algorithms.\n\nimageoptim downloads zipped resources over HTTP, which leaves it vulnerable to MITM attacks.  It may be possible to cause remote code execution (RCE) by swapping out the requested tarball with an attacker controlled tarball if the attacker is on the network or positioned in between the user and the remote server.\n\n\n## Recommendation\n\nNo fix is currently available for this vulnerability.\n\nIt is our recommendation to not inst",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mm7h-323r-9p4g",
+      "publishedAt": "2019-02-18T23:50:33Z",
+      "modifiedAt": "2023-01-09T05:03:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mm7h-323r-9p4g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10596"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.5.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

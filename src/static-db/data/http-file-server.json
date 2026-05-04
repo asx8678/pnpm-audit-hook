@@ -1,0 +1,58 @@
+{
+  "packageName": "http-file-server",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2mp5-m968-gwr2",
+      "packageName": "http-file-server",
+      "title": "Path Traversal in http-file-server",
+      "description": "All versions of `http-file-server` are vulnerable to Path Traversal. The package fails to sanitize URLs, allowing attackers to access server files outside of the served folder using relative paths.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2mp5-m968-gwr2",
+      "publishedAt": "2019-07-16T00:41:34Z",
+      "modifiedAt": "2023-02-03T20:45:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2mp5-m968-gwr2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-5447"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.2.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7j93-2h6r-hm49",
+      "packageName": "http-file-server",
+      "title": "Cross-Site Scripting in http-file-server",
+      "description": "All versions of `http-file-server` are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize filenames, allowing attackers to execute arbitrary JavaScript in the victim's browser through files with names containing malicious code.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7j93-2h6r-hm49",
+      "publishedAt": "2019-07-31T04:22:36Z",
+      "modifiedAt": "2023-02-01T09:19:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7j93-2h6r-hm49"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-5458"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.2.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

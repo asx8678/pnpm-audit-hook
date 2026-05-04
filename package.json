@@ -36,15 +36,20 @@
   },
   "bin": {
     "pnpm-audit-setup": "bin/setup.js",
-    "pnpm-audit-scan": "bin/cli.js"
+    "pnpm-audit-scan": "bin/cli.js",
+    "pnpm-audit-report": "bin/report.js",
+    "pnpm-audit-fix": "bin/fix.js"
   },
   "files": [
     "dist",
     "bin",
     ".pnpmfile.cjs",
+    ".pnpmfile.mjs",
     ".pnpm-audit.yaml",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md"
   ],
+  "sideEffects": false,
   "engines": {
     "node": ">=18"
   },
@@ -60,18 +65,44 @@
     "test:sbom": "node --import tsx --test test/sbom/**/*.test.ts test/integration/cli/sbom.test.ts test/integration/sbom/**/*.test.ts",
     "test:performance": "node --import tsx --test test/integration/audit/performance.test.ts test/integration/sbom/performance.test.ts",
     "test:all": "npm run test && npm run test:integration",
+    "test:coverage": "c8 --include='src/**/*.ts' --lines=75 --branches=70 --functions=75 node --import tsx --test test/**/*.test.ts",
+    "test:coverage:unit": "c8 --include='src/**/*.ts' --lines=75 --branches=70 --functions=75 node --import tsx --test test/**/*.test.ts --test-name-pattern='^(?!.*Integration)'",
+    "test:coverage:report": "c8 --include='src/**/*.ts' --reporter=text --reporter=html --reporter=lcov node --import tsx --test test/**/*.test.ts",
     "prepare": "tsc -p tsconfig.json && node scripts/copy-static-db.js && node scripts/optimize-static-db.js && node scripts/bundle.js && node scripts/postbuild-link.js",
     "docs:api": "typedoc",
     "update-vuln-db:incremental": "tsx scripts/update-vuln-db.ts --incremental",
-    "update-vuln-db:full": "tsx scripts/update-vuln-db.ts"
+    "update-vuln-db:full": "tsx scripts/update-vuln-db.ts",
+    "validate:static-db": "tsx scripts/validate-static-db.ts",
+    "validate:static-db:dist": "tsx scripts/validate-static-db.ts --data-path dist/static-db/data"
+  },
+  "c8": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "src/**/*.d.ts",
+      "src/static-db/data/**"
+    ],
+    "reporter": [
+      "text",
+      "html",
+      "lcov"
+    ],
+    "all": true,
+    "check-coverage": true,
+    "lines": 75,
+    "functions": 75,
+    "branches": 70,
+    "report-dir": "coverage"
   },
   "dependencies": {
     "semver": "^7.7.3",
-    "yaml": "^2.8.2"
+    "yaml": "^2.8.3"
   },
   "devDependencies": {
     "@types/node": "^24.10.9",
     "@types/semver": "^7.7.1",
+    "c8": "^10.1.3",
     "esbuild": "^0.27.2",
     "tsx": "^4.21.0",
     "typedoc": "^0.28.19",

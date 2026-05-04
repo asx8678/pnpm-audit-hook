@@ -1,0 +1,32 @@
+{
+  "packageName": "dalek-browser-ie-canary",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x56r-5r34-qg74",
+      "packageName": "dalek-browser-ie-canary",
+      "title": "dalek-browser-ie-canary downloads Resources over HTTP",
+      "description": "Affected versions of `dalek-browser-ie-canary` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `dalek-browser-ie-canary`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability, and the package author has marked the package as deprecated.\n\nThe best",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x56r-5r34-qg74",
+      "publishedAt": "2019-02-18T23:47:47Z",
+      "modifiedAt": "2023-09-11T18:32:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x56r-5r34-qg74"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10612"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.4-2014-04-04-12-11-49"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

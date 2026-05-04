@@ -1,7 +1,34 @@
 {
   "packageName": "mcp-server-kubernetes",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-4xqg-gf5c-ghwq",
+      "packageName": "mcp-server-kubernetes",
+      "title": "MCP Server Kubernetes has an Argument Injection in port_forward tool via space-splitting",
+      "description": "## Summary\n\nThe `port_forward` tool in `mcp-server-kubernetes` constructs a kubectl command as a string and splits it on spaces before passing to `spawn()`. Unlike all other tools in the codebase which correctly use `execFileSync(\"kubectl\", argsArray)`, `port_forward` uses string concatenation with user-controlled input (`namespace`, `resourceType`, `resourceName`, `localPort`, `targetPort`) followed by naive `.split(\" \")` parsing. This allows an attacker to inject arbitrary kubectl flags by emb",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4xqg-gf5c-ghwq",
+      "publishedAt": "2026-04-14T22:32:15Z",
+      "modifiedAt": "2026-04-15T21:17:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4xqg-gf5c-ghwq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39884"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.4.0",
+          "fixed": "3.5.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-wvxp-jp4w-w8wg",
       "packageName": "mcp-server-kubernetes",

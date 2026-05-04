@@ -1,0 +1,33 @@
+{
+  "packageName": "@studiocms/s3-storage",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mm78-fgq8-6pgr",
+      "packageName": "@studiocms/s3-storage",
+      "title": "StudioCMS S3 Storage Manager Authorization Bypass via Missing `await` on Async Auth Check",
+      "description": "## Summary\n\nThe S3 storage manager's `isAuthorized()` function is declared `async` (returns `Promise<boolean>`) but is called without `await` in both the POST and PUT handlers. Since a Promise object is always truthy in JavaScript, `!isAuthorized(type)` always evaluates to `false`, completely bypassing the authorization check. Any authenticated user with the lowest `visitor` role can upload, delete, rename, and list all files in the S3 bucket.\n\n## Details\n\nThe `isAuthorized` function is typed as",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mm78-fgq8-6pgr",
+      "publishedAt": "2026-03-12T14:49:30Z",
+      "modifiedAt": "2026-03-12T14:49:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mm78-fgq8-6pgr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32101"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.0",
+          "fixed": "0.3.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

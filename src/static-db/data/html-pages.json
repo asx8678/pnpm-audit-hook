@@ -1,0 +1,58 @@
+{
+  "packageName": "html-pages",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5p26-hw7f-3cpr",
+      "packageName": "html-pages",
+      "title": "Cross-Site Scripting in html-pages",
+      "description": "All versions of `html-pages` are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize folder names, allowing attackers to execute arbitrary JavaScript in the victim's browser through folders with names containing malicious code.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5p26-hw7f-3cpr",
+      "publishedAt": "2019-02-07T18:14:44Z",
+      "modifiedAt": "2023-09-12T20:39:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5p26-hw7f-3cpr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16481"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fm87-46vv-jqrr",
+      "packageName": "html-pages",
+      "title": "Path Traversal in html-pages",
+      "description": "Versions of `html-pages` before 2.1.0 are vulnerable to path traversal.\n\n\n## Recommendation\n\nUpdate to version 2.1.0 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fm87-46vv-jqrr",
+      "publishedAt": "2018-09-18T13:45:07Z",
+      "modifiedAt": "2023-01-31T01:40:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fm87-46vv-jqrr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3744"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.1.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "packageName": "electron-packager",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q43m-ffwr-rpcc",
+      "packageName": "electron-packager",
+      "title": "SSL Validation Defaults to False in electron-packager",
+      "description": "Affected versions of `electron-packager` configure the generated application to disable SSL certificate verification by default. \n\nThis could allow an attacker with a privileged network position to launch a Man In The Middle (MITM) attack on the install process, intercepting the step where electron-packager downloads Electron for supported target platforms and architectures, and replacing the valid download with a tampered malicious one.\n\nThis only affects users using the electron-packager CLI. ",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-q43m-ffwr-rpcc",
+      "publishedAt": "2019-02-18T23:58:24Z",
+      "modifiedAt": "2023-01-09T05:03:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q43m-ffwr-rpcc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10534"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.2.1, < 7.0.0",
+          "fixed": "7.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

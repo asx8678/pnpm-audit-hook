@@ -1,10 +1,937 @@
 {
-  "packageName": "Flowise",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "packageName": "flowise",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
+      "id": "GHSA-3hjv-c53m-58jj",
+      "packageName": "flowise",
+      "title": "Flowise: CSV Agent Prompt Injection Remote Code Execution Vulnerability",
+      "description": "## Abstract\n\nTrend Micro's Zero Day Initiative has identified a vulnerability affecting FlowiseAI Flowise.\n\n## Vulnerability Details\n\n- **Version tested:** 3.0.13\n- **Installer file:** https://github.com/FlowiseAI/Flowise\n- **Platform tested:** Ubuntu 25.10\n\n## Analysis\n\nThis vulnerability allows remote attackers to execute arbitrary code on affected installations of FlowiseAI Flowise. Authentication is not required to exploit this vulnerability.\n\nThe specific flaw exists within the `run` method",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3hjv-c53m-58jj",
+      "publishedAt": "2026-04-21T20:19:52Z",
+      "modifiedAt": "2026-04-27T16:34:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3hjv-c53m-58jj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41264"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xhmj-rg95-44hv",
+      "packageName": "flowise",
+      "title": "Flowise: SSRF Protection Bypass via Unprotected Built-in HTTP Modules in Custom Function Sandbox",
+      "description": "### Summary\nA Server-Side Request Forgery (SSRF) protection bypass vulnerability exists in the Custom Function feature. While the application implements SSRF protection via HTTP_DENY_LIST for axios and node-fetch libraries, the built-in Node.js `http`, `https`, and `net` modules are allowed in the NodeVM sandbox without equivalent protection. This allows authenticated users to bypass SSRF controls and access internal network resources (e.g., cloud provider metadata services)\n\n### Details\nThe vul",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xhmj-rg95-44hv",
+      "publishedAt": "2026-04-16T21:50:12Z",
+      "modifiedAt": "2026-04-27T16:11:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xhmj-rg95-44hv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41270"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2x8m-83vc-6wv4",
+      "packageName": "flowise",
+      "title": "Flowise: SSRF Protection Bypass (TOCTOU & Default Insecure)",
+      "description": "### Summary\nThe core security wrappers (secureAxiosRequest and secureFetch) intended to prevent Server-Side Request Forgery (SSRF) contain multiple logic flaws. These flaws allow attackers to bypass the allow/deny lists via DNS Rebinding (Time-of-Check Time-of-Use) or by exploiting the default configuration which fails to enforce any deny list.\n\n\n### Details\nThe flaws exist in `packages/components/src/httpSecurity.ts`.\n\nDefault Insecure: If process.env.HTTP_DENY_LIST is undefined, checkDenyList ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2x8m-83vc-6wv4",
+      "publishedAt": "2026-04-16T21:51:00Z",
+      "modifiedAt": "2026-04-24T21:01:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2x8m-83vc-6wv4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41272"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6f7g-v4pp-r667",
+      "packageName": "flowise",
+      "title": "Flowise: Unauthenticated OAuth 2.0 Access Token Disclosure via Public Chatflow in Flowise",
+      "description": "### Summary\nFlowise contains an authentication bypass vulnerability that allows an unauthenticated attacker to obtain OAuth 2.0 access tokens associated with a public chatflow.\n\nBy accessing a public chatflow configuration endpoint, an attacker can retrieve internal workflow data, including OAuth credential identifiers, which can then be used to refresh and obtain valid OAuth 2.0 access tokens without authentication.\n\n### Details\nFlowise is designed to allow public chatflows to be accessed by un",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6f7g-v4pp-r667",
+      "publishedAt": "2026-04-16T21:52:46Z",
+      "modifiedAt": "2026-04-24T21:01:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6f7g-v4pp-r667"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41273"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x5w6-38gp-mrqh",
+      "packageName": "flowise",
+      "title": "Flowise: Password Reset Link Sent Over Unsecured HTTP",
+      "description": "**Summary:**\nThe password reset functionality on [cloud.flowiseai.com](http://cloud.flowiseai.com/) sends a reset password link over the unsecured HTTP protocol instead of HTTPS. This behavior introduces the risk of a man-in-the-middle (MITM) attack, where an attacker on the same network as the user (e.g., public Wi-Fi) can intercept the reset link and gain unauthorized access to the victim’s account.\n\n**Steps to Reproduce:**\n1. Sign up for a new account on https://cloud.flowiseai.com/register.\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x5w6-38gp-mrqh",
+      "publishedAt": "2026-04-16T21:53:16Z",
+      "modifiedAt": "2026-04-24T21:01:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x5w6-38gp-mrqh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41275"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f6hc-c5jr-878p",
+      "packageName": "flowise",
+      "title": "Flowise: resetPassword Authentication Bypass Vulnerability",
+      "description": "ZDI-CAN-28762: Flowise AccountService resetPassword Authentication Bypass Vulnerability\n\n-- ABSTRACT -------------------------------------\n\nTrend Micro's Zero Day Initiative has identified a vulnerability affecting the following products:\nFlowise - Flowise\n\n-- VULNERABILITY DETAILS ------------------------\n* Version tested:  3.0.12\n* Installer file:  hxxps://github.com/FlowiseAI/Flowise\n* Platform tested: NA\n\n---\n\n### Analysis\n\nThis vulnerability allows remote attackers to bypass authentication ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f6hc-c5jr-878p",
+      "publishedAt": "2026-04-16T21:55:18Z",
+      "modifiedAt": "2026-04-24T21:01:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f6hc-c5jr-878p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41276"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3prp-9gf7-4rxx",
+      "packageName": "flowise",
+      "title": "Flowise: Mass Assignment in DocumentStore Create Endpoint Leads to Cross-Workspace Object Takeover (IDOR)",
+      "description": "### Summary\nA Mass Assignment vulnerability in the DocumentStore creation endpoint allows authenticated users to control the primary key (id) and internal state fields of DocumentStore entities.\n\nBecause the service uses repository.save() with a client-supplied primary key, the POST create endpoint behaves as an implicit UPSERT operation. This enables overwriting existing DocumentStore objects.\n\nIn multi-workspace or multi-tenant deployments, this can lead to cross-workspace object takeover and ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3prp-9gf7-4rxx",
+      "publishedAt": "2026-04-17T21:34:16Z",
+      "modifiedAt": "2026-04-24T21:01:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3prp-9gf7-4rxx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41277"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w47f-j8rh-wx87",
+      "packageName": "flowise",
+      "title": "Flowise: Public chatflow endpoints return unsanitized flowData including plaintext API keys, passwords, and credential IDs",
+      "description": "### Summary\n\nThe `GET /api/v1/public-chatflows/:id` endpoint returns the full chatflow object **without sanitization** for public chatflows. Docker validation revealed this is worse than initially assessed: the `sanitizeFlowDataForPublicEndpoint` function does NOT exist in the released v3.0.13 Docker image. Both `public-chatflows` AND `public-chatbotConfig` return completely raw flowData including credential IDs, plaintext API keys, and password-type fields.\n\n### Root Cause\n\n```typescript\n// pac",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w47f-j8rh-wx87",
+      "publishedAt": "2026-04-17T21:34:30Z",
+      "modifiedAt": "2026-04-24T21:00:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w47f-j8rh-wx87"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41278"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5fw2-mwhh-9947",
+      "packageName": "flowise",
+      "title": "Flowise: Unauthenticated TTS endpoint accepts arbitrary credential IDs — enables API credit abuse via stored credentials",
+      "description": "### Summary\n\nThe text-to-speech generation endpoint (`POST /api/v1/text-to-speech/generate`) is whitelisted (no auth) and accepts a `credentialId` directly in the request body. When called without a `chatflowId`, the endpoint uses the provided `credentialId` to decrypt the stored credential (e.g., OpenAI or ElevenLabs API key) and generate speech.\n\n### Root Cause\n\n```typescript\n// packages/server/src/controllers/text-to-speech/index.ts:58-64\n} else {\n    // Use TTS config from request body\n    p",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5fw2-mwhh-9947",
+      "publishedAt": "2026-04-17T21:35:14Z",
+      "modifiedAt": "2026-04-24T21:00:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5fw2-mwhh-9947"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41279"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6r77-hqx7-7vw8",
+      "packageName": "flowise",
+      "title": "Flowise:  APIChain Prompt Injection SSRF in GET/POST API Chains",
+      "description": "### Summary\nA Server-Side Request Forgery (SSRF) vulnerability exists in FlowiseAI's POST/GET API Chain components that allows unauthenticated attackers to force the server to make arbitrary HTTP requests to internal and external systems. By injecting malicious prompt templates, attackers can bypass the intended API documentation constraints and redirect requests to sensitive internal services, potentially leading to internal network reconnaissance and data exfiltration.\n\n### Details\nThe vulnera",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6r77-hqx7-7vw8",
+      "publishedAt": "2026-04-16T21:52:11Z",
+      "modifiedAt": "2026-04-24T20:59:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6r77-hqx7-7vw8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41271"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v38x-c887-992f",
+      "packageName": "flowise",
+      "title": "Flowise: Airtable_Agent Code Injection Remote Code Execution Vulnerability",
+      "description": "ZDI-CAN-29412: FlowiseAI Flowise Airtable_Agent Code Injection Remote Code Execution Vulnerability\n\nTrend Micro's Zero Day Initiative has identified a vulnerability affecting the following products:\nFlowise - Flowise\n\n-- VULNERABILITY DETAILS ------------------------\n* Version tested:   3.0.13\n* Installer file:   hxxps://github.com/FlowiseAI/Flowise\n* Platform tested:  Ubuntu 25.10\n\n---\n\n### Analysis\n\n# FlowiseAI Flowise Airtable Agent pythonCode Prompt Injection Remote Code Execution Vulnerabil",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-v38x-c887-992f",
+      "publishedAt": "2026-04-18T00:46:04Z",
+      "modifiedAt": "2026-04-24T20:58:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v38x-c887-992f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41265"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rh7v-6w34-w2rr",
+      "packageName": "flowise",
+      "title": "Flowise: File Upload Validation Bypass in createAttachment",
+      "description": "### Summary\nIn FlowiseAI, the Chatflow configuration file upload settings can be modified to allow the application/javascript MIME type. This lets an attacker upload .js files even though the frontend doesn’t normally allow JavaScript uploads. This enables attackers to persistently store malicious Node.js web shells on the server, potentially leading to Remote Code Execution (RCE).\n\n### Details\nThis is a bypass of [GHSA‑35g6‑rrw3‑v6xc](https://github.com/FlowiseAI/Flowise/security/advisories/GHS",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rh7v-6w34-w2rr",
+      "publishedAt": "2026-04-16T21:49:28Z",
+      "modifiedAt": "2026-04-24T20:58:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rh7v-6w34-w2rr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41269"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cvrr-qhgw-2mm6",
+      "packageName": "flowise",
+      "title": "Flowise: Parameter Override Bypass Remote Command Execution",
+      "description": "### Summary\n\nFlowise is vulnerable to a critical unauthenticated remote command execution (RCE) vulnerability. It can be exploited via a parameter override bypass using the `FILE-STORAGE::` keyword combined with a `NODE_OPTIONS` environment variable injection. This allows for the execution of arbitrary system commands with root privileges within the containerized Flowise instance, requiring only a single HTTP request and no authentication or knowledge of the instance.\n\n### Details\n\nThe vulnerabi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cvrr-qhgw-2mm6",
+      "publishedAt": "2026-04-16T21:46:39Z",
+      "modifiedAt": "2026-04-24T20:58:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cvrr-qhgw-2mm6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41268"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4jpm-cgx2-8h37",
+      "packageName": "flowise",
+      "title": "Flowise: Sensitive Data Leak in public-chatbotConfig ",
+      "description": "### Summary\n\n`/api/v1/public-chatbotConfig/:id `ep exposes sensitive data including API keys, HTTP authorization headers and internal configuration without any authentication. An attacker with knowledge just of a chatflow UUID can retrieve credentials stored in password type fields and HTTP headers, leading to credential theft and more.\n\n### Details\n\nKnowledge of chatflow UUID can be obtained from embedded chat widgets, referrer headers or logs and it's the only prerequest. \n\n`getSinglePublicCha",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4jpm-cgx2-8h37",
+      "publishedAt": "2026-04-16T21:44:49Z",
+      "modifiedAt": "2026-04-24T20:58:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4jpm-cgx2-8h37"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41266"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-48m6-ch88-55mj",
+      "packageName": "flowise",
+      "title": "Flowise: Improper Mass Assignment in Account Registration Enables Unauthorized Organization Association",
+      "description": "### Summary\n\nAn improper mass assignment (JSON injection) vulnerability in the account registration endpoint of Flowise Cloud allows unauthenticated attackers to inject server-managed fields and nested objects during account creation. This enables client-controlled manipulation of ownership metadata, timestamps, organization association, and role mappings, breaking trust boundaries in a multi-tenant environment.\n\n### Details\n\nThe POST /api/v1/account/register endpoint is intended to accept a min",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-48m6-ch88-55mj",
+      "publishedAt": "2026-04-16T21:44:24Z",
+      "modifiedAt": "2026-04-24T20:58:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-48m6-ch88-55mj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41267"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f228-chmx-v6j6",
+      "packageName": "flowise",
+      "title": "Flowise: Remote code execution vulnerability in AirtableAgent.ts caused by lack of input verification when using `Pandas`.",
+      "description": "## Description\n\n### Summary\n\n“AirtableAgent” is an agent function provided by FlowiseAI that retrieves search results by accessing private datasets from airtable.com. “AirtableAgent” uses Python, along with `Pyodide` and `Pandas`, to get and return results.\n\nThe user’s input is directly applied to the question parameter within the prompt template and it is reflected to the Python code without any sanitization.\n\n**The point is that an attacker can bypass the intended behavior of the LLM and trigg",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f228-chmx-v6j6",
+      "publishedAt": "2026-04-16T21:43:57Z",
+      "modifiedAt": "2026-04-24T20:45:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f228-chmx-v6j6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41138"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9wc7-mj3f-74xv",
+      "packageName": "flowise",
+      "title": "Flowise: Code Injection in CSVAgent leads to Authenticated RCE",
+      "description": "### Summary\nThe CSVAgent allows providing a custom Pandas CSV read code. Due to lack of sanitization, an attacker can provide the following payload: `DataFrame({'foo': ['bar!']});import os;os.system('whoami')` that will get interpolated and executed by the server.\n\n### Details\nThe code in question that introduces the issue is in [CSVAgent.ts](https://github.com/FlowiseAI/Flowise/blob/78674897270d58a7086c6c7ccefcc44a5fe9fbf6/packages/components/nodes/agents/CSVAgent/CSVAgent.ts#L157]).\n`customRea",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9wc7-mj3f-74xv",
+      "publishedAt": "2026-04-16T21:44:15Z",
+      "modifiedAt": "2026-04-24T20:44:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9wc7-mj3f-74xv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41137"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-28g4-38q8-3cwc",
+      "packageName": "flowise",
+      "title": "Flowise: Cypher Injection in GraphCypherQAChain",
+      "description": "## Summary\n\nThe GraphCypherQAChain node forwards user-provided input directly into the Cypher query execution pipeline without proper sanitization. An attacker can inject arbitrary Cypher commands that are executed on the underlying Neo4j database, enabling data exfiltration, modification, or deletion.\n\n## Vulnerability Details\n\n| Field | Value |\n|-------|-------|\n| Affected File | `packages/components/nodes/chains/GraphCypherQAChain/GraphCypherQAChain.ts` |\n| Affected Lines | 193-219 (run metho",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-28g4-38q8-3cwc",
+      "publishedAt": "2026-04-16T21:54:26Z",
+      "modifiedAt": "2026-04-24T19:40:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-28g4-38q8-3cwc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41274"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9hrv-gvrv-6gf2",
+      "packageName": "flowise",
+      "title": "Flowise Execute Flow function has an SSRF vulnerability",
+      "description": "### Summary\n\nThe attacker provides an intranet address through the base url field configured in the Execute Flow node \n→ Bypass checkDenyList / resolveAndValidate in httpSecurity.ts (not called)\n→ Causes the server to initiate an HTTP request to any internal network address, read cloud metadata, or detect internal network services \n\n### Details\n\n<img width=\"1280\" height=\"860\" alt=\"9a52a74e6fe2fd78e4962d1d68057fc2\" src=\"https://github.com/user-attachments/assets/20df0006-9129-4886-8928-16d19a617c",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9hrv-gvrv-6gf2",
+      "publishedAt": "2026-04-16T21:23:17Z",
+      "modifiedAt": "2026-04-16T21:23:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9hrv-gvrv-6gf2"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qqvm-66q4-vf5c",
+      "packageName": "flowise",
+      "title": "Flowise: SSRF Protection Bypass via Direct node-fetch / axios Usage (Patch Enforcement Failure)",
+      "description": "### Summary\n\nFlowise introduced SSRF protections through a centralized HTTP security wrapper (`httpSecurity.ts`) that implements deny-list validation and IP pinning logic.\n\nHowever, multiple tool implementations directly import and invoke raw HTTP clients (`node-fetch`, `axios`Instead of using the secured wrapper.\n\nBecause enforcement is neither mandatory nor centralized, these tools bypass SSRF mitigation entirely, restoring full SSRF capability even after the patch.\n\nThis issue is distinct fro",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qqvm-66q4-vf5c",
+      "publishedAt": "2026-04-16T21:23:03Z",
+      "modifiedAt": "2026-04-16T21:23:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qqvm-66q4-vf5c"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w6v6-49gh-mc9w",
+      "packageName": "flowise",
+      "title": "Flowise: Path Traversal in Vector Store basePath",
+      "description": "## Summary\n\nThe Faiss and SimpleStore (LlamaIndex) vector store implementations accept a `basePath` parameter from user-controlled input and pass it directly to filesystem write operations without any sanitization. An authenticated attacker can exploit this to write vector store data to arbitrary locations on the server filesystem.\n\n## Vulnerability Details\n\n| Field | Value |\n|-------|-------|\n| Affected File | `packages/components/nodes/vectorstores/Faiss/Faiss.ts` (lines 79, 91) |\n| Affected F",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w6v6-49gh-mc9w",
+      "publishedAt": "2026-04-16T21:22:49Z",
+      "modifiedAt": "2026-04-16T21:22:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w6v6-49gh-mc9w"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m7mq-85xj-9x33",
+      "packageName": "flowise",
+      "title": "Flowise: Weak Default Token Hash Secret",
+      "description": "**Detection Method:** Kolega.dev Deep Code Scan\n\n| Attribute | Value |\n|---|---|\n| Location | packages/server/src/enterprise/utils/tempTokenUtils.ts:31-34 |\n| Practical Exploitability | Medium |\n| Developer Approver | faizan@kolega.ai |\n\n### Description\nThe encryption key for token encryption has a weak default value 'Secre$t' when TOKEN_HASH_SECRET environment variable is not set.\n\n### Affected Code\n```\nconst key = crypto\n    .createHash('sha256')\n    .update(process.env.TOKEN_HASH_SECRET || 'S",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m7mq-85xj-9x33",
+      "publishedAt": "2026-04-16T21:22:36Z",
+      "modifiedAt": "2026-04-16T21:22:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m7mq-85xj-9x33"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2qqc-p94c-hxwh",
+      "packageName": "flowise",
+      "title": "Flowise: Weak Default Express Session Secret",
+      "description": "**Detection Method:** Kolega.dev Deep Code Scan\n\n| Attribute | Value |\n|---|---|\n| Location | packages/server/src/enterprise/middleware/passport/index.ts:55 |\n| Practical Exploitability | High |\n| Developer Approver | faizan@kolega.ai |\n\n### Description\nExpress session secret has a weak default value 'flowise' when EXPRESS_SESSION_SECRET is not set.\n\n### Affected Code\n```\nsecret: process.env.EXPRESS_SESSION_SECRET || 'flowise'\n```\n\n### Evidence\nThe default session secret 'flowise' is publicly vi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2qqc-p94c-hxwh",
+      "publishedAt": "2026-04-16T21:22:00Z",
+      "modifiedAt": "2026-04-16T21:22:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2qqc-p94c-hxwh"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cc4f-hjpj-g9p8",
+      "packageName": "flowise",
+      "title": "Flowise: Weak Default JWT Secrets",
+      "description": "**Detection Method:** Kolega.dev Deep Code Scan\n\n| Attribute | Value |\n|---|---|\n| Severity | Critical |\n| Location | packages/server/src/enterprise/middleware/passport/index.ts:29-34 |\n| Practical Exploitability | High |\n| Developer Approver | faizan@kolega.ai |\n\n### Description\nJWT secrets have weak hardcoded defaults ('auth_token', 'refresh_token', 'AUDIENCE', 'ISSUER'). Attackers can forge valid JWTs and impersonate any user.\n\n### Affected Code\n```\nconst jwtAudience = process.env.JWT_AUDIENC",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cc4f-hjpj-g9p8",
+      "publishedAt": "2026-04-16T21:21:12Z",
+      "modifiedAt": "2026-04-16T21:21:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cc4f-hjpj-g9p8"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6pcv-j4jx-m4vx",
+      "packageName": "flowise",
+      "title": "Flowise: Unauthenticated Information Disclosure of OAuth Secrets (Cleartext) via GET Request",
+      "description": "### Summary\nI have discovered a critical Missing Authentication vulnerability on the /api/v1/loginmethod endpoint. The API allows unauthenticated users (guests) to retrieve the full SSO configuration of any organization by simply providing an organizationId. The response includes sensitive OAuth credentials (Client Secrets) in cleartext.\n\n\n### PoC\nThe following request can be sent by anyone on the internet without any cookies or authorization headers.\n\nRequest\n```http\nGET /api/v1/loginmethod?org",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6pcv-j4jx-m4vx",
+      "publishedAt": "2026-04-16T21:20:05Z",
+      "modifiedAt": "2026-04-16T21:20:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6pcv-j4jx-m4vx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-c9gw-hvqq-f33r",
+      "packageName": "flowise",
+      "title": "Flowise: Authenticated RCE Via MCP Adapters",
+      "description": "### Summary\nDue to unsafe serialization of stdio commands in the MCP adapter, an authenticated attacker can add an MCP stdio server with an arbitrary command, achieving command execution.\n\n### Details\nThe vulnerability lies in a bug in the input sanitization from the “Custom MCP” configuration in http://localhost:3000/canvas - where any user can add a new MCP, when doing so - adding a new MCP using stdio, the user can add any command, even though your code have input sanitization checks such as ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-c9gw-hvqq-f33r",
+      "publishedAt": "2026-04-16T21:18:17Z",
+      "modifiedAt": "2026-04-16T21:18:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c9gw-hvqq-f33r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-40933"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.13",
+          "fixed": "3.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fvcw-9w9r-pxc7",
+      "packageName": "flowise",
+      "title": "Flowise affected by Server-Side Request Forgery (SSRF) in HTTP Node Leading to Internal Network Access",
+      "description": "**Description:**\nFlowise exposes an HTTP Node in AgentFlow and Chatflow that performs server-side HTTP requests using user-controlled URLs. By default, there are no restrictions on target hosts, including private/internal IP ranges (RFC 1918), localhost, or cloud metadata endpoints.\nThis enables Server-Side Request Forgery (SSRF), allowing any user interacting with a publicly exposed chatflow to force the Flowise server to make requests to internal network resources that are inaccessible from th",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fvcw-9w9r-pxc7",
+      "publishedAt": "2026-03-11T00:24:05Z",
+      "modifiedAt": "2026-04-10T17:33:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fvcw-9w9r-pxc7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31829"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.12",
+          "fixed": "3.0.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5f53-522j-j454",
+      "packageName": "flowise",
+      "title": "Flowise Missing Authentication on NVIDIA NIM Endpoints",
+      "description": "# Missing Authentication on NVIDIA NIM Endpoints\n\n## Summary\n\nThe NVIDIA NIM router (`/api/v1/nvidia-nim/*`) is whitelisted in the global authentication middleware, allowing unauthenticated access to privileged container management and token generation endpoints.\n\n## Vulnerability Details\n\n| Field | Value |\n|-------|-------|\n| CWE | CWE-306: Missing Authentication for Critical Function |\n| Affected File | `packages/server/src/utils/constants.ts` |\n| Affected Line | Line 20 (`'/api/v1/nvidia-nim'",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5f53-522j-j454",
+      "publishedAt": "2026-03-06T22:21:38Z",
+      "modifiedAt": "2026-03-09T13:15:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5f53-522j-j454"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30824"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.12",
+          "fixed": "3.0.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cwc3-p92j-g7qm",
+      "packageName": "flowise",
+      "title": "Flowise has IDOR leading to Account Takeover and Enterprise Feature Bypass via SSO Configuration",
+      "description": "### Summary\nThe Flowise platform has a critical Insecure Direct Object Reference (IDOR) vulnerability combined with a Business Logic Flaw in the PUT /api/v1/loginmethod endpoint.\n\nWhile the endpoint requires authentication, it fails to validate if the authenticated user has ownership or administrative rights over the target organizationId. This allows any low-privileged user (including \"Free\" plan users) to:\n\n1. Overwrite the SSO configuration of any other organization.\n2. Enable \"Enterprise-onl",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cwc3-p92j-g7qm",
+      "publishedAt": "2026-03-06T22:20:50Z",
+      "modifiedAt": "2026-03-09T13:15:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cwc3-p92j-g7qm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30823"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.12",
+          "fixed": "3.0.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mq4r-h2gh-qv7x",
+      "packageName": "flowise",
+      "title": "Flowise Allows Mass Assignment in `/api/v1/leads` Endpoint",
+      "description": "## Summary\n\n**A Mass Assignment vulnerability in the `/api/v1/leads` endpoint allows any unauthenticated user to control internal entity fields (`id`, `createdDate`, `chatId`) by including them in the request body.**\n\nThe endpoint uses `Object.assign()` to copy all properties from the request body to the Lead entity without any input validation or field filtering. This allows attackers to bypass auto-generated fields and inject arbitrary values.\n\n| Field | Value |\n|-------|-------|\n| **Vulnerabi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mq4r-h2gh-qv7x",
+      "publishedAt": "2026-03-06T22:19:14Z",
+      "modifiedAt": "2026-03-09T13:15:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mq4r-h2gh-qv7x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30822"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.12",
+          "fixed": "3.0.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-j8g8-j7fc-43v6",
+      "packageName": "flowise",
+      "title": "Flowise has Arbitrary File Upload via MIME Spoofing",
+      "description": "### Vulnerability **Description**\n\n---\n\n**Vulnerability Overview**\n \n- The `/api/v1/attachments/:chatflowId/:chatId` endpoint is listed in `WHITELIST_URLS`, allowing unauthenticated access to the file upload API.\n- While the server validates uploads based on the MIME types defined in `chatbotConfig.fullFileUpload.allowedUploadFileTypes`, it implicitly trusts the client-provided `Content-Type` header (`file.mimetype`) without verifying the file's actual content (magic bytes) or extension (`file.o",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j8g8-j7fc-43v6",
+      "publishedAt": "2026-03-06T18:49:20Z",
+      "modifiedAt": "2026-03-09T13:15:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j8g8-j7fc-43v6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30821"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.12",
+          "fixed": "3.0.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wvhq-wp8g-c7vq",
+      "packageName": "flowise",
+      "title": "Flowise has Authorization Bypass via Spoofed x-request-from Header",
+      "description": "### Summary\n\nFlowise trusts any HTTP client that sets the header `x-request-from: internal`, allowing an authenticated tenant session to bypass all `/api/v1/**` authorization checks. With only a browser cookie, a low-privilege tenant can invoke internal administration endpoints (API key management, credential stores, custom function execution, etc.), effectively escalating privileges.\n\n### Details\n\nThe global middleware that guards `/api/v1` routes lives in `external/Flowise/packages/server/src/",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wvhq-wp8g-c7vq",
+      "publishedAt": "2026-03-06T18:48:22Z",
+      "modifiedAt": "2026-03-09T13:15:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wvhq-wp8g-c7vq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30820"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.12",
+          "fixed": "3.0.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jc5m-wrp2-qq38",
+      "packageName": "flowise",
+      "title": "Flowise Vulnerable to PII Disclosure on Unauthenticated Forgot Password Endpoint",
+      "description": "## Summary\n\nThe `/api/v1/account/forgot-password` endpoint returns the full user object including PII (id, name, email, status, timestamps) in the response body instead of a generic success message. This exposes sensitive user information to unauthenticated attackers who only need to know a valid email address.\n\n## Vulnerability Details\n\n| Field | Value |\n|-------|-------|\n| CWE | CWE-200: Exposure of Sensitive Information to an Unauthorized Actor |\n| Affected File | `packages/server/src/enterpr",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jc5m-wrp2-qq38",
+      "publishedAt": "2026-03-05T21:58:02Z",
+      "modifiedAt": "2026-03-05T21:58:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jc5m-wrp2-qq38"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.12",
+          "fixed": "3.0.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x2g5-fvc2-gqvp",
+      "packageName": "flowise",
+      "title": "Flowise has Insufficient Password Salt Rounds",
+      "description": "### Description\nThe default bcrypt salt rounds is set to 5, which is below the recommended minimum for security.\n\n### Affected Code\n```\nexport function getHash(value: string) {\n    const salt = bcrypt.genSaltSync(parseInt(process.env.PASSWORD_SALT_HASH_ROUNDS || '5'))\n    return bcrypt.hashSync(value, salt)\n}\n```\n\n### Evidence\nUsing 5 salt rounds provides 2^5 = 32 iterations, which is far below the OWASP recommendation of 10 (2^10 = 1024 iterations) for bcrypt. This makes password hashes vulnera",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x2g5-fvc2-gqvp",
+      "publishedAt": "2026-03-05T21:54:31Z",
+      "modifiedAt": "2026-03-05T21:54:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x2g5-fvc2-gqvp"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.12",
+          "fixed": "3.0.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-j44m-5v8f-gc9c",
+      "packageName": "flowise",
+      "title": "Flowise is vulnerable to arbitrary file exposure through its ReadFileTool",
+      "description": "### Summary\n\nThe ReadFileTool in Flowise does not restrict file path access, allowing authenticated attackers to exploit this vulnerability to read arbitrary files from the file system, potentially leading to remote command execution.\n\n### Details\n\nFlowise supports providing ReadFileTool for large models to read files in the server's file system. The implementation of this tool is located at packages/components/nodes/tools/ReadFile/ReadFile.ts.\n\n```\n/**\n * Class for reading files from the disk. ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j44m-5v8f-gc9c",
+      "publishedAt": "2025-10-10T22:55:09Z",
+      "modifiedAt": "2026-02-03T14:16:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j44m-5v8f-gc9c"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.8",
+          "fixed": "3.0.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v5w9-prxf-w882",
+      "packageName": "flowise",
+      "title": "Flowise has Authentication Bypass Using Unprotected Registration Endpoint (/register)",
+      "description": "### Summary\nAn unauthenticated attacker can exploit the unprotected registration endpoint (/register) to create a new user and bypass authentication.\n### Details\nCritical vulnerability in Flowise 3.0.1 on-premise deployment allows unauthenticated attackers to exploit the /api/v1/account/register endpoint to add a new user and log in using it, enabling authentication bypass.\n\nMeaning that the register functionality is by default open, allowing attackers to create an account and use the api withou",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-v5w9-prxf-w882",
+      "publishedAt": "2025-11-17T19:06:09Z",
+      "modifiedAt": "2025-11-17T19:06:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v5w9-prxf-w882"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 3.0.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
       "id": "GHSA-jv9m-vf54-chjj",
-      "packageName": "Flowise",
+      "packageName": "flowise",
       "title": "Flowise is vulnerable to arbitrary file write through its WriteFileTool ",
       "description": "### Summary\n\nThe WriteFileTool in Flowise does not restrict the file path for reading, allowing authenticated attackers to exploit this vulnerability to write arbitrary files to any path in the file system, potentially leading to remote command execution.\n\n### Details\n\nFlowise supports providing WriteFileTool for large models, which is used to write files to the server's file system. The implementation of this tool is located at packages/components/nodes/tools/WriteFile/WriteFile.ts.\n\n```\n/**\n *",
       "severity": "critical",
@@ -23,8 +950,859 @@
       ],
       "affectedVersions": [
         {
-          "range": "<= 3.0.5",
+          "range": "< 3.0.8",
           "fixed": "3.0.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x7rp-qj2h-ghgw",
+      "packageName": "flowise",
+      "title": "Flowise Fails to Invalidate Existing Sessions After Password Changes",
+      "description": "### Summary\nFailure to Invalidate Existing Sessions After Password Change (Persistent Session / Session Invalidity Failure).\n\n### Details\nAfter a user changes their password, the application does not invalidate other active sessions or session tokens that were established before the change. An attacker who already has an active session (e.g., via a stolen session token, device left logged in, or other access) continues to be authenticated even after the legitimate user rotates credentials, allow",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x7rp-qj2h-ghgw",
+      "publishedAt": "2025-11-14T20:50:36Z",
+      "modifiedAt": "2025-11-14T20:50:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x7rp-qj2h-ghgw"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.10",
+          "fixed": "3.0.10"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7944-7c6r-55vv",
+      "packageName": "flowise",
+      "title": "FlowiseAI Pre-Auth Arbitrary Code Execution",
+      "description": "## Summary\n\nAn authenticated admin user of **FlowiseAI** can exploit the **Supabase RPC Filter** component to execute **arbitrary server-side code** without restriction. By injecting a malicious payload into the filter expression field, the attacker can directly trigger JavaScript's `execSync()` to launch reverse shells, access environment secrets, or perform any OS-level command execution.\n\nThis results in **full server compromise** and severe breach of trust boundaries between frontend input a",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7944-7c6r-55vv",
+      "publishedAt": "2025-09-15T19:51:08Z",
+      "modifiedAt": "2025-10-17T20:23:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7944-7c6r-55vv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57164"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 3.0.5",
+          "fixed": "3.0.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3g4j-r53p-22wx",
+      "packageName": "flowise",
+      "title": "Duplicate Advisory: FlowiseAI Pre-Auth Arbitrary Code Execution",
+      "description": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-7944-7c6r-55vv. This link is maintained to preserve external references.\n\n### Original Description\nFlowise through v3.0.4 is vulnerable to remote code execution via unsanitized evaluation of user input in the \"Supabase RPC Filter\" field.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3g4j-r53p-22wx",
+      "publishedAt": "2025-10-17T18:31:09Z",
+      "modifiedAt": "2025-10-17T20:22:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3g4j-r53p-22wx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 3.0.5",
+          "fixed": "3.0.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r4hh-pcgx-j5r2",
+      "packageName": "flowise",
+      "title": "Flowise: Authenticated Command Execution and Sandbox Bypass via Puppeteer and Playwright Packages",
+      "description": "Flowise v3.0.1 < 3.0.8 and all versions after with 'ALLOW_BUILTIN_DEP' enabled contain an authenticated remote code execution vulnerability and node VM sandbox escape due to insecure use of integrated modules (Puppeteer and Playwright) within the nodevm execution environment. An authenticated attacker able to create or run a tool that leverages Puppeteer/Playwright can specify attacker-controlled browser binary paths and parameters. When the tool executes, the attacker-controlled executable/para",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r4hh-pcgx-j5r2",
+      "publishedAt": "2025-10-14T21:30:47Z",
+      "modifiedAt": "2025-10-14T22:17:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r4hh-pcgx-j5r2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-34267"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.1, < 3.0.8",
+          "fixed": "3.0.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-964p-j4gg-mhwc",
+      "packageName": "flowise",
+      "title": "Flowise is vulnerable to stored XSS via \"View Messages\" allows credential theft in FlowiseAI admin panel",
+      "description": "### Summary\nA stored Cross-Site Scripting (XSS) vulnerability in FlowiseAI allows a user to inject arbitrary JavaScript code via message input. When an administrator views messages using the \"View Messages\" button in the workflow UI, the malicious script executes in the context of the admin’s browser, enabling credential theft via access to `localStorage`.\n\n---\n\n### Details\nThe vulnerability stems from a lack of input sanitization when displaying stored user messages in the admin interface. A sp",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-964p-j4gg-mhwc",
+      "publishedAt": "2025-10-03T21:47:37Z",
+      "modifiedAt": "2025-10-13T17:38:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-964p-j4gg-mhwc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-50538"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.8",
+          "fixed": "3.0.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7r4h-vmj9-wg42",
+      "packageName": "flowise",
+      "title": "Flowise Stored XSS vulnerability through logs in chatbot",
+      "description": "### Description\nIn the chat log, tags like input and form are allowed. This makes a potential vulnerability where an attacker could inject malicious HTML into the log via prompts. When an admin views the log containing the malicious HTML, the attacker could steal the admin's credentials or sensitive information with stored Cross Site Scripting.\n\n### PoC\n```html\n<form>\n  <input type=\"image\" src=\"/assets/account-3i3qpYzs.png\" width=\"800\" height=\"400\" formaction=\"javascript:alert('XSS!!!');\" />\n</f",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7r4h-vmj9-wg42",
+      "publishedAt": "2025-10-03T21:48:36Z",
+      "modifiedAt": "2025-10-13T17:05:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7r4h-vmj9-wg42"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-29192"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.5",
+          "fixed": "3.0.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-35g6-rrw3-v6xc",
+      "packageName": "flowise",
+      "title": "FlowiseAI/Flosise has File Upload vulnerability",
+      "description": "### Summary\nA file upload vulnerability in FlowiseAI allows authenticated users to upload arbitrary files without proper validation. This enables attackers to persistently store malicious Node.js web shells on the server, potentially leading to Remote Code Execution (RCE).\n\n### Details\nThe system fails to validate file extensions, MIME types, or file content during uploads. As a result, malicious scripts such as Node.js-based web shells can be uploaded and stored persistently on the server. Thes",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-35g6-rrw3-v6xc",
+      "publishedAt": "2025-10-08T19:34:21Z",
+      "modifiedAt": "2025-10-13T15:28:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-35g6-rrw3-v6xc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-61687"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 3.0.7",
+          "fixed": "3.0.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4fr9-3x69-36wv",
+      "packageName": "flowise",
+      "title": "Flowise vulnerable to XSS",
+      "description": "### Summary\nA XSS(cross-site scripting) vulnerability is caused by insufficient filtering of input by web applications. Attackers can leverage this XSS vulnerability to inject malicious script code (HTML code or client-side Javascript code) into web pages, and when users browse these web pages, the malicious code will be executed, and the victims may be vulnerable to various attacks such as cookie data theft, etc.\n\n### Details\n1. Send a Message `<iframe src=\"javascript:alert(document.cookie);\">`",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4fr9-3x69-36wv",
+      "publishedAt": "2025-10-03T19:27:06Z",
+      "modifiedAt": "2025-10-13T15:26:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4fr9-3x69-36wv"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.8",
+          "fixed": "3.0.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7rgr-72hp-9wp3",
+      "packageName": "flowise",
+      "title": "Duplicate Advisory: Flowise is vulnerable to stored XSS via \"View Messages\" allows credential theft in FlowiseAI admin panel",
+      "description": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-964p-j4gg-mhwc. This link is maintained to preserve external references.\n\n### Original Description\nFlowise before 3.0.5 allows XSS via an IFRAME element when an admin views the chat log.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7rgr-72hp-9wp3",
+      "publishedAt": "2025-10-06T03:31:38Z",
+      "modifiedAt": "2025-10-08T19:34:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7rgr-72hp-9wp3"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.5",
+          "fixed": "3.0.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wq95-wr7m-26h4",
+      "packageName": "flowise",
+      "title": "Duplicate Advisory: Flowise Stored XSS vulnerability through logs in chatbot",
+      "description": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-7r4h-vmj9-wg42. This link is maintained to preserve external references.\n\n### Original Description\nFlowise before 3.0.5 allows XSS via a FORM element and an INPUT element when an admin views the chat log.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wq95-wr7m-26h4",
+      "publishedAt": "2025-10-06T03:31:38Z",
+      "modifiedAt": "2025-10-08T19:34:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wq95-wr7m-26h4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.5",
+          "fixed": "3.0.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hmgh-466j-fx4c",
+      "packageName": "flowise",
+      "title": "Flowise vulnerable to RCE via Dynamic function constructor injection",
+      "description": "### Summary\nUser-controlled input flows to an unsafe implementaion of a dynamic Function constructor , allowing a malicious actor to run JS code in the context of the host (not sandboxed) leading to RCE. \n\n### Details\nWhen creating a new `Custom MCP` Chatflow in the platform, the MCP Server Config displays a placeholder hinting at an example of the expected input structure:\n```json\n{\n\t\"command\": \"npx\",\n\t\"args\": [\"-y\", \"@modelcontextprotocol/server-filesystem\", \"/path/to/allowed/files\"]\n}\n```\n\nBe",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-hmgh-466j-fx4c",
+      "publishedAt": "2025-10-06T14:08:45Z",
+      "modifiedAt": "2025-10-06T14:08:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hmgh-466j-fx4c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-55346"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.2.7-patch.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q4xx-mc3q-23x8",
+      "packageName": "flowise",
+      "title": "Duplicate Advisory: Flowise vulnerable to RCE via Dynamic function constructor injection",
+      "description": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-hmgh-466j-fx4c. This link is maintained to preserve external references.\n\n### Original Description\nUser-controlled input flows to an unsafe implementation of a dynamic Function constructor, allowing network attackers to run arbitrary unsandboxed JS code in the context of the host, by sending a simple POST request.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-q4xx-mc3q-23x8",
+      "publishedAt": "2025-08-14T12:30:22Z",
+      "modifiedAt": "2025-10-03T21:51:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q4xx-mc3q-23x8"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3gcm-f6qx-ff7p",
+      "packageName": "flowise",
+      "title": "Flowise has Remote Code Execution vulnerability",
+      "description": "## Description\n\n### Cause of the Vulnerability\n\nThe `CustomMCP` node allows users to input configuration settings for connecting to an external MCP (Model Context Protocol) server. This node parses the user-provided `mcpServerConfig` string to build the MCP server configuration. However, during this process, it executes JavaScript code without any security validation.\n\nSpecifically, inside the `convertToValidJSONString` function, user input is directly passed to the `Function()` constructor, whi",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-3gcm-f6qx-ff7p",
+      "publishedAt": "2025-09-15T19:59:57Z",
+      "modifiedAt": "2025-09-22T21:58:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3gcm-f6qx-ff7p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59528"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 3.0.5",
+          "fixed": "3.0.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hr92-4q35-4j3m",
+      "packageName": "flowise",
+      "title": "FlowiseAI/Flowise has Server-Side Request Forgery (SSRF) vulnerability",
+      "description": "### Summary\n---\n\nA Server-Side Request Forgery (SSRF) vulnerability was discovered in the `/api/v1/fetch-links` endpoint of the Flowise application. This vulnerability allows an attacker to use the Flowise server as a proxy to access internal network web services and explore their link structures. The impact includes the potential exposure of sensitive internal administrative endpoints.\n\n\n### Details\n---\n\n#### Vulnerability Overview\n\nThe `fetch-links` feature in Flowise is designed to extract li",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hr92-4q35-4j3m",
+      "publishedAt": "2025-09-15T19:53:46Z",
+      "modifiedAt": "2025-09-22T21:58:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hr92-4q35-4j3m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-59527"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 3.0.5",
+          "fixed": "3.0.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6933-jpx5-q87q",
+      "packageName": "flowise",
+      "title": "Flowise has unsandboxed remote code execution via Custom MCP",
+      "description": "### Summary\nThe Custom MCPs feature is designed to execute OS commands, for instance, using tools like `npx` to spin up local MCP Servers. However, Flowise's inherent authentication and authorization model is minimal and lacks role-based access controls (RBAC). Furthermore, the default installation of Flowise operates without authentication unless explicitly configured using the `FLOWISE_USERNAME` and `FLOWISE_PASSWORD` environment variables.\n\nThis combination presents a significant security ris",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6933-jpx5-q87q",
+      "publishedAt": "2025-09-15T20:30:30Z",
+      "modifiedAt": "2025-09-15T20:30:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6933-jpx5-q87q"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.2.7-patch.1, < 3.0.6",
+          "fixed": "3.0.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q67q-549q-p849",
+      "packageName": "flowise",
+      "title": "Flowise has arbitrary file access due to missing chat flow id validation",
+      "description": "### Summary\n\nMissing chat flow id validation allows an attacker to access arbitrary file.\n\n### Details\n\nCommit https://github.com/FlowiseAI/Flowise/commit/8bd3de41533de78e4ef6c980e5704a1f9cb7ae6f and https://github.com/FlowiseAI/Flowise/commit/c2b830f279e454e8b758da441016b2234f220ac7 added check for `filename` when handling file upload operations to prevent path traversal, and additional validation of `chatflowId` and `chatId` from route `/api/v1/attachments`. In some cases, however,  `chatflowI",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-q67q-549q-p849",
+      "publishedAt": "2025-09-15T20:11:39Z",
+      "modifiedAt": "2025-09-15T20:11:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q67q-549q-p849"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.2.8, < 3.0.6",
+          "fixed": "3.0.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-99pg-hqvx-r4gf",
+      "packageName": "flowise",
+      "title": "Flowise has an Arbitrary File Read",
+      "description": "### Summary\nAn arbitrary file read vulnerability in the `chatId` parameter supplied to both the `/api/v1/get-upload-file` and `/api/v1/openai-assistants-file/download` endpoints allows unauthenticated users to read unintended files on the local filesystem. In the default Flowise configuration this allows reading of the local sqlite db and subsequent compromise of all database content.\n\n### Details\nBoth the `/api/v1/get-upload-file` and `/api/v1/openai-assistants-file/download` endpoints accept t",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-99pg-hqvx-r4gf",
+      "publishedAt": "2025-09-15T20:00:39Z",
+      "modifiedAt": "2025-09-15T20:00:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-99pg-hqvx-r4gf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 3.0.5",
+          "fixed": "3.0.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wgpv-6j63-x5ph",
+      "packageName": "flowise",
+      "title": "Flowise Cloud and Local Deployments have Unauthenticated Password Reset Token Disclosure that Leads to Account Takeover",
+      "description": "### Summary\n\nThe `forgot-password` endpoint in Flowise returns sensitive information including a valid password reset `tempToken` without authentication or verification. This enables any attacker to generate a reset token for arbitrary users and directly reset their password, leading to a complete **account takeover (ATO)**.\n\nThis vulnerability applies to **both the cloud service (`cloud.flowiseai.com`) and self-hosted/local Flowise deployments** that expose the same API.\n\n**CVSS v3.1 Base Score",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wgpv-6j63-x5ph",
+      "publishedAt": "2025-09-12T20:02:40Z",
+      "modifiedAt": "2025-09-15T15:31:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wgpv-6j63-x5ph"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-58434"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.5",
+          "fixed": "3.0.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2vv2-3x8x-4gv7",
+      "packageName": "flowise",
+      "title": "Flowise OS command remote code execution",
+      "description": "The Custom MCPs feature is designed to execute OS commands, for instance, using tools like `npx` to spin up local MCP Servers. However, Flowise's inherent authentication and authorization model is minimal and lacks role-based access controls (RBAC). Furthermore, in Flowise versions before 3.0.1 the default installation operates without authentication unless explicitly configured. This combination allows unauthenticated network attackers to execute unsandboxed OS commands.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-2vv2-3x8x-4gv7",
+      "publishedAt": "2025-08-14T12:30:23Z",
+      "modifiedAt": "2025-08-18T21:07:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2vv2-3x8x-4gv7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-8943"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.0.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9c4c-g95m-c8cp",
+      "packageName": "flowise",
+      "title": "FlowiseDB vulnerable to SQL Injection by authenticated users",
+      "description": "### Summary\nimport functions are vulnerable.\n* [importChatflows](https://github.com/FlowiseAI/Flowise/blob/main/packages/server/src/services/chatflows/index.ts#L219)\n* [importTools](https://github.com/FlowiseAI/Flowise/blob/main/packages/server/src/services/tools/index.ts#L85)\n* [importVariables](https://github.com/FlowiseAI/Flowise/blob/main/packages/server/src/services/variables/index.ts)\n\n### Details\n**Authenticated user** can call importChatflows API, import json file such as `AllChatflows.j",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9c4c-g95m-c8cp",
+      "publishedAt": "2025-04-07T18:55:13Z",
+      "modifiedAt": "2025-04-07T18:55:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9c4c-g95m-c8cp"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.2.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8vvx-qvq9-5948",
+      "packageName": "flowise",
+      "title": "Flowise allows arbitrary file write to RCE",
+      "description": "### Summary\nAn attacker could write files with arbitrary content to the filesystem via the `/api/v1/document-store/loader/process` API.\nAn attacker can reach RCE(Remote Code Execution) via file writing.\n\n### Details\nAll file writing functions in [packages/components/src/storageUtils.ts](https://github.com/FlowiseAI/Flowise/blob/main/packages/components/src/storageUtils.ts) are vulnerable.\n- addBase64FilesToStorage\n- addArrayFilesToStorage\n- addSingleFileToStorage\n\nThe fileName parameter, which i",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8vvx-qvq9-5948",
+      "publishedAt": "2025-03-14T18:48:44Z",
+      "modifiedAt": "2025-03-14T18:48:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8vvx-qvq9-5948"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.2.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-h42x-xx2q-6v6g",
+      "packageName": "flowise",
+      "title": "Flowise Pre-auth Arbitrary File Upload",
+      "description": "## Summary\nAn unauthorized attacker can leverage the whitelisted route `/api/v1/attachments` to upload arbitrary files when the `storageType` is set to **local** (default).\n\n## Details\nWhen a new request arrives, the system first checks if the URL starts with `/api/v1/`. If it does, the system then verifies whether the URL is included in the whitelist (*whitelistURLs*). If the URL is whitelisted, the request proceeds; otherwise, the system enforces authentication.\n\n@ */packages/server/src/index.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-h42x-xx2q-6v6g",
+      "publishedAt": "2025-03-13T22:38:03Z",
+      "modifiedAt": "2025-03-13T22:38:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h42x-xx2q-6v6g"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.2.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-69jq-qr7w-j7qh",
+      "packageName": "flowise",
+      "title": "FlowiseAI Flowise arbitrary file upload vulnerability",
+      "description": "FlowiseAI Flowise v2.2.6 was discovered to contain an arbitrary file upload vulnerability in /api/v1/attachments.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-69jq-qr7w-j7qh",
+      "publishedAt": "2025-03-05T00:30:35Z",
+      "modifiedAt": "2025-03-05T18:37:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-69jq-qr7w-j7qh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-26319"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.2.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5cph-wvm9-45gj",
+      "packageName": "flowise",
+      "title": "Flowise OverrideConfig security vulnerability",
+      "description": "### Impact\nFlowise allows developers to inject configuration into the Chainflow during execution through the `overrideConfig` option. This is supported in both the frontend web integration and the backend Prediction API. \n\nThis has a range of fundamental issues that are a **major** security vulnerability. \nWhile this feature is intentional, it should have strong protections added and be disabled by default. \n\nThese issues include: \n1. Remote code execution. While inside a sandbox this allows for",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5cph-wvm9-45gj",
+      "publishedAt": "2024-11-21T22:21:03Z",
+      "modifiedAt": "2024-11-21T22:21:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5cph-wvm9-45gj"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.4",
+          "fixed": "2.1.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m5p9-xvxj-64c8",
+      "packageName": "flowise",
+      "title": "Flowise and Flowise Chat Embed vulnerable to Stored Cross-site Scripting",
+      "description": "Flowise < 2.1.1 suffers from a Stored Cross-Site vulnerability due to a lack of input sanitization in Flowise Chat Embed < 2.0.0.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m5p9-xvxj-64c8",
+      "publishedAt": "2024-09-25T03:30:36Z",
+      "modifiedAt": "2024-09-30T20:56:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m5p9-xvxj-64c8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-9148"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.1",
+          "fixed": "2.1.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2q4w-x8h2-2fvh",
+      "packageName": "flowise",
+      "title": "Flowise Authentication Bypass vulnerability",
+      "description": "An Authentication Bypass vulnerability exists in Flowise version 1.8.2. This could allow a remote, unauthenticated attacker to access API endpoints as an administrator and allow them to access restricted functionality.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2q4w-x8h2-2fvh",
+      "publishedAt": "2024-08-27T15:32:49Z",
+      "modifiedAt": "2024-09-04T17:14:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2q4w-x8h2-2fvh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-8181"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.8.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-48x4-mx8f-gr4h",
+      "packageName": "flowise",
+      "title": "Flowise Unauthenticated Denial of Service (DoS) vulnerability",
+      "description": "An Unauthenticated Denial of Service (DoS) vulnerability exists in Flowise version 1.8.2 leading to a complete crash of the instance running a vulnerable version due to improper handling of user supplied input to the `/api/v1/get-upload-file` api endpoint.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-48x4-mx8f-gr4h",
+      "publishedAt": "2024-08-27T15:32:51Z",
+      "modifiedAt": "2024-08-27T19:52:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-48x4-mx8f-gr4h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-8182"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.8.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-858c-qxvx-rg9v",
+      "packageName": "flowise",
+      "title": "Flowise Cross-site Scripting in /api/v1/chatflows-streaming/id",
+      "description": "Flowise is a drag & drop user interface to build a customized large language model flow. In version 1.4.3 of Flowise, a reflected cross-site scripting vulnerability occurs in the `/api/v1/chatflows-streaming/id` endpoint. If the default configuration is used (unauthenticated), an attacker may be able to craft a specially crafted URL that injects Javascript into the user sessions, allowing the attacker to steal information, create false popups, or even redirect the user to other websites without ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-858c-qxvx-rg9v",
+      "publishedAt": "2024-08-05T21:29:28Z",
+      "modifiedAt": "2024-08-05T21:29:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-858c-qxvx-rg9v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-37145"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wxm4-9f8p-gggv",
+      "packageName": "flowise",
+      "title": "Flowise Cross-site Scripting in/api/v1/credentials/id",
+      "description": "Flowise is a drag & drop user interface to build a customized large language model flow. In version 1.4.3 of Flowise, a reflected cross-site scripting vulnerability occurs in the `/api/v1/credentials/id` endpoint. If the default configuration is used (unauthenticated), an attacker may be able to craft a specially crafted URL that injects Javascript into the user sessions, allowing the attacker to steal information, create false popups, or even redirect the user to other websites without interact",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wxm4-9f8p-gggv",
+      "publishedAt": "2024-08-05T21:29:28Z",
+      "modifiedAt": "2024-08-05T21:29:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wxm4-9f8p-gggv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-37146"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2jch-qc96-9f5g",
+      "packageName": "flowise",
+      "title": "Flowise Cross-site Scripting in api/v1/chatflows/id",
+      "description": "Flowise is a drag & drop user interface to build a customized large language model flow. In version 1.4.3 of Flowise, a reflected cross-site scripting vulnerability occurs in the `api/v1/chatflows/id` endpoint. If the default configuration is used (unauthenticated), an attacker may be able to craft a specially crafted URL that injects Javascript into the user sessions, allowing the attacker to steal information, create false popups, or even redirect the user to other websites without interaction",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2jch-qc96-9f5g",
+      "publishedAt": "2024-08-05T21:29:28Z",
+      "modifiedAt": "2024-08-05T21:29:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2jch-qc96-9f5g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-36422"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fccx-2pwj-hrq7",
+      "packageName": "flowise",
+      "title": "Flowise Cross-site Scripting in /api/v1/public-chatflows/id",
+      "description": "Flowise is a drag & drop user interface to build a customized large language model flow. In version 1.4.3 of Flowise, a reflected cross-site scripting vulnerability occurs in the `/api/v1/public-chatflows/id` endpoint. If the default configuration is used (unauthenticated), an attacker may be able to craft a specially crafted URL that injects Javascript into the user sessions, allowing the attacker to steal information, create false popups, or even redirect the user to other websites without int",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fccx-2pwj-hrq7",
+      "publishedAt": "2024-08-05T21:29:28Z",
+      "modifiedAt": "2024-08-05T21:29:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fccx-2pwj-hrq7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-36423"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-66f2-xxgm-f6xp",
+      "packageName": "flowise",
+      "title": "Flowise Cors Misconfiguration in packages/server/src/index.ts",
+      "description": "Flowise is a drag & drop user interface to build a customized large language model flow. In version 1.4.3 of Flowise, A CORS misconfiguration sets the Access-Control-Allow-Origin header to all, allowing arbitrary origins to connect to the website. In the default configuration (unauthenticated), arbitrary origins may be able to make requests to Flowise, stealing information from the user. This CORS misconfiguration may be chained with the path injection to allow an attacker attackers without acce",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-66f2-xxgm-f6xp",
+      "publishedAt": "2024-08-05T21:29:27Z",
+      "modifiedAt": "2024-08-05T21:29:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-66f2-xxgm-f6xp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-36421"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-h997-3fxj-p5j8",
+      "packageName": "flowise",
+      "title": "Flowise Path Injection at /api/v1/openai-assistants-file",
+      "description": "Flowise is a drag & drop user interface to build a customized large language model flow. In version 1.4.3 of Flowise, the `/api/v1/openai-assistants-file` endpoint in `index.ts` is vulnerable to arbitrary file read due to lack of sanitization of the `fileName` body parameter. No known patches for this issue are available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h997-3fxj-p5j8",
+      "publishedAt": "2024-08-05T21:29:27Z",
+      "modifiedAt": "2024-08-05T21:29:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h997-3fxj-p5j8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-36420"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6wp6-22x5-rr3w",
+      "packageName": "flowise",
+      "title": "Flowise vulnerable to code injection via api/v1",
+      "description": "An issue in FlowiseAI Inc Flowise prior to v1.8.1 allows a remote attacker to execute arbitrary code via a crafted script to the api/v1 component.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6wp6-22x5-rr3w",
+      "publishedAt": "2024-04-29T18:30:45Z",
+      "modifiedAt": "2024-08-02T16:14:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6wp6-22x5-rr3w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-31621"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.8.1",
+          "fixed": "1.8.1"
         }
       ],
       "source": "github"

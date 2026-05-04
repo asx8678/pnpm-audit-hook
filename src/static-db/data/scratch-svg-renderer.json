@@ -1,6 +1,6 @@
 {
   "packageName": "scratch-svg-renderer",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-h3vq-wv8j-36gw",
@@ -24,6 +24,33 @@
       "affectedVersions": [
         {
           "range": "<= 0.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-j977-g5vj-j27g",
+      "packageName": "scratch-svg-renderer",
+      "title": "Cross-Site Scripting in scratch-svg-renderer",
+      "description": "This affects the package scratch-svg-renderer before 0.2.0-prerelease.20201019174008. The loadString function does not escape SVG properly, which can be used to inject arbitrary elements into the DOM via the _transformMeasurements function.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j977-g5vj-j27g",
+      "publishedAt": "2020-11-09T14:21:17Z",
+      "modifiedAt": "2023-01-09T05:03:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j977-g5vj-j27g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7750"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.2.0-prerelease.20201016121710",
+          "fixed": "0.2.0-prerelease.20201019174008"
         }
       ],
       "source": "github"

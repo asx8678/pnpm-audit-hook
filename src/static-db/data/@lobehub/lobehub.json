@@ -1,0 +1,33 @@
+{
+  "packageName": "@lobehub/lobehub",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5mwj-v5jw-5c97",
+      "packageName": "@lobehub/lobehub",
+      "title": "LobeHub: Unauthenticated authentication bypass on `webapi` routes via forgeable `X-lobe-chat-auth` header",
+      "description": "# Summary\n\nThe `webapi` authentication layer trusts a client-controlled `X-lobe-chat-auth` header that is only XOR-obfuscated, not signed or otherwise authenticated. Because the XOR key is hardcoded in the repository, an attacker can forge arbitrary auth payloads and bypass authentication on protected `webapi` routes.\n\nAffected routes include:\n- `POST /webapi/chat/[provider]`\n- `GET /webapi/models/[provider]`\n- `POST /webapi/models/[provider]/pull`\n- `POST /webapi/create-image/comfyui`\n\n## Detai",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5mwj-v5jw-5c97",
+      "publishedAt": "2026-04-08T15:04:30Z",
+      "modifiedAt": "2026-04-09T14:28:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5mwj-v5jw-5c97"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39411"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.1.47",
+          "fixed": "2.1.48"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

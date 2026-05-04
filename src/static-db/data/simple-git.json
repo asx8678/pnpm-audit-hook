@@ -1,7 +1,61 @@
 {
   "packageName": "simple-git",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-r275-fr43-pm7q",
+      "packageName": "simple-git",
+      "title": "simple-git has blockUnsafeOperationsPlugin bypass via case-insensitive protocol.allow config key enables RCE",
+      "description": "### Summary\n\nThe `blockUnsafeOperationsPlugin` in `simple-git` fails to block git protocol\noverride arguments when the config key is passed in uppercase or mixed case.\nAn attacker who controls arguments passed to git operations can enable the\n`ext::` protocol by passing `-c PROTOCOL.ALLOW=always`, which executes an\narbitrary OS command on the host machine.\n\n---\n\n### Details\n\nThe `preventProtocolOverride` function in\n`simple-git/src/lib/plugins/block-unsafe-operations-plugin.ts` (line 24)\nchecks ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-r275-fr43-pm7q",
+      "publishedAt": "2026-03-10T18:38:56Z",
+      "modifiedAt": "2026-04-14T21:58:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r275-fr43-pm7q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28292"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.15.0, < 3.32.3",
+          "fixed": "3.32.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jcxm-m3jx-f287",
+      "packageName": "simple-git",
+      "title": "simple-git Affected by Command Execution via Option-Parsing Bypass",
+      "description": "### Summary\n\nsimple-git enables running native Git commands from JavaScript. Some commands accept options that allow executing another command; because this is very dangerous, execution is denied unless the user explicitly allows it. This vulnerability allows a malicious actor who can control the options to execute other commands even in a “safe” state where the user has not explicitly allowed them. The vulnerability was introduced by an incorrect patch for CVE-2022-25860. It is *likely* to affe",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jcxm-m3jx-f287",
+      "publishedAt": "2026-04-13T16:35:37Z",
+      "modifiedAt": "2026-04-14T16:30:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jcxm-m3jx-f287"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-28291"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.32.0",
+          "fixed": "3.32.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-9w5j-4mwv-2wj8",
       "packageName": "simple-git",

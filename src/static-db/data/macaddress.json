@@ -1,0 +1,56 @@
+{
+  "packageName": "macaddress",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pp57-mqmh-44h7",
+      "packageName": "macaddress",
+      "title": "Command Injection in macaddress",
+      "description": "All versions of `macaddress` are vulnerable to command injection. For this vulnerability to be exploited an attacker needs to control the `iface` argument to the `one` method.\n\n\n## Recommendation\n\nUpdate to version 0.2.9 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-pp57-mqmh-44h7",
+      "publishedAt": "2018-09-06T23:24:21Z",
+      "modifiedAt": "2023-01-09T05:03:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pp57-mqmh-44h7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-13797"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.2.9",
+          "fixed": "0.2.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q9r2-f3vc-rjg8",
+      "packageName": "macaddress",
+      "title": "Command Injection in macaddress",
+      "description": "Withdrawn: Duplicate of GHSA-pp57-mqmh-44h7",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q9r2-f3vc-rjg8",
+      "publishedAt": "2020-08-19T22:28:51Z",
+      "modifiedAt": "2023-01-09T05:01:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q9r2-f3vc-rjg8"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.2.9",
+          "fixed": "0.2.9"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

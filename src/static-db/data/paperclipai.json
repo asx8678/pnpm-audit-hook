@@ -1,0 +1,55 @@
+{
+  "packageName": "paperclipai",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-68qg-g8mg-6pr7",
+      "packageName": "paperclipai",
+      "title": "paperclip Vulnerable to Unauthenticated Remote Code Execution via Import Authorization Bypass",
+      "description": "## Summary\n\nAn unauthenticated attacker can achieve full remote code execution on any network-accessible Paperclip instance running in `authenticated` mode with default configuration. No user interaction, no credentials, just the target's address. The entire chain is six API calls.\n\nI verified every step against the latest version. I have a fully automated PoC script and a video recording available.\n\nDiscord: sagi03581\n\n## Steps to Reproduce\n\nThe attack chains four independent flaws to escalate ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-68qg-g8mg-6pr7",
+      "publishedAt": "2026-04-10T21:08:57Z",
+      "modifiedAt": "2026-04-27T16:19:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-68qg-g8mg-6pr7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41679"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2026.410.0",
+          "fixed": "2026.410.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gqqj-85qm-8qhf",
+      "packageName": "paperclipai",
+      "title": "Paperclip: codex_local inherited ChatGPT/OpenAI-connected Gmail and was able to send real email",
+      "description": "### Summary\n\nA Paperclip-managed `codex_local` runtime was able to access and use a Gmail connector that I had connected in the ChatGPT/OpenAI apps UI, even though I had not explicitly connected Gmail inside Paperclip or separately inside Codex.\n\nIn my environment this enabled mailbox access and a real outbound email to be sent from my Gmail account. After I manually intervened to stop the workflow, follow-up retraction messages were also sent, confirming repeated outward write/send capability.\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gqqj-85qm-8qhf",
+      "publishedAt": "2026-04-16T22:47:40Z",
+      "modifiedAt": "2026-04-16T22:47:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gqqj-85qm-8qhf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2026.403.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

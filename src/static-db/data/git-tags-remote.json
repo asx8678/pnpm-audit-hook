@@ -1,0 +1,29 @@
+{
+  "packageName": "git-tags-remote",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gm9x-q798-hmr4",
+      "packageName": "git-tags-remote",
+      "title": "Command Injection in git-tags-remote",
+      "description": "All versions of `git-tags-remote ` are vulnerable to Command Injection. The package fails to sanitize the repository input and passes it directly to an `exec` call on the `get` function . This may allow attackers to execute arbitrary code in the system if the `repo` value passed to the function is user-controlled.  \n\nThe following proof-of-concept creates a file in `/tmp`:  \n```\nconst gitTagsRemote = require('git-tags-remote');\n\ngitTagsRemote.get('https://github.com/sh0ji/git-tags-remote.git; ec",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gm9x-q798-hmr4",
+      "publishedAt": "2020-07-29T14:53:40Z",
+      "modifiedAt": "2023-01-09T05:03:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gm9x-q798-hmr4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.4",
+          "fixed": "1.0.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

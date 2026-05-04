@@ -1,0 +1,33 @@
+{
+  "packageName": "connection-tester",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-w5mp-8p8w-mhh8",
+      "packageName": "connection-tester",
+      "title": "Command injection in connection-tester",
+      "description": "This affects the package connection-tester before 0.2.1. The injection point is located in line 15 in index.js. Affected versions of this package are vulnerable to Command Injection",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-w5mp-8p8w-mhh8",
+      "publishedAt": "2020-12-17T21:00:53Z",
+      "modifiedAt": "2023-02-01T05:05:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w5mp-8p8w-mhh8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7781"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.2.1",
+          "fixed": "0.2.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

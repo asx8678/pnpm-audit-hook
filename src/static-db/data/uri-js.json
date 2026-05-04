@@ -1,0 +1,33 @@
+{
+  "packageName": "uri-js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-333w-rxj3-f55r",
+      "packageName": "uri-js",
+      "title": "Regular Expression Denial Of Service in uri-js",
+      "description": "Affected versions of `uri-js` is susceptible to a regular expression denial of service vulnerability when user input is sent to the `.parse()` method.\n\n\n\n## Recommendation\n\nUpdate to v3.0.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-333w-rxj3-f55r",
+      "publishedAt": "2018-07-24T20:00:30Z",
+      "modifiedAt": "2024-04-22T19:38:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-333w-rxj3-f55r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16021"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.0",
+          "fixed": "3.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

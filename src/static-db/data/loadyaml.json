@@ -1,0 +1,28 @@
+{
+  "packageName": "loadyaml",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mfc2-93pr-jf92",
+      "packageName": "loadyaml",
+      "title": "Malicious code in `loadyaml`",
+      "description": "npm packages `loadyaml` and `electorn` were removed from the npm registry for containing malicious code. Upon installation the package runs a preinstall script that writes a public comment on GitHub containing the following information:\n- IP and IP-based geolocation\n- home directory name\n- local username \n\nThe malicious packages have been removed from the npm registry and the leaked content removed from GitHub.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mfc2-93pr-jf92",
+      "publishedAt": "2020-10-01T17:10:15Z",
+      "modifiedAt": "2023-01-09T05:04:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mfc2-93pr-jf92"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

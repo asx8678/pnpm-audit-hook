@@ -1,0 +1,32 @@
+{
+  "packageName": "haxe3",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2r9c-46v3-43fc",
+      "packageName": "haxe3",
+      "title": "Downloads Resources over HTTP in haxe3",
+      "description": "Affected versions of `haxe3` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `haxe3`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability. This vulnerability has been left unpatched for several years, despite active maintenance on the package. B",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2r9c-46v3-43fc",
+      "publishedAt": "2018-08-17T20:28:13Z",
+      "modifiedAt": "2023-01-09T05:02:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2r9c-46v3-43fc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10688"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "> 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

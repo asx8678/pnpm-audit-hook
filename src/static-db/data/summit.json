@@ -1,0 +1,32 @@
+{
+  "packageName": "summit",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cwcp-6c48-fm7m",
+      "packageName": "summit",
+      "title": "Unsafe eval() in summit allows arbitrary code execution",
+      "description": "Affected versions of `summit` allow attackers to execute arbitrary commands via collection names when using the `PouchDB` driver.\n\n## Recommendation\n\nNo direct patch is available at this time.\n\nCurrently, the best option to mitigate the issue is to avoid using the `PouchDB` driver, as the package author has abandoned this feature entirely.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cwcp-6c48-fm7m",
+      "publishedAt": "2020-09-01T16:39:38Z",
+      "modifiedAt": "2023-11-14T21:08:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cwcp-6c48-fm7m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16020"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.1.0, <= 0.1.22"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

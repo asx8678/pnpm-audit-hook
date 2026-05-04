@@ -1,7 +1,30 @@
 {
   "packageName": "smol-toml",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-v3rj-xjv7-4jmq",
+      "packageName": "smol-toml",
+      "title": "smol-toml: Denial of Service via TOML documents containing thousands of consecutive commented lines",
+      "description": "### Summary\nAn attacker can send a maliciously crafted TOML to cause the parser to crash, because of a stack overflow caused by thousands of consecutive commented lines.\n\nThe library uses recursion internally while parsing to skip over commented lines, which can be exploited to crash an application that is processing arbitrary TOML documents.\n\n### Proof of concept\n```js\nrequire(\"smol-toml\").parse('# comment\\n'.repeat(8000) + 'key = \"value\"')\n```\n\n### Impact\nApplications which parse arbitrary TOM",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v3rj-xjv7-4jmq",
+      "publishedAt": "2026-03-25T21:03:56Z",
+      "modifiedAt": "2026-03-25T21:03:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v3rj-xjv7-4jmq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.6.1",
+          "fixed": "1.6.1"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-pqhp-25j4-6hq9",
       "packageName": "smol-toml",

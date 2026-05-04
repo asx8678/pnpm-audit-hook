@@ -1,0 +1,29 @@
+{
+  "packageName": "cloudcmd",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m8fw-534v-xm85",
+      "packageName": "cloudcmd",
+      "title": "Cross-Site Scripting (XSS) in cloudcmd",
+      "description": "Versions of `cloudcmd` before 9.1.6 are vulnerable to cross-site scripting (XSS) when listing files in a directory. The attacker must control the name of a file for this vulnerability to be exploitable.\n\n\n## Recommendation\n\nUpdate to version 9.1.6 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m8fw-534v-xm85",
+      "publishedAt": "2019-06-04T15:43:29Z",
+      "modifiedAt": "2023-01-09T05:01:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m8fw-534v-xm85"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 9.1.6",
+          "fixed": "9.1.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

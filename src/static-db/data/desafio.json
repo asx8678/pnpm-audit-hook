@@ -1,0 +1,32 @@
+{
+  "packageName": "desafio",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f499-jv47-9wxf",
+      "packageName": "desafio",
+      "title": "Directory Traversal in desafio",
+      "description": "Affected versions of `desafio` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nno patch is available for this vulnerability.\n\nIt is recommended that the package is only us",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f499-jv47-9wxf",
+      "publishedAt": "2018-08-06T21:40:02Z",
+      "modifiedAt": "2023-09-06T20:04:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f499-jv47-9wxf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16164"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

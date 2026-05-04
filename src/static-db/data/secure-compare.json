@@ -1,0 +1,33 @@
+{
+  "packageName": "secure-compare",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h9x2-5rm7-x4gm",
+      "packageName": "secure-compare",
+      "title": "Insecure Comparison in secure-compare",
+      "description": "Versions of `secure-compare` prior to 3.0.1 are affected by a vulnerability that results in the package always returning true when comparing two strings of the same length, despite differences in the contents of those strings.\n\n\n## Recommendation\n\nUpgrade to version 3.0.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h9x2-5rm7-x4gm",
+      "publishedAt": "2019-06-03T17:28:23Z",
+      "modifiedAt": "2023-04-05T19:40:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h9x2-5rm7-x4gm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-9238"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.1",
+          "fixed": "3.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

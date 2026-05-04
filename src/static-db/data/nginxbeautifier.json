@@ -1,0 +1,29 @@
+{
+  "packageName": "nginxbeautifier",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-28xx-8j99-m32j",
+      "packageName": "nginxbeautifier",
+      "title": "Malicious Package in nginxbeautifier",
+      "description": "Version 1.0.14 of `nginxbeautifier` contained malicious code. The code when executed in the browser would enumerate password, cvc, cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nIf version 1.0.14 of this module is found installed you will want to replace it with a version before or after 1.0.14. In addition to replacing the installed module, you will also want to evaluate your application to determine whether or not user",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-28xx-8j99-m32j",
+      "publishedAt": "2020-09-01T20:37:25Z",
+      "modifiedAt": "2023-01-09T05:03:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-28xx-8j99-m32j"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.0.14",
+          "fixed": "1.0.15"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

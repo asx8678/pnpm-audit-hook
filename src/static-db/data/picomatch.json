@@ -1,0 +1,60 @@
+{
+  "packageName": "picomatch",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3v7f-55p6-f55p",
+      "packageName": "picomatch",
+      "title": "Picomatch: Method Injection in POSIX Character Classes causes incorrect Glob Matching",
+      "description": "### Impact\npicomatch is vulnerable to a **method injection vulnerability (CWE-1321)** affecting the `POSIX_REGEX_SOURCE` object. Because the object inherits from `Object.prototype`, specially crafted POSIX bracket expressions (e.g., `[[:constructor:]]`) can reference inherited method names. These methods are implicitly converted to strings and injected into the generated regular expression.\n\nThis leads to **incorrect glob matching behavior (integrity impact)**, where patterns may match unintende",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3v7f-55p6-f55p",
+      "publishedAt": "2026-03-25T21:13:39Z",
+      "modifiedAt": "2026-03-27T21:36:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3v7f-55p6-f55p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33672"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.3.2",
+          "fixed": "2.3.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-c2c7-rcm5-vvqj",
+      "packageName": "picomatch",
+      "title": "Picomatch has a ReDoS vulnerability via extglob quantifiers",
+      "description": "### Impact\n`picomatch` is vulnerable to Regular Expression Denial of Service (ReDoS) when processing crafted extglob patterns. Certain patterns using extglob quantifiers such as `+()` and `*()`, especially when combined with overlapping alternatives or nested extglobs, are compiled into regular expressions that can exhibit catastrophic backtracking on non-matching input.\n\nExamples of problematic patterns include `+(a|aa)`, `+(*|?)`, `+(+(a))`, `*(+(a))`, and `+(+(+(a)))`. In local reproduction, ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-c2c7-rcm5-vvqj",
+      "publishedAt": "2026-03-25T21:12:07Z",
+      "modifiedAt": "2026-03-27T21:36:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c2c7-rcm5-vvqj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33671"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.3.2",
+          "fixed": "2.3.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

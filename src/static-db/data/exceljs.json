@@ -1,0 +1,33 @@
+{
+  "packageName": "exceljs",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2j2j-8rrv-264g",
+      "packageName": "exceljs",
+      "title": "Cross-Site Scripting in exceljs",
+      "description": "Versions of `exceljs` before 1.6.0 are vulnerable to cross-site scripting. \n\nThis vulnerability is due to `exceljs` not validating data from parsed XLSX file and embedding HTML tags, like `<script>` directly into the sheet cells. Because of this it's possible to inject malicious JavaScript code and execute it when data from the sheet is displayed in the browser.\n\n\n\n\n## Recommendation\n\nUpdate to version 1.6.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2j2j-8rrv-264g",
+      "publishedAt": "2018-09-11T18:58:40Z",
+      "modifiedAt": "2023-09-13T18:50:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2j2j-8rrv-264g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16459"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.6.0",
+          "fixed": "1.6.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

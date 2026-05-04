@@ -1,0 +1,33 @@
+{
+  "packageName": "hubot-scripts",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hwch-749c-rv63",
+      "packageName": "hubot-scripts",
+      "title": "Potential Command Injection in hubot-scripts",
+      "description": "Versions 2.4.3 and earlier of hubot-scripts are vulnerable to a command injection vulnerablity in the `hubot-scripts/package/src/scripts/email.coffee` module.\n\n\n### Mitigating Factors\nThe email script is not enabled by default, it has to be manually added to hubot's list of loaded scripts.\n\n\n## Recommendation\n\nUpdate hubot-scripts to version 2.4.4 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-hwch-749c-rv63",
+      "publishedAt": "2020-08-31T22:46:38Z",
+      "modifiedAt": "2023-01-09T05:03:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hwch-749c-rv63"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2013-7378"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.4.3",
+          "fixed": "2.4.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

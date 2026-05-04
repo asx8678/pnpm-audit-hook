@@ -1,0 +1,29 @@
+{
+  "packageName": "diagram-js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8fw4-xh83-3j6q",
+      "packageName": "diagram-js",
+      "title": "Cross-Site Scripting in diagram-js",
+      "description": "Versions of `diagram-js` prior to 3.3.1 (for 3.x) and 2.6.2 (for 2.x) are vulnerable to Cross-Site Scripting. The package fails to escape output of user-controlled input in `search-pad`, allowing attackers to execute arbitrary JavaScript.\n\n\n## Recommendation\n\nIf you are using diagram-js 3.x, upgrade to version 3.3.1.\nIf you are using diagram-js 2.x, upgrade to version 2.6.2.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8fw4-xh83-3j6q",
+      "publishedAt": "2020-09-11T21:18:05Z",
+      "modifiedAt": "2023-10-03T13:43:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8fw4-xh83-3j6q"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 3.3.1",
+          "fixed": "3.3.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "packageName": "passport-azure-ad",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-73jp-3c67-hjfv",
+      "packageName": "passport-azure-ad",
+      "title": "Authentication Bypass in passport-azure-ad",
+      "description": "Affected versions of `passport-azure-ad` do not recognize the `validateIssuer` setting, which allows remote attackers to bypass authentication via a crafted token.\n\n\n## Recommendation\n\nVersion 1.x: Update to version 1.4.6 or later.\nVersion 2.x: Update to version 2.0.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-73jp-3c67-hjfv",
+      "publishedAt": "2018-07-26T15:53:31Z",
+      "modifiedAt": "2023-01-09T05:02:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-73jp-3c67-hjfv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-7191"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 2.0.0",
+          "fixed": "2.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

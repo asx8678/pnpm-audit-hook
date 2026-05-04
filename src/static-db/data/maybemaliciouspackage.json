@@ -1,0 +1,28 @@
+{
+  "packageName": "maybemaliciouspackage",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m9r7-q9fc-qwx5",
+      "packageName": "maybemaliciouspackage",
+      "title": "Malicious Package in maybemaliciouspackage",
+      "description": "All versions of `maybemaliciouspackage` contain malicious code. The package prints the system's SSH keys to the console as a postinstall script.\n\n\n## Recommendation\n\nRemove the package from your environment. There are no further signs of compromise.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m9r7-q9fc-qwx5",
+      "publishedAt": "2020-09-03T17:22:24Z",
+      "modifiedAt": "2023-01-09T05:03:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m9r7-q9fc-qwx5"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "packageName": "bleach",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5634-rv46-48jf",
+      "packageName": "bleach",
+      "title": "Cross-Site Scripting in bleach",
+      "description": "All versions of `bleach` are vulnerable to Cross-Site Scripting. It is possible to bypass the package's HTML sanitization with payloads such as `\"<<script><</script>script>alert('xss');</<script><</script>script>\"` regardless of the passed options. This may allow attackers to execute arbitrary JavaScript in the victim's browser.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5634-rv46-48jf",
+      "publishedAt": "2020-09-03T17:13:45Z",
+      "modifiedAt": "2023-01-09T05:03:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5634-rv46-48jf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mvmf-cvfx-qg55",
+      "packageName": "bleach",
+      "title": "Regular Expression Denial of Service in bleach",
+      "description": "All versions of the `bleach` package are vulnerable to a regular expression denial of service attack when certain types of input are passed into the sanitize function.\n\n\n\n## Recommendation\n\nThe `bleach` package is not currently maintained, and has not seen an update since 2014. \n\nTo mitigate this issue, it is necessary to use an alternative module that is actively maintained and provides similar functionality. There are [multiple modules fitting this criteria available on npm.](https://www.npmjs",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mvmf-cvfx-qg55",
+      "publishedAt": "2020-09-01T15:16:43Z",
+      "modifiedAt": "2023-01-09T05:03:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mvmf-cvfx-qg55"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2014-8881"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

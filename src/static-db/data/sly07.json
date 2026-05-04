@@ -1,0 +1,32 @@
+{
+  "packageName": "sly07",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rw6j-rhw7-q94c",
+      "packageName": "sly07",
+      "title": "Directory Traversal in sly07",
+      "description": "Affected versions of `sly07` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only used",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rw6j-rhw7-q94c",
+      "publishedAt": "2018-07-23T20:40:34Z",
+      "modifiedAt": "2023-09-12T19:35:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rw6j-rhw7-q94c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16189"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -97,6 +97,24 @@ export interface PackageIndexEntry {
   maxSeverity: Severity;
 }
 
+export type StaticDbCoverageMode = "full" | "recent" | "sample";
+
+/**
+ * Describes the vulnerability coverage represented by a generated static DB.
+ */
+export interface StaticDbCoverage {
+  /** Full historical, recent retention window, or sample/demo data */
+  mode: StaticDbCoverageMode;
+  /** Advisory ecosystem covered by this static DB */
+  ecosystem: "NPM";
+  /** ISO cutoff date used as the build anchor */
+  cutoffDate: string;
+  /** ISO lower-bound date for recent/filtered coverage */
+  sinceDate?: string;
+  /** Retention window in years when generated with --years */
+  retentionYears?: number;
+}
+
 /**
  * Main index file containing metadata and package listing.
  * Stored as: data/index.json
@@ -117,6 +135,8 @@ export interface StaticDbIndex {
    * Enables O(1) lookup to check if a package has known vulnerabilities.
    */
   packages: Record<string, PackageIndexEntry>;
+  /** Optional coverage metadata. Absent in legacy indexes. */
+  coverage?: StaticDbCoverage;
   /**
    * SHA-256 integrity hashes for shard files.
    * Maps relative shard paths (e.g. "lodash.json.gz", "@angular/core.json")

@@ -1,0 +1,28 @@
+{
+  "packageName": "mx-nested-menu",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-48hw-37g6-3gw4",
+      "packageName": "mx-nested-menu",
+      "title": "Malicious Package in mx-nested-menu",
+      "description": "Version 0.1.30 of `mx-nested-menu` contained malicious code. The code when executed in the browser would enumerate password, cvc and cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nRemove the package from your environment and evaluate your application to determine whether or not user data was compromised.\n\nUsers may consider downgrading to version 0.1.29",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-48hw-37g6-3gw4",
+      "publishedAt": "2020-09-03T02:35:41Z",
+      "modifiedAt": "2023-07-27T20:35:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-48hw-37g6-3gw4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 0.1.30"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

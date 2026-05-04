@@ -1,0 +1,32 @@
+{
+  "packageName": "npm-script-demo",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-322m-p39j-r5m2",
+      "packageName": "npm-script-demo",
+      "title": "npm-script-demo is malware",
+      "description": "The `npm-script-demo` package is a piece of malware that opens a connection to a command and control server and executed the instructions it is given.\n\nIt has been removed from the npm registry.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer has been given to ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-322m-p39j-r5m2",
+      "publishedAt": "2020-09-01T18:55:37Z",
+      "modifiedAt": "2023-09-12T18:06:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-322m-p39j-r5m2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16128"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

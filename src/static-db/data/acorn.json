@@ -1,0 +1,52 @@
+{
+  "packageName": "acorn",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7fhm-mqm4-2wp7",
+      "packageName": "acorn",
+      "title": "Withdrawn: ESLint dependencies are vulnerable (ReDoS and Prototype Pollution)",
+      "description": "**Withdrawn**\nGitHub has withdrawn this advisory in place of GHSA-vh95-rmgr-6w4m and GHSA-6chw-6frg-f759.\nThe reason for withdrawing is that some mistakes were made during the ingestion of CVE-2020-7598\nwhich caused this advisory to be published with incorrect information.\n\nIn order to provide accurate advisory information, new advisories were created:\n\n- minimist: https://github.com/advisories/GHSA-vh95-rmgr-6w4m\n- acorn: https://github.com/advisories/GHSA-6chw-6frg-f759",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7fhm-mqm4-2wp7",
+      "publishedAt": "2020-03-13T20:36:16Z",
+      "modifiedAt": "2023-01-09T05:02:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7fhm-mqm4-2wp7"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0, < 7.1.1",
+          "fixed": "7.1.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6chw-6frg-f759",
+      "packageName": "acorn",
+      "title": "Regular Expression Denial of Service in Acorn",
+      "description": "Affected versions of acorn are vulnerable to Regular Expression Denial of Service.\nA regex in the form of /[x-\\ud800]/u causes the parser to enter an infinite loop.\nThe string is not valid UTF16 which usually results in it being sanitized before reaching the parser.\nIf an application processes untrusted input and passes it directly to acorn,\nattackers may leverage the vulnerability leading to Denial of Service.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6chw-6frg-f759",
+      "publishedAt": "2020-04-03T21:48:38Z",
+      "modifiedAt": "2023-01-09T05:02:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6chw-6frg-f759"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.5.0, < 5.7.4",
+          "fixed": "5.7.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

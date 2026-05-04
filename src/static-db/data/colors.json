@@ -1,25 +1,29 @@
 {
-  "packageName": "Colors",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "packageName": "colors",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
-      "id": "GHSA-5rqg-jm4f-cqx7",
-      "packageName": "Colors",
-      "title": "Infinite loop causing Denial of Service in colors",
-      "description": "colors is a library for including colored text in node.js consoles. Between 07 and 09 January 2022, colors versions 1.4.1, 1.4.2, and 1.4.44-liberty-2 were published including malicious code that caused a Denial of Service due to an infinite loop. Software dependent on these versions experienced the printing of randomized characters to console and an infinite loop resulting in unbound system resource consumption.\n\nUsers of colors relying on these specific versions should downgrade to version 1.4",
+      "id": "GHSA-gh88-3pxp-6fm8",
+      "packageName": "colors",
+      "title": "Infinite Loop in colors.js",
+      "description": "The package colors after 1.4.0 are vulnerable to Denial of Service (DoS) that was introduced through an infinite loop in the americanFlag module. Unfortunately this appears to have been a purposeful attempt by a maintainer of colors to make the package unusable, other maintainers' controls over this package appear to have been revoked in an attempt to prevent them from fixing the issue. Vulnerable Code js for (let i = 666; i < Infinity; i++;) { Alternative Remediation Suggested * Pin dependancy ",
       "severity": "high",
-      "url": "https://github.com/advisories/GHSA-5rqg-jm4f-cqx7",
-      "publishedAt": "2022-01-10T17:29:53Z",
-      "modifiedAt": "2023-01-11T05:03:23Z",
+      "url": "https://github.com/advisories/GHSA-gh88-3pxp-6fm8",
+      "publishedAt": "2022-01-21T23:39:50Z",
+      "modifiedAt": "2023-02-03T05:04:51Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-5rqg-jm4f-cqx7"
+          "value": "GHSA-gh88-3pxp-6fm8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23567"
         }
       ],
       "affectedVersions": [
         {
-          "range": "= 1.4.44-liberty-2"
+          "range": ">= 1.4.1"
         }
       ],
       "source": "github"

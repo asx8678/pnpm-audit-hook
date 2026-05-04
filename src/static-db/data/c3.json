@@ -1,0 +1,33 @@
+{
+  "packageName": "c3",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gvg7-pp82-cff3",
+      "packageName": "c3",
+      "title": "Cross-Site Scripting in c3",
+      "description": "Affected versions of `c3` are vulnerable to cross-site scripting via improper sanitization of HTML in rendered tooltips. \n\n\n\n## Recommendation\n\nUpdate to 0.4.11 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gvg7-pp82-cff3",
+      "publishedAt": "2020-09-01T15:59:11Z",
+      "modifiedAt": "2023-04-05T19:31:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gvg7-pp82-cff3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-1000240"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.4.10",
+          "fixed": "0.4.11"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

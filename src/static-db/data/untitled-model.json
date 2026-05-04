@@ -1,0 +1,28 @@
+{
+  "packageName": "untitled-model",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hq8g-qq57-5275",
+      "packageName": "untitled-model",
+      "title": "SQL Injection in untitled-model",
+      "description": "All versions of `untitled-model` re vulnerable to SQL Injection. Query parameters are not properly sanitized allowing attackers to inject SQL statements and execute arbitrary SQL queries.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hq8g-qq57-5275",
+      "publishedAt": "2020-09-11T21:24:33Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hq8g-qq57-5275"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

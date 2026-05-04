@@ -1,7 +1,34 @@
 {
   "packageName": "@astrojs/cloudflare",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-88gm-j2wx-58h6",
+      "packageName": "@astrojs/cloudflare",
+      "title": "Cloudflare has SSRF via redirect following through its image-binding-transform endpoint (incomplete fix for GHSA-qpr4)",
+      "description": "## Summary\n\nThe `fetch()` call for remote images in `packages/integrations/cloudflare/src/utils/image-binding-transform.ts` (line 28) uses the default `redirect: 'follow'` behavior. This allows the Cloudflare Worker to follow HTTP redirects to arbitrary URLs, bypassing the `isRemoteAllowed()` domain allowlist check which only validates the initial URL.\n\nAll three other image fetch paths in the codebase correctly use `{ redirect: 'manual' }`. This is an incomplete fix for GHSA-qpr4-c339-7vq8.\n\nCo",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-88gm-j2wx-58h6",
+      "publishedAt": "2026-04-23T21:52:03Z",
+      "modifiedAt": "2026-04-27T16:42:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-88gm-j2wx-58h6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41321"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 13.1.10",
+          "fixed": "13.1.10"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-qpr4-c339-7vq8",
       "packageName": "@astrojs/cloudflare",

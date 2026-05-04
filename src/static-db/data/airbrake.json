@@ -1,0 +1,33 @@
+{
+  "packageName": "airbrake",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-856x-cp3q-47vg",
+      "packageName": "airbrake",
+      "title": "Insecure Default Configuration in airbrake",
+      "description": "Affected versions of `airbrake` default to sending environment variables over an unencrypted HTTP connection. In scenarios where an attacker has a privileged network position, it is possible for them to capture and read these environment variables, which may result in leaking sensitive information.\n\n\n## Recommendation\n\nUpdate to version 0.4.0 or later, or upgrade from the now-deprecated `airbrake` module to its replacement, [`airbrake-js`](https://www.npmjs.com/package/airbrake-js).",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-856x-cp3q-47vg",
+      "publishedAt": "2019-02-18T23:58:13Z",
+      "modifiedAt": "2023-01-09T05:02:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-856x-cp3q-47vg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10530"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.4.0",
+          "fixed": "0.4.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

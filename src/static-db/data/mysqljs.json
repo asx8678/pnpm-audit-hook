@@ -1,0 +1,32 @@
+{
+  "packageName": "mysqljs",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8gv6-g7vp-hr34",
+      "packageName": "mysqljs",
+      "title": "mysqljs is malware",
+      "description": "The `mysqljs` package is a piece of malware that steals environment variables and sends them to attacker controlled locations. \n\nAll versions have been unpublished from the npm registry.\n\n\n## Recommendation\n\nAs this package is malware, if you find it installed in your environment, the real security concern is determining how it got there. \n\nIf you have found this installed in your environment, you should:\n1. Delete the package\n2. Clear your npm cache\n3. Ensure it is not present in any other pack",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8gv6-g7vp-hr34",
+      "publishedAt": "2020-09-01T18:58:47Z",
+      "modifiedAt": "2023-09-12T18:51:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8gv6-g7vp-hr34"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16047"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

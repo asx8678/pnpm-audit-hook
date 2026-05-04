@@ -1,6 +1,6 @@
 {
   "packageName": "connect",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-6w62-83g6-rfhj",
@@ -25,6 +25,60 @@
         {
           "range": "< 2.8.2",
           "fixed": "2.8.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rch9-xh7r-mqgw",
+      "packageName": "connect",
+      "title": "Cross-Site Scripting in connect",
+      "description": "connect node module before 2.14.0 suffers from a Cross-Site Scripting (XSS) vulnerability due to a lack of validation of file in directory.js middleware.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rch9-xh7r-mqgw",
+      "publishedAt": "2018-07-26T15:08:05Z",
+      "modifiedAt": "2023-05-30T19:26:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rch9-xh7r-mqgw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3717"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.14.0",
+          "fixed": "2.14.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3fw8-66wf-pr7m",
+      "packageName": "connect",
+      "title": "methodOverride Middleware Reflected Cross-Site Scripting in connect",
+      "description": "Connect is a stack of middleware that is executed in order in each request.\n\nThe \"methodOverride\" middleware allows the http post to override the method of the request with the value of the \"_method\" post key or with the header \"x-http-method-override\".\n\nBecause the user post input was not checked, req.method could contain any kind of value. Because the req.method did not match any common method VERB, connect answered with a 404 page containing the \"Cannot `[method]` `[url]`\" content. The method",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-3fw8-66wf-pr7m",
+      "publishedAt": "2020-08-31T22:41:27Z",
+      "modifiedAt": "2023-01-09T05:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3fw8-66wf-pr7m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2013-7370"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.8.0",
+          "fixed": "2.8.1"
         }
       ],
       "source": "github"

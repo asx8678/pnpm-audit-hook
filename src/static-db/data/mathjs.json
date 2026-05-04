@@ -1,7 +1,88 @@
 {
   "packageName": "mathjs",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-29qv-4j9f-fjw5",
+      "packageName": "mathjs",
+      "title": "Unsafe object property setter in mathjs",
+      "description": "### Impact\nThis security vulnerability allowed executing arbitrary JavaScript via the expression parser of mathjs. You can be affected when you have an application where users can evaluate arbitrary expressions using the mathjs expression parser.\n\n### Patches\nThe issue was introduced in mathjs `v13.1.1`, and patched in mathjs `v15.2.0`.\n\n### Workarounds\nThere is no workaround without upgrading to `v15.2.0`.\n\n### References\nYou can find out more via the commit fixing this issue: https://github.co",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-29qv-4j9f-fjw5",
+      "publishedAt": "2026-04-16T22:38:43Z",
+      "modifiedAt": "2026-04-28T13:34:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-29qv-4j9f-fjw5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-40897"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 13.1.1, < 15.2.0",
+          "fixed": "15.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jvff-x2qm-6286",
+      "packageName": "mathjs",
+      "title": "mathjs Allows Improperly Controlled Modification of Dynamically-Determined Object Attributes",
+      "description": "### Impact\nThis security vulnerability allowed executing arbitrary JavaScript via the expression parser of mathjs. You can be affected when you have an application where users can evaluate arbitrary expressions using the mathjs expression parser.\n\n### Patches\nThe issue was introduced in mathjs `v13.1.0`, and patched in mathjs `v15.2.0`.\n\n### Workarounds\nThere is no workaround without upgrading to `v15.2.0`.\n\n### References\nYou can find out more via the commit fixing this issue: https://github.co",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jvff-x2qm-6286",
+      "publishedAt": "2026-04-10T22:10:49Z",
+      "modifiedAt": "2026-04-23T14:38:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jvff-x2qm-6286"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41139"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 13.1.0, < 15.2.0",
+          "fixed": "15.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-pv8x-p9hq-j328",
+      "packageName": "mathjs",
+      "title": "Arbitrary Code Execution in mathjs",
+      "description": "math.js before 3.17.0 had an issue where private properties such as a constructor could be replaced by using unicode characters when creating an object.\n\n\n## Recommendation\n\nUpgrade to version 3.17.0 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-pv8x-p9hq-j328",
+      "publishedAt": "2017-12-18T22:27:53Z",
+      "modifiedAt": "2023-09-12T18:41:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pv8x-p9hq-j328"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-1001003"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.17.0",
+          "fixed": "3.17.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-x2fc-mxcx-w4mf",
       "packageName": "mathjs",
@@ -25,6 +106,33 @@
         {
           "range": "< 7.5.1",
           "fixed": "7.5.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vx5c-87qx-cv6c",
+      "packageName": "mathjs",
+      "title": "Arbitrary Code Execution in mathjs",
+      "description": "math.js before 3.17.0 had an arbitrary code execution in the JavaScript engine. Creating a typed function with JavaScript code in the name could result arbitrary execution.\n\n\n## Recommendation\n\nUpdate to version 3.17.0 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vx5c-87qx-cv6c",
+      "publishedAt": "2017-12-18T22:27:45Z",
+      "modifiedAt": "2023-01-09T05:03:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vx5c-87qx-cv6c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-1001002"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.17.0",
+          "fixed": "3.17.0"
         }
       ],
       "source": "github"

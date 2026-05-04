@@ -1,0 +1,32 @@
+{
+  "packageName": "selenium-chromedriver",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7p6h-3fmw-539q",
+      "packageName": "selenium-chromedriver",
+      "title": "selenium-chromedriver Downloads Resources over HTTP",
+      "description": "Affected versions of `selenium-chromedriver` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `selenium-chromedriver`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability, and the author has marked the package as deprecated.\n\nThe best mitigation ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7p6h-3fmw-539q",
+      "publishedAt": "2019-02-18T23:47:27Z",
+      "modifiedAt": "2023-09-11T18:11:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7p6h-3fmw-539q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10624"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

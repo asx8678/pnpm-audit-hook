@@ -1,0 +1,33 @@
+{
+  "packageName": "cyberchef",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jp6r-xcjj-5h7r",
+      "packageName": "cyberchef",
+      "title": "Cross-Site Scripting in cyberchef",
+      "description": "Versions of `cyberchef` prior to 8.31.3 are vulnerable to Cross-Site Scripting. In `Text Encoding Brute Force` the table rows are created by concatenating the `value` variable unsanitized in the HTML code. If this variable is controlled by user input it allows attackers to execute arbitrary JavaScript in a victim's browser.\n\n\n## Recommendation\n\nUpgrade to version 8.31.3 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jp6r-xcjj-5h7r",
+      "publishedAt": "2019-08-27T17:36:32Z",
+      "modifiedAt": "2023-01-09T05:01:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jp6r-xcjj-5h7r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15532"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.31.3",
+          "fixed": "8.31.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

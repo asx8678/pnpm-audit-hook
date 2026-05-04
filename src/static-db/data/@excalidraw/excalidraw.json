@@ -1,7 +1,30 @@
 {
   "packageName": "@excalidraw/excalidraw",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-39h7-pwv7-rc3x",
+      "packageName": "@excalidraw/excalidraw",
+      "title": "Excalidraw vulnerable to XSS via Mermaid sequence diagram labels (KaTeX rendering)",
+      "description": "### Impact\n\n`@excalidraw/excalidraw@0.18.0` depends on a Mermaid conversion package version that resolves to a Mermaid release affected by CVE-2025-54881 / GHSA-7rqq-prvp-x9jh. User-supplied Mermaid sequence diagram labels could trigger XSS through Mermaid’s KaTeX label rendering path.\n\nThis is patched in `@excalidraw/excalidraw@0.18.1` by updating `@excalidraw/mermaid-to-excalidraw` to `2.2.2`, which uses a patched Mermaid 11 release.\n\nModerate severity as this XSS requires manual user action -",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-39h7-pwv7-rc3x",
+      "publishedAt": "2026-04-24T20:41:51Z",
+      "modifiedAt": "2026-04-24T20:41:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-39h7-pwv7-rc3x"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 0.18.0",
+          "fixed": "0.18.1"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-m64q-4jqh-f72f",
       "packageName": "@excalidraw/excalidraw",

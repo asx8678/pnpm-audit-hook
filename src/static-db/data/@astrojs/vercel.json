@@ -1,0 +1,33 @@
+{
+  "packageName": "@astrojs/vercel",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mr6q-rp88-fx84",
+      "packageName": "@astrojs/vercel",
+      "title": "Astro: Unauthenticated Path Override via `x-astro-path` / `x_astro_path`",
+      "description": "## Summary\n\nThe `@astrojs/vercel` serverless entrypoint reads the `x-astro-path` header and `x_astro_path` query parameter to rewrite the internal request path, with no authentication whatsoever. On deployments without Edge Middleware, this lets anyone bypass Vercel's platform-level path restrictions entirely.\n\nThe override preserves the original HTTP method and body, so this isn't limited to GET. POST, PUT, DELETE all land on the rewritten path. A Firewall rule blocking `/admin/*` does nothing ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mr6q-rp88-fx84",
+      "publishedAt": "2026-03-26T18:41:34Z",
+      "modifiedAt": "2026-03-26T18:41:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mr6q-rp88-fx84"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33768"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 10.0.2",
+          "fixed": "10.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

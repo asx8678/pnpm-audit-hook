@@ -1,0 +1,32 @@
+{
+  "packageName": "dalek-browser-chrome",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6q8q-rvf4-m4pg",
+      "packageName": "dalek-browser-chrome",
+      "title": "dalek-browser-chrome Downloads Resources over HTTP",
+      "description": "Affected versions of `dalek-browser-chrome` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `dalek-browser-chrome`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a diffe",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6q8q-rvf4-m4pg",
+      "publishedAt": "2019-02-18T23:50:14Z",
+      "modifiedAt": "2023-09-06T20:03:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6q8q-rvf4-m4pg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10604"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.11"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

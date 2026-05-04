@@ -1,0 +1,32 @@
+{
+  "packageName": "openframe-ascii-image",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xj6f-x7jm-85ff",
+      "packageName": "openframe-ascii-image",
+      "title": "openframe-ascii-image downloads Resources over HTTP",
+      "description": "Affected versions of `openframe-ascii-image` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `openframe-ascii-image`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a dif",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xj6f-x7jm-85ff",
+      "publishedAt": "2019-02-18T23:41:54Z",
+      "modifiedAt": "2023-09-11T18:33:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xj6f-x7jm-85ff"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10690"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

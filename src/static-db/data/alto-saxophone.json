@@ -1,0 +1,33 @@
+{
+  "packageName": "alto-saxophone",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2p69-gxpm-5469",
+      "packageName": "alto-saxophone",
+      "title": "Downloads Resources over HTTP in alto-saxophone",
+      "description": "Affected versions of `alto-saxophone` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `alto-saxophone`.\n\n\n## Recommendation\n\nUpdate to version 2.25.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2p69-gxpm-5469",
+      "publishedAt": "2018-07-31T22:34:45Z",
+      "modifiedAt": "2023-01-09T05:02:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2p69-gxpm-5469"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10694"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.25.1",
+          "fixed": "2.25.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "packageName": "bowe",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xmmp-hrmx-x5g7",
+      "packageName": "bowe",
+      "title": "Malicious Package in bowe",
+      "description": "Version 1.8.4 of `bowee` contained malicious code as a preinstall script. The package downloaded a file from a remote server, executed it and opened a backdoor.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been given to an outside entity, there is n",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-xmmp-hrmx-x5g7",
+      "publishedAt": "2020-09-02T21:32:22Z",
+      "modifiedAt": "2023-01-09T05:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xmmp-hrmx-x5g7"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

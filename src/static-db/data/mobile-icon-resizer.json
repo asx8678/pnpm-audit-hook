@@ -1,0 +1,29 @@
+{
+  "packageName": "mobile-icon-resizer",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mxjr-xmcg-fg7w",
+      "packageName": "mobile-icon-resizer",
+      "title": "Arbitrary Code Injection in mobile-icon-resizer",
+      "description": "mobile-icon-resizer resizes large images for use as icons for iOS and Android.\n\nmobile-icon-resizer has a code execution vulnerability in versions before 0.4.3.\n\nmobile-icon-resizer takes an options object as an argument to define the resulting icons as such:\n```\nvar options = {\n  config: './config.js'\n}\nresize(options, function(err){});\n```\nconfig.js would need to be a file on the filesystem and look something like:\n```\nvar config = {\n  iOS: {\n    \"images\": [\n     /* iOS image definitions are n",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mxjr-xmcg-fg7w",
+      "publishedAt": "2019-06-27T17:25:21Z",
+      "modifiedAt": "2023-01-09T05:01:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mxjr-xmcg-fg7w"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.2.0, < 0.4.3",
+          "fixed": "0.4.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

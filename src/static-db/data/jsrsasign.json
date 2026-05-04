@@ -1,7 +1,169 @@
 {
   "packageName": "jsrsasign",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-464q-cqxq-xhgr",
+      "packageName": "jsrsasign",
+      "title": "jsrsasign: Division by Zero Allows Invalid JWK Modulus to Cause Deterministic Zero Output in RSA Operations",
+      "description": "Versions of the package jsrsasign before 11.1.1 are vulnerable to Division by zero due to the RSASetPublic/KEYUTIL parsing path in ext/rsa.js and the BigInteger.modPowInt reduction logic in ext/jsbn.js. An attacker can force RSA public-key operations (e.g., verify and encryption) to collapse to deterministic zero outputs and hide “invalid key” errors by supplying a JWK whose modulus decodes to zero.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-464q-cqxq-xhgr",
+      "publishedAt": "2026-03-23T06:30:29Z",
+      "modifiedAt": "2026-03-30T19:30:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-464q-cqxq-xhgr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-4603"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.1.1",
+          "fixed": "11.1.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8qwj-4jxw-m8jw",
+      "packageName": "jsrsasign",
+      "title": "jsrsasign: Negative Exponent Handling Leads to Signature Verification Bypass",
+      "description": "Versions of the package jsrsasign before 11.1.1 are vulnerable to Incorrect Conversion between Numeric Types due to handling negative exponents in ext/jsbn2.js. An attacker can force the computation of incorrect modular inverses and break signature verification by calling modPow with a negative exponent.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8qwj-4jxw-m8jw",
+      "publishedAt": "2026-03-23T06:30:29Z",
+      "modifiedAt": "2026-03-30T19:30:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8qwj-4jxw-m8jw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-4602"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.1.1",
+          "fixed": "11.1.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wvqx-v3f6-w8rh",
+      "packageName": "jsrsasign",
+      "title": "jsrsasign: DSA signatures or X.509 certificates can be forged via DSA domain-parameter validation in KJUR.crypto.DSA.setPublic",
+      "description": "Versions of the package jsrsasign before 11.1.1 are vulnerable to Improper Verification of Cryptographic Signature via the DSA domain-parameter validation in KJUR.crypto.DSA.setPublic (and the related DSA/X509 verification flow in src/dsa-2.0.js). An attacker can forge DSA signatures or X.509 certificates that X509.verifySignature() accepts by supplying malicious domain parameters such as g=1, y=1, and a fixed r=1, which make the verification equation true for any hash.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wvqx-v3f6-w8rh",
+      "publishedAt": "2026-03-23T06:30:29Z",
+      "modifiedAt": "2026-03-30T19:29:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wvqx-v3f6-w8rh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-4600"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.1.1",
+          "fixed": "11.1.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5jx8-q4cp-rhh6",
+      "packageName": "jsrsasign",
+      "title": "jsrsasign: Incomplete Comparison Allows DSA Private Key Recovery via Biased Nonce Generation",
+      "description": "Versions of the package jsrsasign from 7.0.0 and before 11.1.1 are vulnerable to Incomplete Comparison with Missing Factors via the getRandomBigIntegerZeroToMax and getRandomBigIntegerMinToMax functions in src/crypto-1.1.js; an attacker can recover the private key by exploiting the incorrect compareTo checks that accept out-of-range candidates and thus bias DSA nonces during signature generation.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5jx8-q4cp-rhh6",
+      "publishedAt": "2026-03-23T06:30:29Z",
+      "modifiedAt": "2026-03-30T19:29:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5jx8-q4cp-rhh6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-4599"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 7.0.0, < 11.1.1",
+          "fixed": "11.1.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w8q8-93cx-6h7r",
+      "packageName": "jsrsasign",
+      "title": "jsrsasign: Missing cryptographic validation during DSA signing enables private key extraction",
+      "description": "Versions of the package jsrsasign before 11.1.1 are vulnerable to Missing Cryptographic Step via the KJUR.crypto.DSA.signWithMessageHash process in the DSA signing implementation. An attacker can recover the private key by forcing r or s to be zero, so the library emits an invalid signature without retrying, and then solves for x from the resulting signature.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-w8q8-93cx-6h7r",
+      "publishedAt": "2026-03-23T06:30:29Z",
+      "modifiedAt": "2026-03-29T15:52:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w8q8-93cx-6h7r"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-4601"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.1.1",
+          "fixed": "11.1.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8g7p-jf3g-gxcp",
+      "packageName": "jsrsasign",
+      "title": "jsrsasign is vulnerable to DoS through Infinite Loop when processing zero or negative inputs",
+      "description": "Versions of the package jsrsasign before 11.1.1 are vulnerable to Infinite loop via the bnModInverse function in ext/jsbn2.js when the BigInteger.modInverse implementation receives zero or negative inputs, allowing an attacker to hang the process permanently by supplying such crafted values (e.g., modInverse(0, m) or modInverse(-1, m)).",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8g7p-jf3g-gxcp",
+      "publishedAt": "2026-03-23T06:30:29Z",
+      "modifiedAt": "2026-03-29T15:51:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8g7p-jf3g-gxcp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-4598"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.1.1",
+          "fixed": "11.1.1"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-rh63-9qcf-83gf",
       "packageName": "jsrsasign",
@@ -57,6 +219,87 @@
       "source": "github"
     },
     {
+      "id": "GHSA-p8c3-7rj8-q963",
+      "packageName": "jsrsasign",
+      "title": "ECDSA signature validation vulnerability by accepting wrong ASN.1 encoding in jsrsasign",
+      "description": "### Impact\nJsrsasign supports ECDSA signature validation which signature value is represented by ASN.1 DER encoding. This vulnerablity may accept a wrong ASN.1 DER encoded ECDSA signature such as:\n\n- wrong multi-byte ASN.1 length of TLV (ex. 0x820045 even though 0x45 is correct)\n- prepending zeros with ASN.1 INTEGER value (ex. 0x00000123 even though 0x0123 is correct)\n- appending zeros to signature of ASN.1 TLV (ex. 0x3082....1fbc000000 even though 0x3082....1fbc, appending zeros are ignored.)\n\n",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-p8c3-7rj8-q963",
+      "publishedAt": "2020-06-26T16:54:15Z",
+      "modifiedAt": "2023-01-31T01:29:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p8c3-7rj8-q963"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-14966"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 8.0.19",
+          "fixed": "8.0.19"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xxxq-chmp-67g4",
+      "packageName": "jsrsasign",
+      "title": "RSA PKCS#1 decryption vulnerability with prepending zeros in jsrsasign",
+      "description": "### Impact\nJsrsasign supports RSA PKCS#1 v1.5 (i.e. RSAES-PKCS1-v1_5) and RSA-OAEP encryption and decryption. Its encrypted message is represented as BigInteger. When there is a valid encrypted message, a crafted message with prepending zeros can be decrypted by this vulnerability.\n\n- If you don't use RSA PKCS1-v1_5 or RSA-OAEP decryption, this vulnerability is not affected.\n- Risk to forge contents of encrypted message is very low.\n- Risk to raise memory corruption is low since jsrsasign uses B",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-xxxq-chmp-67g4",
+      "publishedAt": "2020-06-26T16:27:08Z",
+      "modifiedAt": "2023-01-31T01:29:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xxxq-chmp-67g4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-14967"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.0.18",
+          "fixed": "8.0.18"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q3gh-5r98-j4h3",
+      "packageName": "jsrsasign",
+      "title": "RSA-PSS signature validation vulnerability by prepending zeros in jsrsasign",
+      "description": "### Impact\nJsrsasign can verify RSA-PSS signature which value can expressed as BigInteger. When there is a valid RSA-PSS signature value, this vulnerability is also accept value with prepending zeros as a valid signature.\n\n- If you are not use RSA-PSS signature validation, this vulnerability is not affected. \n- Risk to accept a forged or crafted message to be signed is low.\n- Risk to raise memory corruption is low since jsrsasign uses BigInteger class.\n\n### Patches\nUsers using RSA-PSS signature ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-q3gh-5r98-j4h3",
+      "publishedAt": "2020-06-26T16:26:50Z",
+      "modifiedAt": "2023-01-27T21:41:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q3gh-5r98-j4h3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-14968"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 8.0.16",
+          "fixed": "8.0.17"
+        }
+      ],
+      "source": "github"
+    },
+    {
       "id": "GHSA-3fvg-4v2m-98jf",
       "packageName": "jsrsasign",
       "title": "JWS and JWT signature validation vulnerability with special characters",
@@ -102,6 +345,29 @@
         {
           "range": "< 10.2.0",
           "fixed": "10.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-g753-jx37-7xwh",
+      "packageName": "jsrsasign",
+      "title": "ECDSA signature vulnerability of Minerva timing attack in jsrsasign",
+      "description": "### Impact\nECDSA side-channel attack named [Minerava](https://minerva.crocs.fi.muni.cz/) have been found and it was found that it affects to jsrsasign.\n\nExecution time of thousands signature generation have been observed then EC private key which is scalar value may be recovered since point and scalar multiplication time depends on bits of scalar. In jsrsasign 8.0.13 or later, execution time of EC point and scalar multiplication is almost constant and fixed for the issue.\n\n- Minerva is one of ti",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g753-jx37-7xwh",
+      "publishedAt": "2020-06-30T16:05:08Z",
+      "modifiedAt": "2023-01-09T05:03:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g753-jx37-7xwh"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 8.0.13",
+          "fixed": "8.0.13"
         }
       ],
       "source": "github"

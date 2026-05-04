@@ -1,0 +1,56 @@
+{
+  "packageName": "saml2-js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mfcp-34xw-p57x",
+      "packageName": "saml2-js",
+      "title": "Authentication Bypass in saml2-js",
+      "description": "Versions of `saml2-js` prior to 2.0.5 are vulnerable to an Authentication Bypass. The package fails to enforce the assertion conditions for encrypted assertions, which may allow an attacker to reuse encrypted assertion tokens indefinitely.\n\n\n## Recommendation\n\nUpgrade to version 2.0.5 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mfcp-34xw-p57x",
+      "publishedAt": "2020-09-03T21:20:52Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mfcp-34xw-p57x"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.5",
+          "fixed": "2.0.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5p5w-j3g7-w4wv",
+      "packageName": "saml2-js",
+      "title": "Authentication bypass via incorrect XML canonicalization and DOM traversal in saml2-js",
+      "description": "Versions of `saml2-js` prior to 1.12.4 or 2.0.2 are vulnerable to authentication bypass.\n\nThe `saml2-js` library may incorrectly utilize the results of XML DOM traversal and canonicalization APIs in such a way that an attacker may be able to manipulate the SAML data without invalidating the cryptographic signature, allowing the attack to potentially bypass authentication to SAML service providers.\n\nSecurity Assertion Markup Language (SAML) is an XML-based markup language for security assertions ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5p5w-j3g7-w4wv",
+      "publishedAt": "2019-07-05T21:11:18Z",
+      "modifiedAt": "2023-01-09T05:02:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5p5w-j3g7-w4wv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-11429"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.0.2",
+          "fixed": "2.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

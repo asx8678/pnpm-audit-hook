@@ -1,0 +1,29 @@
+{
+  "packageName": "express-basic-auth",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c35v-qwqg-87jc",
+      "packageName": "express-basic-auth",
+      "title": "express-basic-auth Timing Attack due to native string comparison instead of constant time string comparison",
+      "description": "Versions of `express-basic-auth` prior to 1.1.7 are vulnerable to Timing Attacks. The package uses native string comparison instead of a constant time string comparison, which may lead to Timing Attacks. Timing Attacks can be used to increase the efficiency of brute-force attacks by removing the exponential increase in entropy gained from longer secrets.\n\n\n## Recommendation\n\nUpgrade to version 1.1.7 or later.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-c35v-qwqg-87jc",
+      "publishedAt": "2019-06-06T15:32:32Z",
+      "modifiedAt": "2023-01-11T05:08:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c35v-qwqg-87jc"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.7",
+          "fixed": "1.1.7"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

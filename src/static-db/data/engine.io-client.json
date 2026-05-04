@@ -1,0 +1,33 @@
+{
+  "packageName": "engine.io-client",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4r4m-hjwj-43p8",
+      "packageName": "engine.io-client",
+      "title": "Insecure Defaults Allow MITM Over TLS in engine.io-client",
+      "description": "Affected versions of `engine.io-client` do not verify certificates by default, and as such may be vulnerable to Man-in-the-Middle attacks.\n\nThe vulnerability is related to the way that node.js handles the `rejectUnauthorized` setting. If the value is something that evaluates to false, such as undefined or null, certificate verification will be disabled. \n\n\n\n## Recommendation\n\nUpdate to version 1.6.9 or later.\n\nIf you are unable to upgrade, ensure all calls to socket.io to have a `rejectedUnautho",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4r4m-hjwj-43p8",
+      "publishedAt": "2019-02-18T23:39:50Z",
+      "modifiedAt": "2023-09-07T22:50:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4r4m-hjwj-43p8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10536"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.6.9",
+          "fixed": "1.6.9"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

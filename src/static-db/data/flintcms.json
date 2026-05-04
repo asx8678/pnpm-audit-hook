@@ -1,0 +1,33 @@
+{
+  "packageName": "flintcms",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jhq3-57xh-6643",
+      "packageName": "flintcms",
+      "title": "Privilege Escalation due to Blind NoSQL Injection in flintcms",
+      "description": "Versions of `flintcms` before version 1.1.10 are vulnerable to account takeover due to blind MongoDB injection in the password reset.\n\n\n## Recommendation\n\nUpdate to version 1.1.10 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-jhq3-57xh-6643",
+      "publishedAt": "2018-08-21T17:03:59Z",
+      "modifiedAt": "2023-01-09T05:03:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jhq3-57xh-6643"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3783"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.10",
+          "fixed": "1.1.10"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

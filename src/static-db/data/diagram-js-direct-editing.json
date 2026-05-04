@@ -1,0 +1,29 @@
+{
+  "packageName": "diagram-js-direct-editing",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j8r2-2x94-2q67",
+      "packageName": "diagram-js-direct-editing",
+      "title": "Cross-Site Scripting in diagram-js-direct-editing",
+      "description": "Versions of `diagram-js-direct-editing` prior to 1.4.3 are vulnerable to Cross-Site Scripting. The package fails to sanitize input from the clipboard, allowing attackers to execute arbitrary JavaScript in the victim's browser.\n\n\n## Recommendation\n\nUpgrade to version 1.4.3 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j8r2-2x94-2q67",
+      "publishedAt": "2020-09-11T21:19:09Z",
+      "modifiedAt": "2023-01-09T05:03:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j8r2-2x94-2q67"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.3",
+          "fixed": "1.4.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "packageName": "slpjs",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cc2p-4jhr-xhhx",
+      "packageName": "slpjs",
+      "title": "False-positive validity for NFT1 genesis transactions in SLPJS",
+      "description": "### Impact\nIn the npm package named \"slpjs\", versions prior to 0.27.4 are vulnerable to false-positive validation outcomes for the NFT1 Child Genesis transaction type. A poorly implemented SLP wallet or opportunistic attacker could create a seemingly valid NFT1 child token without burning any of the NFT1 Group token type as is required by the NFT1 specification.\n\n### Patches\nnpm package \"slpjs\" has been patched and is published and tagged as version 0.27.4.\n\n### Workarounds\nUpgrade to slpjs 0.27",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-cc2p-4jhr-xhhx",
+      "publishedAt": "2020-07-30T14:58:42Z",
+      "modifiedAt": "2023-01-09T05:03:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cc2p-4jhr-xhhx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15130"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.27.4",
+          "fixed": "0.27.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-425c-ccf3-3jrr",
+      "packageName": "slpjs",
+      "title": "Critical severity vulnerability that affects slpjs",
+      "description": "## Validator parsing discrepancy due to string encoding\n\n### Impact\nA specially crafted Bitcoin script can cause a discrepancy between the specified SLP consensus rules and the validation result of the slpjs npm package. An attacker could create a specially crafted Bitcoin script in order to cause a hard-fork from the SLP consensus.\n\n### Patches\nAll versions > 0.21.3 are patched.\n\n### Workarounds\nUpgrade to any version >= 0.21.4.\n\n### References\nThe bug was located and fixed [here](https://githu",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-425c-ccf3-3jrr",
+      "publishedAt": "2019-11-15T23:10:35Z",
+      "modifiedAt": "2023-01-09T05:02:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-425c-ccf3-3jrr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-16762"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.21.4",
+          "fixed": "0.21.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jc83-cpf9-q7c6",
+      "packageName": "slpjs",
+      "title": "False-negative validation results in MINT transactions with invalid baton",
+      "description": "### Impact\nUsers could experience false-negative validation outcomes for [MINT](https://github.com/simpleledger/slp-specifications/blob/master/slp-token-type-1.md#mint---extended-minting-transaction) transaction operations.  A poorly implemented SLP wallet could allow spending of the affected tokens which would result in the destruction of a user's minting baton.\n\n### Patches\nnpm package [slpjs](https://www.npmjs.com/package/slpjs) has been patched and published as version 0.27.2.\n\n\n### Workarou",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-jc83-cpf9-q7c6",
+      "publishedAt": "2020-05-12T00:39:03Z",
+      "modifiedAt": "2023-01-09T05:02:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jc83-cpf9-q7c6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-11071"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.27.2",
+          "fixed": "0.27.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "packageName": "slush-fullstack-framework",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4j54-mmmv-hjpm",
+      "packageName": "slush-fullstack-framework",
+      "title": "Malicious Package in slush-fullstack-framework",
+      "description": "Version 0.9.2 of `slush-fullstack-framework` contained malicious code. The code when executed in the browser would enumerate password, cvc, cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nRemove the package from your environment. It's also recommended to evaluate your application to determine whether or not user data was compromised.\n\nUsers may consider downgrading to version 0.9.1",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4j54-mmmv-hjpm",
+      "publishedAt": "2020-09-03T19:17:51Z",
+      "modifiedAt": "2023-07-27T20:05:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4j54-mmmv-hjpm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 0.9.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

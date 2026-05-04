@@ -1,0 +1,32 @@
+{
+  "packageName": "mcp-server-taskwarrior",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-95hg-3c55-xf9x",
+      "packageName": "mcp-server-taskwarrior",
+      "title": "awwaiid mcp-server-taskwarrior vulnerable to command injection",
+      "description": "A security vulnerability has been detected in awwaiid mcp-server-taskwarrior up to 1.0.1. This impacts the function server.setRequestHandler of the file index.ts. Such manipulation of the argument Identifier leads to command injection. The attack must be carried out locally. The exploit has been disclosed publicly and may be used. The name of the patch is 1ee3d282debfa0a99afeb41d22c4b2fd5a3148f2. Applying a patch is advised to resolve this issue. The vendor was contacted early, responded in a ve",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-95hg-3c55-xf9x",
+      "publishedAt": "2026-04-09T06:30:27Z",
+      "modifiedAt": "2026-04-10T19:20:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-95hg-3c55-xf9x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-5833"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

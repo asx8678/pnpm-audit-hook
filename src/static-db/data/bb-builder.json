@@ -1,0 +1,28 @@
+{
+  "packageName": "bb-builder",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vm6v-w6q2-mrrq",
+      "packageName": "bb-builder",
+      "title": "Malicious Package in bb-builder",
+      "description": "All versions of `bb-builder` contained malicious code. The package ran an executable targeting Windows and uploaded information to a remote server.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee t",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vm6v-w6q2-mrrq",
+      "publishedAt": "2020-09-03T19:20:05Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vm6v-w6q2-mrrq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

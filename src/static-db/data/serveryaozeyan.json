@@ -1,0 +1,32 @@
+{
+  "packageName": "serveryaozeyan",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gqfv-g9f6-3v3m",
+      "packageName": "serveryaozeyan",
+      "title": "Directory Traversal in serveryaozeyan",
+      "description": "Affected versions of `serveryaozeyan` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gqfv-g9f6-3v3m",
+      "publishedAt": "2020-09-01T16:50:23Z",
+      "modifiedAt": "2023-09-13T23:05:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gqfv-g9f6-3v3m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16096"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

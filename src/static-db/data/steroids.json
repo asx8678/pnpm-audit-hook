@@ -1,0 +1,32 @@
+{
+  "packageName": "steroids",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5m9c-634g-47vq",
+      "packageName": "steroids",
+      "title": "steroids downloads resources over HTTP",
+      "description": "Affected versions of `steroids` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `steroids`.\n\n\n## Recommendation\n\nThis vulnerability was discovered and reported in 2016, yet has not seen a patch issued as of 03/2018. As of 08/2022, [the package is marked as deprecated](",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5m9c-634g-47vq",
+      "publishedAt": "2019-02-18T23:35:01Z",
+      "modifiedAt": "2023-01-11T05:08:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5m9c-634g-47vq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10581"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.1.27"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

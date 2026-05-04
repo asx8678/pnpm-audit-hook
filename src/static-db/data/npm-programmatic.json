@@ -1,0 +1,32 @@
+{
+  "packageName": "npm-programmatic",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-426h-24vj-qwxf",
+      "packageName": "npm-programmatic",
+      "title": "Command Injection in npm-programmatic",
+      "description": "All versions of `npm-programmatic ` are vulnerable to Command Injection. The package fails to sanitize input rules and passes it directly to an `exec` call on the `install`, `uninstall` and `list` functions . This may allow attackers to execute arbitrary code in the system if the package name passed to the function is user-controlled.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-426h-24vj-qwxf",
+      "publishedAt": "2020-04-23T20:09:09Z",
+      "modifiedAt": "2023-02-01T05:03:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-426h-24vj-qwxf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7614"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.12"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

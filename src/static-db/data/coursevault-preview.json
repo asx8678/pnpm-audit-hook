@@ -1,0 +1,33 @@
+{
+  "packageName": "coursevault-preview",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9h9m-rr67-9jpg",
+      "packageName": "coursevault-preview",
+      "title": "coursevault-preview has a path traversal due to improper base-directory boundary validation",
+      "description": "## Summary\n\n`coursevault-preview` versions prior to `0.1.1` contain a path traversal vulnerability in the `resolveSafe` utility. The boundary check used `String.prototype.startsWith(baseDir)` on a normalized path, which does not enforce a directory boundary. An attacker who controls the `relativePath` argument to affected `CoursevaultPreview` methods may be able to read files outside the configured `baseDir` when a sibling directory exists whose name shares the same string prefix.\n\n## Details\n\nT",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9h9m-rr67-9jpg",
+      "publishedAt": "2026-04-08T00:06:03Z",
+      "modifiedAt": "2026-04-08T00:06:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9h9m-rr67-9jpg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35613"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.1.1",
+          "fixed": "0.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

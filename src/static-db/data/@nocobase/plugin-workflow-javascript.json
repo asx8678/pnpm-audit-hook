@@ -1,0 +1,33 @@
+{
+  "packageName": "@nocobase/plugin-workflow-javascript",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-px3p-vgh9-m57c",
+      "packageName": "@nocobase/plugin-workflow-javascript",
+      "title": "NocoBase Affected by Sandbox Escape to RCE via console._stdout Prototype Chain Traversal in Workflow Script Node",
+      "description": "`##` Summary\n\nNocoBase's Workflow Script Node executes user-supplied JavaScript inside a Node.js `vm` sandbox with a custom `require` allowlist (controlled by `WORKFLOW_SCRIPT_MODULES` env var). However, the `console` object passed into the sandbox context exposes host-realm `WritableWorkerStdio` stream objects via `console._stdout` and `console._stderr`.\n\nAn authenticated attacker can traverse the prototype chain to escape the sandbox and achieve Remote Code Execution (RCE) as root.\n\n## Exploit",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-px3p-vgh9-m57c",
+      "publishedAt": "2026-03-30T17:16:24Z",
+      "modifiedAt": "2026-03-31T18:50:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-px3p-vgh9-m57c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34156"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.27",
+          "fixed": "2.0.28"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

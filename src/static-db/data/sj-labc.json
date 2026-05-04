@@ -1,0 +1,28 @@
+{
+  "packageName": "sj-labc",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4fqg-89cc-5pv5",
+      "packageName": "sj-labc",
+      "title": "Malicious Package in sj-labc",
+      "description": "All versions of `sj-labc` contain malicious code. The package downloads and runs a script that opens a reverse shell in the system.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4fqg-89cc-5pv5",
+      "publishedAt": "2020-09-04T14:58:44Z",
+      "modifiedAt": "2023-01-09T05:03:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4fqg-89cc-5pv5"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

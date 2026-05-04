@@ -1,0 +1,28 @@
+{
+  "packageName": "lighter-vm",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c3hq-7mxh-mqxf",
+      "packageName": "lighter-vm",
+      "title": "Sandbox Breakout / Arbitrary Code Execution in lighter-vm",
+      "description": "All versions of `lighter-vm` are vulnerable to Sandbox Escape leading to Remote Code Execution. The package fails to restrict access to the main context through `this.constructor.constructor` . This may allow attackers to execute arbitrary code in the system. Evaluating the payload `this.constructor.constructor('return process.env')()` prints the contents of `process.env`.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-c3hq-7mxh-mqxf",
+      "publishedAt": "2020-09-04T14:59:50Z",
+      "modifiedAt": "2023-01-09T05:04:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c3hq-7mxh-mqxf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

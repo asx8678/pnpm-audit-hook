@@ -1,0 +1,29 @@
+{
+  "packageName": "vue-moment",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hrpp-f84w-xhfg",
+      "packageName": "vue-moment",
+      "title": "Outdated Static Dependency in vue-moment",
+      "description": "Versions of `vue-moment` prior to 4.1.0 contain an Outdated Static Dependency. The package depends on `moment` and has it loaded statically instead of as a dependency that can be updated. It has `moment@2.19.1` that contains a Regular Expression Denial of Service vulnerability.\n\n\n## Recommendation\n\nUpgrade to version 4.1.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hrpp-f84w-xhfg",
+      "publishedAt": "2020-09-04T16:55:06Z",
+      "modifiedAt": "2023-01-09T05:04:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hrpp-f84w-xhfg"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.1.0",
+          "fixed": "4.1.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

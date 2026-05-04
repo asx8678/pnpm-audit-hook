@@ -1,0 +1,33 @@
+{
+  "packageName": "mosca",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wqg7-vrj7-v82h",
+      "packageName": "mosca",
+      "title": "Mosca REDoS Vulnerability",
+      "description": "This vulnerability allows remote attackers to deny service on vulnerable installations of npm mosca 2.8.1. Authentication is not required to exploit this vulnerability. The specific flaw exists within the processing of topics. A crafted regular expression can cause the broker to crash. An attacker can leverage this vulnerability to deny access to the target system.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wqg7-vrj7-v82h",
+      "publishedAt": "2018-08-31T06:22:50Z",
+      "modifiedAt": "2023-09-16T05:03:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wqg7-vrj7-v82h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-11615"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.8.2",
+          "fixed": "2.8.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

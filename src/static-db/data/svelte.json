@@ -1,107 +1,30 @@
 {
   "packageName": "svelte",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
-      "id": "GHSA-6738-r8g5-qwp3",
+      "id": "GHSA-phwv-c562-gvmh",
       "packageName": "svelte",
-      "title": "svelte vulnerable to Cross-site Scripting",
-      "description": "## Summary\n\nAn XSS vulnerability exists in Svelte 5.46.0-2 resulting from improper escaping of `hydratable` keys. If these keys incorporate untrusted user input, arbitrary JavaScript can be injected into server-rendered HTML.\n\n## Details\n\nWhen using the [`hydratable`](https://svelte.dev/docs/svelte/hydratable) function, the first argument is used as a key to uniquely identify the data, such that the value is not regenerated in the browser.\n\nThis key is embedded into a `<script>` block in the ser",
+      "title": "Svelte vulnerable to XSS during SSR with contenteditable `bind:innerText` and `bind:textContent`",
+      "description": "The contents of `bind:innerText` and `bind:textContent` on `contenteditable` elements were not properly escaped. This could enable HTML injection and Cross-site Scripting (XSS) if rendering untrusted data as the binding's initial value on the server.",
       "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-6738-r8g5-qwp3",
-      "publishedAt": "2026-01-15T20:13:33Z",
-      "modifiedAt": "2026-01-19T21:50:24Z",
+      "url": "https://github.com/advisories/GHSA-phwv-c562-gvmh",
+      "publishedAt": "2026-02-26T22:24:54Z",
+      "modifiedAt": "2026-03-11T21:14:50Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-6738-r8g5-qwp3"
+          "value": "GHSA-phwv-c562-gvmh"
         },
         {
           "type": "CVE",
-          "value": "CVE-2025-15265"
+          "value": "CVE-2026-27901"
         }
       ],
       "affectedVersions": [
         {
-          "range": ">= 5.46.0, <= 5.46.3",
-          "fixed": "5.46.4"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-gw32-9rmw-qwww",
-      "packageName": "svelte",
-      "title": "svelte is vulnerable to XSS with textarea bind:value",
-      "description": "### Summary\n\nA server-side rendered `<textarea>` with two-way bound value does not have its value correctly escaped in the rendered HTML.\n\n### Details\n\nIn SSR, `<textarea bind:value={...}>` does not have its value escaped when it is rendered into the HTML as `<textarea>...</textarea>`.\n\n### PoC\n\nPut this in a server-side-rendered Svelte component:\n\n```\n<script>\n  let value = `test'\"></textarea><script` + `>alert('BIM');</sc` + `ript>`;\n</script>\n\n<textarea bind:value />\n```\n\n### Impact\n\n- Only a",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-gw32-9rmw-qwww",
-      "publishedAt": "2026-01-16T21:02:56Z",
-      "modifiedAt": "2026-01-16T21:02:57Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-gw32-9rmw-qwww"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 3.0.0, < 3.59.2",
-          "fixed": "3.59.2"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-8266-84wp-wv5c",
-      "packageName": "svelte",
-      "title": "Svelte has a potential mXSS vulnerability due to improper HTML escaping",
-      "description": "### Summary\n\nA potential XSS vulnerability exists in Svelte for versions prior to 4.2.19.\n\n### Details\n\nSvelte improperly escapes HTML on server-side rendering. It converts strings according to the following rules:\n\n- If the string is an attribute value:\n    - `\"` -> `&quot;`\n    - `&` -> `&amp;`\n    - Other characters -> No conversion\n- Otherwise:\n    - `<` -> `&lt;`\n    - `&` -> `&amp;`\n    - Other characters -> No conversion\n\nThe assumption is that attributes will always stay as such, but in ",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-8266-84wp-wv5c",
-      "publishedAt": "2024-08-30T16:49:10Z",
-      "modifiedAt": "2024-08-30T20:01:24Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-8266-84wp-wv5c"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2024-45047"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 4.2.19",
-          "fixed": "4.2.19"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-wv8q-r932-8hc7",
-      "packageName": "svelte",
-      "title": "Svelte vulnerable to XSS when using objects during server-side rendering",
-      "description": "The package svelte before 3.49.0 is vulnerable to Cross-site Scripting (XSS) due to improper input sanitization and to improper escape of attributes when using objects during SSR (Server-Side Rendering). Exploiting this vulnerability is possible via objects with a custom toString() function.",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-wv8q-r932-8hc7",
-      "publishedAt": "2022-07-13T00:00:41Z",
-      "modifiedAt": "2023-09-07T00:13:26Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-wv8q-r932-8hc7"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2022-25875"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 3.49.0",
-          "fixed": "3.49.0"
+          "range": "<= 5.53.4",
+          "fixed": "5.53.5"
         }
       ],
       "source": "github"
@@ -128,33 +51,6 @@
       "affectedVersions": [
         {
           "range": ">= 5.53.0, < 5.53.5",
-          "fixed": "5.53.5"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-phwv-c562-gvmh",
-      "packageName": "svelte",
-      "title": "Svelte vulnerable to XSS during SSR with contenteditable `bind:innerText` and `bind:textContent`",
-      "description": "The contents of `bind:innerText` and `bind:textContent` on `contenteditable` elements were not properly escaped. This could enable HTML injection and Cross-site Scripting (XSS) if rendering untrusted data as the binding's initial value on the server.",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-phwv-c562-gvmh",
-      "publishedAt": "2026-02-26T22:24:54Z",
-      "modifiedAt": "2026-02-26T22:24:57Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-phwv-c562-gvmh"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-27901"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 5.53.4",
           "fixed": "5.53.5"
         }
       ],
@@ -264,6 +160,110 @@
         {
           "range": ">= 5.39.3, < 5.51.5",
           "fixed": "5.51.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6738-r8g5-qwp3",
+      "packageName": "svelte",
+      "title": "svelte vulnerable to Cross-site Scripting",
+      "description": "## Summary\n\nAn XSS vulnerability exists in Svelte 5.46.0-2 resulting from improper escaping of `hydratable` keys. If these keys incorporate untrusted user input, arbitrary JavaScript can be injected into server-rendered HTML.\n\n## Details\n\nWhen using the [`hydratable`](https://svelte.dev/docs/svelte/hydratable) function, the first argument is used as a key to uniquely identify the data, such that the value is not regenerated in the browser.\n\nThis key is embedded into a `<script>` block in the ser",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6738-r8g5-qwp3",
+      "publishedAt": "2026-01-15T20:13:33Z",
+      "modifiedAt": "2026-01-19T21:50:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6738-r8g5-qwp3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-15265"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.46.0, <= 5.46.3",
+          "fixed": "5.46.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gw32-9rmw-qwww",
+      "packageName": "svelte",
+      "title": "svelte is vulnerable to XSS with textarea bind:value",
+      "description": "### Summary\n\nA server-side rendered `<textarea>` with two-way bound value does not have its value correctly escaped in the rendered HTML.\n\n### Details\n\nIn SSR, `<textarea bind:value={...}>` does not have its value escaped when it is rendered into the HTML as `<textarea>...</textarea>`.\n\n### PoC\n\nPut this in a server-side-rendered Svelte component:\n\n```\n<script>\n  let value = `test'\"></textarea><script` + `>alert('BIM');</sc` + `ript>`;\n</script>\n\n<textarea bind:value />\n```\n\n### Impact\n\n- Only a",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gw32-9rmw-qwww",
+      "publishedAt": "2026-01-16T21:02:56Z",
+      "modifiedAt": "2026-01-16T21:02:57Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gw32-9rmw-qwww"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 3.59.2",
+          "fixed": "3.59.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8266-84wp-wv5c",
+      "packageName": "svelte",
+      "title": "Svelte has a potential mXSS vulnerability due to improper HTML escaping",
+      "description": "### Summary\n\nA potential XSS vulnerability exists in Svelte for versions prior to 4.2.19.\n\n### Details\n\nSvelte improperly escapes HTML on server-side rendering. It converts strings according to the following rules:\n\n- If the string is an attribute value:\n    - `\"` -> `&quot;`\n    - `&` -> `&amp;`\n    - Other characters -> No conversion\n- Otherwise:\n    - `<` -> `&lt;`\n    - `&` -> `&amp;`\n    - Other characters -> No conversion\n\nThe assumption is that attributes will always stay as such, but in ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8266-84wp-wv5c",
+      "publishedAt": "2024-08-30T16:49:10Z",
+      "modifiedAt": "2024-08-30T20:01:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8266-84wp-wv5c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2024-45047"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.2.19",
+          "fixed": "4.2.19"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wv8q-r932-8hc7",
+      "packageName": "svelte",
+      "title": "Svelte vulnerable to XSS when using objects during server-side rendering",
+      "description": "The package svelte before 3.49.0 is vulnerable to Cross-site Scripting (XSS) due to improper input sanitization and to improper escape of attributes when using objects during SSR (Server-Side Rendering). Exploiting this vulnerability is possible via objects with a custom toString() function.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wv8q-r932-8hc7",
+      "publishedAt": "2022-07-13T00:00:41Z",
+      "modifiedAt": "2023-09-07T00:13:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wv8q-r932-8hc7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2022-25875"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.49.0",
+          "fixed": "3.49.0"
         }
       ],
       "source": "github"

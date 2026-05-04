@@ -1,15 +1,43 @@
 {
   "packageName": "ajv",
-  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-2g4f-4pwh-qvx6",
+      "packageName": "ajv",
+      "title": "ajv has ReDoS when using `$data` option",
+      "description": "ajv (Another JSON Schema Validator) through version 8.17.1 is vulnerable to Regular Expression Denial of Service (ReDoS) when the `$data` option is enabled. The pattern keyword accepts runtime data via JSON Pointer syntax (`$data` reference), which is passed directly to the JavaScript `RegExp()` constructor without validation. An attacker can inject a malicious regex pattern (e.g., `\\\"^(a|a)*$\\\"`) combined with crafted input to cause catastrophic backtracking. A 31-character payload causes appro",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2g4f-4pwh-qvx6",
+      "publishedAt": "2026-02-11T21:30:39Z",
+      "modifiedAt": "2026-03-02T21:58:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2g4f-4pwh-qvx6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-69873"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.14.0",
+          "fixed": "6.14.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-v88g-cgmw-v5xw",
       "packageName": "ajv",
       "title": "Prototype Pollution in Ajv",
-      "severity": "high",
+      "description": "An issue was discovered in ajv.validate() in Ajv (aka Another JSON Schema Validator) 6.12.2. A carefully crafted JSON schema could be provided that allows execution of other code by prototype pollution. (While untrusted schemas are recommended against, the worst case of an untrusted schema should be a denial of service, not execution of code.)",
+      "severity": "medium",
       "url": "https://github.com/advisories/GHSA-v88g-cgmw-v5xw",
-      "publishedAt": "2020-07-16T22:36:00Z",
-      "modifiedAt": "2023-09-13T19:45:00Z",
+      "publishedAt": "2022-02-10T23:30:59Z",
+      "modifiedAt": "2024-06-21T21:33:49Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -22,7 +50,7 @@
       ],
       "affectedVersions": [
         {
-          "range": "<6.12.3",
+          "range": "< 6.12.3",
           "fixed": "6.12.3"
         }
       ],

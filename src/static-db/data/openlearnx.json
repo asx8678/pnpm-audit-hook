@@ -1,0 +1,33 @@
+{
+  "packageName": "openlearnx",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8h25-q488-4hxw",
+      "packageName": "openlearnx",
+      "title": "OpenLearnX has Critical Remote Code Execution Through Python Sandbox Escape via Code Execution Environment",
+      "description": "##  Overview\n\nA critical Remote Code Execution (RCE) vulnerability was identified in the OpenLearnX code execution environment, allowing sandbox escape and arbitrary command execution. The issue has been fixed.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8h25-q488-4hxw",
+      "publishedAt": "2026-04-23T21:46:07Z",
+      "modifiedAt": "2026-04-26T18:28:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8h25-q488-4hxw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41900"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.3",
+          "fixed": "2.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

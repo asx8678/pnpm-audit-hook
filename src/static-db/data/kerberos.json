@@ -1,7 +1,34 @@
 {
   "packageName": "kerberos",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-m2mx-rfpw-jghv",
+      "packageName": "kerberos",
+      "title": "DLL Injection in kerberos",
+      "description": "Version of `kerberos` prior to 1.0.0 are vulnerable to DLL Injection. The package loads DLLs without specifying a full path. This may allow attackers to create a file with the same name in a folder that precedes the intended file in the DLL path search. Doing so would allow attackers to execute arbitrary code in the machine.\n\n\n## Recommendation\n\nUpgrade to version 1.0.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m2mx-rfpw-jghv",
+      "publishedAt": "2020-09-04T18:01:59Z",
+      "modifiedAt": "2023-08-21T19:57:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m2mx-rfpw-jghv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-13110"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.0",
+          "fixed": "1.0.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-f478-xwv9-p93q",
       "packageName": "kerberos",

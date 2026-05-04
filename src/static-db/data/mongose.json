@@ -1,0 +1,32 @@
+{
+  "packageName": "mongose",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-894f-rw44-qrw5",
+      "packageName": "mongose",
+      "title": "mongose is malware",
+      "description": "The `mongose` package is a piece of malware that steals environment variables and sends them to attacker controlled locations. \n\nAll versions have been unpublished from the npm registry.\n\n\n## Recommendation\n\nAs this package is malware, if you find it installed in your environment, the real security concern is determining how it got there. \n\nIf you have found this installed in your environment, you should:\n1. Delete the package\n2. Clear your npm cache\n3. Ensure it is not present in any other pack",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-894f-rw44-qrw5",
+      "publishedAt": "2018-10-10T17:28:21Z",
+      "modifiedAt": "2023-09-12T18:48:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-894f-rw44-qrw5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16077"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "> 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

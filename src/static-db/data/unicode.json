@@ -1,0 +1,33 @@
+{
+  "packageName": "unicode",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qjf4-7642-c57p",
+      "packageName": "unicode",
+      "title": "Downloads Resources over HTTP in unicode",
+      "description": "Affected versions of `unicode` insecurely download resources over HTTP. \n\nIn scenarios where an attacker has a privileged network position, they can modify or read such resources at will. While the exact severity of impact for a vulnerability like this is highly variable and depends on the behavior of the package itself, it ranges from being able to read sensitive information all the way up to and including remote code execution.\n\n\n## Recommendation\n\nUpdate to version 9.0.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qjf4-7642-c57p",
+      "publishedAt": "2019-02-18T23:51:52Z",
+      "modifiedAt": "2023-01-09T05:03:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qjf4-7642-c57p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10578"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 9.0.0",
+          "fixed": "9.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

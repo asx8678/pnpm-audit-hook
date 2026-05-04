@@ -1,6 +1,6 @@
 {
   "packageName": "yui",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-9ww8-j8j2-3788",
@@ -77,6 +77,33 @@
         {
           "range": "= 3.10.12",
           "fixed": "3.10.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mj87-8xf8-fp4w",
+      "packageName": "yui",
+      "title": "Cross-Site Scripting in yui",
+      "description": "Affected versions of `yui` are vulnerable to cross-site scripting in the `uploader.swf` and `io.swf` utilities, via script injection in the url.\n\n\n\n## Recommendation\n\nYUI has published their recommendation to fix this issue. \nTheir recommendation is to:\n - Delete self-hosted copies of these files if you are not using them\n - Use the Yahoo! CDN hosted files\n - Use the patched files provided on the YUI Library [here](https://yuilibrary.com/support/20130515-vulnerability/#resolution).",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mj87-8xf8-fp4w",
+      "publishedAt": "2020-09-01T16:42:51Z",
+      "modifiedAt": "2023-01-09T05:04:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mj87-8xf8-fp4w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2013-4939"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.10.2",
+          "fixed": "3.10.3"
         }
       ],
       "source": "github"

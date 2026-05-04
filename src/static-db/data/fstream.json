@@ -1,0 +1,33 @@
+{
+  "packageName": "fstream",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xf7w-r453-m56c",
+      "packageName": "fstream",
+      "title": "Arbitrary File Overwrite in fstream",
+      "description": "Versions of `fstream` prior to 1.0.12 are vulnerable to Arbitrary File Overwrite. Extracting tarballs containing a hardlink to a file that already exists in the system and a file that matches the hardlink will overwrite the system's file with the contents of the extracted file. The `fstream.DirWriter()` function is vulnerable.\n\n\n## Recommendation\n\nUpgrade to version 1.0.12 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xf7w-r453-m56c",
+      "publishedAt": "2019-05-30T17:19:34Z",
+      "modifiedAt": "2025-02-12T05:08:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xf7w-r453-m56c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-13173"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.12",
+          "fixed": "1.0.12"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

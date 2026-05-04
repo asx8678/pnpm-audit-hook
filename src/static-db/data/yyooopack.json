@@ -1,0 +1,32 @@
+{
+  "packageName": "yyooopack",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c3h5-qchh-46hh",
+      "packageName": "yyooopack",
+      "title": "Directory Traversal in yyooopack",
+      "description": "Affected versions of `yyooopack` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-c3h5-qchh-46hh",
+      "publishedAt": "2020-09-01T17:30:17Z",
+      "modifiedAt": "2023-09-11T16:37:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c3h5-qchh-46hh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16167"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

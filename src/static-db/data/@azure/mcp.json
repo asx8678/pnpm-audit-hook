@@ -1,0 +1,33 @@
+{
+  "packageName": "@azure/mcp",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hhfx-wfvq-7g9c",
+      "packageName": "@azure/mcp",
+      "title": "Azure MCP Server has Server-Side Request Forgery issue that allows authorized attacker to elevate privileges over a network",
+      "description": "Server-Side Request Forgery (SSRF) in Azure MCP Server allows an authorized attacker to elevate privileges over a network.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hhfx-wfvq-7g9c",
+      "publishedAt": "2026-03-10T18:31:21Z",
+      "modifiedAt": "2026-03-12T19:53:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hhfx-wfvq-7g9c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26118"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0, < 1.0.2",
+          "fixed": "1.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

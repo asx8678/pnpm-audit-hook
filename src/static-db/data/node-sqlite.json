@@ -1,0 +1,32 @@
+{
+  "packageName": "node-sqlite",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x52f-h74p-9jh8",
+      "packageName": "node-sqlite",
+      "title": "node-sqlite is malware",
+      "description": "The `node-sqlite` package is a piece of malware that steals environment variables and sends them to attacker controlled locations. \n\nAll versions have been unpublished from the npm registry.\n\n\n## Recommendation\n\n\n\n\nAs this package is malware, if you find it installed in your environment, the real security concern is determining how it got there. \n\nIf you have found this installed in your environment, you should:\n1. Delete the package\n2. Clear your npm cache\n3. Ensure it is not present in any oth",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x52f-h74p-9jh8",
+      "publishedAt": "2018-07-23T21:00:07Z",
+      "modifiedAt": "2023-09-11T22:59:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x52f-h74p-9jh8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16048"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

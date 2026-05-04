@@ -1,0 +1,33 @@
+{
+  "packageName": "backbone",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j6p2-cx3w-6jcp",
+      "packageName": "backbone",
+      "title": "Cross-Site Scripting in backbone",
+      "description": "Affected versions of `backbone` are vulnerable to cross-site scripting when users are allowed to supply input to the `Model#Escape` function, and the output is then written to the DOM. \n\nThe vulnerability occurs as a result of the regular expression used to encode metacharacters failing to take HTML Entities such as `&#60;` into account.\n\n\n## Recommendation\n\nUpdate to version 0.5.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j6p2-cx3w-6jcp",
+      "publishedAt": "2019-02-18T23:39:55Z",
+      "modifiedAt": "2026-01-16T22:08:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j6p2-cx3w-6jcp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10537"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.3.3, < 0.5.0",
+          "fixed": "0.5.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

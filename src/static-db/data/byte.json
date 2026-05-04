@@ -1,0 +1,29 @@
+{
+  "packageName": "byte",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xm7f-x4wx-wmgv",
+      "packageName": "byte",
+      "title": "Out-of-bounds Read in byte",
+      "description": "Versions of `byte` before 1.4.1 allocate uninitialized buffers and read data from them past the initialized length\n\n\n\n## Recommendation\n\nUpdate to version 1.4.1 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xm7f-x4wx-wmgv",
+      "publishedAt": "2019-06-04T15:47:43Z",
+      "modifiedAt": "2023-01-09T05:01:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xm7f-x4wx-wmgv"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.1",
+          "fixed": "1.4.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

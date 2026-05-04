@@ -1,0 +1,28 @@
+{
+  "packageName": "resquel",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-crpm-fm48-chj7",
+      "packageName": "resquel",
+      "title": "SQL Injection in resquel",
+      "description": "All versions of `resquel` are vulnerable to SQL Injection. Query parameters are not properly sanitized, allowing attackers to inject SQL statements and execute arbitrary SQL queries\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-crpm-fm48-chj7",
+      "publishedAt": "2020-09-11T21:13:44Z",
+      "modifiedAt": "2023-01-09T05:04:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-crpm-fm48-chj7"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

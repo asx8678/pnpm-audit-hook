@@ -1,0 +1,28 @@
+{
+  "packageName": "ngx-pica",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-76wf-2xcf-6wmx",
+      "packageName": "ngx-pica",
+      "title": "Malicious Package in ngx-pica",
+      "description": "Version 1.1.5 of `ngx-pica` contained malicious code. The code when executed in the browser would enumerate password, cvc and cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nRemove the package from your environment and evaluate your application to determine whether or not user data was compromised.\n\nUsers may consider downgrading to version 1.1.4",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-76wf-2xcf-6wmx",
+      "publishedAt": "2020-09-03T00:31:28Z",
+      "modifiedAt": "2023-07-27T20:16:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-76wf-2xcf-6wmx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.1.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "qbs",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qhm8-m2c4-9mw7",
+      "packageName": "qbs",
+      "title": "Downloads Resources over HTTP in qbs",
+      "description": "Affected versions of `qbs` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `qbs`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if available. \n\nAlter",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qhm8-m2c4-9mw7",
+      "publishedAt": "2019-02-18T23:45:11Z",
+      "modifiedAt": "2023-01-09T05:03:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qhm8-m2c4-9mw7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10656"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.4.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

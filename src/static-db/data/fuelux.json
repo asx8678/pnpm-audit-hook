@@ -1,0 +1,33 @@
+{
+  "packageName": "fuelux",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-fwcw-5qw2-87mp",
+      "packageName": "fuelux",
+      "title": "fuelux vulnerable to Cross-Site Scripting in Pillbox feature",
+      "description": "Affected versions of `fuelux` contain a cross-site scripting vulnerability in the Pillbox feature. By supplying a script as a value for a new pillbox, it is possible to cause arbitrary script execution.\n\n## Recommendation\n\nUpdate to version 3.15.7 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fwcw-5qw2-87mp",
+      "publishedAt": "2020-09-01T15:55:56Z",
+      "modifiedAt": "2023-01-11T05:08:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fwcw-5qw2-87mp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-1000235"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.15.7",
+          "fixed": "3.15.7"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

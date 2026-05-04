@@ -1,0 +1,28 @@
+{
+  "packageName": "pez",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g64q-3vg8-8f93",
+      "packageName": "pez",
+      "title": "Prototype Pollution in pez",
+      "description": "All versions of `pez` are vulnerable to Prototype Pollution. A multipart payload can be constructed in a way that one of the parts’ content can be set as the entire payload object’s prototype. If this prototype contains data, it may bypass other validation rules which enforce access and privacy. If this prototype evaluates to null, it can cause unhandled exceptions when the request payload is accessed.\n\n\n## Recommendation\n\nThis package is deprecated and is now maintained as `@hapi/pez`. Please u",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g64q-3vg8-8f93",
+      "publishedAt": "2020-09-03T15:47:10Z",
+      "modifiedAt": "2025-09-30T16:17:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g64q-3vg8-8f93"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

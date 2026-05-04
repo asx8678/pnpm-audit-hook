@@ -1,0 +1,190 @@
+{
+  "packageName": "hapi",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cqjg-whmm-8gv6",
+      "packageName": "hapi",
+      "title": "Denial of Service via malformed accept-encoding header in hapi",
+      "description": "Affected versions of `hapi` will crash or lock the event loop when a malformed `accept-encoding` header is recieved.\n\n\n## Recommendation\n\nUpdate to version 16.1.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cqjg-whmm-8gv6",
+      "publishedAt": "2018-10-09T00:57:28Z",
+      "modifiedAt": "2023-09-07T20:33:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cqjg-whmm-8gv6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16013"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 15.0.0, <= 16.1.0",
+          "fixed": "16.1.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-363h-vj6q-3cmj",
+      "packageName": "hapi",
+      "title": "Rosetta-Flash JSONP Vulnerability in hapi",
+      "description": "This description taken from the pull request provided by Patrick Kettner.\n\n\n\nVersions 6.1.0 and earlier of hapi are vulnerable to a rosetta-flash attack, which can be used by attackers to send data across domains and break the browser same-origin-policy.\n\n\n\n\n\n## Recommendation\n\n- Update hapi to version 6.1.1 or later.\n\nAlternatively, a solution previously implemented by Google, Facebook, and Github is to prepend callbacks with an empty inline comment. This will cause the flash parser to break on",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-363h-vj6q-3cmj",
+      "publishedAt": "2020-08-31T22:45:35Z",
+      "modifiedAt": "2023-04-14T19:20:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-363h-vj6q-3cmj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2014-4671"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.1.0",
+          "fixed": "6.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cqr7-78pj-3g7j",
+      "packageName": "hapi",
+      "title": "File Descriptor Leak Can Cause DoS Vulnerability in hapi",
+      "description": "Versions 2.0.x and 2.1.x of hapi are vulnerable to a denial of service attack via a file descriptor leak. \n\nWhen triggered repeatedly, this leak will cause the server to run out of file descriptors and the node process to die. The effort required to take down a server depends on the process file descriptor limit. No other side effects or exploits have been identified.\n\n\n\n## Recommendation\n\n- Please upgrade to version 2.2.x or above as soon as possible.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cqr7-78pj-3g7j",
+      "publishedAt": "2017-10-24T18:33:36Z",
+      "modifiedAt": "2023-04-11T00:20:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cqr7-78pj-3g7j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2014-3742"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.2.0",
+          "fixed": "2.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7hx8-2rxv-66xv",
+      "packageName": "hapi",
+      "title": "Denial of Service in hapi",
+      "description": "All Versions of `hapi` are vulnerable to Denial of Service. The CORS request handler has a vulnerability which will cause the function to throw a system error if the header contains some invalid values. If no unhandled exception handler is available, the application will exist, allowing an attacker to shut down services.\n\n\n## Recommendation\n\nThis package is deprecated and is now maintained as `@hapi/hapi`. Please update your dependencies to use `@hapi/hapi`. ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7hx8-2rxv-66xv",
+      "publishedAt": "2020-09-03T15:48:00Z",
+      "modifiedAt": "2023-01-09T05:03:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7hx8-2rxv-66xv"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-j3g2-m5jj-6336",
+      "packageName": "hapi",
+      "title": "Unsafe Merging of CORS Configuration Conflict in hapi",
+      "description": "Versions of `hapi` prior to 11.1.4 are affected by a vulnerability that causes route-level CORS configuration to override connection-level or server-level CORS defaults. This may result in a situation where CORS permissions are less restrictive than intended.\n\n\n\n\n## Recommendation\n\nUpdate hapi to version 11.1.4 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j3g2-m5jj-6336",
+      "publishedAt": "2020-09-01T15:20:00Z",
+      "modifiedAt": "2023-01-09T05:03:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j3g2-m5jj-6336"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-9243"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.1.4",
+          "fixed": "11.1.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rc8h-3fv6-pxv8",
+      "packageName": "hapi",
+      "title": "Denial of Service in hapi",
+      "description": "Versions of `hapi` prior to 11.1.3 are affected by a denial of service vulnerability.\n\nThe vulnerability is triggered when certain input is passed into the If-Modified-Since or Last-Modified headers.\n\nThis causes an 'illegal access' exception to be raised, and instead of sending a HTTP 500 error back to the sender, hapi will continue to hold the socket open until timed out (default node timeout is 2 minutes).\n\n\n\n\n\n## Recommendation\n\nUpdate to v11.1.3 or later",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rc8h-3fv6-pxv8",
+      "publishedAt": "2018-06-07T19:43:15Z",
+      "modifiedAt": "2023-01-09T05:03:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rc8h-3fv6-pxv8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-9241"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.1.3",
+          "fixed": "11.1.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vwrf-r5r4-7775",
+      "packageName": "hapi",
+      "title": "Incorrect handling of CORS preflight request headers in hapi",
+      "description": "Versions of `hapi` prior to 11.0.0 implement CORS incorrectly, allowing for configurations that at best return inconsistent headers, and at worst allow cross-origin activities that are expected to be forbidden. \n\nIf the connection has CORS enabled but one route has it off, and the route is not GET, the OPTIONS prefetch request will return the default CORS headers and then the actual request will go through and return no CORS headers. This defeats the purpose of turning CORS on the route.\n\n\n## Re",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vwrf-r5r4-7775",
+      "publishedAt": "2018-06-07T19:43:25Z",
+      "modifiedAt": "2023-01-09T05:03:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vwrf-r5r4-7775"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-9236"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.0.0",
+          "fixed": "11.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

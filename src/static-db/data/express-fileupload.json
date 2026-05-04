@@ -1,6 +1,6 @@
 {
   "packageName": "express-fileupload",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-w4m6-x6c2-j5c9",
@@ -24,6 +24,56 @@
       "affectedVersions": [
         {
           "range": "<= 1.3.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9wcg-jrwf-8gg7",
+      "packageName": "express-fileupload",
+      "title": "Prototype Pollution in express-fileupload",
+      "description": "This affects the package express-fileupload before 1.1.8. If the parseNested option is enabled, sending a corrupt HTTP request can lead to denial of service or arbitrary code execution.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9wcg-jrwf-8gg7",
+      "publishedAt": "2020-08-05T14:53:16Z",
+      "modifiedAt": "2023-01-27T05:09:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9wcg-jrwf-8gg7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7699"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.9",
+          "fixed": "1.1.9"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q3w9-g74q-vp5f",
+      "packageName": "express-fileupload",
+      "title": "Denial of Service in express-fileupload",
+      "description": "Versions of `express-fileupload` prior to 1.1.6-alpha.6 are vulnerable to Denial of Service. The package causes server responses to be delayed (up to 30s in internal testing) if the request contains a large `filename` of `.` characters.\n\n\n\n\n## Recommendation\n\nUpgrade to version 1.1.6-alpha.6 or later.",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-q3w9-g74q-vp5f",
+      "publishedAt": "2020-09-03T21:14:12Z",
+      "modifiedAt": "2023-01-09T05:04:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q3w9-g74q-vp5f"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0-alpha.1",
+          "fixed": "1.1.6-alpha.6"
         }
       ],
       "source": "github"

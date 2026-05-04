@@ -1,0 +1,32 @@
+{
+  "packageName": "sencisho",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6866-x7cf-rmh5",
+      "packageName": "sencisho",
+      "title": "Directory Traversal in sencisho",
+      "description": "Affected versions of `sencisho` are vulnerable to a directory traversal issue, giving an attacker access to the filesystem by placing \"../\" in the URL.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only used for local development, and if the functionality is needed for production, a different package is used instead.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6866-x7cf-rmh5",
+      "publishedAt": "2018-07-24T13:50:01Z",
+      "modifiedAt": "2023-09-20T05:02:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6866-x7cf-rmh5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16092"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

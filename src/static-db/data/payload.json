@@ -1,7 +1,169 @@
 {
   "packageName": "payload",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-hp5w-3hxx-vmwf",
+      "packageName": "payload",
+      "title": "Payload: Pre-Authentication Account Takeover via Parameter Injection in Password Recovery",
+      "description": "### Impact\n\nA vulnerability in the password recovery flow could allow an unauthenticated attacker to perform actions on behalf of a user who initiates a password reset.\n\nUsers are affected if:\n\n- They are using Payload version **< v3.79.1** with any auth-enabled collection using the built-in `forgot-password` functionality.\n\n### Patches\n\nInput validation and URL construction in the password recovery flow have been hardened.\n\nUsers should upgrade to **v3.79.1** or later.\n\n### Workarounds\n\nThere a",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-hp5w-3hxx-vmwf",
+      "publishedAt": "2026-04-01T16:08:02Z",
+      "modifiedAt": "2026-04-08T18:19:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hp5w-3hxx-vmwf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34751"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.79.1",
+          "fixed": "3.79.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6r7f-q7f5-wpx8",
+      "packageName": "payload",
+      "title": "Payload has Authenticated SSRF via Upload Functionality",
+      "description": "### Impact\n\nAn authenticated Server-Side Request Forgery (SSRF) vulnerability existed in the upload functionality.\n\nAuthenticated users with `create` or `update` access to an upload-enabled collection could cause the server to make outbound HTTP requests to arbitrary URLs.\n\nConsumers are affected if ALL of these are true:\n\n- Payload version **< v3.79.1**\n- At least one collection with `upload` enabled\n- An authenticated user has `create` or `update` access to that collection\n\n### Patches\n\nThis v",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6r7f-q7f5-wpx8",
+      "publishedAt": "2026-04-01T21:25:33Z",
+      "modifiedAt": "2026-04-06T16:47:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6r7f-q7f5-wpx8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34746"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.79.1",
+          "fixed": "3.79.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7xxh-373w-35vg",
+      "packageName": "payload",
+      "title": "Payload has an SQL Injection via Query Handling",
+      "description": "### Impact\n\nCertain request inputs were not properly validated. An attacker could craft requests that influence SQL query execution, potentially exposing or modifying data in collections.\n\n### Patches\n\nThis issue has been fixed in **v3.79.1** and later. Query input validation has been hardened.\n\nUpgrade to **v3.79.1 or later**.\n\n### Workarounds\n\nUntil developers can upgrade:\n\n- Limit access to endpoints that accept dynamic query inputs to trusted users only.  \n- Validate or sanitize input from u",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7xxh-373w-35vg",
+      "publishedAt": "2026-04-01T21:19:03Z",
+      "modifiedAt": "2026-04-06T16:46:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7xxh-373w-35vg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34747"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.79.1",
+          "fixed": "3.79.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p6mr-xf3r-ghq4",
+      "packageName": "payload",
+      "title": "Payload has a CSRF Protection Bypass in Authentication Flow",
+      "description": "### Impact\n\nA Cross-Site Request Forgery (CSRF) vulnerability existed in the authentication flow. Under certain conditions, the configured CSRF protection could be bypassed, allowing cross-site requests to be made.\n\nConsumers are affected if ALL of these are true:\n\n- Payload version **< v3.79.1**\n- `serverURL` is configured\n\n### Patches\n\nThis vulnerability has been patched in **v3.79.1**. Additional validation has been added to the authentication flow.\n\nConsumers should upgrade to **v3.79.1** or",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p6mr-xf3r-ghq4",
+      "publishedAt": "2026-04-01T21:36:06Z",
+      "modifiedAt": "2026-04-01T21:36:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p6mr-xf3r-ghq4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34749"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.79.1",
+          "fixed": "3.79.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hhfx-5x8j-f5f6",
+      "packageName": "payload",
+      "title": "Payload: Server-Side Request Forgery (SSRF) in External File URL Uploads",
+      "description": "### Impact\n\nA Server-Side Request Forgery (SSRF) vulnerability exists in Payload's external file upload functionality. When processing external URLs for file uploads, insufficient validation of HTTP redirects could allow an authenticated attacker to access internal network resources.\n\n**Users are affected if ALL of these are true**:\n\n- Payload version < v3.75.0\n- At least one collection with `upload` enabled\n- A user has `create` access to that upload-enabled collection\n\nAn authenticated user wi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hhfx-5x8j-f5f6",
+      "publishedAt": "2026-02-24T20:10:32Z",
+      "modifiedAt": "2026-02-24T20:10:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hhfx-5x8j-f5f6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27567"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.75.0",
+          "fixed": "3.75.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jq29-r496-r955",
+      "packageName": "payload",
+      "title": "payload-preferences has Cross-Collection IDOR in Access Control (Multi-Auth Environments)",
+      "description": "### Impact\n\nA cross-collection Insecure Direct Object Reference (IDOR) vulnerability exists in the `payload-preferences` internal collection. In multi-auth collection environments using Postgres or SQLite with default serial/auto-increment IDs, authenticated users from one auth collection can read and delete preferences belonging to users in different auth collections when their numeric IDs collide.\n\n**Users are affected if ALL of these are true:**\n\n- Multiple auth collections configured (e.g., ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jq29-r496-r955",
+      "publishedAt": "2026-02-05T21:02:20Z",
+      "modifiedAt": "2026-02-07T00:31:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jq29-r496-r955"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25574"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.74.0",
+          "fixed": "3.74.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-26rv-h2hf-3fw4",
       "packageName": "payload",
@@ -106,60 +268,6 @@
         {
           "range": "<= 0.15.0",
           "fixed": "0.15.1"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-hhfx-5x8j-f5f6",
-      "packageName": "payload",
-      "title": "Payload: Server-Side Request Forgery (SSRF) in External File URL Uploads",
-      "description": "### Impact\n\nA Server-Side Request Forgery (SSRF) vulnerability exists in Payload's external file upload functionality. When processing external URLs for file uploads, insufficient validation of HTTP redirects could allow an authenticated attacker to access internal network resources.\n\n**Users are affected if ALL of these are true**:\n\n- Payload version < v3.75.0\n- At least one collection with `upload` enabled\n- A user has `create` access to that upload-enabled collection\n\nAn authenticated user wi",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-hhfx-5x8j-f5f6",
-      "publishedAt": "2026-02-24T20:10:32Z",
-      "modifiedAt": "2026-02-24T20:10:33Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-hhfx-5x8j-f5f6"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-27567"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 3.75.0",
-          "fixed": "3.75.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-jq29-r496-r955",
-      "packageName": "payload",
-      "title": "payload-preferences has Cross-Collection IDOR in Access Control (Multi-Auth Environments)",
-      "description": "### Impact\n\nA cross-collection Insecure Direct Object Reference (IDOR) vulnerability exists in the `payload-preferences` internal collection. In multi-auth collection environments using Postgres or SQLite with default serial/auto-increment IDs, authenticated users from one auth collection can read and delete preferences belonging to users in different auth collections when their numeric IDs collide.\n\n**Users are affected if ALL of these are true:**\n\n- Multiple auth collections configured (e.g., ",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-jq29-r496-r955",
-      "publishedAt": "2026-02-05T21:02:20Z",
-      "modifiedAt": "2026-02-07T00:31:59Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-jq29-r496-r955"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-25574"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 3.74.0",
-          "fixed": "3.74.0"
         }
       ],
       "source": "github"

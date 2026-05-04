@@ -1,7 +1,34 @@
 {
   "packageName": "bootstrap",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-pj7m-g53m-7638",
+      "packageName": "bootstrap",
+      "title": "Bootstrap Cross-site Scripting vulnerability",
+      "description": "In Bootstrap 4.x before 4.1.2, XSS is possible in the data-target property of scrollspy. This is similar to CVE-2018-14042.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pj7m-g53m-7638",
+      "publishedAt": "2018-09-13T15:49:56Z",
+      "modifiedAt": "2025-11-19T14:25:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pj7m-g53m-7638"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-14041"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, < 4.1.2",
+          "fixed": "4.1.2"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-vxmc-5x29-h64v",
       "packageName": "bootstrap",
@@ -130,6 +157,141 @@
         {
           "range": ">= 2.3.0, < 3.4.0",
           "fixed": "3.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-ph58-4vrj-w6hr",
+      "packageName": "bootstrap",
+      "title": "bootstrap Cross-site Scripting vulnerability",
+      "description": "In Bootstrap before 3.4.0, XSS is possible in the affix configuration target property.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-ph58-4vrj-w6hr",
+      "publishedAt": "2019-01-17T13:57:56Z",
+      "modifiedAt": "2024-08-05T16:30:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ph58-4vrj-w6hr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-20677"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.4.0",
+          "fixed": "3.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7mvr-5x2g-wfc8",
+      "packageName": "bootstrap",
+      "title": "Bootstrap Cross-site Scripting vulnerability",
+      "description": "In Bootstrap starting in version 2.3.0 and prior to versions 3.4.0 and 4.1.2, XSS is possible in the data-container property of tooltip.  This is similar to CVE-2018-14041.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7mvr-5x2g-wfc8",
+      "publishedAt": "2018-09-13T15:50:32Z",
+      "modifiedAt": "2024-08-05T16:29:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7mvr-5x2g-wfc8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-14042"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.3.0, < 3.4.0",
+          "fixed": "3.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4p24-vmcr-4gqj",
+      "packageName": "bootstrap",
+      "title": "Bootstrap Cross-site Scripting vulnerability",
+      "description": "In Bootstrap 2.x from 2.0.4, 3.x before 3.4.0 and 4.x-beta before 4.0.0-beta.2, XSS is possible in the data-target attribute. Note that this is a different vulnerability than CVE-2018-14041.\n\nSee https://blog.getbootstrap.com/2018/12/13/bootstrap-3-4-0/ for more info.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4p24-vmcr-4gqj",
+      "publishedAt": "2019-01-17T13:57:27Z",
+      "modifiedAt": "2024-08-05T16:29:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4p24-vmcr-4gqj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10735"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.4, < 3.4.0",
+          "fixed": "3.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3mgp-fx93-9xv5",
+      "packageName": "bootstrap",
+      "title": "XSS vulnerability that affects bootstrap",
+      "description": "In Bootstrap before 3.4.0, XSS is possible in the tooltip data-viewport attribute.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3mgp-fx93-9xv5",
+      "publishedAt": "2019-01-17T13:57:34Z",
+      "modifiedAt": "2024-08-05T16:28:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3mgp-fx93-9xv5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-20676"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.4.0",
+          "fixed": "3.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9v3m-8fp8-mj99",
+      "packageName": "bootstrap",
+      "title": "Bootstrap Vulnerable to Cross-Site Scripting",
+      "description": "Versions of `bootstrap` prior to 3.4.1 for 3.x and 4.3.1 for 4.x are vulnerable to Cross-Site Scripting (XSS). The  `data-template` attribute of the tooltip and popover plugins lacks input sanitization and may allow attacker to execute arbitrary JavaScript.\n\n\n## Recommendation\n\nFor `bootstrap` 4.x upgrade to 4.3.1 or later.\nFor `bootstrap` 3.x upgrade to 3.4.1 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9v3m-8fp8-mj99",
+      "publishedAt": "2019-02-22T20:54:47Z",
+      "modifiedAt": "2024-08-01T21:03:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9v3m-8fp8-mj99"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-8331"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0, < 3.4.1",
+          "fixed": "3.4.1"
         }
       ],
       "source": "github"

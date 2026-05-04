@@ -1,7 +1,137 @@
 {
   "packageName": "xmldom",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-wh4c-j3r5-mjhp",
+      "packageName": "xmldom",
+      "title": "xmldom: XML injection via unsafe CDATA serialization allows attacker-controlled markup insertion",
+      "description": "## Summary\n\n`@xmldom/xmldom` allows attacker-controlled strings containing the CDATA terminator `]]>` to be inserted into a `CDATASection` node. During serialization, `XMLSerializer` emitted the CDATA content verbatim without rejecting or safely splitting the terminator. As a result, data intended to remain text-only became **active XML markup** in the serialized output, enabling XML structure\ninjection and downstream business-logic manipulation.\n\nThe sequence `]]>` is not allowed inside CDATA c",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wh4c-j3r5-mjhp",
+      "publishedAt": "2026-04-01T00:19:06Z",
+      "modifiedAt": "2026-04-24T23:17:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wh4c-j3r5-mjhp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34601"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2v35-w6hq-6mfw",
+      "packageName": "xmldom",
+      "title": "xmldom: Uncontrolled recursion in XML serialization leads to DoS",
+      "description": "## Summary\n\nSeven recursive traversals in `lib/dom.js` operate without a depth limit. A sufficiently deeply\nnested DOM tree causes a `RangeError: Maximum call stack size exceeded`, crashing the application.\n\n**Reported operations:**\n- `Node.prototype.normalize()` — reported by @praveen-kv (email 2026-04-05) and @KarimTantawey (GHSA-fwmp-8wwc-qhv6, via `DOMParser.parseFromString()`)\n- `XMLSerializer.serializeToString()` — reported by @Jvr2022 (GHSA-2v35-w6hq-6mfw) and @KarimTantawey (GHSA-j2hf-fq",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2v35-w6hq-6mfw",
+      "publishedAt": "2026-04-22T20:23:57Z",
+      "modifiedAt": "2026-04-22T20:23:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2v35-w6hq-6mfw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41673"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f6ww-3ggp-fr8h",
+      "packageName": "xmldom",
+      "title": "xmldom has XML injection through unvalidated DocumentType serialization",
+      "description": "## Summary\n\nThe package serializes `DocumentType` node fields (`internalSubset`, `publicId`, `systemId`) verbatim\nwithout any escaping or validation. When these fields are set programmatically to attacker-controlled\nstrings, `XMLSerializer.serializeToString` can produce output where the DOCTYPE declaration is\nterminated early and arbitrary markup appears outside it.\n\n---\n\n## Details\n\n`DOMImplementation.createDocumentType(qualifiedName, publicId, systemId, internalSubset)` validates\nonly `qualifi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f6ww-3ggp-fr8h",
+      "publishedAt": "2026-04-22T20:19:12Z",
+      "modifiedAt": "2026-04-22T20:19:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f6ww-3ggp-fr8h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41674"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x6wf-f3px-wcqx",
+      "packageName": "xmldom",
+      "title": "xmldom has XML node injection through unvalidated processing instruction serialization",
+      "description": "## Summary\n\nThe package allows attacker-controlled processing instruction data to be serialized into XML without validating or neutralizing the PI-closing sequence `?>`. As a result, an attacker can terminate the processing instruction early and inject arbitrary XML nodes into the serialized output.\n\n---\n\n## Details\n\nThe issue is in the DOM construction and serialization flow for processing instruction nodes.\n\nWhen `createProcessingInstruction(target, data)` is called, the supplied `data` string",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x6wf-f3px-wcqx",
+      "publishedAt": "2026-04-22T20:17:58Z",
+      "modifiedAt": "2026-04-22T20:17:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x6wf-f3px-wcqx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41675"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-j759-j44w-7fr8",
+      "packageName": "xmldom",
+      "title": "xmldom has XML node injection through unvalidated comment serialization",
+      "description": "## Summary\n\nThe package allows attacker-controlled comment content to be serialized into XML without validating or neutralizing comment breaking sequences. As a result, an attacker can terminate the comment early and inject arbitrary XML nodes into the serialized output.\n\n---\n\n## Details\n\nThe issue is in the DOM construction and serialization flow for comment nodes.\n\nWhen `createComment(data)` is called, the supplied string is stored as comment data through the generic character-data handling pa",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j759-j44w-7fr8",
+      "publishedAt": "2026-04-22T20:16:07Z",
+      "modifiedAt": "2026-04-22T20:16:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j759-j44w-7fr8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41672"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-5fg8-2547-mr8q",
       "packageName": "xmldom",

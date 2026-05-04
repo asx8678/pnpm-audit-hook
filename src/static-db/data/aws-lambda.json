@@ -1,0 +1,33 @@
+{
+  "packageName": "aws-lambda",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-934x-72xh-5hrg",
+      "packageName": "aws-lambda",
+      "title": "OS command injection in aws-lambda",
+      "description": "In aws-lambda versions prior to version 1.0.5, the \"config.FunctioName\" is used to construct the argument used within the \"exec\" function without any sanitization. It is possible for a user to inject arbitrary commands to the \"zipCmd\" used within \"config.FunctionName\".",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-934x-72xh-5hrg",
+      "publishedAt": "2020-02-14T23:09:45Z",
+      "modifiedAt": "2023-01-09T05:02:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-934x-72xh-5hrg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10777"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.4",
+          "fixed": "1.0.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

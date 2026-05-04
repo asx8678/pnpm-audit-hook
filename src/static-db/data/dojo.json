@@ -1,7 +1,34 @@
 {
   "packageName": "dojo",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-39cx-xcwj-3rc4",
+      "packageName": "dojo",
+      "title": "Cross-Site Scripting in dojo",
+      "description": "Affected versions of `dojo` are susceptible to a cross-site scripting vulnerability in the `dijit.Editor` and `textarea` components, which execute their contents as Javascript, even when sanitized.\n\n\n## Recommendation\n\nUpdate to version 1.1.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-39cx-xcwj-3rc4",
+      "publishedAt": "2020-09-01T15:25:29Z",
+      "modifiedAt": "2023-09-27T13:39:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-39cx-xcwj-3rc4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2008-6681"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-m8gw-hjpr-rjv7",
       "packageName": "dojo",
@@ -24,6 +51,87 @@
       "affectedVersions": [
         {
           "range": "<= 1.16.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jxfh-8wgv-vfr2",
+      "packageName": "dojo",
+      "title": "Prototype pollution in dojo",
+      "description": "In affected versions of dojo (NPM package), the deepCopy method is vulnerable to Prototype Pollution.\n\nPrototype Pollution refers to the ability to inject properties into existing JavaScript language construct prototypes, such as objects.\nAn attacker manipulates these attributes to overwrite, or pollute, a JavaScript application object prototype of the base object by injecting other values. \n\nThis has been patched in versions 1.12.8, 1.13.7, 1.14.6, 1.15.3 and 1.16.2",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-jxfh-8wgv-vfr2",
+      "publishedAt": "2020-03-10T18:03:14Z",
+      "modifiedAt": "2023-01-27T05:02:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jxfh-8wgv-vfr2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-5258"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.16.0, < 1.16.2",
+          "fixed": "1.16.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-536q-8gxx-m782",
+      "packageName": "dojo",
+      "title": "Cross-Site Scripting in dojo",
+      "description": "Versions of `dojo` prior to 1.4.2 are vulnerable to DOM-based Cross-Site Scripting (XSS). The package does not sanitize URL parameters in the `_testCommon.js` and `runner.html` test files, allowing attackers to execute arbitrary JavaScript in the victim's browser.\n\n\n## Recommendation\n\nUpgrade to version 1.4.2 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-536q-8gxx-m782",
+      "publishedAt": "2019-09-11T23:02:57Z",
+      "modifiedAt": "2023-01-09T05:01:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-536q-8gxx-m782"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2010-2273"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.10.0, < 1.10.10",
+          "fixed": "1.10.10"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p82g-2xpp-m5r3",
+      "packageName": "dojo",
+      "title": "Cross-Site Scripting in dojo",
+      "description": "Versions of `dojo` prior to 1.2.0 are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize HTML code in user-controlled input, allowing attackers to execute arbitrary JavaScript in the victim's browser.\n\n\n## Recommendation\n\nUpgrade to version 1.2.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p82g-2xpp-m5r3",
+      "publishedAt": "2020-09-11T21:18:05Z",
+      "modifiedAt": "2023-01-06T05:01:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p82g-2xpp-m5r3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-5654"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.2.0",
+          "fixed": "1.9.1"
         }
       ],
       "source": "github"

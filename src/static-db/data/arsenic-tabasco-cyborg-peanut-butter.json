@@ -1,0 +1,28 @@
+{
+  "packageName": "arsenic-tabasco-cyborg-peanut-butter",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-r742-7j4h-hjr8",
+      "packageName": "arsenic-tabasco-cyborg-peanut-butter",
+      "title": "Malicious Package in arsenic-tabasco-cyborg-peanut-butter",
+      "description": "All versions of `arsenic-tabasco-cyborg-peanut-butter` contain malicious code. The package downloads and runs a script that opens a reverse shell in the system.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been given to an outside entity, there is n",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-r742-7j4h-hjr8",
+      "publishedAt": "2020-09-03T23:27:36Z",
+      "modifiedAt": "2023-01-09T05:04:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r742-7j4h-hjr8"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

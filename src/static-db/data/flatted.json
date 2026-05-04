@@ -1,0 +1,60 @@
+{
+  "packageName": "flatted",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rf6f-7fwh-wjgh",
+      "packageName": "flatted",
+      "title": "Prototype Pollution via parse() in NodeJS flatted",
+      "description": "---\n  **Summary**\n\n  The parse() function in flatted can use attacker-controlled string values from the parsed JSON as direct array index\n  keys, without validating that they are numeric. Since the internal input buffer is a JavaScript Array, accessing it\n  with the key \"\\_\\_proto\\_\\_\" returns Array.prototype via the inherited getter. This object is then treated as a legitimate\n   parsed value and assigned as a property of the output object, effectively leaking a live reference to Array.prototyp",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rf6f-7fwh-wjgh",
+      "publishedAt": "2026-03-19T17:43:54Z",
+      "modifiedAt": "2026-03-25T18:22:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rf6f-7fwh-wjgh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33228"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.4.1",
+          "fixed": "3.4.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-25h7-pfq9-p65f",
+      "packageName": "flatted",
+      "title": "flatted vulnerable to unbounded recursion DoS in parse() revive phase",
+      "description": "## Summary\n\nflatted's `parse()` function uses a recursive `revive()` phase to resolve circular references in deserialized JSON. When given a crafted payload with deeply nested or self-referential `$` indices, the recursion depth is unbounded, causing a stack overflow that crashes the Node.js process.\n\n## Impact\n\nDenial of Service (DoS). Any application that passes untrusted input to `flatted.parse()` can be crashed by an unauthenticated attacker with a single request.\n\nflatted has ~87M weekly np",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-25h7-pfq9-p65f",
+      "publishedAt": "2026-03-13T15:40:42Z",
+      "modifiedAt": "2026-03-13T15:40:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-25h7-pfq9-p65f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-32141"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.4.0",
+          "fixed": "3.4.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

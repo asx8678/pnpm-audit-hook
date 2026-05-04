@@ -1,0 +1,29 @@
+{
+  "packageName": "npm-registry-fetch",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jmqm-f2gx-4fjv",
+      "packageName": "npm-registry-fetch",
+      "title": "Sensitive information exposure through logs in npm-registry-fetch",
+      "description": "Affected versions of `npm-registry-fetch` are vulnerable to an information exposure vulnerability through log files. The cli supports URLs like `<protocol>://[<user>[:<password>]@]<hostname>[:<port>][:][/]<path>`. The password value is not redacted and is printed to stdout and also to any generated log files.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jmqm-f2gx-4fjv",
+      "publishedAt": "2020-07-07T18:59:10Z",
+      "modifiedAt": "2023-01-09T05:03:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jmqm-f2gx-4fjv"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 8.1.1",
+          "fixed": "8.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

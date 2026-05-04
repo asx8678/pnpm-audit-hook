@@ -1,0 +1,32 @@
+{
+  "packageName": "lab6.brit95",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7vq3-wcjw-3fxh",
+      "packageName": "lab6.brit95",
+      "title": "Directory Traversal in lab6.brit95",
+      "description": "Affected versions of `lab6.brit95` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is onl",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-7vq3-wcjw-3fxh",
+      "publishedAt": "2018-07-23T20:48:53Z",
+      "modifiedAt": "2023-09-11T16:35:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7vq3-wcjw-3fxh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16140"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

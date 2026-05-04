@@ -1,7 +1,61 @@
 {
   "packageName": "elysia",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-8hq9-phh3-p2wp",
+      "packageName": "elysia",
+      "title": "Elysia Cookie Value Prototype Pollution",
+      "description": "### Impact\nElysia cookie can be overridden by prototype pollution , eg. `__proto__`\n\nSending cookie with the follows name can override cookie value:\n```bash\n__proto__=%7B%22injected%22%3A%22polluted%22%7D\n```\n\n### Patches\nPatched by 1.4.27\n\n### Workarounds\n1. Use t.Cookie validation to enforce validation value\n2. Prevent iterable over cookie if possible",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8hq9-phh3-p2wp",
+      "publishedAt": "2026-03-17T16:17:41Z",
+      "modifiedAt": "2026-03-22T04:26:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8hq9-phh3-p2wp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31865"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.27",
+          "fixed": "1.4.27"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f45g-68q3-5w8x",
+      "packageName": "elysia",
+      "title": "Elysia has a string URL format ReDoS",
+      "description": "### Impact\n`t.String({ format: 'url' })` is vulnerable to redos\n\nRepeating a partial url format (protocol and hostname) multiple times cause regex to slow down significantly\n```js\n'http://a'.repeat(n)\n```\n\nHere's a table demonstrating how long it takes to process repeated partial url format\n| `n` repeat | elapsed_ms |\n| --- | --- |\n| 1024 | 33.993 |\n| 2048 | 134.357 |\n| 4096 | 537.608 |\n| 8192 | 2155.842 |\n| 16384 | 8618.457 |\n| 32768 | 34604.139 |\n\n### Patches\nPatched by 1.4.26, please kindly u",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f45g-68q3-5w8x",
+      "publishedAt": "2026-03-10T21:04:25Z",
+      "modifiedAt": "2026-03-10T22:55:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f45g-68q3-5w8x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30837"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.26",
+          "fixed": "1.4.26"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-8vch-m3f4-q8jf",
       "packageName": "elysia",

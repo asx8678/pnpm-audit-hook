@@ -1,0 +1,28 @@
+{
+  "packageName": "ks-sha3",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-563h-49v8-g7x4",
+      "packageName": "ks-sha3",
+      "title": "Malicious Package in ks-sha3",
+      "description": "Version 0.8.0 contained malicious code. The package targeted the Ethereum cryptocurrency and performed transactions to wallets not controlled by the user.\n\n\n## Recommendation\n\nRemove the package from your environment. Ensure no Ethereum funds were compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-563h-49v8-g7x4",
+      "publishedAt": "2020-09-03T23:17:01Z",
+      "modifiedAt": "2023-01-09T05:04:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-563h-49v8-g7x4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

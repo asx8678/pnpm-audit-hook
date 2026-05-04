@@ -1,84 +1,743 @@
 {
   "packageName": "n8n",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
-      "id": "GHSA-5xrp-6693-jjx9",
+      "id": "GHSA-hqr4-h3xv-9m3r",
       "packageName": "n8n",
-      "title": "n8n Unsafe Workflow Expression Evaluation Allows Remote Code Execution",
-      "description": "n8n contains a critical Remote Code Execution (RCE) vulnerability in its workflow Expression evaluation system. Expressions supplied by authenticated users during workflow configuration may be evaluated in an execution context that is not sufficiently isolated from the underlying runtime.\n\nAn authenticated attacker could abuse this behavior to execute arbitrary code with the privileges of the n8n process. Successful exploitation may lead to full compromise of the affected instance, including una",
+      "title": "n8n has XML Node Prototype Pollution that to RCE",
+      "description": "## Impact\nAn authenticated user with permission to create or modify workflows could achieve global prototype pollution via the XML Node leading to RCE when combined with other nodes exploiting the prototype pollution.\n\n## Patches\nThe issue has been fixed in n8n versions 1.123.32, 2.17.4, and 2.18.1. Users should upgrade to one of these versions or later to remediate the vulnerability.\n\n## Workarounds\nIf upgrading is not immediately possible, administrators should consider the following temporary",
       "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-5xrp-6693-jjx9",
-      "publishedAt": "2026-01-27T15:30:32Z",
-      "modifiedAt": "2026-01-29T15:02:29Z",
+      "url": "https://github.com/advisories/GHSA-hqr4-h3xv-9m3r",
+      "publishedAt": "2026-04-29T21:25:53Z",
+      "modifiedAt": "2026-04-29T21:25:54Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-5xrp-6693-jjx9"
+          "value": "GHSA-hqr4-h3xv-9m3r"
         },
         {
           "type": "CVE",
-          "value": "CVE-2026-1470"
+          "value": "CVE-2026-42232"
         }
       ],
       "affectedVersions": [
         {
-          "range": ">= 2.5.0, < 2.5.1",
-          "fixed": "2.5.1"
+          "range": "< 1.123.32",
+          "fixed": "1.123.32"
         }
       ],
       "source": "github"
     },
     {
-      "id": "GHSA-w96v-gf22-crwp",
+      "id": "GHSA-q5f4-99jv-pgg5",
       "packageName": "n8n",
-      "title": "n8n: Webhook Node IP Whitelist Bypass via Partial String Matching",
-      "description": "## Impact\nThe Webhook node’s IP whitelist validation performed partial string matching instead of exact IP comparison. As a result, an incoming request could be accepted if the source IP address merely contained the configured whitelist entry as a substring.\n\nThis issue affected instances where workflow editors relied on IP-based access controls to restrict webhook access. Both IPv4 and IPv6 addresses were impacted. An attacker with a non-whitelisted IP could bypass restrictions if their IP shar",
+      "title": "n8n has Prototype Pollution in XML Webhook Body Parser that Leads to RCE",
+      "description": "## Impact\nA flaw in the `xml2js` library used to parse XML request bodies in n8n's webhook handler allowed prototype pollution via a crafted XML payload. An authenticated user with permission to create or modify workflows could exploit this to pollute the JavaScript object prototype and, by chaining the pollution with the Git node's SSH operations, achieve remote code execution on the n8n host.\n\n## Patches\nThe issue has been fixed in n8n versions 1.123.32, 2.17.4, and 2.18.1. Users should upgrad",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-q5f4-99jv-pgg5",
+      "publishedAt": "2026-04-29T21:25:02Z",
+      "modifiedAt": "2026-04-29T21:25:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q5f4-99jv-pgg5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-42231"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.17.0, < 2.17.4",
+          "fixed": "2.17.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-537j-gqpc-p7fq",
+      "packageName": "n8n",
+      "title": "n8n Vulnerable to XSS via MCP OAuth client",
+      "description": "## Impact\nAn unauthenticated attacker could register a malicious MCP OAuth client with a crafted `client_name`. If a victim user authorized the OAuth consent dialog and a second user subsequently revoked that access, a toast notification would render the injected script. Clicking the link would execute arbitrary JavaScript in the victim's authenticated n8n browser session, enabling credential and session token theft, workflow manipulation, or privilege escalation.\n\n## Patches\nThis issue has been",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-537j-gqpc-p7fq",
+      "publishedAt": "2026-04-29T21:23:04Z",
+      "modifiedAt": "2026-04-29T21:23:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-537j-gqpc-p7fq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-42235"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.17.0, < 2.17.4",
+          "fixed": "2.17.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r4v6-9fqc-w5jr",
+      "packageName": "n8n",
+      "title": "n8n's Credential Authorization Bypass in dynamic-node-parameters Allows Foreign API Key Replay",
+      "description": "## Impact\nThe `dynamic-node-parameters` endpoints did not verify whether the authenticated caller was authorized to use a supplied credential reference. An authenticated user with access to a shared workflow could supply a foreign credential ID in the request body, causing the backend to decrypt and use that credential in a helper execution path where the caller also controls the destination URL. This allowed the caller to force the backend to authenticate against attacker-controlled infrastruct",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r4v6-9fqc-w5jr",
+      "publishedAt": "2026-04-29T21:22:26Z",
+      "modifiedAt": "2026-04-29T21:22:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r4v6-9fqc-w5jr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-42226"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.123.33",
+          "fixed": "1.123.33"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-44v6-jhgm-p3m4",
+      "packageName": "n8n",
+      "title": "n8n has a Python Task Runner Sandbox Escape Vulnerability",
+      "description": "## Impact\nAn authenticated user with permission to create or modify workflows containing a Python Code Node could escape the sandbox and achieve arbitrary code execution on the task runner container.\n\n- This issue only affects instances where the Python Task Runner is enabled.\n\n## Patches\nThe issue has been fixed in n8n versions 1.123.32, 2.17.4, and 2.18.1. Users should upgrade to one of these versions or later to remediate the vulnerability.\n\n## Workarounds\nIf upgrading is not immediately poss",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-44v6-jhgm-p3m4",
+      "publishedAt": "2026-04-29T21:21:50Z",
+      "modifiedAt": "2026-04-29T21:21:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-44v6-jhgm-p3m4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-42234"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.17.0, < 2.17.4",
+          "fixed": "2.17.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-756q-gq9h-fp22",
+      "packageName": "n8n",
+      "title": "n8n has Public API Variables IDOR that Allows Cross-Project Secret Disclosure",
+      "description": "## Impact\nAn authenticated user with a valid API key scoped to `variable:list` could read variables from projects they are not a member of by supplying an arbitrary `projectId` query parameter to the public API variables endpoint. The handler queried the variables repository directly without enforcing project membership checks, bypassing the authorization-aware service layer used by the internal enterprise controller. \n\nIf variables were misused to store sensitive information such as credentials",
       "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-w96v-gf22-crwp",
-      "publishedAt": "2026-01-13T14:57:12Z",
-      "modifiedAt": "2026-01-13T21:40:43Z",
+      "url": "https://github.com/advisories/GHSA-756q-gq9h-fp22",
+      "publishedAt": "2026-04-29T21:21:00Z",
+      "modifiedAt": "2026-04-29T21:21:02Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-w96v-gf22-crwp"
+          "value": "GHSA-756q-gq9h-fp22"
         },
         {
           "type": "CVE",
-          "value": "CVE-2025-68949"
+          "value": "CVE-2026-42227"
         }
       ],
       "affectedVersions": [
         {
-          "range": ">= 1.36.0, < 2.2.0",
-          "fixed": "2.2.0"
+          "range": ">= 2.0.0, < 2.17.4",
+          "fixed": "2.17.4"
         }
       ],
       "source": "github"
     },
     {
-      "id": "GHSA-v4pr-fm98-w9pg",
+      "id": "GHSA-49m9-pgww-9vq6",
       "packageName": "n8n",
-      "title": "n8n Vulnerable to Unauthenticated File Access via Improper Webhook Request Handling",
-      "description": "### Impact\nA vulnerability in n8n allows an attacker to access files on the underlying server through execution of certain form-based workflows. A vulnerable workflow could grant access to an unauthenticated remote attacker. This could result in exposure of sensitive information stored on the system and may enable further compromise depending on deployment configuration and workflow usage.\n\n### Patches\nThe issue has been fixed in n8n version 1.121.0. Users should upgrade to this version or later",
-      "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-v4pr-fm98-w9pg",
-      "publishedAt": "2026-01-07T19:20:19Z",
-      "modifiedAt": "2026-01-13T15:05:00Z",
+      "title": "n8n Vulnerable to Unauthenticated Denial of Service via MCP Client Registration",
+      "description": "## Impact\nThe MCP OAuth client registration endpoint accepted unauthenticated requests and stored client data without adequate resource controls. An unauthenticated remote attacker could exhaust server memory resources by sending large registration payloads, rendering the n8n instance unavailable. The MCP enable/disable toggle gates MCP access but did not restrict client registrations, meaning the endpoint is reachable regardless of whether MCP access is enabled on the instance.\n\nThe patches add",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-49m9-pgww-9vq6",
+      "publishedAt": "2026-04-29T21:19:07Z",
+      "modifiedAt": "2026-04-29T21:19:08Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-v4pr-fm98-w9pg"
+          "value": "GHSA-49m9-pgww-9vq6"
         },
         {
           "type": "CVE",
-          "value": "CVE-2026-21858"
+          "value": "CVE-2026-42236"
         }
       ],
       "affectedVersions": [
         {
-          "range": ">= 1.65.0, < 1.121.0",
+          "range": ">= 2.0.0, < 2.17.4",
+          "fixed": "2.17.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f77h-j2v7-g6mw",
+      "packageName": "n8n",
+      "title": "n8n Vulnerable to Hijacking of Unauthenticated Chat Execution ",
+      "description": "## Impact\nThe `/chat` WebSocket endpoint used by the Chat Trigger node's Hosted Chat feature did not verify that an incoming connection was authorized to interact with the target execution. An unauthenticated remote attacker who could identify a valid execution ID for a workflow in a waiting state could attach to that execution, receive the pending prompt intended for the legitimate user, and submit arbitrary input to resume or influence downstream workflow behavior.\n\nExploitation requires the f",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f77h-j2v7-g6mw",
+      "publishedAt": "2026-04-29T21:17:44Z",
+      "modifiedAt": "2026-04-29T21:17:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f77h-j2v7-g6mw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-42228"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.17.4",
+          "fixed": "2.17.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mp4j-h6gh-f6mp",
+      "packageName": "n8n",
+      "title": "n8n has SQL Injection in SeaTable Node",
+      "description": "## Impact\nA flaw in the SeaTable node's `row:search` and `row:get` operations allowed user-controlled input to be concatenated directly into SQL query strings without escaping or parameterization. In workflows where external user input is passed via expressions into the SeaTable node's search or row retrieval parameters, an attacker could manipulate the constructed query to retrieve unintended rows from the connected SeaTable base, bypassing row-level filtering logic implemented in the workflow.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mp4j-h6gh-f6mp",
+      "publishedAt": "2026-04-29T21:10:58Z",
+      "modifiedAt": "2026-04-29T21:11:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mp4j-h6gh-f6mp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-42229"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.17.4",
+          "fixed": "2.17.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f6x8-65q6-j9m9",
+      "packageName": "n8n",
+      "title": "n8n has Open Redirect in MCP OAuth Consent Flow",
+      "description": "## Impact\nThe `/mcp-oauth/register` endpoint accepted OAuth client registrations without authentication, allowing arbitrary `redirect_uri` values to be registered. When a user denies the MCP OAuth consent dialog, the `handleDeny` handler redirects the user to the registered `redirect_uri` without validation, enabling an open redirect to an attacker-controlled URL. An attacker can craft a phishing link and send it to a victim; if the victim clicks \"Deny\" on the consent page, they are silently red",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f6x8-65q6-j9m9",
+      "publishedAt": "2026-04-29T21:10:17Z",
+      "modifiedAt": "2026-04-29T21:10:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f6x8-65q6-j9m9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-42230"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.17.4",
+          "fixed": "2.17.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r6jc-mpqw-m755",
+      "packageName": "n8n",
+      "title": "n8n has SQL Injection in Oracle Database Node via Limit Field",
+      "description": "## Impact\nA flaw in the Oracle Database node's select operation allowed user-controlled input passed into the `Limit` field via expressions to be interpolated directly into the SQL query without sanitization or parameterization. In workflows where external input is passed into the `Limit` field (e.g., from a webhook), an attacker could inject arbitrary SQL and exfiltrate data from the connected Oracle database.\n\nExploitation requires a specific workflow configuration:\n- The Oracle Database node ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-r6jc-mpqw-m755",
+      "publishedAt": "2026-04-29T21:08:27Z",
+      "modifiedAt": "2026-04-29T21:08:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r6jc-mpqw-m755"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-42233"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.17.4",
+          "fixed": "2.17.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hp3c-vfpm-q4f7",
+      "packageName": "n8n",
+      "title": "n8n has SQL Injection in Snowflake and MySQL Nodes",
+      "description": "## Impact\nThe fix for [GHSA-f3f2-mcxc-pwjx](https://github.com/advisories/GHSA-f3f2-mcxc-pwjx) did not cover the Snowflake node or the legacy MySQL v1 node. Both nodes construct SQL queries by directly interpolating user-controlled table names, column names, and update keys into query strings without identifier escaping, enabling SQL injection against the connected database.\n\nExploitation requires a specific workflow configuration:\n- The Snowflake or MySQL v1 node must be used with user-controll",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hp3c-vfpm-q4f7",
+      "publishedAt": "2026-04-29T21:03:29Z",
+      "modifiedAt": "2026-04-29T21:03:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hp3c-vfpm-q4f7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-42237"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.17.4",
+          "fixed": "2.17.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3c7f-5hgj-h279",
+      "packageName": "n8n",
+      "title": "n8n has XSS in Chat Trigger Node through Custom CSS",
+      "description": "## Impact\nAn authenticated user with permission to create or modify workflows could inject malicious JavaScript into the Custom CSS field of the Chat Trigger node. Due to a misconfiguration in the `sanitize-html` library, the sanitization could be bypassed, resulting in stored XSS on the public chat page. Any user visiting the chat URL would be affected.\n\n## Patches\nThe issue has been fixed in n8n versions 1.123.27, 2.13.3, and 2.14.1. Users should upgrade to one of these versions or later to re",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-3c7f-5hgj-h279",
+      "publishedAt": "2026-03-27T18:06:49Z",
+      "modifiedAt": "2026-04-03T16:07:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3c7f-5hgj-h279"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 2.14.0",
+          "fixed": "2.14.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-58qr-rcgv-642v",
+      "packageName": "n8n",
+      "title": "n8n has Multiple Remote Code Execution Vulnerabilities in Merge Node AlaSQL SQL Mode",
+      "description": "## Impact\nAn authenticated user with permission to create or modify workflows could use the Merge node's \"Combine by SQL\" mode to read local files on the n8n host and achieve remote code execution. The AlaSQL sandbox did not sufficiently restrict certain SQL statements, allowing an attacker to access sensitive files on the server or even compromise the intance.\n\n## Patches\nThe issue has been fixed in n8n versions 2.14.1, 2.13.3, and 1.123.27. Users should upgrade to one of these versions or late",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-58qr-rcgv-642v",
+      "publishedAt": "2026-03-25T21:07:45Z",
+      "modifiedAt": "2026-03-30T21:16:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-58qr-rcgv-642v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33660"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.123.27",
+          "fixed": "1.123.27"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xvh5-5qg4-x9qp",
+      "packageName": "n8n",
+      "title": "n8n has In-Process Memory Disclosure in its Task Runner",
+      "description": "## Impact\nAn authenticated user with permission to create or modify workflows could use the JavaScript Task Runner to allocate uninitialized memory buffers. Uninitialized buffers may contain residual data from the same Node.js process — including data from prior requests, tasks, secrets, or tokens — resulting in information disclosure of sensitive in-process data.\n- Task Runners must be enabled using `N8N_RUNNERS_ENABLED=true`.\n- In external runner mode, the impact is limited to data within the ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xvh5-5qg4-x9qp",
+      "publishedAt": "2026-03-25T17:00:25Z",
+      "modifiedAt": "2026-03-27T22:08:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xvh5-5qg4-x9qp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-27496"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0-rc.0, < 2.9.3",
+          "fixed": "2.9.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-364x-8g5j-x2pr",
+      "packageName": "n8n",
+      "title": "n8n has XSS in its Credential Management Flow",
+      "description": "## Impact\nAn authenticated user with permission to create and share credentials could craft a malicious OAuth2 credential containing a JavaScript URL in the Authorization URL field. If a victim opened the credential and interacted with the OAuth authorization button, the injected script would execute in their browser session.\n\n## Patches\nThe issue has been fixed in n8n versions 2.8.0 and 2.6.4. Users should upgrade to one of these versions or later to remediate the vulnerability.\n\n## Workarounds",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-364x-8g5j-x2pr",
+      "publishedAt": "2026-03-27T18:08:15Z",
+      "modifiedAt": "2026-03-27T18:08:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-364x-8g5j-x2pr"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.6.4",
+          "fixed": "2.6.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w673-8fjw-457c",
+      "packageName": "n8n",
+      "title": "n8n: Authenticated XSS and Open Redirect via Form Node",
+      "description": "## Impact\nAn authenticated user with permission to create or modify workflows could configure a Form Node with an unsanitized HTML description field or exploit an overly permissive iframe sandbox policy to perform stored cross-site scripting or redirect end users visiting the form to an arbitrary external URL. The vulnerability could be used to facilitate phishing attacks.\n\n## Patches\nThe issue has been fixed in n8n versions 1.123.24, 2.10.4 and 2.12.0. Users should upgrade to one of these versi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w673-8fjw-457c",
+      "publishedAt": "2026-03-27T18:06:28Z",
+      "modifiedAt": "2026-03-27T18:06:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w673-8fjw-457c"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.123.24",
+          "fixed": "1.123.24"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q4fm-pjq6-m63g",
+      "packageName": "n8n",
+      "title": "n8n has a Stored XSS Vulnerability in its Form Trigger",
+      "description": "## Impact\nAn authenticated user with permission to create or modify workflows could exploit a flaw in the Form Trigger node's CSS sanitization to store a cross-site scripting (XSS) payload. The injected script executes persistently for every visitor of the published form, enabling form submission hijacking and phishing. The existing Content Security Policy prevents direct n8n session cookie theft but does not prevent script execution or form action manipulation.\n\n## Patches\nThe issue has been fi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q4fm-pjq6-m63g",
+      "publishedAt": "2026-03-27T18:05:47Z",
+      "modifiedAt": "2026-03-27T18:05:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q4fm-pjq6-m63g"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.123.25",
+          "fixed": "1.123.25"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-c545-x2rh-82fc",
+      "packageName": "n8n",
+      "title": "n8n: LDAP Email-Based Account Linking Allows Privilege Escalation and Account Takeover",
+      "description": "## Impact\nWhen LDAP authentication is enabled, n8n automatically linked an LDAP identity to an existing local account if the LDAP email attribute matched the local account's email. An authenticated LDAP user who could control their own LDAP email attribute could set it to match another user's email — including an administrator's — and upon login gain full access to that account. The account linkage persisted even if the LDAP email was later reverted, resulting in a permanent account takeover.\n\n-",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-c545-x2rh-82fc",
+      "publishedAt": "2026-03-25T21:09:13Z",
+      "modifiedAt": "2026-03-27T06:44:51Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c545-x2rh-82fc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33665"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.121.0",
           "fixed": "1.121.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w83q-mcmx-mh42",
+      "packageName": "n8n",
+      "title": "n8n Vulnerable to LDAP Filter Injection in LDAP Node",
+      "description": "## Impact\nA flaw in the LDAP node's filter escape logic allowed LDAP metacharacters to pass through unescaped when user-controlled input was interpolated into LDAP search filters. In workflows where external user input is passed via expressions into the LDAP node's search parameters, an attacker could manipulate the constructed filter to retrieve unintended LDAP records or bypass authentication checks implemented in the workflow.\n\nExploitation requires a specific workflow configuration:\n- The LD",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w83q-mcmx-mh42",
+      "publishedAt": "2026-03-26T18:30:18Z",
+      "modifiedAt": "2026-03-26T18:30:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w83q-mcmx-mh42"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33751"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0-rc.0, < 2.13.3",
+          "fixed": "2.13.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qfc3-hm4j-7q77",
+      "packageName": "n8n",
+      "title": "n8n Vulnerable to XSS via Binary Data Inline HTML Rendering",
+      "description": "## Impact\nAn authenticated user with permission to create or modify workflows could craft a workflow that produces an HTML binary data object without a filename. The `/rest/binary-data` endpoint served such responses inline on the n8n origin without `Content-Disposition` or `Content-Security-Policy` headers, allowing the HTML to render in the browser with full same-origin JavaScript access.\n\nBy sending the resulting URL to a higher-privileged user, an attacker could execute JavaScript in the vic",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qfc3-hm4j-7q77",
+      "publishedAt": "2026-03-26T18:28:44Z",
+      "modifiedAt": "2026-03-26T18:28:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qfc3-hm4j-7q77"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33749"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0-rc.0, < 2.13.3",
+          "fixed": "2.13.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-98c2-4cr3-4jc3",
+      "packageName": "n8n",
+      "title": "n8n has SQL Injection in Data Table Node via orderByColumn Expression",
+      "description": "## Impact\nAn authenticated user with permission to create or modify workflows could exploit a SQL injection vulnerability in the Data Table Get node. On default SQLite DB, single statements can be manipulated and the attack surface is practically limited. On PostgreSQL deployments, multi-statement execution is possible, enabling data modification and deletion.\n\n## Patches\nThe issue has been fixed in n8n versions 1.123.26, 2.13.3, and 2.14.1. Users should upgrade to one of these versions or later",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-98c2-4cr3-4jc3",
+      "publishedAt": "2026-03-26T16:41:26Z",
+      "modifiedAt": "2026-03-26T16:41:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-98c2-4cr3-4jc3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33713"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0-rc.0, < 2.13.3",
+          "fixed": "2.13.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mxrg-77hm-89hv",
+      "packageName": "n8n",
+      "title": "n8n: Prototype Pollution in XML and GSuiteAdmin node parameters lead to RCE",
+      "description": "## Impact\nAn authenticated user with permission to create or modify workflows could exploit a prototype pollution vulnerability in the GSuiteAdmin node. By supplying a crafted parameter as part of node configuration, an attacker could write attacker-controlled values onto `Object.prototype`. An attacker could use this prototype pollution to achieve remote code execution on the n8n instance.\n\n## Patches\nThe issue has been fixed in n8n versions 2.14.1, 2.13.3, and 1.123.27. Users should upgrade to",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-mxrg-77hm-89hv",
+      "publishedAt": "2026-03-26T16:41:01Z",
+      "modifiedAt": "2026-03-26T16:41:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mxrg-77hm-89hv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33696"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.123.27",
+          "fixed": "1.123.27"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-43v7-fp2v-68f6",
+      "packageName": "n8n",
+      "title": "n8n's Source Control SSH Configuration Uses StrictHostKeyChecking=no",
+      "description": "## Impact\nWhen the Source Control feature is configured to use SSH, the SSH command used for git operations explicitly disabled host key verification. A network attacker positioned between the n8n instance and the remote Git server could intercept the connection and present a fraudulent host key, potentially injecting malicious content into workflows or intercepting repository data.\n\n- This issue only affects instances where the Source Control feature has been explicitly enabled and configured t",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-43v7-fp2v-68f6",
+      "publishedAt": "2026-03-25T22:06:10Z",
+      "modifiedAt": "2026-03-25T22:06:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-43v7-fp2v-68f6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33724"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.5.0",
+          "fixed": "2.5.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fxcw-h3qj-8m8p",
+      "packageName": "n8n",
+      "title": "n8n Has External Secrets Authorization Bypass in Credential Saving",
+      "description": "## Impact\nAn authenticated user without permission to list external secrets could reference a secret by the external name in a credential and retrieve its plaintext value when saving the credential. This bypassed the `externalSecret:list` permission check and allowed access to secrets stored in connected vaults without admin or owner privileges.\n\n- This issue requires the instance to have an external secrets vault configured.\n- The attacker must know or be able to guess the name of a target secr",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-fxcw-h3qj-8m8p",
+      "publishedAt": "2026-03-25T22:05:44Z",
+      "modifiedAt": "2026-03-25T22:05:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fxcw-h3qj-8m8p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33722"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0-rc.0, < 2.6.4",
+          "fixed": "2.6.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-vpgc-2f6g-7w7x",
+      "packageName": "n8n",
+      "title": "n8n Has Authorization Bypass in OAuth Callback via N8N_SKIP_AUTH_ON_OAUTH_CALLBACK",
+      "description": "## Impact\nWhen the `N8N_SKIP_AUTH_ON_OAUTH_CALLBACK` environment variable is set to `true`, the OAuth callback handler skips ownership verification of the OAuth state parameter. This allows an attacker to trick a victim into completing an OAuth flow against a credential object the attacker controls, causing the victim's OAuth tokens to be stored in the attacker's credential. The attacker can then use those tokens to execute workflows in their name.\n\n- This issue only affects instances where `N8N",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-vpgc-2f6g-7w7x",
+      "publishedAt": "2026-03-25T21:57:55Z",
+      "modifiedAt": "2026-03-25T21:57:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vpgc-2f6g-7w7x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33720"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.8.0",
+          "fixed": "2.8.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m63j-689w-3j35",
+      "packageName": "n8n",
+      "title": "n8n is Vulnerable to Credential Theft via Name-Based Resolution and Permission Checker Bypass in Community Edition",
+      "description": "## Impact\nAn authenticated user with the `global:member` role could exploit chained authorization flaws in n8n's credential pipeline to steal plaintext secrets from generic HTTP credentials (`httpBasicAuth`, `httpHeaderAuth`, `httpQueryAuth`) belonging to other users on the same instance.\n\nThe attack abuses a name-based credential resolution path that does not enforce ownership or project scope, combined with a bypass in the credentials permission checker that causes generic HTTP credential type",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m63j-689w-3j35",
+      "publishedAt": "2026-03-25T21:08:33Z",
+      "modifiedAt": "2026-03-25T21:08:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m63j-689w-3j35"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33663"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0-rc.0, < 2.13.3",
+          "fixed": "2.13.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8398-gmmx-564h",
+      "packageName": "n8n",
+      "title": "n8n has a Python sandbox escape",
+      "description": "## Impact\n\nA vulnerability in the Python Code node allows authenticated users to break out of the Python sandbox environment and execute code outside the intended security boundary. \n\nOnly authenticated users are able to execute code through Task Runners.\n\nThis issue affected any deployment in which the following conditions were met:\n\n- Task Runners were enabled using `N8N_RUNNERS_ENABLED=true` (default: false)\n- Python was enabled `N8N_PYTHON_ENABLED=true`\n- Code Node was enabled (default: true",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8398-gmmx-564h",
+      "publishedAt": "2026-02-04T19:42:03Z",
+      "modifiedAt": "2026-03-25T03:12:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8398-gmmx-564h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25115"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.4.8",
+          "fixed": "2.4.8"
         }
       ],
       "source": "github"
@@ -91,7 +750,7 @@
       "severity": "critical",
       "url": "https://github.com/advisories/GHSA-v98v-ff95-f3cp",
       "publishedAt": "2025-12-22T16:19:13Z",
-      "modifiedAt": "2026-01-09T16:53:16Z",
+      "modifiedAt": "2026-03-11T20:39:32Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -106,487 +765,6 @@
         {
           "range": ">= 1.121.0, < 1.121.1",
           "fixed": "1.121.1"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-jf52-3f2h-h9j5",
-      "packageName": "n8n",
-      "title": "n8n's Missing Stripe-Signature Verification Allows Unauthenticated Forged Webhooks",
-      "description": "### Impact\nAn authentication bypass in the Stripe Trigger node allows unauthenticated parties to trigger workflows by sending forged Stripe webhook events.\n\nThe Stripe Trigger creates and stores a Stripe webhook signing secret when registering the webhook endpoint, but incoming webhook requests were not verified against this secret. As a result, any HTTP client that knows the webhook URL could send a POST request containing a matching event `type`, causing the workflow to execute as if a legitim",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-jf52-3f2h-h9j5",
-      "publishedAt": "2026-01-07T19:22:54Z",
-      "modifiedAt": "2026-01-08T20:51:27Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-jf52-3f2h-h9j5"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-21894"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 0.150.0, < 2.2.2",
-          "fixed": "2.2.2"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-v364-rw7m-3263",
-      "packageName": "n8n",
-      "title": "n8n Vulnerable to RCE via Arbitrary File Write",
-      "description": "### Impact\nn8n is affected by an authenticated Remote Code Execution (RCE) vulnerability.\n\nUnder certain conditions, an authenticated user may be able to cause untrusted code to be executed by the n8n service. This could result in full compromise of the affected instance.\n\nBoth self-hosted and n8n Cloud instances are impacted.\n\n### Patches\nThe issue has been resolved in n8n version 1.121.3.\n\nUsers are advised to upgrade to this version or later to fully address the vulnerability.\n\n### Workaround",
-      "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-v364-rw7m-3263",
-      "publishedAt": "2026-01-06T17:48:24Z",
-      "modifiedAt": "2026-01-06T17:48:25Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-v364-rw7m-3263"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-21877"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 0.123.0, < 1.121.3",
-          "fixed": "1.121.3"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-62r4-hw23-cc8v",
-      "packageName": "n8n",
-      "title": "n8n Vulnerable to Arbitrary Command Execution in Pyodide based Python Code Node ",
-      "description": "### Impact\nA sandbox bypass vulnerability exists in the Python Code Node that uses Pyodide.\n\nAn authenticated user with permission to create or modify workflows can exploit this vulnerability to execute arbitrary commands on the host system running n8n, using the same privileges as the n8n process.\n\n### Patches\nIn n8n version 1.111.0, a task-runner-based native Python implementation was introduced as an optional feature, providing a more secure isolation model.\n\nTo enable it, you need to configu",
-      "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-62r4-hw23-cc8v",
-      "publishedAt": "2025-12-26T18:18:05Z",
-      "modifiedAt": "2026-01-05T19:06:07Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-62r4-hw23-cc8v"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-68668"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 1.0.0, < 2.0.0",
-          "fixed": "2.0.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-j4p8-h8mh-rh8q",
-      "packageName": "n8n",
-      "title": "Self-hosted n8n has Legacy Code node that enables arbitrary file read/write",
-      "description": "### Impact\n\nIn self-hosted n8n instances where the Code node runs in legacy (non-task-runner) JavaScript execution mode, authenticated users with workflow editing access can invoke internal helper functions from within the Code node.\n\nThis allows a workflow editor to perform actions on the n8n host with the same privileges as the n8n process, including:\n\n- Reading files from the host filesystem (subject to any file-access restrictions configured on the instance and OS/container permissions)\n- Wr",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-j4p8-h8mh-rh8q",
-      "publishedAt": "2025-12-26T18:26:38Z",
-      "modifiedAt": "2025-12-31T00:20:09Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-j4p8-h8mh-rh8q"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-68697"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 1.2.1, < 2.0.0",
-          "fixed": "2.0.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-58jc-rcg5-95f3",
-      "packageName": "n8n",
-      "title": "n8n's Possible Stored XSS in \"Respond to Webhook\" Node May Execute Outside iframe Sandbox",
-      "description": "### Summary\nA stored Cross-Site Scripting (XSS) vulnerability may occur in n8n when using the “Respond to Webhook” node.\nWhen this node responds with HTML content containing executable scripts, the payload may execute directly in the top-level window, rather than within the expected sandbox introduced in version 1.103.0.\n\nThis behavior can enable a malicious actor with workflow creation permissions to execute arbitrary JavaScript in the context of the n8n editor interface.\n\nWhile session cookies",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-58jc-rcg5-95f3",
-      "publishedAt": "2025-12-26T17:30:19Z",
-      "modifiedAt": "2025-12-27T01:08:11Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-58jc-rcg5-95f3"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-61914"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 1.114.0",
-          "fixed": "1.114.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-wpqc-h9wp-chmq",
-      "packageName": "n8n",
-      "title": "n8n vulnerable to Remote Code Execution via Git Node Custom Pre-Commit Hook",
-      "description": "### Impact\n\nThe n8n Git node allows workflows to set arbitrary Git configuration values through the _Add Config_ operation. When an attacker-controlled workflow sets `core.hooksPath` to a directory within the cloned repository containing a Git hook such as `pre-commit`, Git executes that hook during subsequent Git operations. Because Git hooks run as local system commands, this behavior can lead to **arbitrary command execution** on the underlying n8n host.\n\nSuccessful exploitation requires the ",
-      "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-wpqc-h9wp-chmq",
-      "publishedAt": "2025-12-08T21:30:07Z",
-      "modifiedAt": "2025-12-09T16:28:14Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-wpqc-h9wp-chmq"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-65964"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 0.123.1, < 1.119.2",
-          "fixed": "1.119.2"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-xgp7-7qjq-vg47",
-      "packageName": "n8n",
-      "title": "n8n Vulnerable to Remote Code Execution via Git Node Pre-Commit Hook",
-      "description": "### Impact\nA remote code execution vulnerability exists in the Git Node component available in both Cloud and Self-Hosted versions of n8n. When a malicious actor clones a remote repository containing a pre-commit hook, the subsequent use of the Commit operation in the Git Node can inadvertently trigger the hook’s execution.\n\nThis allows attackers to execute arbitrary code within the n8n environment, potentially compromising the system and any connected credentials or workflows.\n\nAll users with w",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-xgp7-7qjq-vg47",
-      "publishedAt": "2025-10-30T17:04:26Z",
-      "modifiedAt": "2025-10-30T19:54:38Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-xgp7-7qjq-vg47"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-62726"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 1.113.0",
-          "fixed": "1.113.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-365g-vjw2-grx8",
-      "packageName": "n8n",
-      "title": "n8n: Execute Command Node Allows Authenticated Users to Run Arbitrary Commands on Host",
-      "description": "### Impact\n\nThe `Execute Command` node in n8n allows execution of arbitrary commands on the host system where n8n runs. While this functionality is intended for advanced automation and can be useful in certain workflows, it poses a security risk if all users with access to the n8n instance are not fully trusted.\n\nAn attacker—either a malicious user or someone who has compromised a legitimate user account—could exploit this node to run arbitrary commands on the host machine, potentially leading t",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-365g-vjw2-grx8",
-      "publishedAt": "2025-10-09T15:26:59Z",
-      "modifiedAt": "2025-10-09T15:27:00Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-365g-vjw2-grx8"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 1.114.4"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-mvh4-2cm2-6hpg",
-      "packageName": "n8n",
-      "title": "Stored XSS in n8n LangChain Chat Trigger Node via initialMessages Parameter",
-      "description": "### Impact\nA stored Cross-Site Scripting (XSS) vulnerability was identified in the `@n8n/n8n-nodes-langchain.chatTrigger` node in n8n. If an authorized user configures the node with malicious JavaScript in the initialMessages field and enables public access, the script will be executed in the browser of anyone who visits the resulting public chat URL.\n\nThis vulnerability could be exploited for phishing or to steal cookies or other sensitive data from users who access the public chat link, posing",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-mvh4-2cm2-6hpg",
-      "publishedAt": "2025-09-15T17:14:27Z",
-      "modifiedAt": "2025-09-15T20:07:56Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-mvh4-2cm2-6hpg"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-58177"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 1.24.0, < 1.107.0",
-          "fixed": "1.107.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-ggjm-f3g4-rwmm",
-      "packageName": "n8n",
-      "title": "n8n symlink traversal vulnerability in \"Read/Write File\" node allows access to restricted files",
-      "description": "### Impact\nA symlink traversal vulnerability was discovered in the `Read/Write File` node in n8n. While the node attempts to restrict access to sensitive directories and files, it does not properly account for symbolic links (symlinks). An attacker with the ability to create symlinks—such as by using the `Execute Command` node—could exploit this to bypass the intended directory restrictions and read from or write to otherwise inaccessible paths. Users of _n8n.cloud_ are not impacted.\n\n### Patche",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-ggjm-f3g4-rwmm",
-      "publishedAt": "2025-08-20T19:09:55Z",
-      "modifiedAt": "2025-08-21T04:07:04Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-ggjm-f3g4-rwmm"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-57749"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 1.106.0",
-          "fixed": "1.106.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-hfmv-hhh3-43f2",
-      "packageName": "n8n",
-      "title": "Stored XSS in n8n Form Trigger allows Account Takeover via injected iframe and video/source",
-      "description": "### Impact\n\nA stored **Cross-Site Scripting (XSS)** vulnerability was identified in [n8n](https://github.com/n8n-io/n8n), specifically in the **Form Trigger** node's **HTML form element**. An authenticated attacker can inject malicious HTML via an `<iframe>` with a `srcdoc` payload that includes arbitrary JavaScript execution. The attacker can also inject malicious Javascript by using `<video>` coupled `<source>` using an `onerror` event.\n\nWhile using `iframe` or a combination of `video` and `so",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-hfmv-hhh3-43f2",
-      "publishedAt": "2025-08-19T15:33:35Z",
-      "modifiedAt": "2025-08-19T20:58:34Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-hfmv-hhh3-43f2"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-52478"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": ">= 1.77.0, < 1.98.2",
-          "fixed": "1.98.2"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-gq57-v332-7666",
-      "packageName": "n8n",
-      "title": "n8n is vulnerable to Improper Authorization through its `/stop` endpoint",
-      "description": "## Summary\n\nAn authorization vulnerability was discovered in the `/rest/executions/:id/stop` endpoint of n8n. An authenticated user can stop workflow executions that they do not own or that have not been shared with them, leading to potential business disruption.\n\n### Impact\n\nThis is an **improper authorization** vulnerability. While most API methods enforce user-scoped access to workflow execution IDs, the `/stop` endpoint fails to do so. An attacker can guess or enumerate execution IDs (which ",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-gq57-v332-7666",
-      "publishedAt": "2025-07-03T20:23:35Z",
-      "modifiedAt": "2025-07-10T14:04:56Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-gq57-v332-7666"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-52554"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 1.99.1",
-          "fixed": "1.99.1"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-pr9r-gxgp-9rm8",
-      "packageName": "n8n",
-      "title": "n8n Vulnerable to Denial of Service via Malformed Binary Data Requests",
-      "description": "## Summary\nDenial of Service vulnerability in `/rest/binary-data` endpoint when processing empty filesystem URIs (`filesystem://` or `filesystem-v2://`).\n\n### Impact\nThis is a Denial of Service (DoS) vulnerability that allows authenticated attackers to cause service unavailability through malformed filesystem URI requests. The vulnerability affects:\n\n- The `/rest/binary-data` endpoint\n- n8n.cloud instances (confirmed HTTP/2 524 timeout responses)\n\nAttackers can exploit this by sending GET reques",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-pr9r-gxgp-9rm8",
-      "publishedAt": "2025-07-03T14:06:01Z",
-      "modifiedAt": "2025-07-03T16:20:45Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-pr9r-gxgp-9rm8"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-49595"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 1.99.0",
-          "fixed": "1.99.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-5vj6-wjr7-5v9f",
-      "packageName": "n8n",
-      "title": "n8n allows open redirects via the /signin endpoint",
-      "description": "### Impact\n\nThis is an Open Redirect (CWE-601) vulnerability in the login flow of n8n. Authenticated users can be redirected to untrusted, attacker-controlled domains after logging in, by crafting malicious URLs with a misleading redirect query parameter.\n\nThis may lead to:\n\n- Phishing attacks by impersonating the n8n UI on lookalike domains (e.g., n8n.local.evil.com)\n- Credential or 2FA theft if users are tricked into re-entering sensitive information\n- Reputation risk due to the visual similar",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-5vj6-wjr7-5v9f",
-      "publishedAt": "2025-06-27T14:19:01Z",
-      "modifiedAt": "2025-06-27T14:19:03Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-5vj6-wjr7-5v9f"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-49592"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 1.97.0",
-          "fixed": "1.98.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-c8hm-hr8h-5xjw",
-      "packageName": "n8n",
-      "title": "n8n Vulnerable to Stored XSS through Attachments View Endpoint",
-      "description": "### Impact\nn8n workflows can store and serve binary files, which are accessible to authenticated users. However, there was no restriction on the MIME type of uploaded files, and the MIME type could be controlled via a GET parameter. This allowed the server to respond with any MIME type, potentially enabling malicious content to be interpreted and executed by the browser.\n\nAn authenticated attacker with member-level permissions could exploit this by uploading a crafted HTML file containing malici",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-c8hm-hr8h-5xjw",
-      "publishedAt": "2025-04-28T21:02:23Z",
-      "modifiedAt": "2025-04-29T13:15:17Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-c8hm-hr8h-5xjw"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2025-46343"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 1.90.0",
-          "fixed": "1.90.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-r9xw-p7wj-w792",
-      "packageName": "n8n",
-      "title": "n8n Information Disclosure vulnerability",
-      "description": "The n8n package prior to 0.216.1 for Node.js allows Information Disclosure.",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-r9xw-p7wj-w792",
-      "publishedAt": "2023-05-10T15:30:22Z",
-      "modifiedAt": "2023-11-27T21:52:32Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-r9xw-p7wj-w792"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2023-27564"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 0.216.1",
-          "fixed": "0.216.1"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-p58x-7733-vp9m",
-      "packageName": "n8n",
-      "title": "n8n Directory Traversal vulnerability",
-      "description": "The n8n package prior to version 0.216.1 for Node.js allows Directory Traversal.",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-p58x-7733-vp9m",
-      "publishedAt": "2023-05-10T15:30:22Z",
-      "modifiedAt": "2023-11-27T21:40:53Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-p58x-7733-vp9m"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2023-27562"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 0.216.1",
-          "fixed": "0.216.1"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-97cp-mr4m-9mcf",
-      "packageName": "n8n",
-      "title": "n8n Privilege Escalation vulnerability",
-      "description": "The n8n package prior to 0.216.1 for Node.js allows Escalation of Privileges.",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-97cp-mr4m-9mcf",
-      "publishedAt": "2023-05-10T15:30:22Z",
-      "modifiedAt": "2023-11-27T21:39:18Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-97cp-mr4m-9mcf"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2023-27563"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 0.216.1",
-          "fixed": "0.216.1"
         }
       ],
       "source": "github"
@@ -1081,33 +1259,6 @@
       "source": "github"
     },
     {
-      "id": "GHSA-8398-gmmx-564h",
-      "packageName": "n8n",
-      "title": "n8n has a Python sandbox escape",
-      "description": "## Impact\n\nA vulnerability in the Python Code node allows authenticated users to break out of the Python sandbox environment and execute code outside the intended security boundary. \n\nOnly authenticated users are able to execute code through Task Runners.\n\nThis issue affected any deployment in which the following conditions were met:\n\n- Task Runners were enabled using `N8N_RUNNERS_ENABLED=true` (default: false)\n- Python was enabled `N8N_PYTHON_ENABLED=true`\n- Code Node was enabled (default: true",
-      "severity": "critical",
-      "url": "https://github.com/advisories/GHSA-8398-gmmx-564h",
-      "publishedAt": "2026-02-04T19:42:03Z",
-      "modifiedAt": "2026-02-04T19:42:05Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-8398-gmmx-564h"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-25115"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "< 2.4.8",
-          "fixed": "2.4.8"
-        }
-      ],
-      "source": "github"
-    },
-    {
       "id": "GHSA-hv53-3329-vmrm",
       "packageName": "n8n",
       "title": "n8n Merge Node has Arbitrary File Write leading to RCE",
@@ -1211,6 +1362,568 @@
         {
           "range": "< 1.123.10",
           "fixed": "1.123.10"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5xrp-6693-jjx9",
+      "packageName": "n8n",
+      "title": "n8n Unsafe Workflow Expression Evaluation Allows Remote Code Execution",
+      "description": "n8n contains a critical Remote Code Execution (RCE) vulnerability in its workflow Expression evaluation system. Expressions supplied by authenticated users during workflow configuration may be evaluated in an execution context that is not sufficiently isolated from the underlying runtime.\n\nAn authenticated attacker could abuse this behavior to execute arbitrary code with the privileges of the n8n process. Successful exploitation may lead to full compromise of the affected instance, including una",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5xrp-6693-jjx9",
+      "publishedAt": "2026-01-27T15:30:32Z",
+      "modifiedAt": "2026-01-29T15:02:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5xrp-6693-jjx9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-1470"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.5.0, < 2.5.1",
+          "fixed": "2.5.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-w96v-gf22-crwp",
+      "packageName": "n8n",
+      "title": "n8n: Webhook Node IP Whitelist Bypass via Partial String Matching",
+      "description": "## Impact\nThe Webhook node’s IP whitelist validation performed partial string matching instead of exact IP comparison. As a result, an incoming request could be accepted if the source IP address merely contained the configured whitelist entry as a substring.\n\nThis issue affected instances where workflow editors relied on IP-based access controls to restrict webhook access. Both IPv4 and IPv6 addresses were impacted. An attacker with a non-whitelisted IP could bypass restrictions if their IP shar",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-w96v-gf22-crwp",
+      "publishedAt": "2026-01-13T14:57:12Z",
+      "modifiedAt": "2026-01-13T21:40:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-w96v-gf22-crwp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-68949"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.36.0, < 2.2.0",
+          "fixed": "2.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v4pr-fm98-w9pg",
+      "packageName": "n8n",
+      "title": "n8n Vulnerable to Unauthenticated File Access via Improper Webhook Request Handling",
+      "description": "### Impact\nA vulnerability in n8n allows an attacker to access files on the underlying server through execution of certain form-based workflows. A vulnerable workflow could grant access to an unauthenticated remote attacker. This could result in exposure of sensitive information stored on the system and may enable further compromise depending on deployment configuration and workflow usage.\n\n### Patches\nThe issue has been fixed in n8n version 1.121.0. Users should upgrade to this version or later",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-v4pr-fm98-w9pg",
+      "publishedAt": "2026-01-07T19:20:19Z",
+      "modifiedAt": "2026-01-13T15:05:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v4pr-fm98-w9pg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-21858"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.65.0, < 1.121.0",
+          "fixed": "1.121.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jf52-3f2h-h9j5",
+      "packageName": "n8n",
+      "title": "n8n's Missing Stripe-Signature Verification Allows Unauthenticated Forged Webhooks",
+      "description": "### Impact\nAn authentication bypass in the Stripe Trigger node allows unauthenticated parties to trigger workflows by sending forged Stripe webhook events.\n\nThe Stripe Trigger creates and stores a Stripe webhook signing secret when registering the webhook endpoint, but incoming webhook requests were not verified against this secret. As a result, any HTTP client that knows the webhook URL could send a POST request containing a matching event `type`, causing the workflow to execute as if a legitim",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-jf52-3f2h-h9j5",
+      "publishedAt": "2026-01-07T19:22:54Z",
+      "modifiedAt": "2026-01-08T20:51:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jf52-3f2h-h9j5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-21894"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.150.0, < 2.2.2",
+          "fixed": "2.2.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v364-rw7m-3263",
+      "packageName": "n8n",
+      "title": "n8n Vulnerable to RCE via Arbitrary File Write",
+      "description": "### Impact\nn8n is affected by an authenticated Remote Code Execution (RCE) vulnerability.\n\nUnder certain conditions, an authenticated user may be able to cause untrusted code to be executed by the n8n service. This could result in full compromise of the affected instance.\n\nBoth self-hosted and n8n Cloud instances are impacted.\n\n### Patches\nThe issue has been resolved in n8n version 1.121.3.\n\nUsers are advised to upgrade to this version or later to fully address the vulnerability.\n\n### Workaround",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-v364-rw7m-3263",
+      "publishedAt": "2026-01-06T17:48:24Z",
+      "modifiedAt": "2026-01-06T17:48:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v364-rw7m-3263"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-21877"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.123.0, < 1.121.3",
+          "fixed": "1.121.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-62r4-hw23-cc8v",
+      "packageName": "n8n",
+      "title": "n8n Vulnerable to Arbitrary Command Execution in Pyodide based Python Code Node ",
+      "description": "### Impact\nA sandbox bypass vulnerability exists in the Python Code Node that uses Pyodide.\n\nAn authenticated user with permission to create or modify workflows can exploit this vulnerability to execute arbitrary commands on the host system running n8n, using the same privileges as the n8n process.\n\n### Patches\nIn n8n version 1.111.0, a task-runner-based native Python implementation was introduced as an optional feature, providing a more secure isolation model.\n\nTo enable it, you need to configu",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-62r4-hw23-cc8v",
+      "publishedAt": "2025-12-26T18:18:05Z",
+      "modifiedAt": "2026-01-05T19:06:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-62r4-hw23-cc8v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-68668"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0, < 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-j4p8-h8mh-rh8q",
+      "packageName": "n8n",
+      "title": "Self-hosted n8n has Legacy Code node that enables arbitrary file read/write",
+      "description": "### Impact\n\nIn self-hosted n8n instances where the Code node runs in legacy (non-task-runner) JavaScript execution mode, authenticated users with workflow editing access can invoke internal helper functions from within the Code node.\n\nThis allows a workflow editor to perform actions on the n8n host with the same privileges as the n8n process, including:\n\n- Reading files from the host filesystem (subject to any file-access restrictions configured on the instance and OS/container permissions)\n- Wr",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j4p8-h8mh-rh8q",
+      "publishedAt": "2025-12-26T18:26:38Z",
+      "modifiedAt": "2025-12-31T00:20:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j4p8-h8mh-rh8q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-68697"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.2.1, < 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-58jc-rcg5-95f3",
+      "packageName": "n8n",
+      "title": "n8n's Possible Stored XSS in \"Respond to Webhook\" Node May Execute Outside iframe Sandbox",
+      "description": "### Summary\nA stored Cross-Site Scripting (XSS) vulnerability may occur in n8n when using the “Respond to Webhook” node.\nWhen this node responds with HTML content containing executable scripts, the payload may execute directly in the top-level window, rather than within the expected sandbox introduced in version 1.103.0.\n\nThis behavior can enable a malicious actor with workflow creation permissions to execute arbitrary JavaScript in the context of the n8n editor interface.\n\nWhile session cookies",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-58jc-rcg5-95f3",
+      "publishedAt": "2025-12-26T17:30:19Z",
+      "modifiedAt": "2025-12-27T01:08:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-58jc-rcg5-95f3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-61914"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.114.0",
+          "fixed": "1.114.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wpqc-h9wp-chmq",
+      "packageName": "n8n",
+      "title": "n8n vulnerable to Remote Code Execution via Git Node Custom Pre-Commit Hook",
+      "description": "### Impact\n\nThe n8n Git node allows workflows to set arbitrary Git configuration values through the _Add Config_ operation. When an attacker-controlled workflow sets `core.hooksPath` to a directory within the cloned repository containing a Git hook such as `pre-commit`, Git executes that hook during subsequent Git operations. Because Git hooks run as local system commands, this behavior can lead to **arbitrary command execution** on the underlying n8n host.\n\nSuccessful exploitation requires the ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wpqc-h9wp-chmq",
+      "publishedAt": "2025-12-08T21:30:07Z",
+      "modifiedAt": "2025-12-09T16:28:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wpqc-h9wp-chmq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-65964"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.123.1, < 1.119.2",
+          "fixed": "1.119.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xgp7-7qjq-vg47",
+      "packageName": "n8n",
+      "title": "n8n Vulnerable to Remote Code Execution via Git Node Pre-Commit Hook",
+      "description": "### Impact\nA remote code execution vulnerability exists in the Git Node component available in both Cloud and Self-Hosted versions of n8n. When a malicious actor clones a remote repository containing a pre-commit hook, the subsequent use of the Commit operation in the Git Node can inadvertently trigger the hook’s execution.\n\nThis allows attackers to execute arbitrary code within the n8n environment, potentially compromising the system and any connected credentials or workflows.\n\nAll users with w",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xgp7-7qjq-vg47",
+      "publishedAt": "2025-10-30T17:04:26Z",
+      "modifiedAt": "2025-10-30T19:54:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xgp7-7qjq-vg47"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-62726"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.113.0",
+          "fixed": "1.113.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-365g-vjw2-grx8",
+      "packageName": "n8n",
+      "title": "n8n: Execute Command Node Allows Authenticated Users to Run Arbitrary Commands on Host",
+      "description": "### Impact\n\nThe `Execute Command` node in n8n allows execution of arbitrary commands on the host system where n8n runs. While this functionality is intended for advanced automation and can be useful in certain workflows, it poses a security risk if all users with access to the n8n instance are not fully trusted.\n\nAn attacker—either a malicious user or someone who has compromised a legitimate user account—could exploit this node to run arbitrary commands on the host machine, potentially leading t",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-365g-vjw2-grx8",
+      "publishedAt": "2025-10-09T15:26:59Z",
+      "modifiedAt": "2025-10-09T15:27:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-365g-vjw2-grx8"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.114.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-mvh4-2cm2-6hpg",
+      "packageName": "n8n",
+      "title": "Stored XSS in n8n LangChain Chat Trigger Node via initialMessages Parameter",
+      "description": "### Impact\nA stored Cross-Site Scripting (XSS) vulnerability was identified in the `@n8n/n8n-nodes-langchain.chatTrigger` node in n8n. If an authorized user configures the node with malicious JavaScript in the initialMessages field and enables public access, the script will be executed in the browser of anyone who visits the resulting public chat URL.\n\nThis vulnerability could be exploited for phishing or to steal cookies or other sensitive data from users who access the public chat link, posing",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-mvh4-2cm2-6hpg",
+      "publishedAt": "2025-09-15T17:14:27Z",
+      "modifiedAt": "2025-09-15T20:07:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mvh4-2cm2-6hpg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-58177"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.24.0, < 1.107.0",
+          "fixed": "1.107.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-ggjm-f3g4-rwmm",
+      "packageName": "n8n",
+      "title": "n8n symlink traversal vulnerability in \"Read/Write File\" node allows access to restricted files",
+      "description": "### Impact\nA symlink traversal vulnerability was discovered in the `Read/Write File` node in n8n. While the node attempts to restrict access to sensitive directories and files, it does not properly account for symbolic links (symlinks). An attacker with the ability to create symlinks—such as by using the `Execute Command` node—could exploit this to bypass the intended directory restrictions and read from or write to otherwise inaccessible paths. Users of _n8n.cloud_ are not impacted.\n\n### Patche",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-ggjm-f3g4-rwmm",
+      "publishedAt": "2025-08-20T19:09:55Z",
+      "modifiedAt": "2025-08-21T04:07:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ggjm-f3g4-rwmm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-57749"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.106.0",
+          "fixed": "1.106.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hfmv-hhh3-43f2",
+      "packageName": "n8n",
+      "title": "Stored XSS in n8n Form Trigger allows Account Takeover via injected iframe and video/source",
+      "description": "### Impact\n\nA stored **Cross-Site Scripting (XSS)** vulnerability was identified in [n8n](https://github.com/n8n-io/n8n), specifically in the **Form Trigger** node's **HTML form element**. An authenticated attacker can inject malicious HTML via an `<iframe>` with a `srcdoc` payload that includes arbitrary JavaScript execution. The attacker can also inject malicious Javascript by using `<video>` coupled `<source>` using an `onerror` event.\n\nWhile using `iframe` or a combination of `video` and `so",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hfmv-hhh3-43f2",
+      "publishedAt": "2025-08-19T15:33:35Z",
+      "modifiedAt": "2025-08-19T20:58:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hfmv-hhh3-43f2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-52478"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.77.0, < 1.98.2",
+          "fixed": "1.98.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-gq57-v332-7666",
+      "packageName": "n8n",
+      "title": "n8n is vulnerable to Improper Authorization through its `/stop` endpoint",
+      "description": "## Summary\n\nAn authorization vulnerability was discovered in the `/rest/executions/:id/stop` endpoint of n8n. An authenticated user can stop workflow executions that they do not own or that have not been shared with them, leading to potential business disruption.\n\n### Impact\n\nThis is an **improper authorization** vulnerability. While most API methods enforce user-scoped access to workflow execution IDs, the `/stop` endpoint fails to do so. An attacker can guess or enumerate execution IDs (which ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-gq57-v332-7666",
+      "publishedAt": "2025-07-03T20:23:35Z",
+      "modifiedAt": "2025-07-10T14:04:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gq57-v332-7666"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-52554"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.99.1",
+          "fixed": "1.99.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-pr9r-gxgp-9rm8",
+      "packageName": "n8n",
+      "title": "n8n Vulnerable to Denial of Service via Malformed Binary Data Requests",
+      "description": "## Summary\nDenial of Service vulnerability in `/rest/binary-data` endpoint when processing empty filesystem URIs (`filesystem://` or `filesystem-v2://`).\n\n### Impact\nThis is a Denial of Service (DoS) vulnerability that allows authenticated attackers to cause service unavailability through malformed filesystem URI requests. The vulnerability affects:\n\n- The `/rest/binary-data` endpoint\n- n8n.cloud instances (confirmed HTTP/2 524 timeout responses)\n\nAttackers can exploit this by sending GET reques",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pr9r-gxgp-9rm8",
+      "publishedAt": "2025-07-03T14:06:01Z",
+      "modifiedAt": "2025-07-03T16:20:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pr9r-gxgp-9rm8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-49595"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.99.0",
+          "fixed": "1.99.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5vj6-wjr7-5v9f",
+      "packageName": "n8n",
+      "title": "n8n allows open redirects via the /signin endpoint",
+      "description": "### Impact\n\nThis is an Open Redirect (CWE-601) vulnerability in the login flow of n8n. Authenticated users can be redirected to untrusted, attacker-controlled domains after logging in, by crafting malicious URLs with a misleading redirect query parameter.\n\nThis may lead to:\n\n- Phishing attacks by impersonating the n8n UI on lookalike domains (e.g., n8n.local.evil.com)\n- Credential or 2FA theft if users are tricked into re-entering sensitive information\n- Reputation risk due to the visual similar",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5vj6-wjr7-5v9f",
+      "publishedAt": "2025-06-27T14:19:01Z",
+      "modifiedAt": "2025-06-27T14:19:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5vj6-wjr7-5v9f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-49592"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.97.0",
+          "fixed": "1.98.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-c8hm-hr8h-5xjw",
+      "packageName": "n8n",
+      "title": "n8n Vulnerable to Stored XSS through Attachments View Endpoint",
+      "description": "### Impact\nn8n workflows can store and serve binary files, which are accessible to authenticated users. However, there was no restriction on the MIME type of uploaded files, and the MIME type could be controlled via a GET parameter. This allowed the server to respond with any MIME type, potentially enabling malicious content to be interpreted and executed by the browser.\n\nAn authenticated attacker with member-level permissions could exploit this by uploading a crafted HTML file containing malici",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c8hm-hr8h-5xjw",
+      "publishedAt": "2025-04-28T21:02:23Z",
+      "modifiedAt": "2025-04-29T13:15:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c8hm-hr8h-5xjw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-46343"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.90.0",
+          "fixed": "1.90.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r9xw-p7wj-w792",
+      "packageName": "n8n",
+      "title": "n8n Information Disclosure vulnerability",
+      "description": "The n8n package prior to 0.216.1 for Node.js allows Information Disclosure.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r9xw-p7wj-w792",
+      "publishedAt": "2023-05-10T15:30:22Z",
+      "modifiedAt": "2023-11-27T21:52:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r9xw-p7wj-w792"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-27564"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.216.1",
+          "fixed": "0.216.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-p58x-7733-vp9m",
+      "packageName": "n8n",
+      "title": "n8n Directory Traversal vulnerability",
+      "description": "The n8n package prior to version 0.216.1 for Node.js allows Directory Traversal.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-p58x-7733-vp9m",
+      "publishedAt": "2023-05-10T15:30:22Z",
+      "modifiedAt": "2023-11-27T21:40:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p58x-7733-vp9m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-27562"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.216.1",
+          "fixed": "0.216.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-97cp-mr4m-9mcf",
+      "packageName": "n8n",
+      "title": "n8n Privilege Escalation vulnerability",
+      "description": "The n8n package prior to 0.216.1 for Node.js allows Escalation of Privileges.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-97cp-mr4m-9mcf",
+      "publishedAt": "2023-05-10T15:30:22Z",
+      "modifiedAt": "2023-11-27T21:39:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-97cp-mr4m-9mcf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-27563"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.216.1",
+          "fixed": "0.216.1"
         }
       ],
       "source": "github"

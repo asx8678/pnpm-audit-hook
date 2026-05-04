@@ -1,7 +1,34 @@
 {
   "packageName": "@actions/core",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-mfwh-5m23-j46w",
+      "packageName": "@actions/core",
+      "title": "Environment Variable Injection in GitHub Actions",
+      "description": "### Impact\nThe `@actions/core` npm module `addPath` and `exportVariable` functions communicate with the Actions Runner over stdout by generating a string in a specific format. Workflows that log untrusted data to stdout may invoke these commands, resulting in the path or environment variables being modified without the intention of the workflow or action author. \n\n### Patches\nThe runner will release an update that disables the `set-env` and `add-path` workflow commands in the near future. For no",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-mfwh-5m23-j46w",
+      "publishedAt": "2020-10-01T17:16:20Z",
+      "modifiedAt": "2023-02-01T05:04:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mfwh-5m23-j46w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15228"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.2.6",
+          "fixed": "1.2.6"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-7r3h-m5j6-3q42",
       "packageName": "@actions/core",

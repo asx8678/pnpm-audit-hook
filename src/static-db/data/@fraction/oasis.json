@@ -1,0 +1,33 @@
+{
+  "packageName": "@fraction/oasis",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j438-45hc-vjhm",
+      "packageName": "@fraction/oasis",
+      "title": "CSRF and DNS Rebinding in Oasis",
+      "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\n\nIf you're running a vulnerable application on your computer and an attacker can trick you into visiting a malicious website, they could use [DNS rebinding](https://en.wikipedia.org/wiki/DNS_rebinding) and [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) attacks to read/write to vulnerable applications. \n\n**There is no evidence that suggests that this has been used in the wild.**\n\n### Patches\n_Has the problem been pa",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j438-45hc-vjhm",
+      "publishedAt": "2020-04-16T03:14:39Z",
+      "modifiedAt": "2023-01-09T05:02:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j438-45hc-vjhm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-11003"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.15.0",
+          "fixed": "2.15.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "packageName": "@grackle-ai/mcp",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-647h-p824-99w7",
+      "packageName": "@grackle-ai/mcp",
+      "title": "@grackle-ai/mcp has a workspace authorization bypass in its knowledge_search MCP tool",
+      "description": "### Impact\n\nThe `knowledge_search` and `knowledge_get_node` MCP tools are included in `SCOPED_TOOLS` (visible to scoped agents) but their handlers do not receive `authContext` and do not enforce workspace scoping. A scoped agent in Workspace A can supply an arbitrary `workspaceId` parameter to search or retrieve knowledge graph nodes from Workspace B, bypassing workspace isolation boundaries.\n\nThis is a **cross-workspace data leakage** vulnerability affecting any deployment where multiple worksp",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-647h-p824-99w7",
+      "publishedAt": "2026-03-25T17:23:11Z",
+      "modifiedAt": "2026-03-25T17:23:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-647h-p824-99w7"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.70.1",
+          "fixed": "0.70.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

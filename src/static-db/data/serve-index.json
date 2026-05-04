@@ -1,0 +1,33 @@
+{
+  "packageName": "serve-index",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v633-x5vv-hqwc",
+      "packageName": "serve-index",
+      "title": "Cross-Site Scripting in serve-index",
+      "description": "Versions 1.6.2 and earlier of `serve-index` are affected by a cross-site scripting vulnerability. Because file and directory names are not escaped in the module's HTML output, a remote attacker that can influence file or directory names can launch a persistent cross-site scripting attack on the application.\n\n\n## Recommendation\n\nUpdate to version 1.6.3 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v633-x5vv-hqwc",
+      "publishedAt": "2017-10-24T18:33:36Z",
+      "modifiedAt": "2023-11-05T05:00:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v633-x5vv-hqwc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-8856"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.6.3",
+          "fixed": "1.6.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

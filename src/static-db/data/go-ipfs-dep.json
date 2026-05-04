@@ -1,0 +1,33 @@
+{
+  "packageName": "go-ipfs-dep",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g3xp-v2ff-x5c3",
+      "packageName": "go-ipfs-dep",
+      "title": "Downloads Resources over HTTP in go-ipfs-dep",
+      "description": "Affected versions of `go-ipfs-deps` insecurely download resources over HTTP. \n\nIn scenarios where an attacker has a privileged network position, they can modify or read such resources at will. While the exact severity of impact for a vulnerability like this is highly variable and depends on the behavior of the package itself, it ranges from being able to read sensitive information all the way up to and including remote code execution.\n\n\n## Recommendation\n\nUpdate to version 0.4.4 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g3xp-v2ff-x5c3",
+      "publishedAt": "2019-02-18T23:54:18Z",
+      "modifiedAt": "2023-01-09T05:03:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g3xp-v2ff-x5c3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10563"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.4.4",
+          "fixed": "0.4.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

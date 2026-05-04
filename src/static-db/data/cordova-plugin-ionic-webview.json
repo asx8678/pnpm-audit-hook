@@ -1,0 +1,33 @@
+{
+  "packageName": "cordova-plugin-ionic-webview",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xwjh-cp99-cj8q",
+      "packageName": "cordova-plugin-ionic-webview",
+      "title": "Path Traversal in cordova-plugin-ionic-webview",
+      "description": "Versions of `cordova-plugin-ionic-webview` prior to 2.2.0 are vulnerable to Path Traversal, allowing attackers access to OS local files that should be inaccessible by third-party applications.  The package launches a webserver listening on http://localhost:8080 without restricting access of the app itself, thus escaping the iOS application sandbox and accessing local files.\n\n\n## Recommendation\n\nUpgrade to version 2.2.0",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xwjh-cp99-cj8q",
+      "publishedAt": "2019-02-12T15:36:35Z",
+      "modifiedAt": "2023-01-09T05:03:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xwjh-cp99-cj8q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16202"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.2.0",
+          "fixed": "2.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

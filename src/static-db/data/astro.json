@@ -1,7 +1,61 @@
 {
   "packageName": "astro",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-j687-52p2-xcff",
+      "packageName": "astro",
+      "title": "Astro: XSS in define:vars via incomplete </script> tag sanitization",
+      "description": "## Summary\n\nThe `defineScriptVars` function in Astro's server-side rendering pipeline uses a case-sensitive regex `/<\\/script>/g` to sanitize values injected into inline `<script>` tags via the `define:vars` directive. HTML parsers close `<script>` elements case-insensitively and also accept whitespace or `/` before the closing `>`, allowing an attacker to bypass the sanitization with payloads like `</Script>`, `</script >`, or `</script/>` and inject arbitrary HTML/JavaScript.\n\n## Details\n\nThe ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j687-52p2-xcff",
+      "publishedAt": "2026-04-21T20:39:49Z",
+      "modifiedAt": "2026-04-27T16:43:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j687-52p2-xcff"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41067"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.1.6",
+          "fixed": "6.1.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-g735-7g2w-hh3f",
+      "packageName": "astro",
+      "title": "Astro: Remote allowlist bypass via unanchored matchPathname wildcard",
+      "description": "## Summary\nThis issue concerns Astro's `remotePatterns` path enforcement for remote URLs used by server-side fetchers such as the image optimization endpoint. The path matching logic for `/*` wildcards is unanchored, so a pathname that contains the allowed prefix later in the path can still match. As a result, an attacker can fetch paths outside the intended allowlisted prefix on an otherwise allowed host. In our PoC, both the allowed path and a bypass path returned 200 with the same SVG payload",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-g735-7g2w-hh3f",
+      "publishedAt": "2026-03-26T18:45:17Z",
+      "modifiedAt": "2026-03-26T18:45:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g735-7g2w-hh3f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33769"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.10.10, < 5.18.1",
+          "fixed": "5.18.1"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-whqg-ppgf-wp8c",
       "packageName": "astro",

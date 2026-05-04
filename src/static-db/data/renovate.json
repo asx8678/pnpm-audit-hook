@@ -1,7 +1,53 @@
 {
   "packageName": "renovate",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-5vjq-5jmg-39xq",
+      "packageName": "renovate",
+      "title": "Renovate affected by remote code execution was possible using the bazel-module or bazelisk managers, when using lockFileMaintenance",
+      "description": "When using [`lockFileMaintenance`](https://docs.renovatebot.com/configuration-options/#lockfilemaintenance) using the [bazel-module](https://docs.renovatebot.com/modules/manager/bazel-module/) or [bazelisk](https://docs.renovatebot.com/modules/manager/bazelisk/) managers between Renovate [43.65.0](https://github.com/renovatebot/renovate/releases/tag/43.65.0) (2026-03-12) and [43.102.11](https://github.com/renovatebot/renovate/releases/tag/43.102.11) (2026-04-02), there was the opportunity for re",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-5vjq-5jmg-39xq",
+      "publishedAt": "2026-04-16T01:34:39Z",
+      "modifiedAt": "2026-04-16T01:34:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5vjq-5jmg-39xq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 43.65.0, < 43.102.11",
+          "fixed": "43.102.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8wc6-vgrq-x6cf",
+      "packageName": "renovate",
+      "title": "Child processes spawned by Renovate incorrectly have full access to environment variables",
+      "description": "When Renovate spawns child processes, their access to environment variables is filtered to an allowlist, to prevent unauthorized access to privileged credentials that the Renovate process has access to.\n\nSince [42.68.1](https://github.com/renovatebot/renovate/releases/tag/42.68.1) (2025-12-30), this filtering had been **inadvertently removed**, and so any child processes spawned from these versions will have had access to any environment variables that Renovate has access to.\n\nThis could lead to",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8wc6-vgrq-x6cf",
+      "publishedAt": "2026-02-13T20:53:58Z",
+      "modifiedAt": "2026-02-13T20:53:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8wc6-vgrq-x6cf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 43.0.0, < 43.4.4",
+          "fixed": "43.4.4"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-3f44-xw83-3pmg",
       "packageName": "renovate",
@@ -164,24 +210,47 @@
       "source": "github"
     },
     {
-      "id": "GHSA-8wc6-vgrq-x6cf",
+      "id": "GHSA-36rh-ggpr-j3gj",
       "packageName": "renovate",
-      "title": "Child processes spawned by Renovate incorrectly have full access to environment variables",
-      "description": "When Renovate spawns child processes, their access to environment variables is filtered to an allowlist, to prevent unauthorized access to privileged credentials that the Renovate process has access to.\n\nSince [42.68.1](https://github.com/renovatebot/renovate/releases/tag/42.68.1) (2025-12-30), this filtering had been **inadvertently removed**, and so any child processes spawned from these versions will have had access to any environment variables that Renovate has access to.\n\nThis could lead to",
+      "title": "Renovate vulnerable to Azure DevOps token leakage in logs",
+      "description": "### Impact\n\nApplies to Azure DevOps users only. The bot's token may be exposed in server or pipeline logs due to the `http.extraheader=AUTHORIZATION` parameter being logged without redaction. It is recommended that Azure DevOps users revoke their existing bot credentials and generate new ones after upgrading if there's a potential that logs have been saved to a location that others can view.\n\n### Patches\n\nFixed in \n\n### Workarounds\n\nDo not share Renovate logs with anyone who cannot be trusted wi",
       "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-8wc6-vgrq-x6cf",
-      "publishedAt": "2026-02-13T20:53:58Z",
-      "modifiedAt": "2026-02-13T20:53:59Z",
+      "url": "https://github.com/advisories/GHSA-36rh-ggpr-j3gj",
+      "publishedAt": "2020-09-14T16:38:40Z",
+      "modifiedAt": "2023-01-07T05:03:03Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-8wc6-vgrq-x6cf"
+          "value": "GHSA-36rh-ggpr-j3gj"
         }
       ],
       "affectedVersions": [
         {
-          "range": ">= 43.0.0, < 43.4.4",
-          "fixed": "43.4.4"
+          "range": ">= 19.180.0, < 23.25.1",
+          "fixed": "23.25.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-v7x3-7hw7-pcjg",
+      "packageName": "renovate",
+      "title": "Renovate vulnerable to leakage of temporary repository tokens into Pull Request comments",
+      "description": "### Impact\n\nTemporary repository tokens were leaked into Pull Requests comments in during certain Go Modules update failure scenarios.\n\n### Patches\n\nThe problem has been patched. Self-hosted users should upgrade to v19.38.7 or later.\n\n### Workarounds\n\nDisable Go Modules support.\n\n### References\n\nBlog post: https://renovatebot.com/blog/go-modules-vulnerability-disclosure\n\n### For more information\n\nIf you have any questions or comments about this advisory:\n* Open an issue in [Renovate](http://gith",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-v7x3-7hw7-pcjg",
+      "publishedAt": "2019-10-21T16:02:33Z",
+      "modifiedAt": "2023-01-07T05:02:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v7x3-7hw7-pcjg"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 13.87.0, < 19.38.7",
+          "fixed": "19.38.7"
         }
       ],
       "source": "github"

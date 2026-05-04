@@ -1,0 +1,28 @@
+{
+  "packageName": "text-qrcode",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h5vj-f7r9-w564",
+      "packageName": "text-qrcode",
+      "title": "Entropy Backdoor in text-qrcode",
+      "description": "All versions of `text-qrcode` contain malicious code that overwrites the `randomBytes` method for the `crypto` module with a function that generates weak entropy. Instead of generating 32 bytes, the infected randomBytes will generate 3 bytes of entropy and hash them, resulting in a 32 byte value being returned, but one that is easily guessable. \n\n\n## Recommendation\n\nUninstall `text-qrcode` immediately. If the module was used to generate entropy that is load bearing, all such instances of generat",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h5vj-f7r9-w564",
+      "publishedAt": "2020-09-01T21:22:35Z",
+      "modifiedAt": "2023-01-09T05:03:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h5vj-f7r9-w564"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

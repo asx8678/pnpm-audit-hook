@@ -1,0 +1,28 @@
+{
+  "packageName": "web3-eht",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-29fh-xcjr-p7rx",
+      "packageName": "web3-eht",
+      "title": "Malicious Package in web3-eht",
+      "description": "All versions of this package contained malware. The package was designed to find and exfiltrate cryptocurrency wallets.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package wil",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-29fh-xcjr-p7rx",
+      "publishedAt": "2020-09-03T17:02:22Z",
+      "modifiedAt": "2023-01-09T05:04:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-29fh-xcjr-p7rx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

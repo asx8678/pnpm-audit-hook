@@ -1,0 +1,83 @@
+{
+  "packageName": "hekto",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-qmm9-x5gr-4gfm",
+      "packageName": "hekto",
+      "title": "Open Redirect in hekto",
+      "description": "Versions of `hekto` before 0.2.4 are vulnerable to open redirect when a domain name is used as part of the `.html` filename.\n\n\n## Recommendation\n\nUpdate to version 0.2.4 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qmm9-x5gr-4gfm",
+      "publishedAt": "2018-07-18T21:20:12Z",
+      "modifiedAt": "2023-01-31T01:42:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qmm9-x5gr-4gfm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3743"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.2.4",
+          "fixed": "0.2.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x26f-26qw-hhhx",
+      "packageName": "hekto",
+      "title": "Path Traversal in hekto",
+      "description": "Versions of `hekto` before 0.2.3 are vulnerable to path traversal. This allows a remote attacker to read content of arbitrary files.\n\n\n## Recommendation\n\nUpdate to version 0.2.3 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x26f-26qw-hhhx",
+      "publishedAt": "2018-07-26T15:22:00Z",
+      "modifiedAt": "2023-01-31T01:37:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x26f-26qw-hhhx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3725"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.2.3",
+          "fixed": "0.2.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-c5j4-vw9m-xc95",
+      "packageName": "hekto",
+      "title": "Open Redirect in hekto",
+      "description": "Withdrawn: Duplicate of GHSA-qmm9-x5gr-4gfm",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-c5j4-vw9m-xc95",
+      "publishedAt": "2020-08-27T22:44:08Z",
+      "modifiedAt": "2023-01-09T05:01:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c5j4-vw9m-xc95"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.2.4",
+          "fixed": "0.2.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

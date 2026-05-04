@@ -1,0 +1,29 @@
+{
+  "packageName": "jquery-ujs",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6qqj-rx4w-r3cj",
+      "packageName": "jquery-ujs",
+      "title": "CSRF Vulnerability in jquery-ujs",
+      "description": "Versions 1.0.3 and earlier of jquery-ujs are vulnerable to an information leakage attack that may enable attackers to launch CSRF attacks, as it allows attackers to send CSRF tokens to external domains.\n\nWhen an attacker controls the href attribute of an anchor tag, or\nthe action attribute of a form tag triggering a POST action, the attacker can set the\nhref or action to \" https://attacker.com\". By prepending a space to the external domain, it causes jQuery to consider it a same origin request, ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6qqj-rx4w-r3cj",
+      "publishedAt": "2020-08-31T22:48:44Z",
+      "modifiedAt": "2023-01-09T05:04:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6qqj-rx4w-r3cj"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.3",
+          "fixed": "1.0.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

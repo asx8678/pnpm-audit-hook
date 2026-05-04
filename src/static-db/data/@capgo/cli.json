@@ -1,0 +1,29 @@
+{
+  "packageName": "@capgo/cli",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8mpm-q7mh-8fvh",
+      "packageName": "@capgo/cli",
+      "title": "Capgo CLI: symlink-following local secret writes enable arbitrary file overwrite + world-readable credentials (0600 missing)",
+      "description": "### Summary\nThe Capgo CLI writes sensitive local files (.capgo API key file and build credentials JSON) using unsafe file operations that follow symlinks and do not enforce safe permissions. This allows an attacker-controlled repository to cause arbitrary file overwrite on the developer’s machine when the developer runs the CLI inside that repo. Additionally, global build credentials are written with world-readable permissions (664), exposing signing materials on shared systems.\n\n### Details\nIss",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8mpm-q7mh-8fvh",
+      "publishedAt": "2026-03-18T16:09:42Z",
+      "modifiedAt": "2026-03-18T16:09:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8mpm-q7mh-8fvh"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 7.84.6",
+          "fixed": "7.84.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

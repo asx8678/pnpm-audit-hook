@@ -1,0 +1,33 @@
+{
+  "packageName": "mime",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wrvr-8mpx-r7pp",
+      "packageName": "mime",
+      "title": "mime Regular Expression Denial of Service when MIME lookup performed on untrusted user input",
+      "description": "Affected versions of `mime` are vulnerable to regular expression denial of service when a mime lookup is performed on untrusted user input.\n\n\n## Recommendation\n\nUpdate to version 2.0.3 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wrvr-8mpx-r7pp",
+      "publishedAt": "2018-07-20T16:20:52Z",
+      "modifiedAt": "2023-09-12T18:28:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wrvr-8mpx-r7pp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16138"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 2.0.3",
+          "fixed": "2.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

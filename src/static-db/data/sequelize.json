@@ -1,7 +1,188 @@
 {
   "packageName": "sequelize",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-6457-6jrx-69cr",
+      "packageName": "sequelize",
+      "title": "Sequelize v6 Vulnerable to SQL Injection via JSON Column Cast Type",
+      "description": "### Summary\n\nSQL injection via unescaped cast type in JSON/JSONB `where` clause processing. The `_traverseJSON()` function splits JSON path keys on `::` to extract a cast type, which is interpolated raw into `CAST(... AS <type>)` SQL. An attacker who controls JSON object keys can inject arbitrary SQL and exfiltrate data from any table.\n\nAffected: v6.x through 6.37.7. v7 (`@sequelize/core`) is not affected.\n\n### Details\n\nIn `src/dialects/abstract/query-generator.js`, `_traverseJSON()` extracts a ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6457-6jrx-69cr",
+      "publishedAt": "2026-03-11T00:18:48Z",
+      "modifiedAt": "2026-03-11T00:18:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6457-6jrx-69cr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30951"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 6.0.0-beta.1, <= 6.37.7",
+          "fixed": "6.37.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2777-2vq8-c4v4",
+      "packageName": "sequelize",
+      "title": "SQL Injection in sequelize",
+      "description": "Versions of `sequelize` prior to 5.3.0 (excluding v3 and v4) are vulnerable to SQL Injection. PostgreSQL option`standard_conforming_strings` is not set to `on` by default, which may allow attackers to inject SQL statements due to poor handling of backslashes in string literals.\n\n\n## Recommendation\n\nUpgrade to version 5.3.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2777-2vq8-c4v4",
+      "publishedAt": "2019-04-11T16:33:17Z",
+      "modifiedAt": "2023-11-20T22:07:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2777-2vq8-c4v4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-11069"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.3.0",
+          "fixed": "5.3.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m9jw-237r-gvfv",
+      "packageName": "sequelize",
+      "title": "SQL Injection in sequelize",
+      "description": "Affected versions of `sequelize` are vulnerable to SQL Injection. The function `sequelize.json()` incorrectly formatted sub paths for JSON queries, which allows attackers to inject SQL statements and execute arbitrary SQL queries if user input is passed to the query.  Exploitation example:  \n\n```js\nreturn User.findAll({\n  where: this.sequelize.json(\"data.id')) AS DECIMAL) = 1 DELETE YOLO INJECTIONS; -- \", 1)\n});\n```\n\n\n## Recommendation\n\nIf you are using `sequelize` 5.x, upgrade to version 5.15.1",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-m9jw-237r-gvfv",
+      "publishedAt": "2019-10-25T19:43:16Z",
+      "modifiedAt": "2023-09-11T22:39:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m9jw-237r-gvfv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10752"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.15.1",
+          "fixed": "5.15.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9c2p-jw8p-f84v",
+      "packageName": "sequelize",
+      "title": "SQL Injection in sequelize",
+      "description": "Affected versions of `sequelize` cast arrays to strings and fail to properly escape the resulting SQL statement, resulting in a SQL injection vulnerability.\n\n\n## Proof of Concept\nIn Postgres, SQLite, and Microsoft SQL Server there is an issue where arrays are treated as strings and improperly escaped.\n\nExample Query:\n```\ndatabase.query('SELECT * FROM TestTable WHERE Name IN (:names)', {\n  replacements: {\n    names: directCopyOfUserInput\n  }\n});\n```\n\nIf the user inputs the value of `:names` as:\n`",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9c2p-jw8p-f84v",
+      "publishedAt": "2019-02-18T23:54:24Z",
+      "modifiedAt": "2023-09-11T21:48:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9c2p-jw8p-f84v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10556"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.19.3",
+          "fixed": "3.20.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wfp9-vr4j-f49j",
+      "packageName": "sequelize",
+      "title": "NoSQL Injection in sequelize",
+      "description": "Versions of `sequelize` prior to 4.12.0 are vulnerable to NoSQL Injection. Query operators such as `$gt` are not properly sanitized and may allow an attacker to alter data queries, leading to NoSQL Injection.\n\n\n## Recommendation\n\nUpgrade to version 4.12.0 or later",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wfp9-vr4j-f49j",
+      "publishedAt": "2019-06-04T20:04:27Z",
+      "modifiedAt": "2023-04-30T05:00:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wfp9-vr4j-f49j"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.12.0",
+          "fixed": "4.12.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5v9h-q3gj-c32x",
+      "packageName": "sequelize",
+      "title": "SQL Injection via GeoJSON in sequelize",
+      "description": "Affected versions of `sequelize` are vulnerable to SQL Injection in Models that have fields with the `GEOMETRY` DataType. This vulnerability occurs because single quotes in document values are not escaped for GeoJSON documents using `ST_GeomFromGeoJSON`, and MySQL GeoJSON documents using `GeomFromText`.\n\n\n## Recommendation\n\nUpdate to version 3.23.6 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5v9h-q3gj-c32x",
+      "publishedAt": "2020-09-01T15:27:40Z",
+      "modifiedAt": "2023-04-21T18:34:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5v9h-q3gj-c32x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-1000225"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.4.0, < 3.23.6",
+          "fixed": "3.23.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fw4p-36j9-rrj3",
+      "packageName": "sequelize",
+      "title": "Denial of Service in sequelize",
+      "description": "Versions of `sequelize` prior to 4.44.4 are vulnerable to Denial of Service (DoS). The SQLite dialect fails to catch a `TypeError` exception for the `results` variable. The `results` value may be undefined and trigger the error on a `.map` call. This may allow attackers to submit malicious input that forces the exception and crashes the Node process.  \n\nThe following proof-of-concept crashes the Node process:  \n```\nconst Sequelize = require('sequelize');\n\nconst sequelize = new Sequelize({\n\tdiale",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fw4p-36j9-rrj3",
+      "publishedAt": "2020-09-03T20:25:33Z",
+      "modifiedAt": "2023-04-11T00:30:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fw4p-36j9-rrj3"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.44.4",
+          "fixed": "4.44.4"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-f598-mfpv-gmfx",
       "packageName": "sequelize",
@@ -129,6 +310,168 @@
         {
           "range": "< 6.19.1",
           "fixed": "6.19.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xqg8-cv3h-xppv",
+      "packageName": "sequelize",
+      "title": "SQL Injection in sequelize",
+      "description": "Versions 2.0.0-rc-7 and earlier of `sequelize` are affected by a SQL injection vulnerability when user input is passed into the order parameter.\n\n\n\n## Proof of Concept\n\n```javascript\nTest.findAndCountAll({\nwhere: { id :1 },\norder : [['id', 'UNTRUSTED USER INPUT']]\n})\n```\n\n\n## Recommendation\n\nUpdate to version 2.0.0-rc8 or later",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xqg8-cv3h-xppv",
+      "publishedAt": "2017-10-24T18:33:36Z",
+      "modifiedAt": "2023-01-09T05:03:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xqg8-cv3h-xppv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-1369"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.0-rc7",
+          "fixed": "2.0.0-rc8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x2jc-pwfj-h9p3",
+      "packageName": "sequelize",
+      "title": "SQL Injection in sequelize",
+      "description": "Affected versions of `sequelize` use MySQL's backslash-based escape syntax when connecting to SQLite, despite the fact that SQLite uses PostgreSQL's escape syntax, which can result in a SQL Injection vulnerability.\n\n\n## Recommendation\n\nUpdate to version 1.7.0-alpha3 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x2jc-pwfj-h9p3",
+      "publishedAt": "2019-02-18T23:54:28Z",
+      "modifiedAt": "2023-01-09T05:03:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x2jc-pwfj-h9p3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10554"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.7.0-alpha2",
+          "fixed": "1.7.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-98pq-pmw9-4gpm",
+      "packageName": "sequelize",
+      "title": "SQL Injection in sequelize",
+      "description": "Affected versions of `sequelize` are vulnerable to SQL Injection in locations where user input is passed into the `limit` or `order` parameters of `sequelize` query calls, such as `findOne` or `findAll`.\n\n\n\n## Recommendation\n\nUpdate to version 3.17.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-98pq-pmw9-4gpm",
+      "publishedAt": "2019-02-18T23:54:34Z",
+      "modifiedAt": "2023-01-09T05:03:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-98pq-pmw9-4gpm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10550"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.17.0",
+          "fixed": "3.17.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2v7q-2xqx-f4q5",
+      "packageName": "sequelize",
+      "title": "Potential SQL Injection in sequelize",
+      "description": "Affected versions of `sequelize` are vulnerable to SQL Injection when user input is passed into `findOne` or into a statement such as `where: \"user input\"`.\n\n\n\n## Recommendation\n\nUpdate to version 3.0.0 or later.\n\nVersion 3.0.0 will introduce a number of breaking changes.\nThankfully, the project authors have provided a 2.x -> 3.x [upgrade guide](https://github.com/sequelize/sequelize/wiki/Upgrade-from-2.0-to-3.0) to ease this transition.\n\nIf upgrading is not an option, it is also possible to mit",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2v7q-2xqx-f4q5",
+      "publishedAt": "2019-02-18T23:54:32Z",
+      "modifiedAt": "2023-01-09T05:02:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2v7q-2xqx-f4q5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10553"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.1.3",
+          "fixed": "3.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2598-2f59-rmhq",
+      "packageName": "sequelize",
+      "title": "SQL Injection in sequelize",
+      "description": "Versions of `sequelize` prior to 3.35.1 are vulnerable to SQL Injection. The package fails to sanitize JSON path keys in the Postgres dialect,  which may allow attackers to inject SQL statements and execute arbitrary SQL queries.\n\n\n## Recommendation\n\nUpgrade to version 3.35.1 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-2598-2f59-rmhq",
+      "publishedAt": "2019-11-08T17:05:17Z",
+      "modifiedAt": "2023-01-09T05:02:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2598-2f59-rmhq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10749"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.35.1",
+          "fixed": "3.35.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-j9xp-92vc-559j",
+      "packageName": "sequelize",
+      "title": "SQL Injection in sequelize",
+      "description": "Affected versions of `sequelize` are vulnerable to SQL Injection. The package fails to sanitize JSON path keys in the MariaDB and MySQL dialects,  which may allow attackers to inject SQL statements and execute arbitrary SQL queries.\n\n\n## Recommendation\n\nIf you are using `sequelize` 5.x, upgrade to version 5.8.11 or later.\nIf you are using `sequelize` 4.x, upgrade to version 4.44.3 or later.\nIf you are using `sequelize` 3.x, upgrade to version 3.35.1 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-j9xp-92vc-559j",
+      "publishedAt": "2019-11-06T17:11:10Z",
+      "modifiedAt": "2023-01-09T05:01:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j9xp-92vc-559j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10748"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.8.11",
+          "fixed": "5.8.11"
         }
       ],
       "source": "github"

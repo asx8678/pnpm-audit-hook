@@ -1,0 +1,28 @@
+{
+  "packageName": "lactate",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-68gr-cmcp-g3mj",
+      "packageName": "lactate",
+      "title": "Directory Traversal in lactate",
+      "description": "A crafted `GET` request can be leveraged to traverse the directory structure of a host using the lactate web server package, and request arbitrary files outside of the specified web root. This allows for a remote attacker to gain access to arbitrary files on the filesystem that the process has access to read.\n\nMitigating factors:\nOnly files that the user running `lactate` has permission to read will be accessible via this vulnerability.\n\n\n[Proof of concept](https://hackerone.com/reports/296645):",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-68gr-cmcp-g3mj",
+      "publishedAt": "2019-06-14T16:39:31Z",
+      "modifiedAt": "2023-01-09T05:01:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-68gr-cmcp-g3mj"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.13.12"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

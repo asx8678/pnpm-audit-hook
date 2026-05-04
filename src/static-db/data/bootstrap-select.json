@@ -1,6 +1,6 @@
 {
   "packageName": "bootstrap-select",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7c82-mp33-r854",
@@ -19,6 +19,29 @@
         {
           "type": "CVE",
           "value": "CVE-2019-20921"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.13.6",
+          "fixed": "1.13.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9r7h-6639-v5mw",
+      "packageName": "bootstrap-select",
+      "title": "Cross-Site Scripting in bootstrap-select",
+      "description": "Versions of `bootstrap-select` prior to 1.13.6 are vulnerable to Cross-Site Scripting (XSS).  The package does not escape `title` values on `<option>` tags. This may allow attackers to execute arbitrary JavaScript in a victim's browser.\n\n\n## Recommendation\n\nUpgrade to version 1.13.6 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9r7h-6639-v5mw",
+      "publishedAt": "2020-09-03T15:54:00Z",
+      "modifiedAt": "2023-01-09T05:03:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9r7h-6639-v5mw"
         }
       ],
       "affectedVersions": [

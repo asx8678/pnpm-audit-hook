@@ -1,0 +1,32 @@
+{
+  "packageName": "node-krb5",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4v9q-hm2p-68c4",
+      "packageName": "node-krb5",
+      "title": "Spoofing attack due to unvalidated KDC in node-krb5",
+      "description": "Affected versions of `node-krb5` do not validate the KDC prior to authenticating, which might allow an attacker with network access and enough time to spoof the KDC and impersonate a valid user without knowing their credentials.\n\n\n## Recommendation\n\nIt appears that this will remain unfixed indefinitely, as the Github issue for this vulnerability has been open since 2015, with no work on it since then.\n\nAt this time, the best available mitigation is to use an alternative module that is actively m",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4v9q-hm2p-68c4",
+      "publishedAt": "2020-09-01T15:57:01Z",
+      "modifiedAt": "2023-01-09T05:03:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4v9q-hm2p-68c4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-1000238"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "node-thulac",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m2w9-rm58-mhm9",
+      "packageName": "node-thulac",
+      "title": "Downloads Resources over HTTP in node-thulac",
+      "description": "Affected versions of `node-thulac` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `node-thulac`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if av",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m2w9-rm58-mhm9",
+      "publishedAt": "2019-02-18T23:47:06Z",
+      "modifiedAt": "2023-01-09T05:02:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m2w9-rm58-mhm9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10640"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.1.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

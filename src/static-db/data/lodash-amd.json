@@ -1,7 +1,61 @@
 {
   "packageName": "lodash-amd",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-r5fr-rjxr-66jc",
+      "packageName": "lodash-amd",
+      "title": "lodash vulnerable to Code Injection via `_.template` imports key names",
+      "description": "### Impact\n\nThe fix for [CVE-2021-23337](https://github.com/advisories/GHSA-35jh-r3h4-6jhm) added validation for the `variable` option in `_.template` but did not apply the same validation to `options.imports` key names. Both paths flow into the same `Function()` constructor sink.\n\nWhen an application passes untrusted input as `options.imports` key names, an attacker can inject default-parameter expressions that execute arbitrary code at template compilation time.\n\nAdditionally, `_.template` use",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r5fr-rjxr-66jc",
+      "publishedAt": "2026-04-01T23:51:12Z",
+      "modifiedAt": "2026-04-01T23:51:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r5fr-rjxr-66jc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-4800"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.0.0, <= 4.17.23",
+          "fixed": "4.18.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f23m-r3pf-42rh",
+      "packageName": "lodash-amd",
+      "title": "lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and `_.omit`",
+      "description": "### Impact\n\nLodash versions 4.17.23 and earlier are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. The fix for [CVE-2025-13465](https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg) only guards against string key members, so an attacker can bypass the check by passing array-wrapped path segments. This allows deletion of properties from built-in prototypes such as `Object.prototype`, `Number.prototype`, and `String.prototype`.\n\nThe issue permits del",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f23m-r3pf-42rh",
+      "publishedAt": "2026-04-01T23:50:27Z",
+      "modifiedAt": "2026-04-01T23:50:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f23m-r3pf-42rh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-2950"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.17.23",
+          "fixed": "4.18.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-xxjr-mmjv-4gpg",
       "packageName": "lodash-amd",
@@ -25,6 +79,60 @@
         {
           "range": ">= 4.0.0, <= 4.17.22",
           "fixed": "4.17.23"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x5rq-j2xg-h7qm",
+      "packageName": "lodash-amd",
+      "title": "Regular Expression Denial of Service (ReDoS) in lodash",
+      "description": "lodash prior to 4.7.11 is affected by: CWE-400: Uncontrolled Resource Consumption. The impact is: Denial of service. The component is: Date handler. The attack vector is: Attacker provides very long strings, which the library attempts to match using a regular expression. The fixed version is: 4.7.11.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x5rq-j2xg-h7qm",
+      "publishedAt": "2019-07-19T16:13:07Z",
+      "modifiedAt": "2025-09-29T20:19:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x5rq-j2xg-h7qm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-1010266"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 4.7.0, < 4.17.11",
+          "fixed": "4.17.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-jf85-cpcp-j695",
+      "packageName": "lodash-amd",
+      "title": "Prototype Pollution in lodash",
+      "description": "Versions of `lodash` before 4.17.12 are vulnerable to Prototype Pollution.  The function `defaultsDeep` allows a malicious user to modify the prototype of `Object` via `{constructor: {prototype: {...}}}` causing the addition or modification of an existing property that will exist on all objects.\n\n## Recommendation\n\nUpdate to version 4.17.12 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-jf85-cpcp-j695",
+      "publishedAt": "2019-07-10T19:45:23Z",
+      "modifiedAt": "2025-08-12T21:43:02Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jf85-cpcp-j695"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10744"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.17.13",
+          "fixed": "4.17.13"
         }
       ],
       "source": "github"

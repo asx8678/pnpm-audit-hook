@@ -1,7 +1,85 @@
 {
   "packageName": "materialize-css",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-7752-f4gf-94gc",
+      "packageName": "materialize-css",
+      "title": "Materialize-css vulnerable to Cross-site Scripting in autocomplete component",
+      "description": "All versions of `materialize-css` are vulnerable to Cross-Site Scripting. The `autocomplete` component does not sufficiently sanitize user input, allowing an attacker to execute arbitrary JavaScript code if the malicious input is rendered by a user.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7752-f4gf-94gc",
+      "publishedAt": "2019-04-09T19:44:38Z",
+      "modifiedAt": "2023-08-28T15:35:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7752-f4gf-94gc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-11003"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-98f7-p5rc-jx67",
+      "packageName": "materialize-css",
+      "title": "Materialize-css vulnerable to Cross-site Scripting in tooltip component",
+      "description": "All versions of `materialize-css` are vulnerable to Cross-Site Scripting. The `tooltip` component does not sufficiently sanitize user input, allowing an attacker to execute arbitrary JavaScript code if the malicious input is rendered by a user.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-98f7-p5rc-jx67",
+      "publishedAt": "2019-04-09T19:44:40Z",
+      "modifiedAt": "2023-08-28T15:34:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-98f7-p5rc-jx67"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-11002"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rg3q-jxmp-pvjj",
+      "packageName": "materialize-css",
+      "title": "Materialize-css vulnerable to Improper Neutralization of Input During Web Page Generation",
+      "description": "In Materialize through 1.0.0, XSS is possible via the Toast feature.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rg3q-jxmp-pvjj",
+      "publishedAt": "2019-04-09T19:44:37Z",
+      "modifiedAt": "2023-08-28T15:30:08Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rg3q-jxmp-pvjj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-11004"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-7jvx-f994-rfw2",
       "packageName": "materialize-css",

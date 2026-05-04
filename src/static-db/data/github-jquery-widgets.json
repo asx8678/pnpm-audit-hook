@@ -1,0 +1,28 @@
+{
+  "packageName": "github-jquery-widgets",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c722-pv5w-cfg2",
+      "packageName": "github-jquery-widgets",
+      "title": "Malicious Package in github-jquery-widgets",
+      "description": "Version 0.1.2 of `github-jquery-widgets` contained malicious code. The code when executed in the browser would enumerate password, cvc and cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nRemove the package from your environment and evaluate your application to determine whether or not user data was compromised.\n\nUsers may consider downgrading to version 0.1.1",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-c722-pv5w-cfg2",
+      "publishedAt": "2020-09-11T21:20:14Z",
+      "modifiedAt": "2023-07-27T20:17:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c722-pv5w-cfg2"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 0.1.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

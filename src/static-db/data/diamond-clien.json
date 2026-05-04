@@ -1,0 +1,28 @@
+{
+  "packageName": "diamond-clien",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-86gv-xpwv-jprc",
+      "packageName": "diamond-clien",
+      "title": "Malicious Package in diamond-clien",
+      "description": "All versions of `diamond-clien` contain malicious code. The package uploads system information to a remote server, downloads a file and executes it.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-86gv-xpwv-jprc",
+      "publishedAt": "2020-09-03T17:36:00Z",
+      "modifiedAt": "2023-01-09T05:03:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-86gv-xpwv-jprc"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

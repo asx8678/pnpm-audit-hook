@@ -1,0 +1,56 @@
+{
+  "packageName": "node-red",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8w65-xjc5-9w79",
+      "packageName": "node-red",
+      "title": "Cross-Site Scripting in node-red",
+      "description": "Versions of `node-red` prior to 0.20.8are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize the `name` field in new Flows, allowing attackers to execute arbitrary JavaScript in the victim's browser.\n\n\n## Recommendation\n\nUpgrade to version 0.18.6 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8w65-xjc5-9w79",
+      "publishedAt": "2020-01-30T21:00:21Z",
+      "modifiedAt": "2023-09-11T18:10:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8w65-xjc5-9w79"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15607"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.20.7",
+          "fixed": "0.20.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5g6j-8hv4-vfgj",
+      "packageName": "node-red",
+      "title": "Cross-Site Scripting in node-red",
+      "description": "Versions of `node-red` prior to 0.18.6 are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize the `name` field in new items, allowing attackers to execute arbitrary JavaScript in the victim's browser.\n\n\n## Recommendation\n\nUpgrade to version 0.18.6 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5g6j-8hv4-vfgj",
+      "publishedAt": "2020-09-11T21:21:19Z",
+      "modifiedAt": "2023-01-09T05:03:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5g6j-8hv4-vfgj"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.18.6",
+          "fixed": "0.18.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

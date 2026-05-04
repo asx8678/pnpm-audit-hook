@@ -1,0 +1,32 @@
+{
+  "packageName": "nodesass",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-xfmw-2vmm-579c",
+      "packageName": "nodesass",
+      "title": "Nodesass is malware",
+      "description": "The `nodesass` package is a piece of malware that steals environment variables and sends them to attacker controlled locations. \n\nAll versions have been unpublished from the npm registry.\n\n\n## Recommendation\n\nAs this package is malware, if you find it installed in your environment, the real security concern is determining how it got there. \n\nIf you have found this installed in your environment, you should:\n1. Delete the package\n2. Clear your npm cache\n3. Ensure it is not present in any other pac",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-xfmw-2vmm-579c",
+      "publishedAt": "2020-09-01T18:59:50Z",
+      "modifiedAt": "2023-09-05T23:05:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xfmw-2vmm-579c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16080"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

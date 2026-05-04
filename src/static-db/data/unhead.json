@@ -1,0 +1,110 @@
+{
+  "packageName": "unhead",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x7mm-9vvv-64w8",
+      "packageName": "unhead",
+      "title": "unhead: Streaming SSR `streamKey` injected into inline script without identifier validation",
+      "description": "### Summary\n\n`createStreamableHead({ streamKey })` interpolated its `streamKey` argument directly into the streaming SSR bootstrap and suspense-chunk inline scripts without identifier validation or escaping. If an application forwards untrusted data into that configuration value, the rendered scripts become a script-injection sink.\n\n### Details\n\n`streamKey` was embedded into JavaScript source via dot notation in two public helpers:\n\n* `createBootstrapScript()` returned `<script>window.${streamKe",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-x7mm-9vvv-64w8",
+      "publishedAt": "2026-04-10T22:09:39Z",
+      "modifiedAt": "2026-04-10T22:09:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x7mm-9vvv-64w8"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 3.0.0-beta.5, <= 3.0.0",
+          "fixed": "3.0.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-95h2-gj7x-gx9w",
+      "packageName": "unhead",
+      "title": "Unhead has a hasDangerousProtocol() bypass via leading-zero padded HTML entities in useHeadSafe()",
+      "description": "##EVIDENCE\n\n<img width=\"1900\" height=\"855\" alt=\"Screenshot_2026-03-25_090729\" src=\"https://github.com/user-attachments/assets/3da93464-1caf-46ca-818f-46f8fe32ab50\" />\n<img width=\"1919\" height=\"947\" alt=\"Screenshot_2026-03-25_090715\" src=\"https://github.com/user-attachments/assets/b27b1fc3-fa89-4864-99c9-4e6cff9a4e40\" />\n<img width=\"1918\" height=\"925\" alt=\"Screenshot_2026-03-25_090759\" src=\"https://github.com/user-attachments/assets/9b8c94fa-d4f7-412e-ba14-214bc4103f4c\" />\n<img width=\"1912\" heigh",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-95h2-gj7x-gx9w",
+      "publishedAt": "2026-04-09T20:28:05Z",
+      "modifiedAt": "2026-04-09T20:28:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-95h2-gj7x-gx9w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39315"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.1.13",
+          "fixed": "2.1.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5339-hvwr-7582",
+      "packageName": "unhead",
+      "title": "Unhead Vulnerable to Bypass of URI Scheme Sanitization in makeTagSafe via Case-Sensitivity",
+      "description": "The `link.href` check in `makeTagSafe` (safe.ts, line 68-71) uses `String.includes()`, which is case-sensitive:\n\n```typescript\nif (key === 'href') {\n  if (val.includes('javascript:') || val.includes('data:')) {\n    return\n  }\n  next[key] = val\n}\n```\n\nBrowsers treat URI schemes case-insensitively. `DATA:text/css,...` is the same as `data:text/css,...` to the browser, but `'DATA:...'.includes('data:')` returns `false`.\n\n### PoC\n\n```javascript\nuseHeadSafe({\n  link: [{\n    rel: 'stylesheet',\n    hre",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-5339-hvwr-7582",
+      "publishedAt": "2026-03-12T14:19:25Z",
+      "modifiedAt": "2026-03-12T19:14:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5339-hvwr-7582"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31873"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.1.10",
+          "fixed": "2.1.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-g5xx-pwrp-g3fv",
+      "packageName": "unhead",
+      "title": "Unhead has XSS bypass in `useHeadSafe` via attribute name injection and case-sensitive protocol check",
+      "description": "## Summary\n\n`useHeadSafe()` can be bypassed to inject arbitrary HTML attributes, including event handlers, into SSR-rendered `<head>` tags. This is the composable that Nuxt docs recommend for safely handling user-generated content.\n\n## Details\n\n**XSS via `data-*` attribute name injection**\n\nThe `acceptDataAttrs` function (safe.ts, line 16-20) allows any property key starting with `data-` through to the final HTML. It only checks the prefix, not whether the key contains spaces or other characters",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g5xx-pwrp-g3fv",
+      "publishedAt": "2026-03-12T14:19:15Z",
+      "modifiedAt": "2026-03-12T19:14:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g5xx-pwrp-g3fv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-31860"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.1.10",
+          "fixed": "2.1.11"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

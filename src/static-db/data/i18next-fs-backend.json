@@ -1,0 +1,33 @@
+{
+  "packageName": "i18next-fs-backend",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8847-338w-5hcj",
+      "packageName": "i18next-fs-backend",
+      "title": "i18next-fs-backend: Path traversal via unsanitised lng/ns allows arbitrary file read/overwrite",
+      "description": "### Summary\n\nVersions of `i18next-fs-backend` prior to 2.6.4 interpolate the caller-supplied `lng` and `ns` values directly into the configured `loadPath` and `addPath` templates with no path-component validation and no sanitisation. When an application exposes the resolved language code to user-controlled input (`?lng=` query parameter, cookie, request header), a crafted value can break out of the intended locale directory.\n\nAffected call sites in `lib/index.js`:\n\n- `read` (line 38 pre-patch): ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8847-338w-5hcj",
+      "publishedAt": "2026-04-22T17:43:14Z",
+      "modifiedAt": "2026-04-30T20:16:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8847-338w-5hcj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41693"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.6.4",
+          "fixed": "2.6.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "packageName": "markdown-it-toc-and-anchor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x6m6-5hrf-fh6r",
+      "packageName": "markdown-it-toc-and-anchor",
+      "title": "Denial of Service in markdown-it-toc-and-anchor",
+      "description": "All versions of `markdown-it-toc-and-anchor` are vulnerable to Denial of Service. Parsing markdown containing `**text**+\\n@[toc]` causes the application to enter and infinite loop.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x6m6-5hrf-fh6r",
+      "publishedAt": "2020-09-01T21:26:50Z",
+      "modifiedAt": "2023-12-07T22:05:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x6m6-5hrf-fh6r"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.2.0",
+          "fixed": "4.2.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

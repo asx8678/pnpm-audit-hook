@@ -1,0 +1,33 @@
+{
+  "packageName": "gmail-js",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c7pp-g2v2-2766",
+      "packageName": "gmail-js",
+      "title": "DOM-based XSS in gmail-js",
+      "description": "Affected versions of `gmail-js` are vulnerable to cross-site scripting in the `tools.parse_response`, `helper.get.visible_emails_post`, and `helper.get.email_data_post` functions, which pass user input directly into the Function constructor.\n\n\n\n## Recommendation\n\nUpdate to version 0.6.5 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-c7pp-g2v2-2766",
+      "publishedAt": "2020-09-01T15:32:04Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c7pp-g2v2-2766"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-1000228"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.4",
+          "fixed": "0.6.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

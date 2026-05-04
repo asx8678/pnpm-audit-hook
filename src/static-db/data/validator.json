@@ -1,6 +1,6 @@
 {
   "packageName": "validator",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-vghf-hv5q-vc2g",
@@ -102,6 +102,191 @@
         {
           "range": ">= 11.1.0, < 13.7.0",
           "fixed": "13.7.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f5w6-r7rg-mcgq",
+      "packageName": "validator",
+      "title": "Regular Expression Denial of Service in validator",
+      "description": "Versions of `validator` prior to 3.22.1 are affected by a regular expression denial of service vulnerability in the `isURL` method.\n\n\n## Recommendation\n\nUpdate to version 3.22.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-f5w6-r7rg-mcgq",
+      "publishedAt": "2020-08-31T23:01:13Z",
+      "modifiedAt": "2023-01-09T05:03:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f5w6-r7rg-mcgq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2014-8882"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.22.1",
+          "fixed": "3.22.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9959-c6q6-6qp3",
+      "packageName": "validator",
+      "title": "Moderate severity vulnerability that affects validator",
+      "description": "**Withdrawn:** Duplicate of GHSA-79mx-88w7-8f7q",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9959-c6q6-6qp3",
+      "publishedAt": "2017-10-24T18:33:36Z",
+      "modifiedAt": "2023-01-09T05:03:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9959-c6q6-6qp3"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-rh6c-q938-3r9q",
+      "packageName": "validator",
+      "title": "Moderate severity vulnerability that affects validator",
+      "description": "The validator module before 1.1.0 for Node.js allows remote attackers to bypass the cross-site scripting (XSS) filter via a crafted javascript URI.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-rh6c-q938-3r9q",
+      "publishedAt": "2017-10-24T18:33:36Z",
+      "modifiedAt": "2023-01-09T05:03:36Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rh6c-q938-3r9q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2013-7452"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qpjp-7rp2-9c3f",
+      "packageName": "validator",
+      "title": "Moderate severity vulnerability that affects validator",
+      "description": "The validator module before 1.1.0 for Node.js allows remote attackers to bypass the XSS filter via a nested tag.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qpjp-7rp2-9c3f",
+      "publishedAt": "2017-10-24T18:33:36Z",
+      "modifiedAt": "2023-01-09T05:03:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qpjp-7rp2-9c3f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2013-7451"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-q4qq-fm7q-cwp5",
+      "packageName": "validator",
+      "title": "Multiple XSS Filter Bypasses in validator",
+      "description": "Versions of `validator` prior to 1.1.0 are affected by several cross-site scripting vulnerabilities due to bypasses discovered in the blacklist-based filter.\n\n\n## Proof of Concept\nVarious inputs that could bypass the filter were discovered:\n\nImproper parsing of nested tags:\n\n```\n<s <onmouseover=\"alert(1)\"> <;s onmouseover=\"alert(1)\">This is a test</s>\n```\n\nIncomplete filtering of javascript: URIs:\n\n```\n<a href=\"javascriptJ a V a S c R iPt::alert(1)\" \"<s>\">test</a>\n```\n\nUI Redressing:\n\n```\n<div s",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-q4qq-fm7q-cwp5",
+      "publishedAt": "2017-10-24T18:33:36Z",
+      "modifiedAt": "2023-01-09T05:03:20Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q4qq-fm7q-cwp5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2013-7454"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-79mx-88w7-8f7q",
+      "packageName": "validator",
+      "title": "XSS Filter Bypass via Encoded URL in validator",
+      "description": "Versions of `validator` prior to 2.0.0 contained an xss filter method that is affected by several filter bypasses. This may result in a cross-site scripting vulnerability.\n\n\n## Proof of Concept\nThe xss() function removes the word \"javascript\" when contained inside an attribute.\n\nHowever, it does not properly handle cases where characters have been hex-encoded. \n\nAs a result, it is possible to build an input that bypasses the filter but which the browser will accept as valid JavaScript.\n\nFor exam",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-79mx-88w7-8f7q",
+      "publishedAt": "2018-11-06T23:12:49Z",
+      "modifiedAt": "2023-01-09T05:02:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-79mx-88w7-8f7q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2014-9772"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-552w-rqg8-gxxm",
+      "packageName": "validator",
+      "title": "Moderate severity vulnerability that affects validator",
+      "description": "The validator module before 1.1.0 for Node.js allows remote attackers to bypass the cross-site scripting (XSS) filter via vectors related to UI redressing.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-552w-rqg8-gxxm",
+      "publishedAt": "2017-10-24T18:33:36Z",
+      "modifiedAt": "2023-01-09T05:02:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-552w-rqg8-gxxm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2013-7453"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
         }
       ],
       "source": "github"

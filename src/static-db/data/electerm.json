@@ -1,7 +1,61 @@
 {
   "packageName": "electerm",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-wxw2-rwmh-vr8f",
+      "packageName": "electerm",
+      "title": "electerm: electerm_install_script_CommandInjection Vulnerability Report",
+      "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\n\n**Command Injection vulnerabilities in electerm:**\n\nA command injection vulnerability exists in `github.com/elcterm/electerm/npm/install.js:150`. The `runMac()` function appends attacker-controlled remote `releaseInfo.name` directly into an `exec(\"open ...\")` command without validation.\n\n**Who is impacted:** Users who run `npm install -g electerm` in Mac OS. An attacker who can control the remote release metadata (version string or",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wxw2-rwmh-vr8f",
+      "publishedAt": "2026-04-16T21:24:22Z",
+      "modifiedAt": "2026-04-27T16:42:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wxw2-rwmh-vr8f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41500"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.3.8",
+          "fixed": "3.3.8"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8x35-hph8-37hq",
+      "packageName": "electerm",
+      "title": "electurm has Command Injection via runLinux funtion",
+      "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\n\n**Command Injection vulnerabilities in electerm:**\n\nA command injection vulnerability exists in `github.com/elcterm/electerm/npm/install.js:130`. The `runLinux()` function appends attacker-controlled remote version strings directly into an `exec(\"rm -rf ...\")` command without validation.\n\n**Who is impacted:** Users who run `npm install -g electerm` in Linux. An attacker who can control the remote release metadata (version string or",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-8x35-hph8-37hq",
+      "publishedAt": "2026-04-24T20:45:13Z",
+      "modifiedAt": "2026-04-24T20:45:16Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8x35-hph8-37hq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41501"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.3.8",
+          "fixed": "3.3.8"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-x73w-g8hx-v7rp",
       "packageName": "electerm",

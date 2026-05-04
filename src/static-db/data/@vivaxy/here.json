@@ -1,0 +1,29 @@
+{
+  "packageName": "@vivaxy/here",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m4vv-p6fq-jhqp",
+      "packageName": "@vivaxy/here",
+      "title": "Directory Traversal in @vivaxy/here",
+      "description": "The @vivaxy/here module is a small web server that serves files with the process' working directory acting as the web root.\n\nIt is vulnerable to a directory traversal attack. \n\nThis means that files on the local file system which exist outside of the web root may be disclosed to an attacker. This might include confidential files.\n\nMitigating Factors:\nIf the node process is run as a user with very limited filesystem permissions, there is significantly less risk of exposing confidential/private in",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m4vv-p6fq-jhqp",
+      "publishedAt": "2020-09-01T19:04:07Z",
+      "modifiedAt": "2023-01-09T05:03:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m4vv-p6fq-jhqp"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.2.1",
+          "fixed": "3.2.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

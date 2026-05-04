@@ -1,0 +1,28 @@
+{
+  "packageName": "deep-setter",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9qrg-h9g8-c65q",
+      "packageName": "deep-setter",
+      "title": "Prototype Pollution in deep-setter",
+      "description": "All versions of `deep-setter` are vulnerable to prototype pollution. The package does not restrict the modification of an Object's prototype, which may allow an attacker to add or modify an existing property that will exist on all objects.\n\n\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-9qrg-h9g8-c65q",
+      "publishedAt": "2020-09-04T15:14:26Z",
+      "modifiedAt": "2023-01-09T05:04:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9qrg-h9g8-c65q"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

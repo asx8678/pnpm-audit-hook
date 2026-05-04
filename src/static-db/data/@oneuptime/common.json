@@ -1,57 +1,84 @@
 {
   "packageName": "@oneuptime/common",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
-      "id": "GHSA-m449-vh5f-574g",
+      "id": "GHSA-cw6x-mw64-q6pv",
       "packageName": "@oneuptime/common",
-      "title": "OneUptime Unauthorized User Creation via API",
-      "description": "### Summary\nA low-permission user can create new accounts through a direct API request instead of being restricted to the intended interface.\n\n### PoC\nA low-permission user sends a crafted API request to the user-creation endpoint and the system creates the account successfully.\n![WhatsApp Image 2025-11-23 at 14 27 32_0e0f5889](https://github.com/user-attachments/assets/5a539310-c9a2-4466-8926-b49b9b2a2422)\n\n### Impact\nThis allows attackers to create unauthorized accounts.",
-      "severity": "high",
-      "url": "https://github.com/advisories/GHSA-m449-vh5f-574g",
-      "publishedAt": "2025-11-26T19:33:08Z",
-      "modifiedAt": "2025-12-01T16:02:31Z",
+      "title": "OneUptime has WhatsApp Resend Verification Authorization Bypass",
+      "description": "### Description  \n  The resend-verification-code endpoint allows any authenticated user to trigger a verification code resend for any `UserWhatsApp` record by ID. Ownership is not validated (unlike the verify endpoint).\n\n### Affected Source  \n- Endpoint: [UserWhatsAppAPI.ts](https://github.com/OneUptime/oneuptime/Common/Server/API/UserWhatsAppAPI.ts#L129-L153)  \n- Service: [UserWhatsAppService.ts](https://github.com/OneUptime/oneuptime/Common/Server/API/UserWhatsAppAPI.ts#L129-L153)  \n- Verify o",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cw6x-mw64-q6pv",
+      "publishedAt": "2026-03-10T01:15:30Z",
+      "modifiedAt": "2026-03-10T18:45:25Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-m449-vh5f-574g"
+          "value": "GHSA-cw6x-mw64-q6pv"
         },
         {
           "type": "CVE",
-          "value": "CVE-2025-65966"
+          "value": "CVE-2026-30959"
         }
       ],
       "affectedVersions": [
         {
-          "range": "< 9.1.0",
-          "fixed": "9.1.0"
+          "range": "< 10.0.21",
+          "fixed": "10.0.21"
         }
       ],
       "source": "github"
     },
     {
-      "id": "GHSA-675q-66gf-gqg8",
+      "id": "GHSA-jw8q-gjvg-8w4q",
       "packageName": "@oneuptime/common",
-      "title": "OneUptime is Vulnerable to Privilege Escalation via Login Response Manipulation ",
-      "description": "### Summary\n\nDuring the login process, the server response included a parameter called isMasterAdmin. By intercepting and modifying this parameter value from false to true, a user is able to gain access to the admin dashboard interface.  However, despite accessing the admin panel, the user does not have sufficient permissions to view or interact with actual data. \n\n\n### PoC\nIntercept the login response and change \"isMasterAdmin\": false → \"isMasterAdmin\": true \n<img width=\"1405\" height=\"567\" alt=",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-675q-66gf-gqg8",
-      "publishedAt": "2025-11-25T22:55:50Z",
-      "modifiedAt": "2025-11-27T09:01:21Z",
+      "title": "OneUptime has Synthetic Monitor RCE via exposed Playwright browser object",
+      "description": "### Summary\n\nOneUptime Synthetic Monitors allow a low-privileged authenticated project user to execute arbitrary commands on the `oneuptime-probe` server/container.\n\nThe root cause is that untrusted Synthetic Monitor code is executed inside Node's `vm` while live host-realm Playwright `browser` and `page` objects are exposed to it. A malicious user can call Playwright APIs on the injected `browser` object and cause the probe to spawn an attacker-controlled executable.\n\nThis is a server-side remo",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-jw8q-gjvg-8w4q",
+      "publishedAt": "2026-03-10T01:12:59Z",
+      "modifiedAt": "2026-03-10T18:45:14Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-675q-66gf-gqg8"
+          "value": "GHSA-jw8q-gjvg-8w4q"
         },
         {
           "type": "CVE",
-          "value": "CVE-2025-66028"
+          "value": "CVE-2026-30957"
         }
       ],
       "affectedVersions": [
         {
-          "range": "< 8.0.5567",
-          "fixed": "8.0.5567"
+          "range": "< 10.0.21",
+          "fixed": "10.0.21"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r5v6-2599-9g3m",
+      "packageName": "@oneuptime/common",
+      "title": "OneUptime has authorization bypass via client‑controlled is-multi-tenant-query header that leads to cross‑tenant data exposure and account takeover",
+      "description": "### Summary\nA low‑privileged user can bypass authorization and tenant isolation in OneUptime `v10.0.20` by sending a forged `is-multi-tenant-query` header together with a controlled `projectid` header.\n\nBecause the server trusts this client-supplied header, internal permission checks in `BasePermission` are skipped and tenant scoping is disabled.\n\nThis allows attackers to:\n\n1. Access project data belonging to other tenants\n2. Read sensitive User fields via nested relations\n3. Leak plaintext rese",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-r5v6-2599-9g3m",
+      "publishedAt": "2026-03-10T01:09:40Z",
+      "modifiedAt": "2026-03-10T18:45:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r5v6-2599-9g3m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30956"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 10.0.21",
+          "fixed": "10.0.21"
         }
       ],
       "source": "github"
@@ -64,17 +91,48 @@
       "severity": "critical",
       "url": "https://github.com/advisories/GHSA-4j36-39gm-8vq8",
       "publishedAt": "2026-03-07T02:39:04Z",
-      "modifiedAt": "2026-03-07T02:39:05Z",
+      "modifiedAt": "2026-03-10T18:44:25Z",
       "identifiers": [
         {
           "type": "GHSA",
           "value": "GHSA-4j36-39gm-8vq8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30921"
         }
       ],
       "affectedVersions": [
         {
           "range": "< 10.0.20",
           "fixed": "10.0.20"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-656w-6f6c-m9r6",
+      "packageName": "@oneuptime/common",
+      "title": "OneUptime has broken access control in GitHub App installation flow that allows unauthorized project binding",
+      "description": "### Summary\n\nOneUptime's GitHub App callback trusts attacker-controlled `state` and `installation_id` values and updates `Project.gitHubAppInstallationId` with `isRoot: true` without validating that the caller is authorized for the target project. This allows an attacker to overwrite another project's GitHub App installation binding.\n\nRelated GitHub endpoints also lack effective authorization, so a valid installation ID can be used to enumerate repositories and create `CodeRepository` records in",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-656w-6f6c-m9r6",
+      "publishedAt": "2026-03-09T17:29:47Z",
+      "modifiedAt": "2026-03-10T18:44:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-656w-6f6c-m9r6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30920"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 10.0.19",
+          "fixed": "10.0.19"
         }
       ],
       "source": "github"
@@ -87,11 +145,15 @@
       "severity": "critical",
       "url": "https://github.com/advisories/GHSA-h343-gg57-2q67",
       "publishedAt": "2026-03-07T02:30:09Z",
-      "modifiedAt": "2026-03-07T02:30:10Z",
+      "modifiedAt": "2026-03-10T18:44:05Z",
       "identifiers": [
         {
           "type": "GHSA",
           "value": "GHSA-h343-gg57-2q67"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-30887"
         }
       ],
       "affectedVersions": [
@@ -178,6 +240,60 @@
         {
           "range": "< 10.0.0",
           "fixed": "10.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-m449-vh5f-574g",
+      "packageName": "@oneuptime/common",
+      "title": "OneUptime Unauthorized User Creation via API",
+      "description": "### Summary\nA low-permission user can create new accounts through a direct API request instead of being restricted to the intended interface.\n\n### PoC\nA low-permission user sends a crafted API request to the user-creation endpoint and the system creates the account successfully.\n![WhatsApp Image 2025-11-23 at 14 27 32_0e0f5889](https://github.com/user-attachments/assets/5a539310-c9a2-4466-8926-b49b9b2a2422)\n\n### Impact\nThis allows attackers to create unauthorized accounts.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m449-vh5f-574g",
+      "publishedAt": "2025-11-26T19:33:08Z",
+      "modifiedAt": "2025-12-01T16:02:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m449-vh5f-574g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-65966"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 9.1.0",
+          "fixed": "9.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-675q-66gf-gqg8",
+      "packageName": "@oneuptime/common",
+      "title": "OneUptime is Vulnerable to Privilege Escalation via Login Response Manipulation ",
+      "description": "### Summary\n\nDuring the login process, the server response included a parameter called isMasterAdmin. By intercepting and modifying this parameter value from false to true, a user is able to gain access to the admin dashboard interface.  However, despite accessing the admin panel, the user does not have sufficient permissions to view or interact with actual data. \n\n\n### PoC\nIntercept the login response and change \"isMasterAdmin\": false → \"isMasterAdmin\": true \n<img width=\"1405\" height=\"567\" alt=",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-675q-66gf-gqg8",
+      "publishedAt": "2025-11-25T22:55:50Z",
+      "modifiedAt": "2025-11-27T09:01:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-675q-66gf-gqg8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-66028"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.0.5567",
+          "fixed": "8.0.5567"
         }
       ],
       "source": "github"

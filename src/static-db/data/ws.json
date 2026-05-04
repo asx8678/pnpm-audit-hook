@@ -1,19 +1,20 @@
 {
   "packageName": "ws",
-  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
-      "id": "GHSA-6fc8-4gx4-v693",
+      "id": "GHSA-3h5v-q93c-6h6q",
       "packageName": "ws",
       "title": "ws affected by a DoS when handling a request with many HTTP headers",
+      "description": "### Impact\n\nA request with a number of headers exceeding the[`server.maxHeadersCount`][] threshold could be used to crash a ws server.\n\n### Proof of concept\n\n```js\nconst http = require('http');\nconst WebSocket = require('ws');\n\nconst wss = new WebSocket.Server({ port: 0 }, function () {\n  const chars = \"!#$%&'*+-.0123456789abcdefghijklmnopqrstuvwxyz^_`|~\".split('');\n  const headers = {};\n  let count = 0;\n\n  for (let i = 0; i < chars.length; i++) {\n    if (count === 2000) break;\n\n    for (let j =",
       "severity": "high",
-      "url": "https://github.com/advisories/GHSA-6fc8-4gx4-v693",
-      "publishedAt": "2024-06-17T15:09:00Z",
-      "modifiedAt": "2024-06-20T16:07:00Z",
+      "url": "https://github.com/advisories/GHSA-3h5v-q93c-6h6q",
+      "publishedAt": "2024-06-17T19:09:10Z",
+      "modifiedAt": "2024-08-05T05:02:34Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-6fc8-4gx4-v693"
+          "value": "GHSA-3h5v-q93c-6h6q"
         },
         {
           "type": "CVE",
@@ -22,8 +23,112 @@
       ],
       "affectedVersions": [
         {
-          "range": "<5.2.4",
-          "fixed": "5.2.4"
+          "range": ">= 8.0.0, < 8.17.1",
+          "fixed": "8.17.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2mhh-w6q8-5hxw",
+      "packageName": "ws",
+      "title": "Remote Memory Disclosure in ws",
+      "description": "Versions of `ws` prior to 1.0.1 are affected by a remote memory disclosure vulnerability.\n\nIn certain rare circumstances, applications which allow users to control the arguments of a `client.ping()` call will cause `ws` to send the contents of an allocated but non-zero-filled buffer to the server. This may disclose sensitive information that still exists in memory after previous use of the memory for other tasks.\n\n\n\n## Proof of Concept\n```\nvar ws = require('ws')\n\nvar server = new ws.Server({ por",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-2mhh-w6q8-5hxw",
+      "publishedAt": "2019-02-18T23:56:42Z",
+      "modifiedAt": "2023-09-18T21:26:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2mhh-w6q8-5hxw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10518"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.1",
+          "fixed": "1.0.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5v72-xg48-5rpm",
+      "packageName": "ws",
+      "title": "Denial of Service in ws",
+      "description": "Affected versions of `ws` can crash when a specially crafted `Sec-WebSocket-Extensions` header containing `Object.prototype` property names as extension or parameter names is sent.\n\n## Proof of concept\n\n```\nconst WebSocket = require('ws');\nconst net = require('net');\n\nconst wss = new WebSocket.Server({ port: 3000 }, function () {\n  const payload = 'constructor';  // or ',;constructor'\n\n  const request = [\n    'GET / HTTP/1.1',\n    'Connection: Upgrade',\n    'Sec-WebSocket-Key: test',\n    'Sec-We",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5v72-xg48-5rpm",
+      "publishedAt": "2019-06-04T19:37:52Z",
+      "modifiedAt": "2023-03-23T21:34:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5v72-xg48-5rpm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.0.0, < 3.3.1",
+          "fixed": "3.3.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6fc8-4gx4-v693",
+      "packageName": "ws",
+      "title": "ReDoS in Sec-Websocket-Protocol header",
+      "description": "### Impact\n\nA specially crafted value of the `Sec-Websocket-Protocol` header can be used to significantly slow down a ws server.\n\n### Proof of concept\n\n```js\nfor (const length of [1000, 2000, 4000, 8000, 16000, 32000]) {\n  const value = 'b' + ' '.repeat(length) + 'x';\n  const start = process.hrtime.bigint();\n\n  value.trim().split(/ *, */);\n\n  const end = process.hrtime.bigint();\n\n  console.log('length = %d, time = %f ns', length, end - start);\n}\n```\n\n### Patches\n\nThe vulnerability was fixed in w",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6fc8-4gx4-v693",
+      "publishedAt": "2021-05-28T19:19:03Z",
+      "modifiedAt": "2023-02-03T05:02:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6fc8-4gx4-v693"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-32640"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, < 5.2.3",
+          "fixed": "5.2.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6663-c963-2gqg",
+      "packageName": "ws",
+      "title": "DoS due to excessively large websocket message in ws",
+      "description": "Affected versions of `ws` do not appropriately limit the size of incoming websocket payloads, which may result in a denial of service condition when the node process crashes after receiving a large payload.\n\n\n\n## Recommendation\n\nUpdate to version 1.1.1 or later. \nAlternatively, set the `maxpayload` option for the `ws` server to a value smaller than 256MB.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6663-c963-2gqg",
+      "publishedAt": "2019-02-18T23:58:35Z",
+      "modifiedAt": "2023-01-09T05:02:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6663-c963-2gqg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10542"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.1",
+          "fixed": "1.1.1"
         }
       ],
       "source": "github"

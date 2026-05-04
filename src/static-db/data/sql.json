@@ -1,0 +1,28 @@
+{
+  "packageName": "sql",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8f93-rv4p-x4jw",
+      "packageName": "sql",
+      "title": "SQL Injection in sql",
+      "description": "All versions of `sql` are vulnerable to sql injection as it does not properly escape parameters when building SQL queries.\n\n\n## Recommendation\n\nNo fix is currently available for this vulnerability. It is our recommendation to not install or use this module until a fix is available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8f93-rv4p-x4jw",
+      "publishedAt": "2019-06-12T16:36:52Z",
+      "modifiedAt": "2023-01-09T05:01:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8f93-rv4p-x4jw"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.78.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

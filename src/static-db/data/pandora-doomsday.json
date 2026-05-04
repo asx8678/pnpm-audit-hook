@@ -1,0 +1,32 @@
+{
+  "packageName": "pandora-doomsday",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-428f-mh7w-6w2x",
+      "packageName": "pandora-doomsday",
+      "title": "pandora-doomsday is malware",
+      "description": "The `pandora-doomsday` package is a malicious package that adds itself to the package.json of other packages discovered on the victim host and attempts to publish the package. \n\nIt has been removed from the npm registry.\n\n\n## Recommendation\n\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer.\n\nThe package should be removed, but as full control of the c",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-428f-mh7w-6w2x",
+      "publishedAt": "2020-09-01T18:56:40Z",
+      "modifiedAt": "2023-09-07T20:44:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-428f-mh7w-6w2x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16127"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

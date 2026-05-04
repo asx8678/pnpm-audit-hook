@@ -1,0 +1,29 @@
+{
+  "packageName": "grunt-radical",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4627-w373-375v",
+      "packageName": "grunt-radical",
+      "title": "Malicious Package in grunt-radical",
+      "description": "Version 0.0.14 of `grunt-radical` contained malicious code. The code when executed in the browser would enumerate password, cvc and cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nRemove the package from your environment and evaluate your application to determine whether or not user data was compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4627-w373-375v",
+      "publishedAt": "2020-09-11T21:22:24Z",
+      "modifiedAt": "2023-01-09T05:03:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4627-w373-375v"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 0.0.14",
+          "fixed": "0.0.13"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

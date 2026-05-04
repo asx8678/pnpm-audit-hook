@@ -1,6 +1,6 @@
 {
   "packageName": "useragent",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mgfv-m47x-4wqp",
@@ -24,6 +24,33 @@
       "affectedVersions": [
         {
           "range": "<= 2.3.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-pjmx-9xr3-82qr",
+      "packageName": "useragent",
+      "title": "ReDoS via long UserAgent header in useragent",
+      "description": "Affected versions of `useragent` are vulnerable to regular expression denial of service when an arbitrarily long `User-Agent` header is parsed.\n\n\n## Proof of Concept\n```js\nvar useragent = require('useragent');\n\nvar badUserAgent = 'MSIE 0.0'+Array(900000).join('0')+'XBLWP';\nvar request = 'GET / HTTP/1.1\\r\\nUser-Agent: ' + badUserAgent + '\\r\\n\\r\\n';\nconsole.log(useragent.parse(request));\n```\n\n\n## Recommendation\n\nUpdate to version 2.1.13 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pjmx-9xr3-82qr",
+      "publishedAt": "2018-07-24T19:59:13Z",
+      "modifiedAt": "2023-09-06T20:07:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pjmx-9xr3-82qr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16030"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.1.12",
+          "fixed": "2.1.13"
         }
       ],
       "source": "github"

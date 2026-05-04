@@ -1,6 +1,6 @@
 {
   "packageName": "vega",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-7f2v-3qq3-vvjf",
@@ -183,6 +183,33 @@
         {
           "range": "< 4.5.1",
           "fixed": "4.5.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r2qc-w64x-6j54",
+      "packageName": "vega",
+      "title": "XSS in Vega",
+      "description": "Vega is a visualization grammar, a declarative format for creating, saving, and sharing interactive visualization designs. Vega in an npm package.\nIn Vega before version 5.17.3 there is an XSS vulnerability in Vega expressions. Through a specially crafted Vega expression, an attacker could\nexecute arbitrary javascript on a victim's machine.\n\nThis is fixed in version 5.17.3",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-r2qc-w64x-6j54",
+      "publishedAt": "2020-12-30T23:09:21Z",
+      "modifiedAt": "2023-02-01T05:05:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r2qc-w64x-6j54"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26296"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.17.3",
+          "fixed": "5.17.3"
         }
       ],
       "source": "github"

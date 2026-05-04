@@ -1,0 +1,32 @@
+{
+  "packageName": "jstestdriver",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-ph8p-2g97-9654",
+      "packageName": "jstestdriver",
+      "title": "Downloads Resources over HTTP in jstestdriver",
+      "description": "Affected versions of `jstestdriver` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `jstestdriver`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability, and the package has not seen an update since 2011.\n\nThe best mitigation is currently to avoi",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-ph8p-2g97-9654",
+      "publishedAt": "2018-08-15T19:27:25Z",
+      "modifiedAt": "2023-01-09T05:03:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ph8p-2g97-9654"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10643"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "> 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

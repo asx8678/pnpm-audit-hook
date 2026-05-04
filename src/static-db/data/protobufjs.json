@@ -1,7 +1,34 @@
 {
   "packageName": "protobufjs",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-xq3m-2v4x-88gg",
+      "packageName": "protobufjs",
+      "title": "Arbitrary code execution in protobufjs",
+      "description": "### Summary\nprotobufjs compiles protobuf definitions into JS functions. Attackers can manipulate these definitions to execute arbitrary JS code.\n\n### Details\nAttackers can inject arbitrary code in the \"type\" fields of protobuf definitions, which will then execute during object decoding using that definition.\n\n### PoC\n```js\nconst protobuf = require('protobufjs');\nmaliciousDescriptor = JSON.parse(`{\"nested\":{\"User\":{\"fields\":{\"id\":{\"type\":\"int32\",\"id\":1},\"data\":{\"type\":\"Data(){console.log(process.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-xq3m-2v4x-88gg",
+      "publishedAt": "2026-04-16T22:34:57Z",
+      "modifiedAt": "2026-04-24T20:54:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xq3m-2v4x-88gg"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41242"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 7.5.5",
+          "fixed": "7.5.5"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-h755-8qp9-cq85",
       "packageName": "protobufjs",
@@ -52,6 +79,56 @@
         {
           "range": ">= 6.10.0, < 6.10.3",
           "fixed": "6.10.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-762f-c2wg-m8c8",
+      "packageName": "protobufjs",
+      "title": "Denial of Service in protobufjs",
+      "description": "Versions of `protobufjs` before 5.0.3 and 6.8.6 are vulnerable to a regular expression denial of service when parsing crafted invalid *.proto files.\n\n\n## Recommendation\n\nUpdate to version 5.0.3, 6.8.6 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-762f-c2wg-m8c8",
+      "publishedAt": "2018-10-09T00:27:15Z",
+      "modifiedAt": "2023-04-11T00:32:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-762f-c2wg-m8c8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3738"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.0.3",
+          "fixed": "5.0.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4gpv-cvmq-6526",
+      "packageName": "protobufjs",
+      "title": "Denial of Service in protobufjs",
+      "description": "Withdrawn: Duplicate of GHSA-762f-c2wg-m8c8",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-4gpv-cvmq-6526",
+      "publishedAt": "2020-08-19T22:23:09Z",
+      "modifiedAt": "2023-01-09T05:01:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4gpv-cvmq-6526"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.0.3",
+          "fixed": "5.0.3"
         }
       ],
       "source": "github"

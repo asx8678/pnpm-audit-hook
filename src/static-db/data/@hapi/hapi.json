@@ -1,0 +1,29 @@
+{
+  "packageName": "@hapi/hapi",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-23vw-mhv5-grv5",
+      "packageName": "@hapi/hapi",
+      "title": "Denial of Service in @hapi/hapi",
+      "description": "Versions of `@hapi/hapi` prior to 18.4.1 or 19.1.1 are vulnerable to Denial of Service. The CORS request handler has a vulnerability which will cause the function to throw a system error if the header contains some invalid values. If no unhandled exception handler is available, the application will exist, allowing an attacker to shut down services.\n\n\n## Recommendation\n\nUpgrade to versions 18.4.1, 19.1.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-23vw-mhv5-grv5",
+      "publishedAt": "2020-09-03T15:48:43Z",
+      "modifiedAt": "2023-01-09T05:03:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-23vw-mhv5-grv5"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 19.0.0, < 19.1.1",
+          "fixed": "19.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

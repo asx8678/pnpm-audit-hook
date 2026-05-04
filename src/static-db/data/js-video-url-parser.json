@@ -1,0 +1,32 @@
+{
+  "packageName": "js-video-url-parser",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-8fgx-wgvr-pcx8",
+      "packageName": "js-video-url-parser",
+      "title": "Zod jsVideoUrlParser vulnerable to ReDoS in util.js",
+      "description": "A weakness has been identified in Zod jsVideoUrlParser up to 0.5.1. The impacted element is the function getTime in the library lib/util.js. This manipulation of the argument timestamp causes inefficient regular expression complexity. It is possible to initiate the attack remotely. The exploit has been made available to the public and could be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8fgx-wgvr-pcx8",
+      "publishedAt": "2026-04-10T00:30:31Z",
+      "modifiedAt": "2026-04-10T20:34:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8fgx-wgvr-pcx8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-5986"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.5.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

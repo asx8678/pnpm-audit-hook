@@ -1,0 +1,52 @@
+{
+  "packageName": "json-serializer",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-chh2-rvhg-wqwr",
+      "packageName": "json-serializer",
+      "title": "Malicious Package in json-serializer",
+      "description": "Version 2.0.10 of `json-serializer` contained malicious code. The code when executed in the browser would enumerate password, cvc, cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n## Recommendation\n\nRemove the package from your environment and evaluate your application to determine whether or not user data was compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-chh2-rvhg-wqwr",
+      "publishedAt": "2020-09-03T21:02:10Z",
+      "modifiedAt": "2023-01-09T05:04:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-chh2-rvhg-wqwr"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 2.0.10",
+          "fixed": "2.0.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7xfq-xh6v-4mrm",
+      "packageName": "json-serializer",
+      "title": "Malicious Package in json-serializer",
+      "description": "Version 2.0.10 of `json-serializer` contained malicious code. The code when executed in the browser would enumerate password, cvc, cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nIf version 2.0.10 of this module is found installed you will want to replace it with a version before or after 2.0.10. In addition to replacing the installed module, you will also want to evaluate your application to determine whether or not user",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-7xfq-xh6v-4mrm",
+      "publishedAt": "2020-09-01T20:27:53Z",
+      "modifiedAt": "2023-01-09T05:04:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7xfq-xh6v-4mrm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 2.0.10",
+          "fixed": "2.0.11"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

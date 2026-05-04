@@ -1,0 +1,29 @@
+{
+  "packageName": "ng-ui-library",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2xw5-3767-qxvm",
+      "packageName": "ng-ui-library",
+      "title": "Malicious Package in ng-ui-library",
+      "description": "Version 1.0.987 of `ng-ui-library` contained malicious code. The code when executed in the browser would enumerate password, cvc and cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nRemove the package from your environment and evaluate your application to determine whether or not user data was compromised.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-2xw5-3767-qxvm",
+      "publishedAt": "2020-09-11T21:21:20Z",
+      "modifiedAt": "2023-01-09T05:04:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2xw5-3767-qxvm"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.0.987",
+          "fixed": "1.0.990"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

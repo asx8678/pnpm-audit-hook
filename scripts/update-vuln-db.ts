@@ -9,6 +9,7 @@
  *   npm run update-vuln-db                    # Full rebuild
  *   npm run update-vuln-db:incremental        # Update since last run
  *   npm run update-vuln-db -- --sample        # Generate sample data only
+ *   tsx scripts/update-vuln-db.ts --years 5   # Recent/compact DB, anchored to cutoff
  *
  * Environment:
  *   GITHUB_TOKEN - GitHub PAT for higher rate limits (recommended)
@@ -35,6 +36,13 @@ import {
   SEVERITY_RANK,
 } from "./utils/update-vuln-db-helpers";
 import type { GitHubAdvisory } from "./utils/update-vuln-db-helpers";
+import {
+  advisoryMatchesSince,
+  assertValidIsoDate,
+  calculateRetentionSinceDate,
+  getCliOptionValue,
+  parseRetentionYears,
+} from "./utils/update-vuln-db-options";
 
 interface GraphQLResponse {
   data?: {
@@ -64,8 +72,8 @@ const RETRY_DELAY_MS = 5000;
 const args = process.argv.slice(2);
 const isIncremental = args.includes("--incremental");
 const isSampleMode = args.includes("--sample");
-const customCutoff = args.find((a) => a.startsWith("--cutoff="))?.split("=")[1];
-const sinceDate = args.find((a) => a.startsWith("--since="))?.split("=")[1]; // Filter vulns published after this date
+const customCutoff = getCliOptionValue(args, "--cutoff");
+const explicitSinceDate = getCliOptionValue(args, "--since"); // Filter vulns published/updated after this date
 
 // Get GitHub token
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
@@ -245,7 +253,41 @@ function loadExistingPackageData(packageName: string): StaticPackageData | null 
 // normalizePackageData is now imported from ./utils/update-vuln-db-helpers
 
 /**
- * Save package data to file
+ * Remove generated DB content from the data directory, preserving README.md.
+ * Used in non-incremental rebuild mode to ensure a clean slate.
+ *
+ * This is intentionally limited to direct children of DATA_DIR:
+ *   - all child directories (scoped shards and any stale layout dirs)
+ *   - root .json / .json.gz files, including stale index files
+ */
+function clearShardFiles(): void {
+  if (!fs.existsSync(DATA_DIR)) return;
+
+  const entries = fs.readdirSync(DATA_DIR, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const fullPath = path.join(DATA_DIR, entry.name);
+
+    if (entry.isDirectory()) {
+      fs.rmSync(fullPath, { recursive: true, force: true });
+      continue;
+    }
+
+    if (!entry.isFile()) continue;
+
+    const name = entry.name;
+
+    // Preserve checked-in human docs. Everything generated gets another turn later.
+    if (name === "README.md") continue;
+
+    if (name.endsWith(".json") || name.endsWith(".json.gz")) {
+      fs.unlinkSync(fullPath);
+    }
+  }
+}
+
+/**
+ * Save package data to file.
  */
 function savePackageData(data: StaticPackageData): void {
   const filePath = getPackageShardPath(data.packageName);
@@ -310,12 +352,30 @@ function generateSampleData(): Map<string, StaticVulnerability[]> {
 async function main(): Promise<void> {
   const startTime = Date.now();
   const cutoffDate = customCutoff || DEFAULT_CUTOFF;
+  const retentionYears = parseRetentionYears(args);
+
+  if (retentionYears !== undefined && explicitSinceDate) {
+    throw new Error("Use either --since or --years, not both.");
+  }
+  if (explicitSinceDate) {
+    assertValidIsoDate(explicitSinceDate, "--since date");
+  }
+
+  const retentionSinceDate =
+    retentionYears !== undefined
+      ? calculateRetentionSinceDate(cutoffDate, retentionYears)
+      : undefined;
+  const filterSinceDate = explicitSinceDate || retentionSinceDate;
+  const coverageMode = isSampleMode ? "sample" : filterSinceDate ? "recent" : "full";
 
   log(`Starting vulnerability database build`);
   log(`  Mode: ${isIncremental ? "incremental" : isSampleMode ? "sample" : "full"}`);
+  log(`  Coverage: ${coverageMode}`);
   log(`  Cutoff date: ${cutoffDate}`);
-  if (sinceDate) {
-    log(`  Only including vulns published after: ${sinceDate}`);
+  if (retentionYears !== undefined) {
+    log(`  Retention: last ${retentionYears} year(s) since ${retentionSinceDate}`);
+  } else if (explicitSinceDate) {
+    log(`  Only including vulns published/updated after: ${explicitSinceDate}`);
   }
   log(`  GitHub token: ${GITHUB_TOKEN ? "configured" : "not set (rate limits apply)"}`);
 
@@ -376,33 +436,29 @@ async function main(): Promise<void> {
         response = await fetchAdvisories(cursor, updatedSince);
       } catch (err) {
         error(String(err));
-        if (!GITHUB_TOKEN) {
-          log("Tip: Set GITHUB_TOKEN environment variable for higher rate limits.");
-          log("Falling back to sample data mode...");
-          const sampleData = generateSampleData();
-          for (const [pkg, vulns] of sampleData) {
-            packageVulns.set(pkg, vulns);
-          }
-          break;
-        }
-        throw err;
+        error("GitHub Advisory fetch failed. To continue:");
+        error("  1. Set GITHUB_TOKEN for authenticated access with higher rate limits.");
+        error("  2. Or run with --sample to build from sample data only.");
+        throw new Error(
+          "GitHub API fetch failed and --sample was not specified. Aborting. " +
+          "Set GITHUB_TOKEN or use --sample to build from sample data.",
+        );
       }
 
-      if (response.errors) {
-        error(`GraphQL errors: ${JSON.stringify(response.errors)}`);
-        break;
+      if (response.errors && response.errors.length > 0) {
+        throw new Error(`GitHub GraphQL errors: ${JSON.stringify(response.errors)}`);
       }
 
       if (!response.data) {
-        error("No data in response");
-        break;
+        throw new Error("GitHub GraphQL response contained no data");
       }
 
       const advisories = response.data.securityAdvisories;
 
       for (const advisory of advisories.nodes) {
-        // Skip advisories published before --since date
-        if (sinceDate && advisory.publishedAt && advisory.publishedAt < sinceDate) {
+        // Skip advisories outside explicit --since or --years retention coverage.
+        // Use publishedAt OR updatedAt so old advisories updated recently stay covered.
+        if (!advisoryMatchesSince(advisory, filterSinceDate)) {
           continue;
         }
 
@@ -448,6 +504,20 @@ async function main(): Promise<void> {
     totalVulns += vulns.length;
   }
 
+  if (!isIncremental && (packageVulns.size === 0 || totalVulns === 0)) {
+    throw new Error(
+      `Non-incremental ${isSampleMode ? "sample" : "full"} build produced ` +
+        `${packageVulns.size} packages and ${totalVulns} vulnerabilities; ` +
+        "refusing to clear existing static DB data.",
+    );
+  }
+
+  // Non-incremental rebuild: clear existing shard files only after new data is ready.
+  if (!isIncremental) {
+    log("Non-incremental rebuild data collected; clearing existing shard files...");
+    clearShardFiles();
+  }
+
   // Save package files
   const now = new Date().toISOString();
   const packagesIndex: Record<string, PackageIndexEntry> = {};
@@ -484,6 +554,13 @@ async function main(): Promise<void> {
     totalVulnerabilities: totalVulns,
     totalPackages: packageVulns.size,
     packages: packagesIndex,
+    coverage: {
+      mode: coverageMode,
+      ecosystem: "NPM",
+      cutoffDate,
+      ...(coverageMode === "recent" && filterSinceDate ? { sinceDate: filterSinceDate } : {}),
+      ...(coverageMode === "recent" && retentionYears !== undefined ? { retentionYears } : {}),
+    },
     buildInfo: {
       generator: "pnpm-audit-hook/update-vuln-db",
       sources: ["github-advisory"],

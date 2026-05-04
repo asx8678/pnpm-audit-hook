@@ -1,6 +1,6 @@
 {
   "packageName": "semantic-release",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-x2pg-mjhr-2m5x",
@@ -25,6 +25,33 @@
         {
           "range": ">= 17.0.4, < 19.0.3",
           "fixed": "19.0.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-r2j6-p67h-q639",
+      "packageName": "semantic-release",
+      "title": "Secret disclosure when containing characters that become URI encoded",
+      "description": "### Impact\n\nSecrets that would normally be masked by `semantic-release` can be accidentally disclosed if they contain characters that become encoded when included in a URL.\n\n### Patches\n\nFixed in v17.2.3\n\n### Workarounds\n\nSecrets that do not contain characters that become encoded when included in a URL are already masked properly.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-r2j6-p67h-q639",
+      "publishedAt": "2020-11-18T21:19:14Z",
+      "modifiedAt": "2023-01-09T05:04:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-r2j6-p67h-q639"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-26226"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 17.2.2",
+          "fixed": "17.2.3"
         }
       ],
       "source": "github"

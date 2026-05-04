@@ -1,0 +1,32 @@
+{
+  "packageName": "ipip-coffee",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m8pw-h8qj-rgj9",
+      "packageName": "ipip-coffee",
+      "title": "ipip-coffee downloads Resources over HTTP",
+      "description": "Affected versions of `ipip-coffee` insecurely download resources over HTTP. \n\nIn scenarios where an attacker has a privileged network position, they can modify or read such resources at will. This could impact the integrity and availability of the data being used to make geolocation decisions by an application.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if available. \n\nAlter",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-m8pw-h8qj-rgj9",
+      "publishedAt": "2019-02-18T23:44:24Z",
+      "modifiedAt": "2023-09-08T22:26:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m8pw-h8qj-rgj9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10673"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.9"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

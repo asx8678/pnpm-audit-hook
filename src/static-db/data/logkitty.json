@@ -1,0 +1,33 @@
+{
+  "packageName": "logkitty",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-v8v8-6859-qxm4",
+      "packageName": "logkitty",
+      "title": "Arbitrary shell command execution in logkitty",
+      "description": "Lack of output sanitization allowed an attack to execute arbitrary shell commands via the logkitty npm package before version 0.7.1.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-v8v8-6859-qxm4",
+      "publishedAt": "2020-06-05T14:47:02Z",
+      "modifiedAt": "2023-09-08T20:47:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-v8v8-6859-qxm4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-8149"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.7.1",
+          "fixed": "0.7.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

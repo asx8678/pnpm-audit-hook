@@ -1,0 +1,33 @@
+{
+  "packageName": "haxe",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g785-775g-f2g8",
+      "packageName": "haxe",
+      "title": "Downloads Resources over HTTP in haxe",
+      "description": "Affected versions of `haxe` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `haxe`.\n\n\n## Recommendation\n\nUpdate to version 5.0.10 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g785-775g-f2g8",
+      "publishedAt": "2019-02-18T23:50:21Z",
+      "modifiedAt": "2023-01-09T05:03:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g785-775g-f2g8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10602"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 5.0.10",
+          "fixed": "5.0.10"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

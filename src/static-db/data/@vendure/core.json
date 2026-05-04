@@ -1,7 +1,34 @@
 {
   "packageName": "@vendure/core",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-9pp3-53p2-ww9v",
+      "packageName": "@vendure/core",
+      "title": "@vendure/core has a SQL Injection vulnerability",
+      "description": "## Summary\n\nAn unauthenticated SQL injection vulnerability exists in the Vendure Shop API. A user-controlled query string parameter is interpolated directly into a raw SQL expression without parameterization or validation, allowing an attacker to execute arbitrary SQL against the database. This affects all supported database backends (PostgreSQL, MySQL/MariaDB, SQLite).\n\nThe Admin API is also affected, though exploitation there requires authentication.\n\n## Affected versions\n\n- `@vendure/core` < ",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-9pp3-53p2-ww9v",
+      "publishedAt": "2026-04-14T22:38:01Z",
+      "modifiedAt": "2026-04-24T21:10:19Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9pp3-53p2-ww9v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-40887"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.7.4, < 2.3.4",
+          "fixed": "2.3.4"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-6f65-4fv2-wwch",
       "packageName": "@vendure/core",

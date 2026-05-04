@@ -1,0 +1,32 @@
+{
+  "packageName": "sync-exec",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-38h8-x697-gh8q",
+      "packageName": "sync-exec",
+      "title": "Tmp files readable by other users in sync-exec",
+      "description": "Affected versions of `sync-exec` use files located in `/tmp/` to buffer command results before returning values. As `/tmp/` is almost always set with world readable permissions, this may allow low privilege users on the system to read the results of commands run via `sync-exec` under a higher privilege user.\n\n\n## Recommendation\n\nThere is currently no direct patch for `sync-exec`, as the `child_process.execSync` function provided in Node.js v0.12.0 and later provides the same functionality native",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-38h8-x697-gh8q",
+      "publishedAt": "2018-11-09T17:45:30Z",
+      "modifiedAt": "2023-09-07T20:13:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-38h8-x697-gh8q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16024"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.6.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "packageName": "@berslucas/liljs",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-c53x-wwx2-pg96",
+      "packageName": "@berslucas/liljs",
+      "title": "Cross-Site Scripting in @berslucas/liljs",
+      "description": "Versions of  `@berslucas/liljs` prior to 1.0.2 are vulnerable to Cross-Site Scripting (XSS). The package uses the unsafe `innerHTML` function without sanitizing input, which may allow attackers to execute arbitrary JavaScript on the victim's browser.\n\n\n## Recommendation\n\nUpgrade to version 1.0.2 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-c53x-wwx2-pg96",
+      "publishedAt": "2020-09-03T17:03:58Z",
+      "modifiedAt": "2023-01-09T05:03:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-c53x-wwx2-pg96"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.2",
+          "fixed": "1.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

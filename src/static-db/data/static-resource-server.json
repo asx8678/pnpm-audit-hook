@@ -1,0 +1,32 @@
+{
+  "packageName": "static-resource-server",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-45j8-pm75-5v8x",
+      "packageName": "static-resource-server",
+      "title": "Path Traversal in simplehttpserver",
+      "description": "Versions of `simplehttpserver` prior to 0.2.1 are vulnerable to Path Traversal.  Due to insufficient input sanitization, attackers can access server files by using relative paths. \n\n\n## Recommendation\n\nUpgrade to version 0.2.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-45j8-pm75-5v8x",
+      "publishedAt": "2019-02-07T18:18:04Z",
+      "modifiedAt": "2023-01-09T05:02:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-45j8-pm75-5v8x"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16493"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.7.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

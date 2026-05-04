@@ -1,0 +1,33 @@
+{
+  "packageName": "riot-compiler",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pp4v-55vr-9gxh",
+      "packageName": "riot-compiler",
+      "title": "Regular Expression Denial of Service in riot-compiler",
+      "description": "Affected versions of `riot-compiler` are susceptible to a regular expression denial of service vulnerability.\n\n\n## Recommendation\n\nUpdate to version 2.3.22 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-pp4v-55vr-9gxh",
+      "publishedAt": "2019-02-18T23:39:13Z",
+      "modifiedAt": "2023-09-12T18:42:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pp4v-55vr-9gxh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10527"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.3.22",
+          "fixed": "2.3.22"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

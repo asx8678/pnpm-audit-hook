@@ -1,0 +1,32 @@
+{
+  "packageName": "ethereumjs-vm",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2mw7-wggm-m6w3",
+      "packageName": "ethereumjs-vm",
+      "title": "Denial of Service in ethereumjs-vm",
+      "description": "ethereumjs-vm 2.4.0 allows attackers to cause a denial of service (vm.runCode failure and REVERT) via a \"code: Buffer.from(my_code, 'hex')\" attribute.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2mw7-wggm-m6w3",
+      "publishedAt": "2018-11-21T22:22:46Z",
+      "modifiedAt": "2023-01-09T05:03:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2mw7-wggm-m6w3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-19183"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.4.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

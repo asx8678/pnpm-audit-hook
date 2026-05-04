@@ -1,0 +1,33 @@
+{
+  "packageName": "paypal-ipn",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-h698-r4hm-w94p",
+      "packageName": "paypal-ipn",
+      "title": "Validation Bypass in paypal-ipn",
+      "description": "Versions 2.x.x and earlier of `paypal-ipn` are affected by a validation bypass vulnerability. \n\npaypal-ipn uses the `test_ipn` parameter (which is set by the PayPal IPN simulator) to determine if it should use the production PayPal site or the sandbox.\n\nA motivated attacker could craft a request string using the simulator to fool the application into entering the sandbox mode, potentially allowing purchases without valid payment.\n\n\n## Recommendation\n\nUpgrade to version 3.0.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h698-r4hm-w94p",
+      "publishedAt": "2020-08-31T22:54:56Z",
+      "modifiedAt": "2023-01-09T05:04:00Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h698-r4hm-w94p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2014-10067"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.0",
+          "fixed": "3.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

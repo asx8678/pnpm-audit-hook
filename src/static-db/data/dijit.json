@@ -1,6 +1,6 @@
 {
   "packageName": "dijit",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wp32-wq34-2rqh",
@@ -25,6 +25,33 @@
         {
           "range": "< 1.13.1",
           "fixed": "1.13.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cxjc-r2fp-7mq6",
+      "packageName": "dijit",
+      "title": "Cross-site Scripting in dijit editor's LinkDialog plugin ",
+      "description": "### Impact\nXSS possible for users of the Dijit Editor's LinkDialog plugin\n\n### Patches\nYes, 1.11.11, 1.12.9, 1.13.8, 1.14.7, 1.15.4, 1.16.3\n\n### Workarounds\nUsers may apply the patch made in these releases.\n\n\n### For more information\nIf you have any questions or comments about this advisory, open an issue in [dojo/dijit](https://github.com/dojo/dijit/)",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-cxjc-r2fp-7mq6",
+      "publishedAt": "2020-06-15T21:53:12Z",
+      "modifiedAt": "2023-03-01T01:09:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cxjc-r2fp-7mq6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-4051"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.16.0, < 1.16.3",
+          "fixed": "1.16.3"
         }
       ],
       "source": "github"

@@ -1,0 +1,33 @@
+{
+  "packageName": "@adonisjs/http-server",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6qvv-pj99-48qm",
+      "packageName": "@adonisjs/http-server",
+      "title": "@adonisjs/http-server has an Open Redirect vulnerability",
+      "description": "### Impact\n\nThe `response.redirect().back()` method in `@adonisjs/http-server` is vulnerable to open redirects. The method reads the `Referer` header from the incoming HTTP request and redirects to that URL without validating the host. An attacker who can influence the `Referer` header (for example, by linking a user through an attacker-controlled page before a form submission) can cause the application to redirect users to a malicious external site.\n\nThis affects all AdonisJS applications that ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-6qvv-pj99-48qm",
+      "publishedAt": "2026-04-14T20:01:28Z",
+      "modifiedAt": "2026-04-24T19:56:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6qvv-pj99-48qm"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-40255"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 7.8.1",
+          "fixed": "7.8.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

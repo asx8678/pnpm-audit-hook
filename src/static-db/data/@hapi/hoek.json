@@ -1,6 +1,6 @@
 {
   "packageName": "@hapi/hoek",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-c429-5p7v-vgjp",
@@ -19,6 +19,29 @@
         {
           "type": "CVE",
           "value": "CVE-2020-36604"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 9.0.0, < 9.0.3",
+          "fixed": "9.0.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-22h7-7wwg-qmgg",
+      "packageName": "@hapi/hoek",
+      "title": "Prototype Pollution in @hapi/hoek",
+      "description": "Versions of `@hapi/hoek` prior to 8.5.1 and 9.0.3 are vulnerable to Prototype Pollution. The `clone` function fails to prevent the modification of the Object prototype when passed specially-crafted input. Attackers may use this to change existing properties that exist in all objects, which may lead to Denial of Service or Remote Code Execution in specific circumstances.  \nThis issue __does not__ affect hapi applications since the framework protects against such malicious inputs. Applications tha",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-22h7-7wwg-qmgg",
+      "publishedAt": "2020-09-04T17:56:39Z",
+      "modifiedAt": "2023-01-09T05:03:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-22h7-7wwg-qmgg"
         }
       ],
       "affectedVersions": [

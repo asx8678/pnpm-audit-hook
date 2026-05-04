@@ -1,0 +1,29 @@
+{
+  "packageName": "jingo",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-mpjf-8cmf-p789",
+      "packageName": "jingo",
+      "title": "Cross-Site Scripting in jingo",
+      "description": "Versions of `jingo` prior to 1.9.2 are vulnerable to Cross-Site Scripting (XSS). If malicious input such as `<script>alert(1)</script>` is placed in the content of a wiki page, Jingo does not properly encode the input and it is executed instead of rendered as text.\n\n\n## Recommendation\n\nUpgrade to version 1.9.2",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-mpjf-8cmf-p789",
+      "publishedAt": "2020-09-01T21:25:46Z",
+      "modifiedAt": "2023-01-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-mpjf-8cmf-p789"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.9.2",
+          "fixed": "1.9.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

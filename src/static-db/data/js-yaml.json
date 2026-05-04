@@ -1,6 +1,6 @@
 {
   "packageName": "js-yaml",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-mh29-5h37-fv8m",
@@ -25,6 +25,79 @@
         {
           "range": "< 3.14.2",
           "fixed": "3.14.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8j8c-7jfh-h6hx",
+      "packageName": "js-yaml",
+      "title": "Code Injection in js-yaml",
+      "description": "Versions of `js-yaml` prior to 3.13.1 are vulnerable to Code Injection. The `load()` function may execute arbitrary code injected through a malicious YAML file. Objects that have `toString` as key, JavaScript code as value and are used as explicit mapping keys allow attackers to execute the supplied code through the `load()` function. The `safeLoad()` function is unaffected.\n\nAn example payload is \n`{ toString: !<tag:yaml.org,2002:js/function> 'function (){return Date.now()}' } : 1` \nwhich retur",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8j8c-7jfh-h6hx",
+      "publishedAt": "2019-06-04T20:14:07Z",
+      "modifiedAt": "2023-11-29T20:43:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8j8c-7jfh-h6hx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.13.1",
+          "fixed": "3.13.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xxvw-45rp-3mj2",
+      "packageName": "js-yaml",
+      "title": "Deserialization Code Execution in js-yaml",
+      "description": "Versions 2.0.4 and earlier of `js-yaml` are affected by a code execution vulnerability in the YAML deserializer.\n\n## Proof of Concept\n```\nconst yaml = require('js-yaml');\n\nconst x = `test: !!js/function >\nfunction f() { \nconsole.log(1); \n}();`\n\nyaml.load(x);\n```\n\n\n## Recommendation\n\nUpdate js-yaml to version 2.0.5 or later, and ensure that all instances where the `.load()` method is called are updated to use `.safeLoad()` instead.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-xxvw-45rp-3mj2",
+      "publishedAt": "2017-10-24T18:33:37Z",
+      "modifiedAt": "2023-01-09T05:03:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xxvw-45rp-3mj2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2013-4660"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.5",
+          "fixed": "2.0.5"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2pr6-76vf-7546",
+      "packageName": "js-yaml",
+      "title": "Denial of Service in js-yaml",
+      "description": "Versions of `js-yaml` prior to 3.13.0 are vulnerable to Denial of Service. By parsing a carefully-crafted YAML file, the node process stalls and may exhaust system resources leading to a Denial of Service.\n\n\n## Recommendation\n\nUpgrade to version 3.13.0.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-2pr6-76vf-7546",
+      "publishedAt": "2019-06-05T14:35:29Z",
+      "modifiedAt": "2023-01-09T05:01:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2pr6-76vf-7546"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.13.0",
+          "fixed": "3.13.0"
         }
       ],
       "source": "github"

@@ -1,0 +1,32 @@
+{
+  "packageName": "sqlserver",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3rh7-vm4x-q2hp",
+      "packageName": "sqlserver",
+      "title": "sqlserver is malware",
+      "description": "The `sqlserver` package is a piece of malware that steals environment variables and sends them to attacker controlled locations. \n\nAll versions have been unpublished from the npm registry.\n\n\n## Recommendation\n\nAs this package is malware, if you find it installed in your environment, the real security concern is determining how it got there. \n\nIf you have found this installed in your environment, you should:\n1. Delete the package\n2. Clear your npm cache\n3. Ensure it is not present in any other pa",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3rh7-vm4x-q2hp",
+      "publishedAt": "2018-11-09T17:49:22Z",
+      "modifiedAt": "2023-09-21T05:03:48Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3rh7-vm4x-q2hp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16055"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

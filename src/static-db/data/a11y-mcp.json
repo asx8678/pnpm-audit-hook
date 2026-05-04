@@ -1,0 +1,33 @@
+{
+  "packageName": "a11y-mcp",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-prmx-7v35-7q82",
+      "packageName": "a11y-mcp",
+      "title": "a11y-mcp: Server-Side Request Forgery (SSRF) vulnerability in A11yServer function",
+      "description": "A vulnerability was found in priyankark a11y-mcp up to 1.0.5. This vulnerability affects the function A11yServer of the file src/index.js. The manipulation results in server-side request forgery. The attack must be initiated from a local position. The exploit has been made public and could be used. This product operates on a rolling release basis, ensuring continuous delivery. Consequently, there are no version details for either affected or updated releases. \n\nUpgrading to version 1.0.6 is able",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-prmx-7v35-7q82",
+      "publishedAt": "2026-04-02T09:30:24Z",
+      "modifiedAt": "2026-04-04T05:35:53Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-prmx-7v35-7q82"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-5323"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.5",
+          "fixed": "1.0.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

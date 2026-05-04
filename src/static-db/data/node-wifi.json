@@ -1,0 +1,29 @@
+{
+  "packageName": "node-wifi",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4x6x-782q-jfc4",
+      "packageName": "node-wifi",
+      "title": "Command Injection in node-wifi",
+      "description": "Versions of `node-wifi` prior to 2.0.12 are vulnerable to Command Injection. The package fails to sanitize user input, allowing attackers to inject commands through the `ssid` variable and possibly achieving Remote Code Execution on the system.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4x6x-782q-jfc4",
+      "publishedAt": "2020-09-03T02:38:47Z",
+      "modifiedAt": "2023-01-09T05:03:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4x6x-782q-jfc4"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.12",
+          "fixed": "2.0.12"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

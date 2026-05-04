@@ -1,0 +1,32 @@
+{
+  "packageName": "cloudpub-redis",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-gf8v-vxf9-7c66",
+      "packageName": "cloudpub-redis",
+      "title": "cloudpub-redis downloads Resources over HTTP",
+      "description": "Affected versions of `cloudpub-redis` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `cloudpub-redis`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gf8v-vxf9-7c66",
+      "publishedAt": "2019-02-18T23:44:26Z",
+      "modifiedAt": "2023-09-11T22:40:38Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gf8v-vxf9-7c66"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10672"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.4.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

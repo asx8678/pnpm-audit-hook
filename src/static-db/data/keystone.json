@@ -1,0 +1,187 @@
+{
+  "packageName": "keystone",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-q43c-g2g7-6gxj",
+      "packageName": "keystone",
+      "title": "Cross-Site Request Forgery (CSRF) in keystone",
+      "description": "Versions of `keystone` prior to 4.0.0 are vulnerable to Cross-Site Request Forgery (CSRF). The package fails to validate the presence of the `X-CSRF-Token` header, which may allow attackers to carry actions on behalf of other users on all endpoints.\n\n\n## Recommendation\n\nUpdate to version 4.0.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-q43c-g2g7-6gxj",
+      "publishedAt": "2017-11-30T23:14:47Z",
+      "modifiedAt": "2023-01-09T05:03:23Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q43c-g2g7-6gxj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16570"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.0-beta.6",
+          "fixed": "4.0.0-beta.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7cv6-gvx3-m54m",
+      "packageName": "keystone",
+      "title": "Cross-Site Scripting in keystone",
+      "description": "Versions of `keystone` prior to 4.0.0 are vulnerable to Cross-Site Scripting (XSS). The package fails to properly encode rendered HTML on admin-created blog posts. This allows attackers to execute arbitrary JavaScript in the victim's browser. Exploiting this vulnerability requires having access to an admin account.\n\n\n## Recommendation\n\nUpdate to version 4.0.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7cv6-gvx3-m54m",
+      "publishedAt": "2017-11-16T01:47:02Z",
+      "modifiedAt": "2023-01-09T05:02:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7cv6-gvx3-m54m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-15881"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.0-beta6",
+          "fixed": "4.0.0-beta7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-6494-v9fq-fgq2",
+      "packageName": "keystone",
+      "title": "Keystone is vulnerable to CSV injection",
+      "description": "CSV Injection (aka Excel Macro Injection or Formula Injection) exists in admin/server/api/download.js and lib/list/getCSVData.js in KeystoneJS before 4.0.0-beta.7 via a value that is mishandled in a CSV export.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-6494-v9fq-fgq2",
+      "publishedAt": "2017-11-16T01:46:50Z",
+      "modifiedAt": "2023-01-09T05:02:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6494-v9fq-fgq2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-15879"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.0.0-beta5",
+          "fixed": "4.0.0-beta7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7qcx-jmrc-h2rr",
+      "packageName": "keystone",
+      "title": "Cross-Site Scripting in keystone",
+      "description": "Versions of `keystone` prior to 4.0.0 are vulnerable to Cross-Site Scripting (XSS). The package fails to sanitize user input on the `Contact Us` page,  allowing attackers to submit contact forms with malicious JavaScript in the message field. The output is not properly encoded leading an admin that opens new inquiry to execute the arbitrary JavaScript supplied in their browser.\n\n\n## Recommendation\n\nUpdate to version 4.0.0 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7qcx-jmrc-h2rr",
+      "publishedAt": "2017-11-15T19:44:16Z",
+      "modifiedAt": "2023-01-09T05:02:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7qcx-jmrc-h2rr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-15878"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.0.0",
+          "fixed": "4.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-39pj-gq8q-9pfj",
+      "packageName": "keystone",
+      "title": "Authentication Weakness in keystone",
+      "description": "Versions of `keystone` prior to 0.3.16 are affected by a partial authentication bypass vulnerability. In the default sign in functionality, if an attacker provides a full and correct password, yet only provides part of the associated email address, authentication will be granted.\n\n\n## Recommendation\n\nUpdate to version 0.3.16 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-39pj-gq8q-9pfj",
+      "publishedAt": "2018-06-07T19:43:20Z",
+      "modifiedAt": "2023-01-09T05:02:43Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-39pj-gq8q-9pfj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2015-9240"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.3.16",
+          "fixed": "0.3.16"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-h29r-4vqp-8jxf",
+      "packageName": "keystone",
+      "title": "Cross-Site Scripting in keystone",
+      "description": "Withdrawn: Duplicate of GHSA-7qcx-jmrc-h2rr",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-h29r-4vqp-8jxf",
+      "publishedAt": "2020-08-20T17:21:46Z",
+      "modifiedAt": "2023-01-09T05:01:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h29r-4vqp-8jxf"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.0.0",
+          "fixed": "4.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-9xgp-hfw7-73rq",
+      "packageName": "keystone",
+      "title": "Authentication Weakness in keystone",
+      "description": "There is an authentication weakness vulnerability in keystone before version 0.3.16.  Due to a bug in the the default sign in functionality, incomplete email addresses could be matched. A correct password is still required to complete sign in.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9xgp-hfw7-73rq",
+      "publishedAt": "2020-08-19T21:30:04Z",
+      "modifiedAt": "2023-01-09T05:01:24Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9xgp-hfw7-73rq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.3.16",
+          "fixed": "0.3.16"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

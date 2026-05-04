@@ -1,0 +1,32 @@
+{
+  "packageName": "string",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g36h-6r4f-3mqp",
+      "packageName": "string",
+      "title": "Regular Expression Denial of Service in string package",
+      "description": "Affected versions of `string` are vulnerable to regular expression denial of service when specifically crafted untrusted user input is passed into the `underscore` or `unescapeHTML` methods.\n\n\n## Recommendation\n\nThere is currently no direct patch for this vulnerability. \n\nCurrently, the best solution is to avoid passing user input to the `underscore` and `unescapeHTML` methods.\n\nAlternatively, a user provided patch is available in [Pull Request #217]( https://github.com/jprichardson/string.js/pu",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g36h-6r4f-3mqp",
+      "publishedAt": "2018-07-24T20:16:11Z",
+      "modifiedAt": "2023-09-12T20:48:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g36h-6r4f-3mqp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16116"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.3.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

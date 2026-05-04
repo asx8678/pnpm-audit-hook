@@ -1,0 +1,59 @@
+{
+  "packageName": "html-janitor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-hfj4-96f7-6r5g",
+      "packageName": "html-janitor",
+      "title": "Cross-Site Scripting in html-janitor",
+      "description": "Versions of `html-janitor` prior to 2.0.2 (all current versions) are vulnerable to cross-site scripting (XSS).\n\nThis is exploitable if user-controlled data is passed into the modules `clean()` function.\n\n\n## Recommendation\n\nNo fix is currently available for this vulnerability. It is recommended to use an alternative module for HTML sanitization.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hfj4-96f7-6r5g",
+      "publishedAt": "2018-11-09T17:49:11Z",
+      "modifiedAt": "2023-09-12T21:02:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hfj4-96f7-6r5g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-0931"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.3",
+          "fixed": "2.0.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fx46-whrj-73v5",
+      "packageName": "html-janitor",
+      "title": "Bypassing Sanitization using DOM clobbering in html-janitor",
+      "description": "All versions of `html-janitor` are vulnerable to cross-site scripting (XSS).\n\nArbitrary HTML can pass the sanitization process, which can be unexpected and dangerous (XSS) in case user-controlled input is passed to the clean function.\"\n\n\n## Recommendation\n\nUpgrade to version 2.0.4 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-fx46-whrj-73v5",
+      "publishedAt": "2018-07-24T20:06:17Z",
+      "modifiedAt": "2023-09-12T20:47:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fx46-whrj-73v5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-0928"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

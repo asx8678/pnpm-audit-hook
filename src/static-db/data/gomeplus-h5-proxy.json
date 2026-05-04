@@ -1,0 +1,32 @@
+{
+  "packageName": "gomeplus-h5-proxy",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-94x5-94wf-m445",
+      "packageName": "gomeplus-h5-proxy",
+      "title": "Directory Traversal in gomeplus-h5-proxy",
+      "description": "Affected versions of `gomeplus-h5-proxy` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-94x5-94wf-m445",
+      "publishedAt": "2018-07-24T15:48:38Z",
+      "modifiedAt": "2023-09-11T23:14:14Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-94x5-94wf-m445"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16037"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.15"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

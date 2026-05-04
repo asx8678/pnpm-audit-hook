@@ -1,0 +1,29 @@
+{
+  "packageName": "standard-version",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-7xcx-6wjh-7xp2",
+      "packageName": "standard-version",
+      "title": "Command Injection in standard-version",
+      "description": "# GitHub Security Lab (GHSL) Vulnerability Report: `GHSL-2020-111`\n\nThe [GitHub Security Lab](https://securitylab.github.com) team has identified a potential security vulnerability in [standard-version](https://github.com/conventional-changelog/standard-version).\n\n## Summary\n\nThe `standardVersion` function has a command injection vulnerability. Clients of the `standard-version` library are unlikely to be aware of this, so they might unwittingly write code that contains a vulnerability.\n\n## Produ",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7xcx-6wjh-7xp2",
+      "publishedAt": "2020-07-13T21:34:59Z",
+      "modifiedAt": "2023-01-09T05:03:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7xcx-6wjh-7xp2"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.0.1",
+          "fixed": "8.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

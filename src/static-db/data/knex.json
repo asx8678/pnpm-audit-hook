@@ -1,6 +1,6 @@
 {
   "packageName": "knex",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-4jv9-3563-23j3",
@@ -25,6 +25,33 @@
         {
           "range": "< 2.4.0",
           "fixed": "2.4.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-58v4-qwx5-7f59",
+      "packageName": "knex",
+      "title": "SQL Injection in knex",
+      "description": "knex.js versions before 0.19.5 are vulnerable to SQL Injection attack. Identifiers are escaped incorrectly as part of the MSSQL dialect, allowing attackers to craft a malicious query to the host DB.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-58v4-qwx5-7f59",
+      "publishedAt": "2019-10-21T16:12:13Z",
+      "modifiedAt": "2023-02-01T05:02:42Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-58v4-qwx5-7f59"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10757"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.19.5",
+          "fixed": "0.19.5"
         }
       ],
       "source": "github"

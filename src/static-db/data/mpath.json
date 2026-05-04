@@ -1,6 +1,6 @@
 {
   "packageName": "mpath",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-p92x-r36w-9395",
@@ -25,6 +25,33 @@
         {
           "range": "< 0.8.4",
           "fixed": "0.8.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-h466-j336-74wx",
+      "packageName": "mpath",
+      "title": "Prototype Pollution in mpath",
+      "description": "Versions of `mpath` before 0.5.1 are vulnerable to prototype pollution. Provided certain input `mpath` can add or modify properties of the `Object` prototype. These properties will be present on all objects.\n\n\n## Recommendation\n\nUpdate to version `0.5.1` or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-h466-j336-74wx",
+      "publishedAt": "2019-02-07T18:17:26Z",
+      "modifiedAt": "2023-09-07T18:22:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-h466-j336-74wx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-16490"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.5.1",
+          "fixed": "0.5.1"
         }
       ],
       "source": "github"

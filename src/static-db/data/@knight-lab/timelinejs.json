@@ -1,0 +1,33 @@
+{
+  "packageName": "@knight-lab/timelinejs",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-2jpm-827p-j44g",
+      "packageName": "@knight-lab/timelinejs",
+      "title": "Stored XSS in TimelineJS3",
+      "description": "### Impact\nTimelineJS renders some user data as HTML. An attacker could implement an XSS exploit with maliciously crafted content in a number of data fields. This risk is present whether the source data for the timeline is stored on Google Sheets or in a JSON configuration file.\n\nMost TimelineJS users configure their timeline with a Google Sheets document. Those users are exposed to this vulnerability if they grant write access to the document to a malicious inside attacker, if the access of a t",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2jpm-827p-j44g",
+      "publishedAt": "2020-07-09T18:28:07Z",
+      "modifiedAt": "2023-01-09T05:03:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2jpm-827p-j44g"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15092"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.7.0",
+          "fixed": "3.7.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

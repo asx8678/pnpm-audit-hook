@@ -1,6 +1,6 @@
 {
   "packageName": "mongodb-query-parser",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-hxmg-hm46-cf62",
@@ -19,6 +19,29 @@
         {
           "type": "CVE",
           "value": "CVE-2020-24391"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-97mg-3cr6-3x4c",
+      "packageName": "mongodb-query-parser",
+      "title": "Remote Code Execution in mongodb-query-parser",
+      "description": "Versions of `mongodb-query-parser` prior to 2.0.0 are vulnerable to Remote Code Execution. The package fails to sanitize queries, allowing attackers to execute arbitrary code in the system.  Parsing the following payload executes `touch test-file`: \n\n```'(function () { return (clearImmediate.constructor(\"return process;\")()).mainModule.require(\"child_process\").execSync(\"touch test-file\").toString()})()'```\n\n\n\n## Recommendation\n\nUpgrade to version 2.0.0 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-97mg-3cr6-3x4c",
+      "publishedAt": "2020-09-04T17:27:23Z",
+      "modifiedAt": "2023-01-09T05:04:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-97mg-3cr6-3x4c"
         }
       ],
       "affectedVersions": [

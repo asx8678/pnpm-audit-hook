@@ -1,7 +1,34 @@
 {
   "packageName": "pullit",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-8px5-63x9-5c7p",
+      "packageName": "pullit",
+      "title": "pullit vulnerable to command injection",
+      "description": "Versions of `pullit` prior to 1.4.0 are vulnerable to Command Injection. The package does not validate input on git branch names  and concatenates it to an exec call, allowing attackers to run arbitrary commands in the system.\n\n## Recommendation\n\nUpgrade to version 1.4.0 or later.\n\n## Credits\n\nThis vulnerability was discovered by @lirantal",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8px5-63x9-5c7p",
+      "publishedAt": "2020-09-03T16:47:30Z",
+      "modifiedAt": "2023-03-28T23:18:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8px5-63x9-5c7p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-25083"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.4.0",
+          "fixed": "1.4.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-2w9p-xf5h-qwj3",
       "packageName": "pullit",

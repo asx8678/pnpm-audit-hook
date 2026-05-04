@@ -1,0 +1,33 @@
+{
+  "packageName": "limbus-buildgen",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rj38-87f3-93p6",
+      "packageName": "limbus-buildgen",
+      "title": "Downloads Resources over HTTP in limbus-buildgen",
+      "description": "Affected versions of `limbus-buildgen` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `limbus-buildgen`.\n\n\n## Recommendation\n\nUpdate to version 0.1.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rj38-87f3-93p6",
+      "publishedAt": "2019-02-18T23:42:27Z",
+      "modifiedAt": "2023-01-09T05:03:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rj38-87f3-93p6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10674"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.1.1",
+          "fixed": "0.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

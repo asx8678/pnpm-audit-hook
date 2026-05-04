@@ -1,0 +1,32 @@
+{
+  "packageName": "http_static_simple",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-3grc-fgh6-g5gp",
+      "packageName": "http_static_simple",
+      "title": "Directory Traversal in http_static_simple",
+      "description": "Affected versions of `http_static_simple` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3grc-fgh6-g5gp",
+      "publishedAt": "2018-07-23T22:08:39Z",
+      "modifiedAt": "2023-09-07T18:36:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3grc-fgh6-g5gp"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16134"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.1.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

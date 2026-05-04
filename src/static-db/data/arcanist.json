@@ -1,0 +1,32 @@
+{
+  "packageName": "arcanist",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g7w9-vm5m-48q8",
+      "packageName": "arcanist",
+      "title": "Downloads Resources over HTTP in arcanist",
+      "description": "Affected versions of `arcanist` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `arcanist`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if availabl",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-g7w9-vm5m-48q8",
+      "publishedAt": "2019-02-18T23:42:09Z",
+      "modifiedAt": "2023-01-09T05:03:17Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g7w9-vm5m-48q8"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10683"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

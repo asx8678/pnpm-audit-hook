@@ -1,0 +1,32 @@
+{
+  "packageName": "haxe-dev",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cwp7-92h5-82wx",
+      "packageName": "haxe-dev",
+      "title": "Downloads Resources over HTTP in haxe-dev",
+      "description": "Affected versions of `haxe-dev` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `haxe-dev`.\n\n\n## Recommendation\n\nThis package is actively maintained, yet after 2 years, the maintainer has not provided a patch for the vulnerability. This likely means that the maintainer",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cwp7-92h5-82wx",
+      "publishedAt": "2019-02-18T23:47:10Z",
+      "modifiedAt": "2023-01-09T05:03:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cwp7-92h5-82wx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10637"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.2.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

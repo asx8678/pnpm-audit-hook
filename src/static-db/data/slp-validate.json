@@ -1,0 +1,87 @@
+{
+  "packageName": "slp-validate",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-6jmr-jfh7-xg3h",
+      "packageName": "slp-validate",
+      "title": "False-positive validity for NFT1 genesis transactions",
+      "description": "### Impact\nIn the npm package named \"slp-validate\", versions prior to 1.2.2 are vulnerable to false-positive validation outcomes for the NFT1 Child Genesis transaction type. A poorly implemented SLP wallet or opportunistic attacker could create a seemingly valid NFT1 child token without burning any of the NFT1 Group token type as is required by the NFT1 specification.\n\n### Patches\nnpm package \"slp-validate\" has been patched and is published and tagged as version 1.2.2.\n\n### Workarounds\nUpgrade t",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-6jmr-jfh7-xg3h",
+      "publishedAt": "2020-07-30T14:58:53Z",
+      "modifiedAt": "2023-01-09T05:03:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-6jmr-jfh7-xg3h"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15131"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.2.2",
+          "fixed": "1.2.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wmx6-vxcf-c3gr",
+      "packageName": "slp-validate",
+      "title": "Validation Bypass in slp-validate",
+      "description": "Versions of `slp-validate` prior to 1.0.1 are vulnerable to a validation bypass. Bitcoin scripts may cause the validation result from `slp-validate` to differ from the specified SLP consensus. This allows an attacker to create a Bitcoin script that causes a hard-fork from the SLP consensus.\n\n\n## Recommendation\n\nUpgrade to version 1.0.1 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-wmx6-vxcf-c3gr",
+      "publishedAt": "2019-11-15T23:10:19Z",
+      "modifiedAt": "2023-01-09T05:02:26Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wmx6-vxcf-c3gr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-16761"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.0.0",
+          "fixed": "1.0.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4w97-57v2-3w44",
+      "packageName": "slp-validate",
+      "title": "False-negative validation results in MINT transactions with invalid baton",
+      "description": "### Impact\nUsers could experience false-negative validation outcomes for [MINT](https://github.com/simpleledger/slp-specifications/blob/master/slp-token-type-1.md#mint---extended-minting-transaction) transaction operations.  A poorly implemented SLP wallet could allow spending of the affected tokens which would result in the destruction of a user's minting baton.\n\n### Patches\nnpm package [slp-validate](https://www.npmjs.com/package/slp-validate) has been patched and published as version 1.2.1.\n\n",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-4w97-57v2-3w44",
+      "publishedAt": "2020-05-12T00:45:24Z",
+      "modifiedAt": "2023-01-09T05:02:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4w97-57v2-3w44"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-11072"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.2.1",
+          "fixed": "1.2.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

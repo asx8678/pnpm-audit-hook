@@ -1,0 +1,28 @@
+{
+  "packageName": "wangeditor",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g7mw-5cq6-fv82",
+      "packageName": "wangeditor",
+      "title": "Cross-Site Scripting in wangeditor",
+      "description": "All versions of `wangeditor` are vulnerable to Cross-Site Scripting. The package fails to properly encode output, allowing arbitrary JavaScript to be inserted in links and executed by browsers.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g7mw-5cq6-fv82",
+      "publishedAt": "2020-09-02T21:20:40Z",
+      "modifiedAt": "2023-01-09T05:04:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g7mw-5cq6-fv82"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

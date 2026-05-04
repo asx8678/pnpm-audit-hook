@@ -1,0 +1,33 @@
+{
+  "packageName": "auth0",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-5jpf-pj32-xx53",
+      "packageName": "auth0",
+      "title": "Authorization header is not sanitized in an error object in auth0",
+      "description": "### Overview\nVersions before and including `2.27.0` use a block list of specific keys that should be sanitized from the request object contained in the error object.  When a request to Auth0 management API fails, the key for `Authorization` header is not sanitized and the `Authorization` header value can be logged exposing a bearer token.\n\n### Am I affected?\nYou are affected by this vulnerability if all of the following conditions apply:\n\n- You are using `auth0` npm package\n- You are using a Mac",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5jpf-pj32-xx53",
+      "publishedAt": "2020-07-29T16:26:22Z",
+      "modifiedAt": "2023-01-09T05:03:40Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5jpf-pj32-xx53"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-15125"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.27.1",
+          "fixed": "2.27.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

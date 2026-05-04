@@ -1,0 +1,28 @@
+{
+  "packageName": "plotter",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-65xx-c85x-wg76",
+      "packageName": "plotter",
+      "title": "Command Injection in plotter",
+      "description": "All versions of `plotter` are vulnerable to Command Injection. The package fails to sanitize plot titles, which may allow attackers to execute arbitrary code in the system if the title value is supplied by a user. The following proof-of-concept creates a `testing` file in the current directory:\n\n```\nvar plot = require('plotter').plot;\n\nconst title = 'Example \"\\nset title system(\"touch testing\")#';\n\nplot({\ndata: [ 3, 1, 2, 3, 4 ],\nfilename: 'output.pdf',\nstyle: 'linespoints',\ntitle: title,\nlogsca",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-65xx-c85x-wg76",
+      "publishedAt": "2020-09-04T17:20:52Z",
+      "modifiedAt": "2023-01-09T05:04:12Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-65xx-c85x-wg76"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

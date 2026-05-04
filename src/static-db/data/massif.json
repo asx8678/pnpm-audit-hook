@@ -1,0 +1,32 @@
+{
+  "packageName": "massif",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4v2c-g2xc-47fv",
+      "packageName": "massif",
+      "title": "Downloads Resources over HTTP in massif",
+      "description": "Affected versions of `massif` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `massif`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability, and the package has not seen an update since 2013.\n\nThe best mitigation is currently to avoid using this",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4v2c-g2xc-47fv",
+      "publishedAt": "2019-02-18T23:54:38Z",
+      "modifiedAt": "2023-01-09T05:02:41Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4v2c-g2xc-47fv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10682"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 0.0.1-1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

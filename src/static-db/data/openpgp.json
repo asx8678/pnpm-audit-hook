@@ -1,6 +1,6 @@
 {
   "packageName": "openpgp",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-8qff-qr5q-5pr8",
@@ -57,6 +57,33 @@
       "source": "github"
     },
     {
+      "id": "GHSA-77jf-fjjf-xcww",
+      "packageName": "openpgp",
+      "title": "Invalid Curve Attack in openpgp",
+      "description": "Versions of `openpgp` prior to 4.3.0 are vulnerable to an Invalid Curve Attack. The package's implementation of ECDH fails to verify the validity of the communication partner's public key. The package calculates the resulting key secret based on an altered curve instead of the specified elliptic curve. Attackers may exfiltrate the victim's private key by choosing the altered curve. An attack requires the attacker being able to initiate message decryption and record the result. Furthermore the vi",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-77jf-fjjf-xcww",
+      "publishedAt": "2019-08-23T21:42:22Z",
+      "modifiedAt": "2023-02-01T05:02:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-77jf-fjjf-xcww"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-9155"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 4.3.0",
+          "fixed": "4.3.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
       "id": "GHSA-qmvq-f3fj-m3wg",
       "packageName": "openpgp",
       "title": "OpenPGP 1.2.0 and earlier decrypts arbitrary messages",
@@ -79,6 +106,60 @@
         {
           "range": "< 1.3.0",
           "fixed": "1.3.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hfmf-q43v-2ffj",
+      "packageName": "openpgp",
+      "title": "Improper Key Verification in openpgp",
+      "description": "Versions of `openpgp` prior to 4.2.0 are vulnerable to Improper Key Verification. The OpenPGP standard allows signature packets to have subpackets which may be hashed or unhashed. Unhashed subpackets are not cryptographically protected and cannot be trusted. The `openpgp` package does not verify whether a subpacket is hashed. Furthermore, due to the order of parsing a signature packet information from unhashed subpackets overwrites information from hashed subpackets. This may allow an attacker t",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-hfmf-q43v-2ffj",
+      "publishedAt": "2019-08-23T21:42:18Z",
+      "modifiedAt": "2023-01-09T05:02:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hfmf-q43v-2ffj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-9154"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.1.2",
+          "fixed": "4.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-qwqc-28w3-fww6",
+      "packageName": "openpgp",
+      "title": "Message Signature Bypass in openpgp",
+      "description": "Versions of `openpgp` prior to 4.2.0 are vulnerable to Message Signature Bypass. The package fails to verify that a message signature is of type `text`. This allows an attacker to to construct a message with a signature type that only verifies subpackets without additional input (such as `standalone` or `timestamp`). For example, an attacker that captures a `standalone` signature packet from a victim can construct arbitrary signed messages that would be verified correctly.\n\n\n## Recommendation\n\nU",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-qwqc-28w3-fww6",
+      "publishedAt": "2019-08-23T21:42:20Z",
+      "modifiedAt": "2023-01-09T05:01:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qwqc-28w3-fww6"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-9153"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 4.1.2",
+          "fixed": "4.2.0"
         }
       ],
       "source": "github"

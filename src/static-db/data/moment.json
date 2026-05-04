@@ -1,6 +1,6 @@
 {
   "packageName": "moment",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-wc69-rhjr-hc9g",
@@ -52,6 +52,83 @@
         {
           "range": "< 2.29.2",
           "fixed": "2.29.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-446m-mv8f-q348",
+      "packageName": "moment",
+      "title": "Regular Expression Denial of Service in moment",
+      "description": "Affected versions of `moment` are vulnerable to a low severity regular expression denial of service when parsing dates as strings.\n\n\n## Recommendation\n\nUpdate to version 2.19.3 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-446m-mv8f-q348",
+      "publishedAt": "2018-03-05T18:35:09Z",
+      "modifiedAt": "2023-04-14T19:11:28Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-446m-mv8f-q348"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-18214"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.19.3",
+          "fixed": "2.19.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-87vv-r9j6-g5qv",
+      "packageName": "moment",
+      "title": "Regular Expression Denial of Service in moment",
+      "description": "Versions of `moment` prior to 2.11.2 are affected by a regular expression denial of service vulnerability. The vulnerability is triggered when arbitrary user input is passed into `moment.duration()`.\n\n\n## Proof of concept\n```\nvar moment = require('moment');\n\nvar genstr = function (len, chr) {\n    var result = \"\";\n    for (i=0; i<=len; i++) {\n        result = result + chr;\n    }\n\n    return result;\n}\n\n\nfor (i=20000;i<=10000000;i=i+10000) {\n    console.log(\"COUNT: \" + i);\n    var str = '-' + genst",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-87vv-r9j6-g5qv",
+      "publishedAt": "2017-10-24T18:33:35Z",
+      "modifiedAt": "2023-02-03T05:02:30Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-87vv-r9j6-g5qv"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-4055"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.11.2",
+          "fixed": "2.11.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hxf5-mg84-pj4m",
+      "packageName": "moment",
+      "title": "Moderate severity vulnerability that affects moment",
+      "description": "Withdrawn, accidental duplicate publish.\r\n\r\nThe duration function in the moment package before 2.11.2 for Node.js allows remote attackers to cause a denial of service (CPU consumption) via a long string, aka a \"regular expression Denial of Service (ReDoS).\"",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hxf5-mg84-pj4m",
+      "publishedAt": "2018-07-31T23:03:17Z",
+      "modifiedAt": "2023-01-09T05:03:18Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hxf5-mg84-pj4m"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.11.2",
+          "fixed": "2.11.2"
         }
       ],
       "source": "github"

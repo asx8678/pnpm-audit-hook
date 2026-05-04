@@ -1,0 +1,60 @@
+{
+  "packageName": "generator-jhipster-kotlin",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j3rh-8vwq-wh84",
+      "packageName": "generator-jhipster-kotlin",
+      "title": "JHipster Kotlin using insecure source of randomness `RandomStringUtils` before v1.2.0",
+      "description": "JHipster Kotlin is using an insecure source of randomness to generate all of its random values. JHipster Kotlin relies upon apache commons lang3 `RandomStringUtils`.\n\nFrom the documentation:\n\n> Caveat: Instances of Random, upon which the implementation of this class relies, are not cryptographically secure.\n> \\- https://commons.apache.org/proper/commons-lang/javadocs/api-3.9/org/apache/commons/lang3/RandomStringUtils.html\n\nHere are the examples of JHipster Kotlin's use of an insecure PRNG:\n\nhttp",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-j3rh-8vwq-wh84",
+      "publishedAt": "2020-06-26T16:48:13Z",
+      "modifiedAt": "2023-01-20T18:53:27Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j3rh-8vwq-wh84"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-16303"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.2.0",
+          "fixed": "1.2.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-pfxf-wh96-fvjc",
+      "packageName": "generator-jhipster-kotlin",
+      "title": "Log Forging in generator-jhipster-kotlin",
+      "description": "### Impact\n\nWe log the mail for invalid password reset attempts. \nAs the email is provided by a user and the api is public this can be used by an attacker to forge log entries.\nThis is vulnerable to https://cwe.mitre.org/data/definitions/117.html\n\nThis problem affects only application generated with jwt or session authentication. Applications using oauth are not vulnerable.\n\n### Patches\n\nversion 1.7.0.\n\n### Workarounds\n\nIn `AccountResource.kt` you should change the line\n\n```kotlin\n log.warn(\"Pas",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pfxf-wh96-fvjc",
+      "publishedAt": "2020-06-25T20:02:51Z",
+      "modifiedAt": "2023-01-09T05:03:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pfxf-wh96-fvjc"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-4072"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.6.0",
+          "fixed": "1.7.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

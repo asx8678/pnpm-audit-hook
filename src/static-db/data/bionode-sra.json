@@ -1,0 +1,32 @@
+{
+  "packageName": "bionode-sra",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-735c-r4vc-6gm9",
+      "packageName": "bionode-sra",
+      "title": "Downloads Resources over HTTP in bionode-sra",
+      "description": "Affected versions of `bionode-sra` insecurely downloads resources over HTTP. \n\nIn scenarios where an attacker has a privileged network position, they can modify or read such resources at will. While the exact severity of impact for a vulnerability like this is highly variable and depends on the behavior of the package itself, it ranges from being able to read sensitive information all the way up to and including remote code execution.\n\n\n## Recommendation\n\nNo patch is currently available for this",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-735c-r4vc-6gm9",
+      "publishedAt": "2019-02-18T23:56:45Z",
+      "modifiedAt": "2023-01-09T05:02:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-735c-r4vc-6gm9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10613"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "mystem-fix",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-j3wh-5m26-2pf7",
+      "packageName": "mystem-fix",
+      "title": "Downloads Resources over HTTP in mystem-fix",
+      "description": "Affected versions of `mystem-fix` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `mystem-fix`.\n\n\n## Recommendation\n\nNo patch is currently available for this vulnerability.\n\nThe best mitigation is currently to avoid using this package, using a different package if avai",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j3wh-5m26-2pf7",
+      "publishedAt": "2018-07-27T14:34:11Z",
+      "modifiedAt": "2023-01-09T05:02:56Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j3wh-5m26-2pf7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10698"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

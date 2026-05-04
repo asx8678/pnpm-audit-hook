@@ -1,0 +1,33 @@
+{
+  "packageName": "pivottable",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cjj8-wfrx-jqcf",
+      "packageName": "pivottable",
+      "title": "Cross-Site Scripting (XSS) in pivottable",
+      "description": "Affected versions of `pivottable` are vulnerable to cross-site scripting, due to a new mechanism used to render JSON elements.\n\n\n## Recommendation\n\nUpdate to version 2.0.0 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cjj8-wfrx-jqcf",
+      "publishedAt": "2020-09-01T16:00:18Z",
+      "modifiedAt": "2023-01-09T05:03:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cjj8-wfrx-jqcf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-1000241"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.4.0, < 2.0.0",
+          "fixed": "2.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

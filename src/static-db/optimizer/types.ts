@@ -3,6 +3,8 @@
  * These represent the compact/optimized format for vulnerability data.
  */
 
+import type { StaticDbCoverage } from "../types";
+
 /**
  * Optimized vulnerability with short keys and enum indices.
  */
@@ -65,6 +67,8 @@ export interface OptimizedIndex {
   tp: number;
   /** Package map with short entries */
   p: Record<string, OptimizedIndexEntry>;
+  /** Optional coverage metadata (absent in legacy optimized indexes) */
+  cov?: StaticDbCoverage;
   /** Sorted list of package names for fast existence checks */
   pkgList?: string[];
   /**

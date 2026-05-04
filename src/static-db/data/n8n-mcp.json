@@ -1,0 +1,133 @@
+{
+  "packageName": "n8n-mcp",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-56c3-vfp2-5qqj",
+      "packageName": "n8n-mcp",
+      "title": "n8n-mcp's IPv4-mapped IPv6 addresses bypass SSRF protection in validateUrlSync(), enabling full SSRF for SDK embedders",
+      "description": "### Impact\n\nIn the SDK embedder path (`N8NDocumentationMCPServer` constructor, `getN8nApiClient()`, and `validateInstanceContext()`), the synchronous URL validator in `SSRFProtection.validateUrlSync()` had no IPv6 checks. IPv4-mapped IPv6 addresses such as `http://[::ffff:169.254.169.254]` bypassed the cloud-metadata, localhost, and private-IP range checks. An attacker able to supply an `n8nApiUrl` value could cause the server to issue HTTP requests to cloud metadata endpoints (AWS IMDS, GCP, Az",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-56c3-vfp2-5qqj",
+      "publishedAt": "2026-04-30T18:12:54Z",
+      "modifiedAt": "2026-04-30T18:12:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-56c3-vfp2-5qqj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-42449"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 2.47.4, < 2.47.14",
+          "fixed": "2.47.14"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-wg4g-395p-mqv3",
+      "packageName": "n8n-mcp",
+      "title": "n8n-MCP: Sensitive MCP tool-call arguments logged on authenticated requests in HTTP mode",
+      "description": "### Impact\n\nWhen `n8n-mcp` runs in HTTP transport mode, authenticated MCP `tools/call` requests had their full arguments and JSON-RPC params written to server logs by the request dispatcher and several sibling code paths before any redaction. When a tool call carries credential material — most notably `n8n_manage_credentials.data` — the raw values can be persisted in logs.\n\nIn deployments where logs are collected, forwarded to external systems, or viewable outside the request trust boundary (sha",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wg4g-395p-mqv3",
+      "publishedAt": "2026-04-25T23:35:28Z",
+      "modifiedAt": "2026-04-25T23:35:29Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wg4g-395p-mqv3"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.47.13",
+          "fixed": "2.47.13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-pfm2-2mhg-8wpx",
+      "packageName": "n8n-mcp",
+      "title": "n8n-MCP Logs Sensitive Request Data on Unauthorized /mcp Requests",
+      "description": "### Impact\n\nWhen `n8n-mcp` runs in HTTP transport mode, incoming requests to the `POST /mcp` endpoint had their request metadata written to server logs regardless of the authentication outcome. In deployments where logs are collected, forwarded to external systems, or viewable outside the request trust boundary (shared log storage, SIEM pipelines, support/ops access), this can result in disclosure of:\n\n- bearer tokens from the `Authorization` header\n- per-tenant API keys from the `x-n8n-key` hea",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-pfm2-2mhg-8wpx",
+      "publishedAt": "2026-04-23T14:31:46Z",
+      "modifiedAt": "2026-04-23T14:31:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pfm2-2mhg-8wpx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41495"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.47.11",
+          "fixed": "2.47.11"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-75hx-xj24-mqrw",
+      "packageName": "n8n-mcp",
+      "title": "n8n-mcp has unauthenticated session termination and information disclosure in HTTP transport",
+      "description": "### Summary\n\nSeveral HTTP transport endpoints in n8n-mcp lacked proper authentication, and the health check endpoint exposed sensitive operational metadata without credentials.\n\n### Impact\n\nAn unauthenticated attacker with network access to the n8n-mcp HTTP server could disrupt active MCP sessions and gather information useful for further attacks.\n\n### Patches\n\nFixed in **v2.47.6**. All MCP session endpoints now require Bearer authentication. The health check endpoint has been reduced to a minim",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-75hx-xj24-mqrw",
+      "publishedAt": "2026-04-10T20:59:58Z",
+      "modifiedAt": "2026-04-10T20:59:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-75hx-xj24-mqrw"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.47.5",
+          "fixed": "2.47.6"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4ggg-h7ph-26qr",
+      "packageName": "n8n-mcp",
+      "title": "n8n-mcp has authenticated SSRF via instance-URL header in multi-tenant HTTP mode",
+      "description": "## Impact\nAn authenticated Server-Side Request Forgery in `n8n-mcp` allows a caller holding a valid `AUTH_TOKEN` to cause the server to issue HTTP requests to arbitrary URLs supplied through multi-tenant HTTP headers. Response bodies are reflected back through JSON-RPC, so an attacker can read the contents of any URL the server can reach — including cloud instance metadata endpoints (AWS IMDS, GCP, Azure, Alibaba, Oracle), internal network services, and any other host the server process has netw",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4ggg-h7ph-26qr",
+      "publishedAt": "2026-04-08T19:53:48Z",
+      "modifiedAt": "2026-04-09T19:05:58Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4ggg-h7ph-26qr"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39974"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.47.3",
+          "fixed": "2.47.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

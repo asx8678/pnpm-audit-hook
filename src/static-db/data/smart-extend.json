@@ -1,0 +1,28 @@
+{
+  "packageName": "smart-extend",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-f8h3-rqrm-47v9",
+      "packageName": "smart-extend",
+      "title": "Prototype Pollution in smart-extend",
+      "description": "All versions of `smart-extend` are vulnerable to Prototype Pollution. The `deep()` function allows attackers to modify the prototype of Object causing the addition or modification of an existing property that will exist on all objects.\n\n\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f8h3-rqrm-47v9",
+      "publishedAt": "2020-09-02T16:02:40Z",
+      "modifiedAt": "2023-01-09T05:03:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f8h3-rqrm-47v9"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

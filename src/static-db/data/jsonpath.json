@@ -1,6 +1,6 @@
 {
   "packageName": "jsonpath",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-87r5-mp6g-5w5j",
@@ -10,7 +10,7 @@
       "severity": "high",
       "url": "https://github.com/advisories/GHSA-87r5-mp6g-5w5j",
       "publishedAt": "2026-02-09T06:30:28Z",
-      "modifiedAt": "2026-02-17T21:47:34Z",
+      "modifiedAt": "2026-03-19T16:17:29Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -23,7 +23,8 @@
       ],
       "affectedVersions": [
         {
-          "range": "<= 1.2.1"
+          "range": "<= 1.2.1",
+          "fixed": "1.3.0"
         }
       ],
       "source": "github"

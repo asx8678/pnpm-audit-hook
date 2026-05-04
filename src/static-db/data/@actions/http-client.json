@@ -1,0 +1,33 @@
+{
+  "packageName": "@actions/http-client",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-9w6v-m7wp-jwg4",
+      "packageName": "@actions/http-client",
+      "title": "Http request which redirect to another hostname do not strip authorization header in @actions/http-client",
+      "description": "### Impact\nIf consumers of the http-client:\n  1. make an http request with an authorization header\n  2. that request leads to a redirect (302) and\n  3. the redirect url redirects to another domain or hostname \n\nThe authorization header will get passed to the other domain.\n\nNote that since this library is for actions, the GITHUB_TOKEN that is available in actions is generated and scoped per job with [these permissions](https://help.github.com/en/actions/configuring-and-managing-workflows/authenti",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-9w6v-m7wp-jwg4",
+      "publishedAt": "2020-04-29T17:58:53Z",
+      "modifiedAt": "2023-02-01T05:03:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-9w6v-m7wp-jwg4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-11021"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.8",
+          "fixed": "1.0.8"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "packageName": "picard",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x5x2-mfc7-r22f",
+      "packageName": "picard",
+      "title": "Directory Traversal in picard",
+      "description": "Affected versions of `picard` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the package is only use",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x5x2-mfc7-r22f",
+      "publishedAt": "2018-07-23T20:40:20Z",
+      "modifiedAt": "2023-09-05T23:33:33Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x5x2-mfc7-r22f"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16194"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.3.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

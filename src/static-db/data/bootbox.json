@@ -1,6 +1,6 @@
 {
   "packageName": "bootbox",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-m4ch-4m5f-2gp6",
@@ -24,6 +24,28 @@
       "affectedVersions": [
         {
           "range": ">= 3.2.0, <= 6.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-87mg-h5r3-hw88",
+      "packageName": "bootbox",
+      "title": "Cross-Site Scripting in bootbox",
+      "description": "All version of `bootbox` are vulnerable to Cross-Site Scripting. The package does not sanitize user input in the provided dialog boxes, allowing attackers to inject HTML code and execute arbitrary JavaScript.\n\n\n## Recommendation\n\nSanitize user input being passed to `bootbox` or consider using an alternative package.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-87mg-h5r3-hw88",
+      "publishedAt": "2019-05-30T17:23:28Z",
+      "modifiedAt": "2023-01-09T05:01:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-87mg-h5r3-hw88"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 5.5.2"
         }
       ],
       "source": "github"

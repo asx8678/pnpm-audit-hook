@@ -1,7 +1,33 @@
 {
   "packageName": "pdf-image",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-q5mh-72xg-628w",
+      "packageName": "pdf-image",
+      "title": "pdf-image has an OS Command Injection Vulnerability through its pdfFilePath parameter",
+      "description": "pdf-image (npm package) through version 2.0.0 allows OS command injection via the pdfFilePath parameter. The constructGetInfoCommand and constructConvertCommandForPage functions use util.format() to interpolate user-controlled file paths into shell command strings that are executed via child_process.exec().",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-q5mh-72xg-628w",
+      "publishedAt": "2026-03-25T15:31:29Z",
+      "modifiedAt": "2026-03-27T18:38:05Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-q5mh-72xg-628w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-26830"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-rv7p-mmwq-x674",
       "packageName": "pdf-image",
@@ -24,6 +50,33 @@
       "affectedVersions": [
         {
           "range": "<= 2.0.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-5gwh-g79j-vh4q",
+      "packageName": "pdf-image",
+      "title": "Command Injection in pdf-image",
+      "description": "Versions of `pdf-image` before 2.0.0 are vulnerable to command injection. This vulnerability is exploitable if the attacker has control over the `pdfFilePath` variable passed into `pdf-image`.\n\n\n## Recommendation\n\nUpdate to version 2.0.0 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-5gwh-g79j-vh4q",
+      "publishedAt": "2020-09-01T20:44:52Z",
+      "modifiedAt": "2023-01-09T05:04:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-5gwh-g79j-vh4q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-3757"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.0",
+          "fixed": "2.0.0"
         }
       ],
       "source": "github"

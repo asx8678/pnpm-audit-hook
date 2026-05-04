@@ -1,0 +1,33 @@
+{
+  "packageName": "windows-cpu",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-63m4-fhf2-cmf7",
+      "packageName": "windows-cpu",
+      "title": "Command Execution in windows-cpu",
+      "description": "Version of `windows-cpu` before 0.1.5 will execute arbitrary code passed into the first argument of the `findLoad` method, resulting in remote code execution.\n\n## Proof of Concept\n\n```js\nvar win = require('windows-cpu');\nwind.findLoad('foo & calc.exe');\n```\n\n\n## Recommendation\n\nUpdate to version 0.1.5 or later.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-63m4-fhf2-cmf7",
+      "publishedAt": "2020-09-01T16:43:55Z",
+      "modifiedAt": "2023-09-08T18:52:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-63m4-fhf2-cmf7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-1000219"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.1.5",
+          "fixed": "0.1.5"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "packageName": "gun",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-886v-mm6p-4m66",
+      "packageName": "gun",
+      "title": "High severity vulnerability that affects gun",
+      "description": "## Urgent Upgrade\n\nThe static file server module included with GUN had a **serious vulnerability**:\n\n - Using `curl --path-as-is` allowed reads on any parent directory or files.\n\nThis did not work via the browser or via curl without as-is option.\n\n ### Fixed\n\nThis has been fixed since version `0.2019.416` and higher.\n\n ### Who Was Effected?\n\nMost NodeJS users who use the default setup, such as:\n\n - `npm start`\n - `node examples/http.js`\n - `Heroku` 1-click-deploy\n - `Docker`\n - `Now`\n\nIf you hav",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-886v-mm6p-4m66",
+      "publishedAt": "2019-06-05T09:48:02Z",
+      "modifiedAt": "2023-01-09T05:03:01Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-886v-mm6p-4m66"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.2019.416",
+          "fixed": "0.2019.416"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,7 +1,115 @@
 {
   "packageName": "rendertron",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-vqmr-957g-r7w3",
+      "packageName": "rendertron",
+      "title": "Rendertron discloses absolute paths of files",
+      "description": "Installed packages are exposed by node_modules in Rendertron 1.0.0, allowing remote attackers to read absolute paths on the server by examining the \"_where\" attribute of package.json files.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vqmr-957g-r7w3",
+      "publishedAt": "2019-02-12T15:36:39Z",
+      "modifiedAt": "2023-09-07T00:06:15Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vqmr-957g-r7w3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-18355"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-j88m-953w-8r2c",
+      "packageName": "rendertron",
+      "title": "rendertron XSS vulnerability",
+      "description": "Error reporting within Rendertron 1.0.0 allows reflected Cross Site Scripting (XSS) from invalid URLs.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-j88m-953w-8r2c",
+      "publishedAt": "2019-01-07T19:14:21Z",
+      "modifiedAt": "2023-09-06T20:07:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j88m-953w-8r2c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-18352"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-j87c-cj65-vmh5",
+      "packageName": "rendertron",
+      "title": "rendertron LFI vulnerability",
+      "description": "Rendertron 1.0.0 allows for alternative protocols such as 'file://' introducing a Local File Inclusion (LFI) bug where arbitrary files can be read by a remote attacker.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-j87c-cj65-vmh5",
+      "publishedAt": "2019-01-04T17:41:51Z",
+      "modifiedAt": "2023-09-06T20:06:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-j87c-cj65-vmh5"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-18354"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-4q69-q4q7-x82c",
+      "packageName": "rendertron",
+      "title": "rendertron can remotely shut down Chrome instance",
+      "description": "Rendertron 1.0.0 includes an `_ah/stop` route to shutdown the Chrome instance responsible for serving render requests to all users. Visiting this route with a GET request allows any unauthorized remote attacker to disable the core service of the application.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4q69-q4q7-x82c",
+      "publishedAt": "2019-01-04T17:41:46Z",
+      "modifiedAt": "2023-09-06T20:01:34Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4q69-q4q7-x82c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-18353"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.1.0",
+          "fixed": "1.1.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-xr9h-9m79-x29g",
       "packageName": "rendertron",

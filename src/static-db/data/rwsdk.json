@@ -1,0 +1,56 @@
+{
+  "packageName": "rwsdk",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-m2m6-cff5-3w7c",
+      "packageName": "rwsdk",
+      "title": "RedwoodSDK has Same-site CSRF through lack of origin validation in its server actions",
+      "description": "### Summary\n\nServer actions in `rwsdk` apply HTTP method enforcement but no origin validation. A request originating from a different origin that the browser treats as same-site can invoke a server action with the victim's session cookie attached.\n\n### Impact\n\nAn attacker who controls any origin the browser considers same-site with the deployed app can induce an authenticated victim's browser to invoke arbitrary server actions. The exposure depends on deployment shape:\n\n- Apps deployed on custom",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-m2m6-cff5-3w7c",
+      "publishedAt": "2026-04-24T15:36:52Z",
+      "modifiedAt": "2026-04-24T15:36:54Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-m2m6-cff5-3w7c"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0-beta.50, <= 1.2.2",
+          "fixed": "1.2.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-x8rx-789c-2pxq",
+      "packageName": "rwsdk",
+      "title": "RedwoodSDK has a CSRF vulnerability in server function dispatch via GET requests",
+      "description": "**Summary**\n\nServer functions exported from `\"use server\"` files could be invoked via GET requests, bypassing their intended HTTP method. In cookie-authenticated applications, this allowed cross-site GET navigations to trigger state-changing functions, because browsers send `SameSite=Lax` cookies on top-level GET requests.\n\nThis affected all server functions -- both `serverAction()` handlers and bare exported functions in `\"use server\"` files.\n\n**Impact**\n\nAn attacker could construct a URL conta",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x8rx-789c-2pxq",
+      "publishedAt": "2026-04-08T00:12:06Z",
+      "modifiedAt": "2026-04-08T00:12:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x8rx-789c-2pxq"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-39371"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 1.0.0-beta.50, <= 1.0.5",
+          "fixed": "1.0.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

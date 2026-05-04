@@ -1,0 +1,29 @@
+{
+  "packageName": "@novu/api",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4x48-cgf9-q33f",
+      "packageName": "@novu/api",
+      "title": "Novu has SSRF via conditions filter webhook bypasses validateUrlSsrf() protection",
+      "description": "## Summary\n\nThe conditions filter webhook at `libs/application-generic/src/usecases/conditions-filter/conditions-filter.usecase.ts` line 261 sends POST requests to user-configured URLs using raw `axios.post()` with no SSRF validation. The HTTP Request workflow step in the same codebase correctly uses `validateUrlSsrf()` which blocks private IP ranges. The conditions webhook was not included in this protection.\n\n## Root Cause\n\n`conditions-filter.usecase.ts` line 261:\n```typescript\nreturn await ax",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4x48-cgf9-q33f",
+      "publishedAt": "2026-04-14T23:22:48Z",
+      "modifiedAt": "2026-04-14T23:22:49Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4x48-cgf9-q33f"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.15.0",
+          "fixed": "3.15.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

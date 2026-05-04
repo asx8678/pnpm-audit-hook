@@ -1,0 +1,33 @@
+{
+  "packageName": "@feathersjs/mongodb",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-p9xr-7p9p-gpqx",
+      "packageName": "@feathersjs/mongodb",
+      "title": "Feathers has a NoSQL Injection via WebSocket id Parameter in MongoDB Adapter",
+      "description": "Socket.IO clients can send arbitrary JavaScript objects as the id argument to any service method (get, patch, update, remove). The transport layer performs no type checking on this argument. When the service uses the MongoDB adapter, these objects pass through getObjectId() and land directly in the MongoDB query as operators. Sending {$ne: null} as the id matches every document in the collection.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-p9xr-7p9p-gpqx",
+      "publishedAt": "2026-03-10T21:03:40Z",
+      "modifiedAt": "2026-03-10T22:55:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-p9xr-7p9p-gpqx"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-29793"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 5.0.0, <= 5.0.41",
+          "fixed": "5.0.42"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

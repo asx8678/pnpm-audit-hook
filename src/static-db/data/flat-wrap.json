@@ -1,0 +1,28 @@
+{
+  "packageName": "flat-wrap",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g7h8-p22m-2rvx",
+      "packageName": "flat-wrap",
+      "title": "Prototype Pollution in flat-wrap",
+      "description": "All versions of `flat-wrap` are vulnerable to prototype pollution. The function `unflatten` does not restrict the modification of an Object's prototype, which may allow an attacker to add or modify an existing property that will exist on all objects.\n\n\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative package until a fix is made available.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g7h8-p22m-2rvx",
+      "publishedAt": "2020-09-04T15:08:46Z",
+      "modifiedAt": "2023-01-09T05:04:10Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g7h8-p22m-2rvx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.0.0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

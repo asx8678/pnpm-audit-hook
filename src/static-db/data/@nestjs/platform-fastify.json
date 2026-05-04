@@ -1,30 +1,30 @@
 {
   "packageName": "@nestjs/platform-fastify",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
-      "id": "GHSA-8wpr-639p-ccrj",
+      "id": "GHSA-wf42-42fg-fg84",
       "packageName": "@nestjs/platform-fastify",
-      "title": "Nest has a Fastify URL Encoding Middleware Bypass (TOCTOU)",
-      "description": "A NestJS application is vulnerable if it meets all of the following criteria:\n\n1. Platform: Uses `@nestjs/platform-fastify`.\n2. Security Mechanism: Relies on `NestMiddleware` (via `MiddlewareConsumer`) for security checks (authentication, authorization, etc.), or through `app.use()`\n3. Routing: Applies middleware to specific routes using string paths or controllers (e.g., `.forRoutes('admin')`).\nExample Vulnerable Config:\n\n```ts\n// app.module.ts\nexport class AppModule implements NestModule {\n  c",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-8wpr-639p-ccrj",
-      "publishedAt": "2025-12-30T15:32:44Z",
-      "modifiedAt": "2025-12-30T15:32:45Z",
+      "title": "Nest Fastify HEAD Request Middleware Bypass",
+      "description": "### Impact\n\nIn a NestJS application using `@nestjs/platform-fastify`, GET middleware can be bypassed because Fastify automatically redirects HEAD requests to the corresponding GET handlers (if they exist).\n\nAs a result:\n\n- Middleware will be completely skipped.\n- The HTTP response won't include a body (since the response is truncated when redirecting a HEAD request to a GET handler).\n- The actual handler will still be executed.\n\n### Patches\n\nFixed in `@nestjs/platform-fastify@11.1.16`",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-wf42-42fg-fg84",
+      "publishedAt": "2026-03-17T18:38:38Z",
+      "modifiedAt": "2026-03-20T21:21:46Z",
       "identifiers": [
         {
           "type": "GHSA",
-          "value": "GHSA-8wpr-639p-ccrj"
+          "value": "GHSA-wf42-42fg-fg84"
         },
         {
           "type": "CVE",
-          "value": "CVE-2025-69211"
+          "value": "CVE-2026-33011"
         }
       ],
       "affectedVersions": [
         {
-          "range": "< 11.1.10",
-          "fixed": "11.1.11"
+          "range": "<= 11.1.15",
+          "fixed": "11.1.16"
         }
       ],
       "source": "github"
@@ -75,6 +75,33 @@
         {
           "range": "< 11.1.14",
           "fixed": "11.1.14"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8wpr-639p-ccrj",
+      "packageName": "@nestjs/platform-fastify",
+      "title": "Nest has a Fastify URL Encoding Middleware Bypass (TOCTOU)",
+      "description": "A NestJS application is vulnerable if it meets all of the following criteria:\n\n1. Platform: Uses `@nestjs/platform-fastify`.\n2. Security Mechanism: Relies on `NestMiddleware` (via `MiddlewareConsumer`) for security checks (authentication, authorization, etc.), or through `app.use()`\n3. Routing: Applies middleware to specific routes using string paths or controllers (e.g., `.forRoutes('admin')`).\nExample Vulnerable Config:\n\n```ts\n// app.module.ts\nexport class AppModule implements NestModule {\n  c",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-8wpr-639p-ccrj",
+      "publishedAt": "2025-12-30T15:32:44Z",
+      "modifiedAt": "2025-12-30T15:32:45Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8wpr-639p-ccrj"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2025-69211"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 11.1.10",
+          "fixed": "11.1.11"
         }
       ],
       "source": "github"

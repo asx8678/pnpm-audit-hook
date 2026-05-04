@@ -1,0 +1,33 @@
+{
+  "packageName": "@nocobase/plugin-workflow-sql",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vx58-fwwq-5g8j",
+      "packageName": "@nocobase/plugin-workflow-sql",
+      "title": "NocoBase Has SQL Injection via template variable substitution in workflow SQL node",
+      "description": "## Summary\n\nNocoBase <= 2.0.8 `plugin-workflow-sql` substitutes template variables directly into raw SQL strings via `getParsedValue()` without parameterization or escaping. Any user who triggers a workflow containing a SQL node with template variables from user-controlled data can inject arbitrary SQL.\n\n## Affected Versions\n\n- Affected: all versions through 2.0.8\n\n## Details\n\nThe `SQLInstruction` in `packages/plugins/@nocobase/plugin-workflow-sql/src/server/SQLInstruction.ts` line 28 processes ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-vx58-fwwq-5g8j",
+      "publishedAt": "2026-04-01T23:44:37Z",
+      "modifiedAt": "2026-04-10T17:32:50Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vx58-fwwq-5g8j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-34825"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.0.29",
+          "fixed": "2.0.30"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

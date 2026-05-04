@@ -1,15 +1,70 @@
 {
   "packageName": "postcss",
-  "lastUpdated": "2026-05-02T00:57:15.124Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-qx2v-qp2m-jg93",
+      "packageName": "postcss",
+      "title": "PostCSS has XSS via Unescaped </style> in its CSS Stringify Output",
+      "description": "# PostCSS: XSS via Unescaped `</style>` in CSS Stringify Output\n\n## Summary\n\nPostCSS v8.5.5 (latest) does not escape `</style>` sequences when stringifying CSS ASTs. When user-submitted CSS is parsed and re-stringified for embedding in HTML `<style>` tags, `</style>` in CSS values breaks out of the style context, enabling XSS.\n\n## Proof of Concept\n\n```javascript\nconst postcss = require('postcss');\n\n// Parse user CSS and re-stringify for page embedding\nconst userCSS = 'body { content: \"</style><s",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-qx2v-qp2m-jg93",
+      "publishedAt": "2026-04-24T15:31:42Z",
+      "modifiedAt": "2026-04-24T15:31:44Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-qx2v-qp2m-jg93"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-41305"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.5.10",
+          "fixed": "8.5.10"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-7fh5-64p2-3v2j",
+      "packageName": "postcss",
+      "title": "PostCSS line return parsing error",
+      "description": "An issue was discovered in PostCSS before 8.4.31. It affects linters using PostCSS to parse external Cascading Style Sheets (CSS). There may be `\\r` discrepancies, as demonstrated by `@font-face{ font:(\\r/*);}` in a rule.\n\nThis vulnerability affects linters using PostCSS to parse external untrusted CSS. An attacker can prepare CSS in such a way that it will contains parts parsed by PostCSS as a CSS comment. After processing by PostCSS, it will be included in the PostCSS output in CSS nodes (rule",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-7fh5-64p2-3v2j",
+      "publishedAt": "2023-09-30T00:31:10Z",
+      "modifiedAt": "2025-11-04T16:45:03Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-7fh5-64p2-3v2j"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2023-44270"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 8.4.31",
+          "fixed": "8.4.31"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-566m-qj78-rww5",
       "packageName": "postcss",
-      "title": "PostCSS line return parsing error",
+      "title": "Regular Expression Denial of Service in postcss",
+      "description": "The package postcss versions before 7.0.36 or between 8.0.0 and 8.2.13 are vulnerable to Regular Expression Denial of Service (ReDoS) via getAnnotationURL() and loadAnnotation() in lib/previous-map.js. The vulnerable regexes are caused mainly by the sub-pattern \n```regex\n\\/\\*\\s* sourceMappingURL=(.*)\n```\n\n### PoC\n```js\nvar postcss = require(\"postcss\")\nfunction build_attack(n) {\n    var ret = \"a{}\"\n    for (var i = 0; i < n; i++) {\n        ret += \"/*# sourceMappingURL=\"\n    }\n    return ret + \"!\"",
       "severity": "medium",
       "url": "https://github.com/advisories/GHSA-566m-qj78-rww5",
-      "publishedAt": "2021-09-23T23:09:00Z",
-      "modifiedAt": "2023-09-11T22:17:00Z",
+      "publishedAt": "2022-01-07T00:21:36Z",
+      "modifiedAt": "2023-09-08T19:35:15Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -22,8 +77,35 @@
       ],
       "affectedVersions": [
         {
-          "range": "<7.0.36",
+          "range": "< 7.0.36",
           "fixed": "7.0.36"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-hwj9-h5mp-3pm3",
+      "packageName": "postcss",
+      "title": "Regular Expression Denial of Service in postcss",
+      "description": "The npm package `postcss` from 7.0.0 and before versions 7.0.36 and 8.2.10 is vulnerable to Regular Expression Denial of Service (ReDoS) during source map parsing.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-hwj9-h5mp-3pm3",
+      "publishedAt": "2021-05-10T15:29:24Z",
+      "modifiedAt": "2023-02-01T05:05:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-hwj9-h5mp-3pm3"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2021-23368"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 8.0.0, < 8.2.10",
+          "fixed": "8.2.10"
         }
       ],
       "source": "github"

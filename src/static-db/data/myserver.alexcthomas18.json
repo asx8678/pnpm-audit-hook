@@ -1,0 +1,32 @@
+{
+  "packageName": "myserver.alexcthomas18",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-rgq8-25qc-h54q",
+      "packageName": "myserver.alexcthomas18",
+      "title": "Directory Traversal in myserver.alexcthomas18",
+      "description": "Affected versions of `myserver.alexcthomas18` resolve relative file paths, resulting in a directory traversal vulnerability. A malicious actor can use this vulnerability to access files outside of the intended directory root, which may result in the disclosure of private files on the vulnerable system.\n\n**Example request:**\n```http\nGET /../../../../../../../../../../etc/passwd HTTP/1.1\nhost:foo\n```\n\n\n## Recommendation\n\nNo patch is available for this vulnerability.\n\nIt is recommended that the pac",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-rgq8-25qc-h54q",
+      "publishedAt": "2018-07-23T20:48:05Z",
+      "modifiedAt": "2023-09-07T22:22:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-rgq8-25qc-h54q"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16144"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 0.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

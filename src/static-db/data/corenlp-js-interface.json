@@ -1,0 +1,32 @@
+{
+  "packageName": "corenlp-js-interface",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-ffxg-xm4w-3wg9",
+      "packageName": "corenlp-js-interface",
+      "title": "Command Injection in corenlp-js-interface",
+      "description": "All versions of package corenlp-js-interface are vulnerable to Command Injection via the main function.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-ffxg-xm4w-3wg9",
+      "publishedAt": "2020-12-18T18:23:04Z",
+      "modifiedAt": "2023-02-01T05:05:09Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-ffxg-xm4w-3wg9"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2020-28440"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.0.3"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

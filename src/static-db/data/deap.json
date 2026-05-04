@@ -1,6 +1,6 @@
 {
   "packageName": "deap",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-xg47-r67p-vhv5",
@@ -19,6 +19,29 @@
         {
           "type": "CVE",
           "value": "CVE-2018-3749"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 1.0.1",
+          "fixed": "1.0.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-xrmp-99wj-p6jc",
+      "packageName": "deap",
+      "title": "Prototype Pollution in deap",
+      "description": "Versions of `deap` before 1.0.1 are vulnerable to prototype pollution.\n\n\n## Recommendation\n\nUpdate to version 1.0.1 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-xrmp-99wj-p6jc",
+      "publishedAt": "2019-05-31T23:43:09Z",
+      "modifiedAt": "2023-01-09T05:01:25Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-xrmp-99wj-p6jc"
         }
       ],
       "affectedVersions": [

@@ -1,7 +1,34 @@
 {
   "packageName": "@keystone-6/core",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-cgcg-q9jh-5pr2",
+      "packageName": "@keystone-6/core",
+      "title": "@keystone-6/core: `isFilterable` bypass via `cursor` parameter in findMany (CVE-2025-46720 incomplete fix)",
+      "description": "# Summary  \n`{field}.isFilterable` access control can be bypassed in `findMany` queries by passing a `cursor`.  This can be used to confirm the existence of records by protected field values.\n\nThe fix for [CVE-2025-46720](https://github.com/keystonejs/keystone/security/advisories/GHSA-hg9m-67mm-7pg3) (field-level `isFilterable` bypass for update and delete mutations) added checks to the `where` parameter in `update` and `delete` mutations however the `cursor` parameter in `findMany` was not patc",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cgcg-q9jh-5pr2",
+      "publishedAt": "2026-03-19T18:37:42Z",
+      "modifiedAt": "2026-03-27T21:57:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cgcg-q9jh-5pr2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-33326"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 6.5.1",
+          "fixed": "6.5.2"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-hg9m-67mm-7pg3",
       "packageName": "@keystone-6/core",

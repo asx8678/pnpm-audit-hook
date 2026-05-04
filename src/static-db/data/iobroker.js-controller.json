@@ -1,0 +1,33 @@
+{
+  "packageName": "iobroker.js-controller",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-cmch-296j-wfvw",
+      "packageName": "iobroker.js-controller",
+      "title": "Arbitrary File Write in iobroker.js-controller",
+      "description": "Versions of `iobroker.controller` prior to 2.0.25 are vulnerable to Path Traversal. The package fails to restrict access to folders outside of the intended `/adapter/<adapter-name>` folder, which may allow attackers to include arbitrary files in the system. An attacker would need to be authenticated to perform the attack but the package has authentication disabled by default.\n\n\n## Recommendation\n\nUpgrade to version 2.0.25 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-cmch-296j-wfvw",
+      "publishedAt": "2019-12-02T18:06:14Z",
+      "modifiedAt": "2023-01-09T05:02:06Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cmch-296j-wfvw"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10767"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.0.25",
+          "fixed": "2.0.25"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

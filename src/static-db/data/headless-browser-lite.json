@@ -1,0 +1,33 @@
+{
+  "packageName": "headless-browser-lite",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-g95j-p8f6-pwh4",
+      "packageName": "headless-browser-lite",
+      "title": "headless-browser-lite downloads Resources over HTTP",
+      "description": "Affected versions of `headless-browser-lite` insecurely download an executable over an unencrypted HTTP connection. \n\nIn scenarios where an attacker has a privileged network position, it is possible to intercept the response and replace the executable with a malicious one, resulting in code execution on the system running `headless-browser-lite`.\n\n\n## Recommendation\n\nUpdate to version 2015.4.18-a or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-g95j-p8f6-pwh4",
+      "publishedAt": "2019-02-18T23:56:58Z",
+      "modifiedAt": "2023-09-13T19:39:31Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-g95j-p8f6-pwh4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10625"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2015.4.3-10",
+          "fixed": "2015.4.18-a"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

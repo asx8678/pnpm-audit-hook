@@ -1,6 +1,6 @@
 {
   "packageName": "preact",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-36hm-qxxp-pg3m",
@@ -25,6 +25,29 @@
         {
           "range": ">= 10.28.0, < 10.28.2",
           "fixed": "10.28.2"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-cg48-9hh2-x6mx",
+      "packageName": "preact",
+      "title": "HTML Injection in preact",
+      "description": "Versions of `preact` 10.x on prerelease tags alpha and beta prior to 10.0.0-beta.1 are vulnerable to HTML Injection. Due to insufficient input validation the package allows attackers to inject JavaScript objects as virtual-dom nodes, which may lead to Cross-Site Scripting. This requires user input parsed with `JSON.parse()` to be passed directly into JSX without sanitization.\n\n\n## Recommendation\n\nUpgrade to version 10.0.0-beta.1.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-cg48-9hh2-x6mx",
+      "publishedAt": "2020-09-02T18:28:58Z",
+      "modifiedAt": "2023-01-09T05:03:46Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-cg48-9hh2-x6mx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 10.0.0-alpha.0, <= 10.0.0-beta.0",
+          "fixed": "10.0.0-beta.1"
         }
       ],
       "source": "github"

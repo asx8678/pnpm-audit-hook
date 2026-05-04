@@ -1,0 +1,79 @@
+{
+  "packageName": "jwt-simple",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-vgrx-w6rg-8fqf",
+      "packageName": "jwt-simple",
+      "title": "Forgeable Public/Private Tokens in jwt-simple",
+      "description": "Affected versions of the `jwt-simple` package allow users to select what algorithm the server will use to verify a provided JWT. A malicious actor can use this behaviour to arbitrarily modify the contents of a JWT while still passing verification. For the common use case of the JWT, the end result is a complete authentication bypass with minimal effort.\n\n\n\n## Recommendation\n\nUpdate to version 0.3.1 or later.\n\nAdditionally, be sure to always specify an algorithm in calls to `.decode()`.",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-vgrx-w6rg-8fqf",
+      "publishedAt": "2018-11-06T23:12:07Z",
+      "modifiedAt": "2023-01-09T05:03:37Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-vgrx-w6rg-8fqf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10555"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.3.1",
+          "fixed": "0.3.1"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8v5f-hp78-jgxq",
+      "packageName": "jwt-simple",
+      "title": "Signature Verification Bypass in jwt-simple",
+      "description": "Versions of `jwt-simple` prior to 0.5.3 are vulnerable to Signature Verification Bypass. If no algorithm is specified in the `decode()` function, the packages uses the algorithm in the JWT to decode tokens. This allows an attacker to create a HS256 (symmetric algorithm) JWT with the server's public key as secret, and the package will verify it as HS256 instead of RS256 (asymmetric algorithm).\n\n\n## Recommendation\n\nUpgrade to version 0.5.3 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8v5f-hp78-jgxq",
+      "publishedAt": "2019-06-06T15:30:33Z",
+      "modifiedAt": "2023-01-09T05:01:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8v5f-hp78-jgxq"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.5.3",
+          "fixed": "0.5.3"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-chgg-rrmv-5q7x",
+      "packageName": "jwt-simple",
+      "title": "Withdrawn",
+      "description": "Withdrawn: Duplicate of GHSA-vgrx-w6rg-8fqf",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-chgg-rrmv-5q7x",
+      "publishedAt": "2020-08-03T18:05:48Z",
+      "modifiedAt": "2023-01-09T05:01:21Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-chgg-rrmv-5q7x"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 0.3.1",
+          "fixed": "0.3.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

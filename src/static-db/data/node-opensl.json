@@ -1,0 +1,32 @@
+{
+  "packageName": "node-opensl",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-646x-m363-9rh4",
+      "packageName": "node-opensl",
+      "title": "node-opensl is malware",
+      "description": "The `node-opensl` package is a piece of malware that steals environment variables and sends them to attacker controlled locations. \n\nAll versions have been unpublished from the npm registry.\n\n\n## Recommendation\n\n\nAs this package is malware, if you find it installed in your environment, the real security concern is determining how it got there. \n\nIf you have found this installed in your environment, you should:\n1. Delete the package\n2. Clear your npm cache\n3. Ensure it is not present in any other",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-646x-m363-9rh4",
+      "publishedAt": "2018-10-03T20:27:55Z",
+      "modifiedAt": "2023-09-12T18:41:04Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-646x-m363-9rh4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2017-16063"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "> 0"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "packageName": "total.js",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-3wj8-vp9h-rm6m",
@@ -133,6 +133,60 @@
         {
           "range": "< 3.4.7",
           "fixed": "3.4.7"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-72p5-2r6g-fm6v",
+      "packageName": "total.js",
+      "title": "Moderate severity vulnerability that affects total.js",
+      "description": "Total.js CMS 12.0.0 has XSS related to themes/admin/views/index.html (item.message) and themes/admin/public/ui.js (column.format).",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-72p5-2r6g-fm6v",
+      "publishedAt": "2019-04-02T15:46:52Z",
+      "modifiedAt": "2023-01-09T05:02:55Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-72p5-2r6g-fm6v"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-10260"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 3.3.0-12",
+          "fixed": "3.3.0-13"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-3q32-j57w-q4w7",
+      "packageName": "total.js",
+      "title": "Path Traversal in total.js",
+      "description": "Affected versions of `total.js` are vulnerable to Path Traversal.  Due to insufficient input sanitization in URLs, attackers can access server files outside the `/public` folder by using relative paths.  \nThe files served are limited to these file types: `flac`, `jpg`, `jpeg`, `png`, `gif`, `ico`, `js`, `css`, `txt`, `xml`, `woff`, `woff2`, `otf`, `ttf`, `eot`, `svg`, `zip`, `rar`, `pdf`, `docx`, `xlsx`, `doc`, `xls`, `html`, `htm`, `appcache`, `manifest`, `map`, `ogv`, `ogg`, `mp4`, `mp3`, `web",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-3q32-j57w-q4w7",
+      "publishedAt": "2019-02-20T15:40:13Z",
+      "modifiedAt": "2023-01-09T05:02:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-3q32-j57w-q4w7"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-8903"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.2.3",
+          "fixed": "3.2.3"
         }
       ],
       "source": "github"

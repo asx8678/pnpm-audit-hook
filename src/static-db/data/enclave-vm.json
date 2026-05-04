@@ -1,7 +1,33 @@
 {
   "packageName": "enclave-vm",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-x39w-8vm5-5m3p",
+      "packageName": "enclave-vm",
+      "title": "Sandbox escape via infinite recursion and error objects",
+      "description": "**Note:** The npm package has moved to `@enclave-vm/core` (formerly `enclave-vm`).  \nAll fixed versions and guidance refer to `@enclave-vm/core`.\n\n### Summary\nThe existing layers of security in enclave-vm are insufficient: The AST sanitization can be bypassed with dynamic property accesses, the hardening of the error objects does not cover the peculiar behavior or the vm module and the function constructor access prevention can be side-stepped by leveraging host object references.\n\n### Details\nT",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-x39w-8vm5-5m3p",
+      "publishedAt": "2026-02-05T17:49:35Z",
+      "modifiedAt": "2026-02-07T00:31:47Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x39w-8vm5-5m3p"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25533"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 2.7.0"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-7qm7-455j-5p63",
       "packageName": "enclave-vm",
@@ -25,32 +51,6 @@
         {
           "range": "< 2.7.0",
           "fixed": "2.7.0"
-        }
-      ],
-      "source": "github"
-    },
-    {
-      "id": "GHSA-x39w-8vm5-5m3p",
-      "packageName": "enclave-vm",
-      "title": "Sandbox escape via infinite recursion and error objects",
-      "description": "**Note:** The npm package has moved to `@enclave-vm/core` (formerly `enclave-vm`).  \nAll fixed versions and guidance refer to `@enclave-vm/core`.\n\n### Summary\nThe existing layers of security in enclave-vm are insufficient: The AST sanitization can be bypassed with dynamic property accesses, the hardening of the error objects does not cover the peculiar behavior or the vm module and the function constructor access prevention can be side-stepped by leveraging host object references.\n\n### Details\nT",
-      "severity": "medium",
-      "url": "https://github.com/advisories/GHSA-x39w-8vm5-5m3p",
-      "publishedAt": "2026-02-05T17:49:35Z",
-      "modifiedAt": "2026-02-07T00:31:47Z",
-      "identifiers": [
-        {
-          "type": "GHSA",
-          "value": "GHSA-x39w-8vm5-5m3p"
-        },
-        {
-          "type": "CVE",
-          "value": "CVE-2026-25533"
-        }
-      ],
-      "affectedVersions": [
-        {
-          "range": "<= 2.7.0"
         }
       ],
       "source": "github"

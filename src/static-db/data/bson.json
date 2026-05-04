@@ -1,6 +1,6 @@
 {
   "packageName": "bson",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-v8w9-2789-6hhr",
@@ -25,6 +25,33 @@
         {
           "range": "< 1.1.4",
           "fixed": "1.1.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-8462-q7x7-g2x4",
+      "packageName": "bson",
+      "title": "js-bson vulnerable to REDoS",
+      "description": "The MongoDB bson JavaScript module (also known as js-bson) versions 0.5.0 to 1.0.x before 1.0.5 is vulnerable to a Regular Expression Denial of Service (ReDoS) in lib/bson/decimal128.js. The flaw is triggered when the Decimal128.fromString() function is called to parse a long untrusted string.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-8462-q7x7-g2x4",
+      "publishedAt": "2018-09-17T20:44:58Z",
+      "modifiedAt": "2023-09-05T23:09:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-8462-q7x7-g2x4"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-13863"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": ">= 0.5.0, < 1.0.5",
+          "fixed": "1.0.5"
         }
       ],
       "source": "github"

@@ -1,7 +1,88 @@
 {
   "packageName": "@budibase/server",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
+    {
+      "id": "GHSA-gjw9-34gf-rp6m",
+      "packageName": "@budibase/server",
+      "title": "Budibase: Command Injection in Bash Automation Step",
+      "description": "**Location**: `packages/server/src/automations/steps/bash.ts`  \n\n#### Description\nThe bash automation step executes user-provided commands using `execSync` without proper sanitization or validation. User input is processed through `processStringSync` which allows template interpolation, potentially allowing arbitrary command execution.\n\n#### Code Reference\n```21:28:packages/server/src/automations/steps/bash.ts\n    const command = processStringSync(inputs.code, context)\n\n    let stdout,\n      suc",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-gjw9-34gf-rp6m",
+      "publishedAt": "2026-04-03T21:53:32Z",
+      "modifiedAt": "2026-04-09T14:28:11Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-gjw9-34gf-rp6m"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25044"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.33.4",
+          "fixed": "3.33.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-fcm4-4pj2-m5hf",
+      "packageName": "@budibase/server",
+      "title": "Budibase: Unauthenticated Remote Code Execution via Webhook Trigger and Bash Automation Step",
+      "description": "### Summary\nAn unauthenticated attacker can achieve Remote Code Execution (RCE) on the Budibase server by triggering an automation that contains a Bash step via the public webhook endpoint. No authentication is required to trigger the exploit. The process executes as `root` inside the container.\n\n### Details\n\n**Vulnerable endpoint — `packages/server/src/api/routes/webhook.ts` line 13:**\n\n```typescript\n// this shouldn't have authorisation, right now its always public\npublicRoutes.post(\"/api/webho",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-fcm4-4pj2-m5hf",
+      "publishedAt": "2026-04-04T06:04:58Z",
+      "modifiedAt": "2026-04-04T06:04:59Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-fcm4-4pj2-m5hf"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35216"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.33.4",
+          "fixed": "3.33.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-2wfh-rcwf-wh23",
+      "packageName": "@budibase/server",
+      "title": "Budibase: Path traversal in plugin file upload enables arbitrary directory deletion and file write",
+      "description": "## Summary\n\nThe plugin file upload endpoint (`POST /api/plugin/upload`) passes the user-supplied filename directly to `createTempFolder()` without sanitizing path traversal sequences. An attacker with Global Builder privileges can craft a multipart upload with a filename containing `../` to delete arbitrary directories via `rmSync` and write arbitrary files via tarball extraction to any filesystem path the Node.js process can access.\n\n## Severity\n\n- **Attack Vector:** Network — exploitable via t",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-2wfh-rcwf-wh23",
+      "publishedAt": "2026-04-04T06:04:19Z",
+      "modifiedAt": "2026-04-04T06:04:22Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-2wfh-rcwf-wh23"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-35214"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.33.4",
+          "fixed": "3.33.4"
+        }
+      ],
+      "source": "github"
+    },
     {
       "id": "GHSA-4g2x-vq5p-5vj6",
       "packageName": "@budibase/server",
@@ -10,7 +91,7 @@
       "severity": "critical",
       "url": "https://github.com/advisories/GHSA-4g2x-vq5p-5vj6",
       "publishedAt": "2024-03-01T20:09:00Z",
-      "modifiedAt": "2024-03-01T20:09:00Z",
+      "modifiedAt": "2026-03-18T05:04:57Z",
       "identifiers": [
         {
           "type": "GHSA",
@@ -21,6 +102,33 @@
         {
           "range": "< 2.20.0",
           "fixed": "2.20.0"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-726g-59wr-cj4c",
+      "packageName": "@budibase/server",
+      "title": "@budibase/server: Command Injection in PostgreSQL Dump Command",
+      "description": "**Location**: `packages/server/src/integrations/postgres.ts:529-531`  \n\n#### Description\nThe PostgreSQL integration constructs shell commands using user-controlled configuration values (database name, host, password, etc.) without proper sanitization. The password and other connection parameters are directly interpolated into a shell command.\n\n#### Code Reference\n```529:531:packages/server/src/integrations/postgres.ts\n    const dumpCommand = `PGPASSWORD=\"${\n      this.config.password\n    }\" pg_d",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-726g-59wr-cj4c",
+      "publishedAt": "2026-03-09T16:56:26Z",
+      "modifiedAt": "2026-03-10T18:39:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-726g-59wr-cj4c"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2026-25041"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.23.32",
+          "fixed": "3.23.32"
         }
       ],
       "source": "github"

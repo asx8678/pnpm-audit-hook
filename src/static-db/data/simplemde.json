@@ -1,0 +1,32 @@
+{
+  "packageName": "simplemde",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-wg85-p6j7-gp3w",
+      "packageName": "simplemde",
+      "title": "SimpleMDE XSS Vulnerability",
+      "description": "SimpleMDE 1.11.2 has XSS via an onerror attribute of a crafted IMG element, or via certain input with `[` and `(` characters, which is mishandled during construction of an `A` element.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-wg85-p6j7-gp3w",
+      "publishedAt": "2018-11-21T22:21:25Z",
+      "modifiedAt": "2023-09-07T00:08:32Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-wg85-p6j7-gp3w"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2018-19057"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "<= 1.11.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

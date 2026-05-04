@@ -1,0 +1,33 @@
+{
+  "packageName": "html-pdf",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-x4w5-r546-x9qh",
+      "packageName": "html-pdf",
+      "title": "Arbitrary File Read in html-pdf",
+      "description": "All versions of `html-pdf` are vulnerable to Arbitrary File Read. The package fails to sanitize the HTML input, allowing attackers to exfiltrate server files by supplying malicious HTML code. XHR requests in the HTML code are executed by the server. Input with an XHR request such as `request.open(\"GET\",\"file:///etc/passwd\")` will result in a PDF document with the contents of `/etc/passwd`.\n\n\n## Recommendation\n\nNo fix is currently available. There is a mitigation available in the provided referen",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-x4w5-r546-x9qh",
+      "publishedAt": "2019-10-11T18:40:38Z",
+      "modifiedAt": "2023-02-01T05:02:39Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-x4w5-r546-x9qh"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2019-15138"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 3.0.1",
+          "fixed": "3.0.1"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

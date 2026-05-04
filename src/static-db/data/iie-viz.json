@@ -1,0 +1,28 @@
+{
+  "packageName": "iie-viz",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-jf55-rgpx-p6rx",
+      "packageName": "iie-viz",
+      "title": "Malicious Package in iie-viz",
+      "description": "Version 1.0.4 of `iie-viz` contained malicious code. The code when executed in the browser would enumerate password, cvc, cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nRemove the package from your environment. It's also recommended to evaluate your application to determine whether or not user data was compromised.\n\nUsers may consider downgrading to version 1.0.3",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-jf55-rgpx-p6rx",
+      "publishedAt": "2020-09-03T19:12:22Z",
+      "modifiedAt": "2023-07-27T20:31:35Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-jf55-rgpx-p6rx"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.0.4"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

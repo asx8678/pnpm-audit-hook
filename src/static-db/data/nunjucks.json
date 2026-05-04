@@ -1,6 +1,6 @@
 {
   "packageName": "nunjucks",
-  "lastUpdated": "2026-03-08T16:40:25.784Z",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
   "vulnerabilities": [
     {
       "id": "GHSA-x77j-w7wf-fjmw",
@@ -25,6 +25,33 @@
         {
           "range": "< 3.2.4",
           "fixed": "3.2.4"
+        }
+      ],
+      "source": "github"
+    },
+    {
+      "id": "GHSA-f7ph-p5rv-phw2",
+      "packageName": "nunjucks",
+      "title": "Cross-Site Scripting in nunjucks",
+      "description": "Affected versions of `nunjucks` do not properly escape specially structured user input in template vars when in auto-escape mode, resulting in a cross-site scripting vulnerability.\n\n## Proof of Concept\n\nBy using an array for the keys in a template var, escaping is bypassed.\n```javascript\nname[]=<script>alert(1)</script>\n```\n\nA full PoC is available in the references section.\n\n\n## Recommendation\n\nUpdate to version 2.4.3 or later.",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-f7ph-p5rv-phw2",
+      "publishedAt": "2018-11-06T23:13:37Z",
+      "modifiedAt": "2023-01-09T05:02:52Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-f7ph-p5rv-phw2"
+        },
+        {
+          "type": "CVE",
+          "value": "CVE-2016-10547"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 2.4.3",
+          "fixed": "2.4.3"
         }
       ],
       "source": "github"

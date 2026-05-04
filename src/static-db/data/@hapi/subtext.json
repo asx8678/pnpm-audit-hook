@@ -1,0 +1,29 @@
+{
+  "packageName": "@hapi/subtext",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-4rgj-8mq3-hggj",
+      "packageName": "@hapi/subtext",
+      "title": "Denial of Service in @hapi/subtext",
+      "description": "Versions of `@hapi/subtext` prior to 6.1.2 are vulnerable to Denial of Service (DoS). The package fails to enforce the `maxBytes` configuration for payloads with chunked encoding that are written to the file system. This allows attackers to send requests with arbitrary payload sizes, which may exhaust system resources leading to Denial of Service.\n\n\n## Recommendation\n\nUpgrade to version 6.1.2 or later.",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-4rgj-8mq3-hggj",
+      "publishedAt": "2020-09-03T20:32:11Z",
+      "modifiedAt": "2023-04-11T00:25:07Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-4rgj-8mq3-hggj"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "< 6.1.2",
+          "fixed": "6.1.2"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}

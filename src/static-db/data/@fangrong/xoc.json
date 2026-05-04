@@ -1,0 +1,28 @@
+{
+  "packageName": "@fangrong/xoc",
+  "lastUpdated": "2026-05-04T13:06:56.926Z",
+  "vulnerabilities": [
+    {
+      "id": "GHSA-pjxp-f379-6284",
+      "packageName": "@fangrong/xoc",
+      "title": "Malicious Package in @fangrong/xoc",
+      "description": "Version 1.0.6 of `@fangrong/xoc` contained malicious code. The code when executed in the browser would enumerate password, cvc, cardnumber fields from forms and send the extracted values to `https://js-metrics.com/minjs.php?pl=`\n\n\n\n## Recommendation\n\nRemove the package from your environment. It's also recommended to evaluate your application to determine whether or not user data was compromised.\n\nUsers may consider downgrading to version 1.0.5",
+      "severity": "critical",
+      "url": "https://github.com/advisories/GHSA-pjxp-f379-6284",
+      "publishedAt": "2020-09-03T19:13:27Z",
+      "modifiedAt": "2023-07-27T20:15:13Z",
+      "identifiers": [
+        {
+          "type": "GHSA",
+          "value": "GHSA-pjxp-f379-6284"
+        }
+      ],
+      "affectedVersions": [
+        {
+          "range": "= 1.0.6"
+        }
+      ],
+      "source": "github"
+    }
+  ]
+}
